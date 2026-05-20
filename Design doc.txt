@@ -1,0 +1,177 @@
+---
+name: Ethereal Intelligence
+colors:
+  surface: '#131314'
+  surface-dim: '#131314'
+  surface-bright: '#3a393a'
+  surface-container-lowest: '#0e0e0f'
+  surface-container-low: '#1c1b1c'
+  surface-container: '#201f20'
+  surface-container-high: '#2a2a2b'
+  surface-container-highest: '#353436'
+  on-surface: '#e5e2e3'
+  on-surface-variant: '#cfc2d6'
+  inverse-surface: '#e5e2e3'
+  inverse-on-surface: '#313031'
+  outline: '#988d9f'
+  outline-variant: '#4d4354'
+  surface-tint: '#ddb7ff'
+  primary: '#ddb7ff'
+  on-primary: '#490080'
+  primary-container: '#b76dff'
+  on-primary-container: '#400071'
+  inverse-primary: '#842bd2'
+  secondary: '#adc6ff'
+  on-secondary: '#002e6a'
+  secondary-container: '#0566d9'
+  on-secondary-container: '#e6ecff'
+  tertiary: '#2fd9f4'
+  on-tertiary: '#00363e'
+  tertiary-container: '#009fb4'
+  on-tertiary-container: '#002f36'
+  error: '#ffb4ab'
+  on-error: '#690005'
+  error-container: '#93000a'
+  on-error-container: '#ffdad6'
+  primary-fixed: '#f0dbff'
+  primary-fixed-dim: '#ddb7ff'
+  on-primary-fixed: '#2c0051'
+  on-primary-fixed-variant: '#6900b3'
+  secondary-fixed: '#d8e2ff'
+  secondary-fixed-dim: '#adc6ff'
+  on-secondary-fixed: '#001a42'
+  on-secondary-fixed-variant: '#004395'
+  tertiary-fixed: '#a2eeff'
+  tertiary-fixed-dim: '#2fd9f4'
+  on-tertiary-fixed: '#001f25'
+  on-tertiary-fixed-variant: '#004e5a'
+  background: '#131314'
+  on-background: '#e5e2e3'
+  surface-variant: '#353436'
+typography:
+  display-lg:
+    fontFamily: Geist
+    fontSize: 48px
+    fontWeight: '700'
+    lineHeight: '1.1'
+    letterSpacing: -0.04em
+  display-lg-mobile:
+    fontFamily: Geist
+    fontSize: 32px
+    fontWeight: '700'
+    lineHeight: '1.2'
+    letterSpacing: -0.02em
+  headline-md:
+    fontFamily: Geist
+    fontSize: 24px
+    fontWeight: '600'
+    lineHeight: '1.4'
+    letterSpacing: -0.01em
+  body-lg:
+    fontFamily: Geist
+    fontSize: 18px
+    fontWeight: '400'
+    lineHeight: '1.6'
+    letterSpacing: 0.01em
+  body-md:
+    fontFamily: Geist
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: '1.6'
+    letterSpacing: 0.01em
+  label-sm:
+    fontFamily: Geist
+    fontSize: 12px
+    fontWeight: '500'
+    lineHeight: '1'
+    letterSpacing: 0.05em
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  base: 8px
+  container-max: 1280px
+  gutter: 24px
+  margin-mobile: 16px
+  margin-desktop: 48px
+  section-gap: 80px
+---
+
+## Brand & Style
+
+This design system is built to evoke the feeling of a high-end, futuristic mentorship experience. It targets ambitious professionals who seek a cutting-edge tool that feels both technologically superior and approachable. 
+
+The aesthetic is a sophisticated blend of **Glassmorphism** and **Minimalism**. By utilizing deep, infinite blacks and layered translucency, the UI suggests depth and intelligence. The emotional response should be one of calm confidence—reducing interview anxiety through a clean, focused, and "magical" interface that feels like a glimpse into the future of career coaching.
+
+## Colors
+
+The palette is anchored in a "Deep Space" dark mode. 
+- **Primary:** A vibrant Purple (#A855F7) used for primary actions and AI-driven insights.
+- **Secondary:** An Electric Blue (#3B82F6) used for secondary interactive elements and progress indicators.
+- **Neutrals:** A scale of deep charcoals. The absolute background is #0A0A0B, while elevated surfaces use #121214 with varying levels of transparency.
+- **Gradients:** Use the `accent_gradient` for high-impact areas like active states, premium features, and AI "thinking" animations. 
+- **Neon Highlights:** Subtle cyan (#22D3EE) is reserved for critical status indicators or "live" interview signals.
+
+## Typography
+
+This design system utilizes **Geist** for its technical precision and clean, modern SaaS aesthetic. 
+
+- **Hierarchy:** Dramatic contrast between display sizes and body text creates an editorial feel.
+- **Letter Spacing:** Headlines use slightly negative tracking for a tighter, premium look. Body and label text use generous letter spacing to ensure maximum readability against dark backgrounds.
+- **Weights:** Use 'Regular' (400) for long-form content and 'SemiBold' (600) or 'Bold' (700) for headers and emphasis to ensure clear information architecture.
+
+## Layout & Spacing
+
+The layout philosophy follows a **Fluid Grid** model with high emphasis on whitespace to prevent cognitive overload during stressful interview simulations.
+
+- **Grid:** A 12-column system for desktop, transitioning to a 4-column system for mobile.
+- **Rhythm:** An 8px base unit governs all dimensions. 
+- **Safe Zones:** Use generous 48px margins on desktop to allow the glass panels to "breathe" against the deep background.
+- **Reflow:** On mobile, glass cards should stack vertically, losing their horizontal margins to maximize screen real estate for text-based questions.
+
+## Elevation & Depth
+
+Depth is achieved through **Glassmorphism** rather than traditional shadows.
+
+1.  **Backdrop Blur:** All cards must use a 12px to 20px blur radius to separate content from the background.
+2.  **Translucency:** Surface layers use #FFFFFF at 3-5% opacity.
+3.  **Inner Glows:** Elements should feature a 1px solid white stroke at 10% opacity on the top and left edges to simulate a light source from above.
+4.  **Interactive Glow:** Primary buttons and active input fields utilize an outer "neon" bloom—a soft, colored shadow (0px 0px 20px) matching the element's primary color at 30% opacity.
+
+## Shapes
+
+The design system uses a very soft shape language to feel friendly and inviting.
+
+- **Standard Elements:** Buttons and small inputs use 0.5rem (8px).
+- **Glass Cards:** Use a "2xl" treatment of 1.5rem (24px) to emphasize the "friendly AI" persona.
+- **Interactive States:** On hover, cards may slightly expand, and the corner radius remains constant to maintain structural integrity.
+- **Icons:** Should be encased in circular or highly rounded containers to match the overall softness.
+
+## Components
+
+### Buttons
+- **Primary:** Solid gradient fill (Purple to Blue). On hover, apply a soft glow effect and a 2px upward translation.
+- **Secondary:** Glass background with a 1px border.
+- **Ghost:** No background, purple text, becomes semi-opaque on hover.
+
+### Glass Cards
+- Semi-transparent #121214 background (80% opacity).
+- 1px border with a subtle gradient (White 10% to White 2%).
+- 24px internal padding.
+
+### Input Fields
+- Dark, recessed background (#050505).
+- 1px border that glows electric blue upon focus.
+- Monospaced font for placeholder text to lean into the "technical" feel.
+
+### Chips & Badges
+- Used for "Interview Topic" or "Difficulty Level." 
+- Pill-shaped, with a subtle 5% purple tint and 100% opacity text.
+
+### Interactive Feedback
+- AI "thinking" state: A shimmering gradient animation that moves across the border of the glass card.
+- Feedback highlights: Soft green for "Good Answer" and soft amber for "Improvement Needed," using low-saturation glows rather than harsh solid colors.
