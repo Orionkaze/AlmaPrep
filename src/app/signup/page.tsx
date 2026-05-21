@@ -13,7 +13,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState<string | null>(null)
   const router = useRouter()
   const supabase = createClient()
 
@@ -21,10 +21,10 @@ export default function SignupPage() {
     e.preventDefault()
     setLoading(true)
     setError(null)
-    setSuccess(false)
+    setSuccess(null)
 
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -36,16 +36,20 @@ export default function SignupPage() {
         setError(error.message)
         setLoading(false)
       } else {
-        setSuccess(true)
         setLoading(false)
         // Clear demo cookie if signing up with real credentials
         document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         
-        // Wait a second and redirect to onboarding
-        setTimeout(() => {
-          router.push("/onboarding")
-          router.refresh()
-        }, 1500)
+        if (data.session) {
+          setSuccess("Account created successfully! Redirecting to onboarding...")
+          // Wait a second and redirect to onboarding
+          setTimeout(() => {
+            router.push("/onboarding")
+            router.refresh()
+          }, 1500)
+        } else {
+          setSuccess("Verification email sent! Please check your inbox and click the verification link to complete setup and continue to onboarding.")
+        }
       }
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : "An unexpected error occurred."
@@ -83,7 +87,7 @@ export default function SignupPage() {
 
           {success && (
             <div className="mb-4 p-3 rounded-lg border border-green-500/20 bg-green-500/10 text-green-400 text-xs font-medium">
-              Account created successfully! Redirecting to onboarding...
+              {success}
             </div>
           )}
 
@@ -114,7 +118,7 @@ export default function SignupPage() {
               />
             </div>
 
-            <GlowButton type="submit" disabled={loading || success} className="w-full mt-4 h-12 cursor-pointer">
+            <GlowButton type="submit" disabled={loading || !!success} className="w-full mt-4 h-12 cursor-pointer">
               {loading ? "Creating Account..." : "Sign Up"}
             </GlowButton>
 
