@@ -46,7 +46,7 @@ export default function InterviewSetupPage() {
             ← Back to Dashboard
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">Choose Your Interview</h1>
-          <p className="text-foreground/60">Select the type of interview you'd like to practice.</p>
+          <p className="text-foreground/60">Select the type of interview you&apos;d like to practice.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">

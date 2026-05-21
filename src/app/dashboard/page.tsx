@@ -2,7 +2,30 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMicrophone, faChartBar, faBullseye, faFire } from "@fortawesome/free-solid-svg-icons"
+import {
+  faMicrophone,
+  faChartBar,
+  faBullseye,
+  faFire,
+  faLaptopCode,
+  faUserTie,
+  faRocket,
+  faBrain,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons"
+import { createClient } from "@/lib/supabase/server"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
+import { LogoutButton } from "@/components/logout-button"
+
+// Map avatar strings to FontAwesome icons
+const avatarMap: Record<string, typeof faUserTie> = {
+  "laptop-code": faLaptopCode,
+  "user-tie": faUserTie,
+  "rocket": faRocket,
+  "brain": faBrain,
+  "star": faStar,
+}
 
 // Mock data for demo purposes
 const mockHistory = [
@@ -47,8 +70,78 @@ function CategoryBadge({ category }: { category: string }) {
   )
 }
 
-export default function DashboardPage() {
-  const avgScore = Math.round(mockHistory.reduce((sum, h) => sum + h.score, 0) / mockHistory.length)
+export default async function DashboardPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  const cookieStore = await cookies()
+  const isDemo = cookieStore.get("mockmate-demo-session")?.value === "true"
+
+  let displayName = "Guest User"
+  let avatarIcon = faUserTie
+  let history = mockHistory
+
+  if (user) {
+    // 1. Fetch user profile
+    const { data: profile } = await supabase
+      .from("users")
+      .select("*")
+      .eq("id", user.id)
+      .single()
+
+    if (!profile) {
+      // Redirect to onboarding if profile doesn't exist
+      redirect("/onboarding")
+    }
+
+    displayName = profile.username || user.email?.split("@")[0] || "User"
+    avatarIcon = avatarMap[profile.avatar_url || ""] || faUserTie
+
+    // 2. Fetch interviews and feedback from database
+    const { data: interviewsData } = await supabase
+      .from("interviews")
+      .select(`
+        id,
+        category,
+        status,
+        created_at,
+        feedback (
+          score
+        )
+      `)
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false })
+
+    if (interviewsData) {
+      history = interviewsData.map((item) => {
+        const score = item.feedback && item.feedback[0] ? item.feedback[0].score : 75
+        let cat = item.category
+        if (cat === "hr") cat = "HR"
+        else if (cat === "technical") cat = "Technical"
+        else if (cat === "mixed") cat = "Mixed"
+        else cat = cat.charAt(0).toUpperCase() + cat.slice(1)
+
+        return {
+          id: item.id,
+          category: cat,
+          score,
+          date: item.created_at,
+          status: item.status,
+        }
+      })
+    }
+  } else if (!isDemo) {
+    // Redirect if not authenticated and not demo session
+    redirect("/login")
+  }
+
+  // Calculate statistics
+  const totalSessions = history.length
+  const avgScore = totalSessions > 0
+    ? Math.round(history.reduce((sum, h) => sum + h.score, 0) / totalSessions)
+    : 0
+  const bestScore = totalSessions > 0
+    ? Math.max(...history.map(h => h.score))
+    : 0
 
   return (
     <main className="min-h-screen p-6 md:p-12 relative overflow-hidden">
@@ -63,16 +156,28 @@ export default function DashboardPage() {
             <Link href="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4 inline-block">
               Mock Mate
             </Link>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Welcome back, <span className="text-primary">User</span>
-            </h1>
-            <p className="text-foreground/60 mt-1">Ready for your next interview session?</p>
+            <div className="flex items-center gap-3">
+              {user && (
+                <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-lg">
+                  <FontAwesomeIcon icon={avatarIcon} />
+                </div>
+              )}
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+                  Welcome back, <span className="text-primary">{displayName}</span>
+                </h1>
+                <p className="text-foreground/60 mt-1">Ready for your next interview session?</p>
+              </div>
+            </div>
           </div>
-          <Link href="/interview/setup">
-            <GlowButton className="h-12 px-10 text-base cursor-pointer">
-              <FontAwesomeIcon icon={faMicrophone} className="mr-2" /> Start Interview
-            </GlowButton>
-          </Link>
+          <div className="flex items-center gap-3">
+            <LogoutButton />
+            <Link href="/interview/setup">
+              <GlowButton className="h-12 px-10 text-base cursor-pointer">
+                <FontAwesomeIcon icon={faMicrophone} className="mr-2" /> Start Interview
+              </GlowButton>
+            </Link>
+          </div>
         </div>
 
         {/* Stats Row */}
@@ -92,7 +197,7 @@ export default function DashboardPage() {
             </div>
             <div>
               <p className="text-sm text-foreground/60">Total Sessions</p>
-              <p className="text-2xl font-bold text-secondary">{mockHistory.length}</p>
+              <p className="text-2xl font-bold text-secondary">{totalSessions}</p>
             </div>
           </GlassCard>
           <GlassCard className="flex items-center gap-4">
@@ -101,39 +206,41 @@ export default function DashboardPage() {
             </div>
             <div>
               <p className="text-sm text-foreground/60">Best Score</p>
-              <p className="text-2xl font-bold text-accent">{Math.max(...mockHistory.map(h => h.score))}/100</p>
+              <p className="text-2xl font-bold text-accent">{bestScore}/100</p>
             </div>
           </GlassCard>
         </div>
 
         {/* Interview History */}
-        <div>
-          <h2 className="text-xl font-semibold mb-4">Interview History</h2>
-          <div className="flex flex-col gap-4">
-            {mockHistory.map((session) => (
-              <GlassCard key={session.id} className="flex flex-col sm:flex-row items-center justify-between gap-4 hover:border-primary/30 transition-colors cursor-pointer">
-                <div className="flex items-center gap-6">
-                  <ScoreRing score={session.score} />
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <h3 className="font-semibold text-lg">{session.category} Interview</h3>
-                      <CategoryBadge category={session.category} />
+        {totalSessions > 0 && (
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Interview History</h2>
+            <div className="flex flex-col gap-4">
+              {history.map((session) => (
+                <GlassCard key={session.id} className="flex flex-col sm:flex-row items-center justify-between gap-4 hover:border-primary/30 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-6">
+                    <ScoreRing score={session.score} />
+                    <div>
+                      <div className="flex items-center gap-3 mb-1">
+                        <h3 className="font-semibold text-lg">{session.category} Interview</h3>
+                        <CategoryBadge category={session.category} />
+                      </div>
+                      <p className="text-sm text-foreground/50">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                     </div>
-                    <p className="text-sm text-foreground/50">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                   </div>
-                </div>
-                <Link href={`/interview/${session.id}/feedback`}>
-                  <button className="text-sm font-medium text-primary hover:underline whitespace-nowrap cursor-pointer">
-                    View Feedback →
-                  </button>
-                </Link>
-              </GlassCard>
-            ))}
+                  <Link href={`/interview/${session.id}/feedback`}>
+                    <button className="text-sm font-medium text-primary hover:underline whitespace-nowrap cursor-pointer">
+                      View Feedback →
+                    </button>
+                  </Link>
+                </GlassCard>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Empty state (hidden when there's data) */}
-        {mockHistory.length === 0 && (
+        {totalSessions === 0 && (
           <GlassCard className="text-center py-16">
             <FontAwesomeIcon icon={faMicrophone} className="text-5xl text-foreground/30 mb-4" />
             <h3 className="text-xl font-semibold mb-2">No interviews yet</h3>
@@ -147,4 +254,3 @@ export default function DashboardPage() {
     </main>
   )
 }
-

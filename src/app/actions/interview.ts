@@ -118,7 +118,7 @@ Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no
 
     // Map color classes to the breakdown scores for UI rendering
     const colors = ["bg-primary", "bg-secondary", "bg-accent", "bg-green-500"]
-    const breakdown = (data.breakdown || []).map((item: any, idx: number) => ({
+    const breakdown = (data.breakdown || []).map((item: { label?: string; score?: number }, idx: number) => ({
       label: item.label || "Criteria",
       score: typeof item.score === "number" ? item.score : 70,
       color: colors[idx % colors.length],

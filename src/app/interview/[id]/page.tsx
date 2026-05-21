@@ -1,6 +1,5 @@
 "use client"
 
-import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
