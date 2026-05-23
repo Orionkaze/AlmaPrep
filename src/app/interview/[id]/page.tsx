@@ -97,6 +97,9 @@ export default function InterviewPage({
 
       recognition.onerror = (event: any) => {
         console.error("Speech recognition error:", event.error)
+        if (event.error !== "no-speech") {
+          setInput(`[Mic Error: ${event.error}]`)
+        }
         setIsListening(false)
       }
       
@@ -108,7 +111,7 @@ export default function InterviewPage({
     }
   }, [])
 
-  const toggleListening = () => {
+  const toggleListening = async () => {
     if (!recognitionRef.current) {
       alert("Voice input is not supported in this browser. Please try Chrome or Edge.")
       return
@@ -117,12 +120,20 @@ export default function InterviewPage({
     try {
       if (isListening) {
         recognitionRef.current.stop()
+        setIsListening(false)
       } else {
+        // Force browser to ask for microphone permission explicitly before starting recognition
+        // Close the stream immediately so we don't lock the mic from webkitSpeechRecognition
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+        stream.getTracks().forEach(track => track.stop())
+        
+        setInput("") // Clear input before speaking
         recognitionRef.current.start()
         setIsListening(true)
       }
     } catch (err) {
       console.error("Failed to toggle listening:", err)
+      alert("Microphone access was denied or failed. Please ensure you have allowed microphone permissions in your browser settings.")
       setIsListening(false)
     }
   }
