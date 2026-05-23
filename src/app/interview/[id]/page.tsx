@@ -4,7 +4,7 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane, faXmark, faVideoSlash } from "@fortawesome/free-solid-svg-icons"
 import {
   getNextQuestion,
   generateFeedback,
@@ -318,15 +318,22 @@ export default function InterviewPage({
           </div>
 
           {/* User Webcam Tile */}
-          <div className="flex-1 bg-[#3c4043] rounded-xl relative overflow-hidden border border-white/10 shadow-lg">
-            <video 
-              ref={videoRef}
-              autoPlay
-              playsInline
-              muted
-              className="w-full h-full object-cover"
-              style={{ transform: "scaleX(-1)" }}
-            />
+          <div className="flex-1 bg-[#3c4043] rounded-xl relative overflow-hidden border border-white/10 shadow-lg flex items-center justify-center">
+            {cameraError ? (
+              <div className="text-center p-6 text-white/80">
+                <FontAwesomeIcon icon={faVideoSlash} className="text-3xl mb-3 text-red-400" />
+                <p className="text-sm font-medium">{cameraError}</p>
+              </div>
+            ) : (
+              <video 
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ transform: "scaleX(-1)" }}
+              />
+            )}
             <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-md flex items-center gap-2">
               <FontAwesomeIcon icon={isListening ? faMicrophone : faMicrophoneSlash} className={`text-xs ${isListening ? 'text-green-400' : 'text-red-500'}`} />
               <span className="text-white text-sm font-medium">You</span>
