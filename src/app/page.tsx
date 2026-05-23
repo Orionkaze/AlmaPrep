@@ -13,9 +13,9 @@ export default function Home() {
       
       <div className="z-10 w-full max-w-5xl flex flex-col items-center text-center">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/60">
-          Master Your Next <br className="hidden md:block" />
+          Ace Your Next <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-            Mock Interview
+            Job Interview
           </span>
         </h1>
         
