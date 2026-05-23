@@ -35,7 +35,7 @@ export async function getNextQuestion(
   }
 
   try {
-    const model = genAI.getGenerativeModel({ 
+    let model = genAI.getGenerativeModel({ 
       model: "gemini-2.5-flash",
       safetySettings 
     })
@@ -98,10 +98,7 @@ ${historyPrompt}
 
 Next Response:`
 
-    let model = genAI.getGenerativeModel({ 
-      model: "gemini-2.5-flash",
-      safetySettings 
-    })
+
 
     let result;
     try {
