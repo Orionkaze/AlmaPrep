@@ -44,8 +44,7 @@ export default function SignupPage() {
           setSuccess("Account created successfully! Redirecting to onboarding...")
           // Wait a second and redirect to onboarding
           setTimeout(() => {
-            router.push("/onboarding")
-            router.refresh()
+            window.location.href = "/onboarding"
           }, 1500)
         } else {
           setSuccess("Verification email sent! Please check your inbox and click the verification link to complete setup and continue to onboarding.")

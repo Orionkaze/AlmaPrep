@@ -3,9 +3,10 @@
 import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBriefcase, faLaptopCode, faShuffle } from "@fortawesome/free-solid-svg-icons"
+import { faBriefcase, faLaptopCode, faShuffle, faFileLines } from "@fortawesome/free-solid-svg-icons"
+import { getResumeData } from "@/app/actions/resume"
 
 const categories = [
   {
@@ -33,6 +34,18 @@ const categories = [
 
 export default function InterviewSetupPage() {
   const [selected, setSelected] = useState<string | null>(null)
+  const [hasResume, setHasResume] = useState(false)
+  const [useResume, setUseResume] = useState(false)
+
+  useEffect(() => {
+    async function checkResume() {
+      const result = await getResumeData()
+      if (result.success && result.data && result.data.resumeText) {
+        setHasResume(true)
+      }
+    }
+    checkResume()
+  }, [])
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
@@ -42,18 +55,18 @@ export default function InterviewSetupPage() {
 
       <div className="relative z-10 w-full max-w-3xl">
         <div className="text-center mb-10">
-          <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors mb-4 inline-block">
+          <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors mb-4 inline-block font-medium">
             ← Back to Dashboard
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">Choose Your Interview</h1>
           <p className="text-foreground/60">Select the type of interview you&apos;d like to practice.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {categories.map((cat) => (
-            <button key={cat.id} onClick={() => setSelected(cat.id)} className="text-left">
+            <button key={cat.id} onClick={() => setSelected(cat.id)} className="text-left cursor-pointer">
               <GlassCard
-                className={`h-full flex flex-col items-center text-center transition-all duration-200 hover:scale-[1.02] cursor-pointer ${
+                className={`h-full flex flex-col items-center text-center transition-all duration-200 hover:scale-[1.02] ${
                   selected === cat.id
                     ? "border-primary ring-2 ring-primary/30"
                     : "hover:border-white/20"
@@ -69,8 +82,41 @@ export default function InterviewSetupPage() {
           ))}
         </div>
 
+        {/* Resume Toggle Box */}
+        <GlassCard className="p-5 mb-8 border-dashed border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex-1">
+            <h4 className="text-sm font-semibold mb-1 flex items-center gap-1.5 text-foreground/90">
+              <FontAwesomeIcon icon={faFileLines} className="text-primary text-xs" /> Resume-Focused Questions
+            </h4>
+            {hasResume ? (
+              <p className="text-xs text-foreground/50 leading-relaxed">
+                Saved resume detected! Enable this option to have Gemini ask questions tailored specifically to your background and projects.
+              </p>
+            ) : (
+              <p className="text-xs text-foreground/50 leading-relaxed">
+                You haven&apos;t added a resume yet. To practice questions based on your background, configure your profile in the{" "}
+                <Link href="/dashboard/resume" className="text-primary hover:underline font-semibold">
+                  Resume Analyzer
+                </Link>
+                .
+              </p>
+            )}
+          </div>
+          {hasResume && (
+            <button
+              onClick={() => setUseResume(!useResume)}
+              className="flex items-center gap-3 cursor-pointer select-none"
+            >
+              <span className="text-xs font-bold text-foreground/80">{useResume ? "Enabled" : "Disabled"}</span>
+              <div className={`w-11 h-6 flex items-center rounded-full p-1 transition-all duration-300 ${useResume ? "bg-primary" : "bg-white/10 border border-white/5"}`}>
+                <div className={`bg-white size-4 rounded-full shadow-md transform transition-all duration-300 ${useResume ? "translate-x-5" : "translate-x-0"}`} />
+              </div>
+            </button>
+          )}
+        </GlassCard>
+
         <div className="flex justify-center">
-          <Link href={selected ? `/interview/${selected}` : "#"}>
+          <Link href={selected ? `/interview/${selected}${useResume ? "?resume=true" : ""}` : "#"}>
             <GlowButton
               disabled={!selected}
               className={`h-12 px-12 text-base ${!selected ? "opacity-40 cursor-not-allowed" : ""}`}
@@ -83,4 +129,5 @@ export default function InterviewSetupPage() {
     </main>
   )
 }
+
 

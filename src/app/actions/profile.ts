@@ -33,3 +33,36 @@ export async function createUserProfile(
     return { success: false, error: "An unexpected error occurred" }
   }
 }
+
+export async function updateUserProfile(
+  username: string,
+  avatarUrl: string
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      return { success: false, error: "Not authenticated" }
+    }
+
+    const { error } = await supabase
+      .from("users")
+      .update({
+        username,
+        avatar_url: avatarUrl,
+      })
+      .eq("id", user.id)
+
+    if (error) {
+      console.error("Error updating user profile in Supabase:", error)
+      return { success: false, error: error.message }
+    }
+
+    return { success: true }
+  } catch (e) {
+    console.error("updateUserProfile failed:", e)
+    return { success: false, error: "An unexpected error occurred" }
+  }
+}
+

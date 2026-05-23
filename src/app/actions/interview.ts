@@ -15,7 +15,8 @@ interface MessageInput {
  */
 export async function getNextQuestion(
   category: string,
-  previousMessages: MessageInput[]
+  previousMessages: MessageInput[],
+  useResume?: boolean
 ): Promise<string> {
   if (!process.env.GEMINI_API_KEY) {
     return "Error: GEMINI_API_KEY is not configured in .env.local"
@@ -24,6 +25,34 @@ export async function getNextQuestion(
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" })
 
+    let resumeText = ""
+    if (useResume) {
+      try {
+        const supabase = await createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        if (user) {
+          const { data } = await supabase
+            .from("users")
+            .select("resume_text")
+            .eq("id", user.id)
+            .single()
+          if (data && data.resume_text) {
+            resumeText = data.resume_text
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch resume text in getNextQuestion:", err)
+      }
+    }
+
+    const resumeContextPrompt = resumeText 
+      ? `The candidate has provided their resume for customization:
+---
+${resumeText}
+---
+Focus your interview questions on their background, experiences, projects, and technologies listed in the resume, while still aligning with the "${category}" interview category.`
+      : ""
+
     const historyPrompt = previousMessages
       .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
@@ -31,6 +60,7 @@ export async function getNextQuestion(
     const prompt = `You are an expert AI Interviewer conducting a mock interview for the category: "${category}".
 Your goal is to conduct a professional, realistic, and interactive conversation.
 Assess the candidate's answers, ask relevant follow-up questions, or transition to a new topic as appropriate.
+${resumeContextPrompt}
 
 Rules:
 1. Keep your responses concise, natural, and conversational (1-3 sentences maximum).
@@ -140,7 +170,7 @@ Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no
 /**
  * Save interview session to database if user is authenticated.
  */
-export async function createInterviewSession(category: string): Promise<string | null> {
+export async function createInterviewSession(category: string, useResume?: boolean): Promise<string | null> {
   try {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
@@ -153,6 +183,7 @@ export async function createInterviewSession(category: string): Promise<string |
         user_id: user.id,
         category,
         status: "in_progress",
+        use_resume: useResume || false,
       })
       .select("id")
       .single()

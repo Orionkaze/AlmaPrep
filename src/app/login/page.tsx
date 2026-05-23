@@ -33,8 +33,7 @@ export default function LoginPage() {
       } else {
         // Clear demo cookie if logging in with real credentials
         document.cookie = "mockmate-demo-session=; path=/; max-age=0"
-        router.push("/dashboard")
-        router.refresh()
+        window.location.href = "/dashboard"
       }
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : "An unexpected error occurred."

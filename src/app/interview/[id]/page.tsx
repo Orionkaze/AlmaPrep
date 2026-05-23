@@ -23,8 +23,16 @@ const categoryLabels: Record<string, string> = {
   mixed: "Mixed Interview",
 }
 
-export default function InterviewPage({ params }: { params: Promise<{ id: string }> }) {
+export default function InterviewPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ resume?: string }>
+}) {
   const { id } = use(params)
+  const { resume } = use(searchParams)
+  const useResume = resume === "true"
   const category = id || "mixed"
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
@@ -42,7 +50,7 @@ export default function InterviewPage({ params }: { params: Promise<{ id: string
       setIsAiTyping(true)
       
       // 1. Create a session ID in DB if user is authenticated
-      const sessionId = await createInterviewSession(category)
+      const sessionId = await createInterviewSession(category, useResume)
       if (!active) return
 
       if (sessionId) {
@@ -50,7 +58,7 @@ export default function InterviewPage({ params }: { params: Promise<{ id: string
       }
 
       // 2. Fetch introductory question from Gemini
-      const firstQuestion = await getNextQuestion(category, [])
+      const firstQuestion = await getNextQuestion(category, [], useResume)
       if (!active) return
 
       // 3. Save to database if session exists
@@ -72,7 +80,7 @@ export default function InterviewPage({ params }: { params: Promise<{ id: string
     return () => {
       active = false
     }
-  }, [category])
+  }, [category, useResume])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -103,7 +111,8 @@ export default function InterviewPage({ params }: { params: Promise<{ id: string
     }))
 
     // 3. Generate follow-up question
-    const nextQuestion = await getNextQuestion(category, history)
+    const nextQuestion = await getNextQuestion(category, history, useResume)
+
 
     // 4. Save AI question to DB if session exists
     if (dbSessionId) {

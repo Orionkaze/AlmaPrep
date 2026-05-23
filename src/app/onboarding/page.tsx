@@ -36,8 +36,7 @@ export default function OnboardingPage() {
     const result = await createUserProfile(username.trim(), avatarNames[selectedAvatar])
 
     if (result.success) {
-      router.push("/dashboard")
-      router.refresh()
+      window.location.href = "/dashboard"
     } else {
       setError(result.error || "An error occurred while creating your profile.")
       setLoading(false)

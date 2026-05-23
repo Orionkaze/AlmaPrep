@@ -4,14 +4,18 @@ import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faMicrophone,
-  faChartBar,
-  faBullseye,
-  faFire,
   faLaptopCode,
   faUserTie,
   faRocket,
   faBrain,
   faStar,
+  faFileLines,
+  faUserGear,
+  faArrowRight,
+  faLightbulb,
+  faCheckCircle,
+  faCircleCheck,
+  faCirclePlay
 } from "@fortawesome/free-solid-svg-icons"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
@@ -27,49 +31,6 @@ const avatarMap: Record<string, typeof faUserTie> = {
   "star": faStar,
 }
 
-// Mock data for demo purposes
-const mockHistory = [
-  { id: "1", category: "Technical", score: 82, date: "2025-05-19", status: "completed" },
-  { id: "2", category: "HR", score: 91, date: "2025-05-17", status: "completed" },
-  { id: "3", category: "Mixed", score: 76, date: "2025-05-14", status: "completed" },
-]
-
-function ScoreRing({ score }: { score: number }) {
-  const radius = 36
-  const circumference = 2 * Math.PI * radius
-  const strokeDashoffset = circumference - (score / 100) * circumference
-  const color = score >= 85 ? "#22c55e" : score >= 70 ? "#eab308" : "#ef4444"
-
-  return (
-    <div className="relative flex items-center justify-center">
-      <svg width="88" height="88" viewBox="0 0 88 88" className="-rotate-90">
-        <circle cx="44" cy="44" r={radius} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
-        <circle
-          cx="44" cy="44" r={radius} fill="none"
-          stroke={color} strokeWidth="6" strokeLinecap="round"
-          strokeDasharray={circumference}
-          strokeDashoffset={strokeDashoffset}
-          className="transition-all duration-1000 ease-out"
-        />
-      </svg>
-      <span className="absolute text-lg font-bold">{score}</span>
-    </div>
-  )
-}
-
-function CategoryBadge({ category }: { category: string }) {
-  const colors: Record<string, string> = {
-    Technical: "bg-primary/10 text-primary border-primary/20",
-    HR: "bg-secondary/10 text-secondary border-secondary/20",
-    Mixed: "bg-accent/10 text-accent border-accent/20",
-  }
-  return (
-    <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border ${colors[category] ?? colors.Mixed}`}>
-      {category}
-    </span>
-  )
-}
-
 export default async function DashboardPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -78,7 +39,9 @@ export default async function DashboardPage() {
 
   let displayName = "Guest User"
   let avatarIcon = faUserTie
-  let history = mockHistory
+  let hasResume = false
+  let latestFeedback = null
+  let totalSessions = 0
 
   if (user) {
     // 1. Fetch user profile
@@ -89,59 +52,65 @@ export default async function DashboardPage() {
       .single()
 
     if (!profile) {
-      // Redirect to onboarding if profile doesn't exist
       redirect("/onboarding")
     }
 
     displayName = profile.username || user.email?.split("@")[0] || "User"
     avatarIcon = avatarMap[profile.avatar_url || ""] || faUserTie
+    hasResume = !!profile.resume_text
 
-    // 2. Fetch interviews and feedback from database
-    const { data: interviewsData } = await supabase
+    // 2. Fetch interviews count
+    const { count } = await supabase
+      .from("interviews")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+
+    totalSessions = count || 0
+
+    // 3. Fetch latest completed interview feedback
+    const { data: latestInterview } = await supabase
       .from("interviews")
       .select(`
         id,
         category,
-        status,
         created_at,
         feedback (
-          score
+          score,
+          summary,
+          improvement_suggestions
         )
       `)
       .eq("user_id", user.id)
+      .eq("status", "completed")
       .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle()
 
-    if (interviewsData) {
-      history = interviewsData.map((item) => {
-        const score = item.feedback && item.feedback[0] ? item.feedback[0].score : 75
-        let cat = item.category
-        if (cat === "hr") cat = "HR"
-        else if (cat === "technical") cat = "Technical"
-        else if (cat === "mixed") cat = "Mixed"
-        else cat = cat.charAt(0).toUpperCase() + cat.slice(1)
-
-        return {
-          id: item.id,
-          category: cat,
-          score,
-          date: item.created_at,
-          status: item.status,
-        }
-      })
+    if (latestInterview && latestInterview.feedback && latestInterview.feedback[0]) {
+      const fb = latestInterview.feedback[0]
+      latestFeedback = {
+        score: fb.score,
+        summary: fb.summary,
+        improvements: fb.improvement_suggestions || [],
+        category: latestInterview.category === "hr" ? "HR" : latestInterview.category === "technical" ? "Technical" : "Mixed",
+        date: new Date(latestInterview.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+        id: latestInterview.id
+      }
     }
-  } else if (!isDemo) {
-    // Redirect if not authenticated and not demo session
+  } else if (isDemo) {
+    displayName = "Guest User"
+    avatarIcon = faUserTie
+    hasResume = false
+    totalSessions = 0
+  } else {
     redirect("/login")
   }
 
-  // Calculate statistics
-  const totalSessions = history.length
-  const avgScore = totalSessions > 0
-    ? Math.round(history.reduce((sum, h) => sum + h.score, 0) / totalSessions)
-    : 0
-  const bestScore = totalSessions > 0
-    ? Math.max(...history.map(h => h.score))
-    : 0
+  // Fallback / default tip of the day
+  const dailyTip = {
+    title: "Structure with STAR",
+    description: "When answering behavioral questions, structure your response as: Situation, Task, Action, and Result. This gives clear context to your achievements."
+  }
 
   return (
     <main className="min-h-screen p-6 md:p-12 relative overflow-hidden">
@@ -157,99 +126,184 @@ export default async function DashboardPage() {
               Mock Mate
             </Link>
             <div className="flex items-center gap-3">
-              {user && (
-                <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-lg">
-                  <FontAwesomeIcon icon={avatarIcon} />
-                </div>
-              )}
+              <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-lg">
+                <FontAwesomeIcon icon={avatarIcon} />
+              </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+                <h1 className="text-3xl font-bold tracking-tight">
                   Welcome back, <span className="text-primary">{displayName}</span>
                 </h1>
-                <p className="text-foreground/60 mt-1">Ready for your next interview session?</p>
+                <p className="text-foreground/60 text-sm mt-0.5">Let&apos;s elevate your interview performance today.</p>
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <LogoutButton />
-            <Link href="/interview/setup">
-              <GlowButton className="h-12 px-10 text-base cursor-pointer">
-                <FontAwesomeIcon icon={faMicrophone} className="mr-2" /> Start Interview
-              </GlowButton>
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <Link href="/dashboard/profile" className="flex-1 sm:flex-initial">
+              <button className="w-full sm:w-auto h-12 px-6 rounded-xl text-sm font-semibold border border-white/10 bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                <FontAwesomeIcon icon={faUserGear} className="text-foreground/60" /> My Profile
+              </button>
             </Link>
+            <LogoutButton />
           </div>
         </div>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-          <GlassCard className="flex items-center gap-4">
-            <div className="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-xl">
-              <FontAwesomeIcon icon={faChartBar} className="text-primary" />
-            </div>
-            <div>
-              <p className="text-sm text-foreground/60">Average Score</p>
-              <p className="text-2xl font-bold text-primary">{avgScore}/100</p>
-            </div>
-          </GlassCard>
-          <GlassCard className="flex items-center gap-4">
-            <div className="size-12 rounded-xl bg-secondary/20 flex items-center justify-center text-xl">
-              <FontAwesomeIcon icon={faBullseye} className="text-secondary" />
-            </div>
-            <div>
-              <p className="text-sm text-foreground/60">Total Sessions</p>
-              <p className="text-2xl font-bold text-secondary">{totalSessions}</p>
-            </div>
-          </GlassCard>
-          <GlassCard className="flex items-center gap-4">
-            <div className="size-12 rounded-xl bg-accent/20 flex items-center justify-center text-xl">
-              <FontAwesomeIcon icon={faFire} className="text-accent" />
-            </div>
-            <div>
-              <p className="text-sm text-foreground/60">Best Score</p>
-              <p className="text-2xl font-bold text-accent">{bestScore}/100</p>
-            </div>
-          </GlassCard>
-        </div>
+        {/* Dashboard Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Prep Options and Main Controls (8/12 width) */}
+          <div className="lg:col-span-8 flex flex-col gap-6">
+            
+            {/* Banner info */}
+            <GlassCard className="p-6 relative overflow-hidden bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 border-primary/20">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl pointer-events-none" />
+              <h2 className="text-xl font-bold mb-2">Practice makes perfect</h2>
+              <p className="text-sm text-foreground/75 leading-relaxed max-w-xl">
+                Ready to practice? Choose a mock interview type or set up the Resume Analyzer to tailor questions directly to your career history and skills.
+              </p>
+            </GlassCard>
 
-        {/* Interview History */}
-        {totalSessions > 0 && (
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Interview History</h2>
-            <div className="flex flex-col gap-4">
-              {history.map((session) => (
-                <GlassCard key={session.id} className="flex flex-col sm:flex-row items-center justify-between gap-4 hover:border-primary/30 transition-colors cursor-pointer">
-                  <div className="flex items-center gap-6">
-                    <ScoreRing score={session.score} />
-                    <div>
-                      <div className="flex items-center gap-3 mb-1">
-                        <h3 className="font-semibold text-lg">{session.category} Interview</h3>
-                        <CategoryBadge category={session.category} />
-                      </div>
-                      <p className="text-sm text-foreground/50">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                    </div>
+            {/* Prep Tools Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Mock Interview Tool */}
+              <GlassCard className="p-6 flex flex-col justify-between h-64 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all group">
+                <div>
+                  <div className="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary text-xl mb-4 group-hover:scale-110 transition-transform">
+                    <FontAwesomeIcon icon={faMicrophone} />
                   </div>
-                  <Link href={`/interview/${session.id}/feedback`}>
-                    <button className="text-sm font-medium text-primary hover:underline whitespace-nowrap cursor-pointer">
-                      View Feedback →
+                  <h3 className="text-lg font-bold mb-2">Mock Interview Session</h3>
+                  <p className="text-sm text-foreground/60 leading-relaxed">
+                    Practice structured, real-time interviews. Select from HR, Technical, or Mixed questions.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between mt-4">
+                  <div className="flex gap-1.5">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-foreground/60 font-semibold">HR</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-foreground/60 font-semibold">Technical</span>
+                  </div>
+                  <Link href="/interview/setup">
+                    <GlowButton className="h-9 px-5 text-xs cursor-pointer">
+                      Start Prep <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
+                    </GlowButton>
+                  </Link>
+                </div>
+              </GlassCard>
+
+              {/* Resume Analyzer Tool */}
+              <GlassCard className="p-6 flex flex-col justify-between h-64 border-secondary/10 hover:border-secondary/30 hover:shadow-lg hover:shadow-secondary/5 transition-all group">
+                <div>
+                  <div className="size-12 rounded-xl bg-secondary/20 flex items-center justify-center text-secondary text-xl mb-4 group-hover:scale-110 transition-transform">
+                    <FontAwesomeIcon icon={faFileLines} />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Resume Analyzer</h3>
+                  <p className="text-sm text-foreground/60 leading-relaxed">
+                    Scan your resume with Gemini AI. Uncover improvement areas and unlock custom tailored mock interviews.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between mt-4">
+                  <div className="flex items-center gap-2">
+                    <div className={`size-2.5 rounded-full ${hasResume ? "bg-green-400 animate-pulse" : "bg-amber-400"}`} />
+                    <span className="text-xs text-foreground/50 font-medium">
+                      {hasResume ? "Analysis Ready" : "No Resume Synced"}
+                    </span>
+                  </div>
+                  <Link href="/dashboard/resume">
+                    <button className="h-9 px-4 rounded-lg text-xs font-semibold border border-white/10 bg-white/5 hover:bg-white/10 transition-colors flex items-center gap-1.5 cursor-pointer">
+                      Configure <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
                     </button>
                   </Link>
-                </GlassCard>
-              ))}
+                </div>
+              </GlassCard>
             </div>
           </div>
-        )}
 
-        {/* Empty state (hidden when there's data) */}
-        {totalSessions === 0 && (
-          <GlassCard className="text-center py-16">
-            <FontAwesomeIcon icon={faMicrophone} className="text-5xl text-foreground/30 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">No interviews yet</h3>
-            <p className="text-foreground/60 mb-6">Start your first mock interview and track your progress.</p>
-            <Link href="/interview/setup">
-              <GlowButton>Start Your First Interview</GlowButton>
-            </Link>
-          </GlassCard>
-        )}
+          {/* Right Column: AI Coach insights panel (4/12 width) */}
+          <div className="lg:col-span-4 flex flex-col gap-6">
+            <GlassCard className="p-6 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
+              
+              <div className="flex items-center gap-2 mb-6">
+                <div className="size-6 rounded-lg bg-primary/20 flex items-center justify-center text-primary text-xs">
+                  <FontAwesomeIcon icon={faBrain} />
+                </div>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/70">AI Coach Insights</h3>
+              </div>
+
+              {latestFeedback ? (
+                <div className="flex flex-col gap-4">
+                  {/* Latest Score Card */}
+                  <div className="flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <div className="size-12 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 text-lg font-bold">
+                      {latestFeedback.score}
+                    </div>
+                    <div>
+                      <h4 className="text-xs text-foreground/50 font-bold uppercase tracking-wide">Last Session</h4>
+                      <p className="text-sm font-semibold text-foreground/80">{latestFeedback.category} Interview ({latestFeedback.date})</p>
+                    </div>
+                  </div>
+
+                  {/* Summary */}
+                  <div className="text-xs text-foreground/75 leading-relaxed italic border-l-2 border-primary/30 pl-3 py-1">
+                    &ldquo;{latestFeedback.summary}&rdquo;
+                  </div>
+
+                  {/* Recommendations */}
+                  <div className="mt-2">
+                    <h4 className="text-xs font-bold text-foreground/50 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <FontAwesomeIcon icon={faCheckCircle} className="text-primary text-[10px]" /> Focus Suggestions
+                    </h4>
+                    <ul className="text-xs text-foreground/60 space-y-2 pl-1 list-none">
+                      {latestFeedback.improvements.slice(0, 3).map((tip: string, idx: number) => (
+                        <li key={idx} className="flex gap-2 items-start">
+                          <span className="text-primary">•</span>
+                          <span>{tip}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link href={`/interview/${latestFeedback.id}/feedback`}>
+                    <button className="w-full h-9 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors text-xs text-primary font-bold mt-2 cursor-pointer">
+                      View Full Analysis Report
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-5 py-4">
+                  {/* Onboarding Checklist */}
+                  <div>
+                    <h4 className="text-xs font-bold text-foreground/50 uppercase tracking-wider mb-3">Onboarding Checklist</h4>
+                    <div className="flex flex-col gap-3">
+                      <div className="flex items-center gap-2.5 text-xs text-foreground/80">
+                        <FontAwesomeIcon icon={faCircleCheck} className="text-green-400" />
+                        <span className="line-through text-foreground/40">Set up profile credentials</span>
+                      </div>
+                      <div className="flex items-center gap-2.5 text-xs text-foreground/80">
+                        <FontAwesomeIcon icon={hasResume ? faCircleCheck : faCirclePlay} className={hasResume ? "text-green-400" : "text-secondary"} />
+                        <span className={hasResume ? "line-through text-foreground/40" : "font-medium"}>
+                          <Link href="/dashboard/resume" className="hover:underline">Configure Resume Analyzer</Link>
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2.5 text-xs text-foreground/80">
+                        <FontAwesomeIcon icon={totalSessions > 0 ? faCircleCheck : faCirclePlay} className={totalSessions > 0 ? "text-green-400" : "text-primary"} />
+                        <span className={totalSessions > 0 ? "line-through text-foreground/40" : "font-medium"}>
+                          <Link href="/interview/setup" className="hover:underline">Start your first interview</Link>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Daily Tip */}
+                  <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 mt-2">
+                    <h4 className="text-xs font-bold text-secondary mb-2 flex items-center gap-1.5">
+                      <FontAwesomeIcon icon={faLightbulb} /> Coach Tip of the Day
+                    </h4>
+                    <h5 className="text-xs font-bold text-foreground/80 mb-1">{dailyTip.title}</h5>
+                    <p className="text-[11px] text-foreground/60 leading-relaxed">{dailyTip.description}</p>
+                  </div>
+                </div>
+              )}
+            </GlassCard>
+          </div>
+        </div>
       </div>
     </main>
   )
