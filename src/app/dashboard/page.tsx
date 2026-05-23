@@ -20,7 +20,6 @@ import {
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { LogoutButton } from "@/components/logout-button"
 
 // Map avatar strings to FontAwesome icons
 const avatarMap: Record<string, typeof faUserTie> = {
@@ -143,7 +142,6 @@ export default async function DashboardPage() {
                 <FontAwesomeIcon icon={faUserGear} className="text-foreground/60" /> My Profile
               </button>
             </Link>
-            <LogoutButton />
           </div>
         </div>
 
