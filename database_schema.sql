@@ -24,6 +24,7 @@ create table public.interviews (
 alter table public.interviews enable row level security;
 create policy "Users can view their own interviews" on public.interviews for select using (auth.uid() = user_id);
 create policy "Users can insert their own interviews" on public.interviews for insert with check (auth.uid() = user_id);
+create policy "Users can update their own interviews" on public.interviews for update using (auth.uid() = user_id);
 
 create table public.messages (
   id uuid default gen_random_uuid() primary key,
@@ -33,6 +34,14 @@ create table public.messages (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
+alter table public.messages enable row level security;
+create policy "Users can view their own messages" on public.messages for select using (
+  exists (select 1 from public.interviews where id = public.messages.interview_id and user_id = auth.uid())
+);
+create policy "Users can insert their own messages" on public.messages for insert with check (
+  exists (select 1 from public.interviews where id = public.messages.interview_id and user_id = auth.uid())
+);
+
 create table public.feedback (
   id uuid default gen_random_uuid() primary key,
   interview_id uuid references public.interviews on delete cascade not null,
@@ -40,5 +49,13 @@ create table public.feedback (
   summary text not null,
   improvement_suggestions text[] not null,
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+alter table public.feedback enable row level security;
+create policy "Users can view their own feedback" on public.feedback for select using (
+  exists (select 1 from public.interviews where id = public.feedback.interview_id and user_id = auth.uid())
+);
+create policy "Users can insert their own feedback" on public.feedback for insert with check (
+  exists (select 1 from public.interviews where id = public.feedback.interview_id and user_id = auth.uid())
 );
 

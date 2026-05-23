@@ -43,7 +43,8 @@ export default function LoginPage() {
   }
 
   const handleGuestLogin = () => {
-    document.cookie = "mockmate-demo-session=true; path=/; max-age=86400"
+    // Set a pure Session Cookie (it will automatically delete when the browser is closed)
+    document.cookie = "mockmate-demo-session=true; path=/"
     router.push("/dashboard")
     router.refresh()
   }
