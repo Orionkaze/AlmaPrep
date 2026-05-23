@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faFileLines,
@@ -10,11 +10,13 @@ import {
   faExclamationTriangle,
   faArrowRight,
   faCompass,
-  faLaptopCode
+  faLaptopCode,
+  faUpload
 } from "@fortawesome/free-solid-svg-icons"
 import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import { saveAndAnalyzeResume, ResumeAnalysis } from "@/app/actions/resume"
+import { parseDocument } from "@/app/actions/parse-document"
 
 interface ResumeContentProps {
   initialResumeText: string
@@ -39,6 +41,51 @@ export default function ResumeContent({
   const [loading, setLoading] = useState(false)
   const [loadingStepIdx, setLoadingStepIdx] = useState(0)
   const [error, setError] = useState<string | null>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [isParsing, setIsParsing] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(false)
+  }
+
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(false)
+    const file = e.dataTransfer.files?.[0]
+    if (file) {
+      await handleFileUpload(file)
+    }
+  }
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      await handleFileUpload(file)
+    }
+  }
+
+  const handleFileUpload = async (file: File) => {
+    setIsParsing(true)
+    setError(null)
+    const formData = new FormData()
+    formData.append("file", file)
+    
+    const result = await parseDocument(formData)
+    
+    if (result.success && result.text) {
+      setResumeText(result.text)
+    } else {
+      setError(result.error || "Failed to parse document. Please try pasting the text instead.")
+    }
+    setIsParsing(false)
+  }
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -113,11 +160,23 @@ export default function ResumeContent({
 
             {isEditing ? (
               <form onSubmit={handleAnalyze} className="flex flex-col gap-4">
-                <div className="relative">
+                <div 
+                  className="relative group"
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                >
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    accept=".pdf,.docx,.txt"
+                    className="hidden"
+                  />
                   <textarea
                     value={resumeText}
                     onChange={(e) => setResumeText(e.target.value)}
-                    placeholder={`Paste the text version of your resume here...
+                    placeholder={`Paste the text version of your resume here, or drag & drop a .pdf, .docx, or .txt file...
 
 Example:
 John Doe
@@ -132,11 +191,41 @@ Software Engineer at TechCorp (2024-Present)
 - Developed and optimized dashboard page, reducing bundle size by 30%
 - Integrated third-party Supabase auth and customized database schemas...`}
                     required
-                    className="w-full h-[450px] rounded-2xl p-5 text-sm bg-input border border-border focus:border-ring focus:ring-1 focus:ring-ring/30 outline-none transition-all placeholder:text-foreground/20 leading-relaxed font-mono resize-none"
+                    className={`w-full h-[450px] rounded-2xl p-5 text-sm bg-input border ${isDragging ? 'border-primary border-dashed bg-primary/5' : 'border-border'} focus:border-ring focus:ring-1 focus:ring-ring/30 outline-none transition-all placeholder:text-foreground/20 leading-relaxed font-mono resize-none`}
                   />
-                  <div className="absolute bottom-4 right-4 text-[10px] text-foreground/30 font-semibold bg-background/50 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/5">
+                  <div className="absolute bottom-4 right-4 text-[10px] text-foreground/30 font-semibold bg-background/50 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/5 z-10">
                     {resumeText.length} chars
                   </div>
+                  
+                  {isDragging && (
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center border-2 border-primary border-dashed z-20 pointer-events-none">
+                      <FontAwesomeIcon icon={faUpload} className="text-4xl text-primary mb-4 animate-bounce" />
+                      <p className="text-lg font-bold text-primary">Drop Resume File Here</p>
+                      <p className="text-sm text-foreground/50 mt-1">Supports PDF, DOCX, and TXT</p>
+                    </div>
+                  )}
+
+                  {isParsing && (
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center z-20">
+                      <div className="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary text-xl mb-4 animate-spin">
+                        <FontAwesomeIcon icon={faStar} />
+                      </div>
+                      <p className="font-bold text-primary mt-2">Extracting Text...</p>
+                    </div>
+                  )}
+                  
+                  {!resumeText && !isDragging && !isParsing && (
+                     <div className="absolute top-4 right-4 z-10">
+                       <button
+                         type="button"
+                         onClick={() => fileInputRef.current?.click()}
+                         className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-medium transition-colors cursor-pointer"
+                       >
+                         <FontAwesomeIcon icon={faUpload} />
+                         Upload File
+                       </button>
+                     </div>
+                  )}
                 </div>
 
                 {error && (
