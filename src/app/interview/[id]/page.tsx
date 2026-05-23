@@ -4,7 +4,7 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane, faXmark } from "@fortawesome/free-solid-svg-icons"
 import {
   getNextQuestion,
   generateFeedback,
@@ -332,7 +332,7 @@ export default function InterviewPage({
             <div className="px-4 py-3 border-b border-white/10 bg-white/5 font-medium text-white flex justify-between items-center">
               <span>Transcript</span>
               <button onClick={() => setIsChatOpen(false)} className="text-white/50 hover:text-white transition-colors">
-                <FontAwesomeIcon icon={faTimes} />
+                <FontAwesomeIcon icon={faXmark} />
               </button>
             </div>
             
