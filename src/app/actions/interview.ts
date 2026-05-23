@@ -105,9 +105,8 @@ Next Response:`
       result = await model.generateContent(prompt)
     } catch (err: any) {
       if (err.message?.includes("429") || err.message?.includes("Quota")) {
-        console.log("Falling back to gemini-1.5-flash-8b due to quota limits...")
-        model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b", safetySettings })
-        result = await model.generateContent(prompt)
+        console.log("Quota exceeded. Using mock conversational fallback...")
+        return "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?"
       } else {
         throw err;
       }
@@ -201,13 +200,8 @@ Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no
       result = await model.generateContent(prompt)
     } catch (err: any) {
       if (err.message?.includes("429") || err.message?.includes("Quota")) {
-        console.log("Falling back to gemini-1.5-flash-8b for feedback...")
-        model = genAI.getGenerativeModel({ 
-          model: "gemini-1.5-flash-8b", 
-          safetySettings,
-          generationConfig: { responseMimeType: "application/json" }
-        })
-        result = await model.generateContent(prompt)
+        console.log("Quota exceeded. Returning fallback mock feedback...")
+        return fallbackFeedback
       } else {
         throw err;
       }

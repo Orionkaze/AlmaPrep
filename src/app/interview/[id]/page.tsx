@@ -59,17 +59,28 @@ export default function InterviewPage({
   const [isListening, setIsListening] = useState(false)
   const recognitionRef = useRef<any>(null)
 
+  const [cameraError, setCameraError] = useState<string | null>(null)
+
   // Initialize webcam
   useEffect(() => {
     let stream: MediaStream | null = null;
     const initWebcam = async () => {
       try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          setCameraError("Camera API not supported in this browser.")
+          return
+        }
         stream = await navigator.mediaDevices.getUserMedia({ video: true })
         if (videoRef.current) {
           videoRef.current.srcObject = stream
         }
-      } catch (err) {
+        setCameraError(null)
+      } catch (err: any) {
         console.error("Failed to access webcam:", err)
+        if (err.name === 'NotAllowedError') setCameraError("Camera permission denied.")
+        else if (err.name === 'NotFoundError') setCameraError("No camera found.")
+        else if (err.name === 'NotReadableError') setCameraError("Camera is in use by another app.")
+        else setCameraError(err.message || "Failed to start camera.")
       }
     }
     initWebcam()
