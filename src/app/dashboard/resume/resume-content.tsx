@@ -25,7 +25,7 @@ interface ResumeContentProps {
 
 const loadingSteps = [
   "Uploading resume context...",
-  "Running Gemini AI deep parser...",
+  "Running Mock AI deep parser...",
   "Mapping professional achievements...",
   "Extracting core skills & badges...",
   "Formulating mock interview recommendations..."

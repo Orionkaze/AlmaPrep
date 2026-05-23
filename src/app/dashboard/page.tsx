@@ -193,7 +193,7 @@ export default async function DashboardPage() {
                   </div>
                   <h3 className="text-lg font-bold mb-2">Resume Analyzer</h3>
                   <p className="text-sm text-foreground/60 leading-relaxed">
-                    Scan your resume with Gemini AI. Uncover improvement areas and unlock custom tailored mock interviews.
+                    Scan your resume with Mock AI. Uncover improvement areas and unlock custom tailored mock interviews.
                   </p>
                 </div>
                 <div className="flex items-center justify-between mt-4">
@@ -301,6 +301,12 @@ export default async function DashboardPage() {
               )}
             </GlassCard>
           </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-16 pb-8 text-center text-sm text-foreground/40 font-medium">
+          <p>lets find One peice (Perfect Job ) Together</p>
+          <p className="mt-1 flex justify-center items-center gap-1">with <span className="text-red-500">❤</span>Akshit</p>
         </div>
       </div>
     </main>
