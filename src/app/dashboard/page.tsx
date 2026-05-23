@@ -137,9 +137,14 @@ export default async function DashboardPage() {
             </div>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <Link href="/dashboard/profile" className="flex-1 sm:flex-initial">
-              <button className="w-full sm:w-auto h-12 px-6 rounded-xl text-sm font-semibold border border-white/10 bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                <FontAwesomeIcon icon={faUserGear} className="text-foreground/60" /> My Profile
+            <Link href="/dashboard/profile" className="flex-1 sm:flex-initial group relative">
+              {/* Animated glowing backdrop */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-secondary rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
+              {/* Button surface */}
+              <button className="relative w-full sm:w-auto h-12 px-6 rounded-xl text-sm font-semibold border border-white/10 bg-[#0A0A0A] hover:border-white/20 transition-all flex items-center justify-center gap-2 cursor-pointer overflow-hidden shadow-xl">
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-700 ease-in-out -translate-x-full"></span>
+                <FontAwesomeIcon icon={faUserGear} className="text-primary group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" /> 
+                <span className="text-white/80 group-hover:text-white transition-colors duration-300">My Profile</span>
               </button>
             </Link>
           </div>
