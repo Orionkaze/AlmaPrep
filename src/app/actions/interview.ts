@@ -1,9 +1,20 @@
 "use server"
 
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai"
 import { createClient } from "@/lib/supabase/server"
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
+
+const safetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+]
 
 interface MessageInput {
   role: "user" | "ai"
@@ -24,7 +35,10 @@ export async function getNextQuestion(
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" })
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-1.5-flash",
+      safetySettings 
+    })
 
     let resumeText = ""
     if (useResume) {
