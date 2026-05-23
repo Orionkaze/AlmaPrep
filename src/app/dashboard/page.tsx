@@ -137,15 +137,21 @@ export default async function DashboardPage() {
             </div>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <Link href="/dashboard/profile" className="flex-1 sm:flex-initial group relative">
-              {/* Animated glowing backdrop */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-secondary rounded-xl blur opacity-20 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse"></div>
-              {/* Button surface */}
-              <button className="relative w-full sm:w-auto h-12 px-6 rounded-xl text-sm font-semibold border border-white/10 bg-[#0A0A0A] hover:border-white/20 transition-all flex items-center justify-center gap-2 cursor-pointer overflow-hidden shadow-xl">
-                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-700 ease-in-out -translate-x-full"></span>
-                <FontAwesomeIcon icon={faUserGear} className="text-primary group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" /> 
-                <span className="text-white/80 group-hover:text-white transition-colors duration-300">My Profile</span>
-              </button>
+            <Link href="/dashboard/profile" className="flex-1 sm:flex-initial group relative inline-block transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.03]">
+              {/* Animated glowing backdrop (glow intensify) */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-secondary rounded-xl blur opacity-20 group-hover:opacity-80 transition duration-500"></div>
+              
+              {/* Border shimmer wrapper */}
+              <div className="relative p-[1px] rounded-xl overflow-hidden bg-white/10 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-white/60 group-hover:to-secondary transition-all duration-500 shadow-xl">
+                {/* Button surface */}
+                <button className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-[#0A0A0A] flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
+                  {/* Internal Shimmer Sweep */}
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></span>
+                  
+                  <FontAwesomeIcon icon={faUserGear} className="text-primary group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 relative z-10" /> 
+                  <span className="text-white/80 group-hover:text-white transition-colors duration-300 relative z-10">My Profile</span>
+                </button>
+              </div>
             </Link>
           </div>
         </div>
@@ -310,8 +316,8 @@ export default async function DashboardPage() {
 
         {/* Footer */}
         <div className="mt-16 pb-8 text-center text-sm text-foreground/40 font-medium">
-          <p>lets find One peice (Perfect Job ) Together</p>
-          <p className="mt-1 flex justify-center items-center gap-1">with <span className="text-red-500">❤</span>Akshit</p>
+          <p>Let&apos;s help you find your One Piece, the perfect job <span className="text-red-500">❤️</span></p>
+          <p className="mt-1 flex justify-center items-center gap-1">Built by Akshit</p>
         </div>
       </div>
     </main>
