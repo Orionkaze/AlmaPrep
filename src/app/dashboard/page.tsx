@@ -271,17 +271,17 @@ export default async function DashboardPage() {
                     <h4 className="text-xs font-bold text-foreground/50 uppercase tracking-wider mb-3">Onboarding Checklist</h4>
                     <div className="flex flex-col gap-3">
                       <div className="flex items-center gap-2.5 text-xs text-foreground/80">
-                        <FontAwesomeIcon icon={faCircleCheck} className="text-green-400" />
+                        <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 shrink-0 text-green-400" />
                         <span className="line-through text-foreground/40">Set up profile credentials</span>
                       </div>
                       <div className="flex items-center gap-2.5 text-xs text-foreground/80">
-                        <FontAwesomeIcon icon={hasResume ? faCircleCheck : faCirclePlay} className={hasResume ? "text-green-400" : "text-secondary"} />
+                        <FontAwesomeIcon icon={hasResume ? faCircleCheck : faCirclePlay} className={`w-4 h-4 shrink-0 ${hasResume ? "text-green-400" : "text-secondary"}`} />
                         <span className={hasResume ? "line-through text-foreground/40" : "font-medium"}>
                           <Link href="/dashboard/resume" className="hover:underline">Configure Resume Analyzer</Link>
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5 text-xs text-foreground/80">
-                        <FontAwesomeIcon icon={totalSessions > 0 ? faCircleCheck : faCirclePlay} className={totalSessions > 0 ? "text-green-400" : "text-primary"} />
+                        <FontAwesomeIcon icon={totalSessions > 0 ? faCircleCheck : faCirclePlay} className={`w-4 h-4 shrink-0 ${totalSessions > 0 ? "text-green-400" : "text-primary"}`} />
                         <span className={totalSessions > 0 ? "line-through text-foreground/40" : "font-medium"}>
                           <Link href="/interview/setup" className="hover:underline">Start your first interview</Link>
                         </span>
