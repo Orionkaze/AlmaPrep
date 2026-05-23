@@ -98,7 +98,24 @@ ${historyPrompt}
 
 Next Response:`
 
-    const result = await model.generateContent(prompt)
+    let model = genAI.getGenerativeModel({ 
+      model: "gemini-2.5-flash",
+      safetySettings 
+    })
+
+    let result;
+    try {
+      result = await model.generateContent(prompt)
+    } catch (err: any) {
+      if (err.message?.includes("429") || err.message?.includes("Quota")) {
+        console.log("Falling back to gemini-1.5-flash-8b due to quota limits...")
+        model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b", safetySettings })
+        result = await model.generateContent(prompt)
+      } else {
+        throw err;
+      }
+    }
+    
     return result.response.text().trim()
   } catch (error: any) {
     console.error("Gemini API Error in getNextQuestion:", error)
@@ -137,7 +154,7 @@ export async function generateFeedback(
   }
 
   try {
-    const model = genAI.getGenerativeModel({
+    let model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
       safetySettings,
       generationConfig: { responseMimeType: "application/json" },
@@ -168,7 +185,23 @@ Respond ONLY with a valid JSON object matching this exact structure:
 
 Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no \`\`\`json blocks) is returned. Just the raw JSON object.`
 
-    const result = await model.generateContent(prompt)
+    let result;
+    try {
+      result = await model.generateContent(prompt)
+    } catch (err: any) {
+      if (err.message?.includes("429") || err.message?.includes("Quota")) {
+        console.log("Falling back to gemini-1.5-flash-8b for feedback...")
+        model = genAI.getGenerativeModel({ 
+          model: "gemini-1.5-flash-8b", 
+          safetySettings,
+          generationConfig: { responseMimeType: "application/json" }
+        })
+        result = await model.generateContent(prompt)
+      } else {
+        throw err;
+      }
+    }
+
     const text = result.response.text().trim()
     const data = JSON.parse(text)
 
