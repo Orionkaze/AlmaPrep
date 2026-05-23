@@ -4,7 +4,7 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMicrophone, faMicrophoneSlash } from "@fortawesome/free-solid-svg-icons"
+import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import {
   getNextQuestion,
   generateFeedback,
@@ -51,6 +51,7 @@ export default function InterviewPage({
   const [dbSessionId, setDbSessionId] = useState<string | null>(null)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
+  const [isChatOpen, setIsChatOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   
   // Webcam & Voice states
@@ -277,137 +278,157 @@ export default function InterviewPage({
   }
 
   return (
-    <main className="min-h-screen flex flex-col relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="fixed top-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="fixed bottom-0 right-0 w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      {/* Webcam Background Overlay */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-20 flex items-center justify-center overflow-hidden">
-        <video 
-          ref={videoRef}
-          autoPlay
-          playsInline
-          muted
-          className="min-w-full min-h-full object-cover blur-sm"
-        />
-      </div>
-
-      {/* Picture-in-Picture Webcam */}
-      <div className="fixed top-24 right-6 z-20 w-32 h-40 md:w-48 md:h-60 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/50 backdrop-blur-md">
-        <video 
-          ref={videoRef}
-          autoPlay
-          playsInline
-          muted
-          className="w-full h-full object-cover"
-        />
-        {selectedPersona === "roast" && (
-          <div className="absolute top-2 right-2 bg-red-500/80 backdrop-blur text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-            ROAST MODE
-          </div>
-        )}
-      </div>
-
-      {/* Top bar */}
-      <div className="relative z-10 border-b border-white/5 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-background/80">
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">
-            ← Exit
-          </Link>
-          <div className="h-5 w-px bg-white/10" />
-          <h1 className="text-sm font-semibold">{categoryLabels[category] ?? "Interview"}</h1>
-        </div>
+    <main className="h-screen bg-[#202124] flex flex-col font-sans overflow-hidden">
+      {/* Top Header */}
+      <div className="flex items-center justify-between px-6 py-4 text-white">
+        <h1 className="text-lg font-medium">{categoryLabels[category] ?? "Interview"}</h1>
         <div className="flex items-center gap-2">
           <div className={`size-2 rounded-full ${isComplete ? "bg-amber-400" : "bg-green-400"} animate-pulse`} />
-          <span className="text-xs text-foreground/50">{isComplete ? "Session Complete" : "Live Session"}</span>
+          <span className="text-sm">{isComplete ? "Session Complete" : "Live"}</span>
         </div>
       </div>
 
-      {/* Messages area */}
-      <div className="relative z-10 flex-1 overflow-y-auto px-4 md:px-6 py-6 max-w-4xl mx-auto w-full">
-        <div className="flex flex-col gap-4">
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-[80%] md:max-w-[70%] rounded-2xl px-5 py-3 text-sm leading-relaxed ${
-                  msg.role === "user"
-                    ? "bg-gradient-to-br from-primary to-secondary text-white rounded-br-md"
-                    : "glass-card rounded-bl-md"
-                }`}
-              >
-                {msg.role === "ai" && (
-                  <p className="text-xs text-primary font-semibold mb-1">AI Interviewer</p>
-                )}
-                {msg.content}
-              </div>
+      {/* Main Content Area */}
+      <div className="flex-1 flex overflow-hidden px-4 pb-4 gap-4">
+        
+        {/* Video Grid */}
+        <div className="flex-1 flex flex-col md:flex-row gap-4 h-full">
+          {/* AI Interviewer Tile */}
+          <div className="flex-1 bg-[#3c4043] rounded-xl relative overflow-hidden flex items-center justify-center border border-white/10 shadow-lg">
+            <div className={`size-32 md:size-48 rounded-full bg-primary/20 flex items-center justify-center border-4 ${isAiTyping ? 'border-primary/50 animate-pulse' : 'border-transparent'}`}>
+              <span className="text-4xl md:text-6xl font-semibold text-primary">AI</span>
             </div>
-          ))}
+            <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-md flex items-center gap-2">
+              <div className={`size-1.5 rounded-full ${isAiTyping ? 'bg-primary animate-pulse' : 'bg-green-400'}`} />
+              <span className="text-white text-sm font-medium">Interviewer</span>
+            </div>
+            {selectedPersona === "roast" && (
+              <div className="absolute top-4 right-4 bg-red-500/80 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded-md shadow-lg">
+                ROAST MODE
+              </div>
+            )}
+          </div>
 
-          {/* AI typing indicator */}
-          {isAiTyping && (
-            <div className="flex justify-start">
-              <div className="glass-card rounded-2xl rounded-bl-md px-5 py-3">
-                <p className="text-xs text-primary font-semibold mb-1">AI Interviewer</p>
-                <div className="flex gap-1.5 animate-pulse">
-                  <span className="size-2 rounded-full bg-primary/60" />
-                  <span className="size-2 rounded-full bg-primary/60" />
-                  <span className="size-2 rounded-full bg-primary/60" />
+          {/* User Webcam Tile */}
+          <div className="flex-1 bg-[#3c4043] rounded-xl relative overflow-hidden border border-white/10 shadow-lg">
+            <video 
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className="w-full h-full object-cover"
+              style={{ transform: "scaleX(-1)" }}
+            />
+            <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-md flex items-center gap-2">
+              <FontAwesomeIcon icon={isListening ? faMicrophone : faMicrophoneSlash} className={`text-xs ${isListening ? 'text-green-400' : 'text-red-500'}`} />
+              <span className="text-white text-sm font-medium">You</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Chat Side Panel */}
+        {isChatOpen && (
+          <div className="w-full md:w-[360px] bg-white/5 border border-white/10 rounded-xl flex flex-col overflow-hidden backdrop-blur-sm">
+            <div className="px-4 py-3 border-b border-white/10 bg-white/5 font-medium text-white flex justify-between items-center">
+              <span>Transcript</span>
+              <button onClick={() => setIsChatOpen(false)} className="text-white/50 hover:text-white transition-colors">
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+              {messages.map((msg) => (
+                <div key={msg.id} className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}>
+                  <span className="text-[10px] text-white/50 mb-1 ml-1">{msg.role === "ai" ? "Interviewer" : "You"}</span>
+                  <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${
+                    msg.role === "user" 
+                      ? "bg-primary text-white rounded-br-sm" 
+                      : "bg-[#3c4043] text-white/90 rounded-bl-sm"
+                  }`}>
+                    {msg.content}
+                  </div>
                 </div>
-              </div>
+              ))}
+              {isAiTyping && (
+                <div className="flex flex-col items-start">
+                  <span className="text-[10px] text-white/50 mb-1 ml-1">Interviewer</span>
+                  <div className="bg-[#3c4043] rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5">
+                    <span className="size-1.5 rounded-full bg-white/50 animate-bounce" />
+                    <span className="size-1.5 rounded-full bg-white/50 animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="size-1.5 rounded-full bg-white/50 animate-bounce" style={{ animationDelay: "300ms" }} />
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
             </div>
-          )}
 
-          <div ref={messagesEndRef} />
-        </div>
-      </div>
-
-      {/* Input bar */}
-      <div className="relative z-10 border-t border-white/5 px-4 md:px-6 py-4 backdrop-blur-md bg-background/80">
-        <div className="max-w-4xl mx-auto flex gap-3">
-          {isComplete ? (
-            <div className="w-full flex items-center justify-center gap-4">
-              <p className="text-sm text-foreground/60">Interview complete!</p>
-              <Link href={`/interview/${dbSessionId || category}/feedback`}>
-                <GlowButton className="h-10 px-6">View Feedback →</GlowButton>
-              </Link>
-            </div>
-          ) : (
-            <>
-              <div className="relative flex-1">
+            {/* Chat Input */}
+            <div className="p-3 bg-white/5 border-t border-white/10">
+              <div className="relative flex items-center">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                  placeholder={isAiTyping ? "AI Interviewer is preparing..." : "Type your answer..."}
-                  disabled={isAiTyping}
-                  className="w-full h-12 rounded-xl pl-5 pr-12 text-sm bg-input border border-border focus:border-ring focus:ring-1 focus:ring-ring/30 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
+                  placeholder={isAiTyping ? "Waiting..." : "Type a message"}
+                  disabled={isAiTyping || isComplete}
+                  className="w-full bg-[#3c4043] text-sm text-white placeholder-white/40 rounded-full pl-4 pr-10 py-2.5 outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
                 />
-                <button 
-                  onClick={toggleListening}
-                  disabled={isAiTyping}
-                  className={`absolute right-3 top-1/2 -translate-y-1/2 size-8 flex items-center justify-center rounded-lg transition-all ${
-                    isListening ? "bg-green-500/20 text-green-400 shadow-[0_0_12px_rgba(74,222,128,0.6)] animate-pulse" : "bg-red-500/10 text-red-500 hover:bg-red-500/20"
-                  }`}
-                  title={isListening ? "Stop listening" : "Start Voice Input"}
+                <button
+                  onClick={handleSend}
+                  disabled={!input.trim() || isAiTyping || isComplete}
+                  className="absolute right-2 text-primary hover:text-primary/80 disabled:opacity-50 disabled:hover:text-primary transition-colors size-8 flex items-center justify-center"
                 >
-                  <FontAwesomeIcon icon={isListening ? faMicrophone : faMicrophoneSlash} />
+                  <FontAwesomeIcon icon={faPaperPlane} size="sm" />
                 </button>
               </div>
-              <GlowButton
-                onClick={handleSend}
-                disabled={!input.trim() || isAiTyping}
-                className={`h-12 px-6 ${!input.trim() || isAiTyping ? "opacity-40 cursor-not-allowed" : ""}`}
-              >
-                Send
-              </GlowButton>
-            </>
-          )}
-        </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Bottom Control Bar */}
+      <div className="h-20 flex items-center justify-center gap-4 bg-[#202124] border-t border-white/5 pb-2">
+        <button 
+          onClick={toggleListening}
+          disabled={isAiTyping || isComplete}
+          className={`size-12 rounded-full flex items-center justify-center transition-all ${
+            isListening 
+              ? "bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]" 
+              : "bg-[#3c4043] text-white hover:bg-[#4a4d51] border border-white/10"
+          }`}
+          title={isListening ? "Turn off microphone" : "Turn on microphone"}
+        >
+          <FontAwesomeIcon icon={isListening ? faMicrophone : faMicrophoneSlash} />
+        </button>
+
+        <button 
+          onClick={() => setIsChatOpen(!isChatOpen)}
+          className={`size-12 rounded-full flex items-center justify-center transition-all ${
+            isChatOpen ? "bg-primary text-white shadow-[0_0_15px_rgba(var(--primary),0.5)]" : "bg-[#3c4043] text-white hover:bg-[#4a4d51] border border-white/10"
+          }`}
+          title="Toggle Chat"
+        >
+          <FontAwesomeIcon icon={faMessage} />
+        </button>
+
+        {isComplete ? (
+          <Link href={`/interview/${dbSessionId || category}/feedback`}>
+            <button className="h-12 px-6 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-lg">
+              View Feedback
+            </button>
+          </Link>
+        ) : (
+          <Link href="/dashboard">
+            <button 
+              className="size-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors shadow-[0_0_15px_rgba(239,68,68,0.3)]"
+              title="Leave Interview"
+            >
+              <FontAwesomeIcon icon={faPhoneSlash} />
+            </button>
+          </Link>
+        )}
       </div>
     </main>
   )
