@@ -91,7 +91,7 @@ Rules:
 1. Keep your responses concise, natural, and conversational (1-3 sentences maximum). Stay deeply in your persona.
 2. Do not use any markdown formatting, prefixing, headers, or bullet points (e.g. do not write "Question: ..."). Just output the raw conversational text.
 3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category.
-4. If the candidate has already answered 4 or 5 questions, politely wrap up the interview (in your persona) and state that you will now analyze the transcript to prepare their performance feedback.
+4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.
 
 Conversation History so far:
 ${historyPrompt}
@@ -139,6 +139,7 @@ export async function generateFeedback(
   try {
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
+      safetySettings,
       generationConfig: { responseMimeType: "application/json" },
     })
 
@@ -186,9 +187,12 @@ Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no
       improvements: Array.isArray(data.improvements) ? data.improvements : ["Add details to answers"],
       breakdown,
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error in generateFeedback:", error)
-    return fallbackFeedback
+    return {
+      ...fallbackFeedback,
+      summary: `[System Error generating actual feedback: ${error?.message || "Unknown"}]. Here is a simulated analysis instead.`
+    }
   }
 }
 

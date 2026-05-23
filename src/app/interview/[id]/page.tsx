@@ -227,11 +227,8 @@ export default function InterviewPage({
     // 3. Generate follow-up question
     const nextQuestion = await getNextQuestion(category, history, useResume, selectedPersona)
 
-    // Speak next question
-    if (!nextQuestion.toLowerCase().includes("feedback") && !nextQuestion.toLowerCase().includes("analyze") && (questionIndex + 1) < 5) {
-      speak(nextQuestion)
-    }
-
+    // Speak next question (including the final salutation)
+    speak(nextQuestion)
 
     // 4. Save AI question to DB if session exists
     if (dbSessionId) {
@@ -248,10 +245,10 @@ export default function InterviewPage({
     const nextIndex = questionIndex + 1
     setQuestionIndex(nextIndex)
 
-    // 5. Wrap up if 5 questions have been asked or conclusion is reached
+    // 5. Wrap up if 10 questions have been asked or conclusion is reached
     const isConclusion = nextQuestion.toLowerCase().includes("feedback") || 
                          nextQuestion.toLowerCase().includes("analyze") ||
-                         nextIndex >= 5
+                         nextIndex >= 10
 
     if (isConclusion) {
       setIsComplete(true)
