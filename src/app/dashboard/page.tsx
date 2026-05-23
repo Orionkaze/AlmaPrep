@@ -139,7 +139,7 @@ export default async function DashboardPage() {
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <Link href="/dashboard/profile" className="flex-1 sm:flex-initial group relative">
               {/* Animated glowing backdrop */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-secondary rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-secondary rounded-xl blur opacity-20 group-hover:opacity-75 transition duration-500 group-hover:duration-200 animate-pulse"></div>
               {/* Button surface */}
               <button className="relative w-full sm:w-auto h-12 px-6 rounded-xl text-sm font-semibold border border-white/10 bg-[#0A0A0A] hover:border-white/20 transition-all flex items-center justify-center gap-2 cursor-pointer overflow-hidden shadow-xl">
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-700 ease-in-out -translate-x-full"></span>
