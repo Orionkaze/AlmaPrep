@@ -365,6 +365,7 @@ export async function getFeedback(interviewId: string) {
       summary: data.summary,
       strengths: ["Clear Communication", "Structured Delivery"],
       improvements: data.improvement_suggestions || [],
+      studyGuide: [],
       breakdown: [
         { label: "Communication", score: data.score, color: "bg-primary" },
         { label: "Technical Knowledge", score: Math.max(50, data.score - 5), color: "bg-secondary" },
