@@ -16,7 +16,8 @@ interface MessageInput {
 export async function getNextQuestion(
   category: string,
   previousMessages: MessageInput[],
-  useResume?: boolean
+  useResume?: boolean,
+  persona?: string
 ): Promise<string> {
   if (!process.env.GEMINI_API_KEY) {
     return "Error: GEMINI_API_KEY is not configured in .env.local"
@@ -53,20 +54,30 @@ ${resumeText}
 Focus your interview questions on their background, experiences, projects, and technologies listed in the resume, while still aligning with the "${category}" interview category.`
       : ""
 
+    let personaPrompt = "You are a professional, encouraging, and standard recruiter."
+    if (persona === "roast") {
+      personaPrompt = "You are in ROAST MODE 💀. You are brutally honest, highly sarcastic, funny, and hyper-critical. Roast the candidate's answers while asking your follow-up questions. Be mean but entertaining."
+    } else if (persona === "strict") {
+      personaPrompt = "You are an extremely strict, cold, and formal interviewer. You have extremely high standards, you do not show emotion, and you ask intense follow-up questions to test the candidate's true depth of knowledge."
+    } else if (persona === "supportive") {
+      personaPrompt = "You are a very supportive, warm, and friendly interviewer. You want the candidate to succeed, so you offer gentle encouragement before asking the next question."
+    }
+
     const historyPrompt = previousMessages
       .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
 
     const prompt = `You are an expert AI Interviewer conducting a mock interview for the category: "${category}".
-Your goal is to conduct a professional, realistic, and interactive conversation.
+${personaPrompt}
+Your goal is to conduct a realistic and interactive conversation in this exact persona.
 Assess the candidate's answers, ask relevant follow-up questions, or transition to a new topic as appropriate.
 ${resumeContextPrompt}
 
 Rules:
-1. Keep your responses concise, natural, and conversational (1-3 sentences maximum).
+1. Keep your responses concise, natural, and conversational (1-3 sentences maximum). Stay deeply in your persona.
 2. Do not use any markdown formatting, prefixing, headers, or bullet points (e.g. do not write "Question: ..."). Just output the raw conversational text.
-3. If this is the start of the interview (no candidate answers yet), ask a friendly introductory question tailored to the "${category}" category.
-4. If the candidate has already answered 4 or 5 questions, politely wrap up the interview and state that you will now analyze the transcript to prepare their performance feedback.
+3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category.
+4. If the candidate has already answered 4 or 5 questions, politely wrap up the interview (in your persona) and state that you will now analyze the transcript to prepare their performance feedback.
 
 Conversation History so far:
 ${historyPrompt}

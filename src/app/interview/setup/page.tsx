@@ -36,6 +36,7 @@ export default function InterviewSetupPage() {
   const [selected, setSelected] = useState<string | null>(null)
   const [hasResume, setHasResume] = useState(false)
   const [useResume, setUseResume] = useState(false)
+  const [persona, setPersona] = useState<string>("supportive")
 
   useEffect(() => {
     async function checkResume() {
@@ -53,7 +54,7 @@ export default function InterviewSetupPage() {
       <div className="fixed top-0 right-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="fixed bottom-0 left-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-3xl">
+      <div className="relative z-10 w-full max-w-3xl pt-10">
         <div className="text-center mb-10">
           <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors mb-4 inline-block font-medium">
             ← Back to Dashboard
@@ -81,6 +82,31 @@ export default function InterviewSetupPage() {
             </button>
           ))}
         </div>
+
+        {/* Persona Selector */}
+        <GlassCard className="p-5 mb-4 border-white/10">
+          <h4 className="text-sm font-semibold mb-3 text-foreground/90">Select Recruiter Persona</h4>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { id: "supportive", label: "Supportive", desc: "Warm and encouraging" },
+              { id: "strict", label: "Strict", desc: "Cold and highly formal" },
+              { id: "roast", label: "Roast Mode 💀", desc: "Brutally honest & sarcastic" },
+            ].map((p) => (
+              <button
+                key={p.id}
+                onClick={() => setPersona(p.id)}
+                className={`flex-1 min-w-[120px] p-3 rounded-xl border text-left transition-all ${
+                  persona === p.id 
+                    ? "border-primary bg-primary/10 ring-1 ring-primary/30" 
+                    : "border-white/10 hover:border-white/20 hover:bg-white/5"
+                }`}
+              >
+                <div className="text-sm font-bold mb-1">{p.label}</div>
+                <div className="text-xs text-foreground/50">{p.desc}</div>
+              </button>
+            ))}
+          </div>
+        </GlassCard>
 
         {/* Resume Toggle Box */}
         <GlassCard className="p-5 mb-8 border-dashed border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -115,8 +141,8 @@ export default function InterviewSetupPage() {
           )}
         </GlassCard>
 
-        <div className="flex justify-center">
-          <Link href={selected ? `/interview/${selected}${useResume ? "?resume=true" : ""}` : "#"}>
+        <div className="flex justify-center pb-10">
+          <Link href={selected ? `/interview/${selected}?resume=${useResume}&persona=${persona}` : "#"}>
             <GlowButton
               disabled={!selected}
               className={`h-12 px-12 text-base ${!selected ? "opacity-40 cursor-not-allowed" : ""}`}
