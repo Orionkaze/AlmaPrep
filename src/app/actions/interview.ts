@@ -130,6 +130,7 @@ export async function generateFeedback(
   summary: string
   strengths: string[]
   improvements: string[]
+  studyGuide?: { topic: string; advice: string }[]
   breakdown: { label: string; score: number; color: string }[]
 }> {
   const fallbackFeedback = {
