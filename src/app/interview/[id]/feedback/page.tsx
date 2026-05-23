@@ -121,10 +121,29 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
   if (!feedback) {
     return (
-      <main className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-        <div className="text-center z-10">
-          <p className="text-lg font-medium animate-pulse">Analyzing interview transcript...</p>
+      <main className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden bg-[#0A0A0A]">
+        {/* Animated glowing orbs */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-pulse pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-secondary/20 rounded-full blur-[80px] animate-[pulse_3s_infinite] pointer-events-none" />
+        
+        {/* Glass Loading Card */}
+        <div className="z-10 bg-white/5 border border-white/10 p-10 rounded-2xl backdrop-blur-md shadow-2xl flex flex-col items-center justify-center w-full max-w-md relative overflow-hidden">
+          {/* Shimmer sweep effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+          
+          {/* Custom animated ring spinner */}
+          <div className="relative size-16 mb-8 mt-2">
+            <div className="absolute inset-0 border-4 border-white/10 rounded-full"></div>
+            <div className="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin"></div>
+            <div className="absolute inset-2 border-4 border-secondary rounded-full border-b-transparent animate-[spin_1.5s_linear_infinite_reverse]"></div>
+          </div>
+          
+          <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-3 animate-pulse">
+            Compiling Analysis
+          </h2>
+          <p className="text-sm text-foreground/60 text-center">
+            Mock AI is reviewing your interview transcript and calculating your scores...
+          </p>
         </div>
       </main>
     )
