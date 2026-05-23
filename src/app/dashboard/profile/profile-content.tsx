@@ -301,8 +301,7 @@ export default function ProfileContent({
 
       {/* Right Column: Performance and stats */}
       <div className="lg:col-span-7 flex flex-col gap-6">
-        {/* Stats Grid */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-primary/20 transition-all">
             <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
             <FontAwesomeIcon icon={faChartBar} className="text-primary text-lg" />
