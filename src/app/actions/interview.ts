@@ -144,6 +144,16 @@ export async function generateFeedback(
       { label: "Problem Solving", score: 75, color: "bg-accent" },
       { label: "Confidence", score: 78, color: "bg-green-500" },
     ],
+    studyGuide: [
+      {
+        topic: "STAR Method",
+        advice: "Practice formatting your answers using Situation, Task, Action, Result to ensure your responses are comprehensive."
+      },
+      {
+        topic: "Technical Depth",
+        advice: "When explaining technical concepts, try to go one level deeper into the architecture or trade-offs involved."
+      }
+    ]
   }
 
   if (!process.env.GEMINI_API_KEY) {
@@ -172,6 +182,10 @@ Respond ONLY with a valid JSON object matching this exact structure:
   "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
   "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
   "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
+  "studyGuide": [
+    { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
+    { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
+  ],
   "breakdown": [
     { "label": "Communication", "score": <number> },
     { "label": "Technical Knowledge", "score": <number> },
@@ -215,6 +229,7 @@ Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no
       summary: data.summary || "Good effort on your mock interview.",
       strengths: Array.isArray(data.strengths) ? data.strengths : ["Clear communication"],
       improvements: Array.isArray(data.improvements) ? data.improvements : ["Add details to answers"],
+      studyGuide: Array.isArray(data.studyGuide) ? data.studyGuide : fallbackFeedback.studyGuide,
       breakdown,
     }
   } catch (error: any) {

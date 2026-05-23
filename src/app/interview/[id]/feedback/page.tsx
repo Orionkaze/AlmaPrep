@@ -5,7 +5,7 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { use, useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCheck, faLightbulb } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
 import { getFeedback } from "@/app/actions/interview"
 
 const categoryLabels: Record<string, string> = {
@@ -35,6 +35,16 @@ const demoFeedback = {
     { label: "Problem Solving", score: 80, color: "bg-accent" },
     { label: "Confidence", score: 88, color: "bg-green-500" },
   ],
+  studyGuide: [
+    {
+      topic: "System Design Fundamentals",
+      advice: "Review the differences between monolithic and microservice architectures. Understand when to use which pattern and be ready to discuss trade-offs."
+    },
+    {
+      topic: "STAR Method",
+      advice: "Your behavioral answers were good, but lack concrete metrics. Try using the STAR method (Situation, Task, Action, Result) and include specific numbers."
+    }
+  ]
 }
 
 function ScoreCircle({ score }: { score: number }) {
@@ -77,6 +87,7 @@ function ProgressBar({ score, color }: { score: number; color: string }) {
 export default function FeedbackPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
   const [feedback, setFeedback] = useState<typeof demoFeedback | null>(null)
+  const [showStudyGuide, setShowStudyGuide] = useState(false)
 
   useEffect(() => {
     const loadFeedback = async () => {
@@ -197,6 +208,41 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             </ul>
           </GlassCard>
         </div>
+
+        {/* Study Guide Section */}
+        {feedback.studyGuide && feedback.studyGuide.length > 0 && (
+          <div className="mb-10">
+            <button 
+              onClick={() => setShowStudyGuide(!showStudyGuide)}
+              className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <div className="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <FontAwesomeIcon icon={faBookOpen} className="text-primary" />
+                </div>
+                <div className="text-left">
+                  <h2 className="text-lg font-semibold">Personalized Study Guide</h2>
+                  <p className="text-xs text-foreground/60">Actionable advice based on your weaknesses</p>
+                </div>
+              </div>
+              <FontAwesomeIcon icon={showStudyGuide ? faChevronUp : faChevronDown} className="text-foreground/50 mr-2" />
+            </button>
+            
+            {showStudyGuide && (
+              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
+                {feedback.studyGuide.map((item, idx) => (
+                  <GlassCard key={idx} className="border-primary/20 bg-primary/5">
+                    <h3 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                      <span className="size-5 rounded-full bg-primary/20 flex items-center justify-center text-xs">{idx + 1}</span>
+                      {item.topic}
+                    </h3>
+                    <p className="text-sm text-foreground/80 leading-relaxed">{item.advice}</p>
+                  </GlassCard>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
