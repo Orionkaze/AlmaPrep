@@ -85,18 +85,16 @@ export default function InterviewPage({
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
       const recognition = new SpeechRecognition()
       recognition.continuous = true
-      recognition.interimResults = false
+      recognition.interimResults = true
       recognition.lang = "en-US"
 
       recognition.onresult = (event: any) => {
         let newTranscript = ""
-        for (let i = event.resultIndex; i < event.results.length; ++i) {
+        for (let i = 0; i < event.results.length; ++i) {
           newTranscript += event.results[i][0].transcript
         }
         
-        if (newTranscript) {
-          setInput((prev) => (prev + " " + newTranscript).trim())
-        }
+        setInput(newTranscript)
       }
 
       recognition.onerror = (event: any) => {
