@@ -100,9 +100,9 @@ Next Response:`
 
     const result = await model.generateContent(prompt)
     return result.response.text().trim()
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error in getNextQuestion:", error)
-    return "I'm sorry, I encountered an issue generating the next question. Please try replying again."
+    return `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`
   }
 }
 

@@ -4,7 +4,7 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane } from "@fortawesome/free-solid-svg-icons"
+import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane, faTimes } from "@fortawesome/free-solid-svg-icons"
 import {
   getNextQuestion,
   generateFeedback,
