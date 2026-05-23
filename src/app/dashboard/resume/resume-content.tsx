@@ -148,14 +148,26 @@ export default function ResumeContent({
                 <FontAwesomeIcon icon={faFileLines} className="text-primary" />
                 Resume Plain Text
               </h2>
-              {!isEditing && (
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="text-xs font-semibold text-primary hover:underline cursor-pointer"
-                >
-                  Edit Resume
-                </button>
-              )}
+              <div className="flex items-center gap-3">
+                {isEditing && !isDragging && !isParsing && (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-medium transition-colors cursor-pointer"
+                  >
+                    <FontAwesomeIcon icon={faUpload} />
+                    Upload File
+                  </button>
+                )}
+                {!isEditing && (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="text-xs font-semibold text-primary hover:underline cursor-pointer"
+                  >
+                    Edit Resume
+                  </button>
+                )}
+              </div>
             </div>
 
             {isEditing ? (
@@ -214,18 +226,7 @@ Software Engineer at TechCorp (2024-Present)
                     </div>
                   )}
                   
-                  {!resumeText && !isDragging && !isParsing && (
-                     <div className="absolute top-4 right-4 z-10">
-                       <button
-                         type="button"
-                         onClick={() => fileInputRef.current?.click()}
-                         className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-medium transition-colors cursor-pointer"
-                       >
-                         <FontAwesomeIcon icon={faUpload} />
-                         Upload File
-                       </button>
-                     </div>
-                  )}
+
                 </div>
 
                 {error && (
