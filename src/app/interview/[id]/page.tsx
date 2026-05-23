@@ -85,14 +85,18 @@ export default function InterviewPage({
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
       const recognition = new SpeechRecognition()
       recognition.continuous = true
-      recognition.interimResults = true
+      recognition.interimResults = false
+      recognition.lang = "en-US"
 
       recognition.onresult = (event: any) => {
-        let currentTranscript = ""
-        for (let i = 0; i < event.results.length; i++) {
-          currentTranscript += event.results[i][0].transcript
+        let newTranscript = ""
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          newTranscript += event.results[i][0].transcript
         }
-        setInput(currentTranscript)
+        
+        if (newTranscript) {
+          setInput((prev) => (prev + " " + newTranscript).trim())
+        }
       }
 
       recognition.onerror = (event: any) => {
@@ -122,11 +126,6 @@ export default function InterviewPage({
         recognitionRef.current.stop()
         setIsListening(false)
       } else {
-        // Force browser to ask for microphone permission explicitly before starting recognition
-        // Close the stream immediately so we don't lock the mic from webkitSpeechRecognition
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-        stream.getTracks().forEach(track => track.stop())
-        
         setInput("") // Clear input before speaking
         recognitionRef.current.start()
         setIsListening(true)
@@ -393,12 +392,12 @@ export default function InterviewPage({
                 <button 
                   onClick={toggleListening}
                   disabled={isAiTyping}
-                  className={`absolute right-3 top-1/2 -translate-y-1/2 size-8 flex items-center justify-center rounded-lg transition-colors ${
-                    isListening ? "bg-red-500/20 text-red-500" : "text-foreground/40 hover:bg-white/5 hover:text-foreground"
+                  className={`absolute right-3 top-1/2 -translate-y-1/2 size-8 flex items-center justify-center rounded-lg transition-all ${
+                    isListening ? "bg-red-500/20 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)] animate-pulse" : "text-foreground/40 hover:bg-white/5 hover:text-foreground"
                   }`}
                   title={isListening ? "Stop listening" : "Start Voice Input"}
                 >
-                  <FontAwesomeIcon icon={isListening ? faMicrophoneSlash : faMicrophone} />
+                  <FontAwesomeIcon icon={faMicrophone} />
                 </button>
               </div>
               <GlowButton
