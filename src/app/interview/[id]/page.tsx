@@ -393,11 +393,11 @@ export default function InterviewPage({
                   onClick={toggleListening}
                   disabled={isAiTyping}
                   className={`absolute right-3 top-1/2 -translate-y-1/2 size-8 flex items-center justify-center rounded-lg transition-all ${
-                    isListening ? "bg-red-500/20 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)] animate-pulse" : "text-foreground/40 hover:bg-white/5 hover:text-foreground"
+                    isListening ? "bg-green-500/20 text-green-400 shadow-[0_0_12px_rgba(74,222,128,0.6)] animate-pulse" : "bg-red-500/10 text-red-500 hover:bg-red-500/20"
                   }`}
                   title={isListening ? "Stop listening" : "Start Voice Input"}
                 >
-                  <FontAwesomeIcon icon={faMicrophone} />
+                  <FontAwesomeIcon icon={isListening ? faMicrophone : faMicrophoneSlash} />
                 </button>
               </div>
               <GlowButton
