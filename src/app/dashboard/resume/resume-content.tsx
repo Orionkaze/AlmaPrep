@@ -236,7 +236,7 @@ Software Engineer at TechCorp (2024-Present)
                 )}
 
                 <GlowButton type="submit" disabled={!resumeText.trim()} className="h-12 w-full cursor-pointer">
-                  Save & Analyze with Gemini →
+                  Analyze with Mock AI
                 </GlowButton>
               </form>
             ) : (
