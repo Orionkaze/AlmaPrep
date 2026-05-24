@@ -273,7 +273,14 @@ export default function InterviewPage({
       
       // Save feedback report to DB if session exists
       if (dbSessionId) {
-        await saveInterviewFeedback(dbSessionId, feedback.score, feedback.summary, feedback.improvements)
+        await saveInterviewFeedback(
+          dbSessionId,
+          feedback.score,
+          feedback.summary,
+          feedback.improvements,
+          feedback.strengths,
+          feedback.studyGuide
+        )
       }
 
       // Save to localStorage for client-side routing reading fallback

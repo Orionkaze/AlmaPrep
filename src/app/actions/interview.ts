@@ -106,7 +106,15 @@ Next Response:`
     } catch (err: any) {
       if (err.message?.includes("429") || err.message?.includes("Quota")) {
         console.log("Quota exceeded. Using mock conversational fallback...")
-        return "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?"
+        const fallbacks = [
+          "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?",
+          "Can you walk me through your decision-making process for the technologies you selected in your project?",
+          "How did you handle teamwork or communication conflicts if they arose during your work?",
+          "Let's transition slightly: what area of this role interests you the most and why?",
+          "Could you describe a time when you had to learn a new tool or framework quickly to solve a problem?"
+        ]
+        const index = previousMessages.length % fallbacks.length
+        return fallbacks[index]
       } else {
         throw err;
       }
@@ -307,7 +315,9 @@ export async function saveInterviewFeedback(
   interviewId: string,
   score: number,
   summary: string,
-  improvements: string[]
+  improvements: string[],
+  strengths?: string[],
+  studyGuide?: { topic: string; advice: string }[]
 ): Promise<boolean> {
   try {
     const supabase = await createClient()
@@ -315,10 +325,17 @@ export async function saveInterviewFeedback(
 
     if (!user) return false
 
+    // Serialize strengths and studyGuide inside summary since table lacks dedicated columns
+    const serializedSummary = JSON.stringify({
+      summary,
+      strengths: strengths || ["Clear Communication", "Structured Delivery"],
+      studyGuide: studyGuide || []
+    })
+
     const { error } = await supabase.from("feedback").insert({
       interview_id: interviewId,
       score,
-      summary,
+      summary: serializedSummary,
       improvement_suggestions: improvements,
     })
 
@@ -360,12 +377,27 @@ export async function getFeedback(interviewId: string) {
       return null
     }
 
+    let summaryText = data.summary || ""
+    let strengthsData = ["Clear Communication", "Structured Delivery"]
+    let studyGuideData: { topic: string; advice: string }[] = []
+
+    try {
+      if (summaryText.startsWith("{")) {
+        const parsed = JSON.parse(summaryText)
+        summaryText = parsed.summary || ""
+        strengthsData = parsed.strengths || strengthsData
+        studyGuideData = parsed.studyGuide || []
+      }
+    } catch (e) {
+      console.warn("Failed to parse serialized summary JSON:", e)
+    }
+
     return {
       score: data.score,
-      summary: data.summary,
-      strengths: ["Clear Communication", "Structured Delivery"],
+      summary: summaryText,
+      strengths: strengthsData,
       improvements: data.improvement_suggestions || [],
-      studyGuide: [],
+      studyGuide: studyGuideData,
       breakdown: [
         { label: "Communication", score: data.score, color: "bg-primary" },
         { label: "Technical Knowledge", score: Math.max(50, data.score - 5), color: "bg-secondary" },
