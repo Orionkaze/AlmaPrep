@@ -1,5 +1,6 @@
 "use server"
 
+// @ts-ignore
 import pdfParse from "pdf-parse/lib/pdf-parse.js"
 import mammoth from "mammoth"
 
