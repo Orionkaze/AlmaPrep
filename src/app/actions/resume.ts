@@ -2,8 +2,8 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai"
 import { createClient } from "@/lib/supabase/server"
-
 import { cookies } from "next/headers"
+import { revalidatePath } from "next/cache"
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
 
@@ -69,16 +69,18 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
     if (user) {
       const { error } = await supabase
         .from("users")
-        .update({
+        .upsert({
+          id: user.id,
           resume_text: resumeText,
           resume_analysis: analysis,
         })
-        .eq("id", user.id)
 
       if (error) {
         console.error("Error saving resume to Supabase:", error)
         return { success: false, error: error.message }
       }
+
+      revalidatePath("/dashboard/resume")
     }
 
     return {
