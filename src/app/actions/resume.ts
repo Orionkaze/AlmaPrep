@@ -90,9 +90,9 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
         analysis,
       },
     }
-  } catch (err) {
+  } catch (err: any) {
     console.error("saveAndAnalyzeResume failed:", err)
-    return { success: false, error: "An unexpected error occurred during resume analysis." }
+    return { success: false, error: err.message || "An unexpected error occurred during resume analysis." }
   }
 }
 
