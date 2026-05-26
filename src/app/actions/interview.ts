@@ -1,20 +1,7 @@
 "use server"
 
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai"
 import { createClient } from "@/lib/supabase/server"
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
-
-const safetySettings = [
-  {
-    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-]
+import { getLLMResponse, getLLMJSONResponse } from "@/lib/llm"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -30,16 +17,7 @@ export async function getNextQuestion(
   useResume?: boolean,
   persona?: string
 ): Promise<string> {
-  if (!process.env.GEMINI_API_KEY) {
-    return "Error: GEMINI_API_KEY is not configured in .env.local"
-  }
-
   try {
-    let model = genAI.getGenerativeModel({ 
-      model: "gemini-2.5-flash",
-      safetySettings 
-    })
-
     let resumeText = ""
     if (useResume) {
       try {
@@ -77,11 +55,7 @@ Focus your interview questions on their background, experiences, projects, and t
       personaPrompt = "You are a very supportive, warm, and friendly interviewer. You want the candidate to succeed, so you offer gentle encouragement before asking the next question."
     }
 
-    const historyPrompt = previousMessages
-      .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
-      .join("\n")
-
-    const prompt = `You are an expert AI Interviewer conducting a mock interview for the category: "${category}".
+    const systemPrompt = `You are an expert AI Interviewer conducting a mock interview for the category: "${category}".
 ${personaPrompt}
 Your goal is to conduct a realistic and interactive conversation in this exact persona.
 Assess the candidate's answers, ask relevant follow-up questions, or transition to a new topic as appropriate.
@@ -91,38 +65,38 @@ Rules:
 1. Keep your responses concise, natural, and conversational (1-3 sentences maximum). Stay deeply in your persona.
 2. Do not use any markdown formatting, prefixing, headers, or bullet points (e.g. do not write "Question: ..."). Just output the raw conversational text.
 3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category.
-4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.
+4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.`
 
-Conversation History so far:
-${historyPrompt}
+    const formattedMessages = previousMessages.map((msg) => ({
+      role: msg.role === "ai" ? "assistant" as const : "user" as const,
+      content: msg.content,
+    }))
 
-Next Response:`
-
-
-
-    let result;
-    try {
-      result = await model.generateContent(prompt)
-    } catch (err: any) {
-      if (err.message?.includes("429") || err.message?.includes("Quota")) {
-        console.log("Quota exceeded. Using mock conversational fallback...")
-        const fallbacks = [
-          "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?",
-          "Can you walk me through your decision-making process for the technologies you selected in your project?",
-          "How did you handle teamwork or communication conflicts if they arose during your work?",
-          "Let's transition slightly: what area of this role interests you the most and why?",
-          "Could you describe a time when you had to learn a new tool or framework quickly to solve a problem?"
-        ]
-        const index = previousMessages.length % fallbacks.length
-        return fallbacks[index]
-      } else {
-        throw err;
-      }
+    if (formattedMessages.length === 0) {
+      formattedMessages.push({ role: "user", content: "Hello, please introduce yourself and ask the first question." })
     }
-    
-    return result.response.text().trim()
+
+    try {
+      const nextResponse = await getLLMResponse({
+        systemPrompt,
+        messages: formattedMessages,
+        temperature: 0.7,
+      })
+      return nextResponse
+    } catch (err: any) {
+      console.warn("All LLM providers failed, using conversational fallback...", err)
+      const fallbacks = [
+        "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?",
+        "Can you walk me through your decision-making process for the technologies you selected in your project?",
+        "How did you handle teamwork or communication conflicts if they arose during your work?",
+        "Let's transition slightly: what area of this role interests you the most and why?",
+        "Could you describe a time when you had to learn a new tool or framework quickly to solve a problem?"
+      ]
+      const index = previousMessages.length % fallbacks.length
+      return fallbacks[index]
+    }
   } catch (error: any) {
-    console.error("Gemini API Error in getNextQuestion:", error)
+    console.error("Error in getNextQuestion Server Action:", error)
     return `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`
   }
 }
@@ -164,23 +138,13 @@ export async function generateFeedback(
     ]
   }
 
-  if (!process.env.GEMINI_API_KEY) {
-    return fallbackFeedback
-  }
-
   try {
-    let model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
-      safetySettings,
-      generationConfig: { responseMimeType: "application/json" },
-    })
-
     const transcript = messages
       .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
 
-    const prompt = `You are an expert interviewer evaluating a candidate's performance in a mock interview for the category: "${category}".
-Analyze the following transcript of the mock interview:
+    const systemPrompt = `You are an expert interviewer evaluating a candidate's performance in a mock interview for the category: "${category}".`
+    const prompt = `Analyze the following transcript of the mock interview:
 ${transcript}
 
 Evaluate the candidate's answers based on communication, technical depth, structured delivery, and confidence.
@@ -202,26 +166,26 @@ Respond ONLY with a valid JSON object matching this exact structure:
   ]
 }
 
-Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no \`\`\`json blocks) is returned. Just the raw JSON object.`
+Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
 
-    let result;
-    try {
-      result = await model.generateContent(prompt)
-    } catch (err: any) {
-      if (err.message?.includes("429") || err.message?.includes("Quota")) {
-        console.log("Quota exceeded. Returning fallback mock feedback...")
-        return fallbackFeedback
-      } else {
-        throw err;
-      }
+    interface FeedbackJson {
+      score: number
+      summary: string
+      strengths: string[]
+      improvements: string[]
+      studyGuide?: { topic: string; advice: string }[]
+      breakdown: { label: string; score: number }[]
     }
 
-    const text = result.response.text().trim()
-    const data = JSON.parse(text)
+    const data = await getLLMJSONResponse<FeedbackJson>({
+      systemPrompt,
+      prompt,
+      temperature: 0.7,
+    })
 
     // Map color classes to the breakdown scores for UI rendering
     const colors = ["bg-primary", "bg-secondary", "bg-accent", "bg-green-500"]
-    const breakdown = (data.breakdown || []).map((item: { label?: string; score?: number }, idx: number) => ({
+    const breakdown = (data.breakdown || []).map((item, idx: number) => ({
       label: item.label || "Criteria",
       score: typeof item.score === "number" ? item.score : 70,
       color: colors[idx % colors.length],
@@ -236,7 +200,7 @@ Ensure all scores are numbers, and no extra text or markdown formatting (e.g. no
       breakdown,
     }
   } catch (error: any) {
-    console.error("Gemini API Error in generateFeedback:", error)
+    console.error("LLM Error in generateFeedback:", error)
     return {
       ...fallbackFeedback,
       summary: `[System Error generating actual feedback: ${error?.message || "Unknown"}]. Here is a simulated analysis instead.`

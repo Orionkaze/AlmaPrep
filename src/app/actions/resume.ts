@@ -1,11 +1,9 @@
 "use server"
 
-import { GoogleGenerativeAI } from "@google/generative-ai"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
+import { getLLMJSONResponse } from "@/lib/llm"
 
 export interface ResumeAnalysis {
   summary: string
@@ -21,10 +19,6 @@ export interface ResumeAnalysis {
 export async function saveAndAnalyzeResume(
   resumeText: string
 ): Promise<{ success: boolean; data?: { resumeText: string; analysis: ResumeAnalysis }; error?: string }> {
-  if (!process.env.GEMINI_API_KEY) {
-    return { success: false, error: "GEMINI_API_KEY is not configured in .env.local" }
-  }
-
   try {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
@@ -36,14 +30,8 @@ export async function saveAndAnalyzeResume(
     }
 
 
-    // Call Gemini to analyze the resume
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
-      generationConfig: { responseMimeType: "application/json" },
-    })
-
-    const prompt = `You are an expert resume reviewer and career coach.
-Analyze the following resume text and generate a structured JSON analysis report.
+    const systemPrompt = "You are an expert resume reviewer and career coach."
+    const prompt = `Analyze the following resume text and generate a structured JSON analysis report.
 
 Resume Content:
 """
@@ -61,9 +49,11 @@ You MUST respond with a single valid JSON object containing exactly the followin
 
 Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. Return only the raw JSON string.`
 
-    const result = await model.generateContent(prompt)
-    const text = result.response.text().trim()
-    const analysis: ResumeAnalysis = JSON.parse(text)
+    const analysis = await getLLMJSONResponse<ResumeAnalysis>({
+      systemPrompt,
+      prompt,
+      temperature: 0.7,
+    })
 
     // Save to Supabase users table if authenticated user exists
     if (user) {
