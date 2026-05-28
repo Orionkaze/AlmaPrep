@@ -67,6 +67,16 @@ const ParticleSwarm = () => {
 };
 
 export function ParticleBackground() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="absolute inset-0 z-0 bg-[#0A0A0A] opacity-40" />;
+  }
+
   return (
     <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen">
       <Canvas camera={{ position: [0, 0, 80], fov: 60 }}>

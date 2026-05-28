@@ -317,7 +317,7 @@ export default async function DashboardPage() {
         {/* Footer */}
         <div className="mt-16 pb-8 text-center text-sm text-foreground/40 font-medium">
           <p>Let&apos;s help you find your One Piece, the perfect job <span className="text-red-500">❤️</span></p>
-          <p className="mt-1 flex justify-center items-center gap-1">Built by Akshit and Navya</p>
+          <p className="mt-1 flex justify-center items-center gap-1">Built by Akshit</p>
         </div>
       </div>
     </main>

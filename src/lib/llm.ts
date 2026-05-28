@@ -91,20 +91,20 @@ async function callGroqJson(systemPrompt: string | undefined, prompt: string, te
 }
 
 /**
- * Call the Grok (xAI) API
+ * Call the OpenAI API
  */
-async function callGrokText(messages: ChatMessage[], temperature: number): Promise<string> {
-  const apiKey = process.env.XAI_API_KEY
-  if (!apiKey) throw new Error("XAI_API_KEY not configured")
+async function callOpenAIText(messages: ChatMessage[], temperature: number): Promise<string> {
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) throw new Error("OPENAI_API_KEY not configured")
 
-  const response = await fetch("https://api.x.ai/v1/chat/completions", {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "grok-2",
+      model: "gpt-4o-mini",
       messages,
       temperature,
     }),
@@ -112,7 +112,7 @@ async function callGrokText(messages: ChatMessage[], temperature: number): Promi
 
   if (!response.ok) {
     const errorText = await response.text()
-    throw new Error(`xAI Grok API returned status ${response.status}: ${errorText}`)
+    throw new Error(`OpenAI API returned status ${response.status}: ${errorText}`)
   }
 
   const data = await response.json()
@@ -120,11 +120,11 @@ async function callGrokText(messages: ChatMessage[], temperature: number): Promi
 }
 
 /**
- * Call the Grok (xAI) API expecting JSON
+ * Call the OpenAI API expecting JSON
  */
-async function callGrokJson(systemPrompt: string | undefined, prompt: string, temperature: number): Promise<string> {
-  const apiKey = process.env.XAI_API_KEY
-  if (!apiKey) throw new Error("XAI_API_KEY not configured")
+async function callOpenAIJson(systemPrompt: string | undefined, prompt: string, temperature: number): Promise<string> {
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) throw new Error("OPENAI_API_KEY not configured")
 
   const messages: ChatMessage[] = []
   if (systemPrompt) {
@@ -132,14 +132,14 @@ async function callGrokJson(systemPrompt: string | undefined, prompt: string, te
   }
   messages.push({ role: "user", content: prompt })
 
-  const response = await fetch("https://api.x.ai/v1/chat/completions", {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "grok-2",
+      model: "gpt-4o-mini",
       messages,
       temperature,
       response_format: { type: "json_object" },
@@ -148,7 +148,7 @@ async function callGrokJson(systemPrompt: string | undefined, prompt: string, te
 
   if (!response.ok) {
     const errorText = await response.text()
-    throw new Error(`xAI Grok API returned status ${response.status}: ${errorText}`)
+    throw new Error(`OpenAI API returned status ${response.status}: ${errorText}`)
   }
 
   const data = await response.json()
@@ -228,7 +228,7 @@ async function callGeminiJson(
 }
 
 /**
- * Generate a text response using the hybrid fallback chain (Groq -> Grok -> Gemini)
+ * Generate a text response using the hybrid fallback chain (Groq -> OpenAI -> Gemini)
  */
 export async function getLLMResponse({
   systemPrompt,
@@ -253,14 +253,14 @@ export async function getLLMResponse({
       },
     },
     {
-      name: "Grok",
-      keyExists: !!process.env.XAI_API_KEY,
+      name: "OpenAI",
+      keyExists: !!process.env.OPENAI_API_KEY,
       fn: () => {
         const fullMessages = [...messages]
         if (systemPrompt) {
           fullMessages.unshift({ role: "system", content: systemPrompt })
         }
-        return callGrokText(fullMessages, temperature)
+        return callOpenAIText(fullMessages, temperature)
       },
     },
     {
@@ -273,7 +273,7 @@ export async function getLLMResponse({
   const activeProviders = providers.filter(p => p.keyExists)
 
   if (activeProviders.length === 0) {
-    throw new Error("No LLM API keys configured (checked GROQ_API_KEY, XAI_API_KEY, and GEMINI_API_KEY)")
+    throw new Error("No LLM API keys configured (checked GROQ_API_KEY, OPENAI_API_KEY, and GEMINI_API_KEY)")
   }
 
   let lastError: Error | null = null
@@ -294,7 +294,7 @@ export async function getLLMResponse({
 }
 
 /**
- * Generate a structured JSON response using the hybrid fallback chain (Grok -> Gemini -> Groq)
+ * Generate a structured JSON response using the hybrid fallback chain (OpenAI -> Gemini -> Groq)
  */
 export async function getLLMJSONResponse<T>({
   systemPrompt,
@@ -307,9 +307,9 @@ export async function getLLMJSONResponse<T>({
 }): Promise<T> {
   const providers = [
     {
-      name: "Grok",
-      keyExists: !!process.env.XAI_API_KEY,
-      fn: () => callGrokJson(systemPrompt, prompt, temperature),
+      name: "OpenAI",
+      keyExists: !!process.env.OPENAI_API_KEY,
+      fn: () => callOpenAIJson(systemPrompt, prompt, temperature),
     },
     {
       name: "Gemini",
@@ -326,7 +326,7 @@ export async function getLLMJSONResponse<T>({
   const activeProviders = providers.filter(p => p.keyExists)
 
   if (activeProviders.length === 0) {
-    throw new Error("No LLM API keys configured (checked XAI_API_KEY, GEMINI_API_KEY, and GROQ_API_KEY)")
+    throw new Error("No LLM API keys configured (checked OPENAI_API_KEY, GEMINI_API_KEY, and GROQ_API_KEY)")
   }
 
   let lastError: Error | null = null
