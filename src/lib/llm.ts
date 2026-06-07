@@ -162,7 +162,7 @@ export async function callGeminiText(
   systemPrompt: string | undefined,
   messages: ChatMessage[],
   temperature: number,
-  model: string = "gemini-2.5-flash"
+  modelName: string = "gemini-2.5-flash"
 ): Promise<string> {
   const apiKey = process.env.GEMINI_API_KEY
   if (!apiKey) throw new Error("GEMINI_API_KEY not configured")
@@ -177,7 +177,7 @@ export async function callGeminiText(
   }))
 
   const modelOptions: any = {
-    model,
+    model: modelName,
     safetySettings,
     generationConfig: { temperature }
   }
@@ -204,7 +204,7 @@ export async function callGeminiJson(
   systemPrompt: string | undefined,
   prompt: string,
   temperature: number,
-  model: string = "gemini-2.5-flash"
+  modelName: string = "gemini-2.5-flash"
 ): Promise<string> {
   const apiKey = process.env.GEMINI_API_KEY
   if (!apiKey) throw new Error("GEMINI_API_KEY not configured")
@@ -212,7 +212,7 @@ export async function callGeminiJson(
   const genAI = new GoogleGenerativeAI(apiKey)
 
   const modelOptions: any = {
-    model,
+    model: modelName,
     safetySettings,
     generationConfig: { 
       temperature, 
