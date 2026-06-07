@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     // 1. Authenticate the user
     // First, check NextAuth session
     const session = await getServerSession(authOptions)
-    let userId = session?.user?.id
+    let userId = (session?.user as any)?.id
     let userEmail = session?.user?.email
 
     // Fallback: If no NextAuth session, check Supabase auth to support standard auth users
