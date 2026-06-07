@@ -3,6 +3,8 @@
 import { createClient } from "@/lib/supabase/server"
 import { getLLMResponse, getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -254,15 +256,17 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
  */
 export async function createInterviewSession(category: string, useResume?: boolean): Promise<string | null> {
   try {
+    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = session?.user?.id || supabaseUser?.id
 
-    if (!user) return null
+    if (!userId) return null
 
     const { data, error } = await supabase
       .from("interviews")
       .insert({
-        user_id: user.id,
+        user_id: userId,
         category,
         status: "in_progress",
         use_resume: useResume || false,
@@ -291,10 +295,12 @@ export async function saveInterviewMessage(
   content: string
 ): Promise<boolean> {
   try {
+    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = session?.user?.id || supabaseUser?.id
 
-    if (!user) return false
+    if (!userId) return false
 
     const { error } = await supabase.from("messages").insert({
       interview_id: interviewId,
@@ -325,10 +331,12 @@ export async function saveInterviewFeedback(
   studyGuide?: { topic: string; advice: string }[]
 ): Promise<boolean> {
   try {
+    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = session?.user?.id || supabaseUser?.id
 
-    if (!user) return false
+    if (!userId) return false
 
     // Serialize strengths and studyGuide inside summary since table lacks dedicated columns
     const serializedSummary = JSON.stringify({
@@ -366,10 +374,12 @@ export async function saveInterviewFeedback(
  */
 export async function getFeedback(interviewId: string) {
   try {
+    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = session?.user?.id || supabaseUser?.id
 
-    if (!user) return null
+    if (!userId) return null
 
     const { data, error } = await supabase
       .from("feedback")

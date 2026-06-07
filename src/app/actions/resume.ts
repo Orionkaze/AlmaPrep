@@ -3,6 +3,8 @@
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
 import { getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
 
@@ -90,29 +92,19 @@ export async function getResumeData(): Promise<{
   error?: string
 }> {
   try {
+    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    const cookieStore = await cookies()
-    const isDemo = cookieStore.get("mockmate-demo-session")?.value === "true"
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = session?.user?.id || supabaseUser?.id
 
-    if (!user && !isDemo) {
+    if (!userId) {
       return { success: false, error: "Not authenticated" }
-    }
-
-    if (!user) {
-      return {
-        success: true,
-        data: {
-          resumeText: "",
-          analysis: null,
-        },
-      }
     }
 
     const { data, error } = await supabase
       .from("users")
       .select("resume_text, resume_analysis")
-      .eq("id", user.id)
+      .eq("id", userId)
       .single()
 
     if (error) {
