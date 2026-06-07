@@ -23,26 +23,23 @@ export async function saveAndAnalyzeResume(
   resumeText: string
 ): Promise<{ success: boolean; data?: { resumeText: string; analysis: ResumeAnalysis }; error?: string }> {
   try {
+    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    const cookieStore = await cookies()
-    const isDemo = cookieStore.get("mockmate-demo-session")?.value === "true"
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = (session?.user as any)?.id || supabaseUser?.id
 
-    if (!user && !isDemo) {
+    if (!userId) {
       return { success: false, error: "Not authenticated" }
     }
 
-
     let userTier = "free"
-    if (user) {
-      const { data: profile } = await supabase
-        .from("users")
-        .select("subscription_tier")
-        .eq("id", user.id)
-        .single()
-      if (profile && profile.subscription_tier) {
-        userTier = profile.subscription_tier
-      }
+    const { data: profile } = await supabase
+      .from("users")
+      .select("subscription_tier")
+      .eq("id", userId)
+      .single()
+    if (profile && profile.subscription_tier) {
+      userTier = profile.subscription_tier
     }
 
     const responseJsonText = await callAI(
@@ -52,23 +49,21 @@ export async function saveAndAnalyzeResume(
     )
     const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
 
-    // Save to Supabase users table if authenticated user exists
-    if (user) {
-      const { error } = await supabase
-        .from("users")
-        .upsert({
-          id: user.id,
-          resume_text: resumeText,
-          resume_analysis: analysis,
-        })
+    // Save to Supabase users table
+    const { error } = await supabase
+      .from("users")
+      .upsert({
+        id: userId,
+        resume_text: resumeText,
+        resume_analysis: analysis,
+      })
 
-      if (error) {
-        console.error("Error saving resume to Supabase:", error)
-        return { success: false, error: error.message }
-      }
-
-      revalidatePath("/dashboard/resume")
+    if (error) {
+      console.error("Error saving resume to Supabase:", error)
+      return { success: false, error: error.message }
     }
+
+    revalidatePath("/dashboard/resume")
 
     return {
       success: true,

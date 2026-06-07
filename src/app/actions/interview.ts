@@ -259,7 +259,7 @@ export async function createInterviewSession(category: string, useResume?: boole
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
+    const userId = (session?.user as any)?.id || supabaseUser?.id
 
     if (!userId) return null
 
@@ -298,7 +298,7 @@ export async function saveInterviewMessage(
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
+    const userId = (session?.user as any)?.id || supabaseUser?.id
 
     if (!userId) return false
 
@@ -334,7 +334,7 @@ export async function saveInterviewFeedback(
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
+    const userId = (session?.user as any)?.id || supabaseUser?.id
 
     if (!userId) return false
 
@@ -377,7 +377,7 @@ export async function getFeedback(interviewId: string) {
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
+    const userId = (session?.user as any)?.id || supabaseUser?.id
 
     if (!userId) return null
 
