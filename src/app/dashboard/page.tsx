@@ -38,7 +38,7 @@ export default async function DashboardPage() {
   const { data: { user: supabaseUser } } = await supabase.auth.getUser()
 
   const activeUser = session?.user || supabaseUser
-  const userId = session?.user?.id || supabaseUser?.id
+  const userId = (session?.user as any)?.id || supabaseUser?.id
 
   let displayName = "User"
   let avatarIcon = faUserTie

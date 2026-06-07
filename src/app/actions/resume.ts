@@ -90,7 +90,7 @@ export async function getResumeData(): Promise<{
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
+    const userId = (session?.user as any)?.id || supabaseUser?.id
 
     if (!userId) {
       return { success: false, error: "Not authenticated" }
