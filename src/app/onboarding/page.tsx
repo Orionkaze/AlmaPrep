@@ -19,12 +19,7 @@ export default function OnboardingPage() {
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
-  useEffect(() => {
-    // If guest/demo session, redirect to dashboard
-    if (document.cookie.includes("mockmate-demo-session=true")) {
-      router.push("/dashboard")
-    }
-  }, [router])
+  // Removed guest/demo session redirect
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

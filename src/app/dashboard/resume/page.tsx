@@ -1,18 +1,21 @@
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
 import { getResumeData } from "@/app/actions/resume"
 import ResumeContent from "./resume-content"
 import Link from "next/link"
 import { LogoutButton } from "@/components/logout-button"
 
 export default async function ResumePage() {
+  const session = await getServerSession(authOptions)
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  const cookieStore = await cookies()
-  const isDemo = cookieStore.get("mockmate-demo-session")?.value === "true"
+  const { data: { user: supabaseUser } } = await supabase.auth.getUser()
 
-  if (!user && !isDemo) {
+  const activeUser = session?.user || supabaseUser
+
+  if (!activeUser) {
     redirect("/login")
   }
 

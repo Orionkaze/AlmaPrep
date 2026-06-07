@@ -20,6 +20,8 @@ import {
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
 
 // Map avatar strings to FontAwesome icons
 const avatarMap: Record<string, typeof faUserTie> = {
@@ -31,30 +33,32 @@ const avatarMap: Record<string, typeof faUserTie> = {
 }
 
 export default async function DashboardPage() {
+  const session = await getServerSession(authOptions)
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  const cookieStore = await cookies()
-  const isDemo = cookieStore.get("mockmate-demo-session")?.value === "true"
+  const { data: { user: supabaseUser } } = await supabase.auth.getUser()
 
-  let displayName = "Guest User"
+  const activeUser = session?.user || supabaseUser
+  const userId = session?.user?.id || supabaseUser?.id
+
+  let displayName = "User"
   let avatarIcon = faUserTie
   let hasResume = false
   let latestFeedback = null
   let totalSessions = 0
 
-  if (user) {
+  if (activeUser && userId) {
     // 1. Fetch user profile
     const { data: profile } = await supabase
       .from("users")
       .select("*")
-      .eq("id", user.id)
+      .eq("id", userId)
       .single()
 
     if (!profile) {
       redirect("/onboarding")
     }
 
-    displayName = profile.username || user.email?.split("@")[0] || "User"
+    displayName = profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User"
     avatarIcon = avatarMap[profile.avatar_url || ""] || faUserTie
     hasResume = !!profile.resume_text
 
@@ -62,7 +66,7 @@ export default async function DashboardPage() {
     const { count } = await supabase
       .from("interviews")
       .select("*", { count: "exact", head: true })
-      .eq("user_id", user.id)
+      .eq("user_id", userId)
 
     totalSessions = count || 0
 
@@ -79,7 +83,7 @@ export default async function DashboardPage() {
           improvement_suggestions
         )
       `)
-      .eq("user_id", user.id)
+      .eq("user_id", userId)
       .eq("status", "completed")
       .order("created_at", { ascending: false })
       .limit(1)
@@ -96,11 +100,6 @@ export default async function DashboardPage() {
         id: latestInterview.id
       }
     }
-  } else if (isDemo) {
-    displayName = "Guest User"
-    avatarIcon = faUserTie
-    hasResume = false
-    totalSessions = 0
   } else {
     redirect("/login")
   }
@@ -125,8 +124,12 @@ export default async function DashboardPage() {
               Mock Mate
             </Link>
             <div className="flex items-center gap-3">
-              <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-lg">
-                <FontAwesomeIcon icon={avatarIcon} />
+              <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-lg overflow-hidden">
+                {session?.user?.image ? (
+                  <img src={session.user.image} alt={displayName} className="size-full object-cover" />
+                ) : (
+                  <FontAwesomeIcon icon={avatarIcon} />
+                )}
               </div>
               <div>
                 <h1 className="text-3xl font-bold tracking-tight">

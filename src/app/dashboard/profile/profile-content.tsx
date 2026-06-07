@@ -57,6 +57,7 @@ interface ProfileContentProps {
   userEmail: string
   createdAt: string
   interviews: Interview[]
+  subscriptionTier: string
 }
 
 function ScoreRing({ score }: { score: number }) {
@@ -92,6 +93,7 @@ export default function ProfileContent({
   userEmail,
   createdAt,
   interviews,
+  subscriptionTier,
 }: ProfileContentProps) {
   const [username, setUsername] = useState(initialProfile.username)
   const [selectedAvatar, setSelectedAvatar] = useState(initialProfile.avatar_url)
@@ -213,8 +215,8 @@ export default function ProfileContent({
             ) : (
               <>
                 <h2 className="text-2xl font-bold text-foreground mb-1">{initialProfile.username}</h2>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary mb-4">
-                  <FontAwesomeIcon icon={faAward} /> Mockmate Prep Client
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary mb-4 uppercase">
+                  <FontAwesomeIcon icon={faAward} /> {subscriptionTier} Tier
                 </div>
                 <GlowButton onClick={() => setIsEditing(true)} className="h-8 px-4 text-xs">
                   <FontAwesomeIcon icon={faUserEdit} className="mr-1.5" /> Edit Profile
