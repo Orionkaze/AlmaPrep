@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { signOut } from "next-auth/react"
 
 export function LogoutButton() {
   const router = useRouter()
@@ -11,14 +12,17 @@ export function LogoutButton() {
 
   const handleLogout = async () => {
     // 1. Sign out of Supabase auth
-    await supabase.auth.signOut()
+    try {
+      await supabase.auth.signOut()
+    } catch (err) {
+      console.error("Supabase signOut error:", err)
+    }
 
     // 2. Clear guest/demo cookie
     document.cookie = "mockmate-demo-session=; path=/; max-age=0"
 
-    // 3. Redirect and refresh
-    router.push("/login")
-    router.refresh()
+    // 3. Sign out of NextAuth
+    await signOut({ callbackUrl: "/login" })
   }
 
   return (

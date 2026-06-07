@@ -39,21 +39,25 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const isDemoSession = request.cookies.get('mockmate-demo-session')?.value === 'true'
+  const hasNextAuthCookie = request.cookies.has("next-auth.session-token") ||
+                            request.cookies.has("__Secure-next-auth.session-token")
+  const isAuthed = hasNextAuthCookie || !!user
 
-  // Protect routes here
-  const isProtectedRoute = request.nextUrl.pathname.startsWith('/dashboard') || 
-                           request.nextUrl.pathname.startsWith('/interview') ||
-                           request.nextUrl.pathname.startsWith('/onboarding')
+  const path = request.nextUrl.pathname
+  // Protect routes here (including root '/')
+  const isProtectedRoute = path === '/' ||
+                           path.startsWith('/dashboard') || 
+                           path.startsWith('/interview') ||
+                           path.startsWith('/onboarding')
 
-  if (!user && !isDemoSession && isProtectedRoute) {
+  if (!isAuthed && isProtectedRoute) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // If user or demo session exists and tries to access login/signup, redirect to dashboard
-  if ((user || isDemoSession) && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup')) {
+  // If user exists and tries to access login/signup, redirect to dashboard
+  if (isAuthed && (path === '/login' || path === '/signup')) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
     return NextResponse.redirect(url)
