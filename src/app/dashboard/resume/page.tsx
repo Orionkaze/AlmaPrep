@@ -13,7 +13,7 @@ export default async function ResumePage() {
   const supabase = await createClient()
   const { data: { user: supabaseUser } } = await supabase.auth.getUser()
 
-  const activeUser = session?.user || supabaseUser
+  const activeUser = (session?.user || supabaseUser) as any
 
   if (!activeUser) {
     redirect("/login")

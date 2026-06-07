@@ -37,7 +37,7 @@ export default async function DashboardPage() {
   const supabase = await createClient()
   const { data: { user: supabaseUser } } = await supabase.auth.getUser()
 
-  const activeUser = session?.user || supabaseUser
+  const activeUser = (session?.user || supabaseUser) as any
   const userId = (session?.user as any)?.id || supabaseUser?.id
 
   let displayName = "User"
