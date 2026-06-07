@@ -29,7 +29,7 @@ export default async function ProfilePage() {
   let initialProfile = { username: "User", avatar_url: "user-tie", resume_text: "" }
   let userEmail = activeUser.email || ""
   let createdAt = new Date().toISOString()
-  let interviews = []
+  let interviews: any[] = []
   let subscriptionTier = "free"
 
   // 1. Fetch user profile
