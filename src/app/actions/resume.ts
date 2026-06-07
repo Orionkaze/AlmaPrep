@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { getLLMJSONResponse } from "@/lib/llm"
+import { callAI } from "@/lib/aiRouter"
 
 export interface ResumeAnalysis {
   summary: string
@@ -30,30 +31,24 @@ export async function saveAndAnalyzeResume(
     }
 
 
-    const systemPrompt = "You are an expert resume reviewer and career coach."
-    const prompt = `Analyze the following resume text and generate a structured JSON analysis report.
+    let userTier = "free"
+    if (user) {
+      const { data: profile } = await supabase
+        .from("users")
+        .select("subscription_tier")
+        .eq("id", user.id)
+        .single()
+      if (profile && profile.subscription_tier) {
+        userTier = profile.subscription_tier
+      }
+    }
 
-Resume Content:
-"""
-${resumeText}
-"""
-
-You MUST respond with a single valid JSON object containing exactly the following keys:
-{
-  "summary": "<a concise 2-3 sentence overview of their professional background, career level, and primary focus areas>",
-  "skills": ["<skill 1>", "<skill 2>", "<skill 3>", "... (extract up to 10 key technical and soft skills)"],
-  "highlights": ["<highlight 1>", "<highlight 2>", "<highlight 3>", "... (extract 2-3 key accomplishments or experience bullet points)"],
-  "interviewTopics": ["<topic 1>", "<topic 2>", "<topic 3>", "... (recommend 3-4 specific topics they should practice in mock interviews)"],
-  "improvements": ["<improvement 1>", "<improvement 2>", "<improvement 3>", "... (provide 2-3 actionable suggestions to improve their resume details/structure)"]
-}
-
-Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. Return only the raw JSON string.`
-
-    const analysis = await getLLMJSONResponse<ResumeAnalysis>({
-      systemPrompt,
-      prompt,
-      temperature: 0.7,
-    })
+    const responseJsonText = await callAI(
+      resumeText,
+      "analyze_resume",
+      userTier
+    )
+    const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
 
     // Save to Supabase users table if authenticated user exists
     if (user) {

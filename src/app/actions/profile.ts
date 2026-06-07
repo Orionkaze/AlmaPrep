@@ -20,6 +20,7 @@ export async function createUserProfile(
         id: user.id,
         username,
         avatar_url: avatarUrl,
+        subscription_tier: "free",
       })
 
     if (error) {

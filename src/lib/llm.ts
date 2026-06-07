@@ -28,7 +28,7 @@ export function cleanJsonResponseText(text: string): string {
 /**
  * Call the Groq API (OpenAI compatible endpoint)
  */
-async function callGroqText(messages: ChatMessage[], temperature: number): Promise<string> {
+export async function callGroqText(messages: ChatMessage[], temperature: number): Promise<string> {
   const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) throw new Error("GROQ_API_KEY not configured")
 
@@ -57,7 +57,7 @@ async function callGroqText(messages: ChatMessage[], temperature: number): Promi
 /**
  * Call the Groq API expecting JSON
  */
-async function callGroqJson(systemPrompt: string | undefined, prompt: string, temperature: number): Promise<string> {
+export async function callGroqJson(systemPrompt: string | undefined, prompt: string, temperature: number): Promise<string> {
   const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) throw new Error("GROQ_API_KEY not configured")
 
@@ -93,7 +93,7 @@ async function callGroqJson(systemPrompt: string | undefined, prompt: string, te
 /**
  * Call the OpenAI API
  */
-async function callOpenAIText(messages: ChatMessage[], temperature: number): Promise<string> {
+export async function callOpenAIText(messages: ChatMessage[], temperature: number, model: string = "gpt-4o-mini"): Promise<string> {
   const apiKey = process.env.OPENAI_API_KEY
   if (!apiKey) throw new Error("OPENAI_API_KEY not configured")
 
@@ -104,7 +104,7 @@ async function callOpenAIText(messages: ChatMessage[], temperature: number): Pro
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "gpt-4o-mini",
+      model,
       messages,
       temperature,
     }),
@@ -122,7 +122,7 @@ async function callOpenAIText(messages: ChatMessage[], temperature: number): Pro
 /**
  * Call the OpenAI API expecting JSON
  */
-async function callOpenAIJson(systemPrompt: string | undefined, prompt: string, temperature: number): Promise<string> {
+export async function callOpenAIJson(systemPrompt: string | undefined, prompt: string, temperature: number, model: string = "gpt-4o-mini"): Promise<string> {
   const apiKey = process.env.OPENAI_API_KEY
   if (!apiKey) throw new Error("OPENAI_API_KEY not configured")
 
@@ -139,7 +139,7 @@ async function callOpenAIJson(systemPrompt: string | undefined, prompt: string, 
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "gpt-4o-mini",
+      model,
       messages,
       temperature,
       response_format: { type: "json_object" },
@@ -158,10 +158,11 @@ async function callOpenAIJson(systemPrompt: string | undefined, prompt: string, 
 /**
  * Call the Gemini API
  */
-async function callGeminiText(
+export async function callGeminiText(
   systemPrompt: string | undefined,
   messages: ChatMessage[],
-  temperature: number
+  temperature: number,
+  model: string = "gemini-2.5-flash"
 ): Promise<string> {
   const apiKey = process.env.GEMINI_API_KEY
   if (!apiKey) throw new Error("GEMINI_API_KEY not configured")
@@ -176,7 +177,7 @@ async function callGeminiText(
   }))
 
   const modelOptions: any = {
-    model: "gemini-2.5-flash",
+    model,
     safetySettings,
     generationConfig: { temperature }
   }
@@ -199,10 +200,11 @@ async function callGeminiText(
 /**
  * Call the Gemini API expecting JSON
  */
-async function callGeminiJson(
+export async function callGeminiJson(
   systemPrompt: string | undefined,
   prompt: string,
-  temperature: number
+  temperature: number,
+  model: string = "gemini-2.5-flash"
 ): Promise<string> {
   const apiKey = process.env.GEMINI_API_KEY
   if (!apiKey) throw new Error("GEMINI_API_KEY not configured")
@@ -210,7 +212,7 @@ async function callGeminiJson(
   const genAI = new GoogleGenerativeAI(apiKey)
 
   const modelOptions: any = {
-    model: "gemini-2.5-flash",
+    model,
     safetySettings,
     generationConfig: { 
       temperature, 

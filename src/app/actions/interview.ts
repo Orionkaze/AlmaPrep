@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server"
 import { getLLMResponse, getLLMJSONResponse } from "@/lib/llm"
+import { callAI } from "@/lib/aiRouter"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -76,14 +77,35 @@ Rules:
       formattedMessages.push({ role: "user", content: "Hello, please introduce yourself and ask the first question." })
     }
 
+    let userTier = "free"
     try {
-      const nextResponse = await getLLMResponse({
-        systemPrompt,
-        messages: formattedMessages,
-        temperature: 0.7,
-      })
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        const { data: profile } = await supabase
+          .from("users")
+          .select("subscription_tier")
+          .eq("id", user.id)
+          .single()
+        if (profile && profile.subscription_tier) {
+          userTier = profile.subscription_tier
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch user tier in getNextQuestion:", err)
+    }
+
+    try {
+      const nextResponse = await callAI(
+        JSON.stringify({ category, previousMessages, useResume, persona }),
+        "next_question",
+        userTier
+      )
       return nextResponse
     } catch (err: any) {
+      if (err.message && err.message.includes("free interviews")) {
+        return `[Limit Reached] You've used all 3 free interviews this month. Upgrade to Pro for unlimited access.`
+      }
       console.warn("All LLM providers failed, using conversational fallback...", err)
       const fallbacks = [
         "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?",
@@ -177,11 +199,30 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       breakdown: { label: string; score: number }[]
     }
 
-    const data = await getLLMJSONResponse<FeedbackJson>({
-      systemPrompt,
-      prompt,
-      temperature: 0.7,
-    })
+    let userTier = "free"
+    try {
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        const { data: profile } = await supabase
+          .from("users")
+          .select("subscription_tier")
+          .eq("id", user.id)
+          .single()
+        if (profile && profile.subscription_tier) {
+          userTier = profile.subscription_tier
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch user tier in generateFeedback:", err)
+    }
+
+    const responseJsonText = await callAI(
+      JSON.stringify({ category, messages }),
+      "generate_feedback",
+      userTier
+    )
+    const data = JSON.parse(responseJsonText) as FeedbackJson
 
     // Map color classes to the breakdown scores for UI rendering
     const colors = ["bg-primary", "bg-secondary", "bg-accent", "bg-green-500"]

@@ -57,5 +57,25 @@ create policy "Users can view their own feedback" on public.feedback for select 
 );
 create policy "Users can insert their own feedback" on public.feedback for insert with check (
   exists (select 1 from public.interviews where id = public.feedback.interview_id and user_id = auth.uid())
+
+-- Part 3 & 5: Subscription Tier and Rate Limiting
+ALTER TABLE public.users ADD COLUMN IF NOT EXISTS subscription_tier text DEFAULT 'free';
+
+CREATE TABLE IF NOT EXISTS public.interview_usage (
+  user_id uuid REFERENCES public.users(id) ON DELETE CASCADE NOT NULL,
+  month text NOT NULL,
+  count integer DEFAULT 0 NOT NULL,
+  PRIMARY KEY (user_id, month)
 );
+
+ALTER TABLE public.interview_usage ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view their own usage" ON public.interview_usage
+  FOR SELECT USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can insert their own usage" ON public.interview_usage
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can update their own usage" ON public.interview_usage
+  FOR UPDATE USING (auth.uid() = user_id);
 
