@@ -8,6 +8,7 @@ import {
   cleanJsonResponseText
 } from "@/lib/llm"
 import { createClient } from "@/lib/supabase/server"
+import { headers } from "next/headers"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
@@ -33,14 +34,23 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, name: stri
 export async function callAI(prompt: string, task: string, userTier: string): Promise<string> {
   const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000"
   
-  // Note: NextAuth cookies are passed automatically when fetching from a client, 
-  // but if called from a Server Action, we should ensure headers are forwarded or the session is checked.
-  // Next.js Server Actions automatically forward headers/cookies for same-origin fetch.
+  let requestHeaders: Record<string, string> = {
+    "Content-Type": "application/json",
+  }
+
+  try {
+    const nextHeaders = await headers()
+    const cookie = nextHeaders.get("cookie")
+    if (cookie) {
+      requestHeaders["cookie"] = cookie
+    }
+  } catch (e) {
+    // Suppress if not in a request context (e.g. at build time or custom server tasks)
+  }
+
   const response = await fetch(`${baseUrl}/api/ai`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: requestHeaders,
     body: JSON.stringify({ prompt, task, userTier }),
     cache: "no-store",
   })
