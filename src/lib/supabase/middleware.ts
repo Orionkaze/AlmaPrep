@@ -41,7 +41,8 @@ export async function updateSession(request: NextRequest) {
 
   const hasNextAuthCookie = request.cookies.has("next-auth.session-token") ||
                             request.cookies.has("__Secure-next-auth.session-token")
-  const isAuthed = hasNextAuthCookie || !!user
+  const hasDemoCookie = request.cookies.has("mockmate-demo-session")
+  const isAuthed = hasNextAuthCookie || hasDemoCookie || !!user
 
   const path = request.nextUrl.pathname
   // Protect routes here (including root '/')

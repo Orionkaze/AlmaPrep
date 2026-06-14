@@ -150,6 +150,24 @@ export default function SignupPage() {
               </svg>
               <span>Continue with Google</span>
             </button>
+
+            <div className="relative my-2 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-white/10" />
+              </div>
+              <span className="relative bg-[#0d0a16] px-3 text-xs text-foreground/40 uppercase">Or</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                document.cookie = "mockmate-demo-session=true; path=/; max-age=604800"; // 7 days
+                window.location.href = "/dashboard";
+              }}
+              className="w-full h-12 rounded-lg border border-primary/30 text-primary bg-primary/5 hover:bg-primary/10 transition-colors font-bold text-sm cursor-pointer flex items-center justify-center gap-2"
+            >
+              🚀 Launch Local Demo Mode (No DB)
+            </button>
           </form>
 
           <p className="text-center text-sm text-foreground/70 mt-6">
