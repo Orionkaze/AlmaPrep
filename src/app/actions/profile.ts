@@ -1,12 +1,19 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
+import { cookies } from "next/headers"
 
 export async function createUserProfile(
   username: string,
   avatarUrl: string
 ): Promise<{ success: boolean; error?: string }> {
   try {
+    const cookieStore = await cookies()
+    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+    if (hasDemoCookie) {
+      return { success: true }
+    }
+
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
 
@@ -40,6 +47,12 @@ export async function updateUserProfile(
   avatarUrl: string
 ): Promise<{ success: boolean; error?: string }> {
   try {
+    const cookieStore = await cookies()
+    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+    if (hasDemoCookie) {
+      return { success: true }
+    }
+
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
 
@@ -66,4 +79,5 @@ export async function updateUserProfile(
     return { success: false, error: "An unexpected error occurred" }
   }
 }
+
 
