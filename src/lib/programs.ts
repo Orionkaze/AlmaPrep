@@ -83,7 +83,7 @@ export function getPrograms(): ProgramInfo[] {
   if (cachedPrograms) return cachedPrograms
 
   try {
-    const indexPath = path.join(process.cwd(), "index.json")
+    const indexPath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "index.json")
     if (!fs.existsSync(indexPath)) {
       console.warn(`index.json not found at ${indexPath}`)
       return []
@@ -96,9 +96,7 @@ export function getPrograms(): ProgramInfo[] {
 
     for (const shard of shards) {
       if (!shard.file) continue
-      // Map data/universal/... to universal/... and data/programs/... to programs/...
-      const mappedFile = shard.file.replace(/^data\//, "")
-      const filePath = path.join(process.cwd(), mappedFile)
+      const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), shard.file)
 
       if (fs.existsSync(filePath)) {
         const fileContent = fs.readFileSync(filePath, "utf-8")
@@ -151,7 +149,7 @@ export function getPrograms(): ProgramInfo[] {
 
 export function getProgramQuestions(programId: string): Question[] {
   try {
-    const indexPath = path.join(process.cwd(), "index.json")
+    const indexPath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "index.json")
     if (fs.existsSync(indexPath)) {
       const indexContent = fs.readFileSync(indexPath, "utf-8")
       const indexData = JSON.parse(indexContent)
@@ -165,8 +163,7 @@ export function getProgramQuestions(programId: string): Question[] {
       })
 
       if (matchingShard) {
-        const mappedFile = matchingShard.file.replace(/^data\//, "")
-        const filePath = path.join(process.cwd(), mappedFile)
+        const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), matchingShard.file)
         if (fs.existsSync(filePath)) {
           const fileContent = fs.readFileSync(filePath, "utf-8")
           return JSON.parse(fileContent) as Question[]
@@ -175,9 +172,9 @@ export function getProgramQuestions(programId: string): Question[] {
     }
 
     // Fallback if index lookup failed or not found
-    let filePath = path.join(process.cwd(), "programs", `${programId}.json`)
+    let filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "programs", `${programId}.json`)
     if (!fs.existsSync(filePath)) {
-      filePath = path.join(process.cwd(), "universal", `${programId}.json`)
+      filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "universal", `${programId}.json`)
       if (!fs.existsSync(filePath)) {
         return []
       }
@@ -192,7 +189,7 @@ export function getProgramQuestions(programId: string): Question[] {
 
 export function getSampleQuestions(category: string): Question[] {
   try {
-    const filePath = path.join(process.cwd(), "sample.json")
+    const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "sample.json")
     if (!fs.existsSync(filePath)) {
       return []
     }
