@@ -17,10 +17,30 @@ const mockHistory = [
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions)
   const supabase = await createClient()
-  const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+  
+  // Try getting Supabase user, handling network issues gracefully
+  let supabaseUser = null
+  try {
+    const { data } = await supabase.auth.getUser()
+    supabaseUser = data?.user || null
+  } catch (err) {
+    console.error("ProfilePage: Failed to fetch Supabase user:", err)
+  }
 
-  const activeUser = (session?.user || supabaseUser) as any
-  const userId = (session?.user as any)?.id || supabaseUser?.id
+  const cookieStore = await cookies()
+  const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+  let activeUser = (session?.user || supabaseUser) as any
+  let userId = (session?.user as any)?.id || supabaseUser?.id
+
+  let isDemoMode = false
+  if (!activeUser && hasDemoCookie) {
+    isDemoMode = true
+    activeUser = {
+      name: "Straw Hat Luffy",
+      email: "luffy@goingmerry.org",
+    }
+    userId = "demo-user-id"
+  }
 
   if (!activeUser || !userId) {
     redirect("/login")
@@ -32,25 +52,41 @@ export default async function ProfilePage() {
   let interviews: any[] = []
   let subscriptionTier = "free"
 
-  // 1. Fetch user profile
-  const { data: profile } = await supabase
-    .from("users")
-    .select("*")
-    .eq("id", userId)
-    .single()
+  if (isDemoMode) {
+    initialProfile = {
+      username: "Luffy (Demo)",
+      avatar_url: "rocket",
+      resume_text: "Objective: Find the One Piece. Experience: Captain of the Straw Hat Pirates. Defeated Kaido, Big Mom, Doflamingo. Skills: Gear 5, Conqueror's Haki, Elasticity, leadership, meat eating.",
+    }
+    createdAt = new Date(Date.now() - 365*24*60*60*1000).toISOString()
+    subscriptionTier = "premium"
+    interviews = mockHistory.map(item => ({
+      id: item.id,
+      category: item.category,
+      score: item.score,
+      date: item.date,
+      status: item.status
+    }))
+  } else {
+    // 1. Fetch user profile
+    const { data: profile } = await supabase
+      .from("users")
+      .select("*")
+      .eq("id", userId)
+      .single()
 
-  if (!profile) {
-    redirect("/onboarding")
-  }
+    if (!profile) {
+      redirect("/onboarding")
+    }
 
-  initialProfile = {
-    username: profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User",
-    avatar_url: profile.avatar_url || "user-tie",
-    resume_text: profile.resume_text || "",
-  }
-  userEmail = activeUser.email || ""
-  createdAt = profile.created_at || new Date().toISOString()
-  subscriptionTier = profile.subscription_tier || "free"
+    initialProfile = {
+      username: profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User",
+      avatar_url: profile.avatar_url || "user-tie",
+      resume_text: profile.resume_text || "",
+    }
+    userEmail = activeUser.email || ""
+    createdAt = profile.created_at || new Date().toISOString()
+    subscriptionTier = profile.subscription_tier || "free"
 
     // 2. Fetch interviews and feedback
     const { data: interviewsData } = await supabase
@@ -79,6 +115,7 @@ export default async function ProfilePage() {
         }
       })
     }
+  }
 
   return (
     <main className="min-h-screen p-6 md:p-12 relative overflow-hidden">
