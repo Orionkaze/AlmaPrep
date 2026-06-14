@@ -5,6 +5,8 @@ import { getLLMResponse, getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
+import { cookies } from "next/headers"
+import { getResumeData } from "@/app/actions/resume"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -24,17 +26,9 @@ export async function getNextQuestion(
     let resumeText = ""
     if (useResume) {
       try {
-        const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          const { data } = await supabase
-            .from("users")
-            .select("resume_text")
-            .eq("id", user.id)
-            .single()
-          if (data && data.resume_text) {
-            resumeText = data.resume_text
-          }
+        const res = await getResumeData()
+        if (res.success && res.data?.resumeText) {
+          resumeText = res.data.resumeText
         }
       } catch (err) {
         console.error("Failed to fetch resume text in getNextQuestion:", err)
@@ -81,16 +75,22 @@ Rules:
 
     let userTier = "free"
     try {
-      const supabase = await createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        const { data: profile } = await supabase
-          .from("users")
-          .select("subscription_tier")
-          .eq("id", user.id)
-          .single()
-        if (profile && profile.subscription_tier) {
-          userTier = profile.subscription_tier
+      const cookieStore = await cookies()
+      const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+      if (hasDemoCookie) {
+        userTier = "premium"
+      } else {
+        const supabase = await createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        if (user) {
+          const { data: profile } = await supabase
+            .from("users")
+            .select("subscription_tier")
+            .eq("id", user.id)
+            .single()
+          if (profile && profile.subscription_tier) {
+            userTier = profile.subscription_tier
+          }
         }
       }
     } catch (err) {
@@ -215,16 +215,22 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
 
     let userTier = "free"
     try {
-      const supabase = await createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        const { data: profile } = await supabase
-          .from("users")
-          .select("subscription_tier")
-          .eq("id", user.id)
-          .single()
-        if (profile && profile.subscription_tier) {
-          userTier = profile.subscription_tier
+      const cookieStore = await cookies()
+      const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+      if (hasDemoCookie) {
+        userTier = "premium"
+      } else {
+        const supabase = await createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        if (user) {
+          const { data: profile } = await supabase
+            .from("users")
+            .select("subscription_tier")
+            .eq("id", user.id)
+            .single()
+          if (profile && profile.subscription_tier) {
+            userTier = profile.subscription_tier
+          }
         }
       }
     } catch (err) {
@@ -269,6 +275,11 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
  */
 export async function createInterviewSession(category: string, useResume?: boolean): Promise<string | null> {
   try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return null
+    }
+
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
@@ -308,6 +319,11 @@ export async function saveInterviewMessage(
   content: string
 ): Promise<boolean> {
   try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return false
+    }
+
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
@@ -345,6 +361,11 @@ export async function saveInterviewFeedback(
   questionEvaluation?: { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[]
 ): Promise<boolean> {
   try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return false
+    }
+
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
@@ -389,6 +410,11 @@ export async function saveInterviewFeedback(
  */
 export async function getFeedback(interviewId: string) {
   try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return null
+    }
+
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
