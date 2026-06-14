@@ -23,6 +23,24 @@ export async function saveAndAnalyzeResume(
   resumeText: string
 ): Promise<{ success: boolean; data?: { resumeText: string; analysis: ResumeAnalysis }; error?: string }> {
   try {
+    const cookieStore = await cookies()
+    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+    if (hasDemoCookie) {
+      const responseJsonText = await callAI(
+        resumeText,
+        "analyze_resume",
+        "premium"
+      )
+      const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
+      return {
+        success: true,
+        data: {
+          resumeText,
+          analysis,
+        },
+      }
+    }
+
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
@@ -87,6 +105,24 @@ export async function getResumeData(): Promise<{
   error?: string
 }> {
   try {
+    const cookieStore = await cookies()
+    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+    if (hasDemoCookie) {
+      return {
+        success: true,
+        data: {
+          resumeText: "Straw Hat Luffy\nCaptain of the Straw Hat Pirates\n\nEXPERIENCE:\nCaptain - Straw Hat Pirates (2020 - Present)\n- Guided crew across the Grand Line, entering the New World.\n- Defeated numerous Warlords, Emperor Kaido, and Emperor Big Mom to maintain freedom and safety for friendly territories.\n\nSKILLS:\n- Conqueror's Haki, Armament Haki, Observation Haki\n- Gear 5 (Nika rubber body transformations)\n- Strong leadership and resilience\n- Meat consumption analysis",
+          analysis: {
+            summary: "Extremely driven and resilient team captain with extensive experience leading diverse teams in high-risk environments. Primary focus is territory management, combat, and achieving ultimate goals (the One Piece).",
+            skills: ["Leadership", "Conqueror's Haki", "Observation Haki", "Rubber Body Elasticity (Gear 5)", "Risk Assessment", "Conflict Management", "Physical Resilience"],
+            highlights: ["Liberated multiple nations (Wano, Alabasta, Dressrosa)", "Earned the title of Emperor of the Sea with a 3 billion bounty", "Successfully recruited 9 highly specialized crew members"],
+            interviewTopics: ["Crisis management and split-team coordination", "Dealing with massive power disparities (e.g. Admirals)", "Ethical decision making under severe pressure"],
+            improvements: ["Add detailed metrics of territories protected", "Limit informal slang (e.g. calling superiors 'meathead') in professional settings"]
+          }
+        }
+      }
+    }
+
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
