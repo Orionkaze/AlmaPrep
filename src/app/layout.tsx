@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Fraunces } from "next/font/google";
 import "./globals.css";
+import "./almaprep.css";
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -16,9 +17,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-head",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+});
+
 export const metadata: Metadata = {
-  title: "Mock Mate — AI Mock Interview Platform",
-  description: "Practice mock interviews with AI. Get instant feedback, improve your confidence, and ace your next interview.",
+  title: "Almaprep — Mock interviews that get students into college",
+  description: "Almaprep prepares students for college admission interviews with thousands of vetted interview questions and instant feedback. Free for students, built for schools and institutes.",
 };
 
 export default function RootLayout({
@@ -29,10 +42,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">{children}</body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

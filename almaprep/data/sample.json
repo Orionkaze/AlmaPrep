@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "note": "Gold-standard sample for the college-admission-interview question bank. Single domain (admission). 'program' is set for subject-specific probes, null for universal questions. Most-probable questions only — no filler.",
+    "schemaVersion": 2
+  },
+  "questions": [
+    {
+      "id": "personal-bg-0001",
+      "category": "Personal & Background",
+      "subtopic": "Tell me about yourself",
+      "program": null,
+      "difficulty": "easy",
+      "tags": ["self-intro", "icebreaker"],
+      "question": "Tell us a little about yourself.",
+      "lookingFor": "A focused, structured self-portrait that previews why you're a strong applicant — not a life story.",
+      "idealAnswer": {
+        "bullets": [
+          "Lead with who you are academically and one driving interest",
+          "Pick two or three threads (an activity, an achievement, a value) — not everything",
+          "End by pointing toward why you're applying and what you want to study"
+        ],
+        "modelAnswer": "I'm a final-year student who fell for biology the year our school started a small research club, and I've been chasing that curiosity ever since — most recently a summer project measuring water quality in our local river. Outside the lab I captain the debate team, which taught me to think on my feet and listen before I argue. I'm applying to your environmental science course because it lets me combine fieldwork with policy, which is exactly the intersection I want to build a career in."
+      },
+      "commonMistakes": [
+        "Reciting a chronological autobiography from birth",
+        "Listing achievements with no through-line",
+        "Being so vague it could be any applicant"
+      ],
+      "followUps": ["Which of those threads matters most to you, and why?"]
+    },
+    {
+      "id": "motivation-fit-0002",
+      "category": "Motivation & Fit",
+      "subtopic": "Why this course",
+      "program": null,
+      "difficulty": "medium",
+      "tags": ["motivation", "program-fit"],
+      "question": "Why do you want to study this subject at our university specifically?",
+      "lookingFor": "Genuine, specific motivation tied to this course — evidence you researched beyond rankings.",
+      "idealAnswer": {
+        "bullets": [
+          "Name a specific module, professor, lab, or feature of the course",
+          "Connect it to a concrete personal experience or goal",
+          "Show you understand what makes this course different from others"
+        ],
+        "modelAnswer": "Your course is one of the few that pairs a strong theory core with a year-long applied project, and that mix is exactly how I learn best — I need to build something to really understand it. I read about Professor Lin's work on assistive interfaces, which connects directly to a project I did designing a one-handed keyboard for a relative with limited mobility. I want to take that instinct and ground it in real research, and this is the course built to do that."
+      },
+      "commonMistakes": [
+        "Generic praise that would fit any university",
+        "Leaning on rankings or prestige",
+        "Confusing this course with a different department's offering"
+      ],
+      "followUps": ["What would you contribute to the course?"]
+    },
+    {
+      "id": "challenge-resilience-0003",
+      "category": "Challenges, Failure & Resilience",
+      "subtopic": "A time you failed",
+      "program": null,
+      "difficulty": "medium",
+      "tags": ["resilience", "behavioral", "self-awareness"],
+      "question": "Tell us about a time you failed at something. What did you do next?",
+      "lookingFor": "Honest ownership of a real setback plus a concrete, reflective response — growth over excuses.",
+      "idealAnswer": {
+        "bullets": [
+          "Name a genuine failure, not a humble-brag",
+          "Take ownership without over-apologising or blaming others",
+          "Show the specific change you made and what it led to"
+        ],
+        "modelAnswer": "I ran for student council president in my second year and lost badly — I'd assumed people knew my work and never actually talked to them about what they wanted. It stung, but it taught me that good ideas aren't enough if you don't listen first. The next year I volunteered to run the smaller events committee instead, spent the first month just asking students what they'd actually attend, and we doubled turnout. The loss made me a far better organiser than winning would have."
+      },
+      "commonMistakes": [
+        "Picking a 'failure' that's secretly a strength",
+        "Blaming circumstances or other people",
+        "Stopping at the failure with no recovery or lesson"
+      ],
+      "followUps": ["What would you do differently if you faced the same situation today?"]
+    },
+    {
+      "id": "ethics-situational-0004",
+      "category": "Ethics & Situational",
+      "subtopic": "Academic integrity dilemma",
+      "program": null,
+      "difficulty": "hard",
+      "tags": ["ethics", "judgement", "situational"],
+      "question": "You discover your closest friend cheated on an exam you both sat. What do you do?",
+      "lookingFor": "Structured ethical reasoning that weighs loyalty, fairness, and consequences — not a snap verdict.",
+      "idealAnswer": {
+        "bullets": [
+          "Acknowledge the genuine tension between friendship and fairness",
+          "Reason through options before landing on one",
+          "Favour speaking to the friend first over either ignoring it or reporting blindly"
+        ],
+        "modelAnswer": "My first instinct is loyalty, but I'd remind myself that staying silent isn't neutral — it's unfair to everyone who didn't cheat, and it doesn't actually help my friend. I'd talk to them privately first: I'd want to understand what happened and tell them honestly that I think they should come forward themselves. If they refused and it was serious, I'd feel obliged to raise it, because integrity in an exam isn't something I can quietly opt out of. I'd try to do it in the way that gives them the most agency to make it right."
+      },
+      "commonMistakes": [
+        "Jumping straight to 'report them' with no nuance",
+        "Choosing blind loyalty and ignoring the unfairness",
+        "Refusing to commit to any position at all"
+      ],
+      "followUps": ["Does your answer change if it were a stranger, not a friend?"]
+    },
+    {
+      "id": "med-mmi-0005",
+      "category": "Subject-specific probe",
+      "subtopic": "Motivation for medicine",
+      "program": "Medicine",
+      "difficulty": "medium",
+      "tags": ["medicine", "mmi", "motivation"],
+      "question": "Why do you want to be a doctor rather than another caring profession?",
+      "lookingFor": "A motivation grounded in realistic exposure to medicine, distinguishing it from nursing, research, or social work.",
+      "idealAnswer": {
+        "bullets": [
+          "Show realistic understanding of what the job actually involves",
+          "Articulate what specifically draws you to medicine over adjacent fields",
+          "Back it with exposure — shadowing, volunteering, lived experience"
+        ],
+        "modelAnswer": "I was drawn to caring professions generally after volunteering on a geriatric ward, but what pulled me specifically toward medicine was watching the doctors hold the whole picture — diagnosis, the science, and the conversation with a frightened family all at once. Nursing and social work are vital and I respect them deeply, but I want the diagnostic responsibility: the problem-solving of working out what's wrong and owning that decision. Shadowing a GP confirmed it — the variety and the long-term relationships with patients are exactly what I want from a career."
+      },
+      "commonMistakes": [
+        "'I want to help people' with nothing more specific",
+        "Implying other caring roles are lesser",
+        "No real-world exposure to back the claim"
+      ],
+      "followUps": ["What's the hardest part of being a doctor, and how would you cope with it?"]
+    },
+    {
+      "id": "curveball-0006",
+      "category": "Curveball/Personality",
+      "subtopic": "Abstract prompt",
+      "program": null,
+      "difficulty": "hard",
+      "tags": ["curveball", "creativity", "thinking-aloud"],
+      "question": "If you could have dinner with anyone, living or dead, who would it be and why?",
+      "lookingFor": "Thinking aloud with genuine curiosity — the reasoning matters more than the name.",
+      "idealAnswer": {
+        "bullets": [
+          "Pick someone you can speak about with real substance",
+          "Explain what you'd actually want to learn or ask",
+          "Let it reveal something true about your interests or values"
+        ],
+        "modelAnswer": "I'd choose Rosalind Franklin. Partly because her X-ray work was so central to understanding DNA and yet she's often a footnote, and I'd want to ask how she kept going in a field that overlooked her. But honestly I'd also just want to hear how she thought about the data — the patience of reading structure out of a blurry image is the kind of careful work I find quietly thrilling. I think the conversation would tell me a lot about persistence."
+      },
+      "commonMistakes": [
+        "Naming someone famous with no real reason",
+        "Trying to guess the 'right' answer instead of being genuine",
+        "Freezing because it feels like a trick"
+      ],
+      "followUps": ["What one question would you most want to ask them?"]
+    },
+    {
+      "id": "personal-bg-0007",
+      "category": "Personal & Background",
+      "subtopic": "Walk me through your academic journey",
+      "program": null,
+      "difficulty": "easy",
+      "tags": ["self-intro", "academic-story"],
+      "question": "Walk us through your academic journey so far.",
+      "lookingFor": "A concise narrative that connects your studies and choices into a coherent path toward this course.",
+      "idealAnswer": {
+        "bullets": [
+          "Tell a story with a through-line, not a subject-by-subject readout",
+          "Highlight the choices and turning points, not just grades",
+          "Land on why this course is the logical next step"
+        ],
+        "modelAnswer": "I started out loving maths for its certainty, but a statistics module on public health was the turning point — suddenly the numbers were about real people, and I couldn't stop thinking about it. I chose my electives around that, took on an extended project analysing local vaccination data, and realised I wanted the human side as much as the analysis. This course is the natural next step because it puts data and population health in the same room, which is exactly where I found my motivation."
+      },
+      "commonMistakes": [
+        "Listing subjects and grades with no narrative",
+        "No through-line connecting the choices",
+        "Spending all the time on early years instead of recent direction"
+      ],
+      "followUps": ["Which choice along the way was the hardest for you?"]
+    },
+    {
+      "id": "behavioral-competency-0008",
+      "category": "Behavioral / Competency",
+      "subtopic": "Disagreement within a team",
+      "program": null,
+      "difficulty": "medium",
+      "tags": ["teamwork", "conflict", "star"],
+      "question": "Tell us about a time you disagreed with someone in a group. How did you handle it?",
+      "lookingFor": "A STAR-structured example showing you can disagree maturely and reach a good outcome.",
+      "idealAnswer": {
+        "bullets": [
+          "Set the situation and the specific disagreement briefly",
+          "Focus on what you did — listening, evidence, finding common ground",
+          "End with the resolution and what you learned"
+        ],
+        "modelAnswer": "On a group project a teammate wanted to present our findings before we'd checked the data, and I thought that was risky. Rather than dig in, I asked him to walk me through his reasoning, and it turned out he was worried about the deadline I hadn't appreciated. We agreed on a middle path: he'd start the slides while I did a quick verification pass, and we'd merge them the night before. We caught two errors in time and the presentation went well. It taught me that most disagreements are really missing context."
+      },
+      "commonMistakes": [
+        "Telling a story where you were simply right and they were wrong",
+        "No actual resolution",
+        "Describing conflict avoidance as conflict resolution"
+      ],
+      "followUps": ["What would you have done if you couldn't reach agreement?"]
+    },
+    {
+      "id": "behavioral-competency-0009",
+      "category": "Behavioral / Competency",
+      "subtopic": "Greatest weakness",
+      "program": null,
+      "difficulty": "medium",
+      "tags": ["self-awareness", "weakness"],
+      "question": "What's your greatest weakness?",
+      "lookingFor": "Genuine self-awareness plus evidence of active work on it — not a disguised strength.",
+      "idealAnswer": {
+        "bullets": [
+          "Name a real weakness that isn't disqualifying for a student",
+          "Show you understand its impact",
+          "Describe the concrete steps you're taking to manage it"
+        ],
+        "modelAnswer": "I tend to hold onto work too long trying to make it perfect before I share it, which slowed down a group project when others were waiting on my section. I noticed it was costing us feedback, so I started forcing myself to share rough drafts at the halfway point and label them clearly as drafts. It felt uncomfortable at first, but the work is better for the earlier input and I've stopped being the bottleneck."
+      },
+      "commonMistakes": [
+        "'I'm a perfectionist' with no real substance",
+        "Naming a weakness that undermines your application",
+        "Claiming to have no weaknesses"
+      ],
+      "followUps": ["How do you know you've actually improved?"]
+    },
+    {
+      "id": "subject-cs-0010",
+      "category": "Subject-specific probe",
+      "subtopic": "Concept explanation",
+      "program": "Computer Science",
+      "difficulty": "easy",
+      "tags": ["cs", "fundamentals", "concept"],
+      "question": "Can you explain the difference between a stack and a queue?",
+      "lookingFor": "A clear conceptual explanation with the access order and a real use-case for each — shows genuine subject interest.",
+      "idealAnswer": {
+        "bullets": [
+          "State the ordering: stack is LIFO, queue is FIFO",
+          "Give the core operations for each (push/pop vs enqueue/dequeue)",
+          "Offer a concrete real-world use for each"
+        ],
+        "modelAnswer": "A stack is last-in, first-out — the last thing you add is the first thing you remove, like a stack of plates. You push onto the top and pop off the top, which is why it's used for things like undo history. A queue is first-in, first-out — the first thing in is the first out, like a line at a checkout. You enqueue at the back and dequeue from the front, which fits things like a print queue. I find it interesting that the same idea of 'order of access' quietly shapes so much of how software behaves."
+      },
+      "commonMistakes": [
+        "Mixing up which is LIFO and which is FIFO",
+        "Reciting the definition with no example",
+        "Showing no curiosity beyond the textbook answer"
+      ],
+      "followUps": ["Where might you have seen a queue in everyday software?"]
+    },
+    {
+      "id": "subject-eng-0011",
+      "category": "Subject-specific probe",
+      "subtopic": "Curiosity about the field",
+      "program": "Engineering",
+      "difficulty": "medium",
+      "tags": ["engineering", "curiosity", "applied"],
+      "question": "Tell us about an everyday object you think is well engineered, and why.",
+      "lookingFor": "Curiosity and engineering intuition — the ability to see design trade-offs in ordinary things.",
+      "idealAnswer": {
+        "bullets": [
+          "Pick something specific and explain how it works",
+          "Identify a real design trade-off or constraint it solves",
+          "Show genuine enthusiasm, not a rehearsed example"
+        ],
+        "modelAnswer": "The humble zip is one I keep coming back to. Each tooth is shaped so that the slider forces interlocking in one direction and release in the other, turning a tiny manual motion into a reliable seal along a whole seam. What I admire is the trade-off it solves — it has to be cheap to mass-produce, survive thousands of cycles, and still work with cold or gloved hands. It's a reminder that good engineering is usually invisible until it fails."
+      },
+      "commonMistakes": [
+        "Naming something without explaining how it works",
+        "Ignoring the trade-offs or constraints",
+        "Choosing something too complex to actually explain"
+      ],
+      "followUps": ["How would you improve it?"]
+    },
+    {
+      "id": "motivation-fit-0012",
+      "category": "Goals & Future",
+      "subtopic": "Where do you see yourself",
+      "program": null,
+      "difficulty": "medium",
+      "tags": ["goals", "motivation", "future"],
+      "question": "Where do you see yourself in ten years, and how does this course help you get there?",
+      "lookingFor": "A direction that's ambitious yet grounded, with a clear line from the course to the goal.",
+      "idealAnswer": {
+        "bullets": [
+          "Give a direction, not an over-precise job title",
+          "Connect it honestly to what the course offers",
+          "Show flexibility — that you'll grow and adapt"
+        ],
+        "modelAnswer": "In ten years I'd like to be working at the intersection of climate science and policy — ideally helping cities plan for flooding, which is the problem that got me into this in the first place. I know the exact role might look different by then, and I'm okay with that. What I'm sure of is that this course gives me the scientific grounding plus the policy modules to speak both languages, and that combination is rare and exactly what that work needs."
+      },
+      "commonMistakes": [
+        "An over-rehearsed, unrealistically precise plan",
+        "A goal with no connection to the course",
+        "Sounding like you'll leave the field at the first obstacle"
+      ],
+      "followUps": ["What's the first step you'd take after graduating?"]
+    }
+  ]
+}

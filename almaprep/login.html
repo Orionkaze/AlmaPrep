@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in — Almaprep</title>
+  <meta name="description" content="Log in to Almaprep to continue practicing your mock interviews." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" class="brand">
+          <svg class="mark" viewBox="0 0 80 80" aria-hidden="true"><rect width="80" height="80" rx="18" fill="#059669"/><path d="M40 12 L16 67 L29 67 L36 50 L44 50 L51 67 L64 67 Z" fill="white"/><rect x="30" y="40" width="20" height="8" fill="#059669"/></svg>
+          Almaprep
+        </a>
+        <ul class="nav-links" id="nav-links" style="margin-left:auto">
+          <li><a href="signup.html">Don't have an account? <strong>Sign up</strong></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="auth-wrap">
+      <form class="auth-card" action="dashboard.html" method="get" novalidate>
+        <h1>Welcome back</h1>
+        <p style="color:var(--muted);margin-top:-8px">Log in to keep practicing.</p>
+        <p class="auth-note">Demo shell — the product team wires this up to real auth. Submitting goes to the dashboard preview.</p>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@school.edu" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Log in</button>
+        <p class="auth-alt">New to Almaprep? <a href="signup.html">Create a free account</a></p>
+      </form>
+    </div>
+  </main>
+
+  <script src="nav.js"></script>
+</body>
+</html>

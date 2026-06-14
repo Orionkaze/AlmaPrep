@@ -1,0 +1,604 @@
+[
+  {
+    "id": "prog-chemistry-a-001",
+    "category": "Motivation & Fit",
+    "subtopic": "Why Chemistry",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["motivation", "why-chemistry", "personal-journey"],
+    "question": "What drew you to Chemistry, and when did you realise it was the subject you wanted to study at university?",
+    "lookingFor": "A genuine, personal account of the moment or period that ignited the interest — not a generic love of science, but something specific to Chemistry.",
+    "idealAnswer": {
+      "bullets": [
+        "Point to a concrete moment, experiment, or piece of reading that crystallised the interest",
+        "Distinguish Chemistry from adjacent sciences like Biology or Physics",
+        "Show the interest has grown and deepened, not just appeared last term"
+      ],
+      "modelAnswer": "I think the moment that hooked me was a titration experiment in year ten where I watched a flask go from colourless to a sudden, vivid pink the instant we hit the endpoint. Something about that abruptness — the idea that a reaction tips over a threshold rather than fading gradually — made me want to understand what was really happening at the molecular level. I started reading beyond the syllabus from there, and the more I understood about equilibria and reaction mechanisms, the more I realised Chemistry was the subject that explained everything else I was curious about."
+    },
+    "commonMistakes": [
+      "Saying 'I've always loved science' without any Chemistry-specific hook",
+      "Describing an interest that sounds more like Biology or Physics",
+      "Referencing only the school syllabus with no sign of wider curiosity"
+    ],
+    "followUps": ["Has your idea of what Chemistry is about changed as you've learned more?"]
+  },
+  {
+    "id": "prog-chemistry-a-002",
+    "category": "Motivation & Fit",
+    "subtopic": "Why this university",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["university-fit", "course-research", "motivation"],
+    "question": "Why do you want to study Chemistry here rather than at another institution?",
+    "lookingFor": "Evidence of genuine research into the course — named modules, research groups, facilities, or pedagogical features — connected to a real personal interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific: a research cluster, a module, an integrated year, a facility",
+        "Connect it to your own interests or goals, not just prestige",
+        "Show you understand what makes this course structurally different"
+      ],
+      "modelAnswer": "I was drawn in by the strong computational chemistry strand running through the third and fourth years, which I hadn't found anywhere else at this level. I've been teaching myself Python alongside my A-levels and I wanted a course where modelling and lab work sit alongside each other rather than being treated as separate tracks. I also read about the work coming out of the materials group here, and the idea that I could potentially contribute to that kind of research by the time I'm a fourth-year is genuinely exciting."
+    },
+    "commonMistakes": [
+      "Citing rankings or reputation with no substance behind it",
+      "Describing the course in ways that fit any chemistry department",
+      "Forgetting to connect the course features to your own interests"
+    ],
+    "followUps": ["Is there a particular area of the course you're most apprehensive about?"]
+  },
+  {
+    "id": "prog-chemistry-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Periodic trends",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["periodic-table", "atomic-structure", "fundamentals"],
+    "question": "Why do atomic radii decrease as you move across a period from left to right?",
+    "lookingFor": "A clear explanation linking increased nuclear charge to greater attraction for the same shielded electrons — shows the candidate can reason through a trend rather than just recall it.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that the nuclear charge increases across a period",
+        "Note that electrons are being added to the same shell, so shielding stays roughly constant",
+        "Conclude that greater effective nuclear charge pulls electrons closer in"
+      ],
+      "modelAnswer": "As you go across a period, you're adding protons to the nucleus with each step, so the nuclear charge increases. The electrons being added go into the same principal shell, which means they don't significantly increase the shielding of each other from the nucleus. The result is that each successive element has a higher effective nuclear charge pulling on broadly the same outer electrons, drawing them in closer, so the atom gets smaller. It's one of those trends that feels counterintuitive at first — you're adding electrons but the atom shrinks — until you think about the force balance."
+    },
+    "commonMistakes": [
+      "Saying the atom gets smaller because there are 'more electrons' without explaining the force argument",
+      "Confusing shielding across a period with shielding down a group",
+      "Mixing up the trend with the group trend (radii increase down a group)"
+    ],
+    "followUps": ["How does this relate to why ionisation energies generally increase across a period?"]
+  },
+  {
+    "id": "prog-chemistry-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Bonding and structure",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["bonding", "electronegativity", "covalent"],
+    "question": "What is electronegativity, and how does it determine whether a bond is ionic, polar covalent, or non-polar covalent?",
+    "lookingFor": "A working definition of electronegativity and a clear account of how the difference between two atoms' values places a bond on the spectrum from non-polar to ionic.",
+    "idealAnswer": {
+      "bullets": [
+        "Define electronegativity as the tendency of an atom to attract shared electrons toward itself",
+        "Explain that small differences give non-polar covalent, intermediate differences give polar covalent, large differences give ionic character",
+        "Illustrate with examples — H–H, H–Cl, Na–Cl"
+      ],
+      "modelAnswer": "Electronegativity is a measure of how strongly an atom in a bond pulls the shared electron pair toward itself — Pauling's scale is the one I'm most familiar with. When two atoms have the same or very similar electronegativity, the electrons sit symmetrically and the bond is non-polar covalent, as in H–H or Cl–Cl. When the difference is moderate, as in H–Cl, the electrons sit closer to the more electronegative atom, creating a permanent dipole and a polar covalent bond. When the difference is large — typically above about 1.7 — the electron density shifts so strongly toward one atom that we treat the bond as ionic, as in NaCl."
+    },
+    "commonMistakes": [
+      "Defining electronegativity as the tendency to attract electrons generally rather than shared electrons in a bond",
+      "Treating ionic and covalent as a binary rather than a spectrum",
+      "No examples to anchor the explanation"
+    ],
+    "followUps": ["Can you have a polar molecule that contains no polar bonds?"]
+  },
+  {
+    "id": "prog-chemistry-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Organic chemistry mechanisms",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["organic", "mechanisms", "nucleophilic-substitution"],
+    "question": "Walk me through what happens when a primary haloalkane reacts with a hydroxide ion. Why does the mechanism differ for a tertiary haloalkane?",
+    "lookingFor": "A clear description of SN2 for the primary case — backside attack, inversion of configuration, concerted step — and an understanding that steric bulk forces the tertiary case toward SN1 via a carbocation intermediate.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe SN2 for the primary case: hydroxide attacks from the back as the halide leaves in one concerted step",
+        "Note that steric access is easy at a primary carbon, making backside attack feasible",
+        "Explain that a tertiary carbon is too hindered for backside attack, so the halide leaves first to form a stable tertiary carbocation, which then reacts with hydroxide in two steps (SN1)"
+      ],
+      "modelAnswer": "For a primary haloalkane, the hydroxide ion — which is a good nucleophile — attacks the carbon bearing the halogen from the opposite side to the leaving group. This is a concerted process: the bond to the incoming hydroxide forms as the C–X bond breaks, passing through a single transition state. Because the carbon only has small substituents, there's room for the hydroxide to approach. With a tertiary haloalkane, three alkyl groups crowd around that carbon and block backside attack. Instead, the halide departs first to generate a tertiary carbocation, which is relatively stable because the three alkyl groups donate electron density into the empty orbital. The hydroxide then attacks that carbocation in a separate step."
+    },
+    "commonMistakes": [
+      "Describing the primary mechanism as two steps rather than one concerted step",
+      "Not mentioning inversion of configuration (Walden inversion) for SN2",
+      "Saying the tertiary case is SN1 without explaining why the carbocation is more stable"
+    ],
+    "followUps": ["What would happen to the rate of an SN2 reaction if you increased the concentration of hydroxide ions?"]
+  },
+  {
+    "id": "prog-chemistry-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Thermodynamics and equilibrium",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["equilibrium", "Le-Chatelier", "thermodynamics"],
+    "question": "For a reaction that is exothermic in the forward direction, what happens to the equilibrium position when you raise the temperature? Can you explain it two different ways?",
+    "lookingFor": "The candidate should give the Le Chatelier answer (system opposes the change) and ideally connect it to the thermodynamic explanation — increasing temperature shifts equilibrium in the direction that absorbs heat, which is the reverse for an exothermic reaction — showing they can reason at more than one level.",
+    "idealAnswer": {
+      "bullets": [
+        "State that for an exothermic forward reaction, raising temperature shifts equilibrium to the left (favours reverse reaction)",
+        "Give the Le Chatelier explanation: the system opposes the increase in heat by favouring the endothermic direction",
+        "Give the thermodynamic explanation: Kc depends on temperature; for an exothermic reaction, raising T decreases K, meaning less product at equilibrium"
+      ],
+      "modelAnswer": "From Le Chatelier's principle, if I raise the temperature I'm adding heat to the system, and the system responds by trying to remove that heat — meaning it shifts in the direction that absorbs heat. For an exothermic forward reaction, the reverse reaction is the endothermic one, so the equilibrium shifts left, toward more reactants. The more satisfying explanation to me is the thermodynamic one: the equilibrium constant K is temperature-dependent. For an exothermic reaction, the enthalpy change is negative, and the van't Hoff equation tells us that increasing temperature decreases the value of K. A smaller K means the equilibrium ratio of products to reactants is lower, so the position has shifted toward reactants — which is the same answer, but grounded in why."
+    },
+    "commonMistakes": [
+      "Confusing which direction is exothermic and which is endothermic",
+      "Saying the equilibrium constant stays the same when temperature changes",
+      "Only giving the Le Chatelier answer without any deeper reasoning"
+    ],
+    "followUps": ["If you also increased the pressure, what would happen to the same equilibrium — assuming the reaction involves gases on both sides?"]
+  },
+  {
+    "id": "prog-chemistry-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Acid-base chemistry",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["acids-bases", "pH", "Bronsted-Lowry"],
+    "question": "What is the difference between a strong acid and a weak acid? Can you explain what happens at the molecular level?",
+    "lookingFor": "Correct definition in terms of degree of dissociation, not just pH — and an ability to connect that to equilibrium ideas like Ka.",
+    "idealAnswer": {
+      "bullets": [
+        "Define strong acid as fully dissociating in water and weak acid as partially dissociating",
+        "Explain that weak acid dissociation is an equilibrium, characterised by Ka",
+        "Note that a weak acid can have the same molar concentration as a strong acid but a higher pH"
+      ],
+      "modelAnswer": "A strong acid, like hydrochloric acid, dissociates completely in water — essentially every molecule releases a proton to form H3O+ and the conjugate base, so the reaction goes entirely to the right. A weak acid, like ethanoic acid, only partially dissociates. The dissociation is an equilibrium: most molecules stay intact, and only a fraction release their proton at any given moment. That fraction is described by the acid dissociation constant Ka — a larger Ka means the equilibrium lies more to the right and the acid is stronger within the weak acid category. The practical consequence is that 0.1 mol/dm³ ethanoic acid has a much higher pH than 0.1 mol/dm³ hydrochloric acid because far fewer protons are in solution."
+    },
+    "commonMistakes": [
+      "Saying weak acids are dangerous and strong acids are safe — confusing strength with concentration",
+      "Defining a weak acid as one that doesn't ionise at all",
+      "Not mentioning the equilibrium nature of weak acid dissociation"
+    ],
+    "followUps": ["If you dilute a weak acid, what happens to its degree of dissociation?"]
+  },
+  {
+    "id": "prog-chemistry-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Kinetics",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["kinetics", "rate", "activation-energy", "catalysis"],
+    "question": "A catalyst speeds up a reaction without being consumed. How does it actually do that at a molecular level?",
+    "lookingFor": "Understanding that a catalyst provides an alternative reaction pathway with a lower activation energy — connects to the Boltzmann distribution and the fraction of molecules with sufficient energy.",
+    "idealAnswer": {
+      "bullets": [
+        "State that a catalyst provides an alternative pathway with a lower activation energy",
+        "Connect to the Boltzmann distribution: more molecules have sufficient energy to react",
+        "Note that the overall enthalpy change (ΔH) is unchanged — start and end points are the same"
+      ],
+      "modelAnswer": "A catalyst works by providing an alternative route from reactants to products — one with a lower activation energy than the uncatalysed path. To understand why that matters, I'd think about the Boltzmann distribution of molecular energies. At a given temperature, only the fraction of molecules with energy above the activation energy threshold can react when they collide. By lowering that threshold, the catalyst dramatically increases the proportion of molecules that qualify — so far more productive collisions happen per unit time, and the reaction is faster. Crucially, the catalyst doesn't change the energy difference between reactants and products, so ΔH and the equilibrium position are unaffected. It just gets you to equilibrium faster."
+    },
+    "commonMistakes": [
+      "Saying the catalyst 'gives energy to molecules' rather than lowering the required energy",
+      "Claiming the catalyst shifts the equilibrium position",
+      "Not distinguishing activation energy from the overall enthalpy change"
+    ],
+    "followUps": ["Why might a heterogeneous catalyst become less effective over time?"]
+  },
+  {
+    "id": "prog-chemistry-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Spectroscopy and analytical techniques",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["spectroscopy", "NMR", "analytical", "structure-determination"],
+    "question": "If you were given an unknown organic compound and told it contained only carbon, hydrogen, and oxygen, how would you go about working out its structure?",
+    "lookingFor": "A logical sequence of analytical approaches — mass spectrometry for molecular mass, IR for functional groups, NMR for connectivity — showing the candidate can think like a chemist working through a real problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with mass spectrometry to get the molecular mass and formula",
+        "Use IR spectroscopy to identify functional groups from characteristic absorption frequencies",
+        "Use 1H NMR to determine the chemical environment and connectivity of hydrogen atoms",
+        "Combine the evidence to propose and narrow down structures"
+      ],
+      "modelAnswer": "I'd start with mass spectrometry to get the molecular mass and, if I can interpret the fragmentation pattern, clues about the carbon skeleton. Combined with a combustion analysis or high-resolution MS, I could work out the molecular formula. Then I'd use IR spectroscopy to identify functional groups — a broad absorption around 3000 cm⁻¹ might suggest an O–H, a sharp one near 1700 cm⁻¹ would suggest a carbonyl. Once I have a rough idea of what functional groups are present, I'd use ¹H NMR to map out the hydrogen environments: how many distinct signals, their chemical shifts, and the splitting patterns to work out which H atoms are adjacent to which others. Putting all three together usually lets me narrow it down to one structure, though for something complex I might also want ¹³C NMR."
+    },
+    "commonMistakes": [
+      "Jumping straight to NMR without establishing the molecular formula first",
+      "Describing spectroscopic techniques without connecting them to what information they actually give",
+      "Treating it as a single-step process rather than a convergent, evidence-building approach"
+    ],
+    "followUps": ["What would a broad absorption peak around 2500–3300 cm⁻¹ in the IR spectrum suggest?"]
+  },
+  {
+    "id": "prog-chemistry-a-010",
+    "category": "Wider Reading & Intellectual Curiosity",
+    "subtopic": "Beyond the syllabus",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "curiosity", "self-directed-learning"],
+    "question": "Tell us about something in Chemistry you've read about or explored that goes beyond your school syllabus.",
+    "lookingFor": "Genuine self-directed curiosity — a topic the applicant has actually engaged with, not a rehearsed name-drop. Should show they can engage with ideas above A-level.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific topic, book, paper, lecture, or resource",
+        "Show they actually engaged with it — explain the idea in their own words",
+        "Connect it to something in their syllabus or wider interests"
+      ],
+      "modelAnswer": "I got drawn into supramolecular chemistry after coming across a video about crown ethers — molecules that can selectively bind metal ions based purely on cavity size. The idea that you could design a molecule to recognise another molecule without forming covalent bonds felt almost like lock-and-key biology, and I went down a rabbit hole reading about host-guest chemistry. I found a few review articles I could mostly follow, and what struck me was how much of it feeds into drug delivery and sensing applications. It made me see that chemistry at the edge is often about designing shape and charge rather than just combining reactive groups."
+    },
+    "commonMistakes": [
+      "Naming a topic or book but being unable to say what it was actually about",
+      "Describing something that is squarely in the A-level syllabus",
+      "Over-claiming depth of understanding to seem impressive"
+    ],
+    "followUps": ["What did you find hardest to understand in what you read?"]
+  },
+  {
+    "id": "prog-chemistry-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Redox chemistry",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["redox", "oxidation-states", "fundamentals"],
+    "question": "What does it mean to say that something has been oxidised? Can you give me an example from everyday life?",
+    "lookingFor": "Clear definition in terms of electron loss, oxidation state increase, or oxygen gain — and an everyday example that shows genuine understanding rather than rote recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Define oxidation as loss of electrons (or increase in oxidation state, or gain of oxygen)",
+        "Note the complementary nature of redox — oxidation always paired with reduction",
+        "Give a concrete, explained everyday example"
+      ],
+      "modelAnswer": "Oxidation means a substance loses electrons, or equivalently its oxidation state increases. The classic memory device is OIL RIG — Oxidation Is Loss, Reduction Is Gain — which I find genuinely helpful because it captures that you can never have one without the other. A clear everyday example is iron rusting: iron atoms lose electrons and are oxidised to Fe²⁺ or Fe³⁺ ions as they react with oxygen and water. The oxygen is reduced in the process. It's happening slowly wherever there's exposed metal in contact with moisture — the brownish surface is essentially iron oxide building up as the iron gives away electrons to the environment."
+    },
+    "commonMistakes": [
+      "Defining oxidation only as 'gaining oxygen' and missing the electron-transfer picture",
+      "Forgetting that oxidation and reduction always happen together",
+      "Giving an example but not explaining the chemistry behind it"
+    ],
+    "followUps": ["How would you work out the oxidation state of sulfur in H₂SO₄?"]
+  },
+  {
+    "id": "prog-chemistry-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Transition metals",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["transition-metals", "colour", "d-orbitals", "complex-ions"],
+    "question": "Why are transition metal compounds often so intensely coloured, when most common salts — like sodium chloride — are colourless?",
+    "lookingFor": "An account linking d-orbital splitting in a ligand field to the absorption of visible-wavelength light — shows the applicant can reason about electronic structure beyond s and p orbitals.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that transition metals have partially filled d subshells",
+        "Describe that ligands split the d orbitals into two energy levels",
+        "State that the energy gap corresponds to visible light, so electrons absorbing that light cause the compound to appear coloured"
+      ],
+      "modelAnswer": "The colour comes from the d electrons. In an isolated transition metal ion, the five d orbitals are all at the same energy, but when ligands bind around the ion they set up an electric field that splits those orbitals into two groups at different energies. The size of that split depends on the metal, the oxidation state, and the specific ligands. What's special about transition metals is that the energy gap often falls exactly in the visible region of the spectrum. An electron can absorb a photon of a particular wavelength to jump from the lower to the higher set of d orbitals, and the compound appears the complementary colour to the absorbed wavelength. Sodium chloride has no d electrons to play with, so there's nothing to absorb visible light and it's colourless."
+    },
+    "commonMistakes": [
+      "Saying the colour comes from the metal ion alone without mentioning ligands or the split",
+      "Claiming any partially filled orbital causes colour",
+      "Not explaining the complementary colour relationship between what's absorbed and what's seen"
+    ],
+    "followUps": ["Why does the same copper ion appear different colours in different complexes?"]
+  },
+  {
+    "id": "prog-chemistry-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Organic synthesis",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["organic-synthesis", "retrosynthesis", "multi-step"],
+    "question": "You want to convert ethanol into ethanoic acid. What route would you take, and are there alternatives?",
+    "lookingFor": "A practical synthetic route — acidified potassium dichromate as oxidising agent via the aldehyde intermediate — and ideally awareness of whether the applicant can control the product to stop at the aldehyde stage.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe oxidation of ethanol to ethanal (aldehyde) then to ethanoic acid using acidified K₂Cr₂O₇",
+        "Note that controlled conditions (distilling off the aldehyde) can stop the reaction at ethanal",
+        "Mention reflux as the condition to push fully to ethanoic acid"
+      ],
+      "modelAnswer": "The straightforward route is oxidation. Treating ethanol with acidified potassium dichromate under reflux gives ethanoic acid in two steps that happen in the same flask: first the ethanol is oxidised to ethanal, the aldehyde, and then the ethanal is oxidised further to ethanoic acid. The orange dichromate turns green as it's reduced, which is a useful visual indicator. If I only wanted ethanal, I'd use the same oxidising agent but distil the aldehyde out of the reaction mixture as it forms, preventing the second oxidation — aldehydes are more easily oxidised than alcohols, so removing them quickly is the key. For industrial production, ethanoic acid is more commonly made by the Monsanto or Cativa process — catalytic carbonylation of methanol — but that's well beyond what I'd attempt in a teaching lab."
+    },
+    "commonMistakes": [
+      "Going directly from ethanol to ethanoic acid without mentioning the aldehyde intermediate",
+      "Not distinguishing conditions for stopping at the aldehyde versus going to the acid",
+      "Confusing the colour change of the oxidising agent or getting the reagent wrong"
+    ],
+    "followUps": ["What test could you use to confirm you'd made ethanoic acid rather than ethanal?"]
+  },
+  {
+    "id": "prog-chemistry-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Isomerism",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["isomerism", "stereochemistry", "organic"],
+    "question": "What is the difference between structural isomers and stereoisomers? Can you give an example of each?",
+    "lookingFor": "Clear conceptual distinction — same molecular formula but different connectivity (structural) versus same connectivity but different spatial arrangement (stereo) — with correct examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Define structural isomers as having the same molecular formula but different connectivity of atoms",
+        "Define stereoisomers as having the same connectivity but different spatial arrangement",
+        "Give a concrete example of each — butane/methylpropane and cis/trans but-2-ene or enantiomers of butan-2-ol"
+      ],
+      "modelAnswer": "Structural isomers share the same molecular formula but differ in how their atoms are connected — which atom is bonded to which. A simple example is butane and methylpropane, both C₄H₁₀: one has a straight chain, the other has a branched chain with a different arrangement of bonds. Stereoisomers have identical connectivity — the same atoms bonded in the same sequence — but differ in how their groups are arranged in three-dimensional space. Cis and trans but-2-ene are a classic example: both have the double bond in the same position, but in cis both methyl groups are on the same side of the double bond, while in trans they're on opposite sides. Enantiomers are another type of stereoisomer — mirror images of each other that aren't superimposable — which matters hugely in pharmaceuticals."
+    },
+    "commonMistakes": [
+      "Using examples that don't actually satisfy the criteria (e.g., saying ethanol and methoxymethane are enantiomers)",
+      "Conflating geometric isomers and enantiomers as the only types of stereoisomers",
+      "Forgetting that structural isomers must have the same molecular formula"
+    ],
+    "followUps": ["Why does it matter in medicine whether a drug is the R or S enantiomer?"]
+  },
+  {
+    "id": "prog-chemistry-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Entropy and Gibbs free energy",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["thermodynamics", "entropy", "Gibbs-energy", "spontaneity"],
+    "question": "Some reactions are endothermic yet still happen spontaneously. How can that be?",
+    "lookingFor": "The candidate should invoke entropy and the Gibbs free energy equation (ΔG = ΔH − TΔS), explaining that a sufficiently large positive ΔS can make ΔG negative even when ΔH is positive.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that spontaneity is determined by ΔG, not just ΔH",
+        "State the Gibbs equation: ΔG = ΔH − TΔS",
+        "Explain that if ΔS is sufficiently positive and T is high enough, TΔS can outweigh a positive ΔH to give negative ΔG"
+      ],
+      "modelAnswer": "Enthalpy alone doesn't determine whether a reaction happens — spontaneity is governed by the Gibbs free energy change, ΔG. The equation is ΔG = ΔH minus TΔS. Even if ΔH is positive, meaning the reaction absorbs heat, the reaction can still be spontaneous if the entropy change ΔS is large and positive enough. A positive ΔS means the products are more disordered than the reactants — more ways for the energy to be distributed — and at high enough temperatures, the TΔS term can outweigh the positive ΔH, making ΔG negative and the reaction spontaneous. Dissolving ammonium nitrate in water is the example I always think of: it's strongly endothermic — you can feel the flask get cold — but the large increase in disorder as the ions become hydrated and dispersed drives the process forward."
+    },
+    "commonMistakes": [
+      "Saying the reaction 'takes energy from the surroundings' as if that explains everything",
+      "Not knowing or misremembering the Gibbs equation",
+      "Confusing entropy with enthalpy"
+    ],
+    "followUps": ["What would happen to the spontaneity of that type of reaction if you lowered the temperature significantly?"]
+  },
+  {
+    "id": "prog-chemistry-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Electrochemistry",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["electrochemistry", "electrolysis", "cells"],
+    "question": "Explain how a hydrogen fuel cell works and why it's considered environmentally attractive.",
+    "lookingFor": "A correct account of the electrode half-reactions, the role of the proton exchange membrane, and an honest assessment of the environmental argument — including the caveat about hydrogen production.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the anode reaction: hydrogen is oxidised to H⁺ ions and electrons",
+        "Describe the cathode reaction: oxygen is reduced, combining with H⁺ to form water",
+        "Note the environmental claim — water as the only product — and the caveat about green hydrogen production"
+      ],
+      "modelAnswer": "In a hydrogen fuel cell, hydrogen is fed to the anode where it's oxidised, releasing protons and electrons. The protons travel through the membrane to the cathode while the electrons travel through the external circuit, generating the useful current. At the cathode, oxygen is reduced and combines with the arriving protons and electrons to produce water — that's the only emission at the point of use. The environmental case is strong at the tailpipe: no CO₂, no particulates, just water vapour. The honest caveat is that the environmental value depends entirely on how the hydrogen was produced. If it's made by electrolysing water using renewable electricity, the whole chain is clean. If it's made by steam-reforming natural gas — which is currently the most common method — then you've just moved the carbon emissions upstream."
+    },
+    "commonMistakes": [
+      "Getting the electrode half-reactions backwards (oxidation at cathode, reduction at anode)",
+      "Claiming fuel cells are inherently zero-carbon without addressing hydrogen production",
+      "Confusing a fuel cell with an electrolytic cell"
+    ],
+    "followUps": ["How does a fuel cell differ from an ordinary battery?"]
+  },
+  {
+    "id": "prog-chemistry-a-017",
+    "category": "Wider Reading & Intellectual Curiosity",
+    "subtopic": "Chemistry in society",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["real-world", "chemistry-in-society", "current-affairs"],
+    "question": "Is there a recent development in Chemistry — in research or industry — that you've found genuinely exciting or troubling?",
+    "lookingFor": "Awareness of Chemistry beyond the classroom — a real development the applicant can discuss with some depth and genuine personal reaction, not just a topic they Googled the night before.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific development, not just a field",
+        "Explain what it is and why it matters in their own words",
+        "Give a genuine reaction — excitement, scepticism, ethical concern — with reasoning"
+      ],
+      "modelAnswer": "I've been following the progress in solid-state electrolytes for lithium batteries with a lot of interest. Most lithium-ion batteries use a liquid electrolyte, which creates fire risks and limits how fast you can charge — but several groups are getting close to commercially viable solid electrolytes. The chemistry of achieving high ionic conductivity in a solid while also making it manufacturable at scale is exactly the kind of applied physical chemistry that I find compelling. What excites me is that it could meaningfully change EV adoption, but I'm also aware that the lithium supply chain has its own set of problems. I don't think it's as simple as 'solid-state batteries will fix everything.'"
+    },
+    "commonMistakes": [
+      "Describing a development vaguely without showing they actually understand it",
+      "Picking something that's years old and presenting it as recent",
+      "Giving only enthusiasm with no critical or analytical edge"
+    ],
+    "followUps": ["What do you think the biggest unsolved problem in Chemistry is right now?"]
+  },
+  {
+    "id": "prog-chemistry-a-018",
+    "category": "Personal & Background",
+    "subtopic": "Lab experience",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["practical-experience", "lab-skills", "self-reflection"],
+    "question": "Tell us about a Chemistry practical that went wrong. What did you learn from it?",
+    "lookingFor": "Honest reflection on a real experimental failure — shows scientific mindset, troubleshooting instinct, and the ability to learn from unexpected results rather than treating them as pure failure.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a genuine practical failure, not a minor inconvenience",
+        "Show they tried to diagnose the cause, not just blamed equipment",
+        "Draw a genuine lesson about experimental design, technique, or scientific thinking"
+      ],
+      "modelAnswer": "I was doing a titration to find the concentration of a solution of hydrochloric acid and kept getting results that didn't match — two of my runs were consistent but one was wildly off, and the average was pulling my answer away from the true value. My first instinct was that the equipment was faulty, but when I talked it through with my teacher I realised I hadn't rinsed the burette with the solution I was filling it with, so the first reading was contaminated. It was a lesson I'd read in a textbook but hadn't really internalised. What stayed with me is that a procedure can look fine on paper and still be completely undone by one carelessly skipped step — and that consistency in titration is about identifying and discarding outliers rather than averaging everything blindly."
+    },
+    "commonMistakes": [
+      "Describing a success story framed as a failure",
+      "Blaming equipment or other people without self-reflection",
+      "A lesson so generic it could apply to any subject"
+    ],
+    "followUps": ["How do you decide when an outlier result should be discarded versus investigated further?"]
+  },
+  {
+    "id": "prog-chemistry-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Green chemistry",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["green-chemistry", "sustainability", "atom-economy"],
+    "question": "What do chemists mean by 'atom economy', and why does it matter?",
+    "lookingFor": "Correct definition — the proportion of reactant mass that ends up in the desired product — and an understanding of why maximising it matters for sustainability and industrial efficiency.",
+    "idealAnswer": {
+      "bullets": [
+        "Define atom economy as the ratio of the molecular mass of desired product to the total molecular mass of all products",
+        "Contrast it with yield — a reaction can have high yield but low atom economy",
+        "Explain why it matters: waste, cost, and environmental impact"
+      ],
+      "modelAnswer": "Atom economy is a measure of how efficiently a reaction uses its atoms — specifically, it's the molecular mass of the desired product divided by the total molecular mass of all the products, multiplied by 100. It's different from percentage yield, which only tells you how much of the theoretically possible product you actually got. A reaction could have a 99% yield but a terrible atom economy if it produces a large amount of unwanted by-product for every bit of desired product. That matters industrially because by-products have to be separated, disposed of, or treated, all of which costs money and energy and creates waste. An addition reaction, like adding HBr across a double bond, has 100% atom economy — everything ends up in the product. A substitution reaction producing a salt by-product has lower atom economy. In green chemistry, choosing a reaction pathway with higher atom economy is a key design principle."
+    },
+    "commonMistakes": [
+      "Conflating atom economy with percentage yield",
+      "Defining atom economy using moles rather than masses (it's mass-based)",
+      "Not connecting it to any practical or environmental consequence"
+    ],
+    "followUps": ["Can you think of a type of organic reaction that inherently has 100% atom economy?"]
+  },
+  {
+    "id": "prog-chemistry-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Hydrogen bonding",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["intermolecular-forces", "hydrogen-bonding", "properties"],
+    "question": "Why does water have such an unusually high boiling point for a molecule of its size?",
+    "lookingFor": "A clear account of hydrogen bonding — the conditions for it to form, its relative strength compared to other intermolecular forces — and why it raises the energy needed to vaporise water.",
+    "idealAnswer": {
+      "bullets": [
+        "State that water can form hydrogen bonds due to the O–H bond and lone pairs on oxygen",
+        "Explain that hydrogen bonds are stronger than van der Waals or dipole–dipole interactions",
+        "Connect to boiling point: more energy is needed to overcome stronger intermolecular forces"
+      ],
+      "modelAnswer": "If you plot boiling points of the hydrides of group 16 — H₂S, H₂Se, H₂Te — they increase with molecular mass as you'd expect, because bigger molecules have stronger dispersion forces. Water sits far above that trend, which immediately tells you something unusual is going on. The reason is hydrogen bonding. Each water molecule has two O–H bonds, and because oxygen is so electronegative, those bonds are highly polarised — the hydrogen carries a significant positive charge. Oxygen also has two lone pairs of electrons. That combination means water molecules can form up to four hydrogen bonds each, and hydrogen bonds are much stronger than the van der Waals forces driving the trend in the heavier hydrides. More energy is needed to separate the molecules during vaporisation, so the boiling point is much higher than the molecular mass alone would predict."
+    },
+    "commonMistakes": [
+      "Saying water boils at a high temperature because 'it has strong bonds' — confusing intramolecular with intermolecular bonds",
+      "Not explaining why the conditions for hydrogen bonding are met in water",
+      "Leaving out the comparative context with other group 16 hydrides"
+    ],
+    "followUps": ["What other properties of water can be explained by hydrogen bonding?"]
+  },
+  {
+    "id": "prog-chemistry-a-021",
+    "category": "Motivation & Fit",
+    "subtopic": "Career and application of Chemistry",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["goals", "application", "career-direction"],
+    "question": "Chemistry is an enormously broad subject. Do you have a sense of which area interests you most, and what you might want to do with it?",
+    "lookingFor": "A direction that's genuine and reasoned — not a fixed career plan, but evidence that the applicant has thought about what kind of chemistry draws them and has some sense of where it might lead.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific area of chemistry, not just 'I like it all'",
+        "Explain why that area in particular has captured their interest",
+        "Show appropriate humility about career uncertainty while still having a direction"
+      ],
+      "modelAnswer": "I'm most drawn to physical chemistry, particularly the interface between chemistry and computational modelling. I find it compelling that you can simulate the behaviour of molecules and predict reaction outcomes before you ever set foot in a lab — or use computation to understand results that are otherwise hard to interpret experimentally. In terms of where that leads, I'm honestly not certain yet, and I think that's fine. It could be materials research, drug discovery modelling, or academic research. What I'm sure of is that I want to keep that mathematical and analytical thread running through whatever I do. I'd rather arrive at university with a direction than a rigid plan."
+    },
+    "commonMistakes": [
+      "Claiming to love every area of chemistry equally — sounds like no genuine preference has formed",
+      "Stating a very specific career path with no awareness that it might change",
+      "Describing an area without showing any actual engagement with it"
+    ],
+    "followUps": ["Is there an area of Chemistry you've found less interesting or harder to engage with?"]
+  },
+  {
+    "id": "prog-chemistry-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Chemical safety and ethics",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["safety", "ethics", "dual-use", "chemistry-in-society"],
+    "question": "Chemistry has given us both life-saving medicines and devastating weapons. How do you think about that tension as someone who wants to work in the field?",
+    "lookingFor": "Mature, balanced thinking about dual-use science — not a naive dismissal of the tension nor a paralysing pessimism about it. Shows the applicant can engage with the ethical dimensions of their discipline.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension genuinely rather than brushing it aside",
+        "Give concrete examples on both sides of the tension",
+        "Arrive at a considered position on how chemists navigate responsibility"
+      ],
+      "modelAnswer": "It's one of the things I've thought about because I don't think you can be intellectually serious about chemistry and not notice it. The same understanding of organophosphate chemistry that underpins nerve agent synthesis is the foundation of pesticide development and certain pharmaceuticals. I don't think the answer is to pretend the tension isn't there or to argue that pure science is neutral — knowledge can be misused, and chemists working on certain projects carry a real responsibility. What I've come to think is that the scientific community has to take that seriously through oversight, through the Chemical Weapons Convention, through how universities and companies choose what to research and publish. It doesn't resolve cleanly, but I find that being honest about the tension is more useful than either romanticising chemistry as purely benevolent or treating it as inherently dangerous."
+    },
+    "commonMistakes": [
+      "Giving an entirely positive answer with no acknowledgment of the ethical tension",
+      "Being so pessimistic that it sounds like the applicant hasn't thought through why chemistry is worth pursuing",
+      "Giving a superficial answer that doesn't engage with any specifics"
+    ],
+    "followUps": ["Would you personally be comfortable working in defence research, and why?"]
+  },
+  {
+    "id": "prog-chemistry-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Polymers and materials",
+    "program": "Chemistry",
+    "difficulty": "easy",
+    "tags": ["polymers", "materials", "organic-chemistry"],
+    "question": "What is the difference between addition polymerisation and condensation polymerisation?",
+    "lookingFor": "Correct mechanism for each — addition uses unsaturated monomers with no by-product, condensation joins functional groups and expels a small molecule — with an example of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Define addition polymerisation: monomers with a C=C double bond link to form the polymer with no other product",
+        "Define condensation polymerisation: monomers with two functional groups react, expelling a small molecule (often water) with each linkage",
+        "Give an example of each: poly(ethene) for addition; nylon or polyester for condensation"
+      ],
+      "modelAnswer": "In addition polymerisation, monomers containing a carbon-carbon double bond open that double bond to link together in a chain, incorporating every atom of every monomer into the final polymer — no atoms are lost, which is why it has 100% atom economy. Poly(ethene) is the most familiar example: ethene monomers link up into long –CH₂–CH₂– chains. In condensation polymerisation, each linkage between two monomers expels a small molecule — most often water. The monomers each have two functional groups, so one end of one monomer reacts with one end of another, releasing the small molecule and forming a bond. Nylon is a classic example, made by reacting a diamine with a diacid chloride, releasing hydrogen chloride at each junction. Polyesters like PET work similarly, expelling water as ester bonds form."
+    },
+    "commonMistakes": [
+      "Saying condensation polymerisation always produces water — it produces a small molecule, and for nylon it's HCl not water",
+      "Forgetting that addition polymerisation requires an unsaturated monomer",
+      "Confusing the mechanism with the properties of the resulting polymer"
+    ],
+    "followUps": ["Why might biodegradability be easier to engineer into a condensation polymer than an addition polymer?"]
+  },
+  {
+    "id": "prog-chemistry-a-024",
+    "category": "Personal & Background",
+    "subtopic": "Challenges and perseverance",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["resilience", "academic-challenge", "self-development"],
+    "question": "Which part of Chemistry have you found most difficult, and how have you dealt with that?",
+    "lookingFor": "Honest acknowledgment of a genuine difficulty — not a humble-brag — with a concrete account of how the applicant addressed it. Shows self-awareness and work ethic.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuinely difficult topic, not something minor",
+        "Describe what specifically was hard — not just 'I didn't understand it'",
+        "Give a concrete account of what they did to address it"
+      ],
+      "modelAnswer": "Quantum mechanics and its application to atomic orbitals was the point where I felt the ground disappear. At A-level, orbitals are presented as shapes you learn to draw, but when I started reading about the Schrödinger equation and what an orbital actually represents — a probability distribution, not a path — I found it deeply disorienting. My textbook just said 'accept the model' and move on, which I couldn't. I ended up working through some accessible resources online, including some university-level introductory lectures, and it helped enormously to understand why wave-particle duality makes classical orbits impossible. I still don't feel I fully understand it — I'm not sure anyone does at a non-specialist level — but I'm more comfortable sitting with that uncertainty now."
+    },
+    "commonMistakes": [
+      "Picking a difficulty that's secretly a strength",
+      "Describing the difficulty without explaining what made it hard conceptually",
+      "Not giving any account of how they actually worked on it"
+    ],
+    "followUps": ["Is there a topic in Chemistry that you feel you still haven't fully resolved in your understanding?"]
+  },
+  {
+    "id": "prog-chemistry-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Estimation and order-of-magnitude reasoning",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["problem-solving", "estimation", "Avogadro", "quantitative-reasoning"],
+    "question": "If I told you there are roughly 7 × 10²² atoms in a small glass of water — about 250 cm³ — could you verify that or challenge it?",
+    "lookingFor": "Willingness to engage with a quantitative problem in real time, using moles and Avogadro's number to arrive at an independent estimate and compare it with the number given. Shows comfort with numbers and chemical reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Estimate the mass of water: 250 cm³ × 1 g/cm³ = 250 g",
+        "Calculate moles of water: 250 g ÷ 18 g/mol ≈ 13.9 mol",
+        "Calculate molecules: 13.9 × 6 × 10²³ ≈ 8.3 × 10²⁴ molecules, then multiply by 3 atoms each ≈ 2.5 × 10²⁵ atoms"
+      ],
+      "modelAnswer": "Let me work through it. 250 cm³ of water has a mass of about 250 grams, since water's density is 1 g/cm³. The molar mass of water is 18 grams per mole — 2 from hydrogen, 16 from oxygen — so there are about 250 divided by 18, roughly 14 moles of water. Multiplying by Avogadro's number, about 6 × 10²³, gives me something around 8 × 10²⁴ molecules. But each water molecule contains three atoms, so I multiply by 3 to get roughly 2.5 × 10²⁵ atoms. That's considerably larger than the number you quoted — I'm getting 10²⁵, not 10²². I'd push back on the figure you gave, unless I've made an error somewhere. The number given might be right for a much smaller quantity of water, or the figure might have been misremembered."
+    },
+    "commonMistakes": [
+      "Accepting the number without attempting any verification",
+      "Forgetting to multiply by 3 atoms per molecule",
+      "Getting confused about the difference between moles of molecules and moles of atoms",
+      "Giving up because the calculation seems hard to do in the head"
+    ],
+    "followUps": ["What other everyday quantities could you estimate using a similar approach?"]
+  }
+]

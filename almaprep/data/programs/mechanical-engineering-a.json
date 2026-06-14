@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-mechanical-engineering-a-001",
+    "category": "Motivation & Fit",
+    "subtopic": "Why Mechanical Engineering",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "program-fit", "origin-story"],
+    "question": "What made you want to study Mechanical Engineering?",
+    "lookingFor": "A genuine origin story grounded in a specific moment, object, or problem — not a generic 'I like building things' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Point to a specific moment, project, or experience that sparked the interest",
+        "Connect it to what mechanical engineering actually is — physics, design, systems",
+        "Show the interest has grown over time, not just appeared at application time"
+      ],
+      "modelAnswer": "It started when I was about fourteen and our boiler broke. I watched the engineer diagnose it — tapping pipes, reading pressure gauges, tracing the logic of the system — and it clicked that engineering was applied problem-solving at its most physical. I started taking apart old motors and reading about thermodynamics on my own, then chose my A-levels to match. Everything since has felt like following a thread I picked up in that cold hallway."
+    },
+    "commonMistakes": [
+      "'I've always loved maths and science' with nothing more specific",
+      "Saying you want to build things without naming what or why",
+      "An origin story that sounds assembled for the application rather than lived"
+    ],
+    "followUps": ["Has anything you've read or done since deepened that interest?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-002",
+    "category": "Motivation & Fit",
+    "subtopic": "Why this course / this university",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit", "research"],
+    "question": "Why do you want to study Mechanical Engineering here specifically, rather than at another university?",
+    "lookingFor": "Evidence of genuine research — a specific module, lab, project year, or faculty interest — not prestige or location.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific and accurate about the course or department",
+        "Tie it to a personal interest or goal",
+        "Show you understand what makes this course structurally different from others"
+      ],
+      "modelAnswer": "I was drawn to the integrated design project in the third year, where students own a brief from concept to prototype. That sustained, self-directed work is the part I find missing from most taught programmes. I also read about the computational fluid dynamics research group here and realised it sits directly on top of what I want to do with aerodynamics. I visited on an open day and the lab culture felt collaborative rather than competitive, which matters to me."
+    },
+    "commonMistakes": [
+      "Mentioning only rankings or the city",
+      "Describing the course inaccurately — showing you didn't actually research it",
+      "Generic praise that could apply to any engineering school"
+    ],
+    "followUps": ["What would you bring to the department that isn't already on your application?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Newton's laws in context",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["mechanics", "fundamentals", "physics"],
+    "question": "Can you walk us through Newton's three laws and give a mechanical engineering example for each?",
+    "lookingFor": "Accurate statement of each law plus a concrete, engineering-relevant application — shows the ability to connect theory to practice.",
+    "idealAnswer": {
+      "bullets": [
+        "State each law correctly and concisely",
+        "Use a distinct engineering example for each — not the same scenario recycled",
+        "Show you understand direction and sign convention for the third law"
+      ],
+      "modelAnswer": "The first law says an object at rest stays at rest unless a net force acts — that's why you need a braking force to stop a moving vehicle; inertia is the thing you're fighting. The second law says the net force equals mass times acceleration, which underpins everything from sizing a motor to calculating the force needed to press a component. The third law says every action has an equal and opposite reaction — a jet engine works because expelling exhaust backward pushes the aircraft forward with an equal force. I find the third law the most counterintuitive one to apply correctly, because both forces act on different objects."
+    },
+    "commonMistakes": [
+      "Mangling the first law by forgetting 'net' force",
+      "Using the same example for two laws",
+      "Getting the third law direction wrong or saying the forces cancel out"
+    ],
+    "followUps": ["How would you use F = ma to estimate the braking distance of a car?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Stress and strain",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["materials", "statics", "fundamentals"],
+    "question": "What is the difference between stress and strain, and how are they related?",
+    "lookingFor": "Clear definitions with correct units, plus a statement of Hooke's Law and an awareness of its limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Stress is force per unit area (Pa), strain is dimensionless deformation",
+        "State Hooke's Law: stress = Young's modulus × strain, within the elastic region",
+        "Mention that the relationship breaks down beyond the elastic limit"
+      ],
+      "modelAnswer": "Stress is the internal force a material carries per unit area — measured in pascals — so a thin rod under the same load as a thick one has higher stress. Strain is the fractional change in length, so it's dimensionless. In the elastic region they're proportional: stress equals Young's modulus times strain. Young's modulus is just the slope of that relationship and tells you how stiff the material is. Beyond the elastic limit the material yields, the proportionality breaks down, and you have permanent deformation — which is the failure regime you really want to design away from."
+    },
+    "commonMistakes": [
+      "Confusing stress and strain or swapping their definitions",
+      "Forgetting that strain is dimensionless",
+      "Not mentioning that Hooke's Law only holds in the elastic region"
+    ],
+    "followUps": ["How would you use this to choose a material for a structural beam?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Thermodynamics basics",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "energy", "fundamentals"],
+    "question": "Can you explain the first and second laws of thermodynamics in your own words and say why both matter to an engineer?",
+    "lookingFor": "Conceptual understanding of energy conservation and entropy, with a sense of how each law constrains real engineering decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "First law: energy is conserved — you can't create or destroy it, only convert it",
+        "Second law: every conversion loses useful energy to heat; entropy increases",
+        "Connect each law to a real engineering implication — efficiency limits, heat rejection"
+      ],
+      "modelAnswer": "The first law says energy is conserved — whatever goes in comes out in some form, so you have to account for every joule. That constrains the energy budget of any system. The second law is more sobering: it says not all that energy stays useful. Every real process generates entropy, meaning some energy degrades to low-grade heat you can't recover. For an engineer that's critical because it sets a ceiling on efficiency — no heat engine can convert all its fuel energy to work, which is why we obsess over minimising losses. The two laws together explain why a perpetual motion machine is impossible."
+    },
+    "commonMistakes": [
+      "Confusing the two laws or reversing their content",
+      "Describing the second law only as 'disorder increases' without the engineering implication",
+      "Not connecting either law to a practical consequence"
+    ],
+    "followUps": ["What is a Carnot efficiency, and why does it matter?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Materials selection",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["materials", "design", "trade-offs"],
+    "question": "A designer needs to choose between steel and aluminium for a structural bracket in a car. What factors would you weigh?",
+    "lookingFor": "Systematic multi-factor reasoning — strength, weight, cost, manufacturability, corrosion — not a single-property answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the key properties: specific strength, stiffness, density, corrosion resistance",
+        "Bring in cost and manufacturing (forming, welding, machining)",
+        "Acknowledge that the 'right' answer depends on the use case — no single winner"
+      ],
+      "modelAnswer": "Steel is stiffer and stronger in absolute terms and cheaper to buy, but aluminium is roughly a third of its density, so the specific strength — strength per unit weight — can be competitive or better. For a car bracket where lightweighting matters for fuel economy, aluminium is tempting. But you also have to think about whether the part is stamped, cast, or extruded, because aluminium and steel have different manufacturing constraints. Aluminium corrodes differently — it forms a protective oxide — but it's harder to weld without specialist equipment. I'd want to know the load case, the production volume, and the weight budget before committing."
+    },
+    "commonMistakes": [
+      "Just saying 'aluminium is lighter, so use aluminium' without the trade-offs",
+      "Ignoring cost, manufacturability, or joining",
+      "Treating it as a solved problem with one right answer"
+    ],
+    "followUps": ["How would composites change your analysis?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Free body diagrams",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["statics", "analysis", "fundamentals"],
+    "question": "What is a free body diagram, and why is it one of the first things a mechanical engineer draws?",
+    "lookingFor": "A clear explanation of what it isolates and why — forces, moments, reactions — plus why isolating the body is the key step.",
+    "idealAnswer": {
+      "bullets": [
+        "Define it: a sketch of an isolated body showing all external forces and moments acting on it",
+        "Explain why isolation matters — you remove context to reveal the true load state",
+        "Note that equilibrium equations follow directly from the diagram"
+      ],
+      "modelAnswer": "A free body diagram is a sketch where you draw just the object you're analysing — cut it free from everything connected to it — and then show every force and moment the surroundings were applying to it. The discipline is in the isolation: once you've done that, you can write equilibrium equations directly, because you've accounted for everything acting on the body. Engineers draw them first because every subsequent calculation depends on getting the force picture right. If you skip it you risk missing a reaction force or adding a force that belongs to a different body."
+    },
+    "commonMistakes": [
+      "Leaving out reaction forces at supports",
+      "Including internal forces instead of only external ones",
+      "Drawing the diagram without actually using it to write equations"
+    ],
+    "followUps": ["Can you sketch a free body diagram for a simply supported beam with a central load?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Fluid mechanics basics",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["fluids", "Bernoulli", "fundamentals"],
+    "question": "Can you explain Bernoulli's principle and give one example of where it's used in engineering?",
+    "lookingFor": "Correct statement of the principle — the trade-off between pressure and velocity — plus awareness of its assumptions and a real application.",
+    "idealAnswer": {
+      "bullets": [
+        "State that along a streamline, higher velocity means lower pressure (and vice versa)",
+        "Note the key assumptions: steady, incompressible, inviscid flow along a streamline",
+        "Give a concrete engineering application — aerofoil, carburettor, venturi meter"
+      ],
+      "modelAnswer": "Bernoulli's principle says that in a steady, incompressible flow along a streamline, the sum of pressure, kinetic energy per unit volume, and gravitational potential energy is constant. So if the fluid speeds up, its pressure drops. A classic application is an aerofoil: the shape causes air to move faster over the top surface than the bottom, which drops the pressure on top and creates lift. It's also the operating principle behind a venturi meter, where you measure a pressure difference across a constriction to infer flow rate. The important caveat is that the principle breaks down where flow separates or becomes turbulent."
+    },
+    "commonMistakes": [
+      "Stating the principle without mentioning the conservation basis",
+      "Forgetting the assumptions — applying it to viscous or compressible flows",
+      "Giving an example without explaining the mechanism"
+    ],
+    "followUps": ["Why doesn't Bernoulli fully explain lift on a real wing?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Engineering drawing and CAD",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["design", "CAD", "communication"],
+    "question": "Why are engineering drawings and CAD models important, and have you had any experience with them?",
+    "lookingFor": "Understanding of why precise technical communication matters, plus honest reflection on any hands-on experience — even basic.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that drawings are the universal language between designers and manufacturers",
+        "Note that dimensions, tolerances, and standards are what make a drawing actionable",
+        "Share genuine experience, however limited — school project, online tool, self-taught"
+      ],
+      "modelAnswer": "Engineering drawings are the link between an idea and a manufactured part — without precise dimensions, tolerances, and views, two people will interpret the same design differently and the part will come out wrong. CAD adds the ability to simulate and iterate before anything is built, which saves cost. I've used Fusion 360 to model a small bracket for a school robotics project — nothing complex, but I learned how tolerance decisions ripple through an assembly when parts don't fit. I want to develop that skill much further on the course."
+    },
+    "commonMistakes": [
+      "Treating CAD as just 'drawing on a computer' without the engineering significance",
+      "Claiming deep CAD expertise that isn't substantiated",
+      "No engagement with tolerances or manufacturing intent"
+    ],
+    "followUps": ["What do you think the limits of simulation are compared to physical testing?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Failure modes",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["materials", "failure", "safety"],
+    "question": "What is the difference between brittle and ductile fracture, and why does it matter for safety-critical design?",
+    "lookingFor": "Clear distinction between the two fracture modes, an understanding of warning signs, and the engineering implication for design and material choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Ductile: significant plastic deformation before fracture — gives warning",
+        "Brittle: sudden fracture with little or no deformation — no warning",
+        "Engineering implication: prefer ductile materials in safety-critical applications"
+      ],
+      "modelAnswer": "Ductile fracture involves substantial plastic deformation before the material finally breaks — you get visible necking or bending, which is your warning sign that something is overloaded. Brittle fracture happens suddenly with very little deformation, often with a clean, flat fracture surface. That's dangerous in safety-critical structures because there's no warning: the part looks fine right up until it doesn't exist anymore. The Titanic disaster is a classic case where steel that was ductile at room temperature became brittle at low temperatures, and the hull fractured catastrophically. Designers try to choose materials and temperatures where ductile behaviour is guaranteed."
+    },
+    "commonMistakes": [
+      "Saying brittle is just 'weaker' rather than 'less warning'",
+      "Not connecting to temperature or loading rate effects",
+      "No safety-critical implication given"
+    ],
+    "followUps": ["What is a fatigue crack and how is it different from static fracture?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Heat transfer",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "heat-transfer", "fundamentals"],
+    "question": "What are the three modes of heat transfer? Can you give an engineering example of each?",
+    "lookingFor": "Correct identification of conduction, convection, and radiation with accurate mechanisms and distinct engineering examples for each.",
+    "idealAnswer": {
+      "bullets": [
+        "Conduction: diffusion of heat through a solid — state Fourier's law in principle",
+        "Convection: heat carried by a moving fluid — natural vs forced",
+        "Radiation: electromagnetic emission — works without a medium"
+      ],
+      "modelAnswer": "Conduction is heat flowing through a material by molecular interaction — a metal heat sink conducting heat away from a chip is the obvious example, and the rate depends on the material's thermal conductivity and the temperature gradient. Convection is heat carried by a moving fluid, either naturally because warm fluid rises or forced by a fan or pump — the cooling system in a car engine is forced convection. Radiation is electromagnetic energy emitted by any body above absolute zero; it doesn't need a medium, which is why the sun heats the earth across a vacuum, and it's also relevant in furnace design where the walls radiate to the workpiece. Real engineering systems usually involve all three at once."
+    },
+    "commonMistakes": [
+      "Confusing convection and conduction",
+      "Forgetting that radiation works in a vacuum",
+      "Not giving distinct examples — repeating the same scenario"
+    ],
+    "followUps": ["How would you decide which mode dominates in a given engineering system?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Power and energy in machines",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["mechanics", "power", "energy"],
+    "question": "How is power different from energy, and how would you work out the power needed to lift a load at constant speed?",
+    "lookingFor": "Correct definitions plus a clean worked example — shows ability to apply simple mechanics quantitatively.",
+    "idealAnswer": {
+      "bullets": [
+        "Energy is the capacity to do work (joules); power is the rate of doing work (watts)",
+        "For constant speed: net force equals weight, so power = force × velocity",
+        "Show you can set up the calculation even without numbers"
+      ],
+      "modelAnswer": "Energy is the total work done — measured in joules — while power is the rate at which that work is done, in watts, which is joules per second. For lifting a load at constant speed, the net force must equal the weight — mass times g — because if it were greater the load would accelerate. So the power required is just that force multiplied by the velocity: P equals mgv. If I were lifting a 100 kg load at 0.5 metres per second, that's 100 times 9.81 times 0.5, about 490 watts, ignoring friction and mechanical losses. In practice you'd add a factor for efficiency."
+    },
+    "commonMistakes": [
+      "Confusing power and energy",
+      "Forgetting to match force to weight for constant speed",
+      "Not including units or giving a dimensionless answer"
+    ],
+    "followUps": ["How would friction in the pulley system change your calculation?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Mechanisms and linkages",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["mechanisms", "kinematics", "design"],
+    "question": "What is a four-bar linkage, and where would you find one in everyday life?",
+    "lookingFor": "A correct mechanical description and at least one accurate real-world example — tests whether the applicant has looked beyond textbook problems.",
+    "idealAnswer": {
+      "bullets": [
+        "Define it: four rigid links connected by four revolute joints in a closed chain",
+        "One link is the fixed ground link; the input crank drives the coupler and output rocker",
+        "Give a specific real example — car suspension, windscreen wiper, folding mechanism"
+      ],
+      "modelAnswer": "A four-bar linkage is a closed kinematic chain of four rigid links joined by pin joints. One link is fixed — the ground — and you drive the input crank to get a controlled motion at the output rocker. The coupler link in between can trace surprisingly complex paths. They're everywhere once you look: the front suspension of a car uses a double wishbone that is essentially a four-bar, windscreen wipers are another classic example, and the lid of a laptop is a degenerate case. What I find elegant is that you can design the coupler curve to trace almost any path you want just by changing the link lengths."
+    },
+    "commonMistakes": [
+      "Confusing links with joints — getting the count wrong",
+      "Not being able to name a real-world example",
+      "Describing it statically without explaining the motion"
+    ],
+    "followUps": ["What is a Grashof condition and why does it matter for mechanism design?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Safety factors and design margins",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["design", "safety", "fundamentals"],
+    "question": "What is a factor of safety and why don't engineers just design everything to exactly the load it will experience?",
+    "lookingFor": "A clear definition plus genuine reasoning about uncertainty — material variability, loading uncertainty, fatigue, consequences of failure.",
+    "idealAnswer": {
+      "bullets": [
+        "Factor of safety = material strength divided by design load — a margin above expected loading",
+        "Reasons for the margin: uncertainty in loads, material variability, manufacturing tolerances, fatigue",
+        "Note that a higher factor of safety isn't always better — weight and cost increase too"
+      ],
+      "modelAnswer": "A factor of safety is the ratio of the load a component can actually carry to the load it's designed to carry — so a factor of two means the part could take twice the intended load before failing. You need that margin because nothing is perfectly known: loads in real use can exceed what you predicted, materials have statistical variability, manufacturing introduces imperfections, and cyclic loading causes fatigue cracks at stress levels well below static failure. But you can't just make the factor of safety enormous — extra material means more weight and cost. The art is choosing the right margin for the consequences: a higher factor for a bridge than for a disposable bracket."
+    },
+    "commonMistakes": [
+      "Saying the factor of safety is just 'extra safety' without explaining what sources of uncertainty it covers",
+      "Not mentioning that high factors of safety have real costs",
+      "Confusing factor of safety with reliability"
+    ],
+    "followUps": ["How would the factor of safety differ between an aircraft component and a garden chair?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Renewable energy and engineering",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["energy", "sustainability", "applications"],
+    "question": "From a mechanical engineering perspective, what are the key challenges in designing a wind turbine?",
+    "lookingFor": "Multi-domain thinking — aerodynamics, structural loading, fatigue, grid integration — showing the applicant reads beyond their textbooks.",
+    "idealAnswer": {
+      "bullets": [
+        "Aerodynamic efficiency: blade profile, tip speed ratio, variable pitch",
+        "Structural loading: cyclic fatigue from rotation plus wind gusts, weight at scale",
+        "System-level: gearbox reliability, power transmission, offshore maintenance access"
+      ],
+      "modelAnswer": "The blade design is the most immediately interesting challenge — you're optimising an aerofoil for varying wind speeds, and you have to pitch the blades to stay efficient without stalling or overspeeding. But structurally the blades are also enormous cantilevers carrying cyclic loads every rotation, so fatigue cracking is a constant concern, especially at the root. Scaling up creates problems that aren't obvious: blade weight grows with the cube of length while area grows with the square, so the structural challenge gets worse. The gearbox has historically been a major reliability issue, which is why direct-drive generators are increasingly common. Offshore adds marine corrosion and the fact that maintenance windows are limited by sea state."
+    },
+    "commonMistakes": [
+      "Only mentioning aerodynamics and ignoring structural or system challenges",
+      "Vague answers like 'they have to be strong' without the engineering specifics",
+      "Not acknowledging the trade-offs between competing constraints"
+    ],
+    "followUps": ["How do engineers test a wind turbine blade before putting it in service?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Manufacturing processes",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["manufacturing", "processes", "design-for-manufacture"],
+    "question": "What is the difference between casting, forging, and machining, and when would you choose each?",
+    "lookingFor": "Accurate descriptions of all three processes plus sound reasoning about when each is appropriate — cost, geometry, material properties, volume.",
+    "idealAnswer": {
+      "bullets": [
+        "Casting: molten metal poured into a mould — good for complex shapes, low-to-medium volume",
+        "Forging: solid metal deformed under pressure — stronger grain structure, for high-stress parts",
+        "Machining: material removed to achieve precision — high accuracy, for tight tolerances or finishing"
+      ],
+      "modelAnswer": "Casting pours molten metal into a mould and is great for complex geometries that would be hard to achieve any other way, but the resulting grain structure is less ordered so the mechanical properties are lower. Forging compresses solid metal, which refines and aligns the grain and produces higher strength and fatigue resistance — that's why crankshafts and connecting rods are forged rather than cast. Machining removes material to hit tight tolerances and fine surface finishes; it's often a finishing step after casting or forging. The choice comes down to the mechanical demands of the part, the production volume — casting tooling is cheaper for high volumes — and the geometry."
+    },
+    "commonMistakes": [
+      "Mixing up forging and casting",
+      "Not connecting the process to the resulting material properties",
+      "Ignoring cost or volume considerations"
+    ],
+    "followUps": ["How has additive manufacturing changed this trade-off?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Vibration and resonance",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["dynamics", "vibration", "resonance"],
+    "question": "What is resonance, why is it dangerous in engineering structures, and how do engineers guard against it?",
+    "lookingFor": "A correct explanation of resonance — natural frequency matching excitation — plus real examples of failure and engineering mitigation strategies.",
+    "idealAnswer": {
+      "bullets": [
+        "Resonance occurs when an excitation frequency matches a structure's natural frequency — amplitude grows",
+        "With low damping, amplitude can grow until the structure fails",
+        "Mitigations: detune natural frequency, add damping, use vibration isolators, avoid excitation at resonance"
+      ],
+      "modelAnswer": "Every structure has natural frequencies at which it 'wants' to vibrate. When an external force oscillates at one of those frequencies, energy is added in phase with the motion each cycle and the amplitude grows — sometimes catastrophically if damping is low. The Tacoma Narrows Bridge is the classic case: wind shed vortices at a frequency close to the bridge's torsional natural frequency, and the oscillation grew until the deck failed. Engineers guard against this in several ways: they design the natural frequencies to sit well away from likely excitation frequencies, add damping materials or devices, use tuned mass dampers for large structures, or change the excitation source. In rotating machinery the critical speed — the RPM at which the shaft resonates — is something you either design out or pass through very quickly."
+    },
+    "commonMistakes": [
+      "Describing resonance as just 'vibration' without the frequency-matching concept",
+      "No engineering failure example",
+      "Only one mitigation strategy mentioned"
+    ],
+    "followUps": ["What is a tuned mass damper and where is one famously installed?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Sustainability in engineering",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["sustainability", "design", "lifecycle"],
+    "question": "How should a mechanical engineer think about the environmental impact of a product they design?",
+    "lookingFor": "Lifecycle thinking — not just energy use during operation, but materials extraction, manufacturing, use phase, and end-of-life — with some concrete examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Lifecycle assessment: consider extraction, manufacture, use, and disposal",
+        "Design choices: material selection, lightweighting, repairability, recyclability",
+        "Trade-offs: sometimes a heavier material with lower processing energy is greener overall"
+      ],
+      "modelAnswer": "The environmental impact doesn't start when the product is switched on — it starts in the mine or the oil well. A proper lifecycle assessment looks at the energy and emissions embodied in extracting and processing materials, the manufacturing phase, the operational phase — where fuel efficiency or energy use may dominate — and end-of-life, meaning whether the product can be disassembled, repaired, or recycled. An electric car has a large manufacturing footprint, especially the battery, but the operational phase is much cleaner, so the crossover depends on grid carbon intensity. Engineers increasingly design for disassembly so that materials can be recovered, and they weigh lightweighting decisions not just for fuel savings but for the upstream cost of producing a light alloy versus steel."
+    },
+    "commonMistakes": [
+      "Only thinking about operational energy use and ignoring manufacturing or end-of-life",
+      "Treating 'lighter = greener' as automatically true",
+      "Vague statements about sustainability without specifics"
+    ],
+    "followUps": ["What is the difference between recyclability and circular economy thinking?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Gears and power transmission",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["mechanisms", "power-transmission", "gears"],
+    "question": "How does a gear pair transmit power, and what happens to torque and speed when you mesh a small gear with a larger one?",
+    "lookingFor": "Correct application of the gear ratio — inverse relationship between speed and torque — with a clear physical explanation.",
+    "idealAnswer": {
+      "bullets": [
+        "Gears transmit power by meshing teeth — the pitch-line velocity is equal at the mesh point",
+        "Gear ratio = teeth on output divided by teeth on input",
+        "Higher ratio: output turns slower but with more torque; power is conserved (minus losses)"
+      ],
+      "modelAnswer": "Gears transmit power through meshing teeth — the contact force at the pitch line is what carries the load. The key constraint is that the pitch-line speed is the same for both gears, so if the driven gear has more teeth it must rotate more slowly. If the gear ratio is four — meaning the output gear has four times the teeth — the output rotates at a quarter of the input speed, but the torque is four times larger. Power equals torque times angular velocity, so ignoring friction the power in equals the power out: the gear hasn't created energy, it's just traded speed for torque. That's exactly what you want in a car's gearbox — high torque to get moving, then trade torque for speed once you're rolling."
+    },
+    "commonMistakes": [
+      "Saying the large gear produces more power — not just more torque",
+      "Getting the speed/torque relationship inverted",
+      "Not mentioning that friction means the output power is slightly less than the input"
+    ],
+    "followUps": ["How would you calculate the efficiency of a gearbox experimentally?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-020",
+    "category": "Motivation & Fit",
+    "subtopic": "Wider reading and intellectual curiosity",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["curiosity", "wider-reading", "self-directed"],
+    "question": "What is the most interesting piece of mechanical engineering you have read about or encountered outside of school?",
+    "lookingFor": "A specific, genuinely engaged example that goes beyond the syllabus — shows self-driven curiosity and the ability to explain something technical in plain language.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific — a book, article, podcast, project, documentary",
+        "Explain what it taught you or why it surprised you",
+        "Connect it to your motivation for the course"
+      ],
+      "modelAnswer": "I went down a rabbit hole reading about the James Webb Space Telescope's deployment sequence, specifically the engineering of the sunshield. It has to fold into a volume small enough for a rocket fairing and then unfold precisely in space where there's no margin for error and no human hand to help. What struck me was how many mechanical problems — thermal expansion mismatches, cable tensions, hinge friction in a vacuum — had to be solved simultaneously with no possibility of a field repair. It made me appreciate that the hard part of engineering isn't designing the structure; it's designing for a deployment sequence you can only practice on Earth."
+    },
+    "commonMistakes": [
+      "Naming something from the school syllabus as if it counts as wider reading",
+      "A vague reference with no detail — 'I read about space exploration'",
+      "Not connecting it to what you found technically interesting"
+    ],
+    "followUps": ["Has that reading changed the way you think about any engineering problem?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-021",
+    "category": "Motivation & Fit",
+    "subtopic": "Personal project or experience",
+    "program": "Mechanical Engineering",
+    "difficulty": "easy",
+    "tags": ["experience", "hands-on", "self-driven"],
+    "question": "Have you done any practical projects — in school, at home, or through a club — that have shaped your view of engineering?",
+    "lookingFor": "A concrete, specific experience that shows hands-on engagement and the ability to reflect on what it taught, not just what was built.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific project with what you did and what the challenge was",
+        "Reflect on what it taught you — technically or about the process",
+        "Connect it to what you want to learn more of on the course"
+      ],
+      "modelAnswer": "I built a small pneumatically-actuated robot arm for a school engineering competition. The mechanical design went fine, but when I tested it the arm would jerk rather than move smoothly because the valve was either fully open or fully shut. I had to redesign the valve manifold and add a restrictor to control flow rate, which fixed it. It taught me that function and performance are different — the arm worked but didn't work well, and closing that gap required understanding fluid dynamics at a scale I hadn't expected. I want to develop that intuition more formally on the course."
+    },
+    "commonMistakes": [
+      "Describing what was built without mentioning what went wrong or what was learned",
+      "Claiming a large or complex project without being able to explain the details",
+      "An experience with no engineering content — 'I helped my dad fix a fence'"
+    ],
+    "followUps": ["What would you do differently if you started that project again?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-022",
+    "category": "Goals & Future",
+    "subtopic": "Career direction",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["goals", "career", "motivation"],
+    "question": "What area of mechanical engineering would you like to work in after graduating, and why?",
+    "lookingFor": "A plausible, personally motivated direction — not an over-precise five-year plan, but a genuine sense of what excites them and why.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a sector or area of mechanical engineering with enough specificity to be credible",
+        "Link it to something they've done, read, or cared about — not just prestige",
+        "Acknowledge that it may evolve and that the course will help them discover more"
+      ],
+      "modelAnswer": "I'm drawn toward the aerospace or space sector, particularly structural analysis and lightweighting — the challenge of designing parts that are as light as possible while being reliable for a decade in extreme conditions. Part of what pushes me there is the JWST reading I've done, and part is that aerospace tends to push materials and manufacturing to their limits, which means the engineering problems are genuine unknowns rather than known quantities. I'm open to being surprised by the course — a lot of what I find interesting now I didn't know existed two years ago — but that's the direction I'm pointing."
+    },
+    "commonMistakes": [
+      "Over-precise plan that sounds rehearsed and brittle under a follow-up",
+      "A goal with no personal motivation behind it — 'I want a well-paid job'",
+      "A goal that has nothing to do with mechanical engineering"
+    ],
+    "followUps": ["What skills from the course do you think will matter most for that career?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Control systems",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["control", "feedback", "systems"],
+    "question": "What is feedback control and why is it central to mechanical engineering systems?",
+    "lookingFor": "A clear explanation of closed-loop feedback — sensor, comparator, actuator — and at least one engineering example where open-loop control would fail.",
+    "idealAnswer": {
+      "bullets": [
+        "Feedback control: measure the output, compare to the setpoint, apply a correction",
+        "Closed loop vs open loop: closed loop self-corrects for disturbances",
+        "Concrete example where open-loop fails — thermostat, cruise control, robot arm"
+      ],
+      "modelAnswer": "Feedback control is the principle of measuring what a system is actually doing, comparing it to what you want it to do, and using the error to drive a corrective action. The loop is: sense the output, feed it back to a comparator, generate an error signal, drive the actuator to reduce the error. What makes it powerful is that it automatically compensates for disturbances you didn't anticipate. An open-loop system — like a timer-controlled heater — has no idea whether the room is actually warm; a closed-loop thermostat measures the temperature and responds to the real state. For mechanical engineering the applications are everywhere: cruise control, CNC machining, robotic manipulators, and engine management all rely on feedback. Without it, any model uncertainty or external disturbance accumulates into error."
+    },
+    "commonMistakes": [
+      "Describing feedback without explaining the sensor-comparator-actuator loop",
+      "Not distinguishing open-loop from closed-loop",
+      "No engineering example"
+    ],
+    "followUps": ["What is PID control and what does each term do?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-024",
+    "category": "Challenges, Failure & Resilience",
+    "subtopic": "Problem-solving under constraint",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["problem-solving", "resilience", "creative"],
+    "question": "Describe a time you had to solve a technical or practical problem with limited resources or information. How did you approach it?",
+    "lookingFor": "A structured account of real problem-solving: identifying the constraint, forming a hypothesis, testing, iterating — not just 'I googled it'.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the specific problem and the constraint clearly",
+        "Describe the reasoning process — what you tried and why",
+        "Reflect on what you learned about problem-solving from the experience"
+      ],
+      "modelAnswer": "During a robotics competition the motor driver board failed an hour before the run, and we didn't have a spare. I mapped out what the board actually did — PWM signal to the motor — and worked out that the microcontroller could drive a simpler transistor switch directly if we accepted on-off rather than variable speed. We soldered a workaround in forty minutes, the robot moved, and we competed. The lesson wasn't about electronics — it was about decomposing a system into what each part does and finding the minimum viable substitute under time pressure. I now habitually ask 'what would this need to be true for it to work?' before assuming I need a specific solution."
+    },
+    "commonMistakes": [
+      "A story with no clear technical reasoning — 'we worked together and fixed it'",
+      "No reflection on what the experience taught them",
+      "Describing a non-engineering problem in an engineering application"
+    ],
+    "followUps": ["How do you decide when to keep trying a solution and when to abandon it?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-a-025",
+    "category": "Ethics & Situational",
+    "subtopic": "Engineering responsibility",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "responsibility", "professional"],
+    "question": "An engineer discovers that a component in a product they designed may fail in a way that was not foreseen in testing. The company says the risk is acceptable and the launch will proceed. What should the engineer do?",
+    "lookingFor": "Structured ethical reasoning that takes the public safety duty seriously, considers internal escalation before whistleblowing, and doesn't give an unrealistically simple answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension: professional loyalty versus duty to public safety",
+        "Escalate internally first — document concerns, use formal risk processes, go up the chain",
+        "If internal channels fail and the risk is serious, external escalation or regulatory reporting is justified"
+      ],
+      "modelAnswer": "The duty to public safety is at the core of engineering ethics — it supersedes the company's commercial interest when there's a genuine risk. I'd start internally: document the concern formally, put it in writing so there's a record, and escalate to the chief engineer or safety officer. I'd push hard to quantify the failure probability and the consequences — 'may fail' covers a huge range, and the company might be right that the risk is genuinely acceptable if it's understood properly. If the risk is serious, quantified, and still being dismissed, I would consider whether regulatory bodies or professional institutions need to be informed. It's not a comfortable position, but the Challenger disaster is the warning about what happens when engineers are overruled on safety grounds and stay silent."
+    },
+    "commonMistakes": [
+      "Immediately saying 'I would report them' without internal escalation first",
+      "Deferring entirely to the company without any pushback",
+      "Not acknowledging that 'acceptable risk' can sometimes be a legitimate engineering judgement"
+    ],
+    "followUps": ["How would your answer change if the component failure was unlikely but catastrophic?"]
+  }
+]
