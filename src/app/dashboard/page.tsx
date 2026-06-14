@@ -32,13 +32,29 @@ const avatarMap: Record<string, typeof faUserTie> = {
   "star": faStar,
 }
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions)
-  const supabase = await createClient()
-  const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+  // Try getting Supabase user, handling network issues gracefully
+  let supabaseUser = null
+  try {
+    const { data } = await supabase.auth.getUser()
+    supabaseUser = data?.user || null
+  } catch (err) {
+    console.error("Dashboard: Failed to fetch Supabase user:", err)
+  }
 
-  const activeUser = (session?.user || supabaseUser) as any
-  const userId = (session?.user as any)?.id || supabaseUser?.id
+  const cookieStore = await cookies()
+  const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+  let activeUser = (session?.user || supabaseUser) as any
+  let userId = (session?.user as any)?.id || supabaseUser?.id
+
+  let isDemoMode = false
+  if (!activeUser && hasDemoCookie) {
+    isDemoMode = true
+    activeUser = {
+      name: "Straw Hat Luffy",
+      email: "luffy@goingmerry.org",
+    }
+    userId = "demo-user-id"
+  }
 
   let displayName = "User"
   let avatarIcon = faUserTie
@@ -47,57 +63,76 @@ export default async function DashboardPage() {
   let totalSessions = 0
 
   if (activeUser && userId) {
-    // 1. Fetch user profile
-    const { data: profile } = await supabase
-      .from("users")
-      .select("*")
-      .eq("id", userId)
-      .single()
-
-    if (!profile) {
-      redirect("/onboarding")
-    }
-
-    displayName = profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User"
-    avatarIcon = avatarMap[profile.avatar_url || ""] || faUserTie
-    hasResume = !!profile.resume_text
-
-    // 2. Fetch interviews count
-    const { count } = await supabase
-      .from("interviews")
-      .select("*", { count: "exact", head: true })
-      .eq("user_id", userId)
-
-    totalSessions = count || 0
-
-    // 3. Fetch latest completed interview feedback
-    const { data: latestInterview } = await supabase
-      .from("interviews")
-      .select(`
-        id,
-        category,
-        created_at,
-        feedback (
-          score,
-          summary,
-          improvement_suggestions
-        )
-      `)
-      .eq("user_id", userId)
-      .eq("status", "completed")
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle()
-
-    if (latestInterview && latestInterview.feedback && latestInterview.feedback[0]) {
-      const fb = latestInterview.feedback[0]
+    if (isDemoMode) {
+      displayName = "Luffy (Demo)"
+      avatarIcon = faRocket
+      hasResume = true
+      totalSessions = 3
       latestFeedback = {
-        score: fb.score,
-        summary: fb.summary,
-        improvements: fb.improvement_suggestions || [],
-        category: latestInterview.category === "hr" ? "HR" : latestInterview.category === "technical" ? "Technical" : "Mixed",
-        date: new Date(latestInterview.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-        id: latestInterview.id
+        score: 95,
+        summary: "Your communication style is highly enthusiastic and your confidence is unmatched, though your technical explanations rely a bit too much on 'gum-gum' terminology. Work on detailing your leadership experience with structured examples.",
+        improvements: [
+          "Structure your stories using the STAR method instead of screaming your attacks",
+          "Explain how you manage risks when your team is separated",
+          "Reduce usage of Haki during standard professional introductions"
+        ],
+        category: "Mixed",
+        date: "Jun 14",
+        id: "demo-mixed-session"
+      }
+    } else {
+      // 1. Fetch user profile
+      const { data: profile } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", userId)
+        .single()
+
+      if (!profile) {
+        redirect("/onboarding")
+      }
+
+      displayName = profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User"
+      avatarIcon = avatarMap[profile.avatar_url || ""] || faUserTie
+      hasResume = !!profile.resume_text
+
+      // 2. Fetch interviews count
+      const { count } = await supabase
+        .from("interviews")
+        .select("*", { count: "exact", head: true })
+        .eq("user_id", userId)
+
+      totalSessions = count || 0
+
+      // 3. Fetch latest completed interview feedback
+      const { data: latestInterview } = await supabase
+        .from("interviews")
+        .select(`
+          id,
+          category,
+          created_at,
+          feedback (
+            score,
+            summary,
+            improvement_suggestions
+          )
+        `)
+        .eq("user_id", userId)
+        .eq("status", "completed")
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle()
+
+      if (latestInterview && latestInterview.feedback && latestInterview.feedback[0]) {
+        const fb = latestInterview.feedback[0]
+        latestFeedback = {
+          score: fb.score,
+          summary: fb.summary,
+          improvements: fb.improvement_suggestions || [],
+          category: latestInterview.category === "hr" ? "HR" : latestInterview.category === "technical" ? "Technical" : "Mixed",
+          date: new Date(latestInterview.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+          id: latestInterview.id
+        }
       }
     }
   } else {
