@@ -5,21 +5,21 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: #0A0A0B;
-  --color-foreground: #e5e2e3;
-  --color-primary: #A855F7;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-primary: #059669;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #3B82F6;
+  --color-secondary: #10b981;
   --color-secondary-foreground: #ffffff;
-  --color-muted: #1c1b1c;
-  --color-muted-foreground: #988d9f;
-  --color-accent: #22D3EE;
-  --color-accent-foreground: #000000;
-  --color-destructive: #ffb4ab;
-  --color-destructive-foreground: #690005;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-input: #050505;
-  --color-ring: #3B82F6;
+  --color-muted: #ecfdf5;
+  --color-muted-foreground: #64748b;
+  --color-accent: #a7f3d0;
+  --color-accent-foreground: #062b22;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #cbd5e1;
+  --color-input: #ffffff;
+  --color-ring: #059669;
   
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -32,7 +32,7 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -43,14 +43,14 @@ body {
 
 @layer utilities {
   .glass-card {
-    background-color: rgba(18, 18, 20, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-top-color: rgba(255, 255, 255, 0.2);
-    border-left-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-top-color: rgba(15, 23, 42, 0.04);
+    border-left-color: rgba(15, 23, 42, 0.04);
     border-radius: var(--radius-2xl);
     padding: 1.5rem;
-    box-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.05);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
   }
 
   .glow-button {
@@ -62,7 +62,7 @@ body {
 
   .glow-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px 0 rgba(168, 85, 247, 0.3);
+    box-shadow: 0 0 20px 0 rgba(5, 150, 105, 0.3);
   }
 
   .input-glass {
@@ -73,7 +73,7 @@ body {
 
   .input-glass:focus {
     border-color: var(--color-ring);
-    box-shadow: 0 0 10px 0 rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 10px 0 rgba(5, 150, 105, 0.3);
     outline: none;
   }
 }

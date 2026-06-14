@@ -182,8 +182,13 @@ export default async function DashboardPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-4">
           <div>
-            <Link href="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4 inline-block">
-              Mock Mate
+            <Link href="/" className="inline-flex items-center gap-2 mb-4 group text-xl font-bold text-foreground hover:text-primary transition-colors">
+              <svg className="size-6 text-primary transition-transform group-hover:scale-110" viewBox="0 0 80 80" aria-hidden="true" fill="currentColor">
+                <rect width="80" height="80" rx="18" fill="#059669" />
+                <path d="M40 12 L16 67 L29 67 L36 50 L44 50 L51 67 L64 67 Z" fill="white" />
+                <rect x="30" y="40" width="20" height="8" fill="#059669" />
+              </svg>
+              Almaprep
             </Link>
             <div className="flex items-center gap-3">
               <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-lg overflow-hidden">
@@ -209,12 +214,12 @@ export default async function DashboardPage() {
               {/* Border shimmer wrapper */}
               <div className="relative p-[1px] rounded-xl overflow-hidden bg-white/10 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-white/60 group-hover:to-secondary transition-all duration-500 shadow-xl">
                 {/* Button surface */}
-                <button className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-[#0A0A0A] flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
+                <button className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-white border border-border text-foreground flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
                   {/* Internal Shimmer Sweep */}
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></span>
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></span>
                   
                   <FontAwesomeIcon icon={faUserGear} className="text-primary group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 relative z-10" /> 
-                  <span className="text-white/80 group-hover:text-white transition-colors duration-300 relative z-10">My Profile</span>
+                  <span className="text-foreground/80 group-hover:text-foreground transition-colors duration-300 relative z-10">My Profile</span>
                 </button>
               </div>
             </Link>
