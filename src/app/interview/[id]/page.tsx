@@ -305,7 +305,7 @@ export default function InterviewPage({
   }
 
   return (
-    <main className="h-screen bg-[#202124] flex flex-col font-sans overflow-hidden">
+    <main className="h-screen bg-[#062b22] flex flex-col font-sans overflow-hidden">
       {/* Top Header */}
       <div className="flex items-center justify-between px-6 py-4 text-white">
         <h1 className="text-lg font-medium">{getCategoryLabel(category)}</h1>
@@ -321,7 +321,7 @@ export default function InterviewPage({
         {/* Video Grid */}
         <div className="flex-1 flex flex-col md:flex-row gap-4 h-full">
           {/* AI Interviewer Tile */}
-          <div className="flex-1 bg-[#3c4043] rounded-xl relative overflow-hidden flex items-center justify-center border border-white/10 shadow-lg">
+          <div className="flex-1 bg-[#0a3a2f] rounded-xl relative overflow-hidden flex items-center justify-center border border-emerald-500/10 shadow-lg">
             <div className={`size-32 md:size-48 rounded-full bg-primary/20 flex items-center justify-center border-4 ${isAiTyping ? 'border-primary/50 animate-pulse' : 'border-transparent'}`}>
               <span className="text-4xl md:text-6xl font-semibold text-primary">AI</span>
             </div>
@@ -337,7 +337,7 @@ export default function InterviewPage({
           </div>
 
           {/* User Webcam Tile */}
-          <div className="flex-1 bg-[#3c4043] rounded-xl relative overflow-hidden border border-white/10 shadow-lg flex items-center justify-center">
+          <div className="flex-1 bg-[#0a3a2f] rounded-xl relative overflow-hidden border border-emerald-500/10 shadow-lg flex items-center justify-center">
             {cameraError ? (
               <div className="text-center p-6 text-white/80">
                 <FontAwesomeIcon icon={faVideoSlash} className="text-3xl mb-3 text-red-400" />
@@ -362,8 +362,8 @@ export default function InterviewPage({
 
         {/* Chat Side Panel */}
         {isChatOpen && (
-          <div className="w-full md:w-[360px] bg-white/5 border border-white/10 rounded-xl flex flex-col overflow-hidden backdrop-blur-sm">
-            <div className="px-4 py-3 border-b border-white/10 bg-white/5 font-medium text-white flex justify-between items-center">
+          <div className="w-full md:w-[360px] bg-[#0a3a2f]/80 border border-emerald-500/10 rounded-xl flex flex-col overflow-hidden backdrop-blur-sm">
+            <div className="px-4 py-3 border-b border-emerald-500/10 bg-[#0a3a2f] font-medium text-white flex justify-between items-center">
               <span>Transcript</span>
               <button onClick={() => setIsChatOpen(false)} className="text-white/50 hover:text-white transition-colors">
                 <FontAwesomeIcon icon={faXmark} />
@@ -378,7 +378,7 @@ export default function InterviewPage({
                   <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${
                     msg.role === "user" 
                       ? "bg-primary text-white rounded-br-sm" 
-                      : "bg-[#3c4043] text-white/90 rounded-bl-sm"
+                      : "bg-[#134e40] text-white/90 rounded-bl-sm"
                   }`}>
                     {msg.content}
                   </div>
@@ -387,7 +387,7 @@ export default function InterviewPage({
               {isAiTyping && (
                 <div className="flex flex-col items-start">
                   <span className="text-[10px] text-white/50 mb-1 ml-1">Interviewer</span>
-                  <div className="bg-[#3c4043] rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5">
+                  <div className="bg-[#134e40] rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5">
                     <span className="size-1.5 rounded-full bg-white/50 animate-bounce" />
                     <span className="size-1.5 rounded-full bg-white/50 animate-bounce" style={{ animationDelay: "150ms" }} />
                     <span className="size-1.5 rounded-full bg-white/50 animate-bounce" style={{ animationDelay: "300ms" }} />
@@ -398,7 +398,7 @@ export default function InterviewPage({
             </div>
 
             {/* Chat Input */}
-            <div className="p-3 bg-white/5 border-t border-white/10">
+            <div className="p-3 bg-[#0a3a2f]/40 border-t border-emerald-500/10">
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -407,7 +407,7 @@ export default function InterviewPage({
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
                   placeholder={isAiTyping ? "Waiting..." : "Type a message"}
                   disabled={isAiTyping || isComplete}
-                  className="w-full bg-[#3c4043] text-sm text-white placeholder-white/40 rounded-full pl-4 pr-10 py-2.5 outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
+                  className="w-full bg-[#134e40] text-sm text-white placeholder-white/40 rounded-full pl-4 pr-10 py-2.5 outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
                 />
                 <button
                   onClick={handleSend}
@@ -423,14 +423,14 @@ export default function InterviewPage({
       </div>
 
       {/* Bottom Control Bar */}
-      <div className="h-20 flex items-center justify-center gap-4 bg-[#202124] border-t border-white/5 pb-2">
+      <div className="h-20 flex items-center justify-center gap-4 bg-[#062b22] border-t border-emerald-500/10 pb-2">
         <button 
           onClick={toggleListening}
           disabled={isAiTyping || isComplete}
           className={`size-12 rounded-full flex items-center justify-center transition-all ${
             isListening 
               ? "bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]" 
-              : "bg-[#3c4043] text-white hover:bg-[#4a4d51] border border-white/10"
+              : "bg-[#0a3a2f] text-white hover:bg-[#134e40] border border-emerald-500/10"
           }`}
           title={isListening ? "Turn off microphone" : "Turn on microphone"}
         >
@@ -440,7 +440,7 @@ export default function InterviewPage({
         <button 
           onClick={() => setIsChatOpen(!isChatOpen)}
           className={`size-12 rounded-full flex items-center justify-center transition-all ${
-            isChatOpen ? "bg-primary text-white shadow-[0_0_15px_rgba(var(--primary),0.5)]" : "bg-[#3c4043] text-white hover:bg-[#4a4d51] border border-white/10"
+            isChatOpen ? "bg-primary text-white shadow-primary/50" : "bg-[#0a3a2f] text-white hover:bg-[#134e40] border border-emerald-500/10"
           }`}
           title="Toggle Chat"
         >

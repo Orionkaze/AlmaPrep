@@ -74,7 +74,7 @@ export function ParticleBackground() {
   }, []);
 
   if (!mounted) {
-    return <div className="absolute inset-0 z-0 bg-[#0A0A0A] opacity-40" />;
+    return <div className="absolute inset-0 z-0 bg-background opacity-40" />;
   }
 
   return (
