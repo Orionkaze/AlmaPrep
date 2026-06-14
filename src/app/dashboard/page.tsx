@@ -32,19 +32,14 @@ const avatarMap: Record<string, typeof faUserTie> = {
   "star": faStar,
 }
 
-  // Try getting Supabase user, handling network issues gracefully
-  let supabaseUser = null
-  try {
-    const { data } = await supabase.auth.getUser()
-    supabaseUser = data?.user || null
-  } catch (err) {
-    console.error("Dashboard: Failed to fetch Supabase user:", err)
-  }
-
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions)
   const cookieStore = await cookies()
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-  let activeUser = (session?.user || supabaseUser) as any
-  let userId = (session?.user as any)?.id || supabaseUser?.id
+
+  let supabaseUser = null
+  let activeUser = session?.user as any
+  let userId = (session?.user as any)?.id
 
   let isDemoMode = false
   if (!activeUser && hasDemoCookie) {
@@ -54,6 +49,21 @@ const avatarMap: Record<string, typeof faUserTie> = {
       email: "luffy@goingmerry.org",
     }
     userId = "demo-user-id"
+  }
+
+  const supabase = isDemoMode ? null : await createClient()
+
+  if (!isDemoMode && supabase) {
+    try {
+      const { data } = await supabase.auth.getUser()
+      supabaseUser = data?.user || null
+      if (supabaseUser) {
+        activeUser = supabaseUser
+        userId = supabaseUser.id
+      }
+    } catch (err) {
+      console.error("Dashboard: Failed to fetch Supabase user:", err)
+    }
   }
 
   let displayName = "User"
@@ -81,6 +91,7 @@ const avatarMap: Record<string, typeof faUserTie> = {
         id: "demo-mixed-session"
       }
     } else {
+      if (!supabase) redirect("/login")
       // 1. Fetch user profile
       const { data: profile } = await supabase
         .from("users")

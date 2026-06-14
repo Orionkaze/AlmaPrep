@@ -2,11 +2,35 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function updateSession(request: NextRequest) {
+  const hasNextAuthCookie = request.cookies.has("next-auth.session-token") ||
+                            request.cookies.has("__Secure-next-auth.session-token")
+  const hasDemoCookie = request.cookies.has("mockmate-demo-session")
+
+  const path = request.nextUrl.pathname
+  const isProtectedRoute = path === '/' ||
+                           path.startsWith('/dashboard') || 
+                           path.startsWith('/interview') ||
+                           path.startsWith('/onboarding')
+
+  if (hasNextAuthCookie || hasDemoCookie) {
+    if (path === '/login' || path === '/signup') {
+      const url = request.nextUrl.clone()
+      url.pathname = '/dashboard'
+      return NextResponse.redirect(url)
+    }
+    return NextResponse.next({ request })
+  }
+
   // Skip Supabase auth if credentials aren't configured yet
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseKey) {
+    if (isProtectedRoute) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
+    }
     return NextResponse.next({ request })
   }
 
@@ -35,30 +59,23 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  let user = null
+  try {
+    const {
+      data: { user: supabaseUser },
+    } = await supabase.auth.getUser()
+    user = supabaseUser
+  } catch (err) {
+    console.error("Supabase auth error in middleware:", err)
+  }
 
-  const hasNextAuthCookie = request.cookies.has("next-auth.session-token") ||
-                            request.cookies.has("__Secure-next-auth.session-token")
-  const hasDemoCookie = request.cookies.has("mockmate-demo-session")
-  const isAuthed = hasNextAuthCookie || hasDemoCookie || !!user
-
-  const path = request.nextUrl.pathname
-  // Protect routes here (including root '/')
-  const isProtectedRoute = path === '/' ||
-                           path.startsWith('/dashboard') || 
-                           path.startsWith('/interview') ||
-                           path.startsWith('/onboarding')
-
-  if (!isAuthed && isProtectedRoute) {
+  if (!user && isProtectedRoute) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // If user exists and tries to access login/signup, redirect to dashboard
-  if (isAuthed && (path === '/login' || path === '/signup')) {
+  if (user && (path === '/login' || path === '/signup')) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
     return NextResponse.redirect(url)
@@ -66,4 +83,5 @@ export async function updateSession(request: NextRequest) {
 
   return supabaseResponse
 }
+
 

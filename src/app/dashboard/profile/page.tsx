@@ -16,21 +16,12 @@ const mockHistory = [
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions)
-  const supabase = await createClient()
-  
-  // Try getting Supabase user, handling network issues gracefully
-  let supabaseUser = null
-  try {
-    const { data } = await supabase.auth.getUser()
-    supabaseUser = data?.user || null
-  } catch (err) {
-    console.error("ProfilePage: Failed to fetch Supabase user:", err)
-  }
-
   const cookieStore = await cookies()
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-  let activeUser = (session?.user || supabaseUser) as any
-  let userId = (session?.user as any)?.id || supabaseUser?.id
+  
+  let supabaseUser = null
+  let activeUser = session?.user as any
+  let userId = (session?.user as any)?.id
 
   let isDemoMode = false
   if (!activeUser && hasDemoCookie) {
@@ -40,6 +31,21 @@ export default async function ProfilePage() {
       email: "luffy@goingmerry.org",
     }
     userId = "demo-user-id"
+  }
+
+  const supabase = isDemoMode ? null : await createClient()
+
+  if (!isDemoMode && supabase) {
+    try {
+      const { data } = await supabase.auth.getUser()
+      supabaseUser = data?.user || null
+      if (supabaseUser) {
+        activeUser = supabaseUser
+        userId = supabaseUser.id
+      }
+    } catch (err) {
+      console.error("ProfilePage: Failed to fetch Supabase user:", err)
+    }
   }
 
   if (!activeUser || !userId) {
@@ -68,6 +74,7 @@ export default async function ProfilePage() {
       status: item.status
     }))
   } else {
+    if (!supabase) redirect("/login")
     // 1. Fetch user profile
     const { data: profile } = await supabase
       .from("users")

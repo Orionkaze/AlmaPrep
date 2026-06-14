@@ -10,20 +10,11 @@ import { LogoutButton } from "@/components/logout-button"
 
 export default async function ResumePage() {
   const session = await getServerSession(authOptions)
-  const supabase = await createClient()
-  
-  // Try getting Supabase user, handling network issues gracefully
-  let supabaseUser = null
-  try {
-    const { data } = await supabase.auth.getUser()
-    supabaseUser = data?.user || null
-  } catch (err) {
-    console.error("ResumePage: Failed to fetch Supabase user:", err)
-  }
-
   const cookieStore = await cookies()
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-  let activeUser = (session?.user || supabaseUser) as any
+  
+  let supabaseUser = null
+  let activeUser = session?.user as any
 
   let isDemoMode = false
   if (!activeUser && hasDemoCookie) {
@@ -31,6 +22,20 @@ export default async function ResumePage() {
     activeUser = {
       name: "Straw Hat Luffy",
       email: "luffy@goingmerry.org",
+    }
+  }
+
+  const supabase = isDemoMode ? null : await createClient()
+
+  if (!isDemoMode && supabase) {
+    try {
+      const { data } = await supabase.auth.getUser()
+      supabaseUser = data?.user || null
+      if (supabaseUser) {
+        activeUser = supabaseUser
+      }
+    } catch (err) {
+      console.error("ResumePage: Failed to fetch Supabase user:", err)
     }
   }
 
