@@ -37,7 +37,7 @@ export default function FeaturesPage() {
                 <h3 style={{ margin: "16px 0 8px" }}>&ldquo;Tell me about a time you led a team through a setback.&rdquo;</h3>
                 <p style={{ color: "var(--muted)", margin: 0 }}>Admissions &middot; Behavioral &middot; Medium difficulty</p>
                 <div style={{ marginTop: "20px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                  <span className="pill">Leadership</span><span class="pill">Resilience</span><span class="pill">STAR method</span>
+                  <span className="pill">Leadership</span><span className="pill">Resilience</span><span className="pill">STAR method</span>
                 </div>
               </div>
             </div>

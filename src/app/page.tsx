@@ -143,9 +143,9 @@ export default function Home() {
         <section className="section-sm">
           <div className="wrap">
             <div className="stats narrow">
-              <div className="stat reveal"><div className="num">1,000s</div><div class="lbl" style={{ color: "var(--muted)" }}>Vetted interview questions</div></div>
-              <div className="stat reveal"><div className="num">$0</div><div class="lbl" style={{ color: "var(--muted)" }}>For students, forever</div></div>
-              <div className="stat reveal"><div className="num">24/7</div><div class="lbl" style={{ color: "var(--muted)" }}>Practice on their schedule</div></div>
+              <div className="stat reveal"><div className="num">1,000s</div><div className="lbl" style={{ color: "var(--muted)" }}>Vetted interview questions</div></div>
+              <div className="stat reveal"><div className="num">$0</div><div className="lbl" style={{ color: "var(--muted)" }}>For students, forever</div></div>
+              <div className="stat reveal"><div className="num">24/7</div><div className="lbl" style={{ color: "var(--muted)" }}>Practice on their schedule</div></div>
             </div>
           </div>
         </section>
