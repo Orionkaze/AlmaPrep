@@ -32,8 +32,12 @@ export default function LoginPage() {
         setError(error.message)
         setLoading(false)
       } else {
-        // Clear demo cookie if logging in with real credentials
-        document.cookie = "mockmate-demo-session=; path=/; max-age=0"
+        // Clear demo cookie if logging in with real credentials (not mock mode)
+        const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz");
+        if (!isMockMode) {
+          document.cookie = "mockmate-demo-session=; path=/; max-age=0"
+        }
         window.location.href = "/dashboard"
       }
     } catch (err) {

@@ -21,11 +21,13 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.next({ request })
   }
 
-  // Skip Supabase auth if credentials aren't configured yet
+  // Skip Supabase auth if credentials aren't configured yet or are mock
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-  if (!supabaseUrl || !supabaseKey) {
+  const isMockMode = !supabaseUrl || !supabaseKey || supabaseUrl.includes("evdfkeikrrsdthnekrrz")
+
+  if (isMockMode) {
     if (isProtectedRoute) {
       const url = request.nextUrl.clone()
       url.pathname = '/login'

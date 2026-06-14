@@ -38,8 +38,12 @@ export default function SignupPage() {
         setLoading(false)
       } else {
         setLoading(false)
-        // Clear demo cookie if signing up with real credentials
-        document.cookie = "mockmate-demo-session=; path=/; max-age=0"
+        // Clear demo cookie if signing up with real credentials (not mock mode)
+        const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz");
+        if (!isMockMode) {
+          document.cookie = "mockmate-demo-session=; path=/; max-age=0"
+        }
         
         if (data.session) {
           setSuccess("Account created successfully! Redirecting to onboarding...")
