@@ -11,6 +11,14 @@ export async function createUserProfile(
     const cookieStore = await cookies()
     const hasDemoCookie = cookieStore.has("mockmate-demo-session")
     if (hasDemoCookie) {
+      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+      let email = "luffy@goingmerry.org"
+      if (demoUserCookie) {
+        try {
+          email = JSON.parse(demoUserCookie).email || email
+        } catch (e) {}
+      }
+      cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }
     }
 
@@ -50,6 +58,14 @@ export async function updateUserProfile(
     const cookieStore = await cookies()
     const hasDemoCookie = cookieStore.has("mockmate-demo-session")
     if (hasDemoCookie) {
+      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+      let email = "luffy@goingmerry.org"
+      if (demoUserCookie) {
+        try {
+          email = JSON.parse(demoUserCookie).email || email
+        } catch (e) {}
+      }
+      cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }
     }
 
