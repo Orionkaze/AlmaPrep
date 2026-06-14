@@ -137,6 +137,7 @@ export async function generateFeedback(
   strengths: string[]
   improvements: string[]
   studyGuide?: { topic: string; advice: string }[]
+  questionEvaluation?: { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[]
   breakdown: { label: string; score: number; color: string }[]
 }> {
   const fallbackFeedback = {
@@ -159,7 +160,8 @@ export async function generateFeedback(
         topic: "Technical Depth",
         advice: "When explaining technical concepts, try to go one level deeper into the architecture or trade-offs involved."
       }
-    ]
+    ],
+    questionEvaluation: []
   }
 
   try {
@@ -178,6 +180,15 @@ Respond ONLY with a valid JSON object matching this exact structure:
   "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
   "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
   "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
+  "questionEvaluation": [
+    {
+      "question": "<the exact question asked from the question bank (or standard track)>",
+      "userAnswer": "<brief summary of candidate's answer>",
+      "score": <score for this answer, number between 0 and 100>,
+      "feedback": "<constructive feedback for this answer comparing it to what we look for>",
+      "modelAnswer": "<the ideal answer or model answer from the question bank (or standard track)>"
+    }
+  ],
   "studyGuide": [
     { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
     { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
@@ -198,6 +209,7 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       strengths: string[]
       improvements: string[]
       studyGuide?: { topic: string; advice: string }[]
+      questionEvaluation?: { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[]
       breakdown: { label: string; score: number }[]
     }
 
@@ -240,6 +252,7 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       strengths: Array.isArray(data.strengths) ? data.strengths : ["Clear communication"],
       improvements: Array.isArray(data.improvements) ? data.improvements : ["Add details to answers"],
       studyGuide: Array.isArray(data.studyGuide) ? data.studyGuide : fallbackFeedback.studyGuide,
+      questionEvaluation: Array.isArray(data.questionEvaluation) ? data.questionEvaluation : [],
       breakdown,
     }
   } catch (error: any) {
@@ -328,7 +341,8 @@ export async function saveInterviewFeedback(
   summary: string,
   improvements: string[],
   strengths?: string[],
-  studyGuide?: { topic: string; advice: string }[]
+  studyGuide?: { topic: string; advice: string }[],
+  questionEvaluation?: { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[]
 ): Promise<boolean> {
   try {
     const session = await getServerSession(authOptions)
@@ -338,11 +352,12 @@ export async function saveInterviewFeedback(
 
     if (!userId) return false
 
-    // Serialize strengths and studyGuide inside summary since table lacks dedicated columns
+    // Serialize strengths, studyGuide, and questionEvaluation inside summary since table lacks dedicated columns
     const serializedSummary = JSON.stringify({
       summary,
       strengths: strengths || ["Clear Communication", "Structured Delivery"],
-      studyGuide: studyGuide || []
+      studyGuide: studyGuide || [],
+      questionEvaluation: questionEvaluation || []
     })
 
     const { error } = await supabase.from("feedback").insert({
@@ -395,6 +410,7 @@ export async function getFeedback(interviewId: string) {
     let summaryText = data.summary || ""
     let strengthsData = ["Clear Communication", "Structured Delivery"]
     let studyGuideData: { topic: string; advice: string }[] = []
+    let questionEvaluationData: { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[] = []
 
     try {
       if (summaryText.startsWith("{")) {
@@ -402,6 +418,7 @@ export async function getFeedback(interviewId: string) {
         summaryText = parsed.summary || ""
         strengthsData = parsed.strengths || strengthsData
         studyGuideData = parsed.studyGuide || []
+        questionEvaluationData = parsed.questionEvaluation || []
       }
     } catch (e) {
       console.warn("Failed to parse serialized summary JSON:", e)
@@ -413,6 +430,7 @@ export async function getFeedback(interviewId: string) {
       strengths: strengthsData,
       improvements: data.improvement_suggestions || [],
       studyGuide: studyGuideData,
+      questionEvaluation: questionEvaluationData,
       breakdown: [
         { label: "Communication", score: data.score, color: "bg-primary" },
         { label: "Technical Knowledge", score: Math.max(50, data.score - 5), color: "bg-secondary" },

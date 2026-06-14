@@ -9,6 +9,7 @@ import {
 } from "@/lib/llm"
 import { createClient } from "@/lib/supabase/server"
 import { headers } from "next/headers"
+import { getProgramQuestions } from "./programs"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
@@ -107,13 +108,23 @@ export async function executeAIRouting(
       }
     }
 
-    const resumeContextPrompt = resumeText 
-      ? `The candidate has provided their resume for customization:
+    const questions = getProgramQuestions(category)
+    let resumeContextPrompt = ""
+    if (resumeText) {
+      if (questions && questions.length > 0) {
+        resumeContextPrompt = `The candidate has provided their resume for customization:
+---
+${resumeText}
+---
+IMPORTANT: Integrate the candidate's resume context with the Question Bank. For the selected questions or follow-ups, tailor them to refer to the candidate's projects, technologies, and experiences where relevant. For example, if a question in the bank asks about database design, ask it in the context of a database project listed on their resume.`
+      } else {
+        resumeContextPrompt = `The candidate has provided their resume for customization:
 ---
 ${resumeText}
 ---
 Focus your interview questions on their background, experiences, projects, and technologies listed in the resume, while still aligning with the "${category}" interview category.`
-      : ""
+      }
+    }
 
     let personaPrompt = "You are a professional, encouraging, and standard recruiter."
     if (persona === "roast") {
@@ -124,16 +135,44 @@ Focus your interview questions on their background, experiences, projects, and t
       personaPrompt = "You are a very supportive, warm, and friendly interviewer. You want the candidate to succeed, so you offer gentle encouragement before asking the next question."
     }
 
+    let domainSpecificPrompt = ""
+    if (questions && questions.length > 0) {
+      const programName = questions[0].program
+      domainSpecificPrompt = `
+You are interviewing the candidate for the specialized academic/professional program: "${programName}".
+Here is the official Question Bank of standard questions for this domain. You must select questions from this bank to structure the interview:
+---
+${JSON.stringify(questions.map(q => ({
+  id: q.id,
+  subtopic: q.subtopic,
+  question: q.question,
+  lookingFor: q.lookingFor,
+  followUps: q.followUps,
+  commonMistakes: q.commonMistakes
+})), null, 2)}
+---
+
+Rules for utilizing the Question Bank:
+1. Start the interview by selecting an introductory question from the bank (typically from the "Motivation & Fit" category).
+2. For each follow-up:
+   - Ask follow-up questions to probe the candidate's depth of knowledge or address mistakes in their previous answer (use the "lookingFor", "commonMistakes", and "followUps" fields of the current question for guidance).
+   - Once the candidate has answered a question adequately or if they struggle, transition to a new question from the Question Bank.
+3. Track the conversation history carefully. Do not repeat questions from the bank that have already been asked or covered.
+4. Aim to cover a variety of subtopics (e.g. core concepts, subject-specific probes, and motivation).
+`
+    }
+
     systemPrompt = `You are an expert AI Interviewer conducting a mock interview for the category: "${category}".
 ${personaPrompt}
 Your goal is to conduct a realistic and interactive conversation in this exact persona.
 Assess the candidate's answers, ask relevant follow-up questions, or transition to a new topic as appropriate.
 ${resumeContextPrompt}
+${domainSpecificPrompt}
 
 Rules:
 1. Keep your responses concise, natural, and conversational (1-3 sentences maximum). Stay deeply in your persona.
 2. Do not use any markdown formatting, prefixing, headers, or bullet points (e.g. do not write "Question: ..."). Just output the raw conversational text.
-3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category.
+3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category (or from the question bank if available).
 4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.`
 
     const formattedMessages = previousMessages.map((msg: any) => ({
@@ -156,30 +195,60 @@ Rules:
       .map((msg: any) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
 
+    const questions = getProgramQuestions(category)
+    let domainSpecificFeedbackPrompt = ""
+    if (questions && questions.length > 0) {
+      const programName = questions[0].program
+      domainSpecificFeedbackPrompt = `
+The interview was conducted for the specialized program/domain: "${programName}".
+Here is the official Question Bank containing the ideal criteria and model answers for reference:
+---
+${JSON.stringify(questions.map(q => ({
+  id: q.id,
+  question: q.question,
+  lookingFor: q.lookingFor,
+  idealAnswer: q.idealAnswer
+})), null, 2)}
+---
+Evaluate the candidate's answers against the "lookingFor" criteria and "idealAnswer" models for the specific questions that were asked in the transcript. Provide concrete feedback showing where they matched these standards or where they fell short.
+`
+    }
+
     systemPrompt = `You are an expert interviewer evaluating a candidate's performance in a mock interview for the category: "${category}".`
     promptText = `Analyze the following transcript of the mock interview:
 ${transcript}
 
-Evaluate the candidate's answers based on communication, technical depth, structured delivery, and confidence.
-Respond ONLY with a valid JSON object matching this exact structure:
-{
-  "score": <number between 0 and 100>,
-  "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
-  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
-  "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
-  "studyGuide": [
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
-  ],
-  "breakdown": [
-    { "label": "Communication", "score": <number> },
-    { "label": "Technical Knowledge", "score": <number> },
-    { "label": "Problem Solving", "score": <number> },
-    { "label": "Confidence", "score": <number> }
-  ]
-}
+${domainSpecificFeedbackPrompt}
 
-Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
+    Respond ONLY with a valid JSON object matching this exact structure:
+    {
+      "score": <number between 0 and 100>,
+      "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
+      "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
+      "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
+      "questionEvaluation": [
+        {
+          "question": "<the exact question asked from the question bank (or standard track)>",
+          "userAnswer": "<brief summary of candidate's answer>",
+          "score": <score for this answer, number between 0 and 100>,
+          "feedback": "<constructive feedback for this answer comparing it to what we look for>",
+          "modelAnswer": "<the ideal answer or model answer from the question bank (or standard track)>"
+        }
+      ],
+      "studyGuide": [
+        { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
+        { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
+      ],
+      "breakdown": [
+        { "label": "Communication", "score": <number> },
+        { "label": "Technical Knowledge", "score": <number> },
+        { "label": "Problem Solving", "score": <number> },
+        { "label": "Confidence", "score": <number> }
+      ]
+    }
+
+    If no specialized program question bank was used (i.e. standard hr, technical, mixed interviews), return an empty array [] for "questionEvaluation".
+    Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
   } else if (task === "analyze_resume") {
     isJson = true
     const resumeText = prompt

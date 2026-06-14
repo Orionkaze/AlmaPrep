@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-computer-science-a-001",
+    "category": "Motivation & Fit",
+    "subtopic": "Why Computer Science",
+    "program": "Computer Science",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story", "cs"],
+    "question": "What first drew you to Computer Science?",
+    "lookingFor": "A genuine, personal origin story — a specific moment, problem, or encounter that sparked interest, not a vague 'I've always liked computers'.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment or experience, not a generalisation",
+        "Connect it to something you then pursued — a project, a course, wider reading",
+        "Show the interest compounding, not static"
+      ],
+      "modelAnswer": "It started when I was about fourteen and broke a home network we'd just set up. Instead of calling for help I spent an afternoon reading documentation and packet-tracing with Wireshark until I fixed it, and I remember the specific feeling of understanding something invisible. That sent me down a rabbit hole — I taught myself Python over the next year, built a small tool to scrape football results for a stats project, and realised I was spending my free time doing what I'd eventually want to do every day. That's when it stopped being a hobby and started feeling like a direction."
+    },
+    "commonMistakes": [
+      "'I've always been into tech' with nothing more specific",
+      "Pointing to a person who inspired you rather than a personal encounter with the subject",
+      "No evidence of self-directed pursuit after the initial spark"
+    ],
+    "followUps": ["What did you build or learn next after that first experience?"]
+  },
+  {
+    "id": "prog-computer-science-a-002",
+    "category": "Motivation & Fit",
+    "subtopic": "Why this course specifically",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit", "research"],
+    "question": "Why do you want to study Computer Science at this university in particular?",
+    "lookingFor": "Evidence of real research — a named module, lab, staff member, or structural feature — tied to a concrete personal interest, not generic praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least one specific feature of this course you've researched",
+        "Connect it to something you've already done or want to explore",
+        "Show you understand what distinguishes this course from others you could have picked"
+      ],
+      "modelAnswer": "Two things pulled me here specifically. First, the optional systems programming module in year two is rare at undergraduate level — most courses I looked at abstract the hardware away entirely, and I want to understand what's underneath. Second, I read about the human-computer interaction research group and the work on accessible interfaces, which connects directly to a side project I did building a screen-reader-friendly version of a school timetable app. I want to carry that instinct somewhere it can grow into real research, and this department offers that path."
+    },
+    "commonMistakes": [
+      "Praising the university's ranking or reputation instead of the course",
+      "Describing features that exist at every university",
+      "Showing no awareness of the course structure beyond the title"
+    ],
+    "followUps": ["What would you bring to the research group you mentioned?"]
+  },
+  {
+    "id": "prog-computer-science-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithms and complexity",
+    "program": "Computer Science",
+    "difficulty": "easy",
+    "tags": ["algorithms", "big-o", "fundamentals"],
+    "question": "Can you explain what we mean by the time complexity of an algorithm, and why it matters?",
+    "lookingFor": "A clear explanation of Big-O notation in plain terms, plus genuine understanding of why it matters beyond 'it tells you how fast the code is'.",
+    "idealAnswer": {
+      "bullets": [
+        "Define time complexity as how runtime grows with input size, not raw speed",
+        "Use a concrete example to illustrate O(n) vs O(n²) or similar",
+        "Explain why this matters at scale — small inputs hide the difference"
+      ],
+      "modelAnswer": "Time complexity describes how the number of steps an algorithm takes scales as the input grows — not how fast it runs on one machine, because that depends on hardware. We usually express it with Big-O notation. So an O(n) algorithm doubles its work when you double the input, while an O(n²) algorithm quadruples it. If you're searching a list of a hundred items, both might feel instant. But once you're searching millions of records, the quadratic algorithm becomes unusable. Understanding complexity is what stops you from writing something that works in testing and then falls over in production."
+    },
+    "commonMistakes": [
+      "Confusing time complexity with actual clock speed",
+      "Explaining only one complexity class with no comparison",
+      "Missing the point about scale — that small inputs hide the problem"
+    ],
+    "followUps": ["Can you give me an example of an O(n log n) algorithm you've come across?"]
+  },
+  {
+    "id": "prog-computer-science-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Recursion",
+    "program": "Computer Science",
+    "difficulty": "easy",
+    "tags": ["recursion", "programming", "fundamentals"],
+    "question": "Can you explain recursion and give an example of a problem it solves naturally?",
+    "lookingFor": "A clear, confident explanation of recursion including base cases, with a real example that shows the applicant actually understands it rather than has memorised a definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Define recursion as a function calling itself with a smaller version of the problem",
+        "Stress the base case — without it, infinite loop",
+        "Pick an example where the recursive structure mirrors the problem's own structure"
+      ],
+      "modelAnswer": "Recursion is when a function solves a problem by calling itself on a smaller version of the same problem, shrinking it step by step until it hits a base case that it can answer directly. The classic example is factorial: factorial of n is n times factorial of n minus one, and the base case is factorial of one equals one. But I find the more interesting example is tree traversal — if you want to visit every node in a file system, each folder is itself a folder containing more folders, so the recursive structure of the algorithm exactly mirrors the recursive structure of the data. That's when recursion stops feeling like a trick and starts feeling like the right shape for the problem."
+    },
+    "commonMistakes": [
+      "Forgetting to mention the base case",
+      "Giving only factorial as an example without explaining why recursion fits it",
+      "Confusing recursion with a loop"
+    ],
+    "followUps": ["What's the risk of using recursion without thinking carefully about the input size?"]
+  },
+  {
+    "id": "prog-computer-science-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Data structures",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["data-structures", "arrays", "linked-lists"],
+    "question": "What are the trade-offs between using an array and a linked list?",
+    "lookingFor": "A confident comparison of access, insertion, and memory — showing the applicant thinks in trade-offs rather than 'one is better'.",
+    "idealAnswer": {
+      "bullets": [
+        "Arrays: O(1) random access, O(n) insertion/deletion in the middle, contiguous memory",
+        "Linked lists: O(n) access, O(1) insertion/deletion at a known pointer, dynamic sizing",
+        "Frame it as a trade-off decision driven by usage pattern"
+      ],
+      "modelAnswer": "It really depends on what you're doing most often. Arrays store elements in contiguous memory, so you can jump to any index in constant time — great if you're reading by position a lot. But inserting in the middle means shifting everything after it, which is slow at scale. A linked list stores a pointer to the next node alongside each element, so insertion or deletion just requires updating two pointers — constant time once you have the right node. The cost is that finding that node means traversing from the start. So if I'm building something where I'm mostly reading by index, I'd lean toward an array; if I'm doing a lot of insertions and deletions in arbitrary positions, a linked list might make more sense."
+    },
+    "commonMistakes": [
+      "Saying linked lists are 'always better for insertion' without the caveat about finding the position first",
+      "Ignoring memory layout and cache behaviour",
+      "Framing one as simply better rather than context-dependent"
+    ],
+    "followUps": ["Can you think of a real-world situation where each would be the natural choice?"]
+  },
+  {
+    "id": "prog-computer-science-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Sorting algorithms",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["algorithms", "sorting", "comparison"],
+    "question": "Walk me through how merge sort works and why it's often preferred over bubble sort for large datasets.",
+    "lookingFor": "A clear explanation of the divide-and-conquer idea, with a comparison rooted in time complexity rather than just 'it's faster'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain divide-and-conquer: split in half recursively until single elements, then merge",
+        "State that merge sort is O(n log n) vs bubble sort's O(n²)",
+        "Acknowledge merge sort's space cost as the honest trade-off"
+      ],
+      "modelAnswer": "Merge sort works by splitting the list in half repeatedly until you have single-element sublists — which are trivially sorted — then merging those sorted halves back together, comparing elements as you go. That merge step is the key: because each half is already sorted, a single pass suffices. The total cost is O(n log n) because you do log n splits and each merge is O(n). Bubble sort is O(n²) because it compares every adjacent pair and bubbles elements across the whole list repeatedly. For a few hundred elements you'd barely notice, but for millions the difference is massive. The honest trade-off with merge sort is memory — you need extra space for the merged sublists, which matters in constrained environments."
+    },
+    "commonMistakes": [
+      "Describing merge sort as 'just faster' without the complexity argument",
+      "Getting the merging step wrong — merging is not just concatenating",
+      "Ignoring the space trade-off entirely"
+    ],
+    "followUps": ["When might you still prefer an in-place sort despite its worse complexity?"]
+  },
+  {
+    "id": "prog-computer-science-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Object-oriented programming",
+    "program": "Computer Science",
+    "difficulty": "easy",
+    "tags": ["oop", "programming-paradigm", "fundamentals"],
+    "question": "Can you explain the concept of inheritance in object-oriented programming and where it's useful?",
+    "lookingFor": "A clear explanation of the parent-child class relationship, with a concrete example and an awareness of when it can be misused.",
+    "idealAnswer": {
+      "bullets": [
+        "Define inheritance: a child class acquires properties and methods of a parent class",
+        "Give a concrete example that makes the hierarchy intuitive",
+        "Show awareness of when inheritance creates problems — tight coupling, fragile hierarchies"
+      ],
+      "modelAnswer": "Inheritance lets you define a class that automatically gets all the properties and methods of another class, so you can extend or specialise it without rewriting shared behaviour. A common example is a Shape base class with an area method — Circle and Rectangle inherit from Shape and override area with their own formula, but share any other Shape behaviour for free. It's powerful for modelling real-world hierarchies and reducing repeated code. Where I've seen it go wrong is when people force things into a hierarchy that doesn't really have one, and the child class ends up overriding so much that the parent's logic is irrelevant. That's usually a sign composition would have been the better design."
+    },
+    "commonMistakes": [
+      "Defining inheritance correctly but giving no example",
+      "Not distinguishing overriding from overloading",
+      "No awareness of when inheritance becomes a design problem"
+    ],
+    "followUps": ["What's the difference between inheritance and composition, and when would you prefer each?"]
+  },
+  {
+    "id": "prog-computer-science-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Boolean logic and binary",
+    "program": "Computer Science",
+    "difficulty": "easy",
+    "tags": ["binary", "boolean-logic", "low-level"],
+    "question": "Why do computers use binary, and how does binary arithmetic work at a basic level?",
+    "lookingFor": "A clear, unpretentious explanation linking binary to physical hardware constraints, plus a basic demonstration of binary addition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that binary maps naturally to two stable electrical states",
+        "Show a simple binary addition (e.g. 1 + 1 = 10 in binary)",
+        "Connect it to how this scales up to represent any number or instruction"
+      ],
+      "modelAnswer": "Computers use binary because the electronics underneath have two reliable states — a transistor is either conducting or not, a capacitor charged or not. It's far easier to build hardware that distinguishes two states reliably than ten. In binary, each digit is a power of two: so 1011 in binary is eight plus two plus one, which is eleven in decimal. Addition works similarly to decimal but carries at two instead of ten — so one plus one gives zero with a carry of one, written as 10 in binary. What I find fascinating is that everything — text, images, instructions — is ultimately just patterns of these two states."
+    },
+    "commonMistakes": [
+      "Just saying 'computers use binary because they only understand 0s and 1s' without explaining why",
+      "Confusing binary with hexadecimal",
+      "Unable to demonstrate even basic binary addition"
+    ],
+    "followUps": ["How would you represent the number 13 in binary?"]
+  },
+  {
+    "id": "prog-computer-science-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Networking fundamentals",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["networking", "tcp-ip", "protocols"],
+    "question": "Can you explain, at a high level, what happens when you type a URL into your browser and press Enter?",
+    "lookingFor": "A layered explanation showing the applicant understands DNS, TCP/IP, and HTTP — not necessarily in textbook depth, but as a coherent end-to-end story.",
+    "idealAnswer": {
+      "bullets": [
+        "DNS: the domain is resolved to an IP address",
+        "TCP: a connection is established to that IP, HTTP request is sent",
+        "Server responds, browser renders — show the pipeline, not just one step"
+      ],
+      "modelAnswer": "Your browser first needs to find the IP address for the domain, so it queries a DNS server — essentially a phonebook for the internet. Once it has the IP, it opens a TCP connection to the server, doing the three-way handshake to establish a reliable channel. Then it sends an HTTP request — GET for the page you asked for. The server processes that and sends back an HTTP response with the HTML. Your browser parses the HTML, discovers it needs CSS files and images, fires off more requests for those, and renders the page. What struck me when I first traced this properly was how many network round-trips a single page visit involves — it made me understand why performance engineers care so much about reducing them."
+    },
+    "commonMistakes": [
+      "Stopping at DNS without explaining what happens after the IP is found",
+      "Confusing HTTP and TCP",
+      "Missing that a page often triggers multiple additional requests for resources"
+    ],
+    "followUps": ["What does HTTPS add to that process, and why does it matter?"]
+  },
+  {
+    "id": "prog-computer-science-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Databases",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["databases", "sql", "data-modelling"],
+    "question": "What is a relational database, and can you explain what a foreign key does?",
+    "lookingFor": "A clear grasp of the relational model — tables, rows, relationships — and a precise, accurate explanation of foreign keys as the mechanism that enforces those relationships.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a relational database as structured tables linked by relationships",
+        "Explain primary key first, then foreign key as a reference to another table's primary key",
+        "Give a concrete example of the referential integrity this enforces"
+      ],
+      "modelAnswer": "A relational database organises data into tables — each table has rows representing records and columns representing attributes, and every row has a unique identifier called a primary key. A foreign key is a column in one table that holds the primary key of a row in another table, creating a link between them. For example, an Orders table might have a customer_id column that is a foreign key pointing to the Customers table's primary key. That link means you can query which orders belong to which customer, and the database can enforce that you can't add an order for a customer that doesn't exist — that's referential integrity. I find it elegant how the whole relational model is built around these simple cross-references."
+    },
+    "commonMistakes": [
+      "Confusing primary keys and foreign keys",
+      "Describing a foreign key without explaining what it references",
+      "Missing the referential integrity angle — that it prevents orphaned records"
+    ],
+    "followUps": ["What might go wrong if you didn't use foreign keys and enforced relationships in application code instead?"]
+  },
+  {
+    "id": "prog-computer-science-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Operating systems",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["operating-systems", "processes", "memory"],
+    "question": "What does an operating system actually do? Can you explain the role of the kernel?",
+    "lookingFor": "A confident summary of the OS as a resource manager and abstraction layer, with the kernel correctly placed as the core that mediates between hardware and software.",
+    "idealAnswer": {
+      "bullets": [
+        "OS as an abstraction layer — programs don't talk to hardware directly",
+        "Resource management: CPU scheduling, memory allocation, I/O",
+        "Kernel as the privileged core that handles hardware access on behalf of programs"
+      ],
+      "modelAnswer": "An operating system sits between your hardware and your applications, providing a consistent interface so programs don't have to manage the physical hardware themselves. It handles things like scheduling which process gets CPU time, allocating and protecting memory so one program can't read another's data, and managing input and output devices. The kernel is the core of the OS that runs in privileged mode — it has direct access to hardware and handles the requests from user-space programs through system calls. When your code opens a file, it's not touching the disk itself; it's asking the kernel to do it. What I find interesting about this is how much the design of the kernel affects security — a smaller kernel surface means fewer places for vulnerabilities to hide."
+    },
+    "commonMistakes": [
+      "Describing the OS only as 'what manages your files'",
+      "Conflating the kernel with the whole OS",
+      "No mention of the hardware abstraction role"
+    ],
+    "followUps": ["What is a system call, and can you give an example of when your code would trigger one?"]
+  },
+  {
+    "id": "prog-computer-science-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Computational thinking",
+    "program": "Computer Science",
+    "difficulty": "easy",
+    "tags": ["computational-thinking", "problem-solving", "abstraction"],
+    "question": "What do you understand by the term 'abstraction' in Computer Science, and can you give a real example?",
+    "lookingFor": "A clear grasp that abstraction means hiding complexity behind a simpler interface — and a concrete example drawn from experience, not just a textbook definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Define abstraction as exposing what you need to know and hiding what you don't",
+        "Give a layered example — function, class, or network protocol",
+        "Show why this matters: allows you to work at the right level, reduces cognitive load"
+      ],
+      "modelAnswer": "Abstraction in Computer Science means presenting a simplified interface that hides the underlying complexity — you expose what the user needs and conceal the implementation details. A function is a small example: when I call sort() on a list I don't need to know whether it's using Timsort internally, just that the list comes back sorted. A bigger example is a network socket — I write code that sends a message to an address, and the entire TCP/IP stack underneath is abstracted away. What I like about this concept is that it's not just a programming trick, it's the reason large systems are even buildable — you couldn't hold the whole internet in your head at once without layers of abstraction."
+    },
+    "commonMistakes": [
+      "Confusing abstraction with encapsulation",
+      "Giving a definition with no example",
+      "Not explaining why abstraction is useful, just what it is"
+    ],
+    "followUps": ["Can you think of a case where leaking too much detail through an abstraction causes problems?"]
+  },
+  {
+    "id": "prog-computer-science-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Security and cryptography",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["security", "cryptography", "public-key"],
+    "question": "Can you explain, at a conceptual level, how public-key cryptography allows two people to communicate securely without having met to share a secret?",
+    "lookingFor": "A clear conceptual grasp of the key pair idea and the asymmetric property — not a mathematical proof, but enough to show the applicant understands why it works.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish public key (shared freely) from private key (kept secret)",
+        "Explain: anything encrypted with the public key can only be decrypted with the private key",
+        "Convey why this solves the key exchange problem — no prior shared secret needed"
+      ],
+      "modelAnswer": "In symmetric encryption you'd need to share a secret key in advance, which is the problem — how do you share it securely before you have secure communication? Public-key cryptography solves this by giving each person a pair of mathematically linked keys: a public one they share openly, and a private one they never reveal. If I want to send you a secret message, I encrypt it with your public key. The clever part is that only your private key can decrypt it — even I can't decrypt what I just encrypted. The keys work in only one direction. You never had to tell me anything secret to make that work. The maths underneath — usually based on the difficulty of factoring huge numbers or similar problems — is what makes it practically impossible to derive the private key from the public one."
+    },
+    "commonMistakes": [
+      "Confusing public-key encryption with hashing",
+      "Saying the public key decrypts — it encrypts (or verifies a signature)",
+      "Missing the key insight: why this removes the need for a prior shared secret"
+    ],
+    "followUps": ["What is a digital signature, and how does it use the same key pair?"]
+  },
+  {
+    "id": "prog-computer-science-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Artificial intelligence and machine learning",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["ai", "machine-learning", "neural-networks"],
+    "question": "Can you explain, in broad terms, how a machine learning model learns from data?",
+    "lookingFor": "A conceptually coherent explanation of training — inputs, loss, optimisation — without needing mathematical precision. Shows the applicant has engaged seriously with a major area of the field.",
+    "idealAnswer": {
+      "bullets": [
+        "Model starts with random or arbitrary parameters",
+        "Predictions are compared to correct outputs; the error (loss) is measured",
+        "Parameters are adjusted to reduce loss, repeated over many examples"
+      ],
+      "modelAnswer": "A machine learning model is essentially a function with thousands or millions of adjustable parameters. At the start those parameters are often random, so the model's predictions are poor. You feed it labelled training examples — say, images with correct labels — and each time it makes a prediction you measure how wrong it was using a loss function. Then you work backwards through the network, calculating how each parameter contributed to the error, and nudge all the parameters slightly in the direction that would have reduced it. Do that across millions of examples and the parameters gradually settle into values that make the model accurate. What I find compelling about this is that no one explicitly programmed the rules — they emerged from the data."
+    },
+    "commonMistakes": [
+      "Describing machine learning as 'the computer just learns by itself' with no mechanism",
+      "Confusing training with inference",
+      "Missing the iterative optimisation loop"
+    ],
+    "followUps": ["What is overfitting, and how do you guard against it?"]
+  },
+  {
+    "id": "prog-computer-science-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Concurrency and parallelism",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["concurrency", "parallelism", "threads"],
+    "question": "What is a race condition, and why is it a problem in concurrent programs?",
+    "lookingFor": "A clear explanation of race conditions as non-deterministic bugs arising from shared state, with an illustrative example and awareness of how they're addressed.",
+    "idealAnswer": {
+      "bullets": [
+        "Define: two threads access shared state without coordination, outcome depends on timing",
+        "Give a concrete example — e.g. two threads incrementing a counter",
+        "Name at least one solution: locks, atomic operations, or avoiding shared state"
+      ],
+      "modelAnswer": "A race condition happens when two threads or processes access shared data and the result depends on the order they happen to execute, which you can't guarantee. A classic example is two threads both reading a counter that says 5, both adding 1, and both writing 6 back — when the correct answer is 7. Neither thread knew the other was doing the same thing. The insidious part is that it might work correctly most of the time and only fail under load or on a faster machine, making it hard to reproduce. You address it by ensuring that the read-modify-write sequence is atomic — either using locks so only one thread can enter that critical section at a time, or using hardware-level atomic operations. I find concurrency bugs genuinely hard because the failure is in the timing, not the logic."
+    },
+    "commonMistakes": [
+      "Describing a race condition vaguely as 'when things happen out of order'",
+      "No concrete example of the shared-state problem",
+      "No mention of how to prevent it"
+    ],
+    "followUps": ["What is a deadlock, and how is it different from a race condition?"]
+  },
+  {
+    "id": "prog-computer-science-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and curiosity",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "curiosity", "current-topics"],
+    "question": "Tell us about something you've read or watched recently — outside your school curriculum — that excited you about Computer Science.",
+    "lookingFor": "Genuine intellectual curiosity beyond the syllabus — a specific source, an idea clearly understood and engaged with, and a reason it matters to the applicant personally.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the specific source — book, paper, talk, podcast, blog post",
+        "Explain the idea in your own words, showing you understood it",
+        "Say why it changed or reinforced how you think about the field"
+      ],
+      "modelAnswer": "I've been working through Gödel, Escher, Bach over the past few months — partly because it kept coming up in CS reading lists. The section that stayed with me is Hofstadter's argument about strange loops: how a formal system can contain statements that refer to themselves, and how that's connected to Gödel's incompleteness result. The idea that mathematics has things it can never prove within its own rules felt like a door opening in how I think about computation — it directly connects to the halting problem, which I'd seen in class but never fully appreciated. It made me want to understand computability theory properly rather than just taking it as a fact."
+    },
+    "commonMistakes": [
+      "Naming a source vaguely without describing what it actually said",
+      "Citing something from within the school syllabus",
+      "Showing enthusiasm without demonstrating understanding"
+    ],
+    "followUps": ["How has that reading changed the way you think about a concept you already knew?"]
+  },
+  {
+    "id": "prog-computer-science-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics in computing",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "technology", "bias", "responsibility"],
+    "question": "Computer scientists are increasingly expected to think about the ethical implications of what they build. Can you give an example of an ethical issue in technology and how you'd think about it?",
+    "lookingFor": "A structured ethical argument — acknowledgment of competing interests, a clear position, and awareness that CS professionals bear some responsibility for outcomes.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a specific, real issue rather than a vague 'AI is dangerous'",
+        "Reason through the competing interests and harms",
+        "Land on a position, including what role a CS professional specifically should play"
+      ],
+      "modelAnswer": "The one I keep thinking about is bias in automated hiring systems. There are documented cases of models trained on historical hiring data learning to penalise CVs that mention all-women's colleges, because the historical data reflected past discrimination. The harm is real and measurable: it concentrates existing inequalities and the people affected don't know why they were rejected. The competing interest is efficiency — reviewing thousands of applications is genuinely hard. My view is that efficiency isn't a defence when the system systematically excludes people. As a CS professional, I think the responsibility is upstream — in how you construct training data, what you audit, and whether you ever use the output as a final decision rather than a filter that a human checks. Transparency about the system's limitations isn't optional."
+    },
+    "commonMistakes": [
+      "Choosing an issue so broad it can't be argued specifically",
+      "Refusing to take a position and just listing pros and cons",
+      "Ignoring the specific responsibility of the person who builds the system"
+    ],
+    "followUps": ["Who should have final accountability when an automated system causes harm — the developer, the company, or the regulator?"]
+  },
+  {
+    "id": "prog-computer-science-a-018",
+    "category": "Motivation & Fit",
+    "subtopic": "Personal project or experience",
+    "program": "Computer Science",
+    "difficulty": "easy",
+    "tags": ["project", "self-directed", "experience"],
+    "question": "Tell us about a programming or computing project you've worked on outside of school.",
+    "lookingFor": "Evidence of self-directed initiative — a real project, the problem it solved, what you learned, and ideally what you'd do differently.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the project specifically — what it does, not just what language you used",
+        "Explain the problem it solved or the curiosity it came from",
+        "Show what you learned and what you'd improve"
+      ],
+      "modelAnswer": "I built a small web app to help my sixth-form timetable committee visualise clashes — they were doing it manually in a spreadsheet and missing conflicts. I used Python on the backend and a simple HTML front end, and the interesting part was the constraint-satisfaction logic for detecting overlaps across rooms, teachers, and year groups simultaneously. It worked well enough that they actually used it for the new timetable. What I'd do differently is design the data model first — I changed it three times mid-build as I realised my assumptions were wrong, and that cost me time I could have avoided. That taught me more about upfront design than any lesson had."
+    },
+    "commonMistakes": [
+      "Describing only the technology stack, not what the project actually did",
+      "No reflection on what went wrong or what you'd change",
+      "Picking something so simple it signals no independent drive"
+    ],
+    "followUps": ["What was the hardest technical problem you hit, and how did you solve it?"]
+  },
+  {
+    "id": "prog-computer-science-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Graph theory and problem modelling",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["graph-theory", "modelling", "algorithms"],
+    "question": "Can you explain what a graph is in Computer Science, and give an example of a real-world problem that can be modelled as one?",
+    "lookingFor": "A clear definition of graphs as nodes and edges, with a real-world example that shows the applicant can see the abstraction — not just name it.",
+    "idealAnswer": {
+      "bullets": [
+        "Define graph: nodes (vertices) connected by edges; can be directed or undirected, weighted or not",
+        "Give a real-world example where the structure maps naturally",
+        "Show what a graph algorithm on that example would actually compute"
+      ],
+      "modelAnswer": "A graph is a set of nodes — representing entities — connected by edges that represent relationships between them. Edges can be directed (one-way) or undirected, and weighted if the relationship has a magnitude. A road network is a natural graph: junctions are nodes and roads are edges with weights for distance or travel time. Once you have that model, algorithms like Dijkstra's shortest path tell you the fastest route between two junctions — which is exactly what a navigation app computes. What I like about graphs is how universal the abstraction is: social networks, dependency graphs in software, protein interaction networks in biology — completely different domains, same underlying model."
+    },
+    "commonMistakes": [
+      "Confusing graph in this sense with a chart or plot",
+      "Naming an example without explaining what the nodes and edges represent",
+      "Not connecting the model to what you'd actually compute on it"
+    ],
+    "followUps": ["What is the difference between breadth-first search and depth-first search on a graph?"]
+  },
+  {
+    "id": "prog-computer-science-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Functional vs imperative programming",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["programming-paradigms", "functional", "imperative"],
+    "question": "What is the difference between imperative and functional programming, and why might a functional style reduce certain kinds of bugs?",
+    "lookingFor": "A clear contrast of the paradigms — state mutation vs immutability — and a grounded explanation of why side-effect-free functions are easier to reason about.",
+    "idealAnswer": {
+      "bullets": [
+        "Imperative: step-by-step instructions that modify state; functional: expressions that transform data without mutating it",
+        "Pure functions: same input always gives same output, no side effects",
+        "Link this to testability and reasoning — no hidden state to track"
+      ],
+      "modelAnswer": "Imperative programming describes how to do something step by step, typically by mutating variables and state along the way. Functional programming instead describes what you want to compute, using pure functions that take inputs and return outputs without changing anything outside themselves. A pure function always gives the same output for the same input — there's no hidden global state that could make it behave differently on the second call. That makes a specific class of bugs disappear: you don't have to trace how state evolved over twenty function calls to understand why something is wrong. You can test a pure function in complete isolation. I've found in practice that even in languages like Python, writing more functional-style code — avoiding mutation, favouring map and filter — makes my code easier to reason about and easier to test."
+    },
+    "commonMistakes": [
+      "Confusing functional programming with a specific language like Haskell rather than a style",
+      "Missing the immutability point — describing it only as 'using functions'",
+      "Not connecting the paradigm to testability or debugging"
+    ],
+    "followUps": ["Can you think of a situation where an imperative approach might be more appropriate than a functional one?"]
+  },
+  {
+    "id": "prog-computer-science-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Turing and computability",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["theory", "turing", "computability", "halting-problem"],
+    "question": "What is the halting problem, and why does it matter for Computer Science?",
+    "lookingFor": "A clear statement of the problem — can you write a program to decide if any program halts? — and an understanding of why this is proven impossible and what that implies.",
+    "idealAnswer": {
+      "bullets": [
+        "State the problem: is there a general algorithm that tells you if any program halts on any input?",
+        "Turing's proof shows the answer is no — by contradiction",
+        "Why it matters: there are computational limits; some problems are undecidable"
+      ],
+      "modelAnswer": "The halting problem asks whether you can write a general algorithm that takes any program and any input and correctly tells you whether that program will ever stop running or loop forever. Turing proved in 1936 that you can't — there is no such algorithm. The proof works by contradiction: suppose you had a halter H that decides correctly; you can construct a program D that uses H on itself and then does the opposite — halts if H says it loops, loops if H says it halts. D contradicts H's answer for itself, so H can't exist. What matters about this is that it establishes hard limits on computation — not just 'we haven't found the algorithm yet' but 'it provably cannot exist'. That was a profound shift in how we understand what machines can and cannot do."
+    },
+    "commonMistakes": [
+      "Confusing the halting problem with a statement about specific programs being hard to analyse",
+      "Saying it's unsolved rather than proven undecidable",
+      "Not conveying why the result matters beyond a curiosity"
+    ],
+    "followUps": ["Can you name another problem that is known to be undecidable?"]
+  },
+  {
+    "id": "prog-computer-science-a-022",
+    "category": "Motivation & Fit",
+    "subtopic": "Research interests",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["research", "interests", "future-direction"],
+    "question": "Which area of Computer Science interests you most, and what is it about that area that draws you in?",
+    "lookingFor": "A genuine, substantive interest in a specific sub-discipline — not a generic answer — with a personal reason that goes beyond 'it's popular'.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific area, not just 'AI' or 'cybersecurity' in the abstract",
+        "Explain what specifically within that area captures your interest",
+        "Connect it to something you've done or read — show it's grounded in experience"
+      ],
+      "modelAnswer": "I'm most drawn to compilers and programming language design. I came to it through a blog series on how Python's bytecode works, and I couldn't stop reading — there's something almost architectural about designing a language, the choices you make about types and syntax ripple through everything someone builds with it. I worked through a small interpreter project using Robert Nystrom's Crafting Interpreters book over the summer, which is the most technically demanding thing I've done independently. What draws me in is that compilers sit at the boundary between the theoretical — formal grammars, type theory — and the intensely practical — the code has to actually run fast. I'd love to explore that boundary more rigorously at university."
+    },
+    "commonMistakes": [
+      "Choosing an area purely because it's fashionable without personal grounding",
+      "An interest so broad it signals no real focus",
+      "No evidence of independent engagement with the area"
+    ],
+    "followUps": ["What question in that area would you most want to answer if you could research anything?"]
+  },
+  {
+    "id": "prog-computer-science-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Memory management",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["memory", "pointers", "garbage-collection"],
+    "question": "Can you explain what a memory leak is and how modern languages try to prevent them?",
+    "lookingFor": "A clear explanation of memory leaks as unreleased allocations, with awareness of how manual management differs from garbage collection and modern approaches like Rust's ownership model.",
+    "idealAnswer": {
+      "bullets": [
+        "Memory leak: memory allocated but never freed, so it accumulates and eventually exhausts available memory",
+        "Manual management (C/C++): programmer's responsibility — fragile",
+        "Garbage collection or ownership systems as the automated alternative — trade-offs exist"
+      ],
+      "modelAnswer": "A memory leak happens when a program allocates memory — reserves a chunk of RAM — but never releases it when it's finished with it. If that happens repeatedly, the program consumes more and more memory until the system runs out. In C, the programmer manages memory manually: malloc to allocate, free to release. If you forget to free, or lose the reference before freeing, that memory is gone until the program exits. Higher-level languages like Java and Python use garbage collectors — the runtime tracks what's still reachable and frees the rest automatically. The cost is some overhead and less predictable pauses. Rust takes a different approach: the compiler itself enforces ownership rules that guarantee memory is freed at the right time without a garbage collector. I found Rust's borrow checker frustrating at first but fascinating once I understood what it was actually preventing."
+    },
+    "commonMistakes": [
+      "Describing a memory leak as a program crashing immediately rather than degrading over time",
+      "Not distinguishing manual management from garbage collection",
+      "Unaware that alternatives to garbage collection exist"
+    ],
+    "followUps": ["What are the trade-offs between garbage collection and manual memory management?"]
+  },
+  {
+    "id": "prog-computer-science-a-024",
+    "category": "Curveball/Personality",
+    "subtopic": "Thinking like a computer scientist",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["problem-solving", "creative-thinking", "lateral"],
+    "question": "If you had to design an algorithm to organise a shuffled library of ten thousand books, how would you approach the problem?",
+    "lookingFor": "Structured problem decomposition — defining inputs, outputs, constraints — and evidence of algorithmic thinking applied to an unfamiliar setting rather than a memorised answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Clarify the problem: what does 'organised' mean? By title, author, subject?",
+        "Identify the analogous CS problem — this is sorting, with physical constraints",
+        "Consider real constraints: physical space, human effort, partial information"
+      ],
+      "modelAnswer": "I'd start by clarifying what 'organised' means — sorted alphabetically by author, by subject category, by publication date? That changes the algorithm. Assuming alphabetical by author: conceptually this is a sorting problem, but the physical constraints are interesting. You can't just move books in memory; each move has real cost and you can't hold ten thousand in your hand. I'd probably think about a merge-sort-like approach — divide the library into sections, sort each section using a small staging area, then merge adjacent sorted sections together. You'd minimise the total number of moves by planning the merge passes carefully. The harder real-world problem is that you often don't know all the books upfront, which is closer to an online sorting problem. I'd probably want to know if the library is receiving new books continuously before committing to a scheme."
+    },
+    "commonMistakes": [
+      "Jumping to an algorithm without clarifying what 'organised' means",
+      "Ignoring the physical constraints of the real-world setting",
+      "Applying a standard sorting algorithm without acknowledging that the inputs are unknown"
+    ],
+    "followUps": ["How would your approach change if new books were arriving every day?"]
+  },
+  {
+    "id": "prog-computer-science-a-025",
+    "category": "Goals & Future",
+    "subtopic": "Direction after graduating",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["goals", "career-direction", "motivation"],
+    "question": "You don't need to have a specific career planned, but what kind of problems do you hope to work on after your degree?",
+    "lookingFor": "A genuine, considered direction — a type of problem that matters to the applicant, connected to their interests in CS — not a job title, not empty ambition.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a type of problem, not a job title — shows intellectual engagement rather than career anxiety",
+        "Connect it to something in their CS interest or experience",
+        "Show openness to where the degree will take them — intellectually honest about uncertainty"
+      ],
+      "modelAnswer": "I'm most interested in problems at the edge of what computation can do — the places where you're not just implementing a well-understood solution but trying to figure out what's even computable or tractable. That could be in cryptography, in compilers, or somewhere I haven't found yet. More concretely, I'd love to work somewhere that software and a physical constraint meet — robotics, embedded systems, or even programming languages for hardware. I'm honest that I don't know exactly what that looks like yet, and I think three or four years of proper CS study will change what I find interesting. What I'm confident about is the direction: I want to work at the harder end of the problem space, not just build CRUD applications."
+    },
+    "commonMistakes": [
+      "Naming a prestigious company or job title rather than a type of problem",
+      "A direction completely disconnected from any CS interest they've shown",
+      "Over-rehearsed five-year plan that sounds unconvincing"
+    ],
+    "followUps": ["What module or topic in your degree are you most looking forward to, and why?"]
+  }
+]

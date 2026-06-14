@@ -33,6 +33,18 @@ const categoryLabels: Record<string, string> = {
   mixed: "Mixed Interview",
 }
 
+const getCategoryLabel = (cat: string) => {
+  if (categoryLabels[cat]) return categoryLabels[cat]
+  return cat
+    .split("-")
+    .map(word => {
+      if (word === "a" || word === "b") return `(${word.toUpperCase()})`
+      if (word === "and") return "&"
+      return word.charAt(0).toUpperCase() + word.slice(1)
+    })
+    .join(" ")
+}
+
 export default function InterviewPage({
   params,
   searchParams,
@@ -296,7 +308,7 @@ export default function InterviewPage({
     <main className="h-screen bg-[#202124] flex flex-col font-sans overflow-hidden">
       {/* Top Header */}
       <div className="flex items-center justify-between px-6 py-4 text-white">
-        <h1 className="text-lg font-medium">{categoryLabels[category] ?? "Interview"}</h1>
+        <h1 className="text-lg font-medium">{getCategoryLabel(category)}</h1>
         <div className="flex items-center gap-2">
           <div className={`size-2 rounded-full ${isComplete ? "bg-amber-400" : "bg-green-400"} animate-pulse`} />
           <span className="text-sm">{isComplete ? "Session Complete" : "Live"}</span>

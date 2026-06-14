@@ -5,13 +5,25 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { use, useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp, faClipboardCheck } from "@fortawesome/free-solid-svg-icons"
 import { getFeedback } from "@/app/actions/interview"
 
 const categoryLabels: Record<string, string> = {
   hr: "HR Interview",
   technical: "Technical Interview",
   mixed: "Mixed Interview",
+}
+
+const getCategoryLabel = (cat: string) => {
+  if (categoryLabels[cat]) return categoryLabels[cat]
+  return cat
+    .split("-")
+    .map(word => {
+      if (word === "a" || word === "b") return `(${word.toUpperCase()})`
+      if (word === "and") return "&"
+      return word.charAt(0).toUpperCase() + word.slice(1)
+    })
+    .join(" ")
 }
 
 // Demo feedback data fallback
@@ -44,7 +56,8 @@ const demoFeedback = {
       topic: "STAR Method",
       advice: "Your behavioral answers were good, but lack concrete metrics. Try using the STAR method (Situation, Task, Action, Result) and include specific numbers."
     }
-  ]
+  ],
+  questionEvaluation: [] as { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[]
 }
 
 function ScoreCircle({ score }: { score: number }) {
@@ -88,6 +101,15 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
   const { id } = use(params)
   const [feedback, setFeedback] = useState<typeof demoFeedback | null>(null)
   const [showStudyGuide, setShowStudyGuide] = useState(false)
+  const [showQuestionAnalysis, setShowQuestionAnalysis] = useState(true)
+  const [expandedQuestions, setExpandedQuestions] = useState<Record<number, boolean>>({})
+
+  const toggleQuestionExpand = (idx: number) => {
+    setExpandedQuestions(prev => ({
+      ...prev,
+      [idx]: !prev[idx]
+    }))
+  }
 
   useEffect(() => {
     const loadFeedback = async () => {
@@ -151,7 +173,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
   // Fallback category text
   const isUuid = id && id.length >= 36
-  const categoryText = isUuid ? "Mock Interview" : (categoryLabels[id] ?? "Interview")
+  const categoryText = isUuid ? "Mock Interview" : getCategoryLabel(id)
 
   return (
     <main className="min-h-screen p-6 md:p-12 relative overflow-hidden">
@@ -227,6 +249,91 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             </ul>
           </GlassCard>
         </div>
+
+        {/* Question-by-Question Evaluation */}
+        {feedback.questionEvaluation && feedback.questionEvaluation.length > 0 && (
+          <div className="mb-6">
+            <button 
+              onClick={() => setShowQuestionAnalysis(!showQuestionAnalysis)}
+              className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+            >
+              <div className="flex items-center gap-3">
+                <div className="size-10 rounded-lg bg-secondary/20 flex items-center justify-center">
+                  <FontAwesomeIcon icon={faClipboardCheck} className="text-secondary" />
+                </div>
+                <div className="text-left">
+                  <h2 className="text-lg font-semibold text-white">Question-by-Question Analysis</h2>
+                  <p className="text-xs text-foreground/60">Detailed evaluation of each question asked</p>
+                </div>
+              </div>
+              <FontAwesomeIcon icon={showQuestionAnalysis ? faChevronUp : faChevronDown} className="text-foreground/50 mr-2" />
+            </button>
+            
+            {showQuestionAnalysis && (
+              <div className="mt-4 flex flex-col gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
+                {feedback.questionEvaluation.map((item, idx) => {
+                  const isExpanded = !!expandedQuestions[idx]
+                  const qScore = item.score
+                  const scoreColor = qScore >= 85 ? "text-green-400 bg-green-500/10 border-green-500/20" : qScore >= 70 ? "text-purple-400 bg-purple-500/10 border-purple-500/20" : "text-red-400 bg-red-500/10 border-red-500/20"
+
+                  return (
+                    <GlassCard key={idx} className="p-5 border-white/5 bg-white/2 relative overflow-hidden text-left">
+                      <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-4">
+                        <div className="flex-1">
+                          <span className="text-[10px] uppercase tracking-wider text-primary font-bold bg-primary/10 px-2.5 py-1 rounded-md mb-2 inline-block">
+                            Question {idx + 1}
+                          </span>
+                          <h3 className="text-sm md:text-base font-bold text-white leading-relaxed">
+                            {item.question}
+                          </h3>
+                        </div>
+                        <div className={`px-3 py-1 rounded-full border text-xs font-bold shrink-0 self-start ${scoreColor}`}>
+                          Score: {qScore}%
+                        </div>
+                      </div>
+
+                      {/* Candidate's Answer */}
+                      <div className="mb-4 bg-white/5 p-3 rounded-lg border border-white/5">
+                        <span className="text-[10px] text-foreground/45 uppercase tracking-wider font-semibold block mb-1">Your Answer</span>
+                        <p className="text-xs md:text-sm text-foreground/80 leading-relaxed font-sans italic">
+                          &ldquo;{item.userAnswer}&rdquo;
+                        </p>
+                      </div>
+
+                      {/* Feedback */}
+                      <div className="mb-4">
+                        <span className="text-[10px] text-secondary uppercase tracking-wider font-semibold block mb-1">Feedback</span>
+                        <p className="text-xs md:text-sm text-foreground/80 leading-relaxed">
+                          {item.feedback}
+                        </p>
+                      </div>
+
+                      {/* Ideal/Model Answer (Collapsible) */}
+                      {item.modelAnswer && (
+                        <div className="border-t border-white/5 pt-3 mt-3">
+                          <button
+                            onClick={() => toggleQuestionExpand(idx)}
+                            className="flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors font-semibold focus:outline-none cursor-pointer"
+                          >
+                            <span>{isExpanded ? "Hide" : "Show"} Model Answer & Criteria</span>
+                            <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-[10px]" />
+                          </button>
+                          
+                          {isExpanded && (
+                            <div className="mt-3 bg-primary/5 border border-primary/15 p-3.5 rounded-lg text-xs md:text-sm text-foreground/80 leading-relaxed animate-in slide-in-from-top-2 duration-200">
+                              <span className="text-[10px] text-primary uppercase tracking-wider font-bold block mb-1.5">Model Answer / Looking For:</span>
+                              {item.modelAnswer}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </GlassCard>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Study Guide Section */}
         {feedback.studyGuide && feedback.studyGuide.length > 0 && (

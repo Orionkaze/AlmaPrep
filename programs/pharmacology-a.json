@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-pharmacology-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for Pharmacology",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["motivation", "pharmacology", "personal"],
+    "question": "Why do you want to study Pharmacology specifically, rather than Medicine or Biochemistry?",
+    "lookingFor": "A motivation grounded in realistic understanding of what pharmacology actually is, distinguishing it clearly from adjacent fields.",
+    "idealAnswer": {
+      "bullets": [
+        "Articulate what pharmacology covers that medicine or biochemistry alone does not",
+        "Ground the motivation in a specific moment, reading, or experience",
+        "Show you understand the field sits at the intersection of chemistry, biology, and medicine"
+      ],
+      "modelAnswer": "I came to pharmacology through biochemistry — I loved enzyme kinetics but felt something was missing. When I read about how statins were designed to mimic a natural substrate and block HMG-CoA reductase, it clicked: pharmacology is where the molecular detail meets the patient outcome. Medicine felt too clinical for where my curiosity sits, and biochemistry felt too removed from application. Pharmacology occupies exactly the middle ground I want — understanding how drugs work at a molecular level and what that means for the people taking them."
+    },
+    "commonMistakes": [
+      "'I want to help people' with no pharmacology-specific reasoning",
+      "Describing a career aspiration (like becoming a pharmacist) rather than an intellectual motivation",
+      "Showing no awareness of what pharmacology is distinct from"
+    ],
+    "followUps": ["What aspect of pharmacology are you most excited to go deeper on?"]
+  },
+  {
+    "id": "prog-pharmacology-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit", "pharmacology"],
+    "question": "What drew you to study Pharmacology here specifically?",
+    "lookingFor": "Evidence that the applicant has researched the department beyond rankings — specific modules, research strengths, or staff they can name.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific: a module, a research group, a facility, or a staff member's work",
+        "Connect it to a concrete interest or goal of your own",
+        "Show you understand what this course offers that others may not"
+      ],
+      "modelAnswer": "I was drawn in by the department's research into receptor pharmacology — I read a paper from this group on GPCR signalling bias and found it genuinely exciting, especially the idea that two drugs hitting the same receptor can produce very different downstream effects. The course also has a dedicated drug discovery project in the third year, which is rare at undergraduate level. I want to work in early-stage drug development eventually, so having that hands-on design experience before postgraduate study matters to me."
+    },
+    "commonMistakes": [
+      "Generic praise about 'world-class facilities' with no substance",
+      "Relying entirely on ranking positions",
+      "Mentioning the wrong course features because they didn't research properly"
+    ],
+    "followUps": ["Is there a specific research group here you'd hope to get involved with?"]
+  },
+  {
+    "id": "prog-pharmacology-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Drug receptor interaction basics",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["pharmacology", "receptors", "fundamentals"],
+    "question": "Can you explain what we mean by an agonist and an antagonist?",
+    "lookingFor": "A clear, accurate explanation of both terms with an example of each — demonstrates foundational subject knowledge.",
+    "idealAnswer": {
+      "bullets": [
+        "Define an agonist as a molecule that binds a receptor and activates it, producing a biological response",
+        "Define an antagonist as one that binds but does not activate, blocking other molecules from doing so",
+        "Offer a concrete example of each — e.g. morphine as an opioid agonist, naloxone as an antagonist"
+      ],
+      "modelAnswer": "An agonist binds to a receptor and activates it, producing a physiological response — morphine, for example, binds opioid receptors and produces analgesia. An antagonist also binds the receptor but doesn't activate it; instead it blocks other molecules from getting in. Naloxone does exactly that at the same opioid receptors, which is why it's used to reverse overdoses. What I find interesting is that the distinction isn't always clean — partial agonists activate but less fully than a full agonist, which adds a layer of clinical nuance."
+    },
+    "commonMistakes": [
+      "Confusing antagonist with 'opposing drug' rather than a receptor-level concept",
+      "Giving definitions with no example to anchor them",
+      "Not mentioning the concept of binding at all"
+    ],
+    "followUps": ["What would you expect to happen if you gave an agonist and an antagonist for the same receptor at the same time?"]
+  },
+  {
+    "id": "prog-pharmacology-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "pharmacology", "curiosity"],
+    "question": "Tell us about something you have read or watched recently that has deepened your interest in pharmacology.",
+    "lookingFor": "Evidence of genuine independent curiosity beyond the A-level syllabus — the ability to engage with primary or popular science material.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific book, paper, podcast, or documentary — not a vague category",
+        "Explain what you found interesting and why it matters",
+        "Connect it to something you want to understand better"
+      ],
+      "modelAnswer": "I've been working through Ben Goldacre's Bad Pharma, which is uncomfortable reading but really valuable. The section on publication bias made me think carefully about how clinical evidence is constructed and how drug approval decisions get made on incomplete data. It led me down a rabbit hole into how the FDA now handles negative trial registration. I'm not cynical about pharmacology — if anything it made me more motivated, because good pharmacologists are the people trying to fix those problems."
+    },
+    "commonMistakes": [
+      "Naming a popular TV drama like House and calling it research",
+      "Describing textbook topics rather than anything beyond the curriculum",
+      "Reading without any critical engagement — just summarising"
+    ],
+    "followUps": ["Did reading that change how you think about drug development?"]
+  },
+  {
+    "id": "prog-pharmacology-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Dose-response relationship",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["pharmacology", "dose-response", "fundamentals"],
+    "question": "What is a dose-response relationship, and why is it important in pharmacology?",
+    "lookingFor": "A clear explanation of the concept, ideally with reference to the sigmoidal curve, EC50, and why it matters clinically.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that increasing dose generally increases effect up to a maximum",
+        "Mention the sigmoidal shape of the curve and the concept of EC50",
+        "Connect it to clinical relevance — finding therapeutic doses without toxicity"
+      ],
+      "modelAnswer": "A dose-response relationship describes how the magnitude of a drug's effect changes as the dose increases. Typically you get a sigmoidal curve — there's a threshold below which nothing happens, then a steep rise in effect, then a plateau where you've saturated the receptors and increasing the dose further doesn't add benefit. The EC50 is a key number: the dose that produces half the maximum effect, which lets you compare potency between drugs. Clinically it matters enormously because you want to sit in the therapeutic window — enough drug to work, not so much you hit toxic territory."
+    },
+    "commonMistakes": [
+      "Describing a linear relationship without acknowledging the plateau",
+      "Not mentioning EC50 or any quantitative aspect",
+      "Explaining the curve without connecting it to why it matters in practice"
+    ],
+    "followUps": ["What does a very steep dose-response curve tell you about a drug's safety profile?"]
+  },
+  {
+    "id": "prog-pharmacology-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Pharmacokinetics vs pharmacodynamics",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["pharmacology", "pk-pd", "fundamentals"],
+    "question": "What is the difference between pharmacokinetics and pharmacodynamics?",
+    "lookingFor": "A clean distinction between what the body does to the drug versus what the drug does to the body, with examples of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Pharmacokinetics: absorption, distribution, metabolism, excretion — what the body does to the drug",
+        "Pharmacodynamics: the drug's effect on the body — mechanism of action, receptor binding, downstream response",
+        "Give a brief example that illustrates both sides"
+      ],
+      "modelAnswer": "Pharmacokinetics is what the body does to the drug — how it gets absorbed, distributed around the body, metabolised, usually by the liver, and eventually excreted. Pharmacodynamics is the other direction: what the drug does to the body — how it binds its target, what receptor or enzyme it affects, and what biological response follows. A useful example is morphine: pharmacokinetically, it crosses the blood-brain barrier and is metabolised to morphine-6-glucuronide, which is actually more potent. Pharmacodynamically, it binds mu opioid receptors and reduces pain signalling. Both sides matter — a perfect drug target is useless if the molecule never reaches it."
+    },
+    "commonMistakes": [
+      "Mixing up the two or reversing the definitions",
+      "Giving definitions without any example",
+      "Knowing the acronym ADME but not being able to explain what it means"
+    ],
+    "followUps": ["Why might two patients on the same dose of a drug have very different responses?"]
+  },
+  {
+    "id": "prog-pharmacology-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Drug development pipeline",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "drug-development", "clinical-trials"],
+    "question": "Can you walk us through the stages of clinical drug development, from discovery to approval?",
+    "lookingFor": "An accurate high-level account of preclinical work through Phase I-III trials to regulatory approval, showing an applicant who has engaged beyond the A-level syllabus.",
+    "idealAnswer": {
+      "bullets": [
+        "Cover preclinical (target identification, lead optimisation, in vitro and in vivo testing)",
+        "Explain Phase I, II, III trials and what each is testing for",
+        "Mention regulatory review and note the high attrition rate"
+      ],
+      "modelAnswer": "It starts with identifying a biological target and finding a molecule that modulates it — that lead compound then goes through extensive optimisation and preclinical testing in cells and animal models to check for basic safety and efficacy before it touches a human. Phase I trials are first-in-human, usually in healthy volunteers, primarily looking at safety and how the body handles the drug. Phase II tests a smaller patient group for efficacy and dose-ranging. Phase III is the large randomised controlled trial that provides the statistical evidence for approval. The whole process typically takes ten to fifteen years, and around ninety percent of candidates fail somewhere along the way — which makes the science of predicting failure earlier a really important research question."
+    },
+    "commonMistakes": [
+      "Describing only clinical phases without mentioning preclinical work",
+      "Confusing what Phase I, II, and III are each testing",
+      "No acknowledgment of the attrition rate or the cost of failure"
+    ],
+    "followUps": ["Why do so many drugs that look promising in animal models fail in human trials?"]
+  },
+  {
+    "id": "prog-pharmacology-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Antibiotic resistance",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "antimicrobials", "public-health"],
+    "question": "Why is antibiotic resistance such a serious problem, and what role can pharmacologists play in addressing it?",
+    "lookingFor": "A grasp of the mechanisms of resistance, the scale of the public health threat, and what pharmacological approaches might help.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain at least one mechanism of resistance (e.g. efflux pumps, enzymatic inactivation, target modification)",
+        "Acknowledge the scale — WHO lists AMR as one of the greatest global threats",
+        "Suggest pharmacological responses: new drug classes, drug combinations, dosing strategies, or targeting bacterial virulence"
+      ],
+      "modelAnswer": "Resistance develops because bacteria have multiple ways to outmanoeuvre antibiotics — they can produce enzymes like beta-lactamases that degrade the drug, modify the target so the antibiotic no longer fits, or pump the drug back out before it can act. The problem is compounded by decades of overuse and the slow pipeline of new antibiotic classes. For pharmacologists, there are several angles: rational drug design targeting mechanisms bacteria don't easily mutate, combination therapies that make resistance harder to evolve simultaneously, and better understanding of pharmacokinetics to optimise dosing — because sub-therapeutic concentrations are precisely what drive selection for resistance."
+    },
+    "commonMistakes": [
+      "Describing resistance as 'humans becoming resistant' rather than bacteria",
+      "Only stating the problem with no mention of solutions or pharmacological approaches",
+      "No mechanistic detail — staying at the level of 'bacteria evolve'"
+    ],
+    "followUps": ["Do you think the economics of antibiotic development are a pharmacology problem or a policy problem?"]
+  },
+  {
+    "id": "prog-pharmacology-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant experience",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["experience", "pharmacology", "motivation"],
+    "question": "Have you had any work experience, lab experience, or other exposure to pharmacology or biomedical science? What did you take away from it?",
+    "lookingFor": "Honest reflection on real-world exposure — what they observed, what surprised them, and what it confirmed about their interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the experience specifically and briefly set the context",
+        "Describe one concrete thing they observed or did",
+        "Reflect on what it confirmed, challenged, or sparked about their interest"
+      ],
+      "modelAnswer": "I spent two weeks shadowing in a hospital pharmacy — nothing glamorous, mostly checking dispensing and labelling. But I ended up in a lot of conversations with the clinical pharmacist about drug interactions, especially for patients on multiple medications. One case involved warfarin and a newly prescribed antibiotic, and watching the pharmacist recalculate the dose based on how the antibiotic affects CYP450 metabolism made the textbook suddenly real. It confirmed that pharmacology isn't just discovery science — the clinical pharmacokinetics side is just as intricate, and I want to understand both ends."
+    },
+    "commonMistakes": [
+      "Describing an experience with no reflection beyond 'I found it interesting'",
+      "Exaggerating involvement — panels will probe and gaps show",
+      "Having no experience to draw on and not acknowledging that honestly"
+    ],
+    "followUps": ["What would you have asked to understand better if you'd had more time?"]
+  },
+  {
+    "id": "prog-pharmacology-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "The blood-brain barrier",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "cns", "drug-delivery"],
+    "question": "Why is the blood-brain barrier both important and challenging from a drug delivery perspective?",
+    "lookingFor": "An understanding of what the BBB does physiologically, why it is protective, and the pharmacological challenge of getting CNS drugs across it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the BBB is formed by tight junctions between endothelial cells, restricting paracellular passage",
+        "Note why it exists — protecting the brain from pathogens and large molecules",
+        "Describe the challenge for CNS drug delivery and some strategies to address it (lipophilicity, prodrugs, nanoparticles)"
+      ],
+      "modelAnswer": "The blood-brain barrier is formed by tight junctions between the endothelial cells lining brain capillaries, which means most molecules can't pass through the gaps as they can elsewhere in the body. That's physiologically crucial — it keeps pathogens and toxins out of the CNS. But for drug delivery it's a real problem: most water-soluble molecules and large biologics simply can't cross. CNS drugs tend to need to be small and lipophilic, so they can pass by transcellular diffusion. Strategies to get around this include prodrugs that become active once inside the brain, or nanoparticle carriers that use receptor-mediated transcytosis to sneak across. It's one of the reasons CNS drug development has such high failure rates."
+    },
+    "commonMistakes": [
+      "Describing the BBB vaguely as 'a barrier in the brain' without mechanistic detail",
+      "Only describing the challenge without noting why the barrier exists",
+      "No awareness of any approach to overcome it"
+    ],
+    "followUps": ["Can you think of a disease where a leaky blood-brain barrier is actually the problem rather than the solution?"]
+  },
+  {
+    "id": "prog-pharmacology-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Placebo effect and trial design",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "clinical-trials", "research-design"],
+    "question": "What is the placebo effect, and why does it make drug trials challenging to design?",
+    "lookingFor": "A clear explanation of the phenomenon and an understanding of why double-blinding and randomised controls are necessary.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the placebo effect: a measurable biological or psychological improvement from an inert treatment due to expectation",
+        "Explain why this complicates measuring real drug efficacy",
+        "Describe double-blind, randomised controlled trial design as the methodological solution"
+      ],
+      "modelAnswer": "The placebo effect is the measurable improvement patients experience when they receive an inert treatment — it's not just imagined; you can see real changes in pain scores, blood pressure, even immune markers. That makes it genuinely difficult to know how much of a drug's apparent benefit is the molecule versus the act of receiving treatment. The solution is a randomised double-blind placebo-controlled trial — patients are randomly assigned to drug or placebo, and neither they nor the clinicians administering treatment know who got what. That way, any difference in outcome between the two groups can be attributed to the drug itself. What I find interesting is that the placebo effect doesn't disappear just because you know about it — there's evidence open-label placebos still work, which opens a whole separate set of questions."
+    },
+    "commonMistakes": [
+      "Describing the placebo effect as 'all in the mind' without acknowledging its measurable physiological reality",
+      "Not connecting it to why trial design needs to account for it",
+      "Confusing single-blind and double-blind designs"
+    ],
+    "followUps": ["What ethical issues arise when you give a patient a placebo for a serious condition?"]
+  },
+  {
+    "id": "prog-pharmacology-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Drug metabolism and CYP450",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "metabolism", "cyp450"],
+    "question": "What role do cytochrome P450 enzymes play in drug metabolism, and why does it matter clinically?",
+    "lookingFor": "A working understanding of CYP450's role in hepatic first-pass metabolism, and clinical consequences like drug interactions and individual variation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that CYP450 enzymes in the liver oxidise drugs to more water-soluble forms for excretion",
+        "Note that many drugs are CYP substrates, inducers, or inhibitors — affecting each other's concentrations",
+        "Mention genetic polymorphism as a source of individual variation in drug response"
+      ],
+      "modelAnswer": "Cytochrome P450 enzymes are a family of enzymes primarily in the liver that oxidise drugs, typically converting them into more water-soluble metabolites that can be excreted. The clinical significance is that if two drugs share the same CYP enzyme — say, CYP3A4 — one might inhibit or induce that enzyme and change how quickly the other is broken down, potentially pushing it into toxic or sub-therapeutic concentrations. There's also significant genetic variation in CYP enzyme activity between individuals, so the same dose can behave very differently from one patient to the next. That pharmacogenomics angle is one I find particularly exciting as a direction for more personalised dosing."
+    },
+    "commonMistakes": [
+      "Treating metabolism as just 'the liver breaks it down' with no mechanistic detail",
+      "Not mentioning drug-drug interactions as a clinical consequence",
+      "Confusing CYP inducers with inhibitors"
+    ],
+    "followUps": ["If a patient is a CYP2D6 poor metaboliser, what happens to a drug that relies on CYP2D6 for activation?"]
+  },
+  {
+    "id": "prog-pharmacology-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Therapeutic index",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["pharmacology", "safety", "therapeutic-window"],
+    "question": "What do we mean by the therapeutic index of a drug, and why does it matter?",
+    "lookingFor": "A clear explanation of the ratio between toxic and therapeutic doses, and why a narrow therapeutic index makes clinical management harder.",
+    "idealAnswer": {
+      "bullets": [
+        "Define therapeutic index as the ratio of the toxic dose to the effective dose (TD50/ED50)",
+        "Explain that a narrow index means the margin between working and harmful is small",
+        "Give a real example — warfarin, lithium, digoxin — and why those require careful monitoring"
+      ],
+      "modelAnswer": "The therapeutic index is a measure of how much room there is between the dose that works and the dose that causes harm — formally it's the ratio of TD50 to ED50, the dose toxic in half the population versus the dose effective in half the population. A wide therapeutic index means you have plenty of margin; a narrow one means a small error in dosing can tip the patient into toxicity. Warfarin is a classic example — the therapeutic range for anticoagulation is narrow, individual variation is high, and many drugs and foods interact with it, which is why patients on warfarin need regular INR monitoring. Understanding the therapeutic index is really about understanding risk as a pharmacologist, not just efficacy."
+    },
+    "commonMistakes": [
+      "Defining it vaguely as 'how safe a drug is' without the dose-relationship",
+      "No example of a narrow-index drug",
+      "Not connecting it to the monitoring and clinical management implications"
+    ],
+    "followUps": ["How might you design a drug to have a wider therapeutic index?"]
+  },
+  {
+    "id": "prog-pharmacology-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Biologics vs small molecules",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "biologics", "drug-types"],
+    "question": "What is the difference between a small molecule drug and a biologic, and what are the pros and cons of each?",
+    "lookingFor": "A grasp of the structural distinction, and an informed comparison of specificity, manufacturability, cost, and route of administration.",
+    "idealAnswer": {
+      "bullets": [
+        "Small molecules: low molecular weight, often synthesised chemically, orally bioavailable, less specific",
+        "Biologics: large, protein-based, usually produced in living cells, highly specific, typically injectable",
+        "Trade-offs: biologics are more targeted but more expensive, less stable, and harder to manufacture"
+      ],
+      "modelAnswer": "Small molecule drugs are typically low molecular weight compounds — things like aspirin or ibuprofen — that can be synthesised chemically, taken orally, and cross membranes relatively easily. Biologics are large, complex molecules, usually proteins — antibodies like trastuzumab or insulin — produced in living cell systems. The trade-off is that biologics can be extraordinarily specific, which reduces off-target effects, but they're much harder to manufacture, need to be injected because digestion would destroy them, and are expensive. Small molecules are cheaper and orally available but tend to be less selective, which can cause more side effects. The rise of monoclonal antibodies has changed oncology and autoimmune disease dramatically, so understanding both classes feels essential."
+    },
+    "commonMistakes": [
+      "Describing biologics as 'natural' without any mechanistic distinction",
+      "Not addressing the manufacturing or delivery differences",
+      "Being unaware that most biologics cannot be taken orally"
+    ],
+    "followUps": ["What does the term 'biosimilar' mean, and why is it harder to regulate than a generic small molecule?"]
+  },
+  {
+    "id": "prog-pharmacology-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Current event in pharmacology",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["pharmacology", "current-affairs", "drug-development"],
+    "question": "Can you tell us about a recent development in pharmacology or drug development that caught your attention?",
+    "lookingFor": "Evidence that the applicant follows the field actively and can discuss a real development with appropriate scientific context and critical thinking.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, recent development — not a vague trend",
+        "Explain the underlying pharmacology, not just the headline",
+        "Offer a critical or curious perspective, not just enthusiasm"
+      ],
+      "modelAnswer": "I've been following the GLP-1 receptor agonist story — drugs like semaglutide originally developed for type 2 diabetes are showing remarkable effects on weight, cardiovascular outcomes, and now there's early signal on addiction and inflammatory conditions. The pharmacology is interesting: GLP-1 is an incretin hormone, and these drugs mimic it to slow gastric emptying and reduce appetite centrally. What I find scientifically fascinating is how broad the effects are — it suggests GLP-1 receptors are involved in pathways we didn't fully appreciate. The question I keep coming back to is whether these effects are all receptor-mediated or whether there's something systemic happening via weight loss itself, and I don't think the field has answered that cleanly yet."
+    },
+    "commonMistakes": [
+      "Describing a development from several years ago as 'recent'",
+      "Summarising a news article without any underlying pharmacological understanding",
+      "Having no critical angle — just reciting positive headlines"
+    ],
+    "followUps": ["What do you think the main outstanding questions are for that development?"]
+  },
+  {
+    "id": "prog-pharmacology-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme inhibition as a drug mechanism",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["pharmacology", "enzymes", "mechanism"],
+    "question": "Can you give an example of a drug that works by inhibiting an enzyme, and explain how that leads to its therapeutic effect?",
+    "lookingFor": "A clear mechanistic account linking enzyme inhibition to a downstream biological and clinical outcome.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific enzyme inhibitor drug",
+        "Explain which enzyme it inhibits and what that enzyme normally does",
+        "Trace how inhibiting it produces the therapeutic effect"
+      ],
+      "modelAnswer": "Aspirin is a good one to unpick. It irreversibly inhibits cyclooxygenase enzymes, COX-1 and COX-2, which normally catalyse the first steps in prostaglandin synthesis. Prostaglandins drive inflammation, pain, and fever, so blocking their production reduces all three. Because aspirin acetylates COX-1 irreversibly in platelets — and platelets can't make new protein — it also permanently reduces thromboxane A2, which is why low-dose aspirin is used to prevent clot formation. The fact that it's irreversible, and selective enough between pathways at different doses, is a nice example of how the pharmacological mechanism has to be understood at every level to use a drug intelligently."
+    },
+    "commonMistakes": [
+      "Naming a drug without explaining the enzymatic mechanism",
+      "Confusing inhibition of synthesis with receptor blockade",
+      "Staying at too vague a level — 'it reduces inflammation' with no mechanism"
+    ],
+    "followUps": ["What is the difference between competitive and irreversible enzyme inhibition?"]
+  },
+  {
+    "id": "prog-pharmacology-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Pharmacogenomics",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["pharmacology", "pharmacogenomics", "personalised-medicine"],
+    "question": "What is pharmacogenomics and how might it change the way we prescribe drugs in the future?",
+    "lookingFor": "A genuine understanding of what pharmacogenomics is, with a specific example, and a thoughtful view on its promise and limitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Define pharmacogenomics: the study of how genetic variation affects drug response",
+        "Give a concrete example — CYP2D6 and codeine, HLA-B*57:01 and abacavir, TPMT and azathioprine",
+        "Address both the promise of personalised dosing and the real-world barriers"
+      ],
+      "modelAnswer": "Pharmacogenomics is the study of how a person's genome influences how they respond to a drug — not just whether they'll respond but how quickly they'll metabolise it, whether they'll have an adverse reaction, and what dose is appropriate. A striking example is abacavir, an antiretroviral: a small proportion of patients carry HLA-B*57:01 and will have a severe, potentially fatal hypersensitivity reaction. Genotyping before prescribing now prevents that. More broadly, if we can routinely genotype CYP enzyme variants, we could tailor doses from the start rather than titrating through trial and error. The barriers are practical — cost, data infrastructure, the complexity of polygenic influences — but the direction of travel seems clear, and I think it makes the link between genetics and clinical pharmacology one of the most exciting areas to go into."
+    },
+    "commonMistakes": [
+      "Confusing pharmacogenomics with pharmacogenetics (the distinction is often blurry but the broader term should be understood)",
+      "No concrete example to anchor the concept",
+      "Uncritical enthusiasm with no acknowledgment of barriers or limitations"
+    ],
+    "followUps": ["Are there equity concerns with implementing pharmacogenomics in routine prescribing?"]
+  },
+  {
+    "id": "prog-pharmacology-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Selectivity and side effects",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "selectivity", "side-effects"],
+    "question": "Why is drug selectivity so hard to achieve, and how does lack of selectivity cause side effects?",
+    "lookingFor": "An understanding that many drug targets share structural similarities across tissues, and that side effects are often on-target effects in the wrong place.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that drug targets like receptors and enzymes are often expressed in multiple tissues",
+        "Distinguish on-target side effects (same receptor, wrong tissue) from off-target effects (wrong receptor)",
+        "Give an example — beta-blockers on cardiac vs bronchial beta receptors, for instance"
+      ],
+      "modelAnswer": "Selectivity is hard because biology is not conveniently compartmentalised — the same receptor type often exists in multiple tissues with different functions. Beta-adrenoceptors are a textbook case: beta-1 receptors in the heart slow the heart rate, which is the therapeutic goal of beta-blockers for hypertension. But non-selective beta-blockers also block beta-2 receptors in the airways, causing bronchoconstriction, which is dangerous in asthmatic patients. The development of cardioselective beta-1 blockers like metoprolol was driven by that exact problem. Then there are off-target effects where the drug hits a structurally similar but pharmacologically unintended receptor entirely. Understanding both types of selectivity failure is at the core of designing safer drugs."
+    },
+    "commonMistakes": [
+      "Treating all side effects as 'unintended' without distinguishing on-target from off-target",
+      "No example to ground the explanation",
+      "Implying that selectivity is simply about potency"
+    ],
+    "followUps": ["If you were designing a new drug, how would you test for selectivity early in the process?"]
+  },
+  {
+    "id": "prog-pharmacology-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Drug tolerance and dependence",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "tolerance", "addiction"],
+    "question": "What mechanisms explain why patients can become tolerant to a drug's effects over time?",
+    "lookingFor": "An understanding of at least two distinct mechanisms of tolerance — receptor downregulation and metabolic tolerance — with a real clinical example.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe receptor-level tolerance: downregulation or desensitisation of receptors with prolonged agonist exposure",
+        "Describe metabolic tolerance: enzyme induction speeding up drug breakdown",
+        "Give a clinical example — opioid tolerance, benzodiazepines, or alcohol"
+      ],
+      "modelAnswer": "Tolerance occurs through at least two distinct mechanisms. At the receptor level, sustained agonist exposure can lead to receptor desensitisation — where the receptor becomes uncoupled from its signalling pathway — or downregulation, where the cell internalises and reduces the total number of receptors. With fewer or less responsive receptors, the same dose produces less effect. Separately, metabolic tolerance occurs when the liver upregulates the enzymes that break down the drug, so it's cleared faster — alcohol is a good example, where chronic use induces CYP2E1 and lowers blood alcohol for a given dose. In pain medicine, opioid tolerance from both mechanisms means patients sometimes need escalating doses, which has to be balanced carefully against the risk of dependence."
+    },
+    "commonMistakes": [
+      "Describing tolerance only as 'the body gets used to it' with no mechanism",
+      "Conflating tolerance and dependence",
+      "Only knowing one mechanism of tolerance"
+    ],
+    "followUps": ["How does physical dependence differ from addiction in pharmacological terms?"]
+  },
+  {
+    "id": "prog-pharmacology-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Thinking like a pharmacologist",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["pharmacology", "critical-thinking", "drug-design"],
+    "question": "If you were trying to design a new analgesic drug, what properties would you want it to have, and what trade-offs would you have to accept?",
+    "lookingFor": "The ability to reason like a pharmacologist — balancing efficacy, selectivity, PK properties, safety, and practicality rather than describing an ideal that doesn't exist.",
+    "idealAnswer": {
+      "bullets": [
+        "Specify target-related properties: selectivity for pain pathways, ideally without addiction risk",
+        "Address pharmacokinetic requirements: good bioavailability, appropriate duration of action, safe metabolism",
+        "Acknowledge trade-offs honestly — selectivity vs breadth, potency vs safety margin, cost of novel mechanisms"
+      ],
+      "modelAnswer": "I'd want it to hit a target specific to nociceptive pathways — something like a sodium channel subtype, Nav1.7, which is expressed in pain-sensing neurons and mutations in which are known to abolish pain sensation in humans. That selectivity would mean less off-target CNS sedation and no opioid receptor activity, so ideally no addiction potential. For pharmacokinetics, I'd want oral bioavailability, a half-life suitable for twice-daily dosing, and hepatic metabolism that's predictable — not heavily CYP3A4-dependent, which is too prone to interactions. The trade-off I'd have to accept is that highly selective molecules targeting novel channels are harder and more expensive to develop, and clinical data on safety often doesn't emerge until large numbers of patients have used them. That's the tension in analgesic development right now — we know opioids work but they harm; the alternatives are harder to make and harder to prove."
+    },
+    "commonMistakes": [
+      "Designing a fantasy drug with all desirable properties and no trade-offs",
+      "Staying at a vague level — 'it should be effective and safe' with no pharmacological specifics",
+      "Not knowing what Nav1.7 or any pain-relevant target is"
+    ],
+    "followUps": ["Why haven't Nav1.7 inhibitors translated as cleanly from animal models to the clinic as the genetics suggested they would?"]
+  },
+  {
+    "id": "prog-pharmacology-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics in pharmacological research",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["pharmacology", "ethics", "research"],
+    "question": "Should pharmaceutical companies be allowed to patent drugs? What are the ethical arguments on both sides?",
+    "lookingFor": "Structured reasoning that acknowledges genuine arguments on both sides — innovation incentive versus access — without a simplistic verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Argue the case for patents: they incentivise the enormous investment in R&D that high-failure drug development requires",
+        "Argue the case against: they create monopoly pricing, can price patients in low-income contexts out of life-saving treatments",
+        "Offer a nuanced view: compulsory licensing, tiered pricing, or public funding as possible middle ground"
+      ],
+      "modelAnswer": "The case for patents is real: drug development costs billions and fails most of the time, and without the promise of a period of market exclusivity it is genuinely hard to see how private companies fund that risk. The patent system is what brought us most modern medicines. But the case against is also serious: once a drug is made, the marginal cost of producing another dose can be tiny, and patent monopolies can price treatments beyond what health systems or individual patients in lower-income countries can afford — the HIV antiretroviral access crisis of the early 2000s was a stark example. I don't think the answer is abolishing patents, but mechanisms like compulsory licensing, differential pricing, and more public funding for diseases with weak commercial incentives seem necessary. The pharmacology community has a stake in this because access is part of whether a treatment actually works at a population level."
+    },
+    "commonMistakes": [
+      "Taking only one side without acknowledging the genuine tension",
+      "Not knowing what compulsory licensing or any real policy mechanism is",
+      "Treating this as primarily a business question rather than a scientific and ethical one"
+    ],
+    "followUps": ["Does your reasoning change for a drug treating a neglected tropical disease versus a blockbuster for a common chronic condition?"]
+  },
+  {
+    "id": "prog-pharmacology-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Animal models in drug research",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "animal-models", "ethics"],
+    "question": "How do you feel about the use of animals in pharmacological research, and what alternatives are being developed?",
+    "lookingFor": "A balanced, informed position that acknowledges scientific necessity, ethical weight, the 3Rs framework, and emerging alternatives like organoids or in silico methods.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the scientific necessity of animal models in safety and efficacy testing",
+        "Show awareness of the 3Rs: Replace, Reduce, Refine",
+        "Name at least one credible emerging alternative"
+      ],
+      "modelAnswer": "It's a question I've thought about carefully. Animal models remain scientifically necessary for certain questions — pharmacokinetics in a living system, organ-level toxicity, and behavioural measures in neuropharmacology can't be replicated in a dish. But that doesn't mean the ethical weight is insignificant, and the 3Rs framework — Replace where you can, Reduce numbers, Refine methods to minimise suffering — is the right organising principle. What I find genuinely exciting is how quickly alternatives are maturing: organ-on-a-chip microfluidic systems, human-derived organoids, and increasingly sophisticated in silico ADME prediction can answer some questions that would previously have needed animal studies. The field isn't there yet for replacing animals entirely in late preclinical safety testing, but the direction of travel is clear, and I think pharmacologists who understand both the necessity and the imperative to reduce it will be most valuable."
+    },
+    "commonMistakes": [
+      "Claiming to be fully opposed to animal research while wanting to study pharmacology",
+      "Fully dismissing the ethical concerns as irrelevant to science",
+      "No awareness of alternatives or the 3Rs"
+    ],
+    "followUps": ["Do you think in silico models will ever fully replace animal testing in preclinical trials?"]
+  },
+  {
+    "id": "prog-pharmacology-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Signal transduction",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "signal-transduction", "cellular"],
+    "question": "Many drugs work by modulating cell signalling pathways. Can you describe how a G-protein coupled receptor works?",
+    "lookingFor": "A mechanistic account of GPCR activation, G-protein dissociation, second messenger production, and how downstream effects arise.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the seven-transmembrane structure and how agonist binding causes a conformational change",
+        "Explain G-protein dissociation into alpha and beta-gamma subunits and activation of effectors",
+        "Give an example of a second messenger pathway — e.g. adenylyl cyclase / cAMP, or PLC / IP3 / calcium"
+      ],
+      "modelAnswer": "GPCRs are seven-transmembrane receptors coupled to heterotrimeric G-proteins on the intracellular side. When an agonist binds, it causes a conformational change that activates the G-protein, causing the alpha subunit to exchange GDP for GTP and dissociate. Depending on which G-protein subtype is involved, the alpha subunit then activates or inhibits an effector — a Gs-coupled receptor activates adenylyl cyclase, raising cAMP levels, which activates protein kinase A and produces downstream phosphorylation events. Beta-adrenoceptors are a classic Gs example. Gi-coupled receptors inhibit adenylyl cyclase instead. After a short period, intrinsic GTPase activity on the alpha subunit hydrolyses GTP to GDP and the system resets. The beauty of this system pharmacologically is that different agonists can bias it toward different downstream pathways, which is what makes biased agonism such an active research area."
+    },
+    "commonMistakes": [
+      "Describing GPCRs as 'channel-like' rather than signalling proteins",
+      "Missing the second messenger step — jumping straight from receptor to effect",
+      "Confusing the G-protein with the receptor itself"
+    ],
+    "followUps": ["What happens to a GPCR after prolonged exposure to an agonist?"]
+  },
+  {
+    "id": "prog-pharmacology-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Career paths in pharmacology",
+    "program": "Pharmacology",
+    "difficulty": "easy",
+    "tags": ["pharmacology", "career", "goals"],
+    "question": "What do pharmacology graduates typically go on to do, and where do you see yourself fitting in?",
+    "lookingFor": "Awareness of the range of career paths a pharmacology degree opens — not just drug company research — and a grounded personal direction.",
+    "idealAnswer": {
+      "bullets": [
+        "Show knowledge of diverse paths: industry research, academia, clinical trials, regulatory agencies, medicine conversion",
+        "Connect one or two paths specifically to the applicant's own interests",
+        "Be honest about uncertainty while still having a direction"
+      ],
+      "modelAnswer": "Pharmacology opens up more paths than people expect — industry drug discovery is the obvious one, but graduates also go into clinical trials management, regulatory science at agencies like the MHRA or FDA, toxicology, academic research, and many go on to do graduate medicine or pharmacy. I'm drawn toward the translational end — the point where a discovery in the lab starts to be tested in humans. That sits somewhere between academic and industrial research, which is part of why I'm interested in courses with a strong drug design or pharmacology research project component. I know my thinking might shift once I'm inside the subject, and I'm open to that — but that translational question of whether something actually works in people is what drives me right now."
+    },
+    "commonMistakes": [
+      "Only naming pharmaceutical industry as a career option",
+      "Having no personal direction at all — seeming entirely undecided",
+      "Confusing pharmacology with pharmacy as a profession"
+    ],
+    "followUps": ["Is there any path you'd specifically want to avoid, and why?"]
+  },
+  {
+    "id": "prog-pharmacology-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantitative and mathematical thinking",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "quantitative", "maths"],
+    "question": "Pharmacology is more mathematical than many applicants expect. How comfortable are you with the quantitative side of the subject, and can you give an example of where maths underpins pharmacology?",
+    "lookingFor": "Honest self-assessment of quantitative ability, plus genuine awareness that pharmacology involves modelling, statistics, and kinetics — not just biology.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the quantitative demands: compartmental modelling, statistical analysis of trial data, kinetic equations",
+        "Give a specific example — e.g. first-order kinetics and half-life, or Michaelis-Menten kinetics",
+        "Honestly assess their own readiness and how they plan to manage any gaps"
+      ],
+      "modelAnswer": "I came in expecting biology to dominate and was surprised, honestly, by how much the mathematics matters — dose-response curves, kinetic modelling, statistical analysis of clinical trial data. I'm comfortable with maths at A-level and beyond, and I actually find the quantitative side reassuring because it makes things more precise. First-order kinetics is a good example: the rate at which a drug is eliminated is proportional to its concentration, which gives you the exponential decay curve and the concept of half-life. Knowing that after five half-lives a drug is essentially cleared lets you space doses rationally. It's the kind of calculation that looks simple but is doing real clinical work. I know pharmacokinetic modelling gets more complex from there and I'd want to push into that."
+    },
+    "commonMistakes": [
+      "Claiming to be fully comfortable with all quantitative aspects without specifics",
+      "Expressing anxiety about maths in a way that seems incompatible with the course",
+      "Not being able to give any example of where maths features in pharmacology"
+    ],
+    "followUps": ["Have you looked at compartmental pharmacokinetic models at all? What did you make of them?"]
+  }
+]
