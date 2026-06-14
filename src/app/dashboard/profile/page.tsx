@@ -136,7 +136,7 @@ export default async function ProfilePage() {
       .order("created_at", { ascending: false })
 
     if (interviewsData) {
-      interviews = interviewsData.map((item) => {
+      interviews = (interviewsData as any[]).map((item: any) => {
         const score = item.feedback && item.feedback[0] ? item.feedback[0].score : 75
         return {
           id: item.id,
