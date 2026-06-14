@@ -1,13 +1,12 @@
 "use client"
 
-import { GlowButton } from "@/components/ui/glow-button"
-import { GlassCard } from "@/components/ui/glass-card"
-import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
+import Header from "@/components/almaprep/Header"
+import Footer from "@/components/almaprep/Footer"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -34,7 +33,7 @@ export default function LoginPage() {
       } else {
         // Clear demo cookie if logging in with real credentials (not mock mode)
         const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz");
+          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz")
         if (!isMockMode) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
@@ -47,73 +46,73 @@ export default function LoginPage() {
     }
   }
 
-
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
+    <div className="almaprep-theme min-h-screen flex flex-col">
+      <Header />
       
-      <div className="z-10 w-full max-w-md">
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-block text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-            Mock Mate
-          </Link>
-          <h1 className="text-3xl font-bold mt-6 mb-2">Welcome Back</h1>
-          <p className="text-foreground/70">Sign in to continue your interview prep.</p>
-        </div>
+      <main className="auth-wrap flex-1 flex items-center justify-center">
+        <div className="auth-card">
+          <div style={{ textAlign: "center", marginBottom: "24px" }}>
+            <Link href="/" className="brand" style={{ justifyContent: "center" }}>
+              <svg className="mark" viewBox="0 0 80 80" aria-hidden="true" style={{ width: "32px", height: "32px" }}>
+                <rect width="80" height="80" rx="18" fill="#059669" />
+                <path d="M40 12 L16 67 L29 67 L36 50 L44 50 L51 67 L64 67 Z" fill="white" />
+                <rect x="30" y="40" width="20" height="8" fill="#059669" />
+              </svg>
+              Almaprep
+            </Link>
+            <h1 style={{ marginTop: "16px", marginBottom: "8px", fontSize: "1.8rem" }}>Welcome Back</h1>
+            <p style={{ color: "var(--muted)", fontSize: "0.95rem" }}>Sign in to continue your interview prep.</p>
+          </div>
 
-        <GlassCard className="p-8">
           {error && (
-            <div className="mb-4 p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-red-400 text-xs font-medium">
+            <div className="auth-note" style={{ background: "#fef2f2", borderColor: "#fca5a5", color: "#b91c1c" }}>
               {error}
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="text-sm font-medium text-foreground/90">Email</label>
-              <Input
+          <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <div className="field">
+              <label htmlFor="email">Email</label>
+              <input
                 id="email"
                 type="email"
                 placeholder="you@example.com"
-                className="input-glass h-12"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             
-            <div className="flex flex-col gap-2">
-              <label htmlFor="password" className="text-sm font-medium text-foreground/90">Password</label>
-              <Input
+            <div className="field">
+              <label htmlFor="password">Password</label>
+              <input
                 id="password"
                 type="password"
                 placeholder="••••••••"
-                className="input-glass h-12"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
 
-            <GlowButton type="submit" disabled={loading} className="w-full mt-4 h-12 cursor-pointer">
+            <button type="submit" disabled={loading} className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: "8px" }}>
               {loading ? "Signing In..." : "Sign In"}
-            </GlowButton>
+            </button>
 
-            <div className="relative my-2 flex items-center justify-center">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-white/10" />
-              </div>
-              <span className="relative bg-[#0d0a16] px-3 text-xs text-foreground/40 uppercase">Or</span>
+            <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
+              <span style={{ padding: "0 12px", fontSize: "0.75rem", color: "var(--muted)", textTransform: "uppercase" }}>Or</span>
+              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
 
             <button
               type="button"
               onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-              className="w-full h-12 rounded-lg border border-white/10 text-white bg-white/5 hover:bg-white/10 transition-colors font-semibold text-sm cursor-pointer flex items-center justify-center gap-3"
+              className="btn btn-ghost"
+              style={{ width: "100%", justifyContent: "center", gap: "10px" }}
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24">
+              <svg style={{ width: "20px", height: "20px" }} viewBox="0 0 24 24">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                   fill="#4285F4"
@@ -134,33 +133,35 @@ export default function LoginPage() {
               <span>Continue with Google</span>
             </button>
 
-            <div className="relative my-2 flex items-center justify-center">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-white/10" />
-              </div>
-              <span className="relative bg-[#0d0a16] px-3 text-xs text-foreground/40 uppercase">Or</span>
+            <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
+              <span style={{ padding: "0 12px", fontSize: "0.75rem", color: "var(--muted)", textTransform: "uppercase" }}>Or</span>
+              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
 
             <button
               type="button"
               onClick={() => {
-                document.cookie = "mockmate-demo-session=true; path=/; max-age=604800"; // 7 days
-                window.location.href = "/dashboard";
+                document.cookie = "mockmate-demo-session=true; path=/; max-age=604800" // 7 days
+                window.location.href = "/dashboard"
               }}
-              className="w-full h-12 rounded-lg border border-primary/30 text-primary bg-primary/5 hover:bg-primary/10 transition-colors font-bold text-sm cursor-pointer flex items-center justify-center gap-2"
+              className="btn"
+              style={{ width: "100%", justifyContent: "center", background: "#10b981", color: "#ffffff", border: "none" }}
             >
               🚀 Launch Local Demo Mode (No DB)
             </button>
           </form>
 
-          <p className="text-center text-sm text-foreground/70 mt-6">
+          <p className="auth-alt" style={{ marginTop: "24px" }}>
             Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-primary hover:underline font-medium">
+            <Link href="/signup" style={{ fontWeight: 600, color: "var(--emerald-600)" }}>
               Sign up
             </Link>
           </p>
-        </GlassCard>
-      </div>
-    </main>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   )
 }
