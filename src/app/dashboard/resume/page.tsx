@@ -19,9 +19,25 @@ export default async function ResumePage() {
   let isDemoMode = false
   if (!activeUser && hasDemoCookie) {
     isDemoMode = true
-    activeUser = {
-      name: "Straw Hat Luffy",
-      email: "luffy@goingmerry.org",
+    const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+    if (demoUserCookie) {
+      try {
+        const parsed = JSON.parse(demoUserCookie)
+        activeUser = {
+          name: parsed.username || parsed.email?.split("@")[0] || "User",
+          email: parsed.email,
+          avatar_url: parsed.avatar_url,
+        }
+      } catch (err) {
+        // fallback
+      }
+    }
+    if (!activeUser) {
+      activeUser = {
+        name: "Straw Hat Luffy",
+        email: "luffy@goingmerry.org",
+        avatar_url: "rocket",
+      }
     }
   }
 

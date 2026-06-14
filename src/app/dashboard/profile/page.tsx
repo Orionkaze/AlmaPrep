@@ -26,9 +26,25 @@ export default async function ProfilePage() {
   let isDemoMode = false
   if (!activeUser && hasDemoCookie) {
     isDemoMode = true
-    activeUser = {
-      name: "Straw Hat Luffy",
-      email: "luffy@goingmerry.org",
+    const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+    if (demoUserCookie) {
+      try {
+        const parsed = JSON.parse(demoUserCookie)
+        activeUser = {
+          name: parsed.username || parsed.email?.split("@")[0] || "User",
+          email: parsed.email,
+          avatar_url: parsed.avatar_url,
+        }
+      } catch (err) {
+        // fallback
+      }
+    }
+    if (!activeUser) {
+      activeUser = {
+        name: "Straw Hat Luffy",
+        email: "luffy@goingmerry.org",
+        avatar_url: "rocket",
+      }
     }
     userId = "demo-user-id"
   }
@@ -59,10 +75,19 @@ export default async function ProfilePage() {
   let subscriptionTier = "free"
 
   if (isDemoMode) {
+    let resumeText = "Objective: Find the One Piece. Experience: Captain of the Straw Hat Pirates. Defeated Kaido, Big Mom, Doflamingo. Skills: Gear 5, Conqueror's Haki, Elasticity, leadership, meat eating."
+    const customResume = cookieStore.get("mockmate-demo-resume")?.value
+    if (customResume) {
+      try {
+        const parsed = JSON.parse(customResume)
+        resumeText = parsed.resumeText || resumeText
+      } catch (e) {}
+    }
+
     initialProfile = {
-      username: "Luffy (Demo)",
-      avatar_url: "rocket",
-      resume_text: "Objective: Find the One Piece. Experience: Captain of the Straw Hat Pirates. Defeated Kaido, Big Mom, Doflamingo. Skills: Gear 5, Conqueror's Haki, Elasticity, leadership, meat eating.",
+      username: activeUser.name || "Luffy (Demo)",
+      avatar_url: activeUser.avatar_url || "rocket",
+      resume_text: resumeText,
     }
     createdAt = new Date(Date.now() - 365*24*60*60*1000).toISOString()
     subscriptionTier = "premium"

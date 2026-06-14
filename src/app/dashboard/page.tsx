@@ -44,9 +44,25 @@ export default async function DashboardPage() {
   let isDemoMode = false
   if (!activeUser && hasDemoCookie) {
     isDemoMode = true
-    activeUser = {
-      name: "Straw Hat Luffy",
-      email: "luffy@goingmerry.org",
+    const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+    if (demoUserCookie) {
+      try {
+        const parsed = JSON.parse(demoUserCookie)
+        activeUser = {
+          name: parsed.username || parsed.email?.split("@")[0] || "User",
+          email: parsed.email,
+          avatar_url: parsed.avatar_url,
+        }
+      } catch (err) {
+        // fallback
+      }
+    }
+    if (!activeUser) {
+      activeUser = {
+        name: "Straw Hat Luffy",
+        email: "luffy@goingmerry.org",
+        avatar_url: "rocket",
+      }
     }
     userId = "demo-user-id"
   }
@@ -74,8 +90,8 @@ export default async function DashboardPage() {
 
   if (activeUser && userId) {
     if (isDemoMode) {
-      displayName = "Luffy (Demo)"
-      avatarIcon = faRocket
+      displayName = activeUser.name || "Luffy (Demo)"
+      avatarIcon = avatarMap[activeUser.avatar_url || ""] || faRocket
       hasResume = true
       totalSessions = 3
       latestFeedback = {

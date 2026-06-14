@@ -15,7 +15,17 @@ export async function POST(req: NextRequest) {
 
     if (hasDemoCookie) {
       userId = "demo-user-id"
-      userEmail = "luffy@goingmerry.org"
+      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+      if (demoUserCookie) {
+        try {
+          const parsed = JSON.parse(demoUserCookie)
+          userEmail = parsed.email || "luffy@goingmerry.org"
+        } catch (e) {
+          userEmail = "luffy@goingmerry.org"
+        }
+      } else {
+        userEmail = "luffy@goingmerry.org"
+      }
     } else {
       // 1. Authenticate the user
       // First, check NextAuth session

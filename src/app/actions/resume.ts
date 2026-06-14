@@ -32,6 +32,10 @@ export async function saveAndAnalyzeResume(
         "premium"
       )
       const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
+      
+      // Persist custom resume and analysis in demo mode
+      cookieStore.set("mockmate-demo-resume", JSON.stringify({ resumeText, analysis }), { path: "/", maxAge: 604800 })
+
       return {
         success: true,
         data: {
@@ -108,16 +112,60 @@ export async function getResumeData(): Promise<{
     const cookieStore = await cookies()
     const hasDemoCookie = cookieStore.has("mockmate-demo-session")
     if (hasDemoCookie) {
-      return {
-        success: true,
-        data: {
-          resumeText: "Straw Hat Luffy\nCaptain of the Straw Hat Pirates\n\nEXPERIENCE:\nCaptain - Straw Hat Pirates (2020 - Present)\n- Guided crew across the Grand Line, entering the New World.\n- Defeated numerous Warlords, Emperor Kaido, and Emperor Big Mom to maintain freedom and safety for friendly territories.\n\nSKILLS:\n- Conqueror's Haki, Armament Haki, Observation Haki\n- Gear 5 (Nika rubber body transformations)\n- Strong leadership and resilience\n- Meat consumption analysis",
-          analysis: {
-            summary: "Extremely driven and resilient team captain with extensive experience leading diverse teams in high-risk environments. Primary focus is territory management, combat, and achieving ultimate goals (the One Piece).",
-            skills: ["Leadership", "Conqueror's Haki", "Observation Haki", "Rubber Body Elasticity (Gear 5)", "Risk Assessment", "Conflict Management", "Physical Resilience"],
-            highlights: ["Liberated multiple nations (Wano, Alabasta, Dressrosa)", "Earned the title of Emperor of the Sea with a 3 billion bounty", "Successfully recruited 9 highly specialized crew members"],
-            interviewTopics: ["Crisis management and split-team coordination", "Dealing with massive power disparities (e.g. Admirals)", "Ethical decision making under severe pressure"],
-            improvements: ["Add detailed metrics of territories protected", "Limit informal slang (e.g. calling superiors 'meathead') in professional settings"]
+      const customResume = cookieStore.get("mockmate-demo-resume")?.value
+      if (customResume) {
+        try {
+          const parsed = JSON.parse(customResume)
+          return {
+            success: true,
+            data: {
+              resumeText: parsed.resumeText,
+              analysis: parsed.analysis
+            }
+          }
+        } catch (e) {}
+      }
+
+      // Fallback: Check if there's a custom demo user
+      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+      let displayName = "Straw Hat Luffy"
+      let isLuffy = true
+      if (demoUserCookie) {
+        try {
+          const parsed = JSON.parse(demoUserCookie)
+          if (parsed.email && parsed.email !== "luffy@goingmerry.org") {
+            displayName = parsed.username || parsed.email.split("@")[0] || "User"
+            isLuffy = false
+          }
+        } catch (e) {}
+      }
+
+      if (isLuffy) {
+        return {
+          success: true,
+          data: {
+            resumeText: "Straw Hat Luffy\nCaptain of the Straw Hat Pirates\n\nEXPERIENCE:\nCaptain - Straw Hat Pirates (2020 - Present)\n- Guided crew across the Grand Line, entering the New World.\n- Defeated numerous Warlords, Emperor Kaido, and Emperor Big Mom to maintain freedom and safety for friendly territories.\n\nSKILLS:\n- Conqueror's Haki, Armament Haki, Observation Haki\n- Gear 5 (Nika rubber body transformations)\n- Strong leadership and resilience\n- Meat consumption analysis",
+            analysis: {
+              summary: "Extremely driven and resilient team captain with extensive experience leading diverse teams in high-risk environments. Primary focus is territory management, combat, and achieving ultimate goals (the One Piece).",
+              skills: ["Leadership", "Conqueror's Haki", "Observation Haki", "Rubber Body Elasticity (Gear 5)", "Risk Assessment", "Conflict Management", "Physical Resilience"],
+              highlights: ["Liberated multiple nations (Wano, Alabasta, Dressrosa)", "Earned the title of Emperor of the Sea with a 3 billion bounty", "Successfully recruited 9 highly specialized crew members"],
+              interviewTopics: ["Crisis management and split-team coordination", "Dealing with massive power disparities (e.g. Admirals)", "Ethical decision making under severe pressure"],
+              improvements: ["Add detailed metrics of territories protected", "Limit informal slang (e.g. calling superiors 'meathead') in professional settings"]
+            }
+          }
+        }
+      } else {
+        return {
+          success: true,
+          data: {
+            resumeText: `${displayName}\nSoftware Engineer\n\nEXPERIENCE:\nSoftware Engineer (2020 - Present)\n- Developed innovative frontend applications and backend APIs using React, Next.js, and Node.js.\n- Integrated multiple AI services and automated deployment pipelines.\n\nSKILLS:\n- JavaScript, TypeScript, Next.js, React, Node.js\n- AI Integrations, Prompt Engineering\n- SQL, Database Design\n- Teamwork, Leadership`,
+            analysis: {
+              summary: `Strong software engineering professional with a background in modern web technologies and AI integrations. Focused on building scalable applications and streamlining workflows.`,
+              skills: ["JavaScript", "TypeScript", "Next.js", "React", "Node.js", "AI Integration", "Database Design", "Web Design"],
+              highlights: ["Successfully deployed next-generation AI features", "Optimized frontend performance by 40%", "Designed reusable component library"],
+              interviewTopics: ["Vercel and Next.js optimization", "Handling API rate limits", "Structuring AI agent code"],
+              improvements: ["Detail specific metrics in your experience bullets", "Include cloud infrastructure experience if applicable"]
+            }
           }
         }
       }

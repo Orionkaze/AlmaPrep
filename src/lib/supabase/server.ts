@@ -1,7 +1,111 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
+async function createMockServerClient() {
+  const cookieStore = await cookies()
+
+  return {
+    auth: {
+      signUp: async ({ email, password }: any) => {
+        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
+        cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username: email.split("@")[0] }), { path: "/", maxAge: 604800 });
+        
+        const mockUser = { id: "demo-user-id", email, email_confirmed_at: new Date().toISOString() };
+        return {
+          data: {
+            user: mockUser,
+            session: {
+              access_token: "mock-session-token",
+              expires_in: 3600,
+              user: mockUser,
+            }
+          },
+          error: null
+        };
+      },
+
+      signInWithPassword: async ({ email, password }: any) => {
+        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
+        cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username: email.split("@")[0] }), { path: "/", maxAge: 604800 });
+        
+        const mockUser = { id: "demo-user-id", email, email_confirmed_at: new Date().toISOString() };
+        return {
+          data: {
+            user: mockUser,
+            session: {
+              access_token: "mock-session-token",
+              expires_in: 3600,
+              user: mockUser,
+            }
+          },
+          error: null
+        };
+      },
+
+      signOut: async () => {
+        cookieStore.delete("mockmate-demo-session");
+        cookieStore.delete("mockmate-demo-user");
+        return { error: null };
+      },
+
+      getUser: async () => {
+        const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
+        if (demoUserVal) {
+          try {
+            const parsed = JSON.parse(demoUserVal);
+            return { data: { user: { id: "demo-user-id", email: parsed.email } }, error: null };
+          } catch (e) {}
+        }
+        return { data: { user: null }, error: null };
+      },
+
+      getSession: async () => {
+        const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
+        if (demoUserVal) {
+          try {
+            const parsed = JSON.parse(demoUserVal);
+            const mockUser = { id: "demo-user-id", email: parsed.email };
+            return {
+              data: {
+                session: {
+                  access_token: "mock-session-token",
+                  expires_in: 3600,
+                  user: mockUser,
+                }
+              },
+              error: null
+            };
+          } catch (e) {}
+        }
+        return { data: { session: null }, error: null };
+      }
+    },
+    from: (table: string) => {
+      const chain = {
+        select: () => chain,
+        insert: () => chain,
+        update: () => chain,
+        upsert: () => chain,
+        delete: () => chain,
+        eq: () => chain,
+        single: async () => ({ data: null, error: null }),
+        maybeSingle: async () => ({ data: null, error: null }),
+        limit: () => chain,
+        order: () => chain,
+      };
+      return chain as any;
+    }
+  } as any;
+}
+
 export async function createClient() {
+  const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz.supabase.co");
+
+  if (isMockMode) {
+    return createMockServerClient();
+  }
+
   const cookieStore = await cookies()
 
   return createServerClient(
@@ -27,3 +131,4 @@ export async function createClient() {
     }
   )
 }
+
