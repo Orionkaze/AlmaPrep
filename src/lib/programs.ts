@@ -5,7 +5,7 @@ export interface Question {
   id: string
   category: string
   subtopic: string
-  program: string
+  program: string | null
   difficulty: string
   tags: string[]
   question: string
@@ -83,73 +83,98 @@ export function getPrograms(): ProgramInfo[] {
   if (cachedPrograms) return cachedPrograms
 
   try {
-    const programsDir = path.join(process.cwd(), "programs")
-    const universalDir = path.join(process.cwd(), "universal")
-    const programs: ProgramInfo[] = []
-
-    // Helper function to load JSON files from a directory
-    const loadFromDir = (dirPath: string, isUniversal: boolean) => {
-      if (!fs.existsSync(dirPath)) {
-        console.warn(`Directory not found at ${dirPath}`)
-        return
-      }
-
-      const files = fs.readdirSync(dirPath)
-      for (const file of files) {
-        if (file.endsWith(".json")) {
-          const filePath = path.join(dirPath, file)
-          const fileContent = fs.readFileSync(filePath, "utf-8")
-          const questions: Question[] = JSON.parse(fileContent)
-          
-          const programId = file.replace(".json", "")
-          
-          // Find program display name: either from first question's program field or dynamic cleaning
-          let programName = questions[0]?.program || ""
-          if (!programName) {
-            programName = programId
-              .split("-")
-              .map(word => {
-                if (word === "a" || word === "b") return `(${word.toUpperCase()})`
-                if (word === "and") return "&"
-                return word.charAt(0).toUpperCase() + word.slice(1)
-              })
-              .join(" ")
-          } else {
-            // If we have a vs b files (like medicine-a, medicine-b or dentistry-a, dentistry-b), append it
-            const parts = programId.split("-")
-            const suffix = parts[parts.length - 1]
-            if (suffix === "a" || suffix === "b") {
-              programName = `${programName} (${suffix.toUpperCase()})`
-            }
-          }
-
-          const category = isUniversal ? "Universal" : (categoryMapping[programId] || "Other")
-
-          programs.push({
-            id: programId,
-            name: programName,
-            category,
-            questionCount: questions.length
-          })
-        }
-      }
+    const indexPath = path.join(process.cwd(), "index.json")
+    if (!fs.existsSync(indexPath)) {
+      console.warn(`index.json not found at ${indexPath}`)
+      return []
     }
 
-    loadFromDir(programsDir, false)
-    loadFromDir(universalDir, true)
+    const indexContent = fs.readFileSync(indexPath, "utf-8")
+    const indexData = JSON.parse(indexContent)
+    const shards = indexData.shards || []
+    const programs: ProgramInfo[] = []
+
+    for (const shard of shards) {
+      if (!shard.file) continue
+      // Map data/universal/... to universal/... and data/programs/... to programs/...
+      const mappedFile = shard.file.replace(/^data\//, "")
+      const filePath = path.join(process.cwd(), mappedFile)
+
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, "utf-8")
+        const questions: Question[] = JSON.parse(fileContent)
+        const programId = path.basename(shard.file, ".json")
+        const isUniversal = shard.file.startsWith("data/universal/")
+
+        // Find program display name
+        let programName = questions[0]?.program || ""
+        if (!programName) {
+          programName = programId
+            .split("-")
+            .map(word => {
+              if (word === "a" || word === "b") return `(${word.toUpperCase()})`
+              if (word === "and") return "&"
+              return word.charAt(0).toUpperCase() + word.slice(1)
+            })
+            .join(" ")
+        } else {
+          // If we have a vs b files, append suffix
+          const parts = programId.split("-")
+          const suffix = parts[parts.length - 1]
+          if (suffix === "a" || suffix === "b") {
+            programName = `${programName} (${suffix.toUpperCase()})`
+          }
+        }
+
+        const category = isUniversal ? "Universal" : (categoryMapping[programId] || "Other")
+
+        programs.push({
+          id: programId,
+          name: programName,
+          category,
+          questionCount: questions.length
+        })
+      } else {
+        console.warn(`Shard file not found: ${filePath}`)
+      }
+    }
 
     // Sort alphabetically by name
     programs.sort((a, b) => a.name.localeCompare(b.name))
     cachedPrograms = programs
     return programs
   } catch (error) {
-    console.error("Error reading programs directories:", error)
+    console.error("Error reading programs index:", error)
     return []
   }
 }
 
 export function getProgramQuestions(programId: string): Question[] {
   try {
+    const indexPath = path.join(process.cwd(), "index.json")
+    if (fs.existsSync(indexPath)) {
+      const indexContent = fs.readFileSync(indexPath, "utf-8")
+      const indexData = JSON.parse(indexContent)
+      const shards = indexData.shards || []
+      
+      // Try to find matching shard
+      const matchingShard = shards.find((shard: any) => {
+        if (!shard.file) return false
+        const id = path.basename(shard.file, ".json")
+        return id === programId
+      })
+
+      if (matchingShard) {
+        const mappedFile = matchingShard.file.replace(/^data\//, "")
+        const filePath = path.join(process.cwd(), mappedFile)
+        if (fs.existsSync(filePath)) {
+          const fileContent = fs.readFileSync(filePath, "utf-8")
+          return JSON.parse(fileContent) as Question[]
+        }
+      }
+    }
+
+    // Fallback if index lookup failed or not found
     let filePath = path.join(process.cwd(), "programs", `${programId}.json`)
     if (!fs.existsSync(filePath)) {
       filePath = path.join(process.cwd(), "universal", `${programId}.json`)
@@ -161,6 +186,30 @@ export function getProgramQuestions(programId: string): Question[] {
     return JSON.parse(fileContent) as Question[]
   } catch (error) {
     console.error(`Error reading questions for program ${programId}:`, error)
+    return []
+  }
+}
+
+export function getSampleQuestions(category: string): Question[] {
+  try {
+    const filePath = path.join(process.cwd(), "sample.json")
+    if (!fs.existsSync(filePath)) {
+      return []
+    }
+    const fileContent = fs.readFileSync(filePath, "utf-8")
+    const data = JSON.parse(fileContent)
+    const questions = (data.questions || []) as Question[]
+    
+    if (category === "hr") {
+      return questions.filter(q => q.program === null)
+    } else if (category === "technical") {
+      return questions.filter(q => q.program !== null)
+    } else if (category === "mixed") {
+      return questions
+    }
+    return []
+  } catch (error) {
+    console.error("Error reading sample questions:", error)
     return []
   }
 }

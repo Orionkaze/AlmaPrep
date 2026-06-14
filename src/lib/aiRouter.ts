@@ -9,7 +9,7 @@ import {
 } from "@/lib/llm"
 import { createClient } from "@/lib/supabase/server"
 import { headers } from "next/headers"
-import { getProgramQuestions } from "./programs"
+import { getProgramQuestions, getSampleQuestions } from "./programs"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
@@ -108,7 +108,11 @@ export async function executeAIRouting(
       }
     }
 
-    const questions = getProgramQuestions(category)
+    let questions = getProgramQuestions(category)
+    if ((!questions || questions.length === 0) && ["hr", "technical", "mixed"].includes(category)) {
+      questions = getSampleQuestions(category)
+    }
+
     let resumeContextPrompt = ""
     if (resumeText) {
       if (questions && questions.length > 0) {
@@ -137,9 +141,9 @@ Focus your interview questions on their background, experiences, projects, and t
 
     let domainSpecificPrompt = ""
     if (questions && questions.length > 0) {
-      const programName = questions[0].program
+      const programName = questions[0].program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : "Mixed Interview")
       domainSpecificPrompt = `
-You are interviewing the candidate for the specialized academic/professional program: "${programName}".
+You are interviewing the candidate for: "${programName}".
 Here is the official Question Bank of standard questions for this domain. You must select questions from this bank to structure the interview:
 ---
 ${JSON.stringify(questions.map(q => ({
@@ -153,12 +157,12 @@ ${JSON.stringify(questions.map(q => ({
 ---
 
 Rules for utilizing the Question Bank:
-1. Start the interview by selecting an introductory question from the bank (typically from the "Motivation & Fit" category).
+1. Start the interview by selecting an introductory question from the bank (typically from the "Motivation & Fit" category or a general icebreaker).
 2. For each follow-up:
    - Ask follow-up questions to probe the candidate's depth of knowledge or address mistakes in their previous answer (use the "lookingFor", "commonMistakes", and "followUps" fields of the current question for guidance).
    - Once the candidate has answered a question adequately or if they struggle, transition to a new question from the Question Bank.
 3. Track the conversation history carefully. Do not repeat questions from the bank that have already been asked or covered.
-4. Aim to cover a variety of subtopics (e.g. core concepts, subject-specific probes, and motivation).
+4. Aim to cover a variety of subtopics.
 `
     }
 
@@ -195,12 +199,15 @@ Rules:
       .map((msg: any) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
 
-    const questions = getProgramQuestions(category)
+    let questions = getProgramQuestions(category)
+    if ((!questions || questions.length === 0) && ["hr", "technical", "mixed"].includes(category)) {
+      questions = getSampleQuestions(category)
+    }
     let domainSpecificFeedbackPrompt = ""
     if (questions && questions.length > 0) {
-      const programName = questions[0].program
+      const programName = questions[0].program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : "Mixed Interview")
       domainSpecificFeedbackPrompt = `
-The interview was conducted for the specialized program/domain: "${programName}".
+The interview was conducted for: "${programName}".
 Here is the official Question Bank containing the ideal criteria and model answers for reference:
 ---
 ${JSON.stringify(questions.map(q => ({
@@ -247,7 +254,7 @@ ${domainSpecificFeedbackPrompt}
       ]
     }
 
-    If no specialized program question bank was used (i.e. standard hr, technical, mixed interviews), return an empty array [] for "questionEvaluation".
+    If no question bank was used, return an empty array [] for "questionEvaluation".
     Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
   } else if (task === "analyze_resume") {
     isJson = true
