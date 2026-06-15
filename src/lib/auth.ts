@@ -17,7 +17,6 @@ function generateDeterministicPassword(email: string, secret: string): string {
     .digest("hex")
 }
 
-console.log("[Auth Setup] GOOGLE_CLIENT_ID =", process.env.GOOGLE_CLIENT_ID ? `${process.env.GOOGLE_CLIENT_ID.slice(0, 15)}...` : "UNDEFINED");
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0",
   providers: [
