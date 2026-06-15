@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#063a2d"/>
+      <stop offset="1" stop-color="#062b22"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.1" r="0.7">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Logo lockup -->
+  <g transform="translate(90,80)">
+    <rect width="64" height="64" rx="14" fill="#10b981"/>
+    <path d="M32 9 L12 54 L23 54 L29 40 L35 40 L41 54 L52 54 Z" fill="#0f172a"/>
+    <rect x="24" y="32" width="16" height="6" fill="#10b981"/>
+    <text x="80" y="36" font-family="ui-monospace, 'Courier New', monospace" font-size="28" fill="#ffffff" font-weight="700" letter-spacing="5">ALMAPREP</text>
+    <text x="80" y="58" font-family="ui-monospace, 'Courier New', monospace" font-size="13" fill="#10b981" letter-spacing="3">COLLEGE INTERVIEW PREP</text>
+  </g>
+  <text x="90" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="76" fill="#ffffff" font-weight="600">Prepare every student to ace</text>
+  <text x="90" y="386" font-family="Georgia, 'Times New Roman', serif" font-size="76" fill="#ffffff" font-weight="600">their admission interview.</text>
+  <text x="90" y="470" font-family="Arial, sans-serif" font-size="32" fill="#a7f3d0">Thousands of vetted interview questions. Free for students.</text>
+  <text x="90" y="512" font-family="Arial, sans-serif" font-size="32" fill="#a7f3d0">Built for schools &amp; institutes.</text>
+</svg>
