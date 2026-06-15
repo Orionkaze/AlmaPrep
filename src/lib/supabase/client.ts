@@ -127,8 +127,46 @@ function createMockBrowserClient() {
         upsert: () => chain,
         delete: () => chain,
         eq: () => chain,
-        single: async () => ({ data: null, error: null }),
-        maybeSingle: async () => ({ data: null, error: null }),
+        single: async () => {
+          if (table === "users") {
+            const matches = document.cookie.match(new RegExp('(^| )mockmate-demo-user=([^;]+)'));
+            if (matches) {
+              try {
+                const parsed = JSON.parse(decodeURIComponent(matches[2]));
+                return {
+                  data: {
+                    id: "demo-user-id",
+                    username: parsed.username || parsed.email?.split("@")[0] || "User",
+                    avatar_url: parsed.avatar_url || "user-tie",
+                    subscription_tier: "free"
+                  },
+                  error: null
+                };
+              } catch (e) {}
+            }
+          }
+          return { data: null, error: null };
+        },
+        maybeSingle: async () => {
+          if (table === "users") {
+            const matches = document.cookie.match(new RegExp('(^| )mockmate-demo-user=([^;]+)'));
+            if (matches) {
+              try {
+                const parsed = JSON.parse(decodeURIComponent(matches[2]));
+                return {
+                  data: {
+                    id: "demo-user-id",
+                    username: parsed.username || parsed.email?.split("@")[0] || "User",
+                    avatar_url: parsed.avatar_url || "user-tie",
+                    subscription_tier: "free"
+                  },
+                  error: null
+                };
+              } catch (e) {}
+            }
+          }
+          return { data: null, error: null };
+        },
         limit: () => chain,
         order: () => chain,
       };

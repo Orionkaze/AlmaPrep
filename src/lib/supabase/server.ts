@@ -88,8 +88,46 @@ async function createMockServerClient() {
         upsert: () => chain,
         delete: () => chain,
         eq: () => chain,
-        single: async () => ({ data: null, error: null }),
-        maybeSingle: async () => ({ data: null, error: null }),
+        single: async () => {
+          if (table === "users") {
+            const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
+            if (demoUserVal) {
+              try {
+                const parsed = JSON.parse(demoUserVal);
+                return {
+                  data: {
+                    id: "demo-user-id",
+                    username: parsed.username || parsed.email?.split("@")[0] || "User",
+                    avatar_url: parsed.avatar_url || "user-tie",
+                    subscription_tier: "free"
+                  },
+                  error: null
+                };
+              } catch (e) {}
+            }
+          }
+          return { data: null, error: null };
+        },
+        maybeSingle: async () => {
+          if (table === "users") {
+            const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
+            if (demoUserVal) {
+              try {
+                const parsed = JSON.parse(demoUserVal);
+                return {
+                  data: {
+                    id: "demo-user-id",
+                    username: parsed.username || parsed.email?.split("@")[0] || "User",
+                    avatar_url: parsed.avatar_url || "user-tie",
+                    subscription_tier: "free"
+                  },
+                  error: null
+                };
+              } catch (e) {}
+            }
+          }
+          return { data: null, error: null };
+        },
         limit: () => chain,
         order: () => chain,
       };
