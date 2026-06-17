@@ -96,4 +96,58 @@ export async function updateUserProfile(
   }
 }
 
+export async function clearAllUserData(): Promise<{ success: boolean; error?: string }> {
+  try {
+    const cookieStore = await cookies()
+    
+    // Clear demo/guest cookies
+    cookieStore.delete("mockmate-demo-session")
+    cookieStore.delete("mockmate-demo-user")
+    cookieStore.delete("mockmate-demo-resume")
+
+    // Clear Supabase database data if authenticated
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (user) {
+      const userId = user.id
+      
+      // 1. Delete interviews (which cascade deletes messages and feedback)
+      const { error: interviewErr } = await supabase
+        .from("interviews")
+        .delete()
+        .eq("user_id", userId)
+      if (interviewErr) {
+        console.error("clearAllUserData: failed to delete interviews", interviewErr)
+      }
+
+      // 2. Delete interview usage stats
+      const { error: usageErr } = await supabase
+        .from("interview_usage")
+        .delete()
+        .eq("user_id", userId)
+      if (usageErr) {
+        console.error("clearAllUserData: failed to delete usage", usageErr)
+      }
+
+      // 3. Delete user profile record
+      const { error: profileErr } = await supabase
+        .from("users")
+        .delete()
+        .eq("id", userId)
+      if (profileErr) {
+        console.error("clearAllUserData: failed to delete profile", profileErr)
+      }
+
+      // 4. Sign out from Supabase Auth
+      await supabase.auth.signOut()
+    }
+
+    return { success: true }
+  } catch (e) {
+    console.error("clearAllUserData failed:", e)
+    return { success: false, error: "An unexpected error occurred" }
+  }
+}
+
 
