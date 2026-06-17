@@ -19,12 +19,12 @@ export async function POST(req: NextRequest) {
       if (demoUserCookie) {
         try {
           const parsed = JSON.parse(demoUserCookie)
-          userEmail = parsed.email || "luffy@goingmerry.org"
+          userEmail = parsed.email || "guest@almaprep.com"
         } catch (e) {
-          userEmail = "luffy@goingmerry.org"
+          userEmail = "guest@almaprep.com"
         }
       } else {
-        userEmail = "luffy@goingmerry.org"
+        userEmail = "guest@almaprep.com"
       }
     } else {
       // 1. Authenticate the user

@@ -41,9 +41,9 @@ export default async function ProfilePage() {
     }
     if (!activeUser) {
       activeUser = {
-        name: "Straw Hat Luffy",
-        email: "luffy@goingmerry.org",
-        avatar_url: "rocket",
+        name: "Guest User",
+        email: "guest@almaprep.com",
+        avatar_url: "user-tie",
       }
     }
     userId = "demo-user-id"
@@ -75,7 +75,7 @@ export default async function ProfilePage() {
   let subscriptionTier = "free"
 
   if (isDemoMode) {
-    let resumeText = "Objective: Find the One Piece. Experience: Captain of the Straw Hat Pirates. Defeated Kaido, Big Mom, Doflamingo. Skills: Gear 5, Conqueror's Haki, Elasticity, leadership, meat eating."
+    let resumeText = ""
     const customResume = cookieStore.get("mockmate-demo-resume")?.value
     if (customResume) {
       try {
@@ -85,19 +85,13 @@ export default async function ProfilePage() {
     }
 
     initialProfile = {
-      username: activeUser.name || "Luffy (Demo)",
-      avatar_url: activeUser.avatar_url || "rocket",
+      username: activeUser.name || "Guest",
+      avatar_url: activeUser.avatar_url || "user-tie",
       resume_text: resumeText,
     }
-    createdAt = new Date(Date.now() - 365*24*60*60*1000).toISOString()
-    subscriptionTier = "premium"
-    interviews = mockHistory.map(item => ({
-      id: item.id,
-      category: item.category,
-      score: item.score,
-      date: item.date,
-      status: item.status
-    }))
+    createdAt = new Date().toISOString()
+    subscriptionTier = "free"
+    interviews = []
   } else {
     if (!supabase) redirect("/login")
     // 1. Fetch user profile

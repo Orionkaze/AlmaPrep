@@ -12,7 +12,7 @@ export async function createUserProfile(
     const hasDemoCookie = cookieStore.has("mockmate-demo-session")
     if (hasDemoCookie) {
       const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      let email = "luffy@goingmerry.org"
+      let email = "guest@almaprep.com"
       if (demoUserCookie) {
         try {
           email = JSON.parse(demoUserCookie).email || email
@@ -59,7 +59,7 @@ export async function updateUserProfile(
     const hasDemoCookie = cookieStore.has("mockmate-demo-session")
     if (hasDemoCookie) {
       const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      let email = "luffy@goingmerry.org"
+      let email = "guest@almaprep.com"
       if (demoUserCookie) {
         try {
           email = JSON.parse(demoUserCookie).email || email
