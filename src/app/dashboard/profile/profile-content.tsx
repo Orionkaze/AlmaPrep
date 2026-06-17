@@ -102,6 +102,46 @@ export default function ProfileContent({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  const handleDeleteAccount = async () => {
+    setIsDeleting(true)
+    setError(null)
+    setSuccess(null)
+
+    try {
+      // 1. Call server action to clear DB rows and cookies
+      await clearAllUserData()
+
+      // 2. Clear client-side localStorage
+      localStorage.removeItem("mockmate_users")
+      
+      // Remove all feedback keys
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i)
+        if (key && (key.startsWith("feedback-") || key.startsWith("mockmate-") || key === "mockmate_users")) {
+          localStorage.removeItem(key)
+        }
+      }
+
+      // 3. Clear guest cookies in document
+      document.cookie = "mockmate-demo-session=; path=/; max-age=0"
+      document.cookie = "mockmate-demo-user=; path=/; max-age=0"
+      document.cookie = "mockmate-demo-resume=; path=/; max-age=0"
+
+      // 4. Sign out
+      try {
+        await signOut({ callbackUrl: "/" })
+      } catch (e) {
+        window.location.href = "/"
+      }
+    } catch (err) {
+      console.error("Failed to delete account:", err)
+      setError("Failed to delete account. Please try again.")
+      setIsDeleting(false)
+    }
+  }
 
   // Calculate statistics
   const totalSessions = interviews.length
@@ -238,7 +278,7 @@ export default function ProfileContent({
             <div className="flex items-center gap-3 text-sm text-foreground/75">
               <FontAwesomeIcon icon={faCalendarAlt} className="text-foreground/40 w-4" />
               <div>
-                <p className="text-xs text-foreground/40">Joined MockMate</p>
+                <p className="text-xs text-foreground/40">Joined Almaprep</p>
                 <p className="font-medium">{joinDate}</p>
               </div>
             </div>
@@ -299,6 +339,43 @@ export default function ProfileContent({
               Resume analyzer configured
             </li>
           </ul>
+        </GlassCard>
+
+        {/* Danger Zone */}
+        <GlassCard className="p-5 border-red-500/20 hover:border-red-500/40 transition-all flex flex-col gap-3 relative overflow-hidden bg-red-500/5">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl pointer-events-none" />
+          <h3 className="text-sm font-bold text-red-500 uppercase tracking-wider">Danger Zone</h3>
+          <p className="text-xs text-foreground/75 leading-relaxed">
+            Permanently delete all your account data, profile details, resumes, interview transcripts, and performance analytics. This action is irreversible.
+          </p>
+          
+          {showDeleteConfirm ? (
+            <div className="flex flex-col gap-3 bg-red-500/10 p-3 rounded-lg border border-red-500/20 mt-1">
+              <p className="text-xs font-bold text-red-400 leading-snug">Are you absolutely sure? All your data will be permanently wiped.</p>
+              <div className="flex gap-2 justify-end">
+                <button
+                  onClick={() => setShowDeleteConfirm(false)}
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/10 hover:bg-white/5 cursor-pointer text-foreground transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleDeleteAccount}
+                  disabled={isDeleting}
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-600 hover:bg-red-700 text-white cursor-pointer transition-colors"
+                >
+                  {isDeleting ? "Deleting..." : "Yes, delete everything"}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              className="w-full py-2 px-4 rounded-lg border border-red-500/30 text-red-400 hover:text-white hover:bg-red-500/20 text-xs font-semibold transition-all cursor-pointer text-center"
+            >
+              Delete account
+            </button>
+          )}
         </GlassCard>
       </div>
 
