@@ -34,9 +34,9 @@ export default async function ResumePage() {
     }
     if (!activeUser) {
       activeUser = {
-        name: "Straw Hat Luffy",
-        email: "luffy@goingmerry.org",
-        avatar_url: "rocket",
+        name: "Guest User",
+        email: "guest@almaprep.com",
+        avatar_url: "user-tie",
       }
     }
   }
