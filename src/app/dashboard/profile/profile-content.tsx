@@ -21,7 +21,8 @@ import {
 import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import { Input } from "@/components/ui/input"
-import { updateUserProfile } from "@/app/actions/profile"
+import { updateUserProfile, clearAllUserData } from "@/app/actions/profile"
+import { signOut } from "next-auth/react"
 import Link from "next/link"
 
 const avatarMap: Record<string, typeof faUserTie> = {
