@@ -59,9 +59,9 @@ export default async function DashboardPage() {
     }
     if (!activeUser) {
       activeUser = {
-        name: "Straw Hat Luffy",
-        email: "luffy@goingmerry.org",
-        avatar_url: "rocket",
+        name: "Guest User",
+        email: "guest@almaprep.com",
+        avatar_url: "user-tie",
       }
     }
     userId = "demo-user-id"
@@ -90,22 +90,11 @@ export default async function DashboardPage() {
 
   if (activeUser && userId) {
     if (isDemoMode) {
-      displayName = activeUser.name || "Luffy (Demo)"
-      avatarIcon = avatarMap[activeUser.avatar_url || ""] || faRocket
-      hasResume = true
-      totalSessions = 3
-      latestFeedback = {
-        score: 95,
-        summary: "Your communication style is highly enthusiastic and your confidence is unmatched, though your technical explanations rely a bit too much on 'gum-gum' terminology. Work on detailing your leadership experience with structured examples.",
-        improvements: [
-          "Structure your stories using the STAR method instead of screaming your attacks",
-          "Explain how you manage risks when your team is separated",
-          "Reduce usage of Haki during standard professional introductions"
-        ],
-        category: "Mixed",
-        date: "Jun 14",
-        id: "demo-mixed-session"
-      }
+      displayName = activeUser.name || "Guest"
+      avatarIcon = avatarMap[activeUser.avatar_url || ""] || faUserTie
+      hasResume = false
+      totalSessions = 0
+      latestFeedback = null
     } else {
       if (!supabase) redirect("/login")
       // 1. Fetch user profile
