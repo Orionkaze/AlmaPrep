@@ -230,7 +230,7 @@ export default async function DashboardPage() {
             </GlassCard>
 
             {/* Prep Tools Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Mock Interview Tool */}
               <GlassCard className="p-6 flex flex-col justify-between h-64 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all group">
                 <div>
@@ -250,6 +250,30 @@ export default async function DashboardPage() {
                   <Link href="/interview/setup">
                     <GlowButton className="h-9 px-5 text-xs cursor-pointer">
                       Start Prep <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
+                    </GlowButton>
+                  </Link>
+                </div>
+              </GlassCard>
+
+              {/* Coding Simulator Tool */}
+              <GlassCard className="p-6 flex flex-col justify-between h-64 border-accent/20 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all group">
+                <div>
+                  <div className="size-12 rounded-xl bg-accent/20 flex items-center justify-center text-accent-foreground text-xl mb-4 group-hover:scale-110 transition-transform">
+                    <FontAwesomeIcon icon={faLaptopCode} />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Coding Simulator</h3>
+                  <p className="text-sm text-foreground/60 leading-relaxed">
+                    Practice agentic coding interviews. Direct an AI agent to solve engineering problems in real time.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between mt-4">
+                  <div className="flex gap-1.5">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-foreground/60 font-semibold">Agentic</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-foreground/60 font-semibold">Bug Fix</span>
+                  </div>
+                  <Link href="/interview">
+                    <GlowButton className="h-9 px-5 text-xs cursor-pointer bg-gradient-to-r from-accent-foreground to-primary">
+                      Code Practice <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
                     </GlowButton>
                   </Link>
                 </div>
