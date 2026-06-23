@@ -221,7 +221,7 @@ export default async function DashboardPage() {
           <div className="lg:col-span-8 flex flex-col gap-6">
             
             {/* Banner info */}
-            <GlassCard className="py-10 px-8 relative overflow-hidden bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 border-primary/20">
+            <GlassCard className="py-14 px-8 md:px-10 relative overflow-hidden bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 border-primary/20">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl pointer-events-none" />
               <h2 className="text-xl font-bold mb-2 text-[#0f172a]">Practice makes perfect</h2>
               <p className="text-sm text-foreground/75 leading-relaxed max-w-lg">
@@ -230,21 +230,24 @@ export default async function DashboardPage() {
             </GlassCard>
 
             {/* Separator line */}
-            <div className="h-[1px] bg-slate-200/60 w-full my-1" />
+            <div className="h-[1px] bg-slate-200/60 w-full my-4" />
 
             {/* Subtle Section Label */}
-            <div className="px-6 text-[10px] font-bold text-[#9CA3AF] tracking-widest uppercase">
-              Interview Types
+            <div className="px-8 md:px-10 text-xs font-bold text-[#9CA3AF] tracking-widest uppercase mb-1">
+              INTERVIEW TYPES
             </div>
 
             {/* Prep Tools Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 py-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 py-10 md:px-10 md:py-12">
               
               {/* Mock Interview Tool - featured layout 2fr */}
-              <GlassCard className="p-8 flex flex-col justify-between min-h-[300px] md:col-span-2 border-t-3 border-t-primary border-primary/15 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+              <GlassCard 
+                className="p-8 flex flex-col justify-between border-t-[3px] border-t-primary border-primary/15 hover:shadow-lg hover:-translate-y-[3px] transition-all duration-300 group md:col-span-2"
+                style={{ minHeight: "280px" }}
+              >
                 <div>
                   {/* Icon Block */}
-                  <div className="size-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary text-xl mb-4 group-hover:scale-105 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary text-xl mb-4 group-hover:scale-105 transition-transform" style={{ width: "56px", height: "56px" }}>
                     <FontAwesomeIcon icon={faMicrophone} />
                   </div>
                   {/* Tag Row */}
@@ -262,7 +265,7 @@ export default async function DashboardPage() {
                 {/* CTA Button */}
                 <div className="w-full mt-auto pt-6">
                   <Link href="/interview/setup" className="w-full">
-                    <GlowButton className="w-full h-10 text-xs font-semibold cursor-pointer">
+                    <GlowButton className="w-full h-12 text-sm font-semibold cursor-pointer">
                       Start Prep <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
                     </GlowButton>
                   </Link>
@@ -270,10 +273,13 @@ export default async function DashboardPage() {
               </GlassCard>
 
               {/* Coding Simulator Tool - 1fr */}
-              <GlassCard className="p-8 flex flex-col justify-between min-h-[300px] md:col-span-1 border-t-3 border-t-transparent hover:border-t-primary border border-[#E5E7EB] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+              <GlassCard 
+                className="p-8 flex flex-col justify-between border border-[#E5E7EB] border-t-[3px] border-t-transparent hover:border-t-primary hover:shadow-lg hover:-translate-y-[3px] transition-all duration-300 group md:col-span-1"
+                style={{ minHeight: "280px" }}
+              >
                 <div>
                   {/* Icon Block */}
-                  <div className="size-14 rounded-2xl bg-accent/20 flex items-center justify-center text-accent-foreground text-xl mb-4 group-hover:scale-105 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center text-accent-foreground text-xl mb-4 group-hover:scale-105 transition-transform" style={{ width: "56px", height: "56px" }}>
                     <FontAwesomeIcon icon={faLaptopCode} />
                   </div>
                   {/* Tag Row */}
@@ -291,7 +297,7 @@ export default async function DashboardPage() {
                 {/* CTA Button */}
                 <div className="w-full mt-auto pt-6">
                   <Link href="/interview" className="w-full">
-                    <GlowButton className="w-full h-10 text-xs font-semibold cursor-pointer bg-gradient-to-r from-accent-foreground to-primary">
+                    <GlowButton className="w-full h-12 text-sm font-semibold cursor-pointer bg-gradient-to-r from-accent-foreground to-primary">
                       Code Practice <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
                     </GlowButton>
                   </Link>
@@ -299,35 +305,40 @@ export default async function DashboardPage() {
               </GlassCard>
 
               {/* Resume Analyzer Tool - full width horizontal card */}
-              <GlassCard className="p-8 md:col-span-3 border-t-3 border-t-transparent hover:border-t-primary border-secondary/15 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                  <div className="flex-1">
-                    {/* Icon Block */}
-                    <div className="size-14 rounded-2xl bg-secondary/20 flex items-center justify-center text-secondary text-xl mb-4 group-hover:scale-105 transition-transform">
-                      <FontAwesomeIcon icon={faFileLines} />
+              <GlassCard 
+                className="p-8 md:col-span-3 border border-[#E5E7EB] border-t-[3px] border-t-transparent hover:border-t-primary hover:shadow-lg hover:-translate-y-[3px] transition-all duration-300 group"
+                style={{ minHeight: "280px" }}
+              >
+                <div className="flex flex-col md:flex-row gap-6 items-stretch justify-between h-full w-full">
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Icon Block */}
+                      <div className="w-14 h-14 rounded-2xl bg-secondary/20 flex items-center justify-center text-secondary text-xl mb-4 group-hover:scale-105 transition-transform" style={{ width: "56px", height: "56px" }}>
+                        <FontAwesomeIcon icon={faFileLines} />
+                      </div>
+                      {/* Tag Row */}
+                      <div className="flex flex-wrap gap-2 mt-3 text-xs">
+                        <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white/10 border border-slate-200 text-foreground/60 font-semibold uppercase tracking-wider">Analyzer</span>
+                        <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white/10 border border-slate-200 text-foreground/60 font-semibold uppercase tracking-wider">Resume</span>
+                      </div>
+                      {/* Title */}
+                      <h3 className="text-xl font-bold mt-4 text-[#0f172a] whitespace-nowrap">Resume Analyzer</h3>
+                      {/* Description */}
+                      <p className="text-sm text-[#6B7280] leading-relaxed mt-2 max-w-lg">
+                        Scan your resume with Mock AI. Uncover improvement areas and unlock custom tailored mock interviews.
+                      </p>
                     </div>
-                    {/* Tag Row */}
-                    <div className="flex flex-wrap gap-2 mt-3 text-xs">
-                      <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white/10 border border-slate-200 text-foreground/60 font-semibold uppercase tracking-wider">Analyzer</span>
-                      <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white/10 border border-slate-200 text-foreground/60 font-semibold uppercase tracking-wider">Resume</span>
-                    </div>
-                    {/* Title */}
-                    <h3 className="text-xl font-bold mt-4 text-[#0f172a] whitespace-nowrap">Resume Analyzer</h3>
-                    {/* Description */}
-                    <p className="text-sm text-[#6B7280] leading-relaxed mt-2 max-w-lg line-clamp-3">
-                      Scan your resume with Mock AI. Uncover improvement areas and unlock custom tailored mock interviews.
-                    </p>
                     
                     {/* Empty State / Status indicator */}
-                    <div className="mt-4 flex items-center gap-2">
+                    <div className="mt-6">
                       {hasResume ? (
-                        <>
-                          <div className="size-2.5 rounded-full bg-green-400 animate-pulse" />
-                          <span className="text-xs text-foreground/50 font-semibold">Analysis Ready</span>
-                        </>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200">
+                          <div className="size-2 rounded-full bg-green-500 animate-pulse" />
+                          <span className="text-xs text-green-700 font-semibold">Analysis Ready</span>
+                        </div>
                       ) : (
-                        <div className="flex items-center gap-1.5 text-slate-400">
-                          <FontAwesomeIcon icon={faTriangleExclamation} className="text-amber-500 text-xs animate-pulse" />
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200">
+                          <FontAwesomeIcon icon={faTriangleExclamation} className="text-amber-500 text-xs shrink-0" />
                           <span className="text-xs font-semibold text-[#9CA3AF]">No Resume Synced</span>
                         </div>
                       )}
@@ -335,9 +346,9 @@ export default async function DashboardPage() {
                   </div>
                   
                   {/* CTA Button pinned right */}
-                  <div className="w-full md:w-64 flex flex-col justify-end pt-6 md:pt-0 md:self-end">
+                  <div className="w-full md:w-64 flex flex-col justify-end pt-6 md:pt-0">
                     <Link href="/dashboard/resume" className="w-full">
-                      <button className="w-full h-10 rounded-lg text-xs font-bold border border-white/10 bg-white/5 hover:bg-[#059669] hover:text-white transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer">
+                      <button className="w-full h-12 rounded-lg text-xs font-bold border border-white/10 bg-white/5 hover:bg-[#059669] hover:text-white transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer">
                         Configure <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
                       </button>
                     </Link>
@@ -403,20 +414,20 @@ export default async function DashboardPage() {
                 <div className="flex flex-col gap-5 py-4">
                   {/* Onboarding Checklist */}
                   <div>
-                    <h4 className="text-xs font-bold text-foreground/50 uppercase tracking-widest mt-8 mb-4">Onboarding Checklist</h4>
+                    <h4 className="text-xs font-bold text-foreground/50 uppercase tracking-[0.15em] mt-12 mb-4">ONBOARDING CHECKLIST</h4>
                     <div className="flex flex-col gap-3">
-                      <div className="flex items-center gap-2.5 text-xs text-foreground/80 py-2 leading-relaxed">
-                        <FontAwesomeIcon icon={faCircleCheck} className="size-5 shrink-0 text-green-400" />
+                      <div className="flex items-center gap-2.5 text-xs text-foreground/80 py-2.5 leading-relaxed">
+                        <FontAwesomeIcon icon={faCircleCheck} className="shrink-0 text-green-400" style={{ width: "20px", height: "20px" }} />
                         <span className="line-through text-foreground/40">Set up profile credentials</span>
                       </div>
-                      <div className="flex items-center gap-2.5 text-xs text-foreground/80 py-2 leading-relaxed">
-                        <FontAwesomeIcon icon={hasResume ? faCircleCheck : faCirclePlay} className={`size-5 shrink-0 ${hasResume ? "text-green-400" : "text-secondary"}`} />
+                      <div className="flex items-center gap-2.5 text-xs text-foreground/80 py-2.5 leading-relaxed">
+                        <FontAwesomeIcon icon={hasResume ? faCircleCheck : faCirclePlay} className={`shrink-0 ${hasResume ? "text-green-400" : "text-secondary"}`} style={{ width: "20px", height: "20px" }} />
                         <span className={hasResume ? "line-through text-foreground/40" : "font-medium"}>
                           <Link href="/dashboard/resume" className="hover:underline">Configure Resume Analyzer</Link>
                         </span>
                       </div>
-                      <div className="flex items-center gap-2.5 text-xs text-foreground/80 py-2 leading-relaxed">
-                        <FontAwesomeIcon icon={totalSessions > 0 ? faCircleCheck : faCirclePlay} className={`size-5 shrink-0 ${totalSessions > 0 ? "text-green-400" : "text-primary"}`} />
+                      <div className="flex items-center gap-2.5 text-xs text-foreground/80 py-2.5 leading-relaxed">
+                        <FontAwesomeIcon icon={totalSessions > 0 ? faCircleCheck : faCirclePlay} className={`shrink-0 ${totalSessions > 0 ? "text-green-400" : "text-primary"}`} style={{ width: "20px", height: "20px" }} />
                         <span className={totalSessions > 0 ? "line-through text-foreground/40" : "font-medium"}>
                           <Link href="/interview/setup" className="hover:underline">Start your first interview</Link>
                         </span>
@@ -425,7 +436,7 @@ export default async function DashboardPage() {
                   </div>
 
                   {/* Daily Tip Wrapped in custom card module */}
-                  <div className="p-5 rounded-2xl bg-[#ecfdf5] border border-[#a7f3d0] mt-6 shadow-sm">
+                  <div className="bg-green-50 border border-green-100 rounded-xl p-4 mt-6 shadow-sm">
                     <h4 className="text-xs font-bold text-primary mb-2 flex items-center gap-1.5">
                       <FontAwesomeIcon icon={faLightbulb} /> Coach Tip of the Day
                     </h4>
