@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
+import { exec } from "child_process";
+import { promisify } from "util";
+import fs from "fs/promises";
+import path from "path";
+
+const execAsync = promisify(exec);
 
 function cleanJsonResponseText(text: string): string {
   let cleaned = text.trim();
