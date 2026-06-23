@@ -11,11 +11,31 @@
         "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
       },
       "hidden_tests": [
-        { "id": "t1", "description": "Returns 401 when no token provided", "expects": "401" },
-        { "id": "t2", "description": "Returns 401 when token is malformed", "expects": "401" },
-        { "id": "t3", "description": "Returns 401 when token is expired", "expects": "401" },
-        { "id": "t4", "description": "Returns 200 and user data when token is valid", "expects": "200" },
-        { "id": "t5", "description": "Does not crash on missing Authorization header", "expects": "no_crash" }
+        {
+          "id": "t1",
+          "description": "Returns 401 when no token provided",
+          "expects": "401"
+        },
+        {
+          "id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "expects": "401"
+        },
+        {
+          "id": "t3",
+          "description": "Returns 401 when token is expired",
+          "expects": "401"
+        },
+        {
+          "id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "expects": "200"
+        },
+        {
+          "id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "expects": "no_crash"
+        }
       ],
       "expected_outcomes": {
         "bugs_to_find": [
@@ -28,6 +48,115 @@
       "created_at": "2026-06-24T00:00:00.000Z"
     }
   ],
-  "interview_sessions": [],
-  "interview_reports": []
+  "interview_sessions": [
+    {
+      "id": "0470c121-3e89-4793-ab4d-e76c633fbb08",
+      "user_id": "demo-user-id",
+      "challenge_id": "f1a8c9b3-4f9e-4e3a-96ad-d62fb5291b98",
+      "conversation": [
+        {
+          "role": "user",
+          "content": "Hi, let's fix the bugs in middleware/auth.js. Please inspect it and propose a fix."
+        },
+        {
+          "role": "assistant",
+          "content": {
+            "reasoning": "The current implementation of the authenticate middleware in middleware/auth.js does not handle cases where the 'authorization' header is missing or where the token is invalid. This could lead to runtime errors when trying to verify the token or access the 'user' property of the request object. We need to add error handling to ensure the middleware behaves correctly in these scenarios.",
+            "proposed_changes": [
+              {
+                "filename": "middleware/auth.js",
+                "original": "const decoded = jwt.verify(token, process.env.JWT_SECRET);",
+                "replacement": "const decoded = jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ error: 'Invalid token' }); } return decoded; });",
+                "explanation": "However, jwt.verify is a synchronous function and does not take a callback. Instead, we should use a try-catch block to catch any errors that occur during verification."
+              },
+              {
+                "filename": "middleware/auth.js",
+                "original": "const token = req.headers['authorization'];",
+                "replacement": "const token = req.headers['authorization']; if (!token) { return res.status(401).json({ error: 'Token is missing' }); }",
+                "explanation": "We should check if the token exists before trying to verify it to prevent runtime errors."
+              },
+              {
+                "filename": "middleware/auth.js",
+                "original": "const decoded = jwt.verify(token, process.env.JWT_SECRET);",
+                "replacement": "try { const decoded = jwt.verify(token, process.env.JWT_SECRET); req.user = decoded; next(); } catch (error) { return res.status(401).json({ error: 'Invalid token' }); }",
+                "explanation": "Using a try-catch block to catch any errors that occur during token verification and returning a 401 response if an error occurs."
+              }
+            ],
+            "follow_up": "Test the updated authenticate middleware to ensure it correctly handles missing or invalid tokens and that it successfully verifies valid tokens."
+          }
+        }
+      ],
+      "current_codebase": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ error: 'Invalid token' }); } return decoded; });\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "submitted_code": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ error: 'Invalid token' }); } return decoded; });\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "status": "evaluated",
+      "started_at": "2026-06-23T21:42:15.643Z",
+      "submitted_at": "2026-06-23T21:42:18.980Z"
+    }
+  ],
+  "interview_reports": [
+    {
+      "id": "452b29e1-d036-4c1b-8b63-65522aad3fc1",
+      "session_id": "0470c121-3e89-4793-ab4d-e76c633fbb08",
+      "user_id": "demo-user-id",
+      "scores": {
+        "prompt_engineering": 6,
+        "problem_decomposition": 4,
+        "context_management": 8,
+        "debugging_ability": 8,
+        "testing_strategy": 2,
+        "code_review_quality": 6,
+        "security_awareness": 8
+      },
+      "strengths": [
+        "The candidate provided relevant context by specifying the file to inspect",
+        "The candidate's initial prompt led to a meaningful response from the agent"
+      ],
+      "weaknesses": [
+        "The candidate did not iterate on the agent's response or ask follow-up questions",
+        "The candidate did not explicitly ask about testing or edge cases"
+      ],
+      "hiring_recommendation": "Conditional Hire",
+      "recommendation_reasoning": "The candidate demonstrated some ability to provide context and understand the agent's response, but lacked follow-through in terms of testing and iteration. With additional guidance and training, the candidate may be able to improve their skills in these areas.",
+      "overall_score": 62,
+      "test_results": [
+        {
+          "test_id": "t1",
+          "description": "Returns 401 when no token provided",
+          "passed": false,
+          "error": "Piston execute request failed: Piston API responded with status 401"
+        },
+        {
+          "test_id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "passed": false,
+          "error": "Piston execute request failed: Piston API responded with status 401"
+        },
+        {
+          "test_id": "t3",
+          "description": "Returns 401 when token is expired",
+          "passed": false,
+          "error": "Piston execute request failed: Piston API responded with status 401"
+        },
+        {
+          "test_id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "passed": false,
+          "error": "Piston execute request failed: Piston API responded with status 401"
+        },
+        {
+          "test_id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "passed": false,
+          "error": "Piston execute request failed: Piston API responded with status 401"
+        }
+      ],
+      "generated_at": "2026-06-23T21:42:21.520Z"
+    }
+  ]
 }
