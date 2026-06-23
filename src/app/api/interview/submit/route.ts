@@ -232,6 +232,9 @@ run();
     `.trim();
 
     let testResults: any[] = [];
+    let testsRunSuccessfully = false;
+
+    // Try Piston first
     try {
       const pistonRes = await fetch("https://emkc.org/api/v2/piston/execute", {
         method: "POST",
@@ -255,25 +258,51 @@ run();
         const match = stdout.match(/__TEST_RESULTS_START__(.*?)__TEST_RESULTS_END__/);
         if (match && match[1]) {
           testResults = JSON.parse(match[1]);
-        } else {
-          testResults = challenge.hidden_tests.map((t: any) => ({
-            test_id: t.id,
-            description: t.description,
-            passed: false,
-            error: "Execution failed to print results payload. Stderr: " + stderr
-          }));
+          testsRunSuccessfully = true;
         }
-      } else {
-        throw new Error(`Piston API responded with status ${pistonRes.status}`);
       }
-    } catch (e: any) {
-      console.error("Failed to run tests on Piston:", e);
-      testResults = challenge.hidden_tests.map((t: any) => ({
-        test_id: t.id,
-        description: t.description,
-        passed: false,
-        error: "Piston execute request failed: " + e.message
-      }));
+    } catch (e) {
+      console.warn("Piston Sandbox call failed, attempting local Node execution fallback:", e);
+    }
+
+    // Local Node execution fallback if Piston failed
+    if (!testsRunSuccessfully) {
+      console.log("Piston API is unavailable. Running local Node.js test execution fallback...");
+      const tempDir = path.join(process.cwd(), "scratch", `run_${session_id}_${Date.now()}`);
+      await fs.mkdir(tempDir, { recursive: true });
+
+      try {
+        await fs.mkdir(path.join(tempDir, "middleware"), { recursive: true });
+        await fs.mkdir(path.join(tempDir, "routes"), { recursive: true });
+        
+        await fs.writeFile(path.join(tempDir, "index.js"), testRunnerCode, "utf8");
+        await fs.writeFile(path.join(tempDir, "middleware", "auth.js"), codebase["middleware/auth.js"] || "", "utf8");
+        await fs.writeFile(path.join(tempDir, "routes", "user.js"), codebase["routes/user.js"] || "", "utf8");
+
+        const { stdout, stderr } = await execAsync("node index.js", { cwd: tempDir, timeout: 5000 });
+        const match = stdout.match(/__TEST_RESULTS_START__(.*?)__TEST_RESULTS_END__/);
+        if (match && match[1]) {
+          testResults = JSON.parse(match[1]);
+          testsRunSuccessfully = true;
+          console.log("Local fallback execution succeeded!");
+        } else {
+          throw new Error("Could not parse test results from output: " + (stderr || stdout));
+        }
+      } catch (localErr: any) {
+        console.error("Local sandbox execution fallback failed:", localErr);
+        testResults = challenge.hidden_tests.map((t: any) => ({
+          test_id: t.id,
+          description: t.description,
+          passed: false,
+          error: "Sandbox execution failed: " + localErr.message
+        }));
+      } finally {
+        try {
+          await fs.rm(tempDir, { recursive: true, force: true });
+        } catch (cleanErr) {
+          console.error("Error cleaning up local sandbox files:", cleanErr);
+        }
+      }
     }
 
     // 3. Conversation Scoring (Groq Call)
