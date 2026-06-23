@@ -79,3 +79,65 @@ CREATE POLICY "Users can insert their own usage" ON public.interview_usage
 CREATE POLICY "Users can update their own usage" ON public.interview_usage
   FOR UPDATE USING (auth.uid() = user_id);
 
+-- Coding Interview Simulator Tables
+create table public.challenges (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  description text not null,
+  challenge_type text not null check (challenge_type in ('bug_fix', 'feature', 'refactor', 'security', 'performance')),
+  difficulty text not null check (difficulty in ('easy', 'medium', 'hard')),
+  starter_code jsonb not null,
+  hidden_tests jsonb not null,
+  expected_outcomes jsonb not null,
+  created_at timestamp default now()
+);
+
+create table public.interview_sessions (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id),
+  challenge_id uuid references public.challenges(id),
+  conversation jsonb default '[]',
+  current_codebase jsonb,
+  submitted_code jsonb,
+  status text default 'in_progress' check (status in ('in_progress', 'submitted', 'evaluated')),
+  started_at timestamp default now(),
+  submitted_at timestamp
+);
+
+create table public.interview_reports (
+  id uuid primary key default gen_random_uuid(),
+  session_id uuid references public.interview_sessions(id),
+  user_id uuid references auth.users(id),
+  scores jsonb not null,
+  strengths text[],
+  weaknesses text[],
+  hiring_recommendation text,
+  recommendation_reasoning text,
+  overall_score integer,
+  test_results jsonb,
+  generated_at timestamp default now()
+);
+
+alter table public.challenges enable row level security;
+alter table public.interview_sessions enable row level security;
+alter table public.interview_reports enable row level security;
+
+create policy "Allow read access to challenges" on public.challenges
+  for select using (true);
+
+create policy "Users can read their own sessions" on public.interview_sessions
+  for select using (auth.uid() = user_id);
+
+create policy "Users can insert their own sessions" on public.interview_sessions
+  for insert with check (auth.uid() = user_id);
+
+create policy "Users can update their own sessions" on public.interview_sessions
+  for update using (auth.uid() = user_id);
+
+create policy "Users can read their own reports" on public.interview_reports
+  for select using (auth.uid() = user_id);
+
+create policy "Users can insert their own reports" on public.interview_reports
+  for insert with check (auth.uid() = user_id);
+
+

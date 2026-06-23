@@ -1,0 +1,33 @@
+{
+  "challenges": [
+    {
+      "id": "f1a8c9b3-4f9e-4e3a-96ad-d62fb5291b98",
+      "title": "Fix the Broken Authentication",
+      "challenge_type": "bug_fix",
+      "difficulty": "medium",
+      "description": "Users are reporting they cannot log in. The authentication middleware is failing silently — valid tokens are being rejected and the server crashes on missing tokens. Identify every bug and fix them. Consider error handling, token format, and security best practices.",
+      "starter_code": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "hidden_tests": [
+        { "id": "t1", "description": "Returns 401 when no token provided", "expects": "401" },
+        { "id": "t2", "description": "Returns 401 when token is malformed", "expects": "401" },
+        { "id": "t3", "description": "Returns 401 when token is expired", "expects": "401" },
+        { "id": "t4", "description": "Returns 200 and user data when token is valid", "expects": "200" },
+        { "id": "t5", "description": "Does not crash on missing Authorization header", "expects": "no_crash" }
+      ],
+      "expected_outcomes": {
+        "bugs_to_find": [
+          "No try/catch around jwt.verify — crashes on invalid tokens",
+          "Token not stripped of 'Bearer ' prefix",
+          "No check for missing authorization header",
+          "No 401 response sent on failure"
+        ]
+      },
+      "created_at": "2026-06-24T00:00:00.000Z"
+    }
+  ],
+  "interview_sessions": [],
+  "interview_reports": []
+}
