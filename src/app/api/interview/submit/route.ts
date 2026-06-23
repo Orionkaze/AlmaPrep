@@ -306,9 +306,9 @@ run();
     }
 
     // 3. Conversation Scoring (Groq Call)
-    const apiKey = process.env.INTERVIEW_GROQ_API_KEY || process.env.GROQ_API_KEY;
+    const apiKey = process.env.INTERVIEW_GROQ_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: "Groq API key not configured. Please set INTERVIEW_GROQ_API_KEY or GROQ_API_KEY in .env.local" }, { status: 500 });
+      return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured. Please set it in .env.local" }, { status: 500 });
     }
 
     const evaluationSystemPrompt = `You are an expert technical interviewer evaluating a candidate's performance in an agentic coding interview. The candidate was given a real engineering problem and had to direct an AI coding agent to solve it. You are NOT evaluating the AI agent — you are evaluating how effectively the candidate used the agent.
