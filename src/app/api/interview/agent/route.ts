@@ -40,9 +40,9 @@ export async function POST(request: Request) {
       codebaseStr += `=== ${filename} ===\n${content}\n\n`;
     }
 
-    const apiKey = process.env.INTERVIEW_GROQ_API_KEY || process.env.GROQ_API_KEY;
+    const apiKey = process.env.INTERVIEW_GROQ_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: "Groq API key not configured. Please set INTERVIEW_GROQ_API_KEY or GROQ_API_KEY in .env.local" }, { status: 500 });
+      return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured. Please set it in .env.local" }, { status: 500 });
     }
 
     // Define System Prompt
