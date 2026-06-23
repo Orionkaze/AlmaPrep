@@ -146,6 +146,23 @@
       "status": "evaluated",
       "started_at": "2026-06-23T21:43:17.198Z",
       "submitted_at": "2026-06-23T21:43:20.138Z"
+    },
+    {
+      "id": "60da19c6-36e4-48a6-b253-44cfea145a7b",
+      "user_id": "demo-user-id",
+      "challenge_id": "f1a8c9b3-4f9e-4e3a-96ad-d62fb5291b98",
+      "conversation": [],
+      "current_codebase": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "submitted_code": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "status": "evaluated",
+      "started_at": "2026-06-23T21:49:54.159Z",
+      "submitted_at": "2026-06-23T21:50:13.798Z"
     }
   ],
   "interview_reports": [
@@ -260,6 +277,56 @@
         }
       ],
       "generated_at": "2026-06-23T21:43:22.074Z"
+    },
+    {
+      "id": "f091fecf-0505-412c-beff-ec14c3792c4f",
+      "session_id": "60da19c6-36e4-48a6-b253-44cfea145a7b",
+      "user_id": "demo-user-id",
+      "scores": {
+        "prompt_engineering": 0,
+        "problem_decomposition": 0,
+        "context_management": 0,
+        "debugging_ability": 0,
+        "testing_strategy": 0,
+        "code_review_quality": 0,
+        "security_awareness": 0
+      },
+      "strengths": [],
+      "weaknesses": [
+        "No conversation provided to evaluate the candidate's performance"
+      ],
+      "hiring_recommendation": "No Recommendation",
+      "recommendation_reasoning": "No conversation was provided to assess the candidate's skills and abilities.",
+      "overall_score": 0,
+      "test_results": [
+        {
+          "test_id": "t1",
+          "description": "Returns 401 when no token provided",
+          "passed": false,
+          "error": "Load error: Cannot find module 'express'\nRequire stack:\n- D:\\MockMate\\scratch\\run_60da19c6-36e4-48a6-b253-44cfea145a7b_1782251414847\\routes\\user.js\n- D:\\MockMate\\scratch\\run_60da19c6-36e4-48a6-b253-44cfea145a7b_1782251414847\\index.js"
+        },
+        {
+          "test_id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "passed": false
+        },
+        {
+          "test_id": "t3",
+          "description": "Returns 401 when token is expired",
+          "passed": false
+        },
+        {
+          "test_id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "passed": false
+        },
+        {
+          "test_id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "passed": false
+        }
+      ],
+      "generated_at": "2026-06-23T21:50:15.855Z"
     }
   ]
 }
