@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
-import { getChallengeById, createSession } from "@/lib/interviewDb";
+import { getChallengeById, createSession, getChallenges } from "@/lib/interviewDb";
+
+export async function GET() {
+  try {
+    const challenges = await getChallenges();
+    return NextResponse.json({ challenges });
+  } catch (err: any) {
+    console.error("Error fetching challenges list:", err);
+    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+  }
+}
 
 export async function POST(request: Request) {
   try {
