@@ -1,6 +1,27 @@
 import { NextResponse } from "next/server";
 import { getSessionById, updateSession } from "@/lib/interviewDb";
 
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const session_id = searchParams.get("session_id");
+
+    if (!session_id) {
+      return NextResponse.json({ error: "Missing session_id parameter" }, { status: 400 });
+    }
+
+    const session = await getSessionById(session_id);
+    if (!session) {
+      return NextResponse.json({ error: "Session not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(session);
+  } catch (err: any) {
+    console.error("Error fetching session:", err);
+    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => ({}));
