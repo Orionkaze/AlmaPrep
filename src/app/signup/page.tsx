@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
+import { GoogleMockModal } from "@/components/ui/google-mock-modal"
 
 export default function SignupPage() {
   const [email, setEmail] = useState("")
@@ -16,6 +17,7 @@ export default function SignupPage() {
   const [success, setSuccess] = useState<string | null>(null)
   const router = useRouter()
   const supabase = createClient()
+  const [isMockGoogleOpen, setIsMockGoogleOpen] = useState(false)
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -129,7 +131,15 @@ export default function SignupPage() {
 
             <button
               type="button"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() => {
+                const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+                  process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz")
+                if (isMockMode) {
+                  setIsMockGoogleOpen(true)
+                } else {
+                  signIn("google", { callbackUrl: "/dashboard" })
+                }
+              }}
               className="btn btn-ghost"
               style={{ width: "100%", justifyContent: "center", gap: "10px" }}
             >
@@ -183,6 +193,7 @@ export default function SignupPage() {
       </main>
 
       <Footer />
+      <GoogleMockModal isOpen={isMockGoogleOpen} onClose={() => setIsMockGoogleOpen(false)} />
     </div>
   )
 }
