@@ -25,7 +25,7 @@ export async function updateSession(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-  const isMockMode = !supabaseUrl || !supabaseKey || supabaseUrl.includes("evdfkeikrrsdthnekrrz")
+  const isMockMode = !supabaseUrl || !supabaseKey || supabaseUrl.includes("mock-supabase-project-id")
 
   if (isMockMode) {
     if (isProtectedRoute) {
