@@ -186,8 +186,8 @@ export default function InterviewPage({
         setDbSessionId(sessionId)
       }
 
-      // 2. Fetch introductory question from Gemini
-      const firstQuestion = await getNextQuestion(category, [], useResume, selectedPersona)
+      // 2. Fetch introductory question from fallback chain
+      const { question: firstQuestion, source } = await getNextQuestion(category, [], useResume, selectedPersona)
       if (!active) return
 
       // Speak first question
@@ -195,7 +195,7 @@ export default function InterviewPage({
 
       // 3. Save to database if session exists
       if (sessionId) {
-        await saveInterviewMessage(sessionId, "ai", firstQuestion)
+        await saveInterviewMessage(sessionId, "ai", firstQuestion, source)
       }
 
       setMessages([{
@@ -248,14 +248,14 @@ export default function InterviewPage({
     }))
 
     // 3. Generate follow-up question
-    const nextQuestion = await getNextQuestion(category, history, useResume, selectedPersona)
+    const { question: nextQuestion, source: nextSource } = await getNextQuestion(category, history, useResume, selectedPersona)
 
     // Speak next question (including the final salutation)
     speak(nextQuestion)
 
     // 4. Save AI question to DB if session exists
     if (dbSessionId) {
-      await saveInterviewMessage(dbSessionId, "ai", nextQuestion)
+      await saveInterviewMessage(dbSessionId, "ai", nextQuestion, nextSource)
     }
 
     const aiMsg: Message = {

@@ -166,5 +166,9 @@ create policy "Users can update their own github analysis" on public.github_anal
 create policy "Users can delete their own github analysis" on public.github_analysis 
   for delete using (auth.uid() = user_id);
 
+-- Migration: Add metadata column to public.messages to track question sources
+ALTER TABLE public.messages ADD COLUMN IF NOT EXISTS metadata jsonb DEFAULT '{}'::jsonb;
+
+
 
 

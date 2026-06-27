@@ -111,9 +111,9 @@ export async function POST(req: NextRequest) {
     }
 
     // 4. Run multi-AI routing
-    const result = await executeAIRouting(prompt, task, userTier, userId)
+    const { text, source } = await executeAIRouting(prompt, task, userTier, userId)
 
-    return NextResponse.json({ result })
+    return NextResponse.json({ result: text, source })
   } catch (error: any) {
     console.error("[api/ai] Error in API Route handler:", error)
     return new NextResponse(

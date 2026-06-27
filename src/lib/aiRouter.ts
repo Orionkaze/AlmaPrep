@@ -66,6 +66,46 @@ export async function callAI(prompt: string, task: string, userTier: string): Pr
 }
 
 /**
+ * Unified callAIWithSource function. Fetches the server-side API route and returns result and source.
+ */
+export async function callAIWithSource(
+  prompt: string,
+  task: string,
+  userTier: string
+): Promise<{ result: string; source: string }> {
+  const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000"
+  
+  let requestHeaders: Record<string, string> = {
+    "Content-Type": "application/json",
+  }
+
+  try {
+    const nextHeaders = await headers()
+    const cookie = nextHeaders.get("cookie")
+    if (cookie) {
+      requestHeaders["cookie"] = cookie
+    }
+  } catch (e) {
+    // Suppress if not in a request context
+  }
+
+  const response = await fetch(`${baseUrl}/api/ai`, {
+    method: "POST",
+    headers: requestHeaders,
+    body: JSON.stringify({ prompt, task, userTier }),
+    cache: "no-store",
+  })
+
+  if (!response.ok) {
+    const errorText = await response.text()
+    throw new Error(errorText || `AI Route returned status ${response.status}`)
+  }
+
+  const data = await response.json()
+  return { result: data.result, source: data.source || "unknown" }
+}
+
+/**
  * Executes the actual LLM calls on the server.
  */
 export async function executeAIRouting(
@@ -73,9 +113,8 @@ export async function executeAIRouting(
   task: string,
   userTier: string,
   userId?: string
-): Promise<string> {
-  const isFree = userTier === "free"
-  const timeoutMs = 10000 // 10 seconds timeout
+): Promise<{ text: string; source: string }> {
+  const timeoutMs = 3000 // 3 seconds timeout per provider
 
   // 1. Prepare prompts based on task
   let systemPrompt: string | undefined = undefined
@@ -108,14 +147,24 @@ export async function executeAIRouting(
       }
     }
 
-    let questions = getProgramQuestions(category)
+    const mainQuestions = getProgramQuestions(category)
+    let questions = [...mainQuestions]
     if ((!questions || questions.length === 0) && ["hr", "technical", "mixed"].includes(category)) {
       questions = getSampleQuestions(category)
     }
 
+    // Load key universal questions to combine with program-specific questions for LLM context
+    const suffix = category.endsWith("-b") ? "-b" : "-a"
+    const introQuestions = [
+      ...getProgramQuestions(`motivation-fit${suffix}`).slice(0, 5),
+      ...getProgramQuestions(`personal-background${suffix}`).slice(0, 5)
+    ]
+    const combinedQuestionsForLLM = [...introQuestions, ...questions]
+    const uniqueQuestions = Array.from(new Map(combinedQuestionsForLLM.map(q => [q.id, q])).values())
+
     let resumeContextPrompt = ""
     if (resumeText) {
-      if (questions && questions.length > 0) {
+      if (uniqueQuestions && uniqueQuestions.length > 0) {
         resumeContextPrompt = `The candidate has provided their resume for customization:
 ---
 ${resumeText}
@@ -140,13 +189,20 @@ Focus your interview questions on their background, experiences, projects, and t
     }
 
     let domainSpecificPrompt = ""
-    if (questions && questions.length > 0) {
-      const programName = questions[0].program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : "Mixed Interview")
+    if (uniqueQuestions && uniqueQuestions.length > 0) {
+      const fallbackProgramName = category
+        .split("-")
+        .filter(w => w !== "a" && w !== "b")
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ") || category;
+
+      const programName = mainQuestions[0]?.program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : category === "mixed" ? "Mixed Interview" : fallbackProgramName)
+      
       domainSpecificPrompt = `
 You are interviewing the candidate for: "${programName}".
 Here is the official Question Bank of standard questions for this domain. You must select questions from this bank to structure the interview:
 ---
-${JSON.stringify(questions.map(q => ({
+${JSON.stringify(uniqueQuestions.map(q => ({
   id: q.id,
   subtopic: q.subtopic,
   question: q.question,
@@ -205,7 +261,14 @@ Rules:
     }
     let domainSpecificFeedbackPrompt = ""
     if (questions && questions.length > 0) {
-      const programName = questions[0].program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : "Mixed Interview")
+      const fallbackProgramName = category
+        .split("-")
+        .filter(w => w !== "a" && w !== "b")
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ") || category;
+
+      const programName = questions[0].program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : category === "mixed" ? "Mixed Interview" : fallbackProgramName)
+      
       domainSpecificFeedbackPrompt = `
 The interview was conducted for: "${programName}".
 Here is the official Question Bank containing the ideal criteria and model answers for reference:
@@ -281,70 +344,50 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
     throw new Error(`aiRouter: Unsupported task "${task}"`)
   }
 
-  // 2. Define chain based on tier
-  // If Free: Groq only.
-  // If Pro/Premium: Groq -> OpenAI (gpt-4o) -> Gemini (gemini-1.5-pro)
-  const chain = isFree
-    ? [
-        {
-          name: "Groq",
-          keyExists: !!process.env.GROQ_API_KEY,
-          fn: async () => {
-            if (isJson) {
-              return await callGroqJson(systemPrompt, promptText, 0.7)
-            } else {
-              const fullMessages = [...messages]
-              if (systemPrompt) {
-                fullMessages.unshift({ role: "system", content: systemPrompt })
-              }
-              return await callGroqText(fullMessages, 0.7)
-            }
-          },
-        },
-      ]
-    : [
-        {
-          name: "Groq",
-          keyExists: !!process.env.GROQ_API_KEY,
-          fn: async () => {
-            if (isJson) {
-              return await callGroqJson(systemPrompt, promptText, 0.7)
-            } else {
-              const fullMessages = [...messages]
-              if (systemPrompt) {
-                fullMessages.unshift({ role: "system", content: systemPrompt })
-              }
-              return await callGroqText(fullMessages, 0.7)
-            }
-          },
-        },
-        {
-          name: "OpenAI",
-          keyExists: !!process.env.OPENAI_API_KEY,
-          fn: async () => {
-            if (isJson) {
-              return await callOpenAIJson(systemPrompt, promptText, 0.7, "gpt-4o")
-            } else {
-              const fullMessages = [...messages]
-              if (systemPrompt) {
-                fullMessages.unshift({ role: "system", content: systemPrompt })
-              }
-              return await callOpenAIText(fullMessages, 0.7, "gpt-4o")
-            }
-          },
-        },
-        {
-          name: "Gemini",
-          keyExists: !!process.env.GEMINI_API_KEY,
-          fn: async () => {
-            if (isJson) {
-              return await callGeminiJson(systemPrompt, promptText, 0.7, "gemini-1.5-pro")
-            } else {
-              return await callGeminiText(systemPrompt, messages, 0.7, "gemini-1.5-pro")
-            }
-          },
-        },
-      ]
+  // 2. Define chain: always Groq -> Gemini -> OpenAI for all tasks
+  const chain = [
+    {
+      name: "groq",
+      keyExists: !!process.env.GROQ_API_KEY,
+      fn: async () => {
+        if (isJson) {
+          return await callGroqJson(systemPrompt, promptText, 0.7)
+        } else {
+          const fullMessages = [...messages]
+          if (systemPrompt) {
+            fullMessages.unshift({ role: "system", content: systemPrompt })
+          }
+          return await callGroqText(fullMessages, 0.7)
+        }
+      },
+    },
+    {
+      name: "gemini",
+      keyExists: !!process.env.GEMINI_API_KEY,
+      fn: async () => {
+        if (isJson) {
+          return await callGeminiJson(systemPrompt, promptText, 0.7, "gemini-1.5-pro")
+        } else {
+          return await callGeminiText(systemPrompt, messages, 0.7, "gemini-1.5-pro")
+        }
+      },
+    },
+    {
+      name: "openai",
+      keyExists: !!process.env.OPENAI_API_KEY,
+      fn: async () => {
+        if (isJson) {
+          return await callOpenAIJson(systemPrompt, promptText, 0.7, "gpt-4o")
+        } else {
+          const fullMessages = [...messages]
+          if (systemPrompt) {
+            fullMessages.unshift({ role: "system", content: systemPrompt })
+          }
+          return await callOpenAIText(fullMessages, 0.7, "gpt-4o")
+        }
+      },
+    },
+  ]
 
   const activeChain = chain.filter(p => p.keyExists)
   if (activeChain.length === 0) {
@@ -355,10 +398,10 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
 
   for (const provider of activeChain) {
     try {
-      console.log(`[aiRouter] Routing ${task} request to ${provider.name} (${userTier} tier)...`)
+      console.log(`[aiRouter] Routing ${task} request to ${provider.name}...`)
       const result = await withTimeout(provider.fn(), timeoutMs, provider.name)
       console.log(`[aiRouter] Success with ${provider.name}`)
-      return result
+      return { text: result, source: provider.name }
     } catch (err: any) {
       console.error(`[aiRouter] Provider ${provider.name} failed:`, err.message || err)
       lastError = err

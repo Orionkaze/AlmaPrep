@@ -2,11 +2,12 @@
 
 import { createClient } from "@/lib/supabase/server"
 import { getLLMResponse, getLLMJSONResponse } from "@/lib/llm"
-import { callAI } from "@/lib/aiRouter"
+import { callAI, callAIWithSource } from "@/lib/aiRouter"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { cookies } from "next/headers"
 import { getResumeData } from "@/app/actions/resume"
+import { getCombinedDomainQuestions } from "@/lib/programs"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -21,7 +22,7 @@ export async function getNextQuestion(
   previousMessages: MessageInput[],
   useResume?: boolean,
   persona?: string
-): Promise<string> {
+): Promise<{ question: string; source: string }> {
   try {
     let resumeText = ""
     if (useResume) {
@@ -98,30 +99,60 @@ Rules:
     }
 
     try {
-      const nextResponse = await callAI(
+      const nextResponse = await callAIWithSource(
         JSON.stringify({ category, previousMessages, useResume, persona }),
         "next_question",
         userTier
       )
-      return nextResponse
+      return { question: nextResponse.result, source: nextResponse.source }
     } catch (err: any) {
       if (err.message && err.message.includes("free interviews")) {
-        return `[Limit Reached] You've used all 3 free interviews this month. Upgrade to Pro for unlimited access.`
+        return {
+          question: `[Limit Reached] You've used all 3 free interviews this month. Upgrade to Pro for unlimited access.`,
+          source: "system"
+        }
       }
-      console.warn("All LLM providers failed, using conversational fallback...", err)
-      const fallbacks = [
-        "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?",
-        "Can you walk me through your decision-making process for the technologies you selected in your project?",
-        "How did you handle teamwork or communication conflicts if they arose during your work?",
-        "Let's transition slightly: what area of this role interests you the most and why?",
-        "Could you describe a time when you had to learn a new tool or framework quickly to solve a problem?"
-      ]
-      const index = previousMessages.length % fallbacks.length
-      return fallbacks[index]
+      console.warn("All LLM providers failed, using vetted fallback...", err)
+      
+      // Fallback Layer: Fetch combined program & universal questions
+      const questions = getCombinedDomainQuestions(category)
+      
+      // Filter out questions already asked in previous history
+      const askedQuestionsText = new Set(
+        previousMessages
+          .filter(m => m.role === "ai")
+          .map(m => m.content.toLowerCase().trim())
+      )
+      
+      const availableQuestions = questions.filter(q => {
+        const qTextNormal = q.question.toLowerCase().trim()
+        return !askedQuestionsText.has(qTextNormal)
+      })
+      
+      let selectedQuestion = ""
+      if (availableQuestions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availableQuestions.length)
+        selectedQuestion = availableQuestions[randomIndex].question
+      } else {
+        const fallbacks = [
+          "That is an interesting point. Could you elaborate a little more on the specific challenges you faced there?",
+          "Can you walk me through your decision-making process for the technologies you selected in your project?",
+          "How did you handle teamwork or communication conflicts if they arose during your work?",
+          "Let's transition slightly: what area of this role interests you the most and why?",
+          "Could you describe a time when you had to learn a new tool or framework quickly to solve a problem?"
+        ]
+        const index = previousMessages.length % fallbacks.length
+        selectedQuestion = fallbacks[index]
+      }
+      
+      return { question: selectedQuestion, source: "vetted_fallback" }
     }
   } catch (error: any) {
     console.error("Error in getNextQuestion Server Action:", error)
-    return `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`
+    return {
+      question: `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
+      source: "error"
+    }
   }
 }
 
@@ -316,7 +347,8 @@ export async function createInterviewSession(category: string, useResume?: boole
 export async function saveInterviewMessage(
   interviewId: string,
   role: "user" | "ai",
-  content: string
+  content: string,
+  source?: string
 ): Promise<boolean> {
   try {
     const cookieStore = await cookies()
@@ -331,10 +363,13 @@ export async function saveInterviewMessage(
 
     if (!userId) return false
 
+    const metadata = source ? { source } : {}
+
     const { error } = await supabase.from("messages").insert({
       interview_id: interviewId,
       role,
       content,
+      metadata,
     })
 
     if (error) {

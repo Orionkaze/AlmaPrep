@@ -210,3 +210,42 @@ export function getSampleQuestions(category: string): Question[] {
     return []
   }
 }
+
+/**
+ * Combines program-specific questions and all matching universal questions
+ * (matching the '-a' or '-b' suffix) to build a full question bank pool.
+ */
+export function getCombinedDomainQuestions(domainId: string): Question[] {
+  const suffix = domainId.endsWith("-b") ? "-b" : "-a";
+  const programQuestions = getProgramQuestions(domainId);
+  
+  const universalQuestions: Question[] = [];
+  try {
+    const indexPath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "index.json");
+    if (fs.existsSync(indexPath)) {
+      const indexContent = fs.readFileSync(indexPath, "utf-8");
+      const indexData = JSON.parse(indexContent);
+      const shards = indexData.shards || [];
+      
+      for (const shard of shards) {
+        if (shard.file && shard.file.startsWith("data/universal/") && shard.file.endsWith(`${suffix}.json`)) {
+          const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), shard.file);
+          if (fs.existsSync(filePath)) {
+            try {
+              const fileContent = fs.readFileSync(filePath, "utf-8");
+              const list = JSON.parse(fileContent) as Question[];
+              universalQuestions.push(...list);
+            } catch (err) {
+              console.error(`Error reading universal shard ${shard.file}:`, err);
+            }
+          }
+        }
+      }
+    }
+  } catch (e) {
+    console.error("Error reading index.json for combined questions:", e);
+  }
+
+  return [...programQuestions, ...universalQuestions];
+}
+
