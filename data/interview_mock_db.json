@@ -889,10 +889,13 @@
         "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ message: 'Invalid token' }); } req.user = decoded; next(); });\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
         "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
       },
-      "submitted_code": null,
-      "status": "in_progress",
+      "submitted_code": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ message: 'Invalid token' }); } req.user = decoded; next(); });\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "status": "evaluated",
       "started_at": "2026-06-27T21:31:12.949Z",
-      "submitted_at": null
+      "submitted_at": "2026-06-27T21:33:03.567Z"
     }
   ],
   "interview_reports": [
@@ -1107,6 +1110,59 @@
         }
       ],
       "generated_at": "2026-06-27T21:24:21.939Z"
+    },
+    {
+      "id": "f1d952d5-acb7-4cbe-a8d2-4f2eab3a6cb4",
+      "session_id": "ff80258d-efb2-4081-9e24-5ecd56b36210",
+      "user_id": "demo-user-id",
+      "scores": {
+        "prompt_engineering": 2,
+        "problem_decomposition": 1,
+        "context_management": 1,
+        "debugging_ability": 1,
+        "testing_strategy": 0,
+        "code_review_quality": 1,
+        "security_awareness": 2
+      },
+      "strengths": [
+        "The candidate recognized the need for improvement in the provided authentication middleware code."
+      ],
+      "weaknesses": [
+        "The candidate did not provide clear instructions or prompts to the agent, instead presenting a code snippet without specific questions or objectives.",
+        "The candidate did not engage in a detailed discussion about the proposed changes, error handling, or security considerations."
+      ],
+      "hiring_recommendation": "Conditional Hire",
+      "recommendation_reasoning": "The candidate demonstrated some awareness of security implications but lacked clarity in their prompt and did not engage deeply with the agent's response, suggesting areas for improvement in their ability to effectively utilize an AI coding agent for problem-solving.",
+      "overall_score": 8,
+      "test_results": [
+        {
+          "test_id": "t1",
+          "description": "Returns 401 when no token provided",
+          "passed": false,
+          "error": "Load error: Cannot find module 'express'\nRequire stack:\n- D:\\MockMate\\scratch\\run_ff80258d-efb2-4081-9e24-5ecd56b36210_1782595984408\\routes\\user.js\n- D:\\MockMate\\scratch\\run_ff80258d-efb2-4081-9e24-5ecd56b36210_1782595984408\\index.js"
+        },
+        {
+          "test_id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "passed": false
+        },
+        {
+          "test_id": "t3",
+          "description": "Returns 401 when token is expired",
+          "passed": false
+        },
+        {
+          "test_id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "passed": false
+        },
+        {
+          "test_id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "passed": false
+        }
+      ],
+      "generated_at": "2026-06-27T21:33:05.559Z"
     }
   ]
 }

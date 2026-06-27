@@ -192,8 +192,8 @@ Focus your interview questions on their background, experiences, projects, and t
     if (uniqueQuestions && uniqueQuestions.length > 0) {
       const fallbackProgramName = category
         .split("-")
-        .filter(w => w !== "a" && w !== "b")
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .filter((w: string) => w !== "a" && w !== "b")
+        .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
         .join(" ") || category;
 
       const programName = mainQuestions[0]?.program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : category === "mixed" ? "Mixed Interview" : fallbackProgramName)
@@ -263,8 +263,8 @@ Rules:
     if (questions && questions.length > 0) {
       const fallbackProgramName = category
         .split("-")
-        .filter(w => w !== "a" && w !== "b")
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .filter((w: string) => w !== "a" && w !== "b")
+        .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
         .join(" ") || category;
 
       const programName = questions[0].program || (category === "hr" ? "HR (Human Resources)" : category === "technical" ? "Technical Interview" : category === "mixed" ? "Mixed Interview" : fallbackProgramName)
