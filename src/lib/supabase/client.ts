@@ -177,7 +177,7 @@ function createMockBrowserClient() {
 
 export function createClient() {
   const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz.supabase.co");
+    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id.supabase.co");
 
   if (isMockMode) {
     return createMockBrowserClient();
