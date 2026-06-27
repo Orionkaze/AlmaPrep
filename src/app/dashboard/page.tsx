@@ -197,6 +197,22 @@ export default async function DashboardPage() {
             </div>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
+            <Link href="/pricing" className="flex-1 sm:flex-initial group relative inline-block transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.03]">
+              {/* Animated glowing backdrop */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-secondary via-accent to-primary rounded-xl blur opacity-20 group-hover:opacity-80 transition duration-500"></div>
+              
+              {/* Border shimmer wrapper */}
+              <div className="relative p-[1px] rounded-xl overflow-hidden bg-white/10 group-hover:bg-gradient-to-r group-hover:from-secondary group-hover:via-white/60 group-hover:to-primary transition-all duration-500 shadow-xl">
+                {/* Button surface */}
+                <button className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-white border border-border text-foreground flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-secondary/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></span>
+                  
+                  <FontAwesomeIcon icon={faStar} className="text-secondary group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 relative z-10" /> 
+                  <span className="text-foreground/80 group-hover:text-foreground transition-colors duration-300 relative z-10">Pricing / Plans</span>
+                </button>
+              </div>
+            </Link>
+
             <Link href="/dashboard/profile" className="flex-1 sm:flex-initial group relative inline-block transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.03]">
               {/* Animated glowing backdrop */}
               <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-secondary rounded-xl blur opacity-20 group-hover:opacity-80 transition duration-500"></div>
