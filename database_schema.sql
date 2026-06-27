@@ -140,4 +140,31 @@ create policy "Users can read their own reports" on public.interview_reports
 create policy "Users can insert their own reports" on public.interview_reports
   for insert with check (auth.uid() = user_id);
 
+-- GitHub Project Analysis Cache Table
+create table public.github_analysis (
+  user_id uuid references public.users(id) on delete cascade not null primary key,
+  profile_summary text not null,
+  tech_stack text[] not null,
+  strengths text[] not null,
+  questions jsonb not null, -- Stores array of questions: {repo, question, difficulty}
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Enable RLS
+alter table public.github_analysis enable row level security;
+
+-- RLS Policies
+create policy "Users can view their own github analysis" on public.github_analysis 
+  for select using (auth.uid() = user_id);
+
+create policy "Users can insert their own github analysis" on public.github_analysis 
+  for insert with check (auth.uid() = user_id);
+
+create policy "Users can update their own github analysis" on public.github_analysis 
+  for update using (auth.uid() = user_id);
+
+create policy "Users can delete their own github analysis" on public.github_analysis 
+  for delete using (auth.uid() = user_id);
+
+
 
