@@ -43,16 +43,22 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: `File '${filename}' does not exist in the codebase` }, { status: 400 });
     }
 
+    // Normalize CRLF to LF to prevent Windows vs LLM line ending mismatches
+    const normalizeLineEndings = (str: string) => str.replace(/\r\n/g, "\n");
+    const normalizedContent = normalizeLineEndings(fileContent);
+    const normalizedOriginal = normalizeLineEndings(original);
+    const normalizedReplacement = normalizeLineEndings(replacement);
+
     // Verify if original snippet matches
-    if (!fileContent.includes(original)) {
+    if (!normalizedContent.includes(normalizedOriginal)) {
       return NextResponse.json({
         error: "original_snippet_mismatch",
         message: `The original snippet to replace was not found in ${filename}. The codebase may have been updated since this suggestion was made.`
       }, { status: 400 });
     }
 
-    // Apply the replacement
-    const updatedContent = fileContent.replace(original, replacement);
+    // Apply the replacement on normalized content
+    const updatedContent = normalizedContent.replace(normalizedOriginal, normalizedReplacement);
     codebase[filename] = updatedContent;
 
     // Save codebase to database
