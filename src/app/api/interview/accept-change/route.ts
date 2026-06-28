@@ -49,16 +49,58 @@ export async function POST(request: Request) {
     const normalizedOriginal = normalizeLineEndings(original);
     const normalizedReplacement = normalizeLineEndings(replacement);
 
-    // Verify if original snippet matches
-    if (!normalizedContent.includes(normalizedOriginal)) {
-      return NextResponse.json({
-        error: "original_snippet_mismatch",
-        message: `The original snippet to replace was not found in ${filename}. The codebase may have been updated since this suggestion was made.`
-      }, { status: 400 });
+    let updatedContent = "";
+
+    if (normalizedContent.includes(normalizedOriginal)) {
+      updatedContent = normalizedContent.replace(normalizedOriginal, normalizedReplacement);
+    } else {
+      // Fallback: Attempt to find and replace ignoring all whitespace differences (spaces, tabs, newlines)
+      const cleanOriginal = normalizedOriginal.replace(/\s+/g, "");
+      if (!cleanOriginal) {
+        return NextResponse.json({
+          error: "empty_original_snippet",
+          message: "The original snippet is empty."
+        }, { status: 400 });
+      }
+
+      let origIdx = 0;
+      let startIdx = -1;
+      let endIdx = -1;
+
+      for (let i = 0; i < normalizedContent.length; i++) {
+        const char = normalizedContent[i];
+        if (/\s/.test(char)) {
+          continue;
+        }
+
+        if (char === cleanOriginal[origIdx]) {
+          if (origIdx === 0) {
+            startIdx = i;
+          }
+          origIdx++;
+          if (origIdx === cleanOriginal.length) {
+            endIdx = i + 1;
+            break;
+          }
+        } else {
+          if (startIdx !== -1) {
+            i = startIdx;
+            startIdx = -1;
+            origIdx = 0;
+          }
+        }
+      }
+
+      if (startIdx !== -1 && endIdx !== -1 && origIdx === cleanOriginal.length) {
+        updatedContent = normalizedContent.slice(0, startIdx) + normalizedReplacement + normalizedContent.slice(endIdx);
+      } else {
+        return NextResponse.json({
+          error: "original_snippet_mismatch",
+          message: `The original snippet to replace was not found in ${filename}. The codebase may have been updated since this suggestion was made.`
+        }, { status: 400 });
+      }
     }
 
-    // Apply the replacement on normalized content
-    const updatedContent = normalizedContent.replace(normalizedOriginal, normalizedReplacement);
     codebase[filename] = updatedContent;
 
     // Save codebase to database
