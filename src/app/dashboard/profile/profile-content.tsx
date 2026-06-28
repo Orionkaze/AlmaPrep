@@ -141,6 +141,7 @@ export default function ProfileContent({
       setGithubError(err.message || "An unexpected error occurred while analyzing GitHub profile.")
     } finally {
       setAnalyzingGitHub(false)
+    }
   }
 
   const handleGitHubRedirectLogout = async () => {
