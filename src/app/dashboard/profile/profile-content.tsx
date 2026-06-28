@@ -141,7 +141,22 @@ export default function ProfileContent({
       setGithubError(err.message || "An unexpected error occurred while analyzing GitHub profile.")
     } finally {
       setAnalyzingGitHub(false)
+  }
+
+  const handleGitHubRedirectLogout = async () => {
+    try {
+      const { createClient } = await import("@/lib/supabase/client")
+      const supabase = createClient()
+      await supabase.auth.signOut()
+    } catch (err) {
+      console.error("Supabase signOut error:", err)
     }
+
+    document.cookie = "mockmate-demo-session=; path=/; max-age=0"
+    document.cookie = "mockmate-demo-user=; path=/; max-age=0"
+    document.cookie = "mockmate-demo-resume=; path=/; max-age=0"
+
+    await signOut({ callbackUrl: "/login" })
   }
 
   const handleDeleteAccount = async () => {
@@ -476,7 +491,7 @@ export default function ProfileContent({
                     Your account is not connected to GitHub. Connect via GitHub during login to enable this.
                   </p>
                   <button 
-                    onClick={() => signOut({ callbackUrl: "/login" })}
+                    onClick={handleGitHubRedirectLogout}
                     className="px-4 py-2 bg-slate-900 border border-white/10 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold cursor-pointer"
                   >
                     Go to Login & Connect GitHub
