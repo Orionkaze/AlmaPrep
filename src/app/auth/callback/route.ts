@@ -32,6 +32,8 @@ export async function GET(request: Request) {
       } else {
         return NextResponse.redirect(`${origin}${next}`)
       }
+    } else {
+      console.error("Supabase OAuth code exchange failed:", error)
     }
   }
 
