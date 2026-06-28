@@ -16,7 +16,11 @@ import {
   faBullseye,
   faFire,
   faUserEdit,
-  faSave
+  faSave,
+  faSpinner,
+  faChevronDown,
+  faChevronUp,
+  faSync
 } from "@fortawesome/free-solid-svg-icons"
 import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
@@ -59,6 +63,8 @@ interface ProfileContentProps {
   createdAt: string
   interviews: Interview[]
   subscriptionTier: string
+  hasGitHubToken: boolean
+  initialGitHubAnalysis: any
 }
 
 function ScoreRing({ score }: { score: number }) {
@@ -95,6 +101,8 @@ export default function ProfileContent({
   createdAt,
   interviews,
   subscriptionTier,
+  hasGitHubToken,
+  initialGitHubAnalysis,
 }: ProfileContentProps) {
   const [username, setUsername] = useState(initialProfile.username)
   const [selectedAvatar, setSelectedAvatar] = useState(initialProfile.avatar_url)
@@ -104,6 +112,37 @@ export default function ProfileContent({
   const [success, setSuccess] = useState<string | null>(null)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
+
+  // GitHub Analysis states
+  const [githubAnalysis, setGithubAnalysis] = useState<any>(initialGitHubAnalysis)
+  const [analyzingGitHub, setAnalyzingGitHub] = useState(false)
+  const [githubError, setGithubError] = useState<string | null>(null)
+  const [expandedRepo, setExpandedRepo] = useState<string | null>(null)
+
+  const handleAnalyzeGitHub = async () => {
+    setAnalyzingGitHub(true)
+    setGithubError(null)
+
+    try {
+      const res = await fetch("/api/github-analysis", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ forceRefresh: true })
+      })
+
+      const data = await res.json()
+      if (res.ok && data.result) {
+        setGithubAnalysis(data.result)
+      } else {
+        throw new Error(data.error || "Failed to analyze GitHub profile.")
+      }
+    } catch (err: any) {
+      console.error(err)
+      setGithubError(err.message || "An unexpected error occurred while analyzing GitHub profile.")
+    } finally {
+      setAnalyzingGitHub(false)
+    }
+  }
 
   const handleDeleteAccount = async () => {
     setIsDeleting(true)
@@ -407,6 +446,175 @@ export default function ProfileContent({
             </div>
           </GlassCard>
         </div>
+
+        {/* GitHub Project Analyzer Card */}
+        <GlassCard className="p-6 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="flex items-center gap-3 mb-4">
+            <div className="size-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-white">
+              <svg className="size-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-foreground">GitHub Project Analyzer</h3>
+              <p className="text-xs text-foreground/50">Tailor your coding questions to your actual repositories</p>
+            </div>
+          </div>
+
+          {!githubAnalysis ? (
+            // State A: No analysis generated yet
+            <div className="py-2">
+              <p className="text-sm text-foreground/75 mb-4 leading-relaxed">
+                Connect your GitHub account to analyze your codebase (technologies, coding style, commit history) and generate custom-tailored interview questions directly for your projects.
+              </p>
+              
+              {!hasGitHubToken ? (
+                <div className="bg-white/5 border border-white/5 rounded-xl p-4 text-center">
+                  <p className="text-xs text-foreground/60 mb-3">
+                    Your account is not connected to GitHub. Connect via GitHub during login to enable this.
+                  </p>
+                  <button 
+                    onClick={() => signOut({ callbackUrl: "/login" })}
+                    className="px-4 py-2 bg-slate-900 border border-white/10 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold cursor-pointer"
+                  >
+                    Go to Login & Connect GitHub
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  <GlowButton 
+                    onClick={handleAnalyzeGitHub} 
+                    disabled={analyzingGitHub} 
+                    className="h-10 w-full text-sm font-semibold"
+                  >
+                    {analyzingGitHub ? (
+                      <>
+                        <FontAwesomeIcon icon={faSpinner} className="animate-spin mr-2" />
+                        Fetching & Analyzing Repositories...
+                      </>
+                    ) : (
+                      "Run AI Codebase Analysis"
+                    )}
+                  </GlowButton>
+                  {githubError && <p className="text-xs text-red-400 text-center mt-1">{githubError}</p>}
+                </div>
+              )}
+            </div>
+          ) : (
+            // State B: Analysis results generated
+            <div className="flex flex-col gap-4">
+              <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Coding Profile Summary</h4>
+                  {hasGitHubToken && (
+                    <button
+                      onClick={handleAnalyzeGitHub}
+                      disabled={analyzingGitHub}
+                      className="text-xs text-foreground/45 hover:text-foreground/75 flex items-center gap-1 cursor-pointer disabled:opacity-50 border-0 bg-transparent"
+                      title="Re-run analysis"
+                    >
+                      <FontAwesomeIcon icon={faSync} className={analyzingGitHub ? "animate-spin" : ""} />
+                      {analyzingGitHub ? "Refreshing..." : "Refresh"}
+                    </button>
+                  )}
+                </div>
+                <p className="text-sm text-foreground/80 leading-relaxed">
+                  {githubAnalysis.profile_summary}
+                </p>
+              </div>
+
+              {/* Tech Stack */}
+              <div>
+                <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Primary Tech Stack</h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {githubAnalysis.tech_stack?.map((tech: string) => (
+                    <span 
+                      key={tech} 
+                      className="text-[11px] px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Strengths */}
+              {githubAnalysis.strengths && githubAnalysis.strengths.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Key Strengths</h4>
+                  <ul className="text-xs text-foreground/75 space-y-1.5 pl-1">
+                    {githubAnalysis.strengths.map((strength: string, i: number) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-primary mt-0.5">✦</span>
+                        <span>{strength}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Tailored Questions per Repo */}
+              {githubAnalysis.questions && githubAnalysis.questions.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Tailored Interview Questions</h4>
+                  
+                  {/* Group questions by repository */}
+                  <div className="flex flex-col gap-2">
+                    {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
+                      const repoQuestions = githubAnalysis.questions.filter((q: any) => q.repo === repoName)
+                      const isExpanded = expandedRepo === repoName
+
+                      return (
+                        <div 
+                          key={repoName} 
+                          className="border border-white/5 bg-white/[0.01] rounded-xl overflow-hidden"
+                        >
+                          <button
+                            onClick={() => setExpandedRepo(isExpanded ? null : repoName)}
+                            className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/[0.02] cursor-pointer text-left text-sm font-semibold text-foreground/95 border-0 bg-transparent"
+                          >
+                            <span className="truncate">{repoName}</span>
+                            <FontAwesomeIcon 
+                              icon={isExpanded ? faChevronUp : faChevronDown} 
+                              className="text-xs text-foreground/45" 
+                            />
+                          </button>
+                          
+                          {isExpanded && (
+                            <div className="px-4 pb-4 pt-1 flex flex-col gap-3 border-t border-white/5 bg-white/[0.005]">
+                              {repoQuestions.map((q: any, i: number) => (
+                                <div key={i} className="flex flex-col gap-1">
+                                  <div className="flex items-center gap-2">
+                                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
+                                      q.difficulty === "easy" 
+                                        ? "bg-green-500/10 text-green-400 border border-green-500/20" 
+                                        : q.difficulty === "medium"
+                                        ? "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
+                                        : "bg-red-500/10 text-red-400 border border-red-500/20"
+                                    }`}>
+                                      {q.difficulty}
+                                    </span>
+                                  </div>
+                                  <p className="text-xs text-foreground/80 leading-relaxed">
+                                    {q.question}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {githubError && <p className="text-xs text-red-400 text-center mt-1">{githubError}</p>}
+            </div>
+          )}
+        </GlassCard>
 
         {/* History Log */}
         <GlassCard className="p-6">

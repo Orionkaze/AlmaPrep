@@ -73,6 +73,7 @@ export default async function ProfilePage() {
   let createdAt = new Date().toISOString()
   let interviews: any[] = []
   let subscriptionTier = "free"
+  let githubAnalysis: any = null
 
   if (isDemoMode) {
     let resumeText = ""
@@ -114,6 +115,17 @@ export default async function ProfilePage() {
     createdAt = profile.created_at || new Date().toISOString()
     subscriptionTier = profile.subscription_tier || "free"
 
+    try {
+      const { data: cached } = await supabase
+        .from("github_analysis")
+        .select("*")
+        .eq("user_id", userId)
+        .maybeSingle()
+      githubAnalysis = cached
+    } catch (e) {
+      console.error("Failed to fetch cached github analysis:", e)
+    }
+
     // 2. Fetch interviews and feedback
     const { data: interviewsData } = await supabase
       .from("interviews")
@@ -143,6 +155,8 @@ export default async function ProfilePage() {
     }
   }
 
+  const hasGitHubToken = cookieStore.has("sb-github-provider-token")
+
   return (
     <main className="min-h-screen p-6 md:p-12 relative overflow-hidden">
       {/* Background decorations */}
@@ -170,6 +184,8 @@ export default async function ProfilePage() {
           createdAt={createdAt}
           interviews={interviews}
           subscriptionTier={subscriptionTier}
+          hasGitHubToken={hasGitHubToken}
+          initialGitHubAnalysis={githubAnalysis}
         />
       </div>
     </main>
