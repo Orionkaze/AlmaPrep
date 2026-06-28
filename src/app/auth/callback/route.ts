@@ -12,6 +12,11 @@ export async function GET(request: Request) {
     const supabase = await createClient()
     const { data, error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
+      console.log("Supabase OAuth Session Exchange Success:", {
+        hasSession: !!data?.session,
+        hasProviderToken: !!data?.session?.provider_token,
+        expiresIn: data?.session?.expires_in
+      })
       if (data?.session?.provider_token) {
         const cookieStore = await cookies()
         cookieStore.set('sb-github-provider-token', data.session.provider_token, {
