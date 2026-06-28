@@ -22,7 +22,8 @@ export function LogoutButton() {
     document.cookie = "mockmate-demo-session=; path=/; max-age=0"
 
     // 3. Sign out of NextAuth
-    await signOut({ callbackUrl: "/login" })
+    await signOut({ redirect: false })
+    window.location.href = "/login"
   }
 
   return (

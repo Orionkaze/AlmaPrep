@@ -157,7 +157,8 @@ export default function ProfileContent({
     document.cookie = "mockmate-demo-user=; path=/; max-age=0"
     document.cookie = "mockmate-demo-resume=; path=/; max-age=0"
 
-    await signOut({ callbackUrl: "/login" })
+    await signOut({ redirect: false })
+    window.location.href = "/login"
   }
 
   const handleDeleteAccount = async () => {
@@ -187,7 +188,8 @@ export default function ProfileContent({
 
       // 4. Sign out
       try {
-        await signOut({ callbackUrl: "/" })
+        await signOut({ redirect: false })
+        window.location.href = "/"
       } catch (e) {
         window.location.href = "/"
       }
