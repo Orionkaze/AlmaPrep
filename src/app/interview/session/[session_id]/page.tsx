@@ -54,6 +54,7 @@ export default function InterviewWorkspacePage({
   const [loading, setLoading] = useState(true);
   const [isAgentThinking, setIsAgentThinking] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isApplying, setIsApplying] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   
@@ -189,8 +190,9 @@ export default function InterviewWorkspacePage({
   };
 
   const handleAcceptChange = async () => {
-    if (pendingDiffs.length === 0) return;
+    if (pendingDiffs.length === 0 || isApplying) return;
     const diff = pendingDiffs[activeDiffIndex];
+    setIsApplying(true);
 
     try {
       const res = await fetch("/api/interview/accept-change", {
@@ -225,6 +227,8 @@ export default function InterviewWorkspacePage({
     } catch (err: any) {
       console.error(err);
       showToast(err.message || "Error applying changes.");
+    } finally {
+      setIsApplying(false);
     }
   };
 
@@ -654,7 +658,8 @@ export default function InterviewWorkspacePage({
                 <div className="flex gap-3 mt-2">
                   <button
                     onClick={handleAcceptChange}
-                    className="flex-1 bg-[#059669] hover:bg-[#047857] text-white font-semibold text-xs py-2 rounded-lg flex items-center justify-center gap-1.5 cursor-pointer"
+                    disabled={isApplying}
+                    className="flex-1 bg-[#059669] hover:bg-[#047857] text-white font-semibold text-xs py-2 rounded-lg flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
                   >
                     <Check className="size-3.5" />
                     <span>Accept Change</span>
