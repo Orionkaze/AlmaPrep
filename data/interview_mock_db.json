@@ -926,15 +926,50 @@
             ],
             "follow_up": "Test the updated authenticate middleware with different scenarios, including valid and invalid tokens, and missing 'authorization' headers, to ensure it behaves as expected."
           }
+        },
+        {
+          "role": "user",
+          "content": "The current code has duplicate next() calls and doesn't handle the token correctly. Please write a completely clean middleware/auth.js from scratch. Use a synchronous try-catch block around jwt.verify, check for a missing authorization header, handle the 'Bearer ' prefix, and return a 401 response if verification fails.\""
+        },
+        {
+          "role": "assistant",
+          "content": {
+            "reasoning": "The current implementation of the authenticate middleware has several issues, including duplicate next() calls and incorrect token handling. A clean implementation should use a synchronous try-catch block around jwt.verify, check for a missing 'authorization' header, handle the 'Bearer ' prefix, and return a 401 response if verification fails.",
+            "proposed_changes": [
+              {
+                "filename": "middleware/auth.js",
+                "original": "",
+                "replacement": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const authHeader = req.headers['authorization'] || req.headers['Authorization'];\n  if (!authHeader || !authHeader.startsWith('Bearer ')) {\n    return res.status(401).json({ message: 'Missing or invalid authorization header' });\n  }\n  const token = authHeader.substring(7);\n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ message: 'Invalid token' });\n  }\n};\n\nmodule.exports = authenticate;",
+                "explanation": "This implementation first checks for the presence and correctness of the 'authorization' header, then extracts the token and verifies it using jwt.verify. If verification fails, it returns a 401 response. If successful, it sets the req.user property and calls next()."
+              }
+            ],
+            "follow_up": "Test the updated authenticate middleware with different scenarios, including valid and invalid tokens, and missing or malformed 'authorization' headers, to ensure it behaves as expected."
+          }
         }
       ],
       "current_codebase": {
-        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'] || req.headers['Authorization'];\n  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ message: 'Invalid token' }); } req.user = decoded; next(); });\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const authHeader = req.headers['authorization'] || req.headers['Authorization'];\n  if (!authHeader || !authHeader.startsWith('Bearer ')) {\n    return res.status(401).json({ message: 'Missing or invalid authorization header' });\n  }\n  const token = authHeader.substring(7);\n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ message: 'Invalid token' });\n  }\n};\n\nmodule.exports = authenticate;const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const authHeader = req.headers['authorization'] || req.headers['Authorization'];\n  if (!authHeader || !authHeader.startsWith('Bearer ')) {\n    return res.status(401).json({ message: 'Missing or invalid authorization header' });\n  }\n  const token = authHeader.substring(7);\n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ message: 'Invalid token' });\n  }\n};\n\nmodule.exports = authenticate;const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'] || req.headers['Authorization'];\n  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ message: 'Invalid token' }); } req.user = decoded; next(); });\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
         "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "submitted_code": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const authHeader = req.headers['authorization'] || req.headers['Authorization'];\n  if (!authHeader || !authHeader.startsWith('Bearer ')) {\n    return res.status(401).json({ message: 'Missing or invalid authorization header' });\n  }\n  const token = authHeader.substring(7);\n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ message: 'Invalid token' });\n  }\n};\n\nmodule.exports = authenticate;const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const authHeader = req.headers['authorization'] || req.headers['Authorization'];\n  if (!authHeader || !authHeader.startsWith('Bearer ')) {\n    return res.status(401).json({ message: 'Missing or invalid authorization header' });\n  }\n  const token = authHeader.substring(7);\n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ message: 'Invalid token' });\n  }\n};\n\nmodule.exports = authenticate;const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'] || req.headers['Authorization'];\n  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { if (err) { return res.status(401).json({ message: 'Invalid token' }); } req.user = decoded; next(); });\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "status": "evaluated",
+      "started_at": "2026-06-27T21:36:07.390Z",
+      "submitted_at": "2026-06-28T06:08:32.604Z"
+    },
+    {
+      "id": "3f9311d4-9b3a-48f0-917d-5252737f28db",
+      "user_id": "demo-user-id",
+      "challenge_id": "e1a2b3c4-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+      "conversation": [],
+      "current_codebase": {
+        "solution.js": "function twoSum(nums, target) {\n  // Your solution here\n}\n\nmodule.exports = { twoSum };"
       },
       "submitted_code": null,
       "status": "in_progress",
-      "started_at": "2026-06-27T21:36:07.390Z",
+      "started_at": "2026-06-28T14:07:30.956Z",
       "submitted_at": null
     }
   ],
@@ -1203,6 +1238,60 @@
         }
       ],
       "generated_at": "2026-06-27T21:33:05.559Z"
+    },
+    {
+      "id": "96b30115-d46e-46f4-87b9-f1dacbb8e3b8",
+      "session_id": "3f17a3cb-24f9-46dd-b29b-3b4276100c34",
+      "user_id": "demo-user-id",
+      "scores": {
+        "prompt_engineering": 8,
+        "problem_decomposition": 6,
+        "context_management": 7,
+        "debugging_ability": 8,
+        "testing_strategy": 4,
+        "code_review_quality": 6,
+        "security_awareness": 8
+      },
+      "strengths": [
+        "The candidate effectively iterated on their prompts to the agent, refining their request to address specific issues with the code.",
+        "The candidate demonstrated a clear understanding of the security implications of the bug and the fix, including the importance of handling missing or invalid authorization headers and tokens."
+      ],
+      "weaknesses": [
+        "The candidate did not explicitly ask about edge cases or test coverage, which could indicate a lack of consideration for testing strategy.",
+        "The candidate did not critically evaluate the agent's proposed changes before accepting, which could indicate a lack of attention to code review quality."
+      ],
+      "hiring_recommendation": "Conditional Hire",
+      "recommendation_reasoning": "The candidate demonstrated strong prompt engineering and debugging abilities, and a good understanding of security implications. However, they could improve on testing strategy and code review quality. With additional training or experience, the candidate has the potential to become a strong engineer.",
+      "overall_score": 68,
+      "test_results": [
+        {
+          "test_id": "t1",
+          "description": "Returns 401 when no token provided",
+          "passed": false,
+          "error": "Load error: Identifier 'jwt' has already been declared"
+        },
+        {
+          "test_id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "passed": false
+        },
+        {
+          "test_id": "t3",
+          "description": "Returns 401 when token is expired",
+          "passed": false
+        },
+        {
+          "test_id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "passed": false
+        },
+        {
+          "test_id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "passed": false
+        }
+      ],
+      "generated_at": "2026-06-28T06:08:34.806Z"
     }
   ]
 }
