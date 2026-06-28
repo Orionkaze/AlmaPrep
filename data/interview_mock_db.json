@@ -985,12 +985,14 @@
         }
       ],
       "current_codebase": {
-        "solution.js": "function twoSum(nums, target) {\n  // Your solution here\n}\n\nmodule.exports = { twoSum };"
+        "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (numMap.has(complement)) {\n      return [numMap.get(complement), i];\n    }\n    numMap.set(nums[i], i);\n  }\n  return null;\n}\n\nmodule.exports = { twoSum };"
       },
-      "submitted_code": null,
-      "status": "in_progress",
+      "submitted_code": {
+        "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (numMap.has(complement)) {\n      return [numMap.get(complement), i];\n    }\n    numMap.set(nums[i], i);\n  }\n  return null;\n}\n\nmodule.exports = { twoSum };"
+      },
+      "status": "evaluated",
       "started_at": "2026-06-28T14:07:30.956Z",
-      "submitted_at": null
+      "submitted_at": "2026-06-28T14:16:51.191Z"
     }
   ],
   "interview_reports": [
@@ -1312,6 +1314,57 @@
         }
       ],
       "generated_at": "2026-06-28T06:08:34.806Z"
+    },
+    {
+      "id": "385c5d64-8a25-4e1b-85f4-6b004e95a872",
+      "session_id": "3f9311d4-9b3a-48f0-917d-5252737f28db",
+      "user_id": "demo-user-id",
+      "scores": {
+        "prompt_engineering": 0,
+        "problem_decomposition": 0,
+        "context_management": 0,
+        "debugging_ability": 0,
+        "testing_strategy": 0,
+        "code_review_quality": 0,
+        "security_awareness": 0
+      },
+      "strengths": [],
+      "weaknesses": [
+        "Lack of clear problem description",
+        "No evidence of debugging or testing",
+        "No code review or security consideration"
+      ],
+      "hiring_recommendation": "Do Not Hire",
+      "recommendation_reasoning": "The candidate provided a very vague prompt to the agent and did not engage in any meaningful conversation about the problem or the solution. They did not demonstrate any debugging, testing, or code review skills, and did not consider security implications.",
+      "overall_score": 0,
+      "test_results": [
+        {
+          "test_id": "t1",
+          "description": "Returns 401 when no token provided",
+          "passed": false
+        },
+        {
+          "test_id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "passed": false
+        },
+        {
+          "test_id": "t3",
+          "description": "Returns 401 when token is expired",
+          "passed": false
+        },
+        {
+          "test_id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "passed": false
+        },
+        {
+          "test_id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "passed": false
+        }
+      ],
+      "generated_at": "2026-06-28T14:16:53.663Z"
     }
   ]
 }
