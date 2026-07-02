@@ -191,6 +191,11 @@ create policy "Users can insert their own behavioral analysis" on public.behavio
 -- Migration: Add speaking_analysis column to public.behavioral_analysis
 alter table public.behavioral_analysis add column if not exists speaking_analysis jsonb;
 
+-- Migration: Add proctoring columns to public.interviews
+alter table public.interviews add column if not exists proctoring_log jsonb;
+alter table public.interviews add column if not exists is_flagged boolean default false;
+
+
 
 
 

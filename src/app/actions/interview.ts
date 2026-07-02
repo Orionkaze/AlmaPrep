@@ -741,7 +741,7 @@ Analyze the candidate's aggregated speaking metrics over the entire interview se
 - Frequently overused words: ${aggregatedMetrics.mostOverusedWords.join(", ")}
 - Overall hesitation level: ${aggregatedMetrics.hesitationScore}
 
-Write a professional, constructive, and premium session-level speaking summary. Highlight the key strengths in their delivery (such as sentence pacing) and provide 1-2 major focal areas for their next interview.
+Write a professional, constructive, and premium session-level speaking summary. Highlight the key strengths in their delivery (such as pacing) and provide 1-2 major focal areas for their next interview.
 
 Keep the summary concise and engaging (1 paragraph of 3-4 sentences). Do not include markdown headers or bullet points. Just return the raw text paragraph.`
 
@@ -755,6 +755,73 @@ Keep the summary concise and engaging (1 paragraph of 3-4 sentences). Do not inc
     return response.trim()
   } catch (err) {
     console.error("Error in generateSessionSpeakingSummary:", err)
-    return "Overall, your pacing was solid, but you relied on filler words throughout the session. Try to slow down slightly and pause intentionally rather than using fillers. Sit with silence for a brief second to gather your thoughts."
+    return "Overall, your pacing was solid, but you relied on filler words throughout the session. Try to slow down slightly and pause intentionally rather than using fillers."
+  }
+}
+
+/**
+ * Updates the interviews table with proctoring violations and flag details.
+ */
+export async function saveProctoringLog(
+  interviewId: string,
+  log: {
+    violations: any[];
+    totalCount: number;
+    isFlagged: boolean;
+    terminatedEarly: boolean;
+  }
+): Promise<boolean> {
+  try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return false
+    }
+
+    const supabase = await createClient()
+    const { error } = await supabase
+      .from("interviews")
+      .update({
+        proctoring_log: log,
+        is_flagged: log.isFlagged,
+        status: log.terminatedEarly ? "terminated" : "completed"
+      })
+      .eq("id", interviewId)
+
+    if (error) {
+      console.error("Error updating proctoring log inside Supabase interviews table:", error)
+      return false
+    }
+    return true
+  } catch (e) {
+    console.error("Supabase saveProctoringLog failed:", e)
+    return false
+  }
+}
+
+/**
+ * Retrieves the full interviews session details (including proctoring logs).
+ */
+export async function getInterviewSession(interviewId: string) {
+  try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return null
+    }
+
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from("interviews")
+      .select("*")
+      .eq("id", interviewId)
+      .maybeSingle()
+
+    if (error) {
+      console.error("Error fetching interview session from Supabase:", error)
+      return null
+    }
+    return data
+  } catch (e) {
+    console.error("Supabase getInterviewSession failed:", e)
+    return null
   }
 }
