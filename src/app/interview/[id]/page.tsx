@@ -105,6 +105,8 @@ export default function InterviewPage({
 
   // Initialize webcam
   useEffect(() => {
+    if (!isStarted) return;
+
     let active = true;
     let localStream: MediaStream | null = null;
 
@@ -141,7 +143,7 @@ export default function InterviewPage({
         localStream.getTracks().forEach(track => track.stop())
       }
     }
-  }, [])
+  }, [isStarted])
 
   // Initialize speech recognition
   useEffect(() => {
@@ -769,7 +771,7 @@ export default function InterviewPage({
         )}
       </div>
 
-      {!isComplete && (
+      {!isComplete && isStarted && (
         <BehavioralAnalysis
           videoRef={videoRef}
           sessionId={dbSessionId || category}
