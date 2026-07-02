@@ -185,11 +185,7 @@ export default async function DashboardPage() {
             </Link>
             <div className="flex items-center gap-3">
               <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-lg overflow-hidden">
-                {session?.user?.image ? (
-                  <img src={session.user.image} alt={displayName} className="size-full object-cover" />
-                ) : (
-                  <FontAwesomeIcon icon={avatarIcon} />
-                )}
+                <FontAwesomeIcon icon={avatarIcon} />
               </div>
               <div>
                 <h1 className="text-3xl font-bold tracking-tight">
