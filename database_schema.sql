@@ -188,6 +188,10 @@ create policy "Users can view their own behavioral analysis" on public.behaviora
 create policy "Users can insert their own behavioral analysis" on public.behavioral_analysis
   for insert with check (auth.uid() = user_id);
 
+-- Migration: Add speaking_analysis column to public.behavioral_analysis
+alter table public.behavioral_analysis add column if not exists speaking_analysis jsonb;
+
+
 
 
 
