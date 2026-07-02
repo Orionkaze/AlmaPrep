@@ -105,6 +105,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
     answerScores: any[]
     physicalMetrics: any[]
     finalReport: string
+    speakingAnalysis?: any
   } | null>(null)
   const [showStudyGuide, setShowStudyGuide] = useState(false)
   const [showQuestionAnalysis, setShowQuestionAnalysis] = useState(true)
@@ -131,7 +132,8 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
           setBehavioralData({
             answerScores: dbBehavioral.answer_scores || [],
             physicalMetrics: dbBehavioral.physical_metrics || [],
-            finalReport: dbBehavioral.final_report || ""
+            finalReport: dbBehavioral.final_report || "",
+            speakingAnalysis: dbBehavioral.speaking_analysis || null
           })
         }
       }
@@ -197,7 +199,43 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
               fidgeting_count: 4
             }
           ],
-          finalReport: "You showed strong composure and excellent eye contact overall. You utilized the STAR method well in your introductory answers but showed minor hesitation during technical questions. Posture remained steady, but slight fidgeting was detected towards the end of the session. Focus on breathing and structuring your technical answers as clearly as your behavioral ones."
+          finalReport: "You showed strong composure and excellent eye contact overall. You utilized the STAR method well in your introductory answers but showed minor hesitation during technical questions. Posture remained steady, but slight fidgeting was detected towards the end of the session. Focus on breathing and structuring your technical answers as clearly as your behavioral ones.",
+          speakingAnalysis: {
+            answerMetrics: [
+              {
+                metrics: {
+                  wordCount: 120,
+                  fillerCount: 8,
+                  fillerWords: { "um": 3, "like": 4, "basically": 1 },
+                  avgWordsPerSentence: 18,
+                  overusedWords: ["thing", "good", "basically"],
+                  hesitationPhrases: { "I think": 3, "maybe": 2 }
+                },
+                feedback: "You used filler words 8 times — try replacing 'like' with a brief pause. Your average sentence length of 18 words was very clear and digestible. You repeated 'basically' and 'good' a few times; try varying your vocabulary."
+              },
+              {
+                metrics: {
+                  wordCount: 85,
+                  fillerCount: 4,
+                  fillerWords: { "uh": 2, "right": 2 },
+                  avgWordsPerSentence: 14,
+                  overusedWords: ["system", "process"],
+                  hesitationPhrases: { "I guess": 1 }
+                },
+                feedback: "Solid pacing. You minimized fillers well, using only 4. Sentence structure was concise. Keep up this structured delivery and minimize hesitation phrases."
+              }
+            ],
+            sessionSummary: {
+              metrics: {
+                totalFillerCount: 12,
+                mostUsedFillers: ["like", "um", "right"],
+                avgSentenceComplexity: 16,
+                mostOverusedWords: ["basically", "thing"],
+                hesitationScore: "Medium"
+              },
+              summary: "Overall, your pacing was solid, but you relied on filler words (especially 'like' and 'um') throughout the session. Try to slow down slightly and pause intentionally rather than using fillers. Pacing and sentence lengths are clear."
+            }
+          }
         })
       }
     }
@@ -337,6 +375,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
               answerScores={behavioralData.answerScores}
               physicalMetrics={behavioralData.physicalMetrics}
               finalReport={behavioralData.finalReport}
+              speakingAnalysis={behavioralData.speakingAnalysis}
             />
           </div>
         ) : (
