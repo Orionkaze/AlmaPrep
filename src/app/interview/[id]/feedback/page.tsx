@@ -428,6 +428,17 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             />
           </div>
         ) : (
+          isUuid && (
+            <div className="mb-10 text-left">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="size-10 rounded-lg bg-amber-500/15 flex items-center justify-center border border-amber-500/20">
+                  <FontAwesomeIcon icon={faUserTie} className="text-amber-500" />
+                </div>
+                <div className="text-left">
+                  <h2 className="text-xl font-bold text-white">AI Behavioral & Physical Analysis</h2>
+                  <p className="text-xs text-foreground/60">Combined insights from your speech delivery and physical presence</p>
+                </div>
+              </div>
               <GlassCard className="border border-amber-500/20 bg-amber-500/5 py-6 px-8 rounded-2xl">
                 <h4 className="text-sm font-bold text-amber-400 mb-1">Behavioral Report Unavailable</h4>
                 <p className="text-xs text-white/70 leading-relaxed">
@@ -436,6 +447,86 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
               </GlassCard>
             </div>
           )
+        )}
+
+        {/* Proctoring Summary Panel */}
+        {proctoringData && (
+          <GlassCard className="mb-10 text-left border border-white/5">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
+              <span className="size-8 rounded-lg bg-red-500/20 flex items-center justify-center text-sm">
+                <FontAwesomeIcon icon={faShieldHalved} className="text-red-400" />
+              </span>
+              Proctoring Summary
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col justify-between">
+                <span className="text-[10px] text-white/40 uppercase tracking-wider font-bold mb-1">Status</span>
+                <span className={`text-xs font-extrabold self-start px-2.5 py-0.5 rounded-full ${
+                  proctoringData.isFlagged 
+                    ? "bg-rose-500/10 text-rose-400 border border-rose-500/20" 
+                    : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                }`}>
+                  {proctoringData.isFlagged ? "Flagged" : "Clean"}
+                </span>
+              </div>
+              <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col">
+                <span className="text-[10px] text-white/40 uppercase tracking-wider font-bold mb-1">Total Warnings</span>
+                <span className={`text-xl font-extrabold font-mono ${proctoringData.totalCount >= 3 ? "text-amber-400" : "text-white"}`}>
+                  {proctoringData.totalCount} / 5
+                </span>
+              </div>
+              <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col">
+                <span className="text-[10px] text-white/40 uppercase tracking-wider font-bold mb-1">Completed</span>
+                <span className="text-xs font-extrabold text-white">
+                  {proctoringData.terminatedEarly ? "Terminated Early ❌" : "Finished Normally ✓"}
+                </span>
+              </div>
+            </div>
+
+            {proctoringData.violations.length > 0 ? (
+              <div className="space-y-3">
+                <h3 className="text-xs uppercase font-bold text-white/50 tracking-wider mb-2">Violations Log</h3>
+                <div className="space-y-2">
+                  {proctoringData.violations.map((v: any, index: number) => {
+                    let label = "";
+                    switch (v.type) {
+                      case "tab_switch":
+                        label = "Tab Switching / Minimize";
+                        break;
+                      case "copy_paste":
+                        label = "Clipboard Action (Copy/Cut/Paste)";
+                        break;
+                      case "multiple_faces":
+                        label = "Multiple Faces in Camera Frame";
+                        break;
+                      case "fullscreen_exit":
+                        label = "Exited Fullscreen Mode";
+                        break;
+                      default:
+                        label = v.type;
+                    }
+                    return (
+                      <div key={index} className="flex items-center justify-between text-xs bg-white/5 p-3 rounded-xl border border-white/5">
+                        <span className="font-semibold text-white/80">{label}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="text-white/40 text-[10px] font-mono">
+                            {new Date(v.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+                          </span>
+                          <span className="bg-rose-500/10 text-rose-400 border border-rose-500/25 px-2.5 py-0.5 rounded font-bold">
+                            {v.count} warning{v.count > 1 ? "s" : ""}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-4 text-xs italic text-white/40">
+                No proctoring violations recorded. Excellent adherence to guidelines!
+              </div>
+            )}
+          </GlassCard>
         )}
 
         {/* Question-by-Question Evaluation */}
