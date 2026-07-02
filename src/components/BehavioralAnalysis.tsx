@@ -14,6 +14,7 @@ interface BehavioralAnalysisProps {
     fidgeting_count: number;
   }) => void;
   onActiveStatusChange: (active: boolean) => void;
+  onFaceCountChange?: (count: number) => void;
 }
 
 export default function BehavioralAnalysis({
@@ -21,6 +22,7 @@ export default function BehavioralAnalysis({
   sessionId,
   onIntervalMetrics,
   onActiveStatusChange,
+  onFaceCountChange,
 }: BehavioralAnalysisProps) {
   const [scriptsLoaded, setScriptsLoaded] = useState({
     faceMesh: false,
@@ -88,7 +90,7 @@ export default function BehavioralAnalysis({
         locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
       });
       fm.setOptions({
-        maxNumFaces: 1,
+        maxNumFaces: 4,
         refineLandmarks: true,
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5,
@@ -222,6 +224,11 @@ export default function BehavioralAnalysis({
 
   // FaceMesh Results Processing
   const handleFaceMeshResults = (results: any) => {
+    const faceCount = results?.multiFaceLandmarks ? results.multiFaceLandmarks.length : 0;
+    if (onFaceCountChange) {
+      onFaceCountChange(faceCount);
+    }
+
     if (!results || !results.multiFaceLandmarks || results.multiFaceLandmarks.length === 0) {
       // No face detected -> count as distracted / no eye contact
       frameMetricsRef.current.totalFrames += 1;
