@@ -5,8 +5,9 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { use, useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp, faClipboardCheck } from "@fortawesome/free-solid-svg-icons"
-import { getFeedback } from "@/app/actions/interview"
+import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp, faClipboardCheck, faUserTie } from "@fortawesome/free-solid-svg-icons"
+import { getFeedback, getBehavioralReport } from "@/app/actions/interview"
+import BehavioralReport from "@/components/BehavioralReport"
 
 const categoryLabels: Record<string, string> = {
   hr: "HR Interview",
@@ -100,6 +101,11 @@ function ProgressBar({ score, color }: { score: number; color: string }) {
 export default function FeedbackPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
   const [feedback, setFeedback] = useState<typeof demoFeedback | null>(null)
+  const [behavioralData, setBehavioralData] = useState<{
+    answerScores: any[]
+    physicalMetrics: any[]
+    finalReport: string
+  } | null>(null)
   const [showStudyGuide, setShowStudyGuide] = useState(false)
   const [showQuestionAnalysis, setShowQuestionAnalysis] = useState(true)
   const [expandedQuestions, setExpandedQuestions] = useState<Record<number, boolean>>({})
@@ -118,7 +124,15 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         const dbFeedback = await getFeedback(id)
         if (dbFeedback) {
           setFeedback(dbFeedback)
-          return
+        }
+
+        const dbBehavioral = await getBehavioralReport(id)
+        if (dbBehavioral) {
+          setBehavioralData({
+            answerScores: dbBehavioral.answer_scores || [],
+            physicalMetrics: dbBehavioral.physical_metrics || [],
+            finalReport: dbBehavioral.final_report || ""
+          })
         }
       }
 
@@ -127,15 +141,61 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       if (local) {
         try {
           const parsed = JSON.parse(local)
-          setFeedback(parsed)
-          return
+          setFeedback((prev) => prev || parsed)
         } catch (e) {
           console.error("Failed to parse local feedback data:", e)
         }
       }
 
-      // 3. Fallback to mock data
-      setFeedback(demoFeedback)
+      const localBehavioral = localStorage.getItem(`behavioral-${id}`)
+      if (localBehavioral) {
+        try {
+          const parsed = JSON.parse(localBehavioral)
+          setBehavioralData((prev) => prev || parsed)
+        } catch (e) {
+          console.error("Failed to parse local behavioral data:", e)
+        }
+      }
+
+      // 3. Fallback to mock data if still null
+      setFeedback((prev) => prev || demoFeedback)
+      setBehavioralData((prev) => prev || {
+        answerScores: [
+          {
+            star_score: 8,
+            relevance_score: 9,
+            clarity_score: 8,
+            confidence_score: 8,
+            hints: ["Great use of Situation and Task. Expand more on the Result next time."],
+            summary: "Highly structured and clear introduction."
+          },
+          {
+            star_score: 7,
+            relevance_score: 8,
+            clarity_score: 7,
+            confidence_score: 7,
+            hints: ["Try to explain the Action step more clearly."],
+            summary: "Good technical overview but lacked structure."
+          }
+        ],
+        physicalMetrics: [
+          {
+            interval_index: 0,
+            eye_contact_percent: 85,
+            posture_stability_score: 90,
+            facial_engagement: "neutral" as const,
+            fidgeting_count: 2
+          },
+          {
+            interval_index: 1,
+            eye_contact_percent: 75,
+            posture_stability_score: 85,
+            facial_engagement: "nodding" as const,
+            fidgeting_count: 4
+          }
+        ],
+        finalReport: "You showed strong composure and excellent eye contact overall. You utilized the STAR method well in your introductory answers but showed minor hesitation during technical questions. Posture remained steady, but slight fidgeting was detected towards the end of the session. Focus on breathing and structuring your technical answers as clearly as your behavioral ones."
+      })
     }
 
     loadFeedback()
@@ -249,6 +309,26 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             </ul>
           </GlassCard>
         </div>
+
+        {/* Behavioral Analysis Report */}
+        {behavioralData && (
+          <div className="mb-10 text-left">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="size-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                <FontAwesomeIcon icon={faUserTie} className="text-emerald-400" />
+              </div>
+              <div className="text-left">
+                <h2 className="text-xl font-bold text-white">AI Behavioral & Physical Analysis</h2>
+                <p className="text-xs text-foreground/60">Combined insights from your speech delivery and physical presence</p>
+              </div>
+            </div>
+            <BehavioralReport
+              answerScores={behavioralData.answerScores}
+              physicalMetrics={behavioralData.physicalMetrics}
+              finalReport={behavioralData.finalReport}
+            />
+          </div>
+        )}
 
         {/* Question-by-Question Evaluation */}
         {feedback.questionEvaluation && feedback.questionEvaluation.length > 0 && (
