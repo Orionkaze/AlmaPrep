@@ -39,12 +39,12 @@ export default async function DashboardPage() {
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
 
   let supabaseUser = null
-  let activeUser = session?.user as any
-  let userId = (session?.user as any)?.id
+  let activeUser = null
+  let userId = null
 
-  let isDemoMode = false
-  if (!activeUser && hasDemoCookie) {
-    isDemoMode = true
+  const isDemoMode = hasDemoCookie
+
+  if (isDemoMode) {
     const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
     if (demoUserCookie) {
       try {
@@ -66,6 +66,9 @@ export default async function DashboardPage() {
       }
     }
     userId = "demo-user-id"
+  } else {
+    activeUser = session?.user as any
+    userId = (session?.user as any)?.id
   }
 
   const supabase = isDemoMode ? null : await createClient()

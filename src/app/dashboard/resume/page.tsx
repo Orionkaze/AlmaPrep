@@ -14,11 +14,11 @@ export default async function ResumePage() {
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
   
   let supabaseUser = null
-  let activeUser = session?.user as any
+  let activeUser = null
 
-  let isDemoMode = false
-  if (!activeUser && hasDemoCookie) {
-    isDemoMode = true
+  const isDemoMode = hasDemoCookie
+
+  if (isDemoMode) {
     const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
     if (demoUserCookie) {
       try {
@@ -39,6 +39,8 @@ export default async function ResumePage() {
         avatar_url: "user-tie",
       }
     }
+  } else {
+    activeUser = session?.user as any
   }
 
   const supabase = isDemoMode ? null : await createClient()
