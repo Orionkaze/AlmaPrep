@@ -16,10 +16,14 @@ import {
   saveBehavioralReport,
   analyzeAnswerSpeaking,
   generateSessionSpeakingSummary,
+  saveProctoringLog,
 } from "@/app/actions/interview"
 import { parseSpeakingMetrics } from "@/lib/speakingParser"
 import BehavioralAnalysis from "@/components/BehavioralAnalysis"
 import RealTimeHint from "@/components/RealTimeHint"
+import ProctoringMonitor, { ViolationRecord } from "@/components/ProctoringMonitor"
+import { faShieldHalved } from "@fortawesome/free-solid-svg-icons"
+import { useRouter } from "next/navigation"
 
 // SpeechRecognition type declarations for TS
 declare global {
@@ -65,6 +69,7 @@ export default function InterviewPage({
   const useResume = resume === "true"
   const selectedPersona = typeof persona === "string" ? persona : "supportive"
   const category = id || "mixed"
+  const router = useRouter()
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [isAiTyping, setIsAiTyping] = useState(true)
@@ -74,6 +79,12 @@ export default function InterviewPage({
   const [isChatOpen, setIsChatOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   
+  // Proctoring States
+  const [isStarted, setIsStarted] = useState(false)
+  const [faceCount, setFaceCount] = useState(1)
+  const [violations, setViolations] = useState<ViolationRecord[]>([])
+  const [violationsCount, setViolationsCount] = useState(0)
+
   // Webcam & Voice states
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isListening, setIsListening] = useState(false)
@@ -191,6 +202,7 @@ export default function InterviewPage({
 
   // Start the interview session and get the first question
   useEffect(() => {
+    if (!isStarted) return
     let active = true
 
     const initInterview = async () => {
@@ -230,7 +242,7 @@ export default function InterviewPage({
     return () => {
       active = false
     }
-  }, [category, useResume])
+  }, [category, useResume, isStarted])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -447,6 +459,19 @@ export default function InterviewPage({
         )
       }
 
+      // Save proctoring summary log
+      const proctoringLog = {
+        violations,
+        totalCount: violationsCount,
+        isFlagged: violationsCount >= 3,
+        terminatedEarly: false
+      }
+      if (dbSessionId) {
+        await saveProctoringLog(dbSessionId, proctoringLog)
+      }
+      const proctoringStorageKey = `proctoring-${dbSessionId || category}`
+      localStorage.setItem(proctoringStorageKey, JSON.stringify(proctoringLog))
+
       // Save behavioral report to localStorage for client fallback
       const behavioralStorageKey = `behavioral-${dbSessionId || category}`
       localStorage.setItem(behavioralStorageKey, JSON.stringify({
@@ -462,6 +487,50 @@ export default function InterviewPage({
     }
   }
 
+  // Handle proctoring termination
+  const handleAutoTerminate = async () => {
+    setIsComplete(true)
+    setIsAiTyping(false)
+
+    if (isListening && recognitionRef.current) {
+      try {
+        recognitionRef.current.stop()
+      } catch (e) {
+        console.warn(e)
+      }
+      setIsListening(false)
+    }
+
+    const proctoringLog = {
+      violations,
+      totalCount: violationsCount,
+      isFlagged: true,
+      terminatedEarly: true
+    }
+
+    if (dbSessionId) {
+      await saveProctoringLog(dbSessionId, proctoringLog)
+    }
+
+    const proctoringStorageKey = `proctoring-${dbSessionId || category}`
+    localStorage.setItem(proctoringStorageKey, JSON.stringify(proctoringLog))
+
+    // Re-exit fullscreen cleanly
+    if (document.fullscreenElement) {
+      try {
+        await document.exitFullscreen()
+      } catch (err) {
+        console.warn("Fullscreen exit error:", err)
+      }
+    }
+
+    router.push(`/interview/${dbSessionId || category}/feedback?terminated=true`)
+  }
+
+      </div>
+    )
+  }
+
   return (
     <main className="h-screen bg-[#062b22] flex flex-col font-sans overflow-hidden">
       {/* Top Header */}
@@ -472,6 +541,12 @@ export default function InterviewPage({
             <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-1 rounded-full text-xs text-emerald-400 font-medium animate-pulse">
               <span className="size-1.5 rounded-full bg-emerald-400" />
               <span>Behavioral Tracking Active</span>
+            </div>
+          )}
+          {isStarted && (
+            <div className="flex items-center gap-1.5 bg-rose-500/10 border border-rose-500/25 px-2.5 py-1 rounded-full text-xs text-rose-400 font-medium">
+              <FontAwesomeIcon icon={faShieldHalved} className="size-3" />
+              <span>{violationsCount}/5 Warnings</span>
             </div>
           )}
           <div className="flex items-center gap-2">
@@ -637,6 +712,17 @@ export default function InterviewPage({
           sessionId={dbSessionId || category}
           onIntervalMetrics={(metrics) => setPhysicalMetrics((prev) => [...prev, metrics])}
           onActiveStatusChange={(active) => setIsBehavioralActive(active)}
+          onFaceCountChange={(count) => setFaceCount(count)}
+        />
+      )}
+
+      {!isComplete && isStarted && (
+        <ProctoringMonitor
+          active={isStarted && !isComplete}
+          faceCount={faceCount}
+          onViolationLogged={(records) => setViolations(records)}
+          onViolationCountChange={(count) => setViolationsCount(count)}
+          onTerminate={handleAutoTerminate}
         />
       )}
 
