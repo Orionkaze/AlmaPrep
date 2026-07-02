@@ -159,43 +159,47 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
       // 3. Fallback to mock data if still null
       setFeedback((prev) => prev || demoFeedback)
-      setBehavioralData((prev) => prev || {
-        answerScores: [
-          {
-            star_score: 8,
-            relevance_score: 9,
-            clarity_score: 8,
-            confidence_score: 8,
-            hints: ["Great use of Situation and Task. Expand more on the Result next time."],
-            summary: "Highly structured and clear introduction."
-          },
-          {
-            star_score: 7,
-            relevance_score: 8,
-            clarity_score: 7,
-            confidence_score: 7,
-            hints: ["Try to explain the Action step more clearly."],
-            summary: "Good technical overview but lacked structure."
-          }
-        ],
-        physicalMetrics: [
-          {
-            interval_index: 0,
-            eye_contact_percent: 85,
-            posture_stability_score: 90,
-            facial_engagement: "neutral" as const,
-            fidgeting_count: 2
-          },
-          {
-            interval_index: 1,
-            eye_contact_percent: 75,
-            posture_stability_score: 85,
-            facial_engagement: "nodding" as const,
-            fidgeting_count: 4
-          }
-        ],
-        finalReport: "You showed strong composure and excellent eye contact overall. You utilized the STAR method well in your introductory answers but showed minor hesitation during technical questions. Posture remained steady, but slight fidgeting was detected towards the end of the session. Focus on breathing and structuring your technical answers as clearly as your behavioral ones."
-      })
+      
+      const isRealSession = id && id.length >= 36
+      if (!isRealSession) {
+        setBehavioralData((prev) => prev || {
+          answerScores: [
+            {
+              star_score: 8,
+              relevance_score: 9,
+              clarity_score: 8,
+              confidence_score: 8,
+              hints: ["Great use of Situation and Task. Expand more on the Result next time."],
+              summary: "Highly structured and clear introduction."
+            },
+            {
+              star_score: 7,
+              relevance_score: 8,
+              clarity_score: 7,
+              confidence_score: 7,
+              hints: ["Try to explain the Action step more clearly."],
+              summary: "Good technical overview but lacked structure."
+            }
+          ],
+          physicalMetrics: [
+            {
+              interval_index: 0,
+              eye_contact_percent: 85,
+              posture_stability_score: 90,
+              facial_engagement: "neutral" as const,
+              fidgeting_count: 2
+            },
+            {
+              interval_index: 1,
+              eye_contact_percent: 75,
+              posture_stability_score: 85,
+              facial_engagement: "nodding" as const,
+              fidgeting_count: 4
+            }
+          ],
+          finalReport: "You showed strong composure and excellent eye contact overall. You utilized the STAR method well in your introductory answers but showed minor hesitation during technical questions. Posture remained steady, but slight fidgeting was detected towards the end of the session. Focus on breathing and structuring your technical answers as clearly as your behavioral ones."
+        })
+      }
     }
 
     loadFeedback()
@@ -311,14 +315,21 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         </div>
 
         {/* Behavioral Analysis Report */}
-        {behavioralData && (
+        {behavioralData ? (
           <div className="mb-10 text-left">
             <div className="flex items-center gap-3 mb-6">
               <div className="size-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
                 <FontAwesomeIcon icon={faUserTie} className="text-emerald-400" />
               </div>
               <div className="text-left">
-                <h2 className="text-xl font-bold text-white">AI Behavioral & Physical Analysis</h2>
+                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                  <span>AI Behavioral & Physical Analysis</span>
+                  {!isUuid && (
+                    <span className="text-[9px] uppercase tracking-wider font-bold bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded text-amber-400 align-middle">
+                      Demo Mode
+                    </span>
+                  )}
+                </h2>
                 <p className="text-xs text-foreground/60">Combined insights from your speech delivery and physical presence</p>
               </div>
             </div>
@@ -328,6 +339,26 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
               finalReport={behavioralData.finalReport}
             />
           </div>
+        ) : (
+          isUuid && (
+            <div className="mb-10 text-left">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="size-10 rounded-lg bg-amber-500/15 flex items-center justify-center border border-amber-500/20">
+                  <FontAwesomeIcon icon={faUserTie} className="text-amber-500" />
+                </div>
+                <div className="text-left">
+                  <h2 className="text-xl font-bold text-white">AI Behavioral & Physical Analysis</h2>
+                  <p className="text-xs text-foreground/60">Combined insights from your speech delivery and physical presence</p>
+                </div>
+              </div>
+              <GlassCard className="border border-amber-500/20 bg-amber-500/5 py-6 px-8 rounded-2xl">
+                <h4 className="text-sm font-bold text-amber-400 mb-1">Behavioral Report Unavailable</h4>
+                <p className="text-xs text-white/70 leading-relaxed">
+                  The behavioral and physical metrics report is not available for this session. If this is a new session, the AI analysis might still be generating or failed to save. Please try refreshing or restarting the interview.
+                </p>
+              </GlassCard>
+            </div>
+          )
         )}
 
         {/* Question-by-Question Evaluation */}
