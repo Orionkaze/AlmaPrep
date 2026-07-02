@@ -169,6 +169,26 @@ create policy "Users can delete their own github analysis" on public.github_anal
 -- Migration: Add metadata column to public.messages to track question sources
 ALTER TABLE public.messages ADD COLUMN IF NOT EXISTS metadata jsonb DEFAULT '{}'::jsonb;
 
+-- Migration: Create behavioral_analysis table for behavioral feedback tracking
+create table if not exists public.behavioral_analysis (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references public.users(id) on delete cascade not null,
+  session_id uuid references public.interviews(id) on delete cascade not null,
+  answer_scores jsonb not null, -- Array of per-answer quality scores
+  physical_metrics jsonb not null, -- Array of 30-second interval physical metrics
+  final_report text not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+alter table public.behavioral_analysis enable row level security;
+
+create policy "Users can view their own behavioral analysis" on public.behavioral_analysis
+  for select using (auth.uid() = user_id);
+
+create policy "Users can insert their own behavioral analysis" on public.behavioral_analysis
+  for insert with check (auth.uid() = user_id);
+
+
 
 
 

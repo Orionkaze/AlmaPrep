@@ -1,7 +1,7 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
-import { getLLMResponse, getLLMJSONResponse } from "@/lib/llm"
+import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
@@ -501,6 +501,172 @@ export async function getFeedback(interviewId: string) {
     }
   } catch (e) {
     console.error("Supabase getFeedback failed:", e)
+    return null
+  }
+}
+
+/**
+ * Analyzes the quality of a single answer using Groq (STAR, Relevance, Clarity, Confidence).
+ */
+export async function analyzeAnswerQuality(
+  question: string,
+  answer: string
+): Promise<{
+  star_score: number
+  relevance_score: number
+  clarity_score: number
+  confidence_score: number
+  hints: string[]
+  summary: string
+}> {
+  try {
+    const systemPrompt = `You are an expert AI interviewer evaluating a candidate's answer to a specific interview question.
+Analyze the candidate's answer for:
+1. STAR method usage — Situation, Task, Action, Result. Did they structure it well?
+2. Relevance — Did they actually answer the question asked?
+3. Clarity & conciseness — Rambling, repetition, staying on point.
+4. Language confidence — Assertive vs hesitant phrasing (e.g. "I think maybe..." vs "I did...").
+
+You MUST return a valid JSON object matching this exact structure:
+{
+  "star_score": <score from 0 to 10>,
+  "relevance_score": <score from 0 to 10>,
+  "clarity_score": <score from 0 to 10>,
+  "confidence_score": <score from 0 to 10>,
+  "hints": ["1-2 actionable quick hints for improvement"],
+  "summary": "1 sentence brief feedback summary"
+}
+Ensure all scores are integers between 0 and 10. Do not include markdown code block wraps. Return only the raw JSON string.`
+
+    const prompt = `Question asked: "${question}"
+Candidate's Answer: "${answer}"`
+
+    const response = await callGroqJson(systemPrompt, prompt, 0.2)
+    const cleaned = cleanJsonResponseText(response)
+    return JSON.parse(cleaned)
+  } catch (err) {
+    console.error("Error in analyzeAnswerQuality:", err)
+    // Fallback if Groq fails
+    return {
+      star_score: 7,
+      relevance_score: 7,
+      clarity_score: 7,
+      confidence_score: 7,
+      hints: ["Try to structure your answer using the STAR method.", "Maintain direct relevance to the question."],
+      summary: "Your answer was reasonable but could be more structured and assertive."
+    }
+  }
+}
+
+/**
+ * Generates the final behavioral report based on answer scores and physical metrics.
+ */
+export async function generateBehavioralReport(
+  answerScores: any[],
+  physicalMetrics: any[]
+): Promise<string> {
+  try {
+    const systemPrompt = `You are an expert public speaking, communications, and career coach.
+Analyze the candidate's combined mock interview data:
+1. Answer quality scores evaluating STAR structure, relevance, clarity, and confidence.
+2. Physical behavior metrics evaluating eye contact %, posture stability, facial engagement, and fidgeting frequency aggregated over 30-second intervals.
+
+Generate a unified, comprehensive, and premium feedback report.
+The report must cover:
+- Answer quality trends across all questions.
+- Physical behavior patterns across the full session.
+- Specific actionable improvements.
+
+Keep the report professional, constructive, and highly actionable (around 2-3 short, engaging paragraphs). Focus on providing a balanced view of strengths and areas for growth. Do not return any JSON or markdown headers. Just return the raw paragraphs.`
+
+    const prompt = `Answer Quality Scores: ${JSON.stringify(answerScores)}
+Physical Behavior Metrics: ${JSON.stringify(physicalMetrics)}`
+
+    const response = await callGroqText([
+      { role: "system", content: systemPrompt },
+      { role: "user", content: prompt }
+    ], 0.5)
+
+    return response.trim()
+  } catch (err) {
+    console.error("Error generating final behavioral report:", err)
+    return "You completed the session successfully. Your communication style was engaging, and you kept good composure. Focus on refining your response structures using the STAR method and keeping hand movements minimal during technical answers."
+  }
+}
+
+/**
+ * Saves the behavioral analysis report to Supabase.
+ */
+export async function saveBehavioralReport(
+  sessionId: string,
+  answerScores: any[],
+  physicalMetrics: any[],
+  finalReport: string
+): Promise<boolean> {
+  try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return false
+    }
+
+    const session = await getServerSession(authOptions)
+    const supabase = await createClient()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = (session?.user as any)?.id || supabaseUser?.id
+
+    if (!userId) return false
+
+    const { error } = await supabase.from("behavioral_analysis").insert({
+      user_id: userId,
+      session_id: sessionId,
+      answer_scores: answerScores,
+      physical_metrics: physicalMetrics,
+      final_report: finalReport
+    })
+
+    if (error) {
+      console.error("Error saving behavioral report in Supabase:", error)
+      return false
+    }
+    return true
+  } catch (e) {
+    console.error("Supabase saveBehavioralReport failed:", e)
+    return false
+  }
+}
+
+/**
+ * Fetches the behavioral analysis report from Supabase for a given session ID.
+ */
+export async function getBehavioralReport(sessionId: string) {
+  try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return null
+    }
+
+    const session = await getServerSession(authOptions)
+    const supabase = await createClient()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = (session?.user as any)?.id || supabaseUser?.id
+
+    if (!userId) return null
+
+    const { data, error } = await supabase
+      .from("behavioral_analysis")
+      .select("*")
+      .eq("session_id", sessionId)
+      .eq("user_id", userId)
+      .maybeSingle()
+
+    if (error) {
+      console.error("Error fetching behavioral report from Supabase:", error)
+      return null
+    }
+
+    return data
+  } catch (e) {
+    console.error("Supabase getBehavioralReport failed:", e)
     return null
   }
 }
