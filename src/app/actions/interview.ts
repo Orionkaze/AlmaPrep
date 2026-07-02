@@ -601,7 +601,8 @@ export async function saveBehavioralReport(
   sessionId: string,
   answerScores: any[],
   physicalMetrics: any[],
-  finalReport: string
+  finalReport: string,
+  speakingAnalysis?: any
 ): Promise<boolean> {
   try {
     const cookieStore = await cookies()
@@ -621,7 +622,8 @@ export async function saveBehavioralReport(
       session_id: sessionId,
       answer_scores: answerScores,
       physical_metrics: physicalMetrics,
-      final_report: finalReport
+      final_report: finalReport,
+      speaking_analysis: speakingAnalysis || null
     })
 
     if (error) {
@@ -668,5 +670,91 @@ export async function getBehavioralReport(sessionId: string) {
   } catch (e) {
     console.error("Supabase getBehavioralReport failed:", e)
     return null
+  }
+}
+
+/**
+ * Generates natural language speaking feedback for a single answer using Groq.
+ */
+export async function analyzeAnswerSpeaking(
+  question: string,
+  answer: string,
+  metrics: {
+    wordCount: number;
+    fillerCount: number;
+    fillerWords: Record<string, number>;
+    avgWordsPerSentence: number;
+    overusedWords: string[];
+    hesitationPhrases: Record<string, number>;
+  }
+): Promise<string> {
+  try {
+    const systemPrompt = `You are an expert public speaking coach.
+Analyze the candidate's answer based on the following computed metrics and the transcript:
+1. Filler words used: ${metrics.fillerCount} times (${JSON.stringify(metrics.fillerWords)})
+2. Average sentence complexity: ${metrics.avgWordsPerSentence} words per sentence
+3. Top overused words: ${JSON.stringify(metrics.overusedWords)}
+4. Hesitation phrases used: ${JSON.stringify(metrics.hesitationPhrases)}
+
+Provide natural language speaking feedback for this answer.
+Your feedback MUST cover:
+- Filler word usage (constructive advice, e.g. "You used filler words 8 times — try replacing 'like' with a brief pause").
+- Sentence structure & complexity (e.g. "Your answers averaged 18 words per sentence which is clear and digestible").
+- Vocabulary variety & repetition (e.g. "You repeated the word 'thing' 5 times — try varying your vocabulary").
+- Hesitation patterns (e.g. "Phrases like 'I think' and 'maybe' appeared frequently — use more assertive language").
+
+Keep the feedback highly actionable, direct, and concise (1 short paragraph of 3-4 sentences maximum). Do not return markdown headers or JSON. Just return the raw paragraph.`
+
+    const prompt = `Question asked: "${question}"
+Candidate's Answer: "${answer}"`
+
+    const response = await callGroqText([
+      { role: "system", content: systemPrompt },
+      { role: "user", content: prompt }
+    ], 0.4)
+
+    return response.trim()
+  } catch (err) {
+    console.error("Error in analyzeAnswerSpeaking:", err)
+    return `You spoke clearly. Try to replace filler words with brief pauses and use more assertive phrasing instead of hesitations like "I think".`
+  }
+}
+
+/**
+ * Generates a session-level speaking summary using Groq.
+ */
+export async function generateSessionSpeakingSummary(
+  aggregatedMetrics: {
+    totalFillerCount: number;
+    mostUsedFillers: string[];
+    avgSentenceComplexity: number;
+    mostOverusedWords: string[];
+    hesitationScore: "Low" | "Medium" | "High";
+  }
+): Promise<string> {
+  try {
+    const systemPrompt = `You are an expert public speaking, communication, and speech coaching expert.
+Analyze the candidate's aggregated speaking metrics over the entire interview session:
+- Total filler words used: ${aggregatedMetrics.totalFillerCount}
+- Most common filler words: ${aggregatedMetrics.mostUsedFillers.join(", ")}
+- Average words per sentence: ${aggregatedMetrics.avgSentenceComplexity}
+- Frequently overused words: ${aggregatedMetrics.mostOverusedWords.join(", ")}
+- Overall hesitation level: ${aggregatedMetrics.hesitationScore}
+
+Write a professional, constructive, and premium session-level speaking summary. Highlight the key strengths in their delivery (such as sentence pacing) and provide 1-2 major focal areas for their next interview.
+
+Keep the summary concise and engaging (1 paragraph of 3-4 sentences). Do not include markdown headers or bullet points. Just return the raw text paragraph.`
+
+    const prompt = `Aggregated Speaking Metrics: ${JSON.stringify(aggregatedMetrics)}`
+
+    const response = await callGroqText([
+      { role: "system", content: systemPrompt },
+      { role: "user", content: prompt }
+    ], 0.5)
+
+    return response.trim()
+  } catch (err) {
+    console.error("Error in generateSessionSpeakingSummary:", err)
+    return "Overall, your pacing was solid, but you relied on filler words throughout the session. Try to slow down slightly and pause intentionally rather than using fillers. Sit with silence for a brief second to gather your thoughts."
   }
 }
