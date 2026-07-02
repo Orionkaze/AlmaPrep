@@ -9,6 +9,10 @@ import {
   faHands,
   faFileContract,
   faChartSimple,
+  faVolumeHigh,
+  faMicrophone,
+  faWarning,
+  faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { GlassCard } from "@/components/ui/glass-card";
 
@@ -29,16 +33,46 @@ interface PhysicalMetric {
   fidgeting_count: number;
 }
 
+interface SpeakingMetrics {
+  wordCount: number;
+  fillerCount: number;
+  fillerWords: Record<string, number>;
+  avgWordsPerSentence: number;
+  overusedWords: string[];
+  hesitationPhrases: Record<string, number>;
+}
+
+interface SpeakingAnswer {
+  metrics: SpeakingMetrics;
+  feedback: string;
+}
+
+interface SpeakingAnalysis {
+  answerMetrics: SpeakingAnswer[];
+  sessionSummary: {
+    metrics: {
+      totalFillerCount: number;
+      mostUsedFillers: string[];
+      avgSentenceComplexity: number;
+      mostOverusedWords: string[];
+      hesitationScore: "Low" | "Medium" | "High";
+    };
+    summary: string;
+  };
+}
+
 interface BehavioralReportProps {
   answerScores: AnswerScore[];
   physicalMetrics: PhysicalMetric[];
   finalReport: string;
+  speakingAnalysis?: SpeakingAnalysis;
 }
 
 export default function BehavioralReport({
   answerScores,
   physicalMetrics,
   finalReport,
+  speakingAnalysis,
 }: BehavioralReportProps) {
   // 1. Calculate averages for Physical Metrics
   const totalIntervals = physicalMetrics.length;
@@ -105,11 +139,35 @@ export default function BehavioralReport({
         )
       : 75;
 
+  // Compile total filler words used across all answers for visual bar chart
+  const fillerWordTotals: Record<string, number> = {};
+  if (speakingAnalysis?.answerMetrics) {
+    speakingAnalysis.answerMetrics.forEach((item) => {
+      const fw = item.metrics.fillerWords || {};
+      Object.entries(fw).forEach(([word, count]) => {
+        fillerWordTotals[word] = (fillerWordTotals[word] || 0) + count;
+      });
+    });
+  }
+  const hasFillers = Object.keys(fillerWordTotals).length > 0;
+  const maxFillerCount = hasFillers ? Math.max(...Object.values(fillerWordTotals)) : 1;
+
   // Helpers for visual feedback
   const getProgressColor = (score: number) => {
     if (score >= 80) return "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]";
     if (score >= 60) return "bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]";
     return "bg-rose-500 shadow-[0_0_10px_rgba(239,110,110,0.4)]";
+  };
+
+  const getHesitationBadge = (score: string) => {
+    switch (score) {
+      case "Low":
+        return "bg-green-500/10 text-green-400 border border-green-500/20";
+      case "Medium":
+        return "bg-purple-500/10 text-purple-400 border border-purple-500/20";
+      default:
+        return "bg-rose-500/10 text-rose-400 border border-rose-500/20";
+    }
   };
 
   return (
@@ -279,7 +337,162 @@ export default function BehavioralReport({
         </GlassCard>
       </div>
 
-      {/* section 3: Per-Answer Breakdown */}
+      {/* section 3: Speaking & Pacing Analysis */}
+      {speakingAnalysis && (
+        <div className="space-y-6">
+          {/* Speaking Session summary */}
+          <GlassCard className="border border-emerald-500/10 overflow-hidden relative">
+            <div className="absolute top-0 left-0 w-[200px] h-[200px] bg-purple-500/5 rounded-full blur-[80px] pointer-events-none" />
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
+                <FontAwesomeIcon icon={faVolumeHigh} className="text-emerald-400" />
+              </span>
+              Speech Delivery Summary
+            </h3>
+            <p className="text-white/80 leading-relaxed text-sm font-sans mb-6">
+              {speakingAnalysis.sessionSummary.summary}
+            </p>
+
+            {/* Aggregated Pacing Metrics Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col justify-between">
+                <span className="text-xs text-white/55 font-medium uppercase tracking-wider mb-2">
+                  Hesitation Level
+                </span>
+                <span
+                  className={`self-start text-xs font-bold px-3 py-1 rounded-full ${getHesitationBadge(
+                    speakingAnalysis.sessionSummary.metrics.hesitationScore
+                  )}`}
+                >
+                  {speakingAnalysis.sessionSummary.metrics.hesitationScore}
+                </span>
+              </div>
+
+              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col">
+                <span className="text-xs text-white/55 font-medium uppercase tracking-wider mb-1">
+                  Sentence Complexity
+                </span>
+                <span className="text-2xl font-extrabold text-white font-mono">
+                  {speakingAnalysis.sessionSummary.metrics.avgSentenceComplexity}
+                </span>
+                <span className="text-[10px] text-white/40 font-medium">avg words / sentence</span>
+              </div>
+
+              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col">
+                <span className="text-xs text-white/55 font-medium uppercase tracking-wider mb-1">
+                  Total Filler Words
+                </span>
+                <span className="text-2xl font-extrabold text-purple-400 font-mono">
+                  {speakingAnalysis.sessionSummary.metrics.totalFillerCount}
+                </span>
+                <span className="text-[10px] text-white/40 font-medium">across full session</span>
+              </div>
+            </div>
+          </GlassCard>
+
+          {/* Graphical breakdowns and overused words */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Filler frequency custom chart */}
+            <GlassCard className="border border-emerald-500/10">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-white/70 mb-5 flex items-center gap-2">
+                <FontAwesomeIcon icon={faMicrophone} className="text-emerald-400 size-3.5" />
+                Filler Word Breakdown
+              </h4>
+              
+              {hasFillers ? (
+                <div className="space-y-4">
+                  {Object.entries(fillerWordTotals)
+                    .sort((a, b) => b[1] - a[1])
+                    .map(([word, count]) => {
+                      const percentage = Math.round((count / maxFillerCount) * 100);
+                      return (
+                        <div key={word} className="space-y-1">
+                          <div className="flex justify-between text-xs font-semibold">
+                            <span className="text-white/80 font-mono">"{word}"</span>
+                            <span className="text-emerald-400">{count} occurrences</span>
+                          </div>
+                          <div className="h-2.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                            <div
+                              className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-[1.2s] shadow-[0_0_8px_rgba(16,185,129,0.3)]"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                <div className="text-center py-8 text-white/40 text-xs italic">
+                  No filler words detected during this session! Excellent work.
+                </div>
+              )}
+            </GlassCard>
+
+            {/* Overused Words list */}
+            <GlassCard className="border border-emerald-500/10 flex flex-col justify-between">
+              <div>
+                <h4 className="text-sm font-bold uppercase tracking-wider text-white/70 mb-4 flex items-center gap-2">
+                  <FontAwesomeIcon icon={faWarning} className="text-purple-400 size-3.5" />
+                  Key Overused Words
+                </h4>
+                <p className="text-xs text-white/60 leading-relaxed mb-5">
+                  These words were repeated most frequently. Try using synonyms or varying your vocabulary in future responses.
+                </p>
+              </div>
+
+              {speakingAnalysis.sessionSummary.metrics.mostOverusedWords.length > 0 ? (
+                <div className="flex flex-wrap gap-2.5 pb-2">
+                  {speakingAnalysis.sessionSummary.metrics.mostOverusedWords.map((word) => (
+                    <span
+                      key={word}
+                      className="bg-purple-500/10 border border-purple-500/25 px-4 py-1.5 rounded-full text-xs font-bold text-purple-300 shadow-sm"
+                    >
+                      {word}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-6 text-white/40 text-xs italic">
+                  No repetitive vocabulary detected.
+                </div>
+              )}
+            </GlassCard>
+          </div>
+
+          {/* Per-Answer Speaking Critique list */}
+          <GlassCard className="border border-emerald-500/10">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white/75 mb-5">
+              Detailed Speaking Critique per Answer
+            </h4>
+
+            <div className="space-y-6">
+              {speakingAnalysis.answerMetrics.map((item, idx) => (
+                <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-4 space-y-3 relative overflow-hidden">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2">
+                    <span className="text-xs uppercase font-extrabold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded self-start">
+                      Question {idx + 1}
+                    </span>
+                    <div className="flex flex-wrap gap-3.5 text-[11px] font-semibold text-white/70">
+                      <span>Words: {item.metrics.wordCount}</span>
+                      <span>Fillers: {item.metrics.fillerCount}</span>
+                      <span>Words/Sentence: {item.metrics.avgWordsPerSentence}</span>
+                    </div>
+                  </div>
+
+                  <div className="text-xs leading-relaxed text-white/90 bg-white/2 p-3 rounded-xl border border-white/5 flex gap-2">
+                    <FontAwesomeIcon icon={faQuoteLeft} className="text-emerald-400/25 size-4 shrink-0 mt-0.5" />
+                    <p className="italic text-white/80 leading-relaxed font-sans">
+                      {item.feedback}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </GlassCard>
+        </div>
+      )}
+
+      {/* section 4: Per-Answer Quality Breakdown */}
       {answerScores.length > 0 && (
         <GlassCard className="border border-emerald-500/10">
           <h3 className="text-lg font-semibold mb-5 flex items-center gap-2">
