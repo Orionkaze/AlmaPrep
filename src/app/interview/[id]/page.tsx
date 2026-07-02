@@ -1,6 +1,7 @@
 "use client"
 
 import { GlowButton } from "@/components/ui/glow-button"
+import { GlassCard } from "@/components/ui/glass-card"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
