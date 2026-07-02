@@ -527,7 +527,56 @@ export default function InterviewPage({
     router.push(`/interview/${dbSessionId || category}/feedback?terminated=true`)
   }
 
-      </div>
+  if (!isStarted) {
+    return (
+      <main className="min-h-screen bg-[#062b22] flex items-center justify-center p-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+        <GlassCard className="max-w-md w-full border border-emerald-500/10 p-8 rounded-3xl relative overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.05)] text-center">
+          <div className="size-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto mb-5">
+            <FontAwesomeIcon icon={faShieldHalved} className="size-8" />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Proctoring Enforced Session</h2>
+          <p className="text-sm text-foreground/75 leading-relaxed mb-6 font-sans">
+            To ensure fairness, this interview session is monitored. By continuing, you agree to comply with the proctoring rules.
+          </p>
+          <div className="text-left text-xs bg-white/5 border border-white/5 p-4 rounded-xl space-y-2.5 text-white/70 font-medium mb-8">
+            <div className="flex gap-2">
+              <span className="text-emerald-400">✓</span>
+              <span>Fullscreen mode is enforced at all times.</span>
+            </div>
+            <div className="flex gap-2">
+              <span className="text-emerald-400">✓</span>
+              <span>Leaving the page or switching tabs counts as a violation.</span>
+            </div>
+            <div className="flex gap-2">
+              <span className="text-emerald-400">✓</span>
+              <span>Clipboard actions (copy, cut, paste) are blocked.</span>
+            </div>
+            <div className="flex gap-2">
+              <span className="text-emerald-400">✓</span>
+              <span>Your webcam is used to detect presence. Avoid other people entering the frame.</span>
+            </div>
+            <div className="text-[10px] text-amber-400/80 font-bold border-t border-white/5 pt-2 mt-2">
+              ⚠️ Exceeding 5 total warnings will automatically terminate the session.
+            </div>
+          </div>
+          <GlowButton
+            onClick={async () => {
+              try {
+                if (document.documentElement.requestFullscreen) {
+                  await document.documentElement.requestFullscreen()
+                }
+              } catch (err) {
+                console.warn("Fullscreen request blocked:", err)
+              }
+              setIsStarted(true)
+            }}
+            className="w-full h-12 text-sm font-semibold"
+          >
+            Start Interview & Enter Fullscreen
+          </GlowButton>
+        </GlassCard>
+      </main>
     )
   }
 
