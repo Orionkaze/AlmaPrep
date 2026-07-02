@@ -203,12 +203,12 @@ export default async function DashboardPage() {
               {/* Border shimmer wrapper */}
               <div className="relative p-[1px] rounded-xl overflow-hidden bg-white/10 group-hover:bg-gradient-to-r group-hover:from-secondary group-hover:via-white/60 group-hover:to-primary transition-all duration-500 shadow-xl">
                 {/* Button surface */}
-                <button className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-white border border-border text-foreground flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
+                <span className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-white border border-border text-foreground flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
                   <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-secondary/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></span>
                   
                   <FontAwesomeIcon icon={faStar} className="text-secondary group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 relative z-10" /> 
                   <span className="text-foreground/80 group-hover:text-foreground transition-colors duration-300 relative z-10">Pricing / Plans</span>
-                </button>
+                </span>
               </div>
             </Link>
 
@@ -219,12 +219,12 @@ export default async function DashboardPage() {
               {/* Border shimmer wrapper */}
               <div className="relative p-[1px] rounded-xl overflow-hidden bg-white/10 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-white/60 group-hover:to-secondary transition-all duration-500 shadow-xl">
                 {/* Button surface */}
-                <button className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-white border border-border text-foreground flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
+                <span className="relative w-full sm:w-auto h-12 px-6 rounded-[11px] text-sm font-semibold bg-white border border-border text-foreground flex items-center justify-center gap-2 cursor-pointer overflow-hidden">
                   <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></span>
                   
                   <FontAwesomeIcon icon={faUserGear} className="text-primary group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 relative z-10" /> 
                   <span className="text-foreground/80 group-hover:text-foreground transition-colors duration-300 relative z-10">My Profile</span>
-                </button>
+                </span>
               </div>
             </Link>
           </div>
@@ -277,10 +277,8 @@ export default async function DashboardPage() {
                 </p>
                 {/* CTA Button */}
                 <div className="mt-6 w-full">
-                  <Link href="/interview/setup" className="w-full">
-                    <GlowButton className="w-full h-10 text-xs font-semibold cursor-pointer">
-                      Start Prep <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
-                    </GlowButton>
+                  <Link href="/interview/setup" className="glow-button inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-2 w-full h-10 text-xs font-semibold cursor-pointer">
+                    Start Prep <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
                   </Link>
                 </div>
               </GlassCard>
@@ -307,10 +305,8 @@ export default async function DashboardPage() {
                 </p>
                 {/* CTA Button */}
                 <div className="mt-6 w-full">
-                  <Link href="/interview" className="w-full">
-                    <GlowButton className="w-full h-10 text-xs font-semibold cursor-pointer bg-gradient-to-r from-accent-foreground to-primary">
-                      Code Practice <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
-                    </GlowButton>
+                  <Link href="/interview" className="glow-button inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-2 w-full h-10 text-xs font-semibold cursor-pointer bg-gradient-to-r from-accent-foreground to-primary">
+                    Code Practice <FontAwesomeIcon icon={faArrowRight} className="ml-1.5" />
                   </Link>
                 </div>
               </GlassCard>
@@ -351,10 +347,8 @@ export default async function DashboardPage() {
                 </div>
                 {/* CTA Button */}
                 <div className="mt-6 w-full">
-                  <Link href="/dashboard/resume" className="w-full">
-                    <button className="w-full h-10 rounded-lg text-xs font-bold border border-[#E5E7EB] bg-white text-gray-700 hover:bg-[#059669] hover:text-white transition-all duration-150 flex items-center justify-center gap-1.5 cursor-pointer">
-                      Configure <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
-                    </button>
+                  <Link href="/dashboard/resume" className="w-full h-10 rounded-lg text-xs font-bold border border-[#E5E7EB] bg-white text-gray-700 hover:bg-[#059669] hover:text-white transition-all duration-150 flex items-center justify-center gap-1.5 cursor-pointer">
+                    Configure <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
                   </Link>
                 </div>
               </GlassCard>
@@ -407,10 +401,8 @@ export default async function DashboardPage() {
                     </ul>
                   </div>
 
-                  <Link href={`/interview/${latestFeedback.id}/feedback`}>
-                    <button className="w-full h-9 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors text-xs text-primary font-bold mt-2 cursor-pointer">
-                      View Full Analysis Report
-                    </button>
+                  <Link href={`/interview/${latestFeedback.id}/feedback`} className="w-full h-9 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors text-xs text-primary font-bold mt-2 cursor-pointer flex items-center justify-center">
+                    View Full Analysis Report
                   </Link>
                 </div>
               ) : (
