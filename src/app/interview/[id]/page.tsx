@@ -11,7 +11,12 @@ import {
   createInterviewSession,
   saveInterviewMessage,
   saveInterviewFeedback,
+  analyzeAnswerQuality,
+  generateBehavioralReport,
+  saveBehavioralReport,
 } from "@/app/actions/interview"
+import BehavioralAnalysis from "@/components/BehavioralAnalysis"
+import RealTimeHint from "@/components/RealTimeHint"
 
 // SpeechRecognition type declarations for TS
 declare global {
@@ -72,6 +77,14 @@ export default function InterviewPage({
   const recognitionRef = useRef<any>(null)
 
   const [cameraError, setCameraError] = useState<string | null>(null)
+
+  // Behavioral Analysis states
+  const [answerScores, setAnswerScores] = useState<any[]>([])
+  const [physicalMetrics, setPhysicalMetrics] = useState<any[]>([])
+  const [realTimeHints, setRealTimeHints] = useState<string[]>([])
+  const [showHint, setShowHint] = useState(false)
+  const [isBehavioralActive, setIsBehavioralActive] = useState(false)
+  const pendingAnalysesRef = useRef<Promise<any>[]>([])
 
   // Initialize webcam
   useEffect(() => {
@@ -241,6 +254,35 @@ export default function InterviewPage({
       await saveInterviewMessage(dbSessionId, "user", userText)
     }
 
+    // Run Pipeline 1 Answer Quality Analysis (asynchronously, non-blocking)
+    const lastQuestion = messages[messages.length - 1]?.content || "Please introduce yourself."
+    const analysisPromise = analyzeAnswerQuality(lastQuestion, userText).then((analysis) => {
+      if (analysis) {
+        setAnswerScores((prev) => [...prev, analysis])
+        // Show real-time hints based on physical metrics + answer quality
+        const recentPhysical = physicalMetrics[physicalMetrics.length - 1]
+        const newHints = [...analysis.hints]
+        if (recentPhysical) {
+          if (recentPhysical.eye_contact_percent < 70) {
+            newHints.push("Try to look directly at the camera more often.")
+          }
+          if (recentPhysical.posture_stability_score < 70) {
+            newHints.push("Sit upright and maintain a steady posture.")
+          }
+          if (recentPhysical.fidgeting_count > 5) {
+            newHints.push("Try to minimize hand movements.")
+          }
+        }
+        setRealTimeHints(newHints.slice(0, 2))
+        setShowHint(true)
+      }
+      return analysis
+    }).catch(err => {
+      console.error("Error analyzing answer quality:", err)
+      return null
+    })
+    pendingAnalysesRef.current.push(analysisPromise)
+
     // 2. Build history for Gemini
     const history: { role: "user" | "ai"; content: string }[] = [...messages, userMsg].map((m) => ({
       role: m.role,
@@ -298,6 +340,32 @@ export default function InterviewPage({
       // Save to localStorage for client-side routing reading fallback
       const storageKey = `feedback-${dbSessionId || category}`
       localStorage.setItem(storageKey, JSON.stringify(feedback))
+
+      // Wait for all pending answer quality analyses to complete
+      const resolvedScores = await Promise.all(pendingAnalysesRef.current)
+      const validScores = resolvedScores.filter(Boolean)
+
+      // Generate final behavioral report
+      const behavioralReportText = await generateBehavioralReport(validScores, physicalMetrics)
+
+      // Save behavioral report to Supabase
+      if (dbSessionId) {
+        await saveBehavioralReport(
+          dbSessionId,
+          validScores,
+          physicalMetrics,
+          behavioralReportText
+        )
+      }
+
+      // Save behavioral report to localStorage for client fallback
+      const behavioralStorageKey = `behavioral-${dbSessionId || category}`
+      localStorage.setItem(behavioralStorageKey, JSON.stringify({
+        answerScores: validScores,
+        physicalMetrics,
+        finalReport: behavioralReportText
+      }))
+
       setIsAiTyping(false)
     } else {
       setIsAiTyping(false)
@@ -309,9 +377,17 @@ export default function InterviewPage({
       {/* Top Header */}
       <div className="flex items-center justify-between px-6 py-4 text-white">
         <h1 className="text-lg font-medium">{getCategoryLabel(category)}</h1>
-        <div className="flex items-center gap-2">
-          <div className={`size-2 rounded-full ${isComplete ? "bg-amber-400" : "bg-green-400"} animate-pulse`} />
-          <span className="text-sm">{isComplete ? "Session Complete" : "Live"}</span>
+        <div className="flex items-center gap-4">
+          {isBehavioralActive && (
+            <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-1 rounded-full text-xs text-emerald-400 font-medium animate-pulse">
+              <span className="size-1.5 rounded-full bg-emerald-400" />
+              <span>Behavioral Tracking Active</span>
+            </div>
+          )}
+          <div className="flex items-center gap-2">
+            <div className={`size-2 rounded-full ${isComplete ? "bg-amber-400" : "bg-green-400"} animate-pulse`} />
+            <span className="text-sm">{isComplete ? "Session Complete" : "Live"}</span>
+          </div>
         </div>
       </div>
 
@@ -464,6 +540,21 @@ export default function InterviewPage({
           </Link>
         )}
       </div>
+
+      {!isComplete && (
+        <BehavioralAnalysis
+          videoRef={videoRef}
+          sessionId={dbSessionId || category}
+          onIntervalMetrics={(metrics) => setPhysicalMetrics((prev) => [...prev, metrics])}
+          onActiveStatusChange={(active) => setIsBehavioralActive(active)}
+        />
+      )}
+
+      <RealTimeHint
+        hints={realTimeHints}
+        visible={showHint}
+        onDismiss={() => setShowHint(false)}
+      />
     </main>
   )
 }
