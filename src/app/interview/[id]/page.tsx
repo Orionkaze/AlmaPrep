@@ -14,7 +14,10 @@ import {
   analyzeAnswerQuality,
   generateBehavioralReport,
   saveBehavioralReport,
+  analyzeAnswerSpeaking,
+  generateSessionSpeakingSummary,
 } from "@/app/actions/interview"
+import { parseSpeakingMetrics } from "@/lib/speakingParser"
 import BehavioralAnalysis from "@/components/BehavioralAnalysis"
 import RealTimeHint from "@/components/RealTimeHint"
 
@@ -81,10 +84,12 @@ export default function InterviewPage({
   // Behavioral Analysis states
   const [answerScores, setAnswerScores] = useState<any[]>([])
   const [physicalMetrics, setPhysicalMetrics] = useState<any[]>([])
+  const [speakingScores, setSpeakingScores] = useState<any[]>([])
   const [realTimeHints, setRealTimeHints] = useState<string[]>([])
   const [showHint, setShowHint] = useState(false)
   const [isBehavioralActive, setIsBehavioralActive] = useState(false)
   const pendingAnalysesRef = useRef<Promise<any>[]>([])
+  const pendingSpeakingAnalysesRef = useRef<Promise<any>[]>([])
 
   // Initialize webcam
   useEffect(() => {
@@ -283,6 +288,21 @@ export default function InterviewPage({
     })
     pendingAnalysesRef.current.push(analysisPromise)
 
+    // Run Pipeline 1 Speaking Analysis (asynchronously, non-blocking)
+    const speakingMetrics = parseSpeakingMetrics(userText)
+    const speakingPromise = analyzeAnswerSpeaking(lastQuestion, userText, speakingMetrics).then((feedback) => {
+      const result = {
+        metrics: speakingMetrics,
+        feedback: feedback
+      }
+      setSpeakingScores((prev) => [...prev, result])
+      return result
+    }).catch(err => {
+      console.error("Error in speaking analysis:", err)
+      return null
+    })
+    pendingSpeakingAnalysesRef.current.push(speakingPromise)
+
     // 2. Build history for Gemini
     const history: { role: "user" | "ai"; content: string }[] = [...messages, userMsg].map((m) => ({
       role: m.role,
@@ -348,13 +368,82 @@ export default function InterviewPage({
       // Generate final behavioral report
       const behavioralReportText = await generateBehavioralReport(validScores, physicalMetrics)
 
-      // Save behavioral report to Supabase
+      // Wait for all pending speaking analyses to complete
+      const resolvedSpeaking = await Promise.all(pendingSpeakingAnalysesRef.current)
+      const validSpeaking = resolvedSpeaking.filter(Boolean)
+
+      // Aggregate all speaking metrics
+      let totalFillerCount = 0
+      const fillerFreq: Record<string, number> = {}
+      let totalWords = 0
+      let totalSentences = 0
+      let totalHesitations = 0
+      const overusedWordsFreq: Record<string, number> = {}
+
+      validSpeaking.forEach((item: any) => {
+        const m = item.metrics
+        totalFillerCount += m.fillerCount
+        
+        Object.entries(m.fillerWords).forEach(([word, count]) => {
+          fillerFreq[word] = (fillerFreq[word] || 0) + (count as number)
+        })
+
+        totalWords += m.wordCount
+        const sentenceCount = m.avgWordsPerSentence > 0 ? Math.round(m.wordCount / m.avgWordsPerSentence) : 1
+        totalSentences += sentenceCount
+
+        Object.values(m.hesitationPhrases).forEach((count) => {
+          totalHesitations += count as number
+        })
+
+        m.overusedWords.forEach((word: string) => {
+          overusedWordsFreq[word] = (overusedWordsFreq[word] || 0) + 1
+        })
+      })
+
+      const mostUsedFillers = Object.entries(fillerFreq)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([w]) => w)
+
+      const avgSentenceComplexity = totalSentences > 0 ? Math.round(totalWords / totalSentences) : 15
+
+      const avgHesitations = validSpeaking.length > 0 ? totalHesitations / validSpeaking.length : 0
+      let hesitationScore: "Low" | "Medium" | "High" = "Low"
+      if (avgHesitations > 3) hesitationScore = "High"
+      else if (avgHesitations > 1) hesitationScore = "Medium"
+
+      const mostOverusedWords = Object.entries(overusedWordsFreq)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([w]) => w)
+
+      const aggregatedSpeaking = {
+        totalFillerCount,
+        mostUsedFillers,
+        avgSentenceComplexity,
+        mostOverusedWords,
+        hesitationScore
+      }
+
+      const speakingSummaryText = await generateSessionSpeakingSummary(aggregatedSpeaking)
+
+      const speakingAnalysisData = {
+        answerMetrics: validSpeaking,
+        sessionSummary: {
+          metrics: aggregatedSpeaking,
+          summary: speakingSummaryText
+        }
+      }
+
+      // Save behavioral report + speaking report to Supabase
       if (dbSessionId) {
         await saveBehavioralReport(
           dbSessionId,
           validScores,
           physicalMetrics,
-          behavioralReportText
+          behavioralReportText,
+          speakingAnalysisData
         )
       }
 
@@ -363,7 +452,8 @@ export default function InterviewPage({
       localStorage.setItem(behavioralStorageKey, JSON.stringify({
         answerScores: validScores,
         physicalMetrics,
-        finalReport: behavioralReportText
+        finalReport: behavioralReportText,
+        speakingAnalysis: speakingAnalysisData
       }))
 
       setIsAiTyping(false)
