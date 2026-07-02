@@ -5,8 +5,8 @@ import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { use, useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp, faClipboardCheck, faUserTie } from "@fortawesome/free-solid-svg-icons"
-import { getFeedback, getBehavioralReport } from "@/app/actions/interview"
+import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp, faClipboardCheck, faUserTie, faShieldHalved } from "@fortawesome/free-solid-svg-icons"
+import { getFeedback, getBehavioralReport, getInterviewSession } from "@/app/actions/interview"
 import BehavioralReport from "@/components/BehavioralReport"
 
 const categoryLabels: Record<string, string> = {
@@ -107,6 +107,12 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
     finalReport: string
     speakingAnalysis?: any
   } | null>(null)
+  const [proctoringData, setProctoringData] = useState<{
+    violations: any[]
+    totalCount: number
+    isFlagged: boolean
+    terminatedEarly: boolean
+  } | null>(null)
   const [showStudyGuide, setShowStudyGuide] = useState(false)
   const [showQuestionAnalysis, setShowQuestionAnalysis] = useState(true)
   const [expandedQuestions, setExpandedQuestions] = useState<Record<number, boolean>>({})
@@ -136,6 +142,11 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             speakingAnalysis: dbBehavioral.speaking_analysis || null
           })
         }
+
+        const sessionRecord = await getInterviewSession(id)
+        if (sessionRecord && sessionRecord.proctoring_log) {
+          setProctoringData(sessionRecord.proctoring_log)
+        }
       }
 
       // 2. Try to fetch from local storage
@@ -156,6 +167,16 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
           setBehavioralData((prev) => prev || parsed)
         } catch (e) {
           console.error("Failed to parse local behavioral data:", e)
+        }
+      }
+
+      const localProctoring = localStorage.getItem(`proctoring-${id}`)
+      if (localProctoring) {
+        try {
+          const parsed = JSON.parse(localProctoring)
+          setProctoringData((prev) => prev || parsed)
+        } catch (e) {
+          console.error("Failed to parse local proctoring data:", e)
         }
       }
 
@@ -237,6 +258,16 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             }
           }
         })
+
+        setProctoringData((prev) => prev || {
+          violations: [
+            { type: "tab_switch" as const, timestamp: new Date().toISOString(), count: 1 },
+            { type: "copy_paste" as const, timestamp: new Date().toISOString(), count: 1 }
+          ],
+          totalCount: 2,
+          isFlagged: false,
+          terminatedEarly: false
+        })
       }
     }
 
@@ -292,6 +323,24 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">Interview Feedback</h1>
           <p className="text-foreground/60">{categoryText} • Completed just now</p>
         </div>
+
+        {proctoringData && (proctoringData.terminatedEarly || proctoringData.isFlagged) && (
+          <div className="bg-red-500/10 border border-red-500/20 text-red-200 px-6 py-4 rounded-3xl mb-8 flex items-start gap-4 shadow-[0_0_20px_rgba(239,68,68,0.05)] text-left">
+            <div className="size-10 rounded-xl bg-red-500/20 flex items-center justify-center text-red-400 shrink-0">
+              <FontAwesomeIcon icon={faShieldHalved} className="size-5" />
+            </div>
+            <div>
+              <h3 className="font-bold text-red-400 text-sm">
+                {proctoringData.terminatedEarly ? "Session Terminated Due to Integrity Violations" : "Session Flagged with Proctoring Violations"}
+              </h3>
+              <p className="text-xs text-white/60 leading-relaxed mt-1">
+                {proctoringData.terminatedEarly 
+                  ? "This session was terminated early because the violation limit of 5 was exceeded. An integrity report has been saved to your session history." 
+                  : "This session has been flagged due to multiple proctoring warnings (e.g. exiting fullscreen, switching tabs, or unrecognized face activity)."}
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Score Section */}
         <GlassCard className="flex flex-col items-center text-center mb-6 py-10">
@@ -379,17 +428,6 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             />
           </div>
         ) : (
-          isUuid && (
-            <div className="mb-10 text-left">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="size-10 rounded-lg bg-amber-500/15 flex items-center justify-center border border-amber-500/20">
-                  <FontAwesomeIcon icon={faUserTie} className="text-amber-500" />
-                </div>
-                <div className="text-left">
-                  <h2 className="text-xl font-bold text-white">AI Behavioral & Physical Analysis</h2>
-                  <p className="text-xs text-foreground/60">Combined insights from your speech delivery and physical presence</p>
-                </div>
-              </div>
               <GlassCard className="border border-amber-500/20 bg-amber-500/5 py-6 px-8 rounded-2xl">
                 <h4 className="text-sm font-bold text-amber-400 mb-1">Behavioral Report Unavailable</h4>
                 <p className="text-xs text-white/70 leading-relaxed">
