@@ -355,7 +355,8 @@ export async function saveInterviewMessage(
   interviewId: string,
   role: "user" | "ai",
   content: string,
-  source?: string
+  source?: string,
+  repoName?: string
 ): Promise<boolean> {
   try {
     const cookieStore = await cookies()
@@ -370,7 +371,10 @@ export async function saveInterviewMessage(
 
     if (!userId) return false
 
-    const metadata = source ? { source } : {}
+    const metadata = {
+      ...(source ? { source } : {}),
+      ...(repoName ? { repo_name: repoName } : {})
+    }
 
     const { error } = await supabase.from("messages").insert({
       interview_id: interviewId,
