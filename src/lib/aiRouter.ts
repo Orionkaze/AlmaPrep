@@ -188,8 +188,48 @@ Focus your interview questions on their background, experiences, projects, and t
       personaPrompt = "You are a very supportive, warm, and friendly interviewer. You want the candidate to succeed, so you offer gentle encouragement before asking the next question."
     }
 
+    const isGithubMode = parsed.mode === "github"
+    const currentRepoName = parsed.currentRepoName || ""
+
+    let githubContextPrompt = ""
+    if (isGithubMode && userId && currentRepoName) {
+      try {
+        const supabase = await createClient()
+        const { data: analysis } = await supabase
+          .from("github_analysis")
+          .select("*")
+          .eq("user_id", userId)
+          .maybeSingle()
+        
+        if (analysis) {
+          const repoMeta = analysis.repo_metadata?.[currentRepoName]
+          const repoQuestions = (analysis.questions || []).filter((q: any) => q.repo === currentRepoName)
+          const techStack = analysis.tech_stack || []
+          const designPatterns = analysis.design_patterns || []
+          
+          githubContextPrompt = `
+You are currently in GitHub Mode. The candidate has selected to focus on their repository: "${currentRepoName}".
+Here is the context for this repository:
+- Tech Stack: ${techStack.join(", ")}
+- Design Patterns: ${designPatterns.join(", ")}
+- Repository Metadata: ${repoMeta ? JSON.stringify(repoMeta) : "None"}
+- Target Pre-generated Questions: ${JSON.stringify(repoQuestions)}
+
+IMPORTANT RULES:
+1. You are asking a dynamic follow-up question or continuing the discussion about the repository "${currentRepoName}".
+2. Frame your question to refer to the candidate's repository context, code structure, or technologies.
+3. Be highly technical, realistic, and specific. Analyze their previous answer and drill down into their implementation details, design choices, or trade-offs.
+`
+        }
+      } catch (err) {
+        console.error("aiRouter: Failed to fetch github analysis for follow-up:", err)
+      }
+    }
+
     let domainSpecificPrompt = ""
-    if (uniqueQuestions && uniqueQuestions.length > 0) {
+    if (isGithubMode && githubContextPrompt) {
+      domainSpecificPrompt = githubContextPrompt
+    } else if (uniqueQuestions && uniqueQuestions.length > 0) {
       const fallbackProgramName = category
         .split("-")
         .filter((w: string) => w !== "a" && w !== "b")

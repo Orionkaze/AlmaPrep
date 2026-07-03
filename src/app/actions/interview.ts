@@ -21,9 +21,109 @@ export async function getNextQuestion(
   category: string,
   previousMessages: MessageInput[],
   useResume?: boolean,
-  persona?: string
-): Promise<{ question: string; source: string }> {
+  persona?: string,
+  mode?: string,
+  selectedRepos?: string[]
+): Promise<{ question: string; source: string; repo_name?: string }> {
   try {
+    const isGithub = mode === "github" && selectedRepos && selectedRepos.length >= 2
+    const aiQuestions = previousMessages.filter(m => m.role === "ai")
+    const questionIndex = aiQuestions.length
+
+    const interleaving = ["general", "github_repo", "github_repo", "general", "github_repo", "github_repo", "general", "github_repo", "github_repo", "general"]
+    const currentSlot = isGithub && questionIndex < 10 ? interleaving[questionIndex] : "general"
+
+    // If it's a repo-specific question slot, handle pulling from Supabase or dynamic follow-up
+    if (isGithub && currentSlot === "github_repo") {
+      let repoIdx = 0
+      if (questionIndex === 1 || questionIndex === 2) repoIdx = 0
+      else if (questionIndex === 4 || questionIndex === 5) repoIdx = 1
+      else if (questionIndex === 7 || questionIndex === 8) repoIdx = 2 % selectedRepos.length
+
+      const currentRepoName = selectedRepos[repoIdx]
+
+      // Slot type: Initial repo question (easy/medium/hard) vs Follow-up
+      const isInitialRepoSlot = questionIndex === 1 || questionIndex === 4 || questionIndex === 7
+
+      if (isInitialRepoSlot) {
+        try {
+          const supabase = await createClient()
+          const { data: analysis } = await supabase
+            .from("github_analysis")
+            .select("questions")
+            .maybeSingle()
+
+          if (analysis && Array.isArray(analysis.questions)) {
+            const difficulty = questionIndex === 1 ? "easy" : questionIndex === 4 ? "medium" : "hard"
+            const match = analysis.questions.find(
+              (q: any) => q.repo === currentRepoName && q.difficulty === difficulty
+            )
+            const fallbackMatch = analysis.questions.find((q: any) => q.repo === currentRepoName)
+            const targetQuestion = match?.question || fallbackMatch?.question
+
+            if (targetQuestion) {
+              return {
+                question: `Looking at your project ${currentRepoName} — ${targetQuestion}`,
+                source: "github_repo",
+                repo_name: currentRepoName
+              }
+            }
+          }
+        } catch (dbErr) {
+          console.error("Failed to query pre-generated questions in getNextQuestion:", dbErr)
+        }
+      }
+
+      // If it's a follow-up slot, or fallback for initial slot query failure: generate dynamically via Groq
+      let userTier = "free"
+      try {
+        const cookieStore = await cookies()
+        const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+        if (hasDemoCookie) {
+          userTier = "premium"
+        } else {
+          const supabase = await createClient()
+          const { data: { user } } = await supabase.auth.getUser()
+          if (user) {
+            const { data: profile } = await supabase
+              .from("users")
+              .select("subscription_tier")
+              .eq("id", user.id)
+              .single()
+            if (profile && profile.subscription_tier) {
+              userTier = profile.subscription_tier
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch user tier in getNextQuestion:", err)
+      }
+
+      try {
+        const nextResponse = await callAIWithSource(
+          JSON.stringify({ 
+            category, 
+            previousMessages, 
+            useResume, 
+            persona,
+            mode: "github",
+            selectedRepos,
+            currentRepoName
+          }),
+          "next_question",
+          userTier
+        )
+        return { 
+          question: nextResponse.result, 
+          source: "github_repo", 
+          repo_name: currentRepoName 
+        }
+      } catch (err: any) {
+        console.error("AI routing failed for github follow-up, falling back to general", err)
+      }
+    }
+
+    // Default: General track question generation (Optionally customized with Resume)
     let resumeText = ""
     if (useResume) {
       try {
@@ -34,44 +134,6 @@ export async function getNextQuestion(
       } catch (err) {
         console.error("Failed to fetch resume text in getNextQuestion:", err)
       }
-    }
-
-    const resumeContextPrompt = resumeText 
-      ? `The candidate has provided their resume for customization:
----
-${resumeText}
----
-Focus your interview questions on their background, experiences, projects, and technologies listed in the resume, while still aligning with the "${category}" interview category.`
-      : ""
-
-    let personaPrompt = "You are a professional, encouraging, and standard recruiter."
-    if (persona === "roast") {
-      personaPrompt = "You are in ROAST MODE 💀. You are brutally honest, highly sarcastic, funny, and hyper-critical. Roast the candidate's answers while asking your follow-up questions. Be mean but entertaining."
-    } else if (persona === "strict") {
-      personaPrompt = "You are an extremely strict, cold, and formal interviewer. You have extremely high standards, you do not show emotion, and you ask intense follow-up questions to test the candidate's true depth of knowledge."
-    } else if (persona === "supportive") {
-      personaPrompt = "You are a very supportive, warm, and friendly interviewer. You want the candidate to succeed, so you offer gentle encouragement before asking the next question."
-    }
-
-    const systemPrompt = `You are an expert AI Interviewer conducting a mock interview for the category: "${category}".
-${personaPrompt}
-Your goal is to conduct a realistic and interactive conversation in this exact persona.
-Assess the candidate's answers, ask relevant follow-up questions, or transition to a new topic as appropriate.
-${resumeContextPrompt}
-
-Rules:
-1. Keep your responses concise, natural, and conversational (1-3 sentences maximum). Stay deeply in your persona.
-2. Do not use any markdown formatting, prefixing, headers, or bullet points (e.g. do not write "Question: ..."). Just output the raw conversational text.
-3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category.
-4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.`
-
-    const formattedMessages = previousMessages.map((msg) => ({
-      role: msg.role === "ai" ? "assistant" as const : "user" as const,
-      content: msg.content,
-    }))
-
-    if (formattedMessages.length === 0) {
-      formattedMessages.push({ role: "user", content: "Hello, please introduce yourself and ask the first question." })
     }
 
     let userTier = "free"
@@ -113,22 +175,22 @@ Rules:
         }
       }
       console.warn("All LLM providers failed, using vetted fallback...", err)
-      
+
       // Fallback Layer: Fetch combined program & universal questions
       const questions = getCombinedDomainQuestions(category)
-      
+
       // Filter out questions already asked in previous history
       const askedQuestionsText = new Set(
         previousMessages
           .filter(m => m.role === "ai")
           .map(m => m.content.toLowerCase().trim())
       )
-      
+
       const availableQuestions = questions.filter(q => {
         const qTextNormal = q.question.toLowerCase().trim()
         return !askedQuestionsText.has(qTextNormal)
       })
-      
+
       let selectedQuestion = ""
       if (availableQuestions.length > 0) {
         const randomIndex = Math.floor(Math.random() * availableQuestions.length)
@@ -144,7 +206,7 @@ Rules:
         const index = previousMessages.length % fallbacks.length
         selectedQuestion = fallbacks[index]
       }
-      
+
       return { question: selectedQuestion, source: "vetted_fallback" }
     }
   } catch (error: any) {
