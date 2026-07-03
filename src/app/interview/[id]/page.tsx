@@ -63,11 +63,13 @@ export default function InterviewPage({
   searchParams,
 }: {
   params: Promise<{ id: string }>
-  searchParams: Promise<{ resume?: string; persona?: string }>
+  searchParams: Promise<{ resume?: string; persona?: string; githubMode?: string; repos?: string }>
 }) {
   const { id } = use(params)
-  const { resume, persona } = use(searchParams)
+  const { resume, persona, githubMode, repos } = use(searchParams)
   const useResume = resume === "true"
+  const isGithubMode = githubMode === "true"
+  const selectedRepos = repos ? decodeURIComponent(repos).split(",") : []
   const selectedPersona = typeof persona === "string" ? persona : "supportive"
   const category = id || "mixed"
   const router = useRouter()
@@ -222,7 +224,8 @@ export default function InterviewPage({
       setIsAiTyping(true)
       
       // 1. Create a session ID in DB if user is authenticated
-      const sessionId = await createInterviewSession(category, useResume)
+      const mode = isGithubMode ? "github" : "general"
+      const sessionId = await createInterviewSession(category, useResume, mode, selectedRepos)
       if (!active) return
 
       if (sessionId) {
@@ -230,7 +233,14 @@ export default function InterviewPage({
       }
 
       // 2. Fetch introductory question from fallback chain
-      const { question: firstQuestion, source } = await getNextQuestion(category, [], useResume, selectedPersona)
+      const { question: firstQuestion, source, repo_name } = await getNextQuestion(
+        category, 
+        [], 
+        useResume, 
+        selectedPersona,
+        mode,
+        selectedRepos
+      )
       if (!active) return
 
       // Speak first question
@@ -238,7 +248,7 @@ export default function InterviewPage({
 
       // 3. Save to database if session exists
       if (sessionId) {
-        await saveInterviewMessage(sessionId, "ai", firstQuestion, source)
+        await saveInterviewMessage(sessionId, "ai", firstQuestion, source, repo_name)
       }
 
       setMessages([{
@@ -335,14 +345,22 @@ export default function InterviewPage({
     }))
 
     // 3. Generate follow-up question
-    const { question: nextQuestion, source: nextSource } = await getNextQuestion(category, history, useResume, selectedPersona)
+    const mode = isGithubMode ? "github" : "general"
+    const { question: nextQuestion, source: nextSource, repo_name: nextRepoName } = await getNextQuestion(
+      category, 
+      history, 
+      useResume, 
+      selectedPersona,
+      mode,
+      selectedRepos
+    )
 
     // Speak next question (including the final salutation)
     speak(nextQuestion)
 
     // 4. Save AI question to DB if session exists
     if (dbSessionId) {
-      await saveInterviewMessage(dbSessionId, "ai", nextQuestion, nextSource)
+      await saveInterviewMessage(dbSessionId, "ai", nextQuestion, nextSource, nextRepoName)
     }
 
     const aiMsg: Message = {
