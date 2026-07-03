@@ -195,6 +195,17 @@ alter table public.behavioral_analysis add column if not exists speaking_analysi
 alter table public.interviews add column if not exists proctoring_log jsonb;
 alter table public.interviews add column if not exists is_flagged boolean default false;
 
+-- Migration: Add design_patterns, weak_areas, and repo_metadata to public.github_analysis
+ALTER TABLE public.github_analysis 
+ADD COLUMN IF NOT EXISTS design_patterns text[] DEFAULT '{}'::text[],
+ADD COLUMN IF NOT EXISTS weak_areas text[] DEFAULT '{}'::text[],
+ADD COLUMN IF NOT EXISTS repo_metadata jsonb DEFAULT '{}'::jsonb;
+
+-- Migration: Add mode and selected_repos to public.interviews
+ALTER TABLE public.interviews 
+ADD COLUMN IF NOT EXISTS mode text DEFAULT 'general',
+ADD COLUMN IF NOT EXISTS selected_repos text[] DEFAULT '{}'::text[];
+
 
 
 
