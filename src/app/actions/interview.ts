@@ -304,7 +304,12 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
 /**
  * Save interview session to database if user is authenticated.
  */
-export async function createInterviewSession(category: string, useResume?: boolean): Promise<string | null> {
+export async function createInterviewSession(
+  category: string,
+  useResume?: boolean,
+  mode?: string,
+  selectedRepos?: string[]
+): Promise<string | null> {
   try {
     const cookieStore = await cookies()
     if (cookieStore.has("mockmate-demo-session")) {
@@ -325,6 +330,8 @@ export async function createInterviewSession(category: string, useResume?: boole
         category,
         status: "in_progress",
         use_resume: useResume || false,
+        mode: mode || "general",
+        selected_repos: selectedRepos || [],
       })
       .select("id")
       .single()
@@ -823,5 +830,18 @@ export async function getInterviewSession(interviewId: string) {
   } catch (e) {
     console.error("Supabase getInterviewSession failed:", e)
     return null
+  }
+}
+
+/**
+ * Checks if the user has a connected GitHub account.
+ */
+export async function checkGitHubConnection(): Promise<boolean> {
+  try {
+    const cookieStore = await cookies()
+    return cookieStore.has("sb-github-provider-token")
+  } catch (e) {
+    console.error("Failed to check GitHub connection cookie:", e)
+    return false
   }
 }

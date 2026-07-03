@@ -20,6 +20,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
+import { checkGitHubConnection } from "@/app/actions/interview"
+import { createClient } from "@/lib/supabase/client"
 
 // ProgramInfo interface matching the server definition
 interface ProgramInfo {
@@ -68,6 +70,13 @@ export default function InterviewSetupPage() {
   const [useResume, setUseResume] = useState(false)
   const [persona, setPersona] = useState<string>("supportive")
   
+  // GitHub Mode states
+  const [isDemoMode, setIsDemoMode] = useState(false)
+  const [githubConnected, setGithubConnected] = useState(false)
+  const [githubAnalysis, setGithubAnalysis] = useState<any>(null)
+  const [githubMode, setGithubMode] = useState(false)
+  const [selectedRepos, setSelectedRepos] = useState<string[]>([])
+  
   // Specialized programs states
   const [programs, setPrograms] = useState<ProgramInfo[]>([])
   const [searchQuery, setSearchQuery] = useState("")
@@ -97,8 +106,36 @@ export default function InterviewSetupPage() {
       }
     }
 
+    async function checkGitHub() {
+      try {
+        const cookies = document.cookie.split(";").map(c => c.trim())
+        const isDemo = cookies.some(c => c.startsWith("mockmate-demo-session="))
+        setIsDemoMode(isDemo)
+
+        if (isDemo) return
+
+        const connected = await checkGitHubConnection()
+        setGithubConnected(connected)
+
+        if (connected) {
+          const supabase = createClient()
+          const { data: analysis } = await supabase
+            .from("github_analysis")
+            .select("*")
+            .maybeSingle()
+          
+          if (analysis) {
+            setGithubAnalysis(analysis)
+          }
+        }
+      } catch (err) {
+        console.error("Error checking GitHub in setup page:", err)
+      }
+    }
+
     checkResume()
     fetchPrograms()
+    checkGitHub()
   }, [])
 
   // Handle Search filtering
@@ -298,6 +335,128 @@ export default function InterviewSetupPage() {
           </div>
         )}
 
+        {/* GitHub-Focused Interview Mode */}
+        {selected === "technical" && (
+          <GlassCard className="p-5 mb-4 border-white/5 animate-in fade-in duration-300">
+            <h4 className="text-sm font-semibold mb-1 flex items-center gap-2 text-foreground/90">
+              <span className="size-2 rounded-full bg-primary animate-pulse" />
+              GitHub-Focused Technical Interview
+            </h4>
+            
+            {isDemoMode ? (
+              <p className="text-xs text-foreground/50 leading-relaxed mt-2 bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg">
+                ⚠️ GitHub Mode is not available in Demo Mode. Please sign in and connect GitHub to practice using your repositories.
+              </p>
+            ) : !githubConnected ? (
+              <div className="mt-2 bg-red-500/10 border border-red-500/20 p-3 rounded-lg flex flex-col gap-2">
+                <p className="text-xs text-red-400 font-medium">
+                  ⚠️ Your GitHub account is not connected.
+                </p>
+                <p className="text-xs text-foreground/60 leading-normal">
+                  Connect GitHub on the profile page or login again using the GitHub OAuth button to enable repository-based interview questions.
+                </p>
+                <Link href="/dashboard/profile" className="text-xs text-primary hover:underline font-semibold self-start">
+                  Go to Profile →
+                </Link>
+              </div>
+            ) : !githubAnalysis ? (
+              <div className="mt-2 bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg flex flex-col gap-2">
+                <p className="text-xs text-yellow-500 font-medium">
+                  ⚠️ GitHub analysis has not been run yet.
+                </p>
+                <p className="text-xs text-foreground/60 leading-normal">
+                  You need to analyze your repositories before you can practice questions based on them. Run the analyzer on your profile page first.
+                </p>
+                <Link href="/dashboard/profile" className="text-xs text-primary hover:underline font-semibold self-start">
+                  Go to Profile to Analyze Repos →
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-3 flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs text-foreground/60 leading-relaxed max-w-md">
+                    Toggle this mode to interleave questions tailored specifically to your projects (60%) with general technical questions (40%).
+                  </p>
+                  <button
+                    onClick={() => {
+                      setGithubMode(!githubMode)
+                      setSelectedRepos([])
+                    }}
+                    className="flex items-center gap-3 cursor-pointer select-none"
+                  >
+                    <span className="text-xs font-bold text-foreground/80">{githubMode ? "Enabled" : "Disabled"}</span>
+                    <div className={`w-11 h-6 flex items-center rounded-full p-1 transition-all duration-300 ${githubMode ? "bg-primary" : "bg-white/10 border border-white/5"}`}>
+                      <div className={`bg-white size-4 rounded-full shadow-md transform transition-all duration-300 ${githubMode ? "translate-x-5" : "translate-x-0"}`} />
+                    </div>
+                  </button>
+                </div>
+
+                {githubMode && (
+                  <div className="border-t border-white/5 pt-4 animate-in slide-in-from-top-2 duration-300">
+                    <h5 className="text-xs font-bold text-foreground/75 mb-2 uppercase tracking-wider">
+                      Select Repositories to Focus On (Select 2 to 5)
+                    </h5>
+                    
+                    {/* Repository list/grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
+                      {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
+                        const isSelected = selectedRepos.includes(repoName)
+                        const repoMeta = githubAnalysis.repo_metadata?.[repoName]
+                        
+                        return (
+                          <button
+                            key={repoName}
+                            onClick={() => {
+                              if (isSelected) {
+                                setSelectedRepos(selectedRepos.filter(r => r !== repoName))
+                              } else {
+                                if (selectedRepos.length >= 5) {
+                                  alert("You can select a maximum of 5 repositories.")
+                                  return
+                                }
+                                setSelectedRepos([...selectedRepos, repoName])
+                              }
+                            }}
+                            className={`p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                              isSelected
+                                ? "border-primary bg-primary/10 text-white"
+                                : "border-white/5 hover:border-white/10 bg-white/5 text-foreground/75"
+                            }`}
+                          >
+                            <div className="flex items-start justify-between w-full">
+                              <span className="font-semibold text-xs truncate max-w-[85%]">{repoName}</span>
+                              {isSelected && <span className="text-[10px] text-primary font-bold">✓</span>}
+                            </div>
+                            
+                            {repoMeta && (
+                              <div className="flex gap-1.5 items-center mt-2">
+                                <span className="text-[9px] px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-medium">
+                                  Complexity: {repoMeta.complexity_score}/10
+                                </span>
+                              </div>
+                            )}
+                          </button>
+                        )
+                      })}
+                    </div>
+                    
+                    <div className="mt-3 flex justify-between items-center">
+                      <p className="text-[11px] text-foreground/50">
+                        Selected: <span className="font-bold text-foreground">{selectedRepos.length} / 5</span> (Minimum 2 required)
+                      </p>
+                      {selectedRepos.length < 2 && (
+                        <p className="text-[10px] text-amber-400 font-medium animate-pulse">
+                          ⚠️ Please select at least 2 repositories to start.
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </GlassCard>
+        )}
+
         {/* Persona Selector */}
         <GlassCard className="p-5 mb-4 border-white/5">
           <h4 className="text-sm font-semibold mb-3 text-foreground/90 flex items-center gap-2">
@@ -359,10 +518,22 @@ export default function InterviewSetupPage() {
         </GlassCard>
 
         <div className="flex justify-center">
-          <Link href={selected ? `/interview/${selected}?resume=${useResume}&persona=${persona}` : "#"}>
+          <Link 
+            href={
+              !selected || (selected === "technical" && githubMode && selectedRepos.length < 2)
+                ? "#"
+                : selected === "technical" && githubMode
+                ? `/interview/technical?resume=${useResume}&persona=${persona}&githubMode=true&repos=${encodeURIComponent(selectedRepos.join(","))}`
+                : `/interview/${selected}?resume=${useResume}&persona=${persona}`
+            }
+          >
             <GlowButton
-              disabled={!selected}
-              className={`h-12 px-12 text-sm md:text-base font-semibold ${!selected ? "opacity-30 cursor-not-allowed" : ""}`}
+              disabled={!selected || (selected === "technical" && githubMode && selectedRepos.length < 2)}
+              className={`h-12 px-12 text-sm md:text-base font-semibold ${
+                (!selected || (selected === "technical" && githubMode && selectedRepos.length < 2))
+                  ? "opacity-30 cursor-not-allowed" 
+                  : ""
+              }`}
             >
               Begin Interview Track →
             </GlowButton>
