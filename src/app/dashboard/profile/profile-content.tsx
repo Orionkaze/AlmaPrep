@@ -558,6 +558,23 @@ export default function ProfileContent({
                 </div>
               </div>
 
+              {/* Design Patterns */}
+              {githubAnalysis.design_patterns && githubAnalysis.design_patterns.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Detected Design Patterns</h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {githubAnalysis.design_patterns.map((pattern: string) => (
+                      <span 
+                        key={pattern} 
+                        className="text-[11px] px-2.5 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold"
+                      >
+                        {pattern}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Strengths */}
               {githubAnalysis.strengths && githubAnalysis.strengths.length > 0 && (
                 <div>
@@ -567,6 +584,21 @@ export default function ProfileContent({
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-primary mt-0.5">✦</span>
                         <span>{strength}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Weak Areas to Improve */}
+              {githubAnalysis.weak_areas && githubAnalysis.weak_areas.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Areas to Improve</h4>
+                  <ul className="text-xs text-foreground/75 space-y-1.5 pl-1">
+                    {githubAnalysis.weak_areas.map((weak: string, i: number) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-red-400 mt-0.5">⚠️</span>
+                        <span>{weak}</span>
                       </li>
                     ))}
                   </ul>
@@ -593,33 +625,68 @@ export default function ProfileContent({
                             onClick={() => setExpandedRepo(isExpanded ? null : repoName)}
                             className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/[0.02] cursor-pointer text-left text-sm font-semibold text-foreground/95 border-0 bg-transparent"
                           >
-                            <span className="truncate">{repoName}</span>
+                            <div className="flex items-center gap-2 truncate">
+                              <span className="truncate">{repoName}</span>
+                              {githubAnalysis.repo_metadata?.[repoName]?.complexity_score !== undefined && (
+                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-bold shrink-0">
+                                  Complexity: {githubAnalysis.repo_metadata[repoName].complexity_score}/10
+                                </span>
+                              )}
+                            </div>
                             <FontAwesomeIcon 
                               icon={isExpanded ? faChevronUp : faChevronDown} 
-                              className="text-xs text-foreground/45" 
+                              className="text-xs text-foreground/45 shrink-0" 
                             />
                           </button>
                           
                           {isExpanded && (
-                            <div className="px-4 pb-4 pt-1 flex flex-col gap-3 border-t border-white/5 bg-white/[0.005]">
-                              {repoQuestions.map((q: any, i: number) => (
-                                <div key={i} className="flex flex-col gap-1">
-                                  <div className="flex items-center gap-2">
-                                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
-                                      q.difficulty === "easy" 
-                                        ? "bg-green-500/10 text-green-400 border border-green-500/20" 
-                                        : q.difficulty === "medium"
-                                        ? "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
-                                        : "bg-red-500/10 text-red-400 border border-red-500/20"
-                                    }`}>
-                                      {q.difficulty}
-                                    </span>
-                                  </div>
-                                  <p className="text-xs text-foreground/80 leading-relaxed">
-                                    {q.question}
-                                  </p>
+                            <div className="px-4 pb-4 pt-2 flex flex-col gap-4 border-t border-white/5 bg-white/[0.005]">
+                              {/* Repo specific patterns & weak areas */}
+                              {githubAnalysis.repo_metadata?.[repoName] && (
+                                <div className="flex flex-col gap-2 pt-1 pb-1 text-xs border-b border-white/5">
+                                  {githubAnalysis.repo_metadata[repoName].design_patterns?.length > 0 && (
+                                    <div className="flex flex-wrap gap-1.5 items-center">
+                                      <span className="text-foreground/50 font-medium mr-1 text-[11px]">Patterns:</span>
+                                      {githubAnalysis.repo_metadata[repoName].design_patterns.map((pat: string) => (
+                                        <span key={pat} className="text-[9px] px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent font-semibold">
+                                          {pat}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
+                                  {githubAnalysis.repo_metadata[repoName].weak_areas?.length > 0 && (
+                                    <div className="flex flex-col gap-1 mt-1 text-[11px]">
+                                      <span className="text-foreground/50 font-medium">Repo Weak Areas:</span>
+                                      {githubAnalysis.repo_metadata[repoName].weak_areas.map((weak: string, wi: number) => (
+                                        <span key={wi} className="text-red-400/90 pl-1 leading-normal">
+                                          ⚠️ {weak}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
                                 </div>
-                              ))}
+                              )}
+
+                              <div className="flex flex-col gap-3">
+                                {repoQuestions.map((q: any, i: number) => (
+                                  <div key={i} className="flex flex-col gap-1">
+                                    <div className="flex items-center gap-2">
+                                      <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
+                                        q.difficulty === "easy" 
+                                          ? "bg-green-500/10 text-green-400 border border-green-500/20" 
+                                          : q.difficulty === "medium"
+                                          ? "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
+                                          : "bg-red-500/10 text-red-400 border border-red-500/20"
+                                      }`}>
+                                        {q.difficulty}
+                                      </span>
+                                    </div>
+                                    <p className="text-xs text-foreground/80 leading-relaxed">
+                                      {q.question}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
                           )}
                         </div>
