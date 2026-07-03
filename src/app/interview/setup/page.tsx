@@ -20,8 +20,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
-import { checkGitHubConnection } from "@/app/actions/interview"
-import { createClient } from "@/lib/supabase/client"
+import { checkGitHubConnection, getGitHubAnalysis } from "@/app/actions/interview"
 
 // ProgramInfo interface matching the server definition
 interface ProgramInfo {
@@ -118,12 +117,7 @@ export default function InterviewSetupPage() {
         setGithubConnected(connected)
 
         if (connected) {
-          const supabase = createClient()
-          const { data: analysis } = await supabase
-            .from("github_analysis")
-            .select("*")
-            .maybeSingle()
-          
+          const analysis = await getGitHubAnalysis()
           if (analysis) {
             setGithubAnalysis(analysis)
           }

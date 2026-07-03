@@ -911,3 +911,38 @@ export async function checkGitHubConnection(): Promise<boolean> {
     return false
   }
 }
+
+/**
+ * Fetches the user's cached GitHub analysis from Supabase on the server.
+ */
+export async function getGitHubAnalysis(): Promise<any | null> {
+  try {
+    const cookieStore = await cookies()
+    if (cookieStore.has("mockmate-demo-session")) {
+      return null
+    }
+
+    const session = await getServerSession(authOptions)
+    const supabase = await createClient()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+    const userId = (session?.user as any)?.id || supabaseUser?.id
+
+    if (!userId) return null
+
+    const { data, error } = await supabase
+      .from("github_analysis")
+      .select("*")
+      .eq("user_id", userId)
+      .maybeSingle()
+
+    if (error) {
+      console.error("Error fetching github analysis in action:", error)
+      return null
+    }
+
+    return data
+  } catch (e) {
+    console.error("getGitHubAnalysis failed:", e)
+    return null
+  }
+}
