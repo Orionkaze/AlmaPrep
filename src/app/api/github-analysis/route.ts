@@ -74,6 +74,9 @@ export async function POST(req: NextRequest) {
       tech_stack: analysis.tech_stack,
       strengths: analysis.strengths,
       questions: analysis.questions,
+      design_patterns: analysis.design_patterns || [],
+      weak_areas: analysis.weak_areas || [],
+      repo_metadata: analysis.repo_metadata || {},
       created_at: new Date().toISOString(),
     }
 
