@@ -24,7 +24,8 @@ import {
   RefreshCw,
   Terminal,
   Code2,
-  AlertCircle
+  AlertCircle,
+  LogOut
 } from "lucide-react";
 
 // Lazy-load Monaco Editor
@@ -133,6 +134,9 @@ export default function InterviewWorkspacePage({
   const [createdRepoUrl, setCreatedRepoUrl] = useState("");
   const [gitHubError, setGitHubError] = useState<string | null>(null);
   const [reportId, setReportId] = useState<string | null>(null);
+
+  // Exit interview confirmation
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
 
   // Refs
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -772,14 +776,43 @@ __run_test()
       )}
 
       {/* Topbar */}
+      {/* Exit Interview Confirmation Dialog */}
+      {showExitConfirm && (
+        <div className="fixed inset-0 bg-[#0a0f1d]/90 z-[60] flex items-center justify-center p-6 backdrop-blur-sm">
+          <div className="bg-[#111827] border border-slate-800 rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl">
+            <h3 className="font-bold text-white text-lg text-center">Exit Interview?</h3>
+            <p className="text-sm text-slate-400 text-center leading-relaxed">
+              Are you sure you want to leave? Your progress in this session will not be saved.
+            </p>
+            <div className="flex gap-3 justify-center pt-2">
+              <button
+                onClick={() => setShowExitConfirm(false)}
+                className="bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs px-5 py-2.5 rounded-lg transition-colors cursor-pointer"
+              >
+                Keep Working
+              </button>
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs px-5 py-2.5 rounded-lg transition-colors cursor-pointer"
+              >
+                Exit Interview
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="h-12 shrink-0 bg-[#111827] border-b border-[#374151] flex items-center justify-between px-4 z-40">
         <div className="flex items-center gap-3">
           <button
-            onClick={() => router.push("/interview")}
-            className="p-1 hover:bg-[#1f2937] rounded-lg transition-colors text-slate-400 hover:text-slate-100 cursor-pointer"
+            onClick={() => setShowExitConfirm(true)}
+            className="p-1.5 hover:bg-rose-950/40 rounded-lg transition-colors text-slate-400 hover:text-rose-400 cursor-pointer flex items-center gap-1.5 text-xs"
+            title="Exit interview"
           >
-            <ChevronLeft className="size-5" />
+            <LogOut className="size-4" />
+            <span className="hidden sm:inline font-medium">Exit</span>
           </button>
+          <div className="w-px h-5 bg-[#374151]" />
           <span className="font-semibold text-sm tracking-tight text-white">
             {challenge?.title || "Coding Challenge"}
           </span>

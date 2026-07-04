@@ -4,20 +4,19 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { 
-  faBriefcase, 
-  faLaptopCode, 
-  faShuffle, 
-  faFileLines,
-  faSearch,
-  faGraduationCap,
-  faScaleBalanced,
-  faStethoscope,
-  faMasksTheater,
-  faMicrochip,
-  faGlobe
-} from "@fortawesome/free-solid-svg-icons"
+  Briefcase, 
+  Laptop, 
+  Shuffle, 
+  FileText,
+  Search,
+  GraduationCap,
+  Scale,
+  Stethoscope,
+  Drama,
+  Cpu,
+  Globe
+} from "lucide-react"
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
 import { checkGitHubConnection, getGitHubAnalysis } from "@/app/actions/interview"
@@ -34,33 +33,33 @@ const standardCategories = [
   {
     id: "hr",
     label: "HR Interview",
-    icon: faBriefcase,
+    icon: Briefcase,
     description: "Behavioral questions, teamwork, leadership, and situational scenarios.",
     gradient: "from-primary to-primary/60",
   },
   {
     id: "technical",
     label: "Technical Interview",
-    icon: faLaptopCode,
+    icon: Laptop,
     description: "Data structures, algorithms, system design, and problem-solving.",
     gradient: "from-secondary to-secondary/60",
   },
   {
     id: "mixed",
     label: "Mixed Interview",
-    icon: faShuffle,
+    icon: Shuffle,
     description: "A blend of HR and technical questions simulating a real-world interview.",
     gradient: "from-accent to-accent/60",
   },
 ]
 
 const tabCategories = [
-  { id: "general", label: "General Tracks", icon: faShuffle },
-  { id: "Business & Law", label: "Business & Law", icon: faScaleBalanced },
-  { id: "Health & Medicine", label: "Health & Medicine", icon: faStethoscope },
-  { id: "Humanities & Social Sciences", label: "Humanities & Social", icon: faMasksTheater },
-  { id: "Sciences & Tech", label: "Sciences & Tech", icon: faMicrochip },
-  { id: "Universal", label: "Universal Banks", icon: faGlobe },
+  { id: "general", label: "General Tracks", icon: Shuffle },
+  { id: "Business & Law", label: "Business & Law", icon: Scale },
+  { id: "Health & Medicine", label: "Health & Medicine", icon: Stethoscope },
+  { id: "Humanities & Social Sciences", label: "Humanities & Social", icon: Drama },
+  { id: "Sciences & Tech", label: "Sciences & Tech", icon: Cpu },
+  { id: "Universal", label: "Universal Banks", icon: Globe },
 ]
 
 export default function InterviewSetupPage() {
@@ -168,8 +167,8 @@ export default function InterviewSetupPage() {
 
         {/* Search Bar */}
         <div className="w-full max-w-xl mx-auto mb-8 relative">
-          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-foreground/40">
-            <FontAwesomeIcon icon={faSearch} />
+          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-muted-foreground">
+            <Search size={16} strokeWidth={1.75} />
           </div>
           <input
             type="text"
@@ -219,7 +218,7 @@ export default function InterviewSetupPage() {
                     : "border-white/5 hover:border-white/10 hover:bg-white/5 text-foreground/60"
                 }`}
               >
-                <FontAwesomeIcon icon={tab.icon} className={isActive ? "text-primary" : "text-foreground/40"} />
+                <tab.icon size={16} strokeWidth={1.75} className={isActive ? "text-primary" : "text-muted-foreground"} />
                 {tab.label}
               </button>
             )
@@ -248,7 +247,7 @@ export default function InterviewSetupPage() {
                       }`}
                     >
                       <div className={`size-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center mb-4 opacity-90 shadow-md`}>
-                        <FontAwesomeIcon icon={cat.icon} className="text-xl text-white" />
+                        <cat.icon size={24} strokeWidth={1.75} className="text-white" />
                       </div>
                       <h3 className="text-base font-bold mb-2">{cat.label}</h3>
                       <p className="text-xs text-foreground/50 leading-relaxed">{cat.description}</p>
@@ -268,7 +267,7 @@ export default function InterviewSetupPage() {
 
               {filteredPrograms.filter(p => activeTab === "search" || p.category === activeTab).length === 0 ? (
                 <div className="text-center py-12 bg-white/5 border border-dashed border-white/10 rounded-2xl">
-                  <FontAwesomeIcon icon={faGraduationCap} className="text-2xl text-foreground/20 mb-3" />
+                  <GraduationCap size={28} strokeWidth={1.75} className="text-muted-foreground/40 mb-3 mx-auto" />
                   <p className="text-sm font-semibold text-foreground/60">No specialized programs found</p>
                   <p className="text-xs text-foreground/40 mt-1">Try searching with a different keyword</p>
                 </div>

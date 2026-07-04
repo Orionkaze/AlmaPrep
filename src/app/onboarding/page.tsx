@@ -3,14 +3,25 @@
 import { GlowButton } from "@/components/ui/glow-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Input } from "@/components/ui/input"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLaptopCode, faUserTie, faRocket, faBrain, faStar } from "@fortawesome/free-solid-svg-icons"
-import { useState, useEffect } from "react"
+import { Laptop, UserRound, Rocket, Brain, Star, ArrowLeft } from "lucide-react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { createUserProfile } from "@/app/actions/profile"
+import Link from "next/link"
 
-const avatars = [faLaptopCode, faUserTie, faRocket, faBrain, faStar]
-const avatarNames = ["laptop-code", "user-tie", "rocket", "brain", "star"]
+const avatars = [
+  { icon: Laptop, name: "laptop-code" },
+  { icon: UserRound, name: "user-tie" },
+  { icon: Rocket, name: "rocket" },
+  { icon: Brain, name: "brain" },
+  { icon: Star, name: "star" },
+]
+
+const headingStyle: React.CSSProperties = {
+  fontFamily: "var(--font-head), serif",
+  letterSpacing: "-0.015em",
+  fontWeight: 600,
+}
 
 export default function OnboardingPage() {
   const [username, setUsername] = useState("")
@@ -19,8 +30,6 @@ export default function OnboardingPage() {
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
-  // Removed guest/demo session redirect
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!username.trim()) return
@@ -28,12 +37,26 @@ export default function OnboardingPage() {
     setLoading(true)
     setError(null)
 
-    const result = await createUserProfile(username.trim(), avatarNames[selectedAvatar])
+    const result = await createUserProfile(username.trim(), avatars[selectedAvatar].name)
 
     if (result.success) {
       window.location.href = "/dashboard"
     } else {
       setError(result.error || "An error occurred while creating your profile.")
+      setLoading(false)
+    }
+  }
+
+  const handleSkip = async () => {
+    setLoading(true)
+    setError(null)
+
+    const result = await createUserProfile("User", "user-tie")
+
+    if (result.success) {
+      window.location.href = "/dashboard"
+    } else {
+      setError(result.error || "An error occurred. Please try again.")
       setLoading(false)
     }
   }
@@ -44,21 +67,30 @@ export default function OnboardingPage() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="z-10 w-full max-w-lg">
+        {/* Back link */}
+        <Link
+          href="/login"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
+        >
+          <ArrowLeft size={16} strokeWidth={1.75} />
+          Back to login
+        </Link>
+
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Almost there!</h1>
-          <p className="text-foreground/70">Let&apos;s set up your profile.</p>
+          <h1 className="text-3xl font-bold mb-2 text-foreground" style={headingStyle}>Almost there!</h1>
+          <p className="text-body">Let&apos;s set up your profile.</p>
         </div>
 
         <GlassCard className="p-8">
           {error && (
-            <div className="mb-4 p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-red-400 text-xs font-medium">
+            <div className="mb-4 p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-red-500 text-xs font-medium">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
-              <label htmlFor="username" className="text-sm font-medium text-foreground/90">Choose a Username</label>
+              <label htmlFor="username" className="text-sm font-medium text-foreground">Choose a Username</label>
               <Input
                 id="username"
                 type="text"
@@ -68,26 +100,27 @@ export default function OnboardingPage() {
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
-              <p className="text-xs text-foreground/50 mt-1">This will be displayed on your dashboard.</p>
+              <p className="text-xs text-muted-foreground mt-1">This will be displayed on your dashboard.</p>
             </div>
             
             <div className="flex flex-col gap-3">
-              <label className="text-sm font-medium text-foreground/90">Select an Avatar</label>
+              <label className="text-sm font-medium text-foreground">Select an Avatar</label>
               <div className="flex gap-4 flex-wrap justify-center sm:justify-start">
-                {avatars.map((icon, i) => {
+                {avatars.map((avatar, i) => {
                   const isSelected = selectedAvatar === i
+                  const IconComponent = avatar.icon
                   return (
                     <button 
                       key={i}
                       type="button"
                       onClick={() => setSelectedAvatar(i)}
-                      className={`size-16 rounded-full bg-input/50 border flex items-center justify-center text-xl transition-all cursor-pointer ${
+                      className={`size-16 rounded-full bg-input/50 border flex items-center justify-center transition-all cursor-pointer ${
                         isSelected
                           ? "border-primary ring-2 ring-primary/30 text-primary"
-                          : "border-border hover:border-primary/60 text-foreground/80"
+                          : "border-border hover:border-primary/60 text-muted-foreground"
                       }`}
                     >
-                      <FontAwesomeIcon icon={icon} />
+                      <IconComponent size={24} strokeWidth={1.75} />
                     </button>
                   )
                 })}
@@ -98,6 +131,19 @@ export default function OnboardingPage() {
               {loading ? "Completing Setup..." : "Complete Setup"}
             </GlowButton>
           </form>
+
+          {/* Skip for now */}
+          <div className="mt-5 text-center">
+            <button
+              type="button"
+              onClick={handleSkip}
+              disabled={loading}
+              className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer disabled:opacity-50"
+            >
+              Skip for now →
+            </button>
+            <p className="text-xs text-muted-foreground mt-1">You can update your profile anytime from Settings.</p>
+          </div>
         </GlassCard>
       </div>
     </main>

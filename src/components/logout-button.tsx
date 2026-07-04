@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { LogOut } from "lucide-react"
 import { signOut } from "next-auth/react"
 
 export function LogoutButton() {
@@ -29,9 +28,9 @@ export function LogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="inline-flex items-center gap-2 px-4 h-10 rounded-lg text-sm font-semibold border border-white/10 bg-white/5 hover:bg-white/10 hover:text-red-400 hover:border-red-500/20 transition-all cursor-pointer"
+      className="inline-flex items-center gap-2 px-4 h-10 rounded-lg text-sm font-semibold border border-border bg-muted hover:bg-primary/10 hover:text-red-500 hover:border-red-500/20 transition-all cursor-pointer text-muted-foreground"
     >
-      <FontAwesomeIcon icon={faRightFromBracket} />
+      <LogOut size={16} strokeWidth={1.75} />
       <span>Log Out</span>
     </button>
   )

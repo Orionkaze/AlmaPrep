@@ -5,8 +5,6 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { getResumeData } from "@/app/actions/resume"
 import ResumeContent from "./resume-content"
-import Link from "next/link"
-import { LogoutButton } from "@/components/logout-button"
 
 export default async function ResumePage() {
   const session = await getServerSession(authOptions)
@@ -78,18 +76,11 @@ export default async function ResumePage() {
       <div className="fixed bottom-0 left-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
-          <div className="flex items-center gap-4">
-            <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">
-              ← Dashboard
-            </Link>
-            <div className="h-4 w-px bg-white/10" />
-            <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-              Resume Analyzer
-            </h1>
-          </div>
-          <LogoutButton />
+        {/* Page title */}
+        <div className="mb-8 pb-4 border-b border-border">
+          <h1 className="text-xl font-bold text-foreground" style={{ fontFamily: "var(--font-head), serif", letterSpacing: "-0.015em", fontWeight: 600 }}>
+            Resume Analyzer
+          </h1>
         </div>
 
         <ResumeContent initialResumeText={resumeText} initialAnalysis={analysis} />

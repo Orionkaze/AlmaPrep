@@ -5,8 +5,6 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import ProfileContent from "./profile-content"
 import { readLocalCache } from "@/lib/localCache"
-import Link from "next/link"
-import { LogoutButton } from "@/components/logout-button"
 
 // Mock data for demo fallback
 const mockHistory = [
@@ -181,18 +179,11 @@ export default async function ProfilePage() {
       <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Navigation & Header */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
-          <div className="flex items-center gap-4">
-            <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">
-              ← Dashboard
-            </Link>
-            <div className="h-4 w-px bg-white/10" />
-            <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-              My Profile
-            </h1>
-          </div>
-          <LogoutButton />
+        {/* Page title */}
+        <div className="mb-8 pb-4 border-b border-border">
+          <h1 className="text-xl font-bold text-foreground" style={{ fontFamily: "var(--font-head), serif", letterSpacing: "-0.015em", fontWeight: 600 }}>
+            My Profile
+          </h1>
         </div>
 
         <ProfileContent
