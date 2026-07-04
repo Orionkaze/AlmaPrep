@@ -1392,7 +1392,11 @@ __run_test()
                 <button
                   onClick={() => {
                     setShowResultsModal(false);
-                    router.push("/dashboard");
+                    if (reportId) {
+                      router.push(`/interview/report/${reportId}`);
+                    } else {
+                      router.push("/dashboard");
+                    }
                   }}
                   className="bg-[#059669] hover:bg-[#047857] text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
                 >
@@ -1409,7 +1413,11 @@ __run_test()
                 <button
                   onClick={() => {
                     setShowResultsModal(false);
-                    router.push("/dashboard");
+                    if (reportId) {
+                      router.push(`/interview/report/${reportId}`);
+                    } else {
+                      router.push("/dashboard");
+                    }
                   }}
                   className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
                 >
