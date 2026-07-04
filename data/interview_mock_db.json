@@ -1033,14 +1033,36 @@
       "id": "22284828-32f6-4346-824b-ee94dc6f2d4a",
       "user_id": "demo-user-id",
       "challenge_id": "e1a2b3c4-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
-      "conversation": [],
+      "conversation": [
+        {
+          "role": "user",
+          "content": "Please implement the optimal O(n) solution for Two Sum in solution.js. Use a Map to keep track of seen numbers and their indices, find the complement of each number relative to the target, and return the correct pair of indices. Replace the \"// Your solution here\" comment inside the function."
+        },
+        {
+          "role": "assistant",
+          "content": {
+            "reasoning": "The optimal solution for Two Sum involves using a Map to store the numbers we have seen so far and their indices. This allows us to find the complement of each number relative to the target in constant time, resulting in an overall time complexity of O(n). We iterate over the array, and for each number, we calculate its complement and check if it exists in the Map. If it does, we return the indices of the current number and its complement. If not, we add the current number and its index to the Map.",
+            "proposed_changes": [
+              {
+                "filename": "solution.js",
+                "original": "// Your solution here",
+                "replacement": "const numMap = new Map();\nfor (let i = 0; i < nums.length; i++) {\n  const complement = target - nums[i];\n  if (numMap.has(complement)) {\n    return [numMap.get(complement), i];\n  }\n  numMap.set(nums[i], i);\n}\nreturn [];",
+                "explanation": "This replacement implements the optimal O(n) solution for Two Sum using a Map to store seen numbers and their indices."
+              }
+            ],
+            "follow_up": "Test the function with example inputs to verify its correctness, such as twoSum([2, 7, 11, 15], 9) which should return [0, 1]."
+          }
+        }
+      ],
       "current_codebase": {
-        "solution.js": "function twoSum(nums, target) {\n  // Your solution here\n}\n\nmodule.exports = { twoSum };"
+        "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\nfor (let i = 0; i < nums.length; i++) {\n  const complement = target - nums[i];\n  if (numMap.has(complement)) {\n    return [numMap.get(complement), i];\n  }\n  numMap.set(nums[i], i);\n}\nreturn [];\n}\n\nmodule.exports = { twoSum };"
       },
-      "submitted_code": null,
-      "status": "in_progress",
+      "submitted_code": {
+        "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\nfor (let i = 0; i < nums.length; i++) {\n  const complement = target - nums[i];\n  if (numMap.has(complement)) {\n    return [numMap.get(complement), i];\n  }\n  numMap.set(nums[i], i);\n}\nreturn [];\n}\n\nmodule.exports = { twoSum };"
+      },
+      "status": "evaluated",
       "started_at": "2026-07-04T04:51:58.398Z",
-      "submitted_at": null
+      "submitted_at": "2026-07-04T04:52:41.659Z"
     }
   ],
   "interview_reports": [
@@ -1466,6 +1488,57 @@
         }
       ],
       "generated_at": "2026-07-04T04:51:17.466Z"
+    },
+    {
+      "id": "33c11232-3d20-4090-a42a-94fd5cc9b988",
+      "session_id": "22284828-32f6-4346-824b-ee94dc6f2d4a",
+      "user_id": "demo-user-id",
+      "scores": {
+        "prompt_engineering": 8,
+        "problem_decomposition": 6,
+        "context_management": 7,
+        "debugging_ability": 4,
+        "testing_strategy": 2,
+        "code_review_quality": 5,
+        "security_awareness": 1
+      },
+      "strengths": [
+        "The candidate provided a clear and well-scoped initial prompt to the agent, specifying the problem and the desired solution approach."
+      ],
+      "weaknesses": [
+        "The candidate did not engage in any debugging or testing strategy discussion with the agent, and did not critically evaluate the proposed solution."
+      ],
+      "hiring_recommendation": "Conditional Hire",
+      "recommendation_reasoning": "The candidate demonstrated some strengths in prompt engineering and context management, but lacked engagement in critical aspects of the problem-solving process such as debugging and testing strategy. With additional training or experience, the candidate may develop the necessary skills to excel in this role.",
+      "overall_score": 48,
+      "test_results": [
+        {
+          "test_id": "t1",
+          "description": "Returns 401 when no token provided",
+          "passed": false
+        },
+        {
+          "test_id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "passed": false
+        },
+        {
+          "test_id": "t3",
+          "description": "Returns 401 when token is expired",
+          "passed": false
+        },
+        {
+          "test_id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "passed": false
+        },
+        {
+          "test_id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "passed": false
+        }
+      ],
+      "generated_at": "2026-07-04T04:52:44.025Z"
     }
   ]
 }
