@@ -691,22 +691,38 @@ export async function saveBehavioralReport(
 
     if (!userId) return false
 
-    const { error } = await supabase.from("behavioral_analysis").insert({
+    const record = {
       user_id: userId,
       session_id: sessionId,
       answer_scores: answerScores,
       physical_metrics: physicalMetrics,
       final_report: finalReport,
       speaking_analysis: speakingAnalysis || null
-    })
+    }
+
+    const { error } = await supabase.from("behavioral_analysis").insert(record)
+
+    // Always back up/store to local cache
+    writeLocalCache("behavioral_analysis", sessionId, record)
 
     if (error) {
-      console.error("Error saving behavioral report in Supabase:", error)
-      return false
+      console.error("Error saving behavioral report in Supabase, saved locally:", error)
+      return true
     }
     return true
   } catch (e) {
-    console.error("Supabase saveBehavioralReport failed:", e)
+    console.error("Supabase saveBehavioralReport failed, saving locally if possible:", e)
+    // Try to save locally anyway
+    try {
+      writeLocalCache("behavioral_analysis", sessionId, {
+        session_id: sessionId,
+        answer_scores: answerScores,
+        physical_metrics: physicalMetrics,
+        final_report: finalReport,
+        speaking_analysis: speakingAnalysis || null
+      })
+      return true
+    } catch (_) {}
     return false
   }
 }
@@ -736,14 +752,18 @@ export async function getBehavioralReport(sessionId: string) {
       .maybeSingle()
 
     if (error) {
-      console.error("Error fetching behavioral report from Supabase:", error)
-      return null
+      console.error("Error fetching behavioral report from Supabase, checking local cache:", error)
+      return readLocalCache("behavioral_analysis", sessionId)
+    }
+
+    if (!data) {
+      return readLocalCache("behavioral_analysis", sessionId)
     }
 
     return data
   } catch (e) {
-    console.error("Supabase getBehavioralReport failed:", e)
-    return null
+    console.error("Supabase getBehavioralReport failed, checking local cache:", e)
+    return readLocalCache("behavioral_analysis", sessionId)
   }
 }
 
@@ -937,13 +957,26 @@ export async function getGitHubAnalysis(): Promise<any | null> {
       .maybeSingle()
 
     if (error) {
-      console.error("Error fetching github analysis in action:", error)
-      return null
+      console.error("Error fetching github analysis in action, checking local cache:", error)
+      return readLocalCache("github_analysis", userId)
+    }
+
+    if (!data) {
+      return readLocalCache("github_analysis", userId)
     }
 
     return data
   } catch (e) {
-    console.error("getGitHubAnalysis failed:", e)
+    console.error("getGitHubAnalysis failed, checking local cache:", e)
+    try {
+      const session = await getServerSession(authOptions)
+      const supabase = await createClient()
+      const { data: { user: supabaseUser } } = await supabase.auth.getUser()
+      const userId = (session?.user as any)?.id || supabaseUser?.id
+      if (userId) {
+        return readLocalCache("github_analysis", userId)
+      }
+    } catch (_) {}
     return null
   }
 }
