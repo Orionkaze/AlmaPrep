@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
+import { getSessionById, getChallengeById } from "@/lib/interviewDb";
 
 function cleanJsonResponseText(text: string): string {
   let cleaned = text.trim();
@@ -58,24 +59,14 @@ export async function POST(request: Request) {
       }, { status: 403 });
     }
 
-    // 2. Fetch session and challenge data
-    const { data: session, error: sessionErr } = await supabase
-      .from("interview_sessions")
-      .select("*")
-      .eq("id", session_id)
-      .maybeSingle();
-
-    if (sessionErr || !session) {
+    // 2. Fetch session and challenge data using localDb-aware helpers
+    const session = await getSessionById(session_id);
+    if (!session) {
       return NextResponse.json({ error: "Session not found" }, { status: 404 });
     }
 
-    const { data: challenge, error: challengeErr } = await supabase
-      .from("challenges")
-      .select("*")
-      .eq("id", session.challenge_id)
-      .maybeSingle();
-
-    if (challengeErr || !challenge) {
+    const challenge = await getChallengeById(session.challenge_id);
+    if (!challenge) {
       return NextResponse.json({ error: "Challenge not found" }, { status: 404 });
     }
 
