@@ -28,6 +28,7 @@ import {
   LogOut,
   Sparkles
 } from "lucide-react"
+import { toast } from "sonner"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
@@ -139,7 +140,6 @@ export default function ProfileContent({
   const [isEditing, setIsEditing] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
 
   // GitHub Analysis states
@@ -152,8 +152,10 @@ export default function ProfileContent({
     const nextVal = !githubAutosave
     setGithubAutosave(nextVal)
     const result = await updateGithubAutosave(nextVal)
-    if (!result.success) {
-      setError(result.error || "Failed to update auto-save setting")
+    if (result.success) {
+      toast.success(`GitHub Auto-save ${nextVal ? "enabled" : "disabled"}`)
+    } else {
+      toast.error(result.error || "Failed to update auto-save setting")
       setGithubAutosave(!nextVal) // revert
     }
   }
@@ -241,24 +243,23 @@ export default function ProfileContent({
 
   const handleSave = async () => {
     if (!username.trim()) {
-      setError("Username cannot be empty")
+      toast.error("Username cannot be empty")
       return
     }
 
     setLoading(true)
     setError(null)
-    setSuccess(null)
 
     const result = await updateUserProfile(username.trim(), selectedAvatar)
 
     if (result.success) {
-      setSuccess("Profile updated successfully!")
+      toast.success("Profile updated successfully!")
       setIsEditing(false)
       setTimeout(() => {
         window.location.reload()
       }, 500)
     } else {
-      setError(result.error || "Failed to update profile")
+      toast.error(result.error || "Failed to update profile")
     }
     setLoading(false)
   }
@@ -436,7 +437,6 @@ export default function ProfileContent({
                     </div>
                   </div>
                 )}
-                {success && <p className="text-xs text-green-500 font-medium">{success}</p>}
               </CardContent>
             </Card>
 
