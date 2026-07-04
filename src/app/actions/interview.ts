@@ -8,6 +8,7 @@ import { authOptions } from "@/lib/auth"
 import { cookies } from "next/headers"
 import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
+import { writeLocalCache, readLocalCache } from "@/lib/localCache"
 
 interface MessageInput {
   role: "user" | "ai"

@@ -53,6 +53,12 @@ export async function POST(req: NextRequest) {
       if (cached && !cachedError) {
         return NextResponse.json({ result: cached, cached: true })
       }
+
+      // Local filesystem fallback
+      const localCached = readLocalCache("github_analysis", userId)
+      if (localCached) {
+        return NextResponse.json({ result: localCached, cached: true })
+      }
     }
 
     // 5. Fetch repo data using GitHub REST API
@@ -88,6 +94,9 @@ export async function POST(req: NextRequest) {
     if (upsertError) {
       console.error("[api/github-analysis] Failed to store GitHub analysis in database:", upsertError.message)
     }
+
+    // Always back up/store to local cache
+    writeLocalCache("github_analysis", userId, analysisRecord)
 
     return NextResponse.json({ result: analysisRecord, cached: false })
   } catch (error: any) {
