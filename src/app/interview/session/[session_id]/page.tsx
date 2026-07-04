@@ -1531,7 +1531,11 @@ __run_test()
                 <button
                   onClick={() => {
                     setShowGitHubModal(false);
-                    router.push("/dashboard");
+                    if (reportId) {
+                      router.push(`/interview/report/${reportId}`);
+                    } else {
+                      router.push("/dashboard");
+                    }
                   }}
                   className="bg-[#059669] hover:bg-[#047857] text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
                 >
@@ -1542,7 +1546,11 @@ __run_test()
                   <button
                     onClick={() => {
                       setShowGitHubModal(false);
-                      router.push("/dashboard");
+                      if (reportId) {
+                        router.push(`/interview/report/${reportId}`);
+                      } else {
+                        router.push("/dashboard");
+                      }
                     }}
                     disabled={isSavingToGitHub}
                     className="bg-transparent hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs px-4 py-2 rounded-lg border border-slate-700 transition-all cursor-pointer disabled:opacity-50"
