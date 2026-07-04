@@ -998,13 +998,48 @@
       "id": "b0113daf-bf88-4786-97ec-2f9bd2e39a76",
       "user_id": "demo-user-id",
       "challenge_id": "e1a2b3c4-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+      "conversation": [
+        {
+          "role": "user",
+          "content": "Please implement the optimal O(n) solution for Two Sum in solution.js. Use a Map to keep track of seen numbers and their indices, find the complement of each number relative to the target, and return the correct pair of indices. Replace the \"// Your solution here\" comment inside the function."
+        },
+        {
+          "role": "assistant",
+          "content": {
+            "reasoning": "The optimal solution for the Two Sum problem involves using a Map to store the numbers we have seen so far and their indices. We then iterate over the array, and for each number, we calculate its complement relative to the target. If the complement is already in the Map, we return the current index and the index of the complement. If not, we add the current number and its index to the Map. This approach allows us to find the solution in O(n) time complexity.",
+            "proposed_changes": [
+              {
+                "filename": "solution.js",
+                "original": "// Your solution here",
+                "replacement": "const numMap = new Map();\nfor (let i = 0; i < nums.length; i++) {\n  const complement = target - nums[i];\n  if (numMap.has(complement)) {\n    return [numMap.get(complement), i];\n  }\n  numMap.set(nums[i], i);\n}\nreturn [];",
+                "explanation": "This replacement implements the optimal O(n) solution for the Two Sum problem using a Map to keep track of seen numbers and their indices."
+              }
+            ],
+            "follow_up": "Test the function with example inputs, such as twoSum([2, 7, 11, 15], 9), to verify that it returns the correct pair of indices, which is [0, 1]."
+          }
+        }
+      ],
+      "current_codebase": {
+        "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\nfor (let i = 0; i < nums.length; i++) {\n  const complement = target - nums[i];\n  if (numMap.has(complement)) {\n    return [numMap.get(complement), i];\n  }\n  numMap.set(nums[i], i);\n}\nreturn [];\n}\n\nmodule.exports = { twoSum };"
+      },
+      "submitted_code": {
+        "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\nfor (let i = 0; i < nums.length; i++) {\n  const complement = target - nums[i];\n  if (numMap.has(complement)) {\n    return [numMap.get(complement), i];\n  }\n  numMap.set(nums[i], i);\n}\nreturn [];\n}\n\nmodule.exports = { twoSum };"
+      },
+      "status": "evaluated",
+      "started_at": "2026-07-04T04:49:22.444Z",
+      "submitted_at": "2026-07-04T04:51:14.959Z"
+    },
+    {
+      "id": "22284828-32f6-4346-824b-ee94dc6f2d4a",
+      "user_id": "demo-user-id",
+      "challenge_id": "e1a2b3c4-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
       "conversation": [],
       "current_codebase": {
         "solution.js": "function twoSum(nums, target) {\n  // Your solution here\n}\n\nmodule.exports = { twoSum };"
       },
       "submitted_code": null,
       "status": "in_progress",
-      "started_at": "2026-07-04T04:49:22.444Z",
+      "started_at": "2026-07-04T04:51:58.398Z",
       "submitted_at": null
     }
   ],
@@ -1378,6 +1413,59 @@
         }
       ],
       "generated_at": "2026-06-28T14:16:53.663Z"
+    },
+    {
+      "id": "7f408586-bff6-4354-9b31-2b9a4f07890e",
+      "session_id": "b0113daf-bf88-4786-97ec-2f9bd2e39a76",
+      "user_id": "demo-user-id",
+      "scores": {
+        "prompt_engineering": 8,
+        "problem_decomposition": 6,
+        "context_management": 7,
+        "debugging_ability": 2,
+        "testing_strategy": 4,
+        "code_review_quality": 3,
+        "security_awareness": 1
+      },
+      "strengths": [
+        "The candidate was able to clearly articulate the problem and provide a well-defined prompt to the agent.",
+        "The candidate provided relevant context by specifying the file and the function that needed to be modified."
+      ],
+      "weaknesses": [
+        "The candidate did not engage in any debugging or testing activities, simply accepting the agent's proposed solution without critique.",
+        "The candidate did not demonstrate any security awareness or consideration of potential security implications."
+      ],
+      "hiring_recommendation": "Conditional Hire",
+      "recommendation_reasoning": "The candidate demonstrated some strengths in prompt engineering and context management, but showed significant weaknesses in debugging ability, testing strategy, and security awareness. With additional training and experience, the candidate may be able to develop the necessary skills to excel in this role.",
+      "overall_score": 38,
+      "test_results": [
+        {
+          "test_id": "t1",
+          "description": "Returns 401 when no token provided",
+          "passed": false
+        },
+        {
+          "test_id": "t2",
+          "description": "Returns 401 when token is malformed",
+          "passed": false
+        },
+        {
+          "test_id": "t3",
+          "description": "Returns 401 when token is expired",
+          "passed": false
+        },
+        {
+          "test_id": "t4",
+          "description": "Returns 200 and user data when token is valid",
+          "passed": false
+        },
+        {
+          "test_id": "t5",
+          "description": "Does not crash on missing Authorization header",
+          "passed": false
+        }
+      ],
+      "generated_at": "2026-07-04T04:51:17.466Z"
     }
   ]
 }
