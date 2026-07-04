@@ -1689,6 +1689,54 @@
       "status": "evaluated",
       "started_at": "2026-07-04T05:06:10.234Z",
       "submitted_at": "2026-07-04T05:29:03.739Z"
+    },
+    {
+      "id": "b6bf470c-1208-4a4a-b662-d73fe610b704",
+      "user_id": "demo-user-id",
+      "challenge_id": "e1a2b3c4-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+      "conversation": [
+        {
+          "role": "user",
+          "content": "function twoSum(nums, target) {\n  // Your solution here\n}\n\nmodule.exports = { twoSum };\n\nfix this"
+        },
+        {
+          "role": "assistant",
+          "content": {
+            "reasoning": "The twoSum function is not implemented. It should take an array of numbers and a target sum, then return the indices of the two numbers that add up to the target. We can solve this using a hash table to store the numbers we have seen so far and their indices.",
+            "proposed_changes": [
+              {
+                "filename": "solution.js",
+                "original": "function twoSum(nums, target) {\n  // Your solution here\n}",
+                "replacement": "function twoSum(nums, target) {\n  const numToIndex = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (numToIndex.has(complement)) {\n      return [numToIndex.get(complement), i];\n    }\n    numToIndex.set(nums[i], i);\n  }\n  throw new Error('No solution found');\n}",
+                "explanation": "This implementation iterates over the array, for each number it checks if its complement (target - current number) is in the hash table. If it is, it returns the indices of the complement and the current number. If not, it adds the current number and its index to the hash table."
+              }
+            ],
+            "follow_up": "Test the function with example inputs to ensure it works correctly, such as twoSum([2, 7, 11, 15], 9) which should return [0, 1]."
+          }
+        }
+      ],
+      "current_codebase": {
+        "solution.js": "function twoSum(nums, target) {\n  const numToIndex = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (numToIndex.has(complement)) {\n      return [numToIndex.get(complement), i];\n    }\n    numToIndex.set(nums[i], i);\n  }\n  throw new Error('No solution found');\n}\n\nmodule.exports = { twoSum };"
+      },
+      "submitted_code": {
+        "solution.js": "function twoSum(nums, target) {\n  const numToIndex = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (numToIndex.has(complement)) {\n      return [numToIndex.get(complement), i];\n    }\n    numToIndex.set(nums[i], i);\n  }\n  throw new Error('No solution found');\n}\n\nmodule.exports = { twoSum };"
+      },
+      "status": "evaluated",
+      "started_at": "2026-07-04T05:35:47.525Z",
+      "submitted_at": "2026-07-04T05:36:18.967Z"
+    },
+    {
+      "id": "fb97392f-1e74-46c5-b6a9-bcf62bba7981",
+      "user_id": "7673452a-0948-4cc3-a38c-4f834352bb62",
+      "challenge_id": "e1a2b3c4-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+      "conversation": [],
+      "current_codebase": {
+        "solution.js": "function twoSum(nums, target) {\n  // Your solution here\n}\n\nmodule.exports = { twoSum };"
+      },
+      "submitted_code": null,
+      "status": "in_progress",
+      "started_at": "2026-07-04T05:37:01.598Z",
+      "submitted_at": null
     }
   ],
   "interview_reports": [
@@ -2165,6 +2213,53 @@
         }
       ],
       "generated_at": "2026-07-04T04:52:44.025Z"
+    },
+    {
+      "id": "b4c89466-03e7-47ee-9e78-28fe273db83a",
+      "session_id": "b6bf470c-1208-4a4a-b662-d73fe610b704",
+      "user_id": "7673452a-0948-4cc3-a38c-4f834352bb62",
+      "scores": {
+        "prompt_engineering": 8,
+        "problem_decomposition": 9,
+        "context_management": 8,
+        "debugging_ability": 4,
+        "testing_strategy": 10,
+        "code_review_quality": 9,
+        "security_awareness": 9
+      },
+      "strengths": [
+        "Implemented core algorithm matching time complexity of O(n)",
+        "Add comments to explain the logic",
+        "Validate input types to prevent potential errors"
+      ],
+      "weaknesses": [
+        "Missed edge case: Null or undefined input",
+        "Missed edge case: Non-integer values",
+        "Missed edge case: Non-array input",
+        "Lack of comments",
+        "Potential division by zero not handled"
+      ],
+      "hiring_recommendation": "Strong Hire",
+      "recommendation_reasoning": "The candidate successfully resolved the coding challenge, passing 3 of 3 sandbox tests. The algorithm shows optimal time complexity (O(n)) and clean style (8/10 readability).",
+      "overall_score": 94,
+      "test_results": [
+        {
+          "test_id": "test-0",
+          "description": "Test Case 1 with arguments: [[2,7,11,15],9]",
+          "passed": true
+        },
+        {
+          "test_id": "test-1",
+          "description": "Test Case 2 with arguments: [[3,2,4],6]",
+          "passed": true
+        },
+        {
+          "test_id": "test-2",
+          "description": "Test Case 3 with arguments: [[3,3],6]",
+          "passed": true
+        }
+      ],
+      "generated_at": "2026-07-04T05:36:18.973Z"
     }
   ]
 }
