@@ -13,8 +13,11 @@ import {
   Upload,
   Loader2
 } from "lucide-react"
-import { GlassCard } from "@/components/ui/glass-card"
-import { GlowButton } from "@/components/ui/glow-button"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Progress } from "@/components/ui/progress"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { saveAndAnalyzeResume, ResumeAnalysis } from "@/app/actions/resume"
 import { parseDocument } from "@/app/actions/parse-document"
 
@@ -101,7 +104,6 @@ export default function ResumeContent({
     setError(null)
     setLoadingStepIdx(0)
 
-    // Progressive step interval simulation for visual polish
     const stepInterval = setInterval(() => {
       setLoadingStepIdx((prev) => {
         if (prev < loadingSteps.length - 1) {
@@ -138,11 +140,8 @@ export default function ResumeContent({
           <p className="text-sm text-muted-foreground h-5 animate-pulse transition-all">
             {loadingSteps[loadingStepIdx]}
           </p>
-          <div className="w-full max-w-xs bg-white/5 border border-white/5 rounded-full h-1.5 mt-6 overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500"
-              style={{ width: `${((loadingStepIdx + 1) / loadingSteps.length) * 100}%` }}
-            />
+          <div className="w-full max-w-xs mt-6">
+            <Progress value={((loadingStepIdx + 1) / loadingSteps.length) * 100} className="h-1.5 w-full" />
           </div>
         </div>
       ) : (
@@ -159,7 +158,7 @@ export default function ResumeContent({
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-medium transition-colors cursor-pointer text-muted-foreground hover:text-foreground"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted border border-border hover:bg-muted/70 text-xs font-semibold transition-colors cursor-pointer text-muted-foreground hover:text-foreground"
                   >
                     <Upload size={14} strokeWidth={1.75} />
                     Upload File
@@ -239,9 +238,9 @@ Software Engineer at TechCorp (2024-Present)
                   </div>
                 )}
 
-                <GlowButton type="submit" disabled={!resumeText.trim()} className="h-12 w-full cursor-pointer">
+                <Button type="submit" disabled={!resumeText.trim()} className="h-12 w-full cursor-pointer font-semibold">
                   Analyze with Mock AI
-                </GlowButton>
+                </Button>
               </form>
             ) : (
               <div className="relative group">
@@ -263,89 +262,126 @@ Software Engineer at TechCorp (2024-Present)
             {analysis ? (
               <div className="flex flex-col gap-6">
                 {/* Summary */}
-                <GlassCard className="p-5 relative overflow-hidden">
+                <Card className="shadow-sm relative overflow-hidden text-left">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-2xl pointer-events-none" />
-                  <h3 className="text-sm font-bold text-secondary mb-2 uppercase tracking-wider">Candidate Profile</h3>
-                  <p className="text-sm text-body leading-relaxed italic">
-                    &ldquo;{analysis.summary}&rdquo;
-                  </p>
-                </GlassCard>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xs uppercase tracking-wider text-secondary">Candidate Profile</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-foreground leading-relaxed italic">
+                      &ldquo;{analysis.summary}&rdquo;
+                    </p>
+                  </CardContent>
+                </Card>
 
                 {/* Skills */}
-                <GlassCard className="p-5">
-                  <h3 className="text-sm font-bold text-primary mb-3 uppercase tracking-wider">Detected Skills</h3>
-                  <div className="flex gap-2 flex-wrap">
+                <Card className="shadow-sm text-left">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xs uppercase tracking-wider text-primary">Detected Skills</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex gap-2 flex-wrap">
                     {analysis.skills.map((skill, idx) => (
-                      <span
+                      <Badge
                         key={idx}
-                        className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all cursor-default"
+                        variant="secondary"
+                        className="text-xs font-semibold px-3 py-1 rounded-full cursor-default hover:bg-muted"
                       >
                         {skill}
-                      </span>
+                      </Badge>
                     ))}
-                  </div>
-                </GlassCard>
+                  </CardContent>
+                </Card>
 
                 {/* Highlights */}
-                <GlassCard className="p-5">
-                  <h3 className="text-sm font-bold text-foreground mb-3 uppercase tracking-wider flex items-center gap-2" style={headingStyle}>
-                    <CheckCircle className="text-green-500 text-xs" size={16} strokeWidth={1.75} />
-                    Key Accomplishments
-                  </h3>
-                  <ul className="text-sm text-body space-y-2.5 list-none pl-1">
-                    {analysis.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex gap-2.5 items-start">
-                        <span className="text-primary mt-1">•</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </GlassCard>
+                <Card className="shadow-sm text-left">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xs uppercase tracking-wider text-foreground flex items-center gap-1.5" style={headingStyle}>
+                      <CheckCircle className="text-green-500" size={14} strokeWidth={1.75} />
+                      Key Accomplishments
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-xs text-muted-foreground space-y-2.5 list-none pl-0">
+                      {analysis.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex gap-2 items-start leading-relaxed">
+                          <span className="text-primary font-bold shrink-0">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
 
-                {/* Focus Topics */}
-                <GlassCard className="p-5 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full blur-2xl pointer-events-none" />
-                  <h3 className="text-sm font-bold text-accent mb-3 uppercase tracking-wider flex items-center gap-2" style={headingStyle}>
-                    <Compass className="text-accent text-xs animate-pulse" size={16} strokeWidth={1.75} />
-                    Recommended Interview Topics
-                  </h3>
-                  <div className="flex flex-col gap-2">
-                    {analysis.interviewTopics.map((topic, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-body"
-                      >
-                        <span className="font-medium">{topic}</span>
-                        <ArrowRight className="text-muted-foreground/35" size={14} strokeWidth={2} />
-                      </div>
-                    ))}
-                  </div>
-                </GlassCard>
+                {/* Recommended Interview Topics - Custom Table */}
+                <Card className="shadow-sm text-left overflow-hidden">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xs uppercase tracking-wider text-accent flex items-center gap-1.5" style={headingStyle}>
+                      <Compass className="animate-pulse" size={14} strokeWidth={1.75} />
+                      Recommended Interview Topics
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <Table>
+                      <TableHeader className="bg-muted/40">
+                        <TableRow>
+                          <TableHead className="text-[10px] font-bold text-muted-foreground h-9 px-4">Topic</TableHead>
+                          <TableHead className="text-[10px] font-bold text-muted-foreground h-9 px-4">Focus Track</TableHead>
+                          <TableHead className="text-[10px] font-bold text-muted-foreground h-9 px-4">Priority</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {analysis.interviewTopics.map((topic, idx) => {
+                          const isEngineering = /algorithm|data structure|system design|coding|concurrency|database|api|backend|frontend|react|python|java|javascript|network/i.test(topic)
+                          const track = isEngineering ? "Engineering" : "Admissions / HR"
+                          const priority = idx < 2 ? "High" : "Medium"
+                          const priorityBadgeColor = priority === "High" 
+                            ? "bg-rose-500/10 text-rose-500 border border-rose-500/20 animate-pulse" 
+                            : "bg-amber-500/10 text-amber-500 border border-amber-500/20"
+                          return (
+                            <TableRow key={idx} className="hover:bg-muted/20 transition-colors">
+                              <TableCell className="text-xs font-semibold text-foreground px-4 py-3">{topic}</TableCell>
+                              <TableCell className="text-xs text-muted-foreground px-4 py-3">{track}</TableCell>
+                              <TableCell className="text-xs px-4 py-3">
+                                <Badge variant="outline" className={`${priorityBadgeColor} text-[9px] font-bold py-0 h-5`}>
+                                  {priority}
+                                </Badge>
+                              </TableCell>
+                            </TableRow>
+                          )
+                        })}
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                </Card>
 
                 {/* Improvements */}
-                <GlassCard className="p-5 border-yellow-500/10">
-                  <h3 className="text-sm font-bold text-yellow-500 mb-3 uppercase tracking-wider flex items-center gap-2" style={headingStyle}>
-                    <AlertTriangle className="text-yellow-500 text-xs" size={16} strokeWidth={1.75} />
-                    Suggested Resume Updates
-                  </h3>
-                  <ul className="text-sm text-body space-y-2.5 list-none pl-1">
-                    {analysis.improvements.map((improvement, idx) => (
-                      <li key={idx} className="flex gap-2.5 items-start">
-                        <span className="text-yellow-500 mt-1">•</span>
-                        <span>{improvement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </GlassCard>
+                <Card className="shadow-sm border-yellow-500/10 text-left bg-yellow-500/[0.02]">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xs uppercase tracking-wider text-yellow-500 flex items-center gap-1.5" style={headingStyle}>
+                      <AlertTriangle size={14} strokeWidth={1.75} />
+                      Suggested Resume Updates
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-xs text-muted-foreground space-y-2.5 list-none pl-0">
+                      {analysis.improvements.map((improvement, idx) => (
+                        <li key={idx} className="flex gap-2 items-start leading-relaxed">
+                          <span className="text-yellow-500 font-bold shrink-0">•</span>
+                          <span>{improvement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
               </div>
             ) : (
-              <GlassCard className="p-8 text-center flex flex-col items-center justify-center py-20 text-muted-foreground border-dashed border-2">
+              <Card className="p-8 text-center flex flex-col items-center justify-center py-20 text-muted-foreground border-dashed border-2 bg-card">
                 <ListChecks className="text-muted-foreground/30 mb-4" size={40} strokeWidth={1.75} />
                 <h3 className="text-base font-semibold mb-1 text-foreground" style={headingStyle}>No Resume Analysis Yet</h3>
                 <p className="text-xs text-muted-foreground max-w-sm">
                   Paste your resume details on the left and run analysis to get personalized feedback and unlock resume-based mock interviews.
                 </p>
-              </GlassCard>
+              </Card>
             )}
           </div>
         </div>
