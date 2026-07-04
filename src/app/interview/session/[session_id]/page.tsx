@@ -1383,13 +1383,35 @@ __run_test()
                 </button>
               )}
 
-              {/* Default Close */}
-              {((attemptsCount >= 3) || ((testRunResults?.passed / testRunResults?.total) >= 0.7 && evaluationFeedback?.logic?.logicScore >= 7 && evaluationFeedback?.quality?.qualityScore >= 6)) && (
+              {/* If Passed - Finish & Exit */}
+              {evaluationFeedback && (testRunResults?.passed / testRunResults?.total) >= 0.7 && 
+               evaluationFeedback.logic?.logicScore >= 7 && 
+               evaluationFeedback.quality?.qualityScore >= 6 && (
                 <button
-                  onClick={() => setShowResultsModal(false)}
-                  className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                  onClick={() => {
+                    setShowResultsModal(false);
+                    router.push("/dashboard");
+                  }}
+                  className="bg-[#059669] hover:bg-[#047857] text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
                 >
-                  Close
+                  Finish & Exit
+                </button>
+              )}
+
+              {/* If Failed and no attempts remain */}
+              {attemptsCount >= 3 && evaluationFeedback && !(
+                (testRunResults?.passed / testRunResults?.total) >= 0.7 && 
+                evaluationFeedback.logic?.logicScore >= 7 && 
+                evaluationFeedback.quality?.qualityScore >= 6
+              ) && (
+                <button
+                  onClick={() => {
+                    setShowResultsModal(false);
+                    router.push("/dashboard");
+                  }}
+                  className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                >
+                  Exit Workspace
                 </button>
               )}
             </footer>
@@ -1497,15 +1519,21 @@ __run_test()
             <footer className="flex justify-end gap-3 pt-2">
               {createdRepoUrl ? (
                 <button
-                  onClick={() => setShowGitHubModal(false)}
-                  className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                  onClick={() => {
+                    setShowGitHubModal(false);
+                    router.push("/dashboard");
+                  }}
+                  className="bg-[#059669] hover:bg-[#047857] text-white font-bold text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
                 >
-                  Close
+                  Finish & Exit
                 </button>
               ) : (
                 <>
                   <button
-                    onClick={() => setShowGitHubModal(false)}
+                    onClick={() => {
+                      setShowGitHubModal(false);
+                      router.push("/dashboard");
+                    }}
                     disabled={isSavingToGitHub}
                     className="bg-transparent hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs px-4 py-2 rounded-lg border border-slate-700 transition-all cursor-pointer disabled:opacity-50"
                   >
