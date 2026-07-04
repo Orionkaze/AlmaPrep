@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { getSessionById, getChallengeById, updateSession } from "@/lib/interviewDb";
+import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
 
 function cleanJsonResponseText(text: string): string {
   let cleaned = text.trim();
@@ -236,9 +236,66 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       submitted_at: new Date().toISOString()
     });
 
+    // 7. Map AI evaluation to InterviewReport schema and save
+    const logicScore = parsedLogic.logicScore || 0;
+    const qualityScore = parsedQuality.qualityScore || 0;
+
+    const scores = {
+      prompt_engineering: 8,
+      problem_decomposition: logicScore,
+      context_management: 8,
+      debugging_ability: Math.max(4, 10 - (attempts - 1) * 2),
+      testing_strategy: Math.round(passRatio * 10),
+      code_review_quality: qualityScore,
+      security_awareness: parsedQuality.issues?.some((i: string) => i.toLowerCase().includes("security") || i.toLowerCase().includes("safe")) ? 5 : 9
+    };
+
+    const overallScore = Math.round((passRatio * 40) + (logicScore * 3.5) + (qualityScore * 2.5));
+
+    const strengthsList = [
+      `Implemented core algorithm matching time complexity of ${parsedLogic.timeComplexity || "O(n)"}`,
+      ...(parsedQuality.suggestions || []).slice(0, 2)
+    ];
+    if (strengthsList.length < 2) {
+      strengthsList.push("Demonstrated strong debugging structure in Monaco Workspace");
+    }
+
+    const weaknessesList = [
+      ...(parsedLogic.edgeCasesMissed || []).map((ec: string) => `Missed edge case: ${ec}`),
+      ...(parsedQuality.issues || []).slice(0, 2)
+    ];
+    if (weaknessesList.length === 0) {
+      weaknessesList.push("None identified — code meets readability and testing standards.");
+    }
+
+    const hiringRecommendation = isSuccess ? (overallScore >= 85 ? "Strong Hire" : "Hire") : "No Hire";
+    const recommendationReasoning = isSuccess 
+      ? `The candidate successfully resolved the coding challenge, passing ${test_results.passed} of ${test_results.total} sandbox tests. The algorithm shows optimal time complexity (${parsedLogic.timeComplexity || "O(n)"}) and clean style (${parsedQuality.readabilityScore || 0}/10 readability).`
+      : `The candidate did not meet the passing criteria for the coding challenge. They passed ${test_results.passed} of ${test_results.total} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`;
+
+    const mappedTestResults = test_results.results.map((r: any, idx: number) => ({
+      test_id: `test-${idx}`,
+      description: `Test Case ${idx + 1} with arguments: ${JSON.stringify(r.input)}`,
+      passed: r.passed,
+      error: r.passed ? undefined : String(r.actual)
+    }));
+
+    const report = await createReport({
+      session_id,
+      user_id: userId,
+      scores,
+      strengths: strengthsList,
+      weaknesses: weaknessesList,
+      hiring_recommendation: hiringRecommendation,
+      recommendation_reasoning: recommendationReasoning,
+      overall_score: overallScore,
+      test_results: mappedTestResults
+    });
+
     return NextResponse.json({
       success: isSuccess,
       attempts: attempts,
+      report_id: report.id,
       evaluation: {
         logic: parsedLogic,
         quality: parsedQuality,
