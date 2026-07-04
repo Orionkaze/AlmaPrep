@@ -205,7 +205,6 @@ export default function ProfileContent({
   const handleDeleteAccount = async () => {
     setIsDeleting(true)
     setError(null)
-    setSuccess(null)
 
     try {
       // 1. Call server action to clear DB rows and cookies
