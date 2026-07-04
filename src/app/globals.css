@@ -7,6 +7,8 @@
 @theme {
   --color-background: #f8fafc;
   --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
   --color-primary: #059669;
   --color-primary-foreground: #ffffff;
   --color-secondary: #10b981;
@@ -22,7 +24,8 @@
   --color-input: #ffffff;
   --color-ring: #059669;
   
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-head);
   --font-mono: var(--font-geist-mono);
   
   --radius-sm: 0.25rem;
@@ -36,6 +39,48 @@
   color-scheme: light;
 }
 
+.dark {
+  --color-background: #0b1210;       /* deep slate-emerald, not pure black */
+  --color-foreground: #f1f5f9;
+  --color-card: #0e1715;              /* slightly lighter deep slate-emerald */
+  --color-card-foreground: #f1f5f9;
+  --color-primary: #10b981;          /* slightly brighter emerald for dark-bg contrast */
+  --color-primary-foreground: #052e22;
+  --color-secondary: #34d399;
+  --color-secondary-foreground: #052e22;
+  --color-muted: #111c19;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #064e3b;
+  --color-accent-foreground: #a7f3d0;
+  --color-destructive: #f87171;
+  --color-destructive-foreground: #1c0a0a;
+  --color-border: #1e2b27;
+  --color-input: #111c19;
+  --color-ring: #10b981;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+/* Landing/marketing site bridge variables */
+.dark .almaprep-theme,
+.dark.almaprep-theme {
+  --bg:          #0b1210;
+  --bg-card:     #0e1715;
+  --bg-tint:     #111c19;
+  --bg-deep:     #052e22;
+  --ink:         #f1f5f9;
+  --text:        #e2e8f0;
+  --muted:       #94a3b8;
+  --emerald:     #10b981;
+  --emerald-600: #34d399;
+  --emerald-400: #6ee7b7;
+  --emerald-200: #064e3b;
+  --border:      #1e2b27;
+  --border-strong: #1e2b27;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
@@ -43,29 +88,6 @@ body {
 }
 
 @layer utilities {
-  .glass-card {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-top-color: rgba(15, 23, 42, 0.04);
-    border-left-color: rgba(15, 23, 42, 0.04);
-    border-radius: var(--radius-2xl);
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-  }
-
-  .glow-button {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    border: none;
-    color: white;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .glow-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px 0 rgba(5, 150, 105, 0.3);
-  }
-
   .input-glass {
     background-color: var(--color-input);
     border: 1px solid var(--color-border);
