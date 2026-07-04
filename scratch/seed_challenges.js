@@ -463,7 +463,7 @@ async function seed() {
             starter_code: challenge.starter_code,
             hidden_tests: challenge.hidden_tests,
             expected_outcomes: challenge.expected_outcomes
-          }, { onConflict: 'title' });
+          }, { onConflict: 'id' });
           
         if (error) {
           console.error(`Error upserting "${challenge.title}":`, error);
