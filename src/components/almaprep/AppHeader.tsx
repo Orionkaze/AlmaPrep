@@ -94,11 +94,11 @@ export default function AppHeader() {
             {/* Theme Toggle */}
             <li className="flex items-center">
               <Tooltip>
-                <TooltipTrigger asChild>
+                <TooltipTrigger render={
                   <div>
                     <ModeToggle />
                   </div>
-                </TooltipTrigger>
+                } />
                 <TooltipContent className="bg-card text-card-foreground border border-border px-2 py-1 rounded text-xs z-50">
                   Toggle theme
                 </TooltipContent>
@@ -108,7 +108,7 @@ export default function AppHeader() {
             {/* Account dropdown */}
             <li className="nav-cta" style={{ position: "relative" }}>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+                <DropdownMenuTrigger render={
                   <Button
                     variant="outline"
                     className="gap-1.5 py-2 h-9 border border-border hover:border-emerald bg-card hover:bg-muted text-foreground cursor-pointer text-xs font-semibold rounded-lg"
@@ -117,28 +117,28 @@ export default function AppHeader() {
                     <span>Account</span>
                     <ChevronDown size={14} strokeWidth={2} className="text-muted-foreground" />
                   </Button>
-                </DropdownMenuTrigger>
+                } />
                 <DropdownMenuContent align="end" className="z-50 bg-card text-card-foreground border border-border rounded-lg shadow-md p-1 min-w-[180px]">
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem render={
                     <Link
                       href="/dashboard/profile"
                       onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted outline-none cursor-pointer"
+                      className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted outline-none cursor-pointer text-foreground"
                     >
                       <UserRound size={16} strokeWidth={1.75} />
                       Profile
                     </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
+                  } />
+                  <DropdownMenuItem render={
                     <Link
                       href="/pricing"
                       onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted outline-none cursor-pointer"
+                      className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted outline-none cursor-pointer text-foreground"
                     >
                       <CreditCard size={16} strokeWidth={1.75} />
                       Pricing
                     </Link>
-                  </DropdownMenuItem>
+                  } />
                   <DropdownMenuSeparator className="h-px bg-border my-1" />
                   <DropdownMenuItem
                     onClick={handleLogout}
