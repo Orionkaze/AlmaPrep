@@ -150,4 +150,39 @@ export async function clearAllUserData(): Promise<{ success: boolean; error?: st
   }
 }
 
+export async function updateGithubAutosave(enabled: boolean): Promise<{ success: boolean; error?: string }> {
+  try {
+    const cookieStore = await cookies()
+    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+    if (hasDemoCookie) {
+      return { success: true }
+    }
+
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      return { success: false, error: "Not authenticated" }
+    }
+
+    const { error } = await supabase
+      .from("users")
+      .update({
+        github_autosave: enabled
+      })
+      .eq("id", user.id)
+
+    if (error) {
+      console.error("Error updating github_autosave in Supabase:", error)
+      return { success: false, error: error.message }
+    }
+
+    return { success: true }
+  } catch (e) {
+    console.error("updateGithubAutosave failed:", e)
+    return { success: false, error: "An unexpected error occurred" }
+  }
+}
+
+
 

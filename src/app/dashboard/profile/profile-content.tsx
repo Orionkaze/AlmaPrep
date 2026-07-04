@@ -25,7 +25,7 @@ import {
 import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import { Input } from "@/components/ui/input"
-import { updateUserProfile, clearAllUserData } from "@/app/actions/profile"
+import { updateUserProfile, clearAllUserData, updateGithubAutosave } from "@/app/actions/profile"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
@@ -58,6 +58,7 @@ interface ProfileContentProps {
     username: string
     avatar_url: string
     resume_text?: string
+    github_autosave?: boolean
   }
   userEmail: string
   createdAt: string
