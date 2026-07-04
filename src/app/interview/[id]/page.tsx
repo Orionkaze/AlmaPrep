@@ -1,7 +1,7 @@
 "use client"
 
-import { GlowButton } from "@/components/ui/glow-button"
-import { GlassCard } from "@/components/ui/glass-card"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
 import { Mic, MicOff, PhoneOff, MessageSquare, Send, X, VideoOff } from "lucide-react"
@@ -561,7 +561,7 @@ export default function InterviewPage({
     return (
       <main className="min-h-screen bg-[#062b22] flex items-center justify-center p-6 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-        <GlassCard className="max-w-md w-full border border-emerald-500/10 p-8 rounded-3xl relative overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.05)] text-center">
+        <Card className="max-w-md w-full border border-emerald-500/10 p-8 rounded-3xl relative overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.05)] text-center bg-card">
           <div className="size-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto mb-5">
             <ShieldAlert size={32} strokeWidth={1.75} />
           </div>
@@ -590,7 +590,7 @@ export default function InterviewPage({
               ⚠️ Exceeding 5 total warnings will automatically terminate the session.
             </div>
           </div>
-          <GlowButton
+          <Button
             onClick={async () => {
               try {
                 if (document.documentElement.requestFullscreen) {
@@ -601,11 +601,11 @@ export default function InterviewPage({
               }
               setIsStarted(true)
             }}
-            className="w-full h-12 text-sm font-semibold"
+            className="w-full h-12 text-sm font-semibold cursor-pointer"
           >
             Start Interview & Enter Fullscreen
-          </GlowButton>
-        </GlassCard>
+          </Button>
+        </Card>
       </main>
     )
   }

@@ -1,7 +1,7 @@
 "use client"
 
-import { GlassCard } from "@/components/ui/glass-card"
-import { GlowButton } from "@/components/ui/glow-button"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { use, useState, useEffect } from "react"
 import { 
@@ -358,14 +358,14 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         )}
 
         {/* Score Section */}
-        <GlassCard className="flex flex-col items-center text-center mb-6 py-10">
+        <Card className="flex flex-col items-center text-center mb-6 py-10 shadow-sm">
           <h2 className="text-lg font-semibold text-muted-foreground mb-4" style={headingStyle}>Overall Performance</h2>
           <ScoreCircle score={feedback.score} />
           <p className="text-body mt-6 max-w-lg text-sm leading-relaxed">{feedback.summary}</p>
-        </GlassCard>
+        </Card>
 
         {/* Breakdown */}
-        <GlassCard className="mb-6">
+        <Card className="mb-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-5 text-foreground" style={headingStyle}>Score Breakdown</h2>
           <div className="flex flex-col gap-5">
             {feedback.breakdown.map((item) => (
@@ -378,11 +378,11 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
               </div>
             ))}
           </div>
-        </GlassCard>
+        </Card>
 
         {/* Strengths & Improvements */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          <GlassCard>
+          <Card className="shadow-sm">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-foreground" style={headingStyle}>
               <span className="size-8 rounded-lg bg-green-500/20 flex items-center justify-center text-sm">
                 <Check size={16} strokeWidth={1.75} className="text-green-500" />
@@ -397,8 +397,8 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                 </li>
               ))}
             </ul>
-          </GlassCard>
-          <GlassCard>
+          </Card>
+          <Card className="shadow-sm">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-foreground" style={headingStyle}>
               <span className="size-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-sm">
                 <Lightbulb size={16} strokeWidth={1.75} className="text-amber-500" />
@@ -413,7 +413,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                 </li>
               ))}
             </ul>
-          </GlassCard>
+          </Card>
         </div>
 
         {/* Behavioral Analysis Report */}
@@ -454,19 +454,19 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                   <p className="text-xs text-muted-foreground">Combined insights from your speech delivery and physical presence</p>
                 </div>
               </div>
-              <GlassCard className="border border-amber-500/20 bg-amber-500/5 py-6 px-8 rounded-2xl">
+              <Card className="border border-amber-500/20 bg-amber-500/5 py-6 px-8 rounded-2xl shadow-sm">
                 <h4 className="text-sm font-bold text-amber-400 mb-1" style={headingStyle}>Behavioral Report Unavailable</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   The behavioral and physical metrics report is not available for this session. If this is a new session, the AI analysis might still be generating or failed to save. Please try refreshing or restarting the interview.
                 </p>
-              </GlassCard>
+              </Card>
             </div>
           )
         )}
 
         {/* Proctoring Summary Panel */}
         {proctoringData && (
-          <GlassCard className="mb-10 text-left border border-white/5">
+          <Card className="mb-10 text-left border border-white/5 shadow-sm">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white" style={headingStyle}>
               <span className="size-8 rounded-lg bg-red-500/20 flex items-center justify-center text-sm text-red-400">
                 <ShieldAlert size={16} strokeWidth={1.75} />
@@ -541,7 +541,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                 No proctoring violations recorded. Excellent adherence to guidelines!
               </div>
             )}
-          </GlassCard>
+          </Card>
         )}
 
         {/* Question-by-Question Evaluation */}
@@ -571,7 +571,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                   const scoreColor = qScore >= 85 ? "text-green-400 bg-green-500/10 border-green-500/20" : qScore >= 70 ? "text-purple-400 bg-purple-500/10 border-purple-500/20" : "text-red-400 bg-red-500/10 border-red-500/20"
 
                   return (
-                    <GlassCard key={idx} className="p-5 border-white/5 bg-white/2 relative overflow-hidden text-left">
+                    <Card key={idx} className="p-5 border-white/5 bg-white/2 relative overflow-hidden text-left shadow-sm">
                       <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-4">
                         <div className="flex-1">
                           <span className="text-[10px] uppercase tracking-wider text-primary font-bold bg-primary/10 px-2.5 py-1 rounded-md mb-2 inline-block">
@@ -621,7 +621,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                           )}
                         </div>
                       )}
-                    </GlassCard>
+                    </Card>
                   )
                 })}
               </div>
@@ -651,13 +651,13 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             {showStudyGuide && (
               <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
                 {feedback.studyGuide.map((item, idx) => (
-                  <GlassCard key={idx} className="border-primary/20 bg-primary/5 text-left">
+                  <Card key={idx} className="border-primary/20 bg-primary/5 text-left shadow-sm animate-in fade-in duration-200">
                     <h3 className="font-semibold text-primary mb-2 flex items-center gap-2" style={headingStyle}>
                       <span className="size-5 rounded-full bg-primary/20 flex items-center justify-center text-xs">{idx + 1}</span>
                       {item.topic}
                     </h3>
                     <p className="text-sm text-body leading-relaxed">{item.advice}</p>
-                  </GlassCard>
+                  </Card>
                 ))}
               </div>
             )}
@@ -667,12 +667,12 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/interview/setup">
-            <GlowButton className="h-12 px-10 cursor-pointer">Start Another Interview</GlowButton>
+            <Button className="h-12 px-10 cursor-pointer" variant="default">Start Another Interview</Button>
           </Link>
           <Link href="/dashboard">
-            <button className="h-12 px-10 rounded-lg text-sm font-semibold border border-border bg-muted hover:bg-white/10 transition-colors cursor-pointer text-muted-foreground hover:text-foreground">
+            <Button variant="outline" className="h-12 px-10 cursor-pointer text-muted-foreground hover:text-foreground">
               Go to Dashboard
-            </button>
+            </Button>
           </Link>
         </div>
       </div>
