@@ -13,7 +13,7 @@ import {
   AlertTriangle,
   Quote
 } from "lucide-react";
-import { GlassCard } from "@/components/ui/glass-card";
+import { Card } from "@/components/ui/card";
 
 interface AnswerScore {
   star_score: number;
@@ -178,7 +178,7 @@ export default function BehavioralReport({
   return (
     <div className="space-y-8">
       {/* section 1: Coach Feedback Report */}
-      <GlassCard className="border border-emerald-500/10 overflow-hidden relative">
+      <Card className="border border-emerald-500/10 overflow-hidden relative shadow-sm">
         <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={headingStyle}>
           <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
@@ -189,12 +189,12 @@ export default function BehavioralReport({
         <div className="text-body leading-relaxed text-sm space-y-4 font-sans whitespace-pre-wrap">
           {finalReport}
         </div>
-      </GlassCard>
+      </Card>
 
       {/* section 2: Physical Metrics & Answer Quality side-by-side */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Physical Metrics card */}
-        <GlassCard className="border border-emerald-500/10">
+        <Card className="border border-emerald-500/10 shadow-sm">
           <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-sm">
               <Eye size={16} strokeWidth={1.75} className="text-purple-400" />
@@ -263,10 +263,10 @@ export default function BehavioralReport({
               </span>
             </div>
           </div>
-        </GlassCard>
+        </Card>
 
         {/* Answer Quality card */}
-        <GlassCard className="border border-emerald-500/10">
+        <Card className="border border-emerald-500/10 shadow-sm">
           <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
               <BarChart2 size={16} strokeWidth={1.75} className="text-emerald-400" />
@@ -339,14 +339,14 @@ export default function BehavioralReport({
               </div>
             </div>
           </div>
-        </GlassCard>
+        </Card>
       </div>
 
       {/* section 3: Speaking & Pacing Analysis */}
       {speakingAnalysis && (
         <div className="space-y-6">
           {/* Speaking Session summary */}
-          <GlassCard className="border border-emerald-500/10 overflow-hidden relative">
+          <Card className="border border-emerald-500/10 overflow-hidden relative shadow-sm">
             <div className="absolute top-0 left-0 w-[200px] h-[200px] bg-purple-500/5 rounded-full blur-[80px] pointer-events-none" />
             <h3 className="text-lg font-semibold mb-3 flex items-center gap-2" style={headingStyle}>
               <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
@@ -393,12 +393,12 @@ export default function BehavioralReport({
                 <span className="text-[10px] text-muted-foreground font-medium">across full session</span>
               </div>
             </div>
-          </GlassCard>
+          </Card>
 
           {/* Graphical breakdowns and overused words */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Filler frequency custom chart */}
-            <GlassCard className="border border-emerald-500/10">
+            <Card className="border border-emerald-500/10 shadow-sm">
               <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-5 flex items-center gap-2" style={headingStyle}>
                 <Mic size={14} strokeWidth={1.75} className="text-emerald-400" />
                 Filler Word Breakdown
@@ -431,10 +431,10 @@ export default function BehavioralReport({
                   No filler words detected during this session! Excellent work.
                 </div>
               )}
-            </GlassCard>
+            </Card>
 
             {/* Overused Words list */}
-            <GlassCard className="border border-emerald-500/10 flex flex-col justify-between">
+            <Card className="border border-emerald-500/10 flex flex-col justify-between shadow-sm">
               <div>
                 <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2" style={headingStyle}>
                   <AlertTriangle size={14} strokeWidth={1.75} className="text-purple-400" />
@@ -461,11 +461,11 @@ export default function BehavioralReport({
                   No repetitive vocabulary detected.
                 </div>
               )}
-            </GlassCard>
+            </Card>
           </div>
 
           {/* Per-Answer Speaking Critique list */}
-          <GlassCard className="border border-emerald-500/10">
+          <Card className="border border-emerald-500/10 shadow-sm">
             <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-5" style={headingStyle}>
               Detailed Speaking Critique per Answer
             </h4>
@@ -493,13 +493,13 @@ export default function BehavioralReport({
                 </div>
               ))}
             </div>
-          </GlassCard>
+          </Card>
         </div>
       )}
 
       {/* section 4: Per-Answer Quality Breakdown */}
       {answerScores.length > 0 && (
-        <GlassCard className="border border-emerald-500/10">
+        <Card className="border border-emerald-500/10 shadow-sm">
           <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
               <BarChart2 size={16} strokeWidth={1.75} className="text-emerald-400" />
@@ -541,7 +541,7 @@ export default function BehavioralReport({
               </div>
             ))}
           </div>
-        </GlassCard>
+        </Card>
       )}
     </div>
   );
