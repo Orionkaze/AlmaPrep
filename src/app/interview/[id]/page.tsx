@@ -2,6 +2,17 @@
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
 import { Mic, MicOff, PhoneOff, MessageSquare, Send, X, VideoOff } from "lucide-react"
@@ -751,44 +762,95 @@ export default function InterviewPage({
 
       {/* Bottom Control Bar */}
       <div className="h-20 flex items-center justify-center gap-4 bg-[#062b22] border-t border-emerald-500/10 pb-2">
-        <button 
-          onClick={toggleListening}
-          disabled={isAiTyping || isComplete}
-          className={`size-12 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-            isListening 
-              ? "bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]" 
-              : "bg-[#0a3a2f] text-white hover:bg-[#134e40] border border-emerald-500/10"
-          }`}
-          title={isListening ? "Turn off microphone" : "Turn on microphone"}
-        >
-          {isListening ? <Mic size={20} strokeWidth={1.75} /> : <MicOff size={20} strokeWidth={1.75} />}
-        </button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleListening}
+              disabled={isAiTyping || isComplete}
+              className={`size-12 rounded-full cursor-pointer hover:bg-emerald-500/20 hover:text-white transition-all ${
+                isListening 
+                  ? "bg-green-500 text-white hover:bg-green-600 shadow-[0_0_15px_rgba(34,197,94,0.5)]" 
+                  : "bg-[#0a3a2f] text-white border border-emerald-500/10"
+              }`}
+            >
+              {isListening ? <Mic size={20} strokeWidth={1.75} /> : <MicOff size={20} strokeWidth={1.75} />}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent className="bg-[#0a3a2f] text-white border border-emerald-500/20 text-xs px-2 py-1 rounded">
+            {isListening ? "Mute Microphone" : "Unmute Microphone"}
+          </TooltipContent>
+        </Tooltip>
 
-        <button 
-          onClick={() => setIsChatOpen(!isChatOpen)}
-          className={`size-12 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-            isChatOpen ? "bg-primary text-white shadow-primary/50" : "bg-[#0a3a2f] text-white hover:bg-[#134e40] border border-emerald-500/10"
-          }`}
-          title="Toggle Chat"
-        >
-          <MessageSquare size={20} strokeWidth={1.75} />
-        </button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsChatOpen(!isChatOpen)}
+              className={`size-12 rounded-full cursor-pointer hover:bg-emerald-500/20 hover:text-white transition-all ${
+                isChatOpen ? "bg-primary text-white hover:bg-primary/95 shadow-primary/50" : "bg-[#0a3a2f] text-white border border-emerald-500/10"
+              }`}
+            >
+              <MessageSquare size={20} strokeWidth={1.75} />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent className="bg-[#0a3a2f] text-white border border-emerald-500/20 text-xs px-2 py-1 rounded">
+            Toggle Chat Transcript
+          </TooltipContent>
+        </Tooltip>
 
         {isComplete ? (
           <Link href={`/interview/${dbSessionId || category}/feedback`}>
-            <button className="h-12 px-6 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-lg cursor-pointer">
+            <Button className="h-12 px-6 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-lg cursor-pointer">
               View Feedback
-            </button>
+            </Button>
           </Link>
         ) : (
-          <Link href="/dashboard">
-            <button 
-              className="size-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors shadow-[0_0_15px_rgba(239,68,68,0.3)] cursor-pointer"
-              title="Leave Interview"
-            >
-              <PhoneOff size={20} strokeWidth={1.75} />
-            </button>
-          </Link>
+          <Dialog>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="size-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors shadow-[0_0_15px_rgba(239,68,68,0.3)] cursor-pointer"
+                  >
+                    <PhoneOff size={20} strokeWidth={1.75} />
+                  </Button>
+                </DialogTrigger>
+              </TooltipTrigger>
+              <TooltipContent className="bg-[#0a3a2f] text-white border border-emerald-500/20 text-xs px-2 py-1 rounded">
+                End Interview Session
+              </TooltipContent>
+            </Tooltip>
+            <DialogContent className="bg-[#0a3a2f] border border-emerald-500/20 text-white rounded-lg max-w-md w-full p-6 shadow-xl z-50">
+              <DialogHeader>
+                <DialogTitle className="text-lg font-bold flex items-center gap-2 text-red-400">
+                  <ShieldAlert size={20} /> Exit Interview?
+                </DialogTitle>
+                <DialogDescription className="text-xs text-slate-300 pt-1 leading-relaxed">
+                  Are you sure you want to leave? Your progress in this session will be lost and no feedback report will be generated.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter className="flex gap-2 justify-end mt-4">
+                <DialogClose asChild>
+                  <Button variant="outline" className="text-xs h-9 cursor-pointer border-emerald-500/20 text-slate-300 hover:bg-[#134e40] hover:text-white">
+                    Cancel
+                  </Button>
+                </DialogClose>
+                <Link href="/dashboard" className="inline-block">
+                  <Button
+                    variant="destructive"
+                    className="text-xs h-9 bg-red-600 hover:bg-red-700 font-semibold cursor-pointer"
+                  >
+                    Exit Session
+                  </Button>
+                </Link>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         )}
       </div>
 
