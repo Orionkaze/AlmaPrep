@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { fetchGitHubUserData, analyzeGitHubProfile } from "@/lib/github"
+import { writeLocalCache, readLocalCache } from "@/lib/localCache"
 
 export async function POST(req: NextRequest) {
   try {
