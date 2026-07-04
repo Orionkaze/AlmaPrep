@@ -27,7 +27,8 @@ const tables = [
   'interview_sessions',
   'interview_reports',
   'github_analysis',
-  'behavioral_analysis'
+  'behavioral_analysis',
+  'coding_solutions'
 ];
 
 async function checkTables() {
