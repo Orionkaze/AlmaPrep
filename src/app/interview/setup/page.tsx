@@ -1,7 +1,10 @@
 "use client"
 
-import { GlassCard } from "@/components/ui/glass-card"
-import { GlowButton } from "@/components/ui/glow-button"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Switch } from "@/components/ui/switch"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { 
@@ -15,7 +18,8 @@ import {
   Stethoscope,
   Drama,
   Cpu,
-  Globe
+  Globe,
+  ArrowRight
 } from "lucide-react"
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
@@ -61,6 +65,12 @@ const tabCategories = [
   { id: "Sciences & Tech", label: "Sciences & Tech", icon: Cpu },
   { id: "Universal", label: "Universal Banks", icon: Globe },
 ]
+
+const headingStyle: React.CSSProperties = {
+  fontFamily: "var(--font-head), serif",
+  letterSpacing: "-0.015em",
+  fontWeight: 600,
+}
 
 export default function InterviewSetupPage() {
   const [selected, setSelected] = useState<string | null>(null)
@@ -147,30 +157,30 @@ export default function InterviewSetupPage() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden bg-background text-foreground">
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden bg-background text-foreground text-left">
       {/* Background decorations */}
       <div className="fixed top-0 right-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none animate-pulse" />
       <div className="fixed bottom-0 left-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
 
       <div className="relative z-10 w-full max-w-4xl pt-10 pb-16">
         <div className="text-center mb-8">
-          <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors mb-4 inline-block font-medium">
+          <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-4 inline-block font-semibold">
             ← Back to Dashboard
           </Link>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/90 to-foreground/50">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-foreground" style={headingStyle}>
             Setup Your Practice Session
           </h1>
-          <p className="text-foreground/60 text-sm md:text-base max-w-xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
             Choose a general track or practice with our specialized academic & professional program banks.
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="w-full max-w-xl mx-auto mb-8 relative">
-          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-muted-foreground">
+        <div className="w-full max-w-xl mx-auto mb-8 relative flex items-center">
+          <div className="absolute left-4 flex items-center pointer-events-none text-muted-foreground">
             <Search size={16} strokeWidth={1.75} />
           </div>
-          <input
+          <Input
             type="text"
             placeholder="Search 70+ specialized programs (e.g. Medicine, Law, Physics...)"
             value={searchQuery}
@@ -182,7 +192,7 @@ export default function InterviewSetupPage() {
                 setActiveTab("general")
               }
             }}
-            className="w-full h-12 bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 outline-none text-sm focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all placeholder-white/30"
+            className="w-full h-12 border-border focus:border-primary pl-12 pr-12 text-sm bg-card"
           />
           {searchQuery && (
             <button 
@@ -190,37 +200,33 @@ export default function InterviewSetupPage() {
                 setSearchQuery("")
                 setActiveTab("general")
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-foreground/45 hover:text-foreground/80"
+              className="absolute right-4 text-xs text-muted-foreground hover:text-foreground cursor-pointer"
             >
               Clear
             </button>
           )}
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex overflow-x-auto gap-2 pb-4 mb-6 scrollbar-none border-b border-white/5">
+        {/* Category Tabs / Filter list */}
+        <div className="flex overflow-x-auto gap-2 pb-4 mb-6 scrollbar-none border-b border-border">
           {tabCategories.map((tab) => {
-            // Hide search tab unless searching
             if (tab.id === "search" && !searchQuery) return null;
             const isActive = activeTab === tab.id
             return (
-              <button
+              <Button
                 key={tab.id}
+                variant={isActive ? "default" : "outline"}
                 onClick={() => {
                   setActiveTab(tab.id)
                   if (tab.id !== "search") {
                     setSearchQuery("")
                   }
                 }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                  isActive 
-                    ? "border-primary bg-primary/10 text-white ring-1 ring-primary/20" 
-                    : "border-white/5 hover:border-white/10 hover:bg-white/5 text-foreground/60"
-                }`}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer h-9 text-foreground"
               >
-                <tab.icon size={16} strokeWidth={1.75} className={isActive ? "text-primary" : "text-muted-foreground"} />
+                <tab.icon size={14} strokeWidth={1.75} />
                 {tab.label}
-              </button>
+              </Button>
             )
           })}
         </div>
@@ -230,89 +236,88 @@ export default function InterviewSetupPage() {
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20">
               <div className="size-8 border-2 border-primary border-t-transparent rounded-full animate-spin mb-4" />
-              <p className="text-xs text-foreground/50">Loading specialized question banks...</p>
+              <p className="text-xs text-muted-foreground">Loading specialized question banks...</p>
             </div>
           ) : activeTab === "general" ? (
-            /* General Tracks Grid */
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            /* General Tracks Grid using ToggleGroup */
+            <ToggleGroup
+              type="single"
+              value={selected || ""}
+              onValueChange={(val) => {
+                if (val) setSelected(val)
+              }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full"
+            >
               {standardCategories.map((cat) => {
-                const isSelected = selected === cat.id
                 return (
-                  <button key={cat.id} onClick={() => setSelected(cat.id)} className="text-left cursor-pointer focus:outline-none">
-                    <GlassCard
-                      className={`h-full flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.02] border-white/5 ${
-                        isSelected
-                          ? "border-primary bg-primary/5 ring-1 ring-primary/20 shadow-[0_0_20px_rgba(var(--primary-rgb),0.1)]"
-                          : "hover:border-white/15 hover:bg-white/5"
-                      }`}
-                    >
-                      <div className={`size-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center mb-4 opacity-90 shadow-md`}>
-                        <cat.icon size={24} strokeWidth={1.75} className="text-white" />
-                      </div>
-                      <h3 className="text-base font-bold mb-2">{cat.label}</h3>
-                      <p className="text-xs text-foreground/50 leading-relaxed">{cat.description}</p>
-                    </GlassCard>
-                  </button>
+                  <ToggleGroupItem
+                    key={cat.id}
+                    value={cat.id}
+                    variant="outline"
+                    className="h-auto p-6 flex flex-col items-center text-center cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground rounded-2xl w-full"
+                  >
+                    <div className={`size-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center mb-4 opacity-90 shadow-md`}>
+                      <cat.icon size={24} strokeWidth={1.75} className="text-white" />
+                    </div>
+                    <h3 className="text-base font-bold mb-2">{cat.label}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{cat.description}</p>
+                  </ToggleGroupItem>
                 )
               })}
-            </div>
+            </ToggleGroup>
           ) : (
-            /* Programs Grid (Tabs/Search) */
+            /* Programs Grid using ToggleGroup */
             <div>
               {activeTab === "search" && (
-                <div className="text-xs text-foreground/50 mb-3 px-1">
+                <div className="text-xs text-muted-foreground mb-3 px-1">
                   Found {filteredPrograms.length} specialized program{filteredPrograms.length !== 1 ? 's' : ''} matching &ldquo;{searchQuery}&rdquo;
                 </div>
               )}
 
               {filteredPrograms.filter(p => activeTab === "search" || p.category === activeTab).length === 0 ? (
-                <div className="text-center py-12 bg-white/5 border border-dashed border-white/10 rounded-2xl">
+                <div className="text-center py-12 border border-dashed border-border bg-card rounded-2xl">
                   <GraduationCap size={28} strokeWidth={1.75} className="text-muted-foreground/40 mb-3 mx-auto" />
-                  <p className="text-sm font-semibold text-foreground/60">No specialized programs found</p>
-                  <p className="text-xs text-foreground/40 mt-1">Try searching with a different keyword</p>
+                  <p className="text-sm font-semibold text-muted-foreground">No specialized programs found</p>
+                  <p className="text-xs text-muted-foreground/80 mt-1">Try searching with a different keyword</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                <ToggleGroup
+                  type="single"
+                  value={selected || ""}
+                  onValueChange={(val) => {
+                    if (val) setSelected(val)
+                  }}
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 w-full"
+                >
                   {filteredPrograms
                     .filter(p => activeTab === "search" || p.category === activeTab)
                     .map((prog) => {
-                      const isSelected = selected === prog.id
                       return (
-                        <button 
-                          key={prog.id} 
-                          onClick={() => setSelected(prog.id)} 
-                          className="text-left cursor-pointer focus:outline-none"
+                        <ToggleGroupItem
+                          key={prog.id}
+                          value={prog.id}
+                          variant="outline"
+                          className="p-4 rounded-xl flex flex-col justify-between h-28 relative overflow-hidden bg-card cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground w-full text-left items-stretch"
                         >
-                          <div 
-                            className={`p-4 rounded-xl border transition-all duration-200 hover:scale-[1.01] flex flex-col justify-between h-28 relative overflow-hidden bg-white/5 ${
-                              isSelected
-                                ? "border-primary bg-primary/10 shadow-[0_0_15px_rgba(var(--primary-rgb),0.05)]"
-                                : "border-white/5 hover:border-white/10 hover:bg-white/10"
-                            }`}
-                          >
+                          <div className="flex flex-col flex-1 justify-between">
                             <div>
                               <div className="flex items-start justify-between gap-2">
-                                <h4 className="text-xs md:text-sm font-bold text-white leading-tight line-clamp-2 pr-4">
+                                <h4 className="text-xs md:text-sm font-bold leading-tight line-clamp-2 pr-4 text-foreground">
                                   {prog.name}
                                 </h4>
-                                {isSelected && (
-                                  <div className="size-4 rounded-full bg-primary flex items-center justify-center text-[10px] text-white shrink-0 absolute top-4 right-4">
-                                    ✓
-                                  </div>
-                                )}
                               </div>
-                              <span className="text-[10px] text-foreground/40 mt-1 block">
+                              <span className="text-[10px] text-muted-foreground mt-1 block">
                                 {prog.category}
                               </span>
                             </div>
-                            <span className="text-[10px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-md self-start mt-2">
+                            <span className="text-[10px] font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-md self-start mt-2">
                               {prog.questionCount} Questions
                             </span>
                           </div>
-                        </button>
+                        </ToggleGroupItem>
                       )
                     })}
-                </div>
+                </ToggleGroup>
               )}
             </div>
           )}
@@ -321,7 +326,7 @@ export default function InterviewSetupPage() {
         {/* Selected Category Label Display */}
         {selected && (
           <div className="text-center mb-6 animate-in fade-in duration-300">
-            <span className="text-xs text-foreground/50">Selected Track: </span>
+            <span className="text-xs text-muted-foreground">Selected Track: </span>
             <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
               {getSelectedLabel()}
             </span>
@@ -330,165 +335,167 @@ export default function InterviewSetupPage() {
 
         {/* GitHub-Focused Interview Mode */}
         {selected === "technical" && (
-          <GlassCard className="p-5 mb-4 border-white/5 animate-in fade-in duration-300">
-            <h4 className="text-sm font-semibold mb-1 flex items-center gap-2 text-foreground/90">
-              <span className="size-2 rounded-full bg-primary animate-pulse" />
-              GitHub-Focused Technical Interview
-            </h4>
-            
-            {isDemoMode ? (
-              <p className="text-xs text-foreground/50 leading-relaxed mt-2 bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg">
-                ⚠️ GitHub Mode is not available in Demo Mode. Please sign in and connect GitHub to practice using your repositories.
-              </p>
-            ) : !githubConnected ? (
-              <div className="mt-2 bg-red-500/10 border border-red-500/20 p-3 rounded-lg flex flex-col gap-2">
-                <p className="text-xs text-red-400 font-medium">
-                  ⚠️ Your GitHub account is not connected.
+          <Card className="p-5 mb-4 border-border shadow-sm animate-in fade-in duration-300">
+            <CardHeader className="p-0 pb-3">
+              <CardTitle className="text-sm font-semibold flex items-center gap-2 text-foreground">
+                <span className="size-2 rounded-full bg-primary animate-pulse" />
+                GitHub-Focused Technical Interview
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              {isDemoMode ? (
+                <p className="text-xs text-muted-foreground leading-relaxed bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg">
+                  ⚠️ GitHub Mode is not available in Demo Mode. Please sign in and connect GitHub to practice using your repositories.
                 </p>
-                <p className="text-xs text-foreground/60 leading-normal">
-                  Connect GitHub on the profile page or login again using the GitHub OAuth button to enable repository-based interview questions.
-                </p>
-                <Link href="/dashboard/profile" className="text-xs text-primary hover:underline font-semibold self-start">
-                  Go to Profile →
-                </Link>
-              </div>
-            ) : !githubAnalysis ? (
-              <div className="mt-2 bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg flex flex-col gap-2">
-                <p className="text-xs text-yellow-500 font-medium">
-                  ⚠️ GitHub analysis has not been run yet.
-                </p>
-                <p className="text-xs text-foreground/60 leading-normal">
-                  You need to analyze your repositories before you can practice questions based on them. Run the analyzer on your profile page first.
-                </p>
-                <Link href="/dashboard/profile" className="text-xs text-primary hover:underline font-semibold self-start">
-                  Go to Profile to Analyze Repos →
-                </Link>
-              </div>
-            ) : (
-              <div className="mt-3 flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <p className="text-xs text-foreground/60 leading-relaxed max-w-md">
-                    Toggle this mode to interleave questions tailored specifically to your projects (60%) with general technical questions (40%).
+              ) : !githubConnected ? (
+                <div className="bg-red-500/10 border border-red-500/20 p-3 rounded-lg flex flex-col gap-2">
+                  <p className="text-xs text-red-500 font-semibold">
+                    ⚠️ Your GitHub account is not connected.
                   </p>
-                  <button
-                    onClick={() => {
-                      setGithubMode(!githubMode)
-                      setSelectedRepos([])
-                    }}
-                    className="flex items-center gap-3 cursor-pointer select-none"
-                  >
-                    <span className="text-xs font-bold text-foreground/80">{githubMode ? "Enabled" : "Disabled"}</span>
-                    <div className={`w-11 h-6 flex items-center rounded-full p-1 transition-all duration-300 ${githubMode ? "bg-primary" : "bg-white/10 border border-white/5"}`}>
-                      <div className={`bg-white size-4 rounded-full shadow-md transform transition-all duration-300 ${githubMode ? "translate-x-5" : "translate-x-0"}`} />
-                    </div>
-                  </button>
+                  <p className="text-xs text-muted-foreground leading-normal">
+                    Connect GitHub on the profile page or login again using the GitHub OAuth button to enable repository-based interview questions.
+                  </p>
+                  <Link href="/dashboard/profile" className="text-xs text-primary hover:underline font-semibold self-start">
+                    Go to Profile →
+                  </Link>
                 </div>
-
-                {githubMode && (
-                  <div className="border-t border-white/5 pt-4 animate-in slide-in-from-top-2 duration-300">
-                    <h5 className="text-xs font-bold text-foreground/75 mb-2 uppercase tracking-wider">
-                      Select Repositories to Focus On (Select 2 to 5)
-                    </h5>
-                    
-                    {/* Repository list/grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
-                      {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
-                        const isSelected = selectedRepos.includes(repoName)
-                        const repoMeta = githubAnalysis.repo_metadata?.[repoName]
-                        
-                        return (
-                          <button
-                            key={repoName}
-                            onClick={() => {
-                              if (isSelected) {
-                                setSelectedRepos(selectedRepos.filter(r => r !== repoName))
-                              } else {
-                                if (selectedRepos.length >= 5) {
-                                  alert("You can select a maximum of 5 repositories.")
-                                  return
-                                }
-                                setSelectedRepos([...selectedRepos, repoName])
-                              }
-                            }}
-                            className={`p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
-                              isSelected
-                                ? "border-primary bg-primary/10 text-white"
-                                : "border-white/5 hover:border-white/10 bg-white/5 text-foreground/75"
-                            }`}
-                          >
-                            <div className="flex items-start justify-between w-full">
-                              <span className="font-semibold text-xs truncate max-w-[85%]">{repoName}</span>
-                              {isSelected && <span className="text-[10px] text-primary font-bold">✓</span>}
-                            </div>
-                            
-                            {repoMeta && (
-                              <div className="flex gap-1.5 items-center mt-2">
-                                <span className="text-[9px] px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-medium">
-                                  Complexity: {repoMeta.complexity_score}/10
-                                </span>
-                              </div>
-                            )}
-                          </button>
-                        )
-                      })}
-                    </div>
-                    
-                    <div className="mt-3 flex justify-between items-center">
-                      <p className="text-[11px] text-foreground/50">
-                        Selected: <span className="font-bold text-foreground">{selectedRepos.length} / 5</span> (Minimum 2 required)
-                      </p>
-                      {selectedRepos.length < 2 && (
-                        <p className="text-[10px] text-amber-400 font-medium animate-pulse">
-                          ⚠️ Please select at least 2 repositories to start.
-                        </p>
-                      )}
-                    </div>
+              ) : !githubAnalysis ? (
+                <div className="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg flex flex-col gap-2">
+                  <p className="text-xs text-yellow-500 font-semibold">
+                    ⚠️ GitHub analysis has not been run yet.
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-normal">
+                    You need to analyze your repositories before you can practice questions based on them. Run the analyzer on your profile page first.
+                  </p>
+                  <Link href="/dashboard/profile" className="text-xs text-primary hover:underline font-semibold self-start">
+                    Go to Profile to Analyze Repos →
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-xs text-muted-foreground leading-relaxed max-w-md">
+                      Toggle this mode to interleave questions tailored specifically to your projects (60%) with general technical questions (40%).
+                    </p>
+                    <Switch
+                      checked={githubMode}
+                      onCheckedChange={(checked) => {
+                        setGithubMode(checked)
+                        setSelectedRepos([])
+                      }}
+                      className="cursor-pointer"
+                    />
                   </div>
-                )}
-              </div>
-            )}
-          </GlassCard>
+
+                  {githubMode && (
+                    <div className="border-t border-border pt-4 animate-in slide-in-from-top-2 duration-300">
+                      <h5 className="text-xs font-bold text-muted-foreground mb-2 uppercase tracking-wider">
+                        Select Repositories to Focus On (Select 2 to 5)
+                      </h5>
+                      
+                      <ToggleGroup
+                        type="multiple"
+                        value={selectedRepos}
+                        onValueChange={(val) => {
+                          if (val.length > 5) {
+                            alert("You can select a maximum of 5 repositories.")
+                            return
+                          }
+                          setSelectedRepos(val)
+                        }}
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 w-full"
+                      >
+                        {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
+                          const repoMeta = githubAnalysis.repo_metadata?.[repoName]
+                          
+                          return (
+                            <ToggleGroupItem
+                              key={repoName}
+                              value={repoName}
+                              variant="outline"
+                              className="p-3 rounded-xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between items-stretch h-auto w-full"
+                            >
+                              <div className="flex items-start justify-between w-full">
+                                <span className="font-semibold text-xs truncate max-w-[85%] text-foreground">{repoName}</span>
+                              </div>
+                              
+                              {repoMeta && (
+                                <div className="flex gap-1.5 items-center mt-2">
+                                  <Badge variant="secondary" className="text-[9px] px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-medium">
+                                    Complexity: {repoMeta.complexity_score}/10
+                                  </Badge>
+                                </div>
+                              )}
+                            </ToggleGroupItem>
+                          )
+                        })}
+                      </ToggleGroup>
+                      
+                      <div className="mt-3 flex justify-between items-center">
+                        <p className="text-[11px] text-muted-foreground">
+                          Selected: <span className="font-bold text-foreground">{selectedRepos.length} / 5</span> (Minimum 2 required)
+                        </p>
+                        {selectedRepos.length < 2 && (
+                          <p className="text-[10px] text-amber-500 font-semibold animate-pulse">
+                            ⚠️ Please select at least 2 repositories to start.
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </CardContent>
+          </Card>
         )}
 
         {/* Persona Selector */}
-        <GlassCard className="p-5 mb-4 border-white/5">
-          <h4 className="text-sm font-semibold mb-3 text-foreground/90 flex items-center gap-2">
-            <span className="size-2 rounded-full bg-primary animate-pulse" /> Select Interviewer Persona
-          </h4>
-          <div className="flex flex-wrap gap-3">
-            {[
-              { id: "supportive", label: "Supportive", desc: "Warm, encouraging, friendly" },
-              { id: "strict", label: "Strict", desc: "Cold, formal, intense questions" },
-              { id: "roast", label: "Roast Mode 💀", desc: "Brutally honest, sarcastic" },
-            ].map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setPersona(p.id)}
-                className={`flex-1 min-w-[150px] p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
-                  persona === p.id 
-                    ? "border-primary bg-primary/10 ring-1 ring-primary/20" 
-                    : "border-white/5 hover:border-white/10 hover:bg-white/5"
-                }`}
-              >
-                <div className="text-xs md:text-sm font-bold mb-1 text-white">{p.label}</div>
-                <div className="text-[11px] text-foreground/50 leading-snug">{p.desc}</div>
-              </button>
-            ))}
-          </div>
-        </GlassCard>
+        <Card className="p-5 mb-4 border-border shadow-sm">
+          <CardHeader className="p-0 pb-3">
+            <CardTitle className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <span className="size-2 rounded-full bg-primary animate-pulse" /> Select Interviewer Persona
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <ToggleGroup
+              type="single"
+              value={persona}
+              onValueChange={(val) => {
+                if (val) setPersona(val)
+              }}
+              className="flex flex-col sm:flex-row gap-3 w-full"
+            >
+              {[
+                { id: "supportive", label: "Supportive", desc: "Warm, encouraging, friendly" },
+                { id: "strict", label: "Strict", desc: "Cold, formal, intense questions" },
+                { id: "roast", label: "Roast Mode 💀", desc: "Brutally honest, sarcastic" },
+              ].map((p) => (
+                <ToggleGroupItem
+                  key={p.id}
+                  value={p.id}
+                  variant="outline"
+                  className="flex-1 p-3.5 h-auto rounded-xl flex flex-col items-start text-left cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/10 data-[state=on]:text-primary w-full"
+                >
+                  <div className="text-xs md:text-sm font-bold mb-1">{p.label}</div>
+                  <div className="text-[11px] text-muted-foreground leading-snug">{p.desc}</div>
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </CardContent>
+        </Card>
 
         {/* Resume Toggle Box */}
-        <GlassCard className="p-5 mb-8 border-dashed border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <Card className="p-5 mb-8 border-dashed border-border bg-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
           <div className="flex-1">
-            <h4 className="text-sm font-semibold mb-1 flex items-center gap-1.5 text-foreground/90">
-              <FileText className="text-primary text-xs" size={14} strokeWidth={1.75} /> Resume-Focused Customization
+            <h4 className="text-sm font-semibold mb-1 flex items-center gap-1.5 text-foreground">
+              <FileText className="text-primary" size={14} strokeWidth={1.75} /> Resume-Focused Customization
             </h4>
             {hasResume ? (
-              <p className="text-xs text-foreground/50 leading-relaxed">
+              <p className="text-xs text-muted-foreground leading-relaxed">
                 Saved resume detected! Enable this option to integrate your specific background, projects, and experiences with the selected interview questions.
               </p>
             ) : (
-              <p className="text-xs text-foreground/50 leading-relaxed">
+              <p className="text-xs text-muted-foreground leading-relaxed">
                 No resume detected. To tailor questions specifically to your background, upload your resume in the{" "}
                 <Link href="/dashboard/resume" className="text-primary hover:underline font-semibold">
                   Resume Analyzer
@@ -498,17 +505,16 @@ export default function InterviewSetupPage() {
             )}
           </div>
           {hasResume && (
-            <button
-              onClick={() => setUseResume(!useResume)}
-              className="flex items-center gap-3 cursor-pointer select-none"
-            >
-              <span className="text-xs font-bold text-foreground/80">{useResume ? "Enabled" : "Disabled"}</span>
-              <div className={`w-11 h-6 flex items-center rounded-full p-1 transition-all duration-300 ${useResume ? "bg-primary" : "bg-white/10 border border-white/5"}`}>
-                <div className={`bg-white size-4 rounded-full shadow-md transform transition-all duration-300 ${useResume ? "translate-x-5" : "translate-x-0"}`} />
-              </div>
-            </button>
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-bold text-muted-foreground">{useResume ? "Enabled" : "Disabled"}</span>
+              <Switch
+                checked={useResume}
+                onCheckedChange={setUseResume}
+                className="cursor-pointer"
+              />
+            </div>
           )}
-        </GlassCard>
+        </Card>
 
         <div className="flex justify-center">
           <Link 
@@ -520,16 +526,12 @@ export default function InterviewSetupPage() {
                 : `/interview/${selected}?resume=${useResume}&persona=${persona}`
             }
           >
-            <GlowButton
+            <Button
               disabled={!selected || (selected === "technical" && githubMode && selectedRepos.length < 2)}
-              className={`h-12 px-12 text-sm md:text-base font-semibold ${
-                (!selected || (selected === "technical" && githubMode && selectedRepos.length < 2))
-                  ? "opacity-30 cursor-not-allowed" 
-                  : ""
-              }`}
+              className="h-12 px-12 text-sm md:text-base font-semibold cursor-pointer"
             >
-              Begin Interview Track →
-            </GlowButton>
+              Begin Interview Track <ArrowRight size={16} className="ml-1.5" />
+            </Button>
           </Link>
         </div>
       </div>
