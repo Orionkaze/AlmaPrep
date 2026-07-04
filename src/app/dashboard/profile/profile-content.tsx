@@ -355,10 +355,9 @@ export default function ProfileContent({
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Choose Avatar</label>
                       <ToggleGroup
-                        type="single"
-                        value={selectedAvatar}
+                        value={[selectedAvatar]}
                         onValueChange={(val) => {
-                          if (val) setSelectedAvatar(val)
+                          if (val && val.length > 0) setSelectedAvatar(val[0])
                         }}
                         className="flex justify-start gap-2 flex-wrap"
                       >

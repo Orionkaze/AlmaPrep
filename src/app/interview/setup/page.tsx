@@ -241,10 +241,9 @@ export default function InterviewSetupPage() {
           ) : activeTab === "general" ? (
             /* General Tracks Grid using ToggleGroup */
             <ToggleGroup
-              type="single"
-              value={selected || ""}
+              value={selected ? [selected] : []}
               onValueChange={(val) => {
-                if (val) setSelected(val)
+                if (val && val.length > 0) setSelected(val[0])
               }}
               className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full"
             >
@@ -282,10 +281,9 @@ export default function InterviewSetupPage() {
                 </div>
               ) : (
                 <ToggleGroup
-                  type="single"
-                  value={selected || ""}
+                  value={selected ? [selected] : []}
                   onValueChange={(val) => {
-                    if (val) setSelected(val)
+                    if (val && val.length > 0) setSelected(val[0])
                   }}
                   className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 w-full"
                 >
@@ -394,7 +392,7 @@ export default function InterviewSetupPage() {
                       </h5>
                       
                       <ToggleGroup
-                        type="multiple"
+                        multiple
                         value={selectedRepos}
                         onValueChange={(val) => {
                           if (val.length > 5) {
@@ -458,10 +456,9 @@ export default function InterviewSetupPage() {
           </CardHeader>
           <CardContent className="p-0">
             <ToggleGroup
-              type="single"
-              value={persona}
+              value={[persona]}
               onValueChange={(val) => {
-                if (val) setPersona(val)
+                if (val && val.length > 0) setPersona(val[0])
               }}
               className="flex flex-col sm:flex-row gap-3 w-full"
             >

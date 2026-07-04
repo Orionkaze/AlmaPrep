@@ -108,11 +108,10 @@ export default function OnboardingPage() {
               <div className="flex flex-col gap-3">
                 <label className="text-sm font-medium text-foreground">Select an Avatar</label>
                 <ToggleGroup
-                  type="single"
-                  value={selectedAvatar.toString()}
+                  value={[selectedAvatar.toString()]}
                   onValueChange={(val) => {
-                    if (val !== undefined && val !== "") {
-                      setSelectedAvatar(parseInt(val))
+                    if (val && val.length > 0) {
+                      setSelectedAvatar(parseInt(val[0]))
                     }
                   }}
                   className="flex gap-4 flex-wrap justify-center sm:justify-start"
