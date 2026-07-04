@@ -93,6 +93,7 @@ export default async function ProfilePage() {
       username: activeUser.name || "Guest",
       avatar_url: activeUser.avatar_url || "user-tie",
       resume_text: resumeText,
+      github_autosave: false,
     }
     createdAt = new Date().toISOString()
     subscriptionTier = "free"
@@ -114,6 +115,7 @@ export default async function ProfilePage() {
       username: profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User",
       avatar_url: profile.avatar_url || "user-tie",
       resume_text: profile.resume_text || "",
+      github_autosave: !!profile.github_autosave,
     }
     userEmail = activeUser.email || ""
     createdAt = profile.created_at || new Date().toISOString()
