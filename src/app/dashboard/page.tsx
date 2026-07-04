@@ -198,13 +198,13 @@ export default async function DashboardPage() {
         .eq("user_id", userId)
         .order("created_at", { ascending: false })
 
-      const completedMockInterviews = mockInterviews?.filter(i => i.status === "completed") || []
+      const completedMockInterviews: any[] = mockInterviews?.filter((i: any) => i.status === "completed") || []
       totalSessions = completedMockInterviews.length
 
       // Calculate Average Score
       if (completedMockInterviews.length > 0) {
         const scores = completedMockInterviews
-          .map(i => i.feedback?.[0]?.score)
+          .map((i: any) => i.feedback?.[0]?.score)
           .filter((s): s is number => typeof s === "number")
         if (scores.length > 0) {
           avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
@@ -212,7 +212,7 @@ export default async function DashboardPage() {
       }
 
       // Calculate Streak
-      const mockDates = completedMockInterviews.map(i => new Date(i.created_at))
+      const mockDates = completedMockInterviews.map((i: any) => new Date(i.created_at))
       currentStreak = calculateStreak(mockDates)
 
       // Fetch Coding Sessions
@@ -237,7 +237,7 @@ export default async function DashboardPage() {
 
       // Latest completed feedback from mock interviews
       if (completedMockInterviews.length > 0) {
-        const latestMock = completedMockInterviews[0]
+        const latestMock = completedMockInterviews[0] as any
         if (latestMock.feedback && latestMock.feedback[0]) {
           const fb = latestMock.feedback[0]
           latestFeedback = {
@@ -252,7 +252,7 @@ export default async function DashboardPage() {
       }
 
       // Map sessions to display list
-      const mockSessionsMapped: DisplaySession[] = completedMockInterviews.map(i => ({
+      const mockSessionsMapped: DisplaySession[] = completedMockInterviews.map((i: any) => ({
         id: i.id,
         type: "mock",
         date: new Date(i.created_at),
@@ -262,7 +262,7 @@ export default async function DashboardPage() {
         url: `/interview/${i.id}/feedback`
       }))
 
-      const codingSessionsMapped: DisplaySession[] = (codingSessions || []).map(s => ({
+      const codingSessionsMapped: DisplaySession[] = (codingSessions || []).map((s: any) => ({
         id: s.id,
         type: "coding",
         date: new Date(s.submitted_at || s.started_at),
