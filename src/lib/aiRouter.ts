@@ -10,6 +10,7 @@ import {
 import { createClient } from "@/lib/supabase/server"
 import { headers } from "next/headers"
 import { getProgramQuestions, getSampleQuestions } from "./programs"
+import { readLocalCache } from "@/lib/localCache"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
@@ -195,11 +196,15 @@ Focus your interview questions on their background, experiences, projects, and t
     if (isGithubMode && userId && currentRepoName) {
       try {
         const supabase = await createClient()
-        const { data: analysis } = await supabase
+        let { data: analysis, error: fetchError } = await supabase
           .from("github_analysis")
           .select("*")
           .eq("user_id", userId)
           .maybeSingle()
+        
+        if (fetchError || !analysis) {
+          analysis = readLocalCache("github_analysis", userId)
+        }
         
         if (analysis) {
           const repoMeta = analysis.repo_metadata?.[currentRepoName]
