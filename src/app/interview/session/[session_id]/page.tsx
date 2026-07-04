@@ -132,6 +132,7 @@ export default function InterviewWorkspacePage({
   const [isSavingToGitHub, setIsSavingToGitHub] = useState(false);
   const [createdRepoUrl, setCreatedRepoUrl] = useState("");
   const [gitHubError, setGitHubError] = useState<string | null>(null);
+  const [reportId, setReportId] = useState<string | null>(null);
 
   // Refs
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -654,6 +655,7 @@ __run_test()
 
       setEvaluationFeedback(data.evaluation);
       setAttemptsCount(data.attempts);
+      setReportId(data.report_id || null);
       setShowResultsModal(true);
 
       if (data.success) {
