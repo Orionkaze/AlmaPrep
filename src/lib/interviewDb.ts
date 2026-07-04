@@ -49,6 +49,7 @@ export interface Challenge {
   starter_code: Record<string, string>;
   hidden_tests: any[];
   expected_outcomes: any;
+  language?: string;
   created_at?: string;
 }
 
