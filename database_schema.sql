@@ -206,6 +206,44 @@ ALTER TABLE public.interviews
 ADD COLUMN IF NOT EXISTS mode text DEFAULT 'general',
 ADD COLUMN IF NOT EXISTS selected_repos text[] DEFAULT '{}'::text[];
 
+-- Migration: Add language to challenges and github_autosave to users
+ALTER TABLE public.challenges ADD COLUMN IF NOT EXISTS language text NOT NULL DEFAULT 'javascript';
+ALTER TABLE public.users ADD COLUMN IF NOT EXISTS github_autosave boolean DEFAULT false;
+
+-- Migration: Create coding_solutions table with unique constraint
+create table if not exists public.coding_solutions (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references public.users(id) on delete cascade not null,
+  challenge_id uuid not null,
+  challenge_slug text not null,
+  language text not null,
+  solution_code text not null,
+  test_results jsonb not null,
+  logic_score integer not null,
+  quality_score integer not null,
+  attempts integer default 1,
+  github_repo_url text,
+  github_repo_name text,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  UNIQUE (user_id, challenge_id)
+);
+
+-- Enable RLS for coding_solutions
+alter table public.coding_solutions enable row level security;
+
+-- Policies for coding_solutions
+create policy "Users can view their own coding solutions" on public.coding_solutions
+  for select using (auth.uid() = user_id);
+
+create policy "Users can insert their own coding solutions" on public.coding_solutions
+  for insert with check (auth.uid() = user_id);
+
+create policy "Users can update their own coding solutions" on public.coding_solutions
+  for update using (auth.uid() = user_id);
+
+create policy "Users can delete their own coding solutions" on public.coding_solutions
+  for delete using (auth.uid() = user_id);
+
 
 
 
