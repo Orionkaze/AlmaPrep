@@ -72,7 +72,12 @@ export default async function ProfilePage() {
     redirect("/login")
   }
 
-  let initialProfile = { username: "User", avatar_url: "user-tie", resume_text: "" }
+  let initialProfile: { username: string; avatar_url: string; resume_text: string; github_autosave: boolean } = {
+    username: "User",
+    avatar_url: "user-tie",
+    resume_text: "",
+    github_autosave: false
+  }
   let userEmail = activeUser.email || ""
   let createdAt = new Date().toISOString()
   let interviews: any[] = []
