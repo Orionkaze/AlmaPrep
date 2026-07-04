@@ -445,7 +445,7 @@ async function seed() {
   }
 
   // Seed Supabase if env config exists and is not demo
-  if (env.NEXT_PUBLIC_SUPABASE_URL && !env.NEXT_PUBLIC_SUPABASE_URL.includes('evdfkeikrrsdthnekrrz')) {
+  if (env.NEXT_PUBLIC_SUPABASE_URL) {
     console.log('Seeding Supabase Database...');
     const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
     
