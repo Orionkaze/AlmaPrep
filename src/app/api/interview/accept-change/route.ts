@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionById, updateSession } from "@/lib/interviewDb";
+import { createClient } from "@/lib/supabase/server";
 
 export async function GET(request: Request) {
   try {
