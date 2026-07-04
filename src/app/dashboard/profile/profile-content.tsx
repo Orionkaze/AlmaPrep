@@ -20,11 +20,33 @@ import {
   ChevronDown,
   ChevronUp,
   RefreshCw,
-  AlertCircle
+  AlertCircle,
+  CreditCard,
+  History,
+  GitBranch,
+  ShieldAlert,
+  LogOut,
+  Sparkles
 } from "lucide-react"
-import { GlassCard } from "@/components/ui/glass-card"
-import { GlowButton } from "@/components/ui/glow-button"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Progress, ProgressTrack, ProgressIndicator } from "@/components/ui/progress"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Switch } from "@/components/ui/switch"
+import { Separator } from "@/components/ui/separator"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog"
 import { updateUserProfile, clearAllUserData, updateGithubAutosave } from "@/app/actions/profile"
 import { signOut } from "next-auth/react"
 import Link from "next/link"
@@ -118,7 +140,6 @@ export default function ProfileContent({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
 
   // GitHub Analysis states
@@ -233,7 +254,6 @@ export default function ProfileContent({
     if (result.success) {
       setSuccess("Profile updated successfully!")
       setIsEditing(false)
-      // Force refresh current layout
       setTimeout(() => {
         window.location.reload()
       }, 500)
@@ -254,8 +274,8 @@ export default function ProfileContent({
 
   // Profile completion calculation
   let completionPercentage = 25 // base email confirmed
-  if (initialProfile.username) completionPercentage += 25
-  if (initialProfile.avatar_url) completionPercentage += 25
+  if (initialProfile.username && initialProfile.username !== "User") completionPercentage += 25
+  if (initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie") completionPercentage += 25
   if (initialProfile.resume_text) completionPercentage += 25
 
   // Format date
@@ -269,557 +289,637 @@ export default function ProfileContent({
   const showNudge = initialProfile.username === "User" || initialProfile.avatar_url === "user-tie"
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
-      {/* Left Column: Settings and details */}
-      <div className="lg:col-span-5 flex flex-col gap-6">
-        {showNudge && (
-          <GlassCard className="p-4 border-amber-500/20 bg-amber-500/5 relative overflow-hidden">
+    <div className="w-full max-w-5xl mx-auto space-y-6">
+      {showNudge && (
+        <Card className="border-amber-500/20 bg-amber-500/5 relative overflow-hidden shadow-sm">
+          <CardContent className="p-4">
             <h4 className="text-sm font-bold text-amber-500 mb-1 flex items-center gap-1.5" style={headingStyle}>
               <AlertCircle size={16} strokeWidth={1.75} /> Customize Your Profile
             </h4>
-            <p className="text-xs text-body leading-relaxed">
-              You are currently using a guest profile. Click <strong className="text-amber-500">Edit Profile</strong> below to customize your username and pick a unique avatar!
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              You are currently using a guest profile. Go to the <strong className="text-amber-500">Profile Details</strong> tab below to customize your username and pick a unique avatar!
             </p>
-          </GlassCard>
-        )}
+          </CardContent>
+        </Card>
+      )}
 
-        <GlassCard className="p-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-          
-          <div className="flex flex-col items-center text-center pb-6 border-b border-white/5">
-            <div className="size-24 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center text-primary text-4xl mb-4 relative shadow-lg shadow-primary/10">
-              <AvatarIcon size={40} strokeWidth={1.75} />
-              <div className="absolute -bottom-1 -right-1 bg-green-500 border border-background size-4 rounded-full" />
-            </div>
+      <Tabs defaultValue="profile" className="w-full flex flex-col gap-6">
+        <TabsList className="bg-muted p-1 rounded-lg w-full sm:w-fit grid grid-cols-2 sm:flex sm:flex-row gap-1">
+          <TabsTrigger value="profile" className="px-4 py-1.5 text-xs font-semibold cursor-pointer flex items-center gap-2">
+            <UserRound size={14} /> Profile Details
+          </TabsTrigger>
+          <TabsTrigger value="billing" className="px-4 py-1.5 text-xs font-semibold cursor-pointer flex items-center gap-2">
+            <CreditCard size={14} /> Billing & Danger Zone
+          </TabsTrigger>
+          <TabsTrigger value="github" className="px-4 py-1.5 text-xs font-semibold cursor-pointer flex items-center gap-2">
+            <GitBranch size={14} /> GitHub Integration
+          </TabsTrigger>
+          <TabsTrigger value="history" className="px-4 py-1.5 text-xs font-semibold cursor-pointer flex items-center gap-2">
+            <History size={14} /> Performance History
+          </TabsTrigger>
+        </TabsList>
 
-            {isEditing ? (
-              <div className="w-full flex flex-col gap-4 mt-2">
-                <div className="flex flex-col text-left gap-1">
-                  <label className="text-xs text-muted-foreground font-medium">Username</label>
-                  <Input
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className="h-10 text-center text-sm input-glass"
-                  />
-                </div>
-                
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs text-muted-foreground font-medium text-left">Choose Avatar</label>
-                  <div className="flex justify-center gap-2 flex-wrap">
-                    {avatars.map((av) => {
-                      const IconComp = av.icon
-                      return (
-                        <button
-                          key={av.name}
-                          onClick={() => setSelectedAvatar(av.name)}
-                          className={`size-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
-                            selectedAvatar === av.name
-                              ? "border-primary text-primary bg-primary/10"
-                              : "border-border hover:border-foreground/50 text-muted-foreground"
-                          }`}
-                        >
-                          <IconComp size={16} strokeWidth={1.75} />
-                        </button>
-                      )
-                    })}
-                  </div>
-                </div>
-
-                {error && <p className="text-xs text-red-400 mt-1">{error}</p>}
-                
-                <div className="flex gap-2 justify-center mt-2">
-                  <button
-                    onClick={() => {
-                      setUsername(initialProfile.username)
-                      setSelectedAvatar(initialProfile.avatar_url)
-                      setIsEditing(false)
-                      setError(null)
-                    }}
-                    className="px-4 py-2 rounded-lg text-xs font-semibold border border-white/10 hover:bg-white/5 cursor-pointer"
-                  >
-                    Cancel
-                  </button>
-                  <GlowButton onClick={handleSave} disabled={loading} className="h-8 px-4 text-xs cursor-pointer">
-                    <Save className="mr-1.5" size={12} strokeWidth={1.75} />
-                    {loading ? "Saving..." : "Save"}
-                  </GlowButton>
-                </div>
-              </div>
-            ) : (
-              <>
-                <h2 className="text-2xl font-bold text-foreground mb-1" style={headingStyle}>{initialProfile.username}</h2>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary mb-4 uppercase">
-                  <Award size={12} strokeWidth={2} /> {subscriptionTier} Tier
-                </div>
-                <GlowButton onClick={() => setIsEditing(true)} className="h-8 px-4 text-xs cursor-pointer">
-                  <UserPen className="mr-1.5" size={12} strokeWidth={1.75} /> Edit Profile
-                </GlowButton>
-              </>
-            )}
-            {success && <p className="text-xs text-green-400 mt-3">{success}</p>}
-          </div>
-
-          <div className="flex flex-col gap-4 pt-6">
-            <div className="flex items-center gap-3 text-sm text-body">
-              <Mail className="text-muted-foreground/45 w-4" size={16} strokeWidth={1.75} />
-              <div>
-                <p className="text-xs text-muted-foreground">Email Address</p>
-                <p className="font-medium text-body">{userEmail}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 text-sm text-body">
-              <Calendar className="text-muted-foreground/45 w-4" size={16} strokeWidth={1.75} />
-              <div>
-                <p className="text-xs text-muted-foreground">Joined Almaprep</p>
-                <p className="font-medium text-body">{joinDate}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 text-sm text-body">
-              <CheckCircle className="text-muted-foreground/45 w-4" size={16} strokeWidth={1.75} />
-              <div className="flex-1">
-                <p className="text-xs text-muted-foreground">Resume Status</p>
-                <p className="font-medium text-body">
-                  {initialProfile.resume_text ? (
-                    <span className="text-green-400 font-semibold">Saved & Analyzed</span>
-                  ) : (
-                    <span className="text-muted-foreground font-semibold">
-                      Not Added (
-                      <Link href="/dashboard/resume" className="text-primary hover:underline">
-                        Upload Now
-                      </Link>
-                      )
-                    </span>
-                  )}
-                </p>
-              </div>
-            </div>
-          </div>
-        </GlassCard>
-
-        {/* Profile Completion */}
-        <GlassCard className="p-5 flex flex-col gap-3 relative overflow-hidden">
-          <div className="flex justify-between items-center text-sm font-semibold">
-            <span>Profile Completion</span>
-            <span className="text-primary">{completionPercentage}%</span>
-          </div>
-          <div className="w-full bg-white/5 rounded-full h-2 overflow-hidden border border-white/5">
-            <div
-              className="bg-gradient-to-r from-primary to-secondary h-full rounded-full transition-all duration-1000"
-              style={{ width: `${completionPercentage}%` }}
-            />
-          </div>
-          <ul className="text-xs text-muted-foreground space-y-2 mt-1">
-            <li className="flex items-center gap-2">
-              <span className="text-green-400 font-bold">✓</span> Email verified
-            </li>
-            <li className="flex items-center gap-2">
-              <span className={initialProfile.username && initialProfile.username !== "User" ? "text-green-400 font-bold" : "text-muted-foreground/35"}>
-                {initialProfile.username && initialProfile.username !== "User" ? "✓" : "○"}
-              </span>{" "}
-              Username set
-            </li>
-            <li className="flex items-center gap-2">
-              <span className={initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie" ? "text-green-400 font-bold" : "text-muted-foreground/35"}>
-                {initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie" ? "✓" : "○"}
-              </span>{" "}
-              Avatar chosen
-            </li>
-            <li className="flex items-center gap-2">
-              <span className={initialProfile.resume_text ? "text-green-400 font-bold" : "text-muted-foreground/35"}>
-                {initialProfile.resume_text ? "✓" : "○"}
-              </span>{" "}
-              Resume analyzer configured
-            </li>
-          </ul>
-        </GlassCard>
-
-        {/* Danger Zone */}
-        <GlassCard className="p-5 border-red-500/20 hover:border-red-500/40 transition-all flex flex-col gap-3 relative overflow-hidden bg-red-500/5">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl pointer-events-none" />
-          <h3 className="text-sm font-bold text-red-500 uppercase tracking-wider" style={headingStyle}>Danger Zone</h3>
-          <p className="text-xs text-body leading-relaxed">
-            Permanently delete all your account data, profile details, resumes, interview transcripts, and performance analytics. This action is irreversible.
-          </p>
-          
-          {showDeleteConfirm ? (
-            <div className="flex flex-col gap-3 bg-red-500/10 p-3 rounded-lg border border-red-500/20 mt-1">
-              <p className="text-xs font-bold text-red-400 leading-snug">Are you absolutely sure? All your data will be permanently wiped.</p>
-              <div className="flex gap-2 justify-end">
-                <button
-                  onClick={() => setShowDeleteConfirm(false)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/10 hover:bg-white/5 cursor-pointer text-body transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleDeleteAccount}
-                  disabled={isDeleting}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-600 hover:bg-red-700 text-white cursor-pointer transition-colors"
-                >
-                  {isDeleting ? "Deleting..." : "Yes, delete everything"}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <button
-              onClick={() => setShowDeleteConfirm(true)}
-              className="w-full py-2 px-4 rounded-lg border border-red-500/30 text-red-400 hover:text-white hover:bg-red-500/20 text-xs font-semibold transition-all cursor-pointer text-center"
-            >
-              Delete account
-            </button>
-          )}
-        </GlassCard>
-      </div>
-
-      {/* Right Column: Performance and stats */}
-      <div className="lg:col-span-7 flex flex-col gap-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-primary/20 transition-all text-left">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
-            <BarChart2 className="text-primary text-lg" size={20} strokeWidth={1.75} />
-            <div>
-              <p className="text-2xl font-black tracking-tight">{avgScore}</p>
-              <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">Avg Score</p>
-            </div>
-          </GlassCard>
-          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-secondary/20 transition-all text-left">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-secondary/10 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
-            <Target className="text-secondary text-lg" size={20} strokeWidth={1.75} />
-            <div>
-              <p className="text-2xl font-black tracking-tight">{totalSessions}</p>
-              <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">Total Runs</p>
-            </div>
-          </GlassCard>
-          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-accent/20 transition-all text-left">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-accent/10 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
-            <Flame className="text-accent text-lg" size={20} strokeWidth={1.75} />
-            <div>
-              <p className="text-2xl font-black tracking-tight">{bestScore}</p>
-              <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">Top Score</p>
-            </div>
-          </GlassCard>
-        </div>
-
-        {/* GitHub Project Analyzer Card */}
-        <GlassCard className="p-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-          
-          <div className="flex items-center gap-3 mb-4">
-            <div className="size-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-white">
-              <svg className="size-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-foreground" style={headingStyle}>GitHub Project Analyzer</h3>
-              <p className="text-xs text-muted-foreground">Tailor your coding questions to your actual repositories</p>
-            </div>
-          </div>
-
-          {!githubAnalysis ? (
-            // State A: No analysis generated yet
-            <div className="py-2">
-              <p className="text-sm text-body mb-4 leading-relaxed">
-                Connect your GitHub account to analyze your codebase (technologies, coding style, commit history) and generate custom-tailored interview questions directly for your projects.
-              </p>
-              
-              {!hasGitHubToken ? (
-                <div className="bg-white/5 border border-white/5 rounded-xl p-4 text-center">
-                  <p className="text-xs text-muted-foreground mb-3">
-                    Your account is not connected to GitHub. Connect via GitHub during login to enable this.
-                  </p>
-                  <button 
-                    onClick={handleGitHubRedirectLogout}
-                    className="px-4 py-2 bg-slate-900 border border-white/10 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold cursor-pointer"
-                  >
-                    Go to Login & Connect GitHub
-                  </button>
-                </div>
-              ) : (
-                <div className="flex flex-col gap-3">
-                  <GlowButton 
-                    onClick={handleAnalyzeGitHub} 
-                    disabled={analyzingGitHub} 
-                    className="h-10 w-full text-sm font-semibold cursor-pointer"
-                  >
-                    {analyzingGitHub ? (
-                      <>
-                        <Loader2 className="animate-spin mr-2 inline-block" size={16} strokeWidth={1.75} />
-                        Fetching & Analyzing Repositories...
-                      </>
-                    ) : (
-                      "Run AI Codebase Analysis"
-                    )}
-                  </GlowButton>
-                  {githubError && <p className="text-xs text-red-400 text-center mt-1">{githubError}</p>}
-                </div>
-              )}
-            </div>
-          ) : (
-            // State B: Analysis results generated
-            <div className="flex flex-col gap-4">
-              <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider" style={headingStyle}>Coding Profile Summary</h4>
-                  {hasGitHubToken && (
-                    <button
-                      onClick={handleAnalyzeGitHub}
-                      disabled={analyzingGitHub}
-                      className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 cursor-pointer disabled:opacity-50 border-0 bg-transparent"
-                      title="Re-run analysis"
-                    >
-                      <RefreshCw size={12} strokeWidth={1.75} className={analyzingGitHub ? "animate-spin" : ""} />
-                      {analyzingGitHub ? "Refreshing..." : "Refresh"}
-                    </button>
-                  )}
-                </div>
-                <p className="text-sm text-body leading-relaxed">
-                  {githubAnalysis.profile_summary}
-                </p>
-              </div>
-
-              {/* Tech Stack */}
-              <div>
-                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Primary Tech Stack</h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {githubAnalysis.tech_stack?.map((tech: string) => (
-                    <span 
-                      key={tech} 
-                      className="text-[11px] px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Design Patterns */}
-              {githubAnalysis.design_patterns && githubAnalysis.design_patterns.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Detected Design Patterns</h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {githubAnalysis.design_patterns.map((pattern: string) => (
-                      <span 
-                        key={pattern} 
-                        className="text-[11px] px-2.5 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold"
-                      >
-                        {pattern}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Strengths */}
-              {githubAnalysis.strengths && githubAnalysis.strengths.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Key Strengths</h4>
-                  <ul className="text-xs text-body space-y-1.5 pl-1">
-                    {githubAnalysis.strengths.map((strength: string, i: number) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-primary mt-0.5">✦</span>
-                        <span>{strength}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Weak Areas to Improve */}
-              {githubAnalysis.weak_areas && githubAnalysis.weak_areas.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Areas to Improve</h4>
-                  <ul className="text-xs text-body space-y-1.5 pl-1">
-                    {githubAnalysis.weak_areas.map((weak: string, i: number) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-red-400 mt-0.5">⚠️</span>
-                        <span>{weak}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Tailored Questions per Repo */}
-              {githubAnalysis.questions && githubAnalysis.questions.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Tailored Interview Questions</h4>
+        {/* Tab 1: Profile Details */}
+        <TabsContent value="profile">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            <Card className="md:col-span-7 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg font-bold" style={headingStyle}>Account Settings</CardTitle>
+                <CardDescription className="text-xs">Update your public profile details and configuration settings.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-border">
+                  <Avatar className="size-20 bg-primary/10 border-2 border-primary/20 flex items-center justify-center text-primary text-3xl shadow-md">
+                    <AvatarFallback className="bg-transparent text-primary">
+                      <AvatarIcon size={36} strokeWidth={1.75} />
+                    </AvatarFallback>
+                  </Avatar>
                   
-                  {/* Group questions by repository */}
-                  <div className="flex flex-col gap-2">
-                    {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
-                      const repoQuestions = githubAnalysis.questions.filter((q: any) => q.repo === repoName)
-                      const isExpanded = expandedRepo === repoName
-
-                      return (
-                        <div 
-                          key={repoName} 
-                          className="border border-white/5 bg-white/[0.01] rounded-xl overflow-hidden"
-                        >
-                          <button
-                            onClick={() => setExpandedRepo(isExpanded ? null : repoName)}
-                            className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/[0.02] cursor-pointer text-left text-sm font-semibold text-foreground/95 border-0 bg-transparent"
-                          >
-                            <div className="flex items-center gap-2 truncate">
-                              <span className="truncate">{repoName}</span>
-                              {githubAnalysis.repo_metadata?.[repoName]?.complexity_score !== undefined && (
-                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-bold shrink-0">
-                                  Complexity: {githubAnalysis.repo_metadata[repoName].complexity_score}/10
-                                </span>
-                              )}
-                            </div>
-                            {isExpanded ? <ChevronUp size={16} strokeWidth={1.75} className="text-muted-foreground shrink-0" /> : <ChevronDown size={16} strokeWidth={1.75} className="text-muted-foreground shrink-0" />}
-                          </button>
-                          
-                          {isExpanded && (
-                            <div className="px-4 pb-4 pt-2 flex flex-col gap-4 border-t border-white/5 bg-white/[0.005]">
-                              {/* Repo specific patterns & weak areas */}
-                              {githubAnalysis.repo_metadata?.[repoName] && (
-                                <div className="flex flex-col gap-2 pt-1 pb-1 text-xs border-b border-white/5">
-                                  {githubAnalysis.repo_metadata[repoName].design_patterns?.length > 0 && (
-                                    <div className="flex flex-wrap gap-1.5 items-center">
-                                      <span className="text-muted-foreground font-medium mr-1 text-[11px]">Patterns:</span>
-                                      {githubAnalysis.repo_metadata[repoName].design_patterns.map((pat: string) => (
-                                        <span key={pat} className="text-[9px] px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent font-semibold">
-                                          {pat}
-                                        </span>
-                                      ))}
-                                    </div>
-                                  )}
-                                  {githubAnalysis.repo_metadata[repoName].weak_areas?.length > 0 && (
-                                    <div className="flex flex-col gap-1 mt-1 text-[11px]">
-                                      <span className="text-muted-foreground font-medium">Repo Weak Areas:</span>
-                                      {githubAnalysis.repo_metadata[repoName].weak_areas.map((weak: string, wi: number) => (
-                                        <span key={wi} className="text-red-400/90 pl-1 leading-normal">
-                                          ⚠️ {weak}
-                                        </span>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              )}
-
-                              <div className="flex flex-col gap-3">
-                                {repoQuestions.map((q: any, i: number) => (
-                                  <div key={i} className="flex flex-col gap-1">
-                                    <div className="flex items-center gap-2">
-                                      <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
-                                        q.difficulty === "easy" 
-                                          ? "bg-green-500/10 text-green-400 border border-green-500/20" 
-                                          : q.difficulty === "medium"
-                                          ? "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
-                                          : "bg-red-500/10 text-red-400 border border-red-500/20"
-                                      }`}>
-                                        {q.difficulty}
-                                      </span>
-                                    </div>
-                                    <p className="text-xs text-body leading-relaxed">
-                                      {q.question}
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
+                  <div className="flex-1 space-y-1 text-center sm:text-left">
+                    <h3 className="text-xl font-bold font-serif text-foreground">{initialProfile.username}</h3>
+                    <p className="text-xs text-muted-foreground">Joined Almaprep on {joinDate}</p>
                   </div>
                 </div>
-              )}
 
-              {githubError && <p className="text-xs text-red-400 text-center mt-1">{githubError}</p>}
-            </div>
-          )}
-        </GlassCard>
-
-        {/* GitHub Integration Settings */}
-        <GlassCard className="p-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
-          
-          <div className="flex items-center gap-3 mb-4">
-            <div className="size-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-white">
-              <svg className="size-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-foreground" style={headingStyle}>GitHub Integration</h3>
-              <p className="text-xs text-muted-foreground">Manage settings for storing completed challenges</p>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between border-t border-white/5 pt-4">
-            <div className="max-w-[75%]">
-              <h4 className="text-xs font-bold text-white mb-0.5" style={headingStyle}>Auto-save solutions to GitHub</h4>
-              <p className="text-[10px] text-muted-foreground leading-relaxed">
-                Automatically create a repository and commit your solutions on successful completion of coding challenges.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={handleToggleAutosave}
-              className="flex items-center gap-3 cursor-pointer select-none border-0 bg-transparent"
-            >
-              <div className={`w-10 h-5.5 flex items-center rounded-full p-0.5 transition-all duration-300 ${githubAutosave ? "bg-emerald-500" : "bg-white/10 border border-white/5"}`}>
-                <div className={`bg-white size-4 rounded-full shadow-md transform transition-all duration-300 ${githubAutosave ? "translate-x-4.5" : "translate-x-0"}`} />
-              </div>
-            </button>
-          </div>
-        </GlassCard>
-
-        {/* History Log */}
-        <GlassCard className="p-6">
-          <h3 className="text-lg font-bold mb-4" style={headingStyle}>Interview History & Analytics</h3>
-
-          {totalSessions > 0 ? (
-            <div className="flex flex-col gap-4 max-h-[460px] overflow-y-auto pr-1">
-              {interviews.map((session) => (
-                <div
-                  key={session.id}
-                  className="flex items-center justify-between border-b border-white/5 pb-4 last:border-0 last:pb-0 hover:bg-white/[0.01] p-2 rounded-xl transition-all"
-                >
-                  <div className="flex items-center gap-4">
-                    <ScoreRing score={session.score} />
-                    <div>
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <h4 className="font-semibold text-sm capitalize">{session.category} Interview</h4>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-muted-foreground font-medium">
-                          {session.status}
-                        </span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">
-                        {new Date(session.date).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit",
+                {isEditing ? (
+                  <div className="space-y-5">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Username</label>
+                      <Input
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="h-10 text-sm border-border focus:border-primary"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Choose Avatar</label>
+                      <ToggleGroup
+                        type="single"
+                        value={selectedAvatar}
+                        onValueChange={(val) => {
+                          if (val) setSelectedAvatar(val)
+                        }}
+                        className="flex justify-start gap-2 flex-wrap"
+                      >
+                        {avatars.map((av) => {
+                          const IconComp = av.icon
+                          return (
+                            <ToggleGroupItem
+                              key={av.name}
+                              value={av.name}
+                              variant="outline"
+                              className="size-11 rounded-full flex items-center justify-center cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/10 data-[state=on]:text-primary"
+                            >
+                              <IconComp size={16} strokeWidth={1.75} />
+                            </ToggleGroupItem>
+                          )
                         })}
-                      </p>
+                      </ToggleGroup>
+                    </div>
+
+                    {error && <p className="text-xs text-red-500 font-medium">{error}</p>}
+                    
+                    <div className="flex gap-2 justify-end pt-2">
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          setUsername(initialProfile.username)
+                          setSelectedAvatar(initialProfile.avatar_url)
+                          setIsEditing(false)
+                          setError(null)
+                        }}
+                        className="h-9 text-xs cursor-pointer"
+                      >
+                        Cancel
+                      </Button>
+                      <Button onClick={handleSave} disabled={loading} className="h-9 px-4 text-xs cursor-pointer font-semibold">
+                        {loading ? "Saving..." : "Save Changes"}
+                      </Button>
                     </div>
                   </div>
-                  <Link href={`/interview/${session.id}/feedback`}>
-                    <button className="text-xs font-semibold text-primary hover:underline whitespace-nowrap cursor-pointer">
-                      View Feedback →
-                    </button>
+                ) : (
+                  <div className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-0.5">
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Username</p>
+                        <p className="text-sm font-semibold text-foreground">{initialProfile.username}</p>
+                      </div>
+                      <div className="space-y-0.5">
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Email</p>
+                        <p className="text-sm font-semibold text-foreground">{userEmail}</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-0.5">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Resume Analysis Status</p>
+                      <p className="text-xs text-muted-foreground">
+                        {initialProfile.resume_text ? (
+                          <span className="text-green-500 font-semibold flex items-center gap-1">
+                            <span className="size-1.5 rounded-full bg-green-500 animate-pulse" /> Verified & active in mock interviews
+                          </span>
+                        ) : (
+                          <span>
+                            No resume analyzed yet.{" "}
+                            <Link href="/dashboard/resume" className="text-primary hover:underline font-bold">
+                              Configure Now
+                            </Link>
+                          </span>
+                        )}
+                      </p>
+                    </div>
+
+                    <div className="pt-2">
+                      <Button onClick={() => setIsEditing(true)} className="h-9 px-4 text-xs cursor-pointer font-semibold" variant="outline">
+                        <UserPen className="mr-1.5" size={14} strokeWidth={1.75} /> Customize Profile
+                      </Button>
+                    </div>
+                  </div>
+                )}
+                {success && <p className="text-xs text-green-500 font-medium">{success}</p>}
+              </CardContent>
+            </Card>
+
+            {/* Profile Completion Panel */}
+            <Card className="md:col-span-5 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg font-bold" style={headingStyle}>Profile Completion</CardTitle>
+                <CardDescription className="text-xs">Complete your checklist items to optimize your profile recommendations.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-xs font-bold text-muted-foreground">
+                    <span>PROGRESS</span>
+                    <span className="text-primary">{completionPercentage}%</span>
+                  </div>
+                  <Progress value={completionPercentage} className="h-2 w-full" />
+                </div>
+
+                <Separator />
+
+                <ul className="text-xs text-muted-foreground space-y-2.5">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="text-green-500 shrink-0" size={14} />
+                    <span className="line-through">Email verified ({userEmail})</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className={`size-4 rounded-full border border-border flex items-center justify-center shrink-0 ${initialProfile.username && initialProfile.username !== "User" ? "bg-green-500/10 border-green-500/30" : ""}`}>
+                      {initialProfile.username && initialProfile.username !== "User" ? <CheckCircle className="text-green-500" size={12} /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                    </span>
+                    <span className={initialProfile.username && initialProfile.username !== "User" ? "line-through" : ""}>Set customized username</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className={`size-4 rounded-full border border-border flex items-center justify-center shrink-0 ${initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie" ? "bg-green-500/10 border-green-500/30" : ""}`}>
+                      {initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie" ? <CheckCircle className="text-green-500" size={12} /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                    </span>
+                    <span className={initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie" ? "line-through" : ""}>Choose customized avatar</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className={`size-4 rounded-full border border-border flex items-center justify-center shrink-0 ${initialProfile.resume_text ? "bg-green-500/10 border-green-500/30" : ""}`}>
+                      {initialProfile.resume_text ? <CheckCircle className="text-green-500" size={12} /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                    </span>
+                    <span className={initialProfile.resume_text ? "line-through" : ""}>Configure Resume Analyzer</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Tab 2: Billing & Danger Zone */}
+        <TabsContent value="billing">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            {/* Billing details */}
+            <Card className="md:col-span-7 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg font-bold" style={headingStyle}>Billing Settings</CardTitle>
+                <CardDescription className="text-xs">Manage your plan subscription tier and invoices.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-5">
+                <div className="flex items-center justify-between bg-muted/40 p-4 rounded-xl border border-border">
+                  <div className="space-y-0.5 text-left">
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Subscription Tier</p>
+                    <h4 className="text-base font-bold text-foreground capitalize flex items-center gap-1.5">
+                      <Award size={18} className="text-primary" /> {subscriptionTier} Plan
+                    </h4>
+                  </div>
+                  <Link href="/pricing">
+                    <Button variant="outline" className="h-9 px-4 text-xs font-semibold cursor-pointer">
+                      Upgrade Tier
+                    </Button>
                   </Link>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 flex flex-col items-center">
-              <div className="size-12 rounded-full bg-white/5 flex items-center justify-center mb-3">
-                <Laptop className="text-muted-foreground/30 text-lg" size={20} strokeWidth={1.75} />
+
+                <div className="space-y-2">
+                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Features Included</h4>
+                  <ul className="text-xs text-muted-foreground space-y-2 list-none pl-0">
+                    <li className="flex gap-2 items-start leading-relaxed">
+                      <span className="text-primary font-bold shrink-0">•</span>
+                      <span>Access to HR and Mixed Mock Interview Tracks</span>
+                    </li>
+                    <li className="flex gap-2 items-start leading-relaxed">
+                      <span className="text-primary font-bold shrink-0">•</span>
+                      <span>Real-time voice synthesis and transcriptions</span>
+                    </li>
+                    <li className="flex gap-2 items-start leading-relaxed">
+                      <span className="text-primary font-bold shrink-0">•</span>
+                      <span>Agentic Coding Workspace (standard algorithm challenges)</span>
+                    </li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Danger Zone */}
+            <Card className="md:col-span-5 border-red-500/20 bg-red-500/5 relative overflow-hidden shadow-sm text-left">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl pointer-events-none" />
+              <CardHeader>
+                <CardTitle className="text-lg font-bold text-red-500 uppercase tracking-wider" style={headingStyle}>Danger Zone</CardTitle>
+                <CardDescription className="text-xs text-red-500/80">Permanent, irreversible actions relating to your account.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Permanently delete all your account data, profile details, resumes, interview transcripts, and performance analytics. This action is irreversible.
+                </p>
+
+                {/* Dialog confirmation */}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="destructive"
+                      className="w-full text-xs font-semibold cursor-pointer bg-red-600 hover:bg-red-700"
+                    >
+                      Delete Account Data
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-card text-card-foreground border border-border rounded-lg max-w-md w-full shadow-lg z-50 p-6">
+                    <DialogHeader>
+                      <DialogTitle className="text-base font-bold flex items-center gap-2 text-red-500">
+                        <ShieldAlert size={20} /> Irreversible Action
+                      </DialogTitle>
+                      <DialogDescription className="text-xs text-muted-foreground pt-1 leading-relaxed">
+                        Are you absolutely sure you want to delete your account? All mock interview runs, resume scans, coding session evaluations, and saved user profile details will be permanently wiped.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className="flex gap-2 justify-end mt-4">
+                      <DialogClose asChild>
+                        <Button variant="outline" className="text-xs h-9 cursor-pointer">
+                          Cancel
+                        </Button>
+                      </DialogClose>
+                      <Button
+                        variant="destructive"
+                        onClick={handleDeleteAccount}
+                        disabled={isDeleting}
+                        className="text-xs h-9 cursor-pointer font-semibold"
+                      >
+                        {isDeleting ? "Deleting..." : "Yes, WIPE ALL DATA"}
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Tab 3: GitHub Integration */}
+        <TabsContent value="github" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            {/* GitHub Project Analyzer */}
+            <Card className="md:col-span-7 shadow-sm">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="size-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-white shrink-0">
+                    <svg className="size-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg font-bold" style={headingStyle}>GitHub Project Analyzer</CardTitle>
+                    <CardDescription className="text-xs">Orchestrate custom coding simulator questions targeting your real repositories.</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {!githubAnalysis ? (
+                  <div className="py-2">
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                      Connect your GitHub account to analyze your codebase (technologies, coding style, commit history) and generate custom-tailored interview questions directly for your projects.
+                    </p>
+                    
+                    {!hasGitHubToken ? (
+                      <div className="bg-muted/40 border border-border rounded-xl p-4 text-center">
+                        <p className="text-xs text-muted-foreground mb-3">
+                          Your account is not connected to GitHub. Connect via GitHub during login to enable this.
+                        </p>
+                        <Button 
+                          onClick={handleGitHubRedirectLogout}
+                          className="w-full text-xs font-semibold cursor-pointer"
+                        >
+                          Go to Login & Connect GitHub
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-3">
+                        <Button 
+                          onClick={handleAnalyzeGitHub} 
+                          disabled={analyzingGitHub} 
+                          className="h-10 w-full text-sm font-semibold cursor-pointer"
+                        >
+                          {analyzingGitHub ? (
+                            <>
+                              <Loader2 className="animate-spin mr-2 inline-block" size={16} strokeWidth={1.75} />
+                              Fetching & Analyzing Repositories...
+                            </>
+                          ) : (
+                            "Run AI Codebase Analysis"
+                          )}
+                        </Button>
+                        {githubError && <p className="text-xs text-red-400 text-center mt-1">{githubError}</p>}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-4">
+                    <div className="bg-muted/30 border border-border rounded-xl p-4">
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="text-xs font-bold text-primary uppercase tracking-wider" style={headingStyle}>Coding Profile Summary</h4>
+                        {hasGitHubToken && (
+                          <button
+                            onClick={handleAnalyzeGitHub}
+                            disabled={analyzingGitHub}
+                            className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 cursor-pointer disabled:opacity-50 border-0 bg-transparent"
+                            title="Re-run analysis"
+                          >
+                            <RefreshCw size={12} strokeWidth={1.75} className={analyzingGitHub ? "animate-spin" : ""} />
+                            {analyzingGitHub ? "Refreshing..." : "Refresh"}
+                          </button>
+                        )}
+                      </div>
+                      <p className="text-sm text-foreground leading-relaxed">
+                        {githubAnalysis.profile_summary}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Primary Tech Stack</h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {githubAnalysis.tech_stack?.map((tech: string) => (
+                          <span 
+                            key={tech} 
+                            className="text-[11px] px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {githubAnalysis.design_patterns && githubAnalysis.design_patterns.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Detected Design Patterns</h4>
+                        <div className="flex flex-wrap gap-1.5">
+                          {githubAnalysis.design_patterns.map((pattern: string) => (
+                            <span 
+                              key={pattern} 
+                              className="text-[11px] px-2.5 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold"
+                            >
+                              {pattern}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {githubAnalysis.strengths && githubAnalysis.strengths.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Key Strengths</h4>
+                        <ul className="text-xs text-muted-foreground space-y-1.5 pl-1 list-none">
+                          {githubAnalysis.strengths.map((strength: string, i: number) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <span className="text-primary mt-0.5">✦</span>
+                              <span>{strength}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {githubAnalysis.weak_areas && githubAnalysis.weak_areas.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Areas to Improve</h4>
+                        <ul className="text-xs text-muted-foreground space-y-1.5 pl-1 list-none">
+                          {githubAnalysis.weak_areas.map((weak: string, i: number) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <span className="text-rose-400 mt-0.5">⚠️</span>
+                              <span>{weak}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {githubAnalysis.questions && githubAnalysis.questions.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Tailored Interview Questions</h4>
+                        
+                        <div className="flex flex-col gap-2">
+                          {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
+                            const repoQuestions = githubAnalysis.questions.filter((q: any) => q.repo === repoName)
+                            const isExpanded = expandedRepo === repoName
+
+                            return (
+                              <div 
+                                key={repoName} 
+                                className="border border-border bg-card rounded-xl overflow-hidden shadow-sm"
+                              >
+                                <button
+                                  onClick={() => setExpandedRepo(isExpanded ? null : repoName)}
+                                  className="w-full px-4 py-3 flex items-center justify-between hover:bg-muted/40 cursor-pointer text-left text-sm font-semibold text-foreground/95 border-0 bg-transparent"
+                                >
+                                  <div className="flex items-center gap-2 truncate">
+                                    <span className="truncate">{repoName}</span>
+                                    {githubAnalysis.repo_metadata?.[repoName]?.complexity_score !== undefined && (
+                                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-bold shrink-0">
+                                        Complexity: {githubAnalysis.repo_metadata[repoName].complexity_score}/10
+                                      </span>
+                                    )}
+                                  </div>
+                                  {isExpanded ? <ChevronUp size={16} strokeWidth={1.75} className="text-muted-foreground shrink-0" /> : <ChevronDown size={16} strokeWidth={1.75} className="text-muted-foreground shrink-0" />}
+                                </button>
+                                
+                                {isExpanded && (
+                                  <div className="px-4 pb-4 pt-2 flex flex-col gap-4 border-t border-border bg-muted/20">
+                                    {githubAnalysis.repo_metadata?.[repoName] && (
+                                      <div className="flex flex-col gap-2 pt-1 pb-1 text-xs border-b border-border">
+                                        {githubAnalysis.repo_metadata[repoName].design_patterns?.length > 0 && (
+                                          <div className="flex flex-wrap gap-1.5 items-center">
+                                            <span className="text-muted-foreground font-medium mr-1 text-[11px]">Patterns:</span>
+                                            {githubAnalysis.repo_metadata[repoName].design_patterns.map((pat: string) => (
+                                              <span key={pat} className="text-[9px] px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent font-semibold">
+                                                {pat}
+                                              </span>
+                                            ))}
+                                          </div>
+                                        )}
+                                        {githubAnalysis.repo_metadata[repoName].weak_areas?.length > 0 && (
+                                          <div className="flex flex-col gap-1 mt-1 text-[11px]">
+                                            <span className="text-muted-foreground font-medium">Repo Weak Areas:</span>
+                                            {githubAnalysis.repo_metadata[repoName].weak_areas.map((weak: string, wi: number) => (
+                                              <span key={wi} className="text-rose-400 pl-1 leading-normal">
+                                                ⚠️ {weak}
+                                              </span>
+                                            ))}
+                                          </div>
+                                        )}
+                                      </div>
+                                    )}
+
+                                    <div className="flex flex-col gap-3">
+                                      {repoQuestions.map((q: any, i: number) => (
+                                        <div key={i} className="flex flex-col gap-1">
+                                          <div className="flex items-center gap-2">
+                                            <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
+                                              q.difficulty === "easy" 
+                                                ? "bg-green-500/10 text-green-500 border border-green-500/20" 
+                                                : q.difficulty === "medium"
+                                                ? "bg-yellow-500/10 text-yellow-500 border border-yellow-500/20"
+                                                : "bg-red-500/10 text-red-500 border border-red-500/20"
+                                            }`}>
+                                              {q.difficulty}
+                                            </span>
+                                          </div>
+                                          <p className="text-xs text-muted-foreground leading-relaxed">
+                                            {q.question}
+                                          </p>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    {githubError && <p className="text-xs text-red-400 text-center mt-1">{githubError}</p>}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* GitHub Settings */}
+            <Card className="md:col-span-5 shadow-sm text-left">
+              <CardHeader>
+                <CardTitle className="text-sm font-bold uppercase tracking-wider" style={headingStyle}>GitHub Integration Settings</CardTitle>
+                <CardDescription className="text-xs">Manage workspace saving rules.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between border-t border-border pt-4">
+                  <div className="max-w-[75%]">
+                    <h4 className="text-xs font-bold text-foreground mb-0.5" style={headingStyle}>Auto-save solutions to GitHub</h4>
+                    <p className="text-[10px] text-muted-foreground leading-relaxed">
+                      Automatically create a repository and commit your solutions on successful completion of coding challenges.
+                    </p>
+                  </div>
+                  <Switch
+                    checked={githubAutosave}
+                    onCheckedChange={handleToggleAutosave}
+                    className="cursor-pointer"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Tab 4: Performance History */}
+        <TabsContent value="history" className="space-y-6">
+          {/* Stats Rings */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <Card className="p-4 flex flex-row items-center justify-between gap-4 shadow-sm">
+              <div className="space-y-0.5 text-left">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Avg Score</p>
+                <h3 className="text-2xl font-black font-serif tracking-tight text-foreground">{avgScore}%</h3>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">No interviews logged yet.</p>
-              <Link href="/interview/setup">
-                <GlowButton className="h-9 px-6 text-xs cursor-pointer">Start Practicing</GlowButton>
-              </Link>
-            </div>
-          )}
-        </GlassCard>
-      </div>
+              <BarChart2 className="text-primary text-xl" size={24} strokeWidth={1.75} />
+            </Card>
+            <Card className="p-4 flex flex-row items-center justify-between gap-4 shadow-sm">
+              <div className="space-y-0.5 text-left">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Total Runs</p>
+                <h3 className="text-2xl font-black font-serif tracking-tight text-foreground">{totalSessions}</h3>
+              </div>
+              <Target className="text-secondary text-xl" size={24} strokeWidth={1.75} />
+            </Card>
+            <Card className="p-4 flex flex-row items-center justify-between gap-4 shadow-sm col-span-2 sm:col-span-1">
+              <div className="space-y-0.5 text-left">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Top Score</p>
+                <h3 className="text-2xl font-black font-serif tracking-tight text-foreground">{bestScore}%</h3>
+              </div>
+              <Flame className="text-amber-500 text-xl" size={24} strokeWidth={1.75} />
+            </Card>
+          </div>
+
+          {/* History Log */}
+          <Card className="shadow-sm text-left">
+            <CardHeader>
+              <CardTitle className="text-lg font-bold" style={headingStyle}>Interview History & Analytics</CardTitle>
+              <CardDescription className="text-xs">Review details, scoring reports, and feedback from past sessions.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {totalSessions > 0 ? (
+                <div className="flex flex-col gap-4 max-h-[460px] overflow-y-auto pr-1">
+                  {interviews.map((session) => (
+                    <div
+                      key={session.id}
+                      className="flex items-center justify-between border-b border-border pb-4 last:border-0 last:pb-0 hover:bg-muted/40 p-2 rounded-xl transition-all"
+                    >
+                      <div className="flex items-center gap-4">
+                        <ScoreRing score={session.score} />
+                        <div className="text-left">
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <h4 className="font-semibold text-sm capitalize text-foreground">{session.category} Interview</h4>
+                            <Badge variant="secondary" className="text-[9px] font-medium h-5">
+                              {session.status}
+                            </Badge>
+                          </div>
+                          <p className="text-xs text-muted-foreground">
+                            {new Date(session.date).toLocaleDateString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </p>
+                        </div>
+                      </div>
+                      <Link href={`/interview/${session.id}/feedback`}>
+                        <Button variant="link" className="text-xs font-semibold text-primary hover:underline whitespace-nowrap cursor-pointer">
+                          View Feedback →
+                        </Button>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12 flex flex-col items-center">
+                  <div className="size-12 rounded-full bg-muted flex items-center justify-center mb-3">
+                    <Laptop className="text-muted-foreground/30 text-lg" size={20} strokeWidth={1.75} />
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">No interviews logged yet.</p>
+                  <Link href="/interview/setup">
+                    <Button className="h-9 px-6 text-xs cursor-pointer font-semibold">Start Practicing</Button>
+                  </Link>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }
