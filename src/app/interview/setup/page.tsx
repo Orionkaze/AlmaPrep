@@ -481,7 +481,7 @@ export default function InterviewSetupPage() {
         <GlassCard className="p-5 mb-8 border-dashed border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex-1">
             <h4 className="text-sm font-semibold mb-1 flex items-center gap-1.5 text-foreground/90">
-              <FontAwesomeIcon icon={faFileLines} className="text-primary text-xs" /> Resume-Focused Customization
+              <FileText className="text-primary text-xs" size={14} strokeWidth={1.75} /> Resume-Focused Customization
             </h4>
             {hasResume ? (
               <p className="text-xs text-foreground/50 leading-relaxed">
