@@ -1,27 +1,27 @@
 "use client"
 
 import { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
-  faLaptopCode,
-  faUserTie,
-  faRocket,
-  faBrain,
-  faStar,
-  faEnvelope,
-  faCalendarAlt,
-  faCheckCircle,
-  faAward,
-  faChartBar,
-  faBullseye,
-  faFire,
-  faUserEdit,
-  faSave,
-  faSpinner,
-  faChevronDown,
-  faChevronUp,
-  faSync
-} from "@fortawesome/free-solid-svg-icons"
+  Laptop,
+  UserRound,
+  Rocket,
+  Brain,
+  Star,
+  Mail,
+  Calendar,
+  CheckCircle,
+  Award,
+  BarChart2,
+  Target,
+  Flame,
+  UserPen,
+  Save,
+  Loader2,
+  ChevronDown,
+  ChevronUp,
+  RefreshCw,
+  AlertCircle
+} from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import { Input } from "@/components/ui/input"
@@ -29,20 +29,20 @@ import { updateUserProfile, clearAllUserData, updateGithubAutosave } from "@/app
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
-const avatarMap: Record<string, typeof faUserTie> = {
-  "laptop-code": faLaptopCode,
-  "user-tie": faUserTie,
-  "rocket": faRocket,
-  "brain": faBrain,
-  "star": faStar,
+const avatarMap: Record<string, React.FC<any>> = {
+  "laptop-code": Laptop,
+  "user-tie": UserRound,
+  "rocket": Rocket,
+  "brain": Brain,
+  "star": Star,
 }
 
 const avatars = [
-  { name: "laptop-code", icon: faLaptopCode },
-  { name: "user-tie", icon: faUserTie },
-  { name: "rocket", icon: faRocket },
-  { name: "brain", icon: faBrain },
-  { name: "star", icon: faStar },
+  { name: "laptop-code", icon: Laptop },
+  { name: "user-tie", icon: UserRound },
+  { name: "rocket", icon: Rocket },
+  { name: "brain", icon: Brain },
+  { name: "star", icon: Star },
 ]
 
 interface Interview {
@@ -96,6 +96,12 @@ function ScoreRing({ score }: { score: number }) {
   )
 }
 
+const headingStyle: React.CSSProperties = {
+  fontFamily: "var(--font-head), serif",
+  letterSpacing: "-0.015em",
+  fontWeight: 600,
+}
+
 export default function ProfileContent({
   initialProfile,
   userEmail,
@@ -109,16 +115,6 @@ export default function ProfileContent({
   const [selectedAvatar, setSelectedAvatar] = useState(initialProfile.avatar_url)
   const [githubAutosave, setGithubAutosave] = useState(!!initialProfile.github_autosave)
   const [isEditing, setIsEditing] = useState(false)
-
-  const handleToggleAutosave = async () => {
-    const nextVal = !githubAutosave
-    setGithubAutosave(nextVal)
-    const result = await updateGithubAutosave(nextVal)
-    if (!result.success) {
-      setError(result.error || "Failed to update auto-save setting")
-      setGithubAutosave(!nextVal) // revert
-    }
-  }
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
@@ -130,6 +126,16 @@ export default function ProfileContent({
   const [analyzingGitHub, setAnalyzingGitHub] = useState(false)
   const [githubError, setGithubError] = useState<string | null>(null)
   const [expandedRepo, setExpandedRepo] = useState<string | null>(null)
+
+  const handleToggleAutosave = async () => {
+    const nextVal = !githubAutosave
+    setGithubAutosave(nextVal)
+    const result = await updateGithubAutosave(nextVal)
+    if (!result.success) {
+      setError(result.error || "Failed to update auto-save setting")
+      setGithubAutosave(!nextVal) // revert
+    }
+  }
 
   const handleAnalyzeGitHub = async () => {
     setAnalyzingGitHub(true)
@@ -212,28 +218,6 @@ export default function ProfileContent({
     }
   }
 
-  // Calculate statistics
-  const totalSessions = interviews.length
-  const avgScore = totalSessions > 0
-    ? Math.round(interviews.reduce((sum, h) => sum + h.score, 0) / totalSessions)
-    : 0
-  const bestScore = totalSessions > 0
-    ? Math.max(...interviews.map(h => h.score))
-    : 0
-
-  // Profile completion calculation
-  let completionPercentage = 25 // base email confirmed
-  if (initialProfile.username) completionPercentage += 25
-  if (initialProfile.avatar_url) completionPercentage += 25
-  if (initialProfile.resume_text) completionPercentage += 25
-
-  // Format date
-  const joinDate = new Date(createdAt).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
-
   const handleSave = async () => {
     if (!username.trim()) {
       setError("Username cannot be empty")
@@ -259,23 +243,59 @@ export default function ProfileContent({
     setLoading(false)
   }
 
+  // Calculate statistics
+  const totalSessions = interviews.length
+  const avgScore = totalSessions > 0
+    ? Math.round(interviews.reduce((sum, h) => sum + h.score, 0) / totalSessions)
+    : 0
+  const bestScore = totalSessions > 0
+    ? Math.max(...interviews.map(h => h.score))
+    : 0
+
+  // Profile completion calculation
+  let completionPercentage = 25 // base email confirmed
+  if (initialProfile.username) completionPercentage += 25
+  if (initialProfile.avatar_url) completionPercentage += 25
+  if (initialProfile.resume_text) completionPercentage += 25
+
+  // Format date
+  const joinDate = new Date(createdAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+
+  const AvatarIcon = avatarMap[selectedAvatar] || UserRound
+  const showNudge = initialProfile.username === "User" || initialProfile.avatar_url === "user-tie"
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
       {/* Left Column: Settings and details */}
       <div className="lg:col-span-5 flex flex-col gap-6">
+        {showNudge && (
+          <GlassCard className="p-4 border-amber-500/20 bg-amber-500/5 relative overflow-hidden">
+            <h4 className="text-sm font-bold text-amber-500 mb-1 flex items-center gap-1.5" style={headingStyle}>
+              <AlertCircle size={16} strokeWidth={1.75} /> Customize Your Profile
+            </h4>
+            <p className="text-xs text-body leading-relaxed">
+              You are currently using a guest profile. Click <strong className="text-amber-500">Edit Profile</strong> below to customize your username and pick a unique avatar!
+            </p>
+          </GlassCard>
+        )}
+
         <GlassCard className="p-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
           
           <div className="flex flex-col items-center text-center pb-6 border-b border-white/5">
             <div className="size-24 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center text-primary text-4xl mb-4 relative shadow-lg shadow-primary/10">
-              <FontAwesomeIcon icon={avatarMap[selectedAvatar] || faUserTie} />
+              <AvatarIcon size={40} strokeWidth={1.75} />
               <div className="absolute -bottom-1 -right-1 bg-green-500 border border-background size-4 rounded-full" />
             </div>
 
             {isEditing ? (
               <div className="w-full flex flex-col gap-4 mt-2">
                 <div className="flex flex-col text-left gap-1">
-                  <label className="text-xs text-foreground/50 font-medium">Username</label>
+                  <label className="text-xs text-muted-foreground font-medium">Username</label>
                   <Input
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -284,21 +304,24 @@ export default function ProfileContent({
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs text-foreground/50 font-medium text-left">Choose Avatar</label>
+                  <label className="text-xs text-muted-foreground font-medium text-left">Choose Avatar</label>
                   <div className="flex justify-center gap-2 flex-wrap">
-                    {avatars.map((av) => (
-                      <button
-                        key={av.name}
-                        onClick={() => setSelectedAvatar(av.name)}
-                        className={`size-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
-                          selectedAvatar === av.name
-                            ? "border-primary text-primary bg-primary/10"
-                            : "border-border hover:border-foreground/50 text-foreground/60"
-                        }`}
-                      >
-                        <FontAwesomeIcon icon={av.icon} className="text-sm" />
-                      </button>
-                    ))}
+                    {avatars.map((av) => {
+                      const IconComp = av.icon
+                      return (
+                        <button
+                          key={av.name}
+                          onClick={() => setSelectedAvatar(av.name)}
+                          className={`size-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+                            selectedAvatar === av.name
+                              ? "border-primary text-primary bg-primary/10"
+                              : "border-border hover:border-foreground/50 text-muted-foreground"
+                          }`}
+                        >
+                          <IconComp size={16} strokeWidth={1.75} />
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
 
@@ -312,24 +335,24 @@ export default function ProfileContent({
                       setIsEditing(false)
                       setError(null)
                     }}
-                    className="px-4 py-2 rounded-lg text-xs font-semibold border border-white/10 hover:bg-white/5"
+                    className="px-4 py-2 rounded-lg text-xs font-semibold border border-white/10 hover:bg-white/5 cursor-pointer"
                   >
                     Cancel
                   </button>
-                  <GlowButton onClick={handleSave} disabled={loading} className="h-8 px-4 text-xs">
-                    <FontAwesomeIcon icon={faSave} className="mr-1.5" />
+                  <GlowButton onClick={handleSave} disabled={loading} className="h-8 px-4 text-xs cursor-pointer">
+                    <Save className="mr-1.5" size={12} strokeWidth={1.75} />
                     {loading ? "Saving..." : "Save"}
                   </GlowButton>
                 </div>
               </div>
             ) : (
               <>
-                <h2 className="text-2xl font-bold text-foreground mb-1">{initialProfile.username}</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-1" style={headingStyle}>{initialProfile.username}</h2>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary mb-4 uppercase">
-                  <FontAwesomeIcon icon={faAward} /> {subscriptionTier} Tier
+                  <Award size={12} strokeWidth={2} /> {subscriptionTier} Tier
                 </div>
-                <GlowButton onClick={() => setIsEditing(true)} className="h-8 px-4 text-xs">
-                  <FontAwesomeIcon icon={faUserEdit} className="mr-1.5" /> Edit Profile
+                <GlowButton onClick={() => setIsEditing(true)} className="h-8 px-4 text-xs cursor-pointer">
+                  <UserPen className="mr-1.5" size={12} strokeWidth={1.75} /> Edit Profile
                 </GlowButton>
               </>
             )}
@@ -337,29 +360,29 @@ export default function ProfileContent({
           </div>
 
           <div className="flex flex-col gap-4 pt-6">
-            <div className="flex items-center gap-3 text-sm text-foreground/75">
-              <FontAwesomeIcon icon={faEnvelope} className="text-foreground/40 w-4" />
+            <div className="flex items-center gap-3 text-sm text-body">
+              <Mail className="text-muted-foreground/45 w-4" size={16} strokeWidth={1.75} />
               <div>
-                <p className="text-xs text-foreground/40">Email Address</p>
-                <p className="font-medium">{userEmail}</p>
+                <p className="text-xs text-muted-foreground">Email Address</p>
+                <p className="font-medium text-body">{userEmail}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 text-sm text-foreground/75">
-              <FontAwesomeIcon icon={faCalendarAlt} className="text-foreground/40 w-4" />
+            <div className="flex items-center gap-3 text-sm text-body">
+              <Calendar className="text-muted-foreground/45 w-4" size={16} strokeWidth={1.75} />
               <div>
-                <p className="text-xs text-foreground/40">Joined Almaprep</p>
-                <p className="font-medium">{joinDate}</p>
+                <p className="text-xs text-muted-foreground">Joined Almaprep</p>
+                <p className="font-medium text-body">{joinDate}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 text-sm text-foreground/75">
-              <FontAwesomeIcon icon={faCheckCircle} className="text-foreground/40 w-4" />
+            <div className="flex items-center gap-3 text-sm text-body">
+              <CheckCircle className="text-muted-foreground/45 w-4" size={16} strokeWidth={1.75} />
               <div className="flex-1">
-                <p className="text-xs text-foreground/40">Resume Status</p>
-                <p className="font-medium text-foreground">
+                <p className="text-xs text-muted-foreground">Resume Status</p>
+                <p className="font-medium text-body">
                   {initialProfile.resume_text ? (
                     <span className="text-green-400 font-semibold">Saved & Analyzed</span>
                   ) : (
-                    <span className="text-foreground/50 font-semibold">
+                    <span className="text-muted-foreground font-semibold">
                       Not Added (
                       <Link href="/dashboard/resume" className="text-primary hover:underline">
                         Upload Now
@@ -385,24 +408,24 @@ export default function ProfileContent({
               style={{ width: `${completionPercentage}%` }}
             />
           </div>
-          <ul className="text-xs text-foreground/60 space-y-2 mt-1">
+          <ul className="text-xs text-muted-foreground space-y-2 mt-1">
             <li className="flex items-center gap-2">
-              <span className="text-green-400">✓</span> Email verified
+              <span className="text-green-400 font-bold">✓</span> Email verified
             </li>
             <li className="flex items-center gap-2">
-              <span className={initialProfile.username ? "text-green-400" : "text-foreground/35"}>
-                {initialProfile.username ? "✓" : "○"}
+              <span className={initialProfile.username && initialProfile.username !== "User" ? "text-green-400 font-bold" : "text-muted-foreground/35"}>
+                {initialProfile.username && initialProfile.username !== "User" ? "✓" : "○"}
               </span>{" "}
               Username set
             </li>
             <li className="flex items-center gap-2">
-              <span className={initialProfile.avatar_url ? "text-green-400" : "text-foreground/35"}>
-                {initialProfile.avatar_url ? "✓" : "○"}
+              <span className={initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie" ? "text-green-400 font-bold" : "text-muted-foreground/35"}>
+                {initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie" ? "✓" : "○"}
               </span>{" "}
               Avatar chosen
             </li>
             <li className="flex items-center gap-2">
-              <span className={initialProfile.resume_text ? "text-green-400" : "text-foreground/35"}>
+              <span className={initialProfile.resume_text ? "text-green-400 font-bold" : "text-muted-foreground/35"}>
                 {initialProfile.resume_text ? "✓" : "○"}
               </span>{" "}
               Resume analyzer configured
@@ -413,8 +436,8 @@ export default function ProfileContent({
         {/* Danger Zone */}
         <GlassCard className="p-5 border-red-500/20 hover:border-red-500/40 transition-all flex flex-col gap-3 relative overflow-hidden bg-red-500/5">
           <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl pointer-events-none" />
-          <h3 className="text-sm font-bold text-red-500 uppercase tracking-wider">Danger Zone</h3>
-          <p className="text-xs text-foreground/75 leading-relaxed">
+          <h3 className="text-sm font-bold text-red-500 uppercase tracking-wider" style={headingStyle}>Danger Zone</h3>
+          <p className="text-xs text-body leading-relaxed">
             Permanently delete all your account data, profile details, resumes, interview transcripts, and performance analytics. This action is irreversible.
           </p>
           
@@ -424,7 +447,7 @@ export default function ProfileContent({
               <div className="flex gap-2 justify-end">
                 <button
                   onClick={() => setShowDeleteConfirm(false)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/10 hover:bg-white/5 cursor-pointer text-foreground transition-colors"
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/10 hover:bg-white/5 cursor-pointer text-body transition-colors"
                 >
                   Cancel
                 </button>
@@ -451,28 +474,28 @@ export default function ProfileContent({
       {/* Right Column: Performance and stats */}
       <div className="lg:col-span-7 flex flex-col gap-6">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-primary/20 transition-all">
+          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-primary/20 transition-all text-left">
             <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
-            <FontAwesomeIcon icon={faChartBar} className="text-primary text-lg" />
+            <BarChart2 className="text-primary text-lg" size={20} strokeWidth={1.75} />
             <div>
               <p className="text-2xl font-black tracking-tight">{avgScore}</p>
-              <p className="text-[10px] text-foreground/50 font-bold uppercase tracking-wider">Avg Score</p>
+              <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">Avg Score</p>
             </div>
           </GlassCard>
-          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-secondary/20 transition-all">
+          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-secondary/20 transition-all text-left">
             <div className="absolute top-0 right-0 w-16 h-16 bg-secondary/10 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
-            <FontAwesomeIcon icon={faBullseye} className="text-secondary text-lg" />
+            <Target className="text-secondary text-lg" size={20} strokeWidth={1.75} />
             <div>
               <p className="text-2xl font-black tracking-tight">{totalSessions}</p>
-              <p className="text-[10px] text-foreground/50 font-bold uppercase tracking-wider">Total Runs</p>
+              <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">Total Runs</p>
             </div>
           </GlassCard>
-          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-accent/20 transition-all">
+          <GlassCard className="p-4 flex flex-col justify-between h-28 relative overflow-hidden group hover:border-accent/20 transition-all text-left">
             <div className="absolute top-0 right-0 w-16 h-16 bg-accent/10 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
-            <FontAwesomeIcon icon={faFire} className="text-accent text-lg" />
+            <Flame className="text-accent text-lg" size={20} strokeWidth={1.75} />
             <div>
               <p className="text-2xl font-black tracking-tight">{bestScore}</p>
-              <p className="text-[10px] text-foreground/50 font-bold uppercase tracking-wider">Top Score</p>
+              <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">Top Score</p>
             </div>
           </GlassCard>
         </div>
@@ -488,21 +511,21 @@ export default function ProfileContent({
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-foreground">GitHub Project Analyzer</h3>
-              <p className="text-xs text-foreground/50">Tailor your coding questions to your actual repositories</p>
+              <h3 className="text-lg font-bold text-foreground" style={headingStyle}>GitHub Project Analyzer</h3>
+              <p className="text-xs text-muted-foreground">Tailor your coding questions to your actual repositories</p>
             </div>
           </div>
 
           {!githubAnalysis ? (
             // State A: No analysis generated yet
             <div className="py-2">
-              <p className="text-sm text-foreground/75 mb-4 leading-relaxed">
+              <p className="text-sm text-body mb-4 leading-relaxed">
                 Connect your GitHub account to analyze your codebase (technologies, coding style, commit history) and generate custom-tailored interview questions directly for your projects.
               </p>
               
               {!hasGitHubToken ? (
                 <div className="bg-white/5 border border-white/5 rounded-xl p-4 text-center">
-                  <p className="text-xs text-foreground/60 mb-3">
+                  <p className="text-xs text-muted-foreground mb-3">
                     Your account is not connected to GitHub. Connect via GitHub during login to enable this.
                   </p>
                   <button 
@@ -517,11 +540,11 @@ export default function ProfileContent({
                   <GlowButton 
                     onClick={handleAnalyzeGitHub} 
                     disabled={analyzingGitHub} 
-                    className="h-10 w-full text-sm font-semibold"
+                    className="h-10 w-full text-sm font-semibold cursor-pointer"
                   >
                     {analyzingGitHub ? (
                       <>
-                        <FontAwesomeIcon icon={faSpinner} className="animate-spin mr-2" />
+                        <Loader2 className="animate-spin mr-2 inline-block" size={16} strokeWidth={1.75} />
                         Fetching & Analyzing Repositories...
                       </>
                     ) : (
@@ -537,27 +560,27 @@ export default function ProfileContent({
             <div className="flex flex-col gap-4">
               <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Coding Profile Summary</h4>
+                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider" style={headingStyle}>Coding Profile Summary</h4>
                   {hasGitHubToken && (
                     <button
                       onClick={handleAnalyzeGitHub}
                       disabled={analyzingGitHub}
-                      className="text-xs text-foreground/45 hover:text-foreground/75 flex items-center gap-1 cursor-pointer disabled:opacity-50 border-0 bg-transparent"
+                      className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 cursor-pointer disabled:opacity-50 border-0 bg-transparent"
                       title="Re-run analysis"
                     >
-                      <FontAwesomeIcon icon={faSync} className={analyzingGitHub ? "animate-spin" : ""} />
+                      <RefreshCw size={12} strokeWidth={1.75} className={analyzingGitHub ? "animate-spin" : ""} />
                       {analyzingGitHub ? "Refreshing..." : "Refresh"}
                     </button>
                   )}
                 </div>
-                <p className="text-sm text-foreground/80 leading-relaxed">
+                <p className="text-sm text-body leading-relaxed">
                   {githubAnalysis.profile_summary}
                 </p>
               </div>
 
               {/* Tech Stack */}
               <div>
-                <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Primary Tech Stack</h4>
+                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Primary Tech Stack</h4>
                 <div className="flex flex-wrap gap-1.5">
                   {githubAnalysis.tech_stack?.map((tech: string) => (
                     <span 
@@ -573,7 +596,7 @@ export default function ProfileContent({
               {/* Design Patterns */}
               {githubAnalysis.design_patterns && githubAnalysis.design_patterns.length > 0 && (
                 <div>
-                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Detected Design Patterns</h4>
+                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Detected Design Patterns</h4>
                   <div className="flex flex-wrap gap-1.5">
                     {githubAnalysis.design_patterns.map((pattern: string) => (
                       <span 
@@ -590,8 +613,8 @@ export default function ProfileContent({
               {/* Strengths */}
               {githubAnalysis.strengths && githubAnalysis.strengths.length > 0 && (
                 <div>
-                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Key Strengths</h4>
-                  <ul className="text-xs text-foreground/75 space-y-1.5 pl-1">
+                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Key Strengths</h4>
+                  <ul className="text-xs text-body space-y-1.5 pl-1">
                     {githubAnalysis.strengths.map((strength: string, i: number) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-primary mt-0.5">✦</span>
@@ -605,8 +628,8 @@ export default function ProfileContent({
               {/* Weak Areas to Improve */}
               {githubAnalysis.weak_areas && githubAnalysis.weak_areas.length > 0 && (
                 <div>
-                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Areas to Improve</h4>
-                  <ul className="text-xs text-foreground/75 space-y-1.5 pl-1">
+                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Areas to Improve</h4>
+                  <ul className="text-xs text-body space-y-1.5 pl-1">
                     {githubAnalysis.weak_areas.map((weak: string, i: number) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-red-400 mt-0.5">⚠️</span>
@@ -620,7 +643,7 @@ export default function ProfileContent({
               {/* Tailored Questions per Repo */}
               {githubAnalysis.questions && githubAnalysis.questions.length > 0 && (
                 <div>
-                  <h4 className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Tailored Interview Questions</h4>
+                  <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Tailored Interview Questions</h4>
                   
                   {/* Group questions by repository */}
                   <div className="flex flex-col gap-2">
@@ -645,10 +668,7 @@ export default function ProfileContent({
                                 </span>
                               )}
                             </div>
-                            <FontAwesomeIcon 
-                              icon={isExpanded ? faChevronUp : faChevronDown} 
-                              className="text-xs text-foreground/45 shrink-0" 
-                            />
+                            {isExpanded ? <ChevronUp size={16} strokeWidth={1.75} className="text-muted-foreground shrink-0" /> : <ChevronDown size={16} strokeWidth={1.75} className="text-muted-foreground shrink-0" />}
                           </button>
                           
                           {isExpanded && (
@@ -658,7 +678,7 @@ export default function ProfileContent({
                                 <div className="flex flex-col gap-2 pt-1 pb-1 text-xs border-b border-white/5">
                                   {githubAnalysis.repo_metadata[repoName].design_patterns?.length > 0 && (
                                     <div className="flex flex-wrap gap-1.5 items-center">
-                                      <span className="text-foreground/50 font-medium mr-1 text-[11px]">Patterns:</span>
+                                      <span className="text-muted-foreground font-medium mr-1 text-[11px]">Patterns:</span>
                                       {githubAnalysis.repo_metadata[repoName].design_patterns.map((pat: string) => (
                                         <span key={pat} className="text-[9px] px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent font-semibold">
                                           {pat}
@@ -668,7 +688,7 @@ export default function ProfileContent({
                                   )}
                                   {githubAnalysis.repo_metadata[repoName].weak_areas?.length > 0 && (
                                     <div className="flex flex-col gap-1 mt-1 text-[11px]">
-                                      <span className="text-foreground/50 font-medium">Repo Weak Areas:</span>
+                                      <span className="text-muted-foreground font-medium">Repo Weak Areas:</span>
                                       {githubAnalysis.repo_metadata[repoName].weak_areas.map((weak: string, wi: number) => (
                                         <span key={wi} className="text-red-400/90 pl-1 leading-normal">
                                           ⚠️ {weak}
@@ -693,7 +713,7 @@ export default function ProfileContent({
                                         {q.difficulty}
                                       </span>
                                     </div>
-                                    <p className="text-xs text-foreground/80 leading-relaxed">
+                                    <p className="text-xs text-body leading-relaxed">
                                       {q.question}
                                     </p>
                                   </div>
@@ -724,15 +744,15 @@ export default function ProfileContent({
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-foreground">GitHub Integration</h3>
-              <p className="text-xs text-foreground/50">Manage settings for storing completed challenges</p>
+              <h3 className="text-lg font-bold text-foreground" style={headingStyle}>GitHub Integration</h3>
+              <p className="text-xs text-muted-foreground">Manage settings for storing completed challenges</p>
             </div>
           </div>
 
           <div className="flex items-center justify-between border-t border-white/5 pt-4">
             <div className="max-w-[75%]">
-              <h4 className="text-xs font-bold text-white mb-0.5">Auto-save solutions to GitHub</h4>
-              <p className="text-[10px] text-foreground/45 leading-relaxed">
+              <h4 className="text-xs font-bold text-white mb-0.5" style={headingStyle}>Auto-save solutions to GitHub</h4>
+              <p className="text-[10px] text-muted-foreground leading-relaxed">
                 Automatically create a repository and commit your solutions on successful completion of coding challenges.
               </p>
             </div>
@@ -750,7 +770,7 @@ export default function ProfileContent({
 
         {/* History Log */}
         <GlassCard className="p-6">
-          <h3 className="text-lg font-bold mb-4">Interview History & Analytics</h3>
+          <h3 className="text-lg font-bold mb-4" style={headingStyle}>Interview History & Analytics</h3>
 
           {totalSessions > 0 ? (
             <div className="flex flex-col gap-4 max-h-[460px] overflow-y-auto pr-1">
@@ -764,11 +784,11 @@ export default function ProfileContent({
                     <div>
                       <div className="flex items-center gap-2 mb-0.5">
                         <h4 className="font-semibold text-sm capitalize">{session.category} Interview</h4>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-foreground/60 font-medium">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-muted-foreground font-medium">
                           {session.status}
                         </span>
                       </div>
-                      <p className="text-xs text-foreground/40">
+                      <p className="text-xs text-muted-foreground">
                         {new Date(session.date).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
@@ -790,11 +810,11 @@ export default function ProfileContent({
           ) : (
             <div className="text-center py-12 flex flex-col items-center">
               <div className="size-12 rounded-full bg-white/5 flex items-center justify-center mb-3">
-                <FontAwesomeIcon icon={faLaptopCode} className="text-foreground/30 text-lg" />
+                <Laptop className="text-muted-foreground/30 text-lg" size={20} strokeWidth={1.75} />
               </div>
-              <p className="text-sm text-foreground/50 mb-4">No interviews logged yet.</p>
+              <p className="text-sm text-muted-foreground mb-4">No interviews logged yet.</p>
               <Link href="/interview/setup">
-                <GlowButton className="h-9 px-6 text-xs">Start Practicing</GlowButton>
+                <GlowButton className="h-9 px-6 text-xs cursor-pointer">Start Practicing</GlowButton>
               </Link>
             </div>
           )}

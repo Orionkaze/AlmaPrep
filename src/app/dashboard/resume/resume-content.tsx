@@ -1,18 +1,18 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
-  faFileLines,
-  faStar,
-  faTasks,
-  faCheckCircle,
-  faExclamationTriangle,
-  faArrowRight,
-  faCompass,
-  faLaptopCode,
-  faUpload
-} from "@fortawesome/free-solid-svg-icons"
+  FileText,
+  Star,
+  ListChecks,
+  CheckCircle,
+  AlertTriangle,
+  ArrowRight,
+  Compass,
+  Laptop,
+  Upload,
+  Loader2
+} from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import { saveAndAnalyzeResume, ResumeAnalysis } from "@/app/actions/resume"
@@ -30,6 +30,12 @@ const loadingSteps = [
   "Extracting core skills & badges...",
   "Formulating mock interview recommendations..."
 ]
+
+const headingStyle: React.CSSProperties = {
+  fontFamily: "var(--font-head), serif",
+  letterSpacing: "-0.015em",
+  fontWeight: 600,
+}
 
 export default function ResumeContent({
   initialResumeText,
@@ -119,17 +125,17 @@ export default function ResumeContent({
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full text-left">
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20 max-w-lg mx-auto text-center">
           <div className="relative mb-8">
             <div className="size-20 rounded-2xl bg-primary/20 flex items-center justify-center text-primary text-3xl animate-bounce">
-              <FontAwesomeIcon icon={faStar} className="animate-spin duration-3000 text-secondary" />
+              <Star size={32} strokeWidth={1.75} className="animate-spin duration-3000 text-secondary" />
             </div>
             <span className="absolute inset-0 size-20 rounded-2xl border-2 border-primary border-t-transparent animate-spin" />
           </div>
-          <h3 className="text-xl font-bold mb-2">Analyzing Your Resume</h3>
-          <p className="text-sm text-foreground/50 h-5 animate-pulse transition-all">
+          <h3 className="text-xl font-bold mb-2 text-foreground" style={headingStyle}>Analyzing Your Resume</h3>
+          <p className="text-sm text-muted-foreground h-5 animate-pulse transition-all">
             {loadingSteps[loadingStepIdx]}
           </p>
           <div className="w-full max-w-xs bg-white/5 border border-white/5 rounded-full h-1.5 mt-6 overflow-hidden">
@@ -144,8 +150,8 @@ export default function ResumeContent({
           {/* Left Column: Editor / Resume Text Input */}
           <div className={`lg:col-span-6 flex flex-col gap-4 ${!isEditing ? "opacity-90" : ""}`}>
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-bold flex items-center gap-2">
-                <FontAwesomeIcon icon={faFileLines} className="text-primary" />
+              <h2 className="text-lg font-bold flex items-center gap-2 text-foreground" style={headingStyle}>
+                <FileText className="text-primary" size={20} strokeWidth={1.75} />
                 Resume Plain Text
               </h2>
               <div className="flex items-center gap-3">
@@ -153,9 +159,9 @@ export default function ResumeContent({
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-medium transition-colors cursor-pointer"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-medium transition-colors cursor-pointer text-muted-foreground hover:text-foreground"
                   >
-                    <FontAwesomeIcon icon={faUpload} />
+                    <Upload size={14} strokeWidth={1.75} />
                     Upload File
                   </button>
                 )}
@@ -203,34 +209,32 @@ Software Engineer at TechCorp (2024-Present)
 - Developed and optimized dashboard page, reducing bundle size by 30%
 - Integrated third-party Supabase auth and customized database schemas...`}
                     required
-                    className={`w-full h-[450px] rounded-2xl p-5 text-sm bg-input border ${isDragging ? 'border-primary border-dashed bg-primary/5' : 'border-border'} focus:border-ring focus:ring-1 focus:ring-ring/30 outline-none transition-all placeholder:text-foreground/20 leading-relaxed font-mono resize-none`}
+                    className={`w-full h-[450px] rounded-2xl p-5 text-sm bg-input border ${isDragging ? 'border-primary border-dashed bg-primary/5' : 'border-border'} focus:border-ring focus:ring-1 focus:ring-ring/30 outline-none transition-all placeholder:text-muted-foreground/30 leading-relaxed font-mono resize-none text-body`}
                   />
-                  <div className="absolute bottom-4 right-4 text-[10px] text-foreground/30 font-semibold bg-background/50 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/5 z-10">
+                  <div className="absolute bottom-4 right-4 text-[10px] text-muted-foreground font-semibold bg-background/50 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/5 z-10">
                     {resumeText.length} chars
                   </div>
                   
                   {isDragging && (
                     <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center border-2 border-primary border-dashed z-20 pointer-events-none">
-                      <FontAwesomeIcon icon={faUpload} className="text-4xl text-primary mb-4 animate-bounce" />
-                      <p className="text-lg font-bold text-primary">Drop Resume File Here</p>
-                      <p className="text-sm text-foreground/50 mt-1">Supports PDF, DOCX, and TXT</p>
+                      <Upload className="text-4xl text-primary mb-4 animate-bounce" size={40} strokeWidth={1.75} />
+                      <p className="text-lg font-bold text-primary" style={headingStyle}>Drop Resume File Here</p>
+                      <p className="text-sm text-muted-foreground mt-1">Supports PDF, DOCX, and TXT</p>
                     </div>
                   )}
 
                   {isParsing && (
                     <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center z-20">
                       <div className="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary text-xl mb-4 animate-spin">
-                        <FontAwesomeIcon icon={faStar} />
+                        <Loader2 size={24} strokeWidth={1.75} />
                       </div>
-                      <p className="font-bold text-primary mt-2">Extracting Text...</p>
+                      <p className="font-bold text-primary mt-2" style={headingStyle}>Extracting Text...</p>
                     </div>
                   )}
-                  
-
                 </div>
 
                 {error && (
-                  <div className="p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-red-400 text-xs font-medium">
+                  <div className="p-3 rounded-lg border border-red-500/20 bg-red-500/10 text-red-500 text-xs font-medium">
                     {error}
                   </div>
                 )}
@@ -241,7 +245,7 @@ Software Engineer at TechCorp (2024-Present)
               </form>
             ) : (
               <div className="relative group">
-                <div className="w-full h-[450px] rounded-2xl p-5 text-xs bg-input/40 border border-border/50 text-foreground/50 overflow-y-auto leading-relaxed font-mono whitespace-pre-wrap">
+                <div className="w-full h-[450px] rounded-2xl p-5 text-xs bg-input/40 border border-border/50 text-muted-foreground overflow-y-auto leading-relaxed font-mono whitespace-pre-wrap">
                   {resumeText}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none rounded-2xl" />
@@ -251,8 +255,8 @@ Software Engineer at TechCorp (2024-Present)
 
           {/* Right Column: AI Analysis Report */}
           <div className="lg:col-span-6 flex flex-col gap-6">
-            <h2 className="text-lg font-bold flex items-center gap-2">
-              <FontAwesomeIcon icon={faStar} className="text-secondary" />
+            <h2 className="text-lg font-bold flex items-center gap-2 text-foreground" style={headingStyle}>
+              <Star className="text-secondary" size={20} strokeWidth={1.75} />
               AI Resume Review & Insights
             </h2>
 
@@ -262,7 +266,7 @@ Software Engineer at TechCorp (2024-Present)
                 <GlassCard className="p-5 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-2xl pointer-events-none" />
                   <h3 className="text-sm font-bold text-secondary mb-2 uppercase tracking-wider">Candidate Profile</h3>
-                  <p className="text-sm text-foreground/80 leading-relaxed italic">
+                  <p className="text-sm text-body leading-relaxed italic">
                     &ldquo;{analysis.summary}&rdquo;
                   </p>
                 </GlassCard>
@@ -284,11 +288,11 @@ Software Engineer at TechCorp (2024-Present)
 
                 {/* Highlights */}
                 <GlassCard className="p-5">
-                  <h3 className="text-sm font-bold text-foreground mb-3 uppercase tracking-wider flex items-center gap-2">
-                    <FontAwesomeIcon icon={faCheckCircle} className="text-green-400 text-xs" />
+                  <h3 className="text-sm font-bold text-foreground mb-3 uppercase tracking-wider flex items-center gap-2" style={headingStyle}>
+                    <CheckCircle className="text-green-500 text-xs" size={16} strokeWidth={1.75} />
                     Key Accomplishments
                   </h3>
-                  <ul className="text-sm text-foreground/75 space-y-2.5 list-none pl-1">
+                  <ul className="text-sm text-body space-y-2.5 list-none pl-1">
                     {analysis.highlights.map((highlight, idx) => (
                       <li key={idx} className="flex gap-2.5 items-start">
                         <span className="text-primary mt-1">•</span>
@@ -301,18 +305,18 @@ Software Engineer at TechCorp (2024-Present)
                 {/* Focus Topics */}
                 <GlassCard className="p-5 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full blur-2xl pointer-events-none" />
-                  <h3 className="text-sm font-bold text-accent mb-3 uppercase tracking-wider flex items-center gap-2">
-                    <FontAwesomeIcon icon={faCompass} className="text-accent text-xs animate-pulse" />
+                  <h3 className="text-sm font-bold text-accent mb-3 uppercase tracking-wider flex items-center gap-2" style={headingStyle}>
+                    <Compass className="text-accent text-xs animate-pulse" size={16} strokeWidth={1.75} />
                     Recommended Interview Topics
                   </h3>
                   <div className="flex flex-col gap-2">
                     {analysis.interviewTopics.map((topic, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-foreground/80"
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-body"
                       >
                         <span className="font-medium">{topic}</span>
-                        <FontAwesomeIcon icon={faArrowRight} className="text-foreground/30 text-[10px]" />
+                        <ArrowRight className="text-muted-foreground/35" size={14} strokeWidth={2} />
                       </div>
                     ))}
                   </div>
@@ -320,11 +324,11 @@ Software Engineer at TechCorp (2024-Present)
 
                 {/* Improvements */}
                 <GlassCard className="p-5 border-yellow-500/10">
-                  <h3 className="text-sm font-bold text-yellow-500 mb-3 uppercase tracking-wider flex items-center gap-2">
-                    <FontAwesomeIcon icon={faExclamationTriangle} className="text-yellow-500 text-xs" />
+                  <h3 className="text-sm font-bold text-yellow-500 mb-3 uppercase tracking-wider flex items-center gap-2" style={headingStyle}>
+                    <AlertTriangle className="text-yellow-500 text-xs" size={16} strokeWidth={1.75} />
                     Suggested Resume Updates
                   </h3>
-                  <ul className="text-sm text-foreground/75 space-y-2.5 list-none pl-1">
+                  <ul className="text-sm text-body space-y-2.5 list-none pl-1">
                     {analysis.improvements.map((improvement, idx) => (
                       <li key={idx} className="flex gap-2.5 items-start">
                         <span className="text-yellow-500 mt-1">•</span>
@@ -335,10 +339,10 @@ Software Engineer at TechCorp (2024-Present)
                 </GlassCard>
               </div>
             ) : (
-              <GlassCard className="p-8 text-center flex flex-col items-center justify-center py-20 text-foreground/40 border-dashed border-2">
-                <FontAwesomeIcon icon={faTasks} className="text-4xl text-foreground/20 mb-4" />
-                <h3 className="text-base font-semibold mb-1">No Resume Analysis Yet</h3>
-                <p className="text-xs text-foreground/50 max-w-sm">
+              <GlassCard className="p-8 text-center flex flex-col items-center justify-center py-20 text-muted-foreground border-dashed border-2">
+                <ListChecks className="text-muted-foreground/30 mb-4" size={40} strokeWidth={1.75} />
+                <h3 className="text-base font-semibold mb-1 text-foreground" style={headingStyle}>No Resume Analysis Yet</h3>
+                <p className="text-xs text-muted-foreground max-w-sm">
                   Paste your resume details on the left and run analysis to get personalized feedback and unlock resume-based mock interviews.
                 </p>
               </GlassCard>

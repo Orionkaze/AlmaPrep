@@ -4,8 +4,17 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { GlowButton } from "@/components/ui/glow-button"
 import Link from "next/link"
 import { use, useState, useEffect } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCheck, faLightbulb, faBookOpen, faChevronDown, faChevronUp, faClipboardCheck, faUserTie, faShieldHalved } from "@fortawesome/free-solid-svg-icons"
+import { 
+  Check, 
+  Lightbulb, 
+  BookOpen, 
+  ChevronDown, 
+  ChevronUp, 
+  ClipboardCheck, 
+  UserRound, 
+  ShieldAlert,
+  ArrowLeft
+} from "lucide-react"
 import { getFeedback, getBehavioralReport, getInterviewSession } from "@/app/actions/interview"
 import BehavioralReport from "@/components/BehavioralReport"
 
@@ -81,7 +90,7 @@ function ScoreCircle({ score }: { score: number }) {
       </svg>
       <div className="absolute text-center">
         <p className="text-4xl font-bold">{score}</p>
-        <p className="text-xs text-foreground/50">out of 100</p>
+        <p className="text-xs text-muted-foreground">out of 100</p>
       </div>
     </div>
   )
@@ -96,6 +105,12 @@ function ProgressBar({ score, color }: { score: number; color: string }) {
       />
     </div>
   )
+}
+
+const headingStyle: React.CSSProperties = {
+  fontFamily: "var(--font-head), serif",
+  letterSpacing: "-0.015em",
+  fontWeight: 600,
 }
 
 export default function FeedbackPage({ params }: { params: Promise<{ id: string }> }) {
@@ -293,10 +308,10 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             <div className="absolute inset-2 border-4 border-secondary rounded-full border-b-transparent animate-[spin_1.5s_linear_infinite_reverse]"></div>
           </div>
           
-          <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-3 animate-pulse">
+          <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-3 animate-pulse" style={headingStyle}>
             Compiling Analysis
           </h2>
-          <p className="text-sm text-foreground/60 text-center">
+          <p className="text-sm text-muted-foreground text-center">
             Mock AI is reviewing your interview transcript and calculating your scores...
           </p>
         </div>
@@ -317,23 +332,23 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <Link href="/dashboard" className="text-sm text-foreground/50 hover:text-foreground/80 transition-colors mb-4 inline-block">
-            ← Back to Dashboard
+          <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-4 inline-flex items-center gap-1.5 font-semibold">
+            <ArrowLeft size={16} strokeWidth={1.75} /> Back to Dashboard
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">Interview Feedback</h1>
-          <p className="text-foreground/60">{categoryText} • Completed just now</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-foreground" style={headingStyle}>Interview Feedback</h1>
+          <p className="text-muted-foreground">{categoryText} • Completed just now</p>
         </div>
 
         {proctoringData && (proctoringData.terminatedEarly || proctoringData.isFlagged) && (
           <div className="bg-red-500/10 border border-red-500/20 text-red-200 px-6 py-4 rounded-3xl mb-8 flex items-start gap-4 shadow-[0_0_20px_rgba(239,68,68,0.05)] text-left">
             <div className="size-10 rounded-xl bg-red-500/20 flex items-center justify-center text-red-400 shrink-0">
-              <FontAwesomeIcon icon={faShieldHalved} className="size-5" />
+              <ShieldAlert size={20} strokeWidth={1.75} />
             </div>
             <div>
-              <h3 className="font-bold text-red-400 text-sm">
+              <h3 className="font-bold text-red-400 text-sm" style={headingStyle}>
                 {proctoringData.terminatedEarly ? "Session Terminated Due to Integrity Violations" : "Session Flagged with Proctoring Violations"}
               </h3>
-              <p className="text-xs text-white/60 leading-relaxed mt-1">
+              <p className="text-xs text-muted-foreground leading-relaxed mt-1">
                 {proctoringData.terminatedEarly 
                   ? "This session was terminated early because the violation limit of 5 was exceeded. An integrity report has been saved to your session history." 
                   : "This session has been flagged due to multiple proctoring warnings (e.g. exiting fullscreen, switching tabs, or unrecognized face activity)."}
@@ -344,20 +359,20 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
         {/* Score Section */}
         <GlassCard className="flex flex-col items-center text-center mb-6 py-10">
-          <h2 className="text-lg font-semibold text-foreground/70 mb-4">Overall Performance</h2>
+          <h2 className="text-lg font-semibold text-muted-foreground mb-4" style={headingStyle}>Overall Performance</h2>
           <ScoreCircle score={feedback.score} />
-          <p className="text-foreground/70 mt-6 max-w-lg text-sm leading-relaxed">{feedback.summary}</p>
+          <p className="text-body mt-6 max-w-lg text-sm leading-relaxed">{feedback.summary}</p>
         </GlassCard>
 
         {/* Breakdown */}
         <GlassCard className="mb-6">
-          <h2 className="text-lg font-semibold mb-5">Score Breakdown</h2>
+          <h2 className="text-lg font-semibold mb-5 text-foreground" style={headingStyle}>Score Breakdown</h2>
           <div className="flex flex-col gap-5">
             {feedback.breakdown.map((item) => (
               <div key={item.label}>
                 <div className="flex items-center justify-between text-sm mb-2">
-                  <span className="text-foreground/80">{item.label}</span>
-                  <span className="font-semibold">{item.score}%</span>
+                  <span className="text-body">{item.label}</span>
+                  <span className="font-semibold text-foreground">{item.score}%</span>
                 </div>
                 <ProgressBar score={item.score} color={item.color} />
               </div>
@@ -368,32 +383,32 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         {/* Strengths & Improvements */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           <GlassCard>
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-foreground" style={headingStyle}>
               <span className="size-8 rounded-lg bg-green-500/20 flex items-center justify-center text-sm">
-                <FontAwesomeIcon icon={faCheck} className="text-green-500" />
+                <Check size={16} strokeWidth={1.75} className="text-green-500" />
               </span>
               Strengths
             </h2>
             <ul className="flex flex-col gap-3">
               {feedback.strengths.map((s, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-foreground/80">
-                  <span className="mt-0.5 size-1.5 rounded-full bg-green-400 shrink-0" />
+                <li key={i} className="flex items-start gap-3 text-sm text-body">
+                  <span className="mt-2 size-1.5 rounded-full bg-green-400 shrink-0" />
                   {s}
                 </li>
               ))}
             </ul>
           </GlassCard>
           <GlassCard>
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-foreground" style={headingStyle}>
               <span className="size-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-sm">
-                <FontAwesomeIcon icon={faLightbulb} className="text-amber-500" />
+                <Lightbulb size={16} strokeWidth={1.75} className="text-amber-500" />
               </span>
               Improvements
             </h2>
             <ul className="flex flex-col gap-3">
               {feedback.improvements.map((s, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-foreground/80">
-                  <span className="mt-0.5 size-1.5 rounded-full bg-amber-400 shrink-0" />
+                <li key={i} className="flex items-start gap-3 text-sm text-body">
+                  <span className="mt-2 size-1.5 rounded-full bg-amber-400 shrink-0" />
                   {s}
                 </li>
               ))}
@@ -405,11 +420,11 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         {behavioralData ? (
           <div className="mb-10 text-left">
             <div className="flex items-center gap-3 mb-6">
-              <div className="size-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                <FontAwesomeIcon icon={faUserTie} className="text-emerald-400" />
+              <div className="size-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <UserRound size={20} strokeWidth={1.75} />
               </div>
               <div className="text-left">
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <h2 className="text-xl font-bold text-white flex items-center gap-2" style={headingStyle}>
                   <span>AI Behavioral & Physical Analysis</span>
                   {!isUuid && (
                     <span className="text-[9px] uppercase tracking-wider font-bold bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded text-amber-400 align-middle">
@@ -417,7 +432,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                     </span>
                   )}
                 </h2>
-                <p className="text-xs text-foreground/60">Combined insights from your speech delivery and physical presence</p>
+                <p className="text-xs text-muted-foreground">Combined insights from your speech delivery and physical presence</p>
               </div>
             </div>
             <BehavioralReport
@@ -431,17 +446,17 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
           isUuid && (
             <div className="mb-10 text-left">
               <div className="flex items-center gap-3 mb-4">
-                <div className="size-10 rounded-lg bg-amber-500/15 flex items-center justify-center border border-amber-500/20">
-                  <FontAwesomeIcon icon={faUserTie} className="text-amber-500" />
+                <div className="size-10 rounded-lg bg-amber-500/15 flex items-center justify-center border border-amber-500/20 text-amber-500">
+                  <UserRound size={20} strokeWidth={1.75} />
                 </div>
                 <div className="text-left">
-                  <h2 className="text-xl font-bold text-white">AI Behavioral & Physical Analysis</h2>
-                  <p className="text-xs text-foreground/60">Combined insights from your speech delivery and physical presence</p>
+                  <h2 className="text-xl font-bold text-white" style={headingStyle}>AI Behavioral & Physical Analysis</h2>
+                  <p className="text-xs text-muted-foreground">Combined insights from your speech delivery and physical presence</p>
                 </div>
               </div>
               <GlassCard className="border border-amber-500/20 bg-amber-500/5 py-6 px-8 rounded-2xl">
-                <h4 className="text-sm font-bold text-amber-400 mb-1">Behavioral Report Unavailable</h4>
-                <p className="text-xs text-white/70 leading-relaxed">
+                <h4 className="text-sm font-bold text-amber-400 mb-1" style={headingStyle}>Behavioral Report Unavailable</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   The behavioral and physical metrics report is not available for this session. If this is a new session, the AI analysis might still be generating or failed to save. Please try refreshing or restarting the interview.
                 </p>
               </GlassCard>
@@ -452,15 +467,15 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         {/* Proctoring Summary Panel */}
         {proctoringData && (
           <GlassCard className="mb-10 text-left border border-white/5">
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white">
-              <span className="size-8 rounded-lg bg-red-500/20 flex items-center justify-center text-sm">
-                <FontAwesomeIcon icon={faShieldHalved} className="text-red-400" />
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white" style={headingStyle}>
+              <span className="size-8 rounded-lg bg-red-500/20 flex items-center justify-center text-sm text-red-400">
+                <ShieldAlert size={16} strokeWidth={1.75} />
               </span>
               Proctoring Summary
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
               <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col justify-between">
-                <span className="text-[10px] text-white/40 uppercase tracking-wider font-bold mb-1">Status</span>
+                <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Status</span>
                 <span className={`text-xs font-extrabold self-start px-2.5 py-0.5 rounded-full ${
                   proctoringData.isFlagged 
                     ? "bg-rose-500/10 text-rose-400 border border-rose-500/20" 
@@ -470,13 +485,13 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                 </span>
               </div>
               <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col">
-                <span className="text-[10px] text-white/40 uppercase tracking-wider font-bold mb-1">Total Warnings</span>
+                <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Total Warnings</span>
                 <span className={`text-xl font-extrabold font-mono ${proctoringData.totalCount >= 3 ? "text-amber-400" : "text-white"}`}>
                   {proctoringData.totalCount} / 5
                 </span>
               </div>
               <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col">
-                <span className="text-[10px] text-white/40 uppercase tracking-wider font-bold mb-1">Completed</span>
+                <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Completed</span>
                 <span className="text-xs font-extrabold text-white">
                   {proctoringData.terminatedEarly ? "Terminated Early ❌" : "Finished Normally ✓"}
                 </span>
@@ -485,7 +500,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
             {proctoringData.violations.length > 0 ? (
               <div className="space-y-3">
-                <h3 className="text-xs uppercase font-bold text-white/50 tracking-wider mb-2">Violations Log</h3>
+                <h3 className="text-xs uppercase font-bold text-muted-foreground tracking-wider mb-2" style={headingStyle}>Violations Log</h3>
                 <div className="space-y-2">
                   {proctoringData.violations.map((v: any, index: number) => {
                     let label = "";
@@ -507,9 +522,9 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                     }
                     return (
                       <div key={index} className="flex items-center justify-between text-xs bg-white/5 p-3 rounded-xl border border-white/5">
-                        <span className="font-semibold text-white/80">{label}</span>
+                        <span className="font-semibold text-body">{label}</span>
                         <div className="flex items-center gap-3">
-                          <span className="text-white/40 text-[10px] font-mono">
+                          <span className="text-muted-foreground text-[10px] font-mono">
                             {new Date(v.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                           </span>
                           <span className="bg-rose-500/10 text-rose-400 border border-rose-500/25 px-2.5 py-0.5 rounded font-bold">
@@ -522,7 +537,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                 </div>
               </div>
             ) : (
-              <div className="text-center py-4 text-xs italic text-white/40">
+              <div className="text-center py-4 text-xs italic text-muted-foreground">
                 No proctoring violations recorded. Excellent adherence to guidelines!
               </div>
             )}
@@ -537,15 +552,15 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
               className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <div className="size-10 rounded-lg bg-secondary/20 flex items-center justify-center">
-                  <FontAwesomeIcon icon={faClipboardCheck} className="text-secondary" />
+                <div className="size-10 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary">
+                  <ClipboardCheck size={20} strokeWidth={1.75} />
                 </div>
                 <div className="text-left">
-                  <h2 className="text-lg font-semibold text-white">Question-by-Question Analysis</h2>
-                  <p className="text-xs text-foreground/60">Detailed evaluation of each question asked</p>
+                  <h2 className="text-lg font-semibold text-white" style={headingStyle}>Question-by-Question Analysis</h2>
+                  <p className="text-xs text-muted-foreground">Detailed evaluation of each question asked</p>
                 </div>
               </div>
-              <FontAwesomeIcon icon={showQuestionAnalysis ? faChevronUp : faChevronDown} className="text-foreground/50 mr-2" />
+              {showQuestionAnalysis ? <ChevronUp size={20} strokeWidth={1.75} className="text-muted-foreground mr-2" /> : <ChevronDown size={20} strokeWidth={1.75} className="text-muted-foreground mr-2" />}
             </button>
             
             {showQuestionAnalysis && (
@@ -562,7 +577,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                           <span className="text-[10px] uppercase tracking-wider text-primary font-bold bg-primary/10 px-2.5 py-1 rounded-md mb-2 inline-block">
                             Question {idx + 1}
                           </span>
-                          <h3 className="text-sm md:text-base font-bold text-white leading-relaxed">
+                          <h3 className="text-sm md:text-base font-bold text-white leading-relaxed" style={headingStyle}>
                             {item.question}
                           </h3>
                         </div>
@@ -573,8 +588,8 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
                       {/* Candidate's Answer */}
                       <div className="mb-4 bg-white/5 p-3 rounded-lg border border-white/5">
-                        <span className="text-[10px] text-foreground/45 uppercase tracking-wider font-semibold block mb-1">Your Answer</span>
-                        <p className="text-xs md:text-sm text-foreground/80 leading-relaxed font-sans italic">
+                        <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold block mb-1">Your Answer</span>
+                        <p className="text-xs md:text-sm text-body leading-relaxed font-sans italic">
                           &ldquo;{item.userAnswer}&rdquo;
                         </p>
                       </div>
@@ -582,7 +597,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                       {/* Feedback */}
                       <div className="mb-4">
                         <span className="text-[10px] text-secondary uppercase tracking-wider font-semibold block mb-1">Feedback</span>
-                        <p className="text-xs md:text-sm text-foreground/80 leading-relaxed">
+                        <p className="text-xs md:text-sm text-body leading-relaxed">
                           {item.feedback}
                         </p>
                       </div>
@@ -595,11 +610,11 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                             className="flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors font-semibold focus:outline-none cursor-pointer"
                           >
                             <span>{isExpanded ? "Hide" : "Show"} Model Answer & Criteria</span>
-                            <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-[10px]" />
+                            {isExpanded ? <ChevronUp size={12} strokeWidth={1.75} /> : <ChevronDown size={12} strokeWidth={1.75} />}
                           </button>
                           
                           {isExpanded && (
-                            <div className="mt-3 bg-primary/5 border border-primary/15 p-3.5 rounded-lg text-xs md:text-sm text-foreground/80 leading-relaxed animate-in slide-in-from-top-2 duration-200">
+                            <div className="mt-3 bg-primary/5 border border-primary/15 p-3.5 rounded-lg text-xs md:text-sm text-body leading-relaxed animate-in slide-in-from-top-2 duration-200">
                               <span className="text-[10px] text-primary uppercase tracking-wider font-bold block mb-1.5">Model Answer / Looking For:</span>
                               {item.modelAnswer}
                             </div>
@@ -619,29 +634,29 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
           <div className="mb-10">
             <button 
               onClick={() => setShowStudyGuide(!showStudyGuide)}
-              className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+              className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <div className="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <FontAwesomeIcon icon={faBookOpen} className="text-primary" />
+                <div className="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+                  <BookOpen size={20} strokeWidth={1.75} />
                 </div>
                 <div className="text-left">
-                  <h2 className="text-lg font-semibold">Personalized Study Guide</h2>
-                  <p className="text-xs text-foreground/60">Actionable advice based on your weaknesses</p>
+                  <h2 className="text-lg font-semibold text-white" style={headingStyle}>Personalized Study Guide</h2>
+                  <p className="text-xs text-muted-foreground">Actionable advice based on your weaknesses</p>
                 </div>
               </div>
-              <FontAwesomeIcon icon={showStudyGuide ? faChevronUp : faChevronDown} className="text-foreground/50 mr-2" />
+              {showStudyGuide ? <ChevronUp size={20} strokeWidth={1.75} className="text-muted-foreground mr-2" /> : <ChevronDown size={20} strokeWidth={1.75} className="text-muted-foreground mr-2" />}
             </button>
             
             {showStudyGuide && (
               <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
                 {feedback.studyGuide.map((item, idx) => (
-                  <GlassCard key={idx} className="border-primary/20 bg-primary/5">
-                    <h3 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                  <GlassCard key={idx} className="border-primary/20 bg-primary/5 text-left">
+                    <h3 className="font-semibold text-primary mb-2 flex items-center gap-2" style={headingStyle}>
                       <span className="size-5 rounded-full bg-primary/20 flex items-center justify-center text-xs">{idx + 1}</span>
                       {item.topic}
                     </h3>
-                    <p className="text-sm text-foreground/80 leading-relaxed">{item.advice}</p>
+                    <p className="text-sm text-body leading-relaxed">{item.advice}</p>
                   </GlassCard>
                 ))}
               </div>
@@ -655,7 +670,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             <GlowButton className="h-12 px-10 cursor-pointer">Start Another Interview</GlowButton>
           </Link>
           <Link href="/dashboard">
-            <button className="h-12 px-10 rounded-lg text-sm font-semibold border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+            <button className="h-12 px-10 rounded-lg text-sm font-semibold border border-border bg-muted hover:bg-white/10 transition-colors cursor-pointer text-muted-foreground hover:text-foreground">
               Go to Dashboard
             </button>
           </Link>

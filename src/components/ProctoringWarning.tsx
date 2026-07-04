@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTriangleExclamation, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { AlertTriangle, X } from "lucide-react";
 
 interface ProctoringWarningProps {
   message: string;
@@ -23,7 +22,7 @@ export default function ProctoringWarning({ message, onDismiss }: ProctoringWarn
       <div className="bg-[#1A0B0B]/80 border border-rose-500/30 text-rose-200 px-4 py-3.5 rounded-2xl shadow-[0_0_20px_rgba(239,68,68,0.15)] backdrop-blur-md flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="size-8 rounded-lg bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
-            <FontAwesomeIcon icon={faTriangleExclamation} className="size-4 animate-pulse" />
+            <AlertTriangle className="size-4 animate-pulse" size={16} strokeWidth={1.75} />
           </div>
           <div className="text-xs font-semibold leading-relaxed">
             {message}
@@ -33,7 +32,7 @@ export default function ProctoringWarning({ message, onDismiss }: ProctoringWarn
           onClick={onDismiss}
           className="text-rose-400/50 hover:text-rose-300 transition-colors p-1 cursor-pointer"
         >
-          <FontAwesomeIcon icon={faXmark} className="size-3.5" />
+          <X className="size-3.5" size={14} strokeWidth={1.75} />
         </button>
       </div>
     </div>

@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Lightbulb, X } from "lucide-react";
 
 interface RealTimeHintProps {
   hints: string[];
@@ -53,7 +52,7 @@ export default function RealTimeHint({ hints, visible, onDismiss }: RealTimeHint
     >
       <div className="flex gap-3">
         <div className="size-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
-          <FontAwesomeIcon icon={faLightbulb} className="text-emerald-400 size-4 animate-pulse" />
+          <Lightbulb className="text-emerald-400 size-4 animate-pulse" size={16} strokeWidth={1.75} />
         </div>
         <div className="flex-1 min-w-0">
           <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">
@@ -61,7 +60,7 @@ export default function RealTimeHint({ hints, visible, onDismiss }: RealTimeHint
           </h4>
           <ul className="space-y-1.5">
             {hints.map((hint, idx) => (
-              <li key={idx} className="text-xs text-white/90 leading-relaxed font-medium">
+              <li key={idx} className="text-xs text-body leading-relaxed font-medium">
                 {hint}
               </li>
             ))}
@@ -69,9 +68,9 @@ export default function RealTimeHint({ hints, visible, onDismiss }: RealTimeHint
         </div>
         <button
           onClick={handleDismiss}
-          className="text-white/40 hover:text-white transition-colors size-6 flex items-center justify-center rounded-lg hover:bg-white/5 cursor-pointer shrink-0"
+          className="text-muted-foreground hover:text-white transition-colors size-6 flex items-center justify-center rounded-lg hover:bg-white/5 cursor-pointer shrink-0"
         >
-          <FontAwesomeIcon icon={faXmark} className="size-3" />
+          <X className="size-3" size={12} strokeWidth={1.75} />
         </button>
       </div>
     </div>

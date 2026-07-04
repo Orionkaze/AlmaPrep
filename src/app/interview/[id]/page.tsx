@@ -4,8 +4,7 @@ import { GlowButton } from "@/components/ui/glow-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import Link from "next/link"
 import { useState, useRef, useEffect, use } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faMessage, faPaperPlane, faXmark, faVideoSlash } from "@fortawesome/free-solid-svg-icons"
+import { Mic, MicOff, PhoneOff, MessageSquare, Send, X, VideoOff } from "lucide-react"
 import {
   getNextQuestion,
   generateFeedback,
@@ -23,7 +22,7 @@ import { parseSpeakingMetrics } from "@/lib/speakingParser"
 import BehavioralAnalysis from "@/components/BehavioralAnalysis"
 import RealTimeHint from "@/components/RealTimeHint"
 import ProctoringMonitor, { ViolationRecord } from "@/components/ProctoringMonitor"
-import { faShieldHalved } from "@fortawesome/free-solid-svg-icons"
+import { ShieldAlert } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 // SpeechRecognition type declarations for TS
@@ -564,10 +563,10 @@ export default function InterviewPage({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
         <GlassCard className="max-w-md w-full border border-emerald-500/10 p-8 rounded-3xl relative overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.05)] text-center">
           <div className="size-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto mb-5">
-            <FontAwesomeIcon icon={faShieldHalved} className="size-8" />
+            <ShieldAlert size={32} strokeWidth={1.75} />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">Proctoring Enforced Session</h2>
-          <p className="text-sm text-foreground/75 leading-relaxed mb-6 font-sans">
+          <h2 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-head), serif", letterSpacing: "-0.015em", fontWeight: 600 }}>Proctoring Enforced Session</h2>
+          <p className="text-sm text-slate-300 leading-relaxed mb-6 font-sans">
             To ensure fairness, this interview session is monitored. By continuing, you agree to comply with the proctoring rules.
           </p>
           <div className="text-left text-xs bg-white/5 border border-white/5 p-4 rounded-xl space-y-2.5 text-white/70 font-medium mb-8">
@@ -615,7 +614,7 @@ export default function InterviewPage({
     <main className="h-screen bg-[#062b22] flex flex-col font-sans overflow-hidden">
       {/* Top Header */}
       <div className="flex items-center justify-between px-6 py-4 text-white">
-        <h1 className="text-lg font-medium">{getCategoryLabel(category)}</h1>
+        <h1 className="text-lg font-medium" style={{ fontFamily: "var(--font-head), serif", letterSpacing: "-0.015em", fontWeight: 600 }}>{getCategoryLabel(category)}</h1>
         <div className="flex items-center gap-4">
           {isBehavioralActive && (
             <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-1 rounded-full text-xs text-emerald-400 font-medium animate-pulse">
@@ -625,7 +624,7 @@ export default function InterviewPage({
           )}
           {isStarted && (
             <div className="flex items-center gap-1.5 bg-rose-500/10 border border-rose-500/25 px-2.5 py-1 rounded-full text-xs text-rose-400 font-medium">
-              <FontAwesomeIcon icon={faShieldHalved} className="size-3" />
+              <ShieldAlert size={14} strokeWidth={1.75} />
               <span>{violationsCount}/5 Warnings</span>
             </div>
           )}
@@ -660,8 +659,8 @@ export default function InterviewPage({
           {/* User Webcam Tile */}
           <div className="flex-1 bg-[#0a3a2f] rounded-xl relative overflow-hidden border border-emerald-500/10 shadow-lg flex items-center justify-center">
             {cameraError ? (
-              <div className="text-center p-6 text-white/80">
-                <FontAwesomeIcon icon={faVideoSlash} className="text-3xl mb-3 text-red-400" />
+              <div className="text-center p-6 text-slate-300">
+                <VideoOff className="text-3xl mb-3 text-red-400 mx-auto" size={32} strokeWidth={1.75} />
                 <p className="text-sm font-medium">{cameraError}</p>
               </div>
             ) : (
@@ -678,7 +677,11 @@ export default function InterviewPage({
               />
             )}
             <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-md flex items-center gap-2">
-              <FontAwesomeIcon icon={isListening ? faMicrophone : faMicrophoneSlash} className={`text-xs ${isListening ? 'text-green-400' : 'text-red-500'}`} />
+              {isListening ? (
+                <Mic size={14} strokeWidth={1.75} className="text-green-400" />
+              ) : (
+                <MicOff size={14} strokeWidth={1.75} className="text-red-500" />
+              )}
               <span className="text-white text-sm font-medium">You</span>
             </div>
           </div>
@@ -689,8 +692,8 @@ export default function InterviewPage({
           <div className="w-full md:w-[360px] bg-[#0a3a2f]/80 border border-emerald-500/10 rounded-xl flex flex-col overflow-hidden backdrop-blur-sm">
             <div className="px-4 py-3 border-b border-emerald-500/10 bg-[#0a3a2f] font-medium text-white flex justify-between items-center">
               <span>Transcript</span>
-              <button onClick={() => setIsChatOpen(false)} className="text-white/50 hover:text-white transition-colors">
-                <FontAwesomeIcon icon={faXmark} />
+              <button onClick={() => setIsChatOpen(false)} className="text-white/50 hover:text-white transition-colors cursor-pointer">
+                <X size={16} strokeWidth={1.75} />
               </button>
             </div>
             
@@ -736,9 +739,9 @@ export default function InterviewPage({
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || isAiTyping || isComplete}
-                  className="absolute right-2 text-primary hover:text-primary/80 disabled:opacity-50 disabled:hover:text-primary transition-colors size-8 flex items-center justify-center"
+                  className="absolute right-2 text-primary hover:text-primary/80 disabled:opacity-50 disabled:hover:text-primary transition-colors size-8 flex items-center justify-center cursor-pointer"
                 >
-                  <FontAwesomeIcon icon={faPaperPlane} size="sm" />
+                  <Send size={16} strokeWidth={1.75} />
                 </button>
               </div>
             </div>
@@ -751,39 +754,39 @@ export default function InterviewPage({
         <button 
           onClick={toggleListening}
           disabled={isAiTyping || isComplete}
-          className={`size-12 rounded-full flex items-center justify-center transition-all ${
+          className={`size-12 rounded-full flex items-center justify-center transition-all cursor-pointer ${
             isListening 
               ? "bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]" 
               : "bg-[#0a3a2f] text-white hover:bg-[#134e40] border border-emerald-500/10"
           }`}
           title={isListening ? "Turn off microphone" : "Turn on microphone"}
         >
-          <FontAwesomeIcon icon={isListening ? faMicrophone : faMicrophoneSlash} />
+          {isListening ? <Mic size={20} strokeWidth={1.75} /> : <MicOff size={20} strokeWidth={1.75} />}
         </button>
 
         <button 
           onClick={() => setIsChatOpen(!isChatOpen)}
-          className={`size-12 rounded-full flex items-center justify-center transition-all ${
+          className={`size-12 rounded-full flex items-center justify-center transition-all cursor-pointer ${
             isChatOpen ? "bg-primary text-white shadow-primary/50" : "bg-[#0a3a2f] text-white hover:bg-[#134e40] border border-emerald-500/10"
           }`}
           title="Toggle Chat"
         >
-          <FontAwesomeIcon icon={faMessage} />
+          <MessageSquare size={20} strokeWidth={1.75} />
         </button>
 
         {isComplete ? (
           <Link href={`/interview/${dbSessionId || category}/feedback`}>
-            <button className="h-12 px-6 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-lg">
+            <button className="h-12 px-6 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors shadow-lg cursor-pointer">
               View Feedback
             </button>
           </Link>
         ) : (
           <Link href="/dashboard">
             <button 
-              className="size-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors shadow-[0_0_15px_rgba(239,68,68,0.3)]"
+              className="size-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors shadow-[0_0_15px_rgba(239,68,68,0.3)] cursor-pointer"
               title="Leave Interview"
             >
-              <FontAwesomeIcon icon={faPhoneSlash} />
+              <PhoneOff size={20} strokeWidth={1.75} />
             </button>
           </Link>
         )}

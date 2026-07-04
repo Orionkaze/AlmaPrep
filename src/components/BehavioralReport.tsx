@@ -1,19 +1,18 @@
 "use client";
 
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEye,
-  faUserTie,
-  faSmile,
-  faHands,
-  faFileContract,
-  faChartSimple,
-  faVolumeHigh,
-  faMicrophone,
-  faWarning,
-  faQuoteLeft,
-} from "@fortawesome/free-solid-svg-icons";
+  Eye,
+  UserRound,
+  Smile,
+  Hand,
+  FileText,
+  BarChart2,
+  Volume2,
+  Mic,
+  AlertTriangle,
+  Quote
+} from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 
 interface AnswerScore {
@@ -66,6 +65,12 @@ interface BehavioralReportProps {
   physicalMetrics: PhysicalMetric[];
   finalReport: string;
   speakingAnalysis?: SpeakingAnalysis;
+}
+
+const headingStyle: React.CSSProperties = {
+  fontFamily: "var(--font-head), serif",
+  letterSpacing: "-0.015em",
+  fontWeight: 600,
 }
 
 export default function BehavioralReport({
@@ -175,13 +180,13 @@ export default function BehavioralReport({
       {/* section 1: Coach Feedback Report */}
       <GlassCard className="border border-emerald-500/10 overflow-hidden relative">
         <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
-        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={headingStyle}>
           <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
-            <FontAwesomeIcon icon={faFileContract} className="text-emerald-400" />
+            <FileText size={16} strokeWidth={1.75} className="text-emerald-400" />
           </span>
           Behavioral Coaching Feedback
         </h2>
-        <div className="text-white/80 leading-relaxed text-sm space-y-4 font-sans whitespace-pre-wrap">
+        <div className="text-body leading-relaxed text-sm space-y-4 font-sans whitespace-pre-wrap">
           {finalReport}
         </div>
       </GlassCard>
@@ -190,9 +195,9 @@ export default function BehavioralReport({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Physical Metrics card */}
         <GlassCard className="border border-emerald-500/10">
-          <h3 className="text-lg font-semibold mb-5 flex items-center gap-2">
+          <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-sm">
-              <FontAwesomeIcon icon={faEye} className="text-purple-400" />
+              <Eye size={16} strokeWidth={1.75} className="text-purple-400" />
             </span>
             Physical Behavior
           </h3>
@@ -201,11 +206,11 @@ export default function BehavioralReport({
             {/* Eye contact */}
             <div>
               <div className="flex justify-between items-center text-xs mb-2">
-                <span className="text-white/70 flex items-center gap-2">
-                  <FontAwesomeIcon icon={faEye} className="text-white/40 size-3" />
+                <span className="text-muted-foreground flex items-center gap-2">
+                  <Eye className="text-muted-foreground/60 size-3" size={12} strokeWidth={1.75} />
                   Eye Contact
                 </span>
-                <span className="font-bold text-white">{avgEyeContact}%</span>
+                <span className="font-bold text-foreground">{avgEyeContact}%</span>
               </div>
               <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
                 <div
@@ -220,11 +225,11 @@ export default function BehavioralReport({
             {/* Posture stability */}
             <div>
               <div className="flex justify-between items-center text-xs mb-2">
-                <span className="text-white/70 flex items-center gap-2">
-                  <FontAwesomeIcon icon={faUserTie} className="text-white/40 size-3" />
+                <span className="text-muted-foreground flex items-center gap-2">
+                  <UserRound className="text-muted-foreground/60 size-3" size={12} strokeWidth={1.75} />
                   Posture Stability
                 </span>
-                <span className="font-bold text-white">{avgPosture}%</span>
+                <span className="font-bold text-foreground">{avgPosture}%</span>
               </div>
               <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
                 <div
@@ -238,8 +243,8 @@ export default function BehavioralReport({
 
             {/* Engagement */}
             <div className="flex items-center justify-between border-t border-white/5 pt-3">
-              <span className="text-xs text-white/70 flex items-center gap-2">
-                <FontAwesomeIcon icon={faSmile} className="text-white/40 size-3" />
+              <span className="text-xs text-muted-foreground flex items-center gap-2">
+                <Smile className="text-muted-foreground/60 size-3" size={12} strokeWidth={1.75} />
                 Facial Engagement
               </span>
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">
@@ -249,8 +254,8 @@ export default function BehavioralReport({
 
             {/* Fidgeting */}
             <div className="flex items-center justify-between border-t border-white/5 pt-3">
-              <span className="text-xs text-white/70 flex items-center gap-2">
-                <FontAwesomeIcon icon={faHands} className="text-white/40 size-3" />
+              <span className="text-xs text-muted-foreground flex items-center gap-2">
+                <Hand className="text-muted-foreground/60 size-3" size={12} strokeWidth={1.75} />
                 Fidgeting Detections
               </span>
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/25 text-purple-400">
@@ -262,9 +267,9 @@ export default function BehavioralReport({
 
         {/* Answer Quality card */}
         <GlassCard className="border border-emerald-500/10">
-          <h3 className="text-lg font-semibold mb-5 flex items-center gap-2">
+          <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
-              <FontAwesomeIcon icon={faChartSimple} className="text-emerald-400" />
+              <BarChart2 size={16} strokeWidth={1.75} className="text-emerald-400" />
             </span>
             Speech & Content Quality
           </h3>
@@ -273,8 +278,8 @@ export default function BehavioralReport({
             {/* STAR score */}
             <div>
               <div className="flex justify-between items-center text-xs mb-2">
-                <span className="text-white/70">STAR Structure</span>
-                <span className="font-bold text-white">{avgStar}%</span>
+                <span className="text-muted-foreground">STAR Structure</span>
+                <span className="font-bold text-foreground">{avgStar}%</span>
               </div>
               <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
                 <div
@@ -289,8 +294,8 @@ export default function BehavioralReport({
             {/* Relevance */}
             <div>
               <div className="flex justify-between items-center text-xs mb-2">
-                <span className="text-white/70">Question Relevance</span>
-                <span className="font-bold text-white">{avgRelevance}%</span>
+                <span className="text-muted-foreground">Question Relevance</span>
+                <span className="font-bold text-foreground">{avgRelevance}%</span>
               </div>
               <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
                 <div
@@ -305,8 +310,8 @@ export default function BehavioralReport({
             {/* Clarity */}
             <div>
               <div className="flex justify-between items-center text-xs mb-2">
-                <span className="text-white/70">Clarity & Conciseness</span>
-                <span className="font-bold text-white">{avgClarity}%</span>
+                <span className="text-muted-foreground">Clarity & Conciseness</span>
+                <span className="font-bold text-foreground">{avgClarity}%</span>
               </div>
               <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
                 <div
@@ -321,8 +326,8 @@ export default function BehavioralReport({
             {/* Confidence */}
             <div>
               <div className="flex justify-between items-center text-xs mb-2">
-                <span className="text-white/70">Assertiveness & Confidence</span>
-                <span className="font-bold text-white">{avgConfidence}%</span>
+                <span className="text-muted-foreground">Assertiveness & Confidence</span>
+                <span className="font-bold text-foreground">{avgConfidence}%</span>
               </div>
               <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
                 <div
@@ -343,20 +348,20 @@ export default function BehavioralReport({
           {/* Speaking Session summary */}
           <GlassCard className="border border-emerald-500/10 overflow-hidden relative">
             <div className="absolute top-0 left-0 w-[200px] h-[200px] bg-purple-500/5 rounded-full blur-[80px] pointer-events-none" />
-            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2" style={headingStyle}>
               <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
-                <FontAwesomeIcon icon={faVolumeHigh} className="text-emerald-400" />
+                <Volume2 size={16} strokeWidth={1.75} className="text-emerald-400" />
               </span>
               Speech Delivery Summary
             </h3>
-            <p className="text-white/80 leading-relaxed text-sm font-sans mb-6">
+            <p className="text-body leading-relaxed text-sm font-sans mb-6">
               {speakingAnalysis.sessionSummary.summary}
             </p>
 
             {/* Aggregated Pacing Metrics Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col justify-between">
-                <span className="text-xs text-white/55 font-medium uppercase tracking-wider mb-2">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-2">
                   Hesitation Level
                 </span>
                 <span
@@ -369,23 +374,23 @@ export default function BehavioralReport({
               </div>
 
               <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col">
-                <span className="text-xs text-white/55 font-medium uppercase tracking-wider mb-1">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
                   Sentence Complexity
                 </span>
-                <span className="text-2xl font-extrabold text-white font-mono">
+                <span className="text-2xl font-extrabold text-foreground font-mono">
                   {speakingAnalysis.sessionSummary.metrics.avgSentenceComplexity}
                 </span>
-                <span className="text-[10px] text-white/40 font-medium">avg words / sentence</span>
+                <span className="text-[10px] text-muted-foreground font-medium">avg words / sentence</span>
               </div>
 
               <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col">
-                <span className="text-xs text-white/55 font-medium uppercase tracking-wider mb-1">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
                   Total Filler Words
                 </span>
                 <span className="text-2xl font-extrabold text-purple-400 font-mono">
                   {speakingAnalysis.sessionSummary.metrics.totalFillerCount}
                 </span>
-                <span className="text-[10px] text-white/40 font-medium">across full session</span>
+                <span className="text-[10px] text-muted-foreground font-medium">across full session</span>
               </div>
             </div>
           </GlassCard>
@@ -394,8 +399,8 @@ export default function BehavioralReport({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Filler frequency custom chart */}
             <GlassCard className="border border-emerald-500/10">
-              <h4 className="text-sm font-bold uppercase tracking-wider text-white/70 mb-5 flex items-center gap-2">
-                <FontAwesomeIcon icon={faMicrophone} className="text-emerald-400 size-3.5" />
+              <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-5 flex items-center gap-2" style={headingStyle}>
+                <Mic size={14} strokeWidth={1.75} className="text-emerald-400" />
                 Filler Word Breakdown
               </h4>
               
@@ -408,7 +413,7 @@ export default function BehavioralReport({
                       return (
                         <div key={word} className="space-y-1">
                           <div className="flex justify-between text-xs font-semibold">
-                            <span className="text-white/80 font-mono">"{word}"</span>
+                            <span className="text-body font-mono">"{word}"</span>
                             <span className="text-emerald-400">{count} occurrences</span>
                           </div>
                           <div className="h-2.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
@@ -422,7 +427,7 @@ export default function BehavioralReport({
                     })}
                 </div>
               ) : (
-                <div className="text-center py-8 text-white/40 text-xs italic">
+                <div className="text-center py-8 text-muted-foreground text-xs italic">
                   No filler words detected during this session! Excellent work.
                 </div>
               )}
@@ -431,11 +436,11 @@ export default function BehavioralReport({
             {/* Overused Words list */}
             <GlassCard className="border border-emerald-500/10 flex flex-col justify-between">
               <div>
-                <h4 className="text-sm font-bold uppercase tracking-wider text-white/70 mb-4 flex items-center gap-2">
-                  <FontAwesomeIcon icon={faWarning} className="text-purple-400 size-3.5" />
+                <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2" style={headingStyle}>
+                  <AlertTriangle size={14} strokeWidth={1.75} className="text-purple-400" />
                   Key Overused Words
                 </h4>
-                <p className="text-xs text-white/60 leading-relaxed mb-5">
+                <p className="text-xs text-muted-foreground leading-relaxed mb-5">
                   These words were repeated most frequently. Try using synonyms or varying your vocabulary in future responses.
                 </p>
               </div>
@@ -452,7 +457,7 @@ export default function BehavioralReport({
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-6 text-white/40 text-xs italic">
+                <div className="text-center py-6 text-muted-foreground text-xs italic">
                   No repetitive vocabulary detected.
                 </div>
               )}
@@ -461,7 +466,7 @@ export default function BehavioralReport({
 
           {/* Per-Answer Speaking Critique list */}
           <GlassCard className="border border-emerald-500/10">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white/75 mb-5">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-5" style={headingStyle}>
               Detailed Speaking Critique per Answer
             </h4>
 
@@ -472,16 +477,16 @@ export default function BehavioralReport({
                     <span className="text-xs uppercase font-extrabold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded self-start">
                       Question {idx + 1}
                     </span>
-                    <div className="flex flex-wrap gap-3.5 text-[11px] font-semibold text-white/70">
+                    <div className="flex flex-wrap gap-3.5 text-[11px] font-semibold text-muted-foreground">
                       <span>Words: {item.metrics.wordCount}</span>
                       <span>Fillers: {item.metrics.fillerCount}</span>
                       <span>Words/Sentence: {item.metrics.avgWordsPerSentence}</span>
                     </div>
                   </div>
 
-                  <div className="text-xs leading-relaxed text-white/90 bg-white/2 p-3 rounded-xl border border-white/5 flex gap-2">
-                    <FontAwesomeIcon icon={faQuoteLeft} className="text-emerald-400/25 size-4 shrink-0 mt-0.5" />
-                    <p className="italic text-white/80 leading-relaxed font-sans">
+                  <div className="text-xs leading-relaxed text-body bg-white/2 p-3 rounded-xl border border-white/5 flex gap-2">
+                    <Quote size={16} strokeWidth={1.75} className="text-emerald-400/25 shrink-0 mt-0.5" />
+                    <p className="italic text-muted-foreground leading-relaxed font-sans">
                       {item.feedback}
                     </p>
                   </div>
@@ -495,9 +500,9 @@ export default function BehavioralReport({
       {/* section 4: Per-Answer Quality Breakdown */}
       {answerScores.length > 0 && (
         <GlassCard className="border border-emerald-500/10">
-          <h3 className="text-lg font-semibold mb-5 flex items-center gap-2">
+          <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
-              <FontAwesomeIcon icon={faChartSimple} className="text-emerald-400" />
+              <BarChart2 size={16} strokeWidth={1.75} className="text-emerald-400" />
             </span>
             Speech Quality per Question
           </h3>
@@ -510,14 +515,14 @@ export default function BehavioralReport({
                     Answer {idx + 1}
                   </span>
                   <div className="flex gap-4 text-xs font-semibold">
-                    <span className="text-white/80">STAR: {ans.star_score}/10</span>
-                    <span className="text-white/80">Relevance: {ans.relevance_score}/10</span>
-                    <span className="text-white/80">Clarity: {ans.clarity_score}/10</span>
-                    <span className="text-white/80">Confidence: {ans.confidence_score}/10</span>
+                    <span className="text-muted-foreground">STAR: {ans.star_score}/10</span>
+                    <span className="text-muted-foreground">Relevance: {ans.relevance_score}/10</span>
+                    <span className="text-muted-foreground">Clarity: {ans.clarity_score}/10</span>
+                    <span className="text-muted-foreground">Confidence: {ans.confidence_score}/10</span>
                   </div>
                 </div>
 
-                <div className="text-xs leading-relaxed text-white/80 font-sans italic border-l-2 border-emerald-500/40 pl-3 py-1">
+                <div className="text-xs leading-relaxed text-muted-foreground font-sans italic border-l-2 border-emerald-500/40 pl-3 py-1">
                   {ans.summary}
                 </div>
 

@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpand, faShieldHalved } from "@fortawesome/free-solid-svg-icons";
+import { ShieldAlert, Maximize } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
 import ProctoringWarning from "./ProctoringWarning";
 import ViolationModal from "./ViolationModal";
@@ -212,11 +211,13 @@ export default function ProctoringMonitor({
         <div className="fixed inset-0 z-40 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300">
           <div className="max-w-md w-full text-center p-8 bg-[#121212]/80 border border-rose-500/20 rounded-3xl shadow-[0_0_40px_rgba(239,68,68,0.1)]">
             <div className="size-14 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mx-auto mb-5">
-              <FontAwesomeIcon icon={faShieldHalved} className="size-7" />
+              <ShieldAlert size={28} strokeWidth={1.75} />
             </div>
 
-            <h3 className="text-xl font-bold text-white mb-2">Fullscreen Required</h3>
-            <p className="text-sm text-foreground/70 leading-relaxed mb-6">
+            <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-head), serif", letterSpacing: "-0.015em", fontWeight: 600 }}>
+              Fullscreen Required
+            </h3>
+            <p className="text-sm text-body leading-relaxed mb-6">
               You have exited fullscreen mode. Please click the button below to return to fullscreen to resume your mock interview.
             </p>
 
@@ -224,7 +225,7 @@ export default function ProctoringMonitor({
               className="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold h-11"
               onClick={handleRequestFullscreen}
             >
-              <FontAwesomeIcon icon={faExpand} className="mr-2 size-3.5" />
+              <Maximize className="mr-2 size-3.5 inline-block" size={14} strokeWidth={1.75} />
               Re-enter Fullscreen
             </GlowButton>
           </div>
