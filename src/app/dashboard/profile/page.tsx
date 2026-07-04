@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import ProfileContent from "./profile-content"
+import { readLocalCache } from "@/lib/localCache"
 import Link from "next/link"
 import { LogoutButton } from "@/components/logout-button"
 
@@ -119,14 +120,20 @@ export default async function ProfilePage() {
     subscriptionTier = profile.subscription_tier || "free"
 
     try {
-      const { data: cached } = await supabase
+      const { data: cached, error } = await supabase
         .from("github_analysis")
         .select("*")
         .eq("user_id", userId)
         .maybeSingle()
-      githubAnalysis = cached
+      
+      if (error || !cached) {
+        githubAnalysis = readLocalCache("github_analysis", userId)
+      } else {
+        githubAnalysis = cached
+      }
     } catch (e) {
-      console.error("Failed to fetch cached github analysis:", e)
+      console.error("Failed to fetch cached github analysis, checking local cache:", e)
+      githubAnalysis = readLocalCache("github_analysis", userId)
     }
 
     // 2. Fetch interviews and feedback
