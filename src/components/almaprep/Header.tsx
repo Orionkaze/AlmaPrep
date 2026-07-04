@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import ModeToggle from "./ModeToggle"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -41,6 +42,9 @@ export default function Header() {
             </li>
             <li>
               <Link href="/about" onClick={() => setOpen(false)}>About</Link>
+            </li>
+            <li className="flex items-center px-2">
+              <ModeToggle />
             </li>
             <li>
               <Link href="/login" onClick={() => setOpen(false)}>Log in</Link>

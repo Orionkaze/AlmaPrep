@@ -1,12 +1,22 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { signOut } from "next-auth/react"
 import { User, ChevronDown, LogOut, CreditCard, UserRound } from "lucide-react"
+import ModeToggle from "./ModeToggle"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
 
 const navItems = [
   { label: "Dashboard", href: "/dashboard" },
@@ -19,11 +29,9 @@ export default function AppHeader() {
   const pathname = usePathname()
   const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const dropdownRef = useRef<HTMLLIElement>(null)
 
   // Hide header on interview session pages (full-screen IDE workspace)
-  if (pathname.startsWith("/interview/session/")) {
+  if (pathname.startsWith("/interview/session/") || pathname.startsWith("/interview/report/")) {
     return null
   }
 
@@ -43,17 +51,6 @@ export default function AppHeader() {
     await signOut({ redirect: false })
     window.location.href = "/login"
   }
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false)
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
 
   return (
     <header className="site-header">
@@ -94,106 +91,64 @@ export default function AppHeader() {
               </li>
             ))}
 
-            {/* Account dropdown */}
-            <li className="nav-cta" ref={dropdownRef} style={{ position: "relative" }}>
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="btn btn-ghost"
-                style={{ gap: "6px", paddingTop: "8px", paddingBottom: "8px" }}
-              >
-                <User size={18} strokeWidth={1.75} />
-                <span>Account</span>
-                <ChevronDown
-                  size={14}
-                  strokeWidth={2}
-                  style={{
-                    transition: "transform 0.15s ease",
-                    transform: dropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
-                  }}
-                />
-              </button>
+            {/* Theme Toggle */}
+            <li className="flex items-center">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div>
+                    <ModeToggle />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent className="bg-card text-card-foreground border border-border px-2 py-1 rounded text-xs z-50">
+                  Toggle theme
+                </TooltipContent>
+              </Tooltip>
+            </li>
 
-              {dropdownOpen && (
-                <div
-                  style={{
-                    position: "absolute",
-                    right: 0,
-                    top: "calc(100% + 8px)",
-                    minWidth: "180px",
-                    background: "var(--bg-card)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "var(--radius-sm)",
-                    boxShadow: "var(--shadow)",
-                    zIndex: 100,
-                    padding: "6px 0",
-                  }}
-                >
-                  <Link
-                    href="/dashboard/profile"
-                    onClick={() => { setDropdownOpen(false); setMobileOpen(false) }}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      padding: "10px 16px",
-                      fontSize: "0.92rem",
-                      fontWeight: 500,
-                      color: "var(--text)",
-                      textDecoration: "none",
-                      transition: "background 0.12s ease",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--bg-tint)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            {/* Account dropdown */}
+            <li className="nav-cta" style={{ position: "relative" }}>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="gap-1.5 py-2 h-9 border border-border hover:border-emerald bg-card hover:bg-muted text-foreground cursor-pointer text-xs font-semibold rounded-lg"
                   >
-                    <UserRound size={16} strokeWidth={1.75} />
-                    Profile
-                  </Link>
-                  <Link
-                    href="/pricing"
-                    onClick={() => { setDropdownOpen(false); setMobileOpen(false) }}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      padding: "10px 16px",
-                      fontSize: "0.92rem",
-                      fontWeight: 500,
-                      color: "var(--text)",
-                      textDecoration: "none",
-                      transition: "background 0.12s ease",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--bg-tint)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                  >
-                    <CreditCard size={16} strokeWidth={1.75} />
-                    Pricing
-                  </Link>
-                  <div style={{ height: "1px", background: "var(--border)", margin: "4px 0" }} />
-                  <button
+                    <User size={16} strokeWidth={1.75} />
+                    <span>Account</span>
+                    <ChevronDown size={14} strokeWidth={2} className="text-muted-foreground" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="z-50 bg-card text-card-foreground border border-border rounded-lg shadow-md p-1 min-w-[180px]">
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/dashboard/profile"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted outline-none cursor-pointer"
+                    >
+                      <UserRound size={16} strokeWidth={1.75} />
+                      Profile
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/pricing"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted outline-none cursor-pointer"
+                    >
+                      <CreditCard size={16} strokeWidth={1.75} />
+                      Pricing
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="h-px bg-border my-1" />
+                  <DropdownMenuItem
                     onClick={handleLogout}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      padding: "10px 16px",
-                      fontSize: "0.92rem",
-                      fontWeight: 500,
-                      color: "#ef4444",
-                      background: "transparent",
-                      border: "none",
-                      width: "100%",
-                      cursor: "pointer",
-                      textAlign: "left",
-                      transition: "background 0.12s ease",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(239,68,68,0.06)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                    className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-md text-red-500 hover:bg-red-500/10 hover:text-red-600 outline-none cursor-pointer"
                   >
                     <LogOut size={16} strokeWidth={1.75} />
                     Log out
-                  </button>
-                </div>
-              )}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </li>
           </ul>
         </nav>
