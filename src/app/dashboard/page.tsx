@@ -1,18 +1,23 @@
-import { GlassCard } from "@/components/ui/glass-card"
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import {
   Mic,
   Laptop,
   UserRound,
-  Rocket,
-  Brain,
-  Star,
   FileText,
   ArrowRight,
-  Lightbulb,
-  CheckCircle,
-  PlayCircle,
-  AlertTriangle
+  Brain,
+  CheckCircle2,
+  Calendar,
+  Flame,
+  BarChart2,
+  Settings,
+  Sparkles,
+  Play
 } from "lucide-react"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
@@ -20,19 +25,62 @@ import { redirect } from "next/navigation"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 
-// Map avatar strings to Lucide icons
-const avatarIconMap: Record<string, React.FC<any>> = {
-  "laptop-code": Laptop,
-  "user-tie": UserRound,
-  "rocket": Rocket,
-  "brain": Brain,
-  "star": Star,
-}
-
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-head), serif",
   letterSpacing: "-0.015em",
   fontWeight: 600,
+}
+
+// Map avatar strings to Lucide icons
+const avatarIconMap: Record<string, React.FC<any>> = {
+  "laptop-code": Laptop,
+  "user-tie": UserRound,
+}
+
+function calculateStreak(dates: Date[]): number {
+  if (dates.length === 0) return 0
+  
+  // Normalize dates to YYYY-MM-DD strings in local timezone or UTC
+  const uniqueDates = Array.from(
+    new Set(
+      dates.map(d => {
+        const y = d.getFullYear()
+        const m = String(d.getMonth() + 1).padStart(2, "0")
+        const day = String(d.getDate()).padStart(2, "0")
+        return `${y}-${m}-${day}`
+      })
+    )
+  ).sort((a, b) => b.localeCompare(a)) // sorted desc
+
+  if (uniqueDates.length === 0) return 0
+
+  const todayStr = new Date().toISOString().split('T')[0]
+  const yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+  const yesterdayStr = yesterday.toISOString().split('T')[0]
+
+  // If the most recent interview is not today or yesterday, streak is broken (0)
+  if (uniqueDates[0] !== todayStr && uniqueDates[0] !== yesterdayStr) {
+    return 0
+  }
+
+  let streak = 0
+  const referenceDate = new Date(uniqueDates[0])
+
+  for (let i = 0; i < uniqueDates.length; i++) {
+    const dateStr = uniqueDates[i]
+    
+    const expectedDate = new Date(referenceDate)
+    expectedDate.setDate(expectedDate.getDate() - i)
+    const expectedDateStr = expectedDate.toISOString().split('T')[0]
+
+    if (dateStr === expectedDateStr) {
+      streak++
+    } else {
+      break
+    }
+  }
+  return streak
 }
 
 export default async function DashboardPage() {
@@ -40,7 +88,6 @@ export default async function DashboardPage() {
   const cookieStore = await cookies()
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
 
-  let supabaseUser = null
   let activeUser = null
   let userId = null
 
@@ -78,10 +125,9 @@ export default async function DashboardPage() {
   if (!isDemoMode && supabase) {
     try {
       const { data } = await supabase.auth.getUser()
-      supabaseUser = data?.user || null
-      if (supabaseUser) {
-        activeUser = supabaseUser
-        userId = supabaseUser.id
+      if (data?.user) {
+        activeUser = data.user
+        userId = data.user.id
       }
     } catch (err) {
       console.error("Dashboard: Failed to fetch Supabase user:", err)
@@ -93,6 +139,20 @@ export default async function DashboardPage() {
   let hasResume = false
   let latestFeedback = null
   let totalSessions = 0
+  let avgScore: number | string = "—"
+  let currentStreak = 0
+  
+  interface DisplaySession {
+    id: string
+    type: "mock" | "coding"
+    date: Date
+    category: string
+    score: number | null
+    status: string
+    url: string
+  }
+
+  let recentSessionsList: DisplaySession[] = []
 
   if (activeUser && userId) {
     if (isDemoMode) {
@@ -100,9 +160,12 @@ export default async function DashboardPage() {
       avatarKey = activeUser.avatar_url || "user-tie"
       hasResume = false
       totalSessions = 0
+      avgScore = "—"
+      currentStreak = 0
       latestFeedback = null
     } else {
       if (!supabase) redirect("/login")
+      
       // 1. Fetch user profile
       const { data: profile } = await supabase
         .from("users")
@@ -118,20 +181,13 @@ export default async function DashboardPage() {
       avatarKey = profile.avatar_url || "user-tie"
       hasResume = !!profile.resume_text
 
-      // 2. Fetch interviews count
-      const { count } = await supabase
-        .from("interviews")
-        .select("*", { count: "exact", head: true })
-        .eq("user_id", userId)
-
-      totalSessions = count || 0
-
-      // 3. Fetch latest completed interview feedback
-      const { data: latestInterview } = await supabase
+      // 2. Fetch completed interviews (mock sessions)
+      const { data: mockInterviews } = await supabase
         .from("interviews")
         .select(`
           id,
           category,
+          status,
           created_at,
           feedback (
             score,
@@ -140,286 +196,422 @@ export default async function DashboardPage() {
           )
         `)
         .eq("user_id", userId)
-        .eq("status", "completed")
         .order("created_at", { ascending: false })
-        .limit(1)
-        .maybeSingle()
 
-      if (latestInterview && latestInterview.feedback && latestInterview.feedback[0]) {
-        const fb = latestInterview.feedback[0]
-        latestFeedback = {
-          score: fb.score,
-          summary: fb.summary,
-          improvements: fb.improvement_suggestions || [],
-          category: latestInterview.category === "hr" ? "HR" : latestInterview.category === "technical" ? "Technical" : "Mixed",
-          date: new Date(latestInterview.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-          id: latestInterview.id
+      const completedMockInterviews = mockInterviews?.filter(i => i.status === "completed") || []
+      totalSessions = completedMockInterviews.length
+
+      // Calculate Average Score
+      if (completedMockInterviews.length > 0) {
+        const scores = completedMockInterviews
+          .map(i => i.feedback?.[0]?.score)
+          .filter((s): s is number => typeof s === "number")
+        if (scores.length > 0) {
+          avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
         }
       }
+
+      // Calculate Streak
+      const mockDates = completedMockInterviews.map(i => new Date(i.created_at))
+      currentStreak = calculateStreak(mockDates)
+
+      // Fetch Coding Sessions
+      const { data: codingSessions } = await supabase
+        .from("interview_sessions")
+        .select(`
+          id,
+          status,
+          started_at,
+          submitted_at,
+          challenges (
+            title,
+            difficulty
+          ),
+          interview_reports (
+            id,
+            overall_score
+          )
+        `)
+        .eq("user_id", userId)
+        .order("started_at", { ascending: false })
+
+      // Latest completed feedback from mock interviews
+      if (completedMockInterviews.length > 0) {
+        const latestMock = completedMockInterviews[0]
+        if (latestMock.feedback && latestMock.feedback[0]) {
+          const fb = latestMock.feedback[0]
+          latestFeedback = {
+            score: fb.score,
+            summary: fb.summary,
+            improvements: fb.improvement_suggestions || [],
+            category: latestMock.category === "hr" ? "HR" : latestMock.category === "technical" ? "Technical" : "Mixed",
+            date: new Date(latestMock.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+            id: latestMock.id
+          }
+        }
+      }
+
+      // Map sessions to display list
+      const mockSessionsMapped: DisplaySession[] = completedMockInterviews.map(i => ({
+        id: i.id,
+        type: "mock",
+        date: new Date(i.created_at),
+        category: i.category === "hr" ? "HR Interview" : i.category === "technical" ? "Technical Interview" : "Mixed Interview",
+        score: i.feedback?.[0]?.score ?? null,
+        status: i.status,
+        url: `/interview/${i.id}/feedback`
+      }))
+
+      const codingSessionsMapped: DisplaySession[] = (codingSessions || []).map(s => ({
+        id: s.id,
+        type: "coding",
+        date: new Date(s.submitted_at || s.started_at),
+        category: `Coding: ${s.challenges?.title || "Challenge"}`,
+        score: s.interview_reports?.[0]?.overall_score ?? null,
+        status: s.status === "evaluated" ? "completed" : s.status,
+        url: s.status === "evaluated" ? `/interview/report/${s.interview_reports?.[0]?.id}` : `/interview/session/${s.id}`
+      }))
+
+      recentSessionsList = [...mockSessionsMapped, ...codingSessionsMapped]
+        .sort((a, b) => b.date.getTime() - a.date.getTime())
+        .slice(0, 5)
     }
   } else {
     redirect("/login")
   }
 
-  // Fallback / default tip of the day
-  const dailyTip = {
-    title: "Structure with STAR",
-    description: "When answering behavioral questions, structure your response as: Situation, Task, Action, and Result. This gives clear context to your achievements."
-  }
-
-  const AvatarIcon = avatarIconMap[avatarKey] || UserRound
-
   return (
-    <main className="min-h-screen p-6 md:p-12 relative overflow-hidden">
+    <main className="min-h-screen p-6 md:p-12 relative overflow-hidden bg-background">
       {/* Background decorations */}
-      <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Welcome Header */}
-        <div className="flex items-center gap-3 mb-10">
-          <div className="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary overflow-hidden">
-            <AvatarIcon size={20} strokeWidth={1.75} />
-          </div>
+      <div className="relative z-10 max-w-6xl mx-auto space-y-8">
+        {/* Title row */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground" style={headingStyle}>
-              Welcome back, <span className="text-primary">{displayName}</span>
+            <h1 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+              <span className="font-serif">Dashboard</span>
             </h1>
-            <p className="text-muted-foreground text-sm mt-0.5">Let&apos;s elevate your interview performance today.</p>
+            <p className="text-muted-foreground text-sm mt-0.5">Let's elevate your interview performance today.</p>
+          </div>
+          <div className="flex items-center gap-2 self-start sm:self-center">
+            <span className="text-xs text-muted-foreground font-medium">Logged in as {activeUser.email}</span>
           </div>
         </div>
 
-        {/* Dashboard Grid */}
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card className="shadow-sm">
+            <CardContent className="pt-6 flex flex-row items-center gap-4">
+              <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                <CheckCircle2 size={20} />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Sessions Completed</p>
+                <h3 className="text-2xl font-serif font-bold text-foreground">{totalSessions}</h3>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-sm">
+            <CardContent className="pt-6 flex flex-row items-center gap-4">
+              <div className="size-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+                <BarChart2 size={20} />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Average Score</p>
+                <h3 className="text-2xl font-serif font-bold text-foreground">
+                  {avgScore !== "—" ? `${avgScore}%` : "—"}
+                </h3>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-sm">
+            <CardContent className="pt-6 flex flex-row items-center gap-4">
+              <div className="size-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500">
+                <Flame size={20} className={currentStreak > 0 ? "animate-pulse" : ""} />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Current Streak</p>
+                <h3 className="text-2xl font-serif font-bold text-foreground">{currentStreak} day{currentStreak !== 1 ? "s" : ""}</h3>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-sm">
+            <CardContent className="pt-6 flex flex-row items-center gap-4">
+              <div className="size-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+                <Calendar size={20} />
+              </div>
+              <div className="space-y-0.5 w-full">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Next Scheduled Session</p>
+                <div className="flex items-center justify-between gap-2 mt-0.5">
+                  <span className="text-sm font-semibold text-foreground">Not scheduled</span>
+                  <Link href="/interview/setup" className="text-[10px] text-primary hover:underline font-bold shrink-0">
+                    Book
+                  </Link>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Prep Options and Main Controls (8/12 width) */}
+          {/* Left Column (2/3 width) */}
           <div className="lg:col-span-8 flex flex-col gap-6">
-            
-            {/* Banner info */}
-            <GlassCard className="py-14 px-8 md:px-10 relative overflow-hidden bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 border-primary/20">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl pointer-events-none" />
-              <h2 className="text-xl font-bold mb-2 text-foreground" style={headingStyle}>Practice makes perfect</h2>
-              <p className="text-sm text-body leading-relaxed max-w-lg">
-                Ready to practice? Choose a mock interview type or set up the Resume Analyzer to tailor questions directly to your career history and skills.
-              </p>
-            </GlassCard>
+            <Tabs defaultValue="admissions" className="w-full">
+              <div className="flex items-center justify-between border-b border-border pb-2 mb-4">
+                <TabsList className="bg-muted p-1 rounded-lg">
+                  <TabsTrigger value="admissions" className="px-4 py-1.5 text-xs font-semibold cursor-pointer">
+                    Admissions Practice
+                  </TabsTrigger>
+                  <TabsTrigger value="engineering" className="px-4 py-1.5 text-xs font-semibold cursor-pointer">
+                    Engineering Practice
+                  </TabsTrigger>
+                </TabsList>
+              </div>
 
-            {/* Separator line */}
-            <div className="h-[1px] bg-border w-full my-4" />
+              <TabsContent value="admissions" className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Mock Interview Card */}
+                  <Card className="shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
+                    <CardHeader className="pb-3">
+                      <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2">
+                        <Mic size={20} />
+                      </div>
+                      <CardTitle className="text-base font-bold" style={headingStyle}>Start a Mock Interview</CardTitle>
+                      <CardDescription className="text-xs">
+                        Practice real-time College Admission interviews with AI voice capability. Choose supportive or strict modes.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <Link href="/interview/setup" className="inline-flex items-center justify-center w-full px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold rounded-lg transition-colors cursor-pointer gap-1.5">
+                        Start Interview Track <ArrowRight size={14} />
+                      </Link>
+                    </CardContent>
+                  </Card>
 
-            {/* Admissions Practice Section */}
-            <div className="px-6 text-xs font-bold text-muted-foreground tracking-widest uppercase mt-4 mb-4">
-              ADMISSIONS PRACTICE
-            </div>
+                  {/* Resume Analyzer Card */}
+                  <Card className="shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-2xl group-hover:scale-125 transition-transform" />
+                    <CardHeader className="pb-3">
+                      <div className="size-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-2">
+                        <FileText size={20} />
+                      </div>
+                      <CardTitle className="text-base font-bold" style={headingStyle}>Resume Analyzer</CardTitle>
+                      <CardDescription className="text-xs">
+                        Scan your resume using Mock AI, identify critical weaknesses, and automatically generate tailored mock questions.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="text-[10px] font-semibold text-muted-foreground flex items-center gap-1.5">
+                          <span className={`size-1.5 rounded-full ${hasResume ? "bg-green-500 animate-pulse" : "bg-amber-500"}`} />
+                          {hasResume ? "Analysis Ready" : "No Resume Uploaded"}
+                        </span>
+                        <Link href="/dashboard/resume" className="inline-flex items-center justify-center px-3 py-2 border border-border hover:border-secondary hover:bg-muted text-foreground text-xs font-semibold rounded-lg transition-colors cursor-pointer gap-1">
+                          Configure <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </TabsContent>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 py-4">
-              
-              {/* Mock Interview Tool — PRIMARY ACTION */}
-              <GlassCard 
-                className="p-6 border border-border rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-primary transition-all duration-150 group md:col-span-2"
-                style={{ minHeight: "240px" }}
-              >
-                {/* Icon Block */}
-                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-4">
-                  <Mic size={24} strokeWidth={1.75} />
-                </div>
-                {/* Tag Row */}
-                <div className="flex flex-wrap gap-2 mt-3 text-xs">
-                  <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">HR</span>
-                  <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">Technical</span>
-                </div>
-                {/* Title */}
-                <h3 className="text-lg font-bold mt-4 text-foreground" style={headingStyle}>Start a Mock Interview</h3>
-                {/* Description */}
-                <p className="text-sm text-body mt-2 leading-relaxed">
-                  Practice structured, real-time interviews. Select from HR, Technical, or Mixed questions. Get instant AI-powered feedback on your answers.
-                </p>
-                {/* CTA Button */}
-                <div className="mt-6 w-full">
-                  <Link href="/interview/setup" className="btn btn-primary w-full justify-center">
-                    Start Interview <ArrowRight size={16} strokeWidth={2} />
-                  </Link>
-                </div>
-              </GlassCard>
-
-              {/* Resume Analyzer Tool — SECONDARY */}
-              <GlassCard 
-                className="p-6 border border-border rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-primary transition-all duration-150 group"
-                style={{ minHeight: "240px" }}
-              >
-                {/* Icon Block */}
-                <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center text-secondary mb-4">
-                  <FileText size={24} strokeWidth={1.75} />
-                </div>
-                {/* Tag Row */}
-                <div className="flex flex-wrap gap-2 mt-3 text-xs">
-                  <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">Analyzer</span>
-                  <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">Resume</span>
-                </div>
-                {/* Title */}
-                <h3 className="text-lg font-bold mt-4 text-foreground" style={headingStyle}>Resume Analyzer</h3>
-                {/* Description */}
-                <p className="text-sm text-body mt-2 leading-relaxed line-clamp-3">
-                  Scan your resume with Mock AI. Uncover improvement areas and unlock custom tailored mock interviews.
-                </p>
-                {/* Status indicator */}
-                <div className="mt-4 flex items-center gap-2 text-xs">
-                  {hasResume ? (
-                    <>
-                      <div className="size-2 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-muted-foreground">Analysis Ready</span>
-                    </>
-                  ) : (
-                    <div className="flex items-center gap-1.5 text-muted-foreground">
-                      <AlertTriangle size={14} strokeWidth={1.75} className="text-amber-500" />
-                      <span>No Resume Synced</span>
+              <TabsContent value="engineering" className="space-y-4">
+                <Card className="shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl group-hover:scale-125 transition-transform" />
+                  <CardHeader className="pb-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="size-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+                        <Laptop size={20} />
+                      </div>
+                      <Badge variant="secondary" className="bg-secondary/15 text-secondary text-[10px] font-bold">AGENTIC</Badge>
                     </div>
-                  )}
-                </div>
-                {/* CTA Button */}
-                <div className="mt-6 w-full">
-                  <Link href="/dashboard/resume" className="btn btn-ghost w-full justify-center">
-                    Configure <ArrowRight size={14} strokeWidth={2} />
-                  </Link>
-                </div>
-              </GlassCard>
-
-            </div>
-
-            {/* Engineering Practice Section */}
-            <div className="h-[1px] bg-border w-full my-2" />
-            <div className="px-6 flex items-center gap-2 mt-4 mb-4">
-              <span className="text-xs font-bold text-accent-foreground tracking-widest uppercase">ENGINEERING PRACTICE</span>
-              <span className="px-2 py-0.5 rounded-full bg-accent text-accent-foreground text-[10px] font-bold">CODE</span>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6 px-6 py-4">
-              {/* Coding Simulator Tool */}
-              <GlassCard 
-                className="p-6 border border-border rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-primary transition-all duration-150 group"
-                style={{ minHeight: "200px" }}
-              >
-                <div className="flex flex-col md:flex-row md:items-center gap-6">
-                  {/* Icon Block */}
-                  <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center text-accent-foreground shrink-0">
-                    <Laptop size={24} strokeWidth={1.75} />
-                  </div>
-                  <div className="flex-1">
-                    {/* Tag Row */}
-                    <div className="flex flex-wrap gap-2 text-xs mb-3">
-                      <span className="px-2 py-0.5 rounded-full bg-accent/20 text-accent-foreground font-medium">Agentic</span>
-                      <span className="px-2 py-0.5 rounded-full bg-accent/20 text-accent-foreground font-medium">Bug Fix</span>
-                    </div>
-                    {/* Title */}
-                    <h3 className="text-lg font-bold text-foreground" style={headingStyle}>Coding Simulator</h3>
-                    {/* Description */}
-                    <p className="text-sm text-body mt-2 leading-relaxed">
-                      Practice agentic coding interviews. Direct an AI agent to solve engineering problems in real time.
-                    </p>
-                  </div>
-                  {/* CTA Button */}
-                  <div className="shrink-0">
-                    <Link href="/interview" className="btn btn-ghost" style={{ borderColor: "var(--emerald-200)", color: "var(--emerald-600)" }}>
-                      Code Practice <ArrowRight size={14} strokeWidth={2} />
+                    <CardTitle className="text-base font-bold mt-2" style={headingStyle}>Coding Simulator</CardTitle>
+                    <CardDescription className="text-xs max-w-xl">
+                      Practice complex agentic coding interviews in a mock IDE. Orchestrate an AI coding agent to write, debug, and optimize algorithms while answering technical concept critiques.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Link href="/interview" className="inline-flex items-center justify-center px-4 py-2 border border-border hover:border-secondary hover:bg-muted text-foreground text-xs font-semibold rounded-lg transition-colors cursor-pointer gap-1.5">
+                      Enter Coding Practice Workspace <ArrowRight size={14} />
                     </Link>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+
+            {/* Recent Sessions List / Table */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider" style={headingStyle}>Recent Sessions</h3>
+              <Card className="shadow-sm overflow-hidden">
+                {recentSessionsList.length > 0 ? (
+                  <Table>
+                    <TableHeader className="bg-muted/40">
+                      <TableRow>
+                        <TableHead className="text-xs font-bold text-muted-foreground h-9">Date</TableHead>
+                        <TableHead className="text-xs font-bold text-muted-foreground h-9">Type</TableHead>
+                        <TableHead className="text-xs font-bold text-muted-foreground h-9">Score</TableHead>
+                        <TableHead className="text-xs font-bold text-muted-foreground h-9">Status</TableHead>
+                        <TableHead className="text-xs font-bold text-muted-foreground h-9 text-right"></TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {recentSessionsList.map((session) => {
+                        const dateFormatted = session.date.toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric"
+                        })
+                        const scoreColor = session.score !== null 
+                          ? session.score >= 85 ? "bg-green-500/10 text-green-500 border border-green-500/25"
+                            : session.score >= 70 ? "bg-purple-500/10 text-purple-500 border border-purple-500/25"
+                            : "bg-rose-500/10 text-rose-500 border border-rose-500/25"
+                          : ""
+                        return (
+                          <TableRow key={session.id} className="hover:bg-muted/40 transition-colors">
+                            <TableCell className="text-xs font-medium py-3 text-muted-foreground">{dateFormatted}</TableCell>
+                            <TableCell className="text-xs font-bold text-foreground py-3 capitalize">{session.category}</TableCell>
+                            <TableCell className="text-xs py-3">
+                              {session.score !== null ? (
+                                <Badge variant="outline" className={`${scoreColor} text-[10px] font-bold`}>{session.score}%</Badge>
+                              ) : (
+                                <span className="text-muted-foreground">—</span>
+                              )}
+                            </TableCell>
+                            <TableCell className="text-xs py-3">
+                              <Badge variant="secondary" className="text-[10px] font-semibold py-0 h-5 capitalize">{session.status}</Badge>
+                            </TableCell>
+                            <TableCell className="text-xs py-3 text-right">
+                              <Link href={session.url} className="text-primary hover:underline font-bold text-[10px] inline-flex items-center gap-0.5">
+                                {session.status === "completed" ? "Report" : "Resume"} <ArrowRight size={10} />
+                              </Link>
+                            </TableCell>
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                  </Table>
+                ) : (
+                  <div className="p-8 text-center bg-card text-muted-foreground text-xs leading-relaxed">
+                    No sessions yet — start your first mock interview.
+                    <div className="mt-4">
+                      <Link href="/interview/setup" className="inline-flex items-center gap-1.5 text-primary hover:underline font-semibold">
+                        Start Interview Track <ArrowRight size={12} />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </GlassCard>
+                )}
+              </Card>
             </div>
           </div>
 
-          {/* Right Column: AI Coach insights panel (4/12 width) */}
+          {/* Right Column (1/3 width) */}
           <div className="lg:col-span-4 flex flex-col gap-6">
-            <GlassCard className="p-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
-              
-              <div className="flex items-center gap-2 mb-6">
-                <div className="size-6 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-                  <Brain size={14} strokeWidth={1.75} />
-                </div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground" style={{ fontFamily: "var(--font-body), sans-serif" }}>AI Coach Insights</h3>
-              </div>
-
-              {latestFeedback ? (
-                <div className="flex flex-col gap-4">
-                  {/* Latest Score Card */}
-                  <div className="flex items-center gap-4 p-3.5 rounded-xl bg-muted/50 border border-border">
-                    <div className="size-12 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-600 text-lg font-bold">
-                      {latestFeedback.score}
+            {/* AI Coach Insights */}
+            <Card className="shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                  <Brain size={14} className="text-primary" />
+                  AI Coach Insights
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {latestFeedback ? (
+                  <div className="space-y-4">
+                    {/* Summary */}
+                    <div className="text-xs text-foreground italic border-l-2 border-primary pl-3 py-1 bg-muted/30 rounded-r-lg">
+                      &ldquo;{latestFeedback.summary}&rdquo;
                     </div>
-                    <div>
-                      <h4 className="text-xs text-muted-foreground font-bold uppercase tracking-wide">Last Session</h4>
-                      <p className="text-sm font-semibold text-body">{latestFeedback.category} Interview ({latestFeedback.date})</p>
+
+                    {/* Recommendations */}
+                    <div className="space-y-2">
+                      <h4 className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1">
+                        <CheckCircle2 size={12} className="text-primary" /> Key Focus Suggestions
+                      </h4>
+                      <ul className="text-xs text-muted-foreground space-y-2 list-none pl-0">
+                        {latestFeedback.improvements.slice(0, 3).map((tip: string, idx: number) => (
+                          <li key={idx} className="flex gap-2 items-start leading-relaxed">
+                            <span className="text-primary font-bold shrink-0">•</span>
+                            <span>{tip}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <Link href={`/interview/${latestFeedback.id}/feedback`} className="w-full h-8 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors text-[10px] text-primary font-bold cursor-pointer flex items-center justify-center">
+                      View Full Analysis Report
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Complete your first mock interview to unlock personalized, AI-powered behavioral and technical delivery critiques.
+                    </p>
+                    <div className="bg-muted/40 border border-border p-3.5 rounded-lg space-y-2">
+                      <h4 className="text-[10px] font-bold text-foreground uppercase tracking-wider flex items-center gap-1">
+                        <Sparkles size={11} className="text-amber-500" /> Onboarding Checklist
+                      </h4>
+                      <div className="space-y-1.5 text-xs text-muted-foreground">
+                        <div className="flex items-center gap-2 py-0.5">
+                          <CheckCircle2 size={14} className="text-green-500 shrink-0" />
+                          <span className="line-through">Create account</span>
+                        </div>
+                        <div className="flex items-center gap-2 py-0.5">
+                          <span className={`size-3.5 rounded-full border border-border flex items-center justify-center shrink-0 ${hasResume ? 'bg-green-500/10 border-green-500/30' : ''}`}>
+                            {hasResume ? <CheckCircle2 size={12} className="text-green-500" /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                          </span>
+                          <Link href="/dashboard/resume" className={hasResume ? "line-through" : "hover:underline text-foreground font-medium"}>Configure Resume Analyzer</Link>
+                        </div>
+                        <div className="flex items-center gap-2 py-0.5">
+                          <span className={`size-3.5 rounded-full border border-border flex items-center justify-center shrink-0 ${totalSessions > 0 ? 'bg-green-500/10 border-green-500/30' : ''}`}>
+                            {totalSessions > 0 ? <CheckCircle2 size={12} className="text-green-500" /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                          </span>
+                          <Link href="/interview/setup" className={totalSessions > 0 ? "line-through" : "hover:underline text-foreground font-medium"}>Start first interview</Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                )}
+              </CardContent>
+            </Card>
 
-                  {/* Summary */}
-                  <div className="text-xs text-body leading-relaxed italic border-l-2 border-primary/30 pl-3 py-1">
-                    &ldquo;{latestFeedback.summary}&rdquo;
-                  </div>
-
-                  {/* Recommendations */}
-                  <div className="mt-2">
-                    <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                      <CheckCircle size={12} strokeWidth={1.75} className="text-primary" /> Focus Suggestions
-                    </h4>
-                    <ul className="text-xs text-muted-foreground space-y-2 pl-1 list-none">
-                      {latestFeedback.improvements.slice(0, 3).map((tip: string, idx: number) => (
-                        <li key={idx} className="flex gap-2 items-start">
-                          <span className="text-primary">•</span>
-                          <span>{tip}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Link href={`/interview/${latestFeedback.id}/feedback`} className="w-full h-9 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors text-xs text-primary font-bold mt-2 cursor-pointer flex items-center justify-center">
-                    View Full Analysis Report
+            {/* Quick Actions */}
+            <Card className="shadow-sm">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xs uppercase tracking-wider text-muted-foreground">Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="flex flex-col text-xs font-semibold">
+                  <Link href="/dashboard/profile" className="flex items-center justify-between px-6 py-3.5 hover:bg-muted/40 transition-colors text-foreground">
+                    <span className="flex items-center gap-2.5">
+                      <UserRound size={16} className="text-muted-foreground" /> Update Profile
+                    </span>
+                    <ArrowRight size={14} className="text-muted-foreground/40" />
+                  </Link>
+                  <Separator />
+                  <Link href="/dashboard/profile" className="flex items-center justify-between px-6 py-3.5 hover:bg-muted/40 transition-colors text-foreground">
+                    <span className="flex items-center gap-2.5">
+                      <Settings size={16} className="text-muted-foreground" /> View Progress & Settings
+                    </span>
+                    <ArrowRight size={14} className="text-muted-foreground/40" />
+                  </Link>
+                  <Separator />
+                  <Link href="/pricing" className="flex items-center justify-between px-6 py-3.5 hover:bg-muted/40 transition-colors text-foreground">
+                    <span className="flex items-center gap-2.5">
+                      <FileText size={16} className="text-muted-foreground" /> Manage Billing
+                    </span>
+                    <ArrowRight size={14} className="text-muted-foreground/40" />
                   </Link>
                 </div>
-              ) : (
-                <div className="flex flex-col gap-5 py-4">
-                  {/* Onboarding Checklist */}
-                  <div>
-                    <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.15em] mt-12 mb-4">ONBOARDING CHECKLIST</h4>
-                    <div className="flex flex-col gap-3">
-                      <div className="flex items-center gap-2.5 text-xs text-body py-2.5 leading-relaxed">
-                        <CheckCircle size={20} strokeWidth={1.75} className="shrink-0 text-green-500" />
-                        <span className="line-through text-muted-foreground">Set up profile credentials</span>
-                      </div>
-                      <div className="flex items-center gap-2.5 text-xs text-body py-2.5 leading-relaxed">
-                        {hasResume ? (
-                          <CheckCircle size={20} strokeWidth={1.75} className="shrink-0 text-green-500" />
-                        ) : (
-                          <PlayCircle size={20} strokeWidth={1.75} className="shrink-0 text-secondary" />
-                        )}
-                        <span className={hasResume ? "line-through text-muted-foreground" : "font-medium"}>
-                          <Link href="/dashboard/resume" className="hover:underline">Configure Resume Analyzer</Link>
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2.5 text-xs text-body py-2.5 leading-relaxed">
-                        {totalSessions > 0 ? (
-                          <CheckCircle size={20} strokeWidth={1.75} className="shrink-0 text-green-500" />
-                        ) : (
-                          <PlayCircle size={20} strokeWidth={1.75} className="shrink-0 text-primary" />
-                        )}
-                        <span className={totalSessions > 0 ? "line-through text-muted-foreground" : "font-medium"}>
-                          <Link href="/interview/setup" className="hover:underline">Start your first interview</Link>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Daily Tip */}
-                  <div className="bg-muted border border-accent rounded-xl p-4 mt-6 shadow-sm">
-                    <h4 className="text-xs font-bold text-primary mb-2 flex items-center gap-1.5">
-                      <Lightbulb size={14} strokeWidth={1.75} /> Coach Tip of the Day
-                    </h4>
-                    <h5 className="text-xs font-bold text-body mb-1">{dailyTip.title}</h5>
-                    <p className="text-[11px] text-muted-foreground leading-relaxed">{dailyTip.description}</p>
-                  </div>
-                </div>
-              )}
-            </GlassCard>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
