@@ -16,7 +16,17 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Session not found" }, { status: 404 });
     }
 
-    return NextResponse.json(session);
+    const supabase = await createClient();
+    const { data: profile } = await supabase
+      .from("users")
+      .select("github_autosave")
+      .eq("id", session.user_id)
+      .maybeSingle();
+
+    return NextResponse.json({
+      ...session,
+      github_autosave: !!profile?.github_autosave
+    });
   } catch (err: any) {
     console.error("Error fetching session:", err);
     return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
