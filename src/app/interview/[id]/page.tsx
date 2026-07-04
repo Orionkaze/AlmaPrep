@@ -763,7 +763,7 @@ export default function InterviewPage({
       {/* Bottom Control Bar */}
       <div className="h-20 flex items-center justify-center gap-4 bg-[#062b22] border-t border-emerald-500/10 pb-2">
         <Tooltip>
-          <TooltipTrigger asChild>
+          <TooltipTrigger render={
             <Button
               variant="ghost"
               size="icon"
@@ -777,14 +777,14 @@ export default function InterviewPage({
             >
               {isListening ? <Mic size={20} strokeWidth={1.75} /> : <MicOff size={20} strokeWidth={1.75} />}
             </Button>
-          </TooltipTrigger>
+          } />
           <TooltipContent className="bg-[#0a3a2f] text-white border border-emerald-500/20 text-xs px-2 py-1 rounded">
             {isListening ? "Mute Microphone" : "Unmute Microphone"}
           </TooltipContent>
         </Tooltip>
 
         <Tooltip>
-          <TooltipTrigger asChild>
+          <TooltipTrigger render={
             <Button
               variant="ghost"
               size="icon"
@@ -795,7 +795,7 @@ export default function InterviewPage({
             >
               <MessageSquare size={20} strokeWidth={1.75} />
             </Button>
-          </TooltipTrigger>
+          } />
           <TooltipContent className="bg-[#0a3a2f] text-white border border-emerald-500/20 text-xs px-2 py-1 rounded">
             Toggle Chat Transcript
           </TooltipContent>
@@ -810,8 +810,8 @@ export default function InterviewPage({
         ) : (
           <Dialog>
             <Tooltip>
-              <TooltipTrigger asChild>
-                <DialogTrigger asChild>
+              <TooltipTrigger render={
+                <DialogTrigger render={
                   <Button
                     variant="ghost"
                     size="icon"
@@ -819,8 +819,8 @@ export default function InterviewPage({
                   >
                     <PhoneOff size={20} strokeWidth={1.75} />
                   </Button>
-                </DialogTrigger>
-              </TooltipTrigger>
+                } />
+              } />
               <TooltipContent className="bg-[#0a3a2f] text-white border border-emerald-500/20 text-xs px-2 py-1 rounded">
                 End Interview Session
               </TooltipContent>
@@ -835,11 +835,11 @@ export default function InterviewPage({
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter className="flex gap-2 justify-end mt-4">
-                <DialogClose asChild>
+                <DialogClose render={
                   <Button variant="outline" className="text-xs h-9 cursor-pointer border-emerald-500/20 text-slate-300 hover:bg-[#134e40] hover:text-white">
                     Cancel
                   </Button>
-                </DialogClose>
+                } />
                 <Link href="/dashboard" className="inline-block">
                   <Button
                     variant="destructive"

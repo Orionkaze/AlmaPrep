@@ -542,14 +542,14 @@ export default function ProfileContent({
 
                 {/* Dialog confirmation */}
                 <Dialog>
-                  <DialogTrigger asChild>
+                  <DialogTrigger render={
                     <Button
                       variant="destructive"
                       className="w-full text-xs font-semibold cursor-pointer bg-red-600 hover:bg-red-700"
                     >
                       Delete Account Data
                     </Button>
-                  </DialogTrigger>
+                  } />
                   <DialogContent className="bg-card text-card-foreground border border-border rounded-lg max-w-md w-full shadow-lg z-50 p-6">
                     <DialogHeader>
                       <DialogTitle className="text-base font-bold flex items-center gap-2 text-red-500">
@@ -560,11 +560,11 @@ export default function ProfileContent({
                       </DialogDescription>
                     </DialogHeader>
                     <DialogFooter className="flex gap-2 justify-end mt-4">
-                      <DialogClose asChild>
+                      <DialogClose render={
                         <Button variant="outline" className="text-xs h-9 cursor-pointer">
                           Cancel
                         </Button>
-                      </DialogClose>
+                      } />
                       <Button
                         variant="destructive"
                         onClick={handleDeleteAccount}
