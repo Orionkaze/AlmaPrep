@@ -1683,10 +1683,12 @@
       "current_codebase": {
         "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (numMap.has(complement)) {\n      return [numMap.get(complement), i];\n    }\n    numMap.set(nums[i], i);\n  }\n  return null;\n}\n\nmodule.exports = { twoSum };"
       },
-      "submitted_code": null,
-      "status": "in_progress",
+      "submitted_code": {
+        "solution.js": "function twoSum(nums, target) {\n  const numMap = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (numMap.has(complement)) {\n      return [numMap.get(complement), i];\n    }\n    numMap.set(nums[i], i);\n  }\n  return null;\n}\n\nmodule.exports = { twoSum };"
+      },
+      "status": "evaluated",
       "started_at": "2026-07-04T05:06:10.234Z",
-      "submitted_at": null
+      "submitted_at": "2026-07-04T05:25:20.095Z"
     }
   ],
   "interview_reports": [
