@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { ShieldAlert, Maximize } from "lucide-react";
-import { GlowButton } from "@/components/ui/glow-button";
+import { Button } from "@/components/ui/button";
 import ProctoringWarning from "./ProctoringWarning";
 import ViolationModal from "./ViolationModal";
 
@@ -221,13 +221,13 @@ export default function ProctoringMonitor({
               You have exited fullscreen mode. Please click the button below to return to fullscreen to resume your mock interview.
             </p>
 
-            <GlowButton
-              className="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold h-11"
+            <Button
+              className="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold h-11 cursor-pointer"
               onClick={handleRequestFullscreen}
             >
               <Maximize className="mr-2 size-3.5 inline-block" size={14} strokeWidth={1.75} />
               Re-enter Fullscreen
-            </GlowButton>
+            </Button>
           </div>
         </div>
       )}

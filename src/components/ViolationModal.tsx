@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ShieldAlert, AlertTriangle } from "lucide-react";
-import { GlowButton } from "@/components/ui/glow-button";
+import { Button } from "@/components/ui/button";
 
 interface ViolationModalProps {
   isOpen: boolean;
@@ -49,12 +49,12 @@ export default function ViolationModal({
         </div>
 
         <div className="mt-8 flex justify-center">
-          <GlowButton
-            className="w-full bg-gradient-to-r from-amber-500 to-amber-600 border border-amber-500 hover:from-amber-600 hover:to-amber-700 text-black font-semibold h-11"
+          <Button
+            className="w-full bg-amber-500 hover:bg-amber-600 text-black font-semibold h-11 cursor-pointer"
             onClick={onDismiss}
           >
             I Understand & Will Comply
-          </GlowButton>
+          </Button>
         </div>
       </div>
     </div>
