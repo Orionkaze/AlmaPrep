@@ -14,27 +14,61 @@
         {
           "id": "t1",
           "description": "Returns 401 when no token provided",
-          "expects": "401"
+          "input_args": {
+            "headers": {}
+          },
+          "expected_output": {
+            "status": 401,
+            "next": false
+          }
         },
         {
           "id": "t2",
           "description": "Returns 401 when token is malformed",
-          "expects": "401"
+          "input_args": {
+            "headers": {
+              "authorization": "Bearer malformed"
+            }
+          },
+          "expected_output": {
+            "status": 401,
+            "next": false
+          }
         },
         {
           "id": "t3",
           "description": "Returns 401 when token is expired",
-          "expects": "401"
+          "input_args": {
+            "headers": {
+              "authorization": "Bearer expired_token"
+            }
+          },
+          "expected_output": {
+            "status": 401,
+            "next": false
+          }
         },
         {
           "id": "t4",
           "description": "Returns 200 and user data when token is valid",
-          "expects": "200"
+          "input_args": {
+            "headers": {
+              "authorization": "Bearer valid_token"
+            }
+          },
+          "expected_output": {
+            "next": true
+          }
         },
         {
           "id": "t5",
           "description": "Does not crash on missing Authorization header",
-          "expects": "no_crash"
+          "input_args": {
+            "headers": {}
+          },
+          "expected_output": {
+            "next": false
+          }
         }
       ],
       "expected_outcomes": {
@@ -44,7 +78,8 @@
           "No check for missing authorization header",
           "No 401 response sent on failure"
         ]
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "e1a2b3c4-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
@@ -58,25 +93,59 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "twoSum([2,7,11,15], 9) === [0,1]",
-          "expects": "0,1"
+          "description": "twoSum([2,7,11,15], 9)",
+          "input_args": [
+            [
+              2,
+              7,
+              11,
+              15
+            ],
+            9
+          ],
+          "expected_output": [
+            0,
+            1
+          ]
         },
         {
           "id": "t2",
-          "description": "twoSum([3,2,4], 6) === [1,2]",
-          "expects": "1,2"
+          "description": "twoSum([3,2,4], 6)",
+          "input_args": [
+            [
+              3,
+              2,
+              4
+            ],
+            6
+          ],
+          "expected_output": [
+            1,
+            2
+          ]
         },
         {
           "id": "t3",
-          "description": "twoSum([3,3], 6) === [0,1]",
-          "expects": "0,1"
+          "description": "twoSum([3,3], 6)",
+          "input_args": [
+            [
+              3,
+              3
+            ],
+            6
+          ],
+          "expected_output": [
+            0,
+            1
+          ]
         }
       ],
       "expected_outcomes": {
         "approach": "HashMap for O(n) solution",
         "time_complexity": "O(n)",
         "space_complexity": "O(n)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "a2b3c4d5-e6f7-8a9b-0c1d-2e3f4a5b6c7d",
@@ -90,25 +159,35 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "isValid('()') === true",
-          "expects": "true"
+          "description": "isValid('()')",
+          "input_args": [
+            "()"
+          ],
+          "expected_output": true
         },
         {
           "id": "t2",
-          "description": "isValid('()[}') === false",
-          "expects": "false"
+          "description": "isValid('()[}')",
+          "input_args": [
+            "()[}"
+          ],
+          "expected_output": false
         },
         {
           "id": "t3",
-          "description": "isValid('{[]}') === true",
-          "expects": "true"
+          "description": "isValid('{[]}')",
+          "input_args": [
+            "{[]}"
+          ],
+          "expected_output": true
         }
       ],
       "expected_outcomes": {
         "approach": "Stack-based",
         "time_complexity": "O(n)",
         "space_complexity": "O(n)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "b3c4d5e6-f7a8-9b0c-1d2e-3f4a5b6c7d8e",
@@ -122,25 +201,35 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "lengthOfLongestSubstring('abcabcbb') === 3",
-          "expects": "3"
+          "description": "lengthOfLongestSubstring('abcabcbb')",
+          "input_args": [
+            "abcabcbb"
+          ],
+          "expected_output": 3
         },
         {
           "id": "t2",
-          "description": "lengthOfLongestSubstring('bbbbb') === 1",
-          "expects": "1"
+          "description": "lengthOfLongestSubstring('bbbbb')",
+          "input_args": [
+            "bbbbb"
+          ],
+          "expected_output": 1
         },
         {
           "id": "t3",
-          "description": "lengthOfLongestSubstring('pwwkew') === 3",
-          "expects": "3"
+          "description": "lengthOfLongestSubstring('pwwkew')",
+          "input_args": [
+            "pwwkew"
+          ],
+          "expected_output": 3
         }
       ],
       "expected_outcomes": {
         "approach": "Sliding window with HashMap",
         "time_complexity": "O(n)",
         "space_complexity": "O(n)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "c4d5e6f7-a8b9-0c1d-2e3f-4a5b6c7d8e9f",
@@ -154,25 +243,51 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "maxSubArray([-2,1,-3,4,-1,2,1,-5,4]) === 6",
-          "expects": "6"
+          "description": "maxSubArray([-2,1,-3,4,-1,2,1,-5,4])",
+          "input_args": [
+            [
+              -2,
+              1,
+              -3,
+              4,
+              -1,
+              2,
+              1,
+              -5,
+              4
+            ]
+          ],
+          "expected_output": 6
         },
         {
           "id": "t2",
-          "description": "maxSubArray([1]) === 1",
-          "expects": "1"
+          "description": "maxSubArray([1])",
+          "input_args": [
+            [
+              1
+            ]
+          ],
+          "expected_output": 1
         },
         {
           "id": "t3",
-          "description": "maxSubArray([-1,-2,-3]) === -1",
-          "expects": "-1"
+          "description": "maxSubArray([-1,-2,-3])",
+          "input_args": [
+            [
+              -1,
+              -2,
+              -3
+            ]
+          ],
+          "expected_output": -1
         }
       ],
       "expected_outcomes": {
         "approach": "Kadane's algorithm",
         "time_complexity": "O(n)",
         "space_complexity": "O(1)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "d5e6f7a8-b90c-1d2e-3f4a-5b6c7d8e9f0a",
@@ -186,20 +301,39 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "Valid BST [2,1,3] returns true",
-          "expects": "true"
+          "description": "Valid BST [2,1,3]",
+          "input_args": [
+            [
+              2,
+              1,
+              3
+            ]
+          ],
+          "expected_output": true
         },
         {
           "id": "t2",
-          "description": "Invalid BST [5,1,4,null,null,3,6] returns false",
-          "expects": "false"
+          "description": "Invalid BST [5,1,4,null,null,3,6]",
+          "input_args": [
+            [
+              5,
+              1,
+              4,
+              null,
+              null,
+              3,
+              6
+            ]
+          ],
+          "expected_output": false
         }
       ],
       "expected_outcomes": {
         "approach": "Recursive with min/max bounds",
         "time_complexity": "O(n)",
         "space_complexity": "O(h)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "e6f7a8b9-0c1d-2e3f-4a5b-6c7d8e9f0a1b",
@@ -213,25 +347,108 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "Single island grid returns 1",
-          "expects": "1"
+          "description": "Single island grid",
+          "input_args": [
+            [
+              [
+                "1",
+                "1",
+                "1",
+                "1",
+                "0"
+              ],
+              [
+                "1",
+                "1",
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          ],
+          "expected_output": 1
         },
         {
           "id": "t2",
-          "description": "Three separate islands returns 3",
-          "expects": "3"
+          "description": "Three separate islands",
+          "input_args": [
+            [
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ]
+          ],
+          "expected_output": 3
         },
         {
           "id": "t3",
-          "description": "All water returns 0",
-          "expects": "0"
+          "description": "All water",
+          "input_args": [
+            [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          ],
+          "expected_output": 0
         }
       ],
       "expected_outcomes": {
         "approach": "BFS or DFS flood fill",
         "time_complexity": "O(m×n)",
         "space_complexity": "O(m×n)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "f7a8b90c-1d2e-3f4a-5b6c-7d8e9f0a1b2c",
@@ -245,20 +462,51 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "Merges [[1,4,5],[1,3,4],[2,6]] into [1,1,2,3,4,4,5,6]",
-          "expects": "1,1,2,3,4,4,5,6"
+          "description": "Merges [[1,4,5],[1,3,4],[2,6]]",
+          "input_args": [
+            [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                1,
+                3,
+                4
+              ],
+              [
+                2,
+                6
+              ]
+            ]
+          ],
+          "expected_output": [
+            1,
+            1,
+            2,
+            3,
+            4,
+            4,
+            5,
+            6
+          ]
         },
         {
           "id": "t2",
-          "description": "Empty input returns null",
-          "expects": "null"
+          "description": "Empty input",
+          "input_args": [
+            []
+          ],
+          "expected_output": []
         }
       ],
       "expected_outcomes": {
         "approach": "Min-heap or divide and conquer",
         "time_complexity": "O(n log k)",
         "space_complexity": "O(k)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "a8b90c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d",
@@ -272,20 +520,42 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "wordBreak('catsanddog', ['cat','cats','and','sand','dog']) includes 'cats and dog'",
-          "expects": "cats and dog"
+          "description": "wordBreak('catsanddog')",
+          "input_args": [
+            "catsanddog",
+            [
+              "cat",
+              "cats",
+              "and",
+              "sand",
+              "dog"
+            ]
+          ],
+          "expected_output": [
+            "cat sand dog",
+            "cats and dog"
+          ]
         },
         {
           "id": "t2",
-          "description": "No valid break returns []",
-          "expects": ""
+          "description": "No valid break",
+          "input_args": [
+            "catsandog",
+            [
+              "cats",
+              "dog",
+              "sand"
+            ]
+          ],
+          "expected_output": []
         }
       ],
       "expected_outcomes": {
         "approach": "DFS with memoization",
         "time_complexity": "O(n^2 * 2^n)",
         "space_complexity": "O(n * 2^n)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "b90c1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e",
@@ -299,20 +569,47 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "trap([0,1,0,2,1,0,1,3,2,1,2,1]) === 6",
-          "expects": "6"
+          "description": "trap([0,1,0,2,1,0,1,3,2,1,2,1])",
+          "input_args": [
+            [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ]
+          ],
+          "expected_output": 6
         },
         {
           "id": "t2",
-          "description": "trap([4,2,0,3,2,5]) === 9",
-          "expects": "9"
+          "description": "trap([4,2,0,3,2,5])",
+          "input_args": [
+            [
+              4,
+              2,
+              0,
+              3,
+              2,
+              5
+            ]
+          ],
+          "expected_output": 9
         }
       ],
       "expected_outcomes": {
         "approach": "Two pointer O(n) O(1)",
         "time_complexity": "O(n)",
         "space_complexity": "O(1)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "c0d1e2f3-a4b5-6c7d-8e9f-0a1b2c3d4e5f",
@@ -326,13 +623,25 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "Concurrent calls with same orderId only charge once",
-          "expects": "1"
+          "description": "Concurrent calls only charge once",
+          "input_args": {
+            "calls": 2,
+            "orderId": "ord_1"
+          },
+          "expected_output": {
+            "charges": 1
+          }
         },
         {
           "id": "t2",
-          "description": "Different orderIds are both processed",
-          "expects": "2"
+          "description": "Different orderIds process both",
+          "input_args": {
+            "calls": 2,
+            "different": true
+          },
+          "expected_output": {
+            "charges": 2
+          }
         }
       ],
       "expected_outcomes": {
@@ -340,7 +649,8 @@
           "Race condition between has() check and add()",
           "Solution: optimistic lock or DB-level unique constraint or mutex"
         ]
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "d1e2f3a4-b56c-7d8e-9f0a-1b2c3d4e5f6a",
@@ -355,17 +665,32 @@
         {
           "id": "t1",
           "description": "Injection payload returns no extra rows",
-          "expects": "safe"
+          "input_args": {
+            "query": {
+              "username": "' OR '1'='1"
+            }
+          },
+          "expected_output": {
+            "safe": true
+          }
         },
         {
           "id": "t2",
           "description": "Valid username returns correct user",
-          "expects": "found"
+          "input_args": {
+            "query": {
+              "username": "admin"
+            }
+          },
+          "expected_output": {
+            "found": true
+          }
         }
       ],
       "expected_outcomes": {
         "fix": "Use parameterized queries: db.query('SELECT * FROM users WHERE username = $1', [username])"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "e2f3a4b5-6c7d-8e9f-0a1b-2c3d4e5f6a7b",
@@ -380,17 +705,34 @@
         {
           "id": "t1",
           "description": "User cannot access another user's document",
-          "expects": "403"
+          "input_args": {
+            "params": {
+              "id": "doc_other"
+            },
+            "user_id": "user_1"
+          },
+          "expected_output": {
+            "status": 403
+          }
         },
         {
           "id": "t2",
           "description": "User can access their own document",
-          "expects": "200"
+          "input_args": {
+            "params": {
+              "id": "doc_own"
+            },
+            "user_id": "user_own"
+          },
+          "expected_output": {
+            "status": 200
+          }
         }
       ],
       "expected_outcomes": {
         "fix": "Add WHERE user_id = req.user.id to the query"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "f3a4b56c-7d8e-9f0a-1b2c-3d4e5f6a7b8c",
@@ -405,17 +747,24 @@
         {
           "id": "t1",
           "description": "Returns posts with authors in a single query",
-          "expects": "1_query"
+          "input_args": {},
+          "expected_output": {
+            "queries": 1
+          }
         },
         {
           "id": "t2",
           "description": "All posts have author data populated",
-          "expects": "populated"
+          "input_args": {},
+          "expected_output": {
+            "populated": true
+          }
         }
       ],
       "expected_outcomes": {
         "fix": "Use JOIN: SELECT posts.*, users.name as author_name FROM posts JOIN users ON posts.user_id = users.id"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "a4b56c7d-8e9f-0a1b-2c3d-4e5f6a7b8c9d",
@@ -430,17 +779,33 @@
         {
           "id": "t1",
           "description": "Returns correct filtered results",
-          "expects": "correct"
+          "input_args": {
+            "query": {
+              "query": "phone",
+              "category": "electronics"
+            }
+          },
+          "expected_output": {
+            "correct": true
+          }
         },
         {
           "id": "t2",
           "description": "Uses database-level filtering",
-          "expects": "db_filtered"
+          "input_args": {
+            "query": {
+              "query": "phone"
+            }
+          },
+          "expected_output": {
+            "db_filtered": true
+          }
         }
       ],
       "expected_outcomes": {
         "fix": "Push filtering and sorting into SQL with WHERE, ILIKE, and ORDER BY. Add indexes on category and price."
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "b56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0e",
@@ -454,23 +819,49 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "Registration still works end to end",
-          "expects": "201"
+          "description": "Registration works end to end",
+          "input_args": {
+            "body": {
+              "email": "new@user.com",
+              "password": "password123",
+              "name": "New User"
+            }
+          },
+          "expected_output": {
+            "status": 201
+          }
         },
         {
           "id": "t2",
           "description": "Validation rejects missing fields",
-          "expects": "400"
+          "input_args": {
+            "body": {
+              "email": "new@user.com"
+            }
+          },
+          "expected_output": {
+            "status": 400
+          }
         },
         {
           "id": "t3",
           "description": "Duplicate email returns 409",
-          "expects": "409"
+          "input_args": {
+            "body": {
+              "email": "duplicate@user.com",
+              "password": "password123",
+              "name": "Dupe"
+            }
+          },
+          "expected_output": {
+            "status": 409
+          }
         }
       ],
       "expected_outcomes": {
         "approach": "Extract validateInput, hashPassword, createUser, sendWelcomeEmail into separate modules"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "c56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0f",
@@ -484,23 +875,44 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "101st request from same IP returns 429",
-          "expects": "429"
+          "description": "101st request returns 429",
+          "input_args": {
+            "ip": "1.1.1.1",
+            "requests": 101
+          },
+          "expected_output": {
+            "status": 429
+          }
         },
         {
           "id": "t2",
           "description": "First 100 requests return 200",
-          "expects": "200"
+          "input_args": {
+            "ip": "1.1.1.1",
+            "requests": 100
+          },
+          "expected_output": {
+            "status": 200
+          }
         },
         {
           "id": "t3",
-          "description": "Different IPs have separate limits",
-          "expects": "200"
+          "description": "Different IPs separate limits",
+          "input_args": {
+            "ips": [
+              "1.1.1.1",
+              "2.2.2.2"
+            ]
+          },
+          "expected_output": {
+            "status": 200
+          }
         }
       ],
       "expected_outcomes": {
         "approach": "Sliding window counter or token bucket with in-memory Map or Redis"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "d56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d1a",
@@ -515,22 +927,37 @@
         {
           "id": "t1",
           "description": "Successful job is processed once",
-          "expects": "processed_1"
+          "input_args": {
+            "jobs": [
+              {
+                "fail": false
+              }
+            ]
+          },
+          "expected_output": {
+            "processed": 1
+          }
         },
         {
           "id": "t2",
           "description": "Failing job is retried 3 times then dead-lettered",
-          "expects": "dead_lettered"
-        },
-        {
-          "id": "t3",
-          "description": "Dead letter queue contains failed job",
-          "expects": "in_dlq"
+          "input_args": {
+            "jobs": [
+              {
+                "fail": true
+              }
+            ]
+          },
+          "expected_output": {
+            "retries": 3,
+            "dlq": 1
+          }
         }
       ],
       "expected_outcomes": {
         "approach": "Queue array + retry counter per job + dead letter array"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "e56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d1b",
@@ -544,24 +971,45 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "coinChange([1,2,5], 11) === 3",
-          "expects": "3"
+          "description": "coinChange([1,2,5], 11)",
+          "input_args": [
+            [
+              1,
+              2,
+              5
+            ],
+            11
+          ],
+          "expected_output": 3
         },
         {
           "id": "t2",
-          "description": "coinChange([2], 3) === -1",
-          "expects": "-1"
+          "description": "coinChange([2], 3)",
+          "input_args": [
+            [
+              2
+            ],
+            3
+          ],
+          "expected_output": -1
         },
         {
           "id": "t3",
-          "description": "coinChange([1], 0) === 0",
-          "expects": "0"
+          "description": "coinChange([1], 0)",
+          "input_args": [
+            [
+              1
+            ],
+            0
+          ],
+          "expected_output": 0
         }
       ],
       "expected_outcomes": {
         "approach": "Bottom-up DP with dp array of size amount+1",
         "time_complexity": "O(amount × coins.length)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "f56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d1c",
@@ -575,25 +1023,38 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "LCS('abcde', 'ace') === 3",
-          "expects": "3"
+          "description": "LCS('abcde', 'ace')",
+          "input_args": [
+            "abcde",
+            "ace"
+          ],
+          "expected_output": 3
         },
         {
           "id": "t2",
-          "description": "LCS('abc', 'abc') === 3",
-          "expects": "3"
+          "description": "LCS('abc', 'abc')",
+          "input_args": [
+            "abc",
+            "abc"
+          ],
+          "expected_output": 3
         },
         {
           "id": "t3",
-          "description": "LCS('abc', 'def') === 0",
-          "expects": "0"
+          "description": "LCS('abc', 'def')",
+          "input_args": [
+            "abc",
+            "def"
+          ],
+          "expected_output": 0
         }
       ],
       "expected_outcomes": {
         "approach": "2D DP table",
         "time_complexity": "O(m×n)",
         "space_complexity": "O(m×n)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "a56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d1d",
@@ -607,19 +1068,42 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "canFinish(2, [[1,0]]) === true",
-          "expects": "true"
+          "description": "canFinish(2, [[1,0]])",
+          "input_args": [
+            2,
+            [
+              [
+                1,
+                0
+              ]
+            ]
+          ],
+          "expected_output": true
         },
         {
           "id": "t2",
-          "description": "canFinish(2, [[1,0],[0,1]]) === false (cycle)",
-          "expects": "false"
+          "description": "canFinish(2, [[1,0],[0,1]])",
+          "input_args": [
+            2,
+            [
+              [
+                1,
+                0
+              ],
+              [
+                0,
+                1
+              ]
+            ]
+          ],
+          "expected_output": false
         }
       ],
       "expected_outcomes": {
         "approach": "Topological sort or DFS cycle detection",
         "time_complexity": "O(V+E)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "b56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d1e",
@@ -633,19 +1117,43 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "ladderLength('hit','cog',['hot','dot','dog','lot','log','cog']) === 5",
-          "expects": "5"
+          "description": "ladderLength('hit','cog')",
+          "input_args": [
+            "hit",
+            "cog",
+            [
+              "hot",
+              "dot",
+              "dog",
+              "lot",
+              "log",
+              "cog"
+            ]
+          ],
+          "expected_output": 5
         },
         {
           "id": "t2",
-          "description": "Returns 0 when no path exists",
-          "expects": "0"
+          "description": "No path exists",
+          "input_args": [
+            "hit",
+            "cog",
+            [
+              "hot",
+              "dot",
+              "dog",
+              "lot",
+              "log"
+            ]
+          ],
+          "expected_output": 0
         }
       ],
       "expected_outcomes": {
         "approach": "BFS with visited set",
         "time_complexity": "O(M^2 × N)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "c56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d1f",
@@ -659,24 +1167,44 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "search([4,5,6,7,0,1,2], 0) === 4",
-          "expects": "4"
+          "description": "search([4,5,6,7,0,1,2], 0)",
+          "input_args": [
+            [
+              4,
+              5,
+              6,
+              7,
+              0,
+              1,
+              2
+            ],
+            0
+          ],
+          "expected_output": 4
         },
         {
           "id": "t2",
-          "description": "search([4,5,6,7,0,1,2], 3) === -1",
-          "expects": "-1"
-        },
-        {
-          "id": "t3",
-          "description": "search([1], 0) === -1",
-          "expects": "-1"
+          "description": "search([4,5,6,7,0,1,2], 3)",
+          "input_args": [
+            [
+              4,
+              5,
+              6,
+              7,
+              0,
+              1,
+              2
+            ],
+            3
+          ],
+          "expected_output": -1
         }
       ],
       "expected_outcomes": {
         "approach": "Modified binary search",
         "time_complexity": "O(log n)"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "d56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d2a",
@@ -690,19 +1218,50 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "addNum(1), addNum(2), findMedian() === 1.5",
-          "expects": "1.5"
+          "description": "addNum(1), addNum(2), findMedian()",
+          "input_args": {
+            "actions": [
+              [
+                "add",
+                1
+              ],
+              [
+                "add",
+                2
+              ],
+              [
+                "median"
+              ]
+            ]
+          },
+          "expected_output": [
+            1.5
+          ]
         },
         {
           "id": "t2",
-          "description": "addNum(3), findMedian() === 2",
-          "expects": "2"
+          "description": "addNum(3), findMedian()",
+          "input_args": {
+            "actions": [
+              [
+                "add",
+                3
+              ],
+              [
+                "median"
+              ]
+            ]
+          },
+          "expected_output": [
+            3
+          ]
         }
       ],
       "expected_outcomes": {
         "approach": "Max-heap + min-heap, rebalance on each insert",
         "time_complexity": "O(log n) insert, O(1) median"
-      }
+      },
+      "language": "javascript"
     },
     {
       "id": "e56c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d2b",
@@ -716,15 +1275,47 @@
       "hidden_tests": [
         {
           "id": "t1",
-          "description": "Cache get/put operations with capacity 2",
-          "expects": "correct"
+          "description": "Cache operations capacity 2",
+          "input_args": {
+            "capacity": 2,
+            "actions": [
+              [
+                "put",
+                1,
+                1
+              ],
+              [
+                "put",
+                2,
+                2
+              ],
+              [
+                "get",
+                1
+              ],
+              [
+                "put",
+                3,
+                3
+              ],
+              [
+                "get",
+                2
+              ]
+            ]
+          },
+          "expected_output": [
+            1,
+            -1
+          ]
         }
       ],
       "expected_outcomes": {
         "approach": "HashMap + Doubly Linked List",
         "time_complexity": "O(1)",
         "space_capacity": "O(capacity)"
-      }
+      },
+      "language": "javascript"
     }
   ],
   "interview_sessions": [
