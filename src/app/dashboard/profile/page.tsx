@@ -196,12 +196,6 @@ export default async function ProfilePage() {
     allBadges = DEFAULT_BADGES
   }
 
-  // TEMP: Force all badges to be earned so the user can inspect the colors
-  userBadges = allBadges.map(b => ({
-    badge_slug: b.slug,
-    earned_at: new Date().toISOString()
-  }))
-
   const hasGitHubToken = cookieStore.has("sb-github-provider-token")
 
   return (
