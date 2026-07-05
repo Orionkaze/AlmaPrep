@@ -3,6 +3,7 @@ import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
+import { DEFAULT_BADGES } from "@/lib/badgesData"
 import ProfileContent from "./profile-content"
 import { readLocalCache } from "@/lib/localCache"
 
@@ -188,6 +189,11 @@ export default async function ProfilePage() {
     // Add coding sessions to total activities
     const { count } = await supabase.from("interview_sessions").select("*", { count: "exact", head: true }).eq("user_id", userId).in("status", ["completed", "evaluated"])
     if (count) totalActivities += count
+  }
+
+  // If badges table wasn't seeded or user is in demo mode, fallback to hardcoded list so they are still visible
+  if (allBadges.length === 0) {
+    allBadges = DEFAULT_BADGES
   }
 
   const hasGitHubToken = cookieStore.has("sb-github-provider-token")
