@@ -73,7 +73,37 @@ const categoryMapping: Record<string, string> = {
   "sociology-a": "Humanities & Social Sciences",
   "speech-language-therapy-a": "Health & Medicine",
   "theology-religious-studies-a": "Humanities & Social Sciences",
-  "veterinary-science-a": "Health & Medicine"
+  "veterinary-science-a": "Health & Medicine",
+  
+  // Universal question banks mapped to domains
+  "academic-subject-interest-a": "Sciences & Tech",
+  "academic-subject-interest-b": "Sciences & Tech",
+  "behavioral-competency-a": "Humanities & Social Sciences",
+  "behavioral-competency-b": "Humanities & Social Sciences",
+  "challenges-failure-resilience-a": "Humanities & Social Sciences",
+  "challenges-failure-resilience-b": "Humanities & Social Sciences",
+  "current-affairs-general-awareness-a": "Business & Law",
+  "current-affairs-general-awareness-b": "Business & Law",
+  "curveball-personality-a": "Humanities & Social Sciences",
+  "curveball-personality-b": "Humanities & Social Sciences",
+  "diversity-community-values-a": "Humanities & Social Sciences",
+  "diversity-community-values-b": "Humanities & Social Sciences",
+  "ethics-situational-a": "Business & Law",
+  "ethics-situational-b": "Business & Law",
+  "extracurriculars-leadership-a": "Business & Law",
+  "extracurriculars-leadership-b": "Business & Law",
+  "goals-future-a": "Humanities & Social Sciences",
+  "goals-future-b": "Humanities & Social Sciences",
+  "hypotheticals-reasoning-a": "Sciences & Tech",
+  "hypotheticals-reasoning-b": "Sciences & Tech",
+  "motivation-fit-a": "Humanities & Social Sciences",
+  "motivation-fit-b": "Humanities & Social Sciences",
+  "personal-background-a": "Humanities & Social Sciences",
+  "personal-background-b": "Humanities & Social Sciences",
+  "scholarship-panel-a": "Humanities & Social Sciences",
+  "scholarship-panel-b": "Humanities & Social Sciences",
+  "strengths-self-awareness-a": "Humanities & Social Sciences",
+  "strengths-self-awareness-b": "Humanities & Social Sciences"
 }
 
 // Memory cache for programs list to avoid hitting filesystem repeatedly
@@ -124,7 +154,7 @@ export function getPrograms(): ProgramInfo[] {
           }
         }
 
-        const category = isUniversal ? "Universal" : (categoryMapping[programId] || "Other")
+        const category = categoryMapping[programId] || (isUniversal ? "Universal" : "Other")
 
         programs.push({
           id: programId,
