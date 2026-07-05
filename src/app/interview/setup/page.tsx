@@ -66,7 +66,6 @@ const tabCategories = [
   { id: "Health & Medicine", label: "Health & Medicine", icon: Stethoscope },
   { id: "Humanities & Social Sciences", label: "Humanities & Social", icon: Drama },
   { id: "Sciences & Tech", label: "Sciences & Tech", icon: Cpu },
-  { id: "Universal", label: "Universal Banks", icon: Globe },
 ]
 
 const headingStyle: React.CSSProperties = {
