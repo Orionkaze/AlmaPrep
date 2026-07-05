@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
+import { updateStreak } from "@/app/actions/streak";
+import { checkAndAwardBadges } from "@/app/actions/badges";
+import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
 
 function cleanJsonResponseText(text: string): string {
   let cleaned = text.trim();
@@ -291,6 +294,19 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       overall_score: overallScore,
       test_results: mappedTestResults
     });
+
+    // --- Streak & Badge Logic (Background Execution) ---
+    // Extract local date from request headers or use UTC fallback
+    const clientDate = request.headers.get("x-local-date") || new Date().toISOString().split("T")[0];
+    
+    // We execute these and let them finish before responding to ensure badges are available,
+    // but catch errors so they don't break the main interview flow.
+    const streakPromise = updateStreak(userId, clientDate, 'coding_challenge', session_id)
+      .catch(e => console.error("Streak error:", e));
+    const badgePromise = checkAndAwardBadges(userId)
+      .catch(e => console.error("Badge error:", e));
+      
+    await Promise.allSettled([streakPromise, badgePromise]);
 
     return NextResponse.json({
       success: isSuccess,
