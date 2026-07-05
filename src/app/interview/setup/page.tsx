@@ -280,16 +280,17 @@ export default function InterviewSetupPage() {
 
         {/* Category Tabs / Filter list */}
         <div className="relative w-full flex items-center mb-6">
-          {showLeftArrow && (
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => scroll("left")}
-              className="absolute left-0 z-20 h-9 w-9 rounded-full bg-background/95 shadow-md flex items-center justify-center border border-border cursor-pointer -translate-x-1/2 hover:bg-muted"
-            >
-              <ChevronLeft size={16} />
-            </Button>
-          )}
+          <div
+            className="absolute left-0 top-0 bottom-2 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10"
+            style={{ display: showLeftArrow ? "block" : "none" }}
+          />
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-1 z-20 h-8 w-8 rounded-full bg-background hover:bg-muted shadow-md flex items-center justify-center border border-border cursor-pointer text-foreground transition-all"
+            style={{ display: showLeftArrow ? "flex" : "none" }}
+          >
+            <ChevronLeft size={16} />
+          </button>
 
           <div
             ref={scrollContainerRef}
@@ -317,16 +318,17 @@ export default function InterviewSetupPage() {
             })}
           </div>
 
-          {showRightArrow && (
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => scroll("right")}
-              className="absolute right-0 z-20 h-9 w-9 rounded-full bg-background/95 shadow-md flex items-center justify-center border border-border cursor-pointer translate-x-1/2 hover:bg-muted"
-            >
-              <ChevronRight size={16} />
-            </Button>
-          )}
+          <div
+            className="absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10"
+            style={{ display: showRightArrow ? "block" : "none" }}
+          />
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-1 z-20 h-8 w-8 rounded-full bg-background hover:bg-muted shadow-md flex items-center justify-center border border-border cursor-pointer text-foreground transition-all"
+            style={{ display: showRightArrow ? "flex" : "none" }}
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
 
         {/* Grid Content Selection */}
