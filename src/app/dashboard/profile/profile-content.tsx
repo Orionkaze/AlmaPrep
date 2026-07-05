@@ -274,10 +274,11 @@ export default function ProfileContent({
     : 0
 
   // Profile completion calculation
-  let completionPercentage = 25 // base email confirmed
-  if (initialProfile.username && initialProfile.username !== "User") completionPercentage += 25
-  if (initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie") completionPercentage += 25
-  if (initialProfile.resume_text) completionPercentage += 25
+  let completionPercentage = 20 // base email confirmed
+  if (initialProfile.username && initialProfile.username !== "User") completionPercentage += 20
+  if (initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie") completionPercentage += 20
+  if (initialProfile.resume_text) completionPercentage += 20
+  if (totalSessions > 0) completionPercentage += 20
 
   // Format date
   const joinDate = new Date(createdAt).toLocaleDateString("en-US", {
@@ -478,6 +479,12 @@ export default function ProfileContent({
                       {initialProfile.resume_text ? <CheckCircle className="text-green-500" size={12} /> : <span className="size-1 rounded-full bg-muted-foreground" />}
                     </span>
                     <span className={initialProfile.resume_text ? "line-through" : ""}>Configure Resume Analyzer</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className={`size-4 rounded-full border border-border flex items-center justify-center shrink-0 ${totalSessions > 0 ? "bg-green-500/10 border-green-500/30" : ""}`}>
+                      {totalSessions > 0 ? <CheckCircle className="text-green-500" size={12} /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                    </span>
+                    <span className={totalSessions > 0 ? "line-through" : ""}>Start first interview</span>
                   </li>
                 </ul>
               </CardContent>

@@ -137,6 +137,8 @@ export default async function DashboardPage() {
   let displayName = "User"
   let avatarKey = "user-tie"
   let hasResume = false
+  let hasCustomUsername = false
+  let hasCustomAvatar = false
   let latestFeedback = null
   let totalSessions = 0
   let avgScore: number | string = "—"
@@ -159,6 +161,8 @@ export default async function DashboardPage() {
       displayName = activeUser.name || "Guest"
       avatarKey = activeUser.avatar_url || "user-tie"
       hasResume = false
+      hasCustomUsername = true
+      hasCustomAvatar = true
       totalSessions = 0
       avgScore = "—"
       currentStreak = 0
@@ -180,6 +184,8 @@ export default async function DashboardPage() {
       displayName = profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User"
       avatarKey = profile.avatar_url || "user-tie"
       hasResume = !!profile.resume_text
+      hasCustomUsername = !!profile.username && profile.username !== "User"
+      hasCustomAvatar = !!profile.avatar_url && profile.avatar_url !== "user-tie"
 
       // 2. Fetch completed interviews (mock sessions)
       const { data: mockInterviews } = await supabase
@@ -558,10 +564,22 @@ export default async function DashboardPage() {
                       <h4 className="text-[10px] font-bold text-foreground uppercase tracking-wider flex items-center gap-1">
                         <Sparkles size={11} className="text-amber-500" /> Onboarding Checklist
                       </h4>
-                      <div className="space-y-1.5 text-xs text-muted-foreground">
+                      <div className="space-y-1.5 text-xs text-muted-foreground text-left">
                         <div className="flex items-center gap-2 py-0.5">
                           <CheckCircle2 size={14} className="text-green-500 shrink-0" />
                           <span className="line-through">Create account</span>
+                        </div>
+                        <div className="flex items-center gap-2 py-0.5">
+                          <span className={`size-3.5 rounded-full border border-border flex items-center justify-center shrink-0 ${hasCustomUsername ? 'bg-green-500/10 border-green-500/30' : ''}`}>
+                            {hasCustomUsername ? <CheckCircle2 size={12} className="text-green-500" /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                          </span>
+                          <Link href="/dashboard/profile" className={hasCustomUsername ? "line-through" : "hover:underline text-foreground font-medium"}>Set customized username</Link>
+                        </div>
+                        <div className="flex items-center gap-2 py-0.5">
+                          <span className={`size-3.5 rounded-full border border-border flex items-center justify-center shrink-0 ${hasCustomAvatar ? 'bg-green-500/10 border-green-500/30' : ''}`}>
+                            {hasCustomAvatar ? <CheckCircle2 size={12} className="text-green-500" /> : <span className="size-1 rounded-full bg-muted-foreground" />}
+                          </span>
+                          <Link href="/dashboard/profile" className={hasCustomAvatar ? "line-through" : "hover:underline text-foreground font-medium"}>Choose customized avatar</Link>
                         </div>
                         <div className="flex items-center gap-2 py-0.5">
                           <span className={`size-3.5 rounded-full border border-border flex items-center justify-center shrink-0 ${hasResume ? 'bg-green-500/10 border-green-500/30' : ''}`}>
