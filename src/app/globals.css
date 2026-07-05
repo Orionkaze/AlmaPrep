@@ -24,6 +24,10 @@
   --color-input: #ffffff;
   --color-ring: #059669;
   
+  --color-interview-mock: #6366f1;
+  --color-interview-hr: #3b82f6;
+  --color-interview-technical: #0d9488;
+  
   --font-sans: var(--font-body);
   --font-serif: var(--font-head);
   --font-mono: var(--font-geist-mono);
@@ -57,6 +61,10 @@
   --color-border: #1e2b27;
   --color-input: #111c19;
   --color-ring: #10b981;
+  
+  --color-interview-mock: #818cf8;
+  --color-interview-hr: #60a5fa;
+  --color-interview-technical: #14b8a6;
 }
 
 :root.dark {
@@ -79,6 +87,11 @@
   --emerald-200: #064e3b;
   --border:      #1e2b27;
   --border-strong: #1e2b27;
+}
+
+/* Smooth color transition globally for dark/light mode toggling */
+* {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, text-decoration-color 0.25s ease, fill 0.25s ease, stroke 0.25s ease;
 }
 
 body {

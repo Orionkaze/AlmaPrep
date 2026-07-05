@@ -231,7 +231,7 @@
   /* Footer Section */
   .site-footer { background: var(--bg-deep); color: rgba(255,255,255,.7); padding: var(--s-9) 0 var(--s-6); margin-top: var(--s-10); }
   .footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: var(--s-6); }
-  .brand { color: #fff; }
+  .site-footer .brand { color: #fff; }
   .site-footer h4 { color: #fff; font-family: var(--font-body), sans-serif; font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--s-4); }
   .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-3); }
   .site-footer a { color: rgba(255,255,255,.72); font-size: .95rem; }
