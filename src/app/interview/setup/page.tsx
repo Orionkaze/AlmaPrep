@@ -40,21 +40,21 @@ const standardCategories = [
     label: "HR Interview",
     icon: Briefcase,
     description: "Behavioral questions, teamwork, leadership, and situational scenarios.",
-    gradient: "from-primary to-primary/60",
+    colorClass: "bg-[var(--color-interview-hr)] text-white shadow-[0_0_15px_rgba(59,130,246,0.25)]",
   },
   {
     id: "technical",
     label: "Technical Interview",
     icon: Laptop,
     description: "Data structures, algorithms, system design, and problem-solving.",
-    gradient: "from-secondary to-secondary/60",
+    colorClass: "bg-[var(--color-interview-technical)] text-white shadow-[0_0_15px_rgba(13,148,136,0.25)]",
   },
   {
     id: "mixed",
     label: "Mixed Interview",
     icon: Shuffle,
     description: "A blend of HR and technical questions simulating a real-world interview.",
-    gradient: "from-accent to-accent/60",
+    colorClass: "bg-[var(--color-interview-mock)] text-white shadow-[0_0_15px_rgba(99,102,241,0.25)]",
   },
 ]
 
@@ -157,6 +157,29 @@ export default function InterviewSetupPage() {
     return prog ? prog.name : selected
   }
 
+  const getCategoryStyles = () => {
+    if (!selected) return ""
+    if (selected === "hr") {
+      return "text-[var(--color-interview-hr)] bg-[var(--color-interview-hr)]/10 border-[var(--color-interview-hr)]/20"
+    }
+    if (selected === "technical") {
+      return "text-[var(--color-interview-technical)] bg-[var(--color-interview-technical)]/10 border-[var(--color-interview-technical)]/20"
+    }
+    if (selected === "mixed") {
+      return "text-[var(--color-interview-mock)] bg-[var(--color-interview-mock)]/10 border-[var(--color-interview-mock)]/20"
+    }
+    const prog = programs.find(p => p.id === selected)
+    if (prog) {
+      if (prog.category === "Sciences & Tech") {
+        return "text-[var(--color-interview-technical)] bg-[var(--color-interview-technical)]/10 border-[var(--color-interview-technical)]/20"
+      }
+      if (prog.category === "Business & Law" || prog.category === "Health & Medicine") {
+        return "text-[var(--color-interview-hr)] bg-[var(--color-interview-hr)]/10 border-[var(--color-interview-hr)]/20"
+      }
+    }
+    return "text-[var(--color-interview-mock)] bg-[var(--color-interview-mock)]/10 border-[var(--color-interview-mock)]/20"
+  }
+
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden bg-background text-foreground text-left">
       {/* Background decorations */}
@@ -164,16 +187,18 @@ export default function InterviewSetupPage() {
       <div className="fixed bottom-0 left-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
 
       <div className="relative z-10 w-full max-w-4xl pt-10 pb-16">
-        <div className="text-center mb-8">
-          <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-4 inline-block font-semibold">
+        <div className="mb-8">
+          <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-4 inline-flex items-center gap-1 font-semibold text-left">
             ← Back to Dashboard
           </Link>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-foreground" style={headingStyle}>
-            Setup Your Practice Session
-          </h1>
-          <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
-            Choose a general track or practice with our specialized academic & professional program banks.
-          </p>
+          <div className="text-center mt-2">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-foreground" style={headingStyle}>
+              Setup Your Practice Session
+            </h1>
+            <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
+              Choose a general track or practice with our specialized academic & professional program banks.
+            </p>
+          </div>
         </div>
 
         {/* Search Bar */}
@@ -256,8 +281,8 @@ export default function InterviewSetupPage() {
                     variant="outline"
                     className="h-auto p-6 flex flex-col items-center text-center cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground rounded-2xl w-full"
                   >
-                    <div className={`size-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center mb-4 opacity-90 shadow-md`}>
-                      <cat.icon size={24} strokeWidth={1.75} className="text-white" />
+                    <div className={`size-14 rounded-2xl ${cat.colorClass} flex items-center justify-center mb-4 opacity-90`}>
+                      <cat.icon size={24} strokeWidth={1.75} />
                     </div>
                     <h3 className="text-base font-bold mb-2">{cat.label}</h3>
                     <p className="text-xs text-muted-foreground leading-relaxed">{cat.description}</p>
@@ -326,7 +351,7 @@ export default function InterviewSetupPage() {
         {selected && (
           <div className="text-center mb-6 animate-in fade-in duration-300">
             <span className="text-xs text-muted-foreground">Selected Track: </span>
-            <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+            <span className={`text-xs font-bold px-3 py-1 rounded-full border ${getCategoryStyles()}`}>
               {getSelectedLabel()}
             </span>
           </div>
