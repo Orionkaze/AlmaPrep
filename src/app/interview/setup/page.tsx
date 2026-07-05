@@ -192,10 +192,14 @@ export default function InterviewSetupPage() {
   }, [])
 
   // Handle Search filtering
-  const filteredPrograms = programs.filter(prog => 
-    prog.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    prog.category.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredPrograms = searchQuery.length > 0
+    ? programs.filter(prog => 
+        prog.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prog.category.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : uniqueCategories.includes(activeTab)
+    ? programs.filter(prog => prog.category === activeTab)
+    : [];
 
   // Get currently selected item details
   const getSelectedLabel = () => {
@@ -261,11 +265,7 @@ export default function InterviewSetupPage() {
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value)
-              if (e.target.value && activeTab !== "search") {
-                setActiveTab("search")
-              } else if (!e.target.value && activeTab === "search") {
-                setActiveTab("general")
-              }
+              setActiveTab("search")
             }}
             className="w-full h-12 border-border focus:border-primary pl-12 pr-12 text-sm bg-card"
           />
@@ -297,7 +297,6 @@ export default function InterviewSetupPage() {
             className="flex-1 flex overflow-x-auto gap-2 scrollbar-none scroll-smooth"
           >
             {tabCategories.map((tab) => {
-              if (tab.id === "search" && !searchQuery) return null;
               const isActive = activeTab === tab.id
               return (
                 <Button
@@ -305,9 +304,7 @@ export default function InterviewSetupPage() {
                   variant={isActive ? "default" : "outline"}
                   onClick={() => {
                     setActiveTab(tab.id)
-                    if (tab.id !== "search") {
-                      setSearchQuery("")
-                    }
+                    setSearchQuery("")
                   }}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer h-9 text-foreground"
                 >
@@ -360,11 +357,14 @@ export default function InterviewSetupPage() {
                 )
               })}
             </ToggleGroup>
-          ) : activeTab === "search" ? (
+          ) : activeTab === "search" || uniqueCategories.includes(activeTab) ? (
             /* Programs Search Grid */
             <div>
               <div className="text-xs text-muted-foreground mb-3 px-1">
-                Found {filteredPrograms.length} specialized program{filteredPrograms.length !== 1 ? 's' : ''} matching &ldquo;{searchQuery}&rdquo;
+                {activeTab === "search" 
+                  ? `Found ${filteredPrograms.length} specialized program${filteredPrograms.length !== 1 ? 's' : ''} matching "${searchQuery}"`
+                  : `${filteredPrograms.length} specialized program${filteredPrograms.length !== 1 ? 's' : ''} in "${activeTab}"`
+                }
               </div>
 
               {filteredPrograms.length === 0 ? (
