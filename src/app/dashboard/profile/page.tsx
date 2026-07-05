@@ -119,6 +119,8 @@ export default async function ProfilePage() {
       avatar_url: profile.avatar_url || "user-tie",
       resume_text: profile.resume_text || "",
       github_autosave: !!profile.github_autosave,
+      current_streak: profile.current_streak || 0,
+      longest_streak: profile.longest_streak || 0
     }
     userEmail = activeUser.email || ""
     createdAt = profile.created_at || new Date().toISOString()
@@ -170,6 +172,24 @@ export default async function ProfilePage() {
     }
   }
 
+  let allBadges: any[] = []
+  let userBadges: any[] = []
+  let totalActivities = interviews.length
+
+  if (!isDemoMode && supabase && userId) {
+    // Fetch all badges
+    const { data: badgesData } = await supabase.from("badges").select("*")
+    if (badgesData) allBadges = badgesData
+    
+    // Fetch user's earned badges
+    const { data: earnedBadgesData } = await supabase.from("user_badges").select("*").eq("user_id", userId)
+    if (earnedBadgesData) userBadges = earnedBadgesData
+    
+    // Add coding sessions to total activities
+    const { count } = await supabase.from("interview_sessions").select("*", { count: "exact", head: true }).eq("user_id", userId).in("status", ["completed", "evaluated"])
+    if (count) totalActivities += count
+  }
+
   const hasGitHubToken = cookieStore.has("sb-github-provider-token")
 
   return (
@@ -194,6 +214,9 @@ export default async function ProfilePage() {
           subscriptionTier={subscriptionTier}
           hasGitHubToken={hasGitHubToken}
           initialGitHubAnalysis={githubAnalysis}
+          allBadges={allBadges}
+          userBadges={userBadges}
+          totalActivities={totalActivities}
         />
       </div>
     </main>
