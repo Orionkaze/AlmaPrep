@@ -6,10 +6,8 @@ export default function InterviewLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="bg-background text-foreground min-h-screen flex flex-col">
-      <div className="almaprep-theme">
-        <AppHeader />
-      </div>
+    <div className="almaprep-theme bg-background text-foreground min-h-screen flex flex-col">
+      <AppHeader />
       {children}
     </div>
   )

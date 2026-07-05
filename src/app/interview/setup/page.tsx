@@ -181,7 +181,7 @@ export default function InterviewSetupPage() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden bg-background text-foreground text-left">
+    <main className="flex-1 flex flex-col items-center justify-center p-6 relative overflow-hidden bg-background text-foreground text-left">
       {/* Background decorations */}
       <div className="fixed top-0 right-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none animate-pulse" />
       <div className="fixed bottom-0 left-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
