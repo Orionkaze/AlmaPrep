@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { 
   Briefcase, 
   Laptop, 
@@ -20,7 +20,9 @@ import {
   Drama,
   Cpu,
   Globe,
-  ArrowRight
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react"
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
@@ -91,6 +93,50 @@ export default function InterviewSetupPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("general")
   const [loading, setLoading] = useState(true)
+
+  // Scroll controls for domain tab strip
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [showLeftArrow, setShowLeftArrow] = useState(false)
+  const [showRightArrow, setShowRightArrow] = useState(true)
+
+  const checkScroll = () => {
+    const el = scrollContainerRef.current
+    if (el) {
+      setShowLeftArrow(el.scrollLeft > 5)
+      setShowRightArrow(el.scrollLeft < el.scrollWidth - el.clientWidth - 5)
+    }
+  }
+
+  useEffect(() => {
+    const el = scrollContainerRef.current
+    if (el) {
+      el.addEventListener("scroll", checkScroll)
+      checkScroll()
+      window.addEventListener("resize", checkScroll)
+    }
+    return () => {
+      if (el) el.removeEventListener("scroll", checkScroll)
+      window.removeEventListener("resize", checkScroll)
+    }
+  }, [programs, searchQuery])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      checkScroll()
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [programs, searchQuery, activeTab])
+
+  const scroll = (direction: "left" | "right") => {
+    const el = scrollContainerRef.current
+    if (el) {
+      const scrollAmount = 200
+      el.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      })
+    }
+  }
 
   useEffect(() => {
     async function checkResume() {
@@ -234,27 +280,54 @@ export default function InterviewSetupPage() {
         </div>
 
         {/* Category Tabs / Filter list */}
-        <div className="flex overflow-x-auto gap-2 pb-4 mb-6 scrollbar-none border-b border-border">
-          {tabCategories.map((tab) => {
-            if (tab.id === "search" && !searchQuery) return null;
-            const isActive = activeTab === tab.id
-            return (
-              <Button
-                key={tab.id}
-                variant={isActive ? "default" : "outline"}
-                onClick={() => {
-                  setActiveTab(tab.id)
-                  if (tab.id !== "search") {
-                    setSearchQuery("")
-                  }
-                }}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer h-9 text-foreground"
-              >
-                <tab.icon size={14} strokeWidth={1.75} />
-                {tab.label}
-              </Button>
-            )
-          })}
+        <div className="relative w-full flex items-center mb-6">
+          {showLeftArrow && (
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scroll("left")}
+              className="absolute left-0 z-20 h-9 w-9 rounded-full bg-background/95 shadow-md flex items-center justify-center border border-border cursor-pointer -translate-x-1/2 hover:bg-muted"
+            >
+              <ChevronLeft size={16} />
+            </Button>
+          )}
+
+          <div
+            ref={scrollContainerRef}
+            className="flex-1 flex overflow-x-auto gap-2 pb-2 scrollbar-none border-b border-border scroll-smooth"
+          >
+            {tabCategories.map((tab) => {
+              if (tab.id === "search" && !searchQuery) return null;
+              const isActive = activeTab === tab.id
+              return (
+                <Button
+                  key={tab.id}
+                  variant={isActive ? "default" : "outline"}
+                  onClick={() => {
+                    setActiveTab(tab.id)
+                    if (tab.id !== "search") {
+                      setSearchQuery("")
+                    }
+                  }}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer h-9 text-foreground"
+                >
+                  <tab.icon size={14} strokeWidth={1.75} />
+                  {tab.label}
+                </Button>
+              )
+            })}
+          </div>
+
+          {showRightArrow && (
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scroll("right")}
+              className="absolute right-0 z-20 h-9 w-9 rounded-full bg-background/95 shadow-md flex items-center justify-center border border-border cursor-pointer translate-x-1/2 hover:bg-muted"
+            >
+              <ChevronRight size={16} />
+            </Button>
+          )}
         </div>
 
         {/* Grid Content Selection */}
