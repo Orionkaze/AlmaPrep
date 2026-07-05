@@ -4,6 +4,7 @@
   --bg-card:     #ffffff;   /* cards / surfaces */
   --bg-tint:     #ecfdf5;   /* emerald-tinted surface */
   --bg-deep:     #062b22;   /* deep emerald (footer / dark sections) */
+  --header-bg:   rgba(248, 250, 252, 0.85); /* semi-transparent header */
   --ink:         #0f172a;   /* headings */
   --text:        #334155;   /* body */
   --muted:       #64748b;   /* secondary text */
@@ -97,7 +98,7 @@
   .btn:hover { text-decoration: none; }
   .btn-primary { background: var(--emerald); color: #fff; box-shadow: 0 6px 18px rgba(5,150,105,.28); }
   .btn-primary:hover { background: var(--emerald-600); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(5,150,105,.34); }
-  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--border-strong); }
+  .btn-ghost { background: var(--bg-card); color: var(--ink); border-color: var(--border-strong); }
   .btn-ghost:hover { border-color: var(--emerald); color: var(--emerald-600); }
   .btn-light { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.28); }
   .btn-light:hover { background: rgba(255,255,255,.2); }
@@ -106,7 +107,7 @@
   /* Header & Navigation */
   .site-header {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(248,250,252,.85); backdrop-filter: saturate(180%) blur(12px);
+    background: var(--header-bg); backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 1px solid var(--border);
   }
   .nav { display: flex; align-items: center; gap: var(--s-5); padding: var(--s-4) 0; }
@@ -257,7 +258,7 @@
   .auth-card h1 { font-size: 1.7rem; }
   .field { margin-bottom: var(--s-4); }
   .field label { display: block; font-size: .88rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
-  .field input { width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font: inherit; color: var(--ink); background: #fff; }
+  .field input { width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font: inherit; color: var(--ink); background: var(--bg-card); }
   .field input:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(5,150,105,.15); }
   .auth-alt { text-align: center; margin-top: var(--s-5); color: var(--muted); font-size: .92rem; }
   .auth-note { background: var(--bg-tint); border: 1px solid var(--emerald-200); color: var(--emerald-600); border-radius: var(--radius-sm); padding: 10px 14px; font-size: .84rem; margin-bottom: var(--s-5); }
