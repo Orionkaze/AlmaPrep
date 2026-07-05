@@ -89,7 +89,7 @@ export async function checkAndAwardBadges(userId: string) {
     let fastSolves = 0; // under 5 mins
     let jsAndPythonSolves = new Set<string>();
 
-    codingSessions?.forEach(session => {
+    codingSessions?.forEach((session: any) => {
       const sol = session.coding_solutions?.[0];
       if (sol) {
         if (sol.attempts === 1 && sol.test_results?.passed === sol.test_results?.total) firstTrySolves++;
