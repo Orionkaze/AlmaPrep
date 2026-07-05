@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="bg-background text-foreground min-h-screen flex flex-col">
-      <div className="almaprep-theme">
+      <div className="almaprep-theme" style={{ minHeight: 'auto', background: 'transparent' }}>
         <AppHeader />
       </div>
       {children}
