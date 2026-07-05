@@ -176,8 +176,10 @@ export default function InterviewPage({
       }
 
       recognition.onerror = (event: any) => {
-        console.error("Speech recognition error:", event.error)
-        if (event.error !== "no-speech") {
+        if (event.error === "no-speech") {
+          console.warn("Speech recognition paused (no-speech)")
+        } else {
+          console.error("Speech recognition error:", event.error)
           setInput(`[Mic Error: ${event.error}]`)
         }
         setIsListening(false)
