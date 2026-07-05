@@ -178,7 +178,7 @@ export default function BehavioralReport({
   return (
     <div className="space-y-8">
       {/* section 1: Coach Feedback Report */}
-      <Card className="border border-emerald-500/10 overflow-hidden relative shadow-sm">
+      <Card className="border border-border overflow-hidden relative shadow-sm p-6 sm:p-8">
         <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={headingStyle}>
           <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
@@ -186,7 +186,7 @@ export default function BehavioralReport({
           </span>
           Behavioral Coaching Feedback
         </h2>
-        <div className="text-body leading-relaxed text-sm space-y-4 font-sans whitespace-pre-wrap">
+        <div className="text-muted-foreground leading-relaxed text-sm space-y-4 font-sans whitespace-pre-wrap">
           {finalReport}
         </div>
       </Card>
@@ -194,7 +194,7 @@ export default function BehavioralReport({
       {/* section 2: Physical Metrics & Answer Quality side-by-side */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Physical Metrics card */}
-        <Card className="border border-emerald-500/10 shadow-sm">
+        <Card className="border border-border shadow-sm p-6 sm:p-8">
           <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-sm">
               <Eye size={16} strokeWidth={1.75} className="text-purple-400" />
@@ -212,7 +212,7 @@ export default function BehavioralReport({
                 </span>
                 <span className="font-bold text-foreground">{avgEyeContact}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+              <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-[1.5s] ${getProgressColor(
                     avgEyeContact
@@ -231,7 +231,7 @@ export default function BehavioralReport({
                 </span>
                 <span className="font-bold text-foreground">{avgPosture}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+              <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-[1.5s] ${getProgressColor(
                     avgPosture
@@ -242,7 +242,7 @@ export default function BehavioralReport({
             </div>
 
             {/* Engagement */}
-            <div className="flex items-center justify-between border-t border-white/5 pt-3">
+            <div className="flex items-center justify-between border-t border-border pt-3">
               <span className="text-xs text-muted-foreground flex items-center gap-2">
                 <Smile className="text-muted-foreground/60 size-3" size={12} strokeWidth={1.75} />
                 Facial Engagement
@@ -253,7 +253,7 @@ export default function BehavioralReport({
             </div>
 
             {/* Fidgeting */}
-            <div className="flex items-center justify-between border-t border-white/5 pt-3">
+            <div className="flex items-center justify-between border-t border-border pt-3">
               <span className="text-xs text-muted-foreground flex items-center gap-2">
                 <Hand className="text-muted-foreground/60 size-3" size={12} strokeWidth={1.75} />
                 Fidgeting Detections
@@ -266,7 +266,7 @@ export default function BehavioralReport({
         </Card>
 
         {/* Answer Quality card */}
-        <Card className="border border-emerald-500/10 shadow-sm">
+        <Card className="border border-border shadow-sm p-6 sm:p-8">
           <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
               <BarChart2 size={16} strokeWidth={1.75} className="text-emerald-400" />
@@ -281,7 +281,7 @@ export default function BehavioralReport({
                 <span className="text-muted-foreground">STAR Structure</span>
                 <span className="font-bold text-foreground">{avgStar}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+              <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-[1.5s] ${getProgressColor(
                     avgStar
@@ -297,7 +297,7 @@ export default function BehavioralReport({
                 <span className="text-muted-foreground">Question Relevance</span>
                 <span className="font-bold text-foreground">{avgRelevance}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+              <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-[1.5s] ${getProgressColor(
                     avgRelevance
@@ -313,7 +313,7 @@ export default function BehavioralReport({
                 <span className="text-muted-foreground">Clarity & Conciseness</span>
                 <span className="font-bold text-foreground">{avgClarity}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+              <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-[1.5s] ${getProgressColor(
                     avgClarity
@@ -329,7 +329,7 @@ export default function BehavioralReport({
                 <span className="text-muted-foreground">Assertiveness & Confidence</span>
                 <span className="font-bold text-foreground">{avgConfidence}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+              <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-[1.5s] ${getProgressColor(
                     avgConfidence
@@ -346,7 +346,7 @@ export default function BehavioralReport({
       {speakingAnalysis && (
         <div className="space-y-6">
           {/* Speaking Session summary */}
-          <Card className="border border-emerald-500/10 overflow-hidden relative shadow-sm">
+          <Card className="border border-border overflow-hidden relative shadow-sm p-6 sm:p-8">
             <div className="absolute top-0 left-0 w-[200px] h-[200px] bg-purple-500/5 rounded-full blur-[80px] pointer-events-none" />
             <h3 className="text-lg font-semibold mb-3 flex items-center gap-2" style={headingStyle}>
               <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
@@ -354,13 +354,13 @@ export default function BehavioralReport({
               </span>
               Speech Delivery Summary
             </h3>
-            <p className="text-body leading-relaxed text-sm font-sans mb-6">
+            <p className="text-muted-foreground leading-relaxed text-sm font-sans mb-6">
               {speakingAnalysis.sessionSummary.summary}
             </p>
 
             {/* Aggregated Pacing Metrics Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col justify-between">
+              <div className="bg-muted/40 border border-border rounded-2xl p-4 flex flex-col justify-between">
                 <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-2">
                   Hesitation Level
                 </span>
@@ -373,7 +373,7 @@ export default function BehavioralReport({
                 </span>
               </div>
 
-              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col">
+              <div className="bg-muted/40 border border-border rounded-2xl p-4 flex flex-col">
                 <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
                   Sentence Complexity
                 </span>
@@ -383,7 +383,7 @@ export default function BehavioralReport({
                 <span className="text-[10px] text-muted-foreground font-medium">avg words / sentence</span>
               </div>
 
-              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col">
+              <div className="bg-muted/40 border border-border rounded-2xl p-4 flex flex-col">
                 <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
                   Total Filler Words
                 </span>
@@ -398,7 +398,7 @@ export default function BehavioralReport({
           {/* Graphical breakdowns and overused words */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Filler frequency custom chart */}
-            <Card className="border border-emerald-500/10 shadow-sm">
+            <Card className="border border-border shadow-sm p-6 sm:p-8">
               <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-5 flex items-center gap-2" style={headingStyle}>
                 <Mic size={14} strokeWidth={1.75} className="text-emerald-400" />
                 Filler Word Breakdown
@@ -413,12 +413,12 @@ export default function BehavioralReport({
                       return (
                         <div key={word} className="space-y-1">
                           <div className="flex justify-between text-xs font-semibold">
-                            <span className="text-body font-mono">"{word}"</span>
+                            <span className="text-muted-foreground font-mono">"{word}"</span>
                             <span className="text-emerald-400">{count} occurrences</span>
                           </div>
-                          <div className="h-2.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                          <div className="h-2.5 w-full bg-muted rounded-full overflow-hidden border border-border/20">
                             <div
-                              className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-[1.2s] shadow-[0_0_8px_rgba(16,185,129,0.3)]"
+                               className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-[1.2s] shadow-[0_0_8px_rgba(16,185,129,0.3)]"
                               style={{ width: `${percentage}%` }}
                             />
                           </div>
@@ -434,7 +434,7 @@ export default function BehavioralReport({
             </Card>
 
             {/* Overused Words list */}
-            <Card className="border border-emerald-500/10 flex flex-col justify-between shadow-sm">
+            <Card className="border border-border flex flex-col justify-between shadow-sm p-6 sm:p-8">
               <div>
                 <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2" style={headingStyle}>
                   <AlertTriangle size={14} strokeWidth={1.75} className="text-purple-400" />
@@ -450,7 +450,7 @@ export default function BehavioralReport({
                   {speakingAnalysis.sessionSummary.metrics.mostOverusedWords.map((word) => (
                     <span
                       key={word}
-                      className="bg-purple-500/10 border border-purple-500/25 px-4 py-1.5 rounded-full text-xs font-bold text-purple-300 shadow-sm"
+                      className="bg-purple-500/10 border border-purple-500/25 px-4 py-1.5 rounded-full text-xs font-bold text-purple-400 shadow-sm"
                     >
                       {word}
                     </span>
@@ -465,15 +465,15 @@ export default function BehavioralReport({
           </div>
 
           {/* Per-Answer Speaking Critique list */}
-          <Card className="border border-emerald-500/10 shadow-sm">
+          <Card className="border border-border shadow-sm p-6 sm:p-8">
             <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-5" style={headingStyle}>
               Detailed Speaking Critique per Answer
             </h4>
 
             <div className="space-y-6">
               {speakingAnalysis.answerMetrics.map((item, idx) => (
-                <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-4 space-y-3 relative overflow-hidden">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2">
+                <div key={idx} className="bg-muted/40 border border-border rounded-2xl p-4 space-y-3 relative overflow-hidden">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-2">
                     <span className="text-xs uppercase font-extrabold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded self-start">
                       Question {idx + 1}
                     </span>
@@ -484,7 +484,7 @@ export default function BehavioralReport({
                     </div>
                   </div>
 
-                  <div className="text-xs leading-relaxed text-body bg-white/2 p-3 rounded-xl border border-white/5 flex gap-2">
+                  <div className="text-xs leading-relaxed text-muted-foreground bg-muted/20 p-3 rounded-xl border border-border flex gap-2">
                     <Quote size={16} strokeWidth={1.75} className="text-emerald-400/25 shrink-0 mt-0.5" />
                     <p className="italic text-muted-foreground leading-relaxed font-sans">
                       {item.feedback}
@@ -499,7 +499,7 @@ export default function BehavioralReport({
 
       {/* section 4: Per-Answer Quality Breakdown */}
       {answerScores.length > 0 && (
-        <Card className="border border-emerald-500/10 shadow-sm">
+        <Card className="border border-border shadow-sm p-6 sm:p-8">
           <h3 className="text-lg font-semibold mb-5 flex items-center gap-2" style={headingStyle}>
             <span className="size-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-sm">
               <BarChart2 size={16} strokeWidth={1.75} className="text-emerald-400" />
@@ -509,7 +509,7 @@ export default function BehavioralReport({
 
           <div className="space-y-6">
             {answerScores.map((ans, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/5 rounded-xl p-4 space-y-3">
+              <div key={idx} className="bg-muted/40 border border-border rounded-xl p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded">
                     Answer {idx + 1}

@@ -74,12 +74,12 @@ function ScoreCircle({ score }: { score: number }) {
   const radius = 60
   const circumference = 2 * Math.PI * radius
   const strokeDashoffset = circumference - (score / 100) * circumference
-  const color = score >= 85 ? "#22c55e" : score >= 70 ? "#A855F7" : "#ef4444"
+  const color = score >= 85 ? "#10b981" : score >= 70 ? "#a855f7" : "#ef4444"
 
   return (
     <div className="relative flex items-center justify-center">
       <svg width="148" height="148" viewBox="0 0 148 148" className="-rotate-90">
-        <circle cx="74" cy="74" r={radius} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="8" />
+        <circle cx="74" cy="74" r={radius} fill="none" stroke="currentColor" strokeWidth="8" className="text-muted/60" />
         <circle
           cx="74" cy="74" r={radius} fill="none"
           stroke={color} strokeWidth="8" strokeLinecap="round"
@@ -89,7 +89,7 @@ function ScoreCircle({ score }: { score: number }) {
         />
       </svg>
       <div className="absolute text-center">
-        <p className="text-4xl font-bold">{score}</p>
+        <p className="text-4xl font-bold text-foreground">{score}</p>
         <p className="text-xs text-muted-foreground">out of 100</p>
       </div>
     </div>
@@ -98,7 +98,7 @@ function ScoreCircle({ score }: { score: number }) {
 
 function ProgressBar({ score, color }: { score: number; color: string }) {
   return (
-    <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+    <div className="w-full h-2.5 rounded-full bg-muted overflow-hidden border border-border/20">
       <div
         className={`h-full rounded-full ${color} transition-all duration-[1500ms] ease-out`}
         style={{ width: `${score}%` }}
@@ -291,19 +291,19 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
   if (!feedback) {
     return (
-      <main className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden bg-[#0A0A0A]">
+      <main className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden bg-background">
         {/* Animated glowing orbs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-pulse pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-secondary/20 rounded-full blur-[80px] animate-[pulse_3s_infinite] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[80px] animate-[pulse_3s_infinite] pointer-events-none" />
         
         {/* Glass Loading Card */}
-        <div className="z-10 bg-white/5 border border-white/10 p-10 rounded-2xl backdrop-blur-md shadow-2xl flex flex-col items-center justify-center w-full max-w-md relative overflow-hidden">
+        <div className="z-10 bg-card border border-border p-10 rounded-2xl backdrop-blur-md shadow-2xl flex flex-col items-center justify-center w-full max-w-md relative overflow-hidden">
           {/* Shimmer sweep effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
           
           {/* Custom animated ring spinner */}
           <div className="relative size-16 mb-8 mt-2">
-            <div className="absolute inset-0 border-4 border-white/10 rounded-full"></div>
+            <div className="absolute inset-0 border-4 border-muted rounded-full"></div>
             <div className="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin"></div>
             <div className="absolute inset-2 border-4 border-secondary rounded-full border-b-transparent animate-[spin_1.5s_linear_infinite_reverse]"></div>
           </div>
@@ -324,19 +324,21 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
   const categoryText = isUuid ? "Mock Interview" : getCategoryLabel(id)
 
   return (
-    <main className="min-h-screen p-6 md:p-12 relative overflow-hidden">
+    <main className="min-h-screen p-6 md:p-12 relative overflow-hidden bg-background text-foreground">
       {/* Background decorations */}
-      <div className="fixed top-0 left-1/3 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="fixed bottom-0 right-1/3 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed top-0 left-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="fixed bottom-0 right-1/3 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-4xl mx-auto space-y-6">
         {/* Header */}
-        <div className="text-center mb-10">
-          <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-4 inline-flex items-center gap-1.5 font-semibold">
+        <div className="mb-8">
+          <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-4 inline-flex items-center gap-1.5 font-semibold text-left">
             <ArrowLeft size={16} strokeWidth={1.75} /> Back to Dashboard
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-foreground" style={headingStyle}>Interview Feedback</h1>
-          <p className="text-muted-foreground">{categoryText} • Completed just now</p>
+          <div className="text-center mt-2">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-foreground" style={headingStyle}>Interview Feedback</h1>
+            <p className="text-muted-foreground">{categoryText} • Completed just now</p>
+          </div>
         </div>
 
         {proctoringData && (proctoringData.terminatedEarly || proctoringData.isFlagged) && (
@@ -358,21 +360,21 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         )}
 
         {/* Score Section */}
-        <Card className="flex flex-col items-center text-center mb-6 py-10 shadow-sm">
+        <Card className="flex flex-col items-center text-center p-8 sm:p-10 shadow-sm">
           <h2 className="text-lg font-semibold text-muted-foreground mb-4" style={headingStyle}>Overall Performance</h2>
           <ScoreCircle score={feedback.score} />
-          <p className="text-body mt-6 max-w-lg text-sm leading-relaxed">{feedback.summary}</p>
+          <p className="text-muted-foreground mt-6 max-w-lg text-sm leading-relaxed">{feedback.summary}</p>
         </Card>
 
         {/* Breakdown */}
-        <Card className="mb-6 shadow-sm">
-          <h2 className="text-lg font-semibold mb-5 text-foreground" style={headingStyle}>Score Breakdown</h2>
-          <div className="flex flex-col gap-5">
+        <Card className="p-8 shadow-sm">
+          <h2 className="text-lg font-semibold mb-6 text-foreground" style={headingStyle}>Score Breakdown</h2>
+          <div className="flex flex-col gap-7">
             {feedback.breakdown.map((item) => (
-              <div key={item.label}>
-                <div className="flex items-center justify-between text-sm mb-2">
-                  <span className="text-body">{item.label}</span>
-                  <span className="font-semibold text-foreground">{item.score}%</span>
+              <div key={item.label} className="space-y-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground font-medium">{item.label}</span>
+                  <span className="font-bold text-foreground">{item.score}%</span>
                 </div>
                 <ProgressBar score={item.score} color={item.color} />
               </div>
@@ -381,35 +383,35 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         </Card>
 
         {/* Strengths & Improvements */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          <Card className="shadow-sm">
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-foreground" style={headingStyle}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="p-8 shadow-sm">
+            <h2 className="text-lg font-semibold mb-5 flex items-center gap-2.5 text-foreground" style={headingStyle}>
               <span className="size-8 rounded-lg bg-green-500/20 flex items-center justify-center text-sm">
                 <Check size={16} strokeWidth={1.75} className="text-green-500" />
               </span>
               Strengths
             </h2>
-            <ul className="flex flex-col gap-3">
+            <ul className="space-y-4 text-left">
               {feedback.strengths.map((s, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-body">
-                  <span className="mt-2 size-1.5 rounded-full bg-green-400 shrink-0" />
-                  {s}
+                <li key={i} className="flex items-start gap-3.5 text-sm text-muted-foreground leading-relaxed">
+                  <span className="mt-2.5 size-2 rounded-full bg-green-500 shrink-0" />
+                  <span>{s}</span>
                 </li>
               ))}
             </ul>
           </Card>
-          <Card className="shadow-sm">
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-foreground" style={headingStyle}>
+          <Card className="p-8 shadow-sm">
+            <h2 className="text-lg font-semibold mb-5 flex items-center gap-2.5 text-foreground" style={headingStyle}>
               <span className="size-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-sm">
                 <Lightbulb size={16} strokeWidth={1.75} className="text-amber-500" />
               </span>
               Improvements
             </h2>
-            <ul className="flex flex-col gap-3">
+            <ul className="space-y-4 text-left">
               {feedback.improvements.map((s, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-body">
-                  <span className="mt-2 size-1.5 rounded-full bg-amber-400 shrink-0" />
-                  {s}
+                <li key={i} className="flex items-start gap-3.5 text-sm text-muted-foreground leading-relaxed">
+                  <span className="mt-2.5 size-2 rounded-full bg-amber-500 shrink-0" />
+                  <span>{s}</span>
                 </li>
               ))}
             </ul>
@@ -418,13 +420,13 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
         {/* Behavioral Analysis Report */}
         {behavioralData ? (
-          <div className="mb-10 text-left">
+          <div className="text-left py-4">
             <div className="flex items-center gap-3 mb-6">
               <div className="size-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
                 <UserRound size={20} strokeWidth={1.75} />
               </div>
               <div className="text-left">
-                <h2 className="text-xl font-bold text-white flex items-center gap-2" style={headingStyle}>
+                <h2 className="text-xl font-bold text-foreground flex items-center gap-2" style={headingStyle}>
                   <span>AI Behavioral & Physical Analysis</span>
                   {!isUuid && (
                     <span className="text-[9px] uppercase tracking-wider font-bold bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded text-amber-400 align-middle">
@@ -444,17 +446,17 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
           </div>
         ) : (
           isUuid && (
-            <div className="mb-10 text-left">
+            <div className="text-left py-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="size-10 rounded-lg bg-amber-500/15 flex items-center justify-center border border-amber-500/20 text-amber-500">
                   <UserRound size={20} strokeWidth={1.75} />
                 </div>
                 <div className="text-left">
-                  <h2 className="text-xl font-bold text-white" style={headingStyle}>AI Behavioral & Physical Analysis</h2>
+                  <h2 className="text-xl font-bold text-foreground" style={headingStyle}>AI Behavioral & Physical Analysis</h2>
                   <p className="text-xs text-muted-foreground">Combined insights from your speech delivery and physical presence</p>
                 </div>
               </div>
-              <Card className="border border-amber-500/20 bg-amber-500/5 py-6 px-8 rounded-2xl shadow-sm">
+              <Card className="border border-amber-500/20 bg-amber-500/5 p-8 rounded-2xl shadow-sm">
                 <h4 className="text-sm font-bold text-amber-400 mb-1" style={headingStyle}>Behavioral Report Unavailable</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   The behavioral and physical metrics report is not available for this session. If this is a new session, the AI analysis might still be generating or failed to save. Please try refreshing or restarting the interview.
@@ -466,15 +468,15 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
         {/* Proctoring Summary Panel */}
         {proctoringData && (
-          <Card className="mb-10 text-left border border-white/5 shadow-sm">
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-white" style={headingStyle}>
+          <Card className="p-8 text-left border border-border shadow-sm">
+            <h2 className="text-lg font-semibold mb-6 flex items-center gap-2 text-foreground" style={headingStyle}>
               <span className="size-8 rounded-lg bg-red-500/20 flex items-center justify-center text-sm text-red-400">
                 <ShieldAlert size={16} strokeWidth={1.75} />
               </span>
               Proctoring Summary
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col justify-between">
+              <div className="bg-muted/40 border border-border p-4 rounded-2xl flex flex-col justify-between">
                 <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Status</span>
                 <span className={`text-xs font-extrabold self-start px-2.5 py-0.5 rounded-full ${
                   proctoringData.isFlagged 
@@ -484,15 +486,15 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                   {proctoringData.isFlagged ? "Flagged" : "Clean"}
                 </span>
               </div>
-              <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col">
+              <div className="bg-muted/40 border border-border p-4 rounded-2xl flex flex-col">
                 <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Total Warnings</span>
-                <span className={`text-xl font-extrabold font-mono ${proctoringData.totalCount >= 3 ? "text-amber-400" : "text-white"}`}>
+                <span className={`text-xl font-extrabold font-mono ${proctoringData.totalCount >= 3 ? "text-amber-400" : "text-foreground"}`}>
                   {proctoringData.totalCount} / 5
                 </span>
               </div>
-              <div className="bg-white/2 border border-white/5 p-4 rounded-2xl flex flex-col">
+              <div className="bg-muted/40 border border-border p-4 rounded-2xl flex flex-col">
                 <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Completed</span>
-                <span className="text-xs font-extrabold text-white">
+                <span className="text-xs font-extrabold text-foreground">
                   {proctoringData.terminatedEarly ? "Terminated Early ❌" : "Finished Normally ✓"}
                 </span>
               </div>
@@ -521,8 +523,8 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                         label = v.type;
                     }
                     return (
-                      <div key={index} className="flex items-center justify-between text-xs bg-white/5 p-3 rounded-xl border border-white/5">
-                        <span className="font-semibold text-body">{label}</span>
+                      <div key={index} className="flex items-center justify-between text-xs bg-muted/40 p-4 rounded-xl border border-border">
+                        <span className="font-semibold text-foreground">{label}</span>
                         <div className="flex items-center gap-3">
                           <span className="text-muted-foreground text-[10px] font-mono">
                             {new Date(v.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
@@ -546,17 +548,17 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
         {/* Question-by-Question Evaluation */}
         {feedback.questionEvaluation && feedback.questionEvaluation.length > 0 && (
-          <div className="mb-6">
+          <div className="space-y-4">
             <button 
               onClick={() => setShowQuestionAnalysis(!showQuestionAnalysis)}
-              className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+              className="w-full flex items-center justify-between p-5 rounded-xl border border-border bg-card hover:bg-muted/40 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary">
                   <ClipboardCheck size={20} strokeWidth={1.75} />
                 </div>
                 <div className="text-left">
-                  <h2 className="text-lg font-semibold text-white" style={headingStyle}>Question-by-Question Analysis</h2>
+                  <h2 className="text-lg font-semibold text-foreground" style={headingStyle}>Question-by-Question Analysis</h2>
                   <p className="text-xs text-muted-foreground">Detailed evaluation of each question asked</p>
                 </div>
               </div>
@@ -564,20 +566,20 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             </button>
             
             {showQuestionAnalysis && (
-              <div className="mt-4 flex flex-col gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
+              <div className="space-y-4 animate-in slide-in-from-top-4 fade-in duration-300">
                 {feedback.questionEvaluation.map((item, idx) => {
                   const isExpanded = !!expandedQuestions[idx]
                   const qScore = item.score
                   const scoreColor = qScore >= 85 ? "text-green-400 bg-green-500/10 border-green-500/20" : qScore >= 70 ? "text-purple-400 bg-purple-500/10 border-purple-500/20" : "text-red-400 bg-red-500/10 border-red-500/20"
 
                   return (
-                    <Card key={idx} className="p-5 border-white/5 bg-white/2 relative overflow-hidden text-left shadow-sm">
+                    <Card key={idx} className="p-6 sm:p-8 border-border bg-card relative overflow-hidden text-left shadow-sm">
                       <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-4">
                         <div className="flex-1">
                           <span className="text-[10px] uppercase tracking-wider text-primary font-bold bg-primary/10 px-2.5 py-1 rounded-md mb-2 inline-block">
                             Question {idx + 1}
                           </span>
-                          <h3 className="text-sm md:text-base font-bold text-white leading-relaxed" style={headingStyle}>
+                          <h3 className="text-sm md:text-base font-bold text-foreground leading-relaxed" style={headingStyle}>
                             {item.question}
                           </h3>
                         </div>
@@ -587,9 +589,9 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                       </div>
 
                       {/* Candidate's Answer */}
-                      <div className="mb-4 bg-white/5 p-3 rounded-lg border border-white/5">
+                      <div className="mb-4 bg-muted/40 p-4 rounded-lg border border-border">
                         <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold block mb-1">Your Answer</span>
-                        <p className="text-xs md:text-sm text-body leading-relaxed font-sans italic">
+                        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed font-sans italic">
                           &ldquo;{item.userAnswer}&rdquo;
                         </p>
                       </div>
@@ -597,14 +599,14 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                       {/* Feedback */}
                       <div className="mb-4">
                         <span className="text-[10px] text-secondary uppercase tracking-wider font-semibold block mb-1">Feedback</span>
-                        <p className="text-xs md:text-sm text-body leading-relaxed">
+                        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
                           {item.feedback}
                         </p>
                       </div>
 
                       {/* Ideal/Model Answer (Collapsible) */}
                       {item.modelAnswer && (
-                        <div className="border-t border-white/5 pt-3 mt-3">
+                        <div className="border-t border-border pt-4 mt-4">
                           <button
                             onClick={() => toggleQuestionExpand(idx)}
                             className="flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors font-semibold focus:outline-none cursor-pointer"
@@ -614,7 +616,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
                           </button>
                           
                           {isExpanded && (
-                            <div className="mt-3 bg-primary/5 border border-primary/15 p-3.5 rounded-lg text-xs md:text-sm text-body leading-relaxed animate-in slide-in-from-top-2 duration-200">
+                            <div className="mt-3 bg-primary/5 border border-primary/20 p-4 rounded-lg text-xs md:text-sm text-muted-foreground leading-relaxed animate-in slide-in-from-top-2 duration-200">
                               <span className="text-[10px] text-primary uppercase tracking-wider font-bold block mb-1.5">Model Answer / Looking For:</span>
                               {item.modelAnswer}
                             </div>
@@ -631,17 +633,17 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
         {/* Study Guide Section */}
         {feedback.studyGuide && feedback.studyGuide.length > 0 && (
-          <div className="mb-10">
+          <div className="space-y-4">
             <button 
               onClick={() => setShowStudyGuide(!showStudyGuide)}
-              className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+              className="w-full flex items-center justify-between p-5 rounded-xl border border-border bg-card hover:bg-muted/40 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
                   <BookOpen size={20} strokeWidth={1.75} />
                 </div>
                 <div className="text-left">
-                  <h2 className="text-lg font-semibold text-white" style={headingStyle}>Personalized Study Guide</h2>
+                  <h2 className="text-lg font-semibold text-foreground" style={headingStyle}>Personalized Study Guide</h2>
                   <p className="text-xs text-muted-foreground">Actionable advice based on your weaknesses</p>
                 </div>
               </div>
@@ -649,14 +651,14 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
             </button>
             
             {showStudyGuide && (
-              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
                 {feedback.studyGuide.map((item, idx) => (
-                  <Card key={idx} className="border-primary/20 bg-primary/5 text-left shadow-sm animate-in fade-in duration-200">
+                  <Card key={idx} className="border-primary/20 bg-primary/5 p-6 sm:p-8 text-left shadow-sm animate-in fade-in duration-200">
                     <h3 className="font-semibold text-primary mb-2 flex items-center gap-2" style={headingStyle}>
                       <span className="size-5 rounded-full bg-primary/20 flex items-center justify-center text-xs">{idx + 1}</span>
                       {item.topic}
                     </h3>
-                    <p className="text-sm text-body leading-relaxed">{item.advice}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.advice}</p>
                   </Card>
                 ))}
               </div>
@@ -665,7 +667,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
         )}
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link href="/interview/setup">
             <Button className="h-12 px-10 cursor-pointer" variant="default">Start Another Interview</Button>
           </Link>
@@ -678,4 +680,3 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       </div>
     </main>
   )
-}
