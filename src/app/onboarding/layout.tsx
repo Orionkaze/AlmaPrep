@@ -6,8 +6,10 @@ export default function OnboardingLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="almaprep-theme bg-background text-foreground min-h-screen flex flex-col">
-      <AppHeader />
+    <div className="bg-background text-foreground min-h-screen flex flex-col">
+      <div className="almaprep-theme">
+        <AppHeader />
+      </div>
       {children}
     </div>
   )
