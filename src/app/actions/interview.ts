@@ -9,6 +9,8 @@ import { cookies } from "next/headers"
 import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
+import { updateStreak } from "@/app/actions/streak"
+import { checkAndAwardBadges } from "@/app/actions/badges"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -467,7 +469,8 @@ export async function saveInterviewFeedback(
   improvements: string[],
   strengths?: string[],
   studyGuide?: { topic: string; advice: string }[],
-  questionEvaluation?: { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[]
+  questionEvaluation?: { question: string; userAnswer: string; score: number; feedback: string; modelAnswer: string }[],
+  clientDate?: string
 ): Promise<boolean> {
   try {
     const cookieStore = await cookies()
@@ -502,6 +505,15 @@ export async function saveInterviewFeedback(
       .from("interviews")
       .update({ status: "completed" })
       .eq("id", interviewId)
+
+    // --- Streak & Badge Logic (Background Execution) ---
+    const localDate = clientDate || new Date().toISOString().split("T")[0];
+    const streakPromise = updateStreak(userId, localDate, 'interview', interviewId)
+      .catch(e => console.error("Streak error:", e));
+    const badgePromise = checkAndAwardBadges(userId)
+      .catch(e => console.error("Badge error:", e));
+      
+    await Promise.allSettled([streakPromise, badgePromise]);
 
     if (error) {
       console.error("Error saving feedback in Supabase:", error)
