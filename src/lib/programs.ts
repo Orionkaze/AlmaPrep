@@ -134,27 +134,34 @@ export function getPrograms(): ProgramInfo[] {
         const programId = path.basename(shard.file, ".json")
         const isUniversal = shard.file.startsWith("data/universal/")
 
-        // Find program display name
-        let programName = questions[0]?.program || ""
+        let baseName = questions[0]?.program || "";
+        if (!baseName && questions[0]?.category && isUniversal) {
+          baseName = questions[0].category;
+        }
+        
+        let programName = baseName;
         if (!programName) {
           programName = programId
             .split("-")
             .map(word => {
-              if (word === "a" || word === "b") return `(${word.toUpperCase()})`
-              if (word === "and") return "&"
-              return word.charAt(0).toUpperCase() + word.slice(1)
+              if (word === "a" || word === "b") return "";
+              if (word === "and") return "&";
+              return word.charAt(0).toUpperCase() + word.slice(1);
             })
-            .join(" ")
-        } else {
-          // If we have a vs b files, append suffix
-          const parts = programId.split("-")
-          const suffix = parts[parts.length - 1]
-          if (suffix === "a" || suffix === "b") {
-            programName = `${programName} (${suffix.toUpperCase()})`
-          }
+            .filter(Boolean)
+            .join(" ");
+            
+          baseName = programName;
         }
 
-        const category = categoryMapping[programId] || (isUniversal ? "Universal" : "Other")
+        // Add suffix for a/b variants
+        const parts = programId.split("-");
+        const suffix = parts[parts.length - 1];
+        if (suffix === "a" || suffix === "b") {
+          programName = `${programName} (${suffix.toUpperCase()})`;
+        }
+
+        const category = baseName || "Other";
 
         programs.push({
           id: programId,
