@@ -29,8 +29,43 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Almaprep — Mock interviews that get students into college",
-  description: "Almaprep prepares students for college admission interviews with thousands of vetted interview questions and instant feedback. Free for students, built for schools and institutes.",
+  title: {
+    default: "AI Mock Interview Practice for College & Engineering | Almaprep",
+    template: "%s | Almaprep",
+  },
+  description:
+    "Practice real-time AI mock interviews for college admissions and engineering roles. Get instant resume analysis and personalized coaching insights. Start free with Almaprep.",
+  metadataBase: new URL("https://mock-mate-rosy.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "AI Mock Interview Practice for College & Engineering | Almaprep",
+    description:
+      "Practice real-time AI mock interviews for college admissions and engineering roles. Get instant resume analysis and personalized coaching insights. Start free with Almaprep.",
+    url: "https://mock-mate-rosy.vercel.app",
+    siteName: "Almaprep",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Almaprep — AI Mock Interview Practice",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Mock Interview Practice for College & Engineering | Almaprep",
+    description:
+      "Practice real-time AI mock interviews for college admissions and engineering roles. Get instant resume analysis and personalized coaching insights. Start free with Almaprep.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -44,6 +79,29 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Almaprep",
+              "applicationCategory": "EducationalApplication",
+              "operatingSystem": "All",
+              "description": "AI mock interview practice, resume analyzer, and admissions coaching platform.",
+              "url": "https://mock-mate-rosy.vercel.app",
+              "logo": "https://mock-mate-rosy.vercel.app/favicon.png",
+              "image": "https://mock-mate-rosy.vercel.app/og-image.png",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"
