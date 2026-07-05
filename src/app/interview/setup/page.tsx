@@ -85,12 +85,13 @@ export default function InterviewSetupPage() {
   const [activeTab, setActiveTab] = useState("general")
   const [loading, setLoading] = useState(true)
 
-  // Dynamic domains tab list: General Tracks + 70+ specialized programs
+  // Dynamic domains tab list: General Tracks + unique categories
+  const uniqueCategories = Array.from(new Set(programs.map(p => p.category))).sort()
   const tabCategories = [
     { id: "general", label: "General Tracks", icon: Shuffle },
-    ...programs.map(p => ({
-      id: p.id,
-      label: p.name,
+    ...uniqueCategories.map(cat => ({
+      id: cat,
+      label: cat,
       icon: GraduationCap
     }))
   ]
@@ -103,8 +104,9 @@ export default function InterviewSetupPage() {
   const checkScroll = () => {
     const el = scrollContainerRef.current
     if (el) {
-      setShowLeftArrow(el.scrollLeft > 5)
-      setShowRightArrow(el.scrollLeft < el.scrollWidth - el.clientWidth - 5)
+      // Use Math.ceil to handle fractional pixel values
+      setShowLeftArrow(Math.ceil(el.scrollLeft) > 5)
+      setShowRightArrow(Math.ceil(el.scrollLeft) < el.scrollWidth - el.clientWidth - 5)
     }
   }
 
@@ -281,22 +283,18 @@ export default function InterviewSetupPage() {
         </div>
 
         {/* Category Tabs / Filter list */}
-        <div className="relative w-full flex items-center mb-6">
-          <div
-            className="absolute left-0 top-0 bottom-2 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10"
-            style={{ display: showLeftArrow ? "block" : "none" }}
-          />
+        <div className="w-full flex items-center gap-2 mb-6 border-b border-border pb-2">
           <button
             onClick={() => scroll("left")}
-            className="absolute left-1 z-20 h-8 w-8 rounded-full bg-background hover:bg-muted shadow-md flex items-center justify-center border border-border cursor-pointer text-foreground transition-all"
-            style={{ display: showLeftArrow ? "flex" : "none" }}
+            className="flex-shrink-0 z-20 h-9 w-9 rounded-full bg-background hover:bg-muted shadow-sm flex items-center justify-center border border-border cursor-pointer text-foreground transition-all"
+            style={{ visibility: showLeftArrow ? "visible" : "hidden" }}
           >
             <ChevronLeft size={16} />
           </button>
 
           <div
             ref={scrollContainerRef}
-            className="flex-1 flex overflow-x-auto gap-2 pb-2 scrollbar-none border-b border-border scroll-smooth"
+            className="flex-1 flex overflow-x-auto gap-2 scrollbar-none scroll-smooth"
           >
             {tabCategories.map((tab) => {
               if (tab.id === "search" && !searchQuery) return null;
@@ -320,14 +318,10 @@ export default function InterviewSetupPage() {
             })}
           </div>
 
-          <div
-            className="absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10"
-            style={{ display: showRightArrow ? "block" : "none" }}
-          />
           <button
             onClick={() => scroll("right")}
-            className="absolute right-1 z-20 h-8 w-8 rounded-full bg-background hover:bg-muted shadow-md flex items-center justify-center border border-border cursor-pointer text-foreground transition-all"
-            style={{ display: showRightArrow ? "flex" : "none" }}
+            className="flex-shrink-0 z-20 h-9 w-9 rounded-full bg-background hover:bg-muted shadow-sm flex items-center justify-center border border-border cursor-pointer text-foreground transition-all"
+            style={{ visibility: showRightArrow ? "visible" : "hidden" }}
           >
             <ChevronRight size={16} />
           </button>
