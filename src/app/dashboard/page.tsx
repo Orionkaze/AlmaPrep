@@ -269,7 +269,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <main className="min-h-screen px-6 py-6 md:px-12 md:pt-8 md:pb-12 relative overflow-hidden bg-background">
+    <main className="min-h-screen px-6 pt-4 pb-6 md:px-12 md:pt-4 md:pb-12 relative overflow-hidden bg-background">
       {/* Background decorations */}
       <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
