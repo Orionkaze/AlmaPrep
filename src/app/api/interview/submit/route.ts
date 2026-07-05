@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
 import { updateStreak } from "@/app/actions/streak";
 import { checkAndAwardBadges } from "@/app/actions/badges";
-import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
+
 
 function cleanJsonResponseText(text: string): string {
   let cleaned = text.trim();
