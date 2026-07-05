@@ -23,7 +23,7 @@ export async function checkAndAwardBadges(userId: string) {
 
     if (!user) return { success: false, error: "User not found" };
 
-    const earnedSlugs = new Set((earnedBadges || []).map(b => b.badge_slug));
+    const earnedSlugs = new Set((earnedBadges || []).map((b: any) => b.badge_slug));
     const newBadges: string[] = [];
 
     // Helper to evaluate and queue badge
