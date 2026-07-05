@@ -37,51 +37,7 @@ const avatarIconMap: Record<string, React.FC<any>> = {
   "user-tie": UserRound,
 }
 
-function calculateStreak(dates: Date[]): number {
-  if (dates.length === 0) return 0
-  
-  // Normalize dates to YYYY-MM-DD strings in local timezone or UTC
-  const uniqueDates = Array.from(
-    new Set(
-      dates.map(d => {
-        const y = d.getFullYear()
-        const m = String(d.getMonth() + 1).padStart(2, "0")
-        const day = String(d.getDate()).padStart(2, "0")
-        return `${y}-${m}-${day}`
-      })
-    )
-  ).sort((a, b) => b.localeCompare(a)) // sorted desc
-
-  if (uniqueDates.length === 0) return 0
-
-  const todayStr = new Date().toISOString().split('T')[0]
-  const yesterday = new Date()
-  yesterday.setDate(yesterday.getDate() - 1)
-  const yesterdayStr = yesterday.toISOString().split('T')[0]
-
-  // If the most recent interview is not today or yesterday, streak is broken (0)
-  if (uniqueDates[0] !== todayStr && uniqueDates[0] !== yesterdayStr) {
-    return 0
-  }
-
-  let streak = 0
-  const referenceDate = new Date(uniqueDates[0])
-
-  for (let i = 0; i < uniqueDates.length; i++) {
-    const dateStr = uniqueDates[i]
-    
-    const expectedDate = new Date(referenceDate)
-    expectedDate.setDate(expectedDate.getDate() - i)
-    const expectedDateStr = expectedDate.toISOString().split('T')[0]
-
-    if (dateStr === expectedDateStr) {
-      streak++
-    } else {
-      break
-    }
-  }
-  return streak
-}
+// Removed calculateStreak helper as streak is now stored in DB
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions)
@@ -143,6 +99,7 @@ export default async function DashboardPage() {
   let totalSessions = 0
   let avgScore: number | string = "—"
   let currentStreak = 0
+  let recentBadges: any[] = []
   
   interface DisplaySession {
     id: string
@@ -217,9 +174,8 @@ export default async function DashboardPage() {
         }
       }
 
-      // Calculate Streak
-      const mockDates = completedMockInterviews.map((i: any) => new Date(i.created_at))
-      currentStreak = calculateStreak(mockDates)
+      // Calculate Streak from DB
+      currentStreak = profile.current_streak || 0
 
       // Fetch Coding Sessions
       const { data: codingSessions } = await supabase
@@ -281,6 +237,32 @@ export default async function DashboardPage() {
       recentSessionsList = [...mockSessionsMapped, ...codingSessionsMapped]
         .sort((a, b) => b.date.getTime() - a.date.getTime())
         .slice(0, 5)
+
+      // Fetch Recent Badges
+      const { data: userBadges } = await supabase
+        .from("user_badges")
+        .select(`
+          badge_slug,
+          earned_at,
+          badges (
+            name,
+            icon,
+            rarity
+          )
+        `)
+        .eq("user_id", userId)
+        .order("earned_at", { ascending: false })
+        .limit(3)
+        
+      if (userBadges) {
+        recentBadges = userBadges.map((ub: any) => ({
+          slug: ub.badge_slug,
+          earnedAt: ub.earned_at,
+          name: ub.badges?.name || "Unknown Badge",
+          icon: ub.badges?.icon || "fa-solid fa-certificate",
+          rarity: ub.badges?.rarity || "common"
+        }))
+      }
     }
   } else {
     redirect("/login")
@@ -360,6 +342,42 @@ export default async function DashboardPage() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Recent Badges Strip */}
+        {recentBadges.length > 0 && (
+          <div className="flex items-center gap-4 bg-card border border-border p-4 rounded-xl shadow-sm overflow-x-auto">
+            <div className="flex-shrink-0 mr-2 flex flex-col items-center justify-center">
+              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1"><Sparkles size={14} className="text-amber-500" /> Recent</span>
+              <span className="text-[10px] text-muted-foreground font-semibold">Unlock more in Profile</span>
+            </div>
+            {recentBadges.map((badge, idx) => {
+              const rarityColors = {
+                common: "border-slate-200 bg-slate-50 text-slate-700",
+                rare: "border-blue-200 bg-blue-50 text-blue-700",
+                legendary: "border-amber-200 bg-amber-50 text-amber-700 shadow-[0_0_15px_rgba(251,191,36,0.4)]"
+              }
+              const colorClass = rarityColors[badge.rarity as keyof typeof rarityColors] || rarityColors.common;
+              
+              return (
+                <div key={badge.slug} className={`flex items-center gap-3 px-4 py-2 rounded-lg border ${colorClass} min-w-max transition-all hover:scale-105 duration-300`}>
+                  <div className="flex items-center justify-center size-8 rounded-full bg-white/60 shadow-sm">
+                    <i className={`${badge.icon} text-lg`}></i>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold">{badge.name}</p>
+                    <p className="text-[10px] opacity-80 font-medium uppercase tracking-wider">{badge.rarity}</p>
+                  </div>
+                </div>
+              )
+            })}
+            
+            <div className="ml-auto pl-4">
+              <Link href="/dashboard/profile" className="text-xs font-bold text-primary hover:underline whitespace-nowrap flex items-center gap-1">
+                View All <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
