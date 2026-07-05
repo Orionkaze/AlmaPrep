@@ -60,14 +60,6 @@ const standardCategories = [
   },
 ]
 
-const tabCategories = [
-  { id: "general", label: "General Tracks", icon: Shuffle },
-  { id: "Business & Law", label: "Business & Law", icon: Scale },
-  { id: "Health & Medicine", label: "Health & Medicine", icon: Stethoscope },
-  { id: "Humanities & Social Sciences", label: "Humanities & Social", icon: Drama },
-  { id: "Sciences & Tech", label: "Sciences & Tech", icon: Cpu },
-]
-
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-head), serif",
   letterSpacing: "-0.015em",
@@ -92,6 +84,16 @@ export default function InterviewSetupPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("general")
   const [loading, setLoading] = useState(true)
+
+  // Dynamic domains tab list: General Tracks + 70+ specialized programs
+  const tabCategories = [
+    { id: "general", label: "General Tracks", icon: Shuffle },
+    ...programs.map(p => ({
+      id: p.id,
+      label: p.name,
+      icon: GraduationCap
+    }))
+  ]
 
   // Scroll controls for domain tab strip
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -364,16 +366,14 @@ export default function InterviewSetupPage() {
                 )
               })}
             </ToggleGroup>
-          ) : (
-            /* Programs Grid using ToggleGroup */
+          ) : activeTab === "search" ? (
+            /* Programs Search Grid */
             <div>
-              {activeTab === "search" && (
-                <div className="text-xs text-muted-foreground mb-3 px-1">
-                  Found {filteredPrograms.length} specialized program{filteredPrograms.length !== 1 ? 's' : ''} matching &ldquo;{searchQuery}&rdquo;
-                </div>
-              )}
+              <div className="text-xs text-muted-foreground mb-3 px-1">
+                Found {filteredPrograms.length} specialized program{filteredPrograms.length !== 1 ? 's' : ''} matching &ldquo;{searchQuery}&rdquo;
+              </div>
 
-              {filteredPrograms.filter(p => activeTab === "search" || p.category === activeTab).length === 0 ? (
+              {filteredPrograms.length === 0 ? (
                 <div className="text-center py-12 border border-dashed border-border bg-card rounded-2xl">
                   <GraduationCap size={28} strokeWidth={1.75} className="text-muted-foreground/40 mb-3 mx-auto" />
                   <p className="text-sm font-semibold text-muted-foreground">No specialized programs found</p>
@@ -383,40 +383,67 @@ export default function InterviewSetupPage() {
                 <ToggleGroup
                   value={selected ? [selected] : []}
                   onValueChange={(val) => {
-                    if (val && val.length > 0) setSelected(val[0])
+                    if (val && val.length > 0) {
+                      setSelected(val[0])
+                      setActiveTab(val[0])
+                      setSearchQuery("")
+                    }
                   }}
                   className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 w-full"
                 >
-                  {filteredPrograms
-                    .filter(p => activeTab === "search" || p.category === activeTab)
-                    .map((prog) => {
-                      return (
-                        <ToggleGroupItem
-                          key={prog.id}
-                          value={prog.id}
-                          variant="outline"
-                          className="p-4 rounded-xl flex flex-col justify-between h-28 relative overflow-hidden bg-card cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground w-full text-left items-stretch"
-                        >
-                          <div className="flex flex-col flex-1 justify-between">
-                            <div>
-                              <div className="flex items-start justify-between gap-2">
-                                <h4 className="text-xs md:text-sm font-bold leading-tight line-clamp-2 pr-4 text-foreground">
-                                  {prog.name}
-                                </h4>
-                              </div>
-                              <span className="text-[10px] text-muted-foreground mt-1 block">
-                                {prog.category}
-                              </span>
+                  {filteredPrograms.map((prog) => {
+                    return (
+                      <ToggleGroupItem
+                        key={prog.id}
+                        value={prog.id}
+                        variant="outline"
+                        className="p-4 rounded-xl flex flex-col justify-between h-28 relative overflow-hidden bg-card cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground w-full text-left items-stretch"
+                      >
+                        <div className="flex flex-col flex-1 justify-between">
+                          <div>
+                            <div className="flex items-start justify-between gap-2">
+                              <h4 className="text-xs md:text-sm font-bold leading-tight line-clamp-2 pr-4 text-foreground">
+                                {prog.name}
+                              </h4>
                             </div>
-                            <span className="text-[10px] font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-md self-start mt-2">
-                              {prog.questionCount} Questions
+                            <span className="text-[10px] text-muted-foreground mt-1 block">
+                              {prog.category}
                             </span>
                           </div>
-                        </ToggleGroupItem>
-                      )
-                    })}
+                          <span className="text-[10px] font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-md self-start mt-2">
+                            {prog.questionCount} Questions
+                          </span>
+                        </div>
+                      </ToggleGroupItem>
+                    )
+                  })}
                 </ToggleGroup>
               )}
+            </div>
+          ) : (
+            /* Selected Program Detail View */
+            <div className="max-w-xl mx-auto animate-in fade-in duration-300">
+              {programs
+                .filter((p) => p.id === activeTab)
+                .map((prog) => (
+                  <Card key={prog.id} className="shadow-md border-primary/20 bg-primary/5 p-6 rounded-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center justify-between">
+                        <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-xs font-bold px-3 py-1">
+                          {prog.category}
+                        </Badge>
+                        <span className="text-xs font-bold text-muted-foreground">{prog.questionCount} Questions</span>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-foreground mb-1 font-serif">{prog.name}</h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          Tailored curriculum focusing on {prog.name.replace(/\(A\)|\(B\)/g, "").trim()} core concepts, analytical problem solving, and behavioral alignment.
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
             </div>
           )}
         </div>
