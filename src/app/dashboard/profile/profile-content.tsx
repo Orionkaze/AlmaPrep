@@ -83,6 +83,8 @@ interface ProfileContentProps {
     avatar_url: string
     resume_text?: string
     github_autosave?: boolean
+    current_streak?: number
+    longest_streak?: number
   }
   userEmail: string
   createdAt: string
@@ -90,6 +92,9 @@ interface ProfileContentProps {
   subscriptionTier: string
   hasGitHubToken: boolean
   initialGitHubAnalysis: any
+  allBadges?: any[]
+  userBadges?: any[]
+  totalActivities?: number
 }
 
 function ScoreRing({ score }: { score: number }) {
@@ -134,6 +139,9 @@ export default function ProfileContent({
   subscriptionTier,
   hasGitHubToken,
   initialGitHubAnalysis,
+  allBadges = [],
+  userBadges = [],
+  totalActivities = 0,
 }: ProfileContentProps) {
   const [username, setUsername] = useState(initialProfile.username)
   const [selectedAvatar, setSelectedAvatar] = useState(initialProfile.avatar_url)
@@ -318,6 +326,9 @@ export default function ProfileContent({
           </TabsTrigger>
           <TabsTrigger value="history" className="px-4 py-1.5 text-xs font-semibold cursor-pointer flex items-center gap-2">
             <History size={14} /> Performance History
+          </TabsTrigger>
+          <TabsTrigger value="achievements" className="px-4 py-1.5 text-xs font-semibold cursor-pointer flex items-center gap-2">
+            <Award size={14} /> Achievements
           </TabsTrigger>
         </TabsList>
 
@@ -589,7 +600,98 @@ export default function ProfileContent({
           </div>
         </TabsContent>
 
-        {/* Tab 3: GitHub Integration */}
+        {/* Tab 4: Achievements */}
+        <TabsContent value="achievements" className="space-y-6">
+          <Card className="shadow-sm">
+            <CardHeader>
+              <CardTitle className="text-lg font-bold" style={headingStyle}>Achievements & Badges</CardTitle>
+              <CardDescription className="text-xs">Showcase your dedication and consistency on AlmaPrep.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {/* Badge Stats Summary */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="bg-muted/40 p-4 rounded-xl border border-border flex flex-col items-center justify-center">
+                  <span className="text-2xl font-bold text-primary">{userBadges.length}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mt-1">Total Earned</span>
+                </div>
+                <div className="bg-amber-500/10 border border-amber-500/20 p-4 rounded-xl flex flex-col items-center justify-center">
+                  <span className="text-2xl font-bold text-amber-500">{userBadges.filter(b => allBadges.find(a => a.slug === b.badge_slug)?.rarity === 'legendary').length}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-500/80 mt-1">Legendary</span>
+                </div>
+                <div className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl flex flex-col items-center justify-center">
+                  <span className="text-2xl font-bold text-blue-500">{userBadges.filter(b => allBadges.find(a => a.slug === b.badge_slug)?.rarity === 'rare').length}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-500/80 mt-1">Rare</span>
+                </div>
+                <div className="bg-slate-500/10 border border-slate-500/20 p-4 rounded-xl flex flex-col items-center justify-center">
+                  <span className="text-2xl font-bold text-slate-500">{userBadges.filter(b => allBadges.find(a => a.slug === b.badge_slug)?.rarity === 'common').length}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500/80 mt-1">Common</span>
+                </div>
+              </div>
+
+              {/* Badge Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {allBadges.map((badge) => {
+                  const isEarned = userBadges.some(ub => ub.badge_slug === badge.slug);
+                  const earnedInfo = isEarned ? userBadges.find(ub => ub.badge_slug === badge.slug) : null;
+                  
+                  let badgeStyles = "bg-muted/50 border-border/50 opacity-60 grayscale filter";
+                  let iconColor = "text-muted-foreground";
+                  
+                  if (isEarned) {
+                    if (badge.rarity === 'legendary') {
+                      badgeStyles = "bg-amber-50 border-amber-200 shadow-[0_0_20px_rgba(251,191,36,0.3)]";
+                      iconColor = "text-amber-500";
+                    } else if (badge.rarity === 'rare') {
+                      badgeStyles = "bg-blue-50 border-blue-200 shadow-sm";
+                      iconColor = "text-blue-500";
+                    } else {
+                      badgeStyles = "bg-slate-50 border-slate-200 shadow-sm";
+                      iconColor = "text-slate-700";
+                    }
+                  }
+
+                  return (
+                    <div key={badge.slug} className={`p-4 rounded-xl border flex flex-col items-center text-center gap-2 transition-all ${badgeStyles}`}>
+                      <div className={`size-12 rounded-full bg-white flex items-center justify-center shadow-sm mb-1 ${iconColor}`}>
+                        <i className={`${badge.icon} text-2xl`}></i>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-foreground">{badge.name}</h4>
+                        <p className={`text-[10px] uppercase tracking-widest font-semibold mt-0.5 ${isEarned ? iconColor : ""}`}>{badge.rarity}</p>
+                      </div>
+                      <p className="text-[11px] text-muted-foreground leading-snug flex-1">{badge.description}</p>
+                      {isEarned && earnedInfo && (
+                        <div className="mt-2 text-[9px] font-bold uppercase tracking-widest text-muted-foreground bg-black/5 px-2 py-1 rounded-full w-full">
+                          Earned {new Date(earnedInfo.earned_at).toLocaleDateString()}
+                        </div>
+                      )}
+
+                      <div className="pt-4 border-t border-border/50 grid grid-cols-3 gap-2">
+                        <div className="flex flex-col gap-1 items-center justify-center p-3 rounded-lg bg-muted/30">
+                          <Flame className="text-amber-500 mb-1" size={18} />
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">Current</p>
+                          <p className="text-xl font-bold">{initialProfile.current_streak || 0}</p>
+                        </div>
+                        <div className="flex flex-col gap-1 items-center justify-center p-3 rounded-lg bg-muted/30">
+                          <Target className="text-primary mb-1" size={18} />
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">Longest</p>
+                          <p className="text-xl font-bold">{initialProfile.longest_streak || 0}</p>
+                        </div>
+                        <div className="flex flex-col gap-1 items-center justify-center p-3 rounded-lg bg-muted/30">
+                          <CheckCircle className="text-green-500 mb-1" size={18} />
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">Sessions</p>
+                          <p className="text-xl font-bold">{totalActivities}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Tab 5: GitHub Integration */}
         <TabsContent value="github" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
             {/* GitHub Project Analyzer */}
