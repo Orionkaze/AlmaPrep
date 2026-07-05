@@ -65,7 +65,7 @@ export default function AppHeader() {
     checkAuth()
 
     const supabase = createClient()
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: any, session) => {
       if (session?.user) {
         setIsAuthenticated(true)
         setUserEmail(session.user.email || null)
