@@ -665,24 +665,6 @@ export default function ProfileContent({
                           Earned {new Date(earnedInfo.earned_at).toLocaleDateString()}
                         </div>
                       )}
-
-                      <div className="pt-4 border-t border-border/50 grid grid-cols-3 gap-2">
-                        <div className="flex flex-col gap-1 items-center justify-center p-3 rounded-lg bg-muted/30">
-                          <Flame className="text-amber-500 mb-1" size={18} />
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">Current</p>
-                          <p className="text-xl font-bold">{initialProfile.current_streak || 0}</p>
-                        </div>
-                        <div className="flex flex-col gap-1 items-center justify-center p-3 rounded-lg bg-muted/30">
-                          <Target className="text-primary mb-1" size={18} />
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">Longest</p>
-                          <p className="text-xl font-bold">{initialProfile.longest_streak || 0}</p>
-                        </div>
-                        <div className="flex flex-col gap-1 items-center justify-center p-3 rounded-lg bg-muted/30">
-                          <CheckCircle className="text-green-500 mb-1" size={18} />
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">Sessions</p>
-                          <p className="text-xl font-bold">{totalActivities}</p>
-                        </div>
-                      </div>
                     </div>
                   );
                 })}
