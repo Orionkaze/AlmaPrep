@@ -8,7 +8,9 @@ import {
   cleanJsonResponseText
 } from "@/lib/llm"
 import { createClient } from "@/lib/supabase/server"
-import { headers } from "next/headers"
+import { headers, cookies } from "next/headers"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
 import { getProgramQuestions, getSampleQuestions } from "./programs"
 import { readLocalCache } from "@/lib/localCache"
 
@@ -31,79 +33,63 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, name: stri
 }
 
 /**
- * Unified callAI function. Fetches the server-side API route.
+ * Unified callAI function. Executes LLM routing directly in-process on the server.
  */
 export async function callAI(prompt: string, task: string, userTier: string): Promise<string> {
-  const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000"
-  
-  let requestHeaders: Record<string, string> = {
-    "Content-Type": "application/json",
-  }
-
+  let userId: string | undefined = undefined
   try {
-    const nextHeaders = await headers()
-    const cookie = nextHeaders.get("cookie")
-    if (cookie) {
-      requestHeaders["cookie"] = cookie
+    const cookieStore = await cookies()
+    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+    if (hasDemoCookie) {
+      userId = "demo-user-id"
+    } else {
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        userId = user.id
+      } else {
+        const session = await getServerSession(authOptions)
+        userId = (session?.user as any)?.id
+      }
     }
   } catch (e) {
-    // Suppress if not in a request context (e.g. at build time or custom server tasks)
+    // Suppress if not in request context
   }
 
-  const response = await fetch(`${baseUrl}/api/ai`, {
-    method: "POST",
-    headers: requestHeaders,
-    body: JSON.stringify({ prompt, task, userTier }),
-    cache: "no-store",
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text()
-    throw new Error(errorText || `AI Route returned status ${response.status}`)
-  }
-
-  const data = await response.json()
-  return data.result
+  const { text } = await executeAIRouting(prompt, task, userTier, userId)
+  return text
 }
 
 /**
- * Unified callAIWithSource function. Fetches the server-side API route and returns result and source.
+ * Unified callAIWithSource function. Executes LLM routing directly in-process on the server.
  */
 export async function callAIWithSource(
   prompt: string,
   task: string,
   userTier: string
 ): Promise<{ result: string; source: string }> {
-  const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000"
-  
-  let requestHeaders: Record<string, string> = {
-    "Content-Type": "application/json",
-  }
-
+  let userId: string | undefined = undefined
   try {
-    const nextHeaders = await headers()
-    const cookie = nextHeaders.get("cookie")
-    if (cookie) {
-      requestHeaders["cookie"] = cookie
+    const cookieStore = await cookies()
+    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+    if (hasDemoCookie) {
+      userId = "demo-user-id"
+    } else {
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        userId = user.id
+      } else {
+        const session = await getServerSession(authOptions)
+        userId = (session?.user as any)?.id
+      }
     }
   } catch (e) {
-    // Suppress if not in a request context
+    // Suppress if not in request context
   }
 
-  const response = await fetch(`${baseUrl}/api/ai`, {
-    method: "POST",
-    headers: requestHeaders,
-    body: JSON.stringify({ prompt, task, userTier }),
-    cache: "no-store",
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text()
-    throw new Error(errorText || `AI Route returned status ${response.status}`)
-  }
-
-  const data = await response.json()
-  return { result: data.result, source: data.source || "unknown" }
+  const { text, source } = await executeAIRouting(prompt, task, userTier, userId)
+  return { result: text, source }
 }
 
 /**
