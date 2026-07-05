@@ -101,7 +101,7 @@ export async function executeAIRouting(
   userTier: string,
   userId?: string
 ): Promise<{ text: string; source: string }> {
-  const timeoutMs = 3000 // 3 seconds timeout per provider
+  const timeoutMs = task === "next_question" ? 5000 : 20000 // 5 seconds for questions, 20 seconds for feedback and resume analysis
 
   // 1. Prepare prompts based on task
   let systemPrompt: string | undefined = undefined
