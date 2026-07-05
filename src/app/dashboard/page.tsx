@@ -301,9 +301,6 @@ export default async function DashboardPage() {
             </h1>
             <p className="text-muted-foreground text-sm mt-0.5">Let's elevate your interview performance today.</p>
           </div>
-          <div className="flex items-center gap-2 self-start sm:self-center">
-            <span className="text-xs text-muted-foreground font-medium">Logged in as {activeUser.email}</span>
-          </div>
         </div>
 
         {/* Stats Grid */}
