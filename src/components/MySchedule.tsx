@@ -14,6 +14,71 @@ interface ScheduledSession {
   createdAt: string;
 }
 
+function SessionItem({ session, monthNames }: { session: ScheduledSession, monthNames: string[] }) {
+  const sessionDate = new Date(session.scheduledFor);
+  const [timeLeft, setTimeLeft] = useState<number>(Math.max(0, sessionDate.getTime() - new Date().getTime()));
+
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+
+    const interval = setInterval(() => {
+      const remaining = Math.max(0, new Date(session.scheduledFor).getTime() - new Date().getTime());
+      setTimeLeft(remaining);
+      if (remaining <= 0) clearInterval(interval);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [session.scheduledFor, timeLeft]);
+
+  const formatTimeLeft = (ms: number) => {
+    if (ms <= 0) return "Ready";
+    const hours = Math.floor(ms / (1000 * 60 * 60));
+    const minutes = Math.floor((ms % (1000 * 60 * 60)) / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+    if (hours > 24) {
+      return `${Math.floor(hours / 24)} days left`;
+    }
+    if (hours > 0) {
+      return `${hours}h ${minutes}m`;
+    }
+    return `${minutes}m ${seconds}s`;
+  };
+
+  const isReady = timeLeft <= 0;
+
+  return (
+    <div className="flex items-center justify-between p-3 border border-border rounded-xl bg-card hover:border-primary/50 transition-colors">
+      <div className="flex items-center gap-4">
+        <div className="flex flex-col items-center justify-center w-12 h-12 bg-primary/10 rounded-lg text-primary">
+          <span className="text-xs font-bold uppercase">{monthNames[sessionDate.getMonth()].slice(0, 3)}</span>
+          <span className="text-lg font-black leading-none">{sessionDate.getDate()}</span>
+        </div>
+        <div>
+          <h4 className="text-sm font-bold text-foreground">{session.title}</h4>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="text-xs text-muted-foreground flex items-center gap-1">
+              <Clock size={12} />
+              {sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </span>
+            <Badge variant={isReady ? "default" : "secondary"} className="text-[9px] h-4 py-0">
+              {isReady ? "Ready to Start" : "Scheduled"}
+            </Badge>
+          </div>
+        </div>
+      </div>
+      {isReady ? (
+        <Link href="/interview/setup" className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm">
+          Start Now <ArrowRight size={14} />
+        </Link>
+      ) : (
+        <div className="text-xs font-bold text-muted-foreground bg-muted px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+          <Clock size={12} className="animate-pulse" /> {formatTimeLeft(timeLeft)}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function MySchedule() {
   const [sessions, setSessions] = useState<ScheduledSession[]>([]);
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -134,32 +199,9 @@ export function MySchedule() {
         <CardContent>
           {upcomingSessions.length > 0 ? (
             <div className="space-y-3 max-h-[220px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-muted-foreground/20">
-              {upcomingSessions.map((session) => {
-                const sessionDate = new Date(session.scheduledFor);
-                return (
-                  <div key={session.id} className="flex items-center justify-between p-3 border border-border rounded-xl bg-card hover:border-primary/50 transition-colors">
-                    <div className="flex items-center gap-4">
-                      <div className="flex flex-col items-center justify-center w-12 h-12 bg-primary/10 rounded-lg text-primary">
-                        <span className="text-xs font-bold uppercase">{monthNames[sessionDate.getMonth()].slice(0, 3)}</span>
-                        <span className="text-lg font-black leading-none">{sessionDate.getDate()}</span>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-foreground">{session.title}</h4>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-xs text-muted-foreground flex items-center gap-1">
-                            <Clock size={12} />
-                            {sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                          </span>
-                          <Badge variant="secondary" className="text-[9px] h-4 py-0">Scheduled</Badge>
-                        </div>
-                      </div>
-                    </div>
-                    <Link href="/interview/setup" className="inline-flex items-center justify-center p-2 rounded-full hover:bg-primary/10 text-primary transition-colors">
-                      <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                );
-              })}
+              {upcomingSessions.map((session) => (
+                <SessionItem key={session.id} session={session} monthNames={monthNames} />
+              ))}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center h-[200px] text-center border-2 border-dashed border-border rounded-xl bg-muted/20">
