@@ -88,7 +88,10 @@ export function NotificationBell() {
           .order("created_at", { ascending: false });
 
         if (error) {
-          console.error("Error fetching notifications:", error);
+          // If the table doesn't exist yet (42P01), silently ignore to avoid console clutter in dev
+          if (error.code !== '42P01') {
+            console.error("Error fetching notifications:", error.message || error);
+          }
           return;
         }
 
