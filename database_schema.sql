@@ -157,22 +157,6 @@ alter table public.github_analysis enable row level security;
 create policy "Users can view their own github analysis" on public.github_analysis 
   for select using (auth.uid() = user_id);
 
--- Notifications Table
-create table public.notifications (
-  id uuid default gen_random_uuid() primary key,
-  user_id uuid references public.users(id) on delete cascade not null,
-  type text not null check (type in ('booking', 'badge', 'streak')),
-  title text not null,
-  message text not null,
-  read boolean default false,
-  created_at timestamp with time zone default timezone('utc'::text, now()) not null
-);
-
-alter table public.notifications enable row level security;
-create policy "Users can view their own notifications" on public.notifications for select using (auth.uid() = user_id);
-create policy "Users can insert their own notifications" on public.notifications for insert with check (auth.uid() = user_id);
-create policy "Users can update their own notifications" on public.notifications for update using (auth.uid() = user_id);
-
 create policy "Users can insert their own github analysis" on public.github_analysis 
   for insert with check (auth.uid() = user_id);
 
@@ -266,21 +250,3 @@ create policy "Users can delete their own coding solutions" on public.coding_sol
 
 
 
-\ n \ n - -   N o t i f i c a t i o n s   T a b l e \ n c r e a t e   t a b l e   p u b l i c . n o t i f i c a t i o n s   ( \ n     i d   u u i d   d e f a u l t   g e n _ r a n d o m _ u u i d ( )   p r i m a r y   k e y , \ n     u s e r _ i d   u u i d   r e f e r e n c e s   p u b l i c . u s e r s ( i d )   o n   d e l e t e   c a s c a d e   n o t   n u l l , \ n     t y p e   t e x t   n o t   n u l l   c h e c k   ( t y p e   i n   ( ' b o o k i n g ' ,   ' b a d g e ' ,   ' s t r e a k ' ) ) , \ n     t i t l e   t e x t   n o t   n u l l , \ n     m e s s a g e   t e x t   n o t   n u l l , \ n     r e a d   b o o l e a n   d e f a u l t   f a l s e , \ n     c r e a t e d _ a t   t i m e s t a m p   w i t h   t i m e   z o n e   d e f a u l t   t i m e z o n e ( ' u t c ' : : t e x t ,   n o w ( ) )   n o t   n u l l \ n ) ; \ n \ n a l t e r   t a b l e   p u b l i c . n o t i f i c a t i o n s   e n a b l e   r o w   l e v e l   s e c u r i t y ; \ n c r e a t e   p o l i c y   \  
- U s e r s  
- c a n  
- v i e w  
- t h e i r  
- o w n  
- n o t i f i c a t i o n s \   o n   p u b l i c . n o t i f i c a t i o n s   f o r   s e l e c t   u s i n g   ( a u t h . u i d ( )   =   u s e r _ i d ) ; \ n c r e a t e   p o l i c y   \ U s e r s  
- c a n  
- i n s e r t  
- t h e i r  
- o w n  
- n o t i f i c a t i o n s \   o n   p u b l i c . n o t i f i c a t i o n s   f o r   i n s e r t   w i t h   c h e c k   ( a u t h . u i d ( )   =   u s e r _ i d ) ; \ n c r e a t e   p o l i c y   \ U s e r s  
- c a n  
- u p d a t e  
- t h e i r  
- o w n  
- n o t i f i c a t i o n s \   o n   p u b l i c . n o t i f i c a t i o n s   f o r   u p d a t e   u s i n g   ( a u t h . u i d ( )   =   u s e r _ i d ) ; \ n  
- 

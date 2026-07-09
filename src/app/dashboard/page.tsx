@@ -19,7 +19,6 @@ import {
   Sparkles,
   Play
 } from "lucide-react"
-import { MySchedule } from "@/components/MySchedule"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
@@ -379,9 +378,6 @@ export default async function DashboardPage() {
             </div>
           </div>
         )}
-
-        {/* My Schedule Row */}
-        <MySchedule />
 
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
