@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
+import { ScheduleModal } from "@/components/ScheduleModal"
 import { 
   Briefcase, 
   Laptop, 
@@ -71,6 +72,7 @@ export default function InterviewSetupPage() {
   const [hasResume, setHasResume] = useState(false)
   const [useResume, setUseResume] = useState(false)
   const [persona, setPersona] = useState<string>("supportive")
+  const [scheduleOpen, setScheduleOpen] = useState(false)
   
   // GitHub Mode states
   const [isDemoMode, setIsDemoMode] = useState(false)
@@ -634,7 +636,15 @@ export default function InterviewSetupPage() {
           )}
         </Card>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
+          <Button
+            variant="outline"
+            disabled={!selected || (selected === "technical" && githubMode && selectedRepos.length < 2)}
+            onClick={() => setScheduleOpen(true)}
+            className="h-12 px-6 text-sm md:text-base font-semibold cursor-pointer"
+          >
+            Schedule for Later
+          </Button>
           <Link 
             href={
               !selected || (selected === "technical" && githubMode && selectedRepos.length < 2)
@@ -652,6 +662,11 @@ export default function InterviewSetupPage() {
             </Button>
           </Link>
         </div>
+        <ScheduleModal 
+          open={scheduleOpen} 
+          onOpenChange={setScheduleOpen} 
+          defaultTitle={getSelectedLabel() + " Track"} 
+        />
       </div>
     </main>
   )

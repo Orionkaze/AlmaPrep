@@ -244,6 +244,30 @@ create policy "Users can update their own coding solutions" on public.coding_sol
 create policy "Users can delete their own coding solutions" on public.coding_solutions
   for delete using (auth.uid() = user_id);
 
+-- Migration: Create notifications table
+create table if not exists public.notifications (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references public.users(id) on delete cascade not null,
+  type text not null check (type in ('booking', 'badge', 'streak')),
+  title text not null,
+  message text not null,
+  read boolean default false not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Enable RLS for notifications
+alter table public.notifications enable row level security;
+
+-- Policies for notifications
+create policy "Users can view their own notifications" on public.notifications
+  for select using (auth.uid() = user_id);
+
+create policy "Users can update their own notifications" on public.notifications
+  for update using (auth.uid() = user_id);
+
+create policy "Users can delete their own notifications" on public.notifications
+  for delete using (auth.uid() = user_id);
+
 
 
 
