@@ -2,6 +2,7 @@ import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
+import ContactSalesForm from "@/components/almaprep/ContactSalesForm"
 
 export default function InstitutionsPage() {
   return (
@@ -14,7 +15,7 @@ export default function InstitutionsPage() {
           <div className="wrap">
             <span className="pill">For schools, colleges &amp; coaching institutes</span>
             <h1>Prepare every student for the interview, at scale.</h1>
-            <p className="lead narrow" style={{ marginLeft: 0 }}>The premium AI tier: every student gets live, voice-based mock interviews they actually speak in, and your counselors get the dashboards to see exactly who is ready and who needs help.</p>
+            <p className="lead narrow" style={{ marginLeft: 0 }}>Give every student unlimited AI mock interviews with instant, structured feedback, and get the tools to roll it out across your whole institution.</p>
             <div className="hero-cta">
               <a className="btn btn-primary btn-lg" href="#demo">Book a demo &rarr;</a>
               <Link className="btn btn-ghost btn-lg" href="/pricing">See pricing</Link>
@@ -33,8 +34,8 @@ export default function InstitutionsPage() {
               </div>
               <div className="card reveal">
                 <div className="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
-                <h3>Live voice AI interviews</h3>
-                <p>The premium tier students actually speak in. They sit in a live meeting and talk to a voice AI interviewer that listens, responds, and asks real-time follow-ups, just like a real panel.</p>
+                <h3>Unlimited AI mock interviews</h3>
+                <p>Every student gets unlimited AI-led mock interviews with adaptive follow-up questions and instant, structured feedback on every answer.</p>
               </div>
               <div className="card reveal">
                 <div className="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
@@ -111,46 +112,9 @@ export default function InstitutionsPage() {
             <div className="section-head center reveal">
               <p className="eyebrow">Book a demo</p>
               <h2>See the institution side in action.</h2>
-              <p className="lead">Tell us about your program and we'll set up a walkthrough of the voice interviews, admin dashboards, and rollout plan.</p>
+              <p className="lead">Tell us about your program and we'll set up a walkthrough of the mock interviews, feedback reports, and rollout plan.</p>
             </div>
-            <form className="lead-form reveal" action="https://formspree.io/f/your-form-id" method="POST">
-              <div className="row">
-                <div className="field">
-                  <label htmlFor="lf-name">Your name</label>
-                  <input type="text" id="lf-name" name="name" required autoComplete="name" />
-                </div>
-                <div className="field">
-                  <label htmlFor="lf-email">Work email</label>
-                  <input type="email" id="lf-email" name="email" required autoComplete="email" />
-                </div>
-              </div>
-              <div className="row">
-                <div className="field">
-                  <label htmlFor="lf-org">Institution</label>
-                  <input type="text" id="lf-org" name="institution" required autoComplete="organization" />
-                </div>
-                <div className="field">
-                  <label htmlFor="lf-role">Your role</label>
-                  <input type="text" id="lf-role" name="role" placeholder="e.g. Admissions counselor" />
-                </div>
-              </div>
-              <div className="field">
-                <label htmlFor="lf-size">Roughly how many students?</label>
-                <select id="lf-size" name="students">
-                  <option value="">Select a range</option>
-                  <option>Under 100</option>
-                  <option>100–500</option>
-                  <option>500–2,000</option>
-                  <option>2,000+</option>
-                </select>
-              </div>
-              <div className="field">
-                <label htmlFor="lf-msg">Anything we should know? (optional)</label>
-                <textarea id="lf-msg" name="message" placeholder="Your timeline, goals, or questions"></textarea>
-              </div>
-              <button className="btn btn-primary btn-lg" type="submit">Request a demo &rarr;</button>
-              <p style={{ margin: "14px 0 0", color: "var(--muted)", fontSize: ".85rem", textAlign: "center" }}>Prefer email? Reach us at <a href="mailto:partnerships@almaprep.app">partnerships@almaprep.app</a>.</p>
-            </form>
+            <ContactSalesForm source="institutions" />
           </div>
         </section>
       </main>

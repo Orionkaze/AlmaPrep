@@ -1,6 +1,7 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
+import { getUserTier } from "@/lib/entitlements"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { getServerSession } from "next-auth"
@@ -54,15 +55,7 @@ export async function saveAndAnalyzeResume(
       return { success: false, error: "Not authenticated" }
     }
 
-    let userTier = "free"
-    const { data: profile } = await supabase
-      .from("users")
-      .select("subscription_tier")
-      .eq("id", userId)
-      .single()
-    if (profile && profile.subscription_tier) {
-      userTier = profile.subscription_tier
-    }
+    const { tier: userTier } = await getUserTier()
 
     const responseJsonText = await callAI(
       resumeText,
