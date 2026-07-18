@@ -6,6 +6,7 @@ import { authOptions } from "@/lib/auth"
 import { DEFAULT_BADGES } from "@/lib/badgesData"
 import ProfileContent from "./profile-content"
 import { readLocalCache } from "@/lib/localCache"
+import { normalizeTier } from "@/lib/entitlements"
 
 // Mock data for demo fallback
 const mockHistory = [
@@ -125,7 +126,7 @@ export default async function ProfilePage() {
     }
     userEmail = activeUser.email || ""
     createdAt = profile.created_at || new Date().toISOString()
-    subscriptionTier = profile.subscription_tier || "free"
+    subscriptionTier = normalizeTier(profile.subscription_tier)
 
     try {
       const { data: cached, error } = await supabase

@@ -1,6 +1,8 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
+import { getUserTier } from "@/lib/entitlements"
+import { checkInterviewAllowance, type AllowanceResult } from "@/lib/quota"
 import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
 import { getServerSession } from "next-auth"
@@ -78,29 +80,7 @@ export async function getNextQuestion(
       }
 
       // If it's a follow-up slot, or fallback for initial slot query failure: generate dynamically via Groq
-      let userTier = "free"
-      try {
-        const cookieStore = await cookies()
-        const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-        if (hasDemoCookie) {
-          userTier = "premium"
-        } else {
-          const supabase = await createClient()
-          const { data: { user } } = await supabase.auth.getUser()
-          if (user) {
-            const { data: profile } = await supabase
-              .from("users")
-              .select("subscription_tier")
-              .eq("id", user.id)
-              .single()
-            if (profile && profile.subscription_tier) {
-              userTier = profile.subscription_tier
-            }
-          }
-        }
-      } catch (err) {
-        console.error("Failed to fetch user tier in getNextQuestion:", err)
-      }
+      const { tier: userTier } = await getUserTier()
 
       try {
         const nextResponse = await callAIWithSource(
@@ -139,29 +119,7 @@ export async function getNextQuestion(
       }
     }
 
-    let userTier = "free"
-    try {
-      const cookieStore = await cookies()
-      const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-      if (hasDemoCookie) {
-        userTier = "premium"
-      } else {
-        const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          const { data: profile } = await supabase
-            .from("users")
-            .select("subscription_tier")
-            .eq("id", user.id)
-            .single()
-          if (profile && profile.subscription_tier) {
-            userTier = profile.subscription_tier
-          }
-        }
-      }
-    } catch (err) {
-      console.error("Failed to fetch user tier in getNextQuestion:", err)
-    }
+    const { tier: userTier } = await getUserTier()
 
     try {
       const nextResponse = await callAIWithSource(
@@ -309,29 +267,7 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       breakdown: { label: string; score: number }[]
     }
 
-    let userTier = "free"
-    try {
-      const cookieStore = await cookies()
-      const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-      if (hasDemoCookie) {
-        userTier = "premium"
-      } else {
-        const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          const { data: profile } = await supabase
-            .from("users")
-            .select("subscription_tier")
-            .eq("id", user.id)
-            .single()
-          if (profile && profile.subscription_tier) {
-            userTier = profile.subscription_tier
-          }
-        }
-      }
-    } catch (err) {
-      console.error("Failed to fetch user tier in generateFeedback:", err)
-    }
+    const { tier: userTier } = await getUserTier()
 
     const responseJsonText = await callAI(
       JSON.stringify({ category, messages }),
@@ -369,6 +305,25 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
 /**
  * Save interview session to database if user is authenticated.
  */
+/**
+ * Paywall gate for starting a NEW interview. Returns allowed:true unless the
+ * paywall is enabled AND a free user is over their monthly limit. Records the
+ * interview against the monthly count when allowed. Never throws.
+ *
+ * With the paywall off (the default) this short-circuits to allowed:true and
+ * touches nothing, so existing behaviour is unchanged.
+ */
+export async function checkAndConsumeInterviewAllowance(): Promise<AllowanceResult> {
+  try {
+    const { tier, userId, isDemo } = await getUserTier()
+    if (isDemo || !userId) return { allowed: true }
+    return await checkInterviewAllowance(userId, tier, Date.now(), true)
+  } catch (err) {
+    console.error("Interview allowance check failed, allowing:", err)
+    return { allowed: true }
+  }
+}
+
 export async function createInterviewSession(
   category: string,
   useResume?: boolean,
