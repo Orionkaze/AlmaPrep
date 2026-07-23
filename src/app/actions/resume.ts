@@ -34,8 +34,15 @@ export async function saveAndAnalyzeResume(
       )
       const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
       
-      // Persist custom resume and analysis in demo mode
-      cookieStore.set("mockmate-demo-resume", JSON.stringify({ resumeText, analysis }), { path: "/", maxAge: 604800 })
+      // Safely persist demo resume metadata without exceeding 4KB cookie header limits
+      try {
+        const payload = JSON.stringify({ resumeText: resumeText.substring(0, 1000), analysis });
+        if (payload.length < 3500) {
+          cookieStore.set("mockmate-demo-resume", payload, { path: "/", maxAge: 604800 });
+        }
+      } catch (e) {
+        console.warn("[resume] Demo resume cookie payload skipped due to size limits:", e);
+      }
 
       return {
         success: true,
