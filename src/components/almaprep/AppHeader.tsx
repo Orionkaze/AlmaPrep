@@ -80,7 +80,7 @@ export default function AppHeader() {
     })
 
     return () => {
-      subscription.unsubscribe()
+      subscription?.unsubscribe?.()
     }
   }, [])
 
