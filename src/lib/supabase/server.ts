@@ -79,6 +79,48 @@ async function createMockServerClient() {
         }
         return { data: { session: null }, error: null };
       }
+      onAuthStateChange: (callback: (event: string, session: any) => void) => {
+        const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
+        let session: any = null;
+        if (demoUserVal) {
+          try {
+            const parsed = JSON.parse(demoUserVal);
+            const mockUser = { id: "demo-user-id", email: parsed.email };
+            session = { access_token: "mock-session-token", expires_in: 3600, user: mockUser };
+          } catch (e) {}
+        }
+        return {
+          data: {
+            subscription: {
+              unsubscribe: () => {}
+            }
+          }
+        };
+      },
+
+      signInWithOAuth: async ({ provider }: any) => {
+        const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
+        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
+        cookieStore.set("mockmate-demo-user", JSON.stringify({ email: mockUser.email, username: "demo_user" }), { path: "/", maxAge: 604800 });
+        return { data: { provider, url: "/dashboard" }, error: null };
+      },
+
+      exchangeCodeForSession: async (code: string) => {
+        const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
+        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
+        cookieStore.set("mockmate-demo-user", JSON.stringify({ email: mockUser.email, username: "demo_user" }), { path: "/", maxAge: 604800 });
+        const session = { access_token: "mock-session-token", expires_in: 3600, user: mockUser };
+        return { data: { user: mockUser, session }, error: null };
+      },
+
+      resetPasswordForEmail: async (email: string) => {
+        return { data: {}, error: null };
+      },
+
+      updateUser: async (attributes: any) => {
+        const mockUser = { id: "demo-user-id", email: attributes.email || "demo@mockmate.com", ...attributes };
+        return { data: { user: mockUser }, error: null };
+      }
     },
     from: (table: string) => {
       const chain = {
