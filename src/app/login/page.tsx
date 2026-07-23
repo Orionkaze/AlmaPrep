@@ -25,6 +25,10 @@ export default function LoginPage() {
       if (code) {
         window.location.href = `/auth/callback?code=${code}&next=/dashboard`
       }
+      const errParam = params.get("error")
+      if (errParam) {
+        setError(errParam)
+      }
     }
   }, [])
 
