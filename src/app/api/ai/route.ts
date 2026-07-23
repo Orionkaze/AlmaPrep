@@ -1,48 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createClient } from "@/lib/supabase/server"
 import { executeAIRouting } from "@/lib/aiRouter"
-import { cookies } from "next/headers"
 
 export async function POST(req: NextRequest) {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-
-    let userId = null
-    let userEmail = null
-
-    if (hasDemoCookie) {
-      userId = "demo-user-id"
-      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      if (demoUserCookie) {
-        try {
-          const parsed = JSON.parse(demoUserCookie)
-          userEmail = parsed.email || "guest@almaprep.com"
-        } catch (e) {
-          userEmail = "guest@almaprep.com"
-        }
-      } else {
-        userEmail = "guest@almaprep.com"
-      }
-    } else {
-      // 1. Authenticate the user
-      // First, check NextAuth session
-      const session = await getServerSession(authOptions)
-      userId = (session?.user as any)?.id
-      userEmail = session?.user?.email
-
-      // Fallback: If no NextAuth session, check Supabase auth to support standard auth users
-      if (!userId) {
-        const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          userId = user.id
-          userEmail = user.email
-        }
-      }
-    }
+    const { userId, email: userEmail, isDemo: hasDemoCookie } = await getCurrentUser()
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 })
