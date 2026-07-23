@@ -25,7 +25,8 @@ export function createAdminClient() {
   if (
     !url ||
     !key ||
-    url.includes("mock-supabase-project-id.supabase.co")
+    url.includes("mock-supabase-project-id.supabase.co") ||
+    url.includes("evdfkeikrrsdthnekrrz.supabase.co")
   ) {
     return null
   }
