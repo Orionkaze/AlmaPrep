@@ -78,7 +78,7 @@ async function createMockServerClient() {
           } catch (e) {}
         }
         return { data: { session: null }, error: null };
-      }
+      },
       onAuthStateChange: (callback: (event: string, session: any) => void) => {
         const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
         let session: any = null;

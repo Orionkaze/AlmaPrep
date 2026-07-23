@@ -116,7 +116,7 @@ function createMockBrowserClient() {
           } catch (e) {}
         }
         return { data: { session: null }, error: null };
-      }
+      },
       onAuthStateChange: (callback: (event: string, session: any) => void) => {
         const matches = typeof document !== "undefined" ? document.cookie.match(new RegExp('(^| )mockmate-demo-user=([^;]+)')) : null;
         let session: any = null;
