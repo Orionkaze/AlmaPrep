@@ -77,10 +77,11 @@ export async function POST(request: Request) {
     const lang = challenge.language || "javascript";
 
     // 3. Groq API for Layer 2 & Layer 3 Analysis
-    const apiKey = process.env.INTERVIEW_GROQ_API_KEY;
+    const apiKey = process.env.INTERVIEW_GROQ_API_KEY || process.env.GROQ_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured" }, { status: 500 });
     }
+    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen3.6-2.7b";
 
     // Layer 2 Prompt: Logic & Correctness Grader
     const logicGraderPrompt = `You are a strict technical interviewer. Grade the user's coding solution on correctness, logic, time, and space complexity.
@@ -131,7 +132,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
         Authorization: `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model,
         messages: [
           { role: "system", content: "You are a software grading agent. Output JSON only." },
           { role: "user", content: logicGraderPrompt }
@@ -158,7 +159,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
         Authorization: `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model,
         messages: [
           { role: "system", content: "You are a software grading agent. Output JSON only." },
           { role: "user", content: qualityGraderPrompt }

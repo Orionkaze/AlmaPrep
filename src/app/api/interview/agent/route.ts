@@ -88,7 +88,6 @@ ${codebaseStr.trim()}`;
       body: JSON.stringify({
         model,
         messages: groqMessages,
-        messages: groqMessages,
         max_tokens: 2048,
         temperature: 0.2,
         response_format: { type: "json_object" }
