@@ -29,8 +29,9 @@ export function cleanJsonResponseText(text: string): string {
  * Call the Groq API (OpenAI compatible endpoint)
  */
 export async function callGroqText(messages: ChatMessage[], temperature: number): Promise<string> {
-  const apiKey = process.env.GROQ_API_KEY
+  const apiKey = process.env.GROQ_API_KEY || process.env.INTERVIEW_GROQ_API_KEY
   if (!apiKey) throw new Error("GROQ_API_KEY not configured")
+  const model = process.env.GROQ_INTERVIEW_MODEL || process.env.GROQ_MODEL || "openai/gpt-oss-120b"
 
   const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
@@ -39,7 +40,7 @@ export async function callGroqText(messages: ChatMessage[], temperature: number)
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
+      model,
       messages,
       temperature,
     }),
@@ -58,8 +59,9 @@ export async function callGroqText(messages: ChatMessage[], temperature: number)
  * Call the Groq API expecting JSON
  */
 export async function callGroqJson(systemPrompt: string | undefined, prompt: string, temperature: number): Promise<string> {
-  const apiKey = process.env.GROQ_API_KEY
+  const apiKey = process.env.GROQ_API_KEY || process.env.INTERVIEW_GROQ_API_KEY
   if (!apiKey) throw new Error("GROQ_API_KEY not configured")
+  const model = process.env.GROQ_INTERVIEW_MODEL || process.env.GROQ_MODEL || "openai/gpt-oss-120b"
 
   const messages: ChatMessage[] = []
   if (systemPrompt) {
@@ -74,7 +76,7 @@ export async function callGroqJson(systemPrompt: string | undefined, prompt: str
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
+      model,
       messages,
       temperature,
       response_format: { type: "json_object" },

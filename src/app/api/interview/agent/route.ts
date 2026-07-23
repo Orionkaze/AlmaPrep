@@ -40,10 +40,11 @@ export async function POST(request: Request) {
       codebaseStr += `=== ${filename} ===\n${content}\n\n`;
     }
 
-    const apiKey = process.env.INTERVIEW_GROQ_API_KEY;
+    const apiKey = process.env.INTERVIEW_GROQ_API_KEY || process.env.GROQ_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured. Please set it in .env.local" }, { status: 500 });
     }
+    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen3.6-2.7b";
 
     // Define System Prompt
     const systemPrompt = `You are an expert AI coding agent assisting a developer during a technical interview. You have full awareness of their current codebase. Your job is to help them identify problems, propose precise code changes, and explain your reasoning clearly.
@@ -85,7 +86,8 @@ ${codebaseStr.trim()}`;
         Authorization: `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model,
+        messages: groqMessages,
         messages: groqMessages,
         max_tokens: 2048,
         temperature: 0.2,
