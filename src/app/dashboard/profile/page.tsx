@@ -32,11 +32,20 @@ export default async function ProfilePage() {
   const cookieStore = await cookies()
   const supabase = isDemoMode ? null : await createClient()
 
-  let initialProfile: { username: string; avatar_url: string; resume_text: string; github_autosave: boolean } = {
+  let initialProfile: {
+    username: string
+    avatar_url: string
+    resume_text: string
+    github_autosave: boolean
+    current_streak?: number
+    longest_streak?: number
+  } = {
     username: "User",
     avatar_url: "user-tie",
     resume_text: "",
-    github_autosave: false
+    github_autosave: false,
+    current_streak: 0,
+    longest_streak: 0
   }
   let userEmail = activeUser.email || ""
   let createdAt = new Date().toISOString()
