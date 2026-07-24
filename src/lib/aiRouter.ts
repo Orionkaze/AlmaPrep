@@ -7,10 +7,7 @@ import {
   callGeminiJson,
   cleanJsonResponseText
 } from "@/lib/llm"
-import { createClient } from "@/lib/supabase/server"
-import { headers, cookies } from "next/headers"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { getProgramQuestions, getSampleQuestions } from "./programs"
 import { readLocalCache } from "@/lib/localCache"
 
@@ -36,22 +33,9 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, name: stri
  * Unified callAI function. Executes LLM routing directly in-process on the server.
  */
 export async function callAI(prompt: string, task: string, userTier: string): Promise<string> {
-  let userId: string | undefined = undefined
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
-      userId = "demo-user-id"
-    } else {
-      const supabase = await createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        userId = user.id
-      } else {
-        const session = await getServerSession(authOptions)
-        userId = (session?.user as any)?.id
-      }
-    }
+    const user = await getCurrentUser()
+    userId = user.userId || undefined
   } catch (e) {
     // Suppress if not in request context
   }
@@ -68,22 +52,9 @@ export async function callAIWithSource(
   task: string,
   userTier: string
 ): Promise<{ result: string; source: string }> {
-  let userId: string | undefined = undefined
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
-      userId = "demo-user-id"
-    } else {
-      const supabase = await createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        userId = user.id
-      } else {
-        const session = await getServerSession(authOptions)
-        userId = (session?.user as any)?.id
-      }
-    }
+    const user = await getCurrentUser()
+    userId = user.userId || undefined
   } catch (e) {
     // Suppress if not in request context
   }
