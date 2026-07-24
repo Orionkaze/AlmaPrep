@@ -1,31 +1,22 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { fetchGitHubUserData, analyzeGitHubProfile } from "@/lib/github"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 
 export async function POST(req: NextRequest) {
   try {
     // 1. Authenticate user
-    const session = await getServerSession(authOptions)
-    let userId = (session?.user as any)?.id
-    let userEmail = session?.user?.email
-
-    // Fallback: If no NextAuth session, check Supabase auth
-    const supabase = await createClient()
-    if (!userId) {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        userId = user.id
-        userEmail = user.email
-      }
-    }
+    const user = await getCurrentUser()
+    const userId = user.userId
+    const userEmail = user.email
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
+
+    const supabase = await createClient()
 
     // 2. Extract GitHub provider token from cookie
     const cookieStore = await cookies()
