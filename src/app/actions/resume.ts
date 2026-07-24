@@ -4,8 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { getUserTier } from "@/lib/entitlements"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
 
@@ -24,9 +23,11 @@ export async function saveAndAnalyzeResume(
   resumeText: string
 ): Promise<{ success: boolean; data?: { resumeText: string; analysis: ResumeAnalysis }; error?: string }> {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
+    const user = await getCurrentUser()
+    const isDemoMode = user.isDemo
+    const userId = user.userId
+
+    if (isDemoMode) {
       const responseJsonText = await callAI(
         resumeText,
         "analyze_resume",
@@ -36,6 +37,7 @@ export async function saveAndAnalyzeResume(
       
       // Safely persist demo resume metadata without exceeding 4KB cookie header limits
       try {
+        const cookieStore = await cookies()
         const payload = JSON.stringify({ resumeText: resumeText.substring(0, 1000), analysis });
         if (payload.length < 3500) {
           cookieStore.set("mockmate-demo-resume", payload, { path: "/", maxAge: 604800 });
@@ -53,10 +55,7 @@ export async function saveAndAnalyzeResume(
       }
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
 
     if (!userId) {
       return { success: false, error: "Not authenticated" }
@@ -109,9 +108,12 @@ export async function getResumeData(): Promise<{
   error?: string
 }> {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
+    const user = await getCurrentUser()
+    const isDemoMode = user.isDemo
+    const userId = user.userId
+
+    if (isDemoMode) {
+      const cookieStore = await cookies()
       const customResume = cookieStore.get("mockmate-demo-resume")?.value
       if (customResume) {
         try {
@@ -132,10 +134,7 @@ export async function getResumeData(): Promise<{
       }
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
 
     if (!userId) {
       return { success: false, error: "Not authenticated" }
