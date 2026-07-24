@@ -33,6 +33,7 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, name: stri
  * Unified callAI function. Executes LLM routing directly in-process on the server.
  */
 export async function callAI(prompt: string, task: string, userTier: string): Promise<string> {
+  let userId: string | undefined = undefined
   try {
     const user = await getCurrentUser()
     userId = user.userId || undefined
@@ -52,6 +53,7 @@ export async function callAIWithSource(
   task: string,
   userTier: string
 ): Promise<{ result: string; source: string }> {
+  let userId: string | undefined = undefined
   try {
     const user = await getCurrentUser()
     userId = user.userId || undefined
