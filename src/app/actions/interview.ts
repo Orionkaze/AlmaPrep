@@ -5,9 +5,7 @@ import { getUserTier } from "@/lib/entitlements"
 import { checkInterviewAllowance, type AllowanceResult } from "@/lib/quota"
 import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
-import { cookies } from "next/headers"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
@@ -332,16 +330,13 @@ export async function createInterviewSession(
 ): Promise<string | null> {
   try {
     const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("interviews")
@@ -379,17 +374,13 @@ export async function saveInterviewMessage(
   repoName?: string
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return false
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
-
-    if (!userId) return false
+    const userId = user.userId
 
     const metadata = {
       ...(source ? { source } : {}),
@@ -428,17 +419,13 @@ export async function saveInterviewFeedback(
   clientDate?: string
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return false
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
-
-    if (!userId) return false
+    const userId = user.userId
 
     // Serialize strengths, studyGuide, and questionEvaluation inside summary since table lacks dedicated columns
     const serializedSummary = JSON.stringify({
@@ -486,17 +473,13 @@ export async function saveInterviewFeedback(
  */
 export async function getFeedback(interviewId: string) {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("feedback")
@@ -646,17 +629,13 @@ export async function saveBehavioralReport(
   speakingAnalysis?: any
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return false
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
-
-    if (!userId) return false
+    const userId = user.userId
 
     const record = {
       user_id: userId,
@@ -699,17 +678,13 @@ export async function saveBehavioralReport(
  */
 export async function getBehavioralReport(sessionId: string) {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("behavioral_analysis")
@@ -905,17 +880,13 @@ export async function checkGitHubConnection(): Promise<boolean> {
  */
 export async function getGitHubAnalysis(): Promise<any | null> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("github_analysis")
@@ -936,12 +907,9 @@ export async function getGitHubAnalysis(): Promise<any | null> {
   } catch (e) {
     console.error("getGitHubAnalysis failed, checking local cache:", e)
     try {
-      const session = await getServerSession(authOptions)
-      const supabase = await createClient()
-      const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-      const userId = (session?.user as any)?.id || supabaseUser?.id
-      if (userId) {
-        return readLocalCache("github_analysis", userId)
+      const user = await getCurrentUser()
+      if (user.userId) {
+        return readLocalCache("github_analysis", user.userId)
       }
     } catch (_) {}
     return null
