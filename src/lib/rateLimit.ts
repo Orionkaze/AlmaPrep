@@ -42,3 +42,16 @@ export function rateLimit(
 
   return true
 }
+
+/**
+ * Convenience wrapper over {@link rateLimit} with inverted semantics.
+ * @returns true if the key is OVER the limit (i.e. the request should be
+ * rejected), false if it is still within the allowance.
+ */
+export async function isRateLimited(
+  key: string,
+  limit: number,
+  windowMs: number
+): Promise<boolean> {
+  return !rateLimit(key, limit, windowMs, Date.now())
+}
