@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
+import { verifyJWT } from '@/lib/jwt'
 
 async function generateDeterministicPasswordWebCrypto(email: string, secret: string): Promise<string> {
   const encoder = new TextEncoder()
@@ -29,7 +30,6 @@ async function generateDeterministicPasswordWebCrypto(email: string, secret: str
 export async function updateSession(request: NextRequest) {
   const hasNextAuthCookie = request.cookies.has("next-auth.session-token") ||
                             request.cookies.has("__Secure-next-auth.session-token")
-  const hasDemoCookie = request.cookies.has("mockmate-demo-session")
   const hasSupabaseSession = request.cookies.getAll().some(c => c.name.startsWith("sb-"))
 
   const path = request.nextUrl.pathname
@@ -37,15 +37,6 @@ export async function updateSession(request: NextRequest) {
                            path.startsWith('/dashboard') || 
                            path.startsWith('/interview') ||
                            path.startsWith('/onboarding')
-
-  if (hasDemoCookie) {
-    if (path === '/login' || path === '/signup') {
-      const url = request.nextUrl.clone()
-      url.pathname = '/dashboard'
-      return NextResponse.redirect(url)
-    }
-    return NextResponse.next({ request })
-  }
 
   // Skip Supabase auth if credentials aren't configured yet or are mock
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -55,7 +46,22 @@ export async function updateSession(request: NextRequest) {
     supabaseUrl.includes("mock-supabase-project-id") || 
     supabaseUrl.includes("evdfkeikrrsdthnekrrz")
 
+  // Check and verify mock JWT session if in mock mode
   if (isMockMode) {
+    const mockSessionCookie = request.cookies.get("mockmate-mock-session")?.value
+    if (mockSessionCookie) {
+      const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
+      const payload = await verifyJWT(mockSessionCookie, secret)
+      if (payload) {
+        if (path === '/login' || path === '/signup') {
+          const url = request.nextUrl.clone()
+          url.pathname = '/dashboard'
+          return NextResponse.redirect(url)
+        }
+        return NextResponse.next({ request })
+      }
+    }
+
     if (isProtectedRoute && !hasNextAuthCookie) {
       const url = request.nextUrl.clone()
       url.pathname = '/login'
