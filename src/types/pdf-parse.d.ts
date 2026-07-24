@@ -1,4 +1,4 @@
-declare module "pdf-parse/lib/pdf-parse.js" {
+declare module "pdf-parse" {
   const pdfParse: (dataBuffer: Buffer, options?: any) => Promise<{
     numpages: number;
     numrender: number;
