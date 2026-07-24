@@ -2,6 +2,7 @@ import { cookies } from "next/headers"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
+import { verifyJWT } from "@/lib/jwt"
 
 /**
  * Resolve the current request's user, collapsing the demo-cookie → Supabase →
@@ -22,17 +23,20 @@ export async function getCurrentUser(): Promise<{
 }> {
   try {
     const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
-      let email = "guest@almaprep.com"
-      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      if (demoUserCookie) {
-        try {
-          email = JSON.parse(demoUserCookie).email || email
-        } catch {
-          // keep default
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const isMockMode = !supabaseUrl || 
+      supabaseUrl.includes("mock-supabase-project-id") || 
+      supabaseUrl.includes("evdfkeikrrsdthnekrrz")
+
+    if (isMockMode) {
+      const mockSessionCookie = cookieStore.get("mockmate-mock-session")?.value
+      if (mockSessionCookie) {
+        const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
+        const payload = await verifyJWT(mockSessionCookie, secret)
+        if (payload) {
+          return { userId: payload.userId || "demo-user-id", email: payload.email, isDemo: true }
         }
       }
-      return { userId: "demo-user-id", email, isDemo: true }
     }
 
     // Supabase auth (the primary session for standard users).
