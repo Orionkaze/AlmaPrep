@@ -1,14 +1,25 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { signJWT, verifyJWT } from '@/lib/jwt'
 
 async function createMockServerClient() {
   const cookieStore = await cookies()
+  const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
 
   return {
     auth: {
       signUp: async ({ email, password }: any) => {
-        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
-        cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username: email.split("@")[0] }), { path: "/", maxAge: 604800 });
+        const username = email.split("@")[0];
+        const payload = {
+          userId: "demo-user-id",
+          email,
+          username,
+          exp: Math.floor(Date.now() / 1000) + 604800, // 7 days
+        };
+        const token = await signJWT(payload, secret);
+
+        cookieStore.set("mockmate-mock-session", token, { path: "/", maxAge: 604800 });
+        cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username }), { path: "/", maxAge: 604800 });
         
         const mockUser = { id: "demo-user-id", email, email_confirmed_at: new Date().toISOString() };
         return {
@@ -25,8 +36,17 @@ async function createMockServerClient() {
       },
 
       signInWithPassword: async ({ email, password }: any) => {
-        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
-        cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username: email.split("@")[0] }), { path: "/", maxAge: 604800 });
+        const username = email.split("@")[0];
+        const payload = {
+          userId: "demo-user-id",
+          email,
+          username,
+          exp: Math.floor(Date.now() / 1000) + 604800, // 7 days
+        };
+        const token = await signJWT(payload, secret);
+
+        cookieStore.set("mockmate-mock-session", token, { path: "/", maxAge: 604800 });
+        cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username }), { path: "/", maxAge: 604800 });
         
         const mockUser = { id: "demo-user-id", email, email_confirmed_at: new Date().toISOString() };
         return {
@@ -43,28 +63,28 @@ async function createMockServerClient() {
       },
 
       signOut: async () => {
-        cookieStore.delete("mockmate-demo-session");
+        cookieStore.delete("mockmate-mock-session");
         cookieStore.delete("mockmate-demo-user");
         return { error: null };
       },
 
       getUser: async () => {
-        const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
-        if (demoUserVal) {
-          try {
-            const parsed = JSON.parse(demoUserVal);
-            return { data: { user: { id: "demo-user-id", email: parsed.email } }, error: null };
-          } catch (e) {}
+        const token = cookieStore.get("mockmate-mock-session")?.value;
+        if (token) {
+          const payload = await verifyJWT(token, secret);
+          if (payload) {
+            return { data: { user: { id: payload.userId || "demo-user-id", email: payload.email } }, error: null };
+          }
         }
         return { data: { user: null }, error: null };
       },
 
       getSession: async () => {
-        const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
-        if (demoUserVal) {
-          try {
-            const parsed = JSON.parse(demoUserVal);
-            const mockUser = { id: "demo-user-id", email: parsed.email };
+        const token = cookieStore.get("mockmate-mock-session")?.value;
+        if (token) {
+          const payload = await verifyJWT(token, secret);
+          if (payload) {
+            const mockUser = { id: payload.userId || "demo-user-id", email: payload.email };
             return {
               data: {
                 session: {
@@ -75,19 +95,24 @@ async function createMockServerClient() {
               },
               error: null
             };
-          } catch (e) {}
+          }
         }
         return { data: { session: null }, error: null };
       },
       onAuthStateChange: (callback: (event: string, session: any) => void) => {
-        const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
-        let session: any = null;
-        if (demoUserVal) {
-          try {
-            const parsed = JSON.parse(demoUserVal);
-            const mockUser = { id: "demo-user-id", email: parsed.email };
-            session = { access_token: "mock-session-token", expires_in: 3600, user: mockUser };
-          } catch (e) {}
+        const token = cookieStore.get("mockmate-mock-session")?.value;
+        if (token) {
+          verifyJWT(token, secret).then((payload) => {
+            if (payload) {
+              const mockUser = { id: payload.userId || "demo-user-id", email: payload.email };
+              const session = { access_token: "mock-session-token", expires_in: 3600, user: mockUser };
+              callback("SIGNED_IN", session);
+            } else {
+              callback("SIGNED_OUT", null);
+            }
+          }).catch(() => {
+            callback("SIGNED_OUT", null);
+          });
         }
         return {
           data: {
@@ -100,14 +125,28 @@ async function createMockServerClient() {
 
       signInWithOAuth: async ({ provider }: any) => {
         const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
-        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
+        const payload = {
+          userId: "demo-user-id",
+          email: mockUser.email,
+          username: "demo_user",
+          exp: Math.floor(Date.now() / 1000) + 604800,
+        };
+        const token = await signJWT(payload, secret);
+        cookieStore.set("mockmate-mock-session", token, { path: "/", maxAge: 604800 });
         cookieStore.set("mockmate-demo-user", JSON.stringify({ email: mockUser.email, username: "demo_user" }), { path: "/", maxAge: 604800 });
         return { data: { provider, url: "/dashboard" }, error: null };
       },
 
       exchangeCodeForSession: async (code: string) => {
         const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
-        cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
+        const payload = {
+          userId: "demo-user-id",
+          email: mockUser.email,
+          username: "demo_user",
+          exp: Math.floor(Date.now() / 1000) + 604800,
+        };
+        const token = await signJWT(payload, secret);
+        cookieStore.set("mockmate-mock-session", token, { path: "/", maxAge: 604800 });
         cookieStore.set("mockmate-demo-user", JSON.stringify({ email: mockUser.email, username: "demo_user" }), { path: "/", maxAge: 604800 });
         const session = { access_token: "mock-session-token", expires_in: 3600, user: mockUser };
         return { data: { user: mockUser, session }, error: null };
@@ -132,40 +171,40 @@ async function createMockServerClient() {
         eq: () => chain,
         single: async () => {
           if (table === "users") {
-            const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
-            if (demoUserVal) {
-              try {
-                const parsed = JSON.parse(demoUserVal);
+            const token = cookieStore.get("mockmate-mock-session")?.value;
+            if (token) {
+              const payload = await verifyJWT(token, secret);
+              if (payload) {
                 return {
                   data: {
                     id: "demo-user-id",
-                    username: parsed.username || parsed.email?.split("@")[0] || "User",
-                    avatar_url: parsed.avatar_url || "user-tie",
+                    username: payload.username || payload.email?.split("@")[0] || "User",
+                    avatar_url: "user-tie",
                     subscription_tier: "free"
                   },
                   error: null
                 };
-              } catch (e) {}
+              }
             }
           }
           return { data: null, error: null };
         },
         maybeSingle: async () => {
           if (table === "users") {
-            const demoUserVal = cookieStore.get("mockmate-demo-user")?.value;
-            if (demoUserVal) {
-              try {
-                const parsed = JSON.parse(demoUserVal);
+            const token = cookieStore.get("mockmate-mock-session")?.value;
+            if (token) {
+              const payload = await verifyJWT(token, secret);
+              if (payload) {
                 return {
                   data: {
                     id: "demo-user-id",
-                    username: parsed.username || parsed.email?.split("@")[0] || "User",
-                    avatar_url: parsed.avatar_url || "user-tie",
+                    username: payload.username || payload.email?.split("@")[0] || "User",
+                    avatar_url: "user-tie",
                     subscription_tier: "free"
                   },
                   error: null
                 };
-              } catch (e) {}
+              }
             }
           }
           return { data: null, error: null };
