@@ -8,6 +8,7 @@ import {
   cleanJsonResponseText
 } from "@/lib/llm"
 import { getCurrentUser } from "@/lib/getCurrentUser"
+import { createClient } from "@/lib/supabase/server"
 import { getProgramQuestions, getSampleQuestions } from "./programs"
 import { readLocalCache } from "@/lib/localCache"
 
