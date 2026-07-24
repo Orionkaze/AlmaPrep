@@ -191,23 +191,7 @@ export default function SignupPage() {
               <span>Continue with GitHub</span>
             </button>
 
-            <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
-              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
-              <span style={{ padding: "0 12px", fontSize: "0.75rem", color: "var(--muted)", textTransform: "uppercase" }}>Or</span>
-              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
-            </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                document.cookie = "mockmate-demo-session=true; path=/; max-age=604800" // 7 days
-                window.location.href = "/dashboard"
-              }}
-              className="btn"
-              style={{ width: "100%", justifyContent: "center", background: "#10b981", color: "#ffffff", border: "none" }}
-            >
-              🚀 Launch Local Demo Mode (No DB)
-            </button>
           </form>
 
           <p className="auth-alt" style={{ marginTop: "24px" }}>
