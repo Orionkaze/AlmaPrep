@@ -1,8 +1,7 @@
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { DEFAULT_BADGES } from "@/lib/badgesData"
 import ProfileContent from "./profile-content"
 import { readLocalCache } from "@/lib/localCache"
@@ -16,61 +15,22 @@ const mockHistory = [
 ]
 
 export default async function ProfilePage() {
-  const session = await getServerSession(authOptions)
-  const cookieStore = await cookies()
-  const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-  
-  let supabaseUser = null
-  let activeUser = null
-  let userId = null
+  const user = await getCurrentUser()
+  const isDemoMode = user.isDemo
+  const userId = user.userId
 
-  const isDemoMode = hasDemoCookie
-
-  if (isDemoMode) {
-    const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-    if (demoUserCookie) {
-      try {
-        const parsed = JSON.parse(demoUserCookie)
-        activeUser = {
-          name: parsed.username || parsed.email?.split("@")[0] || "User",
-          email: parsed.email,
-          avatar_url: parsed.avatar_url,
-        }
-      } catch (err) {
-        // fallback
-      }
-    }
-    if (!activeUser) {
-      activeUser = {
-        name: "Guest User",
-        email: "guest@almaprep.com",
-        avatar_url: "user-tie",
-      }
-    }
-    userId = "demo-user-id"
-  } else {
-    activeUser = session?.user as any
-    userId = (session?.user as any)?.id
-  }
-
-  const supabase = isDemoMode ? null : await createClient()
-
-  if (!isDemoMode && supabase) {
-    try {
-      const { data } = await supabase.auth.getUser()
-      supabaseUser = data?.user || null
-      if (supabaseUser) {
-        activeUser = supabaseUser
-        userId = supabaseUser.id
-      }
-    } catch (err) {
-      console.error("ProfilePage: Failed to fetch Supabase user:", err)
-    }
-  }
-
-  if (!activeUser || !userId) {
+  if (!userId) {
     redirect("/login")
   }
+
+  const activeUser = {
+    name: user.username || user.email?.split("@")[0] || "User",
+    email: user.email || "guest@almaprep.com",
+    avatar_url: user.avatarUrl || "user-tie",
+  }
+
+  const cookieStore = await cookies()
+  const supabase = isDemoMode ? null : await createClient()
 
   let initialProfile: { username: string; avatar_url: string; resume_text: string; github_autosave: boolean } = {
     username: "User",
