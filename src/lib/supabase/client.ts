@@ -20,11 +20,15 @@ function createMockBrowserClient() {
         users.push(newUser);
         localStorage.setItem("mockmate_users", JSON.stringify(users));
 
-        const expiry = new Date();
-        expiry.setDate(expiry.getDate() + 7);
-        const expires = "; expires=" + expiry.toUTCString();
-        document.cookie = "mockmate-demo-session=true; path=/" + expires;
-        document.cookie = "mockmate-demo-user=" + encodeURIComponent(JSON.stringify({ email, username: email.split("@")[0] })) + "; path=/" + expires;
+        try {
+          await fetch("/api/auth/mock-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, username: email.split("@")[0] })
+          });
+        } catch (e) {
+          console.error("Failed to set mock session token:", e);
+        }
 
         const mockUser = { id: "demo-user-id", email, email_confirmed_at: new Date().toISOString() };
         return {
@@ -59,11 +63,15 @@ function createMockBrowserClient() {
           return { data: { user: null, session: null }, error: { message: "Invalid login credentials" } };
         }
 
-        const expiry = new Date();
-        expiry.setDate(expiry.getDate() + 7);
-        const expires = "; expires=" + expiry.toUTCString();
-        document.cookie = "mockmate-demo-session=true; path=/" + expires;
-        document.cookie = "mockmate-demo-user=" + encodeURIComponent(JSON.stringify({ email, username: user.username })) + "; path=/" + expires;
+        try {
+          await fetch("/api/auth/mock-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, username: user.username })
+          });
+        } catch (e) {
+          console.error("Failed to set mock session token:", e);
+        }
 
         const mockUser = { id: "demo-user-id", email, email_confirmed_at: new Date().toISOString() };
         return {
@@ -81,8 +89,11 @@ function createMockBrowserClient() {
 
       signOut: async () => {
         console.log("Mock Supabase Client: signOut");
-        document.cookie = "mockmate-demo-session=; path=/; max-age=0";
-        document.cookie = "mockmate-demo-user=; path=/; max-age=0";
+        try {
+          await fetch("/api/auth/mock-session", { method: "DELETE" });
+        } catch (e) {
+          console.error("Failed to clear mock session token:", e);
+        }
         return { error: null };
       },
 
@@ -145,12 +156,14 @@ function createMockBrowserClient() {
       signInWithOAuth: async ({ provider, options }: any) => {
         console.log("Mock Supabase Client: signInWithOAuth", provider);
         const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
-        const expiry = new Date();
-        expiry.setDate(expiry.getDate() + 7);
-        const expires = "; expires=" + expiry.toUTCString();
-        if (typeof document !== "undefined") {
-          document.cookie = "mockmate-demo-session=true; path=/" + expires;
-          document.cookie = "mockmate-demo-user=" + encodeURIComponent(JSON.stringify({ email: mockUser.email, username: "demo_user" })) + "; path=/" + expires;
+        try {
+          await fetch("/api/auth/mock-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: mockUser.email, username: "demo_user" })
+          });
+        } catch (e) {
+          console.error("Failed to set mock session token:", e);
         }
         if (typeof window !== "undefined" && options?.redirectTo) {
           window.location.href = options.redirectTo;
