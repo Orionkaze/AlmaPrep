@@ -21,10 +21,8 @@ import {
 } from "lucide-react"
 import { MySchedule } from "@/components/MySchedule"
 import { createClient } from "@/lib/supabase/server"
-import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-head), serif",
@@ -41,55 +39,21 @@ const avatarIconMap: Record<string, React.FC<any>> = {
 // Removed calculateStreak helper as streak is now stored in DB
 
 export default async function DashboardPage() {
-  const session = await getServerSession(authOptions)
-  const cookieStore = await cookies()
-  const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+  const user = await getCurrentUser()
+  const isDemoMode = user.isDemo
+  const userId = user.userId
 
-  let activeUser = null
-  let userId = null
+  if (!userId) {
+    redirect("/login")
+  }
 
-  const isDemoMode = hasDemoCookie
-
-  if (isDemoMode) {
-    const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-    if (demoUserCookie) {
-      try {
-        const parsed = JSON.parse(demoUserCookie)
-        activeUser = {
-          name: parsed.username || parsed.email?.split("@")[0] || "User",
-          email: parsed.email,
-          avatar_url: parsed.avatar_url,
-        }
-      } catch (err) {
-        // fallback
-      }
-    }
-    if (!activeUser) {
-      activeUser = {
-        name: "Guest User",
-        email: "guest@almaprep.com",
-        avatar_url: "user-tie",
-      }
-    }
-    userId = "demo-user-id"
-  } else {
-    activeUser = session?.user as any
-    userId = (session?.user as any)?.id
+  const activeUser = {
+    name: user.username || user.email?.split("@")[0] || "User",
+    email: user.email || "guest@almaprep.com",
+    avatar_url: user.avatarUrl || "user-tie",
   }
 
   const supabase = isDemoMode ? null : await createClient()
-
-  if (!isDemoMode && supabase) {
-    try {
-      const { data } = await supabase.auth.getUser()
-      if (data?.user) {
-        activeUser = data.user
-        userId = data.user.id
-      }
-    } catch (err) {
-      console.error("Dashboard: Failed to fetch Supabase user:", err)
-    }
-  }
 
   let displayName = "User"
   let avatarKey = "user-tie"
