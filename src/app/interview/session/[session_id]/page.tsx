@@ -25,8 +25,16 @@ import {
   LogOut
 } from "lucide-react";
 
-// Lazy-load Monaco Editor
-const MonacoEditor = dynamic(() => import("@monaco-editor/react"), { ssr: false });
+// Lazy-load Monaco Editor with smooth loading placeholder
+const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
+  ssr: false,
+  loading: () => (
+    <div style={{ display: "flex", height: "100%", width: "100%", alignItems: "center", justifyContent: "center", background: "#1e1e1e", color: "#9ca3af" }}>
+      <Loader2 className="animate-spin" size={24} style={{ marginRight: "8px" }} />
+      <span>Loading Editor...</span>
+    </div>
+  )
+});
 
 interface DiffChange {
   filename: string;

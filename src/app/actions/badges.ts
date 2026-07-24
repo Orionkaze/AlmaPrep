@@ -180,8 +180,8 @@ export async function checkAndAwardBadges(userId: string) {
 
     // Progress
     // Weekend Warrior: Check if there's an interview on Saturday AND Sunday
-    const hasSaturday = interviews?.some(i => new Date(i.created_at).getDay() === 6);
-    const hasSunday = interviews?.some(i => new Date(i.created_at).getDay() === 0);
+    const hasSaturday = interviews?.some((i: any) => new Date(i.created_at).getDay() === 6);
+    const hasSunday = interviews?.some((i: any) => new Date(i.created_at).getDay() === 0);
     evaluate('weekend-warrior', !!(hasSaturday && hasSunday));
 
     // Overachiever: 3+ activities in a single day

@@ -61,6 +61,9 @@ export const authOptions: NextAuthOptions = {
           return false
         }
 
+        if (!process.env.NEXTAUTH_SECRET && process.env.NODE_ENV === "production") {
+          console.warn("[auth] NEXTAUTH_SECRET is not configured in production environment. Relying on default secret may cause auth session drift.")
+        }
         const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
 
         try {

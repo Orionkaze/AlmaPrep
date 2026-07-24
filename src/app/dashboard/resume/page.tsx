@@ -1,63 +1,25 @@
 import { createClient } from "@/lib/supabase/server"
-import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { getResumeData } from "@/app/actions/resume"
 import ResumeContent from "./resume-content"
 
 export default async function ResumePage() {
-  const session = await getServerSession(authOptions)
-  const cookieStore = await cookies()
-  const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-  
-  let supabaseUser = null
-  let activeUser = null
+  const user = await getCurrentUser()
+  const isDemoMode = user.isDemo
+  const userId = user.userId
 
-  const isDemoMode = hasDemoCookie
+  if (!userId) {
+    redirect("/login")
+  }
 
-  if (isDemoMode) {
-    const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-    if (demoUserCookie) {
-      try {
-        const parsed = JSON.parse(demoUserCookie)
-        activeUser = {
-          name: parsed.username || parsed.email?.split("@")[0] || "User",
-          email: parsed.email,
-          avatar_url: parsed.avatar_url,
-        }
-      } catch {
-        // fallback
-      }
-    }
-    if (!activeUser) {
-      activeUser = {
-        name: "Guest User",
-        email: "guest@almaprep.com",
-        avatar_url: "user-tie",
-      }
-    }
-  } else {
-    activeUser = session?.user
+  const activeUser = {
+    name: user.username || user.email?.split("@")[0] || "User",
+    email: user.email || "guest@almaprep.com",
+    avatar_url: user.avatarUrl || "user-tie",
   }
 
   const supabase = isDemoMode ? null : await createClient()
-
-  if (!isDemoMode && supabase) {
-    try {
-      const { data } = await supabase.auth.getUser()
-      supabaseUser = data?.user || null
-      if (supabaseUser) {
-        activeUser = supabaseUser
-      }
-    } catch (err) {
-      console.error("ResumePage: Failed to fetch Supabase user:", err)
-    }
-  }
-
-  if (!activeUser) {
-    redirect("/login")
-  }
 
   // Fetch saved resume data
   let resumeText = ""

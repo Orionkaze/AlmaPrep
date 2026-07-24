@@ -19,6 +19,7 @@ import { Mic, MicOff, PhoneOff, MessageSquare, Send, X, VideoOff } from "lucide-
 import {
   getNextQuestion,
   generateFeedback,
+  checkAndConsumeInterviewAllowance,
   createInterviewSession,
   saveInterviewMessage,
   saveInterviewFeedback,
@@ -284,7 +285,16 @@ export default function InterviewPage({
 
     const initInterview = async () => {
       setIsAiTyping(true)
-      
+
+      // 0. Paywall gate. No-op unless the paywall is enabled and a free user is
+      //    over their monthly limit, in which case send them to the upgrade page.
+      const allowance = await checkAndConsumeInterviewAllowance()
+      if (!active) return
+      if (!allowance.allowed) {
+        router.push("/upgrade")
+        return
+      }
+
       // 1. Create a session ID in DB if user is authenticated
       const mode = isGithubMode ? "github" : "general"
       const sessionId = await createInterviewSession(category, useResume, mode, selectedRepos)

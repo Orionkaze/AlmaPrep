@@ -1,34 +1,22 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { fetchGitHubUserData, analyzeGitHubProfile } from "@/lib/github"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
-import { isRateLimited } from "@/lib/rateLimit"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 
 export async function POST(req: NextRequest) {
   try {
     // 1. Authenticate user
-    const session = await getServerSession(authOptions)
-    let userId = session?.user?.id
-
-    // Fallback: If no NextAuth session, check Supabase auth
-    const supabase = await createClient()
-    if (!userId) {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        userId = user.id
-      }
-    }
+    const user = await getCurrentUser()
+    const userId = user.userId
+    const userEmail = user.email
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    if (await isRateLimited(`github-analysis:${userId}`, 5, 60_000)) {
-      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 })
-    }
+    const supabase = await createClient()
 
     // 2. Extract GitHub provider token from cookie
     const cookieStore = await cookies()
@@ -102,10 +90,10 @@ export async function POST(req: NextRequest) {
     writeLocalCache("github_analysis", userId, analysisRecord)
 
     return NextResponse.json({ result: analysisRecord, cached: false })
-  } catch (error) {
+  } catch (error: any) {
     console.error("[api/github-analysis] Error in POST route:", error)
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Internal Server Error" },
+      { error: error?.message || "Internal Server Error" },
       { status: 500 }
     )
   }

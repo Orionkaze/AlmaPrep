@@ -1,10 +1,11 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
+import { getUserTier } from "@/lib/entitlements"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
+import { getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
 
 export interface ResumeAnalysis {
@@ -22,9 +23,11 @@ export async function saveAndAnalyzeResume(
   resumeText: string
 ): Promise<{ success: boolean; data?: { resumeText: string; analysis: ResumeAnalysis }; error?: string }> {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
+    const user = await getCurrentUser()
+    const isDemoMode = user.isDemo
+    const userId = user.userId
+
+    if (isDemoMode) {
       const responseJsonText = await callAI(
         resumeText,
         "analyze_resume",
@@ -32,8 +35,16 @@ export async function saveAndAnalyzeResume(
       )
       const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
       
-      // Persist custom resume and analysis in demo mode
-      cookieStore.set("mockmate-demo-resume", JSON.stringify({ resumeText, analysis }), { path: "/", maxAge: 604800 })
+      // Safely persist demo resume metadata without exceeding 4KB cookie header limits
+      try {
+        const cookieStore = await cookies()
+        const payload = JSON.stringify({ resumeText: resumeText.substring(0, 1000), analysis });
+        if (payload.length < 3500) {
+          cookieStore.set("mockmate-demo-resume", payload, { path: "/", maxAge: 604800 });
+        }
+      } catch (e) {
+        console.warn("[resume] Demo resume cookie payload skipped due to size limits:", e);
+      }
 
       return {
         success: true,
@@ -44,24 +55,13 @@ export async function saveAndAnalyzeResume(
       }
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) {
       return { success: false, error: "Not authenticated" }
     }
 
-    let userTier = "free"
-    const { data: profile } = await supabase
-      .from("users")
-      .select("subscription_tier")
-      .eq("id", userId)
-      .single()
-    if (profile && profile.subscription_tier) {
-      userTier = profile.subscription_tier
-    }
+    const { tier: userTier } = await getUserTier()
 
     const responseJsonText = await callAI(
       resumeText,
@@ -93,9 +93,9 @@ export async function saveAndAnalyzeResume(
         analysis,
       },
     }
-  } catch (err) {
+  } catch (err: any) {
     console.error("saveAndAnalyzeResume failed:", err)
-    return { success: false, error: err instanceof Error ? err.message : "An unexpected error occurred during resume analysis." }
+    return { success: false, error: err.message || "An unexpected error occurred during resume analysis." }
   }
 }
 
@@ -108,9 +108,12 @@ export async function getResumeData(): Promise<{
   error?: string
 }> {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
+    const user = await getCurrentUser()
+    const isDemoMode = user.isDemo
+    const userId = user.userId
+
+    if (isDemoMode) {
+      const cookieStore = await cookies()
       const customResume = cookieStore.get("mockmate-demo-resume")?.value
       if (customResume) {
         try {
@@ -122,7 +125,7 @@ export async function getResumeData(): Promise<{
               analysis: parsed.analysis
             }
           }
-        } catch {}
+        } catch (e) {}
       }
 
       return {
@@ -131,10 +134,7 @@ export async function getResumeData(): Promise<{
       }
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) {
       return { success: false, error: "Not authenticated" }

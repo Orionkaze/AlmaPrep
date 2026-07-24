@@ -1,26 +1,19 @@
-import {
-  callGroqText,
-  callGroqJson,
-  callOpenAIText,
-  callOpenAIJson,
-  callGeminiText,
+import { 
+  callGroqText, 
+  callGroqJson, 
+  callOpenAIText, 
+  callOpenAIJson, 
+  callGeminiText, 
   callGeminiJson,
+  cleanJsonResponseText
 } from "@/lib/llm"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createClient } from "@/lib/supabase/server"
-import { cookies } from "next/headers"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
 import { getProgramQuestions, getSampleQuestions } from "./programs"
 import { readLocalCache } from "@/lib/localCache"
-import type { GithubAnalysisRow } from "@/types/db"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
-  content: string
-}
-
-interface ChatHistoryMessage {
-  role: string
   content: string
 }
 
@@ -43,21 +36,9 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, name: stri
 export async function callAI(prompt: string, task: string, userTier: string): Promise<string> {
   let userId: string | undefined = undefined
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
-      userId = "demo-user-id"
-    } else {
-      const supabase = await createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        userId = user.id
-      } else {
-        const session = await getServerSession(authOptions)
-        userId = session?.user?.id
-      }
-    }
-  } catch {
+    const user = await getCurrentUser()
+    userId = user.userId || undefined
+  } catch (e) {
     // Suppress if not in request context
   }
 
@@ -75,21 +56,9 @@ export async function callAIWithSource(
 ): Promise<{ result: string; source: string }> {
   let userId: string | undefined = undefined
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
-      userId = "demo-user-id"
-    } else {
-      const supabase = await createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        userId = user.id
-      } else {
-        const session = await getServerSession(authOptions)
-        userId = session?.user?.id
-      }
-    }
-  } catch {
+    const user = await getCurrentUser()
+    userId = user.userId || undefined
+  } catch (e) {
     // Suppress if not in request context
   }
 
@@ -187,19 +156,19 @@ Focus your interview questions on their background, experiences, projects, and t
     if (isGithubMode && userId && currentRepoName) {
       try {
         const supabase = await createClient()
-        const { data: fetchedAnalysis, error: fetchError } = await supabase
+        let { data: analysis, error: fetchError } = await supabase
           .from("github_analysis")
           .select("*")
           .eq("user_id", userId)
-          .maybeSingle() as unknown as { data: GithubAnalysisRow | null; error: { message: string } | null }
-
-        const analysis: GithubAnalysisRow | null = fetchError || !fetchedAnalysis
-          ? (readLocalCache("github_analysis", userId) as unknown as GithubAnalysisRow | null)
-          : fetchedAnalysis
-
+          .maybeSingle()
+        
+        if (fetchError || !analysis) {
+          analysis = readLocalCache("github_analysis", userId)
+        }
+        
         if (analysis) {
-          const repoMeta = (analysis.repo_metadata as Record<string, unknown> | undefined)?.[currentRepoName]
-          const repoQuestions = (analysis.questions || []).filter((q) => q.repo === currentRepoName)
+          const repoMeta = analysis.repo_metadata?.[currentRepoName]
+          const repoQuestions = (analysis.questions || []).filter((q: any) => q.repo === currentRepoName)
           const techStack = analysis.tech_stack || []
           const designPatterns = analysis.design_patterns || []
           
@@ -271,7 +240,7 @@ Rules:
 3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category (or from the question bank if available).
 4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.`
 
-    const formattedMessages = (previousMessages as ChatHistoryMessage[]).map((msg) => ({
+    const formattedMessages = previousMessages.map((msg: any) => ({
       role: msg.role === "ai" ? ("assistant" as const) : ("user" as const),
       content: msg.content,
     }))
@@ -287,8 +256,8 @@ Rules:
     const category = parsed.category
     const feedbackMessages = parsed.messages || []
     
-    const transcript = (feedbackMessages as ChatHistoryMessage[])
-      .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
+    const transcript = feedbackMessages
+      .map((msg: any) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
 
     let questions = getProgramQuestions(category)
@@ -438,10 +407,9 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
       const result = await withTimeout(provider.fn(), timeoutMs, provider.name)
       console.log(`[aiRouter] Success with ${provider.name}`)
       return { text: result, source: provider.name }
-    } catch (err) {
-      const error = err instanceof Error ? err : new Error(String(err))
-      console.error(`[aiRouter] Provider ${provider.name} failed:`, error.message)
-      lastError = error
+    } catch (err: any) {
+      console.error(`[aiRouter] Provider ${provider.name} failed:`, err.message || err)
+      lastError = err
     }
   }
 

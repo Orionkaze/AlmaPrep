@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client"
 import { signOut } from "next-auth/react"
 import { User, ChevronDown, LogOut, CreditCard, UserRound } from "lucide-react"
 import ModeToggle from "./ModeToggle"
+import { NotificationBell } from "@/components/NotificationBell"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import {
   DropdownMenu,
@@ -77,7 +78,7 @@ export default function AppHeader() {
     })
 
     return () => {
-      subscription.unsubscribe()
+      subscription?.unsubscribe?.()
     }
   }, [])
 
@@ -154,6 +155,13 @@ export default function AppHeader() {
                 </TooltipContent>
               </Tooltip>
             </li>
+
+            {/* Notification Bell */}
+            {isAuthenticated && (
+              <li className="flex items-center">
+                <NotificationBell />
+              </li>
+            )}
 
             {/* Account dropdown */}
             {isAuthenticated && (

@@ -1,6 +1,6 @@
 "use server"
 
-import pdfParse from "pdf-parse/lib/pdf-parse.js"
+import pdfParse from "pdf-parse"
 import mammoth from "mammoth"
 
 export async function parseDocument(formData: FormData): Promise<{ success: boolean; text?: string; error?: string }> {

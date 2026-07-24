@@ -1,7 +1,6 @@
 "use client"
 
-import { track, EVENTS } from "@/lib/analytics"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Switch } from "@/components/ui/switch"
 import { Input } from "@/components/ui/input"
@@ -9,13 +8,19 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
-import {
-  Briefcase,
-  Laptop,
-  Shuffle,
+import { ScheduleModal } from "@/components/ScheduleModal"
+import { 
+  Briefcase, 
+  Laptop, 
+  Shuffle, 
   FileText,
   Search,
   GraduationCap,
+  Scale,
+  Stethoscope,
+  Drama,
+  Cpu,
+  Globe,
   ArrowRight,
   ChevronLeft,
   ChevronRight
@@ -30,11 +35,6 @@ interface ProgramInfo {
   name: string
   category: string
   questionCount: number
-}
-
-interface GitHubAnalysisData {
-  questions: Array<{ repo: string; question: string; difficulty: string }>
-  repo_metadata?: Record<string, { complexity_score?: number }>
 }
 
 const standardCategories = [
@@ -72,11 +72,12 @@ export default function InterviewSetupPage() {
   const [hasResume, setHasResume] = useState(false)
   const [useResume, setUseResume] = useState(false)
   const [persona, setPersona] = useState<string>("supportive")
+  const [scheduleOpen, setScheduleOpen] = useState(false)
   
   // GitHub Mode states
   const [isDemoMode, setIsDemoMode] = useState(false)
   const [githubConnected, setGithubConnected] = useState(false)
-  const [githubAnalysis, setGithubAnalysis] = useState<GitHubAnalysisData | null>(null)
+  const [githubAnalysis, setGithubAnalysis] = useState<any>(null)
   const [githubMode, setGithubMode] = useState(false)
   const [selectedRepos, setSelectedRepos] = useState<string[]>([])
   
@@ -179,7 +180,7 @@ export default function InterviewSetupPage() {
         if (connected) {
           const analysis = await getGitHubAnalysis()
           if (analysis) {
-            setGithubAnalysis(analysis as unknown as GitHubAnalysisData)
+            setGithubAnalysis(analysis)
           }
         }
       } catch (err) {
@@ -525,7 +526,7 @@ export default function InterviewSetupPage() {
                         }}
                         className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 w-full"
                       >
-                        {Array.from(new Set(githubAnalysis.questions.map((q) => q.repo))).map((repoName) => {
+                        {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
                           const repoMeta = githubAnalysis.repo_metadata?.[repoName]
                           
                           return (
@@ -635,7 +636,15 @@ export default function InterviewSetupPage() {
           )}
         </Card>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
+          <Button
+            variant="outline"
+            disabled={!selected || (selected === "technical" && githubMode && selectedRepos.length < 2)}
+            onClick={() => setScheduleOpen(true)}
+            className="h-12 px-6 text-sm md:text-base font-semibold cursor-pointer"
+          >
+            Schedule for Later
+          </Button>
           <Link 
             href={
               !selected || (selected === "technical" && githubMode && selectedRepos.length < 2)
@@ -647,13 +656,17 @@ export default function InterviewSetupPage() {
           >
             <Button
               disabled={!selected || (selected === "technical" && githubMode && selectedRepos.length < 2)}
-              onClick={() => track(EVENTS.INTERVIEW_STARTED, { track: selected, persona, github_mode: selected === "technical" && githubMode })}
               className="h-12 px-12 text-sm md:text-base font-semibold cursor-pointer"
             >
               Begin Interview Track <ArrowRight size={16} className="ml-1.5" />
             </Button>
           </Link>
         </div>
+        <ScheduleModal 
+          open={scheduleOpen} 
+          onOpenChange={setScheduleOpen} 
+          defaultTitle={getSelectedLabel() + " Track"} 
+        />
       </div>
     </main>
   )

@@ -10,8 +10,10 @@ import {
   FileCode2,
   ArrowRight,
   Loader2,
-  HelpCircle
+  HelpCircle,
+  Calendar
 } from "lucide-react";
+import { ScheduleModal } from "@/components/ScheduleModal";
 
 interface Challenge {
   id: string;
@@ -38,6 +40,8 @@ export default function ChallengeSelectionPage() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [startingId, setStartingId] = useState<string | null>(null);
   const [errorToast, setErrorToast] = useState<string | null>(null);
+  const [scheduleOpen, setScheduleOpen] = useState(false);
+  const [schedulingChallenge, setSchedulingChallenge] = useState<Challenge | null>(null);
 
   const showToast = (msg: string) => {
     setErrorToast(msg);
@@ -246,29 +250,41 @@ export default function ChallengeSelectionPage() {
                   </div>
 
                   {/* Bottom Row */}
-                  <div className="flex items-center justify-between pt-4 border-t border-[#f1f5f9] mt-auto">
+                  <div className="flex flex-col gap-3 pt-4 border-t border-[#f1f5f9] mt-auto">
                     <div className="flex items-center gap-1.5 text-[#6B7280] text-xs font-medium">
                       {getChallengeIcon(challenge.challenge_type)}
                       <span>{getChallengeTypeLabel(challenge.challenge_type)}</span>
                     </div>
 
-                    <button
-                      onClick={() => handleStart(challenge.id)}
-                      disabled={startingId !== null}
-                      className="inline-flex items-center justify-center gap-1.5 bg-[#059669] text-white hover:bg-[#047857] disabled:opacity-60 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow transition-all duration-150 cursor-pointer min-w-[130px]"
-                    >
-                      {isStarting ? (
-                        <>
-                          <Loader2 className="size-4 animate-spin" />
-                          <span>Starting...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Start Interview</span>
-                          <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
-                        </>
-                      )}
-                    </button>
+                    <div className="flex items-center gap-2 w-full">
+                      <button
+                        onClick={() => {
+                          setSchedulingChallenge(challenge);
+                          setScheduleOpen(true);
+                        }}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 bg-white text-[#6B7280] hover:text-[#0f172a] hover:bg-[#F3F4F6] border border-[#E5E7EB] px-3 py-2 rounded-xl text-sm font-semibold shadow-sm transition-all duration-150 cursor-pointer"
+                      >
+                        <Calendar className="size-4" />
+                        <span>Schedule</span>
+                      </button>
+                      <button
+                        onClick={() => handleStart(challenge.id)}
+                        disabled={startingId !== null}
+                        className="flex-[1.5] inline-flex items-center justify-center gap-1.5 bg-[#059669] text-white hover:bg-[#047857] disabled:opacity-60 px-3 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow transition-all duration-150 cursor-pointer"
+                      >
+                        {isStarting ? (
+                          <>
+                            <Loader2 className="size-4 animate-spin" />
+                            <span>Starting...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Start Now</span>
+                            <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
+                          </>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               );
@@ -276,6 +292,12 @@ export default function ChallengeSelectionPage() {
           </div>
         )}
       </main>
+      
+      <ScheduleModal 
+        open={scheduleOpen} 
+        onOpenChange={setScheduleOpen} 
+        defaultTitle={schedulingChallenge?.title || "Coding Challenge"} 
+      />
     </div>
   );
 }

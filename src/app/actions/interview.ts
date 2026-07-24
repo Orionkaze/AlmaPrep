@@ -1,16 +1,17 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
-import { callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
+import { getUserTier } from "@/lib/entitlements"
+import { checkInterviewAllowance, type AllowanceResult } from "@/lib/quota"
+import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 import { cookies } from "next/headers"
+import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
 import { updateStreak } from "@/app/actions/streak"
 import { checkAndAwardBadges } from "@/app/actions/badges"
-import type { GithubAnalysisRow, FeedbackRow, InterviewRow } from "@/types/db"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -54,14 +55,14 @@ export async function getNextQuestion(
           const { data: analysis } = await supabase
             .from("github_analysis")
             .select("questions")
-            .maybeSingle() as unknown as { data: Pick<GithubAnalysisRow, "questions"> | null }
+            .maybeSingle()
 
           if (analysis && Array.isArray(analysis.questions)) {
             const difficulty = questionIndex === 1 ? "easy" : questionIndex === 4 ? "medium" : "hard"
             const match = analysis.questions.find(
-              (q) => q.repo === currentRepoName && q.difficulty === difficulty
+              (q: any) => q.repo === currentRepoName && q.difficulty === difficulty
             )
-            const fallbackMatch = analysis.questions.find((q) => q.repo === currentRepoName)
+            const fallbackMatch = analysis.questions.find((q: any) => q.repo === currentRepoName)
             const targetQuestion = match?.question || fallbackMatch?.question
 
             if (targetQuestion) {
@@ -78,36 +79,14 @@ export async function getNextQuestion(
       }
 
       // If it's a follow-up slot, or fallback for initial slot query failure: generate dynamically via Groq
-      let userTier = "free"
-      try {
-        const cookieStore = await cookies()
-        const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-        if (hasDemoCookie) {
-          userTier = "premium"
-        } else {
-          const supabase = await createClient()
-          const { data: { user } } = await supabase.auth.getUser()
-          if (user) {
-            const { data: profile } = await supabase
-              .from("users")
-              .select("subscription_tier")
-              .eq("id", user.id)
-              .single()
-            if (profile && profile.subscription_tier) {
-              userTier = profile.subscription_tier
-            }
-          }
-        }
-      } catch (err) {
-        console.error("Failed to fetch user tier in getNextQuestion:", err)
-      }
+      const { tier: userTier } = await getUserTier()
 
       try {
         const nextResponse = await callAIWithSource(
-          JSON.stringify({
-            category,
-            previousMessages,
-            useResume,
+          JSON.stringify({ 
+            category, 
+            previousMessages, 
+            useResume, 
             persona,
             mode: "github",
             selectedRepos,
@@ -116,39 +95,30 @@ export async function getNextQuestion(
           "next_question",
           userTier
         )
-        return {
-          question: nextResponse.result,
-          source: "github_repo",
-          repo_name: currentRepoName
+        return { 
+          question: nextResponse.result, 
+          source: "github_repo", 
+          repo_name: currentRepoName 
         }
-      } catch (err) {
+      } catch (err: any) {
         console.error("AI routing failed for github follow-up, falling back to general", err)
       }
     }
 
-    let userTier = "free"
-    try {
-      const cookieStore = await cookies()
-      const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-      if (hasDemoCookie) {
-        userTier = "premium"
-      } else {
-        const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          const { data: profile } = await supabase
-            .from("users")
-            .select("subscription_tier")
-            .eq("id", user.id)
-            .single()
-          if (profile && profile.subscription_tier) {
-            userTier = profile.subscription_tier
-          }
+    // Default: General track question generation (Optionally customized with Resume)
+    let resumeText = ""
+    if (useResume) {
+      try {
+        const res = await getResumeData()
+        if (res.success && res.data?.resumeText) {
+          resumeText = res.data.resumeText
         }
+      } catch (err) {
+        console.error("Failed to fetch resume text in getNextQuestion:", err)
       }
-    } catch (err) {
-      console.error("Failed to fetch user tier in getNextQuestion:", err)
     }
+
+    const { tier: userTier } = await getUserTier()
 
     try {
       const nextResponse = await callAIWithSource(
@@ -157,9 +127,8 @@ export async function getNextQuestion(
         userTier
       )
       return { question: nextResponse.result, source: nextResponse.source }
-    } catch (err) {
-      const errMessage = err instanceof Error ? err.message : String(err)
-      if (errMessage.includes("free interviews")) {
+    } catch (err: any) {
+      if (err.message && err.message.includes("free interviews")) {
         return {
           question: `[Limit Reached] You've used all 3 free interviews this month. Upgrade to Pro for unlimited access.`,
           source: "system"
@@ -200,11 +169,10 @@ export async function getNextQuestion(
 
       return { question: selectedQuestion, source: "vetted_fallback" }
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in getNextQuestion Server Action:", error)
-    const errMessage = error instanceof Error ? error.message : "Unknown"
     return {
-      question: `[System Error: ${errMessage}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
+      question: `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
       source: "error"
     }
   }
@@ -250,10 +218,43 @@ export async function generateFeedback(
   }
 
   try {
-    // Note: the JSON contract (score/summary/strengths/improvements/questionEvaluation/
-    // studyGuide/breakdown) is sent to the "generate_feedback" task via
-    // `callAI(JSON.stringify({ category, messages }), "generate_feedback", userTier)` below;
-    // the routing layer builds the actual system/user prompt server-side for that task.
+    const transcript = messages
+      .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
+      .join("\n")
+
+    const systemPrompt = `You are an expert interviewer evaluating a candidate's performance in a mock interview for the category: "${category}".`
+    const prompt = `Analyze the following transcript of the mock interview:
+${transcript}
+
+Evaluate the candidate's answers based on communication, technical depth, structured delivery, and confidence.
+Respond ONLY with a valid JSON object matching this exact structure:
+{
+  "score": <number between 0 and 100>,
+  "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
+  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
+  "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
+  "questionEvaluation": [
+    {
+      "question": "<the exact question asked from the question bank (or standard track)>",
+      "userAnswer": "<brief summary of candidate's answer>",
+      "score": <score for this answer, number between 0 and 100>,
+      "feedback": "<constructive feedback for this answer comparing it to what we look for>",
+      "modelAnswer": "<the ideal answer or model answer from the question bank (or standard track)>"
+    }
+  ],
+  "studyGuide": [
+    { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
+    { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
+  ],
+  "breakdown": [
+    { "label": "Communication", "score": <number> },
+    { "label": "Technical Knowledge", "score": <number> },
+    { "label": "Problem Solving", "score": <number> },
+    { "label": "Confidence", "score": <number> }
+  ]
+}
+
+Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
 
     interface FeedbackJson {
       score: number
@@ -265,29 +266,7 @@ export async function generateFeedback(
       breakdown: { label: string; score: number }[]
     }
 
-    let userTier = "free"
-    try {
-      const cookieStore = await cookies()
-      const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-      if (hasDemoCookie) {
-        userTier = "premium"
-      } else {
-        const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          const { data: profile } = await supabase
-            .from("users")
-            .select("subscription_tier")
-            .eq("id", user.id)
-            .single()
-          if (profile && profile.subscription_tier) {
-            userTier = profile.subscription_tier
-          }
-        }
-      }
-    } catch (err) {
-      console.error("Failed to fetch user tier in generateFeedback:", err)
-    }
+    const { tier: userTier } = await getUserTier()
 
     const responseJsonText = await callAI(
       JSON.stringify({ category, messages }),
@@ -313,12 +292,11 @@ export async function generateFeedback(
       questionEvaluation: Array.isArray(data.questionEvaluation) ? data.questionEvaluation : [],
       breakdown,
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("LLM Error in generateFeedback:", error)
-    const errMessage = error instanceof Error ? error.message : "Unknown"
     return {
       ...fallbackFeedback,
-      summary: `[System Error generating actual feedback: ${errMessage}]. Here is a simulated analysis instead.`
+      summary: `[System Error generating actual feedback: ${error?.message || "Unknown"}]. Here is a simulated analysis instead.`
     }
   }
 }
@@ -326,6 +304,25 @@ export async function generateFeedback(
 /**
  * Save interview session to database if user is authenticated.
  */
+/**
+ * Paywall gate for starting a NEW interview. Returns allowed:true unless the
+ * paywall is enabled AND a free user is over their monthly limit. Records the
+ * interview against the monthly count when allowed. Never throws.
+ *
+ * With the paywall off (the default) this short-circuits to allowed:true and
+ * touches nothing, so existing behaviour is unchanged.
+ */
+export async function checkAndConsumeInterviewAllowance(): Promise<AllowanceResult> {
+  try {
+    const { tier, userId, isDemo } = await getUserTier()
+    if (isDemo || !userId) return { allowed: true }
+    return await checkInterviewAllowance(userId, tier, Date.now(), true)
+  } catch (err) {
+    console.error("Interview allowance check failed, allowing:", err)
+    return { allowed: true }
+  }
+}
+
 export async function createInterviewSession(
   category: string,
   useResume?: boolean,
@@ -333,17 +330,13 @@ export async function createInterviewSession(
   selectedRepos?: string[]
 ): Promise<string | null> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("interviews")
@@ -381,17 +374,13 @@ export async function saveInterviewMessage(
   repoName?: string
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return false
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
-
-    if (!userId) return false
+    const userId = user.userId
 
     const metadata = {
       ...(source ? { source } : {}),
@@ -430,17 +419,13 @@ export async function saveInterviewFeedback(
   clientDate?: string
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return false
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
-
-    if (!userId) return false
+    const userId = user.userId
 
     // Serialize strengths, studyGuide, and questionEvaluation inside summary since table lacks dedicated columns
     const serializedSummary = JSON.stringify({
@@ -469,7 +454,7 @@ export async function saveInterviewFeedback(
       .catch(e => console.error("Streak error:", e));
     const badgePromise = checkAndAwardBadges(userId)
       .catch(e => console.error("Badge error:", e));
-
+      
     await Promise.allSettled([streakPromise, badgePromise]);
 
     if (error) {
@@ -488,30 +473,22 @@ export async function saveInterviewFeedback(
  */
 export async function getFeedback(interviewId: string) {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("feedback")
       .select("*")
       .eq("interview_id", interviewId)
-      .single() as unknown as { data: FeedbackRow | null; error: { message: string } | null }
+      .single()
 
     if (error) {
       console.error("Error fetching feedback from Supabase:", error)
-      return null
-    }
-
-    if (!data) {
       return null
     }
 
@@ -609,8 +586,8 @@ Candidate's Answer: "${answer}"`
  * Generates the final behavioral report based on answer scores and physical metrics.
  */
 export async function generateBehavioralReport(
-  answerScores: Record<string, unknown>[],
-  physicalMetrics: Record<string, unknown>[]
+  answerScores: any[],
+  physicalMetrics: any[]
 ): Promise<string> {
   try {
     const systemPrompt = `You are an expert public speaking, communications, and career coach.
@@ -646,23 +623,19 @@ Physical Behavior Metrics: ${JSON.stringify(physicalMetrics)}`
  */
 export async function saveBehavioralReport(
   sessionId: string,
-  answerScores: Record<string, unknown>[],
-  physicalMetrics: Record<string, unknown>[],
+  answerScores: any[],
+  physicalMetrics: any[],
   finalReport: string,
-  speakingAnalysis?: Record<string, unknown>
+  speakingAnalysis?: any
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return false
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
-
-    if (!userId) return false
+    const userId = user.userId
 
     const record = {
       user_id: userId,
@@ -695,7 +668,7 @@ export async function saveBehavioralReport(
         speaking_analysis: speakingAnalysis || null
       })
       return true
-    } catch {}
+    } catch (_) {}
     return false
   }
 }
@@ -705,17 +678,13 @@ export async function saveBehavioralReport(
  */
 export async function getBehavioralReport(sessionId: string) {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("behavioral_analysis")
@@ -832,15 +801,15 @@ Keep the summary concise and engaging (1 paragraph of 3-4 sentences). Do not inc
 export async function saveProctoringLog(
   interviewId: string,
   log: {
-    violations: Record<string, unknown>[];
+    violations: any[];
     totalCount: number;
     isFlagged: boolean;
     terminatedEarly: boolean;
   }
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo) {
       return false
     }
 
@@ -870,8 +839,8 @@ export async function saveProctoringLog(
  */
 export async function getInterviewSession(interviewId: string) {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
@@ -880,7 +849,7 @@ export async function getInterviewSession(interviewId: string) {
       .from("interviews")
       .select("*")
       .eq("id", interviewId)
-      .maybeSingle() as unknown as { data: InterviewRow | null; error: { message: string } | null }
+      .maybeSingle()
 
     if (error) {
       console.error("Error fetching interview session from Supabase:", error)
@@ -909,47 +878,40 @@ export async function checkGitHubConnection(): Promise<boolean> {
 /**
  * Fetches the user's cached GitHub analysis from Supabase on the server.
  */
-export async function getGitHubAnalysis(): Promise<GithubAnalysisRow | null> {
+export async function getGitHubAnalysis(): Promise<any | null> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
-    const session = await getServerSession(authOptions)
     const supabase = await createClient()
-    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = session?.user?.id || supabaseUser?.id
-
-    if (!userId) return null
+    const userId = user.userId
 
     const { data, error } = await supabase
       .from("github_analysis")
       .select("*")
       .eq("user_id", userId)
-      .maybeSingle() as unknown as { data: GithubAnalysisRow | null; error: { message: string } | null }
+      .maybeSingle()
 
     if (error) {
       console.error("Error fetching github analysis in action, checking local cache:", error)
-      return readLocalCache("github_analysis", userId) as GithubAnalysisRow | null
+      return readLocalCache("github_analysis", userId)
     }
 
     if (!data) {
-      return readLocalCache("github_analysis", userId) as GithubAnalysisRow | null
+      return readLocalCache("github_analysis", userId)
     }
 
     return data
   } catch (e) {
     console.error("getGitHubAnalysis failed, checking local cache:", e)
     try {
-      const session = await getServerSession(authOptions)
-      const supabase = await createClient()
-      const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-      const userId = session?.user?.id || supabaseUser?.id
-      if (userId) {
-        return readLocalCache("github_analysis", userId) as GithubAnalysisRow | null
+      const user = await getCurrentUser()
+      if (user.userId) {
+        return readLocalCache("github_analysis", user.userId)
       }
-    } catch {}
+    } catch (_) {}
     return null
   }
 }

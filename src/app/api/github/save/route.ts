@@ -78,10 +78,11 @@ export async function POST(request: Request) {
     const ext = lang === "python" ? "py" : lang === "typescript" ? "ts" : "js";
 
     // 3. Generate README.md via Groq
-    const apiKey = process.env.INTERVIEW_GROQ_API_KEY;
+    const apiKey = process.env.INTERVIEW_GROQ_API_KEY || process.env.GROQ_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured" }, { status: 500 });
     }
+    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen3.6-2.7b";
 
     const readmePrompt = `You are a senior technical writer. Create a professional, portfolio-grade README.md for a GitHub repository that contains the solution to a coding challenge.
 Make it detailed, well-structured, and rich. Focus on explanation, approach, and code structure. Do not use generic template placeholders.
@@ -100,14 +101,14 @@ ${JSON.stringify(challenge.hidden_tests, null, 2)}
 
 Provide the complete README.md content. Respond with ONLY the markdown content, no JSON, no explanations.`;
 
-    const readmeRes = await fetch("https://api.github.com/openai/v1/chat/completions", {
+    const readmeRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model,
         messages: [{ role: "user", content: readmePrompt }],
         max_tokens: 1536,
         temperature: 0.2
