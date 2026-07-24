@@ -68,14 +68,14 @@ export const authOptions: NextAuthOptions = {
           const password = generateDeterministicPassword(user.email, secret)
 
           // 1. Try to sign in to Supabase auth with deterministic password
-          let { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+          let signInResult = await supabase.auth.signInWithPassword({
             email: user.email,
             password,
           })
 
-          if (signInError) {
+          if (signInResult.error) {
             // 2. If sign in fails, the user might not exist in Supabase auth yet. Try signing up.
-            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+            const { error: signUpError } = await supabase.auth.signUp({
               email: user.email,
               password,
             })
@@ -86,22 +86,20 @@ export const authOptions: NextAuthOptions = {
             }
 
             // 3. Retry signing in to set session cookies
-            const { data: retryData, error: retryError } = await supabase.auth.signInWithPassword({
+            signInResult = await supabase.auth.signInWithPassword({
               email: user.email,
               password,
             })
 
-            if (retryError) {
-              console.error("Google login: Failed to sign in to auto-provisioned Supabase account:", retryError.message)
+            if (signInResult.error) {
+              console.error("Google login: Failed to sign in to auto-provisioned Supabase account:", signInResult.error.message)
               return false
             }
-
-            signInData = retryData
           }
 
           // Store the Supabase user ID inside the NextAuth user object for session/jwt callbacks
-          if (signInData?.user) {
-            user.id = signInData.user.id
+          if (signInResult.data.user) {
+            user.id = signInResult.data.user.id
           }
         } catch (err) {
           console.error("Google login: Unexpected error during Supabase sync:", err)
@@ -110,7 +108,7 @@ export const authOptions: NextAuthOptions = {
       }
       return true
     },
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id
         token.email = user.email
@@ -120,8 +118,8 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
-      if (session.user) {
-        ;(session.user as any).id = token.id as string
+      if (session.user && token.id) {
+        session.user.id = token.id
         session.user.email = token.email as string
         session.user.name = token.name as string
         session.user.image = token.picture as string

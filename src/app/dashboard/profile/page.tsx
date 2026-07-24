@@ -4,24 +4,41 @@ import { redirect } from "next/navigation"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { DEFAULT_BADGES } from "@/lib/badgesData"
-import ProfileContent from "./profile-content"
+import ProfileContent, { type GitHubAnalysisData as GitHubAnalysisDataForProfile } from "./profile-content"
 import { readLocalCache } from "@/lib/localCache"
+import type { GithubAnalysisRow, BadgeRow, UserBadgeRow } from "@/types/db"
 
-// Mock data for demo fallback
-const mockHistory = [
-  { id: "1", category: "technical", score: 82, date: "2026-05-19T12:00:00Z", status: "completed" },
-  { id: "2", category: "hr", score: 91, date: "2026-05-17T14:30:00Z", status: "completed" },
-  { id: "3", category: "mixed", score: 76, date: "2026-05-14T09:15:00Z", status: "completed" },
-]
+interface DisplayInterview {
+  id: string
+  category: string
+  score: number
+  date: string
+  status: string
+}
+
+interface BadgeMeta {
+  slug: string
+  name: string
+  description: string
+  category: string
+  icon: string
+  rarity: string
+}
+
+interface ActiveUser {
+  id?: string
+  name?: string | null
+  email?: string | null
+  avatar_url?: string | null
+}
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions)
   const cookieStore = await cookies()
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-  
-  let supabaseUser = null
-  let activeUser = null
-  let userId = null
+
+  let activeUser: ActiveUser | null = null
+  let userId: string | null = null
 
   const isDemoMode = hasDemoCookie
 
@@ -35,7 +52,7 @@ export default async function ProfilePage() {
           email: parsed.email,
           avatar_url: parsed.avatar_url,
         }
-      } catch (err) {
+      } catch {
         // fallback
       }
     }
@@ -48,8 +65,8 @@ export default async function ProfilePage() {
     }
     userId = "demo-user-id"
   } else {
-    activeUser = session?.user as any
-    userId = (session?.user as any)?.id
+    activeUser = session?.user ? { id: session.user.id, name: session.user.name, email: session.user.email, avatar_url: session.user.image } : null
+    userId = session?.user?.id ?? null
   }
 
   const supabase = isDemoMode ? null : await createClient()
@@ -57,10 +74,9 @@ export default async function ProfilePage() {
   if (!isDemoMode && supabase) {
     try {
       const { data } = await supabase.auth.getUser()
-      supabaseUser = data?.user || null
-      if (supabaseUser) {
-        activeUser = supabaseUser
-        userId = supabaseUser.id
+      if (data?.user) {
+        activeUser = { id: data.user.id, email: data.user.email }
+        userId = data.user.id
       }
     } catch (err) {
       console.error("ProfilePage: Failed to fetch Supabase user:", err)
@@ -71,7 +87,7 @@ export default async function ProfilePage() {
     redirect("/login")
   }
 
-  let initialProfile: { username: string; avatar_url: string; resume_text: string; github_autosave: boolean } = {
+  let initialProfile: { username: string; avatar_url: string; resume_text: string; github_autosave: boolean; current_streak?: number; longest_streak?: number } = {
     username: "User",
     avatar_url: "user-tie",
     resume_text: "",
@@ -79,9 +95,9 @@ export default async function ProfilePage() {
   }
   let userEmail = activeUser.email || ""
   let createdAt = new Date().toISOString()
-  let interviews: any[] = []
+  let interviews: DisplayInterview[] = []
   let subscriptionTier = "free"
-  let githubAnalysis: any = null
+  let githubAnalysis: GithubAnalysisRow | null = null
 
   if (isDemoMode) {
     let resumeText = ""
@@ -90,7 +106,7 @@ export default async function ProfilePage() {
       try {
         const parsed = JSON.parse(customResume)
         resumeText = parsed.resumeText || resumeText
-      } catch (e) {}
+      } catch {}
     }
 
     initialProfile = {
@@ -132,16 +148,16 @@ export default async function ProfilePage() {
         .from("github_analysis")
         .select("*")
         .eq("user_id", userId)
-        .maybeSingle()
-      
+        .maybeSingle() as unknown as { data: GithubAnalysisRow | null; error: { message: string } | null }
+
       if (error || !cached) {
-        githubAnalysis = readLocalCache("github_analysis", userId)
+        githubAnalysis = readLocalCache("github_analysis", userId) as unknown as GithubAnalysisRow | null
       } else {
         githubAnalysis = cached
       }
     } catch (e) {
       console.error("Failed to fetch cached github analysis, checking local cache:", e)
-      githubAnalysis = readLocalCache("github_analysis", userId)
+      githubAnalysis = readLocalCache("github_analysis", userId) as unknown as GithubAnalysisRow | null
     }
 
     // 2. Fetch interviews and feedback
@@ -160,7 +176,7 @@ export default async function ProfilePage() {
       .order("created_at", { ascending: false })
 
     if (interviewsData) {
-      interviews = (interviewsData as any[]).map((item: any) => {
+      interviews = (interviewsData as unknown as Array<{ id: string; category: string; status: string; created_at: string; feedback: { score: number }[] }>).map((item) => {
         const score = item.feedback && item.feedback[0] ? item.feedback[0].score : 75
         return {
           id: item.id,
@@ -173,17 +189,17 @@ export default async function ProfilePage() {
     }
   }
 
-  let allBadges: any[] = []
-  let userBadges: any[] = []
+  let allBadges: BadgeMeta[] = []
+  let userBadges: UserBadgeRow[] = []
   let totalActivities = interviews.length
 
   if (!isDemoMode && supabase && userId) {
     // Fetch all badges
-    const { data: badgesData } = await supabase.from("badges").select("*")
+    const { data: badgesData } = await supabase.from("badges").select("*") as unknown as { data: BadgeRow[] | null }
     if (badgesData) allBadges = badgesData
-    
+
     // Fetch user's earned badges
-    const { data: earnedBadgesData } = await supabase.from("user_badges").select("*").eq("user_id", userId)
+    const { data: earnedBadgesData } = await supabase.from("user_badges").select("*").eq("user_id", userId) as unknown as { data: UserBadgeRow[] | null }
     if (earnedBadgesData) userBadges = earnedBadgesData
     
     // Add coding sessions to total activities
@@ -219,7 +235,7 @@ export default async function ProfilePage() {
           interviews={interviews}
           subscriptionTier={subscriptionTier}
           hasGitHubToken={hasGitHubToken}
-          initialGitHubAnalysis={githubAnalysis}
+          initialGitHubAnalysis={githubAnalysis as unknown as GitHubAnalysisDataForProfile}
           allBadges={allBadges}
           userBadges={userBadges}
           totalActivities={totalActivities}

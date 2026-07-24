@@ -1,7 +1,14 @@
-import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
+import { pageMetadata } from "@/lib/seo"
+
+export const metadata = pageMetadata({
+  title: "Terms of Service",
+  description:
+    "The terms that govern your use of Almaprep's interview-practice platform for students and institutions.",
+  path: "/terms",
+})
 
 export default function TermsPage() {
   return (
@@ -29,7 +36,7 @@ export default function TermsPage() {
             <p>Enterprise features are provided under a separate agreement between Almaprep and the institution, which governs pricing, data handling, and support.</p>
 
             <h2>Disclaimer</h2>
-            <p>Almaprep helps you prepare; it does not guarantee any admission, scholarship, or job outcome. The service is provided "as is".</p>
+            <p>Almaprep helps you prepare; it does not guarantee any admission, scholarship, or job outcome. The service is provided &quot;as is&quot;.</p>
 
             <h2>Contact</h2>
             <p>Questions about these terms? Email <a href="mailto:legal@almaprep.app">legal@almaprep.app</a>.</p>

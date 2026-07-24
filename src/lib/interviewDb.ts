@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { createClient } from "@/lib/supabase/server";
+import type { TestResults } from "@/types/db";
 
 // Define the environment check for mock mode
 const isMockMode =
@@ -10,10 +11,16 @@ const isMockMode =
 
 const MOCK_DB_PATH = path.join(process.cwd(), "data", "interview_mock_db.json");
 
+interface MockDb {
+  challenges: Challenge[];
+  interview_sessions: InterviewSession[];
+  interview_reports: InterviewReport[];
+}
+
 // Helper to get mock data from JSON file
-function getMockDb() {
+function getMockDb(): MockDb {
   if (!fs.existsSync(MOCK_DB_PATH)) {
-    const initial = {
+    const initial: MockDb = {
       challenges: [],
       interview_sessions: [],
       interview_reports: []
@@ -24,7 +31,7 @@ function getMockDb() {
   }
   try {
     const content = fs.readFileSync(MOCK_DB_PATH, "utf8");
-    return JSON.parse(content);
+    return JSON.parse(content) as MockDb;
   } catch (e) {
     console.error("Error reading mock database JSON:", e);
     return { challenges: [], interview_sessions: [], interview_reports: [] };
@@ -32,7 +39,7 @@ function getMockDb() {
 }
 
 // Helper to save mock data to JSON file
-function saveMockDb(data: any) {
+function saveMockDb(data: MockDb) {
   try {
     fs.writeFileSync(MOCK_DB_PATH, JSON.stringify(data, null, 2), "utf8");
   } catch (e) {
@@ -47,8 +54,8 @@ export interface Challenge {
   challenge_type: "bug_fix" | "feature" | "refactor" | "security" | "performance";
   difficulty: "easy" | "medium" | "hard";
   starter_code: Record<string, string>;
-  hidden_tests: any[];
-  expected_outcomes: any;
+  hidden_tests: Record<string, unknown>[];
+  expected_outcomes: Record<string, unknown>;
   language?: string;
   created_at?: string;
 }
@@ -57,7 +64,7 @@ export interface InterviewSession {
   id: string;
   user_id: string;
   challenge_id: string;
-  conversation: any[];
+  conversation: Record<string, unknown>[];
   current_codebase: Record<string, string>;
   submitted_code: Record<string, string> | null;
   status: "in_progress" | "submitted" | "evaluated";
@@ -69,13 +76,13 @@ export interface InterviewReport {
   id: string;
   session_id: string;
   user_id: string;
-  scores: any;
+  scores: Record<string, number>;
   strengths: string[];
   weaknesses: string[];
   hiring_recommendation: string;
   recommendation_reasoning: string;
   overall_score: number;
-  test_results: any;
+  test_results: TestResults;
   generated_at?: string;
 }
 
@@ -118,7 +125,7 @@ export async function getChallengeById(id: string): Promise<Challenge | null> {
   return data;
 }
 
-export async function createSession(userId: string, challengeId: string, starterCode: any): Promise<InterviewSession> {
+export async function createSession(userId: string, challengeId: string, starterCode: Record<string, string>): Promise<InterviewSession> {
   const newSession: Partial<InterviewSession> = {
     id: typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2) + Date.now().toString(36),
     user_id: userId,
@@ -133,7 +140,7 @@ export async function createSession(userId: string, challengeId: string, starter
 
   if (isMockMode) {
     const db = getMockDb();
-    db.interview_sessions.push(newSession);
+    db.interview_sessions.push(newSession as InterviewSession);
     saveMockDb(db);
     return newSession as InterviewSession;
   }
@@ -212,7 +219,7 @@ export async function createReport(reportData: Omit<InterviewReport, "id" | "gen
 
   if (isMockMode) {
     const db = getMockDb();
-    db.interview_reports.push(newReport);
+    db.interview_reports.push(newReport as InterviewReport);
     saveMockDb(db);
     return newReport as InterviewReport;
   }

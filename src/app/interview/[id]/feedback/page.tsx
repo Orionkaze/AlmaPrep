@@ -3,20 +3,26 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { use, useState, useEffect } from "react"
+import { use, useState, useEffect, useRef } from "react"
+import { toast } from "sonner"
+import { track, EVENTS } from "@/lib/analytics"
+import { SITE_URL } from "@/lib/siteConfig"
+import BadgeNotifier from "@/components/BadgeNotifier"
 import { 
   Check, 
   Lightbulb, 
   BookOpen, 
   ChevronDown, 
   ChevronUp, 
-  ClipboardCheck, 
-  UserRound, 
+  ClipboardCheck,
+  UserRound,
   ShieldAlert,
-  ArrowLeft
+  ArrowLeft,
+  Share2
 } from "lucide-react"
 import { getFeedback, getBehavioralReport, getInterviewSession } from "@/app/actions/interview"
-import BehavioralReport from "@/components/BehavioralReport"
+import BehavioralReport, { type AnswerScore, type PhysicalMetric, type SpeakingAnalysis } from "@/components/BehavioralReport"
+import type { ViolationRecord } from "@/components/ProctoringMonitor"
 
 const categoryLabels: Record<string, string> = {
   hr: "HR Interview",
@@ -117,13 +123,13 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
   const { id } = use(params)
   const [feedback, setFeedback] = useState<typeof demoFeedback | null>(null)
   const [behavioralData, setBehavioralData] = useState<{
-    answerScores: any[]
-    physicalMetrics: any[]
+    answerScores: AnswerScore[]
+    physicalMetrics: PhysicalMetric[]
     finalReport: string
-    speakingAnalysis?: any
+    speakingAnalysis?: SpeakingAnalysis
   } | null>(null)
   const [proctoringData, setProctoringData] = useState<{
-    violations: any[]
+    violations: ViolationRecord[]
     totalCount: number
     isFlagged: boolean
     terminatedEarly: boolean
@@ -137,6 +143,40 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       ...prev,
       [idx]: !prev[idx]
     }))
+  }
+
+  // Fire interview_completed exactly once, when the feedback first loads.
+  const completedFired = useRef(false)
+  useEffect(() => {
+    if (feedback && !completedFired.current) {
+      completedFired.current = true
+      track(EVENTS.INTERVIEW_COMPLETED, {
+        score: feedback.score,
+        real_session: !!(id && id.length >= 36),
+      })
+    }
+  }, [feedback, id])
+
+  const handleShare = async () => {
+    if (!feedback) return
+    const url = SITE_URL
+    const text = `I scored ${feedback.score}/100 on my Almaprep mock interview. Practicing for the real thing — free at ${url}`
+    track(EVENTS.RESULT_SHARED, { score: feedback.score })
+    // Native share sheet on mobile / supported browsers; clipboard fallback otherwise.
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ title: "My Almaprep mock interview result", text, url })
+        return
+      } catch {
+        // user cancelled or share failed — fall through to clipboard
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(text)
+      toast.success("Result copied — paste it anywhere to share.")
+    } catch {
+      toast.error("Couldn't copy automatically. Select and copy your score to share.")
+    }
   }
 
   useEffect(() => {
@@ -160,7 +200,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
 
         const sessionRecord = await getInterviewSession(id)
         if (sessionRecord && sessionRecord.proctoring_log) {
-          setProctoringData(sessionRecord.proctoring_log)
+          setProctoringData(sessionRecord.proctoring_log as unknown as { violations: ViolationRecord[]; totalCount: number; isFlagged: boolean; terminatedEarly: boolean })
         }
       }
 
@@ -329,6 +369,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       <div className="fixed top-0 left-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="fixed bottom-0 right-1/3 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
 
+      <BadgeNotifier />
       <div className="relative z-10 max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="mb-8">
@@ -364,6 +405,13 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
           <h2 className="text-lg font-semibold text-muted-foreground mb-4" style={headingStyle}>Overall Performance</h2>
           <ScoreCircle score={feedback.score} />
           <p className="text-muted-foreground mt-6 max-w-lg text-sm leading-relaxed">{feedback.summary}</p>
+          <Button
+            variant="outline"
+            onClick={handleShare}
+            className="mt-6 h-10 px-5 cursor-pointer gap-2 text-sm font-semibold"
+          >
+            <Share2 size={15} strokeWidth={1.9} /> Share result
+          </Button>
         </Card>
 
         {/* Breakdown */}
@@ -504,7 +552,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
               <div className="space-y-3">
                 <h3 className="text-xs uppercase font-bold text-muted-foreground tracking-wider mb-2" style={headingStyle}>Violations Log</h3>
                 <div className="space-y-2">
-                  {proctoringData.violations.map((v: any, index: number) => {
+                  {proctoringData.violations.map((v, index) => {
                     let label = "";
                     switch (v.type) {
                       case "tab_switch":

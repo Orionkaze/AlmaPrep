@@ -14,7 +14,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog"
 import Link from "next/link"
-import { useState, useRef, useEffect, use } from "react"
+import { useState, useRef, useEffect, useMemo, use } from "react"
 import { Mic, MicOff, PhoneOff, MessageSquare, Send, X, VideoOff } from "lucide-react"
 import {
   getNextQuestion,
@@ -29,7 +29,7 @@ import {
   generateSessionSpeakingSummary,
   saveProctoringLog,
 } from "@/app/actions/interview"
-import { parseSpeakingMetrics } from "@/lib/speakingParser"
+import { parseSpeakingMetrics, SpeakingMetrics } from "@/lib/speakingParser"
 import BehavioralAnalysis from "@/components/BehavioralAnalysis"
 import RealTimeHint from "@/components/RealTimeHint"
 import ProctoringMonitor, { ViolationRecord } from "@/components/ProctoringMonitor"
@@ -37,10 +37,33 @@ import { ShieldAlert } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 // SpeechRecognition type declarations for TS
+interface SpeechRecognitionResultLike {
+  transcript: string
+}
+
+interface SpeechRecognitionEventLike {
+  results: ArrayLike<ArrayLike<SpeechRecognitionResultLike>>
+}
+
+interface SpeechRecognitionErrorEventLike {
+  error: string
+}
+
+interface SpeechRecognitionLike {
+  continuous: boolean
+  interimResults: boolean
+  lang: string
+  start: () => void
+  stop: () => void
+  onresult: ((event: SpeechRecognitionEventLike) => void) | null
+  onerror: ((event: SpeechRecognitionErrorEventLike) => void) | null
+  onend: (() => void) | null
+}
+
 declare global {
   interface Window {
-    SpeechRecognition: any;
-    webkitSpeechRecognition: any;
+    SpeechRecognition: new () => SpeechRecognitionLike;
+    webkitSpeechRecognition: new () => SpeechRecognitionLike;
   }
 }
 
@@ -48,6 +71,28 @@ interface Message {
   id: string
   role: "user" | "ai"
   content: string
+}
+
+interface AnswerQualityAnalysis {
+  star_score: number
+  relevance_score: number
+  clarity_score: number
+  confidence_score: number
+  hints: string[]
+  summary: string
+}
+
+interface PhysicalMetric {
+  interval_index: number
+  eye_contact_percent: number
+  posture_stability_score: number
+  facial_engagement: "nodding" | "neutral" | "distracted"
+  fidgeting_count: number
+}
+
+interface SpeakingScoreEntry {
+  metrics: SpeakingMetrics
+  feedback: string
 }
 
 const categoryLabels: Record<string, string> = {
@@ -79,7 +124,10 @@ export default function InterviewPage({
   const { resume, persona, githubMode, repos } = use(searchParams)
   const useResume = resume === "true"
   const isGithubMode = githubMode === "true"
-  const selectedRepos = repos ? decodeURIComponent(repos).split(",") : []
+  const selectedRepos = useMemo(
+    () => (repos ? decodeURIComponent(repos).split(",") : []),
+    [repos]
+  )
   const selectedPersona = typeof persona === "string" ? persona : "supportive"
   const category = id || "mixed"
   const router = useRouter()
@@ -101,19 +149,19 @@ export default function InterviewPage({
   // Webcam & Voice states
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isListening, setIsListening] = useState(false)
-  const recognitionRef = useRef<any>(null)
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null)
 
   const [cameraError, setCameraError] = useState<string | null>(null)
 
   // Behavioral Analysis states
-  const [answerScores, setAnswerScores] = useState<any[]>([])
-  const [physicalMetrics, setPhysicalMetrics] = useState<any[]>([])
-  const [speakingScores, setSpeakingScores] = useState<any[]>([])
+  const [, setAnswerScores] = useState<AnswerQualityAnalysis[]>([])
+  const [physicalMetrics, setPhysicalMetrics] = useState<PhysicalMetric[]>([])
+  const [, setSpeakingScores] = useState<SpeakingScoreEntry[]>([])
   const [realTimeHints, setRealTimeHints] = useState<string[]>([])
   const [showHint, setShowHint] = useState(false)
   const [isBehavioralActive, setIsBehavioralActive] = useState(false)
-  const pendingAnalysesRef = useRef<Promise<any>[]>([])
-  const pendingSpeakingAnalysesRef = useRef<Promise<any>[]>([])
+  const pendingAnalysesRef = useRef<Promise<AnswerQualityAnalysis | null>[]>([])
+  const pendingSpeakingAnalysesRef = useRef<Promise<SpeakingScoreEntry | null>[]>([])
 
   // Initialize webcam
   useEffect(() => {
@@ -138,13 +186,15 @@ export default function InterviewPage({
           videoRef.current.srcObject = stream
         }
         setCameraError(null)
-      } catch (err: any) {
+      } catch (err) {
         if (active) {
           console.error("Failed to access webcam:", err)
-          if (err.name === 'NotAllowedError') setCameraError("Camera permission denied.")
-          else if (err.name === 'NotFoundError') setCameraError("No camera found.")
-          else if (err.name === 'NotReadableError') setCameraError("Camera is in use by another app.")
-          else setCameraError(err.message || "Failed to start camera.")
+          const name = err instanceof DOMException ? err.name : undefined
+          const message = err instanceof Error ? err.message : undefined
+          if (name === 'NotAllowedError') setCameraError("Camera permission denied.")
+          else if (name === 'NotFoundError') setCameraError("No camera found.")
+          else if (name === 'NotReadableError') setCameraError("Camera is in use by another app.")
+          else setCameraError(message || "Failed to start camera.")
         }
       }
     }
@@ -166,16 +216,16 @@ export default function InterviewPage({
       recognition.interimResults = true
       recognition.lang = "en-US"
 
-      recognition.onresult = (event: any) => {
+      recognition.onresult = (event) => {
         let newTranscript = ""
         for (let i = 0; i < event.results.length; ++i) {
           newTranscript += event.results[i][0].transcript
         }
-        
+
         setInput(newTranscript)
       }
 
-      recognition.onerror = (event: any) => {
+      recognition.onerror = (event) => {
         if (event.error === "no-speech") {
           console.warn("Speech recognition paused (no-speech)")
         } else {
@@ -277,7 +327,7 @@ export default function InterviewPage({
     return () => {
       active = false
     }
-  }, [category, useResume, isStarted])
+  }, [category, useResume, isStarted, isGithubMode, selectedPersona, selectedRepos])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -418,14 +468,14 @@ export default function InterviewPage({
 
       // Wait for all pending answer quality analyses to complete
       const resolvedScores = await Promise.all(pendingAnalysesRef.current)
-      const validScores = resolvedScores.filter(Boolean)
+      const validScores = resolvedScores.filter((s): s is AnswerQualityAnalysis => Boolean(s))
 
       // Generate final behavioral report
-      const behavioralReportText = await generateBehavioralReport(validScores, physicalMetrics)
+      const behavioralReportText = await generateBehavioralReport(validScores as unknown as Record<string, unknown>[], physicalMetrics as unknown as Record<string, unknown>[])
 
       // Wait for all pending speaking analyses to complete
       const resolvedSpeaking = await Promise.all(pendingSpeakingAnalysesRef.current)
-      const validSpeaking = resolvedSpeaking.filter(Boolean)
+      const validSpeaking = resolvedSpeaking.filter((s): s is SpeakingScoreEntry => Boolean(s))
 
       // Aggregate all speaking metrics
       let totalFillerCount = 0
@@ -435,7 +485,7 @@ export default function InterviewPage({
       let totalHesitations = 0
       const overusedWordsFreq: Record<string, number> = {}
 
-      validSpeaking.forEach((item: any) => {
+      validSpeaking.forEach((item) => {
         const m = item.metrics
         totalFillerCount += m.fillerCount
         
@@ -495,8 +545,8 @@ export default function InterviewPage({
       if (dbSessionId) {
         await saveBehavioralReport(
           dbSessionId,
-          validScores,
-          physicalMetrics,
+          validScores as unknown as Record<string, unknown>[],
+          physicalMetrics as unknown as Record<string, unknown>[],
           behavioralReportText,
           speakingAnalysisData
         )
@@ -510,7 +560,7 @@ export default function InterviewPage({
         terminatedEarly: false
       }
       if (dbSessionId) {
-        await saveProctoringLog(dbSessionId, proctoringLog)
+        await saveProctoringLog(dbSessionId, proctoringLog as unknown as { violations: Record<string, unknown>[]; totalCount: number; isFlagged: boolean; terminatedEarly: boolean })
       }
       const proctoringStorageKey = `proctoring-${dbSessionId || category}`
       localStorage.setItem(proctoringStorageKey, JSON.stringify(proctoringLog))
@@ -552,7 +602,7 @@ export default function InterviewPage({
     }
 
     if (dbSessionId) {
-      await saveProctoringLog(dbSessionId, proctoringLog)
+      await saveProctoringLog(dbSessionId, proctoringLog as unknown as { violations: Record<string, unknown>[]; totalCount: number; isFlagged: boolean; terminatedEarly: boolean })
     }
 
     const proctoringStorageKey = `proctoring-${dbSessionId || category}`

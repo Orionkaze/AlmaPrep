@@ -1,6 +1,33 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { getRequestUserId } from "@/lib/getRequestUserId";
+import type { InterviewWithFeedback, SessionWithSolutionsAndReports, BadgeRow, UserRow } from "@/types/db";
+
+export type EarnedBadge = { slug: string; name: string; icon: string; rarity: string };
+
+// Returns the current user's earned badges (with display info) so the client can
+// diff against what it has already shown and toast the new ones. Demo mode has no
+// real user_badges rows, so it returns [] (no notifications there).
+export async function getEarnedBadges(): Promise<EarnedBadge[]> {
+  try {
+    const userId = await getRequestUserId();
+    if (!userId || userId === "demo-user-id") return [];
+    const supabase = await createClient();
+    const { data } = (await supabase
+      .from("user_badges")
+      .select("badge_slug, badges(name, icon, rarity)")
+      .eq("user_id", userId)) as unknown as {
+      data: { badge_slug: string; badges: { name: string; icon: string; rarity: string } | null }[] | null;
+    };
+    return (data || [])
+      .filter((r) => r.badges)
+      .map((r) => ({ slug: r.badge_slug, name: r.badges!.name, icon: r.badges!.icon, rarity: r.badges!.rarity }));
+  } catch (e) {
+    console.error("getEarnedBadges error:", e);
+    return [];
+  }
+}
 
 export async function checkAndAwardBadges(userId: string) {
   try {
@@ -14,16 +41,16 @@ export async function checkAndAwardBadges(userId: string) {
       { data: codingSessions },
       { data: githubAnalysis }
     ] = await Promise.all([
-      supabase.from("users").select("*").eq("id", userId).single(),
+      supabase.from("users").select("*").eq("id", userId).single() as unknown as Promise<{ data: UserRow | null }>,
       supabase.from("user_badges").select("badge_slug").eq("user_id", userId),
-      supabase.from("interviews").select("*, feedback(*)").eq("user_id", userId).eq("status", "completed").order("created_at", { ascending: false }),
-      supabase.from("interview_sessions").select("*, coding_solutions(*), interview_reports(*)").eq("user_id", userId).in("status", ["completed", "evaluated"]).order("started_at", { ascending: false }),
+      supabase.from("interviews").select("*, feedback(*)").eq("user_id", userId).eq("status", "completed").order("created_at", { ascending: false }) as unknown as Promise<{ data: InterviewWithFeedback[] | null }>,
+      supabase.from("interview_sessions").select("*, coding_solutions(*), interview_reports(*)").eq("user_id", userId).in("status", ["completed", "evaluated"]).order("started_at", { ascending: false }) as unknown as Promise<{ data: SessionWithSolutionsAndReports[] | null }>,
       supabase.from("github_analysis").select("id").eq("user_id", userId).maybeSingle()
     ]);
 
     if (!user) return { success: false, error: "User not found" };
 
-    const earnedSlugs = new Set((earnedBadges || []).map((b: any) => b.badge_slug));
+    const earnedSlugs = new Set((earnedBadges || []).map((b: { badge_slug: string }) => b.badge_slug));
     const newBadges: string[] = [];
 
     // Helper to evaluate and queue badge
@@ -37,7 +64,6 @@ export async function checkAndAwardBadges(userId: string) {
     // Prepare aggregate stats
     const mockCount = interviews?.length || 0;
     const codingCount = codingSessions?.length || 0;
-    const totalActivities = mockCount + codingCount;
     const streak = user.current_streak || 0;
     const createdAt = new Date(user.created_at);
     
@@ -79,7 +105,7 @@ export async function checkAndAwardBadges(userId: string) {
       const details = fb.detailed_metrics || {};
       if (details.fillerWords === 0) zeroFillerWordInterviews++;
       if (details.fillerWords !== undefined && details.fillerWords < 3) lowFillerWordInterviews++;
-      if (details.bodyLanguageScore >= 90) highBodyLanguageInterviews++;
+      if ((details.bodyLanguageScore ?? 0) >= 90) highBodyLanguageInterviews++;
       if (details.violations === 0) zeroViolationInterviews++;
     });
 
@@ -87,9 +113,9 @@ export async function checkAndAwardBadges(userId: string) {
     let firstTrySolves = 0;
     let perfectQualitySolves = 0;
     let fastSolves = 0; // under 5 mins
-    let jsAndPythonSolves = new Set<string>();
+    const jsAndPythonSolves = new Set<string>();
 
-    codingSessions?.forEach((session: any) => {
+    codingSessions?.forEach((session) => {
       const sol = session.coding_solutions?.[0];
       if (sol) {
         if (sol.attempts === 1 && sol.test_results?.passed === sol.test_results?.total) firstTrySolves++;
@@ -160,8 +186,9 @@ export async function checkAndAwardBadges(userId: string) {
 
     // Overachiever: 3+ activities in a single day
     const datesCount: Record<string, number> = {};
-    [...(interviews || []), ...(codingSessions || [])].forEach(act => {
-      const d = new Date(act.created_at || act.started_at).toISOString().split('T')[0];
+    const allActivityDates: Array<{ created_at?: string; started_at?: string }> = [...(interviews || []), ...(codingSessions || [])];
+    allActivityDates.forEach((act) => {
+      const d = new Date(act.created_at || act.started_at || Date.now()).toISOString().split('T')[0];
       datesCount[d] = (datesCount[d] || 0) + 1;
     });
     const maxActsInDay = Math.max(0, ...Object.values(datesCount));
@@ -189,20 +216,20 @@ export async function checkAndAwardBadges(userId: string) {
     }
 
     // 3. Fetch detailed badge info to return to client for UI notification
-    let awardedDetails = [];
+    let awardedDetails: BadgeRow[] = [];
     if (newBadges.length > 0) {
       const { data: badgeDetails } = await supabase
         .from("badges")
         .select("*")
-        .in("slug", newBadges);
-      
+        .in("slug", newBadges) as unknown as { data: BadgeRow[] | null };
+
       awardedDetails = badgeDetails || [];
     }
 
     return { success: true, newlyEarned: awardedDetails };
 
-  } catch (err: any) {
+  } catch (err) {
     console.error("checkAndAwardBadges error:", err);
-    return { success: false, error: err.message };
+    return { success: false, error: err instanceof Error ? err.message : String(err) };
   }
 }

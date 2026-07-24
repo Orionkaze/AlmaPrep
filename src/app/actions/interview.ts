@@ -1,16 +1,16 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
-import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
+import { callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { cookies } from "next/headers"
-import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
 import { updateStreak } from "@/app/actions/streak"
 import { checkAndAwardBadges } from "@/app/actions/badges"
+import type { GithubAnalysisRow, FeedbackRow, InterviewRow } from "@/types/db"
 
 interface MessageInput {
   role: "user" | "ai"
@@ -54,14 +54,14 @@ export async function getNextQuestion(
           const { data: analysis } = await supabase
             .from("github_analysis")
             .select("questions")
-            .maybeSingle()
+            .maybeSingle() as unknown as { data: Pick<GithubAnalysisRow, "questions"> | null }
 
           if (analysis && Array.isArray(analysis.questions)) {
             const difficulty = questionIndex === 1 ? "easy" : questionIndex === 4 ? "medium" : "hard"
             const match = analysis.questions.find(
-              (q: any) => q.repo === currentRepoName && q.difficulty === difficulty
+              (q) => q.repo === currentRepoName && q.difficulty === difficulty
             )
-            const fallbackMatch = analysis.questions.find((q: any) => q.repo === currentRepoName)
+            const fallbackMatch = analysis.questions.find((q) => q.repo === currentRepoName)
             const targetQuestion = match?.question || fallbackMatch?.question
 
             if (targetQuestion) {
@@ -104,10 +104,10 @@ export async function getNextQuestion(
 
       try {
         const nextResponse = await callAIWithSource(
-          JSON.stringify({ 
-            category, 
-            previousMessages, 
-            useResume, 
+          JSON.stringify({
+            category,
+            previousMessages,
+            useResume,
             persona,
             mode: "github",
             selectedRepos,
@@ -116,26 +116,13 @@ export async function getNextQuestion(
           "next_question",
           userTier
         )
-        return { 
-          question: nextResponse.result, 
-          source: "github_repo", 
-          repo_name: currentRepoName 
-        }
-      } catch (err: any) {
-        console.error("AI routing failed for github follow-up, falling back to general", err)
-      }
-    }
-
-    // Default: General track question generation (Optionally customized with Resume)
-    let resumeText = ""
-    if (useResume) {
-      try {
-        const res = await getResumeData()
-        if (res.success && res.data?.resumeText) {
-          resumeText = res.data.resumeText
+        return {
+          question: nextResponse.result,
+          source: "github_repo",
+          repo_name: currentRepoName
         }
       } catch (err) {
-        console.error("Failed to fetch resume text in getNextQuestion:", err)
+        console.error("AI routing failed for github follow-up, falling back to general", err)
       }
     }
 
@@ -170,8 +157,9 @@ export async function getNextQuestion(
         userTier
       )
       return { question: nextResponse.result, source: nextResponse.source }
-    } catch (err: any) {
-      if (err.message && err.message.includes("free interviews")) {
+    } catch (err) {
+      const errMessage = err instanceof Error ? err.message : String(err)
+      if (errMessage.includes("free interviews")) {
         return {
           question: `[Limit Reached] You've used all 3 free interviews this month. Upgrade to Pro for unlimited access.`,
           source: "system"
@@ -212,10 +200,11 @@ export async function getNextQuestion(
 
       return { question: selectedQuestion, source: "vetted_fallback" }
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in getNextQuestion Server Action:", error)
+    const errMessage = error instanceof Error ? error.message : "Unknown"
     return {
-      question: `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
+      question: `[System Error: ${errMessage}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
       source: "error"
     }
   }
@@ -261,43 +250,10 @@ export async function generateFeedback(
   }
 
   try {
-    const transcript = messages
-      .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
-      .join("\n")
-
-    const systemPrompt = `You are an expert interviewer evaluating a candidate's performance in a mock interview for the category: "${category}".`
-    const prompt = `Analyze the following transcript of the mock interview:
-${transcript}
-
-Evaluate the candidate's answers based on communication, technical depth, structured delivery, and confidence.
-Respond ONLY with a valid JSON object matching this exact structure:
-{
-  "score": <number between 0 and 100>,
-  "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
-  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
-  "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
-  "questionEvaluation": [
-    {
-      "question": "<the exact question asked from the question bank (or standard track)>",
-      "userAnswer": "<brief summary of candidate's answer>",
-      "score": <score for this answer, number between 0 and 100>,
-      "feedback": "<constructive feedback for this answer comparing it to what we look for>",
-      "modelAnswer": "<the ideal answer or model answer from the question bank (or standard track)>"
-    }
-  ],
-  "studyGuide": [
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
-  ],
-  "breakdown": [
-    { "label": "Communication", "score": <number> },
-    { "label": "Technical Knowledge", "score": <number> },
-    { "label": "Problem Solving", "score": <number> },
-    { "label": "Confidence", "score": <number> }
-  ]
-}
-
-Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
+    // Note: the JSON contract (score/summary/strengths/improvements/questionEvaluation/
+    // studyGuide/breakdown) is sent to the "generate_feedback" task via
+    // `callAI(JSON.stringify({ category, messages }), "generate_feedback", userTier)` below;
+    // the routing layer builds the actual system/user prompt server-side for that task.
 
     interface FeedbackJson {
       score: number
@@ -357,11 +313,12 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       questionEvaluation: Array.isArray(data.questionEvaluation) ? data.questionEvaluation : [],
       breakdown,
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error("LLM Error in generateFeedback:", error)
+    const errMessage = error instanceof Error ? error.message : "Unknown"
     return {
       ...fallbackFeedback,
-      summary: `[System Error generating actual feedback: ${error?.message || "Unknown"}]. Here is a simulated analysis instead.`
+      summary: `[System Error generating actual feedback: ${errMessage}]. Here is a simulated analysis instead.`
     }
   }
 }
@@ -384,7 +341,7 @@ export async function createInterviewSession(
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) return null
 
@@ -432,7 +389,7 @@ export async function saveInterviewMessage(
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) return false
 
@@ -481,7 +438,7 @@ export async function saveInterviewFeedback(
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) return false
 
@@ -512,7 +469,7 @@ export async function saveInterviewFeedback(
       .catch(e => console.error("Streak error:", e));
     const badgePromise = checkAndAwardBadges(userId)
       .catch(e => console.error("Badge error:", e));
-      
+
     await Promise.allSettled([streakPromise, badgePromise]);
 
     if (error) {
@@ -539,7 +496,7 @@ export async function getFeedback(interviewId: string) {
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) return null
 
@@ -547,10 +504,14 @@ export async function getFeedback(interviewId: string) {
       .from("feedback")
       .select("*")
       .eq("interview_id", interviewId)
-      .single()
+      .single() as unknown as { data: FeedbackRow | null; error: { message: string } | null }
 
     if (error) {
       console.error("Error fetching feedback from Supabase:", error)
+      return null
+    }
+
+    if (!data) {
       return null
     }
 
@@ -648,8 +609,8 @@ Candidate's Answer: "${answer}"`
  * Generates the final behavioral report based on answer scores and physical metrics.
  */
 export async function generateBehavioralReport(
-  answerScores: any[],
-  physicalMetrics: any[]
+  answerScores: Record<string, unknown>[],
+  physicalMetrics: Record<string, unknown>[]
 ): Promise<string> {
   try {
     const systemPrompt = `You are an expert public speaking, communications, and career coach.
@@ -685,10 +646,10 @@ Physical Behavior Metrics: ${JSON.stringify(physicalMetrics)}`
  */
 export async function saveBehavioralReport(
   sessionId: string,
-  answerScores: any[],
-  physicalMetrics: any[],
+  answerScores: Record<string, unknown>[],
+  physicalMetrics: Record<string, unknown>[],
   finalReport: string,
-  speakingAnalysis?: any
+  speakingAnalysis?: Record<string, unknown>
 ): Promise<boolean> {
   try {
     const cookieStore = await cookies()
@@ -699,7 +660,7 @@ export async function saveBehavioralReport(
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) return false
 
@@ -734,7 +695,7 @@ export async function saveBehavioralReport(
         speaking_analysis: speakingAnalysis || null
       })
       return true
-    } catch (_) {}
+    } catch {}
     return false
   }
 }
@@ -752,7 +713,7 @@ export async function getBehavioralReport(sessionId: string) {
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) return null
 
@@ -871,7 +832,7 @@ Keep the summary concise and engaging (1 paragraph of 3-4 sentences). Do not inc
 export async function saveProctoringLog(
   interviewId: string,
   log: {
-    violations: any[];
+    violations: Record<string, unknown>[];
     totalCount: number;
     isFlagged: boolean;
     terminatedEarly: boolean;
@@ -919,7 +880,7 @@ export async function getInterviewSession(interviewId: string) {
       .from("interviews")
       .select("*")
       .eq("id", interviewId)
-      .maybeSingle()
+      .maybeSingle() as unknown as { data: InterviewRow | null; error: { message: string } | null }
 
     if (error) {
       console.error("Error fetching interview session from Supabase:", error)
@@ -948,7 +909,7 @@ export async function checkGitHubConnection(): Promise<boolean> {
 /**
  * Fetches the user's cached GitHub analysis from Supabase on the server.
  */
-export async function getGitHubAnalysis(): Promise<any | null> {
+export async function getGitHubAnalysis(): Promise<GithubAnalysisRow | null> {
   try {
     const cookieStore = await cookies()
     if (cookieStore.has("mockmate-demo-session")) {
@@ -958,7 +919,7 @@ export async function getGitHubAnalysis(): Promise<any | null> {
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) return null
 
@@ -966,15 +927,15 @@ export async function getGitHubAnalysis(): Promise<any | null> {
       .from("github_analysis")
       .select("*")
       .eq("user_id", userId)
-      .maybeSingle()
+      .maybeSingle() as unknown as { data: GithubAnalysisRow | null; error: { message: string } | null }
 
     if (error) {
       console.error("Error fetching github analysis in action, checking local cache:", error)
-      return readLocalCache("github_analysis", userId)
+      return readLocalCache("github_analysis", userId) as GithubAnalysisRow | null
     }
 
     if (!data) {
-      return readLocalCache("github_analysis", userId)
+      return readLocalCache("github_analysis", userId) as GithubAnalysisRow | null
     }
 
     return data
@@ -984,11 +945,11 @@ export async function getGitHubAnalysis(): Promise<any | null> {
       const session = await getServerSession(authOptions)
       const supabase = await createClient()
       const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-      const userId = (session?.user as any)?.id || supabaseUser?.id
+      const userId = session?.user?.id || supabaseUser?.id
       if (userId) {
-        return readLocalCache("github_analysis", userId)
+        return readLocalCache("github_analysis", userId) as GithubAnalysisRow | null
       }
-    } catch (_) {}
+    } catch {}
     return null
   }
 }

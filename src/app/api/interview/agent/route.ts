@@ -1,5 +1,25 @@
 import { NextResponse } from "next/server";
 import { getSessionById, getChallengeById, updateSession } from "@/lib/interviewDb";
+import { getRequestUserId } from "@/lib/getRequestUserId";
+import { isRateLimited } from "@/lib/rateLimit";
+
+interface AgentConversationMessage {
+  role: string;
+  content: unknown;
+}
+
+interface GroqProposedChange {
+  filename: string;
+  original: string;
+  replacement: string;
+  explanation: string;
+}
+
+interface GroqAgentResponse {
+  reasoning: string;
+  proposed_changes: GroqProposedChange[];
+  follow_up: string;
+}
 
 function cleanJsonResponseText(text: string): string {
   let cleaned = text.trim();
@@ -18,10 +38,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing session_id or user_message" }, { status: 400 });
     }
 
+    const userId = await getRequestUserId();
+    if (!userId) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
+    if (await isRateLimited(`agent:${userId}`, 20, 60_000)) {
+      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 });
+    }
+
     // Fetch session and challenge
     const session = await getSessionById(session_id);
     if (!session) {
       return NextResponse.json({ error: "Session not found" }, { status: 404 });
+    }
+    if (session.user_id !== userId) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const challenge = await getChallengeById(session.challenge_id);
@@ -30,7 +61,7 @@ export async function POST(request: Request) {
     }
 
     // Append user message to conversation history
-    const conversation = [...(session.conversation || [])];
+    const conversation: AgentConversationMessage[] = [...(session.conversation || [])] as unknown as AgentConversationMessage[];
     conversation.push({ role: "user", content: user_message });
 
     // Build the codebase representation string
@@ -71,7 +102,7 @@ ${codebaseStr.trim()}`;
     // Format message history for Groq
     const groqMessages = [
       { role: "system", content: systemPrompt },
-      ...conversation.map((msg: any) => ({
+      ...conversation.map((msg) => ({
         role: msg.role === "assistant" ? "assistant" : "user",
         content: typeof msg.content === "string" ? msg.content : JSON.stringify(msg.content)
       }))
@@ -103,21 +134,21 @@ ${codebaseStr.trim()}`;
     const rawContent = data.choices?.[0]?.message?.content || "";
     const cleanedContent = cleanJsonResponseText(rawContent);
 
-    let parsedResponse: any;
+    let parsedResponse: GroqAgentResponse;
     try {
       parsedResponse = JSON.parse(cleanedContent);
-    } catch (parseErr) {
+    } catch {
       console.error("Failed to parse Groq response as JSON:", rawContent);
       return NextResponse.json({ error: "agent_parse_error", raw: rawContent });
     }
 
     // Append agent response to conversation and save
     conversation.push({ role: "assistant", content: parsedResponse });
-    await updateSession(session_id, { conversation });
+    await updateSession(session_id, { conversation: conversation as unknown as Record<string, unknown>[] });
 
     return NextResponse.json({ agent_response: parsedResponse });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error in /api/interview/agent route:", err);
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
   }
 }

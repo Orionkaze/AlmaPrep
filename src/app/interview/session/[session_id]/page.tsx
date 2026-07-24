@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef, use } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import {
-  ChevronLeft,
   Clock,
   Play,
   Send,
@@ -18,10 +17,8 @@ import {
   HelpCircle,
   Maximize2,
   GitBranch,
-  Settings,
   Lock,
   Globe,
-  RefreshCw,
   Terminal,
   Code2,
   AlertCircle,
@@ -31,11 +28,6 @@ import {
 // Lazy-load Monaco Editor
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), { ssr: false });
 
-interface Message {
-  role: "user" | "assistant";
-  content: any; // Can be string or JSON object
-}
-
 interface DiffChange {
   filename: string;
   original: string;
@@ -43,8 +35,72 @@ interface DiffChange {
   explanation: string;
 }
 
+interface AgentResponseContent {
+  reasoning: string;
+  proposed_changes: DiffChange[];
+  follow_up: string;
+}
+
+interface Message {
+  role: "user" | "assistant";
+  content: string | AgentResponseContent; // user messages are plain strings; assistant messages may be raw text or parsed JSON
+}
+
+interface HiddenTest {
+  test_id?: string;
+  description?: string;
+  input_args?: unknown;
+  expected_output?: unknown;
+  [key: string]: unknown;
+}
+
+interface Challenge {
+  id: string;
+  title: string;
+  description?: string;
+  language: string;
+  difficulty?: string;
+  starter_code?: Record<string, string>;
+  hidden_tests?: HiddenTest[];
+  [key: string]: unknown;
+}
+
+interface TestRunResultEntry {
+  input?: unknown;
+  expected?: unknown;
+  actual?: unknown;
+  passed: boolean;
+}
+
+interface TestRunResults {
+  passed: number;
+  failed?: number;
+  total: number;
+  results?: TestRunResultEntry[];
+}
+
+interface LogicFeedback {
+  logicScore: number;
+  timeComplexity: string;
+  spaceComplexity: string;
+  edgeCasesMissed: string[];
+  logicFeedback: string;
+}
+
+interface QualityFeedback {
+  qualityScore: number;
+  readabilityScore: number;
+  issues: string[];
+  suggestions: string[];
+}
+
+interface EvaluationFeedback {
+  logic?: LogicFeedback;
+  quality?: QualityFeedback;
+}
+
 // Deep equality helper for comparing actual vs expected outputs
-function deepEqual(a: any, b: any): boolean {
+function deepEqual(a: unknown, b: unknown): boolean {
   if (a === b) return true;
   if (a && b && typeof a === 'object' && typeof b === 'object') {
     if (Array.isArray(a)) {
@@ -59,7 +115,7 @@ function deepEqual(a: any, b: any): boolean {
     if (keysA.length !== keysB.length) return false;
     for (const key of keysA) {
       if (!keysB.includes(key)) return false;
-      if (!deepEqual(a[key], b[key])) return false;
+      if (!deepEqual((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key])) return false;
     }
     return true;
   }
@@ -69,7 +125,7 @@ function deepEqual(a: any, b: any): boolean {
 // Dynamic script loader for Pyodide
 const loadPyodideScript = () => {
   return new Promise<void>((resolve, reject) => {
-    if ((window as any).loadPyodide) {
+    if ((window as unknown as { loadPyodide?: unknown }).loadPyodide) {
       resolve();
       return;
     }
@@ -82,7 +138,11 @@ const loadPyodideScript = () => {
   });
 };
 
-let pyodideInstance: any = null;
+interface PyodideInstance {
+  runPythonAsync: (code: string) => Promise<string>;
+}
+
+let pyodideInstance: PyodideInstance | null = null;
 
 export default function InterviewWorkspacePage({
   params
@@ -93,7 +153,7 @@ export default function InterviewWorkspacePage({
   const router = useRouter();
 
   // Core workspace state
-  const [challenge, setChallenge] = useState<any>(null);
+  const [challenge, setChallenge] = useState<Challenge | null>(null);
   const [codebase, setCodebase] = useState<Record<string, string>>({});
   const [currentFile, setCurrentFile] = useState<string>("");
   const [conversation, setConversation] = useState<Message[]>([]);
@@ -119,8 +179,8 @@ export default function InterviewWorkspacePage({
   const [githubAutosave, setGithubAutosave] = useState(false);
   
   // Submit evaluation layers feedback
-  const [testRunResults, setTestRunResults] = useState<any>(null);
-  const [evaluationFeedback, setEvaluationFeedback] = useState<any>(null);
+  const [testRunResults, setTestRunResults] = useState<TestRunResults | null>(null);
+  const [evaluationFeedback, setEvaluationFeedback] = useState<EvaluationFeedback | null>(null);
   const [attemptsCount, setAttemptsCount] = useState(1);
   const [showResultsModal, setShowResultsModal] = useState(false);
   const [runningTestIndex, setRunningTestIndex] = useState<number | null>(null);
@@ -141,6 +201,11 @@ export default function InterviewWorkspacePage({
   // Refs
   const chatEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
 
   // Load session data
   useEffect(() => {
@@ -168,14 +233,14 @@ export default function InterviewWorkspacePage({
         }
 
         // Fetch challenge details
-        const chall = (challengeData.challenges || []).find((c: any) => c.id === sessionData.challenge_id);
+        const chall = ((challengeData.challenges || []) as Challenge[]).find((c) => c.id === sessionData.challenge_id);
         if (chall) {
           setChallenge(chall);
           // Set proposed GitHub repo name
           const slug = chall.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
           setProposedRepoName(`almaprep-${slug}-solution`);
         }
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         showToast("Error loading session. Redirecting...");
         setTimeout(() => router.push("/interview"), 2000);
@@ -185,6 +250,7 @@ export default function InterviewWorkspacePage({
     }
 
     fetchSession();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session_id]);
 
   // Lazy-load Pyodide when challenge language is python
@@ -207,11 +273,6 @@ export default function InterviewWorkspacePage({
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [conversation, isAgentThinking]);
-
-  const showToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 3000);
-  };
 
   const handleSendPrompt = async () => {
     if (!userInput.trim() || isAgentThinking) return;
@@ -247,9 +308,9 @@ export default function InterviewWorkspacePage({
       } else {
         throw new Error(data.error || "Agent failed to respond");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      showToast(err.message || "Failed to reach AI agent. Please try again.");
+      showToast(err instanceof Error ? err.message : "Failed to reach AI agent. Please try again.");
     } finally {
       setIsAgentThinking(false);
     }
@@ -290,9 +351,9 @@ export default function InterviewWorkspacePage({
       } else {
         throw new Error(data.message || data.error || "Failed to apply changes");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      showToast(err.message || "Error applying changes.");
+      showToast(err instanceof Error ? err.message : "Error applying changes.");
     } finally {
       setIsApplying(false);
     }
@@ -317,7 +378,13 @@ export default function InterviewWorkspacePage({
   };
 
   // IN-BROWSER JS SANDBOX RUNNER WITH TIMEOUT
-  const runJsTestInWorker = (code: string, challengeTitle: string, test: any): Promise<any> => {
+  interface WorkerTestResult {
+    success: boolean;
+    result?: unknown;
+    error?: string;
+  }
+
+  const runJsTestInWorker = (code: string, challengeTitle: string, test: HiddenTest): Promise<WorkerTestResult> => {
     return new Promise((resolve) => {
       const workerCode = `
         self.onmessage = function(e) {
@@ -514,12 +581,13 @@ export default function InterviewWorkspacePage({
   };
 
   // IN-BROWSER PYTHON RUNNER WITH PYODIDE
-  const runPythonTest = async (code: string, challengeTitle: string, test: any) => {
+  const runPythonTest = async (code: string, challengeTitle: string, test: HiddenTest): Promise<WorkerTestResult> => {
     try {
       await loadPyodideScript();
       if (!pyodideInstance) {
-        pyodideInstance = await (window as any).loadPyodide();
+        pyodideInstance = await (window as unknown as { loadPyodide: () => Promise<PyodideInstance> }).loadPyodide();
       }
+      const pyodide = pyodideInstance;
 
       let functionName = "";
       const slug = challengeTitle.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -554,7 +622,7 @@ __run_test()
       `;
 
       const executionPromise = (async () => {
-        const resultJson = await pyodideInstance.runPythonAsync(pyRunCode);
+        const resultJson = await pyodide.runPythonAsync(pyRunCode);
         return JSON.parse(resultJson);
       })();
 
@@ -564,13 +632,14 @@ __run_test()
 
       const res = await Promise.race([executionPromise, timeoutPromise]);
       return { success: true, result: res };
-    } catch (err: any) {
-      return { success: false, error: err.message };
+    } catch (err) {
+      return { success: false, error: err instanceof Error ? err.message : String(err) };
     }
   };
 
   // Run all structured test cases
   const runAllTests = async (userCode: string, lang: string) => {
+    if (!challenge) return { passed: 0, failed: 0, total: 0, results: [] };
     const tests = challenge.hidden_tests || [];
     const resultsList = [];
     let passedCount = 0;
@@ -578,8 +647,8 @@ __run_test()
     for (let i = 0; i < tests.length; i++) {
       setRunningTestIndex(i);
       const test = tests[i];
-      let testRes: any;
-      
+      let testRes: WorkerTestResult;
+
       try {
         if (lang === "python") {
           testRes = await runPythonTest(userCode, challenge.title, test);
@@ -590,7 +659,7 @@ __run_test()
         const actual = testRes.success ? testRes.result : null;
         const error = testRes.success ? null : testRes.error;
         const expected = test.expected_output;
-        
+
         let passed = false;
         if (testRes.success) {
           passed = deepEqual(actual, expected);
@@ -604,11 +673,11 @@ __run_test()
           actual: testRes.success ? actual : (error || "Execution error"),
           passed
         });
-      } catch (err: any) {
+      } catch (err) {
         resultsList.push({
           input: test.input_args,
           expected: test.expected_output,
-          actual: err.message || "Execution error",
+          actual: err instanceof Error ? err.message : "Execution error",
           passed: false
         });
       }
@@ -625,7 +694,7 @@ __run_test()
 
   // SUBMIT SOLUTION WITH 3-LAYER EVALUATION
   const handleSubmitSolution = async () => {
-    if (isSubmitting) return;
+    if (isSubmitting || !challenge) return;
     setIsSubmitting(true);
     setTestRunResults(null);
     setEvaluationFeedback(null);
@@ -674,9 +743,9 @@ __run_test()
         showToast("Evaluation failed. Review feedback and retry.");
       }
 
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      showToast(err.message || "Submission failed.");
+      showToast(err instanceof Error ? err.message : "Submission failed.");
     } finally {
       setIsSubmitting(false);
     }
@@ -711,9 +780,9 @@ __run_test()
       if (alwaysSave) {
         setGithubAutosave(true);
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      setGitHubError(err.message || "Failed to save to GitHub");
+      setGitHubError(err instanceof Error ? err.message : "Failed to save to GitHub");
     } finally {
       setIsSavingToGitHub(false);
     }
@@ -974,13 +1043,13 @@ __run_test()
                   return (
                     <div key={`msg-${index}`} className="flex flex-col items-end">
                       <div className="bg-[#059669] text-white text-xs px-3.5 py-2.5 rounded-2xl rounded-tr-none max-w-[85%] shadow-sm leading-relaxed whitespace-pre-wrap">
-                        {msg.content}
+                        {typeof msg.content === "string" ? msg.content : JSON.stringify(msg.content)}
                       </div>
                     </div>
                   );
                 } else {
                   // Assistant message formatting
-                  const agentData = typeof msg.content === "string" ? { reasoning: msg.content, proposed_changes: [], follow_up: "" } : msg.content;
+                  const agentData: AgentResponseContent = typeof msg.content === "string" ? { reasoning: msg.content, proposed_changes: [], follow_up: "" } : msg.content;
                   const showReasoning = reasoningExpanded[index] ?? false;
 
                   return (
@@ -1224,7 +1293,7 @@ __run_test()
               {/* Overall Grade Header */}
               {evaluationFeedback && (
                 <div className={`p-4 rounded-xl border flex items-center justify-between ${
-                  (testRunResults?.passed / testRunResults?.total) >= 0.7 && evaluationFeedback.logic?.logicScore >= 7 && evaluationFeedback.quality?.qualityScore >= 6
+                  ((testRunResults?.passed ?? 0) / (testRunResults?.total || 1)) >= 0.7 && (evaluationFeedback.logic?.logicScore ?? 0) >= 7 && (evaluationFeedback.quality?.qualityScore ?? 0) >= 6
                     ? "bg-emerald-950/20 border-emerald-500/30 text-emerald-400"
                     : "bg-rose-950/20 border-rose-500/30 text-rose-400"
                 }`}>
@@ -1232,7 +1301,7 @@ __run_test()
                     <AlertCircle className="size-6 shrink-0" />
                     <div>
                       <h4 className="font-black text-sm uppercase tracking-wide">
-                        {(testRunResults?.passed / testRunResults?.total) >= 0.7 && evaluationFeedback.logic?.logicScore >= 7 && evaluationFeedback.quality?.qualityScore >= 6
+                        {((testRunResults?.passed ?? 0) / (testRunResults?.total || 1)) >= 0.7 && (evaluationFeedback.logic?.logicScore ?? 0) >= 7 && (evaluationFeedback.quality?.qualityScore ?? 0) >= 6
                           ? "🎉 Success Criteria Passed!"
                           : "❌ Criteria Failed"}
                       </h4>
@@ -1246,7 +1315,7 @@ __run_test()
                   <div className="flex items-center gap-3">
                     <div className="flex flex-col items-center">
                       <span className="text-[10px] uppercase text-slate-400 font-bold tracking-wider">Tests</span>
-                      <span className="font-mono text-sm font-black">{Math.round((testRunResults?.passed / testRunResults?.total) * 100)}%</span>
+                      <span className="font-mono text-sm font-black">{Math.round(((testRunResults?.passed ?? 0) / (testRunResults?.total || 1)) * 100)}%</span>
                     </div>
                     <div className="h-6 w-px bg-slate-700" />
                     <div className="flex flex-col items-center">
@@ -1282,7 +1351,7 @@ __run_test()
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#1f2937] text-slate-300 font-mono">
-                      {testRunResults?.results?.map((res: any, idx: number) => (
+                      {testRunResults?.results?.map((res, idx) => (
                         <tr key={idx} className="hover:bg-slate-900/30">
                           <td className="p-3 font-sans">Case {idx + 1}</td>
                           <td className="p-3 truncate max-w-[150px]">{JSON.stringify(res.input)}</td>
@@ -1388,9 +1457,9 @@ __run_test()
             <footer className="p-4 border-t border-slate-800 flex justify-end gap-3 shrink-0">
               {/* If Success AND autosave wasn't already triggered, show manual repo save option */}
               {evaluationFeedback && 
-               (testRunResults?.passed / testRunResults?.total) >= 0.7 && 
-               evaluationFeedback.logic?.logicScore >= 7 && 
-               evaluationFeedback.quality?.qualityScore >= 6 && 
+               ((testRunResults?.passed ?? 0) / (testRunResults?.total || 1)) >= 0.7 && 
+               (evaluationFeedback.logic?.logicScore ?? 0) >= 7 && 
+               (evaluationFeedback.quality?.qualityScore ?? 0) >= 6 && 
                !githubAutosave && 
                !createdRepoUrl && (
                 <button
@@ -1406,9 +1475,9 @@ __run_test()
               
               {/* If Failed and attempts remain */}
               {attemptsCount < 3 && evaluationFeedback && !(
-                (testRunResults?.passed / testRunResults?.total) >= 0.7 && 
-                evaluationFeedback.logic?.logicScore >= 7 && 
-                evaluationFeedback.quality?.qualityScore >= 6
+                ((testRunResults?.passed ?? 0) / (testRunResults?.total || 1)) >= 0.7 && 
+                (evaluationFeedback.logic?.logicScore ?? 0) >= 7 && 
+                (evaluationFeedback.quality?.qualityScore ?? 0) >= 6
               ) && (
                 <button
                   onClick={() => setShowResultsModal(false)}
@@ -1419,9 +1488,9 @@ __run_test()
               )}
 
               {/* If Passed - Finish & Exit */}
-              {evaluationFeedback && (testRunResults?.passed / testRunResults?.total) >= 0.7 && 
-               evaluationFeedback.logic?.logicScore >= 7 && 
-               evaluationFeedback.quality?.qualityScore >= 6 && (
+              {evaluationFeedback && ((testRunResults?.passed ?? 0) / (testRunResults?.total || 1)) >= 0.7 && 
+               (evaluationFeedback.logic?.logicScore ?? 0) >= 7 && 
+               (evaluationFeedback.quality?.qualityScore ?? 0) >= 6 && (
                 <button
                   onClick={() => {
                     setShowResultsModal(false);
@@ -1439,9 +1508,9 @@ __run_test()
 
               {/* If Failed and no attempts remain */}
               {attemptsCount >= 3 && evaluationFeedback && !(
-                (testRunResults?.passed / testRunResults?.total) >= 0.7 && 
-                evaluationFeedback.logic?.logicScore >= 7 && 
-                evaluationFeedback.quality?.qualityScore >= 6
+                ((testRunResults?.passed ?? 0) / (testRunResults?.total || 1)) >= 0.7 && 
+                (evaluationFeedback.logic?.logicScore ?? 0) >= 7 && 
+                (evaluationFeedback.quality?.qualityScore ?? 0) >= 6
               ) && (
                 <button
                   onClick={() => {

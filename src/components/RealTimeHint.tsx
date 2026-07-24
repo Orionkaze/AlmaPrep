@@ -10,35 +10,50 @@ interface RealTimeHintProps {
 }
 
 export default function RealTimeHint({ hints, visible, onDismiss }: RealTimeHintProps) {
-  const [shouldRender, setShouldRender] = useState(false);
+  const shouldShow = visible && hints.length > 0;
+
+  const [shouldRender, setShouldRender] = useState(shouldShow);
   const [animateIn, setAnimateIn] = useState(false);
 
-  useEffect(() => {
-    if (visible && hints.length > 0) {
+  // Adjust state during render (not in an effect) when `shouldShow` flips,
+  // per https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  const [prevShouldShow, setPrevShouldShow] = useState(shouldShow);
+  if (shouldShow !== prevShouldShow) {
+    setPrevShouldShow(shouldShow);
+    if (shouldShow) {
       setShouldRender(true);
-      // Stagger slightly for transition trigger
-      setTimeout(() => setAnimateIn(true), 50);
-
-      // Auto-dismiss after 5 seconds
-      const timer = setTimeout(() => {
-        handleDismiss();
-      }, 5000);
-
-      return () => clearTimeout(timer);
     } else {
       setAnimateIn(false);
-      const timer = setTimeout(() => setShouldRender(false), 300); // Wait for transition
-      return () => clearTimeout(timer);
     }
-  }, [visible, hints]);
+  }
 
-  const handleDismiss = () => {
+  const handleDismiss = React.useCallback(() => {
     setAnimateIn(false);
     setTimeout(() => {
       setShouldRender(false);
       onDismiss();
     }, 300);
-  };
+  }, [onDismiss]);
+
+  useEffect(() => {
+    if (shouldShow) {
+      // Stagger slightly for transition trigger
+      const animateTimer = setTimeout(() => setAnimateIn(true), 50);
+
+      // Auto-dismiss after 5 seconds
+      const dismissTimer = setTimeout(() => {
+        handleDismiss();
+      }, 5000);
+
+      return () => {
+        clearTimeout(animateTimer);
+        clearTimeout(dismissTimer);
+      };
+    } else {
+      const timer = setTimeout(() => setShouldRender(false), 300); // Wait for transition
+      return () => clearTimeout(timer);
+    }
+  }, [shouldShow, handleDismiss]);
 
   if (!shouldRender || hints.length === 0) return null;
 

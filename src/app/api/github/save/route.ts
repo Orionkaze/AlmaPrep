@@ -2,14 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById } from "@/lib/interviewDb";
-
-function cleanJsonResponseText(text: string): string {
-  let cleaned = text.trim();
-  if (cleaned.startsWith("```")) {
-    cleaned = cleaned.replace(/^```[a-zA-Z]*\s*/, "").replace(/\s*```$/, "");
-  }
-  return cleaned.trim();
-}
+import { isRateLimited } from "@/lib/rateLimit";
 
 async function commitFileToRepo(owner: string, repo: string, filePath: string, content: string, token: string) {
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
@@ -49,6 +42,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
+    if (await isRateLimited(`github-save:${user.id}`, 10, 60_000)) {
+      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 });
+    }
+
     // 1. Get GitHub OAuth provider token from cookies
     const cookieStore = await cookies();
     const githubToken = cookieStore.get("sb-github-provider-token")?.value;
@@ -63,6 +60,9 @@ export async function POST(request: Request) {
     const session = await getSessionById(session_id);
     if (!session) {
       return NextResponse.json({ error: "Session not found" }, { status: 404 });
+    }
+    if (session.user_id !== user.id) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const challenge = await getChallengeById(session.challenge_id);
@@ -231,8 +231,8 @@ Provide the complete README.md content. Respond with ONLY the markdown content, 
 
     return NextResponse.json({ repo_url: repoUrl, repo_name: targetRepoName });
 
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error in github save API route:", err);
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
   }
 }

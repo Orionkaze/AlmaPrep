@@ -26,7 +26,7 @@ export default async function ResumePage() {
           email: parsed.email,
           avatar_url: parsed.avatar_url,
         }
-      } catch (err) {
+      } catch {
         // fallback
       }
     }
@@ -38,7 +38,7 @@ export default async function ResumePage() {
       }
     }
   } else {
-    activeUser = session?.user as any
+    activeUser = session?.user
   }
 
   const supabase = isDemoMode ? null : await createClient()

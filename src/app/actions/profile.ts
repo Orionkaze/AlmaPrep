@@ -16,7 +16,7 @@ export async function createUserProfile(
       if (demoUserCookie) {
         try {
           email = JSON.parse(demoUserCookie).email || email
-        } catch (e) {}
+        } catch {}
       }
       cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }
@@ -63,7 +63,7 @@ export async function updateUserProfile(
       if (demoUserCookie) {
         try {
           email = JSON.parse(demoUserCookie).email || email
-        } catch (e) {}
+        } catch {}
       }
       cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }

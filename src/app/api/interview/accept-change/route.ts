@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSessionById, updateSession } from "@/lib/interviewDb";
 import { createClient } from "@/lib/supabase/server";
+import { getRequestUserId } from "@/lib/getRequestUserId";
 
 export async function GET(request: Request) {
   try {
@@ -11,9 +12,17 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Missing session_id parameter" }, { status: 400 });
     }
 
+    const userId = await getRequestUserId();
+    if (!userId) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
+
     const session = await getSessionById(session_id);
     if (!session) {
       return NextResponse.json({ error: "Session not found" }, { status: 404 });
+    }
+    if (session.user_id !== userId) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const supabase = await createClient();
@@ -27,9 +36,9 @@ export async function GET(request: Request) {
       ...session,
       github_autosave: !!profile?.github_autosave
     });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error fetching session:", err);
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
   }
 }
 
@@ -42,9 +51,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required parameters: session_id, filename, original, or replacement" }, { status: 400 });
     }
 
+    const userId = await getRequestUserId();
+    if (!userId) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
+
     const session = await getSessionById(session_id);
     if (!session) {
       return NextResponse.json({ error: "Session not found" }, { status: 404 });
+    }
+    if (session.user_id !== userId) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const codebase = { ...(session.current_codebase || {}) };
@@ -118,8 +135,8 @@ export async function POST(request: Request) {
     await updateSession(session_id, { current_codebase: codebase });
 
     return NextResponse.json({ updated_codebase: codebase });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error in /api/interview/accept-change route:", err);
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
   }
 }

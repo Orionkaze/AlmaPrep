@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import "./almaprep.css";
+// Self-hosted FontAwesome (badge/UI icons). Bundled + served same-origin so the
+// webfonts load reliably — the previous CDN <link> loaded the CSS but the fonts
+// never auto-triggered, leaving every fa-* icon (all the badges) blank.
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import PostHogProvider from "@/components/PostHogProvider";
+import FontAwesomeLoader from "@/components/FontAwesomeLoader";
+import { SITE_URL } from "@/lib/siteConfig";
+import { organizationLd, websiteLd } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,15 +43,12 @@ export const metadata: Metadata = {
   },
   description:
     "Practice real-time AI mock interviews for college admissions and engineering roles. Get instant resume analysis and personalized coaching insights. Start free with Almaprep.",
-  metadataBase: new URL("https://mock-mate-rosy.vercel.app"),
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "AI Mock Interview Practice for College & Engineering | Almaprep",
     description:
       "Practice real-time AI mock interviews for college admissions and engineering roles. Get instant resume analysis and personalized coaching insights. Start free with Almaprep.",
-    url: "https://mock-mate-rosy.vercel.app",
+    url: SITE_URL,
     siteName: "Almaprep",
     images: [
       {
@@ -90,9 +95,9 @@ export default function RootLayout({
               "applicationCategory": "EducationalApplication",
               "operatingSystem": "All",
               "description": "AI mock interview practice, resume analyzer, and admissions coaching platform.",
-              "url": "https://mock-mate-rosy.vercel.app",
-              "logo": "https://mock-mate-rosy.vercel.app/favicon.png",
-              "image": "https://mock-mate-rosy.vercel.app/og-image.png",
+              "url": SITE_URL,
+              "logo": `${SITE_URL}/favicon.png`,
+              "image": `${SITE_URL}/og-image.png`,
               "offers": {
                 "@type": "Offer",
                 "price": "0",
@@ -101,7 +106,14 @@ export default function RootLayout({
             })
           }}
         />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd()) }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
@@ -111,7 +123,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            {children}
+            <FontAwesomeLoader />
+            <PostHogProvider>
+              {children}
+            </PostHogProvider>
             <Toaster />
           </TooltipProvider>
         </ThemeProvider>

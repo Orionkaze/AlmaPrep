@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Laptop, UserRound, Rocket, Brain, Star, ArrowLeft } from "lucide-react"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { createUserProfile } from "@/app/actions/profile"
 import Link from "next/link"
 
@@ -29,7 +28,6 @@ export default function OnboardingPage() {
   const [selectedAvatar, setSelectedAvatar] = useState(0)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

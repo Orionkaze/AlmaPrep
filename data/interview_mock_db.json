@@ -1737,6 +1737,20 @@
       "status": "in_progress",
       "started_at": "2026-07-04T05:37:01.598Z",
       "submitted_at": null
+    },
+    {
+      "id": "7a3ef1e1-9581-4208-9ba4-50ee1642218f",
+      "user_id": "demo-user-id",
+      "challenge_id": "f1a8c9b3-4f9e-4e3a-96ad-d62fb5291b98",
+      "conversation": [],
+      "current_codebase": {
+        "middleware/auth.js": "const jwt = require('jsonwebtoken');\n\nconst authenticate = (req, res, next) => {\n  const token = req.headers['authorization'];\n  const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  req.user = decoded;\n  next();\n};\n\nmodule.exports = authenticate;",
+        "routes/user.js": "const express = require('express');\nconst authenticate = require('../middleware/auth');\nconst router = express.Router();\n\nrouter.get('/profile', authenticate, (req, res) => {\n  res.json({ user: req.user });\n});\n\nmodule.exports = router;"
+      },
+      "submitted_code": null,
+      "status": "in_progress",
+      "started_at": "2026-07-07T20:03:42.985Z",
+      "submitted_at": null
     }
   ],
   "interview_reports": [

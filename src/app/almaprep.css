@@ -360,3 +360,229 @@
 @media (prefers-reduced-motion: reduce) {
   .almaprep-theme .reveal { transition: none; }
 }
+
+/* ============================================================
+   Split auth (login / signup) — brand showcase + form
+   ============================================================ */
+.almaprep-theme .auth-split { display: grid; grid-template-columns: 1.05fr 1fr; min-height: 100vh; }
+.almaprep-theme .auth-aside {
+  position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(158deg, #042c22 0%, #065f46 58%, #059669 125%);
+  padding: var(--s-8) var(--s-7); display: flex; flex-direction: column; justify-content: space-between;
+}
+.almaprep-theme .auth-aside::before {
+  content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none;
+  background:
+    radial-gradient(600px 300px at 85% -5%, rgba(110,231,183,.28), transparent 70%),
+    radial-gradient(500px 320px at 0% 110%, rgba(16,185,129,.30), transparent 70%);
+}
+.almaprep-theme .auth-aside > * { position: relative; z-index: 1; }
+.almaprep-theme .auth-aside .brand { color: #fff; font-family: var(--font-head), serif; }
+.almaprep-theme .auth-aside .brand:hover { text-decoration: none; }
+.almaprep-theme .auth-aside h2 {
+  color: #fff; font-family: var(--font-head), serif; font-weight: 600;
+  font-size: clamp(1.9rem, 3vw, 2.7rem); line-height: 1.12; margin: var(--s-6) 0 var(--s-3);
+}
+.almaprep-theme .auth-aside .aside-sub { color: #d1fae5; font-size: 1.05rem; max-width: 34ch; }
+.almaprep-theme .auth-points { list-style: none; padding: 0; margin: var(--s-6) 0 0; display: grid; gap: var(--s-4); }
+.almaprep-theme .auth-points li { display: flex; gap: 12px; align-items: flex-start; color: #ecfdf5; font-size: .98rem; }
+.almaprep-theme .auth-points svg { flex: none; width: 20px; height: 20px; margin-top: 1px; color: #6ee7b7; }
+.almaprep-theme .auth-trust {
+  list-style: none; padding: var(--s-4) 0 0; margin: 0; border-top: 1px solid rgba(167,243,208,.18);
+  display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5);
+}
+.almaprep-theme .auth-trust li {
+  color: #a7f3d0; font-size: .82rem; font-weight: 600; letter-spacing: .01em;
+  display: flex; align-items: center; gap: 7px;
+}
+.almaprep-theme .auth-trust li::before {
+  content: ""; width: 5px; height: 5px; border-radius: 999px; background: #6ee7b7; flex: none;
+}
+.almaprep-theme .auth-main {
+  display: flex; align-items: center; justify-content: center; padding: var(--s-7) var(--s-5);
+  background:
+    radial-gradient(480px 320px at 100% 0%, rgba(5,150,105,.05), transparent 70%),
+    radial-gradient(420px 280px at 0% 100%, rgba(5,150,105,.04), transparent 70%),
+    var(--bg);
+}
+.almaprep-theme .auth-main .auth-card {
+  width: 100%; max-width: 424px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 18px 48px rgba(2,44,34,.10), 0 2px 8px rgba(0,0,0,.04);
+  padding: clamp(28px, 4vw, 40px);
+}
+/* brand lockup at the top of the form card (also the anchor on mobile, where
+   the showcase panel is hidden) */
+.almaprep-theme .auth-card-brand {
+  display: inline-flex; align-items: center; gap: 9px; margin-bottom: 22px;
+  font-family: var(--font-head), serif; font-weight: 600; font-size: 1.15rem; color: var(--ink);
+}
+/* slightly taller, softer inputs inside the card */
+.almaprep-theme .auth-card .field input { padding: 13px 14px; border-radius: 10px; background: var(--bg); }
+.almaprep-theme .auth-card .field label { font-size: .85rem; }
+.almaprep-theme .auth-card .btn-primary { height: 46px; border-radius: 10px; font-weight: 600; }
+/* security reassurance line under the card body */
+.almaprep-theme .auth-secure {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  margin-top: 20px; color: var(--muted); font-size: .8rem;
+}
+.almaprep-theme .auth-secure svg { width: 13px; height: 13px; flex: none; }
+/* icon chips for the showcase feature list */
+.almaprep-theme .auth-points li .pt-ic {
+  flex: none; width: 40px; height: 40px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.10); border: 1px solid rgba(167,243,208,.22);
+}
+/* glass highlight card above the trust strip */
+.almaprep-theme .auth-highlight {
+  border: 1px solid rgba(167,243,208,.20); background: rgba(255,255,255,.07);
+  border-radius: 16px; padding: 18px 20px;
+}
+.almaprep-theme .auth-highlight .hl-top {
+  display: flex; align-items: center; gap: 8px; color: #6ee7b7;
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.almaprep-theme .auth-highlight .hl-top svg { width: 15px; height: 15px; }
+.almaprep-theme .auth-highlight p { color: #ecfdf5; font-size: .98rem; margin: 8px 0 0; line-height: 1.45; }
+/* subtle grid texture on the showcase panel */
+.almaprep-theme .auth-aside::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(circle at 28% 38%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 28% 38%, #000 0%, transparent 72%);
+}
+
+.almaprep-theme .oauth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.almaprep-theme .oauth-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 11px 14px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  background: var(--bg-card); color: var(--ink); font: inherit; font-weight: 600; font-size: .92rem; cursor: pointer;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.almaprep-theme .oauth-btn:hover { border-color: var(--emerald); transform: translateY(-1px); box-shadow: var(--shadow); }
+.almaprep-theme .oauth-btn svg { width: 18px; height: 18px; }
+.almaprep-theme .auth-divider { display: flex; align-items: center; gap: 12px; margin: var(--s-5) 0; color: var(--muted); }
+.almaprep-theme .auth-divider::before, .almaprep-theme .auth-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.almaprep-theme .auth-divider span { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 600; }
+.almaprep-theme .pw-field { position: relative; }
+.almaprep-theme .pw-toggle {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none;
+  color: var(--muted); cursor: pointer; padding: 4px; display: inline-flex; border-radius: 6px;
+}
+.almaprep-theme .pw-field input { padding-right: 40px; }
+.almaprep-theme .demo-btn {
+  width: 100%; justify-content: center; margin-top: var(--s-3);
+  background: var(--bg-tint); color: var(--emerald-600); border: 1px dashed var(--emerald-400);
+}
+.almaprep-theme .demo-btn:hover { background: #d1fae5; border-style: solid; }
+.almaprep-theme .field-error { background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: var(--radius-sm); padding: 10px 14px; font-size: .86rem; margin-bottom: var(--s-4); }
+.almaprep-theme .field-ok { background: #ecfdf5; border: 1px solid #a7f3d0; color: #047857; border-radius: var(--radius-sm); padding: 10px 14px; font-size: .86rem; margin-bottom: var(--s-4); }
+
+/* ============================================================
+   Checkout
+   ============================================================ */
+.almaprep-theme .checkout-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--s-6); align-items: start; }
+.almaprep-theme .checkout-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s-7); box-shadow: var(--shadow); }
+.almaprep-theme .summary-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s-7); box-shadow: var(--shadow); position: sticky; top: var(--s-6); }
+.almaprep-theme .summary-plan { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); padding-bottom: var(--s-4); border-bottom: 1px solid var(--border); }
+.almaprep-theme .summary-plan .price { font-family: var(--font-head), serif; font-size: 1.8rem; color: var(--ink); }
+.almaprep-theme .summary-plan .price small { font-family: var(--font-body), sans-serif; font-size: .9rem; color: var(--muted); font-weight: 400; }
+.almaprep-theme .summary-line { display: flex; justify-content: space-between; padding: 10px 0; color: var(--muted); font-size: .95rem; }
+.almaprep-theme .summary-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: var(--s-3); padding-top: var(--s-4); border-top: 1px solid var(--border); }
+.almaprep-theme .summary-total strong { font-family: var(--font-head), serif; font-size: 1.5rem; color: var(--ink); }
+.almaprep-theme .card-mount {
+  border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); padding: var(--s-5);
+  text-align: center; color: var(--muted); font-size: .9rem; background: var(--bg);
+}
+.almaprep-theme .card-mount .fa-lock, .almaprep-theme .secure-note svg { color: var(--emerald); }
+.almaprep-theme .pay-btn { width: 100%; justify-content: center; margin-top: var(--s-5); }
+.almaprep-theme .secure-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: var(--s-4); color: var(--muted); font-size: .82rem; }
+.almaprep-theme .plan-toggle { display: inline-flex; background: var(--bg-tint); border: 1px solid var(--emerald-200); border-radius: 999px; padding: 4px; gap: 4px; }
+.almaprep-theme .plan-toggle button { border: none; background: none; padding: 8px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: .88rem; color: var(--emerald-600); cursor: pointer; }
+.almaprep-theme .plan-toggle button.active { background: var(--emerald); color: #fff; box-shadow: 0 4px 12px rgba(5,150,105,.28); }
+.almaprep-theme .save-tag { margin-left: 6px; font-size: .72rem; background: rgba(255,255,255,.25); padding: 1px 6px; border-radius: 999px; }
+.almaprep-theme .paid-banner { text-align: center; padding: var(--s-8) var(--s-5); }
+.almaprep-theme .paid-banner .tick { width: 76px; height: 76px; border-radius: 999px; background: var(--bg-tint); color: var(--emerald); display: grid; place-items: center; margin: 0 auto var(--s-5); font-size: 2rem; }
+
+/* ============================================================
+   Institution demo dashboard
+   ============================================================ */
+.almaprep-theme .demo-banner { background: var(--bg-deep); color: #d1fae5; text-align: center; padding: 9px var(--s-5); font-size: .86rem; }
+.almaprep-theme .demo-banner strong { color: #fff; }
+.almaprep-theme .demo-banner a { color: #6ee7b7; font-weight: 600; }
+.almaprep-theme .demo-shell { max-width: 1180px; margin: 0 auto; padding: var(--s-6) var(--s-5) var(--s-9); }
+.almaprep-theme .demo-topbar { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; margin-bottom: var(--s-5); }
+.almaprep-theme .demo-org { display: flex; align-items: center; gap: 12px; }
+.almaprep-theme .demo-org .logo { width: 44px; height: 44px; border-radius: 12px; background: var(--emerald); color: #fff; display: grid; place-items: center; font-family: var(--font-head), serif; font-size: 1.2rem; font-weight: 600; }
+.almaprep-theme .demo-org h1 { font-size: 1.35rem; margin: 0; }
+.almaprep-theme .demo-org p { margin: 0; color: var(--muted); font-size: .85rem; }
+.almaprep-theme .demo-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4); margin-bottom: var(--s-6); }
+.almaprep-theme .demo-kpi { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s-5); box-shadow: var(--shadow); }
+.almaprep-theme .demo-kpi .label { font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 700; }
+.almaprep-theme .demo-kpi .val { font-family: var(--font-head), serif; font-size: 2.1rem; color: var(--ink); line-height: 1.1; margin-top: 6px; }
+.almaprep-theme .demo-kpi .delta { font-size: .82rem; font-weight: 600; margin-top: 4px; }
+.almaprep-theme .demo-kpi .delta.up { color: var(--emerald-600); }
+.almaprep-theme .demo-kpi .delta.down { color: #dc2626; }
+.almaprep-theme .demo-cols { display: grid; grid-template-columns: 1.55fr 1fr; gap: var(--s-5); align-items: start; }
+.almaprep-theme .demo-panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.almaprep-theme .demo-panel-head { display: flex; align-items: center; justify-content: space-between; padding: var(--s-4) var(--s-5); border-bottom: 1px solid var(--border); }
+.almaprep-theme .demo-panel-head h3 { margin: 0; font-size: 1.05rem; }
+.almaprep-theme .cohort-row { display: grid; grid-template-columns: 1.4fr auto 1.3fr auto; gap: var(--s-4); align-items: center; padding: var(--s-4) var(--s-5); border-bottom: 1px solid var(--border); }
+.almaprep-theme .cohort-row:last-child { border-bottom: none; }
+.almaprep-theme .cohort-row .cname { font-weight: 600; color: var(--ink); }
+.almaprep-theme .cohort-row .cmeta { color: var(--muted); font-size: .82rem; }
+.almaprep-theme .bar { position: relative; height: 8px; border-radius: 999px; background: var(--border); overflow: hidden; min-width: 90px; }
+.almaprep-theme .bar > span { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: var(--emerald); }
+.almaprep-theme .status-pill { font-size: .74rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.almaprep-theme .status-pill.ready { background: #dcfce7; color: #15803d; }
+.almaprep-theme .status-pill.ontrack { background: #dbeafe; color: #1d4ed8; }
+.almaprep-theme .status-pill.risk { background: #fef3c7; color: #b45309; }
+.almaprep-theme .risk-row { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-5); border-bottom: 1px solid var(--border); cursor: pointer; transition: background .12s ease; }
+.almaprep-theme .risk-row:last-child { border-bottom: none; }
+.almaprep-theme .risk-row:hover { background: var(--bg-tint); }
+.almaprep-theme .risk-row .avatar { width: 34px; height: 34px; border-radius: 999px; background: var(--bg-tint); color: var(--emerald-600); display: grid; place-items: center; font-weight: 700; font-size: .82rem; flex: none; }
+.almaprep-theme .risk-row .rname { font-weight: 600; color: var(--ink); font-size: .92rem; }
+.almaprep-theme .risk-row .rwhy { color: var(--muted); font-size: .8rem; }
+.almaprep-theme .risk-row .rscore { margin-left: auto; font-weight: 700; color: #dc2626; }
+.almaprep-theme .demo-tabs { display: inline-flex; gap: 4px; background: var(--bg-tint); padding: 4px; border-radius: 999px; margin-bottom: var(--s-5); }
+.almaprep-theme .demo-tabs button { border: none; background: none; padding: 8px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: .86rem; color: var(--emerald-600); cursor: pointer; }
+.almaprep-theme .demo-tabs button.active { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+.almaprep-theme .spark { display: flex; align-items: flex-end; gap: 5px; height: 60px; }
+.almaprep-theme .spark span { flex: 1; background: var(--emerald-200); border-radius: 4px 4px 0 0; min-height: 4px; }
+.almaprep-theme .spark span.hot { background: var(--emerald); }
+.almaprep-theme .student-drawer { border-top: 1px solid var(--border); padding: var(--s-5); background: var(--bg-tint); }
+.almaprep-theme .student-drawer h4 { margin: 0 0 var(--s-2); }
+
+@media (max-width: 900px) {
+  .almaprep-theme .auth-aside { display: none; }
+  .almaprep-theme .auth-split { grid-template-columns: 1fr; }
+  .almaprep-theme .checkout-grid { grid-template-columns: 1fr; }
+  .almaprep-theme .summary-card { position: static; }
+  .almaprep-theme .demo-kpis { grid-template-columns: repeat(2, 1fr); }
+  .almaprep-theme .demo-cols { grid-template-columns: 1fr; }
+  .almaprep-theme .cohort-row { grid-template-columns: 1fr auto; row-gap: 8px; }
+}
+
+/* AEO answer-first callout — a crisp, extractable "In short" summary near the
+   top of an article. Reads as an editorial lead, not a robotic answer box. */
+.almaprep-theme .aeo-answer {
+  border-left: 3px solid var(--emerald);
+  background: var(--bg-tint);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  margin: 24px 0 28px;
+}
+.almaprep-theme .aeo-answer .aeo-label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--emerald-600);
+  margin-bottom: 6px;
+}
+.almaprep-theme .aeo-answer p { margin: 0; color: var(--ink); font-size: 1rem; line-height: 1.6; }

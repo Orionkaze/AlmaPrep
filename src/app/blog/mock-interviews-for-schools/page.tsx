@@ -2,38 +2,55 @@ import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
+import JsonLd from "@/components/JsonLd"
+import { pageMetadata, blogPostingLd, breadcrumbLd } from "@/lib/seo"
+
+const PATH = "/blog/mock-interviews-for-schools"
+const TITLE = "Running Mock Interviews Across a Whole Cohort"
+const DESC =
+  "One counselor can only sit across from so many students. How prep programs use Almaprep to give every student real interview practice, then focus their own time where it matters."
+const PUBLISHED = "2026-06-25"
+
+export const metadata = pageMetadata({ title: TITLE, description: DESC, path: PATH, type: "article" })
 
 export default function MockInterviewsForSchoolsPage() {
   return (
     <div className="almaprep-theme">
+      <JsonLd data={blogPostingLd({ headline: TITLE, description: DESC, path: PATH, datePublished: PUBLISHED })} />
+      <JsonLd data={breadcrumbLd([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }, { name: TITLE, path: PATH }])} />
       <RevealOnScroll />
       <Header />
 
       <main>
         <article className="section">
           <div className="wrap prose">
-            <p className="eyebrow"><Link href="/blog">&larr; Blog</Link> &middot; For counselors</p>
+            <p className="eyebrow"><Link href="/blog">&larr; Blog</Link> &middot; For counselors &middot; June 25, 2026</p>
             <h1>Running mock interviews across a whole cohort</h1>
-            <p className="lead">A single counselor can only sit across from so many students. Here's how prep programs use Almaprep to give every student real practice, then spend their own time where it matters most.</p>
+            <p className="lead">A single counselor can only sit across from so many students. Here&apos;s how prep programs use Almaprep to give every student real practice, then spend their own time where it matters most.</p>
+
+            <aside className="aeo-answer">
+              <span className="aeo-label">In short</span>
+              <p>To run mock interviews across a whole cohort, give every student unlimited AI-powered interview practice they can do on their own time, then use the resulting dashboards and at-risk flags to focus your limited counselor time on the students who need it most.</p>
+            </aside>
 
             <h2>The problem with one-on-one only</h2>
-            <p>Traditional mock interviews don't scale. If you have two hundred students and a few weeks, most of them get one practice run, if any. The students who need the most help are often the ones who never get on the calendar.</p>
+            <p>Traditional mock interviews don&apos;t scale. If you have two hundred students and a few weeks, most of them get one practice run, if any. The students who need the most help are often the ones who never get on the calendar.</p>
 
             <h2>A blended approach</h2>
             <p>The programs that get the best results use Almaprep for volume and reserve human time for depth:</p>
             <ul>
               <li><strong>Every student practices first.</strong> Students run unlimited mock interviews on their own time and arrive already warmed up.</li>
-              <li><strong>Dashboards surface who needs help.</strong> Counselors see participation and scores by cohort, so support goes where it's needed.</li>
-              <li><strong>Human sessions go further.</strong> When you do sit down with a student, you're refining, not starting from zero.</li>
+              <li><strong>Dashboards surface who needs help.</strong> Counselors see participation and scores by cohort, so support goes where it&apos;s needed.</li>
+              <li><strong>Human sessions go further.</strong> When you do sit down with a student, you&apos;re refining, not starting from zero.</li>
             </ul>
 
-            <blockquote>The goal isn't to replace the counselor. It's to make sure no student walks in cold, and to give counselors a map of where to spend their hours.</blockquote>
+            <blockquote>The goal isn&apos;t to replace the counselor. It&apos;s to make sure no student walks in cold, and to give counselors a map of where to spend their hours.</blockquote>
 
             <h2>What rollout looks like</h2>
             <ol>
               <li>Import your roster and set up cohorts.</li>
               <li>Students start practicing the same day.</li>
-              <li>Watch the dashboards and flag students who haven't started or are scoring low.</li>
+              <li>Watch the dashboards and flag students who haven&apos;t started or are scoring low.</li>
               <li>Book targeted human sessions with the students the data highlights.</li>
             </ol>
 

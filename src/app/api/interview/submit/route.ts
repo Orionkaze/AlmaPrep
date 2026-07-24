@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
 import { updateStreak } from "@/app/actions/streak";
 import { checkAndAwardBadges } from "@/app/actions/badges";
+import { isRateLimited } from "@/lib/rateLimit";
 
 
 function cleanJsonResponseText(text: string): string {
@@ -11,6 +12,12 @@ function cleanJsonResponseText(text: string): string {
     cleaned = cleaned.replace(/^```[a-zA-Z]*\s*/, "").replace(/\s*```$/, "");
   }
   return cleaned.trim();
+}
+
+interface ClientTestResultItem {
+  input?: unknown;
+  passed: boolean;
+  actual?: unknown;
 }
 
 export async function POST(request: Request) {
@@ -27,7 +34,7 @@ export async function POST(request: Request) {
     try {
       const { data } = await supabase.auth.getUser();
       authUser = data?.user || null;
-    } catch (e) {}
+    } catch {}
 
     const isLocalDemo = !authUser && (
       !process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -40,10 +47,17 @@ export async function POST(request: Request) {
 
     const userId = authUser ? authUser.id : "demo-user-id";
 
+    if (await isRateLimited(`submit:${userId}`, 15, 60_000)) {
+      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 });
+    }
+
     // 1. Fetch Session and Challenge using localDb-aware helpers
     const session = await getSessionById(session_id);
     if (!session) {
       return NextResponse.json({ error: "Session not found" }, { status: 404 });
+    }
+    if (session.user_id !== userId) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const challenge = await getChallengeById(session.challenge_id);
@@ -187,7 +201,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
 
     if (authUser) {
       // Check if solution already exists to increment attempts
-      const { data: existingSol, error: fetchSolErr } = await supabase
+      const { data: existingSol } = await supabase
         .from("coding_solutions")
         .select("id, attempts")
         .eq("user_id", userId)
@@ -276,7 +290,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       ? `The candidate successfully resolved the coding challenge, passing ${test_results.passed} of ${test_results.total} sandbox tests. The algorithm shows optimal time complexity (${parsedLogic.timeComplexity || "O(n)"}) and clean style (${parsedQuality.readabilityScore || 0}/10 readability).`
       : `The candidate did not meet the passing criteria for the coding challenge. They passed ${test_results.passed} of ${test_results.total} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`;
 
-    const mappedTestResults = test_results.results.map((r: any, idx: number) => ({
+    const mappedTestResults = test_results.results.map((r: ClientTestResultItem, idx: number) => ({
       test_id: `test-${idx}`,
       description: `Test Case ${idx + 1} with arguments: ${JSON.stringify(r.input)}`,
       passed: r.passed,
@@ -319,8 +333,8 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       }
     });
 
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error in submit API route:", err);
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
   }
 }

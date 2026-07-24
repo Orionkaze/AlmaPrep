@@ -5,7 +5,6 @@ import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
-import { getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
 
 export interface ResumeAnalysis {
@@ -48,7 +47,7 @@ export async function saveAndAnalyzeResume(
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) {
       return { success: false, error: "Not authenticated" }
@@ -94,9 +93,9 @@ export async function saveAndAnalyzeResume(
         analysis,
       },
     }
-  } catch (err: any) {
+  } catch (err) {
     console.error("saveAndAnalyzeResume failed:", err)
-    return { success: false, error: err.message || "An unexpected error occurred during resume analysis." }
+    return { success: false, error: err instanceof Error ? err.message : "An unexpected error occurred during resume analysis." }
   }
 }
 
@@ -123,7 +122,7 @@ export async function getResumeData(): Promise<{
               analysis: parsed.analysis
             }
           }
-        } catch (e) {}
+        } catch {}
       }
 
       return {
@@ -135,7 +134,7 @@ export async function getResumeData(): Promise<{
     const session = await getServerSession(authOptions)
     const supabase = await createClient()
     const { data: { user: supabaseUser } } = await supabase.auth.getUser()
-    const userId = (session?.user as any)?.id || supabaseUser?.id
+    const userId = session?.user?.id || supabaseUser?.id
 
     if (!userId) {
       return { success: false, error: "Not authenticated" }

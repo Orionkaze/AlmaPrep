@@ -2,6 +2,14 @@ import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
+import { pageMetadata } from "@/lib/seo"
+
+export const metadata = pageMetadata({
+  title: "About Almaprep — Why We Built It",
+  description:
+    "Almaprep helps students walk into admission and job interviews already rehearsed. Learn who we are and why interview practice should be free for every student.",
+  path: "/about",
+})
 
 export default function AboutPage() {
   return (
@@ -41,7 +49,7 @@ export default function AboutPage() {
           <div className="wrap">
             <div className="cta-band reveal">
               <h2>Join us.</h2>
-              <p>Whether you're a student or an institution, getting started takes minutes.</p>
+              <p>Whether you&apos;re a student or an institution, getting started takes minutes.</p>
               <div className="hero-cta">
                 <Link className="btn btn-primary btn-lg" href="/signup">Start free</Link>
                 <Link className="btn btn-light btn-lg" href="/institutions">For institutions</Link>

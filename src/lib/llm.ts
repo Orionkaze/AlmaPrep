@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai"
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, ModelParams } from "@google/generative-ai"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
@@ -176,7 +176,7 @@ export async function callGeminiText(
     parts: [{ text: m.content }],
   }))
 
-  const modelOptions: any = {
+  const modelOptions: ModelParams = {
     model: modelName,
     safetySettings,
     generationConfig: { temperature }
@@ -211,12 +211,12 @@ export async function callGeminiJson(
 
   const genAI = new GoogleGenerativeAI(apiKey)
 
-  const modelOptions: any = {
+  const modelOptions: ModelParams = {
     model: modelName,
     safetySettings,
-    generationConfig: { 
-      temperature, 
-      responseMimeType: "application/json" 
+    generationConfig: {
+      temperature,
+      responseMimeType: "application/json"
     }
   }
 
@@ -286,9 +286,10 @@ export async function getLLMResponse({
       const result = await provider.fn()
       console.log(`[LLM Router] Success with ${provider.name}`)
       return result
-    } catch (err: any) {
-      console.error(`[LLM Router] Provider ${provider.name} failed:`, err.message || err)
-      lastError = err
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err)
+      console.error(`[LLM Router] Provider ${provider.name} failed:`, message)
+      lastError = err instanceof Error ? err : new Error(message)
     }
   }
 
@@ -341,9 +342,10 @@ export async function getLLMJSONResponse<T>({
       const parsed = JSON.parse(cleaned) as T
       console.log(`[LLM Router] Success with ${provider.name}`)
       return parsed
-    } catch (err: any) {
-      console.error(`[LLM Router] JSON Provider ${provider.name} failed:`, err.message || err)
-      lastError = err
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err)
+      console.error(`[LLM Router] JSON Provider ${provider.name} failed:`, message)
+      lastError = err instanceof Error ? err : new Error(message)
     }
   }
 

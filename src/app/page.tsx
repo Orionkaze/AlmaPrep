@@ -2,6 +2,14 @@ import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
+import type { Metadata } from "next"
+
+// Home keeps the layout's default title/description/OG; it only pins its own
+// canonical (the global canonical was moved off the layout so app routes don't
+// all inherit "/").
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
 
 export default function Home() {
   return (
@@ -21,7 +29,7 @@ export default function Home() {
               <Link className="btn btn-primary btn-lg" href="/signup">Start free for students &rarr;</Link>
               <Link className="btn btn-ghost btn-lg" href="/institutions">Book an institution demo</Link>
             </div>
-            <p className="hero-note"><strong>Free forever for students.</strong> Thousands of curated questions &middot; No credit card.</p>
+            <p className="hero-note"><strong>Free forever for students.</strong> Thousands of practice questions &middot; No credit card.</p>
           </div>
         </section>
 
@@ -29,7 +37,7 @@ export default function Home() {
         <section className="section-sm">
           <div className="wrap center reveal">
             <span className="early-badge"><span className="dot"></span> Now in early access</span>
-            <p className="lead narrow" style={{ marginTop: "16px" }}>A next-generation take on interview prep: a vetted question bank that's free for every student, and a live voice AI interviewer for those who want the real thing. We're onboarding our first schools and students now.</p>
+            <p className="lead narrow" style={{ marginTop: "16px" }}>A next-generation take on interview prep: a deterministic question bank that&apos;s free for every student, and a live voice AI interviewer for those who want the real thing. We&apos;re onboarding our first schools and students now.</p>
           </div>
         </section>
 
@@ -38,8 +46,8 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head reveal">
               <p className="eyebrow">Why Almaprep is different</p>
-              <h2>Real questions, reviewed by coaches. AI that's grounded in them.</h2>
-              <p className="lead">Every question is written and vetted by interview coaches, so free practice is consistent, relevant, and never random. Upgrade to Pro and that same vetted foundation powers a live voice AI interviewer, conversation where it counts, grounded content underneath.</p>
+              <h2>A fixed question bank. AI that&apos;s grounded in it, not improvising.</h2>
+              <p className="lead">Free practice runs on a deterministic bank of most-probable questions, so it&apos;s consistent, relevant, and the same for every student, never a different random interview each time. Pro layers a live voice AI interviewer on top of that same grounded foundation, conversation where it counts.</p>
             </div>
             <div className="grid grid-3">
               <div className="card reveal">
@@ -47,7 +55,7 @@ export default function Home() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                 </div>
                 <h3>Thousands of vetted questions</h3>
-                <p>HR, technical, and admissions-style questions across hundreds of programs and roles. Curated, not generated.</p>
+                <p>HR, technical, and admissions-style questions across hundreds of programs and roles. A fixed bank, the same for everyone.</p>
               </div>
               <div className="card reveal">
                 <div className="card-icon">
@@ -85,7 +93,7 @@ export default function Home() {
               </div>
               <div className="step reveal">
                 <h3>Get instant feedback</h3>
-                <p>Receive a score and concrete suggestions on structure, clarity, and content while it's fresh.</p>
+                <p>Receive a score and concrete suggestions on structure, clarity, and content while it&apos;s fresh.</p>
               </div>
               <div className="step reveal">
                 <h3>Practice and improve</h3>
@@ -139,11 +147,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats */}
+        {/* Honest credibility strip — real product facts, not fabricated user
+            counts or testimonials. Once we have consented quotes from real early
+            users, add a testimonials section here and lead with those instead. */}
         <section className="section-sm">
           <div className="wrap">
             <div className="stats narrow">
-              <div className="stat reveal"><div className="num">1,000s</div><div className="lbl" style={{ color: "var(--muted)" }}>Vetted interview questions</div></div>
+              <div className="stat reveal"><div className="num">1,000s</div><div className="lbl" style={{ color: "var(--muted)" }}>Practice questions, HR to admissions</div></div>
               <div className="stat reveal"><div className="num">$0</div><div className="lbl" style={{ color: "var(--muted)" }}>For students, forever</div></div>
               <div className="stat reveal"><div className="num">24/7</div><div className="lbl" style={{ color: "var(--muted)" }}>Practice on their schedule</div></div>
             </div>
@@ -164,7 +174,7 @@ export default function Home() {
                 <p>Practice as much as you want against questions real interviewers ask. Get honest feedback. Show up calm.</p>
                 <ul className="check" style={{ margin: "16px 0 24px" }}>
                   <li>Free forever, no credit card</li>
-                  <li>Thousands of curated questions</li>
+                  <li>Thousands of practice questions</li>
                   <li>Instant scores and tips</li>
                   <li>Your full practice history</li>
                   <li>Go Pro for live voice AI interviews</li>

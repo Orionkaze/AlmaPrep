@@ -2,6 +2,14 @@ import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
+import { pageMetadata } from "@/lib/seo"
+
+export const metadata = pageMetadata({
+  title: "Interview Prep Blog — Tips, Questions & Guides",
+  description:
+    "Practical interview-prep advice for students and schools: common admission questions, beating nerves, and running mock interviews across a whole cohort.",
+  path: "/blog",
+})
 
 export default function BlogIndexPage() {
   return (

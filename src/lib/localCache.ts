@@ -7,7 +7,7 @@ function getFilePath(type: string, id: string): string {
   return path.join(CACHE_DIR, type, `${id}.json`)
 }
 
-export function writeLocalCache(type: string, id: string, data: any): boolean {
+export function writeLocalCache(type: string, id: string, data: Record<string, unknown>): boolean {
   try {
     const dir = path.join(CACHE_DIR, type)
     if (!fs.existsSync(dir)) {
@@ -21,7 +21,7 @@ export function writeLocalCache(type: string, id: string, data: any): boolean {
   }
 }
 
-export function readLocalCache(type: string, id: string): any | null {
+export function readLocalCache(type: string, id: string): Record<string, unknown> | null {
   try {
     const filePath = getFilePath(type, id)
     if (fs.existsSync(filePath)) {

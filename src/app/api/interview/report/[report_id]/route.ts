@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getReportById, getSessionById, getChallengeById } from "@/lib/interviewDb";
+import { getRequestUserId } from "@/lib/getRequestUserId";
 
 export async function GET(
   request: Request,
@@ -12,9 +13,17 @@ export async function GET(
       return NextResponse.json({ error: "Missing report_id" }, { status: 400 });
     }
 
+    const userId = await getRequestUserId();
+    if (!userId) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
+
     const report = await getReportById(report_id);
     if (!report) {
       return NextResponse.json({ error: "Report not found" }, { status: 404 });
+    }
+    if (report.user_id !== userId) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const session = await getSessionById(report.session_id);
@@ -25,8 +34,8 @@ export async function GET(
       challenge_title: challenge ? challenge.title : "Unknown Challenge",
       session
     });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error fetching report details:", err);
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });
   }
 }

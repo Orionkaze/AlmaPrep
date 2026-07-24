@@ -33,8 +33,8 @@ export async function parseDocument(formData: FormData): Promise<{ success: bool
 
     return { success: true, text: text.trim() }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error parsing document:", error)
-    return { success: false, error: error.message || "Failed to parse document" }
+    return { success: false, error: error instanceof Error ? error.message : "Failed to parse document" }
   }
 }

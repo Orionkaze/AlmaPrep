@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import { ShieldAlert, Maximize } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProctoringWarning from "./ProctoringWarning";
@@ -36,54 +36,53 @@ export default function ProctoringMonitor({
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [isFullscreenExitBlocking, setIsFullscreenExitBlocking] = useState(false);
 
-  const violationsRef = useRef<ViolationRecord[]>([]);
   const faceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Sync state ref
-  useEffect(() => {
-    violationsRef.current = violations;
-    const totalCount = violations.reduce((acc, v) => acc + v.count, 0);
-    onViolationCountChange(totalCount);
-    onViolationLogged(violations);
+  const addViolation = useCallback(
+    (type: ViolationType) => {
+      const timestamp = new Date().toISOString();
+      setViolations((prev) => {
+        const next = prev.find((v) => v.type === type)
+          ? prev.map((v) => (v.type === type ? { ...v, count: v.count + 1, timestamp } : v))
+          : [...prev, { type, timestamp, count: 1 }];
 
-    if (totalCount === 3) {
-      setShowWarningModal(true);
-    } else if (totalCount >= threshold) {
-      onTerminate();
-    }
-  }, [violations]);
+        // Respond to the violation-count transition right where it happens,
+        // rather than re-deriving it in a separate effect that watches
+        // `violations` (which would call setState synchronously on every
+        // change and risk cascading renders).
+        const totalCount = next.reduce((acc, v) => acc + v.count, 0);
+        onViolationCountChange(totalCount);
+        onViolationLogged(next);
 
-  const addViolation = (type: ViolationType) => {
-    const timestamp = new Date().toISOString();
-    setViolations((prev) => {
-      const existing = prev.find((v) => v.type === type);
-      if (existing) {
-        return prev.map((v) =>
-          v.type === type ? { ...v, count: v.count + 1, timestamp } : v
-        );
-      } else {
-        return [...prev, { type, timestamp, count: 1 }];
+        if (totalCount === 3) {
+          setShowWarningModal(true);
+        } else if (totalCount >= threshold) {
+          onTerminate();
+        }
+
+        return next;
+      });
+
+      // Set appropriate toast warnings
+      let message = "";
+      switch (type) {
+        case "tab_switch":
+          message = "Tab switch detected — please stay on this page during your interview.";
+          break;
+        case "copy_paste":
+          message = "Copy/paste detected — please answer in your own words.";
+          break;
+        case "multiple_faces":
+          message = "Multiple faces detected — please ensure you are alone during the interview.";
+          break;
+        case "fullscreen_exit":
+          message = "Please return to fullscreen to continue your interview.";
+          break;
       }
-    });
-
-    // Set appropriate toast warnings
-    let message = "";
-    switch (type) {
-      case "tab_switch":
-        message = "Tab switch detected — please stay on this page during your interview.";
-        break;
-      case "copy_paste":
-        message = "Copy/paste detected — please answer in your own words.";
-        break;
-      case "multiple_faces":
-        message = "Multiple faces detected — please ensure you are alone during the interview.";
-        break;
-      case "fullscreen_exit":
-        message = "Please return to fullscreen to continue your interview.";
-        break;
-    }
-    setWarningMessage(message);
-  };
+      setWarningMessage(message);
+    },
+    [onViolationCountChange, onViolationLogged, onTerminate, threshold]
+  );
 
   // 1. Visibility API Tab Switch Detection
   useEffect(() => {
@@ -99,7 +98,7 @@ export default function ProctoringMonitor({
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [active]);
+  }, [active, addViolation]);
 
   // 2. Clipboard copy/cut/paste detection
   useEffect(() => {
@@ -124,7 +123,7 @@ export default function ProctoringMonitor({
       document.removeEventListener("cut", handleClipboardEvent);
       document.removeEventListener("paste", handleClipboardEvent);
     };
-  }, [active]);
+  }, [active, addViolation]);
 
   // 3. Fullscreen Enforcement
   useEffect(() => {
@@ -142,7 +141,7 @@ export default function ProctoringMonitor({
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
-  }, [active]);
+  }, [active, addViolation]);
 
   // 4. Multiple Face Detection with 3-second debounce
   useEffect(() => {
@@ -173,7 +172,7 @@ export default function ProctoringMonitor({
         clearTimeout(faceTimerRef.current);
       }
     };
-  }, [faceCount, active]);
+  }, [faceCount, active, addViolation]);
 
   const handleRequestFullscreen = async () => {
     try {

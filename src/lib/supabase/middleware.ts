@@ -26,17 +26,55 @@ async function generateDeterministicPasswordWebCrypto(email: string, secret: str
     .join('')
 }
 
+// State-changing API requests whose Origin doesn't match this deployment's
+// own host are rejected outright — cheap CSRF defense-in-depth on top of the
+// browser's SameSite cookie behavior. Only enforced when an Origin header is
+// present (some legitimate same-origin requests omit it), and never applied
+// to NextAuth's own routes, which handle their own CSRF token.
+function isCrossOriginMutation(request: NextRequest): boolean {
+  if (!["POST", "PUT", "PATCH", "DELETE"].includes(request.method)) return false
+  const origin = request.headers.get("origin")
+  if (!origin) return false
+  try {
+    return new URL(origin).host !== request.nextUrl.host
+  } catch {
+    return true
+  }
+}
+
 export async function updateSession(request: NextRequest) {
   const hasNextAuthCookie = request.cookies.has("next-auth.session-token") ||
                             request.cookies.has("__Secure-next-auth.session-token")
   const hasDemoCookie = request.cookies.has("mockmate-demo-session")
   const hasSupabaseSession = request.cookies.getAll().some(c => c.name.startsWith("sb-"))
+  const hasAnySession = hasNextAuthCookie || hasDemoCookie || hasSupabaseSession
 
   const path = request.nextUrl.pathname
-  const isProtectedRoute = path === '/' ||
-                           path.startsWith('/dashboard') || 
+  // NOTE: '/' is intentionally NOT protected — it's the public marketing landing
+  // page (like /features, /pricing, /institutions, which are also public). Only
+  // the actual product surfaces require a session.
+  const isProtectedRoute = path.startsWith('/dashboard') ||
                            path.startsWith('/interview') ||
                            path.startsWith('/onboarding')
+
+  // API routes: NextAuth's own callback/session endpoints manage their own
+  // CSRF + auth and must stay untouched here. Every other /api/* route gets
+  // a CSRF origin check on mutations, and the cost/data-sensitive ones get a
+  // cheap "is there any session cookie at all" gate before the request even
+  // reaches the route handler. The route handlers still do the authoritative
+  // auth + per-resource ownership check — this is just an edge-layer filter.
+  if (path.startsWith('/api/') && !path.startsWith('/api/auth/')) {
+    if (isCrossOriginMutation(request)) {
+      return NextResponse.json({ error: 'cross-origin request blocked' }, { status: 403 })
+    }
+    const isGatedApiRoute = path.startsWith('/api/interview/') ||
+                            path.startsWith('/api/ai') ||
+                            path.startsWith('/api/github')
+    if (isGatedApiRoute && !hasAnySession) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+    }
+    return NextResponse.next({ request })
+  }
 
   if (hasDemoCookie) {
     if (path === '/login' || path === '/signup') {

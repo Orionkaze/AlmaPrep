@@ -7,15 +7,12 @@ import {
   Rocket,
   Brain,
   Star,
-  Mail,
-  Calendar,
   CheckCircle,
   Award,
   BarChart2,
   Target,
   Flame,
   UserPen,
-  Save,
   Loader2,
   ChevronDown,
   ChevronUp,
@@ -25,17 +22,16 @@ import {
   History,
   GitBranch,
   ShieldAlert,
-  LogOut,
-  Sparkles
+  type LucideIcon,
 } from "lucide-react"
 import { toast } from "sonner"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Progress, ProgressTrack, ProgressIndicator } from "@/components/ui/progress"
+import { Progress } from "@/components/ui/progress"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Switch } from "@/components/ui/switch"
 import { Separator } from "@/components/ui/separator"
@@ -53,7 +49,7 @@ import { updateUserProfile, clearAllUserData, updateGithubAutosave } from "@/app
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 
-const avatarMap: Record<string, React.FC<any>> = {
+const avatarMap: Record<string, LucideIcon> = {
   "laptop-code": Laptop,
   "user-tie": UserRound,
   "rocket": Rocket,
@@ -77,6 +73,37 @@ interface Interview {
   status: string
 }
 
+interface RepoMetadataEntry {
+  complexity_score?: number
+  design_patterns?: string[]
+  weak_areas?: string[]
+  [key: string]: unknown
+}
+
+export interface GitHubAnalysisData {
+  profile_summary: string
+  tech_stack: string[]
+  design_patterns: string[]
+  strengths: string[]
+  weak_areas: string[]
+  questions: Array<{ repo: string; question: string; difficulty: string }>
+  repo_metadata: Record<string, RepoMetadataEntry>
+}
+
+interface BadgeMeta {
+  slug: string
+  name: string
+  description: string
+  category: string
+  icon: string
+  rarity: string
+}
+
+interface UserBadgeMeta {
+  badge_slug: string
+  earned_at: string
+}
+
 interface ProfileContentProps {
   initialProfile: {
     username: string
@@ -91,9 +118,9 @@ interface ProfileContentProps {
   interviews: Interview[]
   subscriptionTier: string
   hasGitHubToken: boolean
-  initialGitHubAnalysis: any
-  allBadges?: any[]
-  userBadges?: any[]
+  initialGitHubAnalysis: GitHubAnalysisData | null
+  allBadges?: BadgeMeta[]
+  userBadges?: UserBadgeMeta[]
   totalActivities?: number
 }
 
@@ -141,7 +168,6 @@ export default function ProfileContent({
   initialGitHubAnalysis,
   allBadges = [],
   userBadges = [],
-  totalActivities = 0,
 }: ProfileContentProps) {
   const [username, setUsername] = useState(initialProfile.username)
   const [selectedAvatar, setSelectedAvatar] = useState(initialProfile.avatar_url)
@@ -152,7 +178,7 @@ export default function ProfileContent({
   const [isDeleting, setIsDeleting] = useState(false)
 
   // GitHub Analysis states
-  const [githubAnalysis, setGithubAnalysis] = useState<any>(initialGitHubAnalysis)
+  const [githubAnalysis, setGithubAnalysis] = useState<GitHubAnalysisData | null>(initialGitHubAnalysis)
   const [analyzingGitHub, setAnalyzingGitHub] = useState(false)
   const [githubError, setGithubError] = useState<string | null>(null)
   const [expandedRepo, setExpandedRepo] = useState<string | null>(null)
@@ -186,9 +212,9 @@ export default function ProfileContent({
       } else {
         throw new Error(data.error || "Failed to analyze GitHub profile.")
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err)
-      setGithubError(err.message || "An unexpected error occurred while analyzing GitHub profile.")
+      setGithubError(err instanceof Error ? err.message : "An unexpected error occurred while analyzing GitHub profile.")
     } finally {
       setAnalyzingGitHub(false)
     }
@@ -239,7 +265,7 @@ export default function ProfileContent({
       try {
         await signOut({ redirect: false })
         window.location.href = "/"
-      } catch (e) {
+      } catch {
         window.location.href = "/"
       }
     } catch (err) {
@@ -815,8 +841,8 @@ export default function ProfileContent({
                         <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" style={headingStyle}>Tailored Interview Questions</h4>
                         
                         <div className="flex flex-col gap-2">
-                          {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
-                            const repoQuestions = githubAnalysis.questions.filter((q: any) => q.repo === repoName)
+                          {Array.from(new Set(githubAnalysis.questions.map((q) => q.repo))).map((repoName) => {
+                            const repoQuestions = githubAnalysis.questions.filter((q) => q.repo === repoName)
                             const isExpanded = expandedRepo === repoName
 
                             return (
@@ -843,20 +869,20 @@ export default function ProfileContent({
                                   <div className="px-4 pb-4 pt-2 flex flex-col gap-4 border-t border-border bg-muted/20">
                                     {githubAnalysis.repo_metadata?.[repoName] && (
                                       <div className="flex flex-col gap-2 pt-1 pb-1 text-xs border-b border-border">
-                                        {githubAnalysis.repo_metadata[repoName].design_patterns?.length > 0 && (
+                                        {(githubAnalysis.repo_metadata[repoName].design_patterns?.length ?? 0) > 0 && (
                                           <div className="flex flex-wrap gap-1.5 items-center">
                                             <span className="text-muted-foreground font-medium mr-1 text-[11px]">Patterns:</span>
-                                            {githubAnalysis.repo_metadata[repoName].design_patterns.map((pat: string) => (
+                                            {githubAnalysis.repo_metadata[repoName].design_patterns?.map((pat: string) => (
                                               <span key={pat} className="text-[9px] px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent font-semibold">
                                                 {pat}
                                               </span>
                                             ))}
                                           </div>
                                         )}
-                                        {githubAnalysis.repo_metadata[repoName].weak_areas?.length > 0 && (
+                                        {(githubAnalysis.repo_metadata[repoName].weak_areas?.length ?? 0) > 0 && (
                                           <div className="flex flex-col gap-1 mt-1 text-[11px]">
                                             <span className="text-muted-foreground font-medium">Repo Weak Areas:</span>
-                                            {githubAnalysis.repo_metadata[repoName].weak_areas.map((weak: string, wi: number) => (
+                                            {githubAnalysis.repo_metadata[repoName].weak_areas?.map((weak: string, wi: number) => (
                                               <span key={wi} className="text-rose-400 pl-1 leading-normal">
                                                 ⚠️ {weak}
                                               </span>
@@ -867,7 +893,7 @@ export default function ProfileContent({
                                     )}
 
                                     <div className="flex flex-col gap-3">
-                                      {repoQuestions.map((q: any, i: number) => (
+                                      {repoQuestions.map((q, i) => (
                                         <div key={i} className="flex flex-col gap-1">
                                           <div className="flex items-center gap-2">
                                             <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${

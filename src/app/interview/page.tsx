@@ -19,7 +19,7 @@ interface Challenge {
   description: string;
   challenge_type: string;
   difficulty: string;
-  starter_code: any;
+  starter_code: Record<string, unknown>;
 }
 
 const challengeTypes = [
@@ -39,15 +39,22 @@ export default function ChallengeSelectionPage() {
   const [startingId, setStartingId] = useState<string | null>(null);
   const [errorToast, setErrorToast] = useState<string | null>(null);
 
+  const showToast = (msg: string) => {
+    setErrorToast(msg);
+    setTimeout(() => {
+      setErrorToast(null);
+    }, 4000);
+  };
+
   // Load challenges
   useEffect(() => {
     async function loadChallenges() {
       try {
         // Fetch from api route start or load mock db start
         // Since we want to make it robust, we can hit an endpoint to get challenges.
-        // Wait, did we create a GET /api/interview/challenges? 
+        // Wait, did we create a GET /api/interview/challenges?
         // No, but we can write a quick endpoint, or just fetch them from a small local helper.
-        // Wait, let's create a small client-side API call to get all challenges, 
+        // Wait, let's create a small client-side API call to get all challenges,
         // or we can write a simple client-side load.
         // Let's call /api/interview/start with an empty body to fetch challenges if allowed,
         // or we can fetch a static JSON, or just use the local seed data.
@@ -60,7 +67,7 @@ export default function ChallengeSelectionPage() {
         } else {
           throw new Error("Failed to load challenges");
         }
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         showToast("Could not load challenges. Please refresh the page.");
       } finally {
@@ -70,13 +77,6 @@ export default function ChallengeSelectionPage() {
 
     loadChallenges();
   }, []);
-
-  const showToast = (msg: string) => {
-    setErrorToast(msg);
-    setTimeout(() => {
-      setErrorToast(null);
-    }, 4000);
-  };
 
   const handleStart = async (challengeId: string) => {
     if (startingId) return;
@@ -99,9 +99,10 @@ export default function ChallengeSelectionPage() {
       } else {
         throw new Error(data.error || "Failed to initiate session");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      showToast(err.message || "Failed to start interview. Try again.");
+      const message = err instanceof Error ? err.message : "Failed to start interview. Try again.";
+      showToast(message);
       setStartingId(null);
     }
   };
@@ -205,7 +206,7 @@ export default function ChallengeSelectionPage() {
             </div>
             <h3 className="text-lg font-semibold text-[#0f172a] mb-1">No challenges found</h3>
             <p className="text-sm text-[#9CA3AF] max-w-xs">
-              We couldn't find any challenges in the "{getChallengeTypeLabel(activeFilter)}" category.
+              We couldn&apos;t find any challenges in the &quot;{getChallengeTypeLabel(activeFilter)}&quot; category.
             </p>
           </div>
         ) : (

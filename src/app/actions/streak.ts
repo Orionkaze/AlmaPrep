@@ -109,8 +109,8 @@ export async function updateStreak(
       current_streak: newCurrentStreak, 
       longest_streak: newLongestStreak 
     };
-  } catch (err: any) {
+  } catch (err) {
     console.error("updateStreak error:", err);
-    return { success: false, error: err.message };
+    return { success: false, error: err instanceof Error ? err.message : String(err) };
   }
 }

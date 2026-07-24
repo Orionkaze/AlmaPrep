@@ -1,7 +1,15 @@
 import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
+import { pageMetadata } from "@/lib/seo"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
+
+export const metadata = pageMetadata({
+  title: "Features — AI Voice Mock Interviews & Feedback",
+  description:
+    "See how Almaprep works: live voice AI interviews you actually speak in, a consistent question bank, instant scoring, and detailed feedback. Free to start.",
+  path: "/features",
+})
 
 export default function FeaturesPage() {
   return (
@@ -24,8 +32,8 @@ export default function FeaturesPage() {
             <div className="feature-row reveal">
               <div>
                 <p className="eyebrow">Vetted question bank</p>
-                <h2>Thousands of real questions, curated by coaches.</h2>
-                <p>The free experience runs on a deterministic bank of vetted questions, so every student gets the same fair, high-quality practice. No AI guesswork, no off-topic detours, no made-up prompts.</p>
+                <h2>Thousands of real questions, one consistent bank.</h2>
+                <p>The free experience runs on a fixed, deterministic question bank, so every student gets the same fair, consistent practice — the same questions every time, not an LLM improvising a different interview on the fly.</p>
                 <ul className="check" style={{ marginTop: "16px" }}>
                   <li>HR, technical, and admissions tracks</li>
                   <li>Hundreds of programs and roles</li>
@@ -47,7 +55,7 @@ export default function FeaturesPage() {
               <div>
                 <p className="eyebrow">Instant feedback</p>
                 <h2>A score and real suggestions, the moment you finish.</h2>
-                <p>Almaprep evaluates each answer for structure, clarity, and content, then hands back a score with specific things to fix, while the answer is still fresh in the student's mind.</p>
+                <p>Almaprep evaluates each answer for structure, clarity, and content, then hands back a score with specific things to fix, while the answer is still fresh in the student&apos;s mind.</p>
                 <ul className="check" style={{ marginTop: "16px" }}>
                   <li>Performance score per answer</li>
                   <li>Actionable, specific suggestions</li>
@@ -70,7 +78,7 @@ export default function FeaturesPage() {
               <div>
                 <p className="eyebrow">Progress tracking</p>
                 <h2>Watch confidence climb, session by session.</h2>
-                <p>Every mock interview is saved. Students see their history and trend line; institutions see the same for entire cohorts, so it's obvious who is improving and who needs a hand.</p>
+                <p>Every mock interview is saved. Students see their history and trend line; institutions see the same for entire cohorts, so it&apos;s obvious who is improving and who needs a hand.</p>
                 <ul className="check" style={{ marginTop: "16px" }}>
                   <li>Full session history</li>
                   <li>Trends over time</li>
@@ -93,9 +101,9 @@ export default function FeaturesPage() {
             {/* Feature 4 */}
             <div className="feature-row flip reveal">
               <div>
-                <span className="pill">Pro &amp; Enterprise &middot; AI voice</span>
+                <span className="pill">Every plan &middot; AI voice</span>
                 <h2 style={{ marginTop: "16px" }}>Live voice interviews with an AI interviewer.</h2>
-                <p>The premium, AI-powered experience. You join a live meeting and speak to a voice AI interviewer that listens, responds out loud, and asks intelligent follow-ups in real time, just like sitting across from a real panel. Available on <strong>Pro</strong> for individuals and <strong>Enterprise</strong> for whole institutions.</p>
+                <p>You join a live meeting and speak to a voice AI interviewer that listens, responds out loud, and asks intelligent follow-ups in real time, just like sitting across from a real panel. Included free, up to 3 interviews a month &mdash; <strong>Pro</strong> and <strong>Enterprise</strong> remove the monthly cap.</p>
                 <ul className="check" style={{ marginTop: "16px" }}>
                   <li>Spoken, real-time conversation</li>
                   <li>Dynamic follow-ups based on what you say</li>
@@ -124,7 +132,7 @@ export default function FeaturesPage() {
                   </div>
                 </div>
                 <h3 style={{ margin: "0 0 8px" }}>&ldquo;You mentioned the project ran late. What would you do differently next time?&rdquo;</h3>
-                <p style={{ color: "var(--muted)", margin: 0, fontSize: ".92rem" }}>Spoken aloud, generated live from the student's last answer &middot; Enterprise only</p>
+                <p style={{ color: "var(--muted)", margin: 0, fontSize: ".92rem" }}>Spoken aloud, generated live from the student&apos;s last answer &middot; Enterprise only</p>
               </div>
             </div>
           </div>

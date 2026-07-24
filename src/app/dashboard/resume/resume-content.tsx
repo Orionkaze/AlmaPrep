@@ -7,13 +7,11 @@ import {
   ListChecks,
   CheckCircle,
   AlertTriangle,
-  ArrowRight,
   Compass,
-  Laptop,
   Upload,
   Loader2
 } from "lucide-react"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"

@@ -28,6 +28,12 @@ if (!supabaseUrl || supabaseUrl.includes('evdfkeikrrsdthnekrrz.supabase.co')) {
   process.exit(0);
 }
 
+if (!process.argv.includes('--yes-really-delete-everything')) {
+  console.error(`This PERMANENTLY DELETES all rows in ${supabaseUrl} (feedback, messages, interviews, interview_usage, users).`);
+  console.error('Re-run with --yes-really-delete-everything to confirm.');
+  process.exit(1);
+}
+
 console.log('Connecting to Supabase at:', supabaseUrl);
 const supabase = createClient(supabaseUrl, supabaseServiceKey || supabaseAnonKey);
 

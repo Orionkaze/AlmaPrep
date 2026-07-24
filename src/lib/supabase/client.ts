@@ -1,18 +1,35 @@
 import { createBrowserClient } from '@supabase/ssr'
+import type { SupabaseClient } from '@supabase/supabase-js'
 
-function createMockBrowserClient() {
+interface LocalDemoUser {
+  email: string
+  password: string
+  username: string
+}
+
+function readLocalDemoUsers(): LocalDemoUser[] {
+  try {
+    const stored = localStorage.getItem("mockmate_users");
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+}
+
+// The demo-mode mock below is a table-agnostic localStorage/cookie-backed
+// shim (it doesn't model per-table row shapes the way the real
+// SupabaseClient does), so its structural type can't match SupabaseClient.
+// Callers should still see the real client's type — that's what the
+// `as unknown as SupabaseClient` cast at the end of this factory is for.
+function createMockBrowserClient(): SupabaseClient {
   return {
     auth: {
-      signUp: async ({ email, password, options }: any) => {
+      signUp: async ({ email, password }: { email: string; password: string }) => {
         console.log("Mock Supabase Client: signUp", email);
-        
-        let users = [];
-        try {
-          const stored = localStorage.getItem("mockmate_users");
-          if (stored) users = JSON.parse(stored);
-        } catch (e) {}
 
-        if (users.some((u: any) => u.email === email)) {
+        const users = readLocalDemoUsers();
+
+        if (users.some((u) => u.email === email)) {
           return { data: { user: null, session: null }, error: { message: "User already registered" } };
         }
 
@@ -40,16 +57,12 @@ function createMockBrowserClient() {
         };
       },
 
-      signInWithPassword: async ({ email, password }: any) => {
+      signInWithPassword: async ({ email, password }: { email: string; password: string }) => {
         console.log("Mock Supabase Client: signInWithPassword", email);
-        
-        let users = [];
-        try {
-          const stored = localStorage.getItem("mockmate_users");
-          if (stored) users = JSON.parse(stored);
-        } catch (e) {}
 
-        let user = users.find((u: any) => u.email === email);
+        const users = readLocalDemoUsers();
+
+        let user = users.find((u) => u.email === email);
         if (!user) {
           // Auto-register to make testing simple and flawless
           user = { email, password, username: email.split("@")[0] };
@@ -92,7 +105,7 @@ function createMockBrowserClient() {
           try {
             const parsed = JSON.parse(decodeURIComponent(matches[2]));
             return { data: { user: { id: "demo-user-id", email: parsed.email } }, error: null };
-          } catch (e) {}
+          } catch {}
         }
         return { data: { user: null }, error: null };
       },
@@ -113,7 +126,7 @@ function createMockBrowserClient() {
               },
               error: null
             };
-          } catch (e) {}
+          } catch {}
         }
         return { data: { session: null }, error: null };
       }
@@ -142,7 +155,7 @@ function createMockBrowserClient() {
                   },
                   error: null
                 };
-              } catch (e) {}
+              } catch {}
             }
           }
           return { data: null, error: null };
@@ -162,7 +175,7 @@ function createMockBrowserClient() {
                   },
                   error: null
                 };
-              } catch (e) {}
+              } catch {}
             }
           }
           return { data: null, error: null };
@@ -170,12 +183,12 @@ function createMockBrowserClient() {
         limit: () => chain,
         order: () => chain,
       };
-      return chain as any;
+      return chain;
     }
-  } as any;
+  } as unknown as SupabaseClient;
 }
 
-export function createClient() {
+export function createClient(): SupabaseClient {
   const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id.supabase.co");
 

@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
-interface AnswerScore {
+export interface AnswerScore {
   star_score: number;
   relevance_score: number;
   clarity_score: number;
@@ -24,7 +24,7 @@ interface AnswerScore {
   summary: string;
 }
 
-interface PhysicalMetric {
+export interface PhysicalMetric {
   interval_index: number;
   eye_contact_percent: number;
   posture_stability_score: number;
@@ -46,7 +46,7 @@ interface SpeakingAnswer {
   feedback: string;
 }
 
-interface SpeakingAnalysis {
+export interface SpeakingAnalysis {
   answerMetrics: SpeakingAnswer[];
   sessionSummary: {
     metrics: {
@@ -413,7 +413,7 @@ export default function BehavioralReport({
                       return (
                         <div key={word} className="space-y-1">
                           <div className="flex justify-between text-xs font-semibold">
-                            <span className="text-muted-foreground font-mono">"{word}"</span>
+                            <span className="text-muted-foreground font-mono">&quot;{word}&quot;</span>
                             <span className="text-emerald-400">{count} occurrences</span>
                           </div>
                           <div className="h-2.5 w-full bg-muted rounded-full overflow-hidden border border-border/20">

@@ -17,9 +17,45 @@ interface BehavioralAnalysisProps {
   onFaceCountChange?: (count: number) => void;
 }
 
+// Minimal shapes for the MediaPipe FaceMesh/Pose data we actually read.
+// MediaPipe's own published types are for its Node/JS package, not the
+// UMD/CDN globals used here, so we model just the fields this component
+// touches.
+interface MediaPipeLandmark {
+  x: number;
+  y: number;
+  z?: number;
+  visibility?: number;
+}
+
+interface FaceMeshResults {
+  multiFaceLandmarks?: MediaPipeLandmark[][];
+}
+
+interface PoseResults {
+  poseLandmarks?: MediaPipeLandmark[];
+}
+
+interface MediaPipeSolution {
+  setOptions: (options: Record<string, unknown>) => void;
+  onResults: (callback: (results: never) => void) => void;
+  send: (input: { image: HTMLVideoElement }) => Promise<void>;
+  close: () => void;
+}
+
+type MediaPipeSolutionConstructor = new (config: {
+  locateFile: (file: string) => string;
+}) => MediaPipeSolution;
+
+declare global {
+  interface Window {
+    FaceMesh?: MediaPipeSolutionConstructor;
+    Pose?: MediaPipeSolutionConstructor;
+  }
+}
+
 export default function BehavioralAnalysis({
   videoRef,
-  sessionId,
   onIntervalMetrics,
   onActiveStatusChange,
   onFaceCountChange,
@@ -29,10 +65,20 @@ export default function BehavioralAnalysis({
     pose: false,
   });
 
-  const faceMeshRef = useRef<any>(null);
-  const poseRef = useRef<any>(null);
+  const faceMeshRef = useRef<MediaPipeSolution | null>(null);
+  const poseRef = useRef<MediaPipeSolution | null>(null);
   const loopActiveRef = useRef<boolean>(false);
   const intervalIndexRef = useRef<number>(0);
+
+  // Keep the latest callback in a ref so the load-status-sync effect below
+  // doesn't need `onActiveStatusChange` in its dependency array — the
+  // parent passes a new function identity on every render, and depending
+  // on it directly would tear down and re-initialize the MediaPipe
+  // pipeline on every unrelated parent re-render.
+  const onActiveStatusChangeRef = useRef(onActiveStatusChange);
+  useEffect(() => {
+    onActiveStatusChangeRef.current = onActiveStatusChange;
+  }, [onActiveStatusChange]);
 
   // Aggregation state for 30s intervals
   const frameMetricsRef = useRef<{
@@ -59,66 +105,162 @@ export default function BehavioralAnalysis({
     lastWristPos: { left: null, right: null },
   });
 
-  // Load status sync
-  useEffect(() => {
-    if (scriptsLoaded.faceMesh && scriptsLoaded.pose) {
-      onActiveStatusChange(true);
-      initializeMediaPipe();
+  // FaceMesh Results Processing
+  const handleFaceMeshResults = (results: FaceMeshResults) => {
+    const faceCount = results?.multiFaceLandmarks ? results.multiFaceLandmarks.length : 0;
+    if (onFaceCountChange) {
+      onFaceCountChange(faceCount);
     }
-    return () => {
-      onActiveStatusChange(false);
-      loopActiveRef.current = false;
-      if (faceMeshRef.current) faceMeshRef.current.close();
-      if (poseRef.current) poseRef.current.close();
-    };
-  }, [scriptsLoaded]);
 
-  const initializeMediaPipe = () => {
-    if (typeof window === "undefined") return;
+    if (!results || !results.multiFaceLandmarks || results.multiFaceLandmarks.length === 0) {
+      // No face detected -> count as distracted / no eye contact
+      frameMetricsRef.current.totalFrames += 1;
+      frameMetricsRef.current.distractedDetections += 1;
+      return;
+    }
 
-    try {
-      const FaceMeshLib = (window as any).FaceMesh;
-      const PoseLib = (window as any).Pose;
+    const state = frameMetricsRef.current;
+    state.totalFrames += 1;
 
-      if (!FaceMeshLib || !PoseLib) {
-        console.error("MediaPipe libraries not loaded on window object.");
-        return;
+    const landmarks = results.multiFaceLandmarks[0];
+
+    // Landmark 1: Nose tip
+    const nose = landmarks[1];
+    // Landmark 234: Left face edge, 454: Right face edge
+    const leftEdge = landmarks[234];
+    const rightEdge = landmarks[454];
+
+    // Compute head yaw/turn
+    const distLeft = Math.sqrt(Math.pow(nose.x - leftEdge.x, 2) + Math.pow(nose.y - leftEdge.y, 2));
+    const distRight = Math.sqrt(Math.pow(nose.x - rightEdge.x, 2) + Math.pow(nose.y - rightEdge.y, 2));
+    const symmetryRatio = distLeft / distRight;
+
+    // Yaw is centered if nose is roughly centered
+    const isYawCentered = symmetryRatio >= 0.65 && symmetryRatio <= 1.55;
+
+    // Compute head pitch/tilt
+    // Forehead (10) to Chin (152) vs Nose
+    const forehead = landmarks[10];
+    const chin = landmarks[152];
+    const distTop = Math.sqrt(Math.pow(nose.x - forehead.x, 2) + Math.pow(nose.y - forehead.y, 2));
+    const distBottom = Math.sqrt(Math.pow(nose.x - chin.x, 2) + Math.pow(nose.y - chin.y, 2));
+    const pitchRatio = distTop / distBottom;
+    const isPitchCentered = pitchRatio >= 0.5 && pitchRatio <= 1.8;
+
+    // Eye contact check
+    let hasEyeContact = isYawCentered && isPitchCentered;
+
+    // Refine iris position check if refined landmarks exist
+    if (landmarks.length >= 478) {
+      // Left eye corner left: 33, right: 133, left iris center: 468
+      const eyeL = landmarks[33];
+      const eyeR = landmarks[133];
+      const iris = landmarks[468];
+
+      const distLToIris = Math.sqrt(Math.pow(iris.x - eyeL.x, 2) + Math.pow(iris.y - eyeL.y, 2));
+      const distRToIris = Math.sqrt(Math.pow(iris.x - eyeR.x, 2) + Math.pow(iris.y - eyeR.y, 2));
+      const eyeSymmetry = distLToIris / distRToIris;
+
+      // If looking away, iris symmetry will be highly skewed
+      if (eyeSymmetry < 0.5 || eyeSymmetry > 2.0) {
+        hasEyeContact = false;
+      }
+    }
+
+    if (hasEyeContact) {
+      state.eyeContactFrames += 1;
+    } else {
+      state.distractedDetections += 1;
+    }
+
+    // Nodding Detection: vertical nose coordinate oscillation
+    if (state.lastNoseY !== null) {
+      state.noseYHistory.push(nose.y);
+      if (state.noseYHistory.length > 8) {
+        state.noseYHistory.shift();
       }
 
-      // Initialize FaceMesh
-      const fm = new FaceMeshLib({
-        locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
-      });
-      fm.setOptions({
-        maxNumFaces: 4,
-        refineLandmarks: true,
-        minDetectionConfidence: 0.5,
-        minTrackingConfidence: 0.5,
-      });
-      fm.onResults(handleFaceMeshResults);
-      faceMeshRef.current = fm;
+      // Check for simple peaks/troughs in nose Y coordinates (vertical nodding oscillation)
+      if (state.noseYHistory.length === 8) {
+        let directionChanges = 0;
+        let lastDiff = state.noseYHistory[1] - state.noseYHistory[0];
+        for (let i = 2; i < state.noseYHistory.length; i++) {
+          const diff = state.noseYHistory[i] - state.noseYHistory[i - 1];
+          if (Math.sign(diff) !== Math.sign(lastDiff) && Math.abs(diff) > 0.002) {
+            directionChanges += 1;
+            lastDiff = diff;
+          }
+        }
+        if (directionChanges >= 2) {
+          state.noddingDetections += 1;
+        }
+      }
+    }
+    state.lastNoseY = nose.y;
+  };
 
-      // Initialize Pose
-      const p = new PoseLib({
-        locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`,
-      });
-      p.setOptions({
-        modelComplexity: 1,
-        smoothLandmarks: true,
-        minDetectionConfidence: 0.5,
-        minTrackingConfidence: 0.5,
-      });
-      p.onResults(handlePoseResults);
-      poseRef.current = p;
+  // Pose Results Processing
+  const handlePoseResults = (results: PoseResults) => {
+    if (!results || !results.poseLandmarks || results.poseLandmarks.length === 0) {
+      return;
+    }
 
-      // Start the throttled processing loop
-      loopActiveRef.current = true;
-      startLoop();
+    const state = frameMetricsRef.current;
+    const landmarks = results.poseLandmarks;
 
-      // Start aggregation timer
-      startAggregationTimer();
-    } catch (e) {
-      console.error("Error initializing MediaPipe:", e);
+    // Shoulder posture tracking (11: Left shoulder, 12: Right shoulder)
+    const lShoulder = landmarks[11];
+    const rShoulder = landmarks[12];
+
+    if (
+      lShoulder &&
+      rShoulder &&
+      (lShoulder.visibility ?? 0) > 0.5 &&
+      (rShoulder.visibility ?? 0) > 0.5
+    ) {
+      const midX = (lShoulder.x + rShoulder.x) / 2;
+      const midY = (lShoulder.y + rShoulder.y) / 2;
+      state.shoulderMidpoints.push({ x: midX, y: midY });
+
+      // Slope angle
+      const dy = rShoulder.y - lShoulder.y;
+      const dx = rShoulder.x - lShoulder.x;
+      const angle = Math.atan2(dy, dx);
+      state.shoulderAngles.push(angle);
+
+      // Keep arrays limited to prevent memory bloat
+      if (state.shoulderMidpoints.length > 120) state.shoulderMidpoints.shift();
+      if (state.shoulderAngles.length > 120) state.shoulderAngles.shift();
+    }
+
+    // Fidgeting tracking (15: Left wrist, 16: Right wrist)
+    const lWrist = landmarks[15];
+    const rWrist = landmarks[16];
+
+    // Check hand movements
+    if (lWrist && (lWrist.visibility ?? 0) > 0.5) {
+      if (state.lastWristPos.left) {
+        const dist = Math.sqrt(
+          Math.pow(lWrist.x - state.lastWristPos.left.x, 2) + Math.pow(lWrist.y - state.lastWristPos.left.y, 2)
+        );
+        // Rapid movement (velocity threshold) or hands high near shoulders/face
+        if (dist > 0.05 || (lShoulder && lWrist.y < lShoulder.y - 0.05)) {
+          state.fidgetingDetections += 1;
+        }
+      }
+      state.lastWristPos.left = { x: lWrist.x, y: lWrist.y };
+    }
+
+    if (rWrist && (rWrist.visibility ?? 0) > 0.5) {
+      if (state.lastWristPos.right) {
+        const dist = Math.sqrt(
+          Math.pow(rWrist.x - state.lastWristPos.right.x, 2) + Math.pow(rWrist.y - state.lastWristPos.right.y, 2)
+        );
+        if (dist > 0.05 || (rShoulder && rWrist.y < rShoulder.y - 0.05)) {
+          state.fidgetingDetections += 1;
+        }
+      }
+      state.lastWristPos.right = { x: rWrist.x, y: rWrist.y };
     }
   };
 
@@ -222,159 +364,69 @@ export default function BehavioralAnalysis({
     }, 30000);
   };
 
-  // FaceMesh Results Processing
-  const handleFaceMeshResults = (results: any) => {
-    const faceCount = results?.multiFaceLandmarks ? results.multiFaceLandmarks.length : 0;
-    if (onFaceCountChange) {
-      onFaceCountChange(faceCount);
-    }
+  const initializeMediaPipe = () => {
+    if (typeof window === "undefined") return;
 
-    if (!results || !results.multiFaceLandmarks || results.multiFaceLandmarks.length === 0) {
-      // No face detected -> count as distracted / no eye contact
-      frameMetricsRef.current.totalFrames += 1;
-      frameMetricsRef.current.distractedDetections += 1;
-      return;
-    }
+    try {
+      const FaceMeshLib = window.FaceMesh;
+      const PoseLib = window.Pose;
 
-    const state = frameMetricsRef.current;
-    state.totalFrames += 1;
-
-    const landmarks = results.multiFaceLandmarks[0];
-
-    // Landmark 1: Nose tip
-    const nose = landmarks[1];
-    // Landmark 234: Left face edge, 454: Right face edge
-    const leftEdge = landmarks[234];
-    const rightEdge = landmarks[454];
-
-    // Compute head yaw/turn
-    const distLeft = Math.sqrt(Math.pow(nose.x - leftEdge.x, 2) + Math.pow(nose.y - leftEdge.y, 2));
-    const distRight = Math.sqrt(Math.pow(nose.x - rightEdge.x, 2) + Math.pow(nose.y - rightEdge.y, 2));
-    const symmetryRatio = distLeft / distRight;
-
-    // Yaw is centered if nose is roughly centered
-    const isYawCentered = symmetryRatio >= 0.65 && symmetryRatio <= 1.55;
-
-    // Compute head pitch/tilt
-    // Forehead (10) to Chin (152) vs Nose
-    const forehead = landmarks[10];
-    const chin = landmarks[152];
-    const distTop = Math.sqrt(Math.pow(nose.x - forehead.x, 2) + Math.pow(nose.y - forehead.y, 2));
-    const distBottom = Math.sqrt(Math.pow(nose.x - chin.x, 2) + Math.pow(nose.y - chin.y, 2));
-    const pitchRatio = distTop / distBottom;
-    const isPitchCentered = pitchRatio >= 0.5 && pitchRatio <= 1.8;
-
-    // Eye contact check
-    let hasEyeContact = isYawCentered && isPitchCentered;
-
-    // Refine iris position check if refined landmarks exist
-    if (landmarks.length >= 478) {
-      // Left eye corner left: 33, right: 133, left iris center: 468
-      const eyeL = landmarks[33];
-      const eyeR = landmarks[133];
-      const iris = landmarks[468];
-
-      const distLToIris = Math.sqrt(Math.pow(iris.x - eyeL.x, 2) + Math.pow(iris.y - eyeL.y, 2));
-      const distRToIris = Math.sqrt(Math.pow(iris.x - eyeR.x, 2) + Math.pow(iris.y - eyeR.y, 2));
-      const eyeSymmetry = distLToIris / distRToIris;
-
-      // If looking away, iris symmetry will be highly skewed
-      if (eyeSymmetry < 0.5 || eyeSymmetry > 2.0) {
-        hasEyeContact = false;
-      }
-    }
-
-    if (hasEyeContact) {
-      state.eyeContactFrames += 1;
-    } else {
-      state.distractedDetections += 1;
-    }
-
-    // Nodding Detection: vertical nose coordinate oscillation
-    if (state.lastNoseY !== null) {
-      state.noseYHistory.push(nose.y);
-      if (state.noseYHistory.length > 8) {
-        state.noseYHistory.shift();
+      if (!FaceMeshLib || !PoseLib) {
+        console.error("MediaPipe libraries not loaded on window object.");
+        return;
       }
 
-      // Check for simple peaks/troughs in nose Y coordinates (vertical nodding oscillation)
-      if (state.noseYHistory.length === 8) {
-        let directionChanges = 0;
-        let lastDiff = state.noseYHistory[1] - state.noseYHistory[0];
-        for (let i = 2; i < state.noseYHistory.length; i++) {
-          const diff = state.noseYHistory[i] - state.noseYHistory[i - 1];
-          if (Math.sign(diff) !== Math.sign(lastDiff) && Math.abs(diff) > 0.002) {
-            directionChanges += 1;
-            lastDiff = diff;
-          }
-        }
-        if (directionChanges >= 2) {
-          state.noddingDetections += 1;
-        }
-      }
+      // Initialize FaceMesh
+      const fm = new FaceMeshLib({
+        locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+      });
+      fm.setOptions({
+        maxNumFaces: 4,
+        refineLandmarks: true,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5,
+      });
+      fm.onResults(handleFaceMeshResults as (results: never) => void);
+      faceMeshRef.current = fm;
+
+      // Initialize Pose
+      const p = new PoseLib({
+        locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`,
+      });
+      p.setOptions({
+        modelComplexity: 1,
+        smoothLandmarks: true,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5,
+      });
+      p.onResults(handlePoseResults as (results: never) => void);
+      poseRef.current = p;
+
+      // Start the throttled processing loop
+      loopActiveRef.current = true;
+      startLoop();
+
+      // Start aggregation timer
+      startAggregationTimer();
+    } catch (e) {
+      console.error("Error initializing MediaPipe:", e);
     }
-    state.lastNoseY = nose.y;
   };
 
-  // Pose Results Processing
-  const handlePoseResults = (results: any) => {
-    if (!results || !results.poseLandmarks || results.poseLandmarks.length === 0) {
-      return;
+  // Load status sync
+  useEffect(() => {
+    if (scriptsLoaded.faceMesh && scriptsLoaded.pose) {
+      onActiveStatusChange(true);
+      initializeMediaPipe();
     }
-
-    const state = frameMetricsRef.current;
-    const landmarks = results.poseLandmarks;
-
-    // Shoulder posture tracking (11: Left shoulder, 12: Right shoulder)
-    const lShoulder = landmarks[11];
-    const rShoulder = landmarks[12];
-
-    if (lShoulder && rShoulder && lShoulder.visibility > 0.5 && rShoulder.visibility > 0.5) {
-      const midX = (lShoulder.x + rShoulder.x) / 2;
-      const midY = (lShoulder.y + rShoulder.y) / 2;
-      state.shoulderMidpoints.push({ x: midX, y: midY });
-
-      // Slope angle
-      const dy = rShoulder.y - lShoulder.y;
-      const dx = rShoulder.x - lShoulder.x;
-      const angle = Math.atan2(dy, dx);
-      state.shoulderAngles.push(angle);
-
-      // Keep arrays limited to prevent memory bloat
-      if (state.shoulderMidpoints.length > 120) state.shoulderMidpoints.shift();
-      if (state.shoulderAngles.length > 120) state.shoulderAngles.shift();
-    }
-
-    // Fidgeting tracking (15: Left wrist, 16: Right wrist)
-    const lWrist = landmarks[15];
-    const rWrist = landmarks[16];
-
-    // Check hand movements
-    if (lWrist && lWrist.visibility > 0.5) {
-      if (state.lastWristPos.left) {
-        const dist = Math.sqrt(
-          Math.pow(lWrist.x - state.lastWristPos.left.x, 2) + Math.pow(lWrist.y - state.lastWristPos.left.y, 2)
-        );
-        // Rapid movement (velocity threshold) or hands high near shoulders/face
-        if (dist > 0.05 || (lShoulder && lWrist.y < lShoulder.y - 0.05)) {
-          state.fidgetingDetections += 1;
-        }
-      }
-      state.lastWristPos.left = { x: lWrist.x, y: lWrist.y };
-    }
-
-    if (rWrist && rWrist.visibility > 0.5) {
-      if (state.lastWristPos.right) {
-        const dist = Math.sqrt(
-          Math.pow(rWrist.x - state.lastWristPos.right.x, 2) + Math.pow(rWrist.y - state.lastWristPos.right.y, 2)
-        );
-        if (dist > 0.05 || (rShoulder && rWrist.y < rShoulder.y - 0.05)) {
-          state.fidgetingDetections += 1;
-        }
-      }
-      state.lastWristPos.right = { x: rWrist.x, y: rWrist.y };
-    }
-  };
+    return () => {
+      onActiveStatusChange(false);
+      loopActiveRef.current = false;
+      if (faceMeshRef.current) faceMeshRef.current.close();
+      if (poseRef.current) poseRef.current.close();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scriptsLoaded]);
 
   return (
     <>

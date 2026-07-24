@@ -12,18 +12,19 @@ import {
   ArrowRight,
   Brain,
   CheckCircle2,
-  Calendar,
+  Trophy,
   Flame,
   BarChart2,
   Settings,
   Sparkles,
-  Play
 } from "lucide-react"
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
+import type { UserRow, InterviewWithFeedback, SessionWithSolutionsAndReports } from "@/types/db"
+import BadgeNotifier from "@/components/BadgeNotifier"
 
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-head), serif",
@@ -31,21 +32,30 @@ const headingStyle: React.CSSProperties = {
   fontWeight: 600,
 }
 
-// Map avatar strings to Lucide icons
-const avatarIconMap: Record<string, React.FC<any>> = {
-  "laptop-code": Laptop,
-  "user-tie": UserRound,
+// Removed calculateStreak helper as streak is now stored in DB
+
+interface ActiveUser {
+  id?: string
+  name?: string | null
+  email?: string | null
+  avatar_url?: string | null
 }
 
-// Removed calculateStreak helper as streak is now stored in DB
+interface RecentBadge {
+  slug: string
+  earnedAt: string
+  name: string
+  icon: string
+  rarity: string
+}
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions)
   const cookieStore = await cookies()
   const hasDemoCookie = cookieStore.has("mockmate-demo-session")
 
-  let activeUser = null
-  let userId = null
+  let activeUser: ActiveUser | null = null
+  let userId: string | null = null
 
   const isDemoMode = hasDemoCookie
 
@@ -59,7 +69,7 @@ export default async function DashboardPage() {
           email: parsed.email,
           avatar_url: parsed.avatar_url,
         }
-      } catch (err) {
+      } catch {
         // fallback
       }
     }
@@ -72,8 +82,8 @@ export default async function DashboardPage() {
     }
     userId = "demo-user-id"
   } else {
-    activeUser = session?.user as any
-    userId = (session?.user as any)?.id
+    activeUser = session?.user ? { id: session.user.id, name: session.user.name, email: session.user.email, avatar_url: session.user.image } : null
+    userId = session?.user?.id ?? null
   }
 
   const supabase = isDemoMode ? null : await createClient()
@@ -82,7 +92,7 @@ export default async function DashboardPage() {
     try {
       const { data } = await supabase.auth.getUser()
       if (data?.user) {
-        activeUser = data.user
+        activeUser = { id: data.user.id, email: data.user.email }
         userId = data.user.id
       }
     } catch (err) {
@@ -90,17 +100,16 @@ export default async function DashboardPage() {
     }
   }
 
-  let displayName = "User"
-  let avatarKey = "user-tie"
   let hasResume = false
   let hasCustomUsername = false
   let hasCustomAvatar = false
   let latestFeedback = null
   let totalSessions = 0
   let avgScore: number | string = "—"
+  let bestScore: number | string = "—"
   let currentStreak = 0
-  let recentBadges: any[] = []
-  
+  let recentBadges: RecentBadge[] = []
+
   interface DisplaySession {
     id: string
     type: "mock" | "coding"
@@ -115,8 +124,6 @@ export default async function DashboardPage() {
 
   if (activeUser && userId) {
     if (isDemoMode) {
-      displayName = activeUser.name || "Guest"
-      avatarKey = activeUser.avatar_url || "user-tie"
       hasResume = false
       hasCustomUsername = true
       hasCustomAvatar = true
@@ -126,20 +133,18 @@ export default async function DashboardPage() {
       latestFeedback = null
     } else {
       if (!supabase) redirect("/login")
-      
+
       // 1. Fetch user profile
       const { data: profile } = await supabase
         .from("users")
         .select("*")
         .eq("id", userId)
-        .single()
+        .single() as unknown as { data: UserRow | null }
 
       if (!profile) {
         redirect("/onboarding")
       }
 
-      displayName = profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User"
-      avatarKey = profile.avatar_url || "user-tie"
       hasResume = !!profile.resume_text
       hasCustomUsername = !!profile.username && profile.username !== "User"
       hasCustomAvatar = !!profile.avatar_url && profile.avatar_url !== "user-tie"
@@ -159,18 +164,19 @@ export default async function DashboardPage() {
           )
         `)
         .eq("user_id", userId)
-        .order("created_at", { ascending: false })
+        .order("created_at", { ascending: false }) as unknown as { data: InterviewWithFeedback[] | null }
 
-      const completedMockInterviews: any[] = mockInterviews?.filter((i: any) => i.status === "completed") || []
+      const completedMockInterviews: InterviewWithFeedback[] = mockInterviews?.filter((i) => i.status === "completed") || []
       totalSessions = completedMockInterviews.length
 
       // Calculate Average Score
       if (completedMockInterviews.length > 0) {
         const scores = completedMockInterviews
-          .map((i: any) => i.feedback?.[0]?.score)
+          .map((i) => i.feedback?.[0]?.score)
           .filter((s): s is number => typeof s === "number")
         if (scores.length > 0) {
           avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
+          bestScore = Math.max(...scores)
         }
       }
 
@@ -195,11 +201,11 @@ export default async function DashboardPage() {
           )
         `)
         .eq("user_id", userId)
-        .order("started_at", { ascending: false })
+        .order("started_at", { ascending: false }) as unknown as { data: SessionWithSolutionsAndReports[] | null }
 
       // Latest completed feedback from mock interviews
       if (completedMockInterviews.length > 0) {
-        const latestMock = completedMockInterviews[0] as any
+        const latestMock = completedMockInterviews[0]
         if (latestMock.feedback && latestMock.feedback[0]) {
           const fb = latestMock.feedback[0]
           latestFeedback = {
@@ -214,7 +220,7 @@ export default async function DashboardPage() {
       }
 
       // Map sessions to display list
-      const mockSessionsMapped: DisplaySession[] = completedMockInterviews.map((i: any) => ({
+      const mockSessionsMapped: DisplaySession[] = completedMockInterviews.map((i) => ({
         id: i.id,
         type: "mock",
         date: new Date(i.created_at),
@@ -224,11 +230,11 @@ export default async function DashboardPage() {
         url: `/interview/${i.id}/feedback`
       }))
 
-      const codingSessionsMapped: DisplaySession[] = (codingSessions || []).map((s: any) => ({
+      const codingSessionsMapped: DisplaySession[] = (codingSessions || []).map((s) => ({
         id: s.id,
         type: "coding",
         date: new Date(s.submitted_at || s.started_at),
-        category: `Coding: ${s.challenges?.title || "Challenge"}`,
+        category: `Coding: ${(s as unknown as { challenges?: { title?: string } }).challenges?.title || "Challenge"}`,
         score: s.interview_reports?.[0]?.overall_score ?? null,
         status: s.status === "evaluated" ? "completed" : s.status,
         url: s.status === "evaluated" ? `/interview/report/${s.interview_reports?.[0]?.id}` : `/interview/session/${s.id}`
@@ -252,10 +258,10 @@ export default async function DashboardPage() {
         `)
         .eq("user_id", userId)
         .order("earned_at", { ascending: false })
-        .limit(3)
-        
+        .limit(3) as unknown as { data: Array<{ badge_slug: string; earned_at: string; badges: { name: string; icon: string; rarity: string } | null }> | null }
+
       if (userBadges) {
-        recentBadges = userBadges.map((ub: any) => ({
+        recentBadges = userBadges.map((ub) => ({
           slug: ub.badge_slug,
           earnedAt: ub.earned_at,
           name: ub.badges?.name || "Unknown Badge",
@@ -274,6 +280,7 @@ export default async function DashboardPage() {
       <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
 
+      <BadgeNotifier />
       <div className="relative z-10 max-w-6xl mx-auto space-y-8">
         {/* Title row */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
@@ -281,9 +288,31 @@ export default async function DashboardPage() {
             <h1 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
               <span className="font-serif">Dashboard</span>
             </h1>
-            <p className="text-muted-foreground text-sm mt-0.5">Let's elevate your interview performance today.</p>
+            <p className="text-muted-foreground text-sm mt-0.5">Let&apos;s elevate your interview performance today.</p>
           </div>
         </div>
+
+        {/* First-run activation — only until the first session is completed.
+            Walk a brand-new user straight into interview #1 instead of leaving
+            them staring at an empty dashboard. */}
+        {totalSessions === 0 && (
+          <Card className="shadow-sm border-primary/30 bg-primary/5">
+            <CardContent className="pt-6 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+              <div className="flex items-start gap-4">
+                <div className="size-11 rounded-xl bg-primary/15 flex items-center justify-center text-primary shrink-0">
+                  <Mic size={22} />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-foreground text-lg">Run your first mock interview</h3>
+                  <p className="text-sm text-muted-foreground mt-0.5 max-w-md">Pick a track and you&apos;ll be speaking with your AI interviewer in under a minute. You get an instant score and detailed feedback the moment you finish.</p>
+                </div>
+              </div>
+              <Link href="/interview/setup" className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity shrink-0 whitespace-nowrap">
+                Start now <ArrowRight size={16} />
+              </Link>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -328,16 +357,13 @@ export default async function DashboardPage() {
           <Card className="shadow-sm">
             <CardContent className="pt-6 flex flex-row items-center gap-4">
               <div className="size-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
-                <Calendar size={20} />
+                <Trophy size={20} />
               </div>
-              <div className="space-y-0.5 w-full">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Next Scheduled Session</p>
-                <div className="flex items-center justify-between gap-2 mt-0.5">
-                  <span className="text-sm font-semibold text-foreground">Not scheduled</span>
-                  <Link href="/interview/setup" className="text-[10px] text-primary hover:underline font-bold shrink-0">
-                    Book
-                  </Link>
-                </div>
+              <div className="space-y-0.5">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Best Score</p>
+                <h3 className="text-2xl font-serif font-bold text-foreground">
+                  {bestScore !== "—" ? `${bestScore}%` : "—"}
+                </h3>
               </div>
             </CardContent>
           </Card>
@@ -348,9 +374,9 @@ export default async function DashboardPage() {
           <div className="flex items-center gap-4 bg-card border border-border p-4 rounded-xl shadow-sm overflow-x-auto">
             <div className="flex-shrink-0 mr-2 flex flex-col items-center justify-center">
               <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1"><Sparkles size={14} className="text-amber-500" /> Recent</span>
-              <span className="text-[10px] text-muted-foreground font-semibold">Unlock more in Profile</span>
+              <span className="text-[10px] text-muted-foreground font-semibold">See your collection</span>
             </div>
-            {recentBadges.map((badge, idx) => {
+            {recentBadges.map((badge) => {
               const rarityColors = {
                 common: "border-slate-200 bg-slate-50 text-slate-700",
                 rare: "border-blue-200 bg-blue-50 text-blue-700",
@@ -372,7 +398,7 @@ export default async function DashboardPage() {
             })}
             
             <div className="ml-auto pl-4">
-              <Link href="/dashboard/profile" className="text-xs font-bold text-primary hover:underline whitespace-nowrap flex items-center gap-1">
+              <Link href="/dashboard/badges" className="text-xs font-bold text-primary hover:underline whitespace-nowrap flex items-center gap-1">
                 View All <ArrowRight size={12} />
               </Link>
             </div>

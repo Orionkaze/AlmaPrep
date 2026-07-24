@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Standalone Node scripts run directly via `node <file>.js` (CommonJS by
+    // design, not part of the Next.js app's module graph) — not app source.
+    "scratch/**",
+    "test_supabase.js",
   ]),
 ]);
 

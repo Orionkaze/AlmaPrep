@@ -1,12 +1,19 @@
 import { createServerClient } from '@supabase/ssr'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 
-async function createMockServerClient() {
+// The demo-mode mock below is a table-agnostic cookie-backed shim (it doesn't
+// model per-table row shapes the way the real SupabaseClient does), so its
+// structural type can't match SupabaseClient. Callers should still see the
+// real client's type — that's what the `as unknown as SupabaseClient` casts
+// at the end of each factory are for; treat this file, not call sites, as the
+// place that owns the demo/real type boundary.
+async function createMockServerClient(): Promise<SupabaseClient> {
   const cookieStore = await cookies()
 
   return {
     auth: {
-      signUp: async ({ email, password }: any) => {
+      signUp: async ({ email }: { email: string; password: string }) => {
         cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
         cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username: email.split("@")[0] }), { path: "/", maxAge: 604800 });
         
@@ -24,7 +31,7 @@ async function createMockServerClient() {
         };
       },
 
-      signInWithPassword: async ({ email, password }: any) => {
+      signInWithPassword: async ({ email }: { email: string; password: string }) => {
         cookieStore.set("mockmate-demo-session", "true", { path: "/", maxAge: 604800 });
         cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username: email.split("@")[0] }), { path: "/", maxAge: 604800 });
         
@@ -54,7 +61,7 @@ async function createMockServerClient() {
           try {
             const parsed = JSON.parse(demoUserVal);
             return { data: { user: { id: "demo-user-id", email: parsed.email } }, error: null };
-          } catch (e) {}
+          } catch {}
         }
         return { data: { user: null }, error: null };
       },
@@ -75,7 +82,7 @@ async function createMockServerClient() {
               },
               error: null
             };
-          } catch (e) {}
+          } catch {}
         }
         return { data: { session: null }, error: null };
       }
@@ -103,7 +110,7 @@ async function createMockServerClient() {
                   },
                   error: null
                 };
-              } catch (e) {}
+              } catch {}
             }
           }
           return { data: null, error: null };
@@ -123,7 +130,7 @@ async function createMockServerClient() {
                   },
                   error: null
                 };
-              } catch (e) {}
+              } catch {}
             }
           }
           return { data: null, error: null };
@@ -131,12 +138,12 @@ async function createMockServerClient() {
         limit: () => chain,
         order: () => chain,
       };
-      return chain as any;
+      return chain;
     }
-  } as any;
+  } as unknown as SupabaseClient;
 }
 
-export async function createClient() {
+export async function createClient(): Promise<SupabaseClient> {
   const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id.supabase.co");
 

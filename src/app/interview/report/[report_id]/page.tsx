@@ -8,11 +8,9 @@ import {
   AlertTriangle,
   ArrowLeft,
   RotateCcw,
-  BookOpen,
   Loader2,
   Calendar,
-  Clock,
-  Sparkles
+  Clock
 } from "lucide-react";
 
 interface TestResult {
@@ -75,12 +73,17 @@ export default function ReportPage({
   const [barWidths, setBarWidths] = useState<Record<string, number>>({});
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
   useEffect(() => {
     async function loadReport() {
       try {
         const res = await fetch(`/api/interview/report/${report_id}`);
         if (!res.ok) throw new Error("Report not found");
-        const data = await res.json();
+        const data: ReportData = await res.json();
         setReport(data);
 
         // Score Counter Animation
@@ -100,7 +103,7 @@ export default function ReportPage({
         // Staggered progress bar widths animation
         categories.forEach((cat, index) => {
           setTimeout(() => {
-            const score = data.scores?.[cat.key] || 0;
+            const score = data.scores?.[cat.key as keyof ReportData["scores"]] || 0;
             const percentage = score * 10;
             setBarWidths((prev) => ({
               ...prev,
@@ -109,7 +112,7 @@ export default function ReportPage({
           }, 150 + index * 80); // Stagger by 80ms
         });
 
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         showToast("Error retrieving interview evaluation report.");
       } finally {
@@ -119,11 +122,6 @@ export default function ReportPage({
 
     loadReport();
   }, [report_id]);
-
-  const showToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 3000);
-  };
 
   const handleTryAgain = async () => {
     if (!report || retrying) return;
@@ -144,9 +142,9 @@ export default function ReportPage({
       } else {
         throw new Error(data.error || "Failed to start attempt");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      showToast(err.message || "Failed to start a new interview attempt.");
+      showToast(err instanceof Error ? err.message : "Failed to start a new interview attempt.");
       setRetrying(false);
     }
   };

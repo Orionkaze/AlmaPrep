@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { signOut } from "next-auth/react"
 import { User, ChevronDown, LogOut, CreditCard, UserRound } from "lucide-react"
@@ -27,7 +26,6 @@ const navItems = [
 
 export default function AppHeader() {
   const pathname = usePathname()
-  const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userEmail, setUserEmail] = useState<string | null>(null)
@@ -46,7 +44,7 @@ export default function AppHeader() {
       const isDemo = typeof document !== "undefined" && document.cookie.includes("mockmate-demo-session")
       if (isDemo) {
         setIsAuthenticated(true)
-        setUserEmail("demo@mockmate.com")
+        setUserEmail("demo@almaprep.app")
         return
       }
 
@@ -65,7 +63,7 @@ export default function AppHeader() {
     checkAuth()
 
     const supabase = createClient()
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         setIsAuthenticated(true)
         setUserEmail(session.user.email || null)
@@ -174,7 +172,7 @@ export default function AppHeader() {
                   <DropdownMenuContent align="end" className="z-50 bg-card text-card-foreground border border-border rounded-lg shadow-md p-3 min-w-[200px] flex flex-col text-left gap-1">
                     <div className="px-2.5 pb-2.5 border-b border-border flex flex-col gap-0.5 select-none">
                       <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Logged In</span>
-                      <span className="text-xs font-semibold text-foreground truncate max-w-[160px]">{userEmail || "user@mockmate.com"}</span>
+                      <span className="text-xs font-semibold text-foreground truncate max-w-[160px]">{userEmail || "user@almaprep.app"}</span>
                     </div>
                     <div className="pt-1.5 space-y-0.5">
                       <DropdownMenuItem render={

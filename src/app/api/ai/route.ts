@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { executeAIRouting } from "@/lib/aiRouter"
 import { cookies } from "next/headers"
+import { isRateLimited } from "@/lib/rateLimit"
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,27 +12,14 @@ export async function POST(req: NextRequest) {
     const hasDemoCookie = cookieStore.has("mockmate-demo-session")
 
     let userId = null
-    let userEmail = null
 
     if (hasDemoCookie) {
       userId = "demo-user-id"
-      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      if (demoUserCookie) {
-        try {
-          const parsed = JSON.parse(demoUserCookie)
-          userEmail = parsed.email || "guest@almaprep.com"
-        } catch (e) {
-          userEmail = "guest@almaprep.com"
-        }
-      } else {
-        userEmail = "guest@almaprep.com"
-      }
     } else {
       // 1. Authenticate the user
       // First, check NextAuth session
       const session = await getServerSession(authOptions)
-      userId = (session?.user as any)?.id
-      userEmail = session?.user?.email
+      userId = session?.user?.id
 
       // Fallback: If no NextAuth session, check Supabase auth to support standard auth users
       if (!userId) {
@@ -39,13 +27,16 @@ export async function POST(req: NextRequest) {
         const { data: { user } } = await supabase.auth.getUser()
         if (user) {
           userId = user.id
-          userEmail = user.email
         }
       }
     }
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 })
+    }
+
+    if (await isRateLimited(`ai:${userId}`, 30, 60_000)) {
+      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 })
     }
 
     // 2. Extract request body
@@ -79,7 +70,7 @@ export async function POST(req: NextRequest) {
           if (previousMessages.length === 0) {
             isNewInterview = true
           }
-        } catch (e) {
+        } catch {
           // Fallback if prompt parsing fails
         }
       }
@@ -114,10 +105,10 @@ export async function POST(req: NextRequest) {
     const { text, source } = await executeAIRouting(prompt, task, userTier, userId)
 
     return NextResponse.json({ result: text, source })
-  } catch (error: any) {
+  } catch (error) {
     console.error("[api/ai] Error in API Route handler:", error)
     return new NextResponse(
-      JSON.stringify({ error: error?.message || "Internal Server Error" }),
+      JSON.stringify({ error: error instanceof Error ? error.message : "Internal Server Error" }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     )
   }

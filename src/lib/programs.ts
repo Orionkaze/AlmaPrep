@@ -25,87 +25,6 @@ export interface ProgramInfo {
   questionCount: number
 }
 
-const categoryMapping: Record<string, string> = {
-  "accounting-finance-a": "Business & Law",
-  "anthropology-a": "Humanities & Social Sciences",
-  "archaeology-a": "Humanities & Social Sciences",
-  "architecture-a": "Humanities & Social Sciences",
-  "audiology-a": "Health & Medicine",
-  "biology-a": "Sciences & Tech",
-  "biomedical-science-a": "Sciences & Tech",
-  "business-management-a": "Business & Law",
-  "chemistry-a": "Sciences & Tech",
-  "classics-a": "Humanities & Social Sciences",
-  "computer-science-a": "Sciences & Tech",
-  "criminology-a": "Humanities & Social Sciences",
-  "dental-hygiene-a": "Health & Medicine",
-  "dentistry-a": "Health & Medicine",
-  "dentistry-b": "Health & Medicine",
-  "development-studies-a": "Humanities & Social Sciences",
-  "economics-a": "Business & Law",
-  "english-literature-a": "Humanities & Social Sciences",
-  "geography-a": "Humanities & Social Sciences",
-  "history-a": "Humanities & Social Sciences",
-  "immunology-a": "Sciences & Tech",
-  "law-a": "Business & Law",
-  "linguistics-a": "Humanities & Social Sciences",
-  "marketing-a": "Business & Law",
-  "mathematics-a": "Sciences & Tech",
-  "mechanical-engineering-a": "Sciences & Tech",
-  "medicine-a": "Health & Medicine",
-  "medicine-b": "Health & Medicine",
-  "midwifery-a": "Health & Medicine",
-  "nursing-a": "Health & Medicine",
-  "nutrition-dietetics-a": "Health & Medicine",
-  "occupational-therapy-a": "Health & Medicine",
-  "optometry-a": "Health & Medicine",
-  "paramedic-science-a": "Health & Medicine",
-  "pharmacology-a": "Health & Medicine",
-  "pharmacy-a": "Health & Medicine",
-  "philosophy-a": "Humanities & Social Sciences",
-  "physics-a": "Sciences & Tech",
-  "physiotherapy-a": "Health & Medicine",
-  "politics-international-relations-a": "Humanities & Social Sciences",
-  "psychology-a": "Humanities & Social Sciences",
-  "public-health-a": "Health & Medicine",
-  "public-policy-a": "Humanities & Social Sciences",
-  "radiography-a": "Health & Medicine",
-  "sociology-a": "Humanities & Social Sciences",
-  "speech-language-therapy-a": "Health & Medicine",
-  "theology-religious-studies-a": "Humanities & Social Sciences",
-  "veterinary-science-a": "Health & Medicine",
-  
-  // Universal question banks mapped to domains
-  "academic-subject-interest-a": "Sciences & Tech",
-  "academic-subject-interest-b": "Sciences & Tech",
-  "behavioral-competency-a": "Humanities & Social Sciences",
-  "behavioral-competency-b": "Humanities & Social Sciences",
-  "challenges-failure-resilience-a": "Humanities & Social Sciences",
-  "challenges-failure-resilience-b": "Humanities & Social Sciences",
-  "current-affairs-general-awareness-a": "Business & Law",
-  "current-affairs-general-awareness-b": "Business & Law",
-  "curveball-personality-a": "Humanities & Social Sciences",
-  "curveball-personality-b": "Humanities & Social Sciences",
-  "diversity-community-values-a": "Humanities & Social Sciences",
-  "diversity-community-values-b": "Humanities & Social Sciences",
-  "ethics-situational-a": "Business & Law",
-  "ethics-situational-b": "Business & Law",
-  "extracurriculars-leadership-a": "Business & Law",
-  "extracurriculars-leadership-b": "Business & Law",
-  "goals-future-a": "Humanities & Social Sciences",
-  "goals-future-b": "Humanities & Social Sciences",
-  "hypotheticals-reasoning-a": "Sciences & Tech",
-  "hypotheticals-reasoning-b": "Sciences & Tech",
-  "motivation-fit-a": "Humanities & Social Sciences",
-  "motivation-fit-b": "Humanities & Social Sciences",
-  "personal-background-a": "Humanities & Social Sciences",
-  "personal-background-b": "Humanities & Social Sciences",
-  "scholarship-panel-a": "Humanities & Social Sciences",
-  "scholarship-panel-b": "Humanities & Social Sciences",
-  "strengths-self-awareness-a": "Humanities & Social Sciences",
-  "strengths-self-awareness-b": "Humanities & Social Sciences"
-}
-
 // Memory cache for programs list to avoid hitting filesystem repeatedly
 let cachedPrograms: ProgramInfo[] | null = null
 
@@ -193,7 +112,7 @@ export function getProgramQuestions(programId: string): Question[] {
       const shards = indexData.shards || []
       
       // Try to find matching shard
-      const matchingShard = shards.find((shard: any) => {
+      const matchingShard = shards.find((shard: { file?: string }) => {
         if (!shard.file) return false
         const id = path.basename(shard.file, ".json")
         return id === programId

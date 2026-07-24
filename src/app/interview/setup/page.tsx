@@ -1,6 +1,7 @@
 "use client"
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { track, EVENTS } from "@/lib/analytics"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Switch } from "@/components/ui/switch"
 import { Input } from "@/components/ui/input"
@@ -8,18 +9,13 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
-import { 
-  Briefcase, 
-  Laptop, 
-  Shuffle, 
+import {
+  Briefcase,
+  Laptop,
+  Shuffle,
   FileText,
   Search,
   GraduationCap,
-  Scale,
-  Stethoscope,
-  Drama,
-  Cpu,
-  Globe,
   ArrowRight,
   ChevronLeft,
   ChevronRight
@@ -34,6 +30,11 @@ interface ProgramInfo {
   name: string
   category: string
   questionCount: number
+}
+
+interface GitHubAnalysisData {
+  questions: Array<{ repo: string; question: string; difficulty: string }>
+  repo_metadata?: Record<string, { complexity_score?: number }>
 }
 
 const standardCategories = [
@@ -75,7 +76,7 @@ export default function InterviewSetupPage() {
   // GitHub Mode states
   const [isDemoMode, setIsDemoMode] = useState(false)
   const [githubConnected, setGithubConnected] = useState(false)
-  const [githubAnalysis, setGithubAnalysis] = useState<any>(null)
+  const [githubAnalysis, setGithubAnalysis] = useState<GitHubAnalysisData | null>(null)
   const [githubMode, setGithubMode] = useState(false)
   const [selectedRepos, setSelectedRepos] = useState<string[]>([])
   
@@ -178,7 +179,7 @@ export default function InterviewSetupPage() {
         if (connected) {
           const analysis = await getGitHubAnalysis()
           if (analysis) {
-            setGithubAnalysis(analysis)
+            setGithubAnalysis(analysis as unknown as GitHubAnalysisData)
           }
         }
       } catch (err) {
@@ -524,7 +525,7 @@ export default function InterviewSetupPage() {
                         }}
                         className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 w-full"
                       >
-                        {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
+                        {Array.from(new Set(githubAnalysis.questions.map((q) => q.repo))).map((repoName) => {
                           const repoMeta = githubAnalysis.repo_metadata?.[repoName]
                           
                           return (
@@ -646,6 +647,7 @@ export default function InterviewSetupPage() {
           >
             <Button
               disabled={!selected || (selected === "technical" && githubMode && selectedRepos.length < 2)}
+              onClick={() => track(EVENTS.INTERVIEW_STARTED, { track: selected, persona, github_mode: selected === "technical" && githubMode })}
               className="h-12 px-12 text-sm md:text-base font-semibold cursor-pointer"
             >
               Begin Interview Track <ArrowRight size={16} className="ml-1.5" />

@@ -7,6 +7,24 @@ interface GitHubRepo {
   default_branch?: string;
 }
 
+interface GitHubTreeItem {
+  path: string;
+  type: string;
+}
+
+interface GitHubPullRequest {
+  title?: string;
+}
+
+interface GitHubIssue {
+  title?: string;
+  pull_request?: unknown;
+}
+
+interface GitHubCommit {
+  commit?: { message?: string };
+}
+
 interface FetchRepoDetailsResult {
   name: string;
   languages: string[];
@@ -102,7 +120,7 @@ export async function fetchGitHubUserData(accessToken: string) {
         if (treeRes.ok) {
           const treeData = await treeRes.json();
           if (treeData && Array.isArray(treeData.tree)) {
-            fileStructure = treeData.tree.map((item: any) => `${item.type === "tree" ? "[DIR] " : ""}${item.path}`);
+            fileStructure = treeData.tree.map((item: GitHubTreeItem) => `${item.type === "tree" ? "[DIR] " : ""}${item.path}`);
           }
         } else {
           // Fallback to master if default branch check fails
@@ -110,7 +128,7 @@ export async function fetchGitHubUserData(accessToken: string) {
           if (fallbackRes.ok) {
             const treeData = await fallbackRes.json();
             if (treeData && Array.isArray(treeData.tree)) {
-              fileStructure = treeData.tree.map((item: any) => `${item.type === "tree" ? "[DIR] " : ""}${item.path}`);
+              fileStructure = treeData.tree.map((item: GitHubTreeItem) => `${item.type === "tree" ? "[DIR] " : ""}${item.path}`);
             }
           }
         }
@@ -136,7 +154,7 @@ export async function fetchGitHubUserData(accessToken: string) {
                   const deps = Object.keys(pkg.dependencies || {});
                   const devDeps = Object.keys(pkg.devDependencies || {});
                   dependencies = `package.json dependencies: ${deps.join(", ")}; devDependencies: ${devDeps.join(", ")}`;
-                } catch (e) {
+                } catch {
                   dependencies = decoded.substring(0, 1000);
                 }
               } else {
@@ -155,7 +173,7 @@ export async function fetchGitHubUserData(accessToken: string) {
         if (prRes.ok) {
           const prData = await prRes.json();
           if (Array.isArray(prData)) {
-            closedPRs = prData.map((pr: any) => pr.title || "");
+            closedPRs = prData.map((pr: GitHubPullRequest) => pr.title || "");
           }
         }
       } catch (err) {
@@ -169,9 +187,9 @@ export async function fetchGitHubUserData(accessToken: string) {
           const issueData = await issueRes.json();
           if (Array.isArray(issueData)) {
             closedIssues = issueData
-              .filter((issue: any) => !issue.pull_request)
+              .filter((issue: GitHubIssue) => !issue.pull_request)
               .slice(0, 5)
-              .map((issue: any) => issue.title || "");
+              .map((issue: GitHubIssue) => issue.title || "");
           }
         }
       } catch (err) {
@@ -199,7 +217,7 @@ export async function fetchGitHubUserData(accessToken: string) {
         if (commitsRes.ok) {
           const commitsData = await commitsRes.json();
           if (Array.isArray(commitsData)) {
-            commits = commitsData.map((c: any) => c.commit?.message || "").filter(Boolean);
+            commits = commitsData.map((c: GitHubCommit) => c.commit?.message || "").filter(Boolean);
           }
         }
       } catch (err) {
