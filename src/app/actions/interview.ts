@@ -6,6 +6,7 @@ import { checkInterviewAllowance, type AllowanceResult } from "@/lib/quota"
 import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
 import { getCurrentUser } from "@/lib/getCurrentUser"
+import { cookies } from "next/headers"
 import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
@@ -838,8 +839,8 @@ export async function saveProctoringLog(
  */
 export async function getInterviewSession(interviewId: string) {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo || !user.userId) {
       return null
     }
 
