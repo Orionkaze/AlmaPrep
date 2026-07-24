@@ -20,6 +20,8 @@ export async function getCurrentUser(): Promise<{
   userId: string | null
   email: string | null
   isDemo: boolean
+  username?: string
+  avatarUrl?: string
 }> {
   try {
     const cookieStore = await cookies()
@@ -34,7 +36,47 @@ export async function getCurrentUser(): Promise<{
         const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
         const payload = await verifyJWT(mockSessionCookie, secret)
         if (payload) {
-          return { userId: payload.userId || "demo-user-id", email: payload.email, isDemo: true }
+          const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+          let username = payload.email?.split("@")[0] || "User"
+          let avatarUrl = "user-tie"
+          if (demoUserCookie) {
+            try {
+              const parsed = JSON.parse(demoUserCookie)
+              username = parsed.username || username
+              avatarUrl = parsed.avatar_url || avatarUrl
+            } catch (e) {}
+          }
+          return {
+            userId: payload.userId || "demo-user-id",
+            email: payload.email,
+            isDemo: true,
+            username,
+            avatarUrl
+          }
+        }
+      }
+
+      // Check for simple demo cookie fallback if no mock JWT
+      const hasDemoCookie = cookieStore.has("mockmate-demo-session")
+      if (hasDemoCookie) {
+        const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
+        let username = "User"
+        let avatarUrl = "user-tie"
+        let email = "guest@almaprep.com"
+        if (demoUserCookie) {
+          try {
+            const parsed = JSON.parse(demoUserCookie)
+            username = parsed.username || parsed.email?.split("@")[0] || username
+            avatarUrl = parsed.avatar_url || avatarUrl
+            email = parsed.email || email
+          } catch (e) {}
+        }
+        return {
+          userId: "demo-user-id",
+          email,
+          isDemo: true,
+          username,
+          avatarUrl
         }
       }
     }
@@ -46,7 +88,13 @@ export async function getCurrentUser(): Promise<{
         data: { user },
       } = await supabase.auth.getUser()
       if (user) {
-        return { userId: user.id, email: user.email ?? null, isDemo: false }
+        return {
+          userId: user.id,
+          email: user.email ?? null,
+          isDemo: false,
+          username: user.user_metadata?.username || user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split("@")[0] || "User",
+          avatarUrl: user.user_metadata?.avatar_url || "user-tie"
+        }
       }
     } catch (err) {
       console.error("[getCurrentUser] Supabase auth lookup failed:", err)
@@ -56,7 +104,13 @@ export async function getCurrentUser(): Promise<{
     const session = await getServerSession(authOptions)
     const userId = (session?.user as { id?: string } | undefined)?.id ?? null
     if (userId) {
-      return { userId, email: session?.user?.email ?? null, isDemo: false }
+      return {
+        userId,
+        email: session?.user?.email ?? null,
+        isDemo: false,
+        username: session?.user?.name || session?.user?.email?.split("@")[0] || "User",
+        avatarUrl: (session?.user as any)?.avatar_url || session?.user?.image || "user-tie"
+      }
     }
 
     return { userId: null, email: null, isDemo: false }
