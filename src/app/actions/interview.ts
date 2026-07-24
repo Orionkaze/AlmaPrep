@@ -329,7 +329,6 @@ export async function createInterviewSession(
   selectedRepos?: string[]
 ): Promise<string | null> {
   try {
-    const cookieStore = await cookies()
     const user = await getCurrentUser()
     if (user.isDemo || !user.userId) {
       return null
