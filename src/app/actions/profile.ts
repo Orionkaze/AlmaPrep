@@ -2,37 +2,32 @@
 
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 
 export async function createUserProfile(
   username: string,
   avatarUrl: string
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
+    const user = await getCurrentUser()
+    if (user.isDemo) {
+      const cookieStore = await cookies()
       const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      let email = "guest@almaprep.com"
-      if (demoUserCookie) {
-        try {
-          email = JSON.parse(demoUserCookie).email || email
-        } catch (e) {}
-      }
+      let email = user.email || "guest@almaprep.com"
       cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }
     }
 
-    const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-
-    if (!user) {
+    if (!user.userId) {
       return { success: false, error: "Not authenticated" }
     }
+
+    const supabase = await createClient()
 
     const { error } = await supabase
       .from("users")
       .insert({
-        id: user.id,
+        id: user.userId,
         username,
         avatar_url: avatarUrl,
         subscription_tier: "free",
@@ -55,26 +50,20 @@ export async function updateUserProfile(
   avatarUrl: string
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
+    const user = await getCurrentUser()
+    if (user.isDemo) {
+      const cookieStore = await cookies()
       const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      let email = "guest@almaprep.com"
-      if (demoUserCookie) {
-        try {
-          email = JSON.parse(demoUserCookie).email || email
-        } catch (e) {}
-      }
+      let email = user.email || "guest@almaprep.com"
       cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }
     }
 
-    const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-
-    if (!user) {
+    if (!user.userId) {
       return { success: false, error: "Not authenticated" }
     }
+
+    const supabase = await createClient()
 
     const { error } = await supabase
       .from("users")
@@ -82,7 +71,7 @@ export async function updateUserProfile(
         username,
         avatar_url: avatarUrl,
       })
-      .eq("id", user.id)
+      .eq("id", user.userId)
 
     if (error) {
       console.error("Error updating user profile in Supabase:", error)
@@ -106,11 +95,11 @@ export async function clearAllUserData(): Promise<{ success: boolean; error?: st
     cookieStore.delete("mockmate-demo-resume")
 
     // Clear Supabase database data if authenticated
-    const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await getCurrentUser()
 
-    if (user) {
-      const userId = user.id
+    if (!user.isDemo && user.userId) {
+      const supabase = await createClient()
+      const userId = user.userId
       
       // 1. Delete interviews (which cascade deletes messages and feedback)
       const { error: interviewErr } = await supabase
@@ -152,25 +141,23 @@ export async function clearAllUserData(): Promise<{ success: boolean; error?: st
 
 export async function updateGithubAutosave(enabled: boolean): Promise<{ success: boolean; error?: string }> {
   try {
-    const cookieStore = await cookies()
-    const hasDemoCookie = cookieStore.has("mockmate-demo-session")
-    if (hasDemoCookie) {
+    const user = await getCurrentUser()
+    if (user.isDemo) {
       return { success: true }
     }
 
-    const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-
-    if (!user) {
+    if (!user.userId) {
       return { success: false, error: "Not authenticated" }
     }
+
+    const supabase = await createClient()
 
     const { error } = await supabase
       .from("users")
       .update({
         github_autosave: enabled
       })
-      .eq("id", user.id)
+      .eq("id", user.userId)
 
     if (error) {
       console.error("Error updating github_autosave in Supabase:", error)
