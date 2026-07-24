@@ -807,8 +807,8 @@ export async function saveProctoringLog(
   }
 ): Promise<boolean> {
   try {
-    const cookieStore = await cookies()
-    if (cookieStore.has("mockmate-demo-session")) {
+    const user = await getCurrentUser()
+    if (user.isDemo) {
       return false
     }
 
