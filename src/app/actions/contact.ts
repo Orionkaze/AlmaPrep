@@ -4,7 +4,6 @@ import { headers } from "next/headers"
 import { createHash } from "crypto"
 import { validateContactLead } from "@/lib/validation/contact"
 import { rateLimit } from "@/lib/rateLimit"
-import { sendSalesEmail } from "@/lib/email"
 import { SALES_EMAIL } from "@/config/plans"
 
 export type ContactState = {
@@ -66,34 +65,52 @@ export async function submitContactSales(
       }
     }
 
-    // Email the lead to sales. This is the delivery; without a mail key set,
-    // sendSalesEmail logs it and reports ok so the flow works in dev.
-    const result = await sendSalesEmail({
-      to: [SALES_EMAIL],
-      replyTo: lead.email,
-      subject: `New ${lead.plan || "sales"} lead: ${lead.institution}`,
-      text: [
-        `Name:        ${lead.name}`,
-        `Email:       ${lead.email}`,
-        `Institution: ${lead.institution}`,
-        `Role:        ${lead.role || "-"}`,
-        `Students:    ${lead.students || "-"}`,
-        `Plan:        ${lead.plan || "-"}`,
-        `Source:      ${lead.source || "-"}`,
-        ``,
-        lead.message || "(no message)",
-      ].join("\n"),
-    })
-
-    if (!result.ok) {
-      console.error("[contact] email send failed:", result.error)
-      return {
-        success: false,
-        error: `Sorry, we couldn't send your message. Please email us directly at ${SALES_EMAIL}.`,
-      }
+    // Send the lead to Formspree. Without a form ID set, we log it in dev mode.
+    const formId = process.env.FORMSPREE_FORM_ID
+    if (!formId) {
+      console.log(
+        `[contact] Dev mode Formspree submission (FORMSPREE_FORM_ID missing):\n`,
+        lead
+      )
+      return { success: true }
     }
 
-    return { success: true }
+    try {
+      const res = await fetch(`https://formspree.io/f/${formId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          name: lead.name,
+          email: lead.email,
+          institution: lead.institution,
+          role: lead.role || "",
+          students: lead.students || "",
+          plan: lead.plan || "",
+          source: lead.source || "",
+          message: lead.message || "",
+        }),
+      })
+
+      if (!res.ok) {
+        const errorText = await res.text()
+        console.error("[contact] Formspree submission failed:", res.status, errorText)
+        return {
+          success: false,
+          error: `Sorry, we couldn't send your message. Please email us directly at ${SALES_EMAIL}.`,
+        }
+      }
+
+      return { success: true }
+    } catch (err) {
+      console.error("[contact] Formspree unexpected error:", err)
+      return {
+        success: false,
+        error: "Something went wrong. Please try again later.",
+      }
+    }
   } catch (err) {
     console.error("[contact] unexpected failure:", err)
     return {
