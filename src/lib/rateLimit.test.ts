@@ -159,12 +159,12 @@ describe("rate limiter", () => {
       // Reset is at t = 60 mins. Time remaining = 35 minutes (2100 seconds).
       expect(result.retryAfter).toBe(2100)
 
-      // Advance by 11 minutes (so oldest hit at t = 0 ages out, but second hit is still active)
-      vi.advanceTimersByTime(11 * 60 * 1000) // total elapsed 36 mins.
-      // first hit (at 0) aged out, so we have 2 hits active (at 10 and 25)
+      // Advance past the 1-hour mark from the first hit (e.g. by 36 minutes, total elapsed 61 minutes)
+      vi.advanceTimersByTime(36 * 60 * 1000) // total elapsed 61 mins.
+      // first hit (at 0) is now 61 mins ago, so it ages out. Active hits are at 10 and 25 (which are 51 and 36 mins ago).
       result = await checkRateLimit(key)
-      expect(result.allowed).toBe(true) // allowed since we have 2 hits
-      expect(result.remaining).toBe(0) // now we have 3 hits again (10, 25, 36)
+      expect(result.allowed).toBe(true) // allowed since we only have 2 active hits in the last 60 minutes
+      expect(result.remaining).toBe(0) // now we have 3 hits again (10, 25, 61)
     })
 
     it("preserves backward compatibility wrapper features", async () => {
