@@ -8,6 +8,7 @@ import { Laptop, UserRound, Rocket, Brain, Star, ArrowLeft } from "lucide-react"
 import { useState } from "react"
 import { createUserProfile } from "@/app/actions/profile"
 import Link from "next/link"
+import { track, EVENTS } from "@/lib/analytics"
 
 const avatars = [
   { icon: Laptop, name: "laptop-code" },
@@ -39,6 +40,7 @@ export default function OnboardingPage() {
     const result = await createUserProfile(username.trim(), avatars[selectedAvatar].name)
 
     if (result.success) {
+      track(EVENTS.ONBOARDING_COMPLETED, { avatar: avatars[selectedAvatar].name, skipped: false })
       window.location.href = "/dashboard"
     } else {
       setError(result.error || "An error occurred while creating your profile.")
@@ -53,6 +55,7 @@ export default function OnboardingPage() {
     const result = await createUserProfile("User", "user-tie")
 
     if (result.success) {
+      track(EVENTS.ONBOARDING_COMPLETED, { avatar: "user-tie", skipped: true })
       window.location.href = "/dashboard"
     } else {
       setError(result.error || "An error occurred. Please try again.")

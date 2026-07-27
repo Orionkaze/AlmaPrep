@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
+import { track, identify, EVENTS } from "@/lib/analytics"
 
 import { useEffect } from "react"
 
@@ -54,6 +55,11 @@ export default function LoginPage() {
         if (!isMockMode) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
+        const { data: { user } } = await supabase.auth.getUser()
+        if (user) {
+          identify(user.id, { email: user.email })
+        }
+        track(EVENTS.LOGIN, { method: "email" })
         window.location.href = "/dashboard"
       }
     } catch (err) {
@@ -125,7 +131,7 @@ export default function LoginPage() {
 
             <button
               type="button"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() => { track(EVENTS.LOGIN, { method: "google" }); signIn("google", { callbackUrl: "/dashboard" }) }}
               className="btn btn-ghost"
               style={{ width: "100%", justifyContent: "center", gap: "10px" }}
             >
@@ -154,6 +160,7 @@ export default function LoginPage() {
               type="button"
               onClick={async () => {
                 setError(null)
+                track(EVENTS.LOGIN, { method: "github" })
                 const { error } = await supabase.auth.signInWithOAuth({
                   provider: "github",
                   options: {

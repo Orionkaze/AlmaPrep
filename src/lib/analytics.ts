@@ -15,8 +15,13 @@ const ENABLED =
 export const EVENTS = {
   SIGNUP: "signup",
   LOGIN: "login",
+  ONBOARDING_COMPLETED: "onboarding_completed",
   INTERVIEW_STARTED: "interview_started",
   INTERVIEW_COMPLETED: "interview_completed",
+  INTERVIEW_TRACK_SELECTED: "interview_track_selected",
+  CODING_CHALLENGE_STARTED: "coding_challenge_started",
+  CODING_SOLUTION_SUBMITTED: "coding_solution_submitted",
+  GITHUB_SAVE_COMPLETED: "github_save_completed",
   CHECKOUT_VIEWED: "checkout_viewed",
   UPGRADE_CLICKED: "upgrade_clicked",
   RESULT_SHARED: "result_shared",
