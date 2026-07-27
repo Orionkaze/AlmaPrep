@@ -1,15 +1,28 @@
 import { Redis } from "@upstash/redis"
 
-/**
- * Minimal in-memory sliding-window rate limiter. No dependency, no external
- * store.
- *
- * CAVEAT: state is per-process and resets on cold start. On serverless this is
- * best-effort, not a guarantee — good enough for a low-volume contact form
- * plus a honeypot and timing check. If real abuse appears, move to a durable
- * store (a DB table or Upstash). A DB-backed limit was avoided here because it
- * needs query methods the repo's mock Supabase client does not implement.
- */
+export interface RateLimitConfig {
+  limit: number
+  windowMs: number
+}
+
+export interface RateLimitResult {
+  allowed: boolean
+  remaining: number
+  limit: number
+  reset: number // UTC epoch in seconds
+  retryAfter: number // Seconds to wait
+}
+
+export const ENDPOINT_CONFIGS: Record<string, RateLimitConfig> = {
+  login: { limit: 5, windowMs: 60 * 1000 },
+  signup: { limit: 3, windowMs: 60 * 60 * 1000 },
+  "forgot-password": { limit: 3, windowMs: 60 * 60 * 1000 },
+  interview: { limit: 15, windowMs: 60 * 60 * 1000 },
+  coding: { limit: 20, windowMs: 60 * 60 * 1000 },
+  "github-analysis": { limit: 5, windowMs: 60 * 60 * 1000 },
+  "resume-analysis": { limit: 20, windowMs: 24 * 60 * 60 * 1000 },
+  chat: { limit: 50, windowMs: 60 * 60 * 1000 },
+}
 
 const hits = new Map<string, number[]>()
 
@@ -21,21 +34,74 @@ const redis =
       })
     : null
 
+let lastLoggedErrorTime = 0
+const LOG_ERROR_THROTTLE_MS = 5 * 60 * 1000 // 5 minutes
+
 /**
- * @returns true if allowed, false if the key is over the limit.
+ * Throttle logging of Redis connection errors to prevent log flooding.
  */
-export function rateLimit(
+function logRedisError(message: string, error: unknown): void {
+  const now = Date.now()
+  if (now - lastLoggedErrorTime > LOG_ERROR_THROTTLE_MS) {
+    lastLoggedErrorTime = now
+    console.error(message, error)
+  }
+}
+
+/**
+ * Helper to resolve the correct RateLimitConfig using custom configs, key prefixes, or environment defaults.
+ */
+function resolveConfig(key: string, config?: string | RateLimitConfig): RateLimitConfig {
+  if (config) {
+    if (typeof config === "string") {
+      const endpointConfig = ENDPOINT_CONFIGS[config]
+      if (endpointConfig) {
+        return endpointConfig
+      }
+    } else {
+      return config
+    }
+  }
+
+  // Parse prefix from key (e.g. key is "login:user@example.com", prefix is "login")
+  const prefix = key.split(":")[0]
+  const endpointConfig = ENDPOINT_CONFIGS[prefix]
+  if (endpointConfig) {
+    return endpointConfig
+  }
+
+  // Fallback to environment variables or defaults
+  const envLimit = process.env.RATE_LIMIT_MAX_REQUESTS
+  const envWindow = process.env.RATE_LIMIT_WINDOW_MS
+
+  return {
+    limit: envLimit ? parseInt(envLimit, 10) : 20,
+    windowMs: envWindow ? parseInt(envWindow, 10) : 60000,
+  }
+}
+
+/**
+ * In-memory sliding-window rate limiter (fallback).
+ */
+function rateLimitInMemory(
   key: string,
   limit: number,
   windowMs: number,
   now: number
-): boolean {
+): RateLimitResult {
   const cutoff = now - windowMs
   const recent = (hits.get(key) ?? []).filter((t) => t > cutoff)
 
   if (recent.length >= limit) {
-    hits.set(key, recent)
-    return false
+    const oldestTimestamp = recent[0] ?? now
+    const resetMs = oldestTimestamp + windowMs
+    return {
+      allowed: false,
+      remaining: 0,
+      limit,
+      reset: Math.ceil(resetMs / 1000),
+      retryAfter: Math.max(0, Math.ceil((resetMs - now) / 1000)),
+    }
   }
 
   recent.push(now)
@@ -50,48 +116,166 @@ export function rateLimit(
     }
   }
 
-  return true
+  const oldestTimestamp = recent[0] ?? now
+  const resetMs = oldestTimestamp + windowMs
+
+  return {
+    allowed: true,
+    remaining: Math.max(0, limit - recent.length),
+    limit,
+    reset: Math.ceil(resetMs / 1000),
+    retryAfter: 0,
+  }
 }
 
 /**
- * Convenience wrapper over {@link rateLimit} with inverted semantics.
- * Checks Redis first if configured; falls back to in-memory rate limiting.
- * @returns true if the key is OVER the limit (i.e. the request should be
- * rejected), false if it is still within the allowance.
+ * Core rate limit checker.
+ *
+ * Implements a sliding-window rate limiter using Redis Sorted Sets (ZSET) if Upstash Redis
+ * environment variables are available. If Redis is unavailable or fails, it falls back
+ * to an in-memory sliding-window rate limiter.
+ *
+ * Redis Data Structure:
+ * - Key: `ratelimit:${key}`
+ * - Type: Sorted Set (ZSET)
+ * - Score: Timestamp of request (milliseconds since Unix epoch)
+ * - Member: `${timestamp}:${Math.random()}` (to ensure uniqueness of concurrent requests)
+ *
+ * Pipeline Operations:
+ * 1. ZREMRANGEBYSCORE: Remove all entries older than (now - windowMs).
+ * 2. ZADD: Add the current request's timestamp-encoded member to the set.
+ * 3. ZCARD: Get the total number of members in the set within the active sliding window.
+ * 4. ZRANGE: Fetch the oldest member in the set to determine window reset time.
+ * 5. PEXPIRE: Set/renew TTL on the set.
+ *
+ * Cleanup Logic:
+ * If the request exceeds the limit, the added member is asynchronously removed (ZREM) to prevent
+ * failed requests from artificially extending the rate-limit window.
+ *
+ * Fallback Behavior:
+ * Gracefully falls back to a sliding-window in-memory rate limiter using a Javascript Map on failure.
+ *
+ * @param key The rate limit identifier key.
+ * @param config Optional endpoint name (from registry) or direct RateLimitConfig object.
+ * @returns RateLimitResult containing limit, remaining, reset, allowed, and retryAfter details.
  */
-export async function isRateLimited(
+export async function checkRateLimit(
   key: string,
-  limit: number,
-  windowMs: number
-): Promise<boolean> {
-  if (redis) {
-    try {
-      const now = Date.now()
-      const cutoff = now - windowMs
-      const redisKey = `ratelimit:${key}`
-      const member = `${now}:${Math.random()}`
+  config?: string | RateLimitConfig
+): Promise<RateLimitResult> {
+  const resolvedConfig = resolveConfig(key, config)
+  const { limit, windowMs } = resolvedConfig
 
+  if (redis) {
+    const now = Date.now()
+    const cutoff = now - windowMs
+    const redisKey = `ratelimit:${key}`
+    const member = `${now}:${Math.random()}`
+
+    try {
       const p = redis.pipeline()
       p.zremrangebyscore(redisKey, 0, cutoff)
       p.zadd(redisKey, { score: now, member })
       p.zcard(redisKey)
+      p.zrange(redisKey, 0, 0)
       p.pexpire(redisKey, windowMs)
 
       const results = await p.exec()
       const card = results[2] as number
+      const zrangeResult = results[3] as string[]
 
-      if (card > limit) {
-        // Over the limit. Remove the added member asynchronously to keep the ZSET accurate.
-        redis.zrem(redisKey, member).catch((err) => {
-          console.error(`Failed to remove rate limit member from Redis for key ${redisKey}:`, err)
-        })
-        return true
+      let oldestTimestamp = now
+      if (Array.isArray(zrangeResult) && zrangeResult.length > 0) {
+        const parts = zrangeResult[0].split(":")
+        const parsed = parseInt(parts[0], 10)
+        if (!isNaN(parsed)) {
+          oldestTimestamp = parsed
+        }
       }
-      return false
+
+      const allowed = card <= limit
+      const remaining = Math.max(0, limit - card)
+      const resetMs = oldestTimestamp + windowMs
+      const reset = Math.ceil(resetMs / 1000)
+      const retryAfter = allowed ? 0 : Math.max(0, Math.ceil((resetMs - now) / 1000))
+
+      if (!allowed) {
+        // Asynchronously remove member if request was rejected to keep sliding window accurate.
+        redis.zrem(redisKey, member).catch((err) => {
+          logRedisError(`Failed to remove rejected rate limit member for key ${redisKey}:`, err)
+        })
+      }
+
+      return {
+        allowed,
+        remaining,
+        limit,
+        reset,
+        retryAfter,
+      }
     } catch (err) {
-      console.error(`Redis rate limiting failed for key ${key}, falling back to in-memory:`, err)
+      logRedisError(`Redis rate limiting failed for key ${key}, falling back to in-memory:`, err)
     }
   }
 
-  return !rateLimit(key, limit, windowMs, Date.now())
-}
+  // Fallback to in-memory rate limiting
+  return rateLimitInMemory(key, limit, windowMs, Date.now())
+}
+
+/**
+ * Synchronous in-memory rate limiter.
+ * Included for backward compatibility (e.g. contact actions).
+ *
+ * @returns true if allowed, false if key is over the limit.
+ */
+export function rateLimit(
+  key: string,
+  limit: number,
+  windowMs: number,
+  now: number
+): boolean {
+  return rateLimitInMemory(key, limit, windowMs, now).allowed
+}
+
+/**
+ * Convenience wrapper over checkRateLimit with inverted semantics.
+ * Included for backward compatibility in standard API routes.
+ *
+ * @returns true if the key is OVER the limit (i.e. blocked), false if allowed.
+ */
+export async function isRateLimited(
+  key: string,
+  limit?: number,
+  windowMs?: number
+): Promise<boolean> {
+  const config = limit !== undefined && windowMs !== undefined
+    ? { limit, windowMs }
+    : undefined
+  const result = await checkRateLimit(key, config)
+  return !result.allowed
+}
+
+/**
+ * Utility to format standard rate limit HTTP headers.
+ *
+ * Provides:
+ * - X-RateLimit-Limit: Maximum requests allowed in the window.
+ * - X-RateLimit-Remaining: Remaining requests allowed in the current window.
+ * - X-RateLimit-Reset: Epoch time in seconds when the window completely resets.
+ * - Retry-After: Seconds to wait before retrying (only returned if request was rejected).
+ *
+ * @param result The result returned from checkRateLimit.
+ * @returns A plain object containing standard rate limit headers.
+ */
+export function getRateLimitHeaders(result: RateLimitResult): Record<string, string> {
+  const headers: Record<string, string> = {
+    "X-RateLimit-Limit": String(result.limit),
+    "X-RateLimit-Remaining": String(result.remaining),
+    "X-RateLimit-Reset": String(result.reset),
+  }
+  if (!result.allowed && result.retryAfter > 0) {
+    headers["Retry-After"] = String(result.retryAfter)
+  }
+  return headers
+}
+
