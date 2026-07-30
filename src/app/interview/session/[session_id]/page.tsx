@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, use } from "react";
 import { useRouter } from "next/navigation";
+import { track, EVENTS } from "@/lib/analytics";
 import dynamic from "next/dynamic";
 import {
   Clock,
@@ -287,6 +288,11 @@ export default function InterviewWorkspacePage({
     const msg = userInput.trim();
     setUserInput("");
     setIsAgentThinking(true);
+    track(EVENTS.AGENT_PROMPT_SENT, {
+      challenge_id: challenge?.id,
+      challenge_title: challenge?.title,
+      prompt_length: msg.length,
+    });
 
     // Reset proposed changes when sending new prompt
     setPendingDiffs([]);
@@ -344,11 +350,16 @@ export default function InterviewWorkspacePage({
       const data = await res.json();
       if (res.ok && data.updated_codebase) {
         setCodebase(data.updated_codebase);
-        
+        track(EVENTS.CODE_CHANGE_ACCEPTED, {
+          challenge_id: challenge?.id,
+          challenge_title: challenge?.title,
+          filename: diff.filename,
+        });
+
         // Trigger green flash effect in Monaco
         setFlashGreen(true);
         setTimeout(() => setFlashGreen(false), 1000);
-        
+
         showToast(`Applied code changes to ${diff.filename}`);
 
         // Remove from pending diffs list or check next
@@ -708,6 +719,12 @@ __run_test()
     setEvaluationFeedback(null);
     setGitHubError(null);
     setCreatedRepoUrl("");
+    track(EVENTS.INTERVIEW_SUBMITTED, {
+      challenge_id: challenge.id,
+      challenge_title: challenge.title,
+      difficulty: challenge.difficulty,
+      elapsed_seconds: elapsedSeconds,
+    });
 
     const currentFileContent = codebase[currentFile] || "";
     const lang = challenge.language || "javascript";
@@ -763,6 +780,12 @@ __run_test()
   const triggerGitHubSave = async (isPrivate: boolean, alwaysSave: boolean) => {
     setIsSavingToGitHub(true);
     setGitHubError(null);
+    track(EVENTS.GITHUB_SAVE_TRIGGERED, {
+      challenge_id: challenge?.id,
+      challenge_title: challenge?.title,
+      repo_name: proposedRepoName,
+      is_private: isPrivate,
+    });
     showToast("Creating GitHub repository & committing solution...");
 
     try {

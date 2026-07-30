@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { track, EVENTS } from "@/lib/analytics";
 import {
   Wrench,
   Zap,
@@ -99,6 +100,12 @@ export default function ChallengeSelectionPage() {
 
       const data = await res.json();
       if (res.ok && data.session_id) {
+        track(EVENTS.INTERVIEW_STARTED, {
+          challenge_id: challengeId,
+          challenge_title: challenges.find(c => c.id === challengeId)?.title,
+          challenge_type: challenges.find(c => c.id === challengeId)?.challenge_type,
+          difficulty: challenges.find(c => c.id === challengeId)?.difficulty,
+        });
         router.push(`/interview/session/${data.session_id}`);
       } else {
         throw new Error(data.error || "Failed to initiate session");

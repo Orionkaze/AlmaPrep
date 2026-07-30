@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getChallengeById, createSession, getChallenges } from "@/lib/interviewDb";
 import { getRequestUserId } from "@/lib/getRequestUserId";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 export async function GET() {
   try {
@@ -35,6 +36,23 @@ export async function POST(request: Request) {
     }
 
     const session = await createSession(userId, challenge_id, challenge.starter_code);
+
+    try {
+      const posthog = getPostHogClient();
+      posthog.capture({
+        distinctId: userId,
+        event: "interview_session_created",
+        properties: {
+          session_id: session.id,
+          challenge_id: challenge_id,
+          challenge_title: challenge.title,
+          challenge_type: challenge.challenge_type,
+          difficulty: challenge.difficulty,
+          language: challenge.language,
+        },
+      });
+      await posthog.flush();
+    } catch {}
 
     return NextResponse.json({
       session_id: session.id,
