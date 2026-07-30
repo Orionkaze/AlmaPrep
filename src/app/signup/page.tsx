@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
+import { track, identify, EVENTS } from "@/lib/analytics"
 
 import { useEffect } from "react"
 
@@ -49,6 +50,10 @@ export default function SignupPage() {
         setLoading(false)
       } else {
         setLoading(false)
+        if (data?.user) {
+          identify(data.user.id, { email: data.user.email })
+          track(EVENTS.SIGNUP, { method: "email" })
+        }
         // Clear demo cookie if signing up with real credentials (not mock mode)
         const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
           process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz") ||
@@ -56,7 +61,7 @@ export default function SignupPage() {
         if (!isMockMode) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
-        
+
         if (data.session) {
           setSuccess("Account created successfully! Redirecting to onboarding...")
           // Wait a second and redirect to onboarding
@@ -142,7 +147,7 @@ export default function SignupPage() {
 
             <button
               type="button"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() => { track(EVENTS.OAUTH_LOGIN_INITIATED, { provider: "google" }); signIn("google", { callbackUrl: "/dashboard" }) }}
               className="btn btn-ghost"
               style={{ width: "100%", justifyContent: "center", gap: "10px" }}
             >
@@ -171,6 +176,7 @@ export default function SignupPage() {
               type="button"
               onClick={async () => {
                 setError(null)
+                track(EVENTS.OAUTH_LOGIN_INITIATED, { provider: "github" })
                 const { error } = await supabase.auth.signInWithOAuth({
                   provider: "github",
                   options: {
