@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -87,8 +86,14 @@ export function MySchedule() {
     try {
       const stored = localStorage.getItem("mockmate-scheduled-sessions");
       if (stored) {
-        const parsed = JSON.parse(stored);
-        const sorted = parsed.sort((a: any, b: any) => new Date(a.scheduledFor).getTime() - new Date(b.scheduledFor).getTime());
+        const parsed = JSON.parse(stored) as ScheduledSession[];
+        const sorted = [...parsed].sort(
+          (a, b) => new Date(a.scheduledFor).getTime() - new Date(b.scheduledFor).getTime()
+        );
+        // Deliberate mount-only read: localStorage does not exist during the
+        // server render, so seeding this into useState would guarantee a
+        // hydration mismatch. One render pass on mount is the trade.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSessions(sorted);
       }
     } catch (err) {

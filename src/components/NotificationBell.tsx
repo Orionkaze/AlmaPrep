@@ -30,7 +30,7 @@ export function NotificationBell() {
           const sessions = JSON.parse(stored);
           const now = new Date();
           let hasChanges = false;
-          sessions.forEach((s: any) => {
+          sessions.forEach((s: { scheduledFor: string; missedNotified?: boolean; title: string }) => {
             if (new Date(s.scheduledFor) < now && !s.missedNotified) {
               s.missedNotified = true;
               hasChanges = true;

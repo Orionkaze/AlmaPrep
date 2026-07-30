@@ -1,5 +1,9 @@
 import { createBrowserClient } from '@supabase/ssr'
 import type { SupabaseClient } from '@supabase/supabase-js'
+import { isMockAuthEnabled } from '@/lib/env'
+
+type MockUser = { id: string; email: string }
+type MockSession = { access_token: string; expires_in: number; user: MockUser }
 
 interface LocalDemoUser {
   email: string
@@ -141,20 +145,20 @@ function createMockBrowserClient(): SupabaseClient {
         }
         return { data: { session: null }, error: null };
       },
-      onAuthStateChange: (callback: (event: string, session: any) => void) => {
+      onAuthStateChange: (callback: (event: string, session: MockSession | null) => void) => {
         const matches = typeof document !== "undefined" ? document.cookie.match(new RegExp('(^| )mockmate-demo-user=([^;]+)')) : null;
-        let session: any = null;
+        let session: MockSession | null = null;
         if (matches) {
           try {
             const parsed = JSON.parse(decodeURIComponent(matches[2]));
             const mockUser = { id: "demo-user-id", email: parsed.email };
             session = { access_token: "mock-session-token", expires_in: 3600, user: mockUser };
-          } catch (e) {}
+          } catch {}
         }
         setTimeout(() => {
           try {
             callback(session ? "SIGNED_IN" : "INITIAL_SESSION", session);
-          } catch (e) {}
+          } catch {}
         }, 0);
 
         return {
@@ -166,7 +170,7 @@ function createMockBrowserClient(): SupabaseClient {
         };
       },
 
-      signInWithOAuth: async ({ provider, options }: any) => {
+      signInWithOAuth: async ({ provider, options }: { provider: string; options?: { redirectTo?: string } }) => {
         console.log("Mock Supabase Client: signInWithOAuth", provider);
         const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
         try {
@@ -191,11 +195,11 @@ function createMockBrowserClient(): SupabaseClient {
         return { data: { user: mockUser, session }, error: null };
       },
 
-      resetPasswordForEmail: async (email: string) => {
+      resetPasswordForEmail: async () => {
         return { data: {}, error: null };
       },
 
-      updateUser: async (attributes: any) => {
+      updateUser: async (attributes: Record<string, unknown> & { email?: string }) => {
         const mockUser = { id: "demo-user-id", email: attributes.email || "demo@mockmate.com", ...attributes };
         return { data: { user: mockUser }, error: null };
       }
@@ -258,17 +262,24 @@ function createMockBrowserClient(): SupabaseClient {
 }
 
 export function createClient(): SupabaseClient {
-  const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id.supabase.co") ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz.supabase.co");
-
-  if (isMockMode) {
+  if (isMockAuthEnabled()) {
     return createMockBrowserClient();
   }
 
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !anonKey) {
+    // Never silently substitute the mock client here — it auto-registers any
+    // email/password pair, so a missing env var would mean "no authentication".
+    throw new Error(
+      "NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY are not set. " +
+        "Set them, or set NEXT_PUBLIC_MOCK_AUTH=true for local development."
+    )
+  }
+
   return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    anonKey,
     {
       auth: {
         detectSessionInUrl: false

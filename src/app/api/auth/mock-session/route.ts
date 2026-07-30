@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { signJWT } from "@/lib/jwt";
+import { getAuthSecret, isMockAuthEnabled } from "@/lib/env";
 
+// This endpoint mints a session for any email with no credential check, so it
+// exists only while mock auth is explicitly enabled (never in production).
 function checkMockMode() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  return !supabaseUrl || 
-    supabaseUrl.includes("mock-supabase-project-id") || 
-    supabaseUrl.includes("evdfkeikrrsdthnekrrz");
+  return isMockAuthEnabled();
 }
 
 export async function POST(request: Request) {
@@ -29,8 +29,7 @@ export async function POST(request: Request) {
       exp: Math.floor(Date.now() / 1000) + 604800, // 7 days
     };
 
-    const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0";
-    const token = await signJWT(payload, secret);
+    const token = await signJWT(payload, getAuthSecret());
 
     const cookieStore = await cookies();
     cookieStore.set("mockmate-mock-session", token, {
@@ -48,9 +47,12 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error creating mock session:", err);
-    return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : "Internal server error" },
+      { status: 500 }
+    );
   }
 }
 

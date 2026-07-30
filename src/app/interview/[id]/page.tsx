@@ -337,7 +337,7 @@ export default function InterviewPage({
     return () => {
       active = false
     }
-  }, [category, useResume, isStarted, isGithubMode, selectedPersona, selectedRepos])
+  }, [category, useResume, isStarted, isGithubMode, selectedPersona, selectedRepos, router])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })

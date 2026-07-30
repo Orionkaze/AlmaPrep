@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 
 import { useEffect } from "react"
+import { isMockAuthEnabled } from "@/lib/env"
 
 export default function SignupPage() {
   const [email, setEmail] = useState("")
@@ -16,7 +16,6 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
-  const router = useRouter()
   const supabase = createClient()
 
   useEffect(() => {
@@ -50,10 +49,7 @@ export default function SignupPage() {
       } else {
         setLoading(false)
         // Clear demo cookie if signing up with real credentials (not mock mode)
-        const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz") ||
-          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id")
-        if (!isMockMode) {
+        if (!isMockAuthEnabled()) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
         

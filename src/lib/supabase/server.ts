@@ -1,14 +1,27 @@
 import { createServerClient } from '@supabase/ssr'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 import { signJWT, verifyJWT } from '@/lib/jwt'
+import { getAuthSecret, isMockAuthEnabled } from '@/lib/env'
 
+type MockCredentials = { email: string; password?: string }
+type MockUser = { id: string; email?: string }
+type MockSession = { access_token: string; expires_in: number; user: MockUser }
+
+/**
+ * Fake Supabase client for local development without a project.
+ *
+ * It accepts ANY email/password pair and mints a session, so reaching it is
+ * equivalent to disabling authentication. createClient() below therefore only
+ * returns it behind isMockAuthEnabled(), which is hard-disabled in production.
+ */
 async function createMockServerClient() {
   const cookieStore = await cookies()
-  const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
+  const secret = getAuthSecret()
 
   return {
     auth: {
-      signUp: async ({ email, password }: any) => {
+      signUp: async ({ email }: MockCredentials) => {
         const username = email.split("@")[0];
         const payload = {
           userId: "demo-user-id",
@@ -35,7 +48,7 @@ async function createMockServerClient() {
         };
       },
 
-      signInWithPassword: async ({ email, password }: any) => {
+      signInWithPassword: async ({ email }: MockCredentials) => {
         const username = email.split("@")[0];
         const payload = {
           userId: "demo-user-id",
@@ -99,7 +112,7 @@ async function createMockServerClient() {
         }
         return { data: { session: null }, error: null };
       },
-      onAuthStateChange: (callback: (event: string, session: any) => void) => {
+      onAuthStateChange: (callback: (event: string, session: MockSession | null) => void) => {
         const token = cookieStore.get("mockmate-mock-session")?.value;
         if (token) {
           verifyJWT(token, secret).then((payload) => {
@@ -123,7 +136,7 @@ async function createMockServerClient() {
         };
       },
 
-      signInWithOAuth: async ({ provider }: any) => {
+      signInWithOAuth: async ({ provider }: { provider: string }) => {
         const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
         const payload = {
           userId: "demo-user-id",
@@ -137,7 +150,7 @@ async function createMockServerClient() {
         return { data: { provider, url: "/dashboard" }, error: null };
       },
 
-      exchangeCodeForSession: async (code: string) => {
+      exchangeCodeForSession: async () => {
         const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
         const payload = {
           userId: "demo-user-id",
@@ -152,11 +165,11 @@ async function createMockServerClient() {
         return { data: { user: mockUser, session }, error: null };
       },
 
-      resetPasswordForEmail: async (email: string) => {
+      resetPasswordForEmail: async () => {
         return { data: {}, error: null };
       },
 
-      updateUser: async (attributes: any) => {
+      updateUser: async (attributes: Record<string, unknown> & { email?: string }) => {
         const mockUser = { id: "demo-user-id", email: attributes.email || "demo@mockmate.com", ...attributes };
         return { data: { user: mockUser }, error: null };
       }
@@ -212,25 +225,32 @@ async function createMockServerClient() {
         limit: () => chain,
         order: () => chain,
       };
-      return chain as any;
+      return chain;
     }
-  } as any;
+  } as unknown as SupabaseClient;
 }
 
 export async function createClient() {
-  const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id.supabase.co") ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz.supabase.co");
-
-  if (isMockMode) {
+  if (isMockAuthEnabled()) {
     return createMockServerClient();
+  }
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !anonKey) {
+    // Fail loudly. The previous behaviour was to silently substitute the mock
+    // client here, which turns a missing env var into "every password works".
+    throw new Error(
+      "NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY are not set. " +
+        "Set them, or set NEXT_PUBLIC_MOCK_AUTH=true for local development."
+    )
   }
 
   const cookieStore = await cookies()
 
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    anonKey,
     {
       cookies: {
         getAll() {

@@ -36,13 +36,17 @@ export async function submitContactSales(
       return { success: true }
     }
 
-    // Timing: forms submitted in under 3s, or with a stale/absent timestamp,
-    // are almost certainly bots. Silently accept without persisting.
+    // Timing: a form filled in under 3 seconds, or carrying a stale/absent
+    // timestamp, is more likely a bot than a person.
+    //
+    // This used to silently return success and drop the submission — which also
+    // silently dropped real leads whose browser autofilled the form and who hit
+    // send quickly. A lost sales lead costs far more than a junk one, so the
+    // signal is now forwarded as a flag and sales decides. The honeypot above
+    // still hard-drops, because nothing legitimate fills a hidden field.
     const now = Date.now()
     const ts = Number(formData.get("ts"))
-    if (!ts || now - ts < 3000 || now - ts > 24 * 60 * 60 * 1000) {
-      return { success: true }
-    }
+    const suspectedBot = !ts || now - ts < 3000 || now - ts > 24 * 60 * 60 * 1000
 
     const validated = validateContactLead(formData)
     if (!validated.ok) {
@@ -91,6 +95,7 @@ export async function submitContactSales(
           plan: lead.plan || "",
           source: lead.source || "",
           message: lead.message || "",
+          ...(suspectedBot ? { suspected_bot: true } : {}),
         }),
       })
 

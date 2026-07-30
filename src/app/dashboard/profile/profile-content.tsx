@@ -65,7 +65,7 @@ const avatars = [
   { name: "star", icon: Star },
 ]
 
-interface Interview {
+export interface Interview {
   id: string
   category: string
   score: number
@@ -90,7 +90,7 @@ export interface GitHubAnalysisData {
   repo_metadata: Record<string, RepoMetadataEntry>
 }
 
-interface BadgeMeta {
+export interface BadgeMeta {
   slug: string
   name: string
   description: string
@@ -99,7 +99,7 @@ interface BadgeMeta {
   rarity: string
 }
 
-interface UserBadgeMeta {
+export interface UserBadgeMeta {
   badge_slug: string
   earned_at: string
 }

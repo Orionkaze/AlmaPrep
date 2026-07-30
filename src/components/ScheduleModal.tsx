@@ -36,7 +36,7 @@ export function ScheduleModal({ open, onOpenChange, defaultTitle = "Interview Se
       toast.success("Session scheduled successfully!");
       onOpenChange(false);
       setDate("");
-    } catch (err) {
+    } catch {
       toast.error("Failed to schedule session.");
     }
   };

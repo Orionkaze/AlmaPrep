@@ -3,15 +3,27 @@
 import { createClient } from "@/lib/supabase/server"
 import { getUserTier } from "@/lib/entitlements"
 import { checkInterviewAllowance, type AllowanceResult } from "@/lib/quota"
-import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
+import { callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { cookies } from "next/headers"
-import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
-import { updateStreak } from "@/app/actions/streak"
-import { checkAndAwardBadges } from "@/app/actions/badges"
+import { updateStreak } from "@/lib/streak"
+import { checkAndAwardBadges } from "@/lib/badges"
+
+/** A pre-generated question attached to one of the candidate's GitHub repos. */
+type GithubRepoQuestion = { repo?: string; difficulty?: string; question?: string }
+
+/** Per-answer scoring produced during a behavioural interview. */
+type AnswerScore = Record<string, unknown>
+
+/** A proctoring/body-language sample taken during a behavioural interview. */
+type PhysicalMetric = Record<string, unknown>
+/** Narrow an unknown thrown value to a message without reaching for `any`. */
+function errorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err)
+}
 
 interface MessageInput {
   role: "user" | "ai"
@@ -60,9 +72,11 @@ export async function getNextQuestion(
           if (analysis && Array.isArray(analysis.questions)) {
             const difficulty = questionIndex === 1 ? "easy" : questionIndex === 4 ? "medium" : "hard"
             const match = analysis.questions.find(
-              (q: any) => q.repo === currentRepoName && q.difficulty === difficulty
+              (q: GithubRepoQuestion) => q.repo === currentRepoName && q.difficulty === difficulty
             )
-            const fallbackMatch = analysis.questions.find((q: any) => q.repo === currentRepoName)
+            const fallbackMatch = analysis.questions.find(
+              (q: GithubRepoQuestion) => q.repo === currentRepoName
+            )
             const targetQuestion = match?.question || fallbackMatch?.question
 
             if (targetQuestion) {
@@ -100,23 +114,13 @@ export async function getNextQuestion(
           source: "github_repo", 
           repo_name: currentRepoName 
         }
-      } catch (err: any) {
+      } catch (err) {
         console.error("AI routing failed for github follow-up, falling back to general", err)
       }
     }
 
-    // Default: General track question generation (Optionally customized with Resume)
-    let resumeText = ""
-    if (useResume) {
-      try {
-        const res = await getResumeData()
-        if (res.success && res.data?.resumeText) {
-          resumeText = res.data.resumeText
-        }
-      } catch (err) {
-        console.error("Failed to fetch resume text in getNextQuestion:", err)
-      }
-    }
+    // Default: General track question generation. The resume, when requested,
+    // is fetched inside aiRouter from the useResume flag below.
 
     const { tier: userTier } = await getUserTier()
 
@@ -127,8 +131,8 @@ export async function getNextQuestion(
         userTier
       )
       return { question: nextResponse.result, source: nextResponse.source }
-    } catch (err: any) {
-      if (err.message && err.message.includes("free interviews")) {
+    } catch (err) {
+      if (errorMessage(err).includes("free interviews")) {
         return {
           question: `[Limit Reached] You've used all 3 free interviews this month. Upgrade to Pro for unlimited access.`,
           source: "system"
@@ -169,10 +173,10 @@ export async function getNextQuestion(
 
       return { question: selectedQuestion, source: "vetted_fallback" }
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in getNextQuestion Server Action:", error)
     return {
-      question: `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
+      question: `[System Error: ${errorMessage(error) || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
       source: "error"
     }
   }
@@ -218,43 +222,8 @@ export async function generateFeedback(
   }
 
   try {
-    const transcript = messages
-      .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
-      .join("\n")
-
-    const systemPrompt = `You are an expert interviewer evaluating a candidate's performance in a mock interview for the category: "${category}".`
-    const prompt = `Analyze the following transcript of the mock interview:
-${transcript}
-
-Evaluate the candidate's answers based on communication, technical depth, structured delivery, and confidence.
-Respond ONLY with a valid JSON object matching this exact structure:
-{
-  "score": <number between 0 and 100>,
-  "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
-  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
-  "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
-  "questionEvaluation": [
-    {
-      "question": "<the exact question asked from the question bank (or standard track)>",
-      "userAnswer": "<brief summary of candidate's answer>",
-      "score": <score for this answer, number between 0 and 100>,
-      "feedback": "<constructive feedback for this answer comparing it to what we look for>",
-      "modelAnswer": "<the ideal answer or model answer from the question bank (or standard track)>"
-    }
-  ],
-  "studyGuide": [
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
-  ],
-  "breakdown": [
-    { "label": "Communication", "score": <number> },
-    { "label": "Technical Knowledge", "score": <number> },
-    { "label": "Problem Solving", "score": <number> },
-    { "label": "Confidence", "score": <number> }
-  ]
-}
-
-Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
+    // NOTE: the feedback prompt itself is built by aiRouter's "generate_feedback"
+    // task; the copy that used to be assembled here was never sent anywhere.
 
     interface FeedbackJson {
       score: number
@@ -292,11 +261,11 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       questionEvaluation: Array.isArray(data.questionEvaluation) ? data.questionEvaluation : [],
       breakdown,
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error("LLM Error in generateFeedback:", error)
     return {
       ...fallbackFeedback,
-      summary: `[System Error generating actual feedback: ${error?.message || "Unknown"}]. Here is a simulated analysis instead.`
+      summary: `[System Error generating actual feedback: ${errorMessage(error) || "Unknown"}]. Here is a simulated analysis instead.`
     }
   }
 }
@@ -334,9 +303,9 @@ export async function createInterviewSession(
     if (user.isDemo || !user.userId) {
       return null
     }
+    const userId = user.userId
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const { data, error } = await supabase
       .from("interviews")
@@ -380,7 +349,6 @@ export async function saveInterviewMessage(
     }
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const metadata = {
       ...(source ? { source } : {}),
@@ -479,7 +447,6 @@ export async function getFeedback(interviewId: string) {
     }
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const { data, error } = await supabase
       .from("feedback")
@@ -586,8 +553,8 @@ Candidate's Answer: "${answer}"`
  * Generates the final behavioral report based on answer scores and physical metrics.
  */
 export async function generateBehavioralReport(
-  answerScores: any[],
-  physicalMetrics: any[]
+  answerScores: AnswerScore[],
+  physicalMetrics: PhysicalMetric[]
 ): Promise<string> {
   try {
     const systemPrompt = `You are an expert public speaking, communications, and career coach.
@@ -623,10 +590,10 @@ Physical Behavior Metrics: ${JSON.stringify(physicalMetrics)}`
  */
 export async function saveBehavioralReport(
   sessionId: string,
-  answerScores: any[],
-  physicalMetrics: any[],
+  answerScores: AnswerScore[],
+  physicalMetrics: PhysicalMetric[],
   finalReport: string,
-  speakingAnalysis?: any
+  speakingAnalysis?: Record<string, unknown>
 ): Promise<boolean> {
   try {
     const user = await getCurrentUser()
@@ -668,7 +635,7 @@ export async function saveBehavioralReport(
         speaking_analysis: speakingAnalysis || null
       })
       return true
-    } catch (_) {}
+    } catch {}
     return false
   }
 }
@@ -682,9 +649,9 @@ export async function getBehavioralReport(sessionId: string) {
     if (user.isDemo || !user.userId) {
       return null
     }
+    const userId = user.userId
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const { data, error } = await supabase
       .from("behavioral_analysis")
@@ -801,7 +768,7 @@ Keep the summary concise and engaging (1 paragraph of 3-4 sentences). Do not inc
 export async function saveProctoringLog(
   interviewId: string,
   log: {
-    violations: any[];
+    violations: Record<string, unknown>[];
     totalCount: number;
     isFlagged: boolean;
     terminatedEarly: boolean;
@@ -878,15 +845,15 @@ export async function checkGitHubConnection(): Promise<boolean> {
 /**
  * Fetches the user's cached GitHub analysis from Supabase on the server.
  */
-export async function getGitHubAnalysis(): Promise<any | null> {
+export async function getGitHubAnalysis(): Promise<Record<string, unknown> | null> {
   try {
     const user = await getCurrentUser()
     if (user.isDemo || !user.userId) {
       return null
     }
+    const userId = user.userId
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const { data, error } = await supabase
       .from("github_analysis")
@@ -911,7 +878,7 @@ export async function getGitHubAnalysis(): Promise<any | null> {
       if (user.userId) {
         return readLocalCache("github_analysis", user.userId)
       }
-    } catch (_) {}
+    } catch {}
     return null
   }
 }

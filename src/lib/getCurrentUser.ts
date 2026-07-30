@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { verifyJWT } from "@/lib/jwt"
+import { getAuthSecret, isMockAuthEnabled } from "@/lib/env"
 
 /**
  * Resolve the current request's user, collapsing the demo-cookie → Supabase →
@@ -25,16 +26,11 @@ export async function getCurrentUser(): Promise<{
 }> {
   try {
     const cookieStore = await cookies()
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const isMockMode = !supabaseUrl || 
-      supabaseUrl.includes("mock-supabase-project-id") || 
-      supabaseUrl.includes("evdfkeikrrsdthnekrrz")
 
-    if (isMockMode) {
+    if (isMockAuthEnabled()) {
       const mockSessionCookie = cookieStore.get("mockmate-mock-session")?.value
       if (mockSessionCookie) {
-        const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
-        const payload = await verifyJWT(mockSessionCookie, secret)
+        const payload = await verifyJWT(mockSessionCookie, getAuthSecret())
         if (payload) {
           const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
           let username = payload.email?.split("@")[0] || "User"
@@ -44,11 +40,11 @@ export async function getCurrentUser(): Promise<{
               const parsed = JSON.parse(demoUserCookie)
               username = parsed.username || username
               avatarUrl = parsed.avatar_url || avatarUrl
-            } catch (e) {}
+            } catch {}
           }
           return {
             userId: payload.userId || "demo-user-id",
-            email: payload.email,
+            email: payload.email ?? null,
             isDemo: true,
             username,
             avatarUrl
@@ -69,7 +65,7 @@ export async function getCurrentUser(): Promise<{
             username = parsed.username || parsed.email?.split("@")[0] || username
             avatarUrl = parsed.avatar_url || avatarUrl
             email = parsed.email || email
-          } catch (e) {}
+          } catch {}
         }
         return {
           userId: "demo-user-id",
@@ -109,7 +105,10 @@ export async function getCurrentUser(): Promise<{
         email: session?.user?.email ?? null,
         isDemo: false,
         username: session?.user?.name || session?.user?.email?.split("@")[0] || "User",
-        avatarUrl: (session?.user as any)?.avatar_url || session?.user?.image || "user-tie"
+        avatarUrl:
+          (session?.user as { avatar_url?: string } | undefined)?.avatar_url ||
+          session?.user?.image ||
+          "user-tie"
       }
     }
 

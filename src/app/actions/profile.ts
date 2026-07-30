@@ -12,8 +12,7 @@ export async function createUserProfile(
     const user = await getCurrentUser()
     if (user.isDemo) {
       const cookieStore = await cookies()
-      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      let email = user.email || "guest@almaprep.com"
+      const email = user.email || "guest@almaprep.com"
       cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }
     }
@@ -53,8 +52,7 @@ export async function updateUserProfile(
     const user = await getCurrentUser()
     if (user.isDemo) {
       const cookieStore = await cookies()
-      const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
-      let email = user.email || "guest@almaprep.com"
+      const email = user.email || "guest@almaprep.com"
       cookieStore.set("mockmate-demo-user", JSON.stringify({ email, username, avatar_url: avatarUrl }), { path: "/", maxAge: 604800 })
       return { success: true }
     }

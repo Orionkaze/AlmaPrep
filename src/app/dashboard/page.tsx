@@ -16,24 +16,46 @@ import {
   Flame,
   BarChart2,
   Settings,
-  Sparkles,
-  Play
+  Sparkles
 } from "lucide-react"
 import { MySchedule } from "@/components/MySchedule"
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 
+/** Shapes of the two dashboard queries, which select "*" plus a joined table. */
+type MockInterviewRow = {
+  id: string
+  status: string
+  category?: string
+  created_at: string
+  feedback?: { score?: number; summary?: string; improvement_suggestions?: string[] }[]
+}
+type CodingSessionRow = {
+  id: string
+  status: string
+  started_at: string
+  submitted_at?: string | null
+  challenges?: { title?: string } | null
+  interview_reports?: { id?: string; overall_score?: number }[]
+}
+type UserBadgeRow = {
+  badge_slug: string
+  earned_at: string
+  badges?: { name?: string; icon?: string; rarity?: string } | null
+}
+type RecentBadge = {
+  slug: string
+  earnedAt: string
+  name: string
+  icon: string
+  rarity: string
+}
+
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-head), serif",
   letterSpacing: "-0.015em",
   fontWeight: 600,
-}
-
-// Map avatar strings to Lucide icons
-const avatarIconMap: Record<string, React.FC<any>> = {
-  "laptop-code": Laptop,
-  "user-tie": UserRound,
 }
 
 // Removed calculateStreak helper as streak is now stored in DB
@@ -55,8 +77,6 @@ export default async function DashboardPage() {
 
   const supabase = isDemoMode ? null : await createClient()
 
-  let displayName = "User"
-  let avatarKey = "user-tie"
   let hasResume = false
   let hasCustomUsername = false
   let hasCustomAvatar = false
@@ -64,7 +84,7 @@ export default async function DashboardPage() {
   let totalSessions = 0
   let avgScore: number | string = "—"
   let currentStreak = 0
-  let recentBadges: any[] = []
+  let recentBadges: RecentBadge[] = []
   
   interface DisplaySession {
     id: string
@@ -80,8 +100,6 @@ export default async function DashboardPage() {
 
   if (activeUser && userId) {
     if (isDemoMode) {
-      displayName = activeUser.name || "Guest"
-      avatarKey = activeUser.avatar_url || "user-tie"
       hasResume = false
       hasCustomUsername = true
       hasCustomAvatar = true
@@ -103,8 +121,6 @@ export default async function DashboardPage() {
         redirect("/onboarding")
       }
 
-      displayName = profile.username || activeUser.name || activeUser.email?.split("@")[0] || "User"
-      avatarKey = profile.avatar_url || "user-tie"
       hasResume = !!profile.resume_text
       hasCustomUsername = !!profile.username && profile.username !== "User"
       hasCustomAvatar = !!profile.avatar_url && profile.avatar_url !== "user-tie"
@@ -126,13 +142,14 @@ export default async function DashboardPage() {
         .eq("user_id", userId)
         .order("created_at", { ascending: false })
 
-      const completedMockInterviews: any[] = mockInterviews?.filter((i: any) => i.status === "completed") || []
+      const completedMockInterviews: MockInterviewRow[] =
+        (mockInterviews as MockInterviewRow[] | null)?.filter((i) => i.status === "completed") || []
       totalSessions = completedMockInterviews.length
 
       // Calculate Average Score
       if (completedMockInterviews.length > 0) {
         const scores = completedMockInterviews
-          .map((i: any) => i.feedback?.[0]?.score)
+          .map((i) => i.feedback?.[0]?.score)
           .filter((s): s is number => typeof s === "number")
         if (scores.length > 0) {
           avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
@@ -164,7 +181,7 @@ export default async function DashboardPage() {
 
       // Latest completed feedback from mock interviews
       if (completedMockInterviews.length > 0) {
-        const latestMock = completedMockInterviews[0] as any
+        const latestMock = completedMockInterviews[0]
         if (latestMock.feedback && latestMock.feedback[0]) {
           const fb = latestMock.feedback[0]
           latestFeedback = {
@@ -179,7 +196,7 @@ export default async function DashboardPage() {
       }
 
       // Map sessions to display list
-      const mockSessionsMapped: DisplaySession[] = completedMockInterviews.map((i: any) => ({
+      const mockSessionsMapped: DisplaySession[] = completedMockInterviews.map((i) => ({
         id: i.id,
         type: "mock",
         date: new Date(i.created_at),
@@ -189,7 +206,7 @@ export default async function DashboardPage() {
         url: `/interview/${i.id}/feedback`
       }))
 
-      const codingSessionsMapped: DisplaySession[] = (codingSessions || []).map((s: any) => ({
+      const codingSessionsMapped: DisplaySession[] = ((codingSessions || []) as CodingSessionRow[]).map((s) => ({
         id: s.id,
         type: "coding",
         date: new Date(s.submitted_at || s.started_at),
@@ -220,7 +237,7 @@ export default async function DashboardPage() {
         .limit(3)
         
       if (userBadges) {
-        recentBadges = userBadges.map((ub: any) => ({
+        recentBadges = (userBadges as unknown as UserBadgeRow[]).map((ub) => ({
           slug: ub.badge_slug,
           earnedAt: ub.earned_at,
           name: ub.badges?.name || "Unknown Badge",
@@ -246,7 +263,7 @@ export default async function DashboardPage() {
             <h1 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
               <span className="font-serif">Dashboard</span>
             </h1>
-            <p className="text-muted-foreground text-sm mt-0.5">Let's elevate your interview performance today.</p>
+            <p className="text-muted-foreground text-sm mt-0.5">Let&apos;s elevate your interview performance today.</p>
           </div>
         </div>
 
@@ -315,7 +332,7 @@ export default async function DashboardPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1"><Sparkles size={14} className="text-amber-500" /> Recent</span>
               <span className="text-[10px] text-muted-foreground font-semibold">Unlock more in Profile</span>
             </div>
-            {recentBadges.map((badge, idx) => {
+            {recentBadges.map((badge) => {
               const rarityColors = {
                 common: "border-slate-200 bg-slate-50 text-slate-700",
                 rare: "border-blue-200 bg-blue-50 text-blue-700",

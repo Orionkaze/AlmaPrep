@@ -2,20 +2,19 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 
 import { useEffect } from "react"
+import { isMockAuthEnabled } from "@/lib/env"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
   const supabase = createClient()
 
   useEffect(() => {
@@ -27,6 +26,10 @@ export default function LoginPage() {
       }
       const errParam = params.get("error")
       if (errParam) {
+        // Deliberate mount-only read: the value lives in the URL of a redirect
+        // back from the auth provider. Seeding it into useState instead would
+        // make the server render (no window) disagree with the client's.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setError(errParam)
       }
     }
@@ -48,10 +51,7 @@ export default function LoginPage() {
         setLoading(false)
       } else {
         // Clear demo cookie if logging in with real credentials (not mock mode)
-        const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz") ||
-          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id")
-        if (!isMockMode) {
+        if (!isMockAuthEnabled()) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
         window.location.href = "/dashboard"

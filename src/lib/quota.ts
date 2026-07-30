@@ -47,6 +47,33 @@ export async function checkInterviewAllowance(
 
   try {
     const month = currentMonth(now)
+
+    if (consume) {
+      // Check and increment in one statement, so two interviews started at the
+      // same moment can't both read "2 of 3 used" and both be allowed through.
+      const { data, error } = await admin
+        .rpc("consume_interview", {
+          p_user_id: userId,
+          p_month: month,
+          p_limit: limit,
+        })
+        .maybeSingle<{ allowed: boolean; used: number }>()
+
+      if (!error && data) {
+        return data.allowed
+          ? { allowed: true, used: data.used, limit }
+          : { allowed: false, reason: "quota", used: data.used, limit }
+      }
+
+      // The RPC ships in migrations/2026-07-30_atomic_interview_usage.sql. Until
+      // that has been run the function does not exist, so fall through to the
+      // old read-then-write path rather than locking anyone out.
+      console.warn(
+        "[quota] consume_interview RPC unavailable, falling back to non-atomic path:",
+        error?.message
+      )
+    }
+
     const { data: row } = await admin
       .from("interview_usage")
       .select("count")

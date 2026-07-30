@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
     // 1. Authenticate user
     const user = await getCurrentUser()
     const userId = user.userId
-    const userEmail = user.email
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -90,10 +89,10 @@ export async function POST(req: NextRequest) {
     writeLocalCache("github_analysis", userId, analysisRecord)
 
     return NextResponse.json({ result: analysisRecord, cached: false })
-  } catch (error: any) {
+  } catch (error) {
     console.error("[api/github-analysis] Error in POST route:", error)
     return NextResponse.json(
-      { error: error?.message || "Internal Server Error" },
+      { error: error instanceof Error ? error.message : "Internal Server Error" },
       { status: 500 }
     )
   }

@@ -5,7 +5,6 @@ import {
   callOpenAIJson, 
   callGeminiText, 
   callGeminiJson,
-  cleanJsonResponseText
 } from "@/lib/llm"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createClient } from "@/lib/supabase/server"
@@ -14,6 +13,12 @@ import { readLocalCache } from "@/lib/localCache"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
+  content: string
+}
+
+/** A turn as the client stores it: "ai" for the interviewer, anything else for the candidate. */
+interface ChatTranscriptMessage {
+  role: string
   content: string
 }
 
@@ -38,7 +43,7 @@ export async function callAI(prompt: string, task: string, userTier: string): Pr
   try {
     const user = await getCurrentUser()
     userId = user.userId || undefined
-  } catch (e) {
+  } catch {
     // Suppress if not in request context
   }
 
@@ -58,7 +63,7 @@ export async function callAIWithSource(
   try {
     const user = await getCurrentUser()
     userId = user.userId || undefined
-  } catch (e) {
+  } catch {
     // Suppress if not in request context
   }
 
@@ -156,19 +161,21 @@ Focus your interview questions on their background, experiences, projects, and t
     if (isGithubMode && userId && currentRepoName) {
       try {
         const supabase = await createClient()
-        let { data: analysis, error: fetchError } = await supabase
+        let { data: analysis } = await supabase
           .from("github_analysis")
           .select("*")
           .eq("user_id", userId)
           .maybeSingle()
         
-        if (fetchError || !analysis) {
+        if (!analysis) {
           analysis = readLocalCache("github_analysis", userId)
         }
         
         if (analysis) {
           const repoMeta = analysis.repo_metadata?.[currentRepoName]
-          const repoQuestions = (analysis.questions || []).filter((q: any) => q.repo === currentRepoName)
+          const repoQuestions = ((analysis.questions || []) as { repo?: string }[]).filter(
+            (q) => q.repo === currentRepoName
+          )
           const techStack = analysis.tech_stack || []
           const designPatterns = analysis.design_patterns || []
           
@@ -240,7 +247,7 @@ Rules:
 3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category (or from the question bank if available).
 4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.`
 
-    const formattedMessages = previousMessages.map((msg: any) => ({
+    const formattedMessages = (previousMessages as ChatTranscriptMessage[]).map((msg) => ({
       role: msg.role === "ai" ? ("assistant" as const) : ("user" as const),
       content: msg.content,
     }))
@@ -257,7 +264,7 @@ Rules:
     const feedbackMessages = parsed.messages || []
     
     const transcript = feedbackMessages
-      .map((msg: any) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
+      .map((msg: ChatTranscriptMessage) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
 
     let questions = getProgramQuestions(category)
@@ -407,9 +414,9 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
       const result = await withTimeout(provider.fn(), timeoutMs, provider.name)
       console.log(`[aiRouter] Success with ${provider.name}`)
       return { text: result, source: provider.name }
-    } catch (err: any) {
-      console.error(`[aiRouter] Provider ${provider.name} failed:`, err.message || err)
-      lastError = err
+    } catch (err) {
+      console.error(`[aiRouter] Provider ${provider.name} failed:`, err instanceof Error ? err.message : err)
+      lastError = err instanceof Error ? err : new Error(String(err))
     }
   }
 

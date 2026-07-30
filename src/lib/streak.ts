@@ -1,12 +1,48 @@
-"use server";
-
 import { createClient } from "@/lib/supabase/server";
 
 /**
+ * Streak accounting.
+ *
+ * SERVER-INTERNAL ON PURPOSE. This takes a userId argument, which is safe only
+ * because it is never a server action — it used to live in a "use server" file,
+ * which made it a public RPC endpoint that any visitor could call with someone
+ * else's id and any date they liked. Call it from a route/action that has
+ * already resolved the user.
+ */
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Clamp the client-reported local date to something a real timezone could
+ * produce.
+ *
+ * The client sends its own calendar date (via the `x-local-date` header) so a
+ * user in UTC+13 gets credit on their own Tuesday, not ours. But the value is
+ * fully attacker-controlled: replaying the call with 2026-01-01, 2026-01-02,
+ * 2026-01-03… walks `current_streak` up one per request, since the logic below
+ * only compares consecutive days.
+ *
+ * Real offsets span UTC-12 to UTC+14, so a legitimate local date is always
+ * within one day of the server's UTC date. Anything else falls back to UTC.
+ */
+export function normalizeLocalDate(input: string | null | undefined, now: number): string {
+  const utcToday = new Date(now).toISOString().slice(0, 10);
+  if (!input || !DATE_RE.test(input)) return utcToday;
+
+  const parsed = Date.parse(`${input}T00:00:00Z`);
+  if (Number.isNaN(parsed)) return utcToday;
+
+  const utcMidnight = Date.parse(`${utcToday}T00:00:00Z`);
+  const dayDelta = Math.round((parsed - utcMidnight) / 86_400_000);
+  return Math.abs(dayDelta) <= 1 ? input : utcToday;
+}
+
+/**
  * Updates the user's streak based on calendar day difference.
- * 
- * @param userId - the user's ID
- * @param localDateString - the local date string (YYYY-MM-DD) from the client where the activity occurred
+ *
+ * @param userId - the user's ID, already resolved from the session by the caller
+ * @param localDateString - the local date string (YYYY-MM-DD) reported by the
+ *   client; clamped to ±1 day of the server's UTC date before it is trusted
  * @param activityType - 'interview' or 'coding_challenge'
  * @param activityId - the ID of the completed session
  */
@@ -18,6 +54,7 @@ export async function updateStreak(
 ) {
   try {
     const supabase = await createClient();
+    const activityDate = normalizeLocalDate(localDateString, Date.now());
 
     // Log the activity regardless of streak changes
     const { error: logError } = await supabase
@@ -26,7 +63,7 @@ export async function updateStreak(
         user_id: userId,
         activity_type: activityType,
         activity_id: activityId,
-        activity_date: localDateString // store exact local date
+        activity_date: activityDate // store exact local date
       });
 
     if (logError) {
@@ -52,7 +89,7 @@ export async function updateStreak(
     let updated = false;
 
     // Use local client dates to determine day boundaries
-    const today = new Date(localDateString);
+    const today = new Date(activityDate);
     today.setHours(0, 0, 0, 0);
 
     if (last_activity_date) {
@@ -88,13 +125,13 @@ export async function updateStreak(
     }
 
     // Update user record if streak logic changed OR if we just need to set today's date for the first time
-    if (updated || last_activity_date !== localDateString) {
+    if (updated || last_activity_date !== activityDate) {
       const { error: updateError } = await supabase
         .from("users")
         .update({
           current_streak: newCurrentStreak,
           longest_streak: newLongestStreak,
-          last_activity_date: localDateString
+          last_activity_date: activityDate
         })
         .eq("id", userId);
 
@@ -104,10 +141,10 @@ export async function updateStreak(
       }
     }
 
-    return { 
-      success: true, 
-      current_streak: newCurrentStreak, 
-      longest_streak: newLongestStreak 
+    return {
+      success: true,
+      current_streak: newCurrentStreak,
+      longest_streak: newLongestStreak
     };
   } catch (err) {
     console.error("updateStreak error:", err);

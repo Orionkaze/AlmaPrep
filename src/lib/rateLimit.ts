@@ -24,7 +24,15 @@ export const ENDPOINT_CONFIGS: Record<string, RateLimitConfig> = {
   chat: { limit: 50, windowMs: 60 * 60 * 1000 },
 }
 
-const hits = new Map<string, number[]>()
+/**
+ * key -> { hit timestamps, the window those timestamps belong to }.
+ *
+ * The window is stored per key because the opportunistic prune below walks the
+ * whole map: pruning every key with the *calling* key's cutoff would drop
+ * still-live hits for longer windows (one 60-second call would wipe the 24-hour
+ * `resume-analysis` history), silently resetting those limits.
+ */
+const hits = new Map<string, { times: number[]; windowMs: number }>()
 
 const redis =
   process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
@@ -90,7 +98,7 @@ function rateLimitInMemory(
   now: number
 ): RateLimitResult {
   const cutoff = now - windowMs
-  const recent = (hits.get(key) ?? []).filter((t) => t > cutoff)
+  const recent = (hits.get(key)?.times ?? []).filter((t) => t > cutoff)
 
   if (recent.length >= limit) {
     const oldestTimestamp = recent[0] ?? now
@@ -105,14 +113,15 @@ function rateLimitInMemory(
   }
 
   recent.push(now)
-  hits.set(key, recent)
+  hits.set(key, { times: recent, windowMs })
 
-  // Opportunistic prune so the map cannot grow without bound.
+  // Opportunistic prune so the map cannot grow without bound. Each entry is
+  // pruned against its own window, not the calling key's.
   if (hits.size > 5000) {
-    for (const [k, times] of hits) {
-      const live = times.filter((t) => t > cutoff)
+    for (const [k, entry] of hits) {
+      const live = entry.times.filter((t) => t > now - entry.windowMs)
       if (live.length === 0) hits.delete(k)
-      else hits.set(k, live)
+      else hits.set(k, { times: live, windowMs: entry.windowMs })
     }
   }
 
@@ -278,4 +287,4 @@ export function getRateLimitHeaders(result: RateLimitResult): Record<string, str
   }
   return headers
 }
-
+

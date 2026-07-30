@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
-import { updateStreak } from "@/app/actions/streak";
-import { checkAndAwardBadges } from "@/app/actions/badges";
+import { updateStreak } from "@/lib/streak";
+import { checkAndAwardBadges } from "@/lib/badges";
 import { isRateLimited } from "@/lib/rateLimit";
+import { isMockAuthEnabled } from "@/lib/env";
 
 
 function cleanJsonResponseText(text: string): string {
@@ -36,10 +37,7 @@ export async function POST(request: Request) {
       authUser = data?.user || null;
     } catch {}
 
-    const isLocalDemo = !authUser && (
-      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-      process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz.supabase.co")
-    );
+    const isLocalDemo = !authUser && isMockAuthEnabled();
 
     if (!authUser && !isLocalDemo) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
@@ -65,7 +63,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Challenge not found" }, { status: 404 });
     }
 
-    // 2. Validate Client-Sent Test Results Structure (prevent spoofing)
+    // 2. Validate Client-Sent Test Results Structure
     if (
       typeof test_results.passed !== "number" ||
       typeof test_results.failed !== "number" ||
@@ -80,6 +78,31 @@ export async function POST(request: Request) {
     if (test_results.total !== dbTestCount) {
       return NextResponse.json({
         error: `Test count mismatch. Expected ${dbTestCount} tests, received ${test_results.total}.`
+      }, { status: 400 });
+    }
+
+    // The payload must be internally consistent: one result entry per hidden
+    // test, each with a boolean verdict, and the summary counters derived from
+    // those entries rather than asserted alongside them.
+    //
+    // LIMITATION: tests still run in the candidate's browser (see the Web Worker
+    // in interview/session/[session_id]), so these checks make the payload
+    // self-consistent, not trustworthy. Anyone willing to hand-craft the whole
+    // array can still report a pass. Server-side execution is the real fix and
+    // is not built yet — until it is, treat scores as self-reported.
+    if (test_results.results.length !== dbTestCount) {
+      return NextResponse.json({
+        error: `Test count mismatch. Expected ${dbTestCount} result entries, received ${test_results.results.length}.`
+      }, { status: 400 });
+    }
+    if (!test_results.results.every((r: ClientTestResultItem) => r && typeof r.passed === "boolean")) {
+      return NextResponse.json({ error: "Invalid test_results format" }, { status: 400 });
+    }
+
+    const passedCount = test_results.results.filter((r: ClientTestResultItem) => r.passed).length;
+    if (test_results.passed !== passedCount || test_results.failed !== dbTestCount - passedCount) {
+      return NextResponse.json({
+        error: "test_results counters do not match the reported results."
       }, { status: 400 });
     }
 
@@ -193,7 +216,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     const parsedQuality = JSON.parse(cleanJsonResponseText(qualityData.choices?.[0]?.message?.content || "{}"));
 
     // 4. Evaluate Success Criteria
-    const passRatio = test_results.passed / test_results.total;
+    const passRatio = dbTestCount === 0 ? 0 : passedCount / dbTestCount;
     const isSuccess = passRatio >= 0.7 && (parsedLogic.logicScore || 0) >= 7 && (parsedQuality.qualityScore || 0) >= 6;
 
     // 5. Update attempts counter & Save solution in Supabase if logged in
@@ -288,8 +311,8 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
 
     const hiringRecommendation = isSuccess ? (overallScore >= 85 ? "Strong Hire" : "Hire") : "No Hire";
     const recommendationReasoning = isSuccess 
-      ? `The candidate successfully resolved the coding challenge, passing ${test_results.passed} of ${test_results.total} sandbox tests. The algorithm shows optimal time complexity (${parsedLogic.timeComplexity || "O(n)"}) and clean style (${parsedQuality.readabilityScore || 0}/10 readability).`
-      : `The candidate did not meet the passing criteria for the coding challenge. They passed ${test_results.passed} of ${test_results.total} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`;
+      ? `The candidate successfully resolved the coding challenge, passing ${passedCount} of ${dbTestCount} sandbox tests. The algorithm shows optimal time complexity (${parsedLogic.timeComplexity || "O(n)"}) and clean style (${parsedQuality.readabilityScore || 0}/10 readability).`
+      : `The candidate did not meet the passing criteria for the coding challenge. They passed ${passedCount} of ${dbTestCount} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`;
 
     const mappedTestResults = test_results.results.map((r: ClientTestResultItem, idx: number) => ({
       test_id: `test-${idx}`,

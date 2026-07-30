@@ -1,9 +1,12 @@
 declare module "pdf-parse" {
-  const pdfParse: (dataBuffer: Buffer, options?: any) => Promise<{
+  const pdfParse: (
+    dataBuffer: Buffer,
+    options?: Record<string, unknown>
+  ) => Promise<{
     numpages: number;
     numrender: number;
-    info: any;
-    metadata: any;
+    info: Record<string, unknown>;
+    metadata: Record<string, unknown> | null;
     text: string;
     version: string;
   }>;

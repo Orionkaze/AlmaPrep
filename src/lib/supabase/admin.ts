@@ -1,4 +1,5 @@
 import { createClient as createSupabaseClient } from "@supabase/supabase-js"
+import { isMockAuthEnabled } from "@/lib/env"
 
 /**
  * SERVER-ONLY Supabase client using the service-role key. It BYPASSES row-level
@@ -22,12 +23,9 @@ export function createAdminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY
 
-  if (
-    !url ||
-    !key ||
-    url.includes("mock-supabase-project-id.supabase.co") ||
-    url.includes("evdfkeikrrsdthnekrrz.supabase.co")
-  ) {
+  // No service-role client while mock auth is on: there is no real project to
+  // talk to, and callers already treat null as "degrade to console logging".
+  if (!url || !key || isMockAuthEnabled()) {
     return null
   }
 

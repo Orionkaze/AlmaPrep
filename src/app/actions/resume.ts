@@ -5,7 +5,6 @@ import { getUserTier } from "@/lib/entitlements"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { getCurrentUser } from "@/lib/getCurrentUser"
-import { getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
 
 export interface ResumeAnalysis {
@@ -28,10 +27,14 @@ export async function saveAndAnalyzeResume(
     const userId = user.userId
 
     if (isDemoMode) {
+      // Demo sessions are DEMO_TIER, never "premium". The demo cookie is
+      // unsigned, so handing it the top model made free unlimited LLM spend a
+      // matter of setting a cookie.
+      const { tier: demoTier } = await getUserTier()
       const responseJsonText = await callAI(
         resumeText,
         "analyze_resume",
-        "premium"
+        demoTier
       )
       const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
       
@@ -93,9 +96,12 @@ export async function saveAndAnalyzeResume(
         analysis,
       },
     }
-  } catch (err: any) {
+  } catch (err) {
     console.error("saveAndAnalyzeResume failed:", err)
-    return { success: false, error: err.message || "An unexpected error occurred during resume analysis." }
+    return {
+      success: false,
+      error: err instanceof Error ? err.message : "An unexpected error occurred during resume analysis.",
+    }
   }
 }
 
@@ -125,7 +131,7 @@ export async function getResumeData(): Promise<{
               analysis: parsed.analysis
             }
           }
-        } catch (e) {}
+        } catch {}
       }
 
       return {

@@ -18,7 +18,16 @@ function base64urlDecode(str: string): Uint8Array {
   return bytes;
 }
 
-export async function signJWT(payload: any, secret: string): Promise<string> {
+/** Claims we read off a token. Extra claims are allowed but untyped. */
+export type JWTPayload = {
+  exp?: number
+  userId?: string
+  email?: string
+  username?: string
+  [claim: string]: unknown
+}
+
+export async function signJWT(payload: JWTPayload, secret: string): Promise<string> {
   const header = { alg: "HS256", typ: "JWT" };
   const headerBase64 = base64urlEncode(new TextEncoder().encode(JSON.stringify(header)));
   const payloadBase64 = base64urlEncode(new TextEncoder().encode(JSON.stringify(payload)));
@@ -43,7 +52,7 @@ export async function signJWT(payload: any, secret: string): Promise<string> {
   return `${tokenInput}.${signatureBase64}`;
 }
 
-export async function verifyJWT(token: string, secret: string): Promise<any | null> {
+export async function verifyJWT(token: string, secret: string): Promise<JWTPayload | null> {
   try {
     const parts = token.split(".");
     if (parts.length !== 3) return null;
@@ -67,7 +76,7 @@ export async function verifyJWT(token: string, secret: string): Promise<any | nu
     const isValid = await crypto.subtle.verify(
       "HMAC",
       key,
-      signatureBytes as any,
+      signatureBytes as BufferSource,
       messageData
     );
     
