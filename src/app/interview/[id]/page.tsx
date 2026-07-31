@@ -146,6 +146,7 @@ export default function InterviewPage({
   const [input, setInput] = useState("")
   const [isAiTyping, setIsAiTyping] = useState(true)
   const [dbSessionId, setDbSessionId] = useState<string | null>(null)
+  const [persistenceWarning, setPersistenceWarning] = useState<string | null>(null)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -342,6 +343,14 @@ export default function InterviewPage({
 
       if (sessionId) {
         setDbSessionId(sessionId)
+      } else {
+        // Every save below is guarded by `if (dbSessionId)`, so a failure here
+        // used to mean a full interview ran and nothing was persisted — no
+        // history, no streak, no badges — without the candidate ever being
+        // told. Say so, and let them decide whether to continue.
+        setPersistenceWarning(
+          "We couldn't start a saved session, so this interview won't be added to your history. You can still practise — try reloading if you'd like it recorded."
+        )
       }
 
       // 2. Fetch introductory question from fallback chain
@@ -745,6 +754,15 @@ export default function InterviewPage({
 
   return (
     <main className="h-screen bg-[#062b22] flex flex-col font-sans overflow-hidden">
+      {persistenceWarning && (
+        <div
+          role="status"
+          className="px-6 py-2 text-xs text-amber-100 bg-amber-500/15 border-b border-amber-400/30 flex items-center gap-2"
+        >
+          <ShieldAlert size={14} strokeWidth={1.75} />
+          <span>{persistenceWarning}</span>
+        </div>
+      )}
       {/* Top Header */}
       <div className="flex items-center justify-between px-6 py-4 text-white">
         <h1 className="text-lg font-medium" style={{ fontFamily: "var(--font-head), serif", letterSpacing: "-0.015em", fontWeight: 600 }}>{getCategoryLabel(category)}</h1>
