@@ -31,9 +31,11 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
     if (!key || !consented) return
     if (posthog.__loaded) return
     posthog.init(key, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+      api_host: "/ingest",
+      ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.posthog.com",
       capture_pageview: false,
       capture_pageleave: true,
+      capture_exceptions: true,
       person_profiles: "identified_only",
       // Off by default in this app. Autocapture records the text of clicked
       // elements, and these pages render interview answers and AI feedback —

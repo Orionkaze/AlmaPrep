@@ -7,6 +7,7 @@ import { verifyJWT } from "@/lib/jwt"
 import { getAuthSecret, isMockAuthEnabled } from "@/lib/env"
 import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
 
+
 /**
  * Resolve the current request's user, collapsing the demo-cookie → Supabase →
  * NextAuth ladder that is currently duplicated across ~8 call sites.

@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import ModeToggle from "./ModeToggle"
 
-export default function Header() {
+export default function Header({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -46,14 +46,24 @@ export default function Header() {
             <li className="flex items-center px-2">
               <ModeToggle />
             </li>
-            <li>
-              <Link href="/login" onClick={() => setOpen(false)}>Log in</Link>
-            </li>
-            <li className="nav-cta">
-              <Link className="btn btn-primary" href="/signup" onClick={() => setOpen(false)}>
-                Start free &rarr;
-              </Link>
-            </li>
+            {isLoggedIn ? (
+              <li className="nav-cta">
+                <Link className="btn btn-primary" href="/dashboard" onClick={() => setOpen(false)}>
+                  Dashboard
+                </Link>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link href="/login" onClick={() => setOpen(false)}>Log in</Link>
+                </li>
+                <li className="nav-cta">
+                  <Link className="btn btn-primary" href="/signup" onClick={() => setOpen(false)}>
+                    Start free &rarr;
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>

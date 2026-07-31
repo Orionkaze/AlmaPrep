@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, use } from "react";
 import { useRouter } from "next/navigation";
+import { track, EVENTS } from "@/lib/analytics";
 import dynamic from "next/dynamic";
 import {
   Clock,
@@ -839,6 +840,13 @@ export default function InterviewWorkspacePage({
       setAttemptsCount(data.attempts);
       setReportId(data.report_id || null);
       setShowResultsModal(true);
+      track(EVENTS.CODING_SOLUTION_SUBMITTED, {
+        success: data.success,
+        attempts: data.attempts,
+        challenge_id: challenge?.id,
+        difficulty: challenge?.difficulty,
+        elapsed_seconds: elapsedSeconds,
+      });
 
       if (data.success) {
         showToast("Challenge successfully passed!");
@@ -886,6 +894,11 @@ export default function InterviewWorkspacePage({
       setCreatedRepoUrl(data.repo_url);
       setProposedRepoName(data.repo_name);
       showToast("Successfully saved to GitHub!");
+      track(EVENTS.GITHUB_SAVE_COMPLETED, {
+        repo_name: data.repo_name,
+        is_private: isPrivate,
+        auto_save: alwaysSave,
+      });
       if (alwaysSave) {
         setGithubAutosave(true);
       }

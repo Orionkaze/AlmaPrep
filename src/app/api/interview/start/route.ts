@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { getChallengeById, createSession, getChallenges } from "@/lib/interviewDb";
 import { getRequestUserId } from "@/lib/getRequestUserId";
+import { getPostHogClient } from "@/lib/posthog-server";
+import { getUserTier } from "@/lib/entitlements";
+import { checkInterviewAllowance } from "@/lib/quota";
 
 export async function GET() {
   try {
@@ -46,12 +49,40 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
+    // Enforce interview allowance paywall check on the API endpoint
+    const { tier, isDemo } = await getUserTier();
+    if (!isDemo && userId !== "demo-user-id") {
+      const allowance = await checkInterviewAllowance(userId, tier, Date.now(), true);
+      if (!allowance.allowed) {
+        return NextResponse.json({
+          error: "quota_exceeded",
+          message: "You've used all free interviews this month. Upgrade to Pro for unlimited access."
+        }, { status: 429 });
+      }
+    }
+
     const challenge = await getChallengeById(challenge_id);
     if (!challenge) {
       return NextResponse.json({ error: "Challenge not found" }, { status: 400 });
     }
 
     const session = await createSession(userId, challenge_id, challenge.starter_code);
+
+    const posthog = getPostHogClient()
+    if (posthog) {
+      posthog.capture({
+        distinctId: userId,
+        event: "interview_session_started",
+        properties: {
+          session_id: session.id,
+          challenge_id: challenge.id,
+          challenge_title: challenge.title,
+          difficulty: challenge.difficulty,
+          language: challenge.language,
+        },
+      })
+      await posthog.flush()
+    }
 
     return NextResponse.json({
       session_id: session.id,

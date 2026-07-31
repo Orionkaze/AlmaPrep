@@ -6,6 +6,7 @@ import { checkAndAwardBadges } from "@/lib/badges";
 import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
 import { isMockAuthEnabled } from "@/lib/env";
 import { cleanJsonResponseText } from "@/lib/llm";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 
 
@@ -325,6 +326,30 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       overall_score: overallScore,
       test_results: mappedTestResults
     });
+
+    // --- PostHog server-side capture ---
+    const phClient = getPostHogClient()
+    if (phClient) {
+      phClient.capture({
+        distinctId: userId,
+        event: "coding_challenge_evaluated",
+        properties: {
+          session_id,
+          challenge_id: challenge.id,
+          challenge_title: challenge.title,
+          success: isSuccess,
+          attempts,
+          overall_score: overallScore,
+          pass_ratio: passRatio,
+          logic_score: parsedLogic.logicScore ?? 0,
+          quality_score: parsedQuality.qualityScore ?? 0,
+          tests_passed: test_results.passed,
+          tests_total: test_results.total,
+          hiring_recommendation: hiringRecommendation,
+        },
+      })
+      await phClient.flush()
+    }
 
     // --- Streak & Badge Logic (Background Execution) ---
     // Extract local date from request headers or use UTC fallback

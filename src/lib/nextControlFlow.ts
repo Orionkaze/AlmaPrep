@@ -15,12 +15,29 @@
  */
 export function isNextControlFlowError(err: unknown): boolean {
   if (typeof err !== "object" || err === null) return false
-  const digest = (err as { digest?: unknown }).digest
-  if (typeof digest !== "string") return false
+
+  const { digest, name, message } = err as {
+    digest?: unknown
+    name?: unknown
+    message?: unknown
+  }
+
+  if (typeof digest === "string") {
+    if (
+      digest === "DYNAMIC_SERVER_USAGE" ||
+      digest === "NEXT_NOT_FOUND" ||
+      digest.startsWith("NEXT_REDIRECT")
+    ) {
+      return true
+    }
+  }
+
+  // Belt and braces on the dynamic-rendering signal: Next has tagged it by
+  // name and by message in different versions, and misclassifying it is what
+  // makes a route silently render as signed-out.
   return (
-    digest === "DYNAMIC_SERVER_USAGE" ||
-    digest === "NEXT_NOT_FOUND" ||
-    digest.startsWith("NEXT_REDIRECT")
+    name === "DynamicServerError" ||
+    (typeof message === "string" && message.includes("Dynamic server usage"))
   )
 }
 

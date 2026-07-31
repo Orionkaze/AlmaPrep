@@ -46,6 +46,25 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
+  // Proxies PostHog through our own origin so ad-blockers don't drop analytics.
+  // Same-origin, so the CSP above needs no extra host for it.
+  async rewrites() {
+    return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/array/:path*",
+        destination: "https://us-assets.i.posthog.com/array/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+    ]
+  },
+  skipTrailingSlashRedirect: true,
 };
 
 export default withSentryConfig(nextConfig, {

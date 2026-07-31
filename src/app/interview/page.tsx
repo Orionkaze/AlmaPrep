@@ -13,7 +13,8 @@ import {
   HelpCircle,
   Calendar
 } from "lucide-react";
-import { ScheduleModal } from "@/components/ScheduleModal";
+import { ScheduleModal } from "@/components/ScheduleModal"
+import { track, EVENTS } from "@/lib/analytics";
 
 /** Just enough to render the picker — the API deliberately sends no test data. */
 interface Challenge {
@@ -90,6 +91,12 @@ export default function ChallengeSelectionPage() {
 
       const data = await res.json();
       if (res.ok && data.session_id) {
+        const started = challenges.find((c) => c.id === challengeId)
+        track(EVENTS.CODING_CHALLENGE_STARTED, {
+          challenge_id: challengeId,
+          challenge_type: started?.challenge_type,
+          difficulty: started?.difficulty,
+        })
         router.push(`/interview/session/${data.session_id}`);
       } else {
         throw new Error(data.error || "Failed to initiate session");

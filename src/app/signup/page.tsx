@@ -6,10 +6,10 @@ import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
+import { identify, track, EVENTS } from "@/lib/analytics"
 
 import { useEffect } from "react"
 import { isMockAuthEnabled } from "@/lib/env"
-import { identify, track, EVENTS } from "@/lib/analytics"
 
 export default function SignupPage() {
   const [email, setEmail] = useState("")
@@ -62,7 +62,12 @@ export default function SignupPage() {
         if (!isMockAuthEnabled()) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
-        
+
+        if (data.user) {
+          identify(data.user.id, { email: data.user.email })
+        }
+        track(EVENTS.SIGNUP, { method: "email" })
+
         if (data.session) {
           // Attribute the new account. No-op without analytics consent.
           if (data.user?.id) identify(data.user.id)
@@ -151,7 +156,7 @@ export default function SignupPage() {
 
             <button
               type="button"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() => { track(EVENTS.SIGNUP, { method: "google" }); signIn("google", { callbackUrl: "/dashboard" }) }}
               className="btn btn-ghost"
               style={{ width: "100%", justifyContent: "center", gap: "10px" }}
             >
@@ -180,6 +185,7 @@ export default function SignupPage() {
               type="button"
               onClick={async () => {
                 setError(null)
+                track(EVENTS.SIGNUP, { method: "github" })
                 const { error } = await supabase.auth.signInWithOAuth({
                   provider: "github",
                   options: {

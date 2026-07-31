@@ -40,10 +40,13 @@ export async function updateSession(request: NextRequest) {
   const hasSupabaseSession = request.cookies.getAll().some(c => c.name.startsWith("sb-"))
 
   const path = request.nextUrl.pathname
-  const isProtectedRoute = path === '/' ||
-                           path.startsWith('/dashboard') ||
+  // '/' is deliberately absent: it is the public marketing page.
+  const isProtectedRoute = path.startsWith('/dashboard') ||
                            path.startsWith('/interview') ||
-                           path.startsWith('/onboarding')
+                           path.startsWith('/onboarding') ||
+                           path.startsWith('/profile') ||
+                           path.startsWith('/history') ||
+                           path.startsWith('/settings')
 
   // Check and verify mock JWT session if in mock mode
   if (isMockAuthEnabled()) {
@@ -87,8 +90,8 @@ export async function updateSession(request: NextRequest) {
   })
 
   const supabase = createServerClient(
-    supabaseUrl,
-    supabaseKey,
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         getAll() {
@@ -143,24 +146,54 @@ export async function updateSession(request: NextRequest) {
     if (path === '/login' || path === '/signup') {
       const url = request.nextUrl.clone()
       url.pathname = '/dashboard'
-      return NextResponse.redirect(url)
+      return addSecurityHeaders(NextResponse.redirect(url))
     }
-    return supabaseResponse
+    return addSecurityHeaders(supabaseResponse)
   }
 
   if (!user && isProtectedRoute) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
-    return NextResponse.redirect(url)
+    return addSecurityHeaders(NextResponse.redirect(url))
   }
 
   if (user && (path === '/login' || path === '/signup')) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
-    return NextResponse.redirect(url)
+    return addSecurityHeaders(NextResponse.redirect(url))
   }
 
-  return supabaseResponse
+  return addSecurityHeaders(supabaseResponse)
+}
+
+function addSecurityHeaders(response: NextResponse): NextResponse {
+  response.headers.set("X-Frame-Options", "DENY")
+  response.headers.set("X-Content-Type-Options", "nosniff")
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin")
+  
+  const cspHeader = [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.posthog.com https://*.sentry.io https://*.google.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.fortawesome.com",
+    "connect-src 'self' https://*.supabase.co https://*.posthog.com https://*.sentry.io https://*.ingest.sentry.io https://formspree.io https://api.github.com",
+    "img-src 'self' blob: data: https://*.supabase.co https://*.posthog.com https://*.githubusercontent.com https://*.googleusercontent.com",
+    "font-src 'self' data: https://fonts.gstatic.com https://*.fortawesome.com",
+    "frame-src 'self' https://*.google.com",
+    "worker-src 'self' blob:",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "upgrade-insecure-requests"
+  ].join("; ")
+  
+  response.headers.set("Content-Security-Policy", cspHeader)
+  response.headers.set("Permissions-Policy", "camera=(self), microphone=(self), geolocation=()")
+  
+  if (process.env.NODE_ENV === "production") {
+    response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
+  }
+  return response
 }
 
 

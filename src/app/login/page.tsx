@@ -6,10 +6,10 @@ import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
+import { identify, track, EVENTS } from "@/lib/analytics"
 
 import { useEffect } from "react"
 import { isMockAuthEnabled } from "@/lib/env"
-import { identify, track, EVENTS } from "@/lib/analytics"
 
 /**
  * Messages for `?error=` on this page. The value comes from the URL, so it is
@@ -67,12 +67,11 @@ export default function LoginPage() {
         if (!isMockAuthEnabled()) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
-        // Attribute the session. identify() has always been a no-op without
-        // consent, and person_profiles is "identified_only", so nothing is
-        // recorded for a visitor who declined analytics.
+        // Id only, no email: identify() is a no-op without analytics consent,
+        // and the address itself never needs to reach PostHog.
         const { data } = await supabase.auth.getUser()
         if (data.user?.id) identify(data.user.id)
-        track(EVENTS.LOGIN)
+        track(EVENTS.LOGIN, { method: "email" })
         window.location.href = "/dashboard"
       }
     } catch (err) {
@@ -144,7 +143,7 @@ export default function LoginPage() {
 
             <button
               type="button"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() => { track(EVENTS.LOGIN, { method: "google" }); signIn("google", { callbackUrl: "/dashboard" }) }}
               className="btn btn-ghost"
               style={{ width: "100%", justifyContent: "center", gap: "10px" }}
             >
@@ -173,6 +172,7 @@ export default function LoginPage() {
               type="button"
               onClick={async () => {
                 setError(null)
+                track(EVENTS.LOGIN, { method: "github" })
                 const { error } = await supabase.auth.signInWithOAuth({
                   provider: "github",
                   options: {

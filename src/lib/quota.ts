@@ -1,13 +1,16 @@
 import { createAdminClient } from "@/lib/supabase/admin"
 import { getEntitlements } from "@/lib/entitlements"
 import { isPaywallEnabled, type TierId } from "@/config/plans"
+import { getRedisClient } from "@/lib/rateLimit"
 
 export type AllowanceResult = {
   allowed: boolean
-  reason?: "quota"
+  reason?: "quota" | "rate_limited"
   used?: number
   limit?: number
 }
+
+const inMemoryLocks = new Set<string>()
 
 function currentMonth(now: number): string {
   return new Date(now).toISOString().substring(0, 7) // "YYYY-MM"
@@ -23,10 +26,7 @@ function currentMonth(now: number): string {
  *   must never lock users out.
  * - Only a genuine over-limit case fails CLOSED.
  *
- * Uses the service-role client so a user cannot reset their own counter (the
- * anon client is blocked by RLS once the migration is applied).
- *
- * Pass `consume: false` to check without incrementing (for pre-flight UI).
+ * Uses a distributed lock (Redis or in-memory fallback) to prevent TOCTOU concurrency race conditions.
  */
 export async function checkInterviewAllowance(
   userId: string,
@@ -43,6 +43,37 @@ export async function checkInterviewAllowance(
   if (!admin) {
     console.warn("[quota] no service-role client — failing open (not enforcing)")
     return { allowed: true }
+  }
+
+  // Acquire Lock if consuming quota
+  const redis = getRedisClient()
+  const lockKey = `lock:quota:${userId}`
+  let lockAcquired = false
+
+  if (consume) {
+    if (redis) {
+      try {
+        const acquired = await redis.set(lockKey, "1", { nx: true, ex: 5 })
+        if (!acquired) {
+          return { allowed: false, reason: "rate_limited" }
+        }
+        lockAcquired = true
+      } catch (err) {
+        console.error("[quota] Redis lock acquisition failed:", err)
+      }
+    } else {
+      // In-memory fallback lock to prevent concurrency during unit tests or local dev
+      if (inMemoryLocks.has(userId)) {
+        return { allowed: false, reason: "rate_limited" }
+      }
+      inMemoryLocks.add(userId)
+      lockAcquired = true
+      
+      // Auto-expire lock after 5 seconds to prevent memory leak / deadlock
+      setTimeout(() => {
+        inMemoryLocks.delete(userId)
+      }, 5000)
+    }
   }
 
   try {
@@ -92,7 +123,6 @@ export async function checkInterviewAllowance(
         .upsert({ user_id: userId, month, count: used + 1 })
       if (error) {
         console.error("[quota] failed to record usage:", error.message)
-        // Already under limit; don't block on a write hiccup.
       }
     }
 
@@ -100,5 +130,18 @@ export async function checkInterviewAllowance(
   } catch (err) {
     console.error("[quota] check failed — failing open:", err)
     return { allowed: true }
+  } finally {
+    // Release Lock
+    if (lockAcquired) {
+      if (redis) {
+        try {
+          await redis.del(lockKey)
+        } catch (err) {
+          console.error("[quota] Redis lock release failed:", err)
+        }
+      } else {
+        inMemoryLocks.delete(userId)
+      }
+    }
   }
 }

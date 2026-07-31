@@ -51,5 +51,12 @@ export function getAuthSecret(): string {
  */
 export function isMockAuthEnabled(): boolean {
   if (process.env.NODE_ENV === "production") return false
-  return process.env.NEXT_PUBLIC_MOCK_AUTH === "true"
+  // NEXT_PUBLIC_MOCK_AUTH is readable in the browser bundle too, which the
+  // client-side Supabase shim needs. MOCK_MODE is accepted as well because
+  // parallel work on master settled on that name; both mean the same thing,
+  // and both are overridden by the production check above.
+  return (
+    process.env.NEXT_PUBLIC_MOCK_AUTH === "true" ||
+    process.env.MOCK_MODE === "true"
+  )
 }
