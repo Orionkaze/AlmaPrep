@@ -58,7 +58,7 @@ export function organizationLd() {
       "Interview preparation",
       "Behavioral interview questions",
       "Technical interviews",
-      "Voice AI interview practice",
+      "Spoken interview practice",
     ],
     areaServed: "Worldwide",
     audience: {

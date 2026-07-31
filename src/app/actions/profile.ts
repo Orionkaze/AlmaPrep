@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createAdminClient } from "@/lib/supabase/admin"
+import { friendlyProfileError, validateUsername } from "@/lib/profileValidation"
 
 export async function createUserProfile(
   username: string,
@@ -22,20 +23,30 @@ export async function createUserProfile(
       return { success: false, error: "Not authenticated" }
     }
 
+    const invalid = validateUsername(username)
+    if (invalid) return { success: false, error: invalid }
+
     const supabase = await createClient()
 
+    // Upsert, not insert: onboarding can legitimately be reached twice (skip
+    // then return, or a transient profile read that sent the user back here),
+    // and a plain insert failed the second time with a duplicate-key error.
+    // subscription_tier is deliberately omitted on conflict — it is set once at
+    // creation and only the service role may change it thereafter.
     const { error } = await supabase
       .from("users")
-      .insert({
-        id: user.userId,
-        username,
-        avatar_url: avatarUrl,
-        subscription_tier: "free",
-      })
+      .upsert(
+        {
+          id: user.userId,
+          username: username.trim(),
+          avatar_url: avatarUrl,
+        },
+        { onConflict: "id" }
+      )
 
     if (error) {
       console.error("Error creating user profile in Supabase:", error)
-      return { success: false, error: error.message }
+      return { success: false, error: friendlyProfileError(error) }
     }
 
     return { success: true }
@@ -64,17 +75,20 @@ export async function updateUserProfile(
 
     const supabase = await createClient()
 
+    const invalid = validateUsername(username)
+    if (invalid) return { success: false, error: invalid }
+
     const { error } = await supabase
       .from("users")
       .update({
-        username,
+        username: username.trim(),
         avatar_url: avatarUrl,
       })
       .eq("id", user.userId)
 
     if (error) {
       console.error("Error updating user profile in Supabase:", error)
-      return { success: false, error: error.message }
+      return { success: false, error: friendlyProfileError(error) }
     }
 
     return { success: true }

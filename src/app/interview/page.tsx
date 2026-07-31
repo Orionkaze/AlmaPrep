@@ -15,13 +15,14 @@ import {
 } from "lucide-react";
 import { ScheduleModal } from "@/components/ScheduleModal";
 
+/** Just enough to render the picker — the API deliberately sends no test data. */
 interface Challenge {
   id: string;
   title: string;
   description: string;
   challenge_type: string;
   difficulty: string;
-  starter_code: Record<string, unknown>;
+  language?: string;
 }
 
 const challengeTypes = [
@@ -54,16 +55,6 @@ export default function ChallengeSelectionPage() {
   useEffect(() => {
     async function loadChallenges() {
       try {
-        // Fetch from api route start or load mock db start
-        // Since we want to make it robust, we can hit an endpoint to get challenges.
-        // Wait, did we create a GET /api/interview/challenges?
-        // No, but we can write a quick endpoint, or just fetch them from a small local helper.
-        // Wait, let's create a small client-side API call to get all challenges,
-        // or we can write a simple client-side load.
-        // Let's call /api/interview/start with an empty body to fetch challenges if allowed,
-        // or we can fetch a static JSON, or just use the local seed data.
-        // Wait, to keep it clean, let's add a GET method in /api/interview/start/route.ts to return all challenges!
-        // That is super elegant and keeps things grouped!
         const res = await fetch("/api/interview/start", { method: "GET" });
         if (res.ok) {
           const data = await res.json();

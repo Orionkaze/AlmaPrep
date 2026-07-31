@@ -4,8 +4,25 @@ import { getRequestUserId } from "@/lib/getRequestUserId";
 
 export async function GET() {
   try {
+    // The picker needs to render a list, not to know the answers. This route
+    // used to return whole challenge rows — including hidden_tests and
+    // expected_outcomes — to any caller, signed in or not. The workspace still
+    // receives the tests it needs when a session is created below.
+    const userId = await getRequestUserId();
+    if (!userId) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
+
     const challenges = await getChallenges();
-    return NextResponse.json({ challenges });
+    const listing = challenges.map((c) => ({
+      id: c.id,
+      title: c.title,
+      description: c.description,
+      challenge_type: c.challenge_type,
+      difficulty: c.difficulty,
+      language: c.language,
+    }));
+    return NextResponse.json({ challenges: listing });
   } catch (err) {
     console.error("Error fetching challenges list:", err);
     return NextResponse.json({ error: err instanceof Error ? err.message : "Internal server error" }, { status: 500 });

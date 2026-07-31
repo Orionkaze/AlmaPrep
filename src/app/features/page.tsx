@@ -5,9 +5,9 @@ import { pageMetadata } from "@/lib/seo"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
 
 export const metadata = pageMetadata({
-  title: "Features — AI Voice Mock Interviews & Feedback",
+  title: "Features — AI Mock Interviews & Feedback",
   description:
-    "See how Almaprep works: live voice AI interviews you actually speak in, a consistent question bank, instant scoring, and detailed feedback. Free to start.",
+    "See how Almaprep works: speak or type your answers, a consistent question bank, instant scoring, and detailed feedback. Free to start.",
   path: "/features",
 })
 
@@ -101,13 +101,13 @@ export default function FeaturesPage() {
             {/* Feature 4 */}
             <div className="feature-row flip reveal">
               <div>
-                <span className="pill">Every plan &middot; AI voice</span>
-                <h2 style={{ marginTop: "16px" }}>Live voice interviews with an AI interviewer.</h2>
-                <p>You join a live meeting and speak to a voice AI interviewer that listens, responds out loud, and asks intelligent follow-ups in real time, just like sitting across from a real panel. Included free, up to 3 interviews a month &mdash; <strong>Pro</strong> and <strong>Enterprise</strong> remove the monthly cap.</p>
+                <span className="pill">Every plan &middot; Speak your answers</span>
+                <h2 style={{ marginTop: "16px" }}>Say your answers out loud, not just type them.</h2>
+                <p>The interviewer reads each question aloud and you answer by speaking &mdash; your browser transcribes it, so you rehearse out loud instead of writing an essay. Follow-up questions adapt to what you actually said. Prefer to type? The keyboard works just as well. Included on every plan; <strong>Pro</strong> and <strong>Enterprise</strong> remove the monthly interview cap.</p>
                 <ul className="check" style={{ marginTop: "16px" }}>
-                  <li>Spoken, real-time conversation</li>
+                  <li>Questions read aloud, answers spoken or typed</li>
                   <li>Dynamic follow-ups based on what you say</li>
-                  <li>Feels like the real interview room</li>
+                  <li>Runs in the browser &mdash; no app, plugin or dial-in</li>
                 </ul>
                 <div className="hero-cta" style={{ marginTop: "24px" }}>
                   <Link className="btn btn-primary" href="/pricing">See plans &rarr;</Link>

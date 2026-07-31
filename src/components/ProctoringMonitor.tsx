@@ -38,6 +38,21 @@ export default function ProctoringMonitor({
 
   const faceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // The parent passes fresh function identities on every render. Depending on
+  // them directly made `addViolation` change identity too, which tore down and
+  // re-registered the visibilitychange / paste / fullscreenchange listeners on
+  // every unrelated parent re-render — and restarted the multiple-faces
+  // debounce timer with them, so a second face could stay on camera
+  // indefinitely without ever completing the 3-second window.
+  const onViolationCountChangeRef = useRef(onViolationCountChange);
+  const onViolationLoggedRef = useRef(onViolationLogged);
+  const onTerminateRef = useRef(onTerminate);
+  useEffect(() => {
+    onViolationCountChangeRef.current = onViolationCountChange;
+    onViolationLoggedRef.current = onViolationLogged;
+    onTerminateRef.current = onTerminate;
+  }, [onViolationCountChange, onViolationLogged, onTerminate]);
+
   const addViolation = useCallback(
     (type: ViolationType) => {
       const timestamp = new Date().toISOString();
@@ -51,13 +66,13 @@ export default function ProctoringMonitor({
         // `violations` (which would call setState synchronously on every
         // change and risk cascading renders).
         const totalCount = next.reduce((acc, v) => acc + v.count, 0);
-        onViolationCountChange(totalCount);
-        onViolationLogged(next);
+        onViolationCountChangeRef.current(totalCount);
+        onViolationLoggedRef.current(next);
 
         if (totalCount === 3) {
           setShowWarningModal(true);
         } else if (totalCount >= threshold) {
-          onTerminate();
+          onTerminateRef.current();
         }
 
         return next;
@@ -70,7 +85,7 @@ export default function ProctoringMonitor({
           message = "Tab switch detected — please stay on this page during your interview.";
           break;
         case "copy_paste":
-          message = "Copy/paste detected — please answer in your own words.";
+          message = "Pasted text detected — please answer in your own words.";
           break;
         case "multiple_faces":
           message = "Multiple faces detected — please ensure you are alone during the interview.";
@@ -81,7 +96,7 @@ export default function ProctoringMonitor({
       }
       setWarningMessage(message);
     },
-    [onViolationCountChange, onViolationLogged, onTerminate, threshold]
+    [threshold]
   );
 
   // 1. Visibility API Tab Switch Detection
@@ -104,24 +119,28 @@ export default function ProctoringMonitor({
   useEffect(() => {
     if (!active) return;
 
-    const handleClipboardEvent = (e: ClipboardEvent) => {
-      // Exclude text input and textarea fields so normal typing pasting is fine
-      const target = e.target as HTMLElement;
-      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
-        return;
-      }
-      e.preventDefault();
+    // This rule used to be exactly backwards: it skipped INPUT and TEXTAREA
+    // ("so normal typing pasting is fine") and blocked everything else. Pasting
+    // a prepared answer INTO the answer box is the behaviour proctoring exists
+    // to catch, and copying the question text is harmless — so the exemption
+    // permitted the only thing worth flagging, while preventDefault stopped
+    // candidates from copying a question they wanted to re-read.
+    const handlePaste = (e: ClipboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      const intoAnswerField =
+        target?.tagName === "INPUT" ||
+        target?.tagName === "TEXTAREA" ||
+        target?.isContentEditable === true;
+      if (!intoAnswerField) return;
+      // Recorded, not blocked: the log should reflect what happened, and a
+      // hostile editor helps nobody.
       addViolation("copy_paste");
     };
 
-    document.addEventListener("copy", handleClipboardEvent);
-    document.addEventListener("cut", handleClipboardEvent);
-    document.addEventListener("paste", handleClipboardEvent);
+    document.addEventListener("paste", handlePaste);
 
     return () => {
-      document.removeEventListener("copy", handleClipboardEvent);
-      document.removeEventListener("cut", handleClipboardEvent);
-      document.removeEventListener("paste", handleClipboardEvent);
+      document.removeEventListener("paste", handlePaste);
     };
   }, [active, addViolation]);
 
