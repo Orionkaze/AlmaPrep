@@ -875,6 +875,7 @@ export async function getInterviewSession(interviewId: string) {
       .from("interviews")
       .select("*")
       .eq("id", interviewId)
+      .eq("user_id", user.userId)
       .maybeSingle()
 
     if (error) {

@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getChallengeById, createSession, getChallenges } from "@/lib/interviewDb";
 import { getRequestUserId } from "@/lib/getRequestUserId";
 import { getPostHogClient } from "@/lib/posthog-server";
+import { getUserTier } from "@/lib/entitlements";
+import { checkInterviewAllowance } from "@/lib/quota";
 
 export async function GET() {
   try {
@@ -28,6 +30,18 @@ export async function POST(request: Request) {
     const userId = await getRequestUserId();
     if (!userId) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
+
+    // Enforce interview allowance paywall check on the API endpoint
+    const { tier, isDemo } = await getUserTier();
+    if (!isDemo && userId !== "demo-user-id") {
+      const allowance = await checkInterviewAllowance(userId, tier, Date.now(), true);
+      if (!allowance.allowed) {
+        return NextResponse.json({
+          error: "quota_exceeded",
+          message: "You've used all free interviews this month. Upgrade to Pro for unlimited access."
+        }, { status: 429 });
+      }
     }
 
     const challenge = await getChallengeById(challenge_id);
