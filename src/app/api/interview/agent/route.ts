@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { getSessionById, getChallengeById, updateSession } from "@/lib/interviewDb";
 import { getRequestUserId } from "@/lib/getRequestUserId";
-import { isRateLimited } from "@/lib/rateLimit";
+import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
+import { cleanJsonResponseText } from "@/lib/llm";
 
 interface AgentConversationMessage {
   role: string;
@@ -21,13 +22,6 @@ interface GroqAgentResponse {
   follow_up: string;
 }
 
-function cleanJsonResponseText(text: string): string {
-  let cleaned = text.trim();
-  if (cleaned.startsWith("```")) {
-    cleaned = cleaned.replace(/^```[a-zA-Z]*\s*/, "").replace(/\s*```$/, "");
-  }
-  return cleaned.trim();
-}
 
 export async function POST(request: Request) {
   try {
@@ -42,8 +36,12 @@ export async function POST(request: Request) {
     if (!userId) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
-    if (await isRateLimited(`agent:${userId}`, 20, 60_000)) {
-      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 });
+    const agentLimit = await checkRateLimit(`agent:${userId}`);
+    if (!agentLimit.allowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please slow down." },
+        { status: 429, headers: getRateLimitHeaders(agentLimit) }
+      );
     }
 
     // Fetch session and challenge

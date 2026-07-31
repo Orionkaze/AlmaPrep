@@ -5,17 +5,9 @@ import { Bell } from "lucide-react";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
 import { getStored, setStored } from "@/lib/localStore"
+import { SCHEDULE_KEY, type ScheduledSession } from "@/lib/schedule"
 
 /** Scheduled practice sessions, namespaced per user by lib/localStore. */
-const SCHEDULE_KEY = "scheduled_sessions"
-type ScheduledSessionRecord = {
-  id?: string
-  title: string
-  scheduledFor: string
-  category?: string
-  createdAt?: string
-  missedNotified?: boolean
-}
 
 interface Notification {
   id: string;
@@ -37,7 +29,7 @@ export function NotificationBell() {
     const markMissedBookings = async () => {
       // Check local storage for missed bookings
       try {
-        const sessions = await getStored<ScheduledSessionRecord[]>(SCHEDULE_KEY);
+        const sessions = await getStored<ScheduledSession[]>(SCHEDULE_KEY);
         if (sessions) {
           const now = new Date();
           let hasChanges = false;

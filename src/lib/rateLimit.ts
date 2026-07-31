@@ -29,9 +29,12 @@ export interface RateLimitResult {
  */
 export const ENDPOINT_CONFIGS: Record<string, RateLimitConfig> = {
   interview: { limit: 60, windowMs: 60 * 60 * 1000 },
+  submit: { limit: 15, windowMs: 60 * 1000 },
+  agent: { limit: 20, windowMs: 60 * 1000 },
+  "github-save": { limit: 10, windowMs: 60 * 1000 },
+  "parse-document": { limit: 10, windowMs: 60 * 1000 },
   "answer-analysis": { limit: 120, windowMs: 60 * 60 * 1000 },
   feedback: { limit: 10, windowMs: 60 * 60 * 1000 },
-  coding: { limit: 20, windowMs: 60 * 60 * 1000 },
   "github-analysis": { limit: 5, windowMs: 60 * 60 * 1000 },
   "resume-analysis": { limit: 20, windowMs: 24 * 60 * 60 * 1000 },
   chat: { limit: 50, windowMs: 60 * 60 * 1000 },
@@ -278,16 +281,10 @@ export async function isRateLimited(
 }
 
 /**
- * Utility to format standard rate limit HTTP headers.
+ * Standard rate-limit headers for a 429 (or an allowed) response.
  *
- * Provides:
- * - X-RateLimit-Limit: Maximum requests allowed in the window.
- * - X-RateLimit-Remaining: Remaining requests allowed in the current window.
- * - X-RateLimit-Reset: Epoch time in seconds when the window completely resets.
- * - Retry-After: Seconds to wait before retrying (only returned if request was rejected).
- *
- * @param result The result returned from checkRateLimit.
- * @returns A plain object containing standard rate limit headers.
+ * - X-RateLimit-Limit / -Remaining / -Reset describe the window.
+ * - Retry-After tells the client how long to wait, and is only set on a refusal.
  */
 export function getRateLimitHeaders(result: RateLimitResult): Record<string, string> {
   const headers: Record<string, string> = {
@@ -300,4 +297,3 @@ export function getRateLimitHeaders(result: RateLimitResult): Record<string, str
   }
   return headers
 }
-

@@ -6,17 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { getStored, setStored } from "@/lib/localStore"
+import { SCHEDULE_KEY, type ScheduledSession } from "@/lib/schedule"
 
 /** Scheduled practice sessions, namespaced per user by lib/localStore. */
-const SCHEDULE_KEY = "scheduled_sessions"
-type ScheduledSessionRecord = {
-  id?: string
-  title: string
-  scheduledFor: string
-  category?: string
-  createdAt?: string
-  missedNotified?: boolean
-}
 
 interface ScheduleModalProps {
   open: boolean;
@@ -35,8 +27,8 @@ export function ScheduleModal({ open, onOpenChange, defaultTitle = "Interview Se
 
     try {
       // Saved locally for the dashboard to read, namespaced to this user.
-      const existing = await getStored<ScheduledSessionRecord[]>(SCHEDULE_KEY);
-      const sessions: ScheduledSessionRecord[] = existing ?? [];
+      const existing = await getStored<ScheduledSession[]>(SCHEDULE_KEY);
+      const sessions: ScheduledSession[] = existing ?? [];
       sessions.push({
         id: crypto.randomUUID(),
         title: defaultTitle,

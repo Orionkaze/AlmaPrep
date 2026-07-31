@@ -6,16 +6,9 @@ import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, ArrowRight 
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { getStored } from "@/lib/localStore"
+import { SCHEDULE_KEY, type ScheduledSession } from "@/lib/schedule"
 
 /** Scheduled practice sessions, namespaced per user by lib/localStore. */
-const SCHEDULE_KEY = "scheduled_sessions"
-
-interface ScheduledSession {
-  id: string;
-  title: string;
-  scheduledFor: string;
-  createdAt: string;
-}
 
 function SessionItem({ session, monthNames }: { session: ScheduledSession, monthNames: string[] }) {
   const sessionDate = new Date(session.scheduledFor);

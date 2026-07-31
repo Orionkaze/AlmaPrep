@@ -13,11 +13,9 @@
 
 export type TierId = "free" | "pro" | "enterprise"
 
-export const TIER_IDS = ["free", "pro", "enterprise"] as const
-
 export const DEFAULT_TIER: TierId = "free"
 
-export const CURRENCY = {
+const CURRENCY = {
   code: "USD",
   symbol: "$",
   locale: "en-US",
@@ -65,8 +63,6 @@ export type Plan = {
   features: string[]
   cta: { label: string; href: string; variant: "btn-primary" | "btn-ghost" }
   featured?: boolean
-  /** Reserved for a future Razorpay integration. Unused today. */
-  razorpayPlanId?: string
   entitlements: Entitlements
 }
 

@@ -24,3 +24,15 @@ export function isClosingMessage(text: string): boolean {
 export function stripEndMarker(text: string): string {
   return text.split(INTERVIEW_END_MARKER).join("").trim()
 }
+
+/**
+ * True when a route segment is an interview id rather than a category.
+ *
+ * The feedback page decided this with `id.length >= 36` in four places, which
+ * accepts any long string; the route layout used a proper pattern. One test.
+ */
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+export function isInterviewId(segment: string | null | undefined): boolean {
+  return typeof segment === "string" && UUID_RE.test(segment)
+}

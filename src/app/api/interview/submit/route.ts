@@ -3,17 +3,11 @@ import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
 import { updateStreak } from "@/lib/streak";
 import { checkAndAwardBadges } from "@/lib/badges";
-import { isRateLimited } from "@/lib/rateLimit";
+import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
 import { isMockAuthEnabled } from "@/lib/env";
+import { cleanJsonResponseText } from "@/lib/llm";
 
 
-function cleanJsonResponseText(text: string): string {
-  let cleaned = text.trim();
-  if (cleaned.startsWith("```")) {
-    cleaned = cleaned.replace(/^```[a-zA-Z]*\s*/, "").replace(/\s*```$/, "");
-  }
-  return cleaned.trim();
-}
 
 interface ClientTestResultItem {
   input?: unknown;
@@ -45,8 +39,12 @@ export async function POST(request: Request) {
 
     const userId = authUser ? authUser.id : "demo-user-id";
 
-    if (await isRateLimited(`submit:${userId}`, 15, 60_000)) {
-      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 });
+    const submitLimit = await checkRateLimit(`submit:${userId}`);
+    if (!submitLimit.allowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please slow down." },
+        { status: 429, headers: getRateLimitHeaders(submitLimit) }
+      );
     }
 
     // 1. Fetch Session and Challenge using localDb-aware helpers
@@ -161,60 +159,45 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
   "suggestions": ["Use meaningful variable names", "Add error boundaries"]
 }`;
 
-    // Perform Groq Layer 2 call
-    const logicRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: "system", content: "You are a software grading agent. Output JSON only." },
-          { role: "user", content: logicGraderPrompt }
-        ],
-        max_tokens: 1024,
-        temperature: 0.1,
-        response_format: { type: "json_object" }
-      }),
-      signal: AbortSignal.timeout(30_000)
-    });
+    // The two graders are independent, so they run together. Awaiting them in
+    // sequence doubled the wall clock of every submission — and with the 30s
+    // timeout on each, the worst case was 60s instead of 30s.
+    const gradeWithGroq = async (prompt: string) =>
+      fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: "system", content: "You are a software grading agent. Output JSON only." },
+            { role: "user", content: prompt }
+          ],
+          max_tokens: 1024,
+          temperature: 0.1,
+          response_format: { type: "json_object" }
+        }),
+        signal: AbortSignal.timeout(30_000)
+      });
+
+    const [logicRes, qualityRes] = await Promise.all([
+      gradeWithGroq(logicGraderPrompt),
+      gradeWithGroq(qualityGraderPrompt),
+    ]);
 
     if (!logicRes.ok) {
       const errTxt = await logicRes.text();
       return NextResponse.json({ error: `Groq logic grading failed: ${errTxt}` }, { status: 500 });
     }
-
-    const logicData = await logicRes.json();
-    const parsedLogic = JSON.parse(cleanJsonResponseText(logicData.choices?.[0]?.message?.content || "{}"));
-
-    // Perform Groq Layer 3 call
-    const qualityRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: "system", content: "You are a software grading agent. Output JSON only." },
-          { role: "user", content: qualityGraderPrompt }
-        ],
-        max_tokens: 1024,
-        temperature: 0.1,
-        response_format: { type: "json_object" }
-      }),
-      signal: AbortSignal.timeout(30_000)
-    });
-
     if (!qualityRes.ok) {
       const errTxt = await qualityRes.text();
       return NextResponse.json({ error: `Groq quality grading failed: ${errTxt}` }, { status: 500 });
     }
 
-    const qualityData = await qualityRes.json();
+    const [logicData, qualityData] = await Promise.all([logicRes.json(), qualityRes.json()]);
+    const parsedLogic = JSON.parse(cleanJsonResponseText(logicData.choices?.[0]?.message?.content || "{}"));
     const parsedQuality = JSON.parse(cleanJsonResponseText(qualityData.choices?.[0]?.message?.content || "{}"));
 
     // 4. Evaluate Success Criteria

@@ -35,7 +35,7 @@ async function scope(): Promise<string> {
 }
 
 /** Call when the signed-in user changes, so the next read re-resolves. */
-export function resetScope(): void {
+function resetScope(): void {
   cachedScope = null
 }
 
@@ -60,15 +60,6 @@ export async function setStored(key: string, value: unknown): Promise<void> {
   } catch (err) {
     // Quota exceeded, or storage disabled in a locked-down school profile.
     console.warn(`[localStore] could not persist ${key}:`, err)
-  }
-}
-
-export async function removeStored(key: string): Promise<void> {
-  if (typeof window === "undefined") return
-  try {
-    localStorage.removeItem(await scopedKey(key))
-  } catch {
-    // ignore
   }
 }
 

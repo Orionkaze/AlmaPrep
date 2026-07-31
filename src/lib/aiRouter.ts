@@ -38,28 +38,19 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, name: stri
 }
 
 /**
- * Unified callAI function. Executes LLM routing directly in-process on the server.
- */
-export async function callAI(prompt: string, task: string, userTier: string): Promise<string> {
-  let userId: string | undefined = undefined
-  try {
-    const user = await getCurrentUser()
-    userId = user.userId || undefined
-  } catch {
-    // Suppress if not in request context
-  }
-
-  const { text } = await executeAIRouting(prompt, task, userTier, userId)
-  return text
-}
-
-/**
- * Unified callAIWithSource function. Executes LLM routing directly in-process on the server.
+ * Run one LLM task and return the text plus which provider answered.
+ *
+ * NOTE ON TIER: these entry points used to take a `userTier` argument that
+ * executeAIRouting never read — the provider chain and the model per provider
+ * are fixed by task, not by plan. Callers were doing a getUserTier() database
+ * round trip per generated question purely to feed it, and a caller-side "pass
+ * the free tier here" fix read as protection that did not exist. The parameter
+ * is gone. If Pro should get a better model, that belongs inside
+ * executeAIRouting where the model is chosen.
  */
 export async function callAIWithSource(
   prompt: string,
-  task: string,
-  userTier: string
+  task: string
 ): Promise<{ result: string; source: string }> {
   let userId: string | undefined = undefined
   try {
@@ -69,8 +60,14 @@ export async function callAIWithSource(
     // Suppress if not in request context
   }
 
-  const { text, source } = await executeAIRouting(prompt, task, userTier, userId)
+  const { text, source } = await executeAIRouting(prompt, task, userId)
   return { result: text, source }
+}
+
+/** As callAIWithSource, when the caller doesn't care which provider answered. */
+export async function callAI(prompt: string, task: string): Promise<string> {
+  const { result } = await callAIWithSource(prompt, task)
+  return result
 }
 
 /**
@@ -79,7 +76,6 @@ export async function callAIWithSource(
 export async function executeAIRouting(
   prompt: string,
   task: string,
-  userTier: string,
   userId?: string
 ): Promise<{ text: string; source: string }> {
   const timeoutMs = task === "next_question" ? 5000 : 20000 // 5 seconds for questions, 20 seconds for feedback and resume analysis

@@ -13,7 +13,8 @@ import { updateStreak } from "@/lib/streak"
 import { checkAndAwardBadges } from "@/lib/badges"
 import { isRateLimited } from "@/lib/rateLimit"
 import type { SupabaseClient } from "@supabase/supabase-js"
-import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
+import { getRequestUserId } from "@/lib/getRequestUserId"
+import { errorMessage } from "@/lib/utils"
 
 /**
  * Every exported function in a "use server" file is a public POST endpoint that
@@ -23,16 +24,7 @@ import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
  * to happen: `getNextQuestion` and friends ran for anonymous callers, which made
  * the whole Groq/OpenAI/Gemini spend reachable without an account.
  */
-async function requireUserId(): Promise<string | null> {
-  try {
-    const { userId } = await getCurrentUser()
-    return userId
-  } catch (err) {
-    rethrowIfNextControlFlow(err)
-    console.error("[interview] failed to resolve the requesting user:", err)
-    return null
-  }
-}
+const requireUserId = getRequestUserId
 
 /**
  * True when `interviewId` belongs to `userId`. RLS should already prevent
@@ -66,10 +58,7 @@ type AnswerScore = Record<string, unknown>
 
 /** A proctoring/body-language sample taken during a behavioural interview. */
 type PhysicalMetric = Record<string, unknown>
-/** Narrow an unknown thrown value to a message without reaching for `any`. */
-function errorMessage(err: unknown): string {
-  return err instanceof Error ? err.message : String(err)
-}
+
 
 interface MessageInput {
   role: "user" | "ai"
@@ -147,8 +136,6 @@ export async function getNextQuestion(
       }
 
       // If it's a follow-up slot, or fallback for initial slot query failure: generate dynamically via Groq
-      const { tier: userTier } = await getUserTier()
-
       try {
         const nextResponse = await callAIWithSource(
           JSON.stringify({ 
@@ -160,8 +147,7 @@ export async function getNextQuestion(
             selectedRepos,
             currentRepoName
           }),
-          "next_question",
-          userTier
+          "next_question"
         )
         return { 
           question: nextResponse.result, 
@@ -176,13 +162,10 @@ export async function getNextQuestion(
     // Default: General track question generation. The resume, when requested,
     // is fetched inside aiRouter from the useResume flag below.
 
-    const { tier: userTier } = await getUserTier()
-
     try {
       const nextResponse = await callAIWithSource(
         JSON.stringify({ category, previousMessages, useResume, persona }),
-        "next_question",
-        userTier
+        "next_question"
       )
       return { question: nextResponse.result, source: nextResponse.source }
     } catch (err) {
@@ -299,12 +282,9 @@ export async function generateFeedback(
       breakdown: { label: string; score: number }[]
     }
 
-    const { tier: userTier } = await getUserTier()
-
     const responseJsonText = await callAI(
       JSON.stringify({ category, messages }),
-      "generate_feedback",
-      userTier
+      "generate_feedback"
     )
     const data = JSON.parse(responseJsonText) as FeedbackJson
 

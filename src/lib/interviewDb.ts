@@ -274,14 +274,3 @@ export async function getReportById(id: string): Promise<InterviewReport | null>
   }
   return data;
 }
-
-// Seed helper specifically for local development
-export function seedChallengeMock(challenge: Challenge) {
-  if (!isMockMode) return;
-  const db = getMockDb();
-  const exists = db.challenges.some((c: Challenge) => c.title === challenge.title);
-  if (!exists) {
-    db.challenges.push(challenge);
-    saveMockDb(db);
-  }
-}

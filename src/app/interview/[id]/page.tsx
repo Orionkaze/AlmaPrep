@@ -39,6 +39,7 @@ import { useRouter } from "next/navigation"
 import { setStored } from "@/lib/localStore"
 import { isClosingMessage, stripEndMarker } from "@/lib/interviewProtocol"
 import { toast } from "sonner"
+import { getCategoryLabel } from "@/lib/categoryLabels"
 
 // SpeechRecognition type declarations for TS
 interface SpeechRecognitionAlternativeLike {
@@ -104,24 +105,6 @@ interface PhysicalMetric {
 interface SpeakingScoreEntry {
   metrics: SpeakingMetrics
   feedback: string
-}
-
-const categoryLabels: Record<string, string> = {
-  hr: "HR Interview",
-  technical: "Technical Interview",
-  mixed: "Mixed Interview",
-}
-
-const getCategoryLabel = (cat: string) => {
-  if (categoryLabels[cat]) return categoryLabels[cat]
-  return cat
-    .split("-")
-    .map(word => {
-      if (word === "a" || word === "b") return `(${word.toUpperCase()})`
-      if (word === "and") return "&"
-      return word.charAt(0).toUpperCase() + word.slice(1)
-    })
-    .join(" ")
 }
 
 export default function InterviewPage({

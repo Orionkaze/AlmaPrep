@@ -1,10 +1,6 @@
 import { notFound } from "next/navigation"
-import { getPrograms } from "@/lib/programs"
-
-/** Tracks that aren't program shards but are valid interview categories. */
-const BUILT_IN_TRACKS = new Set(["hr", "technical", "mixed"])
-
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+import { isKnownCategory } from "@/lib/programs"
+import { isInterviewId } from "@/lib/interviewProtocol"
 
 /**
  * Validate the `[id]` segment before any child renders.
@@ -16,8 +12,9 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
  * then displayed it.
  *
  * The segment serves two shapes: a category for the interview itself, and an
- * interview UUID for the /feedback child that the dashboard links to. Both are
- * accepted; nothing else is.
+ * interview UUID for the /feedback child that the dashboard links to. The UUID
+ * test comes first because it costs nothing — the category check has to consult
+ * the question-bank index.
  */
 export default async function InterviewCategoryLayout({
   children,
@@ -29,10 +26,7 @@ export default async function InterviewCategoryLayout({
   const { id } = await params
   const decoded = decodeURIComponent(id)
 
-  const isKnownCategory =
-    BUILT_IN_TRACKS.has(decoded) || getPrograms().some((p) => p.id === decoded)
-
-  if (!isKnownCategory && !UUID_RE.test(decoded)) {
+  if (!isInterviewId(decoded) && !isKnownCategory(decoded)) {
     notFound()
   }
 

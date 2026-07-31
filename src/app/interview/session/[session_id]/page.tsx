@@ -168,6 +168,12 @@ const JS_ENTRY_POINTS: Record<string, string> = {
   mediandata: "MedianFinder",
   lrucache: "LRUCache",
   authentication: "authenticate",
+  // Middleware-shaped challenges all export the same entry point.
+  sql: "middleware",
+  brokenaccess: "middleware",
+  idor: "middleware",
+  n1query: "middleware",
+  slowsearch: "middleware",
 };
 
 const PYTHON_ENTRY_POINTS: Record<string, string> = {
@@ -530,7 +536,7 @@ export default function InterviewWorkspacePage({
     return new Promise((resolve) => {
       const workerCode = `
         self.onmessage = function(e) {
-          const { code, challengeTitle, test, entryPoint } = e.data;
+          const { code, test, entryPoint } = e.data;
           try {
             const module = { exports: {} };
             const exports = module.exports;
@@ -551,34 +557,9 @@ export default function InterviewWorkspacePage({
               return {};
             };
 
-            // Custom Node/CommonJS file loaders
-            let functionName = entryPoint || "";
-            const slug = challengeTitle.toLowerCase().replace(/[^a-z0-9]/g, "");
-            if (!functionName) {
-            if (slug.includes("twosum")) functionName = "twoSum";
-            else if (slug.includes("validparentheses")) functionName = "isValid";
-            else if (slug.includes("longestsubstring")) functionName = "lengthOfLongestSubstring";
-            else if (slug.includes("maximumsubarray")) functionName = "maxSubArray";
-            else if (slug.includes("binarysearchtree")) functionName = "isValidBST";
-            else if (slug.includes("numberofislands")) functionName = "numIslands";
-            else if (slug.includes("mergeksorted")) functionName = "mergeKLists";
-            else if (slug.includes("wordbreak")) functionName = "wordBreak";
-            else if (slug.includes("trappingrain")) functionName = "trap";
-            else if (slug.includes("sql") || slug.includes("brokenaccess") || slug.includes("idor") || slug.includes("n1query") || slug.includes("slowsearch")) {
-              functionName = "middleware";
-            } else if (slug.includes("godfunction")) functionName = "register";
-            else if (slug.includes("ratelimiter")) functionName = "rateLimiter";
-            else if (slug.includes("jobqueue")) functionName = "JobQueue";
-            else if (slug.includes("coinchange")) functionName = "coinChange";
-            else if (slug.includes("longestcommon")) functionName = "longestCommonSubsequence";
-            else if (slug.includes("courseschedule")) functionName = "canFinish";
-            else if (slug.includes("wordladder")) functionName = "ladderLength";
-            else if (slug.includes("rotatedsorted")) functionName = "search";
-            else if (slug.includes("mediandata")) functionName = "MedianFinder";
-            else if (slug.includes("lrucache")) functionName = "LRUCache";
-            else if (slug.includes("authentication")) functionName = "authenticate";
-            }
-
+            // Resolved on the main thread from the challenge's entry_point,
+            // the title map, or "" meaning "use the first function defined".
+            const functionName = entryPoint || "";
             const isMiddleware = ["authenticate", "middleware", "rateLimiter"].includes(functionName);
 
             // Deserializers for complex tree/list arguments
@@ -722,7 +703,6 @@ export default function InterviewWorkspacePage({
 
       worker.postMessage({
         code,
-        challengeTitle,
         test,
         entryPoint: resolveEntryPoint(challenge, challengeTitle, "javascript"),
       });

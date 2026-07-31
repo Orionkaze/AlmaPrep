@@ -127,8 +127,10 @@ export default async function DashboardPage() {
       hasCustomUsername = !!profile.username && profile.username !== "User"
       hasCustomAvatar = !!profile.avatar_url && profile.avatar_url !== "user-tie"
 
-      // 2. Fetch completed interviews (mock sessions)
-      const { data: mockInterviews } = await supabase
+      // 2. Fetch completed interviews (mock sessions).
+      // Issued together with the coding sessions below — they're independent,
+      // and awaiting them one after another cost two serial round trips.
+      const mockInterviewsQuery = supabase
         .from("interviews")
         .select(`
           id,
@@ -149,25 +151,7 @@ export default async function DashboardPage() {
         .eq("status", "completed")
         .order("created_at", { ascending: false })
 
-      const completedMockInterviews: MockInterviewRow[] =
-        (mockInterviews as MockInterviewRow[] | null) || []
-      totalSessions = completedMockInterviews.length
-
-      // Calculate Average Score
-      if (completedMockInterviews.length > 0) {
-        const scores = completedMockInterviews
-          .map((i) => i.feedback?.[0]?.score)
-          .filter((s): s is number => typeof s === "number")
-        if (scores.length > 0) {
-          avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
-        }
-      }
-
-      // Calculate Streak from DB
-      currentStreak = profile.current_streak || 0
-
-      // Fetch Coding Sessions
-      const { data: codingSessions } = await supabase
+      const codingSessionsQuery = supabase
         .from("interview_sessions")
         .select(`
           id,
@@ -185,6 +169,29 @@ export default async function DashboardPage() {
         `)
         .eq("user_id", userId)
         .order("started_at", { ascending: false })
+        // Only the five most recent sessions are ever rendered (see the slice
+        // below); this used to fetch every session a student had ever run.
+        .limit(5)
+
+      const [{ data: mockInterviews }, { data: codingSessions }] = await Promise.all([
+        mockInterviewsQuery,
+        codingSessionsQuery,
+      ])
+
+      const completedMockInterviews: MockInterviewRow[] =
+        (mockInterviews as MockInterviewRow[] | null) || []
+      totalSessions = completedMockInterviews.length
+
+      if (completedMockInterviews.length > 0) {
+        const scores = completedMockInterviews
+          .map((i) => i.feedback?.[0]?.score)
+          .filter((s): s is number => typeof s === "number")
+        if (scores.length > 0) {
+          avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
+        }
+      }
+
+      currentStreak = profile.current_streak || 0
 
       // Latest completed feedback from mock interviews
       if (completedMockInterviews.length > 0) {

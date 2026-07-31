@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById } from "@/lib/interviewDb";
-import { isRateLimited } from "@/lib/rateLimit";
+import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
 
 async function commitFileToRepo(owner: string, repo: string, filePath: string, content: string, token: string) {
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
@@ -42,8 +42,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    if (await isRateLimited(`github-save:${user.id}`, 10, 60_000)) {
-      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 });
+    const saveLimit = await checkRateLimit(`github-save:${user.id}`);
+    if (!saveLimit.allowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please slow down." },
+        { status: 429, headers: getRateLimitHeaders(saveLimit) }
+      );
     }
 
     // 1. Get GitHub OAuth provider token from cookies

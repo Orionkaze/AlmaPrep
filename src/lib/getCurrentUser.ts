@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { cookies } from "next/headers"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
@@ -17,8 +18,13 @@ import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
  * Order note: demo → Supabase → NextAuth. Some legacy sites check NextAuth
  * first; this matches the majority (aiRouter, interview actions) and is the
  * deliberate standard going forward.
+ *
+ * Wrapped in React's cache() so it resolves once per request. auth.getUser() is
+ * a network call to Supabase Auth, and a single candidate answer used to fan
+ * out to roughly eight of them — getNextQuestion alone resolved the user three
+ * times through different helpers.
  */
-export async function getCurrentUser(): Promise<{
+export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
   userId: string | null
   email: string | null
   isDemo: boolean
@@ -120,4 +126,4 @@ export async function getCurrentUser(): Promise<{
     console.error("[getCurrentUser] Unexpected failure:", err)
     return { userId: null, email: null, isDemo: false }
   }
-}
+})

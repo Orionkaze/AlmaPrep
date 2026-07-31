@@ -1,12 +1,12 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
-import { getUserTier } from "@/lib/entitlements"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { callAI } from "@/lib/aiRouter"
 import { isRateLimited } from "@/lib/rateLimit"
+import { errorMessage } from "@/lib/utils"
 
 /**
  * Longest resume we will send to a model. A real CV is a few thousand
@@ -51,15 +51,7 @@ export async function saveAndAnalyzeResume(
     }
 
     if (isDemoMode) {
-      // Demo sessions are DEMO_TIER, never "premium". The demo cookie is
-      // unsigned, so handing it the top model made free unlimited LLM spend a
-      // matter of setting a cookie.
-      const { tier: demoTier } = await getUserTier()
-      const responseJsonText = await callAI(
-        resumeText,
-        "analyze_resume",
-        demoTier
-      )
+      const responseJsonText = await callAI(resumeText, "analyze_resume")
       const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
       
       // Safely persist demo resume metadata without exceeding 4KB cookie header limits
@@ -88,13 +80,7 @@ export async function saveAndAnalyzeResume(
       return { success: false, error: "Not authenticated" }
     }
 
-    const { tier: userTier } = await getUserTier()
-
-    const responseJsonText = await callAI(
-      resumeText,
-      "analyze_resume",
-      userTier
-    )
+    const responseJsonText = await callAI(resumeText, "analyze_resume")
     const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
 
     // Save to Supabase users table
@@ -124,7 +110,7 @@ export async function saveAndAnalyzeResume(
     console.error("saveAndAnalyzeResume failed:", err)
     return {
       success: false,
-      error: err instanceof Error ? err.message : "An unexpected error occurred during resume analysis.",
+      error: errorMessage(err) || "An unexpected error occurred during resume analysis.",
     }
   }
 }

@@ -80,6 +80,37 @@ function readSampleQuestions(): Question[] {
   return cachedSampleQuestions
 }
 
+let cachedProgramIds: Set<string> | null = null
+
+/**
+ * Every known program id, from index.json alone (~7 KB).
+ *
+ * Callers that only need to answer "is this a real program?" must not go
+ * through getPrograms(), which parses all 76 shards — 3.8 MB — to build display
+ * names it then throws away.
+ */
+export function getProgramIds(): Set<string> {
+  if (cachedProgramIds) return cachedProgramIds
+  cachedProgramIds = new Set(
+    readIndexShards()
+      .map((shard) => (shard.file ? path.basename(shard.file, ".json") : ""))
+      .filter(Boolean)
+  )
+  return cachedProgramIds
+}
+
+/** Tracks that aren't program shards but are valid interview categories. */
+export const BUILT_IN_TRACKS = ["hr", "technical", "mixed"] as const
+
+export type BuiltInTrack = (typeof BUILT_IN_TRACKS)[number]
+
+export function isKnownCategory(category: string): boolean {
+  return (
+    (BUILT_IN_TRACKS as readonly string[]).includes(category) ||
+    getProgramIds().has(category)
+  )
+}
+
 /** Parse one shard file at most once. Missing/broken files memoise as empty. */
 function readShardQuestions(relativePath: string): Question[] {
   const hit = cachedShardQuestions.get(relativePath)

@@ -29,15 +29,6 @@ export interface InterviewRow {
   created_at: string
 }
 
-export interface MessageRow {
-  id: string
-  interview_id: string
-  role: string
-  content: string
-  metadata: Record<string, unknown>
-  created_at: string
-}
-
 export interface FeedbackDetailedMetrics {
   fillerWords?: number
   bodyLanguageScore?: number
@@ -52,31 +43,6 @@ export interface FeedbackRow {
   summary: string
   improvement_suggestions: string[]
   detailed_metrics?: FeedbackDetailedMetrics | null
-  created_at: string
-}
-
-export interface InterviewUsageRow {
-  user_id: string
-  month: string
-  count: number
-}
-
-export interface ChallengeRow {
-  id: string
-  title: string
-  description: string
-  challenge_type: "bug_fix" | "feature" | "refactor" | "security" | "performance"
-  difficulty: "easy" | "medium" | "hard"
-  language: string
-  starter_code: Record<string, unknown>
-  hidden_tests: Record<string, unknown>
-  expected_outcomes: Record<string, unknown>
-  /**
-   * Function a submission must define, e.g. "two_sum". Null falls back to the
-   * client's title map and then to the first function defined.
-   * Added by migrations/2026-07-31_deletion_and_entry_points.sql.
-   */
-  entry_point: string | null
   created_at: string
 }
 
@@ -126,38 +92,6 @@ export interface InterviewReportRow {
   overall_score: number | null
   test_results: TestResults | null
   generated_at: string
-}
-
-export interface GithubAnalysisRow {
-  user_id: string
-  profile_summary: string
-  tech_stack: string[]
-  strengths: string[]
-  questions: Array<{ repo: string; question: string; difficulty: string }>
-  design_patterns: string[]
-  weak_areas: string[]
-  repo_metadata: Record<string, unknown>
-  created_at: string
-}
-
-export interface BehavioralAnalysisRow {
-  id: string
-  user_id: string
-  session_id: string
-  answer_scores: Array<Record<string, unknown>>
-  physical_metrics: Array<Record<string, unknown>>
-  speaking_analysis: Record<string, unknown> | null
-  final_report: string
-  created_at: string
-}
-
-export interface ActivityLogRow {
-  id: string
-  user_id: string
-  activity_type: "interview" | "coding_challenge"
-  activity_id: string
-  activity_date: string
-  created_at: string
 }
 
 export interface BadgeRow {

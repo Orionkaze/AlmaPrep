@@ -16,7 +16,7 @@ export async function parseDocument(formData: FormData): Promise<{ success: bool
     if (!userId) {
       return { success: false, error: "Not authenticated" }
     }
-    if (await isRateLimited(`parse-document:${userId}`, 10, 60_000)) {
+    if (await isRateLimited(`parse-document:${userId}`)) {
       return { success: false, error: "Too many uploads. Please wait a minute and try again." }
     }
 
