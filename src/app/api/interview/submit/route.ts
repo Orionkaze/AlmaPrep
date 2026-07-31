@@ -37,10 +37,7 @@ export async function POST(request: Request) {
       authUser = data?.user || null;
     } catch {}
 
-    const isLocalDemo = !authUser && (
-      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-      process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz.supabase.co")
-    );
+    const isLocalDemo = !authUser && process.env.MOCK_MODE === "true";
 
     if (!authUser && !isLocalDemo) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
