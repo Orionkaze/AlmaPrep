@@ -6,6 +6,14 @@ import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { callAI } from "@/lib/aiRouter"
+import { isRateLimited } from "@/lib/rateLimit"
+
+/**
+ * Longest resume we will send to a model. A real CV is a few thousand
+ * characters; the cap exists because this action is a public endpoint that
+ * takes a raw string, so an unbounded one is a direct cost attack.
+ */
+const MAX_RESUME_CHARS = 50_000
 
 export interface ResumeAnalysis {
   summary: string
@@ -25,6 +33,22 @@ export async function saveAndAnalyzeResume(
     const user = await getCurrentUser()
     const isDemoMode = user.isDemo
     const userId = user.userId
+
+    if (!userId) {
+      return { success: false, error: "Not authenticated" }
+    }
+    if (typeof resumeText !== "string" || !resumeText.trim()) {
+      return { success: false, error: "Please provide the text of your resume." }
+    }
+    if (resumeText.length > MAX_RESUME_CHARS) {
+      return {
+        success: false,
+        error: "That resume is too long to analyse. Please trim it to a couple of pages and try again.",
+      }
+    }
+    if (await isRateLimited(`resume-analysis:${userId}`)) {
+      return { success: false, error: "You've analysed several resumes today. Please try again tomorrow." }
+    }
 
     if (isDemoMode) {
       // Demo sessions are DEMO_TIER, never "premium". The demo cookie is

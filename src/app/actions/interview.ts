@@ -11,6 +11,50 @@ import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
 import { updateStreak } from "@/lib/streak"
 import { checkAndAwardBadges } from "@/lib/badges"
+import { isRateLimited } from "@/lib/rateLimit"
+import type { SupabaseClient } from "@supabase/supabase-js"
+
+/**
+ * Every exported function in a "use server" file is a public POST endpoint that
+ * anyone can call — the client bundle contains the action ids. The LLM-calling
+ * actions below therefore MUST resolve a real user before spending a token, and
+ * the id-taking ones MUST check that the id belongs to that user. Neither used
+ * to happen: `getNextQuestion` and friends ran for anonymous callers, which made
+ * the whole Groq/OpenAI/Gemini spend reachable without an account.
+ */
+async function requireUserId(): Promise<string | null> {
+  try {
+    const { userId } = await getCurrentUser()
+    return userId
+  } catch (err) {
+    console.error("[interview] failed to resolve the requesting user:", err)
+    return null
+  }
+}
+
+/**
+ * True when `interviewId` belongs to `userId`. RLS should already prevent
+ * cross-user access, but these actions are the only place that knows the intent,
+ * and the schema's own policies have gaps (see the with-check migration), so the
+ * check is made explicitly rather than delegated.
+ */
+async function ownsInterview(
+  supabase: SupabaseClient,
+  interviewId: string,
+  userId: string
+): Promise<boolean> {
+  const { data, error } = await supabase
+    .from("interviews")
+    .select("id")
+    .eq("id", interviewId)
+    .eq("user_id", userId)
+    .maybeSingle()
+  if (error) {
+    console.error("[interview] ownership lookup failed:", error.message)
+    return false
+  }
+  return !!data
+}
 
 /** A pre-generated question attached to one of the candidate's GitHub repos. */
 type GithubRepoQuestion = { repo?: string; difficulty?: string; question?: string }
@@ -42,6 +86,14 @@ export async function getNextQuestion(
   selectedRepos?: string[]
 ): Promise<{ question: string; source: string; repo_name?: string }> {
   try {
+    const userId = await requireUserId()
+    if (!userId) {
+      return { question: "[Sign in required] Please sign in again to continue your interview.", source: "system" }
+    }
+    if (await isRateLimited(`interview:${userId}`)) {
+      return { question: "[Slow down] You're generating questions very quickly. Please wait a moment.", source: "system" }
+    }
+
     const isGithub = mode === "github" && selectedRepos && selectedRepos.length >= 2
     const aiQuestions = previousMessages.filter(m => m.role === "ai")
     const questionIndex = aiQuestions.length
@@ -222,6 +274,16 @@ export async function generateFeedback(
   }
 
   try {
+    const userId = await requireUserId()
+    if (!userId) {
+      console.warn("[generateFeedback] refused: no authenticated user")
+      return fallbackFeedback
+    }
+    if (await isRateLimited(`feedback:${userId}`)) {
+      console.warn("[generateFeedback] refused: rate limited")
+      return fallbackFeedback
+    }
+
     // NOTE: the feedback prompt itself is built by aiRouter's "generate_feedback"
     // task; the copy that used to be assembled here was never sent anywhere.
 
@@ -284,7 +346,11 @@ export async function generateFeedback(
 export async function checkAndConsumeInterviewAllowance(): Promise<AllowanceResult> {
   try {
     const { tier, userId, isDemo } = await getUserTier()
-    if (isDemo || !userId) return { allowed: true }
+    // Demo sessions (local mock auth only) are exempt. An anonymous caller is
+    // not: returning "allowed" here meant the monthly limit could be skipped by
+    // simply signing out and calling the action directly.
+    if (isDemo) return { allowed: true }
+    if (!userId) return { allowed: false }
     return await checkInterviewAllowance(userId, tier, Date.now(), true)
   } catch (err) {
     console.error("Interview allowance check failed, allowing:", err)
@@ -349,6 +415,10 @@ export async function saveInterviewMessage(
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[saveInterviewMessage] refused: interviewId does not belong to the caller")
+      return false
+    }
 
     const metadata = {
       ...(source ? { source } : {}),
@@ -393,6 +463,10 @@ export async function saveInterviewFeedback(
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[saveInterviewFeedback] refused: interviewId does not belong to the caller")
+      return false
+    }
     const userId = user.userId
 
     // Serialize strengths, studyGuide, and questionEvaluation inside summary since table lacks dedicated columns
@@ -447,6 +521,10 @@ export async function getFeedback(interviewId: string) {
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[getFeedback] refused: interviewId does not belong to the caller")
+      return null
+    }
 
     const { data, error } = await supabase
       .from("feedback")
@@ -510,7 +588,19 @@ export async function analyzeAnswerQuality(
   hints: string[]
   summary: string
 }> {
+  const unavailable = {
+    star_score: 0,
+    relevance_score: 0,
+    clarity_score: 0,
+    confidence_score: 0,
+    hints: [],
+    summary: "",
+  }
   try {
+    const userId = await requireUserId()
+    if (!userId) return unavailable
+    if (await isRateLimited(`answer-analysis:${userId}`)) return unavailable
+
     const systemPrompt = `You are an expert AI interviewer evaluating a candidate's answer to a specific interview question.
 Analyze the candidate's answer for:
 1. STAR method usage — Situation, Task, Action, Result. Did they structure it well?
@@ -557,6 +647,10 @@ export async function generateBehavioralReport(
   physicalMetrics: PhysicalMetric[]
 ): Promise<string> {
   try {
+    const userId = await requireUserId()
+    if (!userId) return ""
+    if (await isRateLimited(`feedback:${userId}`)) return ""
+
     const systemPrompt = `You are an expert public speaking, communications, and career coach.
 Analyze the candidate's combined mock interview data:
 1. Answer quality scores evaluating STAR structure, relevance, clarity, and confidence.
@@ -602,6 +696,10 @@ export async function saveBehavioralReport(
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, sessionId, user.userId))) {
+      console.warn("[saveBehavioralReport] refused: sessionId does not belong to the caller")
+      return false
+    }
     const userId = user.userId
 
     const record = {
@@ -692,6 +790,10 @@ export async function analyzeAnswerSpeaking(
   }
 ): Promise<string> {
   try {
+    const userId = await requireUserId()
+    if (!userId) return ""
+    if (await isRateLimited(`answer-analysis:${userId}`)) return ""
+
     const systemPrompt = `You are an expert public speaking coach.
 Analyze the candidate's answer based on the following computed metrics and the transcript:
 1. Filler words used: ${metrics.fillerCount} times (${JSON.stringify(metrics.fillerWords)})
@@ -736,6 +838,10 @@ export async function generateSessionSpeakingSummary(
   }
 ): Promise<string> {
   try {
+    const userId = await requireUserId()
+    if (!userId) return ""
+    if (await isRateLimited(`feedback:${userId}`)) return ""
+
     const systemPrompt = `You are an expert public speaking, communication, and speech coaching expert.
 Analyze the candidate's aggregated speaking metrics over the entire interview session:
 - Total filler words used: ${aggregatedMetrics.totalFillerCount}
@@ -779,8 +885,17 @@ export async function saveProctoringLog(
     if (user.isDemo) {
       return false
     }
+    if (!user.userId) {
+      console.warn("[saveProctoringLog] refused: no authenticated user")
+      return false
+    }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[saveProctoringLog] refused: interviewId does not belong to the caller")
+      return false
+    }
+
     const { error } = await supabase
       .from("interviews")
       .update({
@@ -812,6 +927,10 @@ export async function getInterviewSession(interviewId: string) {
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[getInterviewSession] refused: interviewId does not belong to the caller")
+      return null
+    }
     const { data, error } = await supabase
       .from("interviews")
       .select("*")

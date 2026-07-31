@@ -112,7 +112,8 @@ Provide the complete README.md content. Respond with ONLY the markdown content, 
         messages: [{ role: "user", content: readmePrompt }],
         max_tokens: 1536,
         temperature: 0.2
-      })
+      }),
+      signal: AbortSignal.timeout(30_000)
     });
 
     let readmeContent = "";

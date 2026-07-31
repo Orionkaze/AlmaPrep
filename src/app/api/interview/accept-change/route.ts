@@ -132,7 +132,7 @@ export async function POST(request: Request) {
     codebase[filename] = updatedContent;
 
     // Save codebase to database
-    await updateSession(session_id, { current_codebase: codebase });
+    await updateSession(session_id, { current_codebase: codebase }, userId);
 
     return NextResponse.json({ updated_codebase: codebase });
   } catch (err) {

@@ -13,11 +13,24 @@ export interface RateLimitResult {
   retryAfter: number // Seconds to wait
 }
 
+/**
+ * Abuse ceilings per user, keyed by the prefix of the rate-limit key
+ * ("interview:<userId>" resolves to `interview`).
+ *
+ * These are NOT product limits — the paywall in config/plans.ts owns those.
+ * Each number is sized well above what a person doing back-to-back interviews
+ * generates, so it only ever catches a script. A single interview costs roughly
+ * 10 `interview` calls and 20 `answer-analysis` calls.
+ *
+ * NOTE: login/signup/forgot-password used to be listed here, which implied a
+ * protection that did not exist — the browser calls Supabase Auth directly, so
+ * no request reaches this server and nothing ever read those keys. Brute-force
+ * protection for those flows is Supabase's own; configure it there.
+ */
 export const ENDPOINT_CONFIGS: Record<string, RateLimitConfig> = {
-  login: { limit: 5, windowMs: 60 * 1000 },
-  signup: { limit: 3, windowMs: 60 * 60 * 1000 },
-  "forgot-password": { limit: 3, windowMs: 60 * 60 * 1000 },
-  interview: { limit: 15, windowMs: 60 * 60 * 1000 },
+  interview: { limit: 60, windowMs: 60 * 60 * 1000 },
+  "answer-analysis": { limit: 120, windowMs: 60 * 60 * 1000 },
+  feedback: { limit: 10, windowMs: 60 * 60 * 1000 },
   coding: { limit: 20, windowMs: 60 * 60 * 1000 },
   "github-analysis": { limit: 5, windowMs: 60 * 60 * 1000 },
   "resume-analysis": { limit: 20, windowMs: 24 * 60 * 60 * 1000 },

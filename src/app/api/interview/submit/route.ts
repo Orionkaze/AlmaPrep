@@ -177,7 +177,8 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
         max_tokens: 1024,
         temperature: 0.1,
         response_format: { type: "json_object" }
-      })
+      }),
+      signal: AbortSignal.timeout(30_000)
     });
 
     if (!logicRes.ok) {
@@ -204,7 +205,8 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
         max_tokens: 1024,
         temperature: 0.1,
         response_format: { type: "json_object" }
-      })
+      }),
+      signal: AbortSignal.timeout(30_000)
     });
 
     if (!qualityRes.ok) {
@@ -271,11 +273,15 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     }
 
     // 6. Update session status to evaluated using helper (handles mock or live DB)
-    await updateSession(session_id, {
-      status: "evaluated",
-      submitted_code: codebase,
-      submitted_at: new Date().toISOString()
-    });
+    await updateSession(
+      session_id,
+      {
+        status: "evaluated",
+        submitted_code: codebase,
+        submitted_at: new Date().toISOString()
+      },
+      userId
+    );
 
     // 7. Map AI evaluation to InterviewReport schema and save
     const logicScore = parsedLogic.logicScore || 0;

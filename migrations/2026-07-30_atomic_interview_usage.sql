@@ -18,9 +18,8 @@
 
 begin;
 
--- The ON CONFLICT below needs this; the previous upsert assumed it existed.
-create unique index if not exists interview_usage_user_month_idx
-  on public.interview_usage (user_id, month);
+-- The ON CONFLICT below resolves against the table's existing
+-- PRIMARY KEY (user_id, month) — no extra index is needed.
 
 -- Returns allowed=false without incrementing when the user is already at the
 -- limit. The `where` clause on the conflict target is what makes the check and

@@ -4,6 +4,7 @@ import { cookies } from "next/headers"
 import { fetchGitHubUserData, analyzeGitHubProfile } from "@/lib/github"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
 import { getCurrentUser } from "@/lib/getCurrentUser"
+import { isRateLimited } from "@/lib/rateLimit"
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,6 +14,15 @@ export async function POST(req: NextRequest) {
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    // Each call crawls five repos (~7 GitHub requests each) and then runs an
+    // LLM pass, and `forceRefresh` skips the cache — so this needs a ceiling.
+    if (await isRateLimited(`github-analysis:${userId}`)) {
+      return NextResponse.json(
+        { error: "You've refreshed your GitHub analysis several times recently. Please try again later." },
+        { status: 429 }
+      )
     }
 
     const supabase = await createClient()

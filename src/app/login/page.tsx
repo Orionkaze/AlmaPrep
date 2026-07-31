@@ -10,6 +10,18 @@ import Footer from "@/components/almaprep/Footer"
 import { useEffect } from "react"
 import { isMockAuthEnabled } from "@/lib/env"
 
+/**
+ * Messages for `?error=` on this page. The value comes from the URL, so it is
+ * mapped to text we wrote rather than rendered as-is — otherwise anyone can put
+ * their own sentence on our sign-in screen and link to it ("Session expired,
+ * confirm your details at ...").
+ */
+const AUTH_ERROR_MESSAGES: Record<string, string> = {
+  auth_failed: "We couldn't complete that sign-in. Please try again.",
+  default: "Something went wrong signing you in. Please try again.",
+}
+
+
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -30,7 +42,7 @@ export default function LoginPage() {
         // back from the auth provider. Seeding it into useState instead would
         // make the server render (no window) disagree with the client's.
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        setError(errParam)
+        setError(AUTH_ERROR_MESSAGES[errParam] ?? AUTH_ERROR_MESSAGES.default)
       }
     }
   }, [])

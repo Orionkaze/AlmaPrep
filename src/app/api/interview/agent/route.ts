@@ -122,7 +122,8 @@ ${codebaseStr.trim()}`;
         max_tokens: 2048,
         temperature: 0.2,
         response_format: { type: "json_object" }
-      })
+      }),
+      signal: AbortSignal.timeout(30_000)
     });
 
     if (!response.ok) {
@@ -145,7 +146,7 @@ ${codebaseStr.trim()}`;
 
     // Append agent response to conversation and save
     conversation.push({ role: "assistant", content: parsedResponse });
-    await updateSession(session_id, { conversation: conversation as unknown as Record<string, unknown>[] });
+    await updateSession(session_id, { conversation: conversation as unknown as Record<string, unknown>[] }, userId);
 
     return NextResponse.json({ agent_response: parsedResponse });
   } catch (err) {

@@ -105,13 +105,13 @@ describe("rate limiter", () => {
     })
 
     it("resolves endpoint configs by key prefix", async () => {
-      // login has limit 5
-      const resultLogin = await checkRateLimit("login:user@example.com")
-      expect(resultLogin.limit).toBe(5)
+      // github-analysis has limit 5
+      const resultGithub = await checkRateLimit("github-analysis:user-1")
+      expect(resultGithub.limit).toBe(5)
 
-      // signup has limit 3
-      const resultSignup = await checkRateLimit("signup:user@example.com")
-      expect(resultSignup.limit).toBe(3)
+      // feedback has limit 10
+      const resultFeedback = await checkRateLimit("feedback:user-1")
+      expect(resultFeedback.limit).toBe(10)
     })
 
     it("resolves endpoint configs by string configuration argument", async () => {
@@ -121,15 +121,15 @@ describe("rate limiter", () => {
     })
 
     it("returns correct metadata fields including remaining, reset, and retryAfter", async () => {
-      const key = "login:meta-test"
-      // login configuration: 5 requests / 60s
+      const key = "github-analysis:meta-test"
+      // github-analysis configuration: 5 requests / hour
       let result = await checkRateLimit(key)
       expect(result.allowed).toBe(true)
       expect(result.remaining).toBe(4)
       expect(result.limit).toBe(5)
       expect(result.retryAfter).toBe(0)
-      // reset time should be: 1767225600000 + 60000 = 1767225660000 ms (1767225660 sec)
-      expect(result.reset).toBe(1767225660)
+      // reset time should be: 1767225600000 + 3600000 = 1767229200000 ms (1767229200 sec)
+      expect(result.reset).toBe(1767229200)
 
       // Exhaust the limit
       await checkRateLimit(key)
@@ -141,19 +141,20 @@ describe("rate limiter", () => {
       result = await checkRateLimit(key)
       expect(result.allowed).toBe(false)
       expect(result.remaining).toBe(0)
-      expect(result.retryAfter).toBe(60) // windowMs is 60s, none of them aged out
+      expect(result.retryAfter).toBe(3600) // windowMs is 1h, none of them aged out
     })
 
     it("calculates accurate Retry-After and reset timing as window shifts", async () => {
-      const key = "signup:retry-test" // 3 requests / hour (3600000 ms)
-      await checkRateLimit(key) // t = 0
+      const key = "retry-test"
+      const config = { limit: 3, windowMs: 60 * 60 * 1000 } // 3 requests / hour
+      await checkRateLimit(key, config) // t = 0
       vi.advanceTimersByTime(10 * 60 * 1000) // t = 10 mins
-      await checkRateLimit(key)
+      await checkRateLimit(key, config)
       vi.advanceTimersByTime(15 * 60 * 1000) // t = 25 mins
-      await checkRateLimit(key)
+      await checkRateLimit(key, config)
 
       // Now we are at limit (3 hits)
-      let result = await checkRateLimit(key)
+      let result = await checkRateLimit(key, config)
       expect(result.allowed).toBe(false)
       // Oldest is at t = 0 (10 + 15 = 25 minutes ago). 
       // Reset is at t = 60 mins. Time remaining = 35 minutes (2100 seconds).
@@ -162,7 +163,7 @@ describe("rate limiter", () => {
       // Advance past the 1-hour mark from the first hit (e.g. by 36 minutes, total elapsed 61 minutes)
       vi.advanceTimersByTime(36 * 60 * 1000) // total elapsed 61 mins.
       // first hit (at 0) is now 61 mins ago, so it ages out. Active hits are at 10 and 25 (which are 51 and 36 mins ago).
-      result = await checkRateLimit(key)
+      result = await checkRateLimit(key, config)
       expect(result.allowed).toBe(true) // allowed since we only have 2 active hits in the last 60 minutes
       expect(result.remaining).toBe(0) // now we have 3 hits again (10, 25, 61)
     })
@@ -180,7 +181,7 @@ describe("rate limiter", () => {
     })
 
     it("handles concurrent requests", async () => {
-      const key = "login:concurrent-test"
+      const key = "github-analysis:concurrent-test"
       const promises = [
         checkRateLimit(key),
         checkRateLimit(key),
@@ -219,7 +220,7 @@ describe("rate limiter", () => {
       // pipeline returns: zremrangebyscore results, zadd results, zcard = 2, oldest zrange member, pexpire
       mockPipelineExec.mockResolvedValue([0, 1, 2, [`${now}:random`], 1])
 
-      const result = await checkRateLimit("login:redis-user")
+      const result = await checkRateLimit("github-analysis:redis-user")
       expect(result.allowed).toBe(true)
       expect(result.remaining).toBe(3) // 5 - 2
       expect(result.limit).toBe(5)
@@ -235,10 +236,10 @@ describe("rate limiter", () => {
       mockPipelineExec.mockResolvedValue([0, 1, 6, [`${oldestTime}:random`], 1])
       mockZRem.mockResolvedValue(1)
 
-      const result = await checkRateLimit("login:redis-blocked")
+      const result = await checkRateLimit("github-analysis:redis-blocked")
       expect(result.allowed).toBe(false)
       expect(result.remaining).toBe(0)
-      expect(result.retryAfter).toBe(10) // 60s window - 50s elapsed = 10s remaining
+      expect(result.retryAfter).toBe(3550) // 1h window - 50s elapsed = 3550s remaining
       expect(mockPipelineExec).toHaveBeenCalledTimes(1)
 
       // Wait for asynchronous zrem call to complete
@@ -251,13 +252,13 @@ describe("rate limiter", () => {
       const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {})
 
       // First call fails Redis, falls back to in-memory, logs error
-      const result1 = await checkRateLimit("login:redis-err-test")
+      const result1 = await checkRateLimit("github-analysis:redis-err-test")
       expect(result1.allowed).toBe(true)
-      expect(result1.remaining).toBe(4) // fallback login limit = 5
+      expect(result1.remaining).toBe(4) // fallback github-analysis limit = 5
       expect(consoleErrorSpy).toHaveBeenCalledTimes(1)
 
       // Second call fails Redis, falls back, BUT throttles the log (no new console.error)
-      const result2 = await checkRateLimit("login:redis-err-test")
+      const result2 = await checkRateLimit("github-analysis:redis-err-test")
       expect(result2.allowed).toBe(true)
       expect(result2.remaining).toBe(3)
       expect(consoleErrorSpy).toHaveBeenCalledTimes(1) // Still 1 due to throttle!
