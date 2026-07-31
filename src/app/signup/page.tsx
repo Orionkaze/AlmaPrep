@@ -51,9 +51,7 @@ export default function SignupPage() {
       } else {
         setLoading(false)
         // Clear demo cookie if signing up with real credentials (not mock mode)
-        const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz") ||
-          process.env.NEXT_PUBLIC_SUPABASE_URL.includes("mock-supabase-project-id")
+        const isMockMode = process.env.MOCK_MODE === "true"
         if (!isMockMode) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
