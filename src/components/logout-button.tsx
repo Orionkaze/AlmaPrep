@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/client"
 import { LogOut } from "lucide-react"
 import { signOut } from "next-auth/react"
+import { clearAllAppStorage } from "@/lib/localStore"
 
 export function LogoutButton() {
   const supabase = createClient()
@@ -18,7 +19,12 @@ export function LogoutButton() {
     // 2. Clear guest/demo cookie
     document.cookie = "mockmate-demo-session=; path=/; max-age=0"
 
-    // 3. Sign out of NextAuth
+    // 3. Drop every locally cached report, schedule and badge baseline. On a
+    //    shared school machine these outlived the session and the next student
+    //    inherited them.
+    clearAllAppStorage()
+
+    // 4. Sign out of NextAuth
     await signOut({ redirect: false })
     window.location.href = "/login"
   }

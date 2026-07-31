@@ -5,6 +5,10 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { getStored } from "@/lib/localStore"
+
+/** Scheduled practice sessions, namespaced per user by lib/localStore. */
+const SCHEDULE_KEY = "scheduled_sessions"
 
 interface ScheduledSession {
   id: string;
@@ -83,22 +87,22 @@ export function MySchedule() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
+    void (async () => {
     try {
-      const stored = localStorage.getItem("mockmate-scheduled-sessions");
+      const stored = await getStored<ScheduledSession[]>(SCHEDULE_KEY);
       if (stored) {
-        const parsed = JSON.parse(stored) as ScheduledSession[];
-        const sorted = [...parsed].sort(
+        const sorted = [...stored].sort(
           (a, b) => new Date(a.scheduledFor).getTime() - new Date(b.scheduledFor).getTime()
         );
-        // Deliberate mount-only read: localStorage does not exist during the
-        // server render, so seeding this into useState would guarantee a
-        // hydration mismatch. One render pass on mount is the trade.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+        // Deliberate mount-only read: storage does not exist during the server
+        // render, so seeding this into useState would guarantee a hydration
+        // mismatch. One render pass on mount is the trade.
         setSessions(sorted);
       }
     } catch (err) {
-      console.error("Failed to parse scheduled sessions", err);
+      console.error("Failed to read scheduled sessions", err);
     }
+    })();
   }, []);
 
   const getDaysInMonth = (year: number, month: number) => {

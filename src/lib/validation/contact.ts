@@ -66,6 +66,13 @@ export function validateContactLead(fd: FormData): Ok | Err {
   if (message.length > 4000) {
     fieldErrors.message = "Please keep your message under 4000 characters."
   }
+  // Hidden fields, but they still arrive from the client and get forwarded.
+  if (plan.length > 60) {
+    fieldErrors.plan = "Unrecognised plan."
+  }
+  if (source.length > 200) {
+    fieldErrors.source = "Unrecognised source."
+  }
 
   if (Object.keys(fieldErrors).length > 0) {
     return { ok: false, fieldErrors }

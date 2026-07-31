@@ -47,6 +47,7 @@ import {
 } from "@/components/ui/dialog"
 import { updateUserProfile, clearAllUserData, updateGithubAutosave } from "@/app/actions/profile"
 import { signOut } from "next-auth/react"
+import { clearAllAppStorage } from "@/lib/localStore"
 import Link from "next/link"
 
 const avatarMap: Record<string, LucideIcon> = {
@@ -232,6 +233,7 @@ export default function ProfileContent({
     document.cookie = "mockmate-demo-session=; path=/; max-age=0"
     document.cookie = "mockmate-demo-user=; path=/; max-age=0"
     document.cookie = "mockmate-demo-resume=; path=/; max-age=0"
+    clearAllAppStorage()
 
     await signOut({ redirect: false })
     window.location.href = "/login"
@@ -245,16 +247,9 @@ export default function ProfileContent({
       // 1. Call server action to clear DB rows and cookies
       await clearAllUserData()
 
-      // 2. Clear client-side localStorage
-      localStorage.removeItem("mockmate_users")
-      
-      // Remove all feedback keys
-      for (let i = localStorage.length - 1; i >= 0; i--) {
-        const key = localStorage.key(i)
-        if (key && (key.startsWith("feedback-") || key.startsWith("mockmate-") || key === "mockmate_users")) {
-          localStorage.removeItem(key)
-        }
-      }
+      // 2. Clear client-side storage. The old prefix list missed
+      //    behavioral-*, proctoring-* and the badge baseline.
+      clearAllAppStorage()
 
       // 3. Clear guest cookies in document
       document.cookie = "mockmate-demo-session=; path=/; max-age=0"

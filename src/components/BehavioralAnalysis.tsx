@@ -3,6 +3,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
+/**
+ * Pinned MediaPipe builds.
+ *
+ * These were loaded from unversioned jsdelivr paths, so the exact third-party
+ * code executing next to a live camera stream changed without notice. Pinning
+ * is the minimum; self-hosting the npm packages would remove the dependency
+ * entirely and is the better long-term move.
+ */
+const FACE_MESH_VERSION = "0.4.1633559619";
+const POSE_VERSION = "0.5.1635988162";
+const FACE_MESH_BASE = `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@${FACE_MESH_VERSION}`;
+const POSE_BASE = `https://cdn.jsdelivr.net/npm/@mediapipe/pose@${POSE_VERSION}`;
+
 interface BehavioralAnalysisProps {
   videoRef: React.RefObject<HTMLVideoElement | null>;
   sessionId: string;
@@ -378,7 +391,7 @@ export default function BehavioralAnalysis({
 
       // Initialize FaceMesh
       const fm = new FaceMeshLib({
-        locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+        locateFile: (file: string) => `${FACE_MESH_BASE}/${file}`,
       });
       fm.setOptions({
         maxNumFaces: 4,
@@ -391,7 +404,7 @@ export default function BehavioralAnalysis({
 
       // Initialize Pose
       const p = new PoseLib({
-        locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`,
+        locateFile: (file: string) => `${POSE_BASE}/${file}`,
       });
       p.setOptions({
         modelComplexity: 1,
@@ -431,12 +444,12 @@ export default function BehavioralAnalysis({
   return (
     <>
       <Script
-        src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"
+        src={`${FACE_MESH_BASE}/face_mesh.js`}
         strategy="lazyOnload"
         onLoad={() => setScriptsLoaded((prev) => ({ ...prev, faceMesh: true }))}
       />
       <Script
-        src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"
+        src={`${POSE_BASE}/pose.js`}
         strategy="lazyOnload"
         onLoad={() => setScriptsLoaded((prev) => ({ ...prev, pose: true }))}
       />

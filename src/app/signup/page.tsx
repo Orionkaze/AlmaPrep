@@ -9,6 +9,7 @@ import Footer from "@/components/almaprep/Footer"
 
 import { useEffect } from "react"
 import { isMockAuthEnabled } from "@/lib/env"
+import { identify, track, EVENTS } from "@/lib/analytics"
 
 export default function SignupPage() {
   const [email, setEmail] = useState("")
@@ -30,6 +31,15 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
+
+    // Matches the rule enforced on /reset-password. Without it, signup accepted
+    // whatever Supabase's default minimum happened to be.
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters.")
+      return
+    }
+
     setLoading(true)
     setError(null)
     setSuccess(null)
@@ -54,6 +64,9 @@ export default function SignupPage() {
         }
         
         if (data.session) {
+          // Attribute the new account. No-op without analytics consent.
+          if (data.user?.id) identify(data.user.id)
+          track(EVENTS.SIGNUP)
           setSuccess("Account created successfully! Redirecting to onboarding...")
           // Wait a second and redirect to onboarding
           setTimeout(() => {

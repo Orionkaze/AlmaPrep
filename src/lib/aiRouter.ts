@@ -10,11 +10,13 @@ import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createClient } from "@/lib/supabase/server"
 import { getProgramQuestions, getSampleQuestions } from "./programs"
 import { readLocalCache } from "@/lib/localCache"
+import { INTERVIEW_END_MARKER } from "@/lib/interviewProtocol"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
   content: string
 }
+
 
 /** A turn as the client stores it: "ai" for the interviewer, anything else for the candidate. */
 interface ChatTranscriptMessage {
@@ -245,7 +247,8 @@ Rules:
 1. Keep your responses concise, natural, and conversational (1-3 sentences maximum). Stay deeply in your persona.
 2. Do not use any markdown formatting, prefixing, headers, or bullet points (e.g. do not write "Question: ..."). Just output the raw conversational text.
 3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category (or from the question bank if available).
-4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.`
+4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Include a concluding salutation (e.g., "It was nice speaking with you. I will now review our conversation to prepare your results.") and do NOT ask any further questions.
+5. When — and ONLY when — you are wrapping up as described in rule 4, end your message with the exact marker ${INTERVIEW_END_MARKER} on its own. Never include that marker in any other message. It is stripped before the candidate sees it, and it is the only signal that ends the interview, so do not omit it when concluding.`
 
     const formattedMessages = (previousMessages as ChatTranscriptMessage[]).map((msg) => ({
       role: msg.role === "ai" ? ("assistant" as const) : ("user" as const),

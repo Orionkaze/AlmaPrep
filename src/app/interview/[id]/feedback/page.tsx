@@ -23,6 +23,21 @@ import {
 import { getFeedback, getBehavioralReport, getInterviewSession } from "@/app/actions/interview"
 import BehavioralReport, { type AnswerScore, type PhysicalMetric, type SpeakingAnalysis } from "@/components/BehavioralReport"
 import type { ViolationRecord } from "@/components/ProctoringMonitor"
+import { getStored } from "@/lib/localStore"
+
+/** Shapes of the client-side fallback copies written by the interview page. */
+type BehavioralLocalCopy = {
+  answerScores: AnswerScore[]
+  physicalMetrics: PhysicalMetric[]
+  finalReport: string
+  speakingAnalysis?: SpeakingAnalysis
+}
+type ProctoringLocalCopy = {
+  violations: ViolationRecord[]
+  totalCount: number
+  isFlagged: boolean
+  terminatedEarly: boolean
+}
 
 const categoryLabels: Record<string, string> = {
   hr: "HR Interview",
@@ -205,34 +220,19 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       }
 
       // 2. Try to fetch from local storage
-      const local = localStorage.getItem(`feedback-${id}`)
+      const local = await getStored<typeof feedback>(`feedback-${id}`)
       if (local) {
-        try {
-          const parsed = JSON.parse(local)
-          setFeedback((prev) => prev || parsed)
-        } catch (e) {
-          console.error("Failed to parse local feedback data:", e)
-        }
+        setFeedback((prev) => prev || local)
       }
 
-      const localBehavioral = localStorage.getItem(`behavioral-${id}`)
+      const localBehavioral = await getStored<BehavioralLocalCopy>(`behavioral-${id}`)
       if (localBehavioral) {
-        try {
-          const parsed = JSON.parse(localBehavioral)
-          setBehavioralData((prev) => prev || parsed)
-        } catch (e) {
-          console.error("Failed to parse local behavioral data:", e)
-        }
+        setBehavioralData((prev) => prev || localBehavioral)
       }
 
-      const localProctoring = localStorage.getItem(`proctoring-${id}`)
+      const localProctoring = await getStored<ProctoringLocalCopy>(`proctoring-${id}`)
       if (localProctoring) {
-        try {
-          const parsed = JSON.parse(localProctoring)
-          setProctoringData((prev) => prev || parsed)
-        } catch (e) {
-          console.error("Failed to parse local proctoring data:", e)
-        }
+        setProctoringData((prev) => prev || localProctoring)
       }
 
       // 3. Fallback to mock data if still null

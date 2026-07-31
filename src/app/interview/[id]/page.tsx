@@ -36,14 +36,23 @@ import RealTimeHint from "@/components/RealTimeHint"
 import ProctoringMonitor, { ViolationRecord } from "@/components/ProctoringMonitor"
 import { ShieldAlert } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { setStored } from "@/lib/localStore"
+import { isClosingMessage, stripEndMarker } from "@/lib/interviewProtocol"
 
 // SpeechRecognition type declarations for TS
-interface SpeechRecognitionResultLike {
+interface SpeechRecognitionAlternativeLike {
   transcript: string
 }
 
+/** One recognition result: alternatives, plus whether it is settled. */
+interface SpeechRecognitionResultLike extends ArrayLike<SpeechRecognitionAlternativeLike> {
+  isFinal: boolean
+}
+
 interface SpeechRecognitionEventLike {
-  results: ArrayLike<ArrayLike<SpeechRecognitionResultLike>>
+  /** Index of the first result changed by this event. */
+  resultIndex: number
+  results: ArrayLike<SpeechRecognitionResultLike>
 }
 
 interface SpeechRecognitionErrorEventLike {
@@ -161,6 +170,7 @@ export default function InterviewPage({
   const [realTimeHints, setRealTimeHints] = useState<string[]>([])
   const [showHint, setShowHint] = useState(false)
   const [isBehavioralActive, setIsBehavioralActive] = useState(false)
+  const speakTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pendingAnalysesRef = useRef<Promise<AnswerQualityAnalysis | null>[]>([])
   const pendingSpeakingAnalysesRef = useRef<Promise<SpeakingScoreEntry | null>[]>([])
 
@@ -217,13 +227,19 @@ export default function InterviewPage({
       recognition.interimResults = true
       recognition.lang = "en-US"
 
+      // Append only what is new. Rebuilding from index 0 on every event was
+      // quadratic over a long answer and wiped anything the candidate had
+      // typed or corrected by hand between results.
+      let finalTranscript = ""
       recognition.onresult = (event) => {
-        let newTranscript = ""
-        for (let i = 0; i < event.results.length; ++i) {
-          newTranscript += event.results[i][0].transcript
+        let interim = ""
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          const result = event.results[i]
+          const text = result[0].transcript
+          if (result.isFinal) finalTranscript += text
+          else interim += text
         }
-
-        setInput(newTranscript)
+        setInput((finalTranscript + interim).trim())
       }
 
       recognition.onerror = (event) => {
@@ -241,6 +257,30 @@ export default function InterviewPage({
       }
 
       recognitionRef.current = recognition
+
+      return () => {
+        // Without this the recogniser survives navigation — the mic stays live
+        // and, in Chrome, audio keeps streaming to Google's speech service
+        // after the candidate has left the page.
+        recognition.onresult = null
+        recognition.onerror = null
+        recognition.onend = null
+        try {
+          recognition.stop()
+        } catch {
+          // already stopped
+        }
+        recognitionRef.current = null
+      }
+    }
+  }, [])
+
+  // Stop any in-flight narration when leaving the interview.
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel()
+      }
     }
   }, [])
 
@@ -267,15 +307,14 @@ export default function InterviewPage({
   }
 
   const speak = (text: string) => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      
-      // Some browsers require voices to be loaded, or a slight delay
-      setTimeout(() => {
-        window.speechSynthesis.speak(utterance)
-      }, 50)
-    }
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return
+    window.speechSynthesis.cancel()
+    if (speakTimerRef.current) clearTimeout(speakTimerRef.current)
+    const utterance = new SpeechSynthesisUtterance(text)
+    // Some browsers require voices to be loaded, or a slight delay
+    speakTimerRef.current = setTimeout(() => {
+      window.speechSynthesis.speak(utterance)
+    }, 50)
   }
 
   // Start the interview session and get the first question
@@ -305,7 +344,7 @@ export default function InterviewPage({
       }
 
       // 2. Fetch introductory question from fallback chain
-      const { question: firstQuestion, source, repo_name } = await getNextQuestion(
+      const { question: rawFirstQuestion, source, repo_name } = await getNextQuestion(
         category, 
         [], 
         useResume, 
@@ -314,6 +353,10 @@ export default function InterviewPage({
         selectedRepos
       )
       if (!active) return
+
+      // Defensive: the marker should never appear on an opening question, but
+      // it must never reach the candidate if the model misfires.
+      const firstQuestion = stripEndMarker(rawFirstQuestion)
 
       // Speak first question
       speak(firstQuestion)
@@ -351,241 +394,258 @@ export default function InterviewPage({
       setIsListening(false)
     }
 
-    const userText = input.trim()
-    const userMsg: Message = {
-      id: `user-${Date.now()}`,
-      role: "user",
-      content: userText,
-    }
-    setMessages(prev => [...prev, userMsg])
-    setInput("")
-    setIsAiTyping(true)
-
-    // 1. Save user answer to DB if session exists
-    if (dbSessionId) {
-      await saveInterviewMessage(dbSessionId, "user", userText)
-    }
-
-    // Run Pipeline 1 Answer Quality Analysis (asynchronously, non-blocking)
-    const lastQuestion = messages[messages.length - 1]?.content || "Please introduce yourself."
-    const analysisPromise = analyzeAnswerQuality(lastQuestion, userText).then((analysis) => {
-      if (analysis) {
-        setAnswerScores((prev) => [...prev, analysis])
-        // Show real-time hints based on physical metrics + answer quality
-        const recentPhysical = physicalMetrics[physicalMetrics.length - 1]
-        const newHints = [...analysis.hints]
-        if (recentPhysical) {
-          if (recentPhysical.eye_contact_percent < 70) {
-            newHints.push("Try to look directly at the camera more often.")
-          }
-          if (recentPhysical.posture_stability_score < 70) {
-            newHints.push("Sit upright and maintain a steady posture.")
-          }
-          if (recentPhysical.fidgeting_count > 5) {
-            newHints.push("Try to minimize hand movements.")
-          }
-        }
-        setRealTimeHints(newHints.slice(0, 2))
-        setShowHint(true)
+    // The whole send path talks to the network. Without a catch, one failed
+    // call skipped every line below it — including setIsAiTyping(false) — and
+    // left the UI stuck on "AI is typing" with no way back.
+    try {
+      const userText = input.trim()
+      const userMsg: Message = {
+        id: `user-${Date.now()}`,
+        role: "user",
+        content: userText,
       }
-      return analysis
-    }).catch(err => {
-      console.error("Error analyzing answer quality:", err)
-      return null
-    })
-    pendingAnalysesRef.current.push(analysisPromise)
+      setMessages(prev => [...prev, userMsg])
+      setInput("")
+      setIsAiTyping(true)
 
-    // Run Pipeline 1 Speaking Analysis (asynchronously, non-blocking)
-    const speakingMetrics = parseSpeakingMetrics(userText)
-    const speakingPromise = analyzeAnswerSpeaking(lastQuestion, userText, speakingMetrics).then((feedback) => {
-      const result = {
-        metrics: speakingMetrics,
-        feedback: feedback
-      }
-      setSpeakingScores((prev) => [...prev, result])
-      return result
-    }).catch(err => {
-      console.error("Error in speaking analysis:", err)
-      return null
-    })
-    pendingSpeakingAnalysesRef.current.push(speakingPromise)
-
-    // 2. Build history for Gemini
-    const history: { role: "user" | "ai"; content: string }[] = [...messages, userMsg].map((m) => ({
-      role: m.role,
-      content: m.content,
-    }))
-
-    // 3. Generate follow-up question
-    const mode = isGithubMode ? "github" : "general"
-    const { question: nextQuestion, source: nextSource, repo_name: nextRepoName } = await getNextQuestion(
-      category, 
-      history, 
-      useResume, 
-      selectedPersona,
-      mode,
-      selectedRepos
-    )
-
-    // Speak next question (including the final salutation)
-    speak(nextQuestion)
-
-    // 4. Save AI question to DB if session exists
-    if (dbSessionId) {
-      await saveInterviewMessage(dbSessionId, "ai", nextQuestion, nextSource, nextRepoName)
-    }
-
-    const aiMsg: Message = {
-      id: `ai-${Date.now()}`,
-      role: "ai",
-      content: nextQuestion,
-    }
-    setMessages(prev => [...prev, aiMsg])
-    
-    const nextIndex = questionIndex + 1
-    setQuestionIndex(nextIndex)
-
-    // 5. Wrap up if 10 questions have been asked or conclusion is reached
-    const isConclusion = nextQuestion.toLowerCase().includes("feedback") || 
-                         nextQuestion.toLowerCase().includes("analyze") ||
-                         nextIndex >= 10
-
-    if (isConclusion) {
-      setIsComplete(true)
-      setIsAiTyping(true) // Keep typing visible while generating report
-      
-      const finalHistory: { role: "user" | "ai"; content: string }[] = [
-        ...history,
-        { role: "ai", content: nextQuestion }
-      ]
-      const feedback = await generateFeedback(category, finalHistory)
-      
-      // Save feedback report to DB if session exists
+      // 1. Save user answer to DB if session exists
       if (dbSessionId) {
-        await saveInterviewFeedback(
-          dbSessionId,
-          feedback.score,
-          feedback.summary,
-          feedback.improvements,
-          feedback.strengths,
-          feedback.studyGuide
-        )
+        await saveInterviewMessage(dbSessionId, "user", userText)
       }
 
-      // Save to localStorage for client-side routing reading fallback
-      const storageKey = `feedback-${dbSessionId || category}`
-      localStorage.setItem(storageKey, JSON.stringify(feedback))
-
-      // Wait for all pending answer quality analyses to complete
-      const resolvedScores = await Promise.all(pendingAnalysesRef.current)
-      const validScores = resolvedScores.filter((s): s is AnswerQualityAnalysis => Boolean(s))
-
-      // Generate final behavioral report
-      const behavioralReportText = await generateBehavioralReport(validScores as unknown as Record<string, unknown>[], physicalMetrics as unknown as Record<string, unknown>[])
-
-      // Wait for all pending speaking analyses to complete
-      const resolvedSpeaking = await Promise.all(pendingSpeakingAnalysesRef.current)
-      const validSpeaking = resolvedSpeaking.filter((s): s is SpeakingScoreEntry => Boolean(s))
-
-      // Aggregate all speaking metrics
-      let totalFillerCount = 0
-      const fillerFreq: Record<string, number> = {}
-      let totalWords = 0
-      let totalSentences = 0
-      let totalHesitations = 0
-      const overusedWordsFreq: Record<string, number> = {}
-
-      validSpeaking.forEach((item) => {
-        const m = item.metrics
-        totalFillerCount += m.fillerCount
-        
-        Object.entries(m.fillerWords).forEach(([word, count]) => {
-          fillerFreq[word] = (fillerFreq[word] || 0) + (count as number)
-        })
-
-        totalWords += m.wordCount
-        const sentenceCount = m.avgWordsPerSentence > 0 ? Math.round(m.wordCount / m.avgWordsPerSentence) : 1
-        totalSentences += sentenceCount
-
-        Object.values(m.hesitationPhrases).forEach((count) => {
-          totalHesitations += count as number
-        })
-
-        m.overusedWords.forEach((word: string) => {
-          overusedWordsFreq[word] = (overusedWordsFreq[word] || 0) + 1
-        })
+      // Run Pipeline 1 Answer Quality Analysis (asynchronously, non-blocking)
+      const lastQuestion = messages[messages.length - 1]?.content || "Please introduce yourself."
+      const analysisPromise = analyzeAnswerQuality(lastQuestion, userText).then((analysis) => {
+        if (analysis) {
+          setAnswerScores((prev) => [...prev, analysis])
+          // Show real-time hints based on physical metrics + answer quality
+          const recentPhysical = physicalMetrics[physicalMetrics.length - 1]
+          const newHints = [...analysis.hints]
+          if (recentPhysical) {
+            if (recentPhysical.eye_contact_percent < 70) {
+              newHints.push("Try to look directly at the camera more often.")
+            }
+            if (recentPhysical.posture_stability_score < 70) {
+              newHints.push("Sit upright and maintain a steady posture.")
+            }
+            if (recentPhysical.fidgeting_count > 5) {
+              newHints.push("Try to minimize hand movements.")
+            }
+          }
+          setRealTimeHints(newHints.slice(0, 2))
+          setShowHint(true)
+        }
+        return analysis
+      }).catch(err => {
+        console.error("Error analyzing answer quality:", err)
+        return null
       })
+      pendingAnalysesRef.current.push(analysisPromise)
 
-      const mostUsedFillers = Object.entries(fillerFreq)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3)
-        .map(([w]) => w)
-
-      const avgSentenceComplexity = totalSentences > 0 ? Math.round(totalWords / totalSentences) : 15
-
-      const avgHesitations = validSpeaking.length > 0 ? totalHesitations / validSpeaking.length : 0
-      let hesitationScore: "Low" | "Medium" | "High" = "Low"
-      if (avgHesitations > 3) hesitationScore = "High"
-      else if (avgHesitations > 1) hesitationScore = "Medium"
-
-      const mostOverusedWords = Object.entries(overusedWordsFreq)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3)
-        .map(([w]) => w)
-
-      const aggregatedSpeaking = {
-        totalFillerCount,
-        mostUsedFillers,
-        avgSentenceComplexity,
-        mostOverusedWords,
-        hesitationScore
-      }
-
-      const speakingSummaryText = await generateSessionSpeakingSummary(aggregatedSpeaking)
-
-      const speakingAnalysisData = {
-        answerMetrics: validSpeaking,
-        sessionSummary: {
-          metrics: aggregatedSpeaking,
-          summary: speakingSummaryText
+      // Run Pipeline 1 Speaking Analysis (asynchronously, non-blocking)
+      const speakingMetrics = parseSpeakingMetrics(userText)
+      const speakingPromise = analyzeAnswerSpeaking(lastQuestion, userText, speakingMetrics).then((feedback) => {
+        const result = {
+          metrics: speakingMetrics,
+          feedback: feedback
         }
-      }
+        setSpeakingScores((prev) => [...prev, result])
+        return result
+      }).catch(err => {
+        console.error("Error in speaking analysis:", err)
+        return null
+      })
+      pendingSpeakingAnalysesRef.current.push(speakingPromise)
 
-      // Save behavioral report + speaking report to Supabase
-      if (dbSessionId) {
-        await saveBehavioralReport(
-          dbSessionId,
-          validScores as unknown as Record<string, unknown>[],
-          physicalMetrics as unknown as Record<string, unknown>[],
-          behavioralReportText,
-          speakingAnalysisData
-        )
-      }
-
-      // Save proctoring summary log
-      const proctoringLog = {
-        violations,
-        totalCount: violationsCount,
-        isFlagged: violationsCount >= 3,
-        terminatedEarly: false
-      }
-      if (dbSessionId) {
-        await saveProctoringLog(dbSessionId, proctoringLog as unknown as { violations: Record<string, unknown>[]; totalCount: number; isFlagged: boolean; terminatedEarly: boolean })
-      }
-      const proctoringStorageKey = `proctoring-${dbSessionId || category}`
-      localStorage.setItem(proctoringStorageKey, JSON.stringify(proctoringLog))
-
-      // Save behavioral report to localStorage for client fallback
-      const behavioralStorageKey = `behavioral-${dbSessionId || category}`
-      localStorage.setItem(behavioralStorageKey, JSON.stringify({
-        answerScores: validScores,
-        physicalMetrics,
-        finalReport: behavioralReportText,
-        speakingAnalysis: speakingAnalysisData
+      // 2. Build history for Gemini
+      const history: { role: "user" | "ai"; content: string }[] = [...messages, userMsg].map((m) => ({
+        role: m.role,
+        content: m.content,
       }))
 
-      setIsAiTyping(false)
-    } else {
+      // 3. Generate follow-up question
+      const mode = isGithubMode ? "github" : "general"
+      const { question: rawNextQuestion, source: nextSource, repo_name: nextRepoName } = await getNextQuestion(
+        category, 
+        history, 
+        useResume, 
+        selectedPersona,
+        mode,
+        selectedRepos
+      )
+
+      // The interviewer marks its closing message explicitly; strip the marker
+      // before anything shows or speaks it.
+      const modelSignalledEnd = isClosingMessage(rawNextQuestion)
+      const nextQuestion = stripEndMarker(rawNextQuestion)
+
+      // Speak next question (including the final salutation)
+      speak(nextQuestion)
+
+      // 4. Save AI question to DB if session exists
+      if (dbSessionId) {
+        await saveInterviewMessage(dbSessionId, "ai", nextQuestion, nextSource, nextRepoName)
+      }
+
+      const aiMsg: Message = {
+        id: `ai-${Date.now()}`,
+        role: "ai",
+        content: nextQuestion,
+      }
+      setMessages(prev => [...prev, aiMsg])
+    
+      const nextIndex = questionIndex + 1
+      setQuestionIndex(nextIndex)
+
+      // 5. Wrap up if 10 questions have been asked or conclusion is reached
+      // Only the explicit marker, or the hard question cap, ends the interview.
+      // Matching on words like "feedback" or "analyze" used to end it early on
+      // perfectly ordinary questions ("a time you received difficult feedback").
+      const isConclusion = modelSignalledEnd || nextIndex >= 10
+
+      if (isConclusion) {
+        setIsComplete(true)
+        setIsAiTyping(true) // Keep typing visible while generating report
+      
+        const finalHistory: { role: "user" | "ai"; content: string }[] = [
+          ...history,
+          { role: "ai", content: nextQuestion }
+        ]
+        const feedback = await generateFeedback(category, finalHistory)
+      
+        // Save feedback report to DB if session exists
+        if (dbSessionId) {
+          await saveInterviewFeedback(
+            dbSessionId,
+            feedback.score,
+            feedback.summary,
+            feedback.improvements,
+            feedback.strengths,
+            feedback.studyGuide
+          )
+        }
+
+        // Client-side fallback copy, namespaced to this user. It used to be
+        // written under `feedback-<category>` when no session row existed, which
+        // on a shared school machine handed the next student the last one's report.
+        await setStored(`feedback-${dbSessionId || category}`, feedback)
+
+        // Wait for all pending answer quality analyses to complete
+        const resolvedScores = await Promise.all(pendingAnalysesRef.current)
+        const validScores = resolvedScores.filter((s): s is AnswerQualityAnalysis => Boolean(s))
+
+        // Generate final behavioral report
+        const behavioralReportText = await generateBehavioralReport(validScores as unknown as Record<string, unknown>[], physicalMetrics as unknown as Record<string, unknown>[])
+
+        // Wait for all pending speaking analyses to complete
+        const resolvedSpeaking = await Promise.all(pendingSpeakingAnalysesRef.current)
+        const validSpeaking = resolvedSpeaking.filter((s): s is SpeakingScoreEntry => Boolean(s))
+
+        // Aggregate all speaking metrics
+        let totalFillerCount = 0
+        const fillerFreq: Record<string, number> = {}
+        let totalWords = 0
+        let totalSentences = 0
+        let totalHesitations = 0
+        const overusedWordsFreq: Record<string, number> = {}
+
+        validSpeaking.forEach((item) => {
+          const m = item.metrics
+          totalFillerCount += m.fillerCount
+        
+          Object.entries(m.fillerWords).forEach(([word, count]) => {
+            fillerFreq[word] = (fillerFreq[word] || 0) + (count as number)
+          })
+
+          totalWords += m.wordCount
+          const sentenceCount = m.avgWordsPerSentence > 0 ? Math.round(m.wordCount / m.avgWordsPerSentence) : 1
+          totalSentences += sentenceCount
+
+          Object.values(m.hesitationPhrases).forEach((count) => {
+            totalHesitations += count as number
+          })
+
+          m.overusedWords.forEach((word: string) => {
+            overusedWordsFreq[word] = (overusedWordsFreq[word] || 0) + 1
+          })
+        })
+
+        const mostUsedFillers = Object.entries(fillerFreq)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3)
+          .map(([w]) => w)
+
+        const avgSentenceComplexity = totalSentences > 0 ? Math.round(totalWords / totalSentences) : 15
+
+        const avgHesitations = validSpeaking.length > 0 ? totalHesitations / validSpeaking.length : 0
+        let hesitationScore: "Low" | "Medium" | "High" = "Low"
+        if (avgHesitations > 3) hesitationScore = "High"
+        else if (avgHesitations > 1) hesitationScore = "Medium"
+
+        const mostOverusedWords = Object.entries(overusedWordsFreq)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3)
+          .map(([w]) => w)
+
+        const aggregatedSpeaking = {
+          totalFillerCount,
+          mostUsedFillers,
+          avgSentenceComplexity,
+          mostOverusedWords,
+          hesitationScore
+        }
+
+        const speakingSummaryText = await generateSessionSpeakingSummary(aggregatedSpeaking)
+
+        const speakingAnalysisData = {
+          answerMetrics: validSpeaking,
+          sessionSummary: {
+            metrics: aggregatedSpeaking,
+            summary: speakingSummaryText
+          }
+        }
+
+        // Save behavioral report + speaking report to Supabase
+        if (dbSessionId) {
+          await saveBehavioralReport(
+            dbSessionId,
+            validScores as unknown as Record<string, unknown>[],
+            physicalMetrics as unknown as Record<string, unknown>[],
+            behavioralReportText,
+            speakingAnalysisData
+          )
+        }
+
+        // Save proctoring summary log
+        const proctoringLog = {
+          violations,
+          totalCount: violationsCount,
+          isFlagged: violationsCount >= 3,
+          terminatedEarly: false
+        }
+        if (dbSessionId) {
+          await saveProctoringLog(dbSessionId, proctoringLog as unknown as { violations: Record<string, unknown>[]; totalCount: number; isFlagged: boolean; terminatedEarly: boolean })
+        }
+        await setStored(`proctoring-${dbSessionId || category}`, proctoringLog)
+        await setStored(`behavioral-${dbSessionId || category}`, {
+          answerScores: validScores,
+          physicalMetrics,
+          finalReport: behavioralReportText,
+          speakingAnalysis: speakingAnalysisData
+        })
+
+        setIsAiTyping(false)
+      } else {
+        setIsAiTyping(false)
+      }
+    } catch (err) {
+      console.error("Failed to continue the interview:", err)
+      setMessages(prev => [...prev, {
+        id: `ai-error-${Date.now()}`,
+        role: "ai",
+        content: "Sorry — something went wrong on our side. Your answer was recorded; please send it again to continue.",
+      }])
+    } finally {
       setIsAiTyping(false)
     }
   }
@@ -615,8 +675,7 @@ export default function InterviewPage({
       await saveProctoringLog(dbSessionId, proctoringLog as unknown as { violations: Record<string, unknown>[]; totalCount: number; isFlagged: boolean; terminatedEarly: boolean })
     }
 
-    const proctoringStorageKey = `proctoring-${dbSessionId || category}`
-    localStorage.setItem(proctoringStorageKey, JSON.stringify(proctoringLog))
+    await setStored(`proctoring-${dbSessionId || category}`, proctoringLog)
 
     // Re-exit fullscreen cleanly
     if (document.fullscreenElement) {

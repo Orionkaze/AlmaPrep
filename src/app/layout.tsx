@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import PostHogProvider from "@/components/PostHogProvider";
+import CookieConsent from "@/components/CookieConsent";
 import FontAwesomeLoader from "@/components/FontAwesomeLoader";
 import { SITE_URL } from "@/lib/siteConfig";
 import { organizationLd, websiteLd } from "@/lib/seo";
@@ -127,6 +128,7 @@ export default function RootLayout({
             <PostHogProvider>
               {children}
             </PostHogProvider>
+            <CookieConsent />
             <Toaster />
           </TooltipProvider>
         </ThemeProvider>

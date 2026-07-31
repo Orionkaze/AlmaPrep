@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/institutions/demo", changeFrequency: "monthly", priority: 0.6 },
     { path: "/pricing", changeFrequency: "monthly", priority: 0.8 },
     { path: "/contact-sales", changeFrequency: "yearly", priority: 0.5 },
+    { path: "/contact", changeFrequency: "yearly", priority: 0.4 },
     { path: "/about", changeFrequency: "monthly", priority: 0.5 },
     { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
     { path: "/blog/admission-interview-questions", changeFrequency: "monthly", priority: 0.6 },

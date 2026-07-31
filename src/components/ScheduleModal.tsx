@@ -5,6 +5,18 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { getStored, setStored } from "@/lib/localStore"
+
+/** Scheduled practice sessions, namespaced per user by lib/localStore. */
+const SCHEDULE_KEY = "scheduled_sessions"
+type ScheduledSessionRecord = {
+  id?: string
+  title: string
+  scheduledFor: string
+  category?: string
+  createdAt?: string
+  missedNotified?: boolean
+}
 
 interface ScheduleModalProps {
   open: boolean;
@@ -15,23 +27,23 @@ interface ScheduleModalProps {
 export function ScheduleModal({ open, onOpenChange, defaultTitle = "Interview Session" }: ScheduleModalProps) {
   const [date, setDate] = useState("");
   
-  const handleSchedule = () => {
+  const handleSchedule = async () => {
     if (!date) {
       toast.error("Please select a date and time.");
       return;
     }
 
     try {
-      // Mock saving to local storage for the dashboard to read
-      const existing = localStorage.getItem("mockmate-scheduled-sessions");
-      const sessions = existing ? JSON.parse(existing) : [];
+      // Saved locally for the dashboard to read, namespaced to this user.
+      const existing = await getStored<ScheduledSessionRecord[]>(SCHEDULE_KEY);
+      const sessions: ScheduledSessionRecord[] = existing ?? [];
       sessions.push({
         id: crypto.randomUUID(),
         title: defaultTitle,
         scheduledFor: new Date(date).toISOString(),
         createdAt: new Date().toISOString()
       });
-      localStorage.setItem("mockmate-scheduled-sessions", JSON.stringify(sessions));
+      await setStored(SCHEDULE_KEY, sessions);
       
       toast.success("Session scheduled successfully!");
       onOpenChange(false);

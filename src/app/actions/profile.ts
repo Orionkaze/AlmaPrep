@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { getCurrentUser } from "@/lib/getCurrentUser"
+import { createAdminClient } from "@/lib/supabase/admin"
 
 export async function createUserProfile(
   username: string,
@@ -98,36 +99,62 @@ export async function clearAllUserData(): Promise<{ success: boolean; error?: st
     if (!user.isDemo && user.userId) {
       const supabase = await createClient()
       const userId = user.userId
-      
-      // 1. Delete interviews (which cascade deletes messages and feedback)
-      const { error: interviewErr } = await supabase
-        .from("interviews")
-        .delete()
-        .eq("user_id", userId)
-      if (interviewErr) {
-        console.error("clearAllUserData: failed to delete interviews", interviewErr)
+
+      // Order matters: interview_reports references interview_sessions, and
+      // both hang off auth.users (NOT public.users) with no ON DELETE CASCADE,
+      // so deleting the profile row never touched them. Submitted code, agent
+      // transcripts and hiring recommendations used to survive "delete my data"
+      // entirely. Everything else cascades from public.users, but is listed
+      // explicitly so this function stops depending on FK definitions it does
+      // not own.
+      const deletions: Array<[string, PromiseLike<{ error: { message: string } | null }>]> = [
+        ["interview_reports", supabase.from("interview_reports").delete().eq("user_id", userId)],
+        ["interview_sessions", supabase.from("interview_sessions").delete().eq("user_id", userId)],
+        ["coding_solutions", supabase.from("coding_solutions").delete().eq("user_id", userId)],
+        ["behavioral_analysis", supabase.from("behavioral_analysis").delete().eq("user_id", userId)],
+        ["github_analysis", supabase.from("github_analysis").delete().eq("user_id", userId)],
+        ["activity_log", supabase.from("activity_log").delete().eq("user_id", userId)],
+        ["user_badges", supabase.from("user_badges").delete().eq("user_id", userId)],
+        ["notifications", supabase.from("notifications").delete().eq("user_id", userId)],
+        ["interviews", supabase.from("interviews").delete().eq("user_id", userId)],
+        ["interview_usage", supabase.from("interview_usage").delete().eq("user_id", userId)],
+        ["users", supabase.from("users").delete().eq("id", userId)],
+      ]
+
+      const failed: string[] = []
+      for (const [table, query] of deletions) {
+        const { error } = await query
+        if (error) {
+          console.error(`clearAllUserData: failed to delete ${table}`, error)
+          failed.push(table)
+        }
       }
 
-      // 2. Delete interview usage stats
-      const { error: usageErr } = await supabase
-        .from("interview_usage")
-        .delete()
-        .eq("user_id", userId)
-      if (usageErr) {
-        console.error("clearAllUserData: failed to delete usage", usageErr)
+      // Remove the auth account itself. Without the service-role key we can
+      // only clear the data and sign out — say so rather than reporting a
+      // deletion that did not happen.
+      const admin = createAdminClient()
+      if (admin) {
+        const { error: authErr } = await admin.auth.admin.deleteUser(userId)
+        if (authErr) {
+          console.error("clearAllUserData: failed to delete auth user", authErr.message)
+          failed.push("account")
+        }
+      } else {
+        console.warn(
+          "clearAllUserData: no service-role client — data cleared but the account still exists"
+        )
+        failed.push("account")
       }
 
-      // 3. Delete user profile record
-      const { error: profileErr } = await supabase
-        .from("users")
-        .delete()
-        .eq("id", userId)
-      if (profileErr) {
-        console.error("clearAllUserData: failed to delete profile", profileErr)
-      }
-
-      // 4. Sign out from Supabase Auth
       await supabase.auth.signOut()
+
+      if (failed.length > 0) {
+        return {
+          success: false,
+          error: `Your data was cleared, but these could not be removed: ${failed.join(", ")}. Please contact support.`,
+        }
+      }
     }
 
     return { success: true }

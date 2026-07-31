@@ -6,13 +6,16 @@ import Link from "next/link"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import { track, EVENTS } from "@/lib/analytics"
+import { startCheckout, type CheckoutState } from "@/app/actions/checkout"
+import {
+  PRO_BILLING_CYCLES,
+  perMonthPrice,
+  cycleSavingPercent,
+  formatPrice,
+  type BillingCycleId,
+} from "@/config/plans"
 
-const PLANS = {
-  monthly: { id: "pro-monthly", price: 12, total: 12, per: "/ month", billed: "Billed monthly. Cancel anytime.", save: null as string | null },
-  season: { id: "pro-season", price: 29, total: 29, per: "one-time", billed: "One-time charge, covers 3 months. No renewal.", save: "For one admissions season" },
-  annual: { id: "pro-annual", price: 9, total: 108, per: "/ month", billed: "Billed $108 once a year.", save: "Save 25%" },
-}
-type Cycle = keyof typeof PLANS
+type Cycle = BillingCycleId
 
 function CheckoutInner() {
   const searchParams = useSearchParams()
@@ -22,23 +25,49 @@ function CheckoutInner() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [processing, setProcessing] = useState(false)
-  const [paid, setPaid] = useState(false)
+  // A hosted checkout reports success by returning to ?status=success. It is
+  // never set locally — the old code flipped it after a 900ms timer with no
+  // payment taken, which told people they had bought something they hadn't.
+  const paid = searchParams.get("status") === "success"
+  const [notice, setNotice] = useState<string | null>(null)
 
-  const plan = PLANS[cycle]
+  const plan = PRO_BILLING_CYCLES[cycle]
   const total = plan.total
+  const monthly = perMonthPrice(plan)
+  const saving = cycleSavingPercent(plan)
+  const annualSaving = cycleSavingPercent(PRO_BILLING_CYCLES.annual)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { track(EVENTS.CHECKOUT_VIEWED, { cycle: initialCycle }) }, [])
 
-  const handlePay = (e: React.FormEvent) => {
+  const handlePay = async (e: React.FormEvent) => {
     e.preventDefault()
-    track(EVENTS.UPGRADE_CLICKED, { cycle, plan: plan.id, amount: total })
-    // ── Razorpay integration slot ────────────────────────────────────────────
-    // Wire the live Razorpay checkout here: create an order server-side, then
-    // open the Razorpay modal with the returned order_id. This preview simulates
-    // a successful charge so the flow can be demoed end-to-end.
+    track(EVENTS.UPGRADE_CLICKED, { cycle, plan: plan.sku, amount: total })
     setProcessing(true)
-    setTimeout(() => { setProcessing(false); setPaid(true) }, 900)
+    setNotice(null)
+
+    // This used to fake a successful charge — it set "You're all set" after a
+    // 900ms timer, with no payment taken and no tier granted. It now goes
+    // through the same server action as /upgrade, which reports honestly that
+    // payments are not connected yet.
+    const fd = new FormData()
+    fd.set("plan", "pro")
+    fd.set("cycle", plan.id)
+
+    const state: CheckoutState = await startCheckout({ status: "idle" }, fd)
+    setProcessing(false)
+
+    if (state.status === "redirect") {
+      window.location.href = state.url
+      return
+    }
+    if (state.status === "comingSoon") {
+      setNotice("Payments aren't connected yet — we'll email you the moment Pro opens up.")
+      return
+    }
+    if (state.status === "error") {
+      setNotice(state.error)
+    }
   }
 
   return (
@@ -73,7 +102,9 @@ function CheckoutInner() {
                       <button type="button" className={cycle === "monthly" ? "active" : ""} onClick={() => setCycle("monthly")}>Monthly</button>
                       <button type="button" className={cycle === "season" ? "active" : ""} onClick={() => setCycle("season")}>Season</button>
                       <button type="button" className={cycle === "annual" ? "active" : ""} onClick={() => setCycle("annual")}>
-                        Annual{cycle === "annual" && <span className="save-tag">-25%</span>}
+                        Annual{cycle === "annual" && annualSaving !== null && (
+                          <span className="save-tag">-{annualSaving}%</span>
+                        )}
                       </button>
                     </div>
                   </div>
@@ -96,13 +127,22 @@ function CheckoutInner() {
                   <h3 style={{ margin: "24px 0 16px" }}>Payment</h3>
                   <div className="card-mount">
                     <i className="fa-solid fa-lock" style={{ marginRight: 8 }} />
-                    Razorpay secure checkout mounts here
-                    <div style={{ fontSize: ".78rem", marginTop: 6 }}>Cards, UPI, net-banking &amp; wallets — connected soon</div>
+                    Secure checkout mounts here
+                    <div style={{ fontSize: ".78rem", marginTop: 6 }}>Cards, UPI, net-banking &amp; wallets — not connected yet</div>
                   </div>
 
                   <button type="submit" className="btn btn-primary pay-btn btn-lg" disabled={processing}>
-                    {processing ? "Processing…" : `Pay $${total} ${cycle === "annual" ? "/ year" : cycle === "season" ? "one-time" : "/ month"} →`}
+                    {processing ? "Processing…" : `Pay ${formatPrice(total)} ${cycle === "annual" ? "/ year" : cycle === "season" ? "one-time" : "/ month"} →`}
                   </button>
+                  {notice && (
+                    <p
+                      className="auth-note"
+                      role="status"
+                      style={{ background: "#eff6ff", borderColor: "#bfdbfe", color: "#1d4ed8", marginTop: 12 }}
+                    >
+                      {notice}
+                    </p>
+                  )}
                   <p className="secure-note">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     Encrypted checkout · you can cancel anytime
@@ -117,7 +157,7 @@ function CheckoutInner() {
                       <div style={{ fontWeight: 600, color: "var(--ink)" }}>Almaprep Pro</div>
                       <div style={{ color: "var(--muted)", fontSize: ".85rem" }}>{cycle === "annual" ? "Annual plan" : cycle === "season" ? "3-month season pass" : "Monthly plan"}</div>
                     </div>
-                    <div className="price">${plan.price}<small>{cycle === "season" ? "" : plan.per}</small></div>
+                    <div className="price">{formatPrice(monthly)}<small>{cycle === "season" ? "" : " / month"}</small></div>
                   </div>
 
                   <ul className="check" style={{ margin: "20px 0" }}>
@@ -127,12 +167,13 @@ function CheckoutInner() {
                     <li>AI-powered scoring &amp; detailed feedback</li>
                   </ul>
 
-                  <div className="summary-line"><span>Subtotal</span><span>${total.toFixed(2)}</span></div>
-                  {plan.save && <div className="summary-line" style={{ color: "var(--emerald-600)" }}><span>{cycle === "annual" ? "Annual discount" : "Note"}</span><span>{plan.save}</span></div>}
-                  <div className="summary-line"><span>Due today</span><span>${total.toFixed(2)}</span></div>
+                  <div className="summary-line"><span>Subtotal</span><span>{formatPrice(total)}</span></div>
+                  {saving !== null && <div className="summary-line" style={{ color: "var(--emerald-600)" }}><span>Discount</span><span>Save {saving}%</span></div>}
+                  {saving === null && plan.note && <div className="summary-line" style={{ color: "var(--emerald-600)" }}><span>Note</span><span>{plan.note}</span></div>}
+                  <div className="summary-line"><span>Due today</span><span>{formatPrice(total)}</span></div>
                   <div className="summary-total">
                     <span style={{ color: "var(--muted)", fontSize: ".9rem" }}>Total</span>
-                    <strong>${total.toFixed(2)}<span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: ".9rem", color: "var(--muted)", fontWeight: 400 }}> {cycle === "annual" ? "/ yr" : cycle === "season" ? "one-time" : "/ mo"}</span></strong>
+                    <strong>{formatPrice(total)}<span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: ".9rem", color: "var(--muted)", fontWeight: 400 }}> {cycle === "annual" ? "/ yr" : cycle === "season" ? "one-time" : "/ mo"}</span></strong>
                   </div>
 
                   <p style={{ color: "var(--muted)", fontSize: ".82rem", marginTop: 16 }}>{plan.billed}</p>

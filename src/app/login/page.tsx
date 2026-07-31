@@ -9,6 +9,7 @@ import Footer from "@/components/almaprep/Footer"
 
 import { useEffect } from "react"
 import { isMockAuthEnabled } from "@/lib/env"
+import { identify, track, EVENTS } from "@/lib/analytics"
 
 /**
  * Messages for `?error=` on this page. The value comes from the URL, so it is
@@ -66,6 +67,12 @@ export default function LoginPage() {
         if (!isMockAuthEnabled()) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
+        // Attribute the session. identify() has always been a no-op without
+        // consent, and person_profiles is "identified_only", so nothing is
+        // recorded for a visitor who declined analytics.
+        const { data } = await supabase.auth.getUser()
+        if (data.user?.id) identify(data.user.id)
+        track(EVENTS.LOGIN)
         window.location.href = "/dashboard"
       }
     } catch (err) {
