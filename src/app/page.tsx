@@ -3,6 +3,7 @@ import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
 import RevealOnScroll from "@/components/almaprep/RevealOnScroll"
 import type { Metadata } from "next"
+import { getCurrentUser } from "@/lib/getCurrentUser"
 
 // Home keeps the layout's default title/description/OG; it only pins its own
 // canonical (the global canonical was moved off the layout so app routes don't
@@ -11,11 +12,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 }
 
-export default function Home() {
+export default async function Home() {
+  const user = await getCurrentUser()
+  const isLoggedIn = !!user?.userId
+
   return (
     <div className="almaprep-theme">
       <RevealOnScroll />
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
 
       <main>
         {/* Hero */}
@@ -26,8 +30,14 @@ export default function Home() {
             <h1>Prepare every student to ace their admission interview.</h1>
             <p className="lead">Almaprep gives students realistic mock interviews drawn from thousands of vetted questions, with instant, structured feedback. No nerves on the real day.</p>
             <div className="hero-cta">
-              <Link className="btn btn-primary btn-lg" href="/signup">Start free for students &rarr;</Link>
-              <Link className="btn btn-ghost btn-lg" href="/institutions">Book an institution demo</Link>
+              {isLoggedIn ? (
+                <Link className="btn btn-primary btn-lg" href="/dashboard">Go to Dashboard &rarr;</Link>
+              ) : (
+                <>
+                  <Link className="btn btn-primary btn-lg" href="/signup">Get Started &rarr;</Link>
+                  <Link className="btn btn-ghost btn-lg" href="/signup">Sign Up</Link>
+                </>
+              )}
             </div>
             <p className="hero-note"><strong>Free forever for students.</strong> Thousands of practice questions &middot; No credit card.</p>
           </div>
@@ -179,7 +189,11 @@ export default function Home() {
                   <li>Your full practice history</li>
                   <li>Go Pro for live voice AI interviews</li>
                 </ul>
-                <Link className="btn btn-primary" href="/signup">Start free &rarr;</Link>
+                {isLoggedIn ? (
+                  <Link className="btn btn-primary" href="/dashboard">Go to Dashboard &rarr;</Link>
+                ) : (
+                  <Link className="btn btn-primary" href="/signup">Start free &rarr;</Link>
+                )}
               </div>
               <div className="card reveal">
                 <span className="pill">For institutions</span>
@@ -204,7 +218,11 @@ export default function Home() {
               <h2>Give your students the interview edge.</h2>
               <p>Students start free in under a minute. Institutions can book a walkthrough and see the admin side in action.</p>
               <div className="hero-cta">
-                <Link className="btn btn-primary btn-lg" href="/signup">Start free for students</Link>
+                {isLoggedIn ? (
+                  <Link className="btn btn-primary btn-lg" href="/dashboard">Go to Dashboard</Link>
+                ) : (
+                  <Link className="btn btn-primary btn-lg" href="/signup">Get Started</Link>
+                )}
                 <Link className="btn btn-light btn-lg" href="/institutions">Book an institution demo</Link>
               </div>
             </div>
