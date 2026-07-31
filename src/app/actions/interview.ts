@@ -427,6 +427,19 @@ export async function saveInterviewFeedback(
     const supabase = await createClient()
     const userId = user.userId
 
+    // Verify interview session ownership
+    const { data: interview } = await supabase
+      .from("interviews")
+      .select("id")
+      .eq("id", interviewId)
+      .eq("user_id", userId)
+      .maybeSingle()
+
+    if (!interview) {
+      console.error("[saveInterviewFeedback] Forbidden: user does not own interview")
+      return false
+    }
+
     // Serialize strengths, studyGuide, and questionEvaluation inside summary since table lacks dedicated columns
     const serializedSummary = JSON.stringify({
       summary,
@@ -636,6 +649,19 @@ export async function saveBehavioralReport(
 
     const supabase = await createClient()
     const userId = user.userId
+
+    // Verify session ownership
+    const { data: interview } = await supabase
+      .from("interviews")
+      .select("id")
+      .eq("id", sessionId)
+      .eq("user_id", userId)
+      .maybeSingle()
+
+    if (!interview) {
+      console.error("[saveBehavioralReport] Forbidden: user does not own session")
+      return false
+    }
 
     const record = {
       user_id: userId,
