@@ -23,8 +23,8 @@ const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabaseServiceKey = env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!supabaseUrl || supabaseUrl.includes('evdfkeikrrsdthnekrrz.supabase.co')) {
-  console.log('Using placeholder/mock URL. Database clearing script skipped for remote DB.');
+if (env.MOCK_MODE === 'true' || !supabaseUrl) {
+  console.log('Running in mock mode or missing URL. Database clearing script skipped.');
   process.exit(0);
 }
 
