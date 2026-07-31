@@ -111,9 +111,11 @@ export default async function DashboardPage() {
       if (!supabase) redirect("/login")
       
       // 1. Fetch user profile
+      // Named columns, not "*": the users row carries the full resume text and
+      // its analysis, and this page only needs to know a resume exists.
       const { data: profile } = await supabase
         .from("users")
-        .select("*")
+        .select("username, avatar_url, current_streak, resume_text")
         .eq("id", userId)
         .single()
 

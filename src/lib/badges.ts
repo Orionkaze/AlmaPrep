@@ -26,10 +26,30 @@ export async function checkAndAwardBadges(userId: string) {
       { data: codingSessions },
       { data: githubAnalysis }
     ] = await Promise.all([
-      supabase.from("users").select("*").eq("id", userId).single() as unknown as Promise<{ data: UserRow | null }>,
+      // Named columns throughout: this runs after every completed interview,
+      // and "*, feedback(*)" pulled each interview's full summary and
+      // improvement list — plus the entire resume text from users — only to
+      // count things. interview_reports(*) was fetched and never read at all.
+      supabase
+        .from("users")
+        .select("id, username, avatar_url, resume_text, current_streak, created_at")
+        .eq("id", userId)
+        .single() as unknown as Promise<{ data: UserRow | null }>,
       supabase.from("user_badges").select("badge_slug").eq("user_id", userId),
-      supabase.from("interviews").select("*, feedback(*)").eq("user_id", userId).eq("status", "completed").order("created_at", { ascending: false }) as unknown as Promise<{ data: InterviewWithFeedback[] | null }>,
-      supabase.from("interview_sessions").select("*, coding_solutions(*), interview_reports(*)").eq("user_id", userId).in("status", ["completed", "evaluated"]).order("started_at", { ascending: false }) as unknown as Promise<{ data: SessionWithSolutionsAndReports[] | null }>,
+      supabase
+        .from("interviews")
+        .select("id, category, created_at, feedback(score, detailed_metrics)")
+        .eq("user_id", userId)
+        .eq("status", "completed")
+        .order("created_at", { ascending: false }) as unknown as Promise<{ data: InterviewWithFeedback[] | null }>,
+      supabase
+        .from("interview_sessions")
+        .select(
+          "id, started_at, submitted_at, coding_solutions(attempts, created_at, language, quality_score, test_results)"
+        )
+        .eq("user_id", userId)
+        .in("status", ["completed", "evaluated"])
+        .order("started_at", { ascending: false }) as unknown as Promise<{ data: SessionWithSolutionsAndReports[] | null }>,
       supabase.from("github_analysis").select("id").eq("user_id", userId).maybeSingle()
     ]);
 

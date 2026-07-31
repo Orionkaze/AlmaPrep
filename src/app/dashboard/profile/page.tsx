@@ -84,7 +84,9 @@ export default async function ProfilePage() {
     // 1. Fetch user profile
     const { data: profile } = await supabase
       .from("users")
-      .select("*")
+      .select(
+        "username, avatar_url, resume_text, github_autosave, current_streak, longest_streak, created_at, subscription_tier"
+      )
       .eq("id", userId)
       .single()
 

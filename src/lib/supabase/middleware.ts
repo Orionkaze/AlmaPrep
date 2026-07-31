@@ -118,9 +118,10 @@ export async function updateSession(request: NextRequest) {
           password,
         })
         if (error) {
-          console.error("Middleware: Failed to sync Supabase session for", token.email, error.message)
-        } else {
-          console.log("Middleware: Successfully synced Supabase session for", token.email)
+          // No email in the log line. This runs on a normal request path for
+          // signed-in students, many of them minors, and a success message
+          // naming them is PII written to the server log for no benefit.
+          console.error("Middleware: Failed to sync Supabase session:", error.message)
         }
       }
     } catch (err) {
