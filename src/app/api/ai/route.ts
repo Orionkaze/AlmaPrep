@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createClient } from "@/lib/supabase/server"
 import { executeAIRouting } from "@/lib/aiRouter"
+import { getUserTier } from "@/lib/entitlements"
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,11 +13,13 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. Extract request body
-    const { prompt, task, userTier } = await req.json()
+    const { prompt, task } = await req.json()
 
-    if (!prompt || !task || !userTier) {
+    if (!prompt || !task) {
       return new NextResponse("Bad Request: Missing required parameters", { status: 400 })
     }
+
+    const { tier: realUserTier } = await getUserTier()
 
     // 3. Implement Rate Limiting for Free Tier
     let count = 0
@@ -47,7 +50,7 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      if (userTier === "free") {
+      if (realUserTier === "free") {
         // If they are starting a new interview and have already completed/started 3 this month, block them.
         if (isNewInterview && count >= 3) {
           return new NextResponse(
@@ -74,7 +77,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 4. Run multi-AI routing
-    const { text, source } = await executeAIRouting(prompt, task, userTier, userId)
+    const { text, source } = await executeAIRouting(prompt, task, realUserTier, userId)
 
     return NextResponse.json({ result: text, source })
   } catch (error: any) {
