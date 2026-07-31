@@ -18,7 +18,12 @@ function generateDeterministicPassword(email: string, secret: string): string {
 }
 
 export const authOptions: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0",
+  secret: (() => {
+    if (process.env.NODE_ENV === "production" && !process.env.NEXTAUTH_SECRET) {
+      throw new Error("CRITICAL SECURITY ERROR: NEXTAUTH_SECRET environment variable must be set in production to protect credentials and prevent token forging.")
+    }
+    return process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
+  })(),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "mock-client-id",
