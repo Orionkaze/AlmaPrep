@@ -4,6 +4,16 @@ import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { verifyJWT } from "@/lib/jwt"
 
+function isDynamicServerError(err: any): boolean {
+  return (
+    err &&
+    typeof err === "object" &&
+    (err.message?.includes("Dynamic server usage") ||
+     err.digest === "DYNAMIC_SERVER_USAGE" ||
+     err.name === "DynamicServerError")
+  )
+}
+
 /**
  * Resolve the current request's user, collapsing the demo-cookie → Supabase →
  * NextAuth ladder that is currently duplicated across ~8 call sites.
@@ -94,6 +104,9 @@ export async function getCurrentUser(): Promise<{
         }
       }
     } catch (err) {
+      if (isDynamicServerError(err)) {
+        throw err
+      }
       console.error("[getCurrentUser] Supabase auth lookup failed:", err)
     }
 
@@ -112,6 +125,9 @@ export async function getCurrentUser(): Promise<{
 
     return { userId: null, email: null, isDemo: false }
   } catch (err) {
+    if (isDynamicServerError(err)) {
+      throw err
+    }
     console.error("[getCurrentUser] Unexpected failure:", err)
     return { userId: null, email: null, isDemo: false }
   }
