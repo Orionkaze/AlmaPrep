@@ -4,10 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { TestResults } from "@/types/db";
 
 // Define the environment check for mock mode
-const isMockMode =
-  process.env.NODE_ENV === "development" &&
-  (!process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL.includes("evdfkeikrrsdthnekrrz.supabase.co"));
+const isMockMode = process.env.MOCK_MODE === "true";
 
 const MOCK_DB_PATH = path.join(process.cwd(), "data", "interview_mock_db.json");
 

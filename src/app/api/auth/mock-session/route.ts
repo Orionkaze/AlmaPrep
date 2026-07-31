@@ -3,10 +3,7 @@ import { cookies } from "next/headers";
 import { signJWT } from "@/lib/jwt";
 
 function checkMockMode() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  return !supabaseUrl || 
-    supabaseUrl.includes("mock-supabase-project-id") || 
-    supabaseUrl.includes("evdfkeikrrsdthnekrrz");
+  return process.env.MOCK_MODE === "true";
 }
 
 export async function POST(request: Request) {
