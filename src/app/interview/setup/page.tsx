@@ -28,6 +28,7 @@ import {
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
 import { checkGitHubConnection, getGitHubAnalysis } from "@/app/actions/interview"
+import { track, EVENTS } from "@/lib/analytics"
 
 // ProgramInfo interface matching the server definition
 interface ProgramInfo {
@@ -645,7 +646,7 @@ export default function InterviewSetupPage() {
           >
             Schedule for Later
           </Button>
-          <Link 
+          <Link
             href={
               !selected || (selected === "technical" && githubMode && selectedRepos.length < 2)
                 ? "#"
@@ -653,6 +654,16 @@ export default function InterviewSetupPage() {
                 ? `/interview/technical?resume=${useResume}&persona=${persona}&githubMode=true&repos=${encodeURIComponent(selectedRepos.join(","))}`
                 : `/interview/${selected}?resume=${useResume}&persona=${persona}`
             }
+            onClick={() => {
+              if (selected && !(selected === "technical" && githubMode && selectedRepos.length < 2)) {
+                track(EVENTS.INTERVIEW_TRACK_SELECTED, {
+                  track: selected,
+                  persona,
+                  use_resume: useResume,
+                  github_mode: githubMode,
+                })
+              }
+            }}
           >
             <Button
               disabled={!selected || (selected === "technical" && githubMode && selectedRepos.length < 2)}
