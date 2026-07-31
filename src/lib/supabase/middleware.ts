@@ -33,10 +33,12 @@ export async function updateSession(request: NextRequest) {
   const hasSupabaseSession = request.cookies.getAll().some(c => c.name.startsWith("sb-"))
 
   const path = request.nextUrl.pathname
-  const isProtectedRoute = path === '/' ||
-                           path.startsWith('/dashboard') || 
+  const isProtectedRoute = path.startsWith('/dashboard') || 
                            path.startsWith('/interview') ||
-                           path.startsWith('/onboarding')
+                           path.startsWith('/onboarding') ||
+                           path.startsWith('/profile') ||
+                           path.startsWith('/history') ||
+                           path.startsWith('/settings')
 
   // Skip Supabase auth if credentials aren't configured yet or are mock
   const isMockMode = process.env.MOCK_MODE === "true"
