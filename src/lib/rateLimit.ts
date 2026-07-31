@@ -34,6 +34,10 @@ const redis =
       })
     : null
 
+export function getRedisClient(): Redis | null {
+  return redis
+}
+
 let lastLoggedErrorTime = 0
 const LOG_ERROR_THROTTLE_MS = 5 * 60 * 1000 // 5 minutes
 
