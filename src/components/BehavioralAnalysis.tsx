@@ -81,6 +81,7 @@ export default function BehavioralAnalysis({
   const faceMeshRef = useRef<MediaPipeSolution | null>(null);
   const poseRef = useRef<MediaPipeSolution | null>(null);
   const loopActiveRef = useRef<boolean>(false);
+  const aggregationTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const intervalIndexRef = useRef<number>(0);
 
   // Keep the latest callback in a ref so the load-status-sync effect below
@@ -305,6 +306,11 @@ export default function BehavioralAnalysis({
 
   // 30s Aggregator
   const startAggregationTimer = () => {
+    // Kept in a ref so unmount can stop it immediately. The self-clearing guard
+    // below only fires on the next tick, so leaving an interview could still
+    // push one more set of metrics up to 30 seconds after the component was
+    // gone.
+    if (aggregationTimerRef.current) clearInterval(aggregationTimerRef.current);
     const interval = setInterval(() => {
       if (!loopActiveRef.current) {
         clearInterval(interval);
@@ -375,6 +381,7 @@ export default function BehavioralAnalysis({
         lastWristPos: { left: null, right: null },
       };
     }, 30000);
+    aggregationTimerRef.current = interval;
   };
 
   const initializeMediaPipe = () => {
@@ -429,12 +436,19 @@ export default function BehavioralAnalysis({
   // Load status sync
   useEffect(() => {
     if (scriptsLoaded.faceMesh && scriptsLoaded.pose) {
-      onActiveStatusChange(true);
+      // Via the ref, which is what it was introduced for — calling the prop
+      // directly here captured whichever identity the first render happened to
+      // pass.
+      onActiveStatusChangeRef.current(true);
       initializeMediaPipe();
     }
     return () => {
-      onActiveStatusChange(false);
+      onActiveStatusChangeRef.current(false);
       loopActiveRef.current = false;
+      if (aggregationTimerRef.current) {
+        clearInterval(aggregationTimerRef.current);
+        aggregationTimerRef.current = null;
+      }
       if (faceMeshRef.current) faceMeshRef.current.close();
       if (poseRef.current) poseRef.current.close();
     };

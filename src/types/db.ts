@@ -71,6 +71,12 @@ export interface ChallengeRow {
   starter_code: Record<string, unknown>
   hidden_tests: Record<string, unknown>
   expected_outcomes: Record<string, unknown>
+  /**
+   * Function a submission must define, e.g. "two_sum". Null falls back to the
+   * client's title map and then to the first function defined.
+   * Added by migrations/2026-07-31_deletion_and_entry_points.sql.
+   */
+  entry_point: string | null
   created_at: string
 }
 

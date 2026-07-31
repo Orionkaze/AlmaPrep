@@ -140,10 +140,15 @@ export default async function DashboardPage() {
           )
         `)
         .eq("user_id", userId)
+        // Filter in the query, not afterwards in JS: this used to pull every
+        // interview the student had ever started — with each one's full
+        // feedback summary and improvement list — and discard most of them
+        // here, on every dashboard render.
+        .eq("status", "completed")
         .order("created_at", { ascending: false })
 
       const completedMockInterviews: MockInterviewRow[] =
-        (mockInterviews as MockInterviewRow[] | null)?.filter((i) => i.status === "completed") || []
+        (mockInterviews as MockInterviewRow[] | null) || []
       totalSessions = completedMockInterviews.length
 
       // Calculate Average Score
