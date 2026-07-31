@@ -22,12 +22,7 @@ export function createAdminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY
 
-  if (
-    !url ||
-    !key ||
-    url.includes("mock-supabase-project-id.supabase.co") ||
-    url.includes("evdfkeikrrsdthnekrrz.supabase.co")
-  ) {
+  if (process.env.MOCK_MODE === "true" || !url || !key) {
     return null
   }
 
