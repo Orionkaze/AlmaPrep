@@ -180,7 +180,20 @@ export async function checkAndAwardBadges(userId: string) {
     evaluate('overachiever', maxActsInDay >= 3);
 
     // Special
-    evaluate('marathon-session', maxActsInDay >= 3); // similar to overachiever but maybe scoped to interviews, using general for now
+    // 'overachiever' is 3+ activities of any kind in a day. This one asks for a
+    // genuinely longer sitting, otherwise the two always unlocked together and
+    // one of them meant nothing.
+    const maxInterviewsInDay = Math.max(
+      0,
+      ...Object.values(
+        (interviews || []).reduce<Record<string, number>>((acc, i) => {
+          const day = new Date(i.created_at).toISOString().split("T")[0];
+          acc[day] = (acc[day] || 0) + 1;
+          return acc;
+        }, {})
+      )
+    );
+    evaluate('marathon-session', maxInterviewsInDay >= 5);
     
     // 2. Award newly earned badges
     if (newBadges.length > 0) {

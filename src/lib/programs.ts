@@ -25,31 +25,90 @@ export interface ProgramInfo {
   questionCount: number
 }
 
-// Memory cache for programs list to avoid hitting filesystem repeatedly
+/**
+ * The question bank is ~3.8 MB across 76 JSON shards, shipped with the build
+ * and never written at runtime — but it was read straight from disk on every
+ * call. aiRouter asks for three shards per generated question, and each ask
+ * re-read AND re-parsed index.json as well, so a single interview question cost
+ * several synchronous readFileSync + JSON.parse round trips on the request
+ * path, blocking the event loop each time.
+ *
+ * Everything below is memoised for the life of the process. Because the data is
+ * immutable, there is nothing to invalidate.
+ */
 let cachedPrograms: ProgramInfo[] | null = null
+
+type ShardEntry = { file?: string }
+
+let cachedIndexShards: ShardEntry[] | null = null
+const cachedShardQuestions = new Map<string, Question[]>()
+
+function readIndexShards(): ShardEntry[] {
+  if (cachedIndexShards) return cachedIndexShards
+  try {
+    const indexPath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "index.json")
+    if (!fs.existsSync(indexPath)) {
+      cachedIndexShards = []
+      return cachedIndexShards
+    }
+    const indexData = JSON.parse(fs.readFileSync(indexPath, "utf-8"))
+    cachedIndexShards = (indexData.shards || []) as ShardEntry[]
+  } catch (error) {
+    console.error("Error reading programs index:", error)
+    cachedIndexShards = []
+  }
+  return cachedIndexShards
+}
+
+let cachedSampleQuestions: Question[] | null = null
+
+/** data/sample.json, parsed once. */
+function readSampleQuestions(): Question[] {
+  if (cachedSampleQuestions) return cachedSampleQuestions
+  try {
+    const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "sample.json")
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, "utf-8"))
+      cachedSampleQuestions = (data.questions || []) as Question[]
+    } else {
+      cachedSampleQuestions = []
+    }
+  } catch (error) {
+    console.error("Error reading sample questions:", error)
+    cachedSampleQuestions = []
+  }
+  return cachedSampleQuestions
+}
+
+/** Parse one shard file at most once. Missing/broken files memoise as empty. */
+function readShardQuestions(relativePath: string): Question[] {
+  const hit = cachedShardQuestions.get(relativePath)
+  if (hit) return hit
+
+  let questions: Question[] = []
+  try {
+    const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), relativePath)
+    if (fs.existsSync(filePath)) {
+      questions = JSON.parse(fs.readFileSync(filePath, "utf-8")) as Question[]
+    }
+  } catch (error) {
+    console.error(`Error reading question shard ${relativePath}:`, error)
+  }
+  cachedShardQuestions.set(relativePath, questions)
+  return questions
+}
 
 export function getPrograms(): ProgramInfo[] {
   if (cachedPrograms) return cachedPrograms
 
   try {
-    const indexPath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "index.json")
-    if (!fs.existsSync(indexPath)) {
-      console.warn(`index.json not found at ${indexPath}`)
-      return []
-    }
-
-    const indexContent = fs.readFileSync(indexPath, "utf-8")
-    const indexData = JSON.parse(indexContent)
-    const shards = indexData.shards || []
+    const shards = readIndexShards()
     const programs: ProgramInfo[] = []
 
     for (const shard of shards) {
       if (!shard.file) continue
-      const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), shard.file)
-
-      if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath, "utf-8")
-        const questions: Question[] = JSON.parse(fileContent)
+      {
+        const questions: Question[] = readShardQuestions(shard.file)
         const programId = path.basename(shard.file, ".json")
         const isUniversal = shard.file.startsWith("data/universal/")
 
@@ -88,8 +147,6 @@ export function getPrograms(): ProgramInfo[] {
           category,
           questionCount: questions.length
         })
-      } else {
-        console.warn(`Shard file not found: ${filePath}`)
       }
     }
 
@@ -105,38 +162,21 @@ export function getPrograms(): ProgramInfo[] {
 
 export function getProgramQuestions(programId: string): Question[] {
   try {
-    const indexPath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "index.json")
-    if (fs.existsSync(indexPath)) {
-      const indexContent = fs.readFileSync(indexPath, "utf-8")
-      const indexData = JSON.parse(indexContent)
-      const shards = indexData.shards || []
-      
-      // Try to find matching shard
-      const matchingShard = shards.find((shard: { file?: string }) => {
-        if (!shard.file) return false
-        const id = path.basename(shard.file, ".json")
-        return id === programId
-      })
-
-      if (matchingShard) {
-        const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), matchingShard.file)
-        if (fs.existsSync(filePath)) {
-          const fileContent = fs.readFileSync(filePath, "utf-8")
-          return JSON.parse(fileContent) as Question[]
-        }
-      }
+    const matchingShard = readIndexShards().find(
+      (shard) => shard.file && path.basename(shard.file, ".json") === programId
+    )
+    if (matchingShard?.file) {
+      const questions = readShardQuestions(matchingShard.file)
+      if (questions.length > 0) return questions
     }
 
     // Fallback if index lookup failed or not found
-    let filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "programs", `${programId}.json`)
-    if (!fs.existsSync(filePath)) {
-      filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "universal", `${programId}.json`)
-      if (!fs.existsSync(filePath)) {
-        return []
-      }
+    for (const dir of ["programs", "universal"]) {
+      const relative = `data/${dir}/${programId}.json`
+      const questions = readShardQuestions(relative)
+      if (questions.length > 0) return questions
     }
-    const fileContent = fs.readFileSync(filePath, "utf-8")
-    return JSON.parse(fileContent) as Question[]
+    return []
   } catch (error) {
     console.error(`Error reading questions for program ${programId}:`, error)
     return []
@@ -145,18 +185,12 @@ export function getProgramQuestions(programId: string): Question[] {
 
 export function getSampleQuestions(category: string): Question[] {
   try {
-    const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "sample.json")
-    if (!fs.existsSync(filePath)) {
-      return []
-    }
-    const fileContent = fs.readFileSync(filePath, "utf-8")
-    const data = JSON.parse(fileContent)
-    const questions = (data.questions || []) as Question[]
+    const questions = readSampleQuestions()
     
     if (category === "hr") {
-      return questions.filter(q => q.program === null)
+      return questions.filter((q) => q.program === null)
     } else if (category === "technical") {
-      return questions.filter(q => q.program !== null)
+      return questions.filter((q) => q.program !== null)
     } else if (category === "mixed") {
       return questions
     }
@@ -177,29 +211,13 @@ export function getCombinedDomainQuestions(domainId: string): Question[] {
   
   const universalQuestions: Question[] = [];
   try {
-    const indexPath = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "index.json");
-    if (fs.existsSync(indexPath)) {
-      const indexContent = fs.readFileSync(indexPath, "utf-8");
-      const indexData = JSON.parse(indexContent);
-      const shards = indexData.shards || [];
-      
-      for (const shard of shards) {
-        if (shard.file && shard.file.startsWith("data/universal/") && shard.file.endsWith(`${suffix}.json`)) {
-          const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), shard.file);
-          if (fs.existsSync(filePath)) {
-            try {
-              const fileContent = fs.readFileSync(filePath, "utf-8");
-              const list = JSON.parse(fileContent) as Question[];
-              universalQuestions.push(...list);
-            } catch (err) {
-              console.error(`Error reading universal shard ${shard.file}:`, err);
-            }
-          }
-        }
+    for (const shard of readIndexShards()) {
+      if (shard.file && shard.file.startsWith("data/universal/") && shard.file.endsWith(`${suffix}.json`)) {
+        universalQuestions.push(...readShardQuestions(shard.file));
       }
     }
   } catch (e) {
-    console.error("Error reading index.json for combined questions:", e);
+    console.error("Error assembling combined questions:", e);
   }
 
   return [...programQuestions, ...universalQuestions];

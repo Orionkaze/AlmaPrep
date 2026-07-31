@@ -287,13 +287,17 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     const logicScore = parsedLogic.logicScore || 0;
     const qualityScore = parsedQuality.qualityScore || 0;
 
+    // Every dimension here is derived from the submission. `prompt_engineering`
+    // and `context_management` used to sit alongside these as the constant 8,
+    // rendered to the candidate as "8/10" on a report that ends in a hiring
+    // recommendation. Nothing measured them, so they are gone rather than
+    // dressed up; the overall score never used them either.
     const scores = {
-      prompt_engineering: 8,
       problem_decomposition: logicScore,
-      context_management: 8,
       debugging_ability: Math.max(4, 10 - (attempts - 1) * 2),
       testing_strategy: Math.round(passRatio * 10),
       code_review_quality: qualityScore,
+      // Coarse, but it does come from the quality auditor's own findings.
       security_awareness: parsedQuality.issues?.some((i: string) => i.toLowerCase().includes("security") || i.toLowerCase().includes("safe")) ? 5 : 9
     };
 
