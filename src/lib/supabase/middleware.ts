@@ -128,24 +128,34 @@ export async function updateSession(request: NextRequest) {
     if (path === '/login' || path === '/signup') {
       const url = request.nextUrl.clone()
       url.pathname = '/dashboard'
-      return NextResponse.redirect(url)
+      return addSecurityHeaders(NextResponse.redirect(url))
     }
-    return supabaseResponse
+    return addSecurityHeaders(supabaseResponse)
   }
 
   if (!user && isProtectedRoute) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
-    return NextResponse.redirect(url)
+    return addSecurityHeaders(NextResponse.redirect(url))
   }
 
   if (user && (path === '/login' || path === '/signup')) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
-    return NextResponse.redirect(url)
+    return addSecurityHeaders(NextResponse.redirect(url))
   }
 
-  return supabaseResponse
+  return addSecurityHeaders(supabaseResponse)
+}
+
+function addSecurityHeaders(response: NextResponse): NextResponse {
+  response.headers.set("X-Frame-Options", "DENY")
+  response.headers.set("X-Content-Type-Options", "nosniff")
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin")
+  if (process.env.NODE_ENV === "production") {
+    response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
+  }
+  return response
 }
 
 
