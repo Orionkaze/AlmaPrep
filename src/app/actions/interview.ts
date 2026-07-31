@@ -13,6 +13,7 @@ import { updateStreak } from "@/lib/streak"
 import { checkAndAwardBadges } from "@/lib/badges"
 import { isRateLimited } from "@/lib/rateLimit"
 import type { SupabaseClient } from "@supabase/supabase-js"
+import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
 
 /**
  * Every exported function in a "use server" file is a public POST endpoint that
@@ -27,6 +28,7 @@ async function requireUserId(): Promise<string | null> {
     const { userId } = await getCurrentUser()
     return userId
   } catch (err) {
+    rethrowIfNextControlFlow(err)
     console.error("[interview] failed to resolve the requesting user:", err)
     return null
   }

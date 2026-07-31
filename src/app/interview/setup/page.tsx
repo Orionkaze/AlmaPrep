@@ -23,6 +23,7 @@ import {
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
 import { checkGitHubConnection, getGitHubAnalysis } from "@/app/actions/interview"
+import { toast } from "sonner"
 
 /** Cached GitHub analysis as stored in the github_analysis table. */
 type GithubAnalysis = {
@@ -525,7 +526,7 @@ export default function InterviewSetupPage() {
                         value={selectedRepos}
                         onValueChange={(val) => {
                           if (val.length > 5) {
-                            alert("You can select a maximum of 5 repositories.")
+                            toast.error("You can select a maximum of 5 repositories.")
                             return
                           }
                           setSelectedRepos(val)

@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { verifyJWT } from "@/lib/jwt"
 import { getAuthSecret, isMockAuthEnabled } from "@/lib/env"
+import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
 
 /**
  * Resolve the current request's user, collapsing the demo-cookie → Supabase →
@@ -93,6 +94,7 @@ export async function getCurrentUser(): Promise<{
         }
       }
     } catch (err) {
+      rethrowIfNextControlFlow(err)
       console.error("[getCurrentUser] Supabase auth lookup failed:", err)
     }
 
@@ -114,6 +116,7 @@ export async function getCurrentUser(): Promise<{
 
     return { userId: null, email: null, isDemo: false }
   } catch (err) {
+    rethrowIfNextControlFlow(err)
     console.error("[getCurrentUser] Unexpected failure:", err)
     return { userId: null, email: null, isDemo: false }
   }

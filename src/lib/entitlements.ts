@@ -7,6 +7,7 @@ import {
 } from "@/config/plans"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createClient } from "@/lib/supabase/server"
+import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
 
 /**
  * Tier for demo/mock sessions. Deliberately "free": the demo cookie is
@@ -81,6 +82,7 @@ export async function getUserTier(): Promise<{
       isDemo: false,
     }
   } catch (err) {
+    rethrowIfNextControlFlow(err)
     console.error("[getUserTier] Failed to read subscription_tier:", err)
     return { tier: DEFAULT_TIER, userId, isDemo: false }
   }

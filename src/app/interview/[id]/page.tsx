@@ -38,6 +38,7 @@ import { ShieldAlert } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { setStored } from "@/lib/localStore"
 import { isClosingMessage, stripEndMarker } from "@/lib/interviewProtocol"
+import { toast } from "sonner"
 
 // SpeechRecognition type declarations for TS
 interface SpeechRecognitionAlternativeLike {
@@ -286,7 +287,7 @@ export default function InterviewPage({
 
   const toggleListening = async () => {
     if (!recognitionRef.current) {
-      alert("Voice input is not supported in this browser. Please try Chrome or Edge.")
+      toast.error("Voice input isn't supported in this browser. Try Chrome or Edge, or type your answer.")
       return
     }
 
@@ -301,7 +302,7 @@ export default function InterviewPage({
       }
     } catch (err) {
       console.error("Failed to toggle listening:", err)
-      alert("Microphone access was denied or failed. Please ensure you have allowed microphone permissions in your browser settings.")
+      toast.error("Microphone access was denied. Check your browser's microphone permissions, or type your answer instead.")
       setIsListening(false)
     }
   }
