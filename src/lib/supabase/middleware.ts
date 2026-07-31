@@ -39,12 +39,7 @@ export async function updateSession(request: NextRequest) {
                            path.startsWith('/onboarding')
 
   // Skip Supabase auth if credentials aren't configured yet or are mock
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-  const isMockMode = !supabaseUrl || !supabaseKey || 
-    supabaseUrl.includes("mock-supabase-project-id") || 
-    supabaseUrl.includes("evdfkeikrrsdthnekrrz")
+  const isMockMode = process.env.MOCK_MODE === "true"
 
   // Check and verify mock JWT session if in mock mode
   if (isMockMode) {

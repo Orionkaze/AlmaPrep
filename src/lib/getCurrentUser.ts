@@ -25,10 +25,7 @@ export async function getCurrentUser(): Promise<{
 }> {
   try {
     const cookieStore = await cookies()
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const isMockMode = !supabaseUrl || 
-      supabaseUrl.includes("mock-supabase-project-id") || 
-      supabaseUrl.includes("evdfkeikrrsdthnekrrz")
+    const isMockMode = process.env.MOCK_MODE === "true"
 
     if (isMockMode) {
       const mockSessionCookie = cookieStore.get("mockmate-mock-session")?.value
