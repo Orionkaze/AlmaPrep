@@ -1,33 +1,24 @@
-import { cookies } from "next/headers";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { createClient } from "@/lib/supabase/server";
-import { isMockAuthEnabled } from "@/lib/env";
+import { getCurrentUser } from "@/lib/getCurrentUser";
 
-// Single source of truth for "who is making this request" across all API
-// routes. Checks demo mode, then NextAuth (Google), then Supabase
-// (email/password + GitHub) — the same fallback order already used ad hoc
-// across the app's server actions. Never trust a client-supplied user id.
-//
-// The demo branch is gated on isMockAuthEnabled(). `mockmate-demo-session` is
-// an unsigned cookie that only client code ever writes; without that gate any
-// visitor could set it from devtools and satisfy the `if (!userId) 401` check
-// on every route that calls this. It is a local-development affordance, not an
-// identity.
+/**
+ * Who is making this request, as a bare id.
+ *
+ * This used to walk its own auth ladder — demo cookie, then NextAuth, then
+ * Supabase — while getCurrentUser() walked a different one: demo cookie, then
+ * Supabase, then NextAuth. Two functions, each documented as the single source
+ * of truth for identity, disagreeing about precedence and about when the demo
+ * cookie counts. That disagreement was the bug: getCurrentUser gated the
+ * unsigned `mockmate-demo-session` cookie behind mock mode and this one did
+ * not, so every route below accepted a cookie any visitor could set from
+ * devtools.
+ *
+ * There is one ladder now. Precedence no longer matters for correctness
+ * either: the NextAuth signIn callback in lib/auth.ts assigns the Supabase user
+ * id onto the token, so both paths resolve to the same id for the same person.
+ *
+ * Never trust a client-supplied user id.
+ */
 export async function getRequestUserId(): Promise<string | null> {
-  if (isMockAuthEnabled()) {
-    const cookieStore = await cookies();
-    if (cookieStore.has("mockmate-demo-session")) {
-      return "demo-user-id";
-    }
-  }
-
-  const session = await getServerSession(authOptions);
-  if (session?.user?.id) {
-    return session.user.id;
-  }
-
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  return user?.id ?? null;
+  const { userId } = await getCurrentUser();
+  return userId;
 }
