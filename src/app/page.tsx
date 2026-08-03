@@ -47,7 +47,7 @@ export default async function Home() {
         <section className="section-sm">
           <div className="wrap center reveal">
             <span className="early-badge"><span className="dot"></span> Now in early access</span>
-            <p className="lead narrow" style={{ marginTop: "16px" }}>A next-generation take on interview prep: a deterministic question bank that&apos;s free for every student, and a live voice AI interviewer for those who want the real thing. We&apos;re onboarding our first schools and students now.</p>
+            <p className="lead narrow" style={{ marginTop: "16px" }}>A next-generation take on interview prep: a deterministic question bank that&apos;s free for every student, answered out loud rather than typed into a box. We&apos;re onboarding our first schools and students now.</p>
           </div>
         </section>
 
@@ -57,7 +57,7 @@ export default async function Home() {
             <div className="section-head reveal">
               <p className="eyebrow">Why Almaprep is different</p>
               <h2>A fixed question bank. AI that&apos;s grounded in it, not improvising.</h2>
-              <p className="lead">Free practice runs on a deterministic bank of most-probable questions, so it&apos;s consistent, relevant, and the same for every student, never a different random interview each time. Pro layers a live voice AI interviewer on top of that same grounded foundation, conversation where it counts.</p>
+              <p className="lead">Free practice runs on a deterministic bank of most-probable questions, so it&apos;s consistent, relevant, and the same for every student, never a different random interview each time. The AI interviewer adapts its follow-ups to your answers on top of that same grounded foundation, conversation where it counts.</p>
             </div>
             <div className="grid grid-3">
               <div className="card reveal">
@@ -117,9 +117,9 @@ export default async function Home() {
         <section className="section tint">
           <div className="wrap">
             <div className="section-head center reveal">
-              <span className="pill">Pro &amp; Enterprise &middot; AI voice</span>
-              <h2 style={{ marginTop: "14px" }}>Sit down and actually talk to your interviewer.</h2>
-              <p className="lead">No typing. You join a live meeting and speak to a voice AI interviewer that listens, replies out loud, and asks real follow-ups, then scores you on what you said.</p>
+              <span className="pill">Every plan &middot; Speak your answers</span>
+              <h2 style={{ marginTop: "14px" }}>Answer out loud, the way you will on the day.</h2>
+              <p className="lead">Questions are read to you and you reply by speaking &mdash; your browser handles the transcription. The interviewer asks real follow-ups based on what you said, then scores you on it. Typing works too.</p>
             </div>
             <div className="narrow reveal">
               <div className="callwin">
@@ -152,7 +152,7 @@ export default async function Home() {
                   <span className="cbtn end" title="End"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.5 19.5 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/></svg></span>
                 </div>
               </div>
-              <p className="center" style={{ marginTop: "16px", color: "var(--muted)", fontSize: ".9rem" }}>Illustrative preview of the Pro voice interview. <Link href="/pricing">See plans &rarr;</Link></p>
+              <p className="center" style={{ marginTop: "16px", color: "var(--muted)", fontSize: ".9rem" }}>Illustration only &mdash; the interview runs in your browser, not in a meeting app. <Link href="/pricing">See plans &rarr;</Link></p>
             </div>
           </div>
         </section>
@@ -187,7 +187,7 @@ export default async function Home() {
                   <li>Thousands of practice questions</li>
                   <li>Instant scores and tips</li>
                   <li>Your full practice history</li>
-                  <li>Go Pro for live voice AI interviews</li>
+                  <li>Go Pro to remove the monthly cap</li>
                 </ul>
                 {isLoggedIn ? (
                   <Link className="btn btn-primary" href="/dashboard">Go to Dashboard &rarr;</Link>
@@ -198,12 +198,12 @@ export default async function Home() {
               <div className="card reveal">
                 <span className="pill">For institutions</span>
                 <h3 style={{ marginTop: "16px" }}>Prep every student at scale</h3>
-                <p>The premium AI tier: students sit in a live meeting and actually talk to a voice AI interviewer. Plus admin dashboards, counselor analytics, and your branding.</p>
+                <p>Unlimited practice for every student, with spoken answers and adaptive follow-ups. Cohort tooling and branding are planned with your rollout.</p>
                 <ul className="check" style={{ margin: "16px 0 24px" }}>
-                  <li>Live voice AI interviewer</li>
+                  <li>Unlimited interviews for every student</li>
                   <li>Real-time adaptive follow-ups</li>
-                  <li>Admin &amp; cohort dashboards</li>
-                  <li>Your logo and domain</li>
+                  <li>Onboarding and rollout support</li>
+                  <li>Volume pricing per student</li>
                 </ul>
                 <Link className="btn btn-ghost" href="/institutions">Explore for institutions &rarr;</Link>
               </div>

@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 import { verifyJWT } from '@/lib/jwt'
+import { getAuthSecret, isMockAuthEnabled } from '@/lib/env'
 
 async function generateDeterministicPasswordWebCrypto(email: string, secret: string): Promise<string> {
   const encoder = new TextEncoder()
@@ -28,26 +29,29 @@ async function generateDeterministicPasswordWebCrypto(email: string, secret: str
 }
 
 export async function updateSession(request: NextRequest) {
-  const hasNextAuthCookie = request.cookies.has("next-auth.session-token") ||
-                            request.cookies.has("__Secure-next-auth.session-token")
+  const secret = getAuthSecret()
+
+  // Verify the NextAuth JWT rather than checking whether a cookie with that
+  // name exists. Cookie presence is attacker-controlled: any visitor could set
+  // `next-auth.session-token=anything` and, below, both skip the protected-route
+  // redirect and short-circuit the Supabase user lookup.
+  const nextAuthToken = await getToken({ req: request, secret }).catch(() => null)
+  const hasNextAuthSession = !!nextAuthToken
   const hasSupabaseSession = request.cookies.getAll().some(c => c.name.startsWith("sb-"))
 
   const path = request.nextUrl.pathname
-  const isProtectedRoute = path.startsWith('/dashboard') || 
+  // '/' is deliberately absent: it is the public marketing page.
+  const isProtectedRoute = path.startsWith('/dashboard') ||
                            path.startsWith('/interview') ||
                            path.startsWith('/onboarding') ||
                            path.startsWith('/profile') ||
                            path.startsWith('/history') ||
                            path.startsWith('/settings')
 
-  // Skip Supabase auth if credentials aren't configured yet or are mock
-  const isMockMode = process.env.MOCK_MODE === "true"
-
   // Check and verify mock JWT session if in mock mode
-  if (isMockMode) {
+  if (isMockAuthEnabled()) {
     const mockSessionCookie = request.cookies.get("mockmate-mock-session")?.value
     if (mockSessionCookie) {
-      const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
       const payload = await verifyJWT(mockSessionCookie, secret)
       if (payload) {
         if (path === '/login' || path === '/signup') {
@@ -59,7 +63,21 @@ export async function updateSession(request: NextRequest) {
       }
     }
 
-    if (isProtectedRoute && !hasNextAuthCookie) {
+    if (isProtectedRoute && !hasNextAuthSession) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
+    }
+    return NextResponse.next({ request })
+  }
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!supabaseUrl || !supabaseKey) {
+    // Mock auth is off and there is no project configured. Refuse to serve
+    // protected routes rather than letting them through unauthenticated.
+    console.error("[middleware] Supabase env vars missing and NEXT_PUBLIC_MOCK_AUTH is not set")
+    if (isProtectedRoute) {
       const url = request.nextUrl.clone()
       url.pathname = '/login'
       return NextResponse.redirect(url)
@@ -93,20 +111,20 @@ export async function updateSession(request: NextRequest) {
   )
 
   // Sync NextAuth session to Supabase if Supabase cookies are missing
-  if (hasNextAuthCookie && !hasSupabaseSession) {
+  if (hasNextAuthSession && !hasSupabaseSession) {
     try {
-      const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET })
+      const token = nextAuthToken
       if (token?.email) {
-        const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
         const password = await generateDeterministicPasswordWebCrypto(token.email, secret)
         const { error } = await supabase.auth.signInWithPassword({
           email: token.email,
           password,
         })
         if (error) {
-          console.error("Middleware: Failed to sync Supabase session for", token.email, error.message)
-        } else {
-          console.log("Middleware: Successfully synced Supabase session for", token.email)
+          // No email in the log line. This runs on a normal request path for
+          // signed-in students, many of them minors, and a success message
+          // naming them is PII written to the server log for no benefit.
+          console.error("Middleware: Failed to sync Supabase session:", error.message)
         }
       }
     } catch (err) {
@@ -124,7 +142,7 @@ export async function updateSession(request: NextRequest) {
     console.error("Supabase auth error in middleware:", err)
   }
 
-  if (hasNextAuthCookie) {
+  if (hasNextAuthSession) {
     if (path === '/login' || path === '/signup') {
       const url = request.nextUrl.clone()
       url.pathname = '/dashboard'

@@ -3,8 +3,9 @@
 import { useEffect } from "react"
 import { toast } from "sonner"
 import { getEarnedBadges, type EarnedBadge } from "@/app/actions/badges"
+import { getStored, setStored } from "@/lib/localStore"
 
-const SEEN_KEY = "almaprep_seen_badges"
+const SEEN_KEY = "seen_badges"
 
 // Colors mirror the badges gallery so a toast reads as the same badge.
 function rarityRing(rarity: string): { bg: string; fg: string } {
@@ -79,22 +80,16 @@ export default function BadgeNotifier() {
       }
       if (cancelled || earned.length === 0) return
 
-      const raw = localStorage.getItem(SEEN_KEY)
+      const seen = await getStored<string[]>(SEEN_KEY)
       const allSlugs = earned.map((b) => b.slug)
 
-      if (raw === null) {
-        // baseline this browser silently
-        localStorage.setItem(SEEN_KEY, JSON.stringify(allSlugs))
+      if (seen === null) {
+        // baseline this user silently
+        await setStored(SEEN_KEY, allSlugs)
         return
       }
 
-      let seen: string[] = []
-      try {
-        seen = JSON.parse(raw)
-      } catch {
-        seen = []
-      }
-      const seenSet = new Set(seen)
+      const seenSet = new Set(Array.isArray(seen) ? seen : [])
       const fresh = earned.filter((b) => !seenSet.has(b.slug))
       if (fresh.length === 0) return
 
@@ -106,7 +101,7 @@ export default function BadgeNotifier() {
           if (!cancelled) showBadgeToast(b)
         }, 900 + idx * 800)
       })
-      localStorage.setItem(SEEN_KEY, JSON.stringify(allSlugs))
+      await setStored(SEEN_KEY, allSlugs)
     })()
     return () => {
       cancelled = true

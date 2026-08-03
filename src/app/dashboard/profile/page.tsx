@@ -6,13 +6,20 @@ import { DEFAULT_BADGES } from "@/lib/badgesData"
 import ProfileContent from "./profile-content"
 import { readLocalCache } from "@/lib/localCache"
 import { normalizeTier } from "@/lib/entitlements"
+import type {
+  GitHubAnalysisData,
+  Interview,
+  BadgeMeta,
+  UserBadgeMeta,
+} from "./profile-content"
 
-// Mock data for demo fallback
-const mockHistory = [
-  { id: "1", category: "technical", score: 82, date: "2026-05-19T12:00:00Z", status: "completed" },
-  { id: "2", category: "hr", score: 91, date: "2026-05-17T14:30:00Z", status: "completed" },
-  { id: "3", category: "mixed", score: 76, date: "2026-05-14T09:15:00Z", status: "completed" },
-]
+type ProfileInterviewRow = {
+  id: string
+  category: string
+  created_at: string
+  status: string
+  feedback?: { score?: number | null }[]
+}
 
 export default async function ProfilePage() {
   const user = await getCurrentUser()
@@ -49,9 +56,9 @@ export default async function ProfilePage() {
   }
   let userEmail = activeUser.email || ""
   let createdAt = new Date().toISOString()
-  let interviews: any[] = []
+  let interviews: Interview[] = []
   let subscriptionTier = "free"
-  let githubAnalysis: any = null
+  let githubAnalysis: GitHubAnalysisData | null = null
 
   if (isDemoMode) {
     let resumeText = ""
@@ -60,7 +67,7 @@ export default async function ProfilePage() {
       try {
         const parsed = JSON.parse(customResume)
         resumeText = parsed.resumeText || resumeText
-      } catch (e) {}
+      } catch {}
     }
 
     initialProfile = {
@@ -77,7 +84,9 @@ export default async function ProfilePage() {
     // 1. Fetch user profile
     const { data: profile } = await supabase
       .from("users")
-      .select("*")
+      .select(
+        "username, avatar_url, resume_text, github_autosave, current_streak, longest_streak, created_at, subscription_tier"
+      )
       .eq("id", userId)
       .single()
 
@@ -105,13 +114,13 @@ export default async function ProfilePage() {
         .maybeSingle()
       
       if (error || !cached) {
-        githubAnalysis = readLocalCache("github_analysis", userId)
+        githubAnalysis = readLocalCache("github_analysis", userId) as GitHubAnalysisData | null
       } else {
-        githubAnalysis = cached
+        githubAnalysis = cached as GitHubAnalysisData
       }
     } catch (e) {
       console.error("Failed to fetch cached github analysis, checking local cache:", e)
-      githubAnalysis = readLocalCache("github_analysis", userId)
+      githubAnalysis = readLocalCache("github_analysis", userId) as GitHubAnalysisData | null
     }
 
     // 2. Fetch interviews and feedback
@@ -130,8 +139,8 @@ export default async function ProfilePage() {
       .order("created_at", { ascending: false })
 
     if (interviewsData) {
-      interviews = (interviewsData as any[]).map((item: any) => {
-        const score = item.feedback && item.feedback[0] ? item.feedback[0].score : 75
+      interviews = (interviewsData as ProfileInterviewRow[]).map((item) => {
+        const score = item.feedback?.[0]?.score ?? 75
         return {
           id: item.id,
           category: item.category,
@@ -143,8 +152,8 @@ export default async function ProfilePage() {
     }
   }
 
-  let allBadges: any[] = []
-  let userBadges: any[] = []
+  let allBadges: BadgeMeta[] = []
+  let userBadges: UserBadgeMeta[] = []
   let totalActivities = interviews.length
 
   if (!isDemoMode && supabase && userId) {

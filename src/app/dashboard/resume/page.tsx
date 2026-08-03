@@ -1,4 +1,3 @@
-import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { getResumeData } from "@/app/actions/resume"
@@ -6,20 +5,11 @@ import ResumeContent from "./resume-content"
 
 export default async function ResumePage() {
   const user = await getCurrentUser()
-  const isDemoMode = user.isDemo
   const userId = user.userId
 
   if (!userId) {
     redirect("/login")
   }
-
-  const activeUser = {
-    name: user.username || user.email?.split("@")[0] || "User",
-    email: user.email || "guest@almaprep.com",
-    avatar_url: user.avatarUrl || "user-tie",
-  }
-
-  const supabase = isDemoMode ? null : await createClient()
 
   // Fetch saved resume data
   let resumeText = ""

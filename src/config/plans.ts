@@ -13,11 +13,9 @@
 
 export type TierId = "free" | "pro" | "enterprise"
 
-export const TIER_IDS = ["free", "pro", "enterprise"] as const
-
 export const DEFAULT_TIER: TierId = "free"
 
-export const CURRENCY = {
+const CURRENCY = {
   code: "USD",
   symbol: "$",
   locale: "en-US",
@@ -65,8 +63,6 @@ export type Plan = {
   features: string[]
   cta: { label: string; href: string; variant: "btn-primary" | "btn-ghost" }
   featured?: boolean
-  /** Reserved for a future Razorpay integration. Unused today. */
-  razorpayPlanId?: string
   entitlements: Entitlements
 }
 
@@ -201,4 +197,79 @@ export function formatInr(amount: number): string {
     currency: "INR",
     maximumFractionDigits: 0,
   }).format(amount)
+}
+
+/**
+ * Billing cycles offered for Pro.
+ *
+ * The checkout page used to carry its own copy of this table with a $12
+ * monthly price, while /pricing and /upgrade rendered PLANS.pro.price ($9.99)
+ * from here — so a visitor was shown one number and asked for another, and
+ * this file's "nothing else hardcodes a price" promise was untrue.
+ *
+ * Monthly is derived from PLANS.pro.price so the advertised price is by
+ * construction the charged price. The multi-month totals are the owner's own
+ * price points; their discounts are COMPUTED, never written down, because the
+ * old "Save 25%" tag was calculated against the retired $12 and had quietly
+ * become wrong.
+ */
+export type BillingCycleId = "monthly" | "season" | "annual"
+
+export type BillingCycle = {
+  id: BillingCycleId
+  /** Product id sent to the payment provider. */
+  sku: string
+  label: string
+  /** What the customer is charged, in CURRENCY. */
+  total: number
+  /** Number of months the charge covers. */
+  months: number
+  billed: string
+  note?: string
+}
+
+const PRO_MONTHLY = PLANS.pro.price ?? 0
+
+export const PRO_BILLING_CYCLES: Record<BillingCycleId, BillingCycle> = {
+  monthly: {
+    id: "monthly",
+    sku: "pro-monthly",
+    label: "Monthly",
+    total: PRO_MONTHLY,
+    months: 1,
+    billed: "Billed monthly. Cancel anytime.",
+  },
+  season: {
+    id: "season",
+    sku: "pro-season",
+    label: "Season",
+    total: 29,
+    months: 3,
+    billed: "One-time charge, covers 3 months. No renewal.",
+    note: "For one admissions season",
+  },
+  annual: {
+    id: "annual",
+    sku: "pro-annual",
+    label: "Annual",
+    total: 108,
+    months: 12,
+    billed: "Billed once a year.",
+  },
+}
+
+/** Effective per-month price for a cycle. */
+export function perMonthPrice(cycle: BillingCycle): number {
+  return cycle.total / cycle.months
+}
+
+/**
+ * Whole-percent saving against paying monthly, or null when there isn't one.
+ * Computed rather than stored so it cannot drift from the prices above.
+ */
+export function cycleSavingPercent(cycle: BillingCycle): number | null {
+  if (PRO_MONTHLY <= 0 || cycle.months <= 1) return null
+  const atMonthlyRate = PRO_MONTHLY * cycle.months
+  const saving = Math.round(((atMonthlyRate - cycle.total) / atMonthlyRate) * 100)
+  return saving > 0 ? saving : null
 }

@@ -18,8 +18,10 @@ export default function ContactSalesForm({
   )
   // Stamp the mount time into the hidden field AFTER hydration by writing to the
   // DOM node directly (not via state during render), so the server and client
-  // HTML match and there is no hydration mismatch. The server treats a missing
-  // or too-fast (<3s) timestamp as spam, so an early submit fails safe.
+  // HTML match and there is no hydration mismatch. A missing or too-fast (<3s)
+  // timestamp makes the server mark the lead as suspected spam — it is still
+  // delivered, because a real person whose browser autofilled the form should
+  // not vanish silently.
   const tsRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (tsRef.current) tsRef.current.value = String(Date.now())

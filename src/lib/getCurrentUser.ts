@@ -1,18 +1,12 @@
+import { cache } from "react"
 import { cookies } from "next/headers"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { verifyJWT } from "@/lib/jwt"
+import { getAuthSecret, isMockAuthEnabled } from "@/lib/env"
+import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
 
-function isDynamicServerError(err: any): boolean {
-  return (
-    err &&
-    typeof err === "object" &&
-    (err.message?.includes("Dynamic server usage") ||
-     err.digest === "DYNAMIC_SERVER_USAGE" ||
-     err.name === "DynamicServerError")
-  )
-}
 
 /**
  * Resolve the current request's user, collapsing the demo-cookie → Supabase →
@@ -25,8 +19,13 @@ function isDynamicServerError(err: any): boolean {
  * Order note: demo → Supabase → NextAuth. Some legacy sites check NextAuth
  * first; this matches the majority (aiRouter, interview actions) and is the
  * deliberate standard going forward.
+ *
+ * Wrapped in React's cache() so it resolves once per request. auth.getUser() is
+ * a network call to Supabase Auth, and a single candidate answer used to fan
+ * out to roughly eight of them — getNextQuestion alone resolved the user three
+ * times through different helpers.
  */
-export async function getCurrentUser(): Promise<{
+export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
   userId: string | null
   email: string | null
   isDemo: boolean
@@ -35,13 +34,11 @@ export async function getCurrentUser(): Promise<{
 }> {
   try {
     const cookieStore = await cookies()
-    const isMockMode = process.env.MOCK_MODE === "true"
 
-    if (isMockMode) {
+    if (isMockAuthEnabled()) {
       const mockSessionCookie = cookieStore.get("mockmate-mock-session")?.value
       if (mockSessionCookie) {
-        const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
-        const payload = await verifyJWT(mockSessionCookie, secret)
+        const payload = await verifyJWT(mockSessionCookie, getAuthSecret())
         if (payload) {
           const demoUserCookie = cookieStore.get("mockmate-demo-user")?.value
           let username = payload.email?.split("@")[0] || "User"
@@ -51,11 +48,11 @@ export async function getCurrentUser(): Promise<{
               const parsed = JSON.parse(demoUserCookie)
               username = parsed.username || username
               avatarUrl = parsed.avatar_url || avatarUrl
-            } catch (e) {}
+            } catch {}
           }
           return {
             userId: payload.userId || "demo-user-id",
-            email: payload.email,
+            email: payload.email ?? null,
             isDemo: true,
             username,
             avatarUrl
@@ -76,7 +73,7 @@ export async function getCurrentUser(): Promise<{
             username = parsed.username || parsed.email?.split("@")[0] || username
             avatarUrl = parsed.avatar_url || avatarUrl
             email = parsed.email || email
-          } catch (e) {}
+          } catch {}
         }
         return {
           userId: "demo-user-id",
@@ -104,9 +101,7 @@ export async function getCurrentUser(): Promise<{
         }
       }
     } catch (err) {
-      if (isDynamicServerError(err)) {
-        throw err
-      }
+      rethrowIfNextControlFlow(err)
       console.error("[getCurrentUser] Supabase auth lookup failed:", err)
     }
 
@@ -119,16 +114,17 @@ export async function getCurrentUser(): Promise<{
         email: session?.user?.email ?? null,
         isDemo: false,
         username: session?.user?.name || session?.user?.email?.split("@")[0] || "User",
-        avatarUrl: (session?.user as any)?.avatar_url || session?.user?.image || "user-tie"
+        avatarUrl:
+          (session?.user as { avatar_url?: string } | undefined)?.avatar_url ||
+          session?.user?.image ||
+          "user-tie"
       }
     }
 
     return { userId: null, email: null, isDemo: false }
   } catch (err) {
-    if (isDynamicServerError(err)) {
-      throw err
-    }
+    rethrowIfNextControlFlow(err)
     console.error("[getCurrentUser] Unexpected failure:", err)
     return { userId: null, email: null, isDemo: false }
   }
-}
+})

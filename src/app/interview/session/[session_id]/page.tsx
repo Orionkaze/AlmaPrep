@@ -71,6 +71,12 @@ interface Challenge {
   difficulty?: string;
   starter_code?: Record<string, string>;
   hidden_tests?: HiddenTest[];
+  /**
+   * Name of the function a submission must define. Set it on the challenge row
+   * and a new challenge needs no client change; the title maps below are only a
+   * fallback for the rows that predate the column.
+   */
+  entry_point?: string | null;
   [key: string]: unknown;
 }
 
@@ -131,27 +137,159 @@ function deepEqual(a: unknown, b: unknown): boolean {
   return false;
 }
 
-// Dynamic script loader for Pyodide
-const loadPyodideScript = () => {
-  return new Promise<void>((resolve, reject) => {
-    if ((window as unknown as { loadPyodide?: unknown }).loadPyodide) {
-      resolve();
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js";
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = (err) => reject(err);
-    document.body.appendChild(script);
-  });
+const PYTHON_TIMEOUT_MS = 5000;
+
+/**
+ * Which function in the submission should be called.
+ *
+ * Preference order: the challenge row's entry_point, then a title-slug map for
+ * legacy rows, then "" meaning "let the runner pick the first function defined".
+ * The Python path used to have only the slug map and no fallback, so any
+ * challenge whose title was not in the list produced a SyntaxError on every
+ * test — reported to the candidate as a genuine 0/N and a "No Hire".
+ */
+const JS_ENTRY_POINTS: Record<string, string> = {
+  twosum: "twoSum",
+  validparentheses: "isValid",
+  longestsubstring: "lengthOfLongestSubstring",
+  maximumsubarray: "maxSubArray",
+  binarysearchtree: "isValidBST",
+  numberofislands: "numIslands",
+  mergeksorted: "mergeKLists",
+  wordbreak: "wordBreak",
+  trappingrain: "trap",
+  godfunction: "register",
+  ratelimiter: "rateLimiter",
+  jobqueue: "JobQueue",
+  coinchange: "coinChange",
+  longestcommon: "longestCommonSubsequence",
+  courseschedule: "canFinish",
+  wordladder: "ladderLength",
+  rotatedsorted: "search",
+  mediandata: "MedianFinder",
+  lrucache: "LRUCache",
+  authentication: "authenticate",
+  // Middleware-shaped challenges all export the same entry point.
+  sql: "middleware",
+  brokenaccess: "middleware",
+  idor: "middleware",
+  n1query: "middleware",
+  slowsearch: "middleware",
 };
 
-interface PyodideInstance {
-  runPythonAsync: (code: string) => Promise<string>;
+const PYTHON_ENTRY_POINTS: Record<string, string> = {
+  twosum: "two_sum",
+  validparentheses: "is_valid",
+  longestsubstring: "length_of_longest_substring",
+  maximumsubarray: "max_sub_array",
+  binarysearchtree: "is_valid_bst",
+  numberofislands: "num_islands",
+  mergeksorted: "merge_k_lists",
+  wordbreak: "word_break",
+  trappingrain: "trap",
+  coinchange: "coin_change",
+  longestcommon: "longest_common_subsequence",
+  courseschedule: "can_finish",
+  wordladder: "ladder_length",
+  rotatedsorted: "search",
+};
+
+function resolveEntryPoint(
+  challenge: Challenge | null,
+  challengeTitle: string,
+  language: "javascript" | "python"
+): string {
+  if (challenge?.entry_point) return challenge.entry_point;
+  const slug = challengeTitle.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const map = language === "python" ? PYTHON_ENTRY_POINTS : JS_ENTRY_POINTS;
+  const hit = Object.keys(map).find((k) => slug.includes(k));
+  return hit ? map[hit] : "";
 }
 
-let pyodideInstance: PyodideInstance | null = null;
+const PYODIDE_URL = "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js";
+
+/**
+ * Python runs in a Worker, not on the main thread.
+ *
+ * It used to call pyodide.runPythonAsync() directly and race it against a
+ * setTimeout. Pyodide blocks the thread it runs on, so a `while True:` in a
+ * candidate's answer froze the whole tab and the timeout callback could never
+ * be scheduled to fire. The JS path has always used a Worker with terminate();
+ * this brings Python in line.
+ *
+ * Two other things are fixed here:
+ *  - arguments are handed over as a JSON string through pyodide.globals rather
+ *    than interpolated into the Python source, which used to break on any test
+ *    input containing a backslash or newline;
+ *  - each run gets a fresh namespace, so globals defined by one submission no
+ *    longer leak into the next.
+ */
+const PYTHON_WORKER_SOURCE = `
+importScripts(${JSON.stringify(PYODIDE_URL)});
+
+let pyodidePromise = null;
+
+self.onmessage = async (e) => {
+  const { code, argsJson, entryPoint } = e.data;
+  try {
+    if (!pyodidePromise) pyodidePromise = loadPyodide();
+    const pyodide = await pyodidePromise;
+
+    pyodide.globals.set("__almaprep_code", code);
+    pyodide.globals.set("__almaprep_args", argsJson);
+    pyodide.globals.set("__almaprep_entry", entryPoint || "");
+
+    const resultJson = await pyodide.runPythonAsync(\`
+import json
+
+__ns = {}
+exec(__almaprep_code, __ns)
+
+__args = json.loads(__almaprep_args)
+if not isinstance(__args, list):
+    __args = [__args]
+
+__fn = __ns.get(__almaprep_entry) if __almaprep_entry else None
+if __fn is None or not callable(__fn):
+    # Fall back to the first function the submission defines, so a challenge
+    # whose title is not in any hardcoded map still runs.
+    __candidates = [v for k, v in __ns.items() if callable(v) and not k.startswith("__")]
+    __fn = __candidates[0] if __candidates else None
+
+if __fn is None:
+    raise Exception("No function found in the submitted code.")
+
+json.dumps(__fn(*__args))
+\`);
+
+    self.postMessage({ success: true, result: JSON.parse(resultJson) });
+  } catch (err) {
+    self.postMessage({ success: false, error: String(err && err.message ? err.message : err) });
+  }
+};
+`;
+
+/**
+ * One worker for the whole run — Pyodide is a ~10 MB download, so spawning one
+ * per test case would be unusable. It is torn down and rebuilt only when a test
+ * times out, which is exactly when its interpreter state is unsafe to reuse.
+ */
+let pythonWorker: Worker | null = null;
+
+function getPythonWorker(): Worker {
+  if (!pythonWorker) {
+    const blob = new Blob([PYTHON_WORKER_SOURCE], { type: "application/javascript" });
+    pythonWorker = new Worker(URL.createObjectURL(blob));
+  }
+  return pythonWorker;
+}
+
+function killPythonWorker() {
+  if (pythonWorker) {
+    pythonWorker.terminate();
+    pythonWorker = null;
+  }
+}
 
 export default function InterviewWorkspacePage({
   params
@@ -264,9 +402,11 @@ export default function InterviewWorkspacePage({
 
   // Lazy-load Pyodide when challenge language is python
   useEffect(() => {
-    if (challenge?.language === "python") {
-      loadPyodideScript().catch((err) => console.error("Failed to load Pyodide bundle:", err));
-    }
+    if (challenge?.language !== "python") return;
+    // Spin the worker up early so the first test doesn't pay the download.
+    getPythonWorker();
+    // Leaving the page must not leave an interpreter running in the background.
+    return () => killPythonWorker();
   }, [challenge]);
 
   // Handle timer
@@ -397,7 +537,7 @@ export default function InterviewWorkspacePage({
     return new Promise((resolve) => {
       const workerCode = `
         self.onmessage = function(e) {
-          const { code, challengeTitle, test } = e.data;
+          const { code, test, entryPoint } = e.data;
           try {
             const module = { exports: {} };
             const exports = module.exports;
@@ -418,32 +558,9 @@ export default function InterviewWorkspacePage({
               return {};
             };
 
-            // Custom Node/CommonJS file loaders
-            let functionName = "";
-            const slug = challengeTitle.toLowerCase().replace(/[^a-z0-9]/g, "");
-            if (slug.includes("twosum")) functionName = "twoSum";
-            else if (slug.includes("validparentheses")) functionName = "isValid";
-            else if (slug.includes("longestsubstring")) functionName = "lengthOfLongestSubstring";
-            else if (slug.includes("maximumsubarray")) functionName = "maxSubArray";
-            else if (slug.includes("binarysearchtree")) functionName = "isValidBST";
-            else if (slug.includes("numberofislands")) functionName = "numIslands";
-            else if (slug.includes("mergeksorted")) functionName = "mergeKLists";
-            else if (slug.includes("wordbreak")) functionName = "wordBreak";
-            else if (slug.includes("trappingrain")) functionName = "trap";
-            else if (slug.includes("sql") || slug.includes("brokenaccess") || slug.includes("idor") || slug.includes("n1query") || slug.includes("slowsearch")) {
-              functionName = "middleware";
-            } else if (slug.includes("godfunction")) functionName = "register";
-            else if (slug.includes("ratelimiter")) functionName = "rateLimiter";
-            else if (slug.includes("jobqueue")) functionName = "JobQueue";
-            else if (slug.includes("coinchange")) functionName = "coinChange";
-            else if (slug.includes("longestcommon")) functionName = "longestCommonSubsequence";
-            else if (slug.includes("courseschedule")) functionName = "canFinish";
-            else if (slug.includes("wordladder")) functionName = "ladderLength";
-            else if (slug.includes("rotatedsorted")) functionName = "search";
-            else if (slug.includes("mediandata")) functionName = "MedianFinder";
-            else if (slug.includes("lrucache")) functionName = "LRUCache";
-            else if (slug.includes("authentication")) functionName = "authenticate";
-
+            // Resolved on the main thread from the challenge's entry_point,
+            // the title map, or "" meaning "use the first function defined".
+            const functionName = entryPoint || "";
             const isMiddleware = ["authenticate", "middleware", "rateLimiter"].includes(functionName);
 
             // Deserializers for complex tree/list arguments
@@ -585,65 +702,49 @@ export default function InterviewWorkspacePage({
         resolve(e.data);
       };
 
-      worker.postMessage({ code, challengeTitle, test });
+      worker.postMessage({
+        code,
+        test,
+        entryPoint: resolveEntryPoint(challenge, challengeTitle, "javascript"),
+      });
     });
   };
 
   // IN-BROWSER PYTHON RUNNER WITH PYODIDE
-  const runPythonTest = async (code: string, challengeTitle: string, test: HiddenTest): Promise<WorkerTestResult> => {
-    try {
-      await loadPyodideScript();
-      if (!pyodideInstance) {
-        pyodideInstance = await (window as unknown as { loadPyodide: () => Promise<PyodideInstance> }).loadPyodide();
-      }
-      const pyodide = pyodideInstance;
+  const runPythonTest = (code: string, challengeTitle: string, test: HiddenTest): Promise<WorkerTestResult> => {
+    return new Promise((resolve) => {
+      let settled = false;
+      const worker = getPythonWorker();
 
-      let functionName = "";
-      const slug = challengeTitle.toLowerCase().replace(/[^a-z0-9]/g, "");
-      if (slug.includes("twosum")) functionName = "two_sum";
-      else if (slug.includes("validparentheses")) functionName = "is_valid";
-      else if (slug.includes("longestsubstring")) functionName = "length_of_longest_substring";
-      else if (slug.includes("maximumsubarray")) functionName = "max_sub_array";
-      else if (slug.includes("binarysearchtree")) functionName = "is_valid_bst";
-      else if (slug.includes("numberofislands")) functionName = "num_islands";
-      else if (slug.includes("mergeksorted")) functionName = "merge_k_lists";
-      else if (slug.includes("wordbreak")) functionName = "word_break";
-      else if (slug.includes("trappingrain")) functionName = "trap";
-      else if (slug.includes("coinchange")) functionName = "coin_change";
-      else if (slug.includes("longestcommon")) functionName = "longest_common_subsequence";
-      else if (slug.includes("courseschedule")) functionName = "can_finish";
-      else if (slug.includes("wordladder")) functionName = "ladder_length";
-      else if (slug.includes("rotatedsorted")) functionName = "search";
+      const finish = (result: WorkerTestResult) => {
+        if (settled) return;
+        settled = true;
+        worker.removeEventListener("message", onMessage);
+        worker.removeEventListener("error", onError);
+        clearTimeout(timeoutId);
+        resolve(result);
+      };
 
-      const argsJson = JSON.stringify(test.input_args);
-      
-      const pyRunCode = `
-import json
-${code}
+      const onMessage = (event: MessageEvent) => finish(event.data as WorkerTestResult);
+      const onError = (event: ErrorEvent) =>
+        finish({ success: false, error: event.message || "Python worker error" });
 
-def __run_test():
-    args = json.loads('${argsJson.replace(/'/g, "\\'")}')
-    # Simple Python execution harness
-    res = ${functionName}(*args)
-    return json.dumps(res)
+      // A runaway loop cannot be interrupted from inside Pyodide, so the only
+      // reliable stop is terminating the worker. The next test gets a fresh one.
+      const timeoutId = setTimeout(() => {
+        killPythonWorker();
+        finish({ success: false, error: "Execution timed out (5 seconds limit reached)" });
+      }, PYTHON_TIMEOUT_MS);
 
-__run_test()
-      `;
+      worker.addEventListener("message", onMessage);
+      worker.addEventListener("error", onError);
 
-      const executionPromise = (async () => {
-        const resultJson = await pyodide.runPythonAsync(pyRunCode);
-        return JSON.parse(resultJson);
-      })();
-
-      const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error("Execution timed out (5 seconds limit reached)")), 5000);
+      worker.postMessage({
+        code,
+        argsJson: JSON.stringify(test.input_args ?? []),
+        entryPoint: resolveEntryPoint(challenge, challengeTitle, "python"),
       });
-
-      const res = await Promise.race([executionPromise, timeoutPromise]);
-      return { success: true, result: res };
-    } catch (err) {
-      return { success: false, error: err instanceof Error ? err.message : String(err) };
-    }
+    });
   };
 
   // Run all structured test cases

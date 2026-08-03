@@ -13,18 +13,42 @@ export interface RateLimitResult {
   retryAfter: number // Seconds to wait
 }
 
+/**
+ * Abuse ceilings per user, keyed by the prefix of the rate-limit key
+ * ("interview:<userId>" resolves to `interview`).
+ *
+ * These are NOT product limits — the paywall in config/plans.ts owns those.
+ * Each number is sized well above what a person doing back-to-back interviews
+ * generates, so it only ever catches a script. A single interview costs roughly
+ * 10 `interview` calls and 20 `answer-analysis` calls.
+ *
+ * NOTE: login/signup/forgot-password used to be listed here, which implied a
+ * protection that did not exist — the browser calls Supabase Auth directly, so
+ * no request reaches this server and nothing ever read those keys. Brute-force
+ * protection for those flows is Supabase's own; configure it there.
+ */
 export const ENDPOINT_CONFIGS: Record<string, RateLimitConfig> = {
-  login: { limit: 5, windowMs: 60 * 1000 },
-  signup: { limit: 3, windowMs: 60 * 60 * 1000 },
-  "forgot-password": { limit: 3, windowMs: 60 * 60 * 1000 },
-  interview: { limit: 15, windowMs: 60 * 60 * 1000 },
-  coding: { limit: 20, windowMs: 60 * 60 * 1000 },
+  interview: { limit: 60, windowMs: 60 * 60 * 1000 },
+  submit: { limit: 15, windowMs: 60 * 1000 },
+  agent: { limit: 20, windowMs: 60 * 1000 },
+  "github-save": { limit: 10, windowMs: 60 * 1000 },
+  "parse-document": { limit: 10, windowMs: 60 * 1000 },
+  "answer-analysis": { limit: 120, windowMs: 60 * 60 * 1000 },
+  feedback: { limit: 10, windowMs: 60 * 60 * 1000 },
   "github-analysis": { limit: 5, windowMs: 60 * 60 * 1000 },
   "resume-analysis": { limit: 20, windowMs: 24 * 60 * 60 * 1000 },
   chat: { limit: 50, windowMs: 60 * 60 * 1000 },
 }
 
-const hits = new Map<string, number[]>()
+/**
+ * key -> { hit timestamps, the window those timestamps belong to }.
+ *
+ * The window is stored per key because the opportunistic prune below walks the
+ * whole map: pruning every key with the *calling* key's cutoff would drop
+ * still-live hits for longer windows (one 60-second call would wipe the 24-hour
+ * `resume-analysis` history), silently resetting those limits.
+ */
+const hits = new Map<string, { times: number[]; windowMs: number }>()
 
 const redis =
   process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
@@ -34,6 +58,7 @@ const redis =
       })
     : null
 
+/** Shared Redis handle, so the quota lock and the limiter use one connection. */
 export function getRedisClient(): Redis | null {
   return redis
 }
@@ -94,7 +119,7 @@ function rateLimitInMemory(
   now: number
 ): RateLimitResult {
   const cutoff = now - windowMs
-  const recent = (hits.get(key) ?? []).filter((t) => t > cutoff)
+  const recent = (hits.get(key)?.times ?? []).filter((t) => t > cutoff)
 
   if (recent.length >= limit) {
     const oldestTimestamp = recent[0] ?? now
@@ -109,14 +134,15 @@ function rateLimitInMemory(
   }
 
   recent.push(now)
-  hits.set(key, recent)
+  hits.set(key, { times: recent, windowMs })
 
-  // Opportunistic prune so the map cannot grow without bound.
+  // Opportunistic prune so the map cannot grow without bound. Each entry is
+  // pruned against its own window, not the calling key's.
   if (hits.size > 5000) {
-    for (const [k, times] of hits) {
-      const live = times.filter((t) => t > cutoff)
+    for (const [k, entry] of hits) {
+      const live = entry.times.filter((t) => t > now - entry.windowMs)
       if (live.length === 0) hits.delete(k)
-      else hits.set(k, live)
+      else hits.set(k, { times: live, windowMs: entry.windowMs })
     }
   }
 
@@ -260,16 +286,10 @@ export async function isRateLimited(
 }
 
 /**
- * Utility to format standard rate limit HTTP headers.
+ * Standard rate-limit headers for a 429 (or an allowed) response.
  *
- * Provides:
- * - X-RateLimit-Limit: Maximum requests allowed in the window.
- * - X-RateLimit-Remaining: Remaining requests allowed in the current window.
- * - X-RateLimit-Reset: Epoch time in seconds when the window completely resets.
- * - Retry-After: Seconds to wait before retrying (only returned if request was rejected).
- *
- * @param result The result returned from checkRateLimit.
- * @returns A plain object containing standard rate limit headers.
+ * - X-RateLimit-Limit / -Remaining / -Reset describe the window.
+ * - Retry-After tells the client how long to wait, and is only set on a refusal.
  */
 export function getRateLimitHeaders(result: RateLimitResult): Record<string, string> {
   const headers: Record<string, string> = {
@@ -282,4 +302,3 @@ export function getRateLimitHeaders(result: RateLimitResult): Record<string, str
   }
   return headers
 }
-

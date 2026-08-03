@@ -1,19 +1,14 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionById, getChallengeById, updateSession, createReport } from "@/lib/interviewDb";
-import { updateStreak } from "@/app/actions/streak";
-import { checkAndAwardBadges } from "@/app/actions/badges";
-import { isRateLimited } from "@/lib/rateLimit";
+import { updateStreak } from "@/lib/streak";
+import { checkAndAwardBadges } from "@/lib/badges";
+import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
+import { isMockAuthEnabled } from "@/lib/env";
+import { cleanJsonResponseText } from "@/lib/llm";
 import { getPostHogClient } from "@/lib/posthog-server";
 
 
-function cleanJsonResponseText(text: string): string {
-  let cleaned = text.trim();
-  if (cleaned.startsWith("```")) {
-    cleaned = cleaned.replace(/^```[a-zA-Z]*\s*/, "").replace(/\s*```$/, "");
-  }
-  return cleaned.trim();
-}
 
 interface ClientTestResultItem {
   input?: unknown;
@@ -37,7 +32,7 @@ export async function POST(request: Request) {
       authUser = data?.user || null;
     } catch {}
 
-    const isLocalDemo = !authUser && process.env.MOCK_MODE === "true";
+    const isLocalDemo = !authUser && isMockAuthEnabled();
 
     if (!authUser && !isLocalDemo) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
@@ -45,8 +40,12 @@ export async function POST(request: Request) {
 
     const userId = authUser ? authUser.id : "demo-user-id";
 
-    if (await isRateLimited(`submit:${userId}`, 15, 60_000)) {
-      return NextResponse.json({ error: "Too many requests. Please slow down." }, { status: 429 });
+    const submitLimit = await checkRateLimit(`submit:${userId}`);
+    if (!submitLimit.allowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please slow down." },
+        { status: 429, headers: getRateLimitHeaders(submitLimit) }
+      );
     }
 
     // 1. Fetch Session and Challenge using localDb-aware helpers
@@ -63,7 +62,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Challenge not found" }, { status: 404 });
     }
 
-    // 2. Validate Client-Sent Test Results Structure (prevent spoofing)
+    // 2. Validate Client-Sent Test Results Structure
     if (
       typeof test_results.passed !== "number" ||
       typeof test_results.failed !== "number" ||
@@ -78,6 +77,31 @@ export async function POST(request: Request) {
     if (test_results.total !== dbTestCount) {
       return NextResponse.json({
         error: `Test count mismatch. Expected ${dbTestCount} tests, received ${test_results.total}.`
+      }, { status: 400 });
+    }
+
+    // The payload must be internally consistent: one result entry per hidden
+    // test, each with a boolean verdict, and the summary counters derived from
+    // those entries rather than asserted alongside them.
+    //
+    // LIMITATION: tests still run in the candidate's browser (see the Web Worker
+    // in interview/session/[session_id]), so these checks make the payload
+    // self-consistent, not trustworthy. Anyone willing to hand-craft the whole
+    // array can still report a pass. Server-side execution is the real fix and
+    // is not built yet — until it is, treat scores as self-reported.
+    if (test_results.results.length !== dbTestCount) {
+      return NextResponse.json({
+        error: `Test count mismatch. Expected ${dbTestCount} result entries, received ${test_results.results.length}.`
+      }, { status: 400 });
+    }
+    if (!test_results.results.every((r: ClientTestResultItem) => r && typeof r.passed === "boolean")) {
+      return NextResponse.json({ error: "Invalid test_results format" }, { status: 400 });
+    }
+
+    const passedCount = test_results.results.filter((r: ClientTestResultItem) => r.passed).length;
+    if (test_results.passed !== passedCount || test_results.failed !== dbTestCount - passedCount) {
+      return NextResponse.json({
+        error: "test_results counters do not match the reported results."
       }, { status: 400 });
     }
 
@@ -136,62 +160,49 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
   "suggestions": ["Use meaningful variable names", "Add error boundaries"]
 }`;
 
-    // Perform Groq Layer 2 call
-    const logicRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: "system", content: "You are a software grading agent. Output JSON only." },
-          { role: "user", content: logicGraderPrompt }
-        ],
-        max_tokens: 1024,
-        temperature: 0.1,
-        response_format: { type: "json_object" }
-      })
-    });
+    // The two graders are independent, so they run together. Awaiting them in
+    // sequence doubled the wall clock of every submission — and with the 30s
+    // timeout on each, the worst case was 60s instead of 30s.
+    const gradeWithGroq = async (prompt: string) =>
+      fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: "system", content: "You are a software grading agent. Output JSON only." },
+            { role: "user", content: prompt }
+          ],
+          max_tokens: 1024,
+          temperature: 0.1,
+          response_format: { type: "json_object" }
+        }),
+        signal: AbortSignal.timeout(30_000)
+      });
+
+    const [logicRes, qualityRes] = await Promise.all([
+      gradeWithGroq(logicGraderPrompt),
+      gradeWithGroq(qualityGraderPrompt),
+    ]);
 
     if (!logicRes.ok) {
       const errTxt = await logicRes.text();
       return NextResponse.json({ error: `Groq logic grading failed: ${errTxt}` }, { status: 500 });
     }
-
-    const logicData = await logicRes.json();
-    const parsedLogic = JSON.parse(cleanJsonResponseText(logicData.choices?.[0]?.message?.content || "{}"));
-
-    // Perform Groq Layer 3 call
-    const qualityRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: "system", content: "You are a software grading agent. Output JSON only." },
-          { role: "user", content: qualityGraderPrompt }
-        ],
-        max_tokens: 1024,
-        temperature: 0.1,
-        response_format: { type: "json_object" }
-      })
-    });
-
     if (!qualityRes.ok) {
       const errTxt = await qualityRes.text();
       return NextResponse.json({ error: `Groq quality grading failed: ${errTxt}` }, { status: 500 });
     }
 
-    const qualityData = await qualityRes.json();
+    const [logicData, qualityData] = await Promise.all([logicRes.json(), qualityRes.json()]);
+    const parsedLogic = JSON.parse(cleanJsonResponseText(logicData.choices?.[0]?.message?.content || "{}"));
     const parsedQuality = JSON.parse(cleanJsonResponseText(qualityData.choices?.[0]?.message?.content || "{}"));
 
     // 4. Evaluate Success Criteria
-    const passRatio = test_results.passed / test_results.total;
+    const passRatio = dbTestCount === 0 ? 0 : passedCount / dbTestCount;
     const isSuccess = passRatio >= 0.7 && (parsedLogic.logicScore || 0) >= 7 && (parsedQuality.qualityScore || 0) >= 6;
 
     // 5. Update attempts counter & Save solution in Supabase if logged in
@@ -246,23 +257,31 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     }
 
     // 6. Update session status to evaluated using helper (handles mock or live DB)
-    await updateSession(session_id, {
-      status: "evaluated",
-      submitted_code: codebase,
-      submitted_at: new Date().toISOString()
-    });
+    await updateSession(
+      session_id,
+      {
+        status: "evaluated",
+        submitted_code: codebase,
+        submitted_at: new Date().toISOString()
+      },
+      userId
+    );
 
     // 7. Map AI evaluation to InterviewReport schema and save
     const logicScore = parsedLogic.logicScore || 0;
     const qualityScore = parsedQuality.qualityScore || 0;
 
+    // Every dimension here is derived from the submission. `prompt_engineering`
+    // and `context_management` used to sit alongside these as the constant 8,
+    // rendered to the candidate as "8/10" on a report that ends in a hiring
+    // recommendation. Nothing measured them, so they are gone rather than
+    // dressed up; the overall score never used them either.
     const scores = {
-      prompt_engineering: 8,
       problem_decomposition: logicScore,
-      context_management: 8,
       debugging_ability: Math.max(4, 10 - (attempts - 1) * 2),
       testing_strategy: Math.round(passRatio * 10),
       code_review_quality: qualityScore,
+      // Coarse, but it does come from the quality auditor's own findings.
       security_awareness: parsedQuality.issues?.some((i: string) => i.toLowerCase().includes("security") || i.toLowerCase().includes("safe")) ? 5 : 9
     };
 
@@ -286,8 +305,8 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
 
     const hiringRecommendation = isSuccess ? (overallScore >= 85 ? "Strong Hire" : "Hire") : "No Hire";
     const recommendationReasoning = isSuccess 
-      ? `The candidate successfully resolved the coding challenge, passing ${test_results.passed} of ${test_results.total} sandbox tests. The algorithm shows optimal time complexity (${parsedLogic.timeComplexity || "O(n)"}) and clean style (${parsedQuality.readabilityScore || 0}/10 readability).`
-      : `The candidate did not meet the passing criteria for the coding challenge. They passed ${test_results.passed} of ${test_results.total} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`;
+      ? `The candidate successfully resolved the coding challenge, passing ${passedCount} of ${dbTestCount} sandbox tests. The algorithm shows optimal time complexity (${parsedLogic.timeComplexity || "O(n)"}) and clean style (${parsedQuality.readabilityScore || 0}/10 readability).`
+      : `The candidate did not meet the passing criteria for the coding challenge. They passed ${passedCount} of ${dbTestCount} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`;
 
     const mappedTestResults = test_results.results.map((r: ClientTestResultItem, idx: number) => ({
       test_id: `test-${idx}`,

@@ -96,10 +96,17 @@ export function parseSpeakingMetrics(text: string): SpeakingMetrics {
     }
   });
 
-  // 3. Sentence complexity (words per sentence)
+  // 3. Sentence complexity (words per sentence).
+  //
+  // Browser speech recognition usually returns unpunctuated text, in which case
+  // the whole answer looks like one enormous sentence and the average is the
+  // word count — a number that then gets coached on. Report 0 when there is no
+  // sentence structure to measure rather than a misleading figure; callers
+  // treat 0 as "not available".
   const sentences = normalizedText.split(/[.!?]+/).map(s => s.trim()).filter(Boolean);
-  let avgWordsPerSentence = wordCount;
-  if (sentences.length > 0) {
+  const hasPunctuation = /[.!?]/.test(normalizedText);
+  let avgWordsPerSentence = 0;
+  if (hasPunctuation && sentences.length > 0) {
     const totalSentenceWords = sentences.reduce((sum, s) => {
       const words = s.split(/\s+/).filter(Boolean);
       return sum + words.length;
@@ -115,7 +122,13 @@ export function parseSpeakingMetrics(text: string): SpeakingMetrics {
     }
   });
 
+  // A word is only "overused" if it actually repeats. This used to take the
+  // top three by frequency unconditionally, so a short answer in which every
+  // word appeared once still came back with three words flagged — and the
+  // coaching feedback duly told the candidate to stop overusing them.
+  const OVERUSE_MIN_OCCURRENCES = 3;
   const overusedWords = Object.entries(wordFreq)
+    .filter(([, count]) => count >= OVERUSE_MIN_OCCURRENCES)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 3)
     .map(([word]) => word);

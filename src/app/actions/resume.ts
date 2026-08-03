@@ -1,12 +1,19 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
-import { getUserTier } from "@/lib/entitlements"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { getCurrentUser } from "@/lib/getCurrentUser"
-import { getLLMJSONResponse } from "@/lib/llm"
 import { callAI } from "@/lib/aiRouter"
+import { isRateLimited } from "@/lib/rateLimit"
+import { errorMessage } from "@/lib/utils"
+
+/**
+ * Longest resume we will send to a model. A real CV is a few thousand
+ * characters; the cap exists because this action is a public endpoint that
+ * takes a raw string, so an unbounded one is a direct cost attack.
+ */
+const MAX_RESUME_CHARS = 50_000
 
 export interface ResumeAnalysis {
   summary: string
@@ -27,12 +34,24 @@ export async function saveAndAnalyzeResume(
     const isDemoMode = user.isDemo
     const userId = user.userId
 
+    if (!userId) {
+      return { success: false, error: "Not authenticated" }
+    }
+    if (typeof resumeText !== "string" || !resumeText.trim()) {
+      return { success: false, error: "Please provide the text of your resume." }
+    }
+    if (resumeText.length > MAX_RESUME_CHARS) {
+      return {
+        success: false,
+        error: "That resume is too long to analyse. Please trim it to a couple of pages and try again.",
+      }
+    }
+    if (await isRateLimited(`resume-analysis:${userId}`)) {
+      return { success: false, error: "You've analysed several resumes today. Please try again tomorrow." }
+    }
+
     if (isDemoMode) {
-      const responseJsonText = await callAI(
-        resumeText,
-        "analyze_resume",
-        "premium"
-      )
+      const responseJsonText = await callAI(resumeText, "analyze_resume")
       const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
       
       // Safely persist demo resume metadata without exceeding 4KB cookie header limits
@@ -61,13 +80,7 @@ export async function saveAndAnalyzeResume(
       return { success: false, error: "Not authenticated" }
     }
 
-    const { tier: userTier } = await getUserTier()
-
-    const responseJsonText = await callAI(
-      resumeText,
-      "analyze_resume",
-      userTier
-    )
+    const responseJsonText = await callAI(resumeText, "analyze_resume")
     const analysis = JSON.parse(responseJsonText) as ResumeAnalysis
 
     // Save to Supabase users table
@@ -93,9 +106,12 @@ export async function saveAndAnalyzeResume(
         analysis,
       },
     }
-  } catch (err: any) {
+  } catch (err) {
     console.error("saveAndAnalyzeResume failed:", err)
-    return { success: false, error: err.message || "An unexpected error occurred during resume analysis." }
+    return {
+      success: false,
+      error: errorMessage(err) || "An unexpected error occurred during resume analysis.",
+    }
   }
 }
 
@@ -125,7 +141,7 @@ export async function getResumeData(): Promise<{
               analysis: parsed.analysis
             }
           }
-        } catch (e) {}
+        } catch {}
       }
 
       return {

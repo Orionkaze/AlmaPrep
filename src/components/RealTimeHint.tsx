@@ -27,9 +27,19 @@ export default function RealTimeHint({ hints, visible, onDismiss }: RealTimeHint
     }
   }
 
+  // Held in a ref so unmounting mid-animation doesn't leave a timer that fires
+  // setState and onDismiss against a component that is already gone.
+  const dismissTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  React.useEffect(() => {
+    return () => {
+      if (dismissTimerRef.current) clearTimeout(dismissTimerRef.current);
+    };
+  }, []);
+
   const handleDismiss = React.useCallback(() => {
     setAnimateIn(false);
-    setTimeout(() => {
+    if (dismissTimerRef.current) clearTimeout(dismissTimerRef.current);
+    dismissTimerRef.current = setTimeout(() => {
       setShouldRender(false);
       onDismiss();
     }, 300);

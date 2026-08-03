@@ -25,13 +25,13 @@ interface ReportData {
   session_id: string;
   user_id: string;
   scores: {
-    prompt_engineering: number;
     problem_decomposition: number;
-    context_management: number;
     debugging_ability: number;
     testing_strategy: number;
     code_review_quality: number;
     security_awareness: number;
+    /** Older reports may carry retired, never-measured dimensions. */
+    [key: string]: number | undefined;
   };
   strengths: string[];
   weaknesses: string[];
@@ -48,10 +48,12 @@ interface ReportData {
   };
 }
 
+// Only dimensions the grader actually measures. "Prompt Engineering" and
+// "Context Management" were shown here as a hardcoded 8/10 for every candidate;
+// they are no longer written, and older reports that still carry them simply
+// don't render them.
 const categories = [
-  { key: "prompt_engineering", label: "Prompt Engineering" },
   { key: "problem_decomposition", label: "Problem Decomposition" },
-  { key: "context_management", label: "Context Management" },
   { key: "debugging_ability", label: "Debugging Ability" },
   { key: "testing_strategy", label: "Testing Strategy" },
   { key: "code_review_quality", label: "Code Review Quality" },

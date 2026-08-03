@@ -2,14 +2,14 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
-import { track, identify, EVENTS } from "@/lib/analytics"
+import { identify, track, EVENTS } from "@/lib/analytics"
 
 import { useEffect } from "react"
+import { isMockAuthEnabled } from "@/lib/env"
 
 export default function SignupPage() {
   const [email, setEmail] = useState("")
@@ -17,7 +17,6 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
-  const router = useRouter()
   const supabase = createClient()
 
   useEffect(() => {
@@ -32,6 +31,15 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
+
+    // Matches the rule enforced on /reset-password. Without it, signup accepted
+    // whatever Supabase's default minimum happened to be.
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters.")
+      return
+    }
+
     setLoading(true)
     setError(null)
     setSuccess(null)
@@ -51,8 +59,7 @@ export default function SignupPage() {
       } else {
         setLoading(false)
         // Clear demo cookie if signing up with real credentials (not mock mode)
-        const isMockMode = process.env.MOCK_MODE === "true"
-        if (!isMockMode) {
+        if (!isMockAuthEnabled()) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
 
@@ -62,6 +69,9 @@ export default function SignupPage() {
         track(EVENTS.SIGNUP, { method: "email" })
 
         if (data.session) {
+          // Attribute the new account. No-op without analytics consent.
+          if (data.user?.id) identify(data.user.id)
+          track(EVENTS.SIGNUP)
           setSuccess("Account created successfully! Redirecting to onboarding...")
           // Wait a second and redirect to onboarding
           setTimeout(() => {

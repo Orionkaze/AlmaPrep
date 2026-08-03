@@ -1,15 +1,32 @@
 import fs from "fs"
+import os from "os"
 import path from "path"
 
-const CACHE_DIR = path.join(process.cwd(), "data", "local_cache")
+/**
+ * Best-effort disk cache, used as a fallback when a Supabase read/write fails.
+ *
+ * On a serverless host the bundle directory is read-only, so writes under
+ * process.cwd() always threw and this "local fallback" never actually existed
+ * in production — it only logged. Everything therefore goes to the OS temp
+ * directory when running on Vercel, which is writable (and per-instance and
+ * ephemeral, which is what a cache wants anyway).
+ */
+const CACHE_DIR = process.env.VERCEL
+  ? path.join(os.tmpdir(), "almaprep_cache")
+  : path.join(process.cwd(), "data", "local_cache")
+
+/** Ids are user ids today, but never let one escape the cache directory. */
+function safeSegment(value: string): string {
+  return value.replace(/[^a-zA-Z0-9_-]/g, "_")
+}
 
 function getFilePath(type: string, id: string): string {
-  return path.join(CACHE_DIR, type, `${id}.json`)
+  return path.join(CACHE_DIR, safeSegment(type), `${safeSegment(id)}.json`)
 }
 
 export function writeLocalCache(type: string, id: string, data: Record<string, unknown>): boolean {
   try {
-    const dir = path.join(CACHE_DIR, type)
+    const dir = path.join(CACHE_DIR, safeSegment(type))
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true })
     }

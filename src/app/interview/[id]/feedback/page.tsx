@@ -23,23 +23,22 @@ import {
 import { getFeedback, getBehavioralReport, getInterviewSession } from "@/app/actions/interview"
 import BehavioralReport, { type AnswerScore, type PhysicalMetric, type SpeakingAnalysis } from "@/components/BehavioralReport"
 import type { ViolationRecord } from "@/components/ProctoringMonitor"
+import { getStored } from "@/lib/localStore"
+import { getCategoryLabel } from "@/lib/categoryLabels"
+import { isInterviewId } from "@/lib/interviewProtocol"
 
-const categoryLabels: Record<string, string> = {
-  hr: "HR Interview",
-  technical: "Technical Interview",
-  mixed: "Mixed Interview",
+/** Shapes of the client-side fallback copies written by the interview page. */
+type BehavioralLocalCopy = {
+  answerScores: AnswerScore[]
+  physicalMetrics: PhysicalMetric[]
+  finalReport: string
+  speakingAnalysis?: SpeakingAnalysis
 }
-
-const getCategoryLabel = (cat: string) => {
-  if (categoryLabels[cat]) return categoryLabels[cat]
-  return cat
-    .split("-")
-    .map(word => {
-      if (word === "a" || word === "b") return `(${word.toUpperCase()})`
-      if (word === "and") return "&"
-      return word.charAt(0).toUpperCase() + word.slice(1)
-    })
-    .join(" ")
+type ProctoringLocalCopy = {
+  violations: ViolationRecord[]
+  totalCount: number
+  isFlagged: boolean
+  terminatedEarly: boolean
 }
 
 // Demo feedback data fallback
@@ -152,7 +151,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       completedFired.current = true
       track(EVENTS.INTERVIEW_COMPLETED, {
         score: feedback.score,
-        real_session: !!(id && id.length >= 36),
+        real_session: isInterviewId(id),
       })
     }
   }, [feedback, id])
@@ -182,7 +181,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
   useEffect(() => {
     const loadFeedback = async () => {
       // 1. Try to fetch from Supabase if authenticated and id is a UUID
-      if (id && id.length >= 36) {
+      if (isInterviewId(id)) {
         const dbFeedback = await getFeedback(id)
         if (dbFeedback) {
           setFeedback(dbFeedback)
@@ -205,40 +204,25 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
       }
 
       // 2. Try to fetch from local storage
-      const local = localStorage.getItem(`feedback-${id}`)
+      const local = await getStored<typeof feedback>(`feedback-${id}`)
       if (local) {
-        try {
-          const parsed = JSON.parse(local)
-          setFeedback((prev) => prev || parsed)
-        } catch (e) {
-          console.error("Failed to parse local feedback data:", e)
-        }
+        setFeedback((prev) => prev || local)
       }
 
-      const localBehavioral = localStorage.getItem(`behavioral-${id}`)
+      const localBehavioral = await getStored<BehavioralLocalCopy>(`behavioral-${id}`)
       if (localBehavioral) {
-        try {
-          const parsed = JSON.parse(localBehavioral)
-          setBehavioralData((prev) => prev || parsed)
-        } catch (e) {
-          console.error("Failed to parse local behavioral data:", e)
-        }
+        setBehavioralData((prev) => prev || localBehavioral)
       }
 
-      const localProctoring = localStorage.getItem(`proctoring-${id}`)
+      const localProctoring = await getStored<ProctoringLocalCopy>(`proctoring-${id}`)
       if (localProctoring) {
-        try {
-          const parsed = JSON.parse(localProctoring)
-          setProctoringData((prev) => prev || parsed)
-        } catch (e) {
-          console.error("Failed to parse local proctoring data:", e)
-        }
+        setProctoringData((prev) => prev || localProctoring)
       }
 
       // 3. Fallback to mock data if still null
       setFeedback((prev) => prev || demoFeedback)
       
-      const isRealSession = id && id.length >= 36
+      const isRealSession = isInterviewId(id)
       if (!isRealSession) {
         setBehavioralData((prev) => prev || {
           answerScores: [
@@ -360,7 +344,7 @@ export default function FeedbackPage({ params }: { params: Promise<{ id: string 
   }
 
   // Fallback category text
-  const isUuid = id && id.length >= 36
+  const isUuid = isInterviewId(id)
   const categoryText = isUuid ? "Mock Interview" : getCategoryLabel(id)
 
   return (

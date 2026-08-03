@@ -1,4 +1,5 @@
 import { SITE_URL } from "@/lib/siteConfig";
+import { PLANS, PRO_BILLING_CYCLES, formatPrice } from "@/config/plans";
 
 // Serves /llms.txt — a clean, structured overview of Almaprep for AI agents and
 // answer/generative engines (the llms.txt convention). This is a GEO asset:
@@ -9,13 +10,13 @@ export const dynamic = "force-static";
 export function GET() {
   const body = `# Almaprep
 
-> AI-powered mock interview practice for college admissions and job interviews. Free for students, built for schools and coaching institutes. Live voice AI interviews you actually speak in, with instant scoring and detailed feedback.
+> AI-powered mock interview practice for college admissions and job interviews. Free for students, built for schools and coaching institutes. Speak or type your answers, with instant scoring and detailed feedback.
 
-Almaprep (a product of Conyso) helps students walk into admission and job interviews already rehearsed. Live voice AI mock interviews are included on every plan, including the free tier. Institutions get unlimited interviews for every student plus counselor dashboards and analytics.
+Almaprep (a product of Conyso) helps students walk into admission and job interviews already rehearsed. Interviews run in the browser: the interviewer's questions are read aloud, and you can answer by speaking (using your browser's built-in speech recognition) or by typing. Institutions get unlimited interviews for every student.
 
 ## Core pages
 - [Home](${SITE_URL}/): What Almaprep is and who it's for
-- [Features](${SITE_URL}/features): Live voice AI interviews, a consistent question bank, instant scoring and feedback
+- [Features](${SITE_URL}/features): Spoken or typed answers, a consistent question bank, instant scoring and feedback
 - [Pricing](${SITE_URL}/pricing): Free / Pro ($12/mo) / Enterprise (per student, per year)
 - [For institutions](${SITE_URL}/institutions): Mock interviews at scale for schools, colleges and coaching institutes
 - [About](${SITE_URL}/about): Why Almaprep exists
@@ -26,12 +27,13 @@ Almaprep (a product of Conyso) helps students walk into admission and job interv
 - [Running mock interviews across a whole cohort](${SITE_URL}/blog/mock-interviews-for-schools)
 
 ## Key facts
-- Free tier: the full question bank plus up to 3 live voice AI mock interviews per month, no credit card required.
-- Pro: $12/month for unlimited interviews, full progress history and detailed feedback reports. A one-time $29 three-month "season pass" is also available for a single admissions season.
-- Enterprise (institutions): from $5 per student per year, unlimited interviews plus admin/cohort dashboards, counselor analytics, bulk management and custom branding.
+- Free tier: the full question bank plus up to ${PLANS.free.entitlements.monthlyInterviews} AI mock interviews per month, no credit card required.
+- Pro: ${formatPrice(PRO_BILLING_CYCLES.monthly.total)}/month for unlimited interviews, full progress history and detailed feedback reports. A one-time ${formatPrice(PRO_BILLING_CYCLES.season.total)} three-month "season pass" is also available for a single admissions season.
+- Enterprise (institutions): custom pricing, unlimited interviews for every student, with onboarding and rollout support.
 - Interview tracks: HR/behavioral, technical, and college-admissions.
-- Voice interviews run on the browser's built-in speech — no separate app, plugin, or paid voice service.
-- Data: institutions own their students' data; student data is never sold or used to train third-party models.
+- Answers can be spoken or typed. Speech is handled by the browser's own speech recognition and speech synthesis — there is no separate app, plugin, or paid voice service, and no phone or meeting to join.
+- Also included: resume analysis, GitHub-repo-based technical interviews, and a coding challenge workspace that runs tests in your browser.
+- Data: institutions own their students' data; student data is never sold.
 
 ## Contact
 - Partnerships and institutions: partnerships@almaprep.app

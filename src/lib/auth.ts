@@ -2,13 +2,18 @@ import { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { createClient } from "@/lib/supabase/server"
+import { getAuthSecret } from "@/lib/env"
 import crypto from "crypto"
 
 /**
  * WARNING FOR FUTURE DEVELOPERS:
  * The NEXTAUTH_SECRET is used to generate deterministic passwords for Google-provisioned Supabase users.
- * Do NOT rotate NEXTAUTH_SECRET casually! Rotating it will change the generated passwords, preventing 
+ * Do NOT rotate NEXTAUTH_SECRET casually! Rotating it will change the generated passwords, preventing
  * existing Google Sign-In users from authenticating with their mapped Supabase accounts and causing RLS/data loss.
+ *
+ * It also must never have a committed fallback value: anyone holding the secret
+ * can compute any user's Supabase password from their email address. getAuthSecret()
+ * throws in production rather than substituting one.
  */
 function generateDeterministicPassword(email: string, secret: string): string {
   return crypto
@@ -18,12 +23,7 @@ function generateDeterministicPassword(email: string, secret: string): string {
 }
 
 export const authOptions: NextAuthOptions = {
-  secret: (() => {
-    if (process.env.NODE_ENV === "production" && !process.env.NEXTAUTH_SECRET) {
-      throw new Error("CRITICAL SECURITY ERROR: NEXTAUTH_SECRET environment variable must be set in production to protect credentials and prevent token forging.")
-    }
-    return process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
-  })(),
+  secret: getAuthSecret(),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "mock-client-id",
@@ -66,10 +66,7 @@ export const authOptions: NextAuthOptions = {
           return false
         }
 
-        if (!process.env.NEXTAUTH_SECRET && process.env.NODE_ENV === "production") {
-          console.warn("[auth] NEXTAUTH_SECRET is not configured in production environment. Relying on default secret may cause auth session drift.")
-        }
-        const secret = process.env.NEXTAUTH_SECRET || "3c8c7c90b6a2df33be1eb8b4c5384666f7f2d3a3c2a1e64d38c642b918fbd8f0"
+        const secret = getAuthSecret()
 
         try {
           const supabase = await createClient()

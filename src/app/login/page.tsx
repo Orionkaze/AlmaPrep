@@ -2,21 +2,32 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { signIn } from "next-auth/react"
 import Header from "@/components/almaprep/Header"
 import Footer from "@/components/almaprep/Footer"
-import { track, identify, EVENTS } from "@/lib/analytics"
+import { identify, track, EVENTS } from "@/lib/analytics"
 
 import { useEffect } from "react"
+import { isMockAuthEnabled } from "@/lib/env"
+
+/**
+ * Messages for `?error=` on this page. The value comes from the URL, so it is
+ * mapped to text we wrote rather than rendered as-is — otherwise anyone can put
+ * their own sentence on our sign-in screen and link to it ("Session expired,
+ * confirm your details at ...").
+ */
+const AUTH_ERROR_MESSAGES: Record<string, string> = {
+  auth_failed: "We couldn't complete that sign-in. Please try again.",
+  default: "Something went wrong signing you in. Please try again.",
+}
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
   const supabase = createClient()
 
   useEffect(() => {
@@ -28,7 +39,11 @@ export default function LoginPage() {
       }
       const errParam = params.get("error")
       if (errParam) {
-        setError(errParam)
+        // Deliberate mount-only read: the value lives in the URL of a redirect
+        // back from the auth provider. Seeding it into useState instead would
+        // make the server render (no window) disagree with the client's.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setError(AUTH_ERROR_MESSAGES[errParam] ?? AUTH_ERROR_MESSAGES.default)
       }
     }
   }, [])
@@ -49,14 +64,13 @@ export default function LoginPage() {
         setLoading(false)
       } else {
         // Clear demo cookie if logging in with real credentials (not mock mode)
-        const isMockMode = process.env.MOCK_MODE === "true"
-        if (!isMockMode) {
+        if (!isMockAuthEnabled()) {
           document.cookie = "mockmate-demo-session=; path=/; max-age=0"
         }
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          identify(user.id, { email: user.email })
-        }
+        // Id only, no email: identify() is a no-op without analytics consent,
+        // and the address itself never needs to reach PostHog.
+        const { data } = await supabase.auth.getUser()
+        if (data.user?.id) identify(data.user.id)
         track(EVENTS.LOGIN, { method: "email" })
         window.location.href = "/dashboard"
       }

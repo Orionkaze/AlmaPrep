@@ -34,7 +34,7 @@ export default function AboutPage() {
 
             <h2>How we think about it</h2>
             <blockquote>Practice should be consistent, fair, and available at 2am the night before. That is what a question bank does that a chatbot cannot guarantee.</blockquote>
-            <p>For students who want the real thing, and for schools preparing whole cohorts, we layer on live voice AI interviews and the dashboards counselors need, so an entire program can lift its students at once.</p>
+            <p>For students who want the real thing, and for schools preparing whole cohorts, we remove the monthly cap and work with counselors on rollout, so an entire program can lift its students at once.</p>
 
             <h2>What we care about</h2>
             <ul>

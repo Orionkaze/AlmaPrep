@@ -5,15 +5,22 @@ import {
   callOpenAIJson, 
   callGeminiText, 
   callGeminiJson,
-  cleanJsonResponseText
 } from "@/lib/llm"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createClient } from "@/lib/supabase/server"
 import { getProgramQuestions, getSampleQuestions } from "./programs"
 import { readLocalCache } from "@/lib/localCache"
+import { INTERVIEW_END_MARKER } from "@/lib/interviewProtocol"
 
 interface ChatMessage {
   role: "user" | "assistant" | "system"
+  content: string
+}
+
+
+/** A turn as the client stores it: "ai" for the interviewer, anything else for the candidate. */
+interface ChatTranscriptMessage {
+  role: string
   content: string
 }
 
@@ -31,39 +38,36 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, name: stri
 }
 
 /**
- * Unified callAI function. Executes LLM routing directly in-process on the server.
- */
-export async function callAI(prompt: string, task: string, userTier: string): Promise<string> {
-  let userId: string | undefined = undefined
-  try {
-    const user = await getCurrentUser()
-    userId = user.userId || undefined
-  } catch (e) {
-    // Suppress if not in request context
-  }
-
-  const { text } = await executeAIRouting(prompt, task, userTier, userId)
-  return text
-}
-
-/**
- * Unified callAIWithSource function. Executes LLM routing directly in-process on the server.
+ * Run one LLM task and return the text plus which provider answered.
+ *
+ * NOTE ON TIER: these entry points used to take a `userTier` argument that
+ * executeAIRouting never read — the provider chain and the model per provider
+ * are fixed by task, not by plan. Callers were doing a getUserTier() database
+ * round trip per generated question purely to feed it, and a caller-side "pass
+ * the free tier here" fix read as protection that did not exist. The parameter
+ * is gone. If Pro should get a better model, that belongs inside
+ * executeAIRouting where the model is chosen.
  */
 export async function callAIWithSource(
   prompt: string,
-  task: string,
-  userTier: string
+  task: string
 ): Promise<{ result: string; source: string }> {
   let userId: string | undefined = undefined
   try {
     const user = await getCurrentUser()
     userId = user.userId || undefined
-  } catch (e) {
+  } catch {
     // Suppress if not in request context
   }
 
-  const { text, source } = await executeAIRouting(prompt, task, userTier, userId)
+  const { text, source } = await executeAIRouting(prompt, task, userId)
   return { result: text, source }
+}
+
+/** As callAIWithSource, when the caller doesn't care which provider answered. */
+export async function callAI(prompt: string, task: string): Promise<string> {
+  const { result } = await callAIWithSource(prompt, task)
+  return result
 }
 
 /**
@@ -72,7 +76,6 @@ export async function callAIWithSource(
 export async function executeAIRouting(
   prompt: string,
   task: string,
-  userTier: string,
   userId?: string
 ): Promise<{ text: string; source: string }> {
   const timeoutMs = task === "next_question" ? 5000 : 20000 // 5 seconds for questions, 20 seconds for feedback and resume analysis
@@ -156,19 +159,21 @@ Focus your interview questions on their background, experiences, projects, and t
     if (isGithubMode && userId && currentRepoName) {
       try {
         const supabase = await createClient()
-        let { data: analysis, error: fetchError } = await supabase
+        let { data: analysis } = await supabase
           .from("github_analysis")
           .select("*")
           .eq("user_id", userId)
           .maybeSingle()
         
-        if (fetchError || !analysis) {
+        if (!analysis) {
           analysis = readLocalCache("github_analysis", userId)
         }
         
         if (analysis) {
           const repoMeta = analysis.repo_metadata?.[currentRepoName]
-          const repoQuestions = (analysis.questions || []).filter((q: any) => q.repo === currentRepoName)
+          const repoQuestions = ((analysis.questions || []) as { repo?: string }[]).filter(
+            (q) => q.repo === currentRepoName
+          )
           const techStack = analysis.tech_stack || []
           const designPatterns = analysis.design_patterns || []
           
@@ -238,9 +243,10 @@ Rules:
 1. Keep your responses concise, natural, and conversational (1-3 sentences maximum). Stay deeply in your persona.
 2. Do not use any markdown formatting, prefixing, headers, or bullet points (e.g. do not write "Question: ..."). Just output the raw conversational text.
 3. If this is the start of the interview (no candidate answers yet), ask a relevant introductory question tailored to the "${category}" category (or from the question bank if available).
-4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Make sure to include a concluding salutation (e.g., "It was nice speaking with you. I will now analyze our conversation to prepare your feedback.") and do NOT ask any further questions.`
+4. If the candidate has already answered 9 or 10 questions, politely wrap up the interview (in your persona). Include a concluding salutation (e.g., "It was nice speaking with you. I will now review our conversation to prepare your results.") and do NOT ask any further questions.
+5. When — and ONLY when — you are wrapping up as described in rule 4, end your message with the exact marker ${INTERVIEW_END_MARKER} on its own. Never include that marker in any other message. It is stripped before the candidate sees it, and it is the only signal that ends the interview, so do not omit it when concluding.`
 
-    const formattedMessages = previousMessages.map((msg: any) => ({
+    const formattedMessages = (previousMessages as ChatTranscriptMessage[]).map((msg) => ({
       role: msg.role === "ai" ? ("assistant" as const) : ("user" as const),
       content: msg.content,
     }))
@@ -257,7 +263,7 @@ Rules:
     const feedbackMessages = parsed.messages || []
     
     const transcript = feedbackMessages
-      .map((msg: any) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
+      .map((msg: ChatTranscriptMessage) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
       .join("\n")
 
     let questions = getProgramQuestions(category)
@@ -407,9 +413,9 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
       const result = await withTimeout(provider.fn(), timeoutMs, provider.name)
       console.log(`[aiRouter] Success with ${provider.name}`)
       return { text: result, source: provider.name }
-    } catch (err: any) {
-      console.error(`[aiRouter] Provider ${provider.name} failed:`, err.message || err)
-      lastError = err
+    } catch (err) {
+      console.error(`[aiRouter] Provider ${provider.name} failed:`, err instanceof Error ? err.message : err)
+      lastError = err instanceof Error ? err : new Error(String(err))
     }
   }
 

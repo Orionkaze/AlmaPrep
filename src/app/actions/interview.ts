@@ -3,15 +3,62 @@
 import { createClient } from "@/lib/supabase/server"
 import { getUserTier } from "@/lib/entitlements"
 import { checkInterviewAllowance, type AllowanceResult } from "@/lib/quota"
-import { getLLMResponse, getLLMJSONResponse, callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
+import { callGroqJson, callGroqText, cleanJsonResponseText } from "@/lib/llm"
 import { callAI, callAIWithSource } from "@/lib/aiRouter"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 import { cookies } from "next/headers"
-import { getResumeData } from "@/app/actions/resume"
 import { getCombinedDomainQuestions } from "@/lib/programs"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
-import { updateStreak } from "@/app/actions/streak"
-import { checkAndAwardBadges } from "@/app/actions/badges"
+import { updateStreak } from "@/lib/streak"
+import { checkAndAwardBadges } from "@/lib/badges"
+import { isRateLimited } from "@/lib/rateLimit"
+import type { SupabaseClient } from "@supabase/supabase-js"
+import { getRequestUserId } from "@/lib/getRequestUserId"
+import { errorMessage } from "@/lib/utils"
+
+/**
+ * Every exported function in a "use server" file is a public POST endpoint that
+ * anyone can call — the client bundle contains the action ids. The LLM-calling
+ * actions below therefore MUST resolve a real user before spending a token, and
+ * the id-taking ones MUST check that the id belongs to that user. Neither used
+ * to happen: `getNextQuestion` and friends ran for anonymous callers, which made
+ * the whole Groq/OpenAI/Gemini spend reachable without an account.
+ */
+const requireUserId = getRequestUserId
+
+/**
+ * True when `interviewId` belongs to `userId`. RLS should already prevent
+ * cross-user access, but these actions are the only place that knows the intent,
+ * and the schema's own policies have gaps (see the with-check migration), so the
+ * check is made explicitly rather than delegated.
+ */
+async function ownsInterview(
+  supabase: SupabaseClient,
+  interviewId: string,
+  userId: string
+): Promise<boolean> {
+  const { data, error } = await supabase
+    .from("interviews")
+    .select("id")
+    .eq("id", interviewId)
+    .eq("user_id", userId)
+    .maybeSingle()
+  if (error) {
+    console.error("[interview] ownership lookup failed:", error.message)
+    return false
+  }
+  return !!data
+}
+
+/** A pre-generated question attached to one of the candidate's GitHub repos. */
+type GithubRepoQuestion = { repo?: string; difficulty?: string; question?: string }
+
+/** Per-answer scoring produced during a behavioural interview. */
+type AnswerScore = Record<string, unknown>
+
+/** A proctoring/body-language sample taken during a behavioural interview. */
+type PhysicalMetric = Record<string, unknown>
+
 
 interface MessageInput {
   role: "user" | "ai"
@@ -30,6 +77,14 @@ export async function getNextQuestion(
   selectedRepos?: string[]
 ): Promise<{ question: string; source: string; repo_name?: string }> {
   try {
+    const userId = await requireUserId()
+    if (!userId) {
+      return { question: "[Sign in required] Please sign in again to continue your interview.", source: "system" }
+    }
+    if (await isRateLimited(`interview:${userId}`)) {
+      return { question: "[Slow down] You're generating questions very quickly. Please wait a moment.", source: "system" }
+    }
+
     const isGithub = mode === "github" && selectedRepos && selectedRepos.length >= 2
     const aiQuestions = previousMessages.filter(m => m.role === "ai")
     const questionIndex = aiQuestions.length
@@ -60,9 +115,11 @@ export async function getNextQuestion(
           if (analysis && Array.isArray(analysis.questions)) {
             const difficulty = questionIndex === 1 ? "easy" : questionIndex === 4 ? "medium" : "hard"
             const match = analysis.questions.find(
-              (q: any) => q.repo === currentRepoName && q.difficulty === difficulty
+              (q: GithubRepoQuestion) => q.repo === currentRepoName && q.difficulty === difficulty
             )
-            const fallbackMatch = analysis.questions.find((q: any) => q.repo === currentRepoName)
+            const fallbackMatch = analysis.questions.find(
+              (q: GithubRepoQuestion) => q.repo === currentRepoName
+            )
             const targetQuestion = match?.question || fallbackMatch?.question
 
             if (targetQuestion) {
@@ -79,8 +136,6 @@ export async function getNextQuestion(
       }
 
       // If it's a follow-up slot, or fallback for initial slot query failure: generate dynamically via Groq
-      const { tier: userTier } = await getUserTier()
-
       try {
         const nextResponse = await callAIWithSource(
           JSON.stringify({ 
@@ -92,43 +147,29 @@ export async function getNextQuestion(
             selectedRepos,
             currentRepoName
           }),
-          "next_question",
-          userTier
+          "next_question"
         )
         return { 
           question: nextResponse.result, 
           source: "github_repo", 
           repo_name: currentRepoName 
         }
-      } catch (err: any) {
+      } catch (err) {
         console.error("AI routing failed for github follow-up, falling back to general", err)
       }
     }
 
-    // Default: General track question generation (Optionally customized with Resume)
-    let resumeText = ""
-    if (useResume) {
-      try {
-        const res = await getResumeData()
-        if (res.success && res.data?.resumeText) {
-          resumeText = res.data.resumeText
-        }
-      } catch (err) {
-        console.error("Failed to fetch resume text in getNextQuestion:", err)
-      }
-    }
-
-    const { tier: userTier } = await getUserTier()
+    // Default: General track question generation. The resume, when requested,
+    // is fetched inside aiRouter from the useResume flag below.
 
     try {
       const nextResponse = await callAIWithSource(
         JSON.stringify({ category, previousMessages, useResume, persona }),
-        "next_question",
-        userTier
+        "next_question"
       )
       return { question: nextResponse.result, source: nextResponse.source }
-    } catch (err: any) {
-      if (err.message && err.message.includes("free interviews")) {
+    } catch (err) {
+      if (errorMessage(err).includes("free interviews")) {
         return {
           question: `[Limit Reached] You've used all 3 free interviews this month. Upgrade to Pro for unlimited access.`,
           source: "system"
@@ -169,10 +210,10 @@ export async function getNextQuestion(
 
       return { question: selectedQuestion, source: "vetted_fallback" }
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in getNextQuestion Server Action:", error)
     return {
-      question: `[System Error: ${error?.message || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
+      question: `[System Error: ${errorMessage(error) || "Unknown"}] I'm sorry, I encountered an issue generating the next question. Please try replying again.`,
       source: "error"
     }
   }
@@ -218,43 +259,18 @@ export async function generateFeedback(
   }
 
   try {
-    const transcript = messages
-      .map((msg) => `${msg.role === "ai" ? "Interviewer" : "Candidate"}: ${msg.content}`)
-      .join("\n")
-
-    const systemPrompt = `You are an expert interviewer evaluating a candidate's performance in a mock interview for the category: "${category}".`
-    const prompt = `Analyze the following transcript of the mock interview:
-${transcript}
-
-Evaluate the candidate's answers based on communication, technical depth, structured delivery, and confidence.
-Respond ONLY with a valid JSON object matching this exact structure:
-{
-  "score": <number between 0 and 100>,
-  "summary": "<a concise 2-3 sentence overview of their performance, strengths, and areas to work on>",
-  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
-  "improvements": ["<improvement suggestion 1>", "<improvement suggestion 2>", "<improvement suggestion 3>", "<improvement suggestion 4>"],
-  "questionEvaluation": [
-    {
-      "question": "<the exact question asked from the question bank (or standard track)>",
-      "userAnswer": "<brief summary of candidate's answer>",
-      "score": <score for this answer, number between 0 and 100>,
-      "feedback": "<constructive feedback for this answer comparing it to what we look for>",
-      "modelAnswer": "<the ideal answer or model answer from the question bank (or standard track)>"
+    const userId = await requireUserId()
+    if (!userId) {
+      console.warn("[generateFeedback] refused: no authenticated user")
+      return fallbackFeedback
     }
-  ],
-  "studyGuide": [
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" },
-    { "topic": "<specific topic to study>", "advice": "<actionable advice>" }
-  ],
-  "breakdown": [
-    { "label": "Communication", "score": <number> },
-    { "label": "Technical Knowledge", "score": <number> },
-    { "label": "Problem Solving", "score": <number> },
-    { "label": "Confidence", "score": <number> }
-  ]
-}
+    if (await isRateLimited(`feedback:${userId}`)) {
+      console.warn("[generateFeedback] refused: rate limited")
+      return fallbackFeedback
+    }
 
-Ensure all scores are numbers, and no extra text or markdown formatting is returned. Just the raw JSON object.`
+    // NOTE: the feedback prompt itself is built by aiRouter's "generate_feedback"
+    // task; the copy that used to be assembled here was never sent anywhere.
 
     interface FeedbackJson {
       score: number
@@ -266,12 +282,9 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       breakdown: { label: string; score: number }[]
     }
 
-    const { tier: userTier } = await getUserTier()
-
     const responseJsonText = await callAI(
       JSON.stringify({ category, messages }),
-      "generate_feedback",
-      userTier
+      "generate_feedback"
     )
     const data = JSON.parse(responseJsonText) as FeedbackJson
 
@@ -292,11 +305,11 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
       questionEvaluation: Array.isArray(data.questionEvaluation) ? data.questionEvaluation : [],
       breakdown,
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error("LLM Error in generateFeedback:", error)
     return {
       ...fallbackFeedback,
-      summary: `[System Error generating actual feedback: ${error?.message || "Unknown"}]. Here is a simulated analysis instead.`
+      summary: `[System Error generating actual feedback: ${errorMessage(error) || "Unknown"}]. Here is a simulated analysis instead.`
     }
   }
 }
@@ -315,7 +328,11 @@ Ensure all scores are numbers, and no extra text or markdown formatting is retur
 export async function checkAndConsumeInterviewAllowance(): Promise<AllowanceResult> {
   try {
     const { tier, userId, isDemo } = await getUserTier()
-    if (isDemo || !userId) return { allowed: true }
+    // Demo sessions (local mock auth only) are exempt. An anonymous caller is
+    // not: returning "allowed" here meant the monthly limit could be skipped by
+    // simply signing out and calling the action directly.
+    if (isDemo) return { allowed: true }
+    if (!userId) return { allowed: false }
     return await checkInterviewAllowance(userId, tier, Date.now(), true)
   } catch (err) {
     console.error("Interview allowance check failed, allowing:", err)
@@ -334,9 +351,9 @@ export async function createInterviewSession(
     if (user.isDemo || !user.userId) {
       return null
     }
+    const userId = user.userId
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const { data, error } = await supabase
       .from("interviews")
@@ -380,7 +397,10 @@ export async function saveInterviewMessage(
     }
 
     const supabase = await createClient()
-    const userId = user.userId
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[saveInterviewMessage] refused: interviewId does not belong to the caller")
+      return false
+    }
 
     const metadata = {
       ...(source ? { source } : {}),
@@ -425,6 +445,10 @@ export async function saveInterviewFeedback(
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[saveInterviewFeedback] refused: interviewId does not belong to the caller")
+      return false
+    }
     const userId = user.userId
 
     // Verify interview session ownership
@@ -492,7 +516,10 @@ export async function getFeedback(interviewId: string) {
     }
 
     const supabase = await createClient()
-    const userId = user.userId
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[getFeedback] refused: interviewId does not belong to the caller")
+      return null
+    }
 
     const { data, error } = await supabase
       .from("feedback")
@@ -556,7 +583,19 @@ export async function analyzeAnswerQuality(
   hints: string[]
   summary: string
 }> {
+  const unavailable = {
+    star_score: 0,
+    relevance_score: 0,
+    clarity_score: 0,
+    confidence_score: 0,
+    hints: [],
+    summary: "",
+  }
   try {
+    const userId = await requireUserId()
+    if (!userId) return unavailable
+    if (await isRateLimited(`answer-analysis:${userId}`)) return unavailable
+
     const systemPrompt = `You are an expert AI interviewer evaluating a candidate's answer to a specific interview question.
 Analyze the candidate's answer for:
 1. STAR method usage — Situation, Task, Action, Result. Did they structure it well?
@@ -599,10 +638,14 @@ Candidate's Answer: "${answer}"`
  * Generates the final behavioral report based on answer scores and physical metrics.
  */
 export async function generateBehavioralReport(
-  answerScores: any[],
-  physicalMetrics: any[]
+  answerScores: AnswerScore[],
+  physicalMetrics: PhysicalMetric[]
 ): Promise<string> {
   try {
+    const userId = await requireUserId()
+    if (!userId) return ""
+    if (await isRateLimited(`feedback:${userId}`)) return ""
+
     const systemPrompt = `You are an expert public speaking, communications, and career coach.
 Analyze the candidate's combined mock interview data:
 1. Answer quality scores evaluating STAR structure, relevance, clarity, and confidence.
@@ -636,10 +679,10 @@ Physical Behavior Metrics: ${JSON.stringify(physicalMetrics)}`
  */
 export async function saveBehavioralReport(
   sessionId: string,
-  answerScores: any[],
-  physicalMetrics: any[],
+  answerScores: AnswerScore[],
+  physicalMetrics: PhysicalMetric[],
   finalReport: string,
-  speakingAnalysis?: any
+  speakingAnalysis?: Record<string, unknown>
 ): Promise<boolean> {
   try {
     const user = await getCurrentUser()
@@ -648,6 +691,10 @@ export async function saveBehavioralReport(
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, sessionId, user.userId))) {
+      console.warn("[saveBehavioralReport] refused: sessionId does not belong to the caller")
+      return false
+    }
     const userId = user.userId
 
     // Verify session ownership
@@ -694,7 +741,7 @@ export async function saveBehavioralReport(
         speaking_analysis: speakingAnalysis || null
       })
       return true
-    } catch (_) {}
+    } catch {}
     return false
   }
 }
@@ -708,9 +755,9 @@ export async function getBehavioralReport(sessionId: string) {
     if (user.isDemo || !user.userId) {
       return null
     }
+    const userId = user.userId
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const { data, error } = await supabase
       .from("behavioral_analysis")
@@ -751,6 +798,10 @@ export async function analyzeAnswerSpeaking(
   }
 ): Promise<string> {
   try {
+    const userId = await requireUserId()
+    if (!userId) return ""
+    if (await isRateLimited(`answer-analysis:${userId}`)) return ""
+
     const systemPrompt = `You are an expert public speaking coach.
 Analyze the candidate's answer based on the following computed metrics and the transcript:
 1. Filler words used: ${metrics.fillerCount} times (${JSON.stringify(metrics.fillerWords)})
@@ -795,6 +846,10 @@ export async function generateSessionSpeakingSummary(
   }
 ): Promise<string> {
   try {
+    const userId = await requireUserId()
+    if (!userId) return ""
+    if (await isRateLimited(`feedback:${userId}`)) return ""
+
     const systemPrompt = `You are an expert public speaking, communication, and speech coaching expert.
 Analyze the candidate's aggregated speaking metrics over the entire interview session:
 - Total filler words used: ${aggregatedMetrics.totalFillerCount}
@@ -827,7 +882,7 @@ Keep the summary concise and engaging (1 paragraph of 3-4 sentences). Do not inc
 export async function saveProctoringLog(
   interviewId: string,
   log: {
-    violations: any[];
+    violations: Record<string, unknown>[];
     totalCount: number;
     isFlagged: boolean;
     terminatedEarly: boolean;
@@ -838,8 +893,17 @@ export async function saveProctoringLog(
     if (user.isDemo) {
       return false
     }
+    if (!user.userId) {
+      console.warn("[saveProctoringLog] refused: no authenticated user")
+      return false
+    }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[saveProctoringLog] refused: interviewId does not belong to the caller")
+      return false
+    }
+
     const { error } = await supabase
       .from("interviews")
       .update({
@@ -871,6 +935,10 @@ export async function getInterviewSession(interviewId: string) {
     }
 
     const supabase = await createClient()
+    if (!(await ownsInterview(supabase, interviewId, user.userId))) {
+      console.warn("[getInterviewSession] refused: interviewId does not belong to the caller")
+      return null
+    }
     const { data, error } = await supabase
       .from("interviews")
       .select("*")
@@ -905,15 +973,15 @@ export async function checkGitHubConnection(): Promise<boolean> {
 /**
  * Fetches the user's cached GitHub analysis from Supabase on the server.
  */
-export async function getGitHubAnalysis(): Promise<any | null> {
+export async function getGitHubAnalysis(): Promise<Record<string, unknown> | null> {
   try {
     const user = await getCurrentUser()
     if (user.isDemo || !user.userId) {
       return null
     }
+    const userId = user.userId
 
     const supabase = await createClient()
-    const userId = user.userId
 
     const { data, error } = await supabase
       .from("github_analysis")
@@ -938,7 +1006,7 @@ export async function getGitHubAnalysis(): Promise<any | null> {
       if (user.userId) {
         return readLocalCache("github_analysis", user.userId)
       }
-    } catch (_) {}
+    } catch {}
     return null
   }
 }

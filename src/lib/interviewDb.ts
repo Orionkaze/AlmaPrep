@@ -2,9 +2,10 @@ import fs from "fs";
 import path from "path";
 import { createClient } from "@/lib/supabase/server";
 import type { TestResults } from "@/types/db";
+import { isMockAuthEnabled } from "@/lib/env";
 
 // Define the environment check for mock mode
-const isMockMode = process.env.MOCK_MODE === "true";
+const isMockMode = isMockAuthEnabled();
 
 const MOCK_DB_PATH = path.join(process.cwd(), "data", "interview_mock_db.json");
 
@@ -182,21 +183,40 @@ export async function getSessionById(id: string): Promise<InterviewSession | nul
   return data;
 }
 
-export async function updateSession(id: string, updates: Partial<InterviewSession>): Promise<InterviewSession> {
+/**
+ * Apply a partial update to a session.
+ *
+ * `userId` is required: this used to filter on `id` alone, so a caller that
+ * forgot its own ownership check could write to anyone's session — and because
+ * `updates` is a free-form Partial, that included reassigning `user_id`. Both
+ * holes are closed here rather than left to each call site.
+ */
+export async function updateSession(
+  id: string,
+  updates: Partial<InterviewSession>,
+  userId: string
+): Promise<InterviewSession> {
   if (isMockMode) {
     const db = getMockDb();
-    const idx = db.interview_sessions.findIndex((s: InterviewSession) => s.id === id);
+    const idx = db.interview_sessions.findIndex(
+      (s: InterviewSession) => s.id === id && s.user_id === userId
+    );
     if (idx === -1) throw new Error("Session not found");
     db.interview_sessions[idx] = { ...db.interview_sessions[idx], ...updates };
     saveMockDb(db);
     return db.interview_sessions[idx];
   }
 
+  // Never let a caller move a session to another user.
+  const safeUpdates = { ...updates };
+  delete safeUpdates.user_id;
+
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("interview_sessions")
-    .update(updates)
+    .update(safeUpdates)
     .eq("id", id)
+    .eq("user_id", userId)
     .select("*")
     .single();
 
@@ -253,15 +273,4 @@ export async function getReportById(id: string): Promise<InterviewReport | null>
     throw error;
   }
   return data;
-}
-
-// Seed helper specifically for local development
-export function seedChallengeMock(challenge: Challenge) {
-  if (!isMockMode) return;
-  const db = getMockDb();
-  const exists = db.challenges.some((c: Challenge) => c.title === challenge.title);
-  if (!exists) {
-    db.challenges.push(challenge);
-    saveMockDb(db);
-  }
 }

@@ -1,3 +1,7 @@
+/** GitHub is fast and bounded, but a bare fetch has no timeout at all. */
+const GITHUB_TIMEOUT_MS = 15_000
+const ghSignal = () => AbortSignal.timeout(GITHUB_TIMEOUT_MS)
+
 interface GitHubRepo {
   name: string;
   owner: { login: string };
@@ -54,7 +58,7 @@ export async function fetchGitHubUserData(accessToken: string) {
   // 1. Fetch user profile to get their username
   let username = "GitHub User";
   try {
-    const userRes = await fetch("https://api.github.com/user", { headers });
+    const userRes = await fetch("https://api.github.com/user", { headers, signal: ghSignal() });
     if (userRes.ok) {
       const userData = await userRes.json();
       username = userData.login || username;
@@ -64,7 +68,7 @@ export async function fetchGitHubUserData(accessToken: string) {
   }
 
   // 2. Fetch top 5 recently updated repos
-  const reposRes = await fetch("https://api.github.com/user/repos?sort=updated&per_page=5", { headers });
+  const reposRes = await fetch("https://api.github.com/user/repos?sort=updated&per_page=5", { headers, signal: ghSignal() });
   if (!reposRes.ok) {
     const errorText = await reposRes.text();
     throw new Error(`Failed to fetch repositories from GitHub (Status ${reposRes.status}): ${errorText}`);
@@ -92,7 +96,7 @@ export async function fetchGitHubUserData(accessToken: string) {
 
       // Fetch languages used
       try {
-        const langRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/languages`, { headers });
+        const langRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/languages`, { headers, signal: ghSignal() });
         if (langRes.ok) {
           const langData = await langRes.json();
           languages = Object.keys(langData);
@@ -103,7 +107,7 @@ export async function fetchGitHubUserData(accessToken: string) {
 
       // Fetch README content
       try {
-        const readmeRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/readme`, { headers });
+        const readmeRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/readme`, { headers, signal: ghSignal() });
         if (readmeRes.ok) {
           const readmeData = await readmeRes.json();
           if (readmeData.content && readmeData.encoding === "base64") {
@@ -116,7 +120,7 @@ export async function fetchGitHubUserData(accessToken: string) {
 
       // Fetch top-level file structure via Trees API
       try {
-        const treeRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/git/trees/${defaultBranch}`, { headers });
+        const treeRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/git/trees/${defaultBranch}`, { headers, signal: ghSignal() });
         if (treeRes.ok) {
           const treeData = await treeRes.json();
           if (treeData && Array.isArray(treeData.tree)) {
@@ -124,7 +128,7 @@ export async function fetchGitHubUserData(accessToken: string) {
           }
         } else {
           // Fallback to master if default branch check fails
-          const fallbackRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/git/trees/master`, { headers });
+          const fallbackRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/git/trees/master`, { headers, signal: ghSignal() });
           if (fallbackRes.ok) {
             const treeData = await fallbackRes.json();
             if (treeData && Array.isArray(treeData.tree)) {
@@ -143,7 +147,7 @@ export async function fetchGitHubUserData(accessToken: string) {
 
       if (depFileToFetch) {
         try {
-          const depRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/contents/${depFileToFetch}`, { headers });
+          const depRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/contents/${depFileToFetch}`, { headers, signal: ghSignal() });
           if (depRes.ok) {
             const depData = await depRes.json();
             if (depData.content && depData.encoding === "base64") {
@@ -169,7 +173,7 @@ export async function fetchGitHubUserData(accessToken: string) {
 
       // Fetch last 5 closed PRs
       try {
-        const prRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/pulls?state=closed&per_page=5`, { headers });
+        const prRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/pulls?state=closed&per_page=5`, { headers, signal: ghSignal() });
         if (prRes.ok) {
           const prData = await prRes.json();
           if (Array.isArray(prData)) {
@@ -182,7 +186,7 @@ export async function fetchGitHubUserData(accessToken: string) {
 
       // Fetch last 5 closed Issues (excluding PRs)
       try {
-        const issueRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/issues?state=closed&per_page=15`, { headers });
+        const issueRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/issues?state=closed&per_page=15`, { headers, signal: ghSignal() });
         if (issueRes.ok) {
           const issueData = await issueRes.json();
           if (Array.isArray(issueData)) {
@@ -200,7 +204,7 @@ export async function fetchGitHubUserData(accessToken: string) {
       try {
         const threeMonthsAgo = new Date();
         threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
-        const commitsRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/commits?since=${threeMonthsAgo.toISOString()}&per_page=100`, { headers });
+        const commitsRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/commits?since=${threeMonthsAgo.toISOString()}&per_page=100`, { headers, signal: ghSignal() });
         if (commitsRes.ok) {
           const commitsData = await commitsRes.json();
           if (Array.isArray(commitsData)) {
@@ -213,7 +217,7 @@ export async function fetchGitHubUserData(accessToken: string) {
 
       // Fetch top 5 recent commits (for questions/reference)
       try {
-        const commitsRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/commits?per_page=5`, { headers });
+        const commitsRes = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/commits?per_page=5`, { headers, signal: ghSignal() });
         if (commitsRes.ok) {
           const commitsData = await commitsRes.json();
           if (Array.isArray(commitsData)) {

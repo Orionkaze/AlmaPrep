@@ -54,7 +54,7 @@ export default function MockInterviewsForSchoolsPage() {
               <li>Book targeted human sessions with the students the data highlights.</li>
             </ol>
 
-            <p>The enterprise tier adds live voice AI interviews students actually speak in, counselor analytics, and your own branding on top of the free student experience.</p>
+            <p>The enterprise tier removes the monthly interview cap for every student and adds onboarding and rollout support on top of the free student experience.</p>
             <p><Link className="btn btn-primary" href="/institutions">See Almaprep for institutions &rarr;</Link></p>
           </div>
         </article>

@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Switch } from "@/components/ui/switch"
 import { Input } from "@/components/ui/input"
@@ -16,11 +16,6 @@ import {
   FileText,
   Search,
   GraduationCap,
-  Scale,
-  Stethoscope,
-  Drama,
-  Cpu,
-  Globe,
   ArrowRight,
   ChevronLeft,
   ChevronRight
@@ -28,7 +23,19 @@ import {
 import { getResumeData } from "@/app/actions/resume"
 import { getAllPrograms } from "@/app/actions/programs"
 import { checkGitHubConnection, getGitHubAnalysis } from "@/app/actions/interview"
+import { toast } from "sonner"
 import { track, EVENTS } from "@/lib/analytics"
+
+/** Cached GitHub analysis as stored in the github_analysis table. */
+type GithubAnalysis = {
+  questions?: { repo: string; difficulty?: string; question?: string }[]
+  repo_metadata?: Record<string, { complexity_score?: number; [key: string]: unknown }>
+  tech_stack?: string[]
+  design_patterns?: string[]
+  weak_areas?: string[]
+  profile_summary?: string
+  strengths?: string[]
+}
 
 // ProgramInfo interface matching the server definition
 interface ProgramInfo {
@@ -78,7 +85,7 @@ export default function InterviewSetupPage() {
   // GitHub Mode states
   const [isDemoMode, setIsDemoMode] = useState(false)
   const [githubConnected, setGithubConnected] = useState(false)
-  const [githubAnalysis, setGithubAnalysis] = useState<any>(null)
+  const [githubAnalysis, setGithubAnalysis] = useState<GithubAnalysis | null>(null)
   const [githubMode, setGithubMode] = useState(false)
   const [selectedRepos, setSelectedRepos] = useState<string[]>([])
   
@@ -520,14 +527,14 @@ export default function InterviewSetupPage() {
                         value={selectedRepos}
                         onValueChange={(val) => {
                           if (val.length > 5) {
-                            alert("You can select a maximum of 5 repositories.")
+                            toast.error("You can select a maximum of 5 repositories.")
                             return
                           }
                           setSelectedRepos(val)
                         }}
                         className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 w-full"
                       >
-                        {Array.from(new Set(githubAnalysis.questions.map((q: any) => q.repo))).map((repoName: any) => {
+                        {Array.from(new Set((githubAnalysis.questions || []).map((q) => q.repo))).map((repoName) => {
                           const repoMeta = githubAnalysis.repo_metadata?.[repoName]
                           
                           return (

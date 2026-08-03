@@ -58,7 +58,7 @@ export function organizationLd() {
       "Interview preparation",
       "Behavioral interview questions",
       "Technical interviews",
-      "Voice AI interview practice",
+      "Spoken interview practice",
     ],
     areaServed: "Worldwide",
     audience: {
@@ -90,18 +90,6 @@ export function breadcrumbLd(items: { name: string; path: string }[]) {
       position: i + 1,
       name: item.name,
       item: `${SITE_URL}${item.path}`,
-    })),
-  };
-}
-
-export function faqLd(qas: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: qas.map(({ q, a }) => ({
-      "@type": "Question",
-      name: q,
-      acceptedAnswer: { "@type": "Answer", text: a },
     })),
   };
 }

@@ -2,17 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { getStored } from "@/lib/localStore"
+import { SCHEDULE_KEY, type ScheduledSession } from "@/lib/schedule"
 
-interface ScheduledSession {
-  id: string;
-  title: string;
-  scheduledFor: string;
-  createdAt: string;
-}
+/** Scheduled practice sessions, namespaced per user by lib/localStore. */
 
 function SessionItem({ session, monthNames }: { session: ScheduledSession, monthNames: string[] }) {
   const sessionDate = new Date(session.scheduledFor);
@@ -84,16 +80,22 @@ export function MySchedule() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
+    void (async () => {
     try {
-      const stored = localStorage.getItem("mockmate-scheduled-sessions");
+      const stored = await getStored<ScheduledSession[]>(SCHEDULE_KEY);
       if (stored) {
-        const parsed = JSON.parse(stored);
-        const sorted = parsed.sort((a: any, b: any) => new Date(a.scheduledFor).getTime() - new Date(b.scheduledFor).getTime());
+        const sorted = [...stored].sort(
+          (a, b) => new Date(a.scheduledFor).getTime() - new Date(b.scheduledFor).getTime()
+        );
+        // Deliberate mount-only read: storage does not exist during the server
+        // render, so seeding this into useState would guarantee a hydration
+        // mismatch. One render pass on mount is the trade.
         setSessions(sorted);
       }
     } catch (err) {
-      console.error("Failed to parse scheduled sessions", err);
+      console.error("Failed to read scheduled sessions", err);
     }
+    })();
   }, []);
 
   const getDaysInMonth = (year: number, month: number) => {

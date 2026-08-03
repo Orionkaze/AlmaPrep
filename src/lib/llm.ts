@@ -5,16 +5,38 @@ interface ChatMessage {
   content: string
 }
 
+/**
+ * Gemini content filtering.
+ *
+ * These were previously both BLOCK_NONE, which disabled harassment and
+ * hate-speech filtering entirely. This product is sold to schools and its own
+ * marketing page describes handling minors' data, so the filters stay on at
+ * Google's standard threshold. The "roast" interviewer persona still works —
+ * it is sarcasm within the model's safety envelope, which is where it belongs.
+ */
 const safetySettings = [
   {
     category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
   },
   {
     category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
   },
 ]
+
+/**
+ * Upstream request budget. A plain `fetch` has no timeout, and racing it
+ * against a timer (as aiRouter does) resolves our promise while leaving the
+ * request — and the serverless invocation paying for it — running. An
+ * AbortSignal actually cancels it.
+ */
+const LLM_TIMEOUT_MS = 30_000
+
+/** True when a Groq key is available under either of the names we accept. */
+function groqKey(): string | undefined {
+  return process.env.GROQ_API_KEY || process.env.INTERVIEW_GROQ_API_KEY
+}
 
 // Helper to strip markdown json code block fences if returned by LLM
 export function cleanJsonResponseText(text: string): string {
@@ -29,7 +51,7 @@ export function cleanJsonResponseText(text: string): string {
  * Call the Groq API (OpenAI compatible endpoint)
  */
 export async function callGroqText(messages: ChatMessage[], temperature: number): Promise<string> {
-  const apiKey = process.env.GROQ_API_KEY || process.env.INTERVIEW_GROQ_API_KEY
+  const apiKey = groqKey()
   if (!apiKey) throw new Error("GROQ_API_KEY not configured")
   const model = process.env.GROQ_INTERVIEW_MODEL || process.env.GROQ_MODEL || "openai/gpt-oss-120b"
 
@@ -44,6 +66,7 @@ export async function callGroqText(messages: ChatMessage[], temperature: number)
       messages,
       temperature,
     }),
+    signal: AbortSignal.timeout(LLM_TIMEOUT_MS),
   })
 
   if (!response.ok) {
@@ -59,7 +82,7 @@ export async function callGroqText(messages: ChatMessage[], temperature: number)
  * Call the Groq API expecting JSON
  */
 export async function callGroqJson(systemPrompt: string | undefined, prompt: string, temperature: number): Promise<string> {
-  const apiKey = process.env.GROQ_API_KEY || process.env.INTERVIEW_GROQ_API_KEY
+  const apiKey = groqKey()
   if (!apiKey) throw new Error("GROQ_API_KEY not configured")
   const model = process.env.GROQ_INTERVIEW_MODEL || process.env.GROQ_MODEL || "openai/gpt-oss-120b"
 
@@ -81,6 +104,7 @@ export async function callGroqJson(systemPrompt: string | undefined, prompt: str
       temperature,
       response_format: { type: "json_object" },
     }),
+    signal: AbortSignal.timeout(LLM_TIMEOUT_MS),
   })
 
   if (!response.ok) {
@@ -110,6 +134,7 @@ export async function callOpenAIText(messages: ChatMessage[], temperature: numbe
       messages,
       temperature,
     }),
+    signal: AbortSignal.timeout(LLM_TIMEOUT_MS),
   })
 
   if (!response.ok) {
@@ -146,6 +171,7 @@ export async function callOpenAIJson(systemPrompt: string | undefined, prompt: s
       temperature,
       response_format: { type: "json_object" },
     }),
+    signal: AbortSignal.timeout(LLM_TIMEOUT_MS),
   })
 
   if (!response.ok) {
@@ -229,127 +255,4 @@ export async function callGeminiJson(
   const model = genAI.getGenerativeModel(modelOptions)
   const result = await model.generateContent(prompt)
   return result.response.text().trim()
-}
-
-/**
- * Generate a text response using the hybrid fallback chain (Groq -> OpenAI -> Gemini)
- */
-export async function getLLMResponse({
-  systemPrompt,
-  messages,
-  temperature = 0.7,
-}: {
-  systemPrompt?: string
-  messages: ChatMessage[]
-  temperature?: number
-}): Promise<string> {
-  const providers = [
-    {
-      name: "Groq",
-      keyExists: !!process.env.GROQ_API_KEY,
-      fn: () => {
-        // Embed systemPrompt at the start of messages if present
-        const fullMessages = [...messages]
-        if (systemPrompt) {
-          fullMessages.unshift({ role: "system", content: systemPrompt })
-        }
-        return callGroqText(fullMessages, temperature)
-      },
-    },
-    {
-      name: "OpenAI",
-      keyExists: !!process.env.OPENAI_API_KEY,
-      fn: () => {
-        const fullMessages = [...messages]
-        if (systemPrompt) {
-          fullMessages.unshift({ role: "system", content: systemPrompt })
-        }
-        return callOpenAIText(fullMessages, temperature)
-      },
-    },
-    {
-      name: "Gemini",
-      keyExists: !!process.env.GEMINI_API_KEY,
-      fn: () => callGeminiText(systemPrompt, messages, temperature),
-    },
-  ]
-
-  const activeProviders = providers.filter(p => p.keyExists)
-
-  if (activeProviders.length === 0) {
-    throw new Error("No LLM API keys configured (checked GROQ_API_KEY, OPENAI_API_KEY, and GEMINI_API_KEY)")
-  }
-
-  let lastError: Error | null = null
-
-  for (const provider of activeProviders) {
-    try {
-      console.log(`[LLM Router] Routing text generation request to ${provider.name}...`)
-      const result = await provider.fn()
-      console.log(`[LLM Router] Success with ${provider.name}`)
-      return result
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err)
-      console.error(`[LLM Router] Provider ${provider.name} failed:`, message)
-      lastError = err instanceof Error ? err : new Error(message)
-    }
-  }
-
-  throw new Error(`All configured LLM providers failed. Last error: ${lastError?.message || "Unknown error"}`)
-}
-
-/**
- * Generate a structured JSON response using the hybrid fallback chain (OpenAI -> Gemini -> Groq)
- */
-export async function getLLMJSONResponse<T>({
-  systemPrompt,
-  prompt,
-  temperature = 0.7,
-}: {
-  systemPrompt?: string
-  prompt: string
-  temperature?: number
-}): Promise<T> {
-  const providers = [
-    {
-      name: "OpenAI",
-      keyExists: !!process.env.OPENAI_API_KEY,
-      fn: () => callOpenAIJson(systemPrompt, prompt, temperature),
-    },
-    {
-      name: "Gemini",
-      keyExists: !!process.env.GEMINI_API_KEY,
-      fn: () => callGeminiJson(systemPrompt, prompt, temperature),
-    },
-    {
-      name: "Groq",
-      keyExists: !!process.env.GROQ_API_KEY,
-      fn: () => callGroqJson(systemPrompt, prompt, temperature),
-    },
-  ]
-
-  const activeProviders = providers.filter(p => p.keyExists)
-
-  if (activeProviders.length === 0) {
-    throw new Error("No LLM API keys configured (checked OPENAI_API_KEY, GEMINI_API_KEY, and GROQ_API_KEY)")
-  }
-
-  let lastError: Error | null = null
-
-  for (const provider of activeProviders) {
-    try {
-      console.log(`[LLM Router] Routing JSON generation request to ${provider.name}...`)
-      const rawResult = await provider.fn()
-      const cleaned = cleanJsonResponseText(rawResult)
-      const parsed = JSON.parse(cleaned) as T
-      console.log(`[LLM Router] Success with ${provider.name}`)
-      return parsed
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err)
-      console.error(`[LLM Router] JSON Provider ${provider.name} failed:`, message)
-      lastError = err instanceof Error ? err : new Error(message)
-    }
-  }
-
-  throw new Error(`All configured LLM JSON providers failed. Last error: ${lastError?.message || "Unknown error"}`)
 }

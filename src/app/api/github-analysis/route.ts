@@ -4,16 +4,26 @@ import { cookies } from "next/headers"
 import { fetchGitHubUserData, analyzeGitHubProfile } from "@/lib/github"
 import { writeLocalCache, readLocalCache } from "@/lib/localCache"
 import { getCurrentUser } from "@/lib/getCurrentUser"
+import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit"
 
 export async function POST(req: NextRequest) {
   try {
     // 1. Authenticate user
     const user = await getCurrentUser()
     const userId = user.userId
-    const userEmail = user.email
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    // Each call crawls five repos (~7 GitHub requests each) and then runs an
+    // LLM pass, and `forceRefresh` skips the cache — so this needs a ceiling.
+    const analysisLimit = await checkRateLimit(`github-analysis:${userId}`)
+    if (!analysisLimit.allowed) {
+      return NextResponse.json(
+        { error: "You've refreshed your GitHub analysis several times recently. Please try again later." },
+        { status: 429, headers: getRateLimitHeaders(analysisLimit) }
+      )
     }
 
     const supabase = await createClient()
@@ -90,10 +100,10 @@ export async function POST(req: NextRequest) {
     writeLocalCache("github_analysis", userId, analysisRecord)
 
     return NextResponse.json({ result: analysisRecord, cached: false })
-  } catch (error: any) {
+  } catch (error) {
     console.error("[api/github-analysis] Error in POST route:", error)
     return NextResponse.json(
-      { error: error?.message || "Internal Server Error" },
+      { error: error instanceof Error ? error.message : "Internal Server Error" },
       { status: 500 }
     )
   }

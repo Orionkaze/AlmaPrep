@@ -4,6 +4,10 @@ import React, { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
+import { getStored, setStored } from "@/lib/localStore"
+import { SCHEDULE_KEY, type ScheduledSession } from "@/lib/schedule"
+
+/** Scheduled practice sessions, namespaced per user by lib/localStore. */
 
 interface Notification {
   id: string;
@@ -22,15 +26,14 @@ export function NotificationBell() {
     const isDemoMode = document.cookie.includes("mockmate-demo-session");
     const supabase = isDemoMode ? null : createClient();
 
-    const markMissedBookings = () => {
+    const markMissedBookings = async () => {
       // Check local storage for missed bookings
       try {
-        const stored = localStorage.getItem("mockmate-scheduled-sessions");
-        if (stored) {
-          const sessions = JSON.parse(stored);
+        const sessions = await getStored<ScheduledSession[]>(SCHEDULE_KEY);
+        if (sessions) {
           const now = new Date();
           let hasChanges = false;
-          sessions.forEach((s: any) => {
+          sessions.forEach((s) => {
             if (new Date(s.scheduledFor) < now && !s.missedNotified) {
               s.missedNotified = true;
               hasChanges = true;
@@ -41,7 +44,7 @@ export function NotificationBell() {
             }
           });
           if (hasChanges) {
-            localStorage.setItem("mockmate-scheduled-sessions", JSON.stringify(sessions));
+            await setStored(SCHEDULE_KEY, sessions);
           }
         }
       } catch (err) {
