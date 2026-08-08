@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-robotics-mechatronics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Sensing vs actuation trade-off",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["control", "sensors", "trade-offs"],
+    "question": "A robot arm can be made more accurate either by adding better sensors or by using a more precise control algorithm on cheaper sensors. How would you think about that trade-off?",
+    "lookingFor": "Understanding that accuracy is a system property, not a single-component fix, and awareness of cost, noise, and feedback loops.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that better sensors reduce raw measurement error but cost more and can still be noisy",
+        "Recognise that smarter control (filtering, feedback, calibration) can compensate for weaker sensors up to a point",
+        "Frame the choice around the specific error source and where diminishing returns set in"
+      ],
+      "modelAnswer": "I'd first ask what's actually causing the inaccuracy, because if it's sensor noise, no amount of clever control fully fixes bad data, but if it's a slow or poorly tuned response to good data, better algorithms are the cheaper win. In practice I think you do both a little: a Kalman filter or similar can squeeze a lot more out of an average sensor, but there's a floor you can't control your way past. I'd rather spend on the sensor only once I've proven the algorithm is the bottleneck, since that's the cheaper experiment to run first."
+    },
+    "commonMistakes": [
+      "Assuming more expensive sensors always solve the problem",
+      "Ignoring that control algorithms have their own error sources like latency",
+      "Giving a one-word answer without discussing how to test which factor dominates"
+    ],
+    "followUps": ["How would you actually measure which one is limiting your accuracy?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Degrees of freedom",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["kinematics", "fundamentals"],
+    "question": "What does 'degrees of freedom' mean for a robotic arm, and why does a human arm having roughly seven matter?",
+    "lookingFor": "A correct grasp of degrees of freedom as independent ways a system can move, with an example of why redundancy is useful.",
+    "idealAnswer": {
+      "bullets": [
+        "Define degrees of freedom as the number of independent parameters needed to fully describe a configuration",
+        "Note that six degrees of freedom are enough to reach any position and orientation in 3D space",
+        "Explain that extra degrees of freedom, like the human arm's seventh, give redundancy to avoid obstacles or awkward joint angles"
+      ],
+      "modelAnswer": "Degrees of freedom are the number of independent ways a joint or system can move, so a hinge joint has one and a ball joint has three. You technically only need six to place a hand anywhere in space with any orientation, but the human arm has about seven, and that extra one is redundant in the mathematical sense, not wasted. It means if your elbow needs to dodge a table edge, your hand can still reach the same target through a different joint configuration, which is exactly why robotic arms in cluttered environments are often built with that same redundancy."
+    },
+    "commonMistakes": [
+      "Confusing degrees of freedom with the number of motors",
+      "Not explaining why six is the minimum for full 3D reach and orientation",
+      "Missing the point of redundancy entirely"
+    ],
+    "followUps": ["What's a real downside of adding extra degrees of freedom?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-003",
+    "category": "Ethics & Situational",
+    "subtopic": "Autonomous decision-making harm",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["ethics", "autonomy", "safety"],
+    "question": "A warehouse robot you helped design has to choose between stopping suddenly, which could injure the person riding on a nearby cart, or swerving, which could damage expensive stock. How should engineers decide what the robot does?",
+    "lookingFor": "Structured ethical reasoning that prioritises human safety while acknowledging the difficulty of encoding judgement calls into code.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that human safety takes priority over property in the decision hierarchy",
+        "Acknowledge the difficulty of predicting real outcomes and the need for conservative, well-tested rules",
+        "Bring in accountability: who signs off on the rule, and how it's tested and audited"
+      ],
+      "modelAnswer": "My starting principle is that no amount of stock damage justifies risking a person, so the robot's priority ordering has to put human safety above property, full stop. The harder part is that 'stopping suddenly' and 'swerving' both carry uncertain outcomes, so I'd want the actual rule to come from safety engineers and be tested extensively in simulation and controlled trials, not decided ad hoc by whoever wrote that line of code. I'd also want it logged and auditable, because if something does go wrong, you need to be able to show the reasoning was sound at the time, not just that it happened."
+    },
+    "commonMistakes": [
+      "Trying to optimise for cost without naming safety as the clear priority",
+      "Pretending the robot can perfectly predict outcomes",
+      "Ignoring the question of accountability and testing"
+    ],
+    "followUps": ["Who do you think should be legally responsible if the robot's choice injures someone?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development awareness",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "humanoid-robots", "industry"],
+    "question": "Several companies are racing to build general-purpose humanoid robots for warehouses and homes. What do you think is the hardest unsolved problem standing in the way?",
+    "lookingFor": "Awareness of a real current debate in robotics with a reasoned opinion, not just headline recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific technical bottleneck such as dexterous manipulation, battery life, or generalising to unstructured environments",
+        "Show understanding of why it's hard, not just that it's hard",
+        "Give a view on realistic timelines rather than hype or dismissal"
+      ],
+      "modelAnswer": "I think the hardest problem isn't walking or even basic manipulation, it's generalisation, getting a robot to handle the huge variety of objects and situations a home or a real warehouse throws at it without being explicitly programmed for each one. Grasping is deceptively hard because a slightly different object shape or a spilled liquid can break a system trained on clean data. I'm optimistic that large-scale learning approaches are closing that gap faster than people expected, but I'd be cautious about the timelines companies are publicly promising, because a demo working once in a controlled setting is very different from reliability at scale."
+    },
+    "commonMistakes": [
+      "Vague statements like 'AI isn't good enough yet' with no specifics",
+      "Only repeating marketing claims from a company without critical distance",
+      "Confusing walking and balance with the harder manipulation problem"
+    ],
+    "followUps": ["Do you think humanoid form factor is even the right approach for most of these tasks?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Open vs closed loop control",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["control-systems", "fundamentals"],
+    "question": "What's the difference between open-loop and closed-loop control, and can you give an example of each from everyday life?",
+    "lookingFor": "Correct conceptual grasp of feedback in control systems, illustrated with clear, accurate examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Open-loop acts without checking the result; closed-loop measures the output and adjusts",
+        "Give a genuine open-loop example, like a microwave timer",
+        "Give a genuine closed-loop example, like a thermostat, and explain the feedback path"
+      ],
+      "modelAnswer": "Open-loop control just sends a command without checking whether it worked, like a microwave running for ninety seconds regardless of whether the food is actually hot. Closed-loop control measures the actual outcome and corrects based on the difference, like a thermostat that keeps checking room temperature and switches the heating on or off to track a target. The key idea is feedback, closed-loop systems can correct for disturbances they didn't anticipate, which is exactly why most robots need it for anything precise."
+    },
+    "commonMistakes": [
+      "Mixing up which system uses feedback",
+      "Giving examples that don't actually match the definition",
+      "Failing to mention the role of a sensor in closed-loop systems"
+    ],
+    "followUps": ["Why might an engineer deliberately choose open-loop control even though it's less accurate?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical design constraint",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["design", "hypothetical", "problem-solving"],
+    "question": "You need to design a small robot to inspect the inside of a narrow, curved water pipe with no GPS and no light. How would you approach the sensing and navigation problem?",
+    "lookingFor": "Structured engineering reasoning under real constraints, showing awareness of appropriate sensor choices and trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Rule out GPS and vision-heavy solutions given the constraints, and propose alternatives like ultrasonic, tactile, or inertial sensing",
+        "Address how the robot would move and steer in a curved, narrow, wet space",
+        "Discuss how it would know where it is or how far it's travelled, such as odometry or landmark features"
+      ],
+      "modelAnswer": "Since there's no light or GPS, I'd rule out cameras as the primary sense and lean on something like ultrasonic or contact sensors to detect the pipe walls and stay centred, plus an IMU for orientation. For movement I'd think about a design with flexible, spring-loaded wheels or legs that can adapt to a changing diameter and curvature without getting stuck. For localisation I'd rely on wheel odometry combined with any known features like joints or valves the pipe network has, since without GPS you're essentially dead-reckoning and need to correct drift whenever you pass something recognisable."
+    },
+    "commonMistakes": [
+      "Defaulting to a camera-based solution despite the no-light constraint",
+      "Ignoring how the robot physically adapts to a curved, narrow space",
+      "Not addressing the localisation problem at all"
+    ],
+    "followUps": ["How would you get the robot back out, or retrieve its data, if it lost communication?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "PID control intuition",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["control-systems", "pid"],
+    "question": "Can you explain what a PID controller does, in plain terms, and why you'd need all three terms rather than just one?",
+    "lookingFor": "Intuitive but technically correct understanding of proportional, integral, and derivative control and why each solves a different failure mode.",
+    "idealAnswer": {
+      "bullets": [
+        "Proportional term reacts to the current error, integral term corrects persistent bias, derivative term dampens overshoot",
+        "Explain what goes wrong if you use only proportional control, such as steady-state error or oscillation",
+        "Show intuition, not just memorised formulas"
+      ],
+      "modelAnswer": "A PID controller is basically three ways of reacting to how far off target you are. The proportional term pushes harder the further away you are right now, but on its own it often settles just short of the target, which is where the integral term comes in, it adds up past error over time and nudges the system the rest of the way. The derivative term looks at how fast the error is changing and applies a brake, which stops the system overshooting and oscillating back and forth. You need all three because using proportional alone tends to leave a steady offset, and adding integral alone can make things swing wildly without something to dampen it."
+    },
+    "commonMistakes": [
+      "Reciting the acronym without explaining what each term actually fixes",
+      "Confusing the derivative term's damping role with the proportional term's reaction",
+      "Not mentioning steady-state error as the reason integral is needed"
+    ],
+    "followUps": ["What happens if the integral gain is set too high?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development awareness",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "manufacturing", "automation"],
+    "question": "There's an ongoing debate about robots replacing factory workers versus robots working alongside them as 'cobots.' What's your view on where that balance is heading?",
+    "lookingFor": "Awareness of the collaborative robotics trend and a reasoned, balanced view rather than a purely technological or purely social take.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of collaborative robots as a distinct trend from full automation, including safety features like force limiting",
+        "Discuss the economic and skills argument, not just the technical one",
+        "Offer a grounded opinion rather than a purely optimistic or purely alarmist stance"
+      ],
+      "modelAnswer": "I think full replacement gets the headlines but cobots are actually the more interesting trend, because a lot of tasks are still easier for a human to adapt to on the fly, while the repetitive, strain-heavy parts are exactly what robots do well and workers don't want to do anyway. What I find compelling about collaborative robots is that they're built with force and torque limits so they can share space with people safely, which changes the economics, you don't need a caged-off cell. I do think it shifts what jobs look like rather than eliminating them outright, so the harder problem for society is retraining, not the robotics itself."
+    },
+    "commonMistakes": [
+      "Treating it as a purely binary robots-vs-jobs debate",
+      "Not knowing what a cobot actually is or how it differs from an industrial robot",
+      "Giving an opinion with no engineering or economic reasoning behind it"
+    ],
+    "followUps": ["What safety feature would you consider essential in a cobot working near people?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Actuator selection",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["actuators", "mechanical-design"],
+    "question": "If you had to choose between a hydraulic actuator, a pneumatic actuator, and an electric motor for a robot's joint, what would you consider?",
+    "lookingFor": "Understanding of the practical trade-offs between actuator types across force, precision, cleanliness, and complexity.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast hydraulics for high force and power density against their leaks and complexity",
+        "Contrast pneumatics for simplicity and speed against their poor precision and compressibility",
+        "Note electric motors' precision and control ease against limits on raw force in a compact size"
+      ],
+      "modelAnswer": "It really depends on what the joint needs to do. Hydraulics give you huge force in a small package, which is why you see them in heavy machinery, but they're messy, need a pump and fluid lines, and aren't something I'd want in a precision application. Pneumatics are simple and fast and clean by comparison, but air compresses, so you lose fine positional control, which rules them out if you need accuracy. For most robotic joints I'd lean electric, because you get precise closed-loop control and it's easier to integrate electronically, and you only really give that up if you need the sheer force density hydraulics offer."
+    },
+    "commonMistakes": [
+      "Only listing what each actuator is, without discussing the trade-offs relevant to a joint",
+      "Ignoring precision and control differences",
+      "Picking one option without justifying it against the alternatives"
+    ],
+    "followUps": ["Why might compressibility in pneumatics actually be useful in some applications, like a gripper?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-010",
+    "category": "Ethics & Situational",
+    "subtopic": "Data and privacy in robots",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["ethics", "privacy", "data"],
+    "question": "Home robots increasingly carry cameras and microphones to navigate and understand context. How would you balance that capability against a user's privacy?",
+    "lookingFor": "Awareness that sensing capability and privacy are in genuine tension, with concrete design ideas rather than a vague 'be careful' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that raw sensing is often necessary for the robot to function, not gratuitous surveillance",
+        "Propose concrete mitigations such as local processing, data minimisation, or clear user control",
+        "Recognise the trust and consent dimension, not just the technical one"
+      ],
+      "modelAnswer": "I don't think the answer is to strip out the sensors, because a robot navigating a home genuinely needs to see and sometimes hear its surroundings to do its job safely. But there's a real difference between using that data in the moment and storing or transmitting it, so I'd push for as much processing to happen locally on the device as possible, with raw footage discarded rather than uploaded by default. I'd also want the user to have a visible, simple way to know when it's actively sensing and to turn it off, because trust in a home robot depends on the person feeling in control of it, not just on the engineering being technically sound."
+    },
+    "commonMistakes": [
+      "Dismissing the privacy concern as unimportant because the technology is useful",
+      "Giving no concrete technical mitigation, just a general statement about caring about privacy",
+      "Ignoring the consent and transparency angle entirely"
+    ],
+    "followUps": ["Who should own the data a home robot collects, the manufacturer or the user?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Sensor fusion",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["sensors", "sensor-fusion"],
+    "question": "Why would a self-driving robot use both cameras and lidar rather than relying on just one?",
+    "lookingFor": "Understanding of complementary sensor strengths and weaknesses, and the reasoning behind sensor fusion rather than reliance on a single modality.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what each sensor is strong at, such as cameras for texture and colour, lidar for precise depth",
+        "Explain a specific failure case for each sensor alone, such as cameras struggling in poor light or with distance estimation, lidar struggling with fog or transparent objects",
+        "Show understanding that fusion improves reliability by covering for each sensor's blind spots"
+      ],
+      "modelAnswer": "Cameras are great at recognising what something is, like reading a sign or distinguishing a pedestrian from a lamppost, but they struggle to judge distance precisely and can be thrown off by glare or low light. Lidar is the opposite, it gives you very accurate distance and shape data by bouncing light off surfaces, but it doesn't understand what it's looking at and can be confused by things like fog, rain, or glass. Using both means the system can cross-check, if the camera says pedestrian and the lidar confirms an object at that exact distance and shape, you trust the detection far more than either sensor alone."
+    },
+    "commonMistakes": [
+      "Saying lidar and cameras do the 'same thing' just with different technology",
+      "Not naming a concrete failure mode for either sensor",
+      "Missing the idea that fusion increases confidence, not just coverage"
+    ],
+    "followUps": ["What would you do if the camera and lidar data disagreed?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical failure scenario",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "safety", "debugging"],
+    "question": "You've built a robotic prosthetic hand and in testing it occasionally grips too hard without warning. Walk me through how you'd investigate the cause.",
+    "lookingFor": "A systematic diagnostic approach that separates hardware, sensing, and software causes rather than guessing at a fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose isolating variables, checking sensor readings against actual grip force before blaming software",
+        "Consider multiple possible causes across the stack, such as sensor calibration drift, noisy signal spikes, or a control algorithm overreacting",
+        "Emphasise reproducing the fault reliably before attempting a fix"
+      ],
+      "modelAnswer": "First I'd want to reproduce it reliably, because an intermittent fault is much harder to fix if I can't trigger it on demand, so I'd log every sensor reading and motor command during repeated trials until I catch it happening. Then I'd check whether the force sensor itself is reporting the true force at that moment, since a miscalibrated or noisy sensor could tell the controller it needs more grip when it doesn't. If the sensor data looks clean, I'd suspect the control logic, maybe a spike in the input signal from muscle activity is being interpreted too aggressively, and I'd look at whether smoothing or a safety cap on maximum force would prevent harm even if the root cause takes longer to fully nail down."
+    },
+    "commonMistakes": [
+      "Jumping straight to rewriting the algorithm without first isolating the cause",
+      "Assuming it's a software bug without checking the sensor data",
+      "Not proposing a safety cap or fallback while still debugging the root issue"
+    ],
+    "followUps": ["Would you ship a temporary safety fix before finding the root cause? Why or why not?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Gear ratios and torque",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["mechanical-design", "torque", "fundamentals"],
+    "question": "Why do robots often use gearboxes instead of connecting the motor directly to the joint?",
+    "lookingFor": "Correct understanding of the torque-speed trade-off gears provide and why motors alone are usually mismatched to joint requirements.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that motors are typically efficient at high speed and low torque, while joints often need the opposite",
+        "Describe how a gearbox trades speed for torque, and why that suits robotic joints",
+        "Mention a downside such as backlash or reduced backdrivability"
+      ],
+      "modelAnswer": "Most electric motors are efficient spinning fast with relatively low torque, but a robot joint usually needs to move slowly and with a lot of force, like lifting an arm's own weight plus a payload. A gearbox lets you trade that excess speed for torque, so a motor spinning at a few thousand RPM can drive a joint that only needs a few RPM but much higher torque. The trade-off is that gears add backlash and friction, and they can make the joint harder to backdrive by hand, which actually matters for things like collaborative robots where you want the arm to be able to be pushed safely."
+    },
+    "commonMistakes": [
+      "Saying gearboxes just make things 'more powerful' without explaining the speed-torque trade-off",
+      "Not mentioning any downside of gearing",
+      "Confusing gear ratio effects with electrical power changes"
+    ],
+    "followUps": ["What is backdrivability and why might it matter for a robot working near people?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development awareness",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "regulation", "autonomous-vehicles"],
+    "question": "Autonomous vehicle companies have had incidents that led to recalls or paused testing. What do you think that tells us about how the industry should be regulated?",
+    "lookingFor": "Awareness of a real, current tension in robotics deployment and a considered view on regulation versus innovation.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that real incidents have occurred and shaped public and regulatory response",
+        "Discuss the tension between rapid iteration in engineering and the higher bar needed for public safety",
+        "Offer a specific, reasoned position on regulation rather than a purely pro- or anti-tech stance"
+      ],
+      "modelAnswer": "I think it shows that the normal software approach of shipping fast and fixing bugs later doesn't transfer cleanly to something operating in public with people's safety on the line, and a few high-profile incidents have made that gap obvious. I don't think the answer is to freeze innovation, because these systems do improve with real-world data, but I do think there needs to be a higher, independently verified bar before wider deployment, similar to how aviation software is certified, rather than each company setting its own threshold. It's a genuinely hard balance because being too cautious also means never collecting the data that makes the systems safer, so I'd want regulation that scales testing scope with a track record rather than an all-or-nothing gate."
+    },
+    "commonMistakes": [
+      "No awareness of any actual incidents or regulatory response",
+      "Taking an extreme position, either 'ban it' or 'let the market decide' with no nuance",
+      "Confusing autonomous vehicles with driver-assist systems"
+    ],
+    "followUps": ["How would you design a testing framework that scales trust with track record?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Stability and centre of mass",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["mechanics", "fundamentals"],
+    "question": "Why is it much harder to build a stable two-legged walking robot than a four-legged one?",
+    "lookingFor": "Correct understanding of static versus dynamic stability and the role of the centre of mass and support polygon.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the idea of a support polygon and how four legs usually keep the centre of mass within it",
+        "Note that two-legged walking is often dynamically, not statically, stable, meaning it's constantly recovering from a controlled fall",
+        "Connect this to why bipedal robots need faster, more active balance control"
+      ],
+      "modelAnswer": "With four legs on the ground you usually have a wide support polygon, so as long as the centre of mass stays inside that area, the robot is stable without doing anything actively, that's static stability. A two-legged robot walking has moments where only one foot, or sometimes no foot, is on the ground, so it can't just rely on standing still and staying balanced, it has to actively predict and correct its balance many times a second, which is closer to a controlled, continuous fall than standing still. That's why bipedal robots need much faster sensing and control loops than something like a quadruped."
+    },
+    "commonMistakes": [
+      "Vaguely saying two legs are 'less stable' without explaining the mechanism",
+      "Not mentioning the support polygon or centre of mass concept",
+      "Confusing static and dynamic stability"
+    ],
+    "followUps": ["How does this compare to how humans actually balance when they walk?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-016",
+    "category": "Ethics & Situational",
+    "subtopic": "Automation and job displacement",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["ethics", "automation", "society"],
+    "question": "If you help design a robot that automates a task currently done by dozens of workers, do you feel any responsibility for what happens to those jobs?",
+    "lookingFor": "Genuine ethical reflection that neither dismisses the human impact nor abandons the value of the engineering work.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real human impact honestly rather than deflecting to 'it's just technology'",
+        "Reason through where responsibility sits, engineer, company, and policy, rather than claiming full or zero personal responsibility",
+        "Show a considered, not rehearsed, personal position"
+      ],
+      "modelAnswer": "I don't think I can honestly say it's not my concern just because I'm the one writing code rather than making hiring decisions, the two are connected even if the responsibility isn't only mine. At the same time I don't think the right response is to stop building useful things, because automation has also removed genuinely dangerous or repetitive work throughout history and freed people for other roles. Where I do think engineers have a responsibility is in being honest with the companies and policymakers we work for about the scale and speed of the impact, rather than staying quiet because it's not our department, because that honesty is often the thing that's missing when transitions go badly."
+    },
+    "commonMistakes": [
+      "Fully disclaiming responsibility as 'not my job'",
+      "Overclaiming personal responsibility for outcomes far outside their control",
+      "Giving a purely abstract answer with no personal reflection"
+    ],
+    "followUps": ["Would that change what kinds of automation projects you'd choose to work on?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Mechatronics integration",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["mechatronics", "systems-thinking"],
+    "question": "Mechatronics is often described as combining mechanical, electrical, and software engineering. Can you give an example where a problem in one of those domains was actually best solved in another?",
+    "lookingFor": "Genuine systems-level understanding of mechatronics as an integrated discipline, ideally with a specific, believable example.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a concrete, specific example rather than a generic statement about interdisciplinarity",
+        "Explain why the cross-domain solution was actually better than solving it within its 'native' domain",
+        "Show genuine understanding of why mechatronics needs engineers who think across boundaries"
+      ],
+      "modelAnswer": "A good example is vibration in a mechanical arm, the obvious fix is a mechanical one, like stiffer materials or dampers, but that adds weight and cost. Often it's actually cheaper and more effective to solve it in software, using a control algorithm that predicts and counteracts the vibration frequency through the motor commands themselves. That's the essence of mechatronics to me, the best fix for a mechanical symptom is sometimes an electrical or software one, and you only see that if you understand enough of all three domains to look across the boundary instead of staying in your own lane."
+    },
+    "commonMistakes": [
+      "Giving only a generic definition of mechatronics with no specific example",
+      "Choosing an example where the cross-domain link is weak or unclear",
+      "Not explaining why the alternative-domain fix was actually better"
+    ],
+    "followUps": ["What's a case where the mechanical fix actually is the right one, even though a software patch is tempting?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Reasoning under uncertainty",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["reasoning", "probability", "estimation"],
+    "question": "A robot vacuum has to decide whether a dark patch on the floor is a shadow or a hole. It has no depth sensor, only a camera. How would you get it to make that decision safely?",
+    "lookingFor": "Reasoning under uncertainty with an appropriately conservative default, showing awareness that misclassification has asymmetric consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the asymmetric cost of the two mistakes, treating a hole as a shadow is far worse than the reverse",
+        "Propose practical cues a camera-only system could use, such as edge sharpness, context, or testing with a small probing behaviour",
+        "Default to caution when uncertain rather than assuming the safer-looking interpretation"
+      ],
+      "modelAnswer": "The key thing is the two mistakes aren't equally bad, treating a real hole as a harmless shadow could mean the robot falls down stairs, while treating a shadow as a hole just means unnecessary caution, so I'd bias the system heavily toward the cautious interpretation whenever it's unsure. Practically, without depth sensing I'd look at cues like whether the dark patch has a sharp, consistent edge that moves with the light source, which suggests shadow, versus one that stays fixed regardless of lighting changes. If it's still ambiguous, I'd rather have the robot slow down and nudge forward cautiously, maybe using a bump sensor as a last check, than confidently drive over something it can't actually verify."
+    },
+    "commonMistakes": [
+      "Treating both types of error as equally costly",
+      "Assuming a camera-only system can reliably detect depth without acknowledging the real limitation",
+      "Not proposing any concrete visual cue or fallback behaviour"
+    ],
+    "followUps": ["What would you add to the hardware if false stops were becoming a real usability problem?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Power and battery constraints",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["power", "design-constraints"],
+    "question": "Battery life is often the real limiting factor in mobile robots, more than processing power or sensors. Why do you think that is, and how would you design around it?",
+    "lookingFor": "Understanding of energy as a genuine system constraint, with practical design responses rather than just naming the problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why energy density hasn't kept pace with gains in compute and sensing",
+        "Connect this to real trade-offs designers face, like heavier batteries reducing mobility or shorter runtime limiting usefulness",
+        "Propose concrete design responses such as more efficient motors, task scheduling, or reducing continuous sensing load"
+      ],
+      "modelAnswer": "Processing power and sensor capability have improved incredibly quickly, but battery energy density has grown much more slowly by comparison, so a robot's brain and eyes have massively outpaced its stamina. That creates a real design tension, because a bigger battery gives longer runtime but adds weight, which then demands more energy to move, so you can hit diminishing returns fast. Practically I'd want to reduce unnecessary continuous power draw, like only running the camera at full resolution when something interesting is actually detected, and design the mechanical system to be as low-friction and light as possible, since every gram you save is a gram you don't have to spend energy moving."
+    },
+    "commonMistakes": [
+      "Only naming the problem without proposing any design response",
+      "Assuming a bigger battery is a free fix with no downside",
+      "Ignoring the mechanical side of energy efficiency entirely"
+    ],
+    "followUps": ["Would you consider swappable batteries or wireless charging stations as an alternative? What are the trade-offs?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: swarm robotics",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "swarm-robotics", "systems-thinking"],
+    "question": "Imagine you have a hundred small, simple robots instead of one sophisticated one to search a collapsed building for survivors. What are the advantages and challenges of that approach?",
+    "lookingFor": "Systems-level thinking about swarm robotics, including genuine trade-offs rather than assuming more robots is automatically better.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify advantages such as redundancy, parallel coverage, and graceful degradation if individual units fail",
+        "Identify challenges such as coordination, communication in a collapsed environment, and avoiding duplicated or conflicting effort",
+        "Show awareness that simple individual robots require clever collective behaviour rather than central intelligence"
+      ],
+      "modelAnswer": "The big advantage is redundancy and parallel coverage, if ten of the hundred robots get crushed or stuck, the search still continues, and you're covering the debris field far faster than one robot ever could alone. The hard part is coordination, especially because a collapsed building is exactly the environment where radio communication is unreliable, so you can't just rely on a central robot telling everyone where to go. I'd look at simple local rules, like each robot marking where it's already searched and avoiding areas other units report as covered, so useful behaviour emerges from many simple robots without needing constant communication or central control."
+    },
+    "commonMistakes": [
+      "Only listing advantages without engaging with coordination or communication challenges",
+      "Assuming reliable constant communication is available in a collapsed building",
+      "Describing central control rather than genuine swarm-style local coordination"
+    ],
+    "followUps": ["How would you get the swarm's information back to human rescuers if communication is patchy?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Materials selection",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["materials", "mechanical-design"],
+    "question": "Why might an engineer choose a lightweight composite over aluminium for a robot's structural frame, and what would they be giving up?",
+    "lookingFor": "Understanding of real material trade-offs across strength-to-weight, cost, and manufacturability rather than assuming lighter is simply better.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the strength-to-weight advantage of composites and why it matters for mobile or arm-mounted robots",
+        "Name at least one real downside such as cost, manufacturing complexity, or repairability",
+        "Show that the choice depends on the application, not a universal rule"
+      ],
+      "modelAnswer": "Composites like carbon fibre typically offer a much better strength-to-weight ratio than aluminium, which matters a lot for a robot arm, since every gram at the end of the arm has to be moved and stopped by a motor closer to the base, so lighter really does mean faster and more efficient motion. What you give up is cost and manufacturing simplicity, composites are more expensive to produce, harder to machine or repair after damage, and less forgiving of small manufacturing defects than a block of aluminium. I'd choose composite for something like a fast-moving arm segment where weight really counts, but I wouldn't default to it for a static base or frame where aluminium's cost and ease of repair matter more than shaving off weight."
+    },
+    "commonMistakes": [
+      "Assuming lighter material is always strictly better with no downside",
+      "Not mentioning cost or manufacturability as real trade-offs",
+      "Giving a generic materials science answer disconnected from robotics application"
+    ],
+    "followUps": ["Where on a robot would weight savings matter least, and why?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-022",
+    "category": "Ethics & Situational",
+    "subtopic": "Dual-use technology",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["ethics", "dual-use", "military"],
+    "question": "Many robotics breakthroughs, like drone navigation or agile legged robots, have both civilian and military applications. Would that dual-use potential affect what research you'd be willing to work on?",
+    "lookingFor": "Honest, reasoned reflection on dual-use dilemmas showing the applicant has actually thought about it rather than giving a rehearsed idealistic line.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that dual-use is close to unavoidable in much of robotics research, not a rare edge case",
+        "Articulate some personal line or set of considerations, even if not absolute, rather than refusing to engage",
+        "Show awareness that avoiding a field entirely doesn't necessarily prevent the dual-use outcome, since others will pursue it"
+      ],
+      "modelAnswer": "Honestly I think almost any capable navigation or manipulation research could end up with a military application eventually, so refusing to work on anything with that potential would rule out most of the field. What I'd actually think about is closer involvement, whether I'm building the general capability, like better balance control, versus directly working on a weapons application, and I'm far more comfortable with the former. I also don't think me personally avoiding a topic necessarily stops it from being developed elsewhere, so I'd rather stay engaged and have a voice in how the underlying research is published and used, than assume opting out is itself an ethical solution."
+    },
+    "commonMistakes": [
+      "Claiming they'd simply avoid all dual-use research without engaging with how pervasive it is",
+      "Giving a purely idealistic answer with no personal reasoning or nuance",
+      "Dismissing the ethical question as irrelevant to an engineer's job"
+    ],
+    "followUps": ["Would your answer be different if you were offered funding directly from a defence contractor?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Feedback and instability",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["control-systems", "stability"],
+    "question": "What can cause a control system to become unstable, and what would that actually look like on a real robot?",
+    "lookingFor": "Correct technical understanding of instability causes such as excessive gain or delay, with a concrete physical picture of the symptom.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least one real cause of instability, such as gain set too high or a delay or lag in the feedback loop",
+        "Describe the physical symptom, such as oscillation growing over time rather than settling",
+        "Show understanding that instability is a system property tied to the loop, not just 'bad code'"
+      ],
+      "modelAnswer": "A common cause is the gain being set too aggressively, where the system overcorrects every time it senses an error, and each overcorrection is bigger than the last, so instead of settling near the target it oscillates with growing amplitude. Delay in the feedback loop causes something similar, if the sensor reading or the motor's response lags behind reality, the controller ends up reacting to old information and effectively pushes in the wrong direction at the wrong time. On a real robot arm this would actually look and sound alarming, a joint that's supposed to hold steady visibly shaking or swinging wider and wider, which is why tuning and testing gain and latency carefully matters so much before you trust a controller near people."
+    },
+    "commonMistakes": [
+      "Vaguely saying 'a bug' causes instability without naming a real control-theory cause",
+      "Not describing what instability actually looks like physically",
+      "Confusing instability with simple inaccuracy or steady-state error"
+    ],
+    "followUps": ["How would you go about safely tuning the gain without risking damage during testing?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development awareness",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "machine-learning", "robotics"],
+    "question": "Large language models and vision-language models are increasingly being connected to robots to let them follow natural-language instructions. What excites or concerns you about that trend?",
+    "lookingFor": "Awareness of a genuinely current robotics trend with a balanced, specific view rather than pure enthusiasm or pure skepticism.",
+    "idealAnswer": {
+      "bullets": [
+        "Show specific awareness of what these models add, such as flexible instruction-following instead of hard-coded tasks",
+        "Raise a genuine concern, such as reliability, hallucinated actions, or safety when a language model's output drives a physical actuator",
+        "Give a balanced, considered take rather than only excitement or only fear"
+      ],
+      "modelAnswer": "What excites me is that it starts to close the gap between a robot only doing exactly what it was explicitly programmed for and a robot that can be given a flexible instruction like 'clear the small items off the table' and actually work out what that means in a new environment. What concerns me is that these models can be confidently wrong, and a wrong answer from a chatbot is an inconvenience, but a wrong action from a robot arm can cause real physical harm, so I think the safety layer between the model's suggestion and the actual motor command matters enormously and probably needs to stay much more conservative than the language model itself. I'd want to see that translated into constrained, verifiable actions rather than the model directly controlling actuators."
+    },
+    "commonMistakes": [
+      "Treating language-model-driven robots as already solved and reliable",
+      "Dismissing the trend without engaging with its genuine usefulness",
+      "Not distinguishing between the risk of a wrong chatbot answer and a wrong physical action"
+    ],
+    "followUps": ["How would you design a safety layer between a language model's suggestion and the robot's actual movement?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: sim-to-real gap",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "simulation", "reasoning"],
+    "question": "A robot you trained entirely in simulation performs perfectly there but stumbles constantly the moment it's tested on a real robot. What would you suspect, and how would you investigate?",
+    "lookingFor": "Awareness of the sim-to-real gap as a known, specific problem, with a structured investigative approach rather than a vague 'simulation isn't perfect' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the sim-to-real gap explicitly, where simulation doesn't capture real friction, sensor noise, latency, or material properties",
+        "Propose a structured way to isolate the cause, such as comparing sensor readings in sim versus reality, or testing individual subsystems",
+        "Suggest a concrete mitigation, such as domain randomisation or gradually reintroducing real-world noise into training"
+      ],
+      "modelAnswer": "This is a classic sim-to-real gap, simulations often get physics like friction, motor response delay, or sensor noise slightly wrong, and a policy trained to perfection on those exact simplified numbers can be very brittle once reality doesn't match. I'd start by comparing specific measurements, like actual motor torque response or camera noise, against what the simulator assumed, to find where the mismatch is biggest rather than guessing. Depending on what I found, I'd either improve the simulation's fidelity in that specific area or use domain randomisation, deliberately varying friction, delay, and noise during training so the policy learns to be robust to a range of conditions rather than one exact simulated world."
+    },
+    "commonMistakes": [
+      "Giving a vague answer like 'simulation isn't real life' without a concrete diagnostic plan",
+      "Jumping to retraining without first identifying which physical property is mismatched",
+      "Not mentioning any specific mitigation technique like domain randomisation"
+    ],
+    "followUps": ["Is there a risk that making the simulation too randomised actually hurts performance? How would you balance that?"]
+  }
+]

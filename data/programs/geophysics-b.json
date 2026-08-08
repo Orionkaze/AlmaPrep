@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-geophysics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "S-waves and the liquid outer core",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["seismology", "earth-structure", "waves"],
+    "question": "How did seismologists first work out that the Earth's outer core is liquid, when nobody has ever drilled anywhere near it?",
+    "lookingFor": "Understands that S-waves cannot travel through fluids and connects the observed S-wave shadow zone to inferring core state from indirect seismic evidence.",
+    "idealAnswer": {
+      "bullets": [
+        "State that shear waves (S-waves) cannot propagate through a fluid because fluids cannot support shear stress",
+        "Describe the S-wave shadow zone, the region on the far side of the globe where no direct S-waves arrive after a large earthquake",
+        "Explain that this absence, combined with P-wave refraction patterns, was the evidence Oldham and later Lehmann built on to map core structure"
+      ],
+      "modelAnswer": "The key clue is that S-waves need a medium that can support shear, and a liquid just can't do that, it has no rigidity. When you plot where S-waves from a big earthquake actually arrive around the globe, there's a whole shadow zone on the far side where they simply don't show up, and that gap is what convinced early seismologists the outer core had to be liquid. What I find elegant about it is that nobody had to see the core to know its state, the absence of a wave was the evidence itself, which still strikes me as a very geophysics way of doing science."
+    },
+    "commonMistakes": [
+      "Saying we know the core is liquid because samples were drilled or recovered",
+      "Confusing the S-wave shadow zone with the separate P-wave shadow zone",
+      "Vaguely gesturing at 'seismic waves' without naming which type is diagnostic and why"
+    ],
+    "followUps": ["Why is the inner core solid despite being even hotter than the outer core?"]
+  },
+  {
+    "id": "prog-geophysics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Non-uniqueness in geophysical inversion",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["inversion", "gravity", "ambiguity"],
+    "question": "If you found a gravity anomaly under a survey area, could you say for certain what caused it? Why or why not?",
+    "lookingFor": "Grasps the fundamental non-uniqueness of potential field inversion and knows the practical ways geophysicists constrain it rather than pretending a single clean answer exists.",
+    "idealAnswer": {
+      "bullets": [
+        "State that a given gravity anomaly can be produced by infinitely many different combinations of density, depth, and shape",
+        "Explain that this is a fundamental property of potential fields, not just a data quality problem",
+        "Describe how geophysicists narrow the ambiguity, using other datasets like magnetics or seismic, geological constraints, and borehole control"
+      ],
+      "modelAnswer": "Honestly, no, and that surprised me when I first learned it properly. A dense small body close to the surface can produce almost the same gravity signature as a bigger, less dense body further down, the maths just doesn't uniquely separate them, that's the non-uniqueness problem in potential field inversion. What you actually do is bring in other evidence, magnetic data if the source is magnetic, seismic reflectors to pin down depth, or known geology from nearby boreholes, and use those to rule out implausible models. I think that's actually the honest core of a lot of geophysics, you're not solving for the one true answer, you're narrowing down a family of answers that fit the physics and picking the most geologically sensible one."
+    },
+    "commonMistakes": [
+      "Claiming a single gravity survey can pin down a unique subsurface model",
+      "Treating non-uniqueness as a solvable engineering flaw rather than a mathematical property",
+      "Not mentioning any real way ambiguity gets reduced in practice"
+    ],
+    "followUps": ["Does adding more gravity stations on the surface ever fully resolve this ambiguity?"]
+  },
+  {
+    "id": "prog-geophysics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Induced seismicity and professional responsibility",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["ethics", "induced-seismicity", "energy"],
+    "question": "Say you're working as a geophysicist monitoring a wastewater injection or fracking site, and your data starts showing a pattern that suggests the operation is triggering small earthquakes. The company wants to keep operating at current volumes. What do you do?",
+    "lookingFor": "Structured ethical reasoning that treats technical honesty and public safety as non-negotiable while acknowledging commercial and regulatory realities.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between commercial pressure and the duty to report what the data actually shows",
+        "Insist on transparent reporting through the proper channel, whether that's a traffic-light protocol, regulator, or internal safety officer, rather than quietly downplaying it",
+        "Reason about proportionality, small induced events are common and not automatically catastrophic, so the response should match the actual risk shown by the data"
+      ],
+      "modelAnswer": "My first obligation is to what the data is actually telling me, not to what's convenient for the operator. If seismicity is climbing in a way that tracks injection volumes, I'd document that clearly and escalate it through whatever monitoring protocol is in place, a lot of sites use a traffic-light system precisely so this decision isn't left to informal pressure. I wouldn't want to be alarmist either, plenty of induced seismicity is small and manageable, so I'd want my report to be calibrated to the actual magnitude and trend, not just a blanket alarm. But if the company pushed me to soften or delay that reporting, I don't think I could go along with it, because the people living near that site are the ones who'd carry the actual risk if I stayed quiet."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'shut it all down' with no proportionality or protocol",
+      "Deciding to quietly go along with the company to avoid conflict",
+      "Treating this as purely a technical question with no acknowledgement of the ethical stakes"
+    ],
+    "followUps": ["What would change in your answer if the events were still below the regulatory threshold but trending upward fast?"]
+  },
+  {
+    "id": "prog-geophysics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Machine learning in seismic interpretation",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["current-debate", "machine-learning", "seismology"],
+    "question": "There's been a lot of talk about machine learning replacing traditional seismic interpretation. Where do you stand on that?",
+    "lookingFor": "Awareness of a live debate in the field with a balanced, informed opinion rather than either blind enthusiasm or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of concrete applications, such as automated fault picking, phase detection for earthquake catalogues, and denoising",
+        "Acknowledge genuine strengths, speed and consistency at scale, plus real limitations, data hunger and poor performance outside the training distribution",
+        "Land on a considered position, that ML is a powerful tool alongside physical understanding rather than a replacement for it"
+      ],
+      "modelAnswer": "I think it's already changing the field, not replacing it. Automated phase picking has massively increased how many small earthquakes global and regional networks can catalogue, and deep learning fault detection on 3D seismic volumes genuinely speeds up interpretation that used to take weeks by hand. But these models are only as good as the labelled data they're trained on, and they can be confidently wrong in geological settings that don't look like their training set, which is a real problem in a field where being wrong has physical consequences. My honest view is that the strongest interpreters will be the ones who use ML to do the repetitive scanning while keeping their own physical reasoning as the check on what the model spits out."
+    },
+    "commonMistakes": [
+      "Treating ML as either a magic solution or an irrelevant fad, no middle ground",
+      "No concrete named application, just vague enthusiasm",
+      "Not mentioning any limitation or failure mode at all"
+    ],
+    "followUps": ["Can you think of a scenario where a machine learning model might confidently mis-pick a seismic event?"]
+  },
+  {
+    "id": "prog-geophysics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Prediction versus forecasting",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["earthquakes", "hazard", "terminology"],
+    "question": "Can earthquakes be predicted? Be precise in your answer.",
+    "lookingFor": "Correctly distinguishes deterministic prediction from probabilistic forecasting and explains why the former remains essentially unachieved.",
+    "idealAnswer": {
+      "bullets": [
+        "Define prediction precisely, specifying location, time, and magnitude in advance with useful accuracy, and state that this has not been reliably achieved",
+        "Contrast it with forecasting, which gives probabilities of an earthquake occurring in a region over a longer time window, based on historical rates and fault behaviour",
+        "Explain the underlying reason, that the physics of fault rupture initiation is not currently predictable at the precision prediction would require, even though we understand a lot about where and roughly how often"
+      ],
+      "modelAnswer": "Not in the strict sense people usually mean, no. Prediction would mean telling you the location, timing, and size of a specific quake in advance, and despite decades of effort nobody has managed that reliably, there have been claimed precursors like radon gas or animal behaviour but none hold up statistically. What we can do is forecast, which is giving a probability, say a percentage chance of a major quake on a given fault segment over the next thirty years, based on historical recurrence and strain accumulation. I think the distinction actually matters a lot for public communication, because forecasting sounds less satisfying than prediction but it's the honest, physically grounded thing we can actually offer."
+    },
+    "commonMistakes": [
+      "Conflating prediction and forecasting as the same thing",
+      "Claiming some precursor method reliably works",
+      "Saying earthquakes are entirely random with no spatial or temporal structure at all"
+    ],
+    "followUps": ["What does an early warning system actually do differently from prediction?"]
+  },
+  {
+    "id": "prog-geophysics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Bouguer correction and gravity surveys",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["gravity", "survey-methods", "corrections"],
+    "question": "If you measure gravity at the top of a hill and at sea level, the raw readings will differ even with identical rock underneath. Why, and how do geophysicists deal with that?",
+    "lookingFor": "Understands that raw gravity measurements are affected by elevation and terrain and knows the standard corrections applied before interpreting anomalies.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that gravity decreases with distance from Earth's centre, so elevation alone changes the raw reading, this is corrected with the free-air correction",
+        "Explain that the rock mass between the station and a reference datum also pulls extra gravity toward the instrument, corrected with the Bouguer correction",
+        "Note that nearby topography, hills and valleys, also distorts the reading and needs a terrain correction before what's left, the Bouguer anomaly, reflects actual subsurface density variation"
+      ],
+      "modelAnswer": "It's because raw gravity readings are affected by more than just what's directly underneath the station. Being higher up means you're further from the Earth's centre, so you apply a free-air correction to account for that. But there's also extra rock mass sitting between the station and sea level pulling on the instrument, so you apply a Bouguer correction to strip that out, and if there's a hill or valley nearby distorting the pull sideways, you add a terrain correction too. Once all of that is stripped away what's left is the Bouguer anomaly, which is the part of the signal that actually reflects density differences in the subsurface, and that's the number you'd actually interpret geologically."
+    },
+    "commonMistakes": [
+      "Naming only one correction, usually free-air, and thinking it's the whole story",
+      "Confusing the direction of the Bouguer correction",
+      "Not explaining why terrain correction matters near rugged topography"
+    ],
+    "followUps": ["Would you expect a Bouguer anomaly to be positive or negative over a buried salt dome, and why?"]
+  },
+  {
+    "id": "prog-geophysics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "The Moho discontinuity",
+    "program": "Geophysics",
+    "difficulty": "easy",
+    "tags": ["earth-structure", "seismology", "crust"],
+    "question": "What is the Mohorovicic discontinuity, and how was it discovered?",
+    "lookingFor": "Basic but accurate knowledge of a foundational geophysical structure and the seismic evidence that revealed it.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the Moho as the boundary between the crust and the mantle",
+        "Explain that it was identified from a sudden increase in seismic wave velocity at that depth",
+        "Note that Andrija Mohorovicic spotted this from earthquake travel-time data in the early twentieth century"
+      ],
+      "modelAnswer": "The Moho is the boundary that separates the Earth's crust from the mantle below it, and it's named after Andrija Mohorovicic, the Croatian seismologist who first identified it in 1909. He noticed that seismic waves from a local earthquake arrived in two distinct sets, one that had travelled a slower, direct path through the crust and one that had refracted through a faster layer beneath it and actually arrived earlier at greater distances. That sudden jump in velocity is what marks the crust-mantle boundary, and it's a nice example of how a careful reading of arrival times revealed something about the Earth nobody could see directly."
+    },
+    "commonMistakes": [
+      "Confusing the Moho with the core-mantle boundary",
+      "Describing it only vaguely as 'a layer' without the velocity jump explanation",
+      "Getting the discoverer or era noticeably wrong"
+    ],
+    "followUps": ["Why is the Moho deeper under continents than under oceans?"]
+  },
+  {
+    "id": "prog-geophysics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Paleomagnetism and seafloor spreading",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["plate-tectonics", "paleomagnetism", "evidence"],
+    "question": "How did magnetic stripes on the ocean floor help confirm plate tectonics?",
+    "lookingFor": "Understands the mechanism of magnetic reversal recording at mid-ocean ridges and why symmetric striping was strong evidence for seafloor spreading.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that as magma cools at a mid-ocean ridge, magnetic minerals in the rock align with the Earth's magnetic field at that time and lock in",
+        "Note that the Earth's magnetic field periodically reverses polarity, creating alternating bands of normal and reversed magnetisation",
+        "State that these bands appear as mirror-image stripes symmetric on either side of the ridge, which is exactly what you'd expect if new crust is being created at the ridge and pushed apart"
+      ],
+      "modelAnswer": "When magma erupts at a mid-ocean ridge and cools, the iron-bearing minerals in the new rock align themselves with the Earth's magnetic field at that moment and freeze that orientation in, essentially recording a tiny compass reading. Because the Earth's field flips polarity every so often over geological time, you get alternating bands of rock magnetised one way and then the other as you move away from the ridge. When Vine and Matthews mapped this out, they found the stripes were symmetric, mirrored on both sides of the ridge, which only makes sense if the seafloor is being continuously created at the ridge and spreading outward in both directions. That symmetry is what turned continental drift from a controversial idea into something with a clear physical mechanism behind it."
+    },
+    "commonMistakes": [
+      "Describing the stripes without explaining the magnetic reversal mechanism behind them",
+      "Missing the significance of symmetry across the ridge",
+      "Confusing seafloor magnetic striping with paleomagnetic pole wander on continents"
+    ],
+    "followUps": ["How is this same magnetic record used to estimate the rate of seafloor spreading?"]
+  },
+  {
+    "id": "prog-geophysics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Seismic tomography and mantle plumes",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["seismology", "mantle", "tomography"],
+    "question": "Seismic tomography is often compared to a CT scan of the Earth. How does it actually work, and what are its limits?",
+    "lookingFor": "Understands the principle of using travel-time residuals from many crossing raypaths to build a 3D velocity model, and can articulate resolution limits honestly.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that tomography uses the arrival times of seismic waves from many earthquakes recorded at many stations, comparing observed to predicted travel times to find velocity anomalies along each raypath",
+        "Note that combining thousands of crossing raypaths lets you invert for a 3D velocity structure, similar in principle to how a medical CT scan combines many X-ray projections",
+        "Acknowledge real limits, resolution degrades with depth and in regions with sparse ray coverage, like much of the oceans and the deep lower mantle, so images there are blurrier and more model-dependent"
+      ],
+      "modelAnswer": "The basic idea is that seismic waves travel faster through cooler, denser rock and slower through hotter or partially molten rock, so if a wave arrives earlier or later than a model predicts for a uniform Earth, that residual tells you something about what it passed through. With enough earthquakes recorded at enough stations, you get thousands of raypaths crossing the Earth from different angles, and inverting all those residuals together lets you build up a 3D velocity model, which is why people compare it to a CT scan. The honest caveat is that resolution really depends on ray coverage, so regions with dense global seismic networks nearby are imaged sharply while remote oceanic regions or the deep mantle beneath data-poor areas come out much blurrier, and that's part of why debates about whether specific mantle plumes are real, continuous features are still not fully settled."
+    },
+    "commonMistakes": [
+      "Describing it only as 'X-ray of the Earth' with no mention of travel-time residuals or inversion",
+      "Ignoring that resolution is uneven and depends on station and earthquake distribution",
+      "Overstating confidence in deep mantle plume imaging as settled fact"
+    ],
+    "followUps": ["Why might two different tomography models of the same region disagree with each other?"]
+  },
+  {
+    "id": "prog-geophysics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Extractive industry funding and independence",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["ethics", "funding", "resource-exploration"],
+    "question": "A lot of geophysics research and jobs, from oil and gas exploration to mineral surveying, are funded by extractive industries. Do you have any reservations about that, given the environmental stakes?",
+    "lookingFor": "Honest, nuanced reflection on a real tension in the field rather than a rehearsed non-answer, showing the applicant has actually thought about where they'd draw lines.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension honestly rather than dismissing the question",
+        "Recognise that geophysical skills applied to resource exploration also apply directly to the energy transition, geothermal siting, mineral exploration for batteries, carbon storage monitoring",
+        "Articulate some personal sense of where they would or wouldn't want to work, showing they've actually thought it through rather than reciting a neutral position"
+      ],
+      "modelAnswer": "I won't pretend there's no tension there, it's something I've actually thought about because the same imaging techniques used to find an oil reservoir are used to site a geothermal well or monitor a carbon storage project. I think the skill itself is fairly neutral, it's imaging the subsurface, and what matters more to me is which application I'd choose to put my own career into. I'd be genuinely drawn to the geothermal and critical minerals side of things, partly because the demand for those skills is only growing as the energy transition needs more subsurface expertise, not less. I don't think it would be honest of me to say the industry history doesn't complicate the field, but I also don't think that means the tools themselves are the problem."
+    },
+    "commonMistakes": [
+      "A flat, rehearsed 'I have no issue with it' that avoids engaging with the real tension",
+      "Refusing to ever consider working in traditional resource exploration, which can come across as naive about the field's realities",
+      "Not connecting the discussion to any specific application, like geothermal or carbon capture"
+    ],
+    "followUps": ["Would you personally be comfortable working on an oil exploration project? Why or why not?"]
+  },
+  {
+    "id": "prog-geophysics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical mineral exploration on contested land",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["ethics", "mining", "indigenous-rights"],
+    "question": "Suppose a geophysical survey you're running detects a large lithium deposit under land that's sacred to a local indigenous community, who oppose any mining there. What's your responsibility as the geophysicist who found it?",
+    "lookingFor": "Recognition that technical findings do not automatically justify extraction, and that the geophysicist's responsibility includes how the finding is reported and to whom, not just whether the data is accurate.",
+    "idealAnswer": {
+      "bullets": [
+        "Separate the technical finding from the decision about whether to develop it, these are different questions with different decision-makers",
+        "Emphasise that free, prior and informed consent from the affected community is a real ethical and often legal standard that should shape what happens next, not an afterthought",
+        "Reflect on the geophysicist's own agency, they can report findings accurately while also flagging the social and ethical context, rather than treating the discovery as automatically actionable"
+      ],
+      "modelAnswer": "My job is to report what the data actually shows accurately, I wouldn't distort the survey either way. But finding a deposit doesn't mean it should be developed, that's a separate decision that belongs to the community and regulators, not to me as the geophysicist. I think I'd have a responsibility to make sure my report is presented alongside the full context, that the land is contested and the community has expressed clear opposition, rather than letting the finding get used in isolation to push a project forward. If I felt my work was going to be used to pressure a community that hadn't given genuine consent, I think I'd want to raise that concern through whatever channel I had, even if that made me unpopular with whoever commissioned the survey."
+    },
+    "commonMistakes": [
+      "Treating the discovery as automatically justifying extraction because it's technically valuable",
+      "Assuming it's entirely someone else's problem and the geophysicist has no responsibility at all",
+      "Suggesting the applicant would alter or downplay the technical findings, which conflates ethics with dishonesty"
+    ],
+    "followUps": ["Does your answer change if the mineral is needed for batteries that reduce carbon emissions elsewhere?"]
+  },
+  {
+    "id": "prog-geophysics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Earthquake early warning trade-offs",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["current-debate", "hazard", "early-warning"],
+    "question": "Earthquake early warning systems like ShakeAlert give people a few seconds of notice before shaking arrives. Is that actually useful, or is it too short to matter?",
+    "lookingFor": "Realistic understanding of what early warning systems can and cannot do, including the physics of why the warning window is short and genuine uses of even a few seconds.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the physical basis, P-waves travel faster than the more damaging S-waves and surface waves, so detecting the P-wave gives a short lead time before stronger shaking arrives",
+        "Note that the warning window shrinks the closer you are to the epicentre, so it helps most for distant users and struggles right at the source",
+        "Give concrete, realistic uses of a short warning, automatically stopping trains, opening elevator doors, pausing surgeries, people dropping and covering, rather than dismissing seconds as useless"
+      ],
+      "modelAnswer": "It's genuinely useful, but you have to be realistic about what a few seconds actually buys you. The physics is that P-waves arrive first and are much less damaging, so a network can detect that first arrival, estimate the earthquake's size, and send a warning before the slower, more destructive S-waves and surface waves reach further-out locations. That window is basically zero right near the epicentre and grows the further away you are, which is exactly the trade-off of the method. But a few seconds is enough to automatically slow trains, stop elevators at the nearest floor, or get someone to drop and take cover, and those seconds have measurably prevented injuries in places like Japan and Mexico, so I don't think 'too short to matter' is a fair characterisation."
+    },
+    "commonMistakes": [
+      "Dismissing early warning as pointless because the lead time is short",
+      "Not explaining why the warning is shortest right at the epicentre",
+      "Giving no concrete real-world use of a short warning window"
+    ],
+    "followUps": ["Why can't early warning systems give more lead time by simply improving the sensors?"]
+  },
+  {
+    "id": "prog-geophysics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: dam siting near an active fault",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "hazard-assessment", "risk"],
+    "question": "Imagine you're the geophysicist responsible for the seismic hazard assessment of a proposed dam site, and your survey finds a previously unmapped fault running close to the foundation. The project is already years into planning and hugely expensive to relocate. How do you handle it?",
+    "lookingFor": "Prioritises rigorous, transparent hazard communication over project convenience, while thinking through the assessment carefully rather than reacting with a blanket refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that sunk cost and project momentum cannot be allowed to influence the technical hazard assessment itself",
+        "Describe what a proper assessment would actually involve, characterising the fault's activity, slip rate, and potential magnitude before jumping to conclusions",
+        "Explain that the finding needs to be reported fully and clearly to decision-makers, with the geophysicist's role being to inform the decision, not unilaterally make it or hide it"
+      ],
+      "modelAnswer": "However expensive relocating the project is, that cost can't be allowed to change what my survey actually shows, a dam foundation is exactly the kind of structure where getting this wrong has catastrophic consequences. My first step would be to properly characterise the fault, is it active, what's its slip rate, what magnitude of rupture could it plausibly produce, rather than jumping straight to 'stop everything' or 'ignore it' before I actually know. Then I'd write that up as clearly and completely as I could and put it in front of the engineers and decision-makers, because ultimately whether to relocate, redesign, or add mitigation is an engineering and policy call that needs my honest data, not my opinion on the budget. I think the worst thing I could do is let years of sunk planning cost quietly soften how I report what I found."
+    },
+    "commonMistakes": [
+      "Deciding unilaterally to bury or soften the finding because of project cost pressure",
+      "Jumping to 'cancel the dam' without first properly characterising the fault's actual hazard",
+      "Treating the decision about what to do next as the geophysicist's call rather than an engineering and policy decision informed by their data"
+    ],
+    "followUps": ["What specific information would you need to gather before you could even say how serious this fault is?"]
+  },
+  {
+    "id": "prog-geophysics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: single seismometer on Mars",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "planetary-science", "seismology"],
+    "question": "NASA's InSight mission put a single seismometer on Mars, unlike Earth where we have thousands of stations. What can you actually learn about a planet's interior from just one instrument, and what can't you?",
+    "lookingFor": "Understands how single-station seismology extracts meaningful information through clever use of wave arrivals and known limitations compared to a dense network.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a single station can still measure arrival times of different wave phases from a marsquake, and differences between P and S arrivals give distance to the source",
+        "Note that reflections and conversions off internal boundaries, like the crust-mantle or core boundary, can reveal layering even without multiple stations, if you can identify the right phases",
+        "Acknowledge the real limitation, without multiple stations you generally can't triangulate the precise location of a quake or build a full 3D tomographic image, only a much coarser, mostly 1D model of layer depths"
+      ],
+      "modelAnswer": "It's genuinely impressive what InSight managed with just one seismometer. Even from a single station you can measure the time gap between P and S wave arrivals, which tells you roughly how far away the marsquake was, and if you can identify waves that reflected or converted off internal boundaries like the crust-mantle boundary or the core, the timing of those bounces reveals how deep those layers sit. That's actually how the Martian core size and crust thickness got estimated. What you really can't do with one station is properly locate quakes in two dimensions or build a detailed 3D image the way Earth tomography does, you're mostly limited to an averaged, largely one-dimensional layered model of the planet rather than a map of lateral variations."
+    },
+    "commonMistakes": [
+      "Assuming a single station can produce the same 3D imaging as a dense global network",
+      "Not explaining how a single instrument can still extract distance and depth information from wave timing",
+      "Vague hand-waving with no mention of specific wave phases or reflections"
+    ],
+    "followUps": ["How would having a second seismometer on Mars change what's possible?"]
+  },
+  {
+    "id": "prog-geophysics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Magnetotellurics versus seismic imaging",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["magnetotellurics", "survey-methods", "electrical-conductivity"],
+    "question": "Seismic methods aren't the only way to image the subsurface. Can you explain how magnetotellurics works and why you might choose it over seismic surveying?",
+    "lookingFor": "Understands that magnetotellurics uses natural electromagnetic field variations to map electrical conductivity, and can articulate when that's more useful than seismic velocity imaging.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that magnetotellurics measures natural variations in the Earth's electric and magnetic fields, caused by solar wind interactions and lightning, and how the subsurface responds reveals electrical conductivity structure",
+        "Note that conductivity is sensitive to things seismic velocity often isn't, fluids, partial melt, and mineralisation, particularly things like brine or graphite that conduct electricity well",
+        "Give a concrete case for choosing it, such as detecting a geothermal reservoir or an ore body where the conductivity contrast is much sharper than the velocity contrast"
+      ],
+      "modelAnswer": "Magnetotellurics uses naturally occurring electromagnetic field fluctuations, mostly from solar wind interacting with the magnetosphere at longer periods and lightning at shorter periods, as a kind of free signal source instead of an artificial one like a seismic source. By measuring how the electric and magnetic fields at the surface relate to each other, you can work out how electrical conductivity varies with depth. What makes it genuinely complementary to seismic is that conductivity is really sensitive to things like saline fluids, partial melt, or conductive minerals such as graphite and sulphides, which might barely show up as a seismic velocity contrast at all. That's why it's a go-to method for geothermal exploration or mapping certain ore deposits, where the fluid or mineral signature is the whole point, not just structural geometry."
+    },
+    "commonMistakes": [
+      "Confusing magnetotellurics with active-source electrical resistivity surveys",
+      "Not explaining what physical property it actually measures, conductivity, versus what seismic measures, velocity",
+      "No concrete example of when it beats seismic for a particular target"
+    ],
+    "followUps": ["What kind of geological setting might make magnetotelluric data particularly noisy or hard to interpret?"]
+  },
+  {
+    "id": "prog-geophysics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Geothermal-induced seismicity debate",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["current-debate", "geothermal", "induced-seismicity"],
+    "question": "The Pohang geothermal project in South Korea was linked to a magnitude 5.4 earthquake and ultimately shut down. What does that case tell you about the trade-offs in developing enhanced geothermal systems?",
+    "lookingFor": "Awareness of a specific, real case and the ability to draw a balanced lesson about risk management rather than a blanket condemnation or dismissal of geothermal energy.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness of the case, fluid injection at an enhanced geothermal site was found to have triggered or at least significantly contributed to the 2017 Pohang earthquake",
+        "Explain the underlying mechanism, injected fluid changes pore pressure on a nearby fault, reducing the effective stress holding it locked and potentially triggering slip",
+        "Draw a balanced lesson, that the case argues for far more rigorous pre-drilling fault characterisation and real-time monitoring protocols, not for abandoning geothermal energy altogether"
+      ],
+      "modelAnswer": "Pohang is a genuinely important cautionary case, fluid injection at the enhanced geothermal site there was found by an independent investigation to have very likely triggered the magnitude 5.4 quake in 2017, and the project was subsequently shut down. Mechanically what's thought to have happened is that injecting fluid at depth raised pore pressure on a fault that was already close to failure, reducing the effective stress holding it locked and letting it slip. I don't think the right lesson is that geothermal is inherently too dangerous, we need low-carbon baseload energy and geothermal is a strong candidate for it, I think the lesson is that fault characterisation before drilling and real-time seismic monitoring with a clear traffic-light protocol during injection need to be treated as non-negotiable, not an afterthought, especially near populated areas."
+    },
+    "commonMistakes": [
+      "Not knowing the case at all or getting the basic facts wrong",
+      "Concluding geothermal energy should be abandoned entirely",
+      "Explaining the earthquake without any physical mechanism, just saying 'drilling caused it'"
+    ],
+    "followUps": ["How would a traffic-light monitoring protocol actually work in practice?"]
+  },
+  {
+    "id": "prog-geophysics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "InSAR and ground deformation monitoring",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["geodesy", "remote-sensing", "insar"],
+    "question": "How does satellite InSAR let scientists measure ground deformation of just a few millimetres from space?",
+    "lookingFor": "Understands the principle of comparing phase differences between repeat radar images to detect small surface displacement, and can name a real application.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that InSAR compares the phase of radar signals reflected from the ground in two satellite passes over the same area at different times",
+        "State that differences in phase, once corrected for satellite position and atmospheric effects, correspond to tiny changes in the distance between the satellite and the ground, revealing millimetre-scale deformation",
+        "Give a concrete application, monitoring volcanic inflation before an eruption, tracking aquifer-related subsidence, or measuring slow fault creep between earthquakes"
+      ],
+      "modelAnswer": "InSAR works by comparing the phase of radar signals the satellite sends down and receives back from the ground on two separate passes over the same spot. Radar wavelength is only a few centimetres, so even a tiny change in the distance between the satellite and the ground surface shows up as a measurable shift in the returned phase, and once you correct for the satellite's exact position and atmospheric delay, what's left can reveal ground movement of just millimetres. It's used for things like watching a volcano's flanks slowly inflate as magma accumulates underneath before an eruption, or tracking subsidence in cities pumping too much groundwater, which I think is a great example of a technique built for one purpose, radar imaging, being repurposed into a genuinely powerful geophysical tool."
+    },
+    "commonMistakes": [
+      "Describing it as simple before-and-after photo comparison rather than a phase-based measurement",
+      "Not mentioning that atmospheric and orbital corrections are needed to get millimetre precision",
+      "Giving no concrete real-world application"
+    ],
+    "followUps": ["What kinds of errors or noise make InSAR measurements less reliable in certain environments?"]
+  },
+  {
+    "id": "prog-geophysics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Carbon capture and storage monitoring",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["current-development", "ccs", "monitoring"],
+    "question": "Carbon capture and storage projects inject CO2 deep underground for long-term storage. What role does geophysics play in making sure it stays where it's supposed to?",
+    "lookingFor": "Awareness of a live and growing application of geophysics, with concrete understanding of how monitoring methods detect leakage or plume migration.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that time-lapse (4D) seismic surveys can track how the injected CO2 plume migrates through the reservoir over time by detecting changes in seismic response caused by the fluid substitution",
+        "Note that microseismic monitoring detects small seismic events that could indicate the caprock is being stressed or fractured, an early warning sign for potential leakage pathways",
+        "Mention complementary methods, such as gravity surveys sensitive to the density change from CO2 displacing brine, or surface deformation monitoring via InSAR above the storage site"
+      ],
+      "modelAnswer": "Geophysics is really central to CCS monitoring because once the CO2 is down there, you need to actually verify it's staying contained rather than just trusting the initial geological model. Time-lapse, or 4D, seismic surveys are probably the main tool, repeating a 3D seismic survey over the same reservoir at intervals lets you see how the injected CO2 plume is spreading, because CO2 replacing brine in the pore space changes the seismic response in a detectable way. Alongside that, microseismic monitoring listens for small events that might signal the caprock is being stressed, which would be an early sign of a potential leak pathway, and gravity surveys can pick up the density change from CO2 displacing denser brine. I find this area genuinely exciting because it's essentially reservoir characterisation skills built for oil and gas exploration being redirected toward keeping carbon out of the atmosphere instead."
+    },
+    "commonMistakes": [
+      "Vague answer with no named monitoring method, just 'they check on it'",
+      "Confusing CCS monitoring with earthquake early warning",
+      "Not connecting the physical property change, CO2 versus brine, to why the method actually detects it"
+    ],
+    "followUps": ["Why might CO2 injection itself sometimes trigger small induced earthquakes?"]
+  },
+  {
+    "id": "prog-geophysics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Building codes and residual risk",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["ethics", "hazard", "risk-communication"],
+    "question": "Seismic building codes are always a trade-off, more stringent codes save more lives but cost more and can make housing less affordable. As a geophysicist advising a city on seismic hazard, how do you think about that trade-off?",
+    "lookingFor": "Recognises that the geophysicist's role is to provide honest, well-communicated probabilistic hazard information while acknowledging the trade-off decision itself belongs to policymakers and the community.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish the geophysicist's role, providing the best possible probabilistic hazard estimate, from the policy role of deciding acceptable risk and cost trade-offs",
+        "Emphasise the importance of communicating uncertainty honestly rather than either downplaying risk to keep costs low or exaggerating it out of caution",
+        "Show awareness that the trade-off has real equity dimensions, stricter codes raise costs that can fall hardest on people who can least afford them, so it isn't just a pure safety-versus-cost question"
+      ],
+      "modelAnswer": "I think my job is to give the most honest and clearly communicated probabilistic hazard estimate I can, including the uncertainty in it, and then be upfront that deciding how much risk is acceptable is a policy and community decision, not something the science alone answers. I'd resist pressure to either sandbag the hazard estimate to make a project look cheaper or to overstate it out of excessive caution, because either way I'm making the decision for people instead of giving them the information to make it themselves. What I'd want policymakers to understand clearly is that this isn't a clean safety-versus-cost line, stricter codes that raise construction costs can price out exactly the people who are often in the most vulnerable housing to begin with, so the trade-off has an equity dimension built into it that the raw hazard numbers don't capture on their own."
+    },
+    "commonMistakes": [
+      "Claiming the geophysicist should personally decide what code strictness is 'right'",
+      "Ignoring the uncertainty in hazard estimates and presenting them as precise",
+      "Treating this purely as a safety-versus-cost question with no equity dimension"
+    ],
+    "followUps": ["How would you communicate a probabilistic hazard estimate to a city council that isn't technically trained?"]
+  },
+  {
+    "id": "prog-geophysics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "The D'' layer at the core-mantle boundary",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["earth-structure", "mantle", "core"],
+    "question": "What is the D-double-prime layer, and why do geophysicists think it matters for how the Earth works?",
+    "lookingFor": "Knowledge of a genuinely advanced structural feature and its dynamical significance, showing depth beyond textbook basics.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify D'' as the heterogeneous, seismically distinct layer at the very base of the mantle, just above the core-mantle boundary",
+        "Note its role as a thermal and chemical boundary layer, where heat conducts out of the hot core into the cooler mantle, and where dense, possibly chemically distinct material may pool",
+        "Connect it to mantle plume generation, some geophysicists think D'' is where deep mantle plumes, like those thought to feed hotspot volcanism, originate"
+      ],
+      "modelAnswer": "D-double-prime is the name for the seismically distinctive layer right at the base of the mantle, sitting just above the core-mantle boundary, and it's a region where seismic velocities behave in complicated, laterally variable ways compared to the more uniform lower mantle above it. What makes it dynamically important is that it's thought to be a thermal boundary layer, heat is conducting out of the much hotter core into the mantle there, and it may also host dense, chemically distinct material, sometimes discussed as large low-shear-velocity provinces, that's been accumulating over deep time. A lot of the interest in it comes from the idea that this is where deep mantle plumes, the kind thought to feed long-lived hotspot volcanism like Hawaii, actually originate, so it's essentially the boundary layer that helps drive part of the Earth's internal heat engine."
+    },
+    "commonMistakes": [
+      "Confusing D'' with the Moho or the core-mantle boundary itself rather than the layer just above it",
+      "Describing it with no mention of its role as a thermal boundary layer",
+      "No connection made to mantle plume origin or hotspot volcanism"
+    ],
+    "followUps": ["What kind of seismic evidence would actually let you distinguish thermal from chemical anomalies in this layer?"]
+  },
+  {
+    "id": "prog-geophysics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ambient noise tomography",
+    "program": "Geophysics",
+    "difficulty": "medium",
+    "tags": ["seismology", "tomography", "noise"],
+    "question": "How can seismologists build useful images of the subsurface using nothing but background seismic noise, without waiting for an earthquake?",
+    "lookingFor": "Understands the principle of cross-correlating ambient noise between station pairs to extract surface wave information as if from a virtual source.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that constant, low-level ambient seismic noise, from ocean waves, wind, and human activity, is recorded continuously at seismic stations even with no earthquake occurring",
+        "State that cross-correlating long recordings of this noise between pairs of stations recovers an approximation of the surface wave that would have travelled directly between them, as if one station were a virtual source",
+        "Note the practical advantage, this gives dense, continuous velocity structure information in regions or time periods with too few earthquakes to rely on"
+      ],
+      "modelAnswer": "The trick is that seismic stations are always recording something even when there's no earthquake, background noise from ocean waves pounding the coast, wind, traffic, all sorts of constant low-level vibration. If you take long recordings of that noise from two stations and cross-correlate them, what falls out is an approximation of the surface wave signal that would have travelled directly between those two stations, essentially treating one station as if it were a virtual seismic source for the other. That's genuinely useful because it means you can build up dense velocity structure images in places or time periods without enough real earthquakes, and you can keep collecting more data every single day rather than waiting years for a big enough event."
+    },
+    "commonMistakes": [
+      "Confusing ambient noise tomography with regular earthquake-based tomography",
+      "Not explaining what the cross-correlation actually recovers, the virtual surface wave between stations",
+      "Missing the practical motivation, data availability where earthquakes are sparse"
+    ],
+    "followUps": ["What kinds of ambient noise sources dominate at different frequencies?"]
+  },
+  {
+    "id": "prog-geophysics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Volcanic hazard communication dilemma",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["ethics", "volcanology", "risk-communication"],
+    "question": "Volcano monitoring data starts showing unusual signals, ground inflation and a rise in small earthquakes, but it's genuinely ambiguous whether an eruption is imminent or the volcano will simply settle back down. Evacuating the surrounding town would be hugely disruptive and costly. What do you recommend?",
+    "lookingFor": "Understands the real difficulty of communicating uncertain hazard, and can reason about proportionate response rather than either false certainty or paralysis, aware of real historical cases like L'Aquila.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine scientific uncertainty honestly rather than pretending the data gives a clear answer either way",
+        "Advocate a graded, proportionate response, raising alert levels and preparing evacuation logistics without necessarily ordering a full evacuation on ambiguous data alone",
+        "Show awareness of the real cost of getting communication wrong in either direction, referencing that scientists have faced serious consequences (as in the L'Aquila case) for both overstating false reassurance and understating genuine risk"
+      ],
+      "modelAnswer": "I'd be honest that the data genuinely doesn't give a clean answer, inflation and increased seismicity are consistent with an eruption building but they're also consistent with the volcano just relieving pressure without erupting, and I think pretending otherwise to look decisive would actually be worse. What I'd recommend is a graded response, raising the official alert level, pre-positioning evacuation logistics and communicating clearly to the town what the signals mean and don't mean, rather than either staying silent or calling a full evacuation on ambiguous grounds alone. I think about the L'Aquila case a lot in this context, scientists there were criticised for reassuring the public too confidently before a deadly quake, and the lesson I take isn't 'always evacuate' but that honest, well-communicated uncertainty protects people better than false confidence in either direction."
+    },
+    "commonMistakes": [
+      "Claiming the data clearly points one way when it's genuinely ambiguous",
+      "Recommending either full evacuation or total inaction with no graded middle response",
+      "No awareness of the real communication stakes or historical precedent"
+    ],
+    "followUps": ["How would you explain that uncertainty to a worried resident who just wants a yes or no answer?"]
+  },
+  {
+    "id": "prog-geophysics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Seismic anisotropy",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["seismology", "anisotropy", "mantle"],
+    "question": "What does it mean for a seismic wave to experience anisotropy as it travels through the mantle, and why do geophysicists care about measuring it?",
+    "lookingFor": "Understands that seismic velocity can depend on direction due to aligned crystal structure or layering, and can connect this to inferring mantle flow direction.",
+    "idealAnswer": {
+      "bullets": [
+        "Define anisotropy as the property where seismic wave velocity depends on the direction the wave travels through the material, rather than being the same in all directions",
+        "Explain the physical cause in the mantle, olivine crystals tend to align their fast axis in the direction of past or present mantle flow, and that alignment produces measurable directional velocity differences",
+        "State why it matters, measuring anisotropy, for example through shear wave splitting, gives geophysicists a way to infer mantle flow patterns that can't be observed directly"
+      ],
+      "modelAnswer": "Anisotropy means the seismic velocity isn't the same in every direction through a material, a wave travelling one way through the rock moves at a different speed than a wave travelling perpendicular to it. In the mantle this mostly comes from olivine, which is the dominant mineral there, its crystals tend to align their fast axis with the direction of mantle flow when the rock deforms over long timescales, so the rock as a whole ends up with a directional fabric. What makes this genuinely useful is that you can measure it, classically through shear wave splitting, where an S-wave passing through an anisotropic layer splits into two components travelling at different speeds, and the direction of that splitting effectively gives you a proxy for which way the mantle has been flowing, which is something you obviously can't observe directly."
+    },
+    "commonMistakes": [
+      "Defining anisotropy vaguely without stating it means direction-dependent velocity",
+      "Not connecting it to the physical cause, crystal alignment from mantle deformation",
+      "Missing why it's useful, inferring mantle flow direction indirectly"
+    ],
+    "followUps": ["What's the difference between anisotropy in the upper mantle beneath a plate boundary and anisotropy deeper in the lower mantle?"]
+  },
+  {
+    "id": "prog-geophysics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: resource deposit under a protected wetland",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "ethics", "environment"],
+    "question": "Your survey work for a mining company turns up strong evidence of a valuable mineral deposit, but it sits directly beneath a legally protected wetland that's home to an endangered species. The company asks you to write the technical report in a way that downplays the environmental sensitivity of the site so it reads more favourably for a permit application. What do you do?",
+    "lookingFor": "Firm ethical commitment to reporting integrity in the face of direct commercial pressure, with realistic thinking about how to escalate or push back rather than a simplistic answer.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that deliberately shaping a technical report to mislead a permitting process is not something to go along with, regardless of the commercial stakes",
+        "Distinguish the geophysicist's actual expertise, subsurface mineral characterisation, from environmental sensitivity assessment, which usually belongs to separate ecological experts, and note that being asked to write outside that lane is itself a red flag",
+        "Describe a realistic course of action, refusing the specific request, raising the issue with a supervisor, professional body, or ethics channel if pressure continues, rather than a vague statement of principle with no next step"
+      ],
+      "modelAnswer": "I wouldn't do it, writing a report to intentionally understate something relevant to a permitting decision isn't a grey area to me, it's asking me to mislead a regulatory process, and my name would be on that report. I'd also point out that assessing environmental sensitivity isn't really my technical expertise anyway, my job is characterising the deposit, and if the company wants the environmental framing changed that request itself is a warning sign about what they're actually trying to do. Practically, I'd push back directly with whoever asked, explain clearly why I can't write it that way, and if the pressure continued I'd want to escalate it, whether that's to a supervisor, a professional ethics body, or ultimately walking away from the project, because I don't think a paycheck is worth being complicit in a report I know is misleading."
+    },
+    "commonMistakes": [
+      "Agreeing to soften the report to keep the client happy",
+      "A vague principled statement with no concrete next step if pressure continues",
+      "Not recognising that environmental sensitivity assessment is outside a geophysicist's own technical expertise"
+    ],
+    "followUps": ["What would you do if refusing meant you were removed from the project and someone less scrupulous took over?"]
+  },
+  {
+    "id": "prog-geophysics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Whether earthquake prediction will ever be possible",
+    "program": "Geophysics",
+    "difficulty": "hard",
+    "tags": ["current-debate", "earthquakes", "reasoning"],
+    "question": "Some scientists argue that reliable short-term earthquake prediction is fundamentally impossible, not just currently unachieved, because of how fault rupture actually initiates. Do you agree?",
+    "lookingFor": "Ability to reason through a genuinely open scientific debate with real physical grounding, rather than reciting a settled opinion, while distinguishing chaos-based scepticism from a merely engineering-limitations view.",
+    "idealAnswer": {
+      "bullets": [
+        "Present the core argument for fundamental unpredictability, that rupture nucleation may depend sensitively on small-scale, effectively unmeasurable fault conditions, similar to chaotic systems where tiny differences in initial state lead to very different outcomes",
+        "Present the counter-view fairly, that some researchers think better instrumentation, denser fault-zone monitoring, or new precursor signals could eventually push forecasting toward genuinely useful short-term windows even if not perfect prediction",
+        "Reach a reasoned personal position rather than refusing to commit, while being honest about the uncertainty in the debate itself"
+      ],
+      "modelAnswer": "I lean toward taking the fundamental unpredictability argument seriously, mainly because rupture nucleation seems to depend on the exact stress state and frictional properties on a fault at a scale we can't practically instrument everywhere, which has the flavour of a chaotic system where tiny unmeasured differences change the outcome completely. That said, I don't think it's a fully closed debate, some researchers argue denser fault-zone arrays or a genuine precursor signal we haven't identified yet could still shift the odds, and I don't want to be overconfident about ruling that out completely given how young the field still is in geological terms. My honest position is that I'd bet on forecasting and hazard assessment being where the real progress happens, while staying open to being surprised on prediction, because I think it would be intellectually dishonest to declare something permanently impossible in a field that's barely a century old."
+    },
+    "commonMistakes": [
+      "Confidently declaring prediction will 'definitely' be solved with more data, ignoring the chaos argument",
+      "Flatly declaring it impossible with no acknowledgement of the genuine scientific debate or counter-arguments",
+      "Refusing to state any actual position when asked directly"
+    ],
+    "followUps": ["What would a genuinely convincing precursor signal need to demonstrate statistically before you'd trust it?"]
+  }
+]

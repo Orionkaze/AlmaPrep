@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-oceanography-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Thermohaline circulation drivers",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["physical-oceanography", "circulation", "climate"],
+    "question": "What actually drives the global thermohaline circulation, and why does the North Atlantic matter so much to it?",
+    "lookingFor": "Understanding that density differences from temperature and salinity, not wind, drive deep circulation, with a specific mechanism for North Atlantic Deep Water formation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain density as a function of both temperature and salinity, not either alone",
+        "Describe how cold, salty surface water in the Nordic and Labrador Seas sinks to form deep water",
+        "Connect this sinking to the wider conveyor belt that redistributes heat globally"
+      ],
+      "modelAnswer": "Thermohaline circulation is driven by density, and density in seawater depends on both temperature and salinity working together rather than either one alone. In the North Atlantic, cold winter air strips heat from the surface while sea ice formation leaves the remaining water saltier, so you get a mass of water that's both cold and dense enough to sink all the way to the deep ocean. That sinking, mostly around the Nordic Seas and the Labrador Sea, is basically the engine room that pulls surface water northward and keeps the whole global conveyor moving. It's a big part of why the North Atlantic region is warmer than its latitude would otherwise suggest."
+    },
+    "commonMistakes": [
+      "Attributing thermohaline circulation to wind stress alone",
+      "Mentioning temperature but forgetting salinity's role",
+      "Vague reference to 'ocean currents' without naming the sinking mechanism"
+    ],
+    "followUps": ["What would happen to European climate if this sinking weakened significantly?"]
+  },
+  {
+    "id": "prog-oceanography-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Coastal upwelling mechanism",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["physical-oceanography", "ekman-transport", "productivity"],
+    "question": "Explain how wind can pull deep, nutrient-rich water up to the surface along a coastline.",
+    "lookingFor": "A correct application of Ekman transport to explain coastal upwelling and its link to biological productivity.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe Ekman transport as net water movement roughly 90 degrees from the wind direction due to the Coriolis effect",
+        "Explain that alongshore wind pushes surface water offshore, which must be replaced from below",
+        "Link the upwelled water's nutrient content to elevated productivity and major fisheries"
+      ],
+      "modelAnswer": "When wind blows parallel to a coastline, the Coriolis effect deflects the net surface water transport about ninety degrees to the wind, a phenomenon called Ekman transport, and in the right geometry that pushes surface water away from the shore. Something has to fill that gap, so colder, nutrient-rich water from depth rises up to replace it, which is coastal upwelling. That's why places like the California and Peruvian coasts, where the wind and coastline line up this way, support such productive fisheries, because the upwelled nutrients fuel phytoplankton growth at the base of the food web. It's one of my favourite examples of how physics directly controls where life thrives in the ocean."
+    },
+    "commonMistakes": [
+      "Saying wind simply 'pushes water down' rather than explaining the deflection",
+      "Omitting the Coriolis effect entirely",
+      "Not connecting the physical process to the biological consequence"
+    ],
+    "followUps": ["What would happen to a coastal fishery if the upwelling-favourable winds weakened for a season?"]
+  },
+  {
+    "id": "prog-oceanography-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Ocean acidification chemistry",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["chemical-oceanography", "carbon-cycle", "acidification"],
+    "question": "Walk me through the chemistry of why absorbing more CO2 makes the ocean more acidic, and why that's a problem for shell-building organisms specifically.",
+    "lookingFor": "A correct carbonate chemistry explanation, not just 'CO2 makes water acidic', linking pH change to carbonate ion availability.",
+    "idealAnswer": {
+      "bullets": [
+        "Show the reaction chain: CO2 dissolves, forms carbonic acid, dissociates into bicarbonate and hydrogen ions",
+        "Explain that extra hydrogen ions lower pH and also react with carbonate ions, reducing their availability",
+        "Connect reduced carbonate ion concentration to the difficulty of building calcium carbonate shells and skeletons"
+      ],
+      "modelAnswer": "When CO2 dissolves in seawater it forms carbonic acid, which dissociates into bicarbonate and hydrogen ions, and it's that extra hydrogen that lowers pH, so calling it acidification is really about that shift even though the ocean stays alkaline overall. The trickier part for organisms is that those extra hydrogen ions also react with carbonate ions already in the water, pulling them into bicarbonate and leaving less carbonate ion available. Calcifying organisms like corals, pteropods and some plankton need carbonate ions to build calcium carbonate shells and skeletons, so as carbonate becomes scarcer it takes more energy for them to calcify, and in some cases their shells can even start to dissolve. I find it striking that the same molecule causing warming is also quietly reshaping ocean chemistry through a completely separate pathway."
+    },
+    "commonMistakes": [
+      "Saying the ocean is 'turning acidic' as if crossing pH 7",
+      "Skipping the carbonate ion mechanism and only discussing pH",
+      "Failing to name which organisms are most affected and why"
+    ],
+    "followUps": ["Why are cold, high-latitude waters expected to hit the acidification threshold for calcifiers sooner than tropical ones?"]
+  },
+  {
+    "id": "prog-oceanography-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "ENSO teleconnections",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["physical-oceanography", "enso", "climate-variability"],
+    "question": "What's actually happening in the tropical Pacific during an El Nino event, and why does it affect weather so far away?",
+    "lookingFor": "A coupled ocean-atmosphere explanation of ENSO with an example of a remote teleconnection.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the weakening of trade winds and the eastward shift of warm surface water and convection",
+        "Explain the coupling between ocean and atmosphere, not treating it as a purely oceanic event",
+        "Give a concrete example of a distant teleconnected impact"
+      ],
+      "modelAnswer": "Normally the trade winds pile warm surface water up in the western Pacific, keeping a pool of cold water exposed off South America through upwelling. In an El Nino event those trade winds weaken, so the warm water sloshes back eastward and the usual upwelling of cold water off Peru shuts down. That shift moves the region of strong convection and rainfall eastward with it, which reorganises atmospheric circulation patterns globally, so you get knock-on effects like drier conditions in parts of Southeast Asia and wetter winters in the southern United States. What I find fascinating is that it's genuinely a coupled system, the ocean and atmosphere are pushing on each other rather than one simply causing the other."
+    },
+    "commonMistakes": [
+      "Describing El Nino as purely a warming of the water with no atmospheric coupling",
+      "Getting the direction of the trade wind weakening backwards",
+      "No concrete example of a remote teleconnected effect"
+    ],
+    "followUps": ["How do forecasters actually predict an El Nino event months in advance?"]
+  },
+  {
+    "id": "prog-oceanography-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "AMOC slowdown debate",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["current-debate", "circulation", "climate-change"],
+    "question": "There's been a lot of debate about whether the Atlantic Meridional Overturning Circulation is weakening and might even collapse. What's your read on where that science currently stands?",
+    "lookingFor": "Awareness of current debate and appropriate scientific caution, distinguishing observed trends, proxy evidence, and model projections rather than asserting a settled catastrophe narrative.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine scientific uncertainty rather than presenting collapse as confirmed or imminent",
+        "Distinguish between direct short observational records, longer proxy reconstructions, and climate model projections",
+        "Explain the physical mechanism of concern: freshwater input from melting ice disrupting the density-driven sinking"
+      ],
+      "modelAnswer": "My understanding is that this is genuinely contested rather than settled. We only have continuous direct measurements from arrays like RAPID since around 2004, so a lot of the longer-term weakening claims lean on proxy reconstructions and climate models, and there's real disagreement about how much weight to put on each. The physical concern is coherent though, freshwater from melting Greenland ice and increased precipitation could dilute the salty surface water that needs to sink in the North Atlantic, weakening the overturning. I'd say most of the field agrees a slowdown by this century is plausible and worth taking seriously, but a full collapse within decades is still a more contested, tail-risk scenario rather than consensus, and I try to be careful not to overstate certainty in either direction."
+    },
+    "commonMistakes": [
+      "Presenting AMOC collapse as an already-confirmed, imminent event",
+      "Dismissing the concern entirely as media exaggeration",
+      "Confusing AMOC with the Gulf Stream as identical systems"
+    ],
+    "followUps": ["What kind of observational evidence would change your confidence one way or the other?"]
+  },
+  {
+    "id": "prog-oceanography-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Deep-sea mining ethics",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["ethics", "deep-sea", "policy"],
+    "question": "Deep-sea mining companies argue that polymetallic nodules are essential for the batteries the energy transition needs, and that seabed mining might do less ecological damage than terrestrial mining. Do you find that argument convincing?",
+    "lookingFor": "Structured ethical reasoning that weighs genuine trade-offs rather than a reflexive verdict either way, showing awareness of scientific uncertainty in deep-sea ecosystems.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the resource-need argument seriously rather than dismissing it",
+        "Weigh it against how poorly understood and slow-recovering abyssal ecosystems are",
+        "Land on a reasoned position, likely favouring caution or a moratorium until baseline science and governance catch up"
+      ],
+      "modelAnswer": "I don't think it's a bad-faith argument, the demand for cobalt and nickel is real and terrestrial mining does carry serious human and ecological costs of its own, so I don't want to dismiss the comparison out of hand. But what concerns me is the asymmetry in what we know, we've mapped a tiny fraction of the abyssal plain and species living around nodule fields can take decades or centuries to recover from disturbance, if they recover at all, so we'd be making an essentially irreversible decision with a very thin evidence base. My own view leans toward supporting the moratorium calls until independent baseline surveys and a functioning regulatory regime through the International Seabed Authority are actually in place, because the precautionary case seems stronger to me than the resource urgency right now. I'd want that position to be revisited as the science improves rather than treated as fixed forever though."
+    },
+    "commonMistakes": [
+      "Dismissing the resource argument without engaging with it",
+      "Giving a flat yes or no with no weighing of trade-offs",
+      "Overstating certainty about deep-sea ecological damage that is still being researched"
+    ],
+    "followUps": ["Who should have the authority to decide this, given the seabed lies outside any single nation's jurisdiction?"]
+  },
+  {
+    "id": "prog-oceanography-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Marine protected area trade-offs",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["ethics", "conservation", "fisheries"],
+    "question": "A coastal community depends on fishing grounds that scientists want closed off as a fully protected marine reserve. How would you think through that conflict?",
+    "lookingFor": "Recognition that conservation and livelihood needs both carry real weight, with a reasoned path rather than picking a side without justification.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the legitimate short-term cost to the community, not just treat conservation as automatically correct",
+        "Bring in evidence that well-managed reserves often boost adjacent catch through spillover effects",
+        "Suggest a process-based answer involving community consultation and phased implementation rather than an imposed decision"
+      ],
+      "modelAnswer": "I wouldn't want to just say science wins and the community has to absorb the cost, because for people whose income depends on that water, a closure is a genuine and immediate hardship, not an abstraction. At the same time, there's decent evidence that well-designed no-take reserves can increase fish biomass inside the boundary enough that it spills over into adjacent fished areas within a few years, so the community isn't necessarily choosing between conservation and their livelihood forever. What I'd push for is involving the community in designing the reserve's boundaries and timeline from the start, alongside transitional support like alternative income or phased zoning, because reserves that are imposed without buy-in tend to get poorly respected anyway. It's not a purely scientific question, it's as much about fair process as it is about the biology."
+    },
+    "commonMistakes": [
+      "Treating the fishing community's objection as simply wrong",
+      "Ignoring the spillover evidence and assuming conservation and catch are pure trade-offs",
+      "Proposing a solution with no attention to how the decision gets made fairly"
+    ],
+    "followUps": ["What would make you change your mind about how large the reserve should be?"]
+  },
+  {
+    "id": "prog-oceanography-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Coral bleaching mechanism",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["biological-oceanography", "coral-reefs", "climate-stress"],
+    "question": "What is actually happening biologically when a coral reef bleaches?",
+    "lookingFor": "An accurate explanation of the coral-algae symbiosis breaking down under stress, not just 'coral turns white from hot water'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the symbiotic relationship between coral polyps and their zooxanthellae algae",
+        "Describe how thermal or other stress causes the coral to expel the algae",
+        "Clarify that bleaching itself isn't death, but leaves the coral starved and vulnerable"
+      ],
+      "modelAnswer": "Coral polyps host tiny photosynthetic algae called zooxanthellae inside their tissue, and that relationship is mutual, the algae get shelter and the coral gets most of its energy and its colour from them. When water gets too warm, or there's other stress like excess light or pollution, the algae's photosynthesis starts producing harmful byproducts inside the coral tissue, and the coral responds by expelling the algae, which leaves behind the transparent tissue over white calcium carbonate skeleton, hence the bleached look. Bleaching on its own isn't immediate death, the coral can survive for a while and even recolonise algae if conditions improve quickly, but it's essentially starving and much more vulnerable to disease in the meantime, so prolonged or repeated bleaching events are what actually kill reefs."
+    },
+    "commonMistakes": [
+      "Saying the coral itself dies and turns white, skipping the algae's role entirely",
+      "Treating bleaching and coral death as the same event",
+      "No mention of the symbiosis being the actual mechanism under stress"
+    ],
+    "followUps": ["Why do some coral species or reef locations show more resistance to bleaching than others?"]
+  },
+  {
+    "id": "prog-oceanography-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Coastal hypoxia and dead zones",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["chemical-oceanography", "eutrophication", "coastal"],
+    "question": "How does fertiliser runoff from farms hundreds of kilometres inland end up creating an oxygen dead zone in the ocean?",
+    "lookingFor": "A correct causal chain from nutrient loading through algal bloom to decomposition-driven hypoxia.",
+    "idealAnswer": {
+      "bullets": [
+        "Trace nutrients from agricultural runoff through rivers to coastal waters",
+        "Explain the resulting algal bloom and its eventual die-off",
+        "Describe how bacterial decomposition of that organic matter consumes dissolved oxygen, creating hypoxia"
+      ],
+      "modelAnswer": "Nitrogen and phosphorus from fertiliser wash off farmland into rivers and eventually reach the coast, where those nutrients fuel an unusually large algal bloom because they're normally the limiting factor for growth. That bloom doesn't last, the algae eventually die and sink, and bacteria break down all that extra organic matter, which consumes dissolved oxygen in the water column as they respire. If the water is stratified, which stops oxygen-rich surface water from mixing down, oxygen in the bottom layers can drop so low that fish and other mobile animals leave and less mobile bottom species suffocate, which is essentially what's happening every summer in places like the Gulf of Mexico off the Mississippi outflow."
+    },
+    "commonMistakes": [
+      "Saying fertiliser 'poisons' the water directly rather than explaining the oxygen mechanism",
+      "Skipping the decomposition step that actually consumes the oxygen",
+      "Missing the role of water column stratification in trapping low-oxygen water"
+    ],
+    "followUps": ["Why do dead zones tend to be worse in summer than winter?"]
+  },
+  {
+    "id": "prog-oceanography-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Seafloor spreading evidence",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["geological-oceanography", "plate-tectonics", "evidence"],
+    "question": "What evidence from the ocean floor actually convinced scientists that seafloor spreading was real?",
+    "lookingFor": "Knowledge of the specific geophysical evidence, especially magnetic striping, rather than a vague reference to plate tectonics.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the symmetric magnetic striping pattern either side of mid-ocean ridges",
+        "Connect this to periodic reversals of Earth's magnetic field recorded as new crust forms",
+        "Mention supporting evidence like age of seafloor sediment increasing with distance from ridges"
+      ],
+      "modelAnswer": "The clinching evidence was the pattern of magnetic striping found on either side of mid-ocean ridges, bands of seafloor rock magnetised in alternating directions that turned out to be almost perfectly symmetrical when mapped away from the ridge axis. Earth's magnetic field has flipped polarity many times over geological history, and as new basalt crystallises at the ridge and cools, it locks in the field direction at that moment, so as new crust keeps forming and pushing older crust outward, you get matching mirror-image stripes recording that history on both sides. That symmetry was very hard to explain any other way, and it was backed up by the fact that sediment cores show seafloor gets progressively older the further you drill from the ridge, both lines of evidence together made seafloor spreading essentially undeniable."
+    },
+    "commonMistakes": [
+      "Citing continental drift or fossil matching, which predate and don't directly prove seafloor spreading",
+      "Vague reference to 'plate tectonics' without naming the specific ridge evidence",
+      "Omitting the symmetry of the magnetic pattern, which is the key detail"
+    ],
+    "followUps": ["How can scientists use this striping pattern to calculate a spreading rate for a given ridge?"]
+  },
+  {
+    "id": "prog-oceanography-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Iron limitation hypothesis",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["biological-oceanography", "primary-production", "nutrient-limitation"],
+    "question": "Some parts of the open ocean have plenty of nitrate and phosphate but surprisingly low phytoplankton growth. What explains that, and how was it demonstrated?",
+    "lookingFor": "Knowledge of the iron limitation hypothesis in high-nutrient low-chlorophyll regions and awareness of the experimental evidence behind it.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify these as high-nutrient, low-chlorophyll regions and name iron as the limiting micronutrient",
+        "Explain why iron is scarce there, largely due to distance from dust and terrestrial sources",
+        "Reference iron-enrichment experiments like IronEx that demonstrated a bloom response when iron was added"
+      ],
+      "modelAnswer": "These are called high-nutrient, low-chlorophyll regions, places like the Southern Ocean and parts of the equatorial Pacific, where nitrate and phosphate are abundant but phytoplankton still can't grow to their full potential. The missing piece turned out to be iron, which phytoplankton need in small amounts for enzymes involved in photosynthesis and nitrogen processing, and it's scarce in these regions because they're far from the dust storms and river inputs that deliver iron elsewhere. This was tested directly in experiments like IronEx in the 1990s, where researchers actually seeded patches of open ocean with dissolved iron and observed a rapid, visible phytoplankton bloom respond within days, which was pretty striking confirmation. It's also part of why ocean iron fertilisation later got proposed as a climate intervention, since more phytoplankton growth draws down more atmospheric CO2, at least in theory."
+    },
+    "commonMistakes": [
+      "Assuming all ocean regions are simply nitrogen or phosphorus limited",
+      "Not naming iron specifically as the limiting micronutrient",
+      "No awareness of the experimental evidence that established the hypothesis"
+    ],
+    "followUps": ["What are the risks of trying to scale iron fertilisation up as a deliberate carbon removal strategy?"]
+  },
+  {
+    "id": "prog-oceanography-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Ocean geoengineering ethics",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["ethics", "geoengineering", "carbon-removal"],
+    "question": "If a company offered to fund a large-scale ocean iron fertilisation project to fight climate change, and asked for your view as a marine scientist, what would you tell them?",
+    "lookingFor": "Balanced ethical and scientific reasoning about geoengineering, weighing climate urgency against ecological risk and governance gaps, without a knee-jerk verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine appeal of a cheap-seeming climate lever given the urgency of the problem",
+        "Raise the real scientific uncertainties: uncertain carbon sequestration efficiency, food web disruption, potential for harmful algal blooms",
+        "Land on caution, likely recommending small controlled research rather than deployment, and flag the governance question of who bears the risk"
+      ],
+      "modelAnswer": "I'd tell them I understand the appeal, it looks like a comparatively cheap intervention against a genuinely urgent problem, and the early experiments do show it can trigger blooms. But I'd want them to know the open questions are still large, a lot of that bloom's carbon can get recycled back into the surface ocean or atmosphere within a season rather than actually sequestered long term, and pushing large blooms into an ecosystem risks shifting the food web or triggering toxic algal species in ways that are hard to predict or reverse. I'd also raise that the ocean crosses national jurisdictions, so a single company or country deciding to fertilise a patch of international water raises real governance and consent questions for everyone downstream of the effects. My honest advice would be to fund small, tightly monitored research rather than any deployment at scale, because right now we don't have the evidence base to be confident the trade-off is worth it."
+    },
+    "commonMistakes": [
+      "Endorsing deployment enthusiastically without engaging the scientific uncertainty",
+      "Rejecting all geoengineering research outright without nuance",
+      "Ignoring the international governance dimension of the ocean as a shared resource"
+    ],
+    "followUps": ["What kind of monitoring would you insist on before scaling any such project further?"]
+  },
+  {
+    "id": "prog-oceanography-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Marine heatwaves",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["current-development", "climate-change", "physical-oceanography"],
+    "question": "What is a marine heatwave, and why has this become such a widely discussed topic in oceanography recently?",
+    "lookingFor": "Correct definition plus awareness of why the concept has gained prominence, including recent record-breaking events and ecological consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a marine heatwave as a prolonged period of anomalously warm sea surface temperature relative to a historical baseline for that location and season",
+        "Note that both frequency and intensity of these events have increased with background ocean warming",
+        "Give a concrete ecological consequence, such as mass mortality events or shifted species ranges"
+      ],
+      "modelAnswer": "A marine heatwave is a period, usually at least five days, where sea surface temperature in a region sits well above what's normal for that place and time of year, based on a historical baseline. They've become a big topic because both how often they occur and how intense they get have clearly increased as the background ocean has warmed, events like 'the Blob' in the North Pacific and repeated Mediterranean and Tasman Sea heatwaves have caused real damage, from kelp forest collapse to mass mortality in fisheries and shellfish stocks. What makes them scientifically interesting to me is that they're a good example of how a shifting mean can push short-term extremes into territory ecosystems just haven't adapted to before."
+    },
+    "commonMistakes": [
+      "Confusing marine heatwaves with general long-term ocean warming trends",
+      "No mention of a specific real-world event or consequence",
+      "Vague definition with no reference to a baseline or duration"
+    ],
+    "followUps": ["Can you name a specific marine heatwave event and describe what it did to a local ecosystem?"]
+  },
+  {
+    "id": "prog-oceanography-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Blue carbon and climate policy",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["current-development", "carbon-cycle", "policy"],
+    "question": "What's the current thinking on 'blue carbon' ecosystems like mangroves and seagrass, and why are they getting so much policy attention right now?",
+    "lookingFor": "Understanding of what blue carbon ecosystems are, why they sequester carbon efficiently, and awareness of the current push to include them in carbon markets and climate policy.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify mangroves, seagrass meadows and salt marshes as the key blue carbon ecosystems",
+        "Explain why they sequester carbon efficiently, largely through burial in anoxic sediments that slow decomposition",
+        "Note the current policy interest in counting them toward national carbon budgets and carbon credit markets"
+      ],
+      "modelAnswer": "Blue carbon refers mainly to mangroves, seagrass meadows and salt marshes, coastal ecosystems that capture and store carbon at a rate per hectare that's often far higher than terrestrial forests. Part of the reason is that their sediments are waterlogged and low in oxygen, which slows decomposition dramatically, so carbon that would break down and release CO2 on land can stay locked in coastal mud for centuries. They've gained a lot of policy attention recently because countries and companies are starting to count blue carbon restoration toward national climate targets and voluntary carbon credit markets, which is exciting for funding conservation but also a bit contentious, since measuring and verifying how much carbon a given restoration project actually locks away long term is genuinely difficult to do rigorously."
+    },
+    "commonMistakes": [
+      "Confusing blue carbon with phytoplankton-driven ocean carbon uptake generally",
+      "Not explaining the anoxic sediment mechanism that makes coastal storage so efficient",
+      "No awareness of the current carbon market and verification debate"
+    ],
+    "followUps": ["What makes verifying blue carbon credits harder than verifying a typical forestry carbon credit?"]
+  },
+  {
+    "id": "prog-oceanography-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Tragedy of the commons in fisheries",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["ethics", "fisheries", "resource-management"],
+    "question": "Overfishing is often described as a classic tragedy of the commons. As someone who wants to study this field, do you think that framing actually helps solve the problem?",
+    "lookingFor": "Critical engagement with a standard theoretical framework rather than reciting it uncritically, showing awareness of real-world management approaches that complicate the simple model.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the tragedy of the commons framing accurately: individually rational fishing decisions collectively deplete a shared resource",
+        "Push back with real-world counterexamples, like community-managed fisheries or quota systems, that show the tragedy isn't inevitable",
+        "Reach a considered view on what actually works, such as secure access rights or co-management, rather than treating the framing as the whole answer"
+      ],
+      "modelAnswer": "I think the framing captures something real, when no one owns a shared fish stock, each individual boat has an incentive to catch as much as it can before someone else does, even though collectively that depletes the resource for everyone. But I don't think it's the whole story, because plenty of fisheries have avoided that trap through things like individual transferable quotas or community-based co-management, where a group with real, secure stake in a stock's long-term health polices itself surprisingly well, Elinor Ostrom's work on commons governance is basically a direct rebuttal to the idea that tragedy is inevitable. So I'd say the framing is a useful starting diagnosis but a poor guide to solutions on its own, what actually seems to matter is whether the people fishing have secure long-term rights and enforceable rules, not just whether the resource is shared."
+    },
+    "commonMistakes": [
+      "Reciting the tragedy of the commons as an unquestionable law with no counterexamples",
+      "Dismissing the framing entirely without acknowledging what it gets right",
+      "No mention of any actual management tool or governance approach"
+    ],
+    "followUps": ["Can you think of a case where a quota system itself created a new problem?"]
+  },
+  {
+    "id": "prog-oceanography-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Bycatch ethics dilemma",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["ethics", "fisheries", "bycatch"],
+    "question": "Say you're advising a small fishing fleet whose gear catches endangered sea turtles as bycatch, and the fix, turtle excluder devices, cuts their shrimp catch and their income. How would you approach that conversation?",
+    "lookingFor": "Empathetic but principled reasoning that balances conservation obligation against genuine livelihood cost, favouring collaborative problem-solving over a top-down mandate.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the income impact on the fleet seriously rather than treating it as a rounding error",
+        "Explain why the conservation obligation still matters, given endangered species status and legal or market pressure",
+        "Propose a practical path: gear trials, phased adoption, subsidies or market incentives, not just an instruction to comply"
+      ],
+      "modelAnswer": "I wouldn't want to walk in and just tell them to install the devices and accept the income hit, because for a small fleet a real drop in catch can be the difference between staying afloat and not, and that's a legitimate concern I'd want to actually hear out first. At the same time, turtle bycatch on an endangered population isn't a trade-off I think it's fair to just accept indefinitely, and increasingly buyers and export markets are requiring proof of turtle-safe gear anyway, so there's a commercial angle too, not just a moral one. I'd want to bring the fleet into testing different device designs themselves, since some newer excluder designs have much smaller catch losses than older ones, and pair that with a phased timeline and possibly a subsidy or gear-cost support so the transition isn't just imposed on them unfunded. Getting buy-in from the people actually fishing tends to matter more for whether a rule actually gets followed than the rule itself."
+    },
+    "commonMistakes": [
+      "Dismissing the income concern as secondary to conservation without engagement",
+      "Treating the mandate as purely a compliance issue with no collaborative process",
+      "No awareness that excluder device designs and their catch-loss trade-offs vary"
+    ],
+    "followUps": ["What would you do if, after all that, the fleet still refused to comply?"]
+  },
+  {
+    "id": "prog-oceanography-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Sea level rise components",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["physical-oceanography", "sea-level", "climate-change"],
+    "question": "Sea level rise is usually reported as a single global average number, but what's actually contributing to it, and why does the rate vary so much by location?",
+    "lookingFor": "Ability to decompose a headline figure into component processes and explain regional variability, rather than treating it as a single uniform phenomenon.",
+    "idealAnswer": {
+      "bullets": [
+        "Separate the two main global contributors: thermal expansion of warming seawater and mass added from melting land ice",
+        "Note that vertical land motion, like subsidence or glacial isostatic rebound, changes the local relative sea level experienced",
+        "Mention that ocean circulation and gravitational effects near melting ice sheets also cause regional variation"
+      ],
+      "modelAnswer": "The global average figure is really the sum of two main things, thermal expansion, where warmer water simply takes up more volume, and added mass from melting glaciers and ice sheets, which are roughly comparable contributors globally though ice mass loss has been accelerating. But the number any particular coastline experiences can be quite different from the global average, partly because of vertical land motion, some cities are sinking due to groundwater extraction or historically compacting sediment, which adds directly to relative sea level rise regardless of the ocean. There's also a less intuitive gravitational effect, when a huge ice sheet like Greenland loses mass, its gravitational pull on nearby ocean water weakens, so sea level can actually rise less near Greenland and disproportionately more far away, which surprised me when I first learned about it."
+    },
+    "commonMistakes": [
+      "Treating sea level rise as caused only by melting ice, ignoring thermal expansion",
+      "Assuming the rate is uniform everywhere geographically",
+      "No mention of local land motion as a factor in experienced sea level change"
+    ],
+    "followUps": ["Why might a city far from any ice sheet still see above-average relative sea level rise?"]
+  },
+  {
+    "id": "prog-oceanography-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Deep-sea ecosystem hypothetical",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "deep-sea", "ecology"],
+    "question": "Imagine a whale carcass sinks to the deep seafloor far from any sunlight. Walk me through what you'd expect to happen to that patch of seafloor over the following years.",
+    "lookingFor": "Knowledge of whale-fall ecological succession and an ability to reason through a scenario using ecological principles rather than reciting a memorised fact alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the initial scavenger stage where mobile predators strip soft tissue quickly",
+        "Explain the opportunist stage where smaller organisms colonise remaining organic material and sediment",
+        "Describe the final sulphophilic stage where bacteria break down lipids in the bones, releasing sulphides that support chemosynthetic organisms"
+      ],
+      "modelAnswer": "In the first months I'd expect large mobile scavengers, hagfish, sleeper sharks, amphipods, to strip most of the soft tissue quite quickly, since a food fall that size is a rare energy windfall in an otherwise food-poor environment. After that, a slower opportunist stage sets in over maybe a year or two, where smaller worms and crustaceans colonise the remaining organic matter and the enriched sediment around the carcass. What I find most interesting is the final stage, which can last decades, where bacteria break down lipids stored deep in the whale bones and release hydrogen sulphide, and that supports a chemosynthetic community, tube worms and clams with symbiotic sulphur-oxidising bacteria, quite similar to what you'd see at a hydrothermal vent. It's essentially a temporary island of vent-like chemistry sustained purely by one animal's death."
+    },
+    "commonMistakes": [
+      "Describing only rapid scavenging and stopping there, missing the longer successional stages",
+      "No connection to chemosynthesis or hydrothermal vent communities",
+      "Treating the carcass as simply decomposing with no ecological succession"
+    ],
+    "followUps": ["Why might whale falls be ecologically important as stepping stones between hydrothermal vent sites?"]
+  },
+  {
+    "id": "prog-oceanography-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Anomalous bloom hypothetical",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "harmful-algal-bloom", "field-reasoning"],
+    "question": "You're on a research cruise and your instruments show a sudden, unexpected patch of intense chlorophyll fluorescence and low dissolved oxygen in surface water that wasn't in your survey plan. What would you actually do?",
+    "lookingFor": "A methodical field-reasoning process showing how a scientist would investigate an unexpected observation rather than either panicking or ignoring it.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise verifying the instrument reading itself before assuming it reflects reality",
+        "Describe a logical sampling response: water samples for species identification, nutrient and toxin analysis, satellite imagery cross-check",
+        "Show awareness this could indicate a harmful algal bloom and consider reporting protocols beyond just personal curiosity"
+      ],
+      "modelAnswer": "My first instinct would actually be to double check the instrument itself, a fluorometer reading a sudden spike could be biofouling or a calibration drift as easily as a real bloom, so I'd want a quick sanity check, maybe a CTD cast with a secondary sensor, before treating it as real. If it held up, I'd want to deviate from the plan enough to collect actual water samples at a few depths through the patch, for phytoplankton species identification under a microscope, nutrient concentrations, and if the equipment was available, a toxin screen, since some bloom-forming species produce toxins that matter for both ecosystem and public health reasons. I'd also want to check whether satellite ocean colour imagery showed the same feature over a wider area, to understand its scale, and if it looked like a genuine harmful algal bloom near a coastline, I'd think it's worth flagging to the chief scientist about notifying relevant coastal authorities, not just treating it as an interesting side note for our own paper."
+    },
+    "commonMistakes": [
+      "Assuming the anomalous reading is automatically real without questioning instrument error",
+      "Only mentioning curiosity or noting it down, with no concrete sampling plan",
+      "No consideration of a real-world reporting obligation if it turns out to be a public-health-relevant bloom"
+    ],
+    "followUps": ["What if the ship's schedule genuinely couldn't accommodate the detour to sample it properly?"]
+  },
+  {
+    "id": "prog-oceanography-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Research funding trade-off hypothetical",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "research-priorities", "resource-allocation"],
+    "question": "Imagine you're on a small committee that has to choose between funding one more year of a long-running coral reef monitoring programme or a new deep-sea survey in a region proposed for mining. How would you think it through?",
+    "lookingFor": "Ability to reason about competing scientific priorities using explicit criteria rather than a gut preference, while acknowledging real uncertainty in the decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify relevant criteria: value of long time-series data versus urgency of baseline data before irreversible activity",
+        "Weigh the cost of losing continuity in an existing dataset against the cost of losing the only chance to gather pre-disturbance baseline data",
+        "Reach a reasoned, not dogmatic, conclusion and note what additional information would change the decision"
+      ],
+      "modelAnswer": "I'd want to separate two different kinds of value here, the coral monitoring programme's worth comes largely from its continuity, a long unbroken time series is scientifically precious in a way that's very hard to recreate if you have a gap, while the deep-sea survey's urgency comes from the fact that if mining goes ahead there, this might be the only chance to ever get pre-disturbance baseline data for that ecosystem. If the mining decision timeline is genuinely imminent, I'd lean toward funding the deep-sea survey, because a missed year of reef monitoring is a gap you can partially bridge with satellite or partner data, whereas a missed baseline survey before mining starts is gone forever. But I'd want to check first whether there's any bridge funding or partner institution that could keep even minimal continuity on the reef monitoring, because I wouldn't want the choice to be treated as fully binary if there's a cheaper way to avoid losing either."
+    },
+    "commonMistakes": [
+      "Picking one option with no explicit reasoning or criteria",
+      "Ignoring the irreversibility argument specific to pre-mining baseline data",
+      "Treating the choice as purely binary without considering partial mitigation options"
+    ],
+    "followUps": ["How would your answer change if the mining project were still years away from approval?"]
+  },
+  {
+    "id": "prog-oceanography-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Paleoclimate proxies",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["geological-oceanography", "paleoclimate", "proxies"],
+    "question": "How can scientists reconstruct what ocean temperatures were like tens of thousands of years ago, long before any thermometer existed?",
+    "lookingFor": "Correct explanation of at least one specific proxy method with the underlying physical or biological principle, not just a name-drop.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific proxy, such as oxygen isotope ratios in foraminifera shells",
+        "Explain the underlying principle linking the proxy measurement to past temperature or ice volume",
+        "Note that proxies are typically cross-validated against multiple independent methods for confidence"
+      ],
+      "modelAnswer": "One of the main tools is oxygen isotope ratios preserved in the calcium carbonate shells of foraminifera buried in seafloor sediment cores. The ratio of the heavier oxygen-18 to the lighter oxygen-16 in seawater, and therefore in the shells that form from it, shifts depending on both temperature and how much water is locked up in ice sheets, since lighter oxygen evaporates preferentially and ends up trapped in ice during glacial periods. By drilling a sediment core and measuring that ratio at different depths, which correspond to different time periods, scientists can build a record of past temperature and ice volume changes, and they typically cross-check it against other proxies, like alkenones from marine algae or ice core records, to be confident the signal is real rather than an artefact of one method."
+    },
+    "commonMistakes": [
+      "Naming a proxy with no explanation of the underlying mechanism",
+      "Confusing oxygen isotopes with radiocarbon dating, which serves a different purpose",
+      "Presenting a single proxy as fully conclusive with no cross-validation"
+    ],
+    "followUps": ["Why might scientists want to combine several different proxy methods rather than trust just one?"]
+  },
+  {
+    "id": "prog-oceanography-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Methane hydrate feedback",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["chemical-oceanography", "methane-hydrates", "climate-feedback"],
+    "question": "What are methane hydrates, and why do some scientists worry about them as a climate feedback risk while others think that worry is overstated?",
+    "lookingFor": "Accurate description of methane hydrate stability and a balanced view of the current scientific debate about the scale of the risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe methane hydrates as ice-like structures trapping methane, stable under specific high-pressure, low-temperature conditions on continental margins and permafrost",
+        "Explain the feedback concern: ocean warming could destabilise hydrates, releasing a potent greenhouse gas",
+        "Present the counterargument fairly: most hydrate deposits are buried deep enough that warming penetrates too slowly to trigger large-scale release on short timescales"
+      ],
+      "modelAnswer": "Methane hydrates are essentially ice-like cage structures that trap methane molecules, and they're stable under the high pressure and low temperature conditions found in seafloor sediments on continental margins and in permafrost, but that stability depends on staying within a fairly narrow temperature and pressure window. The feedback concern is that as bottom water warms, some hydrate deposits could destabilise and release methane, a much more potent greenhouse gas than CO2 over short timescales, which could then accelerate warming further. But a lot of researchers think the doomsday version of this is overstated, because most of the vast hydrate reservoir sits buried deep enough in sediment that heat penetration from ocean warming is extremely slow, so any release over the next century is likely to be gradual and localised to shallower, more vulnerable deposits like parts of the Arctic shelf, rather than a sudden global pulse. I think both sides of that debate are reasonable, it's more a disagreement about timescale and magnitude than about whether the mechanism exists at all."
+    },
+    "commonMistakes": [
+      "Presenting a catastrophic sudden global methane release as an established near-term certainty",
+      "Dismissing the feedback risk entirely with no acknowledgment of localised vulnerable deposits",
+      "No explanation of what actually keeps hydrates stable in the first place"
+    ],
+    "followUps": ["Which specific regions are considered most vulnerable to near-term hydrate destabilisation, and why?"]
+  },
+  {
+    "id": "prog-oceanography-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Microplastics current debate",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["current-development", "pollution", "microplastics"],
+    "question": "Where does the current scientific debate actually stand on how much of a threat microplastics pose to marine life and human health?",
+    "lookingFor": "Nuanced awareness that microplastics are a genuine, established concern but that the science on health impact magnitude is still developing, avoiding both alarmism and dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish what's well-established, widespread presence in marine organisms and the food web, from what's still uncertain, precise health and ecological impact thresholds",
+        "Note the difficulty of studying real-world exposure versus the higher concentrations often used in lab studies",
+        "Show awareness this is an active, evolving research area rather than presenting a fixed conclusion"
+      ],
+      "modelAnswer": "What's genuinely well established is that microplastics are now essentially everywhere in the marine environment, found in organisms from plankton up through fish and even in deep-sea sediment, and that's been documented pretty thoroughly. What's still actively debated is the actual magnitude of harm at realistic environmental concentrations, a lot of the striking toxicity results come from lab studies using particle concentrations far higher than what's typically found in the wild, so translating those findings into real-world risk for either marine organisms or human health is genuinely difficult and researchers are cautious about overclaiming. I'd say the honest current position is that microplastics are clearly a legitimate concern worth taking seriously and reducing, but the specific claims about definite harm at current environmental levels are still being actively worked out, and I try not to repeat the more alarmist headlines without checking whether they're based on realistic exposure levels."
+    },
+    "commonMistakes": [
+      "Treating every lab toxicity study result as directly proving real-world harm at current concentrations",
+      "Dismissing microplastics as a non-issue because ecological presence isn't the same as proven harm",
+      "No distinction between what's well-established versus what's still actively researched"
+    ],
+    "followUps": ["Why might a lab study using very high plastic particle concentrations still be scientifically useful?"]
+  },
+  {
+    "id": "prog-oceanography-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "30x30 marine protection target",
+    "program": "Oceanography",
+    "difficulty": "medium",
+    "tags": ["current-development", "policy", "conservation"],
+    "question": "The global '30 by 30' target aims to protect 30 percent of the ocean by 2030. What's your view on whether that target is achievable, and whether the percentage itself is the right way to measure success?",
+    "lookingFor": "Awareness of a current policy debate plus critical thinking about whether a simple area-based metric captures actual conservation effectiveness.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the target's current status, well under 30 percent effectively protected as of the most recent assessments",
+        "Raise the distinction between area designated on paper and areas actually enforced or ecologically effective",
+        "Offer a considered view on whether percentage coverage alone is a sufficient metric, or whether placement and enforcement quality matter more"
+      ],
+      "modelAnswer": "As I understand it, we're still well under that thirty percent figure in terms of areas that are both formally protected and meaningfully enforced, a lot of designated marine protected areas exist mostly on paper without the funding or monitoring to actually restrict harmful activity inside them. That's actually my bigger concern with the target as a metric, hitting thirty percent of ocean area doesn't tell you much if the areas chosen aren't ecologically important or if enforcement is weak, a smaller area of well-placed, well-enforced, high-biodiversity reserve could plausibly do more good than a larger area of nominal protection in low-value open ocean. So I think the target is a useful rallying point for political attention and funding, but I'd want the actual measure of success to be about ecological outcomes and enforcement quality, not just the raw percentage of ocean with a line drawn around it on a map."
+    },
+    "commonMistakes": [
+      "Treating the target as simply achievable or already on track without checking current status",
+      "Accepting area percentage as automatically equivalent to conservation success",
+      "No mention of enforcement or paper park concerns"
+    ],
+    "followUps": ["How would you actually measure whether a marine protected area is 'working'?"]
+  },
+  {
+    "id": "prog-oceanography-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Invasive species response hypothetical",
+    "program": "Oceanography",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "invasive-species", "management"],
+    "question": "Imagine a fast-reproducing invasive species has just been discovered in a harbour, likely introduced through a ship's ballast water. You're advising the local authority on next steps. What would you recommend, and how confident could you actually be in your recommendation?",
+    "lookingFor": "Structured reasoning about rapid response under uncertainty, weighing eradication feasibility against monitoring, and honest acknowledgment of the limits of confidence in early-stage decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Emphasise the urgency of acting fast, since detection windows for feasible eradication close quickly with fast-reproducing species",
+        "Outline a rapid assessment: extent of the current population, likely spread pathways, feasibility of physical or chemical removal without excessive collateral damage",
+        "Be honest about the genuine uncertainty in early-stage decisions and recommend monitoring alongside any action rather than presenting false confidence"
+      ],
+      "modelAnswer": "My first recommendation would be to move fast, because the window where an invasive population is small and localised enough to plausibly eradicate rather than just manage tends to close within weeks or months for a fast-reproducing species. I'd want a rapid survey first, how far has it actually spread within the harbour, what's the likely density, and whether removal methods, physical trapping, targeted treatment, or in some cases closing off the harbour, could work without doing serious collateral damage to native species living in the same space. I'd be honest with the authority that at this early stage I can't give them high confidence either way, we genuinely don't know yet if eradication is realistic or if we're already past that point and need to shift to containment and long-term monitoring instead, and I'd want that survey data before committing to a specific plan rather than pretending I already know the right answer. What I would push hard for regardless of which path we take is establishing a monitoring programme immediately, because acting without tracking whether it's working is close to acting blind."
+    },
+    "commonMistakes": [
+      "Recommending immediate eradication with unwarranted confidence with no assessment step first",
+      "Treating the situation as low urgency and delaying any decisive action",
+      "No acknowledgment of genuine uncertainty at the early detection stage"
+    ],
+    "followUps": ["How would your recommendation change if the survey showed the species had already spread beyond the harbour?"]
+  }
+]

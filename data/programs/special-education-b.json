@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-special-education-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "IEP versus 504 plan",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["idea", "504", "legal-frameworks"],
+    "question": "Can you explain the difference between an IEP and a 504 plan, and why a student might qualify for one but not the other?",
+    "lookingFor": "Clear grasp of the legal distinction between IDEA and Section 504, not just that both are 'accommodation plans'.",
+    "idealAnswer": {
+      "bullets": [
+        "IEP is under IDEA and requires a specific disability category with an educational impact needing specialized instruction",
+        "504 is under a civil rights law and only requires that a disability substantially limits a major life activity, so it covers a broader group",
+        "504 provides accommodations, IEP can provide accommodations plus specialized instruction and related services"
+      ],
+      "modelAnswer": "An IEP falls under IDEA, so a student needs to be found eligible under one of thirteen disability categories and show that the disability actually affects their ability to access the curriculum, which then triggers specialized instruction and services. A 504 plan sits under a civil rights law, Section 504 of the Rehabilitation Act, and the bar is lower, the student just needs a disability that substantially limits a major life activity like walking or concentrating. So a student with severe allergies or ADHD that doesn't need specialized teaching might get a 504 with accommodations like extra time, while a student with a learning disability who needs actual specialized reading instruction would need an IEP. I find that distinction important because it changes what the school is actually obligated to provide."
+    },
+    "commonMistakes": [
+      "Saying 504 and IEP are basically the same thing",
+      "Assuming any diagnosis automatically qualifies a student for an IEP",
+      "Not knowing which law each falls under"
+    ],
+    "followUps": ["Could a student have both at different points, or move from one to the other?"]
+  },
+  {
+    "id": "prog-special-education-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Least restrictive environment tension",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["lre", "inclusion", "placement"],
+    "question": "IDEA requires students to be educated in the least restrictive environment. What tensions can arise when applying that principle in practice?",
+    "lookingFor": "Ability to reason through the tension between inclusion as a default and a student's actual support needs, not just recite the term.",
+    "idealAnswer": {
+      "bullets": [
+        "LRE means the general education classroom with supports, to the maximum extent appropriate, not full inclusion at all costs",
+        "Tension arises when a student's needs are so intensive that full inclusion could compromise both their own learning and the class's",
+        "Good reasoning weighs the student's individual needs each year rather than defaulting to policy or convenience either way"
+      ],
+      "modelAnswer": "LRE doesn't mean every student belongs in a general classroom regardless of need, it means placement decisions start there and move toward more restrictive settings only as far as a student's needs actually require. The real tension is that inclusion is the right default and it has huge social and academic benefits, but for a student who needs intensive one-on-one behavior support, forcing them into a large classroom can end up isolating them anyway, just in a room full of people. I think the honest answer is that LRE has to be decided student by student and revisited often, because what's least restrictive for one child with autism might be completely wrong for another."
+    },
+    "commonMistakes": [
+      "Treating LRE as a synonym for full inclusion",
+      "Assuming more restrictive automatically means worse",
+      "Giving a one-size-fits-all answer with no nuance"
+    ],
+    "followUps": ["Who should have the final say when the family and the school team disagree on placement?"]
+  },
+  {
+    "id": "prog-special-education-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Accommodation versus modification",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["accommodation", "modification", "idea"],
+    "question": "What's the difference between an accommodation and a modification, and can you give an example of each?",
+    "lookingFor": "Precise understanding of a distinction special ed teachers apply constantly.",
+    "idealAnswer": {
+      "bullets": [
+        "Accommodation changes how a student accesses or demonstrates learning without changing the expectation",
+        "Modification changes the actual content or expectation being taught or assessed",
+        "Examples should be concrete and correctly categorized"
+      ],
+      "modelAnswer": "An accommodation changes how a student gets to the same learning target, so extra time on a test or having a text read aloud doesn't lower the bar, it just removes a barrier that isn't related to what's actually being measured. A modification actually changes the target itself, like giving a student a shortened spelling list or grading them on a simplified version of the assignment. I think the distinction matters because accommodations should be used as much as possible before modifications, since modifications can unintentionally lower expectations if they're used too broadly."
+    },
+    "commonMistakes": [
+      "Using the two terms interchangeably",
+      "Giving an example that's actually the other category",
+      "Implying modifications are always negative"
+    ],
+    "followUps": ["When might overusing modifications actually hurt a student?"]
+  },
+  {
+    "id": "prog-special-education-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Universal Design for Learning",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["udl", "instructional-design"],
+    "question": "What is Universal Design for Learning, and how is it different from just writing more IEP accommodations?",
+    "lookingFor": "Understanding of UDL as proactive whole-class design versus reactive individual accommodation.",
+    "idealAnswer": {
+      "bullets": [
+        "UDL is a proactive framework built into lesson design from the start, for all learners",
+        "It rests on offering multiple means of engagement, representation, and action/expression",
+        "It reduces but doesn't eliminate the need for individualized accommodations"
+      ],
+      "modelAnswer": "Universal Design for Learning is about building flexibility into a lesson from the very beginning instead of retrofitting accommodations for one student after the fact. It's built around giving students multiple ways to engage with material, multiple ways to take it in, and multiple ways to show what they know, so a lesson might offer a video, a text, and a hands-on option all covering the same content. I like that it benefits the whole class, not just students with IEPs, but I also know it doesn't replace individualized planning entirely, some students will still need supports UDL alone can't provide."
+    },
+    "commonMistakes": [
+      "Confusing UDL with differentiated instruction as identical concepts",
+      "Describing UDL as only for students with disabilities",
+      "Missing the three core principles entirely"
+    ],
+    "followUps": ["Give an example of how you'd apply UDL to a single history lesson."]
+  },
+  {
+    "id": "prog-special-education-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Medical model versus social model of disability",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["disability-models", "theory"],
+    "question": "How would you explain the difference between the medical model and the social model of disability?",
+    "lookingFor": "Conceptual fluency with a framework that shapes how special education itself is debated.",
+    "idealAnswer": {
+      "bullets": [
+        "Medical model locates disability within the individual as something to diagnose and fix",
+        "Social model locates disability in barriers created by environment and society, not the person",
+        "A strong answer recognizes special education sits uneasily between both models"
+      ],
+      "modelAnswer": "The medical model treats disability as a deficit inside the person, something to diagnose, treat, or remediate, which is the lens a lot of traditional special education testing and labeling comes from. The social model flips that around and says the disability is really created by an environment that wasn't built for that person, so a wheelchair user isn't disabled by their legs, they're disabled by a building with no ramp. What I find interesting is that special education as a system is caught between both, we diagnose and provide individualized remediation, which is medical model thinking, but we're also trying to remove barriers and rethink environments, which is social model thinking. I don't think good practice fully rejects either one."
+    },
+    "commonMistakes": [
+      "Treating the models as interchangeable",
+      "Dismissing the medical model entirely as outdated",
+      "Giving a textbook definition with no application to special ed practice"
+    ],
+    "followUps": ["Which model do you think current special education policy leans toward, and is that a problem?"]
+  },
+  {
+    "id": "prog-special-education-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Person-first versus identity-first language",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["language", "neurodiversity", "self-advocacy"],
+    "question": "Some people prefer 'person with autism' and others prefer 'autistic person.' What's this debate about, and how would you navigate it as a future educator?",
+    "lookingFor": "Awareness of a live language debate within the disability community and comfort deferring to individual preference.",
+    "idealAnswer": {
+      "bullets": [
+        "Person-first language emphasizes the person before the disability, historically meant to reduce stigma",
+        "Identity-first language, favored by much of the autistic self-advocacy community, treats the identity as core, not shameful",
+        "Best practice is asking the individual or family their preference rather than assuming"
+      ],
+      "modelAnswer": "Person-first language, saying 'a person with autism,' was designed to push back against people being reduced to a diagnosis, and it's still standard in a lot of professional and medical writing. But a large part of the autistic self-advocacy community actually prefers identity-first language, 'autistic person,' because they see autism as core to who they are rather than something separate that needs to be politely set aside. I don't think there's one universally correct answer, so as a future teacher I'd want to ask the student or family what they prefer and follow their lead, rather than assuming my training program's style guide speaks for everyone."
+    },
+    "commonMistakes": [
+      "Declaring one form definitively correct for everyone",
+      "Being unaware the debate exists at all",
+      "Treating it as a purely academic issue with no real stakes for students"
+    ],
+    "followUps": ["Would your answer change if a student and their parent disagreed with each other on this?"]
+  },
+  {
+    "id": "prog-special-education-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "MTSS and identification",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["mtss", "rti", "identification"],
+    "question": "Explain how Response to Intervention or MTSS works, and how it changed the way learning disabilities get identified.",
+    "lookingFor": "Grasp of tiered intervention systems and their role in reducing over-identification.",
+    "idealAnswer": {
+      "bullets": [
+        "MTSS/RTI is a tiered system, universal instruction, then targeted small-group support, then intensive individual intervention",
+        "Student progress is monitored with data at each tier before moving up",
+        "It shifted identification away from a strict 'wait to fail' discrepancy model toward tracking response to instruction over time"
+      ],
+      "modelAnswer": "MTSS is a tiered structure where every student starts in Tier 1, high-quality general classroom instruction, and if data shows they're not responding, they move into Tier 2, small-group targeted support, and if that's still not enough, Tier 3, intensive individualized intervention. The point is you're constantly collecting data on how a student responds to instruction rather than just waiting for them to fall far enough behind to get tested. I think it was a real shift because the older discrepancy model basically required a student to fail long enough for the gap between ability and achievement to show up, and MTSS is supposed to catch struggling students earlier instead of waiting for them to fail first."
+    },
+    "commonMistakes": [
+      "Describing MTSS as just extra tutoring with no tiered structure",
+      "Not mentioning data-based decision making",
+      "Confusing MTSS with the actual IEP evaluation process"
+    ],
+    "followUps": ["What are the risks if a school uses MTSS to delay a formal evaluation a parent has requested?"]
+  },
+  {
+    "id": "prog-special-education-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Functional behavior assessment",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["fba", "bip", "behavior"],
+    "question": "Walk me through what a functional behavior assessment is for, and why you can't write an effective behavior plan without one.",
+    "lookingFor": "Understanding that behavior is communicative and that a BIP without a proper FBA is guesswork.",
+    "idealAnswer": {
+      "bullets": [
+        "FBA identifies the function of the behavior, what need it's serving, not just the behavior itself",
+        "Common functions include escape, attention, access to something, or sensory need",
+        "A BIP built on the wrong assumed function usually fails or worsens behavior"
+      ],
+      "modelAnswer": "A functional behavior assessment tries to figure out why a behavior is happening, not just what it looks like, because the same behavior, say a student throwing a chair, could be about escaping a hard task, getting attention, or a sensory overload, and each of those needs a completely different response. If you skip that step and just write a behavior plan based on the behavior itself, you might build a plan that punishes a student for trying to escape an overwhelming situation, which usually makes things worse, not better. I think that's the part people underestimate, a behavior plan is only as good as the accuracy of the function it's built on."
+    },
+    "commonMistakes": [
+      "Treating the FBA as a formality rather than the basis for the plan",
+      "Assuming all challenging behavior serves the same function",
+      "Describing a BIP as primarily about consequences rather than teaching a replacement skill"
+    ],
+    "followUps": ["What would you replace a behavior with if its function was escaping a hard academic task?"]
+  },
+  {
+    "id": "prog-special-education-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Co-teaching models",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["co-teaching", "inclusion"],
+    "question": "What are some of the different co-teaching models used in inclusive classrooms, and what makes co-teaching hard to do well?",
+    "lookingFor": "Practical knowledge of inclusive classroom structures and awareness of implementation challenges.",
+    "idealAnswer": {
+      "bullets": [
+        "Models range from one teach/one observe or assist, to station teaching, parallel teaching, and true team teaching",
+        "Effectiveness depends heavily on shared planning time and mutual respect between general and special educators",
+        "A common failure mode is the special educator becoming a classroom aide rather than a genuine co-teacher"
+      ],
+      "modelAnswer": "Co-teaching can look like one teacher leading while the other supports individual students, or the class split into stations or two parallel groups, all the way up to true team teaching where both teachers are equally leading instruction together. In practice I think the hardest part isn't the model itself, it's that the two teachers need real shared planning time to actually design lessons together, and a lot of schools don't build that into the schedule. I've read that when that planning time is missing, the special education teacher often ends up just walking around supporting students instead of genuinely co-teaching, which defeats a lot of the purpose."
+    },
+    "commonMistakes": [
+      "Naming only one model as if it's the only approach",
+      "Ignoring the practical constraints like scheduling and planning time",
+      "Assuming co-teaching automatically means better outcomes with no conditions attached"
+    ],
+    "followUps": ["If you were the special educator in that room, how would you push for genuine shared planning time?"]
+  },
+  {
+    "id": "prog-special-education-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Transition planning",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["transition", "idea", "postsecondary"],
+    "question": "IDEA requires transition planning to begin by a certain age. What does good transition planning actually look like, and why does it matter?",
+    "lookingFor": "Awareness that special education extends beyond academics into life after school.",
+    "idealAnswer": {
+      "bullets": [
+        "Transition planning must start by age 16 under IDEA, with measurable postsecondary goals",
+        "It should cover education/training, employment, and independent living, not just academics",
+        "Good transition planning is individualized and starts with the student's own goals, not a generic template"
+      ],
+      "modelAnswer": "Transition planning has to start by the time a student is sixteen, and it's meant to set measurable goals for what happens after they leave the school system in education or training, employment, and independent living, not just academics. What I think makes it good rather than just a paperwork exercise is starting from what the student actually wants for their own life, whether that's a specific job, community college, or independent living skills, and then working backward to what supports and courses get them there. It matters because special education can otherwise end at graduation with no real bridge to adult life, and that's exactly the moment a lot of students and families feel most unsupported."
+    },
+    "commonMistakes": [
+      "Not knowing the age requirement",
+      "Treating transition planning as purely vocational with no self-determination component",
+      "Describing it as a one-time meeting rather than an ongoing multi-year process"
+    ],
+    "followUps": ["How would you involve a student who struggles to articulate their own goals in that planning?"]
+  },
+  {
+    "id": "prog-special-education-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Disproportionality in identification",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["disproportionality", "equity", "identification"],
+    "question": "Black students, particularly boys, are disproportionately identified for special education, especially in categories like emotional disturbance. What do you think is driving that, and what should be done about it?",
+    "lookingFor": "Nuanced awareness of a real, documented equity issue in special education, without oversimplifying causes or blaming students.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge disproportionality is well documented, not a fringe claim",
+        "Consider multiple contributing factors: implicit bias in referral, cultural mismatch in behavior interpretation, under-resourced schools, and inequitable access to early intervention",
+        "Point toward structural remedies like better teacher training and more rigorous, bias-checked referral processes, not just individual blame"
+      ],
+      "modelAnswer": "It's a well documented pattern, Black students and especially boys are overrepresented in categories like emotional disturbance and intellectual disability relative to their peers, and I don't think there's one single cause. Some of it is implicit bias, where the exact same behavior from a Black student and a white student gets read differently by a teacher and leads to a referral in one case and not the other. Some of it is that schools serving those students are often under-resourced, so early academic struggles turn into behavior problems before anyone intervenes properly. I think the fix has to be structural, better training on culturally responsive behavior interpretation, stronger MTSS so kids get support before a crisis point, and referral processes that build in a check against bias, not just telling individual teachers to be less biased."
+    },
+    "commonMistakes": [
+      "Denying or minimizing that the disparity exists",
+      "Reducing the cause to a single factor like 'racism' or 'poverty' with no nuance",
+      "Offering no concrete idea for what should change"
+    ],
+    "followUps": ["How would you personally guard against bias in your own referral decisions as a teacher?"]
+  },
+  {
+    "id": "prog-special-education-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Science of reading versus balanced literacy",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["literacy", "dyslexia", "policy"],
+    "question": "There's an ongoing debate in literacy instruction known as the 'science of reading' versus balanced literacy. What's it about, and why does it matter especially for students with dyslexia?",
+    "lookingFor": "Current awareness of a major policy and pedagogy debate directly relevant to special education literacy instruction.",
+    "idealAnswer": {
+      "bullets": [
+        "Science of reading emphasizes systematic, explicit phonics instruction grounded in cognitive research",
+        "Balanced literacy leaned more on whole language and cueing strategies like guessing words from context or pictures",
+        "For students with dyslexia specifically, cueing-based strategies can mask rather than address the underlying decoding deficit"
+      ],
+      "modelAnswer": "The science of reading movement pushes for systematic, explicit phonics instruction based on decades of cognitive research on how the brain actually learns to decode words, while balanced literacy leaned more on strategies like using context and picture cues to guess unfamiliar words. It matters hugely for students with dyslexia because those cueing strategies can actually let a struggling reader hide a decoding problem for years, they get good at guessing without ever building the underlying skill, and then they hit a wall once texts get harder and pictures disappear. A lot of states have started mandating structured literacy approaches partly because of pressure from parents of kids with dyslexia, and I think that shift is one of the more consequential things happening in education right now."
+    },
+    "commonMistakes": [
+      "Being unaware the debate exists",
+      "Treating it as a minor pedagogical preference rather than something with real stakes for struggling readers",
+      "Confusing phonics instruction with rote memorization"
+    ],
+    "followUps": ["Do you think whole language approaches have any place left in early literacy instruction?"]
+  },
+  {
+    "id": "prog-special-education-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Neurodiversity movement",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["neurodiversity", "paradigm"],
+    "question": "The neurodiversity movement argues that conditions like autism and ADHD shouldn't be framed purely as deficits to be fixed. How do you think that view should shape special education practice?",
+    "lookingFor": "Ability to engage with a paradigm-shifting framework without either dismissing it or adopting it uncritically.",
+    "idealAnswer": {
+      "bullets": [
+        "Neurodiversity reframes conditions as natural variation, not solely a disorder to eliminate",
+        "It pushes special education toward supporting a student's strengths and reducing environmental barriers, not just remediating deficits",
+        "A strong answer holds the tension: some skills genuinely need direct teaching, even within a neurodiversity-affirming approach"
+      ],
+      "modelAnswer": "The neurodiversity movement argues that things like autism and ADHD are natural variations in how brains work, not simply disorders to be corrected, and that the goal of support should be reducing barriers and building on someone's actual strengths rather than trying to make them behave more typically for its own sake. I think that view should shift a lot of special education practice away from compliance-focused goals toward asking what a student actually needs to thrive on their own terms. But I don't think it means abandoning direct instruction altogether, a student might still genuinely benefit from being explicitly taught a skill like reading social cues if they want that skill, the difference is doing it collaboratively with them rather than imposing it as correction for something that was never actually wrong."
+    },
+    "commonMistakes": [
+      "Treating neurodiversity as meaning no support or intervention is ever appropriate",
+      "Dismissing the framework entirely as unscientific",
+      "Giving a purely abstract answer with no practical implication for classroom practice"
+    ],
+    "followUps": ["Where do you think the line is between affirming a student's identity and still teaching them a needed skill?"]
+  },
+  {
+    "id": "prog-special-education-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "ABA controversy",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["aba", "autism", "ethics"],
+    "question": "Applied Behavior Analysis is the most widely used and insured intervention for autism, but many autistic self-advocates have criticized it. What's their concern, and where do you land on it?",
+    "lookingFor": "Balanced awareness of both the evidence base and the lived-experience critique, with a reasoned personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "ABA has a strong evidence base for skill-building and is often the only intervention insurance covers",
+        "Critics, many autistic themselves, argue historical ABA emphasized compliance and suppressing autistic traits rather than wellbeing, sometimes using aversive methods",
+        "A thoughtful answer distinguishes modern, play-based, consent-oriented ABA from its more compliance-heavy earlier forms rather than treating all ABA as identical"
+      ],
+      "modelAnswer": "ABA has the strongest research base behind it for building skills in autistic children and it's usually the only therapy insurance will actually cover, so a lot of families rely on it. But a lot of autistic adults who went through it as children describe it as teaching them to mask and suppress natural behaviors like stimming to look more neurotypical, rather than actually helping them, and some earlier versions used aversive consequences that most practitioners today would reject. I think the honest position is that ABA isn't one fixed thing, modern trauma-informed and play-based versions that prioritize the child's consent and wellbeing look pretty different from the compliance-heavy version from decades ago, and I'd want to know which version I was looking at before I judged it wholesale."
+    },
+    "commonMistakes": [
+      "Treating all ABA, historical and modern, as identical",
+      "Dismissing autistic self-advocates' concerns as unfounded",
+      "Refusing to take any position at all"
+    ],
+    "followUps": ["If a parent insisted on an ABA approach you had concerns about, how would you handle that as a teacher?"]
+  },
+  {
+    "id": "prog-special-education-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Restraint and seclusion practices",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["restraint", "seclusion", "policy"],
+    "question": "Restraint and seclusion of students with disabilities remains a heavily debated practice in schools. What's your view on when, if ever, it's justified?",
+    "lookingFor": "Careful ethical reasoning about a practice with real safety and rights implications, not a glib answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge restraint/seclusion should be an absolute last resort only for imminent physical danger, never for routine discipline",
+        "Recognize the documented harms: trauma, disproportionate use on students with disabilities and students of color, and cases of injury or death",
+        "A strong answer emphasizes prevention through de-escalation and FBA-based planning as the real fix, not just tighter rules on restraint itself"
+      ],
+      "modelAnswer": "I think restraint or seclusion can only be justified in a genuine emergency where a student poses immediate physical danger to themselves or someone else, and even then it should be the shortest possible intervention by trained staff, never used as a punishment or a way to manage a classroom. The data on this is pretty troubling, students with disabilities and students of color are restrained and secluded at wildly disproportionate rates, and there are documented cases where it's caused real physical and psychological harm. I think the deeper issue is that if a school is using restraint often, that's usually a sign the behavior plan and de-escalation training failed long before that moment, so the real fix is investing in prevention, not just writing stricter rules about how restraint gets used."
+    },
+    "commonMistakes": [
+      "Endorsing restraint as a routine behavior management tool",
+      "Giving a blanket 'never acceptable' answer with no acknowledgment of genuine safety emergencies",
+      "Ignoring the documented disparities in who it's used on"
+    ],
+    "followUps": ["What would you do if you witnessed a colleague use restraint inappropriately?"]
+  },
+  {
+    "id": "prog-special-education-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "AI tools in IEP writing",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["ai", "iep", "technology"],
+    "question": "Some districts are starting to use AI tools to help draft IEP goals and paperwork. What are the potential benefits and risks of that?",
+    "lookingFor": "Awareness of a very recent development and ability to reason about it critically rather than just enthusiastically or dismissively.",
+    "idealAnswer": {
+      "bullets": [
+        "Benefit: reduces the heavy paperwork burden that drives special ed teacher burnout and attrition",
+        "Risk: generic, templated language that doesn't reflect the actual individual student, undermining the 'I' in IEP",
+        "Risk: confidentiality and data privacy concerns when student information is fed into external tools"
+      ],
+      "modelAnswer": "The upside is real, special education teachers spend an enormous amount of time on paperwork, and if AI can speed up drafting goals or progress notes, that's time given back for actual teaching and relationship building, which matters given how many special ed teachers burn out and leave the field. My worry is that an IEP is supposed to be individualized by definition, and if a tool is generating goals from a generic template, you risk ending up with legally compliant but hollow paperwork that doesn't actually reflect that specific student's needs. There's also a real question about student data privacy if confidential information about a child's disability is being entered into an outside system. I'd want to see it used to speed up drafting under close teacher review, never to replace the judgment of the team that actually knows the student."
+    },
+    "commonMistakes": [
+      "Treating AI-generated IEPs as either purely good or purely bad with no nuance",
+      "Ignoring the confidentiality and privacy dimension entirely",
+      "Not connecting it to the real problem of special ed teacher paperwork burden"
+    ],
+    "followUps": ["Would you disclose to a parent that AI helped draft part of their child's IEP?"]
+  },
+  {
+    "id": "prog-special-education-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Full inclusion versus continuum of placements",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["inclusion", "placement", "policy"],
+    "question": "There's a push in some places toward full inclusion, ending separate special education classrooms altogether. Do you think that's the right direction?",
+    "lookingFor": "Ability to weigh a genuinely contested policy question with evidence and nuance rather than picking a side reflexively.",
+    "idealAnswer": {
+      "bullets": [
+        "Full inclusion advocates point to social belonging, higher expectations, and evidence that segregated settings can limit outcomes",
+        "Critics argue some students with intensive needs are underserved in general classrooms without adequate specialized support, and full inclusion sometimes gets implemented as a cost-cutting measure without real resources",
+        "A strong answer supports the intent of inclusion while defending the need for a genuine continuum of services for students who need it"
+      ],
+      "modelAnswer": "I'm sympathetic to the goal behind full inclusion, there's good evidence that students with disabilities benefit socially and academically from being with their peers and having high expectations set for them, and separate classrooms have historically been used to warehouse kids rather than genuinely serve them. But I'm cautious about ending the continuum entirely, because for a student with very intensive support needs, a general classroom without the staffing and specialized instruction to match can end up being inclusion in name only, where they're physically present but not actually learning or included socially either. I think the honest answer is that inclusion should be the strong default with real resources behind it, but a continuum of settings still needs to exist for the students whose needs genuinely require it, and the mistake is when full inclusion becomes a way to cut costs rather than a genuine commitment to support."
+    },
+    "commonMistakes": [
+      "Picking a side without acknowledging the strongest argument on the other side",
+      "Assuming full inclusion is purely about ideology with no resource question attached",
+      "Giving a vague both-sides answer with no actual position"
+    ],
+    "followUps": ["How would you know, as a teacher, if inclusion was being done well versus done as a cost-cutting move?"]
+  },
+  {
+    "id": "prog-special-education-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: witnessing an improper restraint",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["ethics", "restraint", "reporting"],
+    "question": "You're a student teacher and you see a lead teacher physically restrain a student who is having a meltdown, in a way that doesn't match the student's behavior plan. What do you do?",
+    "lookingFor": "Structured ethical reasoning that weighs student safety, professional hierarchy, and the obligation to report, without freezing or deflecting.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize the student's immediate physical and emotional safety in the moment if possible",
+        "Recognize the obligation to report a deviation from the behavior plan even though the lead teacher outranks you",
+        "Reason through the discomfort of confronting a supervisor rather than avoiding the issue"
+      ],
+      "modelAnswer": "In the moment, my first concern is whether the student is physically safe, and if the restraint seems to be escalating rather than calming things down I'd want to say something immediately, even as the less experienced person in the room. But regardless of what happens in that exact moment, I don't think I could just let it go afterward, because using a restraint that isn't in the student's actual behavior plan is a real problem, both for that student and potentially for others down the line if it's a pattern. I'd report it through whatever channel my program requires, even knowing it's uncomfortable to do that about someone supervising me, because staying quiet to avoid an awkward conversation isn't something I'd be able to justify to myself if that student got hurt again."
+    },
+    "commonMistakes": [
+      "Saying you'd say nothing to avoid conflict with a supervisor",
+      "Focusing only on reporting with no consideration of the immediate safety of the student",
+      "Giving an answer with no actual commitment to act"
+    ],
+    "followUps": ["What if the lead teacher was someone whose recommendation you needed for your certification?"]
+  },
+  {
+    "id": "prog-special-education-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: parent refuses evaluation",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["ethics", "parental-rights", "evaluation"],
+    "question": "A parent refuses to consent to a special education evaluation for their child even though you strongly suspect a learning disability. What do you do?",
+    "lookingFor": "Reasoning that respects parental rights under IDEA while still advocating for the child, rather than overriding the family or giving up.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize parental consent is legally required, the school cannot evaluate without it",
+        "Explore and address the parent's underlying concerns, stigma, past bad experiences, language barriers, rather than just repeating the request",
+        "Continue supporting the student informally, through classroom strategies and MTSS, while keeping the door open"
+      ],
+      "modelAnswer": "Legally, a parent's consent is required before an evaluation can happen, so I can't just push it through, and I'd want to actually understand why they're refusing rather than assume it's simple denial, maybe they've had a bad experience with labeling in the past, or there's stigma in their community around a diagnosis, or they're worried about their child being tracked into a lower-expectations setting. I'd try to have an honest, low-pressure conversation about what an evaluation would and wouldn't mean for their child, and in the meantime keep supporting the student with whatever classroom-level strategies I can use without a formal label. I wouldn't drop it permanently, but I also wouldn't make the parent feel cornered, because I think the relationship with the family is part of what actually helps the child in the long run."
+    },
+    "commonMistakes": [
+      "Suggesting you'd evaluate anyway or pressure the parent aggressively",
+      "Giving up on the student entirely once the parent says no",
+      "Not considering why the parent might be refusing"
+    ],
+    "followUps": ["How would this change if you believed the student was actively falling further behind every week the refusal continued?"]
+  },
+  {
+    "id": "prog-special-education-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: confidentiality about a diagnosis",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["ethics", "confidentiality"],
+    "question": "A classmate asks you, as their friend's aide, why that student 'acts weird sometimes.' How would you handle a question like that?",
+    "lookingFor": "Understanding of confidentiality obligations balanced with fostering peer understanding without disclosing private information.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize a student's diagnosis and IEP details are confidential and not yours to share",
+        "Redirect toward general, respectful explanation of behavior differences without naming a diagnosis",
+        "Consider involving the student or family in deciding what, if anything, gets shared with peers"
+      ],
+      "modelAnswer": "I wouldn't share any details about a diagnosis or what's in someone's IEP, that's confidential information and it's not mine to give out even if the question comes from a place of genuine curiosity rather than meanness. I'd probably say something simple like everyone's brain works a little differently and that's completely normal, without turning it into an explanation of a specific student's file. If I thought the peer group would genuinely benefit from more understanding, I'd raise that with the student and their family first, because it should be their choice whether and how much gets shared, not something I decide for them."
+    },
+    "commonMistakes": [
+      "Sharing diagnosis details because the question seemed innocent",
+      "Being so evasive it embarrasses the student further",
+      "Not considering that the student themselves might want to explain in their own way"
+    ],
+    "followUps": ["What if the student themselves wanted you to explain it to their classmates on their behalf?"]
+  },
+  {
+    "id": "prog-special-education-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: over-helping paraprofessional",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["ethics", "paraprofessional", "independence"],
+    "question": "You notice a paraprofessional consistently doing the work for a student instead of supporting them to do it independently. What's the concern, and what would you do?",
+    "lookingFor": "Recognition of the 'velcro paraprofessional' problem and willingness to address it constructively, not just criticize silently.",
+    "idealAnswer": {
+      "bullets": [
+        "Over-helping can foster learned helplessness and actually reduce a student's independence and peer interaction over time",
+        "Recognize this often comes from good intentions, care and a desire to help, not laziness",
+        "Address it collaboratively, through modeling and communication, rather than public criticism"
+      ],
+      "modelAnswer": "The concern is that if a para is doing the work rather than scaffolding it, the student never actually builds the independence or the skill the support was supposed to be building toward, and it can also quietly cut them off from interacting with peers because the adult is always right there doing things for them. I don't think this usually comes from bad intentions, it's often someone who genuinely cares and wants to see the student succeed in the moment. I'd want to address it privately and specifically, maybe by modeling what more of a step-back, prompting role looks like, rather than embarrassing them in front of the student or the classroom."
+    },
+    "commonMistakes": [
+      "Assuming bad intent rather than a well-meaning instinct",
+      "Ignoring the issue to avoid an awkward conversation",
+      "Addressing it in a way that undermines the para in front of the student"
+    ],
+    "followUps": ["How would you coach a para on the difference between supporting and doing for a student?"]
+  },
+  {
+    "id": "prog-special-education-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: grade-level content versus functional skills",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["ethics", "curriculum", "family"],
+    "question": "A parent wants their child, who has significant intellectual disability, to stay on a grade-level academic curriculum, while the IEP team believes functional life skills would serve the student better. How should that disagreement be handled?",
+    "lookingFor": "Ability to reason through competing visions of what's 'best' for a student while respecting family authority within a team process.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize both sides have legitimate motivations, high expectations versus practical readiness for life",
+        "IDEA requires the team, including the parent, to reach decisions together, not the school unilaterally overriding the family",
+        "A good answer looks for common ground, blending both goals rather than framing it as one side winning"
+      ],
+      "modelAnswer": "I don't think either side is simply wrong here, the parent wants their child held to high expectations and not written off, which is a completely legitimate instinct given how often kids with intellectual disabilities have been underestimated, while the team is trying to make sure the student leaves school actually able to function independently. I think the answer is to try to find where those goals overlap rather than treating it as one side has to lose, maybe grade-level content delivered in a way that also builds functional skills, or academic goals in areas most connected to daily life. Since IDEA makes the parent an equal member of the IEP team, the school genuinely can't just impose its preferred plan, so it has to be an honest conversation, probably over more than one meeting, not a single decision handed down."
+    },
+    "commonMistakes": [
+      "Assuming the school's professional judgment should simply override the parent",
+      "Dismissing the parent's position as unrealistic without engaging with it",
+      "Framing the conflict as one side needing to fully capitulate"
+    ],
+    "followUps": ["What data would you bring to that conversation to help move it forward?"]
+  },
+  {
+    "id": "prog-special-education-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: assessing a non-verbal student",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "communication", "assessment"],
+    "question": "You have a non-verbal student in your class and you need to figure out whether they understand a lesson on fractions. How would you go about it?",
+    "lookingFor": "Creative, student-centered thinking about assessment beyond verbal or written response.",
+    "idealAnswer": {
+      "bullets": [
+        "Consider augmentative and alternative communication tools the student may already use",
+        "Use non-verbal demonstration methods, pointing, sorting, manipulatives, eye gaze, matching",
+        "Avoid assuming lack of speech means lack of understanding"
+      ],
+      "modelAnswer": "I'd start by finding out what communication system that student already uses, whether that's an AAC device, picture cards, or eye gaze, and build the assessment around that rather than expecting a verbal or written answer. For something like fractions, I could set up a task where they physically sort or match pieces, like dividing a shape into equal parts using manipulatives, or point to the correct fraction on a set of cards, so understanding shows up through action instead of speech. I'd be careful not to assume that because a student can't speak, they don't understand what's happening, that gap between comprehension and expression is exactly what a lot of assessment needs to be designed around."
+    },
+    "commonMistakes": [
+      "Assuming non-verbal means low comprehension",
+      "Defaulting only to written assessment as the fallback",
+      "Not mentioning the student's existing AAC or communication system"
+    ],
+    "followUps": ["How would you involve the student's speech-language pathologist in that planning?"]
+  },
+  {
+    "id": "prog-special-education-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: balancing one student's behavior against the class",
+    "program": "Special Education",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "inclusion", "behavior"],
+    "question": "In an inclusive classroom, one student's behavioral outbursts are disrupting learning for the rest of the class regularly. The IEP team maintains this is the right placement. How would you balance that student's needs against the rest of the class?",
+    "lookingFor": "Practical, systems-level thinking rather than framing it as one student versus everyone else.",
+    "idealAnswer": {
+      "bullets": [
+        "Investigate the function of the behavior and whether current supports are actually being implemented with fidelity",
+        "Consider environmental and instructional adjustments before assuming the placement itself is wrong",
+        "Recognize the needs of the rest of the class are real too, and a plan has to account for both, not sacrifice one for the other"
+      ],
+      "modelAnswer": "My first move wouldn't be to question the placement, it would be to ask whether the supports written into that student's plan are actually being delivered consistently, because outbursts often escalate when a behavior plan exists on paper but isn't being followed day to day. I'd want to look at the pattern, what's happening right before the outbursts, to see if there's a trigger we could address earlier, like a transition or a specific type of task. At the same time, I wouldn't pretend the rest of the class doesn't matter, so I'd be thinking about things like a planned break space or a clear routine everyone understands, so the response to an outburst is calm and doesn't derail the whole room every time. It's not really one student against the class, it's a systems problem, and usually there's a fix that helps everyone."
+    },
+    "commonMistakes": [
+      "Concluding immediately that the student should be removed from the classroom",
+      "Ignoring the impact on other students entirely",
+      "Assuming the plan is being implemented correctly without checking"
+    ],
+    "followUps": ["What would make you eventually agree the placement itself needs to change?"]
+  },
+  {
+    "id": "prog-special-education-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: twice-exceptional student",
+    "program": "Special Education",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "twice-exceptional", "identification"],
+    "question": "A student is clearly gifted in math but also has a diagnosed learning disability in reading. How might that combination get missed or misunderstood in a typical classroom, and how would you approach a student like that?",
+    "lookingFor": "Awareness of twice-exceptional students and the specific ways their needs can be masked.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that giftedness can mask a disability, and a disability can mask giftedness, so the student may qualify for neither support alone",
+        "Understand the frustration and identity impact of being seen as inconsistent or lazy rather than twice-exceptional",
+        "Approach requires services that address both ends simultaneously, not choosing one over the other"
+      ],
+      "modelAnswer": "A student like that can easily fall through the cracks because their strong math ability can make teachers assume the reading struggles are just about effort or attention, while their reading difficulty can drag down assessments enough that nobody flags them as gifted either, so they end up looking simply average and getting neither type of support. That's genuinely frustrating for a student, being seen as inconsistent or lazy when actually they're managing two very different profiles inside one brain. I'd want to make sure both things are named and supported at the same time, real reading intervention alongside real enrichment or acceleration in math, rather than treating it as if addressing one automatically takes care of the other."
+    },
+    "commonMistakes": [
+      "Assuming giftedness rules out the possibility of a genuine learning disability",
+      "Assuming a learning disability rules out real giftedness elsewhere",
+      "Proposing to only address one of the two needs"
+    ],
+    "followUps": ["How would you advocate for that student if the school's gifted program required grade-level reading scores to qualify?"]
+  }
+]

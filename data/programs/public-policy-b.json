@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-public-policy-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Cost-benefit analysis and the value of a life",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "cost-benefit-analysis",
+      "welfare-economics",
+      "methodology"
+    ],
+    "question": "When governments run a cost-benefit analysis, they often have to put a monetary value on a human life. Do you think that's a defensible thing to do?",
+    "lookingFor": "Understanding of how value-of-statistical-life figures are actually used, plus willingness to defend the method while naming its limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that it's a 'value of statistical life', not a price on any individual, usually derived from wage-risk trade-offs or stated preference surveys",
+        "Give a reason it's necessary despite discomfort — budgets are finite and implicit trade-offs happen anyway if you refuse to make them explicit",
+        "Name a real limitation, such as it varying by income and potentially undervaluing the poor, or missing non-monetisable harms"
+      ],
+      "modelAnswer": "It sounds cold at first, but I think the alternative is worse, because every safety regulation implicitly trades off cost against risk whether you put a number on it or not, and doing it explicitly at least lets you compare decisions consistently. What I'd want to interrogate is how the number is built. If it comes from wage premiums for risky jobs, it can end up valuing a wealthy person's life more than a poor person's, which feels like exactly the wrong thing for a public policy to encode. So I'd support using it as one input among several, not as the final word, especially where the harms are hard to monetise like community trust or dignity."
+    },
+    "commonMistakes": [
+      "Rejecting the whole method as immoral without offering an alternative",
+      "Not knowing that these are statistical, population-level values, not prices on named individuals",
+      "Accepting the number uncritically with no mention of its known biases"
+    ],
+    "followUps": [
+      "How would you handle a policy where the costs are monetisable but the main benefit isn't, like protecting a historic building?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Regulatory capture",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "regulation",
+      "bureaucracy",
+      "accountability"
+    ],
+    "question": "What is regulatory capture, and can you think of an industry where it's a real risk?",
+    "lookingFor": "A working definition plus a concrete, plausible example — shows the candidate reads beyond the textbook.",
+    "idealAnswer": {
+      "bullets": [
+        "Define capture as regulators coming to serve the interests of the industry they oversee rather than the public",
+        "Explain a mechanism — revolving-door hiring, information asymmetry, or lobbying resources",
+        "Give one specific, defensible example and at least gesture at a safeguard"
+      ],
+      "modelAnswer": "Regulatory capture is when the body meant to police an industry ends up shaped by that industry's interests instead of the public's, often quite gradually rather than through outright corruption. Financial regulation is the example I keep coming back to, because regulators frequently hire from the banks they oversee and vice versa, so there's a shared worldview even without any deliberate wrongdoing. It's also just an information problem, the industry knows far more about its own practices than the regulator does, so it ends up setting the terms of the conversation. Things like mandatory cooling-off periods before switching between regulator and industry jobs, or funding regulators independently of the firms they regulate, are the kinds of safeguards I'd want to see."
+    },
+    "commonMistakes": [
+      "Assuming capture always means outright bribery rather than subtler, structural influence",
+      "Picking an example with no explanation of the mechanism",
+      "Concluding that regulation is therefore pointless, rather than proposing a fix"
+    ],
+    "followUps": [
+      "Should regulators be funded by the industries they regulate at all? What are the trade-offs?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Agenda-setting and why some problems become policy",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "agenda-setting",
+      "policy-process",
+      "theory"
+    ],
+    "question": "Lots of serious problems never make it onto the political agenda, while some minor ones dominate the news for months. What determines whether a problem actually gets turned into policy?",
+    "lookingFor": "Some grasp of agenda-setting dynamics — problem framing, focusing events, political will — beyond 'if it's important enough'.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the naive view that objective severity alone drives the agenda",
+        "Reference how problems, proposed solutions, and political will need to line up, sometimes triggered by a crisis or 'focusing event'",
+        "Note the role of framing and who has the power to define an issue as a problem in the first place"
+      ],
+      "modelAnswer": "I don't think it's really about how serious a problem is in some objective sense, because plenty of severe issues like antimicrobial resistance get almost no attention for years. What tends to move something onto the agenda is a combination of a workable solution already existing, political actors willing to champion it, and often some kind of focusing event, like a disaster, that makes the problem suddenly vivid and hard to ignore. Framing matters enormously too. How an issue gets described, as an individual failing versus a systemic one, for instance, changes whether people think government even has a role to play. So a lot of policy work is really about reframing a known problem so it becomes politically actionable."
+    },
+    "commonMistakes": [
+      "Assuming issue salience tracks objective harm in a straightforward way",
+      "Ignoring the role of interest groups and framing in shaping what counts as 'a problem'",
+      "Giving a purely abstract answer with no real-world illustration"
+    ],
+    "followUps": [
+      "Can you think of a problem that you think deserves more attention than it currently gets? Why hasn't it caught on?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Path dependency in policy",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "path-dependency",
+      "institutions",
+      "reform"
+    ],
+    "question": "Why is it often so hard to reform a policy once it's been in place for a long time, even when almost everyone agrees it isn't working well?",
+    "lookingFor": "Understanding of path dependency and entrenched interests, not just 'bureaucracy is slow'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that early choices create infrastructure, expectations, and vested interests that raise the cost of switching later",
+        "Give a concrete mechanism, such as sunk investment, or groups who benefit from the status quo organising to defend it",
+        "Distinguish inefficiency from illegitimacy — a policy can be locked in without being popular"
+      ],
+      "modelAnswer": "A lot of it comes down to path dependency, meaning once a policy is in place, whole systems, careers, and expectations get built around it, which makes even a clearly better alternative expensive to switch to. Pension systems are a classic case, because people have planned their retirement around the existing rules for decades, so reforming it isn't just a technical fix, it's asking a generation to absorb a loss they didn't sign up for. There's also usually a smaller, well-organised group benefiting from the status quo who will fight hard to keep it, against a larger but more diffuse group who'd gain from reform but has less reason to mobilise. So agreement that something isn't working is rarely enough on its own."
+    },
+    "commonMistakes": [
+      "Blaming reform failure entirely on bureaucratic incompetence",
+      "Missing the distributional angle — who loses if the policy changes",
+      "Treating path dependency as an excuse rather than something reformers have to work around"
+    ],
+    "followUps": [
+      "If you were trying to reform a path-dependent policy, how would you build support for it?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "The principal-agent problem in the civil service",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "bureaucracy",
+      "principal-agent",
+      "accountability"
+    ],
+    "question": "Elected ministers set policy, but civil servants actually implement it day to day. What can go wrong in that relationship, and how do governments try to manage it?",
+    "lookingFor": "Recognition of information asymmetry and misaligned incentives between politicians and bureaucrats, with at least one real control mechanism.",
+    "idealAnswer": {
+      "bullets": [
+        "Frame it as a principal-agent problem — the minister can't observe or verify everything the agency does",
+        "Give an example of drift, such as an agency pursuing its own priorities or being risk-averse in ways the minister didn't intend",
+        "Name a real oversight mechanism, like performance targets, audits, or parliamentary scrutiny, and note its limits"
+      ],
+      "modelAnswer": "It's essentially a principal-agent problem: ministers set the goal, but civil servants have far more day-to-day information and discretion, so there's always a gap the minister can't fully see into. That can show up as bureaucratic drift, where an agency quietly prioritises its own institutional interests, like avoiding risk or protecting its budget, over what the minister actually wanted. Governments try to close that gap with things like performance targets, independent audits, and select committee scrutiny, but each of those has its own distortions, targets especially can get gamed rather than genuinely met. I think the honest answer is that you never fully close the gap, you just try to keep the incentives roughly aligned and build in enough transparency that drift gets caught eventually."
+    },
+    "commonMistakes": [
+      "Assuming civil servants simply implement instructions with no discretion of their own",
+      "Naming a control mechanism with no acknowledgment of its weaknesses",
+      "Treating this as unique to government rather than a general organisational problem"
+    ],
+    "followUps": [
+      "Can performance targets ever make an agency's behaviour worse rather than better? Can you think of an example?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Unintended consequences and perverse incentives",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "unintended-consequences",
+      "incentives",
+      "policy-design"
+    ],
+    "question": "Can you describe a policy that achieved the opposite of what it intended, or created a serious side effect its designers didn't foresee?",
+    "lookingFor": "A real or plausible example plus reasoning about why the incentive structure produced the wrong behaviour.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific example rather than a vague generalisation",
+        "Explain the incentive mechanism that produced the perverse outcome",
+        "Draw a lesson about anticipating behavioural responses in policy design"
+      ],
+      "modelAnswer": "The example I think about is targets for hospital waiting times that measured time from being added to a list rather than time from referral, which led some trusts to delay formally listing patients so the clock started later, technically hitting the target while patients waited just as long in practice. It's a good illustration of Goodhart's Law, that once a measure becomes a target, people optimise for the measure rather than the underlying goal it was meant to track. The lesson I take from it is that policy designers need to think like the people who'll be held to the rule, and ask how it could be gamed, not just whether it looks sound on paper. Good policy design usually needs a few overlapping measures rather than one number that's easy to hit the wrong way."
+    },
+    "commonMistakes": [
+      "Describing a policy failure with no explanation of the causal mechanism",
+      "Confusing an unintended consequence with simple underfunding or poor execution",
+      "Concluding that policy-making is therefore futile"
+    ],
+    "followUps": [
+      "How would you redesign that policy to avoid the perverse incentive?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of randomised control trials in policy",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "evidence-based-policy",
+      "methodology",
+      "rcts"
+    ],
+    "question": "Randomised control trials are often called the gold standard for testing what policies work. What are their limits when it comes to actually setting national policy?",
+    "lookingFor": "Awareness of external validity, ethical, and scale problems with RCTs beyond just 'they're expensive'.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge RCTs are strong for internal validity — isolating causal effect in the trial context",
+        "Raise external validity — a result from one place or population may not generalise",
+        "Mention practical or ethical limits, such as scale effects, spillovers, or the impossibility of randomising some policies"
+      ],
+      "modelAnswer": "RCTs are genuinely good at telling you whether a specific intervention caused a specific effect in the place it was tested, because randomisation deals with confounding in a way observational studies can't. The problem is what economists call external validity, a job training programme that works in one city with a particular labour market and particular administrators might not transfer cleanly to a different context, and policymakers sometimes treat a single trial as more universally true than it is. There's also a scale problem, a small pilot might work partly because it's small and gets extra attention, effects that can wash out once you roll it out nationally. And some policies just can't ethically or practically be randomised, like a change to interest rates, so RCTs end up being strongest for narrow, programme-level questions rather than big structural ones."
+    },
+    "commonMistakes": [
+      "Treating RCT results as automatically generalisable to any context",
+      "Dismissing RCTs entirely rather than describing what they're actually good for",
+      "Confusing internal and external validity"
+    ],
+    "followUps": [
+      "If an RCT in one country shows a policy works, how would you decide whether to trust it for your own country?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Universal basic income trade-offs",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "ubi",
+      "welfare-policy",
+      "trade-offs"
+    ],
+    "question": "Suppose a government wants to replace most existing means-tested welfare benefits with a universal basic income paid to everyone regardless of need. What's the strongest argument for it, and the strongest argument against?",
+    "lookingFor": "Balanced, specific reasoning on both sides rather than a rehearsed pro or con position.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a genuine strongest case for UBI — reduced stigma, lower administrative cost, or removing the 'benefits trap'",
+        "Give a genuine strongest case against — cost of universality, or the loss of targeted support for those with higher need",
+        "Show awareness that the comparison depends on the funding mechanism and what exactly is being replaced"
+      ],
+      "modelAnswer": "The strongest case for it, I think, is that means-tested systems create a benefits trap, where earning a bit more can cost someone their eligibility and leave them worse off, and UBI removes that cliff edge along with the stigma and paperwork of proving need. The strongest case against is that universality is expensive precisely because it pays money to people who don't need it, so unless it's funded very carefully it either has to be set too low to actually replace targeted support, or it costs far more than the system it replaces. My honest view is that the answer depends heavily on what specifically gets cut to pay for it, because if disability or housing support for people with the highest need gets folded into a flat payment, that group could end up worse off even while the average person gains, which is the trade-off I'd want any serious proposal to be transparent about."
+    },
+    "commonMistakes": [
+      "Only arguing one side despite being asked for both",
+      "Ignoring the funding question entirely",
+      "Treating 'basic income' and 'negative income tax' as identical without noting the design differences"
+    ],
+    "followUps": [
+      "Who do you think would be most at risk of losing out if a UBI replaced disability benefits specifically?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Central bank independence and democratic accountability",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "monetary-policy",
+      "democracy",
+      "institutions"
+    ],
+    "question": "Central banks in most democracies are deliberately insulated from day-to-day political control. Is that a good arrangement for a democracy?",
+    "lookingFor": "Grasp of the trade-off between technical credibility and democratic accountability, not a one-sided answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the rationale for independence — avoiding short-term political manipulation of interest rates before elections",
+        "Raise the democratic cost — unelected officials making decisions with large distributional consequences",
+        "Offer or evaluate a partial reconciliation, like a mandate set by elected government with independent implementation"
+      ],
+      "modelAnswer": "The case for independence is that politicians facing an election have an incentive to keep interest rates artificially low to boost growth in the short term, even if it stores up inflation later, so taking that lever away from elected hands is meant to buy long-term credibility. The uncomfortable part is that interest rate decisions have huge distributional effects, they hit mortgage holders, savers, and borrowers very differently, and those choices are being made by people nobody voted for. I think the usual reconciliation, where elected government sets the target, like an inflation target, and the central bank is independent only in how it hits that target, is a reasonable middle ground, but it still leaves a real democratic accountability gap whenever the target itself doesn't match the moment, like during a cost-of-living crisis."
+    },
+    "commonMistakes": [
+      "Treating independence as an unquestionable technical necessity",
+      "Ignoring the actual mechanism (target-setting vs implementation) that many systems use to balance the trade-off",
+      "Giving a purely economic answer with no engagement with the democracy question actually asked"
+    ],
+    "followUps": [
+      "Should the same argument for independence apply to fiscal policy, like setting the budget?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Rent control",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "housing-economics",
+      "price-controls",
+      "policy-tools"
+    ],
+    "question": "Many economists are sceptical of rent control, yet it remains popular with the public and many local governments still use it. How would you explain that gap?",
+    "lookingFor": "Ability to hold the economic critique and the political rationale in mind at once, rather than dismissing either side.",
+    "idealAnswer": {
+      "bullets": [
+        "State the standard economic critique — price ceilings can reduce the supply and quality of rental housing over time",
+        "Explain why it's still popular — it delivers immediate, visible protection to existing tenants, especially against sudden rent hikes",
+        "Note that the disagreement is partly about timeframe and who bears the cost, current tenants versus future ones"
+      ],
+      "modelAnswer": "The standard economic worry is that capping rents below the market rate discourages landlords from maintaining or building new rental housing, which can shrink supply and quality over the long run, effectively protecting today's tenants at the expense of tomorrow's. But that critique is a long-run, aggregate argument, while rent control's popularity is driven by a very immediate, concrete benefit, protecting an existing tenant from being priced out of their home right now. I think the gap partly comes down to whose costs are visible, a family facing a rent hike this month is a vivid, sympathetic case, while a slightly smaller future housing supply is diffuse and hard to see. That's why some places use milder versions, like capping the rate of increase rather than the rent itself, trying to get some tenant protection without killing the incentive to keep building."
+    },
+    "commonMistakes": [
+      "Presenting either side as simply irrational",
+      "Ignoring the design variation between strict rent control and rate-of-increase caps",
+      "Answering with pure theory and no acknowledgment of the real political pressure behind it"
+    ],
+    "followUps": [
+      "If you were advising a city with a housing shortage, would you recommend any form of rent control at all?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Electoral system design and gerrymandering",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "electoral-systems",
+      "democracy",
+      "institutions"
+    ],
+    "question": "Why does the way electoral districts are drawn matter so much for policy outcomes, and what's one way to reduce the risk of gerrymandering?",
+    "lookingFor": "Understanding of how district design shapes representation, plus at least one credible institutional fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that district boundaries determine how votes translate into seats, so the same votes can produce very different legislatures",
+        "Note the specific mechanism of gerrymandering — packing and cracking opposing voters",
+        "Offer a real safeguard, such as independent redistricting commissions or clear non-partisan criteria"
+      ],
+      "modelAnswer": "District boundaries matter because they determine how a given set of votes converts into actual seats, so a party can win a minority of the vote but a majority of seats if the lines are drawn well for them. Gerrymandering usually works through two tactics, packing the opposing party's voters into a few districts they'll win overwhelmingly, wasting their surplus votes, and cracking their voters thinly across many districts so they never reach a majority anywhere. One safeguard that's worked reasonably well in some places is handing the redistricting process to an independent, non-partisan commission with fixed criteria like compactness and keeping communities together, rather than leaving it to the incumbent legislature that directly benefits from the outcome."
+    },
+    "commonMistakes": [
+      "Describing gerrymandering vaguely as 'drawing unfair lines' with no mechanism",
+      "Assuming it's a uniquely American problem with no relevance elsewhere",
+      "Proposing a fix with no explanation of why it would actually work"
+    ],
+    "followUps": [
+      "Would you trust an independent commission to be truly non-partisan? What could go wrong with that model too?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Sunset clauses and the timing of policy evaluation",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "policy-evaluation",
+      "policy-design",
+      "accountability"
+    ],
+    "question": "Some policies are written with a 'sunset clause' that automatically ends them after a fixed period unless they're actively renewed. Why might a government choose to do that, and what's the downside?",
+    "lookingFor": "Understanding of sunset clauses as a forcing mechanism for evaluation, plus a realistic downside.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the purpose — forcing a genuine review rather than letting a policy run on inertia",
+        "Note it counters the default bias toward keeping existing policy, since ending something usually requires more effort than continuing it",
+        "Give a real downside, like creating uncertainty for people relying on the policy, or renewal becoming a rubber stamp anyway"
+      ],
+      "modelAnswer": "A sunset clause flips the usual default, normally a policy just continues unless someone actively fights to end it, but with a sunset clause it ends automatically unless someone actively makes the case to keep it, which forces a genuine evaluation rather than letting something drift on by inertia. It's especially useful for emergency powers or experimental programmes, where you want a built-in moment to ask honestly whether it's still needed. The downside is it can create real uncertainty for anyone relying on the policy, a business or a family can't plan long-term around something that might vanish at a fixed date, and in practice renewal sometimes becomes a formality that gets rubber-stamped without the rigorous review it was supposed to guarantee."
+    },
+    "commonMistakes": [
+      "Confusing a sunset clause with simple time-limited funding",
+      "Missing that the mechanism works by reversing the default, not just by having a deadline",
+      "Giving only the upside with no realistic downside"
+    ],
+    "followUps": [
+      "Can you think of a type of policy where a sunset clause would be a bad idea?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Whistleblowing on manipulated data",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "whistleblowing",
+      "integrity"
+    ],
+    "question": "Imagine you're working as a junior policy analyst and you discover that a report your department is about to publish has quietly excluded data that would undermine the minister's preferred conclusion. What would you do?",
+    "lookingFor": "Structured ethical reasoning that takes professional integrity seriously without assuming a heroic public leak is the only honest option.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between loyalty to the team and the duty of honest analysis",
+        "Favour raising it internally first, through a manager or an ethics or standards channel, before escalating externally",
+        "Reason about what you'd do if internal channels failed, rather than skipping straight to a dramatic response"
+      ],
+      "modelAnswer": "My first move would be to raise it directly with whoever's responsible for the report, on the assumption it might be an oversight rather than deliberate, and ask for the excluded data to be reinstated or at least acknowledged. If I was told to let it go, I'd want to escalate through whatever internal standards or ethics channel exists, because a policy report that's been shaped to fit a predetermined conclusion isn't just dishonest, it can lead to genuinely worse decisions being made on false grounds. I wouldn't jump straight to going public, because that has real consequences for me and for trust in the institution, but I also don't think I could sign off on something I knew was misleading. If every internal option was exhausted and the stakes were serious, like a decision that would materially harm people, I think I'd have to be willing to escalate further, even at personal cost."
+    },
+    "commonMistakes": [
+      "Jumping straight to a public leak without exhausting internal options",
+      "Deciding to simply stay quiet to protect your position",
+      "Treating this as a black-and-white choice with no acknowledgment of the real risk involved"
+    ],
+    "followUps": [
+      "Does your answer change if the excluded data was borderline relevant rather than clearly significant?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Vaccine mandates and individual liberty",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "public-health",
+      "liberty"
+    ],
+    "question": "During a serious disease outbreak, a government is considering mandating vaccination for certain workers, with fines for those who refuse. How would you think through whether that's justified?",
+    "lookingFor": "Structured reasoning weighing individual liberty against collective harm, engaging with proportionality rather than a snap verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between bodily autonomy and preventing harm to others",
+        "Bring in a proportionality test — severity of the threat, effectiveness of the measure, and whether less restrictive options were tried first",
+        "Consider fairness questions, like exemptions and who bears the burden of the mandate"
+      ],
+      "modelAnswer": "I'd want to start from the harm principle, that restricting someone's liberty can be justified when their choice imposes serious risk on other people, not just on themselves, which is different from a purely personal health decision. From there I'd apply something like a proportionality test, is the outbreak severe enough to justify this, is vaccination actually effective at reducing transmission and not just personal risk, and have less coercive options like strong incentives or targeted restrictions been tried first. I'd also want the mandate to include genuine medical exemptions and to fall on the people best placed to bear it, rather than disproportionately burdening low-paid workers who have less power to challenge it or find another job. My instinct is that a mandate can be justified for high-risk settings like hospitals during a severe outbreak, but the bar should be genuinely high, because normalising it for lower-stakes situations would erode trust that's hard to rebuild."
+    },
+    "commonMistakes": [
+      "Treating this as purely a matter of individual rights with no consideration of harm to others",
+      "Treating it as purely a matter of public health with no consideration of liberty at all",
+      "Giving a verdict with no reasoning process behind it"
+    ],
+    "followUps": [
+      "Would your answer change for a disease that's serious for the individual but not very transmissible?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithmic bias in criminal justice",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "algorithmic-bias",
+      "criminal-justice"
+    ],
+    "question": "Some courts use algorithmic risk-assessment tools to help judges decide on bail or sentencing. These tools have been shown to replicate racial bias present in historical data. Should governments keep using them?",
+    "lookingFor": "Nuanced reasoning about how bias enters algorithmic systems and whether the alternative, human judgement, is actually cleaner.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism — training data reflects historical patterns of policing and sentencing that were themselves biased",
+        "Avoid the trap of assuming human judges are automatically less biased",
+        "Land on a conditional position, such as use only with transparency, auditing, and human override, rather than an absolute yes or no"
+      ],
+      "modelAnswer": "The core problem is that these tools learn from historical arrest and sentencing data, and if policing itself was applied unevenly across communities, the algorithm can end up encoding that bias and presenting it back as objective risk, which is dangerous because it looks neutral even when it isn't. That said, I don't think the alternative, purely human judgement, is obviously less biased, we know from research that judges' decisions vary by things like time of day or how tired they are, so the comparison isn't between a flawed tool and a perfect human, it's between two flawed systems. My view is that these tools shouldn't be banned outright, but they need to be genuinely transparent about what data they were trained on, audited regularly for disparate impact, and treated as one input a judge can override, not a number that quietly becomes the decision itself."
+    },
+    "commonMistakes": [
+      "Assuming the tool is neutral because it's mathematical",
+      "Assuming human decision-makers are automatically fairer with no evidence",
+      "Giving an absolute ban-or-allow answer with no conditions attached"
+    ],
+    "followUps": [
+      "Who should be responsible for auditing these tools, government, the courts, or an independent body?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Contact tracing and surveillance",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "privacy",
+      "public-health"
+    ],
+    "question": "During a pandemic, a government proposes a digital contact-tracing app that tracks who you've been near, in order to alert people who may have been exposed. What conditions would need to be met for you to consider that acceptable?",
+    "lookingFor": "Concrete privacy safeguards named, not just a general 'it depends' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the genuine public health benefit of faster exposure notification",
+        "Name specific conditions — data minimisation, time-limited retention, no use for unrelated purposes like law enforcement",
+        "Address whether participation should be voluntary or mandatory, and what that implies"
+      ],
+      "modelAnswer": "I think the public health case is real, faster notification of exposure can genuinely slow transmission, so I wouldn't dismiss the idea outright. But I'd want some clear conditions before accepting it, the data collected should be the minimum needed, ideally proximity data rather than precise location history, it should be deleted automatically after a short, defined period, and there should be a legal guarantee it can't be repurposed later for things like policing or immigration enforcement, because that kind of scope creep is exactly what erodes public trust. I'd also lean toward it being voluntary rather than mandatory, because a coerced surveillance tool sets a precedent that's hard to walk back even after the emergency ends, and uptake matters less if people trust it enough to actually use it."
+    },
+    "commonMistakes": [
+      "Refusing to engage with the trade-off and rejecting all surveillance outright",
+      "Accepting the tool with no safeguards attached",
+      "Ignoring the question of whether it should be voluntary or mandatory"
+    ],
+    "followUps": [
+      "Should the same rules apply once the emergency is over and the app is repurposed for something else, like general disease monitoring?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Sin taxes and paternalism",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "paternalism",
+      "taxation"
+    ],
+    "question": "Governments tax things like sugary drinks and tobacco partly to change behaviour, not just to raise revenue. Is it the state's place to nudge people away from choices that mainly harm themselves?",
+    "lookingFor": "Engagement with the paternalism objection directly, plus a considered position rather than a reflexive yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "State the paternalism objection clearly — adults should be free to make choices that mainly affect themselves",
+        "Offer a counter — costs often aren't purely private, given shared healthcare systems and effects on family",
+        "Reach a considered position, perhaps distinguishing a tax that preserves choice from an outright ban"
+      ],
+      "modelAnswer": "The strongest objection is that in a free society, adults should be allowed to make choices that mainly affect their own health, even bad ones, and a tax on that choice is the state substituting its judgement for the individual's. But I don't think the harm is ever purely private in a system with shared healthcare, the costs of treating diet-related illness get spread across everyone through taxes or insurance premiums, so there's a genuine collective interest, not just a moral one. I land on thinking a tax is more defensible than an outright ban, because it preserves the choice for someone who really wants the product while still nudging behaviour and raising revenue that can fund things like public health campaigns, whereas a ban removes the choice entirely and tends to just push it underground."
+    },
+    "commonMistakes": [
+      "Treating the paternalism objection as obviously wrong without engaging with it",
+      "Ignoring that these taxes are often regressive, falling harder on lower-income consumers",
+      "Conflating a tax with an outright ban as if they raise the same ethical question"
+    ],
+    "followUps": [
+      "These taxes tend to fall hardest on lower-income households. Does that change your view?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "AI regulation and the EU AI Act",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "ai-policy",
+      "regulation"
+    ],
+    "question": "Different countries are taking quite different approaches to regulating artificial intelligence right now, some favouring binding rules, others favouring a lighter, innovation-first touch. Which approach do you find more convincing, and why?",
+    "lookingFor": "Demonstrated awareness of an actual live regulatory debate, with a defensible, specific position rather than vague AI commentary.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of at least one real regulatory approach and how it differs from a lighter-touch alternative",
+        "Give a substantive reason for a preference, tied to a specific risk or benefit, not just 'balance is good'",
+        "Acknowledge the trade-off the other side is worried about"
+      ],
+      "modelAnswer": "The approach that requires stricter obligations for higher-risk uses of AI, like in hiring or law enforcement, while leaving lower-risk applications largely unregulated, strikes me as more convincing than a purely light-touch model, because the risks of AI aren't evenly distributed, a chatbot recommending recipes and a system deciding parole eligibility shouldn't face the same rules. The worry from the lighter-touch side is that heavier regulation could push investment and talent toward jurisdictions with fewer rules, and that's a real risk I don't want to dismiss. But I think a risk-tiered approach actually addresses that concern reasonably well, because it doesn't burden the vast majority of low-risk applications, it concentrates the compliance cost where the potential harm is genuinely highest, which seems like a more defensible trade-off than either extreme."
+    },
+    "commonMistakes": [
+      "Vague statements about AI being 'exciting but risky' with no reference to an actual regulatory model",
+      "Picking a side with no reasoning about the trade-off",
+      "Confusing AI regulation with data protection law more broadly"
+    ],
+    "followUps": [
+      "Who should decide what counts as 'high risk'? Governments, courts, or the companies themselves?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Student debt relief as a policy debate",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "higher-education-policy",
+      "distribution"
+    ],
+    "question": "There's an ongoing debate about whether governments should forgive large amounts of existing student loan debt. What's the strongest fairness argument on each side?",
+    "lookingFor": "Balanced engagement with the distributional and fairness dimensions, not just the fiscal cost.",
+    "idealAnswer": {
+      "bullets": [
+        "Give the strongest fairness case for forgiveness — debt from rising tuition and limited job markets isn't fully the borrower's fault",
+        "Give the strongest fairness case against — it can reward people who borrowed for degrees with high future earnings, while people who never went to university get nothing",
+        "Note that the answer likely depends on design, such as means-testing or targeting relief"
+      ],
+      "modelAnswer": "The case for forgiveness rests partly on the idea that a lot of this debt was taken on under conditions students didn't control, rising tuition, and a job market that didn't deliver the earnings graduates were promised, so treating the debt as purely a personal failure to repay ignores those structural pressures. The case against is a fairness argument in the other direction, blanket forgiveness can end up disproportionately helping people who'll go on to have high lifetime earnings anyway, like law or medical graduates, while doing nothing for someone who never had the option to go to university at all and is paying taxes that fund the relief. I think that tension is really an argument for targeting rather than an all-or-nothing choice, means-tested relief or forgiveness tied to income after graduation seems more defensible than a flat, universal write-off."
+    },
+    "commonMistakes": [
+      "Treating this as a purely fiscal question with no fairness dimension",
+      "Only presenting one side despite being asked for both",
+      "Ignoring that forgiveness design (targeted vs blanket) changes the fairness calculus significantly"
+    ],
+    "followUps": [
+      "Would you weigh the argument differently for debt taken on for a degree that led to a well-paid job versus one that didn't?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Global minimum corporate tax",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "international-tax-policy",
+      "cooperation"
+    ],
+    "question": "Over a hundred countries have signed on to a global minimum corporate tax rate to stop companies shifting profits to low-tax jurisdictions. Why has that kind of international cooperation been so hard to achieve historically, and do you think this agreement will hold?",
+    "lookingFor": "Understanding of the collective action problem in international tax competition, and a reasoned, non-definitive view on durability.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the underlying collective action problem — any single country benefits from undercutting others, even while all countries lose overall",
+        "Note the enforcement challenge — no world government to compel compliance, so agreements rely on mutual incentive to stick",
+        "Give a reasoned, hedged view on whether it holds, rather than a confident prediction with no basis"
+      ],
+      "modelAnswer": "The core problem is a classic collective action failure, every individual country has an incentive to keep its own corporate tax rate low to attract investment, even though if every country does that simultaneously, they all end up worse off through a race to the bottom that starves everyone of revenue. Historically that made cooperation nearly impossible, because there's no world government to enforce a shared rate, and any country holding out could still profit from undercutting everyone else. What makes this agreement somewhat more credible is that it's paired with enforcement mechanisms, like allowing other countries to top up tax on profits booked in a non-compliant low-tax country, which reduces the payoff from staying outside the deal. I'd guess it holds in broad terms but with a lot of pressure at the edges, because a few smaller economies that relied heavily on being a low-tax destination have a strong incentive to find workarounds."
+    },
+    "commonMistakes": [
+      "Describing the agreement without explaining why cooperation was hard in the first place",
+      "Making a confident prediction with no reasoning behind it",
+      "Confusing a minimum corporate rate with personal income tax harmonisation"
+    ],
+    "followUps": [
+      "Which countries do you think have the most to lose from this agreement, and why?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Gig economy worker classification",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "labour-policy",
+      "gig-economy"
+    ],
+    "question": "Courts and legislatures in several countries have been fighting over whether gig platform workers should be classified as employees or independent contractors. Why does that classification matter so much, and where do you land on it?",
+    "lookingFor": "Understanding of the concrete stakes of classification, plus a defensible, specific position.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what actually rides on the classification — benefits, minimum wage protections, employer costs",
+        "Acknowledge the platforms' counterargument about flexibility and the risk that reclassification reduces available work",
+        "Land on a specific position, perhaps a hybrid third category, rather than avoiding a stance"
+      ],
+      "modelAnswer": "The classification matters because it determines whether a worker gets protections like minimum wage, paid leave, and unemployment insurance, or none of that, since independent contractors are largely responsible for themselves. Platforms argue that reclassifying drivers as employees would force them to guarantee shifts and reduce the flexibility that many workers actually value, and there's real evidence that some workers do prefer being able to log on and off freely. My own view leans toward a hybrid third category that some jurisdictions have tried, giving workers a floor of protections like minimum earnings per hour worked and some paid leave, without imposing full employee-style scheduling obligations on the platform, because it seems to preserve the flexibility while closing the worst gaps in protection."
+    },
+    "commonMistakes": [
+      "Treating this as a simple binary with no acknowledgment of hybrid models being tried elsewhere",
+      "Ignoring the platforms' flexibility argument entirely",
+      "Refusing to state an actual position"
+    ],
+    "followUps": [
+      "If a hybrid category existed, who should decide the minimum protections it guarantees, government or the courts?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Central bank digital currencies",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "monetary-policy",
+      "digital-government"
+    ],
+    "question": "Several central banks are piloting their own digital currencies. What policy problem is a central bank digital currency actually meant to solve, and what risk does it introduce?",
+    "lookingFor": "Specific understanding of the CBDC rationale, distinct from cryptocurrency generally, plus a genuine risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish a CBDC from decentralised cryptocurrency — it's central-bank-issued and backed, not speculative or private",
+        "Give a real motivating problem, such as declining cash use, financial inclusion, or competition from private stablecoins",
+        "Name a genuine risk, like privacy concerns from a fully traceable digital cash, or disintermediating commercial banks"
+      ],
+      "modelAnswer": "A CBDC is easy to mix up with cryptocurrency, but it's really the opposite in spirit, it's issued and backed by the central bank rather than being decentralised or speculative, so it's meant to function like digital cash. The policy problem it's usually aimed at is a mix of things, cash use is declining in a lot of countries, which risks leaving people without bank accounts further behind, and central banks are also wary of private companies' stablecoins becoming a dominant, largely unregulated form of digital money. The risk that worries me most is privacy, a fully traceable digital currency issued by the state could make every transaction visible to the government in a way physical cash never was, so the design choices around anonymity and data retention matter enormously for whether it ends up as a genuine public good or a surveillance tool."
+    },
+    "commonMistakes": [
+      "Confusing a CBDC with a cryptocurrency like Bitcoin",
+      "Naming a benefit with no corresponding risk",
+      "Giving a purely technical answer with no policy framing"
+    ],
+    "followUps": [
+      "Could a CBDC threaten commercial banks if people moved their savings directly to the central bank? How might a government design around that?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Allocating a fixed city budget",
+    "program": "Public Policy",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "budgeting",
+      "trade-offs"
+    ],
+    "question": "Imagine you're advising a mayor with a one-time windfall of fifty million dollars and three competing proposals: expanding public transport, building affordable housing, or funding a major school renovation programme. How would you approach deciding between them, without just picking your personal favourite?",
+    "lookingFor": "A reasoned decision process — criteria, evidence, and trade-offs — rather than an intuitive pick with no method.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a structured way to compare the options — cost per beneficiary, time horizon of impact, urgency, or existing evidence of effectiveness",
+        "Acknowledge that the choice involves genuine value trade-offs, not just technical optimisation",
+        "Reach a reasoned conclusion or at least a defensible next step, like a needs assessment, rather than dodging the choice"
+      ],
+      "modelAnswer": "Rather than picking based on gut instinct, I'd want to compare the three against a few criteria, roughly how many people each would reach, how urgent the underlying need is, and what evidence exists that similar investments elsewhere actually delivered results. I'd also want to be honest that this isn't purely a technical exercise, transport benefits tend to be diffuse and long-term, while housing addresses a more immediate crisis for a smaller number of people, and that's a genuine value judgement about who the city prioritises, not something a spreadsheet alone resolves. If I had to move toward a decision, I'd probably start with a rapid needs assessment, current housing waitlist numbers, school building safety data, and transport ridership projections, because concrete numbers on unmet need would tell me far more than an abstract comparison of good causes."
+    },
+    "commonMistakes": [
+      "Picking one option immediately with no stated reasoning process",
+      "Pretending the decision is purely technical with no value trade-off involved",
+      "Listing pros and cons for each option with no actual conclusion or next step"
+    ],
+    "followUps": [
+      "If you could only fund one project fully rather than splitting the money, which would you choose and why?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Advising under thin evidence and political pressure",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "evidence-based-policy",
+      "professional-judgement"
+    ],
+    "question": "Say you're a junior policy adviser and a minister wants to announce a new programme next week, but the evidence base for whether it will actually work is thin and mixed. What do you do?",
+    "lookingFor": "Professional judgement that neither blocks action indefinitely nor pretends the evidence is stronger than it is.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid both extremes — refusing to ever act without perfect evidence, and pretending thin evidence is solid",
+        "Propose a practical middle path, such as piloting with built-in evaluation, or being transparent about uncertainty in the announcement",
+        "Recognise the adviser's role is to inform the decision honestly, not to make the political call themselves"
+      ],
+      "modelAnswer": "I wouldn't tell the minister the evidence is stronger than it is just because there's a deadline, because that sets up a decision that looks evidence-based but isn't, and it makes it harder to course-correct later if the programme underdelivers. But I also don't think 'we need more research' is always the right answer either, sometimes a problem is urgent enough that waiting has its own real cost. What I'd actually recommend is being explicit with the minister about what we do and don't know, and suggesting the programme launch as a pilot with a built-in evaluation plan, so we're being honest about the uncertainty while still allowing the government to act on a genuine priority. My job as the adviser is to make sure the decision-maker understands the evidence accurately, not to quietly make the political trade-off for them."
+    },
+    "commonMistakes": [
+      "Refusing to act at all until evidence is perfect, ignoring real time pressure",
+      "Overstating the evidence to please the minister",
+      "Making the political decision yourself rather than informing the minister's decision"
+    ],
+    "followUps": [
+      "What would you do if the minister decided to announce it as proven and effective anyway?"
+    ]
+  },
+  {
+    "id": "prog-public-policy-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a refugee resettlement policy",
+    "program": "Public Policy",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "migration-policy",
+      "trade-offs"
+    ],
+    "question": "Imagine your country needs to decide how to allocate a fixed number of refugee resettlement places among people fleeing several different crises at once. What criteria would you use to decide who gets priority, and what's the hardest trade-off in that decision?",
+    "lookingFor": "A reasoned, explicit set of prioritisation criteria and honest engagement with the moral discomfort of rationing places.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose defensible criteria, such as vulnerability (unaccompanied minors, medical need), rather than arbitrary or purely political ones",
+        "Acknowledge that any criteria will mean turning away people in genuine need, and sit with that discomfort rather than glossing over it",
+        "Note practical considerations like resettlement capacity and integration support alongside pure need"
+      ],
+      "modelAnswer": "I'd want the criteria to centre on vulnerability, things like unaccompanied children, people with urgent medical needs, or those facing the most direct and immediate danger, rather than criteria that are easier to justify politically but less connected to actual need, like nationality quotas. The hardest trade-off is that any prioritisation system, however principled, means actively choosing not to help someone who is also in genuine danger, and I don't think there's a way to make that choice feel comfortable, it just has to be made as transparently and consistently as possible so it isn't arbitrary. I'd also want to weigh practical capacity, like whether there's enough housing and support infrastructure for successful integration, alongside pure need, because bringing people into a resettlement system that can't actually support them isn't really helping them either, it's just moving the crisis."
+    },
+    "commonMistakes": [
+      "Proposing criteria based on convenience or politics rather than need",
+      "Pretending the trade-off isn't morally uncomfortable",
+      "Ignoring practical integration capacity and treating this as a purely moral calculation"
+    ],
+    "followUps": [
+      "Should family reunification count as a priority criterion on its own, even for someone facing less immediate danger than others on the list?"
+    ]
+  }
+]

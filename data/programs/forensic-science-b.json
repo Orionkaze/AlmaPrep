@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-forensic-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Locard's Exchange Principle in practice",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["trace-evidence", "core-principle", "reasoning"],
+    "question": "Locard's Exchange Principle says every contact leaves a trace. Can you explain it and give an example of where it might fail in practice?",
+    "lookingFor": "Understanding of the principle plus honest awareness of its practical limits, such as transfer below detection limits or evidence loss.",
+    "idealAnswer": {
+      "bullets": [
+        "State the principle clearly: contact between two surfaces results in mutual transfer of material",
+        "Give a concrete example, such as fibers, soil, or gunshot residue",
+        "Acknowledge limits: transfer can be too small to detect, or evidence can degrade or be removed before collection"
+      ],
+      "modelAnswer": "Locard's principle basically says that whenever two things come into contact, something passes between them, even if it's just a few fibers or skin cells. A classic example is a burglar brushing against a curtain and leaving carpet fibers behind while picking up curtain fibers on their clothes. But I think the principle gets oversold sometimes, because in real cases the transferred material can be below detection limits, or it gets washed away or walked over before anyone collects it. So I'd say it's true in theory almost always, but provable is a different question from true."
+    },
+    "commonMistakes": [
+      "Reciting the principle without any real example",
+      "Treating it as a guarantee that evidence will always be found",
+      "Confusing transfer with persistence and forgetting evidence can degrade"
+    ],
+    "followUps": ["How would persistence of evidence change your answer for a wet outdoor crime scene versus a dry indoor one?"]
+  },
+  {
+    "id": "prog-forensic-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Chain of custody",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["chain-of-custody", "procedure", "integrity"],
+    "question": "Why is chain of custody treated as being almost as important as the evidence itself, and what happens if it's broken?",
+    "lookingFor": "Understanding of the legal and scientific weight of documented evidence handling and the consequences of gaps in it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain chain of custody as an unbroken documented record of who handled evidence, when, and how",
+        "Explain why it matters: it proves evidence wasn't tampered with, substituted, or contaminated",
+        "Describe the consequence of a break: evidence can be challenged or excluded even if the science behind it is sound"
+      ],
+      "modelAnswer": "Chain of custody is basically the paper trail that proves the sample tested in the lab is the same sample collected at the scene, with nothing swapped or contaminated along the way. It matters almost as much as the science because a defence lawyer doesn't need to disprove the DNA match, they just need to show a gap where the evidence could have been tampered with, and that alone can get it thrown out. I find that a bit sobering actually, because it means a brilliant piece of analysis can become worthless over something as ordinary as a missing signature on a log sheet."
+    },
+    "commonMistakes": [
+      "Describing it only as a legal formality with no scientific rationale",
+      "Assuming any break automatically means the evidence is false rather than doubted or inadmissible",
+      "Giving a vague answer without mentioning documentation specifics"
+    ],
+    "followUps": ["If you were the analyst and realized you'd forgotten to log a transfer, what would you do?"]
+  },
+  {
+    "id": "prog-forensic-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Fingerprint certainty debate",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["fingerprints", "pattern-evidence", "current-debate"],
+    "question": "Fingerprint examiners have traditionally testified to 'absolute certainty' of a match. What's the current scientific criticism of that, and where do you stand?",
+    "lookingFor": "Awareness of criticism that pattern-matching disciplines lack a statistical foundation for absolute certainty claims, plus a reasoned personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that fingerprint uniqueness has never been statistically proven, only assumed from experience",
+        "Reference criticism, such as national review reports, of subjective 'certain' language without error-rate data",
+        "Give a considered position that values the method while wanting language to reflect actual known error rates"
+      ],
+      "modelAnswer": "For decades examiners were trained to say a print match is a match to the exclusion of everyone else on earth, but nobody has actually proven that no two fingers can ever produce a similar enough partial print. Major reviews of forensic science pointed out that pattern-matching fields, fingerprints included, often don't have solid error-rate studies behind those absolute claims. I think fingerprint comparison is still genuinely useful, but I'd rather see examiners testify with the actual known error rate from proficiency testing than a phrase like a hundred percent certain, because overselling certainty is exactly what has contributed to wrongful convictions."
+    },
+    "commonMistakes": [
+      "Treating fingerprint matching as flawless and unquestionable",
+      "Dismissing fingerprint evidence as worthless",
+      "Showing no awareness of any critique and just guessing at an answer"
+    ],
+    "followUps": ["How would you redesign an examiner's report to reflect this more honestly?"]
+  },
+  {
+    "id": "prog-forensic-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Bite mark analysis controversy",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["bite-mark", "junk-science", "current-debate"],
+    "question": "Bite mark analysis has been used to convict people who were later exonerated by DNA. What went wrong scientifically, and should the technique still be used?",
+    "lookingFor": "Understanding of why bite mark comparison lacks scientific validity, and a defensible view on how it should be used going forward.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core problem: skin distorts and there's no proven basis that bite marks are unique or reliably recorded",
+        "Reference that exonerations exposed cases where bite mark testimony overstated its certainty",
+        "Give a reasoned stance, such as restricting it to an investigative lead rather than standalone courtroom proof"
+      ],
+      "modelAnswer": "The core problem is that skin isn't a stable recording surface, it stretches and swells and heals differently depending on where the bite is, so two examiners can look at the same mark and disagree, or one can misidentify a mark that DNA evidence later proved came from someone else. Several exonerations, including cases where people spent years in prison, came down to bite mark testimony that sounded far more certain than the underlying science justified. I don't think it should be thrown out completely as an investigative lead, but I don't think it should ever be presented in court as identifying a specific person, because the studies just don't support that level of confidence."
+    },
+    "commonMistakes": [
+      "Defending bite mark analysis as fully reliable",
+      "Showing no awareness of any exoneration case or the skin-distortion problem",
+      "Giving an extreme all-or-nothing answer with no nuance"
+    ],
+    "followUps": ["What would you want to see change before you'd trust a bite mark comparison in court?"]
+  },
+  {
+    "id": "prog-forensic-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Cognitive and contextual bias",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["cognitive-bias", "lab-reform", "current-debate"],
+    "question": "Studies have shown forensic examiners can be unconsciously influenced by knowing a suspect already confessed. How would you guard against that kind of bias in your own work?",
+    "lookingFor": "Understanding of contextual and confirmation bias in forensic analysis and knowledge of mitigation approaches like sequential unmasking.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that even trained, honest examiners are influenced by irrelevant contextual information",
+        "Describe a mitigation approach such as blind verification or examining evidence before seeing suspect information",
+        "Show humility that bias is a known feature of human cognition, not a matter of dishonesty"
+      ],
+      "modelAnswer": "What I find striking about the research is that this isn't examiners being dishonest, it's that human perception genuinely shifts once you know a likely answer, so even careful, well-meaning analysts see what they expect to see. The approach I find convincing is one where you deliberately look at the evidence itself first, form and record your conclusion, and only afterward are given the case context, so the order protects you from anchoring on the suspect's story. I'd want my lab to structure casework that way rather than trusting willpower alone, because I don't think anyone is immune to this, myself included."
+    },
+    "commonMistakes": [
+      "Claiming personal willpower or integrity alone solves the problem",
+      "Showing no knowledge of any concrete bias-mitigation technique",
+      "Dismissing the phenomenon as not a real issue"
+    ],
+    "followUps": ["Would you support never telling the examiner who the suspect is until after analysis? What are the trade-offs?"]
+  },
+  {
+    "id": "prog-forensic-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Pressure to shade a finding",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "integrity", "dilemma"],
+    "question": "Imagine your analysis is inconclusive, but the lead detective strongly hints that a clearer finding would 'help close the case.' What do you do?",
+    "lookingFor": "Firm commitment to scientific objectivity under institutional pressure, with a constructive way of handling the interpersonal dynamic.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that the finding stands as inconclusive regardless of the pressure",
+        "Address the interpersonal side by explaining the reasoning to the detective rather than just refusing",
+        "Recognize the stakes: a shaded finding can convict the innocent or let the guilty go free"
+      ],
+      "modelAnswer": "My finding has to reflect what the evidence actually supports, so if it's inconclusive, it stays inconclusive no matter how the request is phrased. I wouldn't just shut the conversation down though, I'd explain to the detective why overstating it is actually risky for the case too, because a finding that gets torn apart on cross-examination hurts the investigation far more than an honest we can't say for certain does. I think it's worth remembering that a shortcut here doesn't just affect me, it can put an innocent person in prison or let the real offender stay free, and that's not a trade I'm willing to make for anyone's convenience."
+    },
+    "commonMistakes": [
+      "Agreeing to soften language to please the detective",
+      "Being combative rather than explaining the reasoning",
+      "Not acknowledging the real-world stakes behind the decision"
+    ],
+    "followUps": ["What would you do if this happened repeatedly with the same detective?"]
+  },
+  {
+    "id": "prog-forensic-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Contamination discovered after submission",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "integrity", "procedure"],
+    "question": "You submit your final report, and the next day you realize your gloves may have been contaminated before you handled a key sample. What do you do?",
+    "lookingFor": "Immediate disclosure and correction over self-protective silence, and understanding of professional obligation.",
+    "idealAnswer": {
+      "bullets": [
+        "Disclose immediately to a supervisor rather than waiting or hoping it goes unnoticed",
+        "Describe a corrective process such as retesting or issuing an amended report",
+        "Show understanding that early disclosure protects the case and personal credibility far more than silence would"
+      ],
+      "modelAnswer": "I'd flag it straight away to my supervisor rather than sit on it, even though I know that's an uncomfortable conversation to have the day after submitting a report. The right next step is probably to see if the sample can be retested, and if not, to issue an amended report that's honest about the possible contamination and what it does or doesn't change about the conclusion. I'd rather take the hit of admitting a mistake early than have it surface later during cross-examination, because at that point it looks like something I tried to hide rather than something I caught myself."
+    },
+    "commonMistakes": [
+      "Deciding to stay quiet because the mistake might not matter",
+      "Panicking without describing a concrete corrective process",
+      "Treating it as purely a personal failure rather than a case-integrity issue"
+    ],
+    "followUps": ["How would you explain this error if you were later questioned about it on the stand?"]
+  },
+  {
+    "id": "prog-forensic-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Touch DNA and secondary transfer",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["dna", "touch-dna", "interpretation"],
+    "question": "Touch DNA can be transferred indirectly, someone can leave DNA on an object they never touched. How does that complicate interpreting DNA evidence at a crime scene?",
+    "lookingFor": "Understanding of secondary or tertiary transfer and its implications for interpreting DNA presence as evidence of presence at a scene.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain secondary transfer, where DNA moves person to object to object without direct contact",
+        "Explain the interpretive risk: finding someone's DNA doesn't prove they touched or were present at the item",
+        "Note that quantity, location, and corroborating evidence matter, not DNA presence alone"
+      ],
+      "modelAnswer": "The complication is that DNA presence doesn't automatically mean physical contact, someone could shake hands with a person who then touches a weapon, and trace amounts of the first person's DNA end up transferred secondhand. That means finding a DNA profile on an item can't be read on its own as proof that person was ever at the scene, it just tells you their cells got there somehow. I think that pushes the interpretation toward looking at quantity, location on the item, and what other evidence supports or contradicts presence, rather than treating a DNA hit as the whole story."
+    },
+    "commonMistakes": [
+      "Treating any DNA match as proof of direct contact or presence",
+      "Showing no awareness that indirect transfer is possible",
+      "Ignoring the need for corroborating context"
+    ],
+    "followUps": ["How would low-quantity touch DNA change how confident you'd be compared to a large blood sample?"]
+  },
+  {
+    "id": "prog-forensic-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of body temperature for time of death",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["pmi", "forensic-pathology", "limitations"],
+    "question": "Estimating time of death from body temperature is a classic method. What makes it less reliable than TV crime shows suggest?",
+    "lookingFor": "Knowledge that estimating postmortem interval from temperature depends on many variables and yields a range, not a precise time.",
+    "idealAnswer": {
+      "bullets": [
+        "Name variables affecting cooling rate, such as ambient temperature, body size, clothing, or water immersion",
+        "Explain that the result is a wide time range with real uncertainty, not an exact time",
+        "Show awareness that other methods like rigor, lividity, or insect activity are usually combined for a better estimate"
+      ],
+      "modelAnswer": "Body cooling depends on so many variables, ambient temperature, whether the body's clothed, body fat, even whether it's outdoors in wind or lying on a cold floor, that the same core temperature reading can correspond to quite different times depending on the scene. So instead of a single precise time of death, what you actually get is a wide window, often several hours, and it gets even less reliable the longer the body has been there because the temperature difference shrinks. I think that's exactly why real investigations combine temperature with things like rigor mortis, lividity, and insect activity rather than leaning on one method the way TV shows tend to."
+    },
+    "commonMistakes": [
+      "Implying body temperature gives a precise, exact time of death",
+      "Listing no actual variables that affect cooling",
+      "Not mentioning that other methods should be combined"
+    ],
+    "followUps": ["Which method would you trust more for a body that's been dead over a week, and why?"]
+  },
+  {
+    "id": "prog-forensic-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Postmortem redistribution in toxicology",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["toxicology", "postmortem-redistribution", "interpretation"],
+    "question": "A drug concentration found in a body after death isn't always the concentration present at the moment of death. Why not, and what does that mean for toxicology reports?",
+    "lookingFor": "Understanding of postmortem redistribution and cautious, context-aware interpretation of toxicology results.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain postmortem redistribution, where drugs migrate from tissues like the liver into the blood after death",
+        "Explain the implication: a measured blood level can overstate the amount actually circulating at time of death",
+        "Note the importance of sample site, timing of collection, and comparison with case circumstances"
+      ],
+      "modelAnswer": "After death, cells break down and drugs that were stored in tissue, especially the liver, can leak back into the bloodstream, so a sample taken hours after death can show a much higher concentration than was actually circulating at the moment the person died. That matters a lot for toxicology reports because a level that looks like a fatal overdose could partly be an artifact of where and when the sample was drawn rather than reflecting what killed the person. I think a responsible toxicologist has to note the sample site, central versus peripheral blood, and be upfront that the number is an estimate shaped by these after-death processes, not a perfect snapshot of the moment of death."
+    },
+    "commonMistakes": [
+      "Treating any postmortem drug level as exactly what was present at time of death",
+      "No mention of sample site, central versus peripheral, mattering",
+      "Overconfidence in a single number without context"
+    ],
+    "followUps": ["Would peripheral blood or central blood give you a more reliable reading, and why?"]
+  },
+  {
+    "id": "prog-forensic-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Subjectivity in toolmark comparison",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["ballistics", "toolmarks", "current-debate"],
+    "question": "Firearm and toolmark comparison relies on an examiner's visual judgment of 'sufficient agreement.' Critics say that's subjective. Do you think it should still count as scientific evidence?",
+    "lookingFor": "Understanding of the subjectivity critique of toolmark identification and a reasoned position on standards and error rates.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the criticism: sufficient agreement is a qualitative judgment without a fixed threshold or large-scale error-rate studies",
+        "Present a balanced position that the method has value but needs statistical grounding rather than certainty language",
+        "Mention validation research or blind proficiency testing as a path forward"
+      ],
+      "modelAnswer": "The honest criticism is that sufficient agreement isn't a number, it's a trained examiner's judgment call, and two examiners looking at the same striations can genuinely land on different conclusions, which isn't something you'd accept in a field with a firmer scientific foundation. I still think toolmark comparison has real value as physical evidence, it's not nothing, but I don't think it should be presented in court with the same certainty as a well-validated DNA match. What would change my mind is more large-scale studies that actually measure how often examiners get it wrong, and testimony that reports that real error rate instead of a phrase like a reasonable degree of scientific certainty."
+    },
+    "commonMistakes": [
+      "Accepting toolmark matching as fully objective science with no caveats",
+      "Dismissing it entirely as useless",
+      "Being unaware that sufficient agreement is the actual disputed standard"
+    ],
+    "followUps": ["How would you explain sufficient agreement to a jury without overstating its certainty?"]
+  },
+  {
+    "id": "prog-forensic-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "The prosecutor's fallacy",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["statistics", "reasoning", "courtroom"],
+    "question": "A DNA match has a random match probability of 1 in a million. A lawyer tells the jury that means there's a one in a million chance the defendant is innocent. What's wrong with that statement?",
+    "lookingFor": "Recognition of the prosecutor's fallacy, confusing the probability of the evidence given innocence with the probability of innocence given the evidence.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the fallacy in substance: it confuses the chance of a coincidental match with the chance the defendant is innocent",
+        "Explain why they're different: real probability of innocence depends on the wider suspect pool, not the match statistic alone",
+        "Give a clarifying example of how population size changes the real interpretation"
+      ],
+      "modelAnswer": "That statement mixes up two different questions, the one in a million figure is the chance a random unrelated person would also match, not the chance that this specific defendant is innocent given the match, and those are not the same thing at all. If you tested a million random people you'd actually expect about one coincidental match by pure chance, so in a large database search the real odds of innocence depend on how many people were in the pool being compared, not just that one statistic in isolation. I think it's a really important distinction because juries can hear one in a million and assume it settles guilt, when really it's just describing how rare the DNA type is, not how likely the specific person is guilty."
+    },
+    "commonMistakes": [
+      "Being unable to identify what's actually wrong with the lawyer's statement",
+      "Sensing something is off but being unable to explain the underlying probability confusion",
+      "Confusing this with an unrelated statistical concept"
+    ],
+    "followUps": ["How would you explain this distinction to a jury in plain language?"]
+  },
+  {
+    "id": "prog-forensic-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "The CSI effect",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["csi-effect", "juries", "current-debate"],
+    "question": "The 'CSI effect' describes juries expecting forensic evidence that real cases often can't provide. How do you think this affects the justice system, and what should forensic scientists do about it?",
+    "lookingFor": "Awareness of unrealistic public expectations shaping trial outcomes, and a considered view on communication responsibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the effect: TV drama creates unrealistic expectations of speed, certainty, and universal physical evidence",
+        "Discuss the consequence: juries may wrongly acquit without forensic evidence, or overweight forensic testimony that is presented",
+        "Suggest a remedy such as clearer, more honest communication of evidence's limits and uncertainty"
+      ],
+      "modelAnswer": "Shows like that make it look like every crime scene yields a perfect DNA profile within hours, so real juries sometimes expect forensic proof that genuinely isn't available in an ordinary case, and can undervalue a strong circumstantial case just because there's no lab result attached to it. On the flip side I think it can also make jurors overly trusting when forensic evidence is presented, assuming it's as infallible as it looks on screen. I'd want forensic scientists to be very plain in court about what a result can and can't tell you and where the uncertainty sits, rather than letting the jury's TV-shaped assumptions fill in the gaps."
+    },
+    "commonMistakes": [
+      "Only discussing one direction of the effect without the flip side of overtrust",
+      "Giving no concrete suggestion for how forensic professionals should respond",
+      "Treating it as a joke rather than a real courtroom issue"
+    ],
+    "followUps": ["Have you seen this play out in a real case you've read about?"]
+  },
+  {
+    "id": "prog-forensic-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Investigative genetic genealogy",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["genetic-genealogy", "privacy", "current-development"],
+    "question": "Investigative genetic genealogy, uploading crime scene DNA to consumer ancestry databases, has cracked cold cases like the Golden State Killer. What's the debate around using it?",
+    "lookingFor": "Awareness of the technique and the privacy and consent tension it raises, along with a reasoned personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the technique: building a family tree from partial DNA matches to narrow down a suspect",
+        "Present the debate: distant relatives who never consented to law enforcement use can implicate a suspect",
+        "Offer a position weighing usefulness for cold cases against the need for clear regulation or limits"
+      ],
+      "modelAnswer": "The technique works by uploading crime scene DNA to a genealogy site and using distant relative matches to build out a family tree until investigators can narrow it down to one plausible suspect, which is how cases that had gone cold for decades finally got solved. The debate is really about consent, because the people whose DNA actually enables the match are usually the suspect's distant relatives who uploaded their own DNA for ancestry reasons and never agreed to it being used this way. I think the results speak for themselves for solving serious violent crimes, but I'd want clear rules limiting it to serious cases and requiring transparency with users about how their data could be used, rather than leaving it to each company's terms of service."
+    },
+    "commonMistakes": [
+      "Showing no awareness of the technique or a relevant case example",
+      "Ignoring the privacy or consent side of the debate entirely",
+      "Giving an extreme all-or-nothing stance with no acknowledgment of trade-offs"
+    ],
+    "followUps": ["Should this be restricted to only violent crimes, or is that line hard to hold in practice?"]
+  },
+  {
+    "id": "prog-forensic-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Wrongful convictions and forensic reform",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["wrongful-conviction", "reform", "current-debate"],
+    "question": "A large share of DNA exonerations in the US have involved flawed forensic science testimony. What does that tell you about the field you're entering?",
+    "lookingFor": "Sober, non-defensive engagement with the field's documented failures and genuine commitment to rigor.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the scale of the problem honestly rather than being defensive",
+        "Identify contributing factors such as overstated certainty or unvalidated pattern-matching techniques",
+        "Show personal commitment to rigor, honesty about limits, and staying current with validation research"
+      ],
+      "modelAnswer": "It tells me the field has a real history of overselling what the science can actually prove, whether that's an examiner testifying to impossible certainty or a technique being used in court well before anyone had properly validated it. That's a hard thing to sit with going into the field, but I'd rather go in with my eyes open than pretend it's not part of the profession's history. For me it means I want to be the kind of analyst who says we can't be certain when that's true, who keeps up with validation research, and who treats a wrongful conviction as the worst possible outcome of my work, not just a rare unlucky case."
+    },
+    "commonMistakes": [
+      "Being defensive or dismissive of the problem",
+      "Giving a vague acknowledgment with no specific contributing cause named",
+      "Offering no personal reflection on what it means for their own future practice"
+    ],
+    "followUps": ["What's one specific change in lab practice you think would reduce these errors?"]
+  },
+  {
+    "id": "prog-forensic-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Personal connection to a case",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "conflict-of-interest", "dilemma"],
+    "question": "You're assigned to analyze evidence in a case, and partway through you realize you know the victim's family. What do you do?",
+    "lookingFor": "Recognition of conflict of interest and commitment to disclosure and recusal rather than pushing through and hoping objectivity holds.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize this as a conflict of interest even while believing they could personally stay objective",
+        "Commit to disclosing it immediately to a supervisor rather than deciding alone",
+        "Accept recusal as the likely and correct outcome, prioritizing case integrity over personal involvement"
+      ],
+      "modelAnswer": "Even if I felt confident I could stay objective, the fact that I know the family is itself a conflict of interest, and it's not really my call to decide I'm fine and carry on quietly. I'd go straight to my supervisor, explain the connection, and let someone independent decide whether I should be reassigned. I'd expect to be taken off the case, and honestly I'd want that, because if the connection ever came out later it could undermine the whole analysis and the family deserves a result nobody can question."
+    },
+    "commonMistakes": [
+      "Deciding alone that personal objectivity is enough to continue",
+      "Not disclosing the connection at all",
+      "Treating disclosure as optional rather than mandatory"
+    ],
+    "followUps": ["What if the connection was more distant, like a family friend from years ago? Would your answer change?"]
+  },
+  {
+    "id": "prog-forensic-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Reasoning between two plausible narratives",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "reasoning", "ambiguity"],
+    "question": "At a scene, the physical evidence is consistent with both an accident and a staged crime. How would you approach reaching a conclusion?",
+    "lookingFor": "Methodical, evidence-first reasoning that tolerates ambiguity rather than forcing a premature conclusion.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a systematic approach: identify which evidence supports each narrative and which actually distinguishes between them",
+        "Avoid premature closure by being willing to say the evidence doesn't yet favor one conclusion",
+        "Mention seeking additional data, such as further testing or scene reconstruction, before committing"
+      ],
+      "modelAnswer": "I'd start by laying out exactly which pieces of evidence are genuinely consistent with both scenarios and which ones, if any, actually distinguish between them, because it's easy to feel like you have two competing theories when really you just don't have the evidence that discriminates yet. If nothing does distinguish them, I think the honest answer is to say the physical evidence alone is inconclusive rather than picking whichever story feels more likely to me personally. I'd want to see if there's more to test, whether that's additional trace evidence, digital records, or a fuller scene reconstruction, before I'd be comfortable leaning either way."
+    },
+    "commonMistakes": [
+      "Picking a conclusion based on gut feeling rather than evidence",
+      "Offering no concrete method for distinguishing between the two narratives",
+      "Refusing to accept that inconclusive can be the correct honest answer"
+    ],
+    "followUps": ["What kind of additional evidence would most efficiently break the tie between the two theories?"]
+  },
+  {
+    "id": "prog-forensic-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Encryption and law enforcement access",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["digital-forensics", "encryption", "privacy-debate"],
+    "question": "Law enforcement sometimes wants tech companies to build backdoors into encrypted devices to help solve crimes. What's your view on that debate?",
+    "lookingFor": "Awareness of the encryption backdoor debate and a reasoned position balancing investigative need against broader security and privacy risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain both sides: investigative access versus the security risk a backdoor creates for everyone",
+        "Note the technical reality that a backdoor built for law enforcement can be found and exploited by others",
+        "Give a considered personal position rather than a purely one-sided answer"
+      ],
+      "modelAnswer": "I understand the instinct, there are real cases where a locked phone might hold evidence that could solve a violent crime, and it's frustrating for investigators to be blocked by encryption they can't get around. But from what I've read, security researchers are pretty consistent that a backdoor built for law enforcement doesn't stay exclusive to law enforcement, if it exists, it becomes a vulnerability that criminals or hostile actors can eventually find too. So my view is that weakening encryption for everyone to help a smaller number of investigations creates a bigger overall risk, and I'd rather see resources go into better digital forensics on the data investigators can lawfully already access."
+    },
+    "commonMistakes": [
+      "Only presenting one side of the debate",
+      "Showing no awareness that a backdoor is a security vulnerability for all users",
+      "Avoiding taking any position at all"
+    ],
+    "followUps": ["Are there narrower alternatives to a backdoor that you think could work better?"]
+  },
+  {
+    "id": "prog-forensic-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Forensic entomology and time since death",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["entomology", "pmi", "subject-knowledge"],
+    "question": "How can insect activity on a body help estimate time since death, and what could throw that estimate off?",
+    "lookingFor": "Basic understanding of entomological succession used for postmortem interval estimation, plus awareness of confounding factors.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic method: insects colonize a body in a predictable sequence and larval stage indicates a minimum time since death",
+        "Note dependency on temperature, since development rate depends on local weather conditions",
+        "Identify confounding factors such as a wrapped, buried, or moved body changing insect access"
+      ],
+      "modelAnswer": "Blowflies tend to find a body within minutes to hours outdoors and lay eggs, and because their eggs and larvae develop through predictable stages at a rate that depends on temperature, an entomologist can look at how developed the larvae are and work backward to estimate a minimum time since death. It's not just about which stage the larvae are in though, you need accurate local temperature data because development speeds up in heat and slows down in cold. What could throw it off is anything that delays or changes insect access, a body wrapped in plastic, buried, kept indoors, or moved from where it died, because then the insect evidence reflects when the body became accessible, not necessarily the actual time of death."
+    },
+    "commonMistakes": [
+      "Giving a vague mention of insects on the body with no actual method described",
+      "Ignoring temperature dependence",
+      "Not mentioning any confounding factor such as a body being moved, wrapped, or hidden"
+    ],
+    "followUps": ["How would a body found indoors versus outdoors change how much you'd trust the entomological estimate?"]
+  },
+  {
+    "id": "prog-forensic-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Blind verification as a bias control",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["lab-reform", "bias", "procedure"],
+    "question": "Some labs now require examiners to reach a conclusion before being told who the suspect is. Why might that improve forensic reliability, and are there any downsides?",
+    "lookingFor": "Understanding of sequential unmasking as bias control and honest weighing of practical trade-offs such as efficiency and workflow.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the benefit: it prevents the suspect's identity or narrative from unconsciously shaping interpretation of ambiguous evidence",
+        "Acknowledge downsides such as slower casework or added procedural complexity, especially for small labs",
+        "Show balanced judgment rather than treating it as a costless fix"
+      ],
+      "modelAnswer": "The benefit is that it stops case context from leaking into the interpretation, if you don't know who the suspect is or what they supposedly did, you can't unconsciously read the evidence in a way that fits a story you already believe. The downside is it does add friction, smaller labs with limited staff might not have the capacity to run two-stage blind reviews on every case, and it can slow down casework in a system that's often already backed up. I still think the reliability gain is worth it for anything involving pattern-matching judgment calls, but I'd want it paired with realistic funding for labs, otherwise it just becomes another underfunded mandate."
+    },
+    "commonMistakes": [
+      "Describing the benefit with no acknowledgment of any real trade-off",
+      "Giving no clear explanation of what the procedure actually is",
+      "Dismissing the reform as unnecessary"
+    ],
+    "followUps": ["Would you apply this the same way to a DNA analysis as to a bite mark comparison?"]
+  },
+  {
+    "id": "prog-forensic-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of mass disaster victim identification",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["dvi", "ethics", "identification"],
+    "question": "In a mass casualty disaster, forensic teams have to identify many victims quickly, sometimes with degraded remains. What ethical responsibilities come with that work?",
+    "lookingFor": "Awareness of the human dimension of victim identification work, accuracy under pressure, dignity, and honest communication with grieving families.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the tension between speed, since families are desperate for answers, and accuracy, since a wrong identification causes profound harm",
+        "Emphasize dignity and respectful handling of remains throughout the process",
+        "Discuss honest communication with families, including tolerating uncertainty rather than rushing a premature identification"
+      ],
+      "modelAnswer": "There's real pressure to move fast because grieving families are waiting for answers, but a wrong identification in that setting is devastating in a way that's hard to undo, imagine burying the wrong person or telling a family their relative survived when they didn't. So I think the core responsibility is refusing to let urgency compromise the standard of proof, even when it feels difficult to ask a family to wait longer for a confirmed match. Alongside that there's a basic duty of dignity, treating remains with the same care you would if it were someone you knew, and being honest with families about what is and isn't certain yet rather than offering false reassurance to end a difficult conversation."
+    },
+    "commonMistakes": [
+      "Focusing only on the technical identification methods with no ethical dimension",
+      "Prioritizing speed over accuracy without acknowledging the risk",
+      "No mention of how to communicate uncertainty to grieving families"
+    ],
+    "followUps": ["How would you handle a family who is pressuring you for an identification before you're confident in it?"]
+  },
+  {
+    "id": "prog-forensic-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Facial recognition as an investigative tool",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["ai", "facial-recognition", "current-development"],
+    "question": "Facial recognition software is increasingly used to generate investigative leads. What concerns you about relying on it, and how should it be used responsibly?",
+    "lookingFor": "Awareness of accuracy and bias issues in facial recognition across demographic groups, and a clear view that it should generate leads, not conclusions.",
+    "idealAnswer": {
+      "bullets": [
+        "Note documented accuracy issues, including higher error rates for certain demographic groups",
+        "Emphasize it should produce an investigative lead, not stand alone as identification or courtroom proof",
+        "Suggest safeguards such as human review, corroborating evidence, and transparency about error rates"
+      ],
+      "modelAnswer": "What concerns me is that several studies have found these systems perform less accurately on certain groups, particularly women and people with darker skin tones, which means the tool's mistakes aren't randomly distributed, they land harder on some people than others. I think that makes it dangerous to treat a facial recognition hit as anything more than a lead worth investigating further, never as the identification itself. Responsible use would mean full transparency about the system's known error rates, a human review of every match rather than rubber-stamping the algorithm, and always requiring independent corroborating evidence before it's ever used to justify an arrest."
+    },
+    "commonMistakes": [
+      "Treating facial recognition as a definitive identification tool",
+      "Showing no awareness of demographic accuracy disparities",
+      "Offering no concrete safeguard for responsible use"
+    ],
+    "followUps": ["Should an arrest ever be made based on a facial recognition match alone? Why or why not?"]
+  },
+  {
+    "id": "prog-forensic-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Pressure from a case backlog",
+    "program": "Forensic Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "workload", "integrity"],
+    "question": "Your lab has a huge case backlog and management is pushing you to process samples faster. How would you balance thoroughness with that pressure?",
+    "lookingFor": "Commitment to maintaining scientific rigor under institutional pressure, with a constructive rather than purely defiant response.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that quality and correct procedure shouldn't be sacrificed even under time pressure",
+        "Suggest constructive responses such as flagging the backlog upward rather than silently cutting corners",
+        "Recognize that rushed work risks errors far more costly than the delay itself"
+      ],
+      "modelAnswer": "I wouldn't cut corners on the actual analysis just because there's pressure to move faster, because a rushed mistake costs far more time and trust in the long run than the delay would have, not to mention what it could do to someone's case. What I would do is be upfront with management about what a responsible timeline actually looks like for the caseload I have, and push the backlog conversation up to where it belongs, which is usually a resourcing and staffing problem rather than something an individual analyst can just work harder to fix. I'd rather be honest that the backlog needs more people or better prioritization than quietly let standards slip to make the numbers look better."
+    },
+    "commonMistakes": [
+      "Agreeing to cut corners to meet management's pace",
+      "Purely refusing without offering any constructive path forward",
+      "Not recognizing the backlog as a systemic resourcing issue beyond their control"
+    ],
+    "followUps": ["How would you prioritize cases if you genuinely couldn't get through the full backlog properly?"]
+  },
+  {
+    "id": "prog-forensic-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "A gap in the custody log",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "chain-of-custody", "integrity"],
+    "question": "While analyzing a piece of trace evidence, you notice the custody log has a gap, nobody signed for it during a two-day window. The result would be useful to the case. What do you do?",
+    "lookingFor": "Prioritizing procedural integrity and disclosure over a convenient result, and understanding downstream legal consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Flag the gap explicitly rather than quietly proceeding or ignoring it",
+        "Report it up the chain and document the concern alongside any findings",
+        "Recognize that a useful result built on a broken chain of custody can harm the case more than no result at all"
+      ],
+      "modelAnswer": "I'd flag the gap the moment I noticed it rather than just carrying on with the analysis and hoping nobody asks, because a two-day unaccounted window is exactly the kind of thing that could get the whole piece of evidence challenged later. I'd report it to my supervisor and make sure it's documented clearly alongside whatever result I get, so it's transparent rather than something that surfaces for the first time in cross-examination. Even if the result would be useful to the case, a finding built on a broken chain of custody can actually do more damage than having no result at all, because it can throw doubt on evidence that might otherwise have been solid."
+    },
+    "commonMistakes": [
+      "Proceeding with analysis and staying quiet about the gap because the result is useful",
+      "Assuming a chain of custody gap is a minor clerical issue not worth reporting",
+      "Giving no mention of documentation or escalation"
+    ],
+    "followUps": ["Should the result still be used for investigative leads even if it can't be used in court?"]
+  },
+  {
+    "id": "prog-forensic-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Missing error-rate research",
+    "program": "Forensic Science",
+    "difficulty": "hard",
+    "tags": ["error-rates", "validation", "current-debate"],
+    "question": "Many pattern-matching forensic disciplines, like tire tread or handwriting comparison, still lack large-scale error-rate studies. Why does that matter, and what would you want to see change?",
+    "lookingFor": "Understanding of why an established error rate is fundamental to a discipline's scientific credibility, and awareness of the push for validation research.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why error rates matter: without them, courts can't properly weigh how much confidence a match deserves",
+        "Note that experience-based confidence isn't the same as a scientifically measured error rate",
+        "Point to what should change, such as funded validation studies and standardized terminology reflecting real uncertainty"
+      ],
+      "modelAnswer": "Without a real error-rate study, an examiner's confidence is really just their personal experience talking, and experience isn't the same thing as a number a jury can actually weigh, it doesn't tell you how often examiners in that field get it wrong on cases where the true answer is already known. That matters because a technique can feel reliable to the people practicing it and still turn out to have a much higher error rate than anyone assumed once it's properly tested, which is basically what happened with several other pattern disciplines. What I'd want to see is funded, independent studies across these fields, plus routine proficiency testing, so that testimony can eventually say something closer to this method has a known error rate of x instead of relying on the examiner's personal sense of confidence."
+    },
+    "commonMistakes": [
+      "Confusing experience with a proven error rate",
+      "No mention of large-scale studies or proficiency testing as the actual mechanism to fix this",
+      "Treating the absence of error-rate data as a minor technicality"
+    ],
+    "followUps": ["Would you trust a technique less if it had a known 5% error rate, or more, compared to one with an unknown error rate? Why?"]
+  }
+]

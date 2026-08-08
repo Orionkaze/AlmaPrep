@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-game-development-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Game loop and delta time",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["engine", "programming", "fundamentals"],
+    "question": "What actually happens inside a game's main loop each frame, and why does delta time matter?",
+    "lookingFor": "Real technical grasp of update/render separation and why frame-rate independence matters, not just buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the loop as roughly: process input, update game state, render, repeat",
+        "Explain that delta time scales movement and physics so behaviour is consistent regardless of frame rate",
+        "Mention the risk of not using it: a game that runs differently on a fast machine versus a slow one"
+      ],
+      "modelAnswer": "Every frame the loop takes input, updates the game state, then renders the result, and it does this dozens of times a second. Delta time is the interval since the last frame, and you multiply movement and physics by it so a character moves the same real-world distance per second whether the game is running at 30 or 144 frames a second. I found this out the hard way in a small Unity project where my character sprinted twice as fast on my friend's high refresh monitor until I fixed the update to use deltaTime properly. It taught me that a lot of invisible bugs in games come from timing, not logic."
+    },
+    "commonMistakes": [
+      "Describing the loop only as rendering graphics with no mention of update or input",
+      "Not knowing why frame-rate dependence causes bugs",
+      "Confusing delta time with frame rate itself"
+    ],
+    "followUps": ["How would a fixed timestep for physics differ from a variable one for rendering?"]
+  },
+  {
+    "id": "prog-game-development-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Difficulty curves and flow",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["design", "difficulty", "player-experience"],
+    "question": "What makes a difficulty curve feel fair rather than frustrating, and can you point to a game that gets this right or wrong?",
+    "lookingFor": "Understanding of flow theory, matching challenge to growing skill, backed by a specific example.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the idea of keeping challenge just ahead of player skill, not flat and not spiking",
+        "Distinguish difficulty from unfairness, such as randomness or unclear rules versus genuine skill demand",
+        "Give a concrete game example with a specific moment, not a vague genre claim"
+      ],
+      "modelAnswer": "A curve feels fair when the challenge rises just ahead of what the player has learned to do, so you're always slightly stretched but never stuck without new tools. Celeste does this well, every level introduces one new mechanic, lets you fail safely and instantly, and only then escalates it, so death never feels random. Compare that to games where a difficulty spike comes from an unexplained enemy pattern rather than a skill you were taught, that reads as unfair rather than hard. I think that distinction, skill versus surprise, is the real difference between challenging and frustrating."
+    },
+    "commonMistakes": [
+      "Equating harder with more enemies or bigger numbers only",
+      "Giving no specific game or moment as evidence",
+      "Ignoring the role of failure recovery time in how difficulty feels"
+    ],
+    "followUps": ["How might difficulty design differ for a single-player game versus a competitive multiplayer one?"]
+  },
+  {
+    "id": "prog-game-development-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Procedural generation trade-offs",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["design", "procedural-generation", "content"],
+    "question": "What do you gain and lose when a game uses procedural generation instead of hand-crafted content?",
+    "lookingFor": "Balanced understanding of replayability and scale versus authored pacing and memorability.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the gains: replayability, scale, reduced authoring cost for large worlds",
+        "Name the losses: weaker hand-tuned pacing, risk of repetitive or forgettable spaces",
+        "Show awareness that many games blend both, such as procedural layout with hand-placed set pieces"
+      ],
+      "modelAnswer": "Procedural generation gives you replayability and scale you could never afford to hand-build, which is why a roguelike like Hades can feel fresh after dozens of runs. What you lose is the kind of deliberate pacing a designer gives a hand-crafted level, the perfectly placed reveal or the exact difficulty spike at exactly the right beat. I think the best solutions blend the two, Hades actually hand-authors its rooms and encounters and only randomises the order and combination, so it keeps authored quality while still getting variety. That hybrid approach is what I find most interesting to study."
+    },
+    "commonMistakes": [
+      "Treating procedural generation as strictly better or strictly worse with no nuance",
+      "Not mentioning any real example",
+      "Ignoring hybrid approaches that combine both methods"
+    ],
+    "followUps": ["What kind of game would you never want to use procedural generation for, and why?"]
+  },
+  {
+    "id": "prog-game-development-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Collision detection",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["programming", "physics", "algorithms"],
+    "question": "How would you detect whether two moving objects have collided in a 2D game, and why can naive per-frame checks fail?",
+    "lookingFor": "Concrete technical reasoning about collision detection and awareness of tunnelling at high speed.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a basic check, such as bounding boxes or circle overlap tested each frame",
+        "Explain tunnelling: a fast object can skip past a thin wall between two frames if you only check current positions",
+        "Mention a fix, such as swept collision, raycasting along the movement path, or smaller timesteps"
+      ],
+      "modelAnswer": "The simple version is checking each frame whether two bounding boxes or circles overlap, which works fine for slow-moving objects. The problem is a fast bullet can be on one side of a wall in one frame and the other side in the next, so a naive check never sees them overlap and the bullet tunnels straight through. I ran into exactly this building a small breakout clone, where a fast ball would occasionally skip through a paddle. The fix is swept collision, essentially casting the object's movement path as a line and checking where it would first intersect the wall, rather than just comparing two static snapshots."
+    },
+    "commonMistakes": [
+      "Describing only static overlap checks with no awareness of tunnelling",
+      "Vague hand-waving about the physics engine handling it",
+      "Not proposing any concrete fix when pressed"
+    ],
+    "followUps": ["Would your approach change for a 3D game with many fast-moving objects?"]
+  },
+  {
+    "id": "prog-game-development-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Finite state machines for AI",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["ai", "programming", "enemy-design"],
+    "question": "How would you structure the behaviour of an enemy that can patrol, chase, and attack, and what breaks down with that structure as complexity grows?",
+    "lookingFor": "Understanding of finite state machines as a starting point and awareness of their scaling limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a finite state machine with clear states and transition conditions",
+        "Identify the scaling problem: state count and transitions explode as behaviours grow",
+        "Mention an alternative, such as behaviour trees, as a way to manage that complexity"
+      ],
+      "modelAnswer": "I'd model it as a finite state machine with states like patrol, chase, and attack, each with clear conditions for switching, for example seeing the player triggers chase and getting close enough triggers attack. The issue is that as you add more behaviours, like fleeing at low health or calling for backup, the number of transitions between states grows really fast and the logic gets tangled and hard to debug. I actually hit this in a small project where a five-state enemy became almost unreadable once I added two more conditions. That's when I read about behaviour trees, which organise decisions hierarchically instead of as a flat web of transitions, and it made the enemy logic much easier to reason about."
+    },
+    "commonMistakes": [
+      "Describing states with no transition logic",
+      "Not recognising that FSMs become unwieldy at scale",
+      "Naming behaviour trees without explaining what problem they actually solve"
+    ],
+    "followUps": ["How would you test that an AI's behaviour is actually working as intended?"]
+  },
+  {
+    "id": "prog-game-development-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Teaching mechanics without tutorials",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["design", "onboarding", "level-design"],
+    "question": "How can a level teach a player a new mechanic without a text pop-up or explicit tutorial?",
+    "lookingFor": "Grasp of environmental and implicit teaching, ideally with a named example.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe using level layout to force or invite the mechanic in a low-risk context",
+        "Explain the idea of a safe space to fail before the mechanic becomes mandatory or dangerous",
+        "Cite a specific example, such as Super Mario Bros' first level layout"
+      ],
+      "modelAnswer": "You design the space so the mechanic is almost the only reasonable move, in a low-stakes area where failing costs nothing. The classic example is world 1-1 in Super Mario Bros, where the very first enemy walks toward you across flat ground with nothing else going on, so you either jump or bump into it, and you learn jumping without a single word of text. What I like about that design is it also teaches through safe failure, if you get it wrong the consequence is small and you can immediately try again. I think that principle, letting the space ask the question instead of a pop-up telling you the answer, is one of the most elegant ideas in game design."
+    },
+    "commonMistakes": [
+      "Only describing text-based tutorials despite the question ruling them out",
+      "No concrete example",
+      "Missing the idea of low-risk practice before the mechanic matters"
+    ],
+    "followUps": ["Can you think of a mechanic that genuinely needs an explicit tutorial rather than implicit teaching?"]
+  },
+  {
+    "id": "prog-game-development-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Player agency versus authored narrative",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["narrative", "design", "player-agency"],
+    "question": "Games are often described as offering player agency, but every choice a designer offers is itself authored. Is meaningful choice in games actually possible?",
+    "lookingFor": "Comfort with a genuine design tension, not a simple yes or no, and a specific example of how it's handled well.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the paradox: all options are pre-written, so true unlimited freedom is impossible",
+        "Reframe meaningful choice as choices that feel consequential within that constraint, through tone, relationships, or trade-offs rather than infinite branching",
+        "Reference a specific game's approach to illustrate the point"
+      ],
+      "modelAnswer": "Strictly speaking, no choice in a game is ever unauthored, every branch was written by someone in advance, so total freedom is impossible. But I don't think that makes agency fake, it just means agency is really about choices feeling consequential within a bounded system rather than being infinite. Disco Elysium does this brilliantly, you can't do literally anything, but the choices you can make shape how your character sees themselves and how the world responds, which feels far more meaningful than a game with more branches but shallower consequences. So I'd say meaningful choice is possible, it's just a design illusion built well rather than an actual absence of authorship."
+    },
+    "commonMistakes": [
+      "Giving a flat yes, games have real choice, with no engagement with the paradox",
+      "Getting stuck purely in philosophy with no game design example",
+      "Confusing branching quantity with meaningful choice"
+    ],
+    "followUps": ["Does a linear game like a platformer offer any agency at all, in your view?"]
+  },
+  {
+    "id": "prog-game-development-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Multiplayer latency and lag compensation",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["networking", "multiplayer", "programming"],
+    "question": "In an online shooter, a player with high ping can seem to shoot you after they've already ducked behind cover on your screen. Why does that happen, and how do developers handle it?",
+    "lookingFor": "Awareness of client-server architecture, network delay, and lag compensation techniques like rewinding server state.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that what each client sees is delayed relative to the true server state",
+        "Introduce lag compensation, where the server rewinds hitboxes to what the shooter saw at the moment they fired",
+        "Note the trade-off this creates: fairness for the shooter can feel unfair to the person who was hit"
+      ],
+      "modelAnswer": "What you see on your screen is always slightly behind the true state on the server, because of network delay, so the shooter's client showed you still in cover a fraction of a second after you'd actually moved on the server. Most shooters use lag compensation, where the server rewinds the world back to what the shooter's client was seeing at the exact moment they fired, and checks the hit against that past state rather than the current one. It's the fairest way to handle it from the shooter's point of view, but it does mean the person who got hit can feel like they died behind cover on their own screen, which is exactly the frustration you're describing. I find it a fascinating example of how fairness in networked games is really a trade-off, not an absolute."
+    },
+    "commonMistakes": [
+      "Blaming it entirely on lag with no explanation of the mechanism",
+      "Not knowing what lag compensation actually does",
+      "Missing that the technique has a real trade-off, not just a fix"
+    ],
+    "followUps": ["Would a fighting game need the same networking approach as a shooter, or something different?"]
+  },
+  {
+    "id": "prog-game-development-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Game feel and juice",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["design", "feedback", "polish"],
+    "question": "What is 'game feel', and why can a game with simple mechanics feel amazing while a mechanically deeper game feels flat?",
+    "lookingFor": "Understanding that responsiveness and feedback, not just mechanical depth, drive how satisfying a game feels.",
+    "idealAnswer": {
+      "bullets": [
+        "Define game feel as the moment-to-moment responsiveness and feedback of an action, not the rules themselves",
+        "Give examples of feedback layers: screen shake, sound, animation timing, particle effects, input responsiveness",
+        "Explain why depth without feedback can feel flat, and simplicity with strong feedback can feel great"
+      ],
+      "modelAnswer": "Game feel is basically how satisfying an action is in the instant you do it, separate from how deep the underlying system is, it comes from things like input responsiveness, sound, screen shake, and animation timing all landing together. A game like Downwell has almost trivially simple mechanics, jump and shoot downward, but the feedback on every hit and landing is so tight and punchy that it feels incredible to play. Meanwhile you can have a mechanically rich strategy game where every click feels mushy because there's no snappy feedback confirming your action registered. That's why I think game feel is really its own discipline, it's not about what the rules allow, it's about how immediately and clearly the game responds to you."
+    },
+    "commonMistakes": [
+      "Defining game feel as just graphics quality",
+      "Confusing game feel with mechanical complexity",
+      "No concrete example of feedback techniques"
+    ],
+    "followUps": ["Can you think of a game where you felt the game feel was actively working against the mechanics?"]
+  },
+  {
+    "id": "prog-game-development-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Accessibility in game design",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["accessibility", "design", "inclusion"],
+    "question": "What does accessible game design actually involve beyond a colourblind mode, and can you name a game that does it well?",
+    "lookingFor": "Broader understanding of accessibility across motor, cognitive, and sensory needs, grounded in a real example.",
+    "idealAnswer": {
+      "bullets": [
+        "Go beyond visual accessibility to mention motor needs like remappable controls and difficulty assists, cognitive needs like clear objectives and adjustable pace, and auditory needs like subtitles and visual sound cues",
+        "Frame accessibility options as expanding who can play well, not lowering quality for everyone",
+        "Cite a specific example with specific features"
+      ],
+      "modelAnswer": "Accessible design covers a lot more than colour, things like fully remappable controls and adjustable difficulty for motor impairments, clear text and pacing options for cognitive load, and subtitles plus visual sound cues for deaf or hard of hearing players. The Last of Us Part II is often cited because it shipped with dozens of options, from full narration of menus for blind players to combat assists that don't feel like easy mode shame, they're just framed as options. I think what makes that approach good design rather than just compliance is that many of the same options, like clearer objective markers, end up helping every player, not only the ones who strictly need them. Accessibility done well tends to just be better design overall."
+    },
+    "commonMistakes": [
+      "Only mentioning colourblind modes or subtitles",
+      "Framing accessibility as a niche feature rather than good general design",
+      "No specific game example with concrete features"
+    ],
+    "followUps": ["Are there mechanics you think are inherently hard to make accessible? Which, and why?"]
+  },
+  {
+    "id": "prog-game-development-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Asymmetric balance",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["balance", "design", "multiplayer"],
+    "question": "How do designers balance a competitive game where the sides or characters aren't identical, like a fighting game roster or an asymmetric strategy game?",
+    "lookingFor": "Understanding that balance isn't about making everything equal but about giving every option a viable answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain balance in asymmetric systems as ensuring every choice has a counter or a competitive win rate, not literal equality",
+        "Mention tools designers use: playtesting data, win-rate tracking, and iterative patching",
+        "Show awareness that perfect balance is a moving target, especially post-launch"
+      ],
+      "modelAnswer": "In an asymmetric game, balance doesn't mean every character or side is identical, it means every option has a viable answer and no single choice dominates across skill levels. Designers rely heavily on data, tracking win rates and pick rates across different levels of play, because what feels overpowered to a beginner might be balanced or even weak at a high level, and patches adjust numbers or add counters rather than making everything the same. Starcraft is a good example, the three races play completely differently but decades of iteration have kept them close to balanced by giving each race distinct tools against the others rather than mirrored ones. I think that's the core insight, balance is about the shape of the whole rock-paper-scissors web, not about individual pieces being equal."
+    },
+    "commonMistakes": [
+      "Assuming balance means making all options mathematically identical",
+      "No mention of data or playtesting as tools",
+      "Treating balance as a one-time fix rather than an ongoing process"
+    ],
+    "followUps": ["How would you decide whether a strategy is genuinely overpowered versus just underused?"]
+  },
+  {
+    "id": "prog-game-development-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Branching narrative cost",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["narrative", "design", "production"],
+    "question": "Why don't more games offer fully branching storylines where every choice leads to a completely different path?",
+    "lookingFor": "Understanding of the combinatorial cost of branching content, sometimes called the narrative bomb problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the combinatorial explosion: each fully separate branch multiplies the writing, art, voice, and QA work",
+        "Mention techniques studios use to fake breadth cheaply, such as converging paths, flag-based variation, or delayed consequences",
+        "Show awareness of the trade-off between scope and replay value"
+      ],
+      "modelAnswer": "If every choice truly forked the whole rest of the game, the amount of content, writing, voice acting, art, and testing would multiply exponentially, and most studios simply can't afford to build and polish content that most players will never see in a single playthrough. That's why a lot of branching narrative games actually converge, you get a handful of diverging scenes that funnel back into a shared spine, and the game tracks flags in the background that colour dialogue and small details later without needing entirely separate levels. Telltale's games leaned hard on this, the illusion of huge branching felt real moment to moment even though the underlying structure was much narrower. I think that's a smart trade-off, spending the budget on the choices that feel most consequential rather than spreading it thin across every possible path."
+    },
+    "commonMistakes": [
+      "Not recognising the production cost angle at all",
+      "Assuming branching is purely a writing problem rather than art, audio, and QA too",
+      "No mention of techniques used to fake breadth"
+    ],
+    "followUps": ["If you had to choose, would you rather a game have fewer, deeper choices or more, shallower ones?"]
+  },
+  {
+    "id": "prog-game-development-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Performance optimization trade-offs",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["engine", "optimization", "graphics"],
+    "question": "A game is running below its target frame rate on the intended hardware. What are some of the trade-offs you'd consider to fix it?",
+    "lookingFor": "Technical literacy about common optimization levers and the trade-offs each one carries.",
+    "idealAnswer": {
+      "bullets": [
+        "Name concrete techniques: level of detail models, reducing draw calls, culling off-screen objects, lowering shadow or particle quality",
+        "Explain that each fix has a visible cost, such as popping geometry or reduced fidelity",
+        "Show awareness that you first profile to find the actual bottleneck rather than guessing"
+      ],
+      "modelAnswer": "The first thing I'd want is to actually profile the game rather than guess, because a slowdown could be the CPU struggling with too many draw calls or the GPU struggling with overdraw, and the fix is different for each. If it's rendering, common levers are level of detail models that simplify geometry at a distance, culling objects that are off-screen so they're never drawn, and dialing back shadow resolution or particle counts. Each of those has a visible cost though, LOD swaps can pop noticeably if the transition distance is too close, and cutting particles can make an explosion feel weaker. I think the skill isn't knowing the techniques, it's knowing which trade-off is least noticeable for that specific game's style."
+    },
+    "commonMistakes": [
+      "Jumping straight to fixes without mentioning profiling first",
+      "Naming techniques with no understanding of their visible cost",
+      "Vague answers like 'optimise the code' with no specifics"
+    ],
+    "followUps": ["How would your answer differ if the bottleneck turned out to be CPU-bound rather than GPU-bound?"]
+  },
+  {
+    "id": "prog-game-development-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Loot boxes and monetization aimed at minors",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["ethics", "monetization", "regulation"],
+    "question": "Loot boxes have been compared to gambling and some countries now regulate them. If you were designing a game's monetization, where would you draw the line?",
+    "lookingFor": "Ethical reasoning that weighs business reality against player welfare, especially for younger or vulnerable players, without dodging the tension.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both sides: monetization funds free-to-play games, but randomised paid rewards can exploit compulsive spending, especially in minors",
+        "Propose a concrete line, such as disclosed odds, no randomised purchases for players under a certain age, or cosmetic-only randomisation rather than power",
+        "Show awareness this is a live regulatory debate, not a settled question"
+      ],
+      "modelAnswer": "I understand why loot boxes exist, free-to-play games need revenue and randomised rewards are proven to drive spending, but I think the line has to be drawn at whether the randomised item affects gameplay power versus just cosmetics, and at whether the odds are disclosed. A loot box that only offers skins with published drop rates feels closer to a blind bag toy than gambling, but one that sells randomised power in a competitive game, with hidden odds, aimed at a playerbase that includes children, crosses into something I'm not comfortable with. Belgium and the Netherlands have already restricted these mechanics under gambling law, and I think that regulatory pressure is pushing the industry toward exactly this kind of distinction. If I were designing monetization, I'd rather build a slower, more sustainable revenue model than one that depends on exploiting a small number of compulsive spenders."
+    },
+    "commonMistakes": [
+      "Condemning all monetization as unethical with no acknowledgement of why it exists",
+      "Defending loot boxes purely on business grounds with no ethical line at all",
+      "Not knowing that this is an active regulatory debate in several countries"
+    ],
+    "followUps": ["Would your answer change for a game aimed entirely at adults rather than a general audience?"]
+  },
+  {
+    "id": "prog-game-development-b-015",
+    "category": "Ethics & Situational",
+    "subtopic": "Crunch culture in studios",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["ethics", "labor", "industry"],
+    "question": "Crunch, unpaid or expected overtime before a game's release, has been widely criticised in the industry, yet it's still common. If you were leading a small team facing a slipping deadline, how would you handle it?",
+    "lookingFor": "Understanding of the human cost of crunch and a preference for structural fixes like scope or schedule adjustment over normalising overtime.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge crunch causes real harm, burnout, turnover, and worse-quality decisions late in a project",
+        "Prefer scope cuts, schedule extension, or better upfront planning over asking the team to just work more hours",
+        "Show awareness of real industry cases and why the practice persists despite criticism"
+      ],
+      "modelAnswer": "I've read about the effects of crunch on studios like the reports around Cyberpunk 2077's development, and what strikes me is that it doesn't even reliably produce a better game, it produces burnt out teams and rushed decisions in the final weeks that are often the buggiest. If I were leading a small team facing a slipping deadline, my instinct would be to cut scope or push the date before I'd ask people to work unsustainable hours, because a smaller, well-tested game beats a bloated, exhausted one. I do understand why it happens, publisher deadlines and marketing dates create real pressure that a small studio may not control, but I think normalising crunch just passes that pressure straight onto the people least able to push back. I'd rather build a culture where flagging a slipping deadline early is safe, so the fix is scope or time, not silent overtime."
+    },
+    "commonMistakes": [
+      "Treating crunch as simply 'part of the industry' with no ethical concern",
+      "No concrete alternative offered, just criticism of crunch",
+      "No awareness of real, well-known cases"
+    ],
+    "followUps": ["What would you do if the publisher, not you, was the one demanding the deadline stay fixed?"]
+  },
+  {
+    "id": "prog-game-development-b-016",
+    "category": "Ethics & Situational",
+    "subtopic": "Cultural representation in game worlds",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["ethics", "representation", "narrative"],
+    "question": "Games increasingly draw on real cultures and histories for their settings and characters. How would you approach representing a culture that isn't your own in a game you're designing?",
+    "lookingFor": "Thoughtful reasoning about research, consultation, and avoiding stereotype, rather than a defensive or dismissive answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the risk of flattening a culture into surface aesthetics or stereotype for spectacle",
+        "Propose concrete steps: genuine research, consulting people from that culture, involving them in the process rather than just referencing them",
+        "Balance this against not being paralysed into avoiding diverse settings altogether"
+      ],
+      "modelAnswer": "I'd want to be honest that as an outsider I can easily flatten a culture into its most visually striking surface details without understanding what actually matters to the people who live it, which is how you end up with settings that feel more like costume than context. My approach would be to do real research beyond a quick image search, and where possible bring in cultural consultants or writers from that background rather than just referencing their culture from the outside. I don't think the answer is to avoid diverse settings entirely, that just narrows games to whatever the mostly homogeneous industry already knows, but representation done carelessly can genuinely hurt people, so I'd rather slow down and get it right than ship something fast and thoughtless. Games like Never Alone, made with the Iñupiat community rather than just about them, feel like the right model to me."
+    },
+    "commonMistakes": [
+      "Dismissing the concern as overly sensitive or as censorship",
+      "No concrete process, only good intentions stated vaguely",
+      "Concluding that avoiding non-native cultures entirely is the safest and best answer"
+    ],
+    "followUps": ["What would you do if a cultural consultant and your creative vision genuinely conflicted?"]
+  },
+  {
+    "id": "prog-game-development-b-017",
+    "category": "Ethics & Situational",
+    "subtopic": "Engagement optimization and player wellbeing",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["ethics", "dark-patterns", "player-wellbeing"],
+    "question": "Some live-service games use daily login streaks, fear-of-missing-out timers, and push notifications specifically to maximise time spent, sometimes called dark patterns. Where's the line between good retention design and exploiting players?",
+    "lookingFor": "Nuanced reasoning that distinguishes healthy engagement hooks from mechanics designed to exploit anxiety or compulsion.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that wanting players to come back isn't inherently wrong, that's just good design",
+        "Identify the line as whether the mechanic serves genuine enjoyment versus manufactured anxiety, e.g. real fear of missing out driving compulsive logins",
+        "Give a concrete example of a mechanic on either side of that line"
+      ],
+      "modelAnswer": "I don't think wanting players to want to come back is the problem, a genuinely fun core loop naturally makes people want to return, and that's just good design. The line for me is whether the mechanic is generating real anxiety rather than real enjoyment, something like a permanently-lost daily streak or a limited-time item that vanishes forever creates a fear response that overrides whether the player is actually having fun in that session. I think a battle pass with a generous window and clear progress tracking is on the healthier side of that line, while an aggressively countdown-timed exclusive skin pushed through a notification at 11pm is deliberately manufacturing urgency rather than earning it. As a designer I'd want to ask honestly whether a mechanic works because the game is good, or because it's exploiting a fear players didn't choose to have."
+    },
+    "commonMistakes": [
+      "Treating all retention mechanics as equally acceptable or equally exploitative",
+      "No concrete distinguishing test, just vague discomfort",
+      "Ignoring that studios have real commercial pressure driving these choices"
+    ],
+    "followUps": ["Would your answer change if the game was aimed at children rather than adults?"]
+  },
+  {
+    "id": "prog-game-development-b-018",
+    "category": "Ethics & Situational",
+    "subtopic": "Moderating toxicity in online communities",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["ethics", "community", "moderation"],
+    "question": "You're on a small team that just shipped a multiplayer game, and its in-game chat is being used for targeted harassment against certain players. What would you actually do?",
+    "lookingFor": "Practical, prioritised thinking about moderation trade-offs, not just a vague call for 'better moderation'.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise the immediate harm: give affected players tools like mute, block, and report that work quickly",
+        "Address the systemic side: staffing or automated moderation, clear community guidelines, visible consequences",
+        "Show awareness of the trade-off between free expression in games and the duty of care a studio has to its players"
+      ],
+      "modelAnswer": "My first priority would be giving affected players immediate tools, a functioning mute and block and a report system that actually leads to visible consequences, because a policy that only helps future players doesn't help the person being harassed right now. Beyond that immediate layer, I'd want the team to look at whether this is a pattern, which usually means investing in either automated text filtering or enough human moderation capacity to act on reports quickly, and publishing clear community guidelines so enforcement isn't arbitrary. I do think there's a real tension between wanting an open, expressive community and the studio's duty of care to players, especially since harassment disproportionately targets women and minority players in gaming communities, and I don't think 'it's just banter' is a good enough reason to under-invest here. As a small team we might not have the resources of a big publisher, but even basic, fast-acting tools go a long way before you can build out the bigger systems."
+    },
+    "commonMistakes": [
+      "Giving a vague answer like 'we would moderate better' with no concrete mechanism",
+      "Ignoring the immediate needs of the harassed player in favour of only long-term policy",
+      "Dismissing the issue as unavoidable or not the studio's responsibility"
+    ],
+    "followUps": ["How would you balance moderation costs against the fact that you're a small, resource-constrained team?"]
+  },
+  {
+    "id": "prog-game-development-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI in game content creation",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["ai", "industry", "current-debate"],
+    "question": "Generative AI is increasingly used to produce game art, dialogue, and even code. What's your view on where it helps and where it threatens something valuable about how games get made?",
+    "lookingFor": "Balanced awareness of a live industry debate, covering both productivity gains and genuine concerns like job displacement and creative authorship.",
+    "idealAnswer": {
+      "bullets": [
+        "Name concrete uses: rapid prototyping, placeholder art, procedural dialogue variation, code assistance",
+        "Name concrete concerns: displacement of concept artists and writers, training data and consent issues, homogenised or generic-feeling output",
+        "Land on a considered personal position rather than pure enthusiasm or pure rejection"
+      ],
+      "modelAnswer": "I think generative AI is genuinely useful for things like rapid prototyping, quickly mocking up placeholder art or generating dialogue variations so a small team can iterate faster before committing real budget to final assets. What worries me more is the effect on artists and writers whose work, often without consent, trained the very models now used to replace parts of their job, and the risk that games start to feel generic if a lot of studios lean on similar tools trained on similar data. I don't think the answer is rejecting the technology outright, that's not realistic given the cost pressures a lot of studios are under, but I do think there's a real difference between using it as a tool inside a human creative process and using it to quietly replace the people who built that creative vision in the first place. I'd want any studio I worked for to be transparent about where and how it's used, both with players and with its own team."
+    },
+    "commonMistakes": [
+      "Uncritical enthusiasm with no mention of labor or consent concerns",
+      "Blanket rejection with no acknowledgement of legitimate uses",
+      "Showing no awareness this is an active, contested industry debate right now"
+    ],
+    "followUps": ["Should players be told when game content was AI-generated? Why or why not?"]
+  },
+  {
+    "id": "prog-game-development-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Live-service monetization fatigue",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["industry", "monetization", "current-debate"],
+    "question": "A lot of live-service games have recently shut down or underperformed despite big budgets, and players increasingly talk about 'live-service fatigue'. Why do you think that's happening?",
+    "lookingFor": "Awareness of a recent, real industry trend with a reasoned explanation, not just a vague 'people are tired of it'.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the market saturation problem: too many games competing for the same limited player attention and spend",
+        "Mention specific pressures: ongoing content demands, monetization fatigue, and the difficulty of dethroning entrenched titles",
+        "Reference at least one real example of a high-profile live-service shutdown or struggle"
+      ],
+      "modelAnswer": "I think the core issue is that live-service games ask for something scarcer than money, they ask for a player's ongoing attention, and there's only so much of that to go around when a handful of titles like Fortnite or League of Legends have already captured most of it. Games like Concord shutting down within weeks of launch, or Suicide Squad underperforming despite a big budget, show that even well-funded games struggle to pull players away from an established live-service habit, and building all the ongoing content, seasons, and battle passes that the model demands is enormously expensive to sustain if the audience doesn't show up. I also think players have become more wary of investing time and money into a game that might get shut down entirely, so the fatigue is partly a rational response to watching that happen repeatedly. It makes me think the smarter long-term bet for a lot of studios is a strong single-player or smaller-scope game rather than chasing the next live-service hit."
+    },
+    "commonMistakes": [
+      "No specific real examples of recent live-service struggles or shutdowns",
+      "Reducing it to 'players got bored' with no structural explanation",
+      "Confusing live-service fatigue with a general decline in gaming's popularity, which isn't accurate"
+    ],
+    "followUps": ["Do you think live-service games as a model are here to stay, or a passing trend?"]
+  },
+  {
+    "id": "prog-game-development-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Blockchain and NFT games backlash",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["industry", "current-debate", "monetization"],
+    "question": "A few years ago several major publishers pushed into blockchain and NFT games, and most of those efforts were quietly abandoned after strong player backlash. What do you think went wrong?",
+    "lookingFor": "Understanding of why the pitch failed to connect with players, covering both technical and cultural reasons.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the mismatch: NFTs promised ownership and investment value, but players wanted fun, not a speculative asset",
+        "Mention the environmental and scam-association baggage that came with blockchain at the time",
+        "Reference at least one specific case, such as Ubisoft's Quartz or the wider industry reaction"
+      ],
+      "modelAnswer": "I think the core problem was that the pitch, owning a tradeable, verifiably scarce in-game item, answered a question players weren't really asking. Most people play games to have fun and feel a sense of progress, not to hold a speculative asset, and framing cosmetic items as investments felt at odds with why people play in the first place. It also arrived carrying a lot of baggage, the environmental cost of early blockchain tech and its close association with crypto scams made players deeply skeptical before they'd even evaluated the actual game mechanics, which is part of why Ubisoft's Quartz NFT experiment was so widely mocked and quietly shelved. I think it's a good case study in a mismatch between what a technology enables and what an audience actually wants, the capability existed but nobody had asked for it."
+    },
+    "commonMistakes": [
+      "No specific example or case referenced",
+      "Dismissing it purely as 'a scam' with no deeper reasoning about player motivation",
+      "Confusing blockchain gaming with unrelated crypto topics with no gaming connection"
+    ],
+    "followUps": ["Is there any version of blockchain technology in games you think could work? Why or why not?"]
+  },
+  {
+    "id": "prog-game-development-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-driven NPCs and dynamic dialogue",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["ai", "narrative", "current-debate"],
+    "question": "Some recent games are experimenting with large language models to give NPCs open-ended, generated dialogue instead of pre-written lines. What are the risks and possibilities of that approach?",
+    "lookingFor": "Grasp of a genuinely current technical and design debate, weighing creative possibility against control and quality concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the possibility: NPCs that respond to truly open player input rather than a fixed dialogue tree, increasing immersion",
+        "Name the risks: loss of authorial control, inconsistent tone or lore-breaking responses, unpredictable or unsafe outputs",
+        "Show a considered view on whether this fits every kind of game or only specific ones"
+      ],
+      "modelAnswer": "The appeal is obvious, a shopkeeper or companion who can respond to genuinely open-ended player input instead of picking from three pre-written options would make a world feel much more alive, and demos like the one built into inZOI or the earlier work using GPT for Skyrim mods show real promise there. The risk is that a writer loses precise control over tone, lore consistency, and pacing, an NPC might say something that contradicts the game's established world or breaks the emotional beat a scene was building toward, and there's also a real question of quality, generated dialogue can be blander or more generic than something a skilled writer crafted specifically for that moment. I don't think it replaces authored dialogue for a story-critical scene, but I could see it working well for background NPCs or open-world flavour text where variety matters more than precision. I'd want to use it as an addition to strong authored writing, not a replacement for it."
+    },
+    "commonMistakes": [
+      "Pure enthusiasm with no mention of authorial control or consistency risk",
+      "Dismissing the technology outright with no acknowledgement of genuine creative potential",
+      "No awareness that this is being actively tried in real, recent projects"
+    ],
+    "followUps": ["Would you trust an LLM-driven NPC in a game with strong lore, like a long-running RPG series? Why or why not?"]
+  },
+  {
+    "id": "prog-game-development-b-023",
+    "category": "Curveball/Personality",
+    "subtopic": "Design under a severe constraint",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "design", "constraint"],
+    "question": "You have to design a genuinely fun game using only one button as input. Walk me through how you'd approach it.",
+    "lookingFor": "Creative, structured design thinking under constraint, not just naming an existing one-button game from memory.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the constraint forces depth from timing, rhythm, or context rather than input variety",
+        "Sketch a concrete mechanic, e.g. timing-based jump height, or the button meaning changes based on game state",
+        "Reference how real one-button games solve this, while showing your own reasoning rather than just reciting an example"
+      ],
+      "modelAnswer": "With one button, all the depth has to come from when you press it and what state the game is in when you do, not from which button you press. I'd probably build around timing, something like a character that auto-runs and jumps on press, where the height or arc of the jump depends on how long you hold it, so the skill is entirely about rhythm and reaction rather than input combinations. I know Flappy Bird does something similar, a single tap for a flap, and the entire difficulty curve comes from how tightly the gaps are spaced, which shows you don't need many verbs if the timing window is tuned well. I'd want to prototype fast and playtest constantly, because with only one input, the feel of that single interaction has to carry the whole game, so any mushiness there is fatal."
+    },
+    "commonMistakes": [
+      "Simply naming an existing one-button game with no original reasoning",
+      "Trying to smuggle in multiple inputs like holds and double-taps as separate 'buttons'",
+      "No mention of iterative playtesting given how much weight the single mechanic carries"
+    ],
+    "followUps": ["What genre do you think is hardest to make work with only one button?"]
+  },
+  {
+    "id": "prog-game-development-b-024",
+    "category": "Curveball/Personality",
+    "subtopic": "Fixing an overpowered mechanic post-launch",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "balance", "design"],
+    "question": "Your competitive game just launched, and within a week a single strategy is winning almost every match, breaking the game. What do you do in the first 48 hours, and what do you do longer term?",
+    "lookingFor": "Structured crisis thinking that separates an immediate stopgap from a properly tested long-term fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Short term: a fast, minimal, reversible fix such as a small numeric nerf or a hotfix, communicated clearly to players",
+        "Longer term: proper root-cause analysis of why it's dominant, followed by a tested rebalance rather than a panic overcorrection",
+        "Show awareness of the communication side, players trust developers more when changes are explained, not just silently patched"
+      ],
+      "modelAnswer": "In the first 48 hours I'd want the smallest, safest change that takes the strategy from dominant to merely strong, something like a targeted numeric nerf rather than a redesign, because a rushed structural change under panic is how you accidentally break something else. I'd also communicate clearly and quickly, telling players we've seen the issue and a fix is coming, because silence during an obviously broken meta erodes trust fast. Longer term I'd want the team to actually understand why the strategy is dominant, is it a genuine power outlier or is it just unusually easy to execute compared to its counters, because those need different fixes, and I'd want any bigger rebalance properly tested before it ships rather than being another rushed hotfix. I think the instinct to way overcorrect out of panic is exactly what turns one balance problem into a cycle of new ones."
+    },
+    "commonMistakes": [
+      "Only giving a long-term answer with no plan for the immediate crisis",
+      "Proposing a drastic rework as the immediate fix, risking new problems",
+      "No mention of communicating with the player base"
+    ],
+    "followUps": ["How would you tell the difference between a strategy that's truly broken versus one that's just newly discovered and not yet countered?"]
+  },
+  {
+    "id": "prog-game-development-b-025",
+    "category": "Curveball/Personality",
+    "subtopic": "Publisher pressure to cut a core feature",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "production", "creative-vision"],
+    "question": "Imagine you're the lead designer on a small game, and close to launch the publisher asks you to cut the one feature you believe is the heart of the game's identity, to save time and cost. How do you respond?",
+    "lookingFor": "Balanced thinking about creative conviction versus commercial reality, and a constructive, evidence-based way to push back.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid both extremes: blind compliance that guts the vision, and stubborn refusal that ignores real business constraints",
+        "Propose making the case with evidence, e.g. playtesting data or a specific comparison, rather than just personal conviction",
+        "Consider a compromise, such as a scoped-down version of the feature rather than an all-or-nothing fight"
+      ],
+      "modelAnswer": "My first move wouldn't be to simply refuse, publishers usually have real cost and schedule pressures I might not fully see from inside the design team, but I also wouldn't cut something I believe is core just to avoid conflict. I'd want to make my case with evidence rather than just conviction, pulling playtest feedback or comparing what reviewers and players responded to most in similar games, to show concretely why this feature is what makes the game distinct rather than interchangeable with anything else on the market. If the schedule genuinely can't support the full version, I'd look for a compromise, a scoped-down but still recognisable version of the feature rather than losing it entirely, because half of a great idea is often still worth more than a fully polished but generic game. I think the goal is to treat it as a negotiation grounded in evidence, not a standoff between my vision and their spreadsheet."
+    },
+    "commonMistakes": [
+      "Immediately caving with no attempt to make a reasoned case",
+      "Framing it as a pure standoff with no room for compromise or evidence",
+      "Ignoring that the publisher's business constraints might be entirely legitimate"
+    ],
+    "followUps": ["What would you do if you made your case with evidence and the publisher still said no?"]
+  }
+]

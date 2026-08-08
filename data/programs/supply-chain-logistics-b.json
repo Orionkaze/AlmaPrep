@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-supply-chain-logistics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "EOQ trade-off reasoning",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["quantitative", "inventory", "eoq"],
+    "question": "A company doubles its order quantity to get a bulk discount and cut ordering frequency in half. Walk me through what that does to their total inventory costs, not just the purchase price.",
+    "lookingFor": "Correctly reasons that ordering cost falls but holding cost rises, showing a real model of the EOQ trade-off rather than assuming bigger orders are simply cheaper.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the discount price only affects part of the total cost picture",
+        "Explain ordering cost falls because fewer orders are placed per year",
+        "Explain holding cost rises because average inventory increases, and weigh the two against each other"
+      ],
+      "modelAnswer": "If they double the order size, ordering costs drop because they're placing half as many orders a year, and that's the obvious win everyone points to. But average inventory on hand roughly doubles too, since average inventory is order quantity over two, so holding costs, warehouse space, insurance, the risk of the stock going stale, all rise at the same time. Whether the bulk discount actually makes sense depends on whether the ordering cost savings and the discount itself outweigh that extra holding cost, which is exactly the trade-off the EOQ model is built to find rather than just assuming bigger orders are always cheaper."
+    },
+    "commonMistakes": [
+      "Only looking at the discounted unit price and ignoring holding cost",
+      "Assuming fewer orders is automatically better",
+      "Not connecting order quantity to average inventory level"
+    ],
+    "followUps": ["What would push the optimal order quantity down instead of up?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Vendor-managed inventory",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["vmi", "concept", "collaboration"],
+    "question": "What is vendor-managed inventory, and why might a retailer be nervous about handing that control to a supplier?",
+    "lookingFor": "Correct definition of VMI plus genuine critical reasoning about the trust and control trade-off, not just praise for the model.",
+    "idealAnswer": {
+      "bullets": [
+        "Define VMI as the supplier monitoring stock and deciding replenishment on the retailer's behalf",
+        "Give the benefit, smoother demand signal and fewer stockouts or overstocks",
+        "Name the retailer's real concern, a supplier's incentive to sell more, not necessarily to hold the leanest stock"
+      ],
+      "modelAnswer": "Vendor-managed inventory is when the supplier, not the retailer, monitors the retailer's stock levels and decides when and how much to replenish, usually with real-time sales data shared between them. It can smooth out demand swings because the supplier sees actual sales instead of guessing from orders, and it frees up the retailer's own planning time. But I'd be nervous handing that over because the supplier has its own incentive to sell more, not necessarily to hold the leanest inventory for me, so the retailer needs strong contractual service levels and enough trust in the data-sharing relationship before giving up that much control."
+    },
+    "commonMistakes": [
+      "Giving the definition with no sense of the underlying tension",
+      "Assuming VMI is purely beneficial with no downside",
+      "Confusing VMI with simple drop-shipping"
+    ],
+    "followUps": ["What kind of contract terms would make you comfortable with that arrangement?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Total cost of ownership vs unit price",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["sourcing", "cost", "reasoning"],
+    "question": "A supplier offers a component for 15 percent less than your current one. What else would you need to know before deciding to switch?",
+    "lookingFor": "Recognises that total cost of ownership includes quality, reliability, and switching cost, not just the unit price.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that unit price alone doesn't capture the total cost of the decision",
+        "Probe quality and defect rate, not just the sticker price",
+        "Consider switching or requalification costs and delivery reliability"
+      ],
+      "modelAnswer": "Before I switched I'd want to know a lot more than the sticker price, starting with defect rate and how reliable their delivery has actually been, because a cheaper part that arrives late or fails more often can easily cost more once you count rework, returns, and production downtime. I'd also factor in the cost of actually switching, requalifying the part and building trust with an unproven relationship versus a supplier we already know works. Fifteen percent sounds significant on paper, but total cost of ownership is what actually decides whether it's a good deal, not the unit price alone."
+    },
+    "commonMistakes": [
+      "Taking the price difference at face value",
+      "Ignoring quality or reliability entirely",
+      "Ignoring the cost of actually switching suppliers"
+    ],
+    "followUps": ["How would you actually quantify the risk of an unproven supplier?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital twins in supply chain planning",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["technology", "simulation", "current-development"],
+    "question": "You may have heard of companies building 'digital twins' of their supply chains. What do you understand that to mean, and what's it actually good for?",
+    "lookingFor": "A correct grasp of a digital twin as a live simulated model, with a realistic sense of its use case rather than hype.",
+    "idealAnswer": {
+      "bullets": [
+        "Define it as a virtual, data-fed model that mirrors the real physical network",
+        "Explain its use for running what-if scenarios before a disruption actually happens",
+        "Note the real limit, it's only as good as the data feeding it"
+      ],
+      "modelAnswer": "A digital twin is a virtual model of the actual supply chain, warehouses, routes, suppliers, that's fed by live data so it mirrors what's really happening rather than being a static diagram. What makes it useful is you can run what-if scenarios on it, what happens to our delivery times if this port closes for two weeks, without actually having to live through the disruption to find out. I think the value is real but easy to oversell, the model is only as good as the data feeding it, and building one that's accurate across a messy global network is a much bigger undertaking than the marketing usually suggests."
+    },
+    "commonMistakes": [
+      "Giving a vague buzzword answer with no real mechanism",
+      "Treating it as guaranteeing accurate predictions",
+      "No acknowledgment of the data or build limitations"
+    ],
+    "followUps": ["What kind of decision would you trust a digital twin's output for, and what would you still want a human to check?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in demand forecasting, current debate",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["ai", "forecasting", "current-development"],
+    "question": "AI-driven demand forecasting is a big talking point in the industry right now. Where do you think it genuinely helps, and where are people overselling it?",
+    "lookingFor": "A balanced, informed view distinguishing real capability from overhype, not blanket enthusiasm or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine strength, handling many noisy signals a spreadsheet can't",
+        "Name a genuine weakness, poor performance on truly novel shocks with no history",
+        "Show healthy skepticism about vendor claims rather than uncritical optimism"
+      ],
+      "modelAnswer": "I think AI genuinely helps when there's a lot of noisy but real signal, pulling in weather, local events, and years of sales history to catch patterns a spreadsheet model would miss, and that can meaningfully cut forecast error for routine demand. Where I think it gets oversold is in genuinely novel situations, a pandemic, a geopolitical shock, a brand new product with no sales history, because the model is fundamentally pattern-matching against the past and those events by definition don't have a clean historical analogue. I'd want any company using it to still keep a human sanity-checking the output, especially whenever the world does something it hasn't done before."
+    },
+    "commonMistakes": [
+      "Uncritical techno-optimism with no limitation named",
+      "Dismissing AI entirely as hype",
+      "Giving no specific example of where it actually helps"
+    ],
+    "followUps": ["How would you actually test whether an AI forecasting tool is worth its cost?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Automation and warehouse jobs, ethical tension",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "automation", "labor"],
+    "question": "Warehouse automation and robotics can cut costs and injury rates, but they also eliminate jobs, often in communities with few other options. How do you think about that trade-off?",
+    "lookingFor": "Structured ethical reasoning acknowledging both real benefits and real human cost, not a one-sided verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine benefits, safety and competitiveness",
+        "Acknowledge the genuine human cost rather than dismissing it as inevitable",
+        "Propose a nuanced stance, such as retraining support or a paced rollout"
+      ],
+      "modelAnswer": "I don't think there's a clean answer here, because both sides are real, automation genuinely reduces injuries from repetitive lifting and makes a company more competitive, but it also displaces workers in exactly the kind of communities that don't have many other job options nearby. I'd want to push back on the idea that this is simply the cost of progress and workers should just adapt, because that ignores how disruptive it actually is for someone's life. I think companies that automate have some responsibility to invest in retraining or transition support and to pace the rollout rather than cutting jobs overnight, even if that's slower and more expensive than doing it all at once."
+    },
+    "commonMistakes": [
+      "Dismissing worker impact as inevitable or not the company's problem",
+      "Refusing to acknowledge real safety or cost benefits",
+      "Giving no concrete idea of what a responsible approach looks like"
+    ],
+    "followUps": ["Should that responsibility fall on the company, the government, or both?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Semiconductor supply chain concentration",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["geopolitics", "risk", "current-development"],
+    "question": "A huge share of the world's most advanced chips are made by one company in Taiwan. Why does that matter for supply chains far outside the tech industry, and what could companies realistically do about it?",
+    "lookingFor": "Understands that concentration risk cascades across industries, with a realistic, not naive, view of mitigation options.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain chips are embedded across many industries, so disruption ripples broadly",
+        "Note the geopolitical risk tied to that concentration specifically",
+        "Give realistic partial mitigations, diversifying and buffer stock, while admitting full de-risking is slow"
+      ],
+      "modelAnswer": "It matters way beyond tech because advanced chips end up embedded in cars, medical devices, appliances, basically anything with a control system, so a disruption to that one manufacturer ripples into industries that don't think of themselves as tech companies at all, which is exactly what happened to automakers during the chip shortage. On top of the concentration itself, there's real geopolitical risk given Taiwan's position, which makes it a single point of failure companies can't fully control. Realistically I don't think companies can just walk away from that dependency overnight, building new advanced fabs takes years and enormous capital, so the more honest answer is diversifying where they can and holding more buffer stock of critical chips while accepting that the most cutting-edge chips will stay concentrated for a long time."
+    },
+    "commonMistakes": [
+      "Only discussing the tech industry, missing the cascade to unrelated sectors",
+      "Suggesting companies can simply switch suppliers overnight",
+      "No acknowledgment of the geopolitical dimension"
+    ],
+    "followUps": ["Do you think government subsidies for domestic chip fabs actually solve this problem?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Red Sea shipping disruption",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["current-events", "risk", "shipping"],
+    "question": "Attacks on shipping in the Red Sea have pushed many container ships to reroute around Africa instead of through the Suez Canal. What effect does that actually have on a supply chain, beyond the ships just taking longer?",
+    "lookingFor": "Goes beyond 'it's slower' to reason about capacity, cost, and inventory planning knock-on effects.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the direct effect, added transit time and fuel cost from the reroute",
+        "Explain the capacity knock-on, the same fleet covers more distance so effective capacity shrinks and rates rise",
+        "Connect it to inventory planning, longer and less predictable lead times push companies toward more safety stock"
+      ],
+      "modelAnswer": "The extra distance around the Cape of Good Hope isn't just a few more days, it's often ten days to two weeks longer, which means the same ships are tied up longer per round trip, so effective global shipping capacity actually shrinks even though no ships have left the fleet. That's part of why freight rates spike during these periods, and it also makes lead times less predictable, not just longer, because congestion builds at the ports on the new routes. For a company planning inventory, that unpredictability is often more disruptive than the extra days themselves, because safety stock calculations are built on lead time variability, not just the average, so a lot of companies end up holding more buffer stock than the delay alone would suggest."
+    },
+    "commonMistakes": [
+      "Stopping at 'it takes longer' with no deeper mechanism",
+      "Missing the capacity and freight rate effect",
+      "Not connecting the disruption to inventory planning"
+    ],
+    "followUps": ["Do you think this kind of disruption should push companies toward permanent buffer stock, or is that overreacting to a temporary event?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Panama Canal drought",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["current-events", "climate", "risk"],
+    "question": "The Panama Canal has had to restrict how many ships pass through it during periods of drought. Why would a canal's water level have anything to do with how many ships it can handle?",
+    "lookingFor": "Understands that the canal's locks depend on fresh water, correctly connecting a climate issue to logistics.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the locks use fresh water drawn from rain-fed reservoirs, not seawater",
+        "Note low rainfall means less water to spare, so authorities cut daily transits",
+        "Frame it as climate variability becoming a direct logistics risk"
+      ],
+      "modelAnswer": "It surprised me too when I first read about it, but the canal's locks actually run on fresh water from nearby reservoirs, not seawater, because every time a ship passes through the locks that fresh water gets released out to the ocean and isn't reused. When rainfall drops, the reservoirs can't refill fast enough, so the authority has to cut the number of ships allowed through each day to conserve what's left, which creates a backlog and pushes some shippers to reroute entirely. I think it's a good example of how climate variability isn't just an environmental talking point anymore, it's become a direct and fairly unpredictable input into global shipping capacity."
+    },
+    "commonMistakes": [
+      "Confusing the canal with sea-level or tidal issues",
+      "Not knowing it depends on fresh water",
+      "Treating it as a one-off event rather than a recurring climate risk"
+    ],
+    "followUps": ["What would you do differently if you ran a company that depended heavily on that canal?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Friend-shoring and de-risking",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["geopolitics", "sourcing", "current-development"],
+    "question": "A lot of companies talk about 'friend-shoring' or 'de-risking' their supply chains away from China. What do you think that actually looks like in practice, and is it realistic?",
+    "lookingFor": "A nuanced grasp that de-risking is usually gradual and partial rather than full decoupling, with an honest view of feasibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the strategy as diversifying rather than fully exiting China",
+        "Note the reality is usually 'China plus one', adding capacity elsewhere while keeping existing operations",
+        "Acknowledge genuine constraints, decades of supplier ecosystem and skilled labour aren't easily replicated"
+      ],
+      "modelAnswer": "In practice I don't think most companies are actually leaving China, what they're doing is adding a second or third country, often Vietnam, India, or Mexico, so they're not entirely dependent on one place if relations sour or tariffs change. Full decoupling is a lot harder than the phrase suggests, because China's supplier ecosystem and skilled manufacturing workforce took decades to build, and you can't just replicate that overnight somewhere else, especially for anything complex like electronics. So I'd call it realistic as a gradual hedge rather than a genuine exit, companies are buying insurance against concentration risk, not actually abandoning the capability they've built there."
+    },
+    "commonMistakes": [
+      "Describing it as a full and imminent exit from China",
+      "Ignoring the practical difficulty of rebuilding supplier ecosystems elsewhere",
+      "Treating it as purely political with no operational reasoning"
+    ],
+    "followUps": ["What kind of product would be hardest to move out of China, and why?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Tariffs and sourcing decisions",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["tariffs", "policy", "current-development"],
+    "question": "If a government suddenly raised tariffs on a category of imported goods by 25 percent, how would that actually change a company's sourcing decisions, not just its costs?",
+    "lookingFor": "Reasons past the obvious cost increase into behavioural and strategic sourcing responses.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the direct cost effect but push past it to behaviour",
+        "Explain the shift toward non-tariffed sourcing or absorbing margin short-term",
+        "Frame tariffs as reshaping where production happens over time, not just a price pass-through"
+      ],
+      "modelAnswer": "The obvious effect is that the imported goods get more expensive, but the more interesting question is what companies actually do about it. Some will try to reroute sourcing to a country not covered by the tariff, even if that supplier is a bit more expensive on paper, because it's still cheaper than eating the full 25 percent. Others might absorb the cost for a while if switching suppliers is too disruptive, while quietly starting to qualify a new source in the background so they're not caught the same way again. I think the real lesson is that tariffs don't just raise prices, they reshape where production actually happens over time, which is part of why so much manufacturing has shifted between countries as trade policy has shifted."
+    },
+    "commonMistakes": [
+      "Only discussing the price increase with no behavioural response",
+      "Assuming companies simply absorb the cost passively",
+      "Ignoring the longer-term sourcing shift"
+    ],
+    "followUps": ["Do you think tariffs are an effective tool for bringing manufacturing back domestically?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Forced labour import restrictions",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "regulation", "forced-labor"],
+    "question": "Some countries now block imports if there's reasonable evidence a product was made with forced labour anywhere in its supply chain, even several tiers back. Do you think that's a fair standard to hold a company to?",
+    "lookingFor": "Engages with the genuine difficulty of tracing multi-tier supply chains rather than giving a simple yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the underlying ethical principle is sound",
+        "Be honest about the practical difficulty of tracing raw materials through many supplier tiers",
+        "Land on a reasoned standard, genuine due diligence effort rather than impossible perfect knowledge"
+      ],
+      "modelAnswer": "I think the principle behind it is right, a company shouldn't get to claim ignorance just because the forced labour happened four suppliers upstream from the ones they deal with directly. What makes it genuinely hard is that most companies only have real visibility into their tier one suppliers, the raw material tracing gets murkier fast the further back you go, especially for something like cotton or minerals that get blended together before they even reach a factory. So I'd say it's fair to hold companies to a standard of serious, demonstrable effort, audits, supplier mapping, third-party verification, rather than a standard of perfect knowledge that's genuinely impossible to guarantee in a complex global chain."
+    },
+    "commonMistakes": [
+      "Giving a simple yes or no with no engagement with tracing difficulty",
+      "Dismissing the regulation as unfair without weighing the ethical principle",
+      "Assuming perfect traceability is trivially achievable"
+    ],
+    "followUps": ["How would you actually go about verifying a raw material's origin several tiers back?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Carbon border adjustment mechanism",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["sustainability", "regulation", "current-development"],
+    "question": "The EU has introduced a carbon border tax on certain imported goods based on the emissions used to produce them. What problem is that trying to solve, and what challenge does it create for supply chain managers?",
+    "lookingFor": "Correctly identifies the policy intent and names a genuine operational challenge it creates.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the goal, preventing carbon leakage by matching imported and domestic carbon cost",
+        "Identify the operational challenge, actually measuring and verifying embedded emissions in imports",
+        "Note this is a live, evolving area rather than a settled one"
+      ],
+      "modelAnswer": "The idea is to stop what's called carbon leakage, where a company avoids a domestic carbon price by just importing the same good from a country with weaker emissions rules, which defeats the purpose of the domestic policy entirely and undercuts local producers who are paying for their emissions. The hard part for a supply chain manager is that you now need to actually know and prove the emissions embedded in producing that imported good, not just estimate it, and most companies don't have that kind of granular emissions tracking built into their supplier relationships yet. I think it's going to push a lot of investment into better emissions data collection across supply chains, which is a genuinely difficult and expensive thing to build well."
+    },
+    "commonMistakes": [
+      "Describing it only as an environmental policy with no trade or leakage logic",
+      "Missing the measurement and verification burden it creates",
+      "Treating it as already fully solved rather than an evolving challenge"
+    ],
+    "followUps": ["Who do you think should bear the cost of building that emissions tracking, the supplier or the buyer?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Circular economy and reverse flows",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["sustainability", "circular-economy", "strategy"],
+    "question": "What would it mean for a company to design its supply chain around a circular economy model instead of a traditional linear one, and what's genuinely hard about doing that?",
+    "lookingFor": "Understanding beyond simple recycling, designing for reuse and reverse flow, plus a realistic difficulty.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the circular model as designing so materials flow back into the system, not a one-way flow",
+        "Give a concrete example beyond recycling, such as take-back or resale programs",
+        "Identify a genuine difficulty, reverse flows are far less predictable than forward flows"
+      ],
+      "modelAnswer": "A circular model means designing the product and the supply chain together so that materials flow back in, not just recycling at the end but actually building take-back programs, refurbishment, or resale into the business from the start, like how some electronics companies now resell refurbished phones through the same channel as new ones. What's genuinely hard is that reverse flows are far less predictable than forward ones, you don't know exactly when a product will come back, in what condition, or how many will show up in a given month, which makes planning warehouse space and refurbishment capacity much messier than a standard forecast-driven forward supply chain. I think that unpredictability is the real reason circular models are still the exception rather than the norm, not a lack of environmental will."
+    },
+    "commonMistakes": [
+      "Equating circularity with recycling alone",
+      "Ignoring the reverse logistics complexity",
+      "Treating it as purely a marketing or sustainability talking point"
+    ],
+    "followUps": ["What kind of product do you think is best suited to a circular model, and which isn't?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Cold chain distribution hypothetical",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "cold-chain", "case"],
+    "question": "Imagine you're responsible for distributing a vaccine that must stay below minus 70 degrees Celsius, to rural clinics with unreliable electricity. Walk me through the main problems you'd need to solve.",
+    "lookingFor": "Structured case reasoning across the full cold chain rather than a single fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the core tension, ultra-cold requirements versus unreliable last-mile infrastructure",
+        "Propose a layered solution, specialised packaging and tighter delivery windows rather than relying on clinic storage",
+        "Acknowledge monitoring and verification matter as much as the physical solution"
+      ],
+      "modelAnswer": "The core problem is that the ultra-cold requirement and the unreliable electricity are fundamentally in conflict, so I wouldn't try to solve it by getting clinics to somehow maintain minus 70 storage, I'd instead try to shrink how long the vaccine actually needs to sit at the clinic at all. That probably means using specialised insulated containers with dry ice for the final leg, timed so batches arrive close to when they'll actually be used, rather than stockpiled for weeks. I'd also want real-time temperature monitoring on the shipment itself, not just trust, because if a batch does get compromised you need to know immediately rather than discovering it after people have already been vaccinated with a spoiled dose. It's really a scheduling and packaging problem as much as a refrigeration one."
+    },
+    "commonMistakes": [
+      "Assuming clinics can simply be equipped with the required refrigeration",
+      "Ignoring monitoring or verification of whether the cold chain held",
+      "Giving a single fix rather than a layered plan"
+    ],
+    "followUps": ["How would you decide how much wastage is an acceptable trade-off for wider reach?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Last-mile delivery economics",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["last-mile", "cost", "hypothetical"],
+    "question": "Why is the last mile of a delivery, the final trip from a depot to someone's door, usually the most expensive part of the whole journey, even though it's the shortest distance?",
+    "lookingFor": "Correct economic reasoning about lost consolidation and scale on the final leg versus long-haul transport.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast long-haul consolidation with the many scattered stops of the last mile",
+        "Explain cost drivers, driver time and vehicle capacity spread across fewer packages per stop",
+        "Mention that consolidation, lockers, and route density are the real levers"
+      ],
+      "modelAnswer": "On the long-haul legs you get real economies of scale, one container ship or truck is carrying thousands of packages at once, so the cost per package is tiny. The last mile flips that completely, a driver might make forty separate stops in a single afternoon, each one requiring its own drive time, parking, and often a failed delivery attempt if no one's home, so all that cost gets spread across far fewer packages per stop. That's exactly why companies push things like delivery lockers or asking customers to pick a tighter delivery window, because increasing the density of stops per route is really the only lever that meaningfully brings that cost down."
+    },
+    "commonMistakes": [
+      "Assuming shorter distance automatically means cheaper",
+      "Missing the stop-density or consolidation explanation",
+      "Giving no example of how companies try to reduce it"
+    ],
+    "followUps": ["Do you think drone delivery is a realistic solution to that problem, or mostly hype?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Blockchain traceability, critical evaluation",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["technology", "traceability", "current-debate"],
+    "question": "Blockchain gets pitched a lot as a way to make supply chains fully traceable and trustworthy. What do you think it can genuinely do, and where does that pitch fall apart?",
+    "lookingFor": "Critical, informed evaluation distinguishing what blockchain solves from what it can't.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what it does well, a tamper-evident shared record once data is entered",
+        "Identify the real weak point, it can't verify the data was accurate at the point of entry",
+        "Conclude with a grounded view, useful record-keeping, not a guarantee of honesty"
+      ],
+      "modelAnswer": "What blockchain genuinely does well is make a record hard to quietly alter after the fact, so if five different parties in a supply chain are all logging the same shipment, no one can secretly change their entry later without everyone else's record disagreeing. Where the pitch falls apart is that it does nothing to verify the data was true the moment it was entered, if someone scans a fake certificate or mislabels where a material actually came from, blockchain will faithfully and permanently record that lie just as well as the truth. So I think it's a genuinely useful tool for tamper-evidence and shared record-keeping between parties who don't fully trust each other, but it's not the guarantee of honesty the marketing often implies, that still comes down to who's actually checking the physical reality at the source."
+    },
+    "commonMistakes": [
+      "Uncritically repeating the 'blockchain solves trust' pitch",
+      "Dismissing it entirely with no acknowledgment of genuine tamper-evidence value",
+      "Confusing traceability with verification of truth at the source"
+    ],
+    "followUps": ["What would you actually need in addition to blockchain to solve that verification problem?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithmic supplier scoring, ethics",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "algorithm", "judgement"],
+    "question": "A company uses an algorithm to automatically score and rank suppliers, and it starts consistently deprioritising smaller, minority-owned businesses, even though nothing in the code explicitly mentions ownership. What do you make of that?",
+    "lookingFor": "Recognises proxy bias in algorithmic systems and reasons through responsibility and remedy rather than trusting the output blindly.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as proxy bias, correlated variables producing discriminatory outcomes without explicit intent",
+        "Reject 'the algorithm is neutral because it doesn't mention it' as an insufficient defence",
+        "Propose a concrete response, auditing inputs and outcomes rather than trusting the score"
+      ],
+      "modelAnswer": "I don't think it matters that ownership isn't explicitly in the code, because other variables, like years in business or order volume history, can act as a proxy for exactly the same thing, so the algorithm ends up discriminating indirectly even without anyone intending it to. Saying it's neutral because the code doesn't mention race or ownership misses the point, what actually matters is the outcome it produces, and a consistent pattern like that is a real signal something's wrong with the model, not a coincidence. I'd want the company to actually audit what inputs are driving that outcome and adjust the model or its criteria, rather than trusting a score just because it came from an algorithm instead of a person."
+    },
+    "commonMistakes": [
+      "Accepting 'the code doesn't mention it' as proof of neutrality",
+      "Treating the outcome as coincidence rather than a real signal",
+      "Offering no concrete next step to investigate or fix it"
+    ],
+    "followUps": ["Should a human always review the algorithm's decisions, or is that just reintroducing the same bias a different way?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical supplier failure hypothetical",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "crisis", "reasoning"],
+    "question": "You're managing procurement for a mid-size manufacturer, and your only supplier for a critical component just told you, with no warning, that they're shutting down within the month. Walk me through what you'd actually do in the first week.",
+    "lookingFor": "Structured crisis response prioritising immediate stabilisation before long-term fixes, with realistic sequencing.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise confirming exact stock on hand and how long production can run",
+        "Move in parallel to find any alternate source, even imperfect, to buy time",
+        "Communicate honestly and early with internal stakeholders and customers"
+      ],
+      "modelAnswer": "First thing I'd do is figure out exactly how much runway we actually have, how much of that component is in stock or already in transit, and how many days of production that buys us, because that number decides how much time I have to work with. In parallel, I'd start reaching out to any alternate suppliers I know of, even ones that are more expensive or slower, because buying a temporary bridge matters more right now than finding the perfect long-term replacement. I'd also make sure our own sales and operations teams know there's a real risk as early as possible, because customers finding out about a delay at the last minute is far worse than an early honest warning that gives everyone time to adjust."
+    },
+    "commonMistakes": [
+      "Jumping straight to finding a perfect permanent replacement instead of stabilising first",
+      "Failing to establish exact stock runway before acting",
+      "Staying silent internally until the crisis actually hits"
+    ],
+    "followUps": ["How would you decide whether to pay a premium for a rushed alternate supplier versus risk a production stoppage?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "JIT vs resilience reflection, post-pandemic",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["reflection", "strategy", "debate"],
+    "question": "After the pandemic, a lot of companies said they were moving away from lean, just-in-time models toward holding more buffer stock. A few years on, some of those same companies have quietly gone back to leaner inventory. What do you make of that shift back?",
+    "lookingFor": "Genuine reflective reasoning about the real tension between efficiency and resilience, not a simple verdict either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the shift is a real ongoing trade-off, not hypocrisy",
+        "Recognise that memory of disruption fades as cost pressure returns",
+        "Land on a nuanced own view, buffer calibrated to actual input risk, not a blanket policy"
+      ],
+      "modelAnswer": "I don't think that's necessarily hypocrisy, it's more that holding extra buffer stock is genuinely expensive, and a few years without a major disruption makes that cost feel a lot less justified than it did right after the pandemic, especially with competitors undercutting on price. What I find interesting is that it suggests resilience isn't something companies actually value in the abstract, they value it in proportion to how recently they got burned, which is a pretty human way to make decisions but not necessarily a rational one. My own view is that the right amount of buffer stock should really be calibrated to the actual risk profile of each specific input, a single-sourced critical part deserves more buffer than a commodity you can get from ten places, rather than treating it as one blanket policy that swings back and forth with recent memory."
+    },
+    "commonMistakes": [
+      "Judging companies as simply hypocritical with no deeper reasoning",
+      "Picking a single 'correct' answer, always lean or always buffered, with no nuance",
+      "Ignoring the cost side of holding buffer stock"
+    ],
+    "followUps": ["How would you convince a company not to let its risk memory fade after a few good years?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Perishable overage-underage trade-off",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["quantitative", "perishable", "reasoning"],
+    "question": "A bakery has to decide each morning how many loaves to bake before knowing exact demand. If they bake too few they lose sales, if they bake too many they throw away unsold bread. How would you think about finding the right number?",
+    "lookingFor": "Grasp of the overage-underage trade-off, reasoning toward skewing quantity by which error is cheaper, not just averaging.",
+    "idealAnswer": {
+      "bullets": [
+        "Frame it as balancing the cost of an unsold loaf against the profit lost from an unmet sale",
+        "Explain that baking exactly average demand isn't optimal if the two costs differ",
+        "Connect it to needing a sense of demand variability, not just the average"
+      ],
+      "modelAnswer": "I don't think baking exactly the average expected demand is actually the right target, because the cost of the two mistakes isn't the same, throwing away a loaf costs roughly the ingredients and labour, while a missed sale costs the full profit margin and maybe even a customer's trust if they keep finding empty shelves. If the lost-sale cost is higher than the waste cost, which it usually is for something like fresh bread, then the bakery should actually skew their bake number a bit above the average demand, accepting more frequent small waste in exchange for rarely running out. Getting that right really depends on understanding not just average demand but how much it varies day to day, so you can pick a quantity that balances those two different costs rather than just splitting the difference."
+    },
+    "commonMistakes": [
+      "Assuming baking the average demand is automatically optimal",
+      "Treating the two error costs as equivalent when they usually aren't",
+      "Giving no sense that demand variability, not just the average, matters"
+    ],
+    "followUps": ["How would a weekend versus a weekday change that calculation?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Control towers and network visibility",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["technology", "visibility", "concept"],
+    "question": "What's a supply chain 'control tower', and how is it different from just having good data in each individual system?",
+    "lookingFor": "Understands the distinction between data existing somewhere and being unified and actionable in real time.",
+    "idealAnswer": {
+      "bullets": [
+        "Define it as a centralised real-time view pulled from across the whole chain",
+        "Explain fragmented data across systems that don't talk to each other isn't really usable visibility",
+        "Give a concrete payoff, spotting a delay's downstream effect before it causes a stoppage"
+      ],
+      "modelAnswer": "A control tower is basically a centralised layer that pulls together data from across the whole chain, transportation, warehouse inventory, supplier status, orders, into one place you can actually see and act on in real time. The difference from just having good individual systems is that data scattered across ten different platforms that don't talk to each other isn't really visibility, it's just data that exists somewhere, and by the time someone manually pulls it together the moment to act on it may have passed. What a control tower actually buys you is speed, if a shipment gets delayed you can immediately see which production line downstream depends on it and react before the delay actually causes a line stoppage, rather than finding out only once it's already happened."
+    },
+    "commonMistakes": [
+      "Describing it as just another software dashboard with no explanation of the integration",
+      "Missing why fragmented data isn't the same as usable visibility",
+      "Giving no concrete example of the payoff"
+    ],
+    "followUps": ["What would make a company's data too messy to actually build a working control tower on top of?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "EV battery minerals and ethics",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["current-development", "sourcing", "sustainability"],
+    "question": "The push toward electric vehicles depends heavily on minerals like lithium and cobalt, much of which is concentrated in a small number of countries with real ethical and environmental concerns around mining. How should a company weigh that against the broader climate benefit of EVs?",
+    "lookingFor": "Engages honestly with the genuine tension rather than resolving it too easily in either direction.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension, a climate-positive technology can rest on ethically fraught mining",
+        "Avoid dismissing the concern because the end goal is climate-positive, or rejecting EVs entirely",
+        "Propose a genuine path forward, recycling, second-life batteries, and supplier auditing"
+      ],
+      "modelAnswer": "I think it's genuinely uncomfortable and companies shouldn't get to wave it away just because the end product reduces emissions, mining cobalt under exploitative labour conditions doesn't become acceptable because the final car is green. At the same time, I don't think the answer is to reject EVs outright, because the climate cost of not transitioning is also real and serious, so it's not a case where one side is simply the ethical choice. What I'd actually want a company to do is invest seriously in battery recycling and second-life use to reduce how much fresh mining is needed over time, and be genuinely rigorous about auditing and diversifying where the minerals come from, rather than treating the upstream harm as an acceptable cost of a good headline."
+    },
+    "commonMistakes": [
+      "Dismissing the ethical concern because the technology is climate-positive",
+      "Rejecting EVs entirely with no engagement with the climate trade-off",
+      "Offering no concrete path forward, just naming the tension"
+    ],
+    "followUps": ["Do you think consumers share any responsibility here, or does it fall entirely on manufacturers?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Customs mislabeling dilemma",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "compliance", "dilemma"],
+    "question": "You're doing an internship in a logistics team and you notice a colleague has been mislabeling the value of shipments on customs paperwork to reduce the import duty owed. No one senior seems to know. What would you do?",
+    "lookingFor": "Structured ethical reasoning that takes the seriousness of customs fraud seriously while thinking through a responsible first step.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this is fraud with real legal exposure, not a minor grey area",
+        "Reason through a responsible first step rather than ignoring it or immediately escalating over everyone's head",
+        "Acknowledge the genuine discomfort of being an intern in that position"
+      ],
+      "modelAnswer": "I'd take it seriously precisely because it isn't a grey area, mislabeling customs value to cut duty is fraud, and if it ever came out it wouldn't just be that one person in trouble, it could expose the whole company to serious legal and financial risk. I know it's uncomfortable as an intern to raise something like that, but I don't think staying quiet protects anyone, including the colleague. I'd probably start by asking the colleague directly what's going on, in case I'm misreading the situation, and if it was confirmed and they brushed it off, I'd raise it with a manager or compliance contact rather than sitting on it, because letting it continue makes it worse for everyone the longer it goes unaddressed."
+    },
+    "commonMistakes": [
+      "Treating it as a minor shortcut not worth raising",
+      "Jumping straight to reporting without first understanding the situation",
+      "Ignoring the genuine discomfort and power imbalance of being an intern"
+    ],
+    "followUps": ["What would you do if the colleague was actually your direct manager instead of a peer?"]
+  },
+  {
+    "id": "prog-supply-chain-logistics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Reflective self-critique on quantitative confidence",
+    "program": "Supply Chain & Logistics",
+    "difficulty": "medium",
+    "tags": ["reflection", "self-awareness", "quantitative"],
+    "question": "Supply chain roles involve a lot of quantitative modelling, forecasting, optimisation, cost analysis. Where do you think your own quantitative reasoning is genuinely strong, and where is it still shaky?",
+    "lookingFor": "Honest, specific self-assessment of quantitative ability rather than blanket confidence or false modesty.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuinely specific quantitative strength backed by an example",
+        "Name a genuine specific gap, showing real self-awareness",
+        "Show what the applicant is actually doing to close the gap"
+      ],
+      "modelAnswer": "I'm genuinely comfortable with the kind of applied arithmetic and logical trade-off reasoning this field needs, working through a reorder point or comparing two sourcing options under different assumptions, because I did a lot of that in an economics project last year and it came naturally. Where I know I'm shakier is in actual statistical modelling, I understand the concept of forecasting demand from historical variability, but I haven't built a real regression model or worked with the kind of data science tools that would let me do it properly myself. That's actually part of why I'm looking at the analytics modules in this course specifically, I want that gap to close through structured coursework rather than pretending it isn't there."
+    },
+    "commonMistakes": [
+      "Claiming to be strong at everything with no genuine gap named",
+      "Naming a 'weakness' that's secretly a strength",
+      "Giving no concrete plan or reason for closing the gap"
+    ],
+    "followUps": ["Can you walk me through how you'd actually approach building that reorder point calculation from scratch?"]
+  }
+]

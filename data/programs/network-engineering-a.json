@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-network-engineering-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for network engineering",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "networking"],
+    "question": "Why do you want to study network engineering?",
+    "lookingFor": "A genuine, specific motivation tied to how networks actually work, not a vague love of computers.",
+    "idealAnswer": {
+      "bullets": [
+        "Point to a concrete moment or experience that pulled you toward networking specifically",
+        "Distinguish networking from general IT or software interest",
+        "Show you understand what the day-to-day of the field involves"
+      ],
+      "modelAnswer": "Our home router kept dropping connections during lockdown and I ended up spending a weekend figuring out channel interference and DHCP lease issues just to fix it myself. That fixing process was the part I loved, tracing a problem through layers until I found the actual cause. Since then I've built a small home lab with an old switch and a couple of routers, and I like that networking sits right at the point where hardware, protocols and real people's frustration all meet."
+    },
+    "commonMistakes": [
+      "Saying 'I've always liked computers' with no networking specifics",
+      "Confusing networking with software development or cybersecurity generally",
+      "No concrete example or experience to back the claim"
+    ],
+    "followUps": ["What part of that experience did you find most interesting?"]
+  },
+  {
+    "id": "prog-network-engineering-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this course and university",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why do you want to study network engineering here specifically, rather than a general computer science degree elsewhere?",
+    "lookingFor": "Evidence of real research into the course structure and how it differs from a general CS path.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific module, lab, or accreditation the course offers",
+        "Explain why the specialised route suits you better than general CS",
+        "Connect it to a concrete goal or interest of yours"
+      ],
+      "modelAnswer": "I looked at general computer science courses too, but they spend maybe one module on networking before moving on, and I want more than that. Your course has a dedicated routing and switching lab plus a module built around Cisco's curriculum, which means I'd be working with real equipment rather than only simulators. I want to go deep on the infrastructure side rather than broad across programming, and this course is one of the few that lets me do that from year one."
+    },
+    "commonMistakes": [
+      "Generic praise that would fit any university",
+      "Not being able to name anything specific about the course",
+      "Treating networking and general CS as interchangeable"
+    ],
+    "followUps": ["What would you do if the course turned out to be more theoretical than you expect?"]
+  },
+  {
+    "id": "prog-network-engineering-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "What first sparked interest",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story"],
+    "question": "What was the moment that first got you interested in networks?",
+    "lookingFor": "A genuine, specific origin story rather than a rehearsed answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a concrete, personal moment rather than a general statement",
+        "Explain what specifically about it hooked you",
+        "Show how that early spark has developed since"
+      ],
+      "modelAnswer": "My school ran a networking day where local engineers came in and set up a temporary network across the sports hall so we could see how devices found each other and shared files. What stuck with me was watching them use a simple diagram to explain something that felt like magic a minute before, packets finding their way through hops I couldn't see. I went home and started reading about how the internet actually routes traffic, and I have not really stopped since."
+    },
+    "commonMistakes": [
+      "A vague answer with no specific moment",
+      "An origin story that does not connect to networking specifically",
+      "Sounding rehearsed rather than genuine"
+    ],
+    "followUps": ["How has your understanding of that moment changed since then?"]
+  },
+  {
+    "id": "prog-network-engineering-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Hands-on experience",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["experience", "practical"],
+    "question": "What hands-on experience with networks do you have, if any?",
+    "lookingFor": "Evidence of genuine curiosity applied outside the classroom, even at a small scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific practical project or setup, however small",
+        "Explain what you learned from doing it, not just that you did it",
+        "Be honest about the limits of your experience"
+      ],
+      "modelAnswer": "I put together a small home lab using two second-hand switches and an old router running pfSense, mainly to practise VLAN segmentation and basic firewall rules between my devices. I also used Cisco Packet Tracer to build out bigger topologies I could not afford in hardware, like a simulated small office network with multiple subnets. It is nowhere near professional experience, but building something that actually broke and having to work out why taught me more than any tutorial did."
+    },
+    "commonMistakes": [
+      "Claiming professional-level experience that will not hold up under follow-up questions",
+      "Only naming tools or certifications with no description of what was actually done",
+      "Downplaying genuinely relevant self-directed projects"
+    ],
+    "followUps": ["What was the hardest problem you ran into while setting that up?"]
+  },
+  {
+    "id": "prog-network-engineering-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and self-study",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "self-study"],
+    "question": "What have you read or studied outside the curriculum to learn more about networking?",
+    "lookingFor": "Genuine self-directed engagement with the field beyond what is required for exams.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific book, course, certification study, or resource",
+        "Explain one concrete idea you took from it",
+        "Show ongoing curiosity rather than a one-off effort"
+      ],
+      "modelAnswer": "I worked through most of the CCNA study material on my own, not to sit the exam yet but because it gave me a structured path through subnetting, routing and switching that my school course does not cover. I also follow a couple of networking blogs that break down real outages, like the Facebook BGP incident, which taught me how a single misconfigured route can cascade globally. Reading about real failures has taught me more about why the theory matters than the theory alone ever did."
+    },
+    "commonMistakes": [
+      "Naming a resource without saying what it taught them",
+      "Claiming to have read something they clearly have not engaged with",
+      "Only mentioning school-assigned material"
+    ],
+    "followUps": ["What is one thing from that reading you disagreed with or found surprising?"]
+  },
+  {
+    "id": "prog-network-engineering-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "OSI model",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "osi-model"],
+    "question": "Can you explain the OSI model and why it's useful?",
+    "lookingFor": "A clear grasp of the seven layers and why the abstraction matters for real troubleshooting.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the seven layers in order, even loosely",
+        "Explain that each layer only deals with the one below and above it",
+        "Give a practical reason the model is useful, such as isolating faults"
+      ],
+      "modelAnswer": "The OSI model breaks network communication into seven layers, from physical cabling at the bottom up through data link, network, transport, session, presentation, and application at the top. Each layer only has to worry about talking to the layers directly next to it, which is what lets a web browser not care whether the data underneath is travelling over fibre or Wi-Fi. What I find genuinely useful about it is troubleshooting, if a website will not load, working down from application to see whether DNS resolved, then whether the connection opened, then whether packets are actually arriving, gives you a systematic way to isolate the fault instead of guessing."
+    },
+    "commonMistakes": [
+      "Reciting the layer names in the wrong order or missing several",
+      "Not explaining why the model is useful in practice",
+      "Confusing the OSI model with the simpler TCP/IP model without noticing"
+    ],
+    "followUps": ["How does the TCP/IP model differ from the OSI model?"]
+  },
+  {
+    "id": "prog-network-engineering-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "TCP vs UDP",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["protocols", "fundamentals"],
+    "question": "What's the difference between TCP and UDP, and when would you use each?",
+    "lookingFor": "Clear understanding of reliability trade-offs and appropriate real-world use cases.",
+    "idealAnswer": {
+      "bullets": [
+        "State that TCP is connection-oriented and reliable, UDP is connectionless and fast",
+        "Mention the handshake and acknowledgement mechanism in TCP",
+        "Give a real use case for each, such as web traffic versus video calls"
+      ],
+      "modelAnswer": "TCP sets up a connection first with a three-way handshake and then confirms every packet arrives, retransmitting anything lost, which makes it reliable but adds overhead. UDP just sends packets without checking they arrived, so it is faster and lighter but can lose data silently. That is why web pages and file transfers use TCP, you need every byte to arrive correctly, while video calls and online games often use UDP, because a dropped frame is less noticeable than the lag caused by waiting for a retransmission. I think it is a nice example of how there is rarely one right protocol, just the right trade-off for what you are sending."
+    },
+    "commonMistakes": [
+      "Saying TCP is simply better without explaining the trade-off",
+      "Getting the reliability direction backwards",
+      "No concrete real-world example of when each is used"
+    ],
+    "followUps": ["Why might a streaming service still choose TCP for parts of its service?"]
+  },
+  {
+    "id": "prog-network-engineering-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "IP addressing and subnetting",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["ip-addressing", "subnetting"],
+    "question": "What is subnetting, and why would a network engineer split a large network into smaller subnets?",
+    "lookingFor": "Understanding of subnetting mechanics and the practical reasons for segmenting a network.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that subnetting divides an IP range into smaller networks using a subnet mask",
+        "Give at least one practical reason, such as reducing broadcast traffic or isolating departments",
+        "Show awareness that it also affects security and troubleshooting"
+      ],
+      "modelAnswer": "Subnetting takes one large block of IP addresses and divides it into smaller networks by borrowing bits from the host portion for the network portion, using the subnet mask to define where that split happens. A company might split its network so that finance, engineering, and guest Wi-Fi each sit on their own subnet rather than one huge flat network. That matters because a smaller subnet has less broadcast traffic, it is easier to isolate a fault to one segment, and you can apply different security rules to guest traffic than to finance systems. It is one of those topics where the maths is fiddly at first but the reasoning behind it makes complete sense once you have designed one network yourself."
+    },
+    "commonMistakes": [
+      "Describing the calculation without explaining why it is done",
+      "Missing security or broadcast-domain reasoning entirely",
+      "Confusing a subnet mask with a default gateway"
+    ],
+    "followUps": ["How would you work out how many usable hosts a /27 subnet supports?"]
+  },
+  {
+    "id": "prog-network-engineering-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "DNS explanation",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["dns", "fundamentals"],
+    "question": "Explain how DNS works, in simple terms.",
+    "lookingFor": "A clear, accurate explanation of name resolution without needing jargon overload.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe DNS as translating human-readable names into IP addresses",
+        "Mention the basic lookup path, such as resolver to root to authoritative server",
+        "Note caching as a reason it is usually fast"
+      ],
+      "modelAnswer": "DNS is basically the internet's phone book, it translates a name like a website address into the IP address a computer actually needs to connect. When you type an address, your device asks a resolver, which if it does not already know the answer works its way from the root servers down through the top-level domain server to the authoritative server that holds the actual record. Most of the time this happens in milliseconds because answers get cached along the way, so your device or your internet provider often already has the answer stored from a previous lookup. I like that something so invisible is doing that much work every time anyone opens a browser."
+    },
+    "commonMistakes": [
+      "Saying DNS 'connects you to the website' without explaining resolution",
+      "Missing the concept of caching entirely",
+      "Confusing DNS with DHCP"
+    ],
+    "followUps": ["What happens if a DNS server gives out the wrong IP address on purpose?"]
+  },
+  {
+    "id": "prog-network-engineering-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "DHCP explanation",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["dhcp", "fundamentals"],
+    "question": "What does DHCP do, and why is it useful on a large network?",
+    "lookingFor": "Understanding of automatic IP assignment and why manual configuration does not scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain DHCP automatically assigns IP addresses and related settings to devices",
+        "Mention the lease process at a basic level",
+        "Give a reason manual assignment does not scale on large networks"
+      ],
+      "modelAnswer": "DHCP automatically hands a device an IP address, subnet mask, default gateway, and usually a DNS server, so you do not have to configure each device by hand. When a device joins the network it broadcasts a request, the DHCP server offers an address, and the device accepts it for a set lease time before it has to renew or release it. On a network with hundreds of devices, manually assigning addresses would be slow and error-prone, you would end up with duplicate addresses and constant support tickets, so DHCP is really what makes large networks practical to run day to day."
+    },
+    "commonMistakes": [
+      "Confusing DHCP with DNS",
+      "Not mentioning the lease or renewal concept at all",
+      "Assuming DHCP only matters for home networks"
+    ],
+    "followUps": ["What problems can occur if two DHCP servers exist on the same network unintentionally?"]
+  },
+  {
+    "id": "prog-network-engineering-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Switch vs router",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["switching", "routing", "fundamentals"],
+    "question": "What's the difference between a switch and a router?",
+    "lookingFor": "Clear separation of layer 2 versus layer 3 function and a sense of where each device sits in a network.",
+    "idealAnswer": {
+      "bullets": [
+        "State that a switch operates at layer 2 using MAC addresses within one network",
+        "State that a router operates at layer 3 using IP addresses to connect different networks",
+        "Give a simple example showing both working together"
+      ],
+      "modelAnswer": "A switch works at layer 2 and forwards traffic within a single network based on MAC addresses, it is what connects all the devices in one office together. A router works at layer 3 and forwards traffic between different networks based on IP addresses, which is what actually gets your data out to the internet or between subnets. In a typical home setup the router and switch functions live in the same box, but on a real network you would have switches connecting devices within a floor and a router sitting at the boundary deciding how traffic gets from one network to another."
+    },
+    "commonMistakes": [
+      "Saying they do the same thing, just at different speeds",
+      "Mixing up which device uses MAC addresses versus IP addresses",
+      "Not explaining how the two work together in practice"
+    ],
+    "followUps": ["Where would a layer 3 switch fit into that picture?"]
+  },
+  {
+    "id": "prog-network-engineering-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "VLANs",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["vlans", "switching"],
+    "question": "What is a VLAN, and why would you use one instead of just plugging devices into separate switches?",
+    "lookingFor": "Understanding that VLANs create logical separation without needing separate physical hardware, plus a reason to use them.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a VLAN creates a logically separate broadcast domain on shared physical hardware",
+        "Contrast this with the cost and inflexibility of physically separate switches",
+        "Give a real reason for using one, such as security or reducing broadcast traffic"
+      ],
+      "modelAnswer": "A VLAN lets you split one physical switch into multiple logically separate networks, so devices in VLAN 10 cannot see broadcast traffic from VLAN 20 even though they are plugged into the same physical box. Buying separate switches for every department would be expensive and would not scale as the organisation changes, whereas VLANs let you reassign a port to a different network with a configuration change instead of running new cable. I think the appeal is really flexibility, you get the isolation benefits of separate networks, for security or to keep broadcast traffic down, without the physical cost of actually building separate networks."
+    },
+    "commonMistakes": [
+      "Describing VLANs as physically separate networks",
+      "Not explaining the cost or flexibility advantage over separate switches",
+      "Ignoring the security or broadcast-domain benefit"
+    ],
+    "followUps": ["How does a device on one VLAN communicate with a device on another VLAN?"]
+  },
+  {
+    "id": "prog-network-engineering-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Ping and traceroute mechanics",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["troubleshooting", "diagnostics"],
+    "question": "How does traceroute actually work, and how would you use it to diagnose a network issue?",
+    "lookingFor": "Understanding of TTL-based hop discovery and practical diagnostic reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain traceroute uses increasing TTL values to force each hop to respond",
+        "Describe how the returned ICMP time-exceeded messages reveal the path",
+        "Connect this to a real troubleshooting use, such as finding where latency or loss begins"
+      ],
+      "modelAnswer": "Traceroute sends a series of packets with increasing time-to-live values, starting at one, so the first router along the path drops the packet once the TTL hits zero and sends back an ICMP time-exceeded message identifying itself. By repeating this with TTL two, three, and so on, you build up the full path one hop at a time, each router revealing itself in turn until the packet finally reaches the destination. In practice I would use it to work out where a problem actually is, if the response times jump sharply at one particular hop, or the trace just stops responding, that tells me roughly where to focus rather than treating the whole path as a black box."
+    },
+    "commonMistakes": [
+      "Saying it simply 'pings each hop' without explaining the TTL mechanism",
+      "Not connecting the tool to a real diagnostic scenario",
+      "Confusing traceroute with a simple ping"
+    ],
+    "followUps": ["Why might traceroute show 'request timed out' at a hop even though the connection still works fine end to end?"]
+  },
+  {
+    "id": "prog-network-engineering-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Firewalls",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["security", "firewalls"],
+    "question": "What does a firewall do, and how does it decide what traffic to allow?",
+    "lookingFor": "Understanding of rule-based traffic filtering, not just 'it blocks hackers'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a firewall filters traffic based on defined rules",
+        "Mention criteria it can filter on, such as IP address, port, or protocol",
+        "Show awareness that firewalls exist at different points, such as network edge or host level"
+      ],
+      "modelAnswer": "A firewall inspects traffic passing through it and decides whether to allow or block it based on a set of rules, which might filter by source or destination IP address, port number, or protocol. A simple example would be a rule that only allows traffic on port 443 for web traffic in from the internet, while blocking everything else by default. Firewalls sit in different places too, an organisation might have one at the network edge controlling what comes in from the internet, and also run host-based firewalls on individual machines as a second layer of defence."
+    },
+    "commonMistakes": [
+      "Describing a firewall as something that just 'stops viruses'",
+      "Not mentioning rule-based filtering criteria at all",
+      "Treating firewalls as a single monolithic thing rather than something deployed at multiple points"
+    ],
+    "followUps": ["What's the difference between a stateful and a stateless firewall?"]
+  },
+  {
+    "id": "prog-network-engineering-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Latency, bandwidth and throughput",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["performance", "fundamentals"],
+    "question": "What's the difference between latency and bandwidth, and can a high-bandwidth connection still feel slow?",
+    "lookingFor": "Clear distinction between the two concepts and understanding that they affect user experience differently.",
+    "idealAnswer": {
+      "bullets": [
+        "Define latency as the time delay for data to travel, and bandwidth as the maximum capacity",
+        "Explain that they are independent, a link can be high in one and poor in the other",
+        "Give a real example where high bandwidth still feels slow because of latency"
+      ],
+      "modelAnswer": "Bandwidth is how much data a connection can carry per second, while latency is how long it takes for a single piece of data to travel from one point to another. They are not the same thing at all, a satellite internet connection can offer decent bandwidth but still feel sluggish for something like video calls because the signal has to physically travel such a long distance, adding delay regardless of how much data the pipe can carry. That is exactly why a high-bandwidth connection can still feel slow for real-time tasks, the bottleneck is not how much data can flow, it's how long each round trip takes, so the two need to be thought about as genuinely separate problems."
+    },
+    "commonMistakes": [
+      "Treating bandwidth and latency as the same measurement",
+      "No real-world example showing them diverging",
+      "Confusing latency with jitter without noticing the distinction"
+    ],
+    "followUps": ["What is jitter, and why does it matter more for calls than for downloads?"]
+  },
+  {
+    "id": "prog-network-engineering-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "DDoS attacks",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["security", "attacks"],
+    "question": "What is a DDoS attack, and how might a network engineer help defend against one?",
+    "lookingFor": "Correct understanding of distributed attack mechanics and at least one realistic mitigation concept.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a DDoS attack floods a target with traffic from many sources to overwhelm it",
+        "Distinguish it from a single-source DoS attack",
+        "Name at least one realistic defence, such as rate limiting, filtering, or traffic scrubbing"
+      ],
+      "modelAnswer": "A DDoS attack overwhelms a target, like a server or a whole network, by flooding it with traffic from many different sources at once, often from a botnet of compromised devices, so the target cannot keep up and legitimate users cannot get through. The distributed part is what makes it hard to defend against compared to a single-source attack, you cannot just block one IP address because the traffic is coming from thousands of them simultaneously. As a network engineer I would look at things like rate limiting, working with an upstream provider or a scrubbing service that can absorb and filter the traffic before it reaches us, and making sure critical systems are not sitting behind a single point of failure."
+    },
+    "commonMistakes": [
+      "Confusing DDoS with a virus or malware infection",
+      "Not distinguishing distributed from single-source attacks",
+      "Naming no realistic defence at all"
+    ],
+    "followUps": ["Why is a DDoS attack particularly hard to distinguish from a genuine traffic spike?"]
+  },
+  {
+    "id": "prog-network-engineering-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "NAT explanation",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["nat", "ip-addressing"],
+    "question": "What is NAT, and why is it so widely used?",
+    "lookingFor": "Understanding of address translation and the practical problem it solves, particularly IPv4 exhaustion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain NAT translates private internal addresses to a public address for internet traffic",
+        "Connect its widespread use to the shortage of available IPv4 addresses",
+        "Mention it also provides a degree of obscurity for internal network structure"
+      ],
+      "modelAnswer": "NAT translates the private IP addresses used inside a network, like the ones your home devices have, into a single public IP address when traffic leaves for the internet, and translates the responses back to the right internal device using port numbers to keep track. It became so widely used because the internet ran out of enough IPv4 addresses to give every single device its own public one, NAT let one public address cover an entire home or office network. As a side effect it also hides the internal structure of a network from the outside world, since external systems only ever see the one translated address rather than every device behind it."
+    },
+    "commonMistakes": [
+      "Describing NAT as a security feature rather than an address-sharing mechanism",
+      "Not connecting NAT's popularity to IPv4 address exhaustion",
+      "Confusing NAT with a VPN"
+    ],
+    "followUps": ["How does IPv6 change the need for NAT?"]
+  },
+  {
+    "id": "prog-network-engineering-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Routing protocols",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["routing", "protocols"],
+    "question": "What's the difference between an interior routing protocol like OSPF and an exterior one like BGP, and why does the internet need both?",
+    "lookingFor": "Awareness of the scale and trust differences between routing within an organisation and routing between organisations.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain OSPF operates within a single administrative domain and converges quickly on the best path",
+        "Explain BGP operates between separate networks or autonomous systems and prioritises policy over pure speed",
+        "Give a reason both are needed rather than one universal protocol"
+      ],
+      "modelAnswer": "OSPF is an interior gateway protocol, it runs inside a single organisation's network and works out the best path using link cost, converging quickly whenever something changes because everything is under one administrative control. BGP is an exterior protocol that runs between separate networks, or autonomous systems, like different internet service providers, and it cares less about pure speed and more about policy, which paths an organisation is actually willing to route through commercially or contractually. The internet needs both because no single protocol could sensibly manage that difference in scale and trust, OSPF assumes you control and trust every router involved, while BGP has to work when neighbouring networks do not trust each other at all and just need to agree on rules for exchanging traffic."
+    },
+    "commonMistakes": [
+      "Treating BGP as just a bigger version of OSPF",
+      "Not mentioning the trust or administrative-domain distinction",
+      "Vague answer with no sense of why two different protocols are actually necessary"
+    ],
+    "followUps": ["What real-world incident have you read about that involved a BGP misconfiguration?"]
+  },
+  {
+    "id": "prog-network-engineering-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Troubleshooting scenario",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["troubleshooting", "problem-solving"],
+    "question": "A user says the internet is 'down' on their laptop. Walk me through how you'd troubleshoot it, step by step.",
+    "lookingFor": "A methodical, layer-by-layer approach rather than random guessing.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with the simplest physical or local checks before assuming a complex fault",
+        "Work through the layers logically, physical connectivity, IP configuration, DNS, then wider connectivity",
+        "Show willingness to isolate whether it is one device or a wider issue"
+      ],
+      "modelAnswer": "I would start with the basics rather than assuming something complicated, checking whether the Wi-Fi or cable is actually connected and whether other devices on the same network are also affected, because that immediately tells me if it is one laptop or a wider issue. If it is just the one device, I would check its IP configuration to see whether it actually has a valid address from DHCP or has fallen back to a self-assigned one, which usually points to a DHCP problem. From there I would try pinging the default gateway to test local connectivity, then a public IP address to rule out DNS specifically, and only then start looking further up the chain toward the router or the provider. Working outward like that stops me jumping to conclusions and wasting time on the wrong layer."
+    },
+    "commonMistakes": [
+      "Jumping straight to restarting the router without checking anything first",
+      "No structured order, guessing at random possible causes",
+      "Never checking whether the issue is isolated to one device or affects everyone"
+    ],
+    "followUps": ["What would change about your approach if it turned out to affect the whole office?"]
+  },
+  {
+    "id": "prog-network-engineering-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Wireless standards and security",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["wireless", "security"],
+    "question": "What do you know about Wi-Fi security, and why is WPA2 or WPA3 preferred over older standards like WEP?",
+    "lookingFor": "Basic awareness of wireless encryption evolution and why older standards are considered insecure.",
+    "idealAnswer": {
+      "bullets": [
+        "State that WEP has known, easily exploitable encryption weaknesses",
+        "Explain WPA2 and WPA3 use stronger, regularly updated encryption methods",
+        "Show awareness that wireless traffic is broadcast and therefore needs strong encryption by design"
+      ],
+      "modelAnswer": "Wi-Fi signals are broadcast through the air rather than sent down a private cable, so anyone nearby with the right tools can potentially capture the traffic, which is why encryption on wireless networks matters so much more than people often assume. WEP was the original standard but its encryption can actually be cracked within minutes using freely available tools because of weaknesses in how it generates its keys, so it is considered unsafe for any real use today. WPA2 fixed most of those weaknesses with much stronger encryption, and WPA3 improves on that further, particularly around protecting against offline password-guessing attacks, which is why any network I set up would use WPA2 at minimum and WPA3 where the hardware supports it."
+    },
+    "commonMistakes": [
+      "Saying WEP is just 'older' without explaining the actual security flaw",
+      "Not explaining why broadcast wireless traffic needs strong encryption in the first place",
+      "Confusing Wi-Fi encryption standards with general internet security"
+    ],
+    "followUps": ["What's the risk of leaving a guest Wi-Fi network on the same VLAN as internal devices?"]
+  },
+  {
+    "id": "prog-network-engineering-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "IPv4 vs IPv6",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["ip-addressing", "ipv6"],
+    "question": "Why is the world moving from IPv4 to IPv6, and what's actually different about the two?",
+    "lookingFor": "Understanding of address exhaustion as the driver, plus awareness of a concrete structural difference.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain IPv4's roughly 4.3 billion addresses have essentially run out given the number of connected devices",
+        "State IPv6 uses a vastly larger 128-bit address space instead of IPv4's 32-bit",
+        "Mention at least one other practical difference, such as reduced reliance on NAT or simplified headers"
+      ],
+      "modelAnswer": "IPv4 only has about 4.3 billion possible addresses, which sounded like plenty decades ago but is nowhere near enough now that phones, laptops, and increasingly everyday devices all need their own address. IPv6 solves that by using a 128-bit address space instead of IPv4's 32-bit one, which gives you an almost incomprehensibly larger number of possible addresses, enough that every device could realistically have its own public one again. Beyond just the address space, IPv6 was also designed with a simpler header format for faster processing and reduces the need for NAT, since scarcity was the whole reason NAT became so essential in the first place."
+    },
+    "commonMistakes": [
+      "Saying IPv6 is 'just a longer version' of IPv4 without explaining why that matters",
+      "Not identifying address exhaustion as the actual driver",
+      "No awareness of any structural or design difference beyond address length"
+    ],
+    "followUps": ["Why do you think IPv6 adoption has been slower than expected, given how long it's existed?"]
+  },
+  {
+    "id": "prog-network-engineering-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Emerging trends in networking",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["industry-trends", "sdn"],
+    "question": "What's a recent development in the networking field that you find interesting, and why?",
+    "lookingFor": "Awareness of the field beyond textbook material and an ability to reason about why a development matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, real development rather than a vague buzzword",
+        "Explain what problem it actually solves",
+        "Show independent opinion, not just repeated marketing language"
+      ],
+      "modelAnswer": "I have been reading about software defined networking, and what interests me is the idea of separating the control plane from the data plane, so instead of configuring every individual switch and router by hand, you manage the whole network's behaviour centrally through software. That matters because traditional networks are slow to reconfigure at scale, if a data centre needs to change how traffic flows, doing that device by device does not scale the way a cloud provider needs it to. What I find genuinely interesting is the trade-off it creates, you get huge flexibility and automation, but you are also now trusting a lot of your network's behaviour to a central controller, which becomes a single point of failure if it is not designed carefully."
+    },
+    "commonMistakes": [
+      "Naming a buzzword with no real explanation of what it does",
+      "Reciting marketing language rather than showing independent understanding",
+      "Picking something not actually related to networking"
+    ],
+    "followUps": ["What's a downside or risk of that development that people don't talk about as much?"]
+  },
+  {
+    "id": "prog-network-engineering-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Certifications and independent study",
+    "program": "Network Engineering",
+    "difficulty": "easy",
+    "tags": ["certifications", "self-study"],
+    "question": "Have you pursued any networking certifications or independent courses, and what made you choose them?",
+    "lookingFor": "Genuine initiative in structured self-study, with honest reflection on what was gained.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the specific certification or course, even if not yet completed",
+        "Explain why that one specifically, rather than picking anything at random",
+        "Reflect honestly on what it taught or where it fell short"
+      ],
+      "modelAnswer": "I am partway through studying for the CCNA, not because a school teacher pointed me there but because I wanted a structured way to actually learn the material properly instead of picking it up in fragments online. I chose it specifically because it covers the fundamentals I kept running into gaps on, subnetting, routing, and basic switch configuration, and having a clear syllabus kept me honest about actually finishing topics rather than jumping around. I have not sat the exam yet, I want to be properly ready rather than rush it, but working through the labs has already made my home network projects noticeably more deliberate."
+    },
+    "commonMistakes": [
+      "Claiming a certification was completed when it was not, and being unable to answer follow-ups",
+      "No explanation of why that particular certification was chosen",
+      "Treating the certification as the whole story with no reflection on what was actually learned"
+    ],
+    "followUps": ["What topic in that certification did you find hardest to get your head around?"]
+  },
+  {
+    "id": "prog-network-engineering-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Team project experience",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["teamwork", "experience"],
+    "question": "Tell us about a group project or activity where you had to plan or build something network-related with others.",
+    "lookingFor": "Evidence of applying networking knowledge collaboratively, plus reflection on the teamwork itself.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific project with a clear networking component",
+        "Explain your particular role or contribution",
+        "Reflect on a challenge the team faced and how it was resolved"
+      ],
+      "modelAnswer": "For a school computing project, three of us designed a small network for a fictional office as part of an assessment, using Packet Tracer to plan the subnetting and VLAN structure before configuring it. I ended up taking the lead on the addressing scheme because I had already been practising subnetting on my own, while the others focused on the physical topology and the presentation. The trickiest part was disagreeing on whether to use static or DHCP addressing for the servers, we eventually settled on static for anything sensitive and DHCP for general devices, and having to actually justify that choice to each other made the final design better than any one of us would have produced alone."
+    },
+    "commonMistakes": [
+      "Describing a project with no real networking content",
+      "Taking sole credit with no mention of collaboration",
+      "No specific disagreement, challenge, or lesson mentioned"
+    ],
+    "followUps": ["What would you do differently if you ran that project again?"]
+  },
+  {
+    "id": "prog-network-engineering-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Career direction within networking",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["goals", "career"],
+    "question": "Networking is a broad field, from enterprise infrastructure to cloud networking to security. Where do you see your interests heading, and how does this course support that?",
+    "lookingFor": "A grounded, specific direction connected clearly to what the course actually offers, with openness to change.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific area of interest within the broad field",
+        "Explain what is drawing you there rather than just naming it",
+        "Connect it honestly to the course while staying open to it evolving"
+      ],
+      "modelAnswer": "Right now I am most drawn to network security, specifically the infrastructure side of it, designing networks that are hard to compromise rather than just responding after something goes wrong. That came out of a small project where I set up firewall rules on my home lab and realised how much of security is really just careful network design decided in advance. I know that interest might shift once I have been exposed to cloud networking and other areas properly, but your course's mix of core infrastructure modules with a security-focused elective in the later years is exactly the kind of foundation that would let that interest either deepen or evolve honestly."
+    },
+    "commonMistakes": [
+      "An answer so specific it sounds rehearsed and inflexible",
+      "No connection at all to what the actual course offers",
+      "A directionless answer that shows no real thought about the field's different paths"
+    ],
+    "followUps": ["What's drawing you to that area specifically, over the other paths within networking?"]
+  }
+]

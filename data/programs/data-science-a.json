@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-data-science-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Why data science",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["motivation", "data-science", "intro"],
+    "question": "Why do you want to study data science?",
+    "lookingFor": "Genuine motivation grounded in a real moment or interest, not just buzzwords like 'AI is the future'.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific moment or project that pulled you toward data",
+        "Show you understand what the field actually involves day to day",
+        "Connect it to what you want to do with it"
+      ],
+      "modelAnswer": "I got interested in data science after a school project where we tracked our town's recycling rates over a year, and I realized the story was hidden in the numbers until we actually plotted them out. That feeling of turning a messy spreadsheet into something that explained what was really going on stuck with me. I taught myself basic Python afterward to analyze a bigger dataset on local air quality, and I want to build on that with proper training in statistics and machine learning."
+    },
+    "commonMistakes": [
+      "Saying 'I'm good at math' as the entire answer",
+      "Reciting that data science is a top paying career with no personal connection",
+      "Confusing data science with generic computer programming"
+    ],
+    "followUps": ["What part of that project did you find hardest?"]
+  },
+  {
+    "id": "prog-data-science-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this program specifically",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation", "research"],
+    "question": "Why do you want to study data science here rather than at another university?",
+    "lookingFor": "Specific research into the program's curriculum, faculty, or approach, not generic praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific course, professor, capstone project, or lab",
+        "Explain what makes their approach to data science distinctive",
+        "Tie it back to a personal goal or interest"
+      ],
+      "modelAnswer": "I looked at a few programs and yours is the only one I found where the second year includes a full applied capstone with a real industry partner rather than just another set of exams, and that hands on structure is how I actually learn best. I also read about Dr. Osei's work on using satellite data for crop yield prediction, which connects to a small weather dataset project I did last year. I want training that treats data science as something you build with, not just something you study in theory."
+    },
+    "commonMistakes": [
+      "Praise that could apply to any university with data science",
+      "Citing rankings as the sole reason",
+      "Not knowing anything specific about the curriculum"
+    ],
+    "followUps": ["What would you want to work on if you got a spot on that capstone?"]
+  },
+  {
+    "id": "prog-data-science-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "What first drew you to data",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story"],
+    "question": "What first got you interested in working with data?",
+    "lookingFor": "An authentic origin story, however small, that shows curiosity predates the application.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick one real moment rather than a vague general interest",
+        "Explain what specifically caught your attention about it",
+        "Show the interest has continued or grown since"
+      ],
+      "modelAnswer": "It started with something small, my school football team kept losing close games and I wanted to know why, so I started logging shots and possession by hand during matches. When I put it into a spreadsheet and saw we were dominating possession but converting almost nothing, it completely changed how the coach ran training. That was the first time I saw that data could answer a question nobody could answer just by watching, and I have been looking for that feeling in other problems ever since."
+    },
+    "commonMistakes": [
+      "Claiming interest since early childhood with no real detail",
+      "Giving an answer that sounds rehearsed and generic",
+      "Describing an interest in computers generally rather than data specifically"
+    ],
+    "followUps": ["Did that experience change how you think about other problems?"]
+  },
+  {
+    "id": "prog-data-science-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant project experience",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["experience", "project", "portfolio"],
+    "question": "Tell us about a data project you have worked on, even a small or informal one.",
+    "lookingFor": "A concrete, specific project with a real process, not just a vague claim of experience.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the question you were trying to answer",
+        "Explain the actual steps, cleaning, analysis, tools used",
+        "Share what you found or what you would do differently"
+      ],
+      "modelAnswer": "For a school assignment I pulled three years of local bus punctuality data from the council's open data portal and tried to find out whether delays got worse in winter. Most of my time actually went into cleaning the data, there were duplicate entries and missing timestamps I had to sort through in Python before I could plot anything useful. It turned out delays were driven more by a couple of specific routes than by weather overall, which surprised me and taught me not to trust my first assumption about a dataset."
+    },
+    "commonMistakes": [
+      "Describing only the result and skipping the actual process",
+      "Overselling a tutorial exercise as an original project",
+      "No mention of any problems encountered or lessons learned"
+    ],
+    "followUps": ["What would you do differently if you repeated that project?"]
+  },
+  {
+    "id": "prog-data-science-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and following the field",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "engagement"],
+    "question": "What have you read or followed recently that relates to data science?",
+    "lookingFor": "Genuine, specific engagement with the field beyond the syllabus.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific, a book, article, paper, or podcast",
+        "Explain what idea or argument actually stuck with you",
+        "Show it shaped how you think, not just that you consumed it"
+      ],
+      "modelAnswer": "I read Cathy O'Neil's Weapons of Math Destruction over the summer, and the part that stayed with me was how a model can look objective while quietly encoding the biases of whoever built it. It made me a lot more careful when I was doing my own small project on school attendance data, I kept asking myself whose experience the numbers might be missing. It is part of why I want a program that treats the ethics of data as seriously as the technical methods."
+    },
+    "commonMistakes": [
+      "Naming something without being able to say what it actually argued",
+      "Picking something clearly chosen just to impress",
+      "Nothing recent, only citing something from years ago"
+    ],
+    "followUps": ["Did anything in it change how you'd approach your own work?"]
+  },
+  {
+    "id": "prog-data-science-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Data science vs statistics vs computer science",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "concept", "field-definition"],
+    "question": "How would you explain the difference between data science, statistics, and computer science to someone outside the field?",
+    "lookingFor": "A clear conceptual grasp of how the fields overlap and differ, not a vague blend.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe statistics as the theory of drawing conclusions from data under uncertainty",
+        "Describe computer science as the tools and systems that store and process data at scale",
+        "Describe data science as combining both with domain context to answer real questions"
+      ],
+      "modelAnswer": "Statistics gives you the theory for how confident you can be in a conclusion given some data and some uncertainty. Computer science gives you the tools to actually store, clean, and process that data, especially when there is a lot of it. Data science sits on top of both and adds the practical side, understanding the actual problem well enough to know which statistical method makes sense and which parts of the pipeline you need to build. I think of it less as a separate field and more as the place where those two meet a real question."
+    },
+    "commonMistakes": [
+      "Saying data science is just statistics with a computer",
+      "Being unable to name what each field actually contributes",
+      "Treating them as completely unrelated fields"
+    ],
+    "followUps": ["Where do you think data science overlaps most with machine learning?"]
+  },
+  {
+    "id": "prog-data-science-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Overfitting",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["machine-learning", "fundamentals", "concept"],
+    "question": "In simple terms, what does it mean for a model to overfit?",
+    "lookingFor": "A clear, correct, jargon-light explanation with an intuitive example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the model learns noise or specifics of the training data rather than the general pattern",
+        "Note the symptom, great performance on training data, poor on new data",
+        "Give a simple example or analogy"
+      ],
+      "modelAnswer": "Overfitting is when a model learns the training data too closely, including its noise and quirks, instead of learning the actual underlying pattern. It will look brilliant on the data it was trained on but perform badly on new data it has not seen, because it memorized specifics rather than generalizing. I think of it like a student who memorizes the answers to last year's exam paper instead of actually understanding the topic, they do great on that exact paper and struggle the moment the questions change."
+    },
+    "commonMistakes": [
+      "Confusing overfitting with underfitting",
+      "Giving only the definition with no real world analogy",
+      "Not mentioning the training versus new data distinction"
+    ],
+    "followUps": ["What is one way you could try to reduce overfitting?"]
+  },
+  {
+    "id": "prog-data-science-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias-variance tradeoff",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": ["machine-learning", "statistics", "concept"],
+    "question": "Can you explain the bias-variance tradeoff?",
+    "lookingFor": "Understanding that model error has two distinct sources and that reducing one often raises the other.",
+    "idealAnswer": {
+      "bullets": [
+        "Define bias as error from overly simple assumptions that miss real patterns",
+        "Define variance as error from being overly sensitive to the specific training data",
+        "Explain why you cannot minimize both freely, there is a tradeoff as model complexity changes"
+      ],
+      "modelAnswer": "Bias is the error you get when a model makes assumptions that are too simple to capture what is really going on, so it underfits and misses real patterns even in the training data. Variance is the error from a model being too sensitive to the exact training data it saw, so it changes a lot if you gave it a slightly different sample, which is overfitting. The tradeoff is that as you make a model more flexible to reduce bias, you usually increase variance, and the goal is to find the level of complexity that minimizes the combination of both rather than chasing either one alone."
+    },
+    "commonMistakes": [
+      "Defining only one of the two terms",
+      "Treating them as unrelated rather than a tradeoff",
+      "No mention of model complexity as the lever that moves both"
+    ],
+    "followUps": ["How would you recognize a high variance model in practice?"]
+  },
+  {
+    "id": "prog-data-science-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Correlation versus causation",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["statistics", "fundamentals", "reasoning"],
+    "question": "Why does correlation not imply causation? Can you give an example?",
+    "lookingFor": "Correct reasoning plus a genuine example, not just the memorized phrase.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that two variables can move together without one causing the other",
+        "Mention a third factor, a confounder, or reverse causation as possible explanations",
+        "Give a concrete example that illustrates the point"
+      ],
+      "modelAnswer": "Correlation just means two variables tend to move together, but that can happen for reasons other than one causing the other, there could be a third factor driving both, or the direction of causation could even be reversed. The classic example is ice cream sales and drowning deaths rising together in summer, ice cream obviously does not cause drowning, hot weather drives both people swimming more and buying more ice cream. It is a mistake I try to catch myself making whenever I see two trends line up neatly on a chart."
+    },
+    "commonMistakes": [
+      "Repeating the phrase without explaining why it is true",
+      "Giving an example that is actually a real causal relationship",
+      "Not mentioning confounding variables at all"
+    ],
+    "followUps": ["How might you go about testing whether a relationship is actually causal?"]
+  },
+  {
+    "id": "prog-data-science-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining a p-value simply",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["statistics", "hypothesis-testing", "concept"],
+    "question": "How would you explain what a p-value means to someone with no statistics background?",
+    "lookingFor": "A correct, accessible explanation avoiding the common misinterpretation.",
+    "idealAnswer": {
+      "bullets": [
+        "Frame it around the assumption of no real effect, the null hypothesis",
+        "Describe it as the probability of seeing data this extreme if that assumption were true",
+        "Avoid the common misstatement that it is the probability the hypothesis is true"
+      ],
+      "modelAnswer": "A p-value answers a fairly narrow question, if there really were no effect at all, how likely would it be to see a result this extreme just by chance. A small p-value means that result would be quite unlikely under that assumption, which makes us doubt the assumption of no effect. What it is not is the probability that our hypothesis is true, that is a mistake I used to make myself, it is really about how surprising the data would be if nothing interesting were going on."
+    },
+    "commonMistakes": [
+      "Stating that the p-value is the probability the hypothesis is true",
+      "Giving a definition with no plain language explanation",
+      "Not mentioning the null hypothesis at all"
+    ],
+    "followUps": ["What would you say a very small p-value does and does not tell you?"]
+  },
+  {
+    "id": "prog-data-science-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Precision, recall and the confusion matrix",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["machine-learning", "evaluation", "concept"],
+    "question": "What is the difference between precision and recall, and when might you care more about one than the other?",
+    "lookingFor": "Correct definitions plus judgment about which metric matters in a given context.",
+    "idealAnswer": {
+      "bullets": [
+        "Define precision as the share of predicted positives that are actually correct",
+        "Define recall as the share of actual positives that the model actually caught",
+        "Give an example where you would prioritize one over the other"
+      ],
+      "modelAnswer": "Precision is out of everything the model flagged as positive, how many actually were positive, so it is about avoiding false alarms. Recall is out of everything that was actually positive, how many the model actually caught, so it is about not missing real cases. For something like a disease screening test I would care more about recall, missing a real case is far worse than a false alarm that gets checked and ruled out, whereas for something like flagging spam email I might weigh precision more heavily so I am not burying real messages."
+    },
+    "commonMistakes": [
+      "Mixing up which one is which",
+      "Giving definitions with no example of when each matters",
+      "Claiming one metric is always more important than the other"
+    ],
+    "followUps": ["What metric would you use if you needed a single number that balances both?"]
+  },
+  {
+    "id": "prog-data-science-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Handling missing data",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["data-cleaning", "practical", "concept"],
+    "question": "If you were given a dataset with a lot of missing values, what would you do?",
+    "lookingFor": "A sensible, structured approach rather than jumping straight to deleting or filling blindly.",
+    "idealAnswer": {
+      "bullets": [
+        "Investigate why the data is missing before deciding what to do",
+        "Mention specific options, dropping rows, imputing, or flagging missingness itself",
+        "Show awareness that the choice can bias the results"
+      ],
+      "modelAnswer": "Before doing anything I would want to understand why the values are missing, whether it is random or tied to something specific, because that changes what is safe to do. If it is a small number of rows I might just drop them, but if a whole column is patchy I would look at imputing with something like the median, or in some cases treating the fact that it is missing as useful information in itself. I would also check afterward whether whatever I did changed the shape of the results, because filling in guesses can quietly introduce its own bias."
+    },
+    "commonMistakes": [
+      "Saying you would just delete every row with any missing value",
+      "Not asking why the data is missing in the first place",
+      "Assuming imputation is always safe with no downside"
+    ],
+    "followUps": ["Can you think of a situation where missing data itself is meaningful information?"]
+  },
+  {
+    "id": "prog-data-science-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Tools and languages used",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["tools", "programming", "experience"],
+    "question": "What programming languages or tools have you used for working with data?",
+    "lookingFor": "Honest, specific experience level, not an inflated list of buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the actual tools used and be honest about depth of experience",
+        "Give a concrete example of using one of them",
+        "Show willingness to keep learning rather than claiming mastery"
+      ],
+      "modelAnswer": "I have used Python the most, mainly pandas for cleaning and reshaping data and matplotlib for basic charts, and I picked up just enough SQL to pull the tables I needed for my school project on bus data. I would not call myself advanced, most of what I know I learned by getting stuck on a real problem and looking things up as I went. I am looking forward to actually being taught these properly rather than patching gaps myself."
+    },
+    "commonMistakes": [
+      "Listing every tool ever heard of with no real experience",
+      "Overstating fluency in a language barely used",
+      "Sounding embarrassed about limited experience instead of framing it honestly"
+    ],
+    "followUps": ["What was the hardest bug or problem you had to work through?"]
+  },
+  {
+    "id": "prog-data-science-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining a JOIN in SQL",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["sql", "fundamentals", "concept"],
+    "question": "Can you explain what a JOIN does in SQL, in simple terms?",
+    "lookingFor": "A correct, plain explanation of combining data from related tables.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a join combines rows from two tables based on a related column",
+        "Give a simple real world example of two related tables",
+        "Mention there are different types like inner versus left join, even briefly"
+      ],
+      "modelAnswer": "A join lets you combine information from two tables that share something in common, like a customer ID that appears in both a customers table and an orders table. Instead of keeping the data separate, a join lines up the matching rows so you can see, for example, each order alongside the customer's name and details in one result. I know there are different kinds, like an inner join that only keeps matches on both sides, versus a left join that keeps everything from one table even without a match, though I am still getting comfortable with when to use which."
+    },
+    "commonMistakes": [
+      "Describing a join as just stacking two tables together",
+      "No example of a real relationship between tables",
+      "Confusing a join with a simple filter"
+    ],
+    "followUps": ["What would happen to a row with no match in a left join?"]
+  },
+  {
+    "id": "prog-data-science-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Neural networks at a high level",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["machine-learning", "deep-learning", "concept"],
+    "question": "In your own words, what is a neural network and how does it learn?",
+    "lookingFor": "A correct high level intuition without needing heavy mathematics.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe it as layers of simple units that combine inputs with weights",
+        "Explain learning as adjusting those weights based on errors on training examples",
+        "Show awareness this is inspired by, not identical to, how brains work"
+      ],
+      "modelAnswer": "A neural network is made of layers of simple units that each take some inputs, multiply them by weights, add them up, and pass the result through a small nonlinear function before sending it to the next layer. It learns by making a prediction, checking how wrong it was against the actual answer, and then adjusting all those weights slightly to reduce that error, repeating this over and over across many examples. I know the name comes from a loose analogy to neurons in the brain, but I try not to lean on that comparison too hard, the actual mechanism is really just a lot of weighted arithmetic and calculus underneath."
+    },
+    "commonMistakes": [
+      "Overstating the brain analogy as if it is literally how it works",
+      "No mention of how the weights actually get adjusted",
+      "Reciting buzzwords without a real explanation"
+    ],
+    "followUps": ["What do you think the role of that nonlinear function is?"]
+  },
+  {
+    "id": "prog-data-science-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Supervised versus unsupervised learning",
+    "program": "Data Science",
+    "difficulty": "easy",
+    "tags": ["machine-learning", "fundamentals", "concept"],
+    "question": "What is the difference between supervised and unsupervised learning?",
+    "lookingFor": "A clear distinction with a correct example of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Define supervised learning as learning from labeled examples with known outcomes",
+        "Define unsupervised learning as finding structure in data with no labels",
+        "Give one example task for each"
+      ],
+      "modelAnswer": "Supervised learning is when you train a model on examples that already have the correct answer attached, like emails already labeled spam or not spam, and the model learns to predict that label on new examples. Unsupervised learning is when there is no labeled answer at all, you are just trying to find structure or patterns in the data on its own, like grouping customers into clusters based on their shopping behavior without being told in advance what the groups should be. I find unsupervised learning more unsettling in a good way, because you genuinely do not know what the model will find."
+    },
+    "commonMistakes": [
+      "Giving the definitions but the wrong examples for each",
+      "Confusing unsupervised learning with having no data at all",
+      "Mixing up which one uses labels"
+    ],
+    "followUps": ["Can you think of a real situation where you would not have labels available?"]
+  },
+  {
+    "id": "prog-data-science-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithmic bias and fairness",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "bias", "judgement"],
+    "question": "A hiring algorithm trained on ten years of a company's past hiring data turns out to favor one group of applicants over another. What is going on, and what would you do?",
+    "lookingFor": "Structured ethical and technical reasoning about how bias enters models and how to respond, not a simple verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the model likely learned patterns from biased historical decisions",
+        "Weigh technical responses, reviewing features, reweighting, testing outcomes by group, against the deeper question of whether to use the tool at all",
+        "Show awareness that removing an obviously biased feature is not enough on its own"
+      ],
+      "modelAnswer": "The model is not being malicious, it is just faithfully learning the pattern in ten years of human decisions, and if those decisions were biased the model will reproduce and can even amplify that bias. Just removing gender or ethnicity as a feature usually is not enough because other variables can act as proxies for it, so I would want to actually test the model's outcomes broken down by group and see if the gap persists even without the obvious feature. If it does, I think the responsible move is to flag it to whoever owns the decision and push back on using it as is, because a tool that quietly locks in past unfairness under the appearance of objectivity is arguably worse than an openly biased human process."
+    },
+    "commonMistakes": [
+      "Assuming removing the sensitive feature alone fixes the problem",
+      "Treating the model's decision as neutral just because it is a computer",
+      "Jumping to a fix with no plan to actually test whether it worked"
+    ],
+    "followUps": ["Who do you think should be accountable when this kind of bias happens, the data, the model, or the people using it?"]
+  },
+  {
+    "id": "prog-data-science-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "A misleading statistic you encountered",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["statistics", "critical-thinking", "reasoning"],
+    "question": "Can you describe a time you saw a statistic used in a misleading way?",
+    "lookingFor": "Genuine critical engagement with real world data claims, not a textbook example recited from memory.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific real claim, ideally not a famous textbook example",
+        "Explain precisely what made it misleading, sample size, framing, missing context",
+        "Show what the more honest version of the claim would have looked like"
+      ],
+      "modelAnswer": "I remember a local news article claiming crime had risen fifty percent in our area, which sounded alarming until I found the actual report and realized it had gone from two incidents to three in a very small category, the percentage was technically true but wildly misleading given how small the underlying numbers were. It stuck with me because it was a good lesson in checking whether a big sounding percentage is hiding a tiny base number. Since then I try to ask for the raw counts whenever I see a striking percentage change in the news."
+    },
+    "commonMistakes": [
+      "Recycling a famous textbook example instead of a real one they actually noticed",
+      "Naming the statistic without explaining exactly what made it misleading",
+      "No mention of what the honest version would look like"
+    ],
+    "followUps": ["How would you check a claim like that if you saw it again?"]
+  },
+  {
+    "id": "prog-data-science-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "A dataset or competition you explored",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["experience", "portfolio", "kaggle"],
+    "question": "Have you explored any public datasets or competitions on your own, like on Kaggle? What did you learn?",
+    "lookingFor": "Genuine self-directed curiosity and an honest account of what was actually learned, including struggles.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific dataset or competition, not a vague reference",
+        "Describe what you actually tried, including anything that did not work",
+        "Share a concrete lesson, technical or otherwise"
+      ],
+      "modelAnswer": "I spent a few weekends on the Titanic dataset on Kaggle, which I know is the classic beginner one, but I wanted to go beyond the standard tutorial and tried engineering my own features, like extracting titles from passenger names. My first few models barely improved on a simple baseline, which was frustrating, but it taught me that a lot of the real gains come from understanding the data deeply rather than just trying a fancier algorithm. It also got me curious about survivorship patterns tied to class and family size, which I ended up reading more about afterward."
+    },
+    "commonMistakes": [
+      "Naming a dataset with no detail about what was actually done",
+      "Only mentioning success with no honest account of struggle",
+      "Treating a beginner tutorial as if it were an original research project"
+    ],
+    "followUps": ["What would you try next if you went back to that dataset?"]
+  },
+  {
+    "id": "prog-data-science-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Central limit theorem",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": ["statistics", "theory", "concept"],
+    "question": "What is the central limit theorem and why does it matter in practice?",
+    "lookingFor": "A technically correct statement plus an understanding of why it is practically useful.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the distribution of sample means approaches a normal distribution as sample size grows, regardless of the original distribution's shape",
+        "Mention the practical implication, it lets us use normal based methods even when the underlying data is not normal",
+        "Note it requires a reasonably large and independent sample"
+      ],
+      "modelAnswer": "The central limit theorem says that if you take repeated samples from almost any distribution and look at the average of each sample, those averages will tend to follow a normal distribution as the sample size gets large, even if the original data itself is nowhere near normal. What makes it so useful in practice is that it lets us build confidence intervals and run tests based on the normal distribution even when we know very little about the shape of the underlying data, as long as our sample is reasonably large and the observations are independent. It is one of those results that quietly makes a huge amount of everyday statistics possible."
+    },
+    "commonMistakes": [
+      "Saying it means the data itself becomes normally distributed, not the sample means",
+      "No mention of why it is practically useful",
+      "Forgetting the sample size and independence conditions"
+    ],
+    "followUps": ["What might go wrong if you relied on it with a very small sample?"]
+  },
+  {
+    "id": "prog-data-science-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Regularization",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": ["machine-learning", "concept", "model-building"],
+    "question": "What is regularization and why would you use it when building a model?",
+    "lookingFor": "Correct technical understanding of how regularization controls model complexity to fight overfitting.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that regularization adds a penalty for model complexity, usually large coefficients, to the training objective",
+        "Connect it directly to reducing overfitting and improving generalization",
+        "Mention at least one specific type, such as L1 or L2, even briefly"
+      ],
+      "modelAnswer": "Regularization adds a penalty to the model's training objective based on how large or complex its parameters are, so the model is discouraged from relying too heavily on any one feature just to squeeze out a slightly better fit on the training data. The point is to trade a little bit of training accuracy for a model that generalizes better to new data, which directly fights overfitting. I have read a bit about L1 regularization, which can push some coefficients all the way to zero and effectively select features, versus L2, which shrinks them all more smoothly, though I would want to actually apply both properly before I claim real intuition for when to pick one over the other."
+    },
+    "commonMistakes": [
+      "Confusing regularization with data cleaning or preprocessing",
+      "No connection made to overfitting specifically",
+      "Claiming deep expertise with no honest caveat about experience level"
+    ],
+    "followUps": ["Why might you choose L1 over L2 regularization for a specific problem?"]
+  },
+  {
+    "id": "prog-data-science-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining a model to a non-technical audience",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["communication", "applied", "stakeholders"],
+    "question": "Imagine you built a model that predicts something useful, but the person you need to convince has no technical background. How would you explain your results to them?",
+    "lookingFor": "An ability to translate technical work into plain, honest, decision-relevant language.",
+    "idealAnswer": {
+      "bullets": [
+        "Lead with the practical implication, not the method",
+        "Avoid jargon, or explain any term you cannot avoid",
+        "Be honest about the model's limitations and uncertainty rather than overselling it"
+      ],
+      "modelAnswer": "I would start with what the result actually means for their decision rather than how I built it, something like, based on the pattern in this data, we would expect about this many more customers to respond to the new approach. If I had to mention a technical term, like accuracy or confidence interval, I would explain it in one plain sentence rather than assume they know it. I would also be upfront about where the model is less reliable, because I think trust matters more than making the work sound impressive, and a stakeholder who understands the limits will actually use the result better."
+    },
+    "commonMistakes": [
+      "Leading with the technical method instead of the practical takeaway",
+      "Overselling certainty the model does not actually have",
+      "Using jargon without checking it landed"
+    ],
+    "followUps": ["How would you handle it if they pushed back and did not trust the result?"]
+  },
+  {
+    "id": "prog-data-science-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Role of math in data science",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["mathematics", "fundamentals", "preparation"],
+    "question": "How comfortable are you with the mathematics behind data science, like statistics, linear algebra, or calculus, and why does that math actually matter here?",
+    "lookingFor": "Honest self-assessment plus genuine understanding of why the underlying math is not optional.",
+    "idealAnswer": {
+      "bullets": [
+        "Give an honest, specific account of current math background",
+        "Explain concretely where that math shows up in data science, not just that it is important",
+        "Show willingness to build on gaps rather than avoid them"
+      ],
+      "modelAnswer": "I am solid on statistics from school and comfortable with basic calculus, but linear algebra is the area I have only touched lightly, mostly through following along with how vectors and matrices show up in machine learning tutorials. I know it actually matters a lot in practice, calculus underlies how models like neural networks adjust their weights during training, and linear algebra is basically the language that data itself gets represented in once you have more than a couple of variables. That is honestly one of the reasons I want a structured program, I would rather build that foundation properly than keep patching gaps as I go."
+    },
+    "commonMistakes": [
+      "Claiming full confidence with no honest gaps mentioned",
+      "Saying the math does not matter much because tools handle it automatically",
+      "Being vague about which specific area is a strength or weakness"
+    ],
+    "followUps": ["Which of those areas do you think you would need to work hardest on?"]
+  },
+  {
+    "id": "prog-data-science-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Following current developments in data science and AI",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["current-events", "engagement", "field-awareness"],
+    "question": "Is there a recent development in data science or AI that you have been following? What do you make of it?",
+    "lookingFor": "Genuine, informed engagement with the field's current state, with a real opinion rather than just a headline.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific and reasonably current, not something outdated or vague",
+        "Explain what it actually is in your own words",
+        "Offer a genuine opinion or question you still have about it"
+      ],
+      "modelAnswer": "I have been following the growing use of large language models for generating synthetic data to train other models when real data is limited or sensitive, which came up while I was reading about applications in healthcare research. What interests me is that it seems like a real solution to a genuine privacy problem, but I am not fully convinced yet that synthetic data captures the messy edge cases of real data as well as people hope. It is the kind of question I would like to actually dig into properly once I have the statistical grounding to evaluate it rather than just reading summaries."
+    },
+    "commonMistakes": [
+      "Naming something without being able to explain it in their own words",
+      "Picking something so old it does not read as current",
+      "No personal opinion or question, just a summary"
+    ],
+    "followUps": ["What would convince you either way on that question?"]
+  },
+  {
+    "id": "prog-data-science-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Long term goals in data science",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": ["goals", "motivation", "future"],
+    "question": "Where do you see yourself using data science in the future, and how does this program get you there?",
+    "lookingFor": "An ambitious but grounded direction, clearly connected to what the program actually offers.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a direction or problem area, not an overly specific job title",
+        "Connect it honestly to specific parts of the program",
+        "Show flexibility about how the path might evolve"
+      ],
+      "modelAnswer": "I would like to end up working on data problems in public health, ideally somewhere that combines the technical modeling side with actually talking to the people the data represents, which is what first pulled me toward this field through a project on local health data. I know the specific role might not exist yet in the form I am imagining, and I am fine with that changing as I learn more. What draws me to this program specifically is that it pairs technical training with modules on ethics and communication, which is exactly the combination I think that kind of work actually needs."
+    },
+    "commonMistakes": [
+      "An overly specific, unrealistic ten year plan",
+      "A goal with no real connection to what the program teaches",
+      "Sounding uncertain about wanting to stay in the field at all"
+    ],
+    "followUps": ["What is the first step you would want to take after this program?"]
+  }
+]

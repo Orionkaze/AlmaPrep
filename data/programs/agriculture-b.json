@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-agriculture-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Nitrogen use and fertilizer overuse",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["soil science", "fertilizer", "sustainability"],
+    "question": "Farmers often apply more nitrogen fertilizer than the crop can use. Why does this happen, and what's the environmental cost?",
+    "lookingFor": "Understanding of the nitrogen cycle and leaching/runoff consequences, plus reasoning about the economic incentives behind over-application.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why farmers over-apply, insurance against yield loss, cheap fertilizer, or skipped soil testing",
+        "Describe where the excess nitrogen goes, leaching to groundwater, runoff causing eutrophication, nitrous oxide emissions",
+        "Suggest a management fix, soil testing, split applications, precision dosing"
+      ],
+      "modelAnswer": "Farmers over apply nitrogen mostly as insurance, because a shortfall costs them yield and money while extra fertilizer feels like a cheap safety net, especially when soil testing is expensive or skipped. The plant only takes up so much though, and the rest doesn't just disappear, it leaches into groundwater or runs off into rivers where it feeds algal blooms that suffocate aquatic life, and some of it escapes as nitrous oxide which is a much stronger greenhouse gas than CO2. I think the fix has to combine better soil testing with split applications timed to when the crop actually needs nitrogen, rather than one large dose upfront."
+    },
+    "commonMistakes": [
+      "Blaming farmers without acknowledging the economic pressure behind over-application",
+      "Not mentioning where the excess nitrogen actually goes",
+      "Treating it as a purely chemistry question with no policy or behavioral angle"
+    ],
+    "followUps": ["How would you convince a skeptical farmer to reduce fertilizer use?"]
+  },
+  {
+    "id": "prog-agriculture-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Soil degradation and erosion",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["soil science", "erosion", "land management"],
+    "question": "What causes soil erosion on farmland, and why should a farmer care about it beyond this season's yield?",
+    "lookingFor": "Mechanistic understanding of erosion drivers and long-term thinking about topsoil as a finite, slow-forming resource.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify main drivers, tillage exposing bare soil, water runoff on slopes, wind on dry exposed fields, loss of organic matter and root structure",
+        "Explain the long-term consequence, topsoil takes centuries to form but can be lost in seasons, reducing fertility and water-holding capacity",
+        "Mention a mitigation practice, cover cropping, reduced tillage, contour farming"
+      ],
+      "modelAnswer": "Erosion mostly comes down to bare, disturbed soil being exposed to wind and water, which is why heavy tillage on sloped land is such a common cause, since it breaks up the structure that roots would otherwise hold together. What worries me is that topsoil can take hundreds of years to form but a few bad seasons of erosion can strip it away, and you lose organic matter and water holding capacity along with it, so future yields quietly get worse even if this year's harvest looks fine. That's why I find cover cropping and reduced tillage interesting, they keep something rooted in the soil year round instead of leaving it bare between plantings."
+    },
+    "commonMistakes": [
+      "Only mentioning wind or water, not both",
+      "Ignoring the multi-generational timescale of topsoil formation",
+      "No concrete mitigation practice offered"
+    ],
+    "followUps": ["Why might a farmer resist switching to reduced tillage even knowing this?"]
+  },
+  {
+    "id": "prog-agriculture-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetically modified crops, mechanism",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["biotechnology", "gmo", "crop science"],
+    "question": "Explain, in your own words, how a genetically modified crop like Bt cotton actually works.",
+    "lookingFor": "Correct science, gene insertion producing a targeted protein, not just a vague 'engineered to resist pests' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a gene from Bacillus thuringiensis is inserted into the plant genome",
+        "Explain the plant expresses a protein toxic to specific insect larvae but generally safe for humans and most other organisms",
+        "Note a real limitation, resistance evolution in pests, need for refuge planting"
+      ],
+      "modelAnswer": "Bt cotton works by taking a gene from a soil bacterium called Bacillus thuringiensis and inserting it into the cotton genome, so the plant itself produces a protein that's toxic to the gut of specific caterpillar pests like the bollworm when they try to eat it. It's fairly targeted, that protein doesn't have the same effect on humans or most beneficial insects because it needs a specific gut receptor those pests have. What I find interesting is that it's not a permanent fix, pests can evolve resistance over time, which is why farmers are told to plant refuge areas of non-Bt cotton to slow that down."
+    },
+    "commonMistakes": [
+      "Vague 'it's engineered to be pest resistant' with no mechanism",
+      "Confusing herbicide-tolerant GM traits with pest-resistant Bt traits",
+      "Not acknowledging resistance evolution as a real limitation"
+    ],
+    "followUps": ["Why might resistance evolve faster if farmers ignore the refuge requirement?"]
+  },
+  {
+    "id": "prog-agriculture-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Crop rotation reasoning",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["agronomy", "soil science", "reasoning"],
+    "question": "Why does rotating crops like legumes with cereals actually improve soil health, rather than just being tradition?",
+    "lookingFor": "Reasoning about nitrogen fixation and disease-cycle disruption, not a hand-wave toward 'good practice'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain nitrogen fixation by legume root nodules enriching soil nitrogen for the following cereal crop",
+        "Explain how rotation breaks pest and disease life cycles that build up under continuous monocropping",
+        "Mention diversity of root structures and depths improving soil structure"
+      ],
+      "modelAnswer": "The clearest mechanism is nitrogen fixation, legumes host rhizobia bacteria in their root nodules that pull nitrogen from the air and convert it into a form the plant can use, and some of that stays in the soil for the next crop, so a cereal planted afterward needs less added fertilizer. It also breaks the life cycle of pests and diseases that build up when you plant the same crop year after year, because a pest specialized on wheat, say, doesn't have a host to survive on if you switch to beans the following season. I'd also say the different root depths and structures between legumes and cereals keep the soil structure healthier than one crop repeatedly pulling nutrients from the same layer."
+    },
+    "commonMistakes": [
+      "Saying 'it's just good practice' without mechanism",
+      "Only mentioning nitrogen and ignoring pest cycle disruption",
+      "Confusing crop rotation with intercropping"
+    ],
+    "followUps": ["What would you plant after a heavy nitrogen-fixing legume, and why?"]
+  },
+  {
+    "id": "prog-agriculture-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Water use efficiency and irrigation trade-offs",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["irrigation", "water management", "trade-offs"],
+    "question": "Drip irrigation uses far less water than flood irrigation, so why do many farmers still flood their fields?",
+    "lookingFor": "Ability to weigh technical superiority against real-world cost, access, and incentive barriers, not just praise the 'better' technology.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge drip's efficiency, less evaporation and runoff, targeted delivery",
+        "Explain real barriers to adoption, upfront capital cost, maintenance and clogging, land tenancy uncertainty, subsidized or free water reducing incentive",
+        "Show balanced judgment rather than assuming farmers are simply making the wrong choice"
+      ],
+      "modelAnswer": "Drip irrigation is clearly more water efficient, it delivers water right to the root zone and cuts down on evaporation and runoff compared to just flooding a field. But the switch has a real upfront cost for the pipes and emitters, plus ongoing maintenance since they clog easily, and that's a hard ask for a farmer on a tight margin or one who doesn't own the land long term and isn't sure they'll be there to see the investment pay off. On top of that, in a lot of places water itself is heavily subsidized or effectively free, so there's no price signal pushing farmers toward efficiency even though it would help the water table. I don't think it's farmers being irrational, it's the incentives around them not lining up with the technically better choice."
+    },
+    "commonMistakes": [
+      "Assuming farmers are simply uninformed or backward",
+      "Only discussing water efficiency without any adoption barrier",
+      "No mention of the subsidized-water incentive problem"
+    ],
+    "followUps": ["What policy change would you suggest to encourage adoption without hurting poor farmers?"]
+  },
+  {
+    "id": "prog-agriculture-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Pesticide resistance mechanism",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["entomology", "evolution", "pest management"],
+    "question": "A pesticide that worked well for years suddenly stops controlling a pest population. Walk me through why that happens biologically.",
+    "lookingFor": "Correct evolutionary reasoning, pre-existing variation and selection pressure, not 'the bugs got used to it'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain resistance is pre-existing genetic variation being selected for, not individual pests adapting",
+        "Describe how repeated uniform pesticide use kills susceptible individuals and lets resistant ones survive and breed, shifting the population over generations",
+        "Connect to management implications, rotating modes of action, integrated pest management"
+      ],
+      "modelAnswer": "It's not that the insects individually get used to the chemical, it's natural selection. In any large pest population there's already some genetic variation, and by chance a few individuals carry traits that let them survive that particular pesticide. When you spray the same chemical repeatedly, you're killing off the susceptible majority every time and leaving the resistant few to breed, so each generation the resistant trait becomes more common until eventually the whole population can shrug it off. That's why I think rotating between different modes of action, or combining chemical control with biological methods in an integrated pest management approach, matters so much, using the same tool constantly is basically running a selection experiment for resistance."
+    },
+    "commonMistakes": [
+      "Lamarckian framing, 'the bugs learned to resist it' individually",
+      "Not connecting to selection pressure and generational change",
+      "No practical management takeaway"
+    ],
+    "followUps": ["Would resistance spread faster or slower in a pest with a short generation time, and why?"]
+  },
+  {
+    "id": "prog-agriculture-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Photosynthesis and yield limits",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["plant physiology", "yield", "crop science"],
+    "question": "What actually limits how much a crop like wheat or rice can yield, once you rule out water and nutrients?",
+    "lookingFor": "Awareness that photosynthetic efficiency and carbon fixation pathway set a biological ceiling on yield.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention photosynthetic efficiency as the underlying ceiling, how much captured light energy converts to biomass",
+        "Distinguish C3 crops like wheat and rice from more efficient C4 crops like maize, and why that matters",
+        "Note the research angle, improving photosynthetic efficiency and C4 rice research as a genuine yield frontier"
+      ],
+      "modelAnswer": "Once water and nutrients aren't the constraint, the real ceiling comes down to how efficiently the plant converts sunlight and CO2 into biomass through photosynthesis, and that efficiency is actually pretty low, only a few percent of the light energy hitting the leaf ends up as usable plant matter. Wheat and rice use the C3 pathway, which loses energy to a process called photorespiration in hot, high light conditions, whereas C4 crops like maize have a biochemical pump that suppresses that loss and photosynthesize more efficiently. That's actually one of the more exciting frontiers in crop science right now, there's real research trying to engineer C4-like efficiency into rice, because if it worked it could raise the yield ceiling without needing more land, water, or fertilizer."
+    },
+    "commonMistakes": [
+      "Defaulting to 'water and fertilizer' again after being told to rule those out",
+      "Not knowing the C3/C4 distinction at all",
+      "Treating yield ceiling as purely a genetics question with no physiology"
+    ],
+    "followUps": ["Why hasn't C4 rice been achieved yet, given how long it's been researched?"]
+  },
+  {
+    "id": "prog-agriculture-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate change and crop adaptation",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["climate change", "crop breeding", "resilience"],
+    "question": "How is climate change already changing decisions farmers make about what and when to plant?",
+    "lookingFor": "Concrete, specific understanding of adaptation responses, not vague statements about climate change being bad for farming.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific effects, erratic rainfall timing, heat stress during flowering, shifting pest and disease ranges",
+        "Explain farmer-level adaptive responses, shifting sowing dates, switching to drought or heat-tolerant varieties, diversifying crops",
+        "Show awareness this is an ongoing adjustment, not a one-time fix"
+      ],
+      "modelAnswer": "The clearest change I've read about is how unreliable rainfall timing has become, farmers who used to sow right at the start of a predictable monsoon window are now delaying or gambling on shorter, more erratic rains, and a late or early start can wreck a season. Heat stress during flowering is another big one, a few degrees at the wrong moment can crash yields in crops like wheat, so there's a real push toward heat-tolerant varieties and adjusting sowing dates to dodge the worst heat. Pest ranges are shifting too, insects that used to be limited to warmer regions are showing up further north as temperatures rise, so farmers are having to plan for pests they didn't used to worry about. It feels less like a single problem to solve and more like an ongoing recalibration every season."
+    },
+    "commonMistakes": [
+      "Vague statements with no specific mechanism or example",
+      "Talking only about global mitigation policy instead of farm-level decisions",
+      "Ignoring pest and disease range shifts entirely"
+    ],
+    "followUps": ["If you were advising a smallholder farmer today, what's one concrete change you'd suggest?"]
+  },
+  {
+    "id": "prog-agriculture-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Precision agriculture and AI in farming",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["agri-tech", "precision agriculture", "current-affairs"],
+    "question": "Precision agriculture using drones, sensors and AI is getting a lot of attention right now. What's it actually solving, and where do you think its limits are?",
+    "lookingFor": "Informed awareness of a real current trend, balanced with critical thinking about adoption limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what precision agriculture does, site-specific input application using sensor, satellite, or drone data to reduce waste",
+        "Identify a genuine benefit, reduced input costs, environmental impact, better yield prediction",
+        "Identify a real limit, equipment cost, data literacy, relevance mainly to large mechanized farms, rural connectivity"
+      ],
+      "modelAnswer": "From what I've read, precision agriculture is really about replacing blanket decisions, spraying or fertilizing an entire field uniformly, with site-specific ones, using sensors, satellite imagery or drones to figure out exactly which parts of a field need more water or nitrogen and which don't. That can cut input costs and environmental impact meaningfully because you're not overtreating the parts of the field that don't need it. But I think its limits are underdiscussed, the equipment and software are expensive and assume large, mechanized, well-connected farms, so right now it's mostly benefiting bigger commercial operations rather than the smallholder farmers who make up most of the world's growers. I'd be interested in how much of that technology can actually be made affordable and simple enough to reach them."
+    },
+    "commonMistakes": [
+      "Describing it only in buzzword terms without explaining the actual mechanism",
+      "Treating it as a universal solution with no adoption barriers",
+      "No awareness of the smallholder versus large-farm divide"
+    ],
+    "followUps": ["How would you adapt this technology to be useful for a small, low-resource farm?"]
+  },
+  {
+    "id": "prog-agriculture-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene editing ethics",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["ethics", "biotechnology", "gene editing"],
+    "question": "CRISPR gene editing could let us create crops resistant to almost any disease, far faster than traditional breeding. Should there be limits on how far we take this?",
+    "lookingFor": "Structured ethical reasoning weighing benefits against risks and landing on a considered position, not a snap verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine upside, faster disease resistance, reduced pesticide dependence, food security benefit",
+        "Raise a real concern, loss of genetic diversity if everyone plants the same edited variety, and who controls patents and seed access",
+        "Land on a nuanced position rather than an absolute yes or no"
+      ],
+      "modelAnswer": "I don't think the technology itself is the problem, being able to edit in disease resistance faster than waiting for traditional breeding could genuinely reduce pesticide use and protect food supplies, especially against fast-moving diseases. What worries me more is what happens at scale, if everyone adopts the same edited variety because it's the most resistant, you lose genetic diversity across the food system, and a monoculture like that is exactly what makes crops vulnerable to the next unexpected threat. There's also the question of who owns the edited seed and whether smallholder farmers can actually access it or get locked into buying from one company every season. So I wouldn't ban the technology, but I'd want strong rules around maintaining diversity in what's actually planted and around equitable access to the seeds themselves."
+    },
+    "commonMistakes": [
+      "A blanket 'GMOs are dangerous' or 'GMOs are totally safe' stance with no nuance",
+      "Ignoring the diversity and monoculture risk entirely",
+      "Not addressing who controls access to the technology"
+    ],
+    "followUps": ["Should governments or companies own patents on gene-edited crop varieties?"]
+  },
+  {
+    "id": "prog-agriculture-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Lab-grown meat debate",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "food-systems", "livestock"],
+    "question": "Lab-grown meat is now being approved for sale in some countries. Do you think it's a genuine solution to the environmental cost of livestock farming?",
+    "lookingFor": "Informed, balanced awareness of a live debate, weighing real environmental promise against practical and cultural barriers.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the environmental case, lower land and water use, fewer emissions than conventional livestock, in principle",
+        "Raise a genuine limitation, production cost and scale, bioreactor energy use, consumer acceptance, impact on livestock farming livelihoods",
+        "Reach a considered, non-absolute judgment"
+      ],
+      "modelAnswer": "The environmental logic is real, livestock farming, especially cattle, is a big driver of land use, water use and methane emissions, so if you can grow the muscle tissue without the animal, in principle you cut a lot of that footprint. But I'm cautious about calling it solved, the current production processes are still energy intensive and expensive at the scale needed to actually replace conventional meat, and there's a real question of whether people will accept it culturally and whether it's fair to the livelihoods of livestock farmers if it does scale up. I think it's a genuinely promising piece of the solution rather than the whole answer, alongside things like better feed efficiency and reduced food waste."
+    },
+    "commonMistakes": [
+      "Treating it as either a total non-starter or an already-solved miracle",
+      "No mention of the livelihood impact on farmers",
+      "Ignoring the current energy and cost limitations of production"
+    ],
+    "followUps": ["What would you say to a farmer worried this technology threatens their livelihood?"]
+  },
+  {
+    "id": "prog-agriculture-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Regenerative agriculture versus conventional",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["sustainability", "regenerative agriculture", "reasoning"],
+    "question": "Regenerative agriculture claims it can be as productive as conventional farming while restoring soil health. Are you convinced by that claim?",
+    "lookingFor": "Critical, evidence-minded thinking rather than uncritical endorsement of a trendy term.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what regenerative agriculture actually involves, minimal tillage, cover crops, diverse rotations, integrating livestock",
+        "Weigh the evidence honestly, soil health benefits are well supported, but yield parity claims are contested and vary by crop and region",
+        "Show a reasoned, not uncritical, conclusion"
+      ],
+      "modelAnswer": "I think regenerative practices like minimal tillage, cover cropping and diverse rotations genuinely do build soil organic matter and resilience over time, that part is well supported. Where I'd push back a little is the blanket claim that yields match conventional farming immediately, from what I've read the transition period often sees a yield dip while the soil biology rebuilds, and results vary a lot by crop and region, so it's not a universal like-for-like swap. I'd say it's a strong long-term bet for soil health and resilience to shocks like drought, but I'd be honest with a farmer that the first few years might cost them something, and that's a real barrier for anyone farming on thin margins."
+    },
+    "commonMistakes": [
+      "Uncritically repeating marketing claims without evidence-based skepticism",
+      "Dismissing regenerative agriculture entirely as a fad",
+      "Not mentioning the transition period yield dip"
+    ],
+    "followUps": ["How would you support a farmer financially through that transition period?"]
+  },
+  {
+    "id": "prog-agriculture-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Monoculture disease risk hypothetical",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "risk", "crop diversity"],
+    "question": "Imagine an entire region has committed to growing a single high-yield variety of a staple crop because it outperforms everything else. A new disease appears that this variety has no resistance to. As an agricultural advisor, what would you tell that region?",
+    "lookingFor": "Structured hypothetical reasoning that identifies the monoculture root cause and proposes both crisis response and structural fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Diagnose the underlying cause, genetic uniformity removed any natural buffer against a novel disease",
+        "Propose a short-term response, contain spread, source resistant varieties or seed banks",
+        "Propose a longer-term structural fix, reintroducing varietal diversity, staggered planting, incentives against over-reliance on one variety"
+      ],
+      "modelAnswer": "The root problem is that by planting one variety everywhere, the region removed any natural buffer, if that variety has no resistance, the disease can move through the whole area almost unchecked because there's no genetic diversity slowing it down. In the short term I'd want to contain the outbreak as fast as possible, working out how it spreads and whether there are resistant varieties in seed banks or gene banks that could be brought in quickly, even if they yield a bit less. Longer term though, I'd push hard for the region to diversify what it plants, maybe several resistant varieties staggered across different farms, because the real lesson here is that betting everything on one high performer is a bet against nature eventually finding its weakness."
+    },
+    "commonMistakes": [
+      "Only addressing the immediate outbreak with no structural fix",
+      "Not identifying genetic uniformity as the actual root cause",
+      "Suggesting an unrealistic overnight fix ignoring farmer livelihoods during transition"
+    ],
+    "followUps": ["How would you convince farmers to give up some yield now for resilience later?"]
+  },
+  {
+    "id": "prog-agriculture-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Antibiotic use in livestock",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["ethics", "livestock", "antibiotic resistance"],
+    "question": "Routine antibiotic use in livestock farming boosts growth and prevents disease in crowded conditions, but it's also linked to antibiotic resistance in humans. Where do you stand?",
+    "lookingFor": "A reasoned ethical position that weighs farmer economics and animal welfare against a genuine public health externality.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real reason it's used, disease prevention in crowded conditions and farmer economics",
+        "Explain the public health externality, resistant bacteria can transfer to humans and undermine antibiotics that treat human illness",
+        "Land on a defensible position, likely restricting routine growth-promotion use while preserving legitimate treatment use"
+      ],
+      "modelAnswer": "I understand why farmers use antibiotics routinely, crowded conditions make disease spread likely, and preventing an outbreak protects the animals and the farmer's income, plus it's been shown to boost growth. But the externality bothers me, when bacteria develop resistance in that setting it doesn't stay contained to the farm, it can move into the human population and undermine antibiotics we rely on for actual illness, and that's a cost carried by people who had no say in the farming decision. My position would be to restrict routine, growth-promotion use of antibiotics specifically, while still allowing them for treating genuinely sick animals, because that keeps the tool available for actual disease without normalizing constant low-dose use that breeds resistance."
+    },
+    "commonMistakes": [
+      "Dismissing farmer economics entirely as irrelevant",
+      "Not identifying the externality onto public health as the core issue",
+      "Refusing to take a position at all"
+    ],
+    "followUps": ["How would restricting this affect small farmers who rely on cheap disease prevention?"]
+  },
+  {
+    "id": "prog-agriculture-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Farm subsidy policy debate",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["policy", "economics", "current-affairs"],
+    "question": "Many governments still subsidize staple crops like wheat, rice or corn. Is that still the right policy, or does it distort what farmers grow?",
+    "lookingFor": "Economically literate reasoning about incentives and unintended consequences, not a purely political opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the original rationale, food security, price stability, protecting farmer incomes from volatile markets",
+        "Identify a real distortion effect, overproduction of subsidized staples, less incentive to diversify, water-intensive crops grown in water-scarce regions",
+        "Offer a reasoned view rather than a flat yes or no"
+      ],
+      "modelAnswer": "The original logic makes sense to me, subsidies were meant to protect farmers from volatile prices and guarantee enough of a staple crop to feed the country, which is a real food security concern. But I do think they distort behavior over time, if wheat or rice is guaranteed a price no matter what, farmers have less reason to diversify into other crops or adapt to what the local soil and water actually suit, so you can end up with something like rice being over-grown in a water-scarce region simply because the subsidy makes it the safe bet. I wouldn't scrap subsidies outright since the income protection matters, but I'd want them redesigned to reward practices like water efficiency or crop diversification rather than just rewarding growing more of the same staple."
+    },
+    "commonMistakes": [
+      "Treating this as a purely political talking point rather than reasoning through incentives",
+      "Ignoring the environmental side-effects of distorted crop choice",
+      "A simple yes or no with no proposed redesign"
+    ],
+    "followUps": ["What would a better-designed subsidy actually reward?"]
+  },
+  {
+    "id": "prog-agriculture-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Food crops versus biofuel land use dilemma",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["ethics", "land use", "food security"],
+    "question": "A country facing both food insecurity and energy shortages is deciding whether to convert farmland from food crops to biofuel crops. How would you advise them to think about that trade-off?",
+    "lookingFor": "Structured weighing of competing needs, awareness this isn't a purely technical choice, and a reasoned framework rather than a snap verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the genuine tension, energy security and rural income versus immediate food availability and price effects",
+        "Bring in relevant nuance, which land is affected, marginal land unsuited to food crops versus prime farmland",
+        "Propose a reasoned framework, protect prime food-producing land, allow biofuel crops on marginal land, monitor food price impact"
+      ],
+      "modelAnswer": "I wouldn't want to give a blanket yes or no, because it really depends on which land is being converted. If it's genuinely marginal land that struggles to produce food crops well anyway, growing a hardier biofuel crop there could bring energy and income without much cost to food supply. But if it's prime farmland that's actually feeding people, converting it risks pushing up food prices, and that burden falls hardest on the poorest people in that country, who spend the largest share of their income on food. So my framework would be to protect land that's genuinely productive for food, direct biofuel crops toward marginal or degraded land where possible, and closely monitor food prices as the policy rolls out so it can be reversed if it starts hurting food security."
+    },
+    "commonMistakes": [
+      "Treating it as a simple either/or without land-quality nuance",
+      "Ignoring the disproportionate impact of food price rises on the poor",
+      "No proposed monitoring or safeguard mechanism"
+    ],
+    "followUps": ["What would make you reverse this policy once it's underway?"]
+  },
+  {
+    "id": "prog-agriculture-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Soil microbiome and plant nutrition",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["soil science", "microbiology", "plant health"],
+    "question": "What role do soil microbes actually play in plant nutrition, beyond just breaking down organic matter?",
+    "lookingFor": "Understanding of symbiotic relationships like mycorrhizal fungi and nitrogen-fixing bacteria, beyond a generic decomposition answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention mycorrhizal fungi forming symbiotic relationships with roots, extending effective root surface area",
+        "Mention nitrogen-fixing bacteria converting atmospheric nitrogen into plant-usable forms",
+        "Note the implication for farming practice, why disturbing soil biology can hurt long-term fertility"
+      ],
+      "modelAnswer": "Beyond just decomposing organic matter into nutrients, a lot of soil microbes are actually in direct partnership with the plant. Mycorrhizal fungi, for instance, attach to roots and extend a fine network out into the soil that massively increases the effective surface area for picking up water and phosphorus, which the plant's own roots alone couldn't reach as efficiently. Nitrogen-fixing bacteria do something similar, converting nitrogen from the air into a form the plant can actually use, which is the whole reason legumes enrich soil. It makes me think twice about practices like heavy tillage or soil fumigation, because you're not just moving dirt around, you're disrupting a living network the plant actually depends on."
+    },
+    "commonMistakes": [
+      "A generic 'microbes decompose organic matter' answer with nothing further",
+      "Not naming mycorrhizal fungi or nitrogen-fixing bacteria specifically",
+      "No connection to farming practice implications"
+    ],
+    "followUps": ["Why might a farmer's tillage practice damage this microbial network?"]
+  },
+  {
+    "id": "prog-agriculture-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Vertical farming trade-offs",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "agri-tech", "urban farming"],
+    "question": "Vertical farming is being promoted as a way to grow food in cities with far less land and water. What do you think it can and can't realistically solve?",
+    "lookingFor": "Balanced awareness of a real trend, distinguishing what it's genuinely good for from its practical limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the genuine advantage, reduced water use, no weather dependency, works well for leafy greens and herbs near urban consumers",
+        "Identify the real limitation, high energy cost for lighting and climate control, not viable yet for staple calorie crops",
+        "Reach a balanced conclusion about where it fits, not a blanket 'future of farming' claim"
+      ],
+      "modelAnswer": "Vertical farming genuinely solves a real problem for certain crops, leafy greens and herbs grown this way use a fraction of the water of open field farming and can sit right next to the city that consumes them, cutting transport losses and emissions. But I don't think it's a general answer to feeding the world, the energy cost of artificial lighting and climate control is enormous, and it's just not economically viable yet for the staple, calorie-dense crops like wheat or rice that most people actually depend on for calories. So I'd say it's a smart complement for high-value, perishable produce near cities, not a replacement for traditional field agriculture."
+    },
+    "commonMistakes": [
+      "Treating vertical farming as a total solution to global food production",
+      "Ignoring the significant energy cost trade-off",
+      "Not distinguishing which crop types it actually suits"
+    ],
+    "followUps": ["What would need to change technologically for vertical farming to grow staple crops economically?"]
+  },
+  {
+    "id": "prog-agriculture-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Shared river water rights hypothetical",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "water management", "conflict"],
+    "question": "Imagine two farming communities share a river. Upstream farmers have started using much more water for a new water-intensive crop, and downstream farmers are now facing shortages. As an agricultural policy advisor brought in to mediate, what would you actually do?",
+    "lookingFor": "Structured mediation reasoning that gathers facts and recognizes both sides' legitimate interests, rather than picking a side reflexively.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by gathering facts, how much water is being used, what rights or agreements already exist, what alternatives upstream farmers have",
+        "Recognize both sides have legitimate interests, upstream livelihood versus downstream's existing dependency",
+        "Propose a process, data-informed allocation, phased adjustment, incentives, ongoing monitoring"
+      ],
+      "modelAnswer": "I wouldn't start by deciding who's right, I'd start by actually measuring the situation, how much water the new upstream crop uses compared to before, what water rights or agreements already existed between the two communities, and whether the upstream farmers have a viable alternative crop. Both sides have a real stake here, the upstream farmers presumably switched to that crop because it made economic sense for them, and the downstream farmers have an existing dependency that predates the change, so I wouldn't want to just shut the new crop down overnight without a transition plan. I'd aim for a phased allocation agreement based on actual data, maybe combined with some support or incentive for the upstream farmers to shift toward a less water-intensive variety over a few seasons, with ongoing monitoring so it doesn't quietly slide back into shortage."
+    },
+    "commonMistakes": [
+      "Immediately siding with downstream farmers as the victims without gathering facts",
+      "Proposing an abrupt ban with no transition support for upstream farmers",
+      "No mechanism for ongoing monitoring or enforcement"
+    ],
+    "followUps": ["What would you do if the upstream community refused to cooperate at all?"]
+  },
+  {
+    "id": "prog-agriculture-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetic diversity and food security",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["genetics", "food security", "crop diversity"],
+    "question": "We rely on a surprisingly small number of crop species and varieties for most of the world's calories. Why is that a risk, and what's actually being done about it?",
+    "lookingFor": "Understanding of genetic bottleneck risk and awareness of a real mitigation effort like seed banks.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the risk, a narrow genetic base means a single disease or shock can threaten a huge share of global food supply",
+        "Note real-world mitigation, global seed banks and breeding programs preserving landrace and wild relative diversity",
+        "Show why this matters for future breeding, wild relatives as a genetic reservoir for future resistance traits"
+      ],
+      "modelAnswer": "A handful of crops like wheat, rice, maize and potato provide most of the world's calories, and within those, a lot of farmland is planted with just a few high-yield varieties, which narrows the genetic base a lot. The risk is that a narrow genetic base means one disease or pest that the dominant variety has no resistance to can devastate a huge share of the food supply at once, which is basically what happened in the Irish potato famine when a single blight hit fields planted almost entirely with one vulnerable variety. What's reassuring is that there's real effort going into protecting against this now, seed banks like the one in Svalbard preserve genetic diversity from thousands of varieties and wild relatives specifically so breeders have a reservoir to pull resistance traits from when a new threat appears."
+    },
+    "commonMistakes": [
+      "Not connecting the risk to a real historical example",
+      "No awareness of seed bank or diversity preservation efforts",
+      "Treating it as purely a past problem with no ongoing relevance"
+    ],
+    "followUps": ["Why might a wild relative of a crop be more valuable for breeding than a modern high-yield variety?"]
+  },
+  {
+    "id": "prog-agriculture-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Carbon farming and climate mitigation",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["climate change", "carbon farming", "current-affairs"],
+    "question": "There's growing talk of paying farmers for 'carbon farming', storing carbon in soil through practices like cover cropping and reduced tillage. Do you think this can genuinely work at scale?",
+    "lookingFor": "Informed, critical engagement with a live policy idea, including measurement and verification challenges, not just enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic mechanism, certain practices increase soil organic carbon, a genuine sink farmers could be paid for via carbon credits",
+        "Raise a genuine practical challenge, measuring and verifying soil carbon accurately is hard, and carbon can be released again if practices reverse",
+        "Reach a considered, non-absolute judgment"
+      ],
+      "modelAnswer": "The underlying science is real, practices like cover cropping and reduced tillage do build up organic carbon in the soil over time, so paying farmers to adopt them through carbon credits is a genuinely interesting idea for both climate mitigation and soil health. What I'm less sure about is the measurement side, soil carbon is hard and expensive to measure accurately at scale, and if a farmer gets paid for storing carbon this year but ploughs the field up again in five years, that carbon can release right back out, so verifying it's actually permanent is a real challenge for those credit markets. I think it's worth pursuing, but I'd want the payment schemes to be honest about measurement uncertainty rather than overselling it as a guaranteed climate fix."
+    },
+    "commonMistakes": [
+      "Uncritical enthusiasm with no mention of measurement or permanence challenges",
+      "Dismissing the whole concept without engaging with the real underlying science",
+      "Confusing carbon farming with unrelated carbon capture technology"
+    ],
+    "followUps": ["How would you design a verification system that's both accurate and affordable for smallholder farmers?"]
+  },
+  {
+    "id": "prog-agriculture-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Integrated pest management reasoning",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["pest management", "reasoning", "sustainability"],
+    "question": "Why would a farmer choose integrated pest management over simply spraying a broad-spectrum pesticide when a pest problem shows up?",
+    "lookingFor": "Reasoning about ecological trade-offs, killing beneficial insects and resistance risk, versus a quick chemical fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the downside of broad-spectrum spraying, kills beneficial predators and pollinators, can trigger secondary pest outbreaks",
+        "Explain what IPM actually combines, monitoring and thresholds, biological control, resistant varieties, targeted chemical use as a last resort",
+        "Show understanding that IPM is often more cost-effective long-term, not just more eco-friendly"
+      ],
+      "modelAnswer": "A broad-spectrum spray does kill the target pest, but it also wipes out the natural predators and pollinators in the field, and without those predators around, a secondary pest that used to be kept in check can suddenly explode, so you can end up trading one problem for another. Integrated pest management tries to avoid that by combining monitoring, so you only spray once a pest actually crosses a damage threshold rather than automatically, along with biological controls, resistant varieties, and chemical use as more of a last resort rather than the default. I think what gets missed is that this isn't just the environmentally nicer option, it's often more cost-effective over a full season too, because you're not constantly rebuying pesticide and fighting secondary outbreaks you created yourself."
+    },
+    "commonMistakes": [
+      "Framing IPM as purely an environmental choice, missing the economic argument",
+      "Not explaining why broad-spectrum spraying can backfire",
+      "A vague description of IPM without naming its actual components"
+    ],
+    "followUps": ["How would a farmer know when a pest has actually crossed an 'economic threshold' worth spraying for?"]
+  },
+  {
+    "id": "prog-agriculture-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Drought-resistant breeding trade-offs",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["crop breeding", "climate resilience", "trade-offs"],
+    "question": "Breeding a crop variety for drought resistance often comes with a yield penalty in a normal, well-watered year. How should a breeder or a farmer think about that trade-off?",
+    "lookingFor": "Nuanced reasoning about risk management under uncertainty, not a simple 'always choose one or the other' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why the trade-off exists biologically, resources redirected to stress tolerance mechanisms instead of pure growth",
+        "Frame it as risk management depending on regional climate reliability, average yield across years may favor the resilient variety",
+        "Note farmer choice may depend on more than agronomy, insurance access, risk tolerance, whether one bad year is catastrophic"
+      ],
+      "modelAnswer": "Biologically it makes sense that there's a trade-off, a plant that's investing energy into deeper roots or mechanisms to survive water stress has less to put into pure biomass growth in a good year, so the drought-tolerant variety often looks like it's underperforming when conditions are actually fine. But I don't think you should judge it by a single good year, you have to think about the average outcome across many years including the bad ones. In a region where drought hits every few years, a variety with a lower ceiling but a much higher floor might actually deliver a better average yield over time than a high-yield variety that occasionally collapses completely. That said, I'd also factor in things like whether the farmer has crop insurance or savings to absorb a bad year, because a farmer with no safety net might rationally prioritize avoiding catastrophic loss over maximizing average yield."
+    },
+    "commonMistakes": [
+      "Treating it as an obvious win for drought resistance without weighing the yield cost",
+      "No mention of the biological mechanism behind the trade-off",
+      "Ignoring the farmer's actual risk tolerance and financial safety net"
+    ],
+    "followUps": ["How would climate change itself shift this calculation over the next twenty years?"]
+  },
+  {
+    "id": "prog-agriculture-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Pesticide use versus yield for a smallholder farmer",
+    "program": "Agriculture",
+    "difficulty": "hard",
+    "tags": ["ethics", "pesticide", "smallholder farming"],
+    "question": "A smallholder farmer you're advising is using a pesticide that's cheap and effective but has known health risks to farmworkers and is being phased out in wealthier countries. The farmer says they can't afford the safer alternative and their family's income depends on this harvest. What do you tell them?",
+    "lookingFor": "Empathetic but honest ethical reasoning that doesn't dismiss the farmer's real constraints, while landing on practical, achievable steps.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine bind, a real economic constraint, not recklessness, and the farmer bears the health risk personally",
+        "Look for practical middle steps, protective equipment, safer application technique, connecting them to subsidy or support programs",
+        "Be honest about the limits of advice alone, structural and economic support matters as much as awareness"
+      ],
+      "modelAnswer": "I wouldn't just tell them to stop using it, because that ignores the real bind they're in, they know the risk and they're still choosing it because the alternative costs more than they can absorb right now, and it's their own health on the line, not some abstract statistic. What I'd actually focus on first is harm reduction within what's realistic for them, proper protective equipment if they don't already have it, safer timing and technique for application to reduce exposure, and trying to connect them with any subsidy or cooperative buying program that might bring the safer alternative's cost down. I'd be honest that advice alone doesn't solve this, it's fundamentally an economic constraint, so part of my job would be pointing them toward whatever support exists rather than just telling them to make a choice they've already told me they can't afford."
+    },
+    "commonMistakes": [
+      "Preachy insistence on stopping immediately with no acknowledgment of the economic reality",
+      "Excusing the health risk entirely because of cost, with no harm-reduction steps offered",
+      "Framing it as purely the farmer's individual choice with no structural context"
+    ],
+    "followUps": ["Whose responsibility is it to fix this, the farmer, the government, or the pesticide manufacturer?"]
+  },
+  {
+    "id": "prog-agriculture-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Advising a farmer switching to organic",
+    "program": "Agriculture",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "organic farming", "advising"],
+    "question": "A conventional farmer comes to you wanting to switch entirely to organic certification next season because they've heard it pays a premium. What would you actually tell them before they commit?",
+    "lookingFor": "Realistic, well-rounded advice showing understanding of certification requirements, transition costs, and market risk, not just encouragement.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the certification transition period reality, often a multi-year conversion period before the organic premium applies",
+        "Flag the yield and pest management learning curve during transition",
+        "Emphasize checking the actual local market before committing, is the premium real where they farm"
+      ],
+      "modelAnswer": "Before they commit, I'd want them to know the transition isn't instant, most certification systems require a multi-year conversion period, often two or three years, where they have to farm organically but can't yet sell at the organic premium, so they need to be able to absorb that gap financially. I'd also be honest that yields often dip during that transition while the soil biology rebuilds and they're learning organic pest and weed management without the tools they're used to, so it's not just a paperwork change, it's a real skills shift. And before any of that, I'd want them to actually confirm there's a buyer willing to pay that premium locally, because the price difference people hear about isn't guaranteed everywhere, and committing to years of lower yields chasing a premium that doesn't materialize in their market would be the worst outcome."
+    },
+    "commonMistakes": [
+      "Pure encouragement with no mention of the multi-year transition period",
+      "Ignoring the yield dip and skills learning curve",
+      "Not checking whether an actual organic market or premium exists locally"
+    ],
+    "followUps": ["What would you tell them to do differently in year one to make the transition easier?"]
+  }
+]

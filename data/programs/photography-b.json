@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-photography-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Reciprocity and metering logic",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["technical", "exposure", "reasoning"],
+    "question": "A camera's meter is calibrated to 18% grey. If you photograph a snow scene using the meter's suggested exposure without compensation, what happens to the snow, and why?",
+    "lookingFor": "Genuine technical understanding of how reflective metering works and why it fails on non-average scenes, not a memorised rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the meter tries to render whatever it sees as mid-grey",
+        "Conclude the snow will come out grey and underexposed if you trust the meter blindly",
+        "Give the fix: exposure compensation upward, or spot metering off a known tone and adjusting"
+      ],
+      "modelAnswer": "The meter doesn't know it's looking at snow, it just tries to make the average of the frame come out as middle grey, so if I trust it blindly on an all white scene the snow gets underexposed and turns a dull grey. I'd usually dial in about a stop and a half of positive exposure compensation, or meter off something I know is closer to eighteen percent grey like grass or my own hand and work from there. I actually learned this the hard way shooting a ski trip before I understood metering properly, which is partly why it stuck with me."
+    },
+    "commonMistakes": [
+      "Saying the camera will expose snow correctly because it is 'smart'",
+      "Confusing exposure compensation with white balance",
+      "Giving the rule without explaining why the meter behaves that way"
+    ],
+    "followUps": ["How would the same logic apply to photographing a black cat or a coal scuttle?"]
+  },
+  {
+    "id": "prog-photography-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Depth of field variables",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["technical", "optics", "depth-of-field"],
+    "question": "Besides aperture, what other factors change how much of a scene appears in focus, and how would you use them deliberately?",
+    "lookingFor": "Awareness that depth of field is a function of aperture, focal length, distance to subject and sensor size together, not aperture alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Name focal length, camera-to-subject distance, and sensor size as additional variables",
+        "Explain the general direction of each effect",
+        "Give a practical example of combining them to get a look aperture alone couldn't"
+      ],
+      "modelAnswer": "Aperture is the one everyone learns first, but focal length matters too, a longer lens compresses and blurs the background more at the same aperture, and getting physically closer to your subject also shrinks the depth of field. Sensor size plays in as well, which is why a phone struggles to get a shallow background even wide open, the sensor is just too small. So if I want a really melted background for a portrait I don't only open the aperture, I'll also step back and use a longer lens, which flattens the background and blurs it more than a wide lens would at the same distance."
+    },
+    "commonMistakes": [
+      "Naming only aperture and stopping there",
+      "Confusing focal length compression with actual depth of field change",
+      "Ignoring sensor size entirely"
+    ],
+    "followUps": ["Why do phone cameras fake background blur instead of achieving it optically?"]
+  },
+  {
+    "id": "prog-photography-b-003",
+    "category": "Ethics & Situational",
+    "subtopic": "Staged documentary image",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["ethics", "documentary", "judgement"],
+    "question": "You're shooting a photo essay on a family affected by flooding. The most powerful shot you get is one where you gently asked the mother to stand in a particular spot so the light and composition worked. Is that still documentary photography? Would you caption it differently?",
+    "lookingFor": "Honest engagement with the line between direction and fabrication in documentary work, with a defensible position on disclosure.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish directing a real subject's position from inventing a scene that didn't happen",
+        "Weigh the ethical weight of captioning and audience trust",
+        "Land on a clear practice, such as disclosure or a preference for observed over directed moments"
+      ],
+      "modelAnswer": "I think there's a real difference between asking someone to stand where the light is best and staging an event that never happened, the flood and her loss are real either way. But I'd still be honest with myself that I nudged the composition, and I think that's worth disclosing, maybe in a caption note or an artist statement about method, because documentary photography runs on the audience trusting what they see. If I had the choice I'd rather wait a few extra minutes for her to naturally move into good light than direct her, because the slightly less perfect but unprompted moment usually has more truth in it anyway."
+    },
+    "commonMistakes": [
+      "Claiming any direction at all disqualifies the image as documentary",
+      "Dismissing the question as unimportant because the emotion is real",
+      "Giving no practical answer about captioning or disclosure"
+    ],
+    "followUps": ["Does your answer change if the subject asked you to move them there?"]
+  },
+  {
+    "id": "prog-photography-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: AI training on photographers' work",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "ai", "copyright"],
+    "question": "Several photo agencies and individual photographers have sued AI companies over training image generators on their work without consent. What's your view on where the line should sit between fair use and exploitation here?",
+    "lookingFor": "Awareness of the actual live debate, not just a vague AI opinion, with a reasoned position on consent, compensation, and attribution.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of specific real disputes, such as Getty's case, without needing exact legal detail",
+        "Separate the technical question of how training works from the economic and consent question",
+        "Offer a personal, reasoned position rather than a fence-sitting non-answer"
+      ],
+      "modelAnswer": "I follow this because it directly affects photographers, cases like Getty Images against Stability AI are essentially asking whether scraping millions of copyrighted photos to train a generator counts as fair use or as uncompensated exploitation of someone's labour. My own view leans toward photographers deserving some form of consent or compensation mechanism, because the models are commercially valuable precisely because they learned from real photographic choices about light and composition that took someone years to develop. I don't think the answer is banning the technology, I think it's building licensing systems, similar to how music sampling eventually got formal clearance processes."
+    },
+    "commonMistakes": [
+      "Vague 'AI is concerning' answers with no specific awareness of the debate",
+      "Treating it purely as a legal question with no personal position",
+      "Assuming AI generation and AI-assisted editing are the same issue"
+    ],
+    "followUps": ["Would you be comfortable if your own portfolio images were used to train a model, with credit but no payment?"]
+  },
+  {
+    "id": "prog-photography-b-005",
+    "category": "Curveball/Personality",
+    "subtopic": "Discipline-relevant hypothetical",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "constraint", "problem-solving"],
+    "question": "Your memory card fails halfway through the only shoot of a once-only event, like a wedding ceremony. You realise it at the moment you'd normally swap cards. What do you actually do in the next five minutes?",
+    "lookingFor": "Calm, practical crisis management that prioritises salvaging the irreplaceable moments over dwelling on the loss.",
+    "idealAnswer": {
+      "bullets": [
+        "Show immediate triage: stop shooting to the dead card, switch to a backup card or body",
+        "Prioritise which moments are truly unrepeatable versus recoverable later",
+        "Mention after-the-fact steps like data recovery and honest communication with the client"
+      ],
+      "modelAnswer": "First thing I'd do is stop shooting to that card immediately so I don't make it worse, and switch straight to my backup card, which is why I always carry a spare in a different pocket, not the camera bag flap where I might fumble it. In the moment I'd mentally triage what's about to happen, if the vows are seconds away I focus entirely on not missing that, and worry about anything already lost afterward. Once the event calms down I'd try a data recovery tool on the failed card that night, and if that failed I'd tell the couple honestly rather than pretend everything is fine, because trust matters more than looking flawless."
+    },
+    "commonMistakes": [
+      "Panicking in the answer instead of describing a clear sequence of actions",
+      "Ignoring the need for a backup card as basic preparation",
+      "Skipping the honesty question with the client afterward"
+    ],
+    "followUps": ["How would you build your workflow to make this scenario less likely in the first place?"]
+  },
+  {
+    "id": "prog-photography-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Colour theory in editing",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["technical", "colour", "post-processing"],
+    "question": "How would you explain the idea of complementary colours to someone who's never studied colour theory, and how do you actually use it when you edit?",
+    "lookingFor": "Ability to explain a technical concept simply and connect it to real editing decisions, not just recite the colour wheel.",
+    "idealAnswer": {
+      "bullets": [
+        "Define complementary colours as opposite pairs on the colour wheel that create visual tension or contrast",
+        "Give an accessible everyday example",
+        "Connect it to a real grading or composition choice in their own work"
+      ],
+      "modelAnswer": "I'd say complementary colours are pairs that sit opposite each other on the colour wheel, like orange and blue, and when you put them next to each other they make each other look more vivid, which is why they feel so satisfying together. The classic example people already know without realising it is a warm skin tone against a cool blue sky or shadow, that's basically every teal and orange film poster you've ever seen. When I edit I'll often push shadows slightly cooler and midtones slightly warmer for exactly that reason, it's subtle but it gives the image a bit more visual pop without looking artificial if you don't overdo it."
+    },
+    "commonMistakes": [
+      "Reciting colour wheel theory with no practical application",
+      "Overclaiming that complementary grading is 'the' correct look for every image",
+      "Confusing complementary colours with analogous colours"
+    ],
+    "followUps": ["When would you deliberately avoid a complementary colour scheme?"]
+  },
+  {
+    "id": "prog-photography-b-007",
+    "category": "Ethics & Situational",
+    "subtopic": "Client versus artistic vision conflict",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["ethics", "client-relations", "judgement"],
+    "question": "A client hires you for their brand campaign but keeps rejecting every technically strong image because they want something you think looks dated and clichéd. How far do you compromise?",
+    "lookingFor": "Practical professionalism that balances honest creative input with respecting the client owns the final call and the budget.",
+    "idealAnswer": {
+      "bullets": [
+        "Advocate for your view once, clearly, with reasons rather than just taste",
+        "Recognise the client is paying for their vision, not a personal art project",
+        "Describe a fair compromise, such as delivering both options or renegotiating scope"
+      ],
+      "modelAnswer": "I'd say my piece once, clearly and with reasons rather than just 'I don't like it', because that's actually part of what they're paying me for as someone who thinks about images professionally. But if they still want the more conventional look after hearing me out, it's their brand and their money, not my portfolio piece, so I'd deliver what they asked for well rather than sulking through it. What I try to do is build in a shot or two during the session that lets me try my instinct too, so I can show them the alternative concretely instead of just arguing about it in the abstract."
+    },
+    "commonMistakes": [
+      "Refusing to deliver anything except your own vision",
+      "Caving immediately with no attempt to advocate for a better result",
+      "Treating client work and personal art as if they have identical goals"
+    ],
+    "followUps": ["Would your answer change if the client's choice made the images factually misleading, not just stylistically dated?"]
+  },
+  {
+    "id": "prog-photography-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Dynamic range and sensor limitations",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["technical", "sensors", "reasoning"],
+    "question": "You're shooting a bright window and a dim interior in the same frame. Explain in your own terms why the sensor struggles with this, and what your actual options are on set.",
+    "lookingFor": "Real technical grasp of dynamic range limits and a set of practical, prioritised solutions rather than just naming HDR.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain dynamic range as the sensor's limited range between the darkest and brightest recoverable detail in one exposure",
+        "List realistic in-camera options: exposing for highlights and lifting shadows, filters, flash fill, waiting for different light",
+        "Mention bracketing and blending as a fallback, with awareness of its limits for moving subjects"
+      ],
+      "modelAnswer": "The sensor can only capture a certain range between the darkest shadow detail and the brightest highlight detail before one end clips completely, and a bright window against a dim room usually exceeds that range in a single exposure. On set my first instinct is actually to change the light rather than fix it later, so I'd consider a neutral density gel on the window to bring it down closer to the room, or add a bounce or small flash to lift the interior instead. If neither is practical, I'd expose to protect the highlights since blown out windows are unrecoverable, and either lift shadows in post or shoot a bracketed exposure to blend, accepting that blending doesn't work well if anything in frame is moving."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'I'd just do HDR' with no understanding of why it's needed",
+      "Ignoring in-camera solutions like gels or fill light entirely",
+      "Not acknowledging that bracketing fails with movement in frame"
+    ],
+    "followUps": ["What would you do differently if the subject in the dim room were a moving child rather than a still object?"]
+  },
+  {
+    "id": "prog-photography-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: computational photography",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "computational-photography", "debate"],
+    "question": "Modern phones now use computational photography, stacking multiple frames and using machine learning to build a single image, sometimes adding detail the sensor never actually captured, like reconstructed moon craters. Does that change what a photograph even is?",
+    "lookingFor": "Genuine engagement with a live technical and philosophical debate, showing awareness of specific real examples, not a shrug.",
+    "idealAnswer": {
+      "bullets": [
+        "Show concrete awareness of the debate, such as the Samsung moon photo controversy or general multi-frame computational stacking",
+        "Distinguish reasonable computational processing from fabricating detail that wasn't in the scene",
+        "Offer a personal working definition of what still counts as an honest photograph"
+      ],
+      "modelAnswer": "I think about this a lot because it's genuinely unsettled, the Samsung moon photo situation was a good example, where people found the phone was adding detail from a trained model rather than purely from what the sensor captured, and that felt different from ordinary noise reduction or exposure blending. My own line is roughly that combining and cleaning up real captured light across frames still counts as photography to me, but inserting detail the sensor never recorded, even if it looks convincing, starts to cross into something closer to illustration. I don't think that makes computational photography bad, I just think we need clearer honesty from camera makers about which processes are which."
+    },
+    "commonMistakes": [
+      "No awareness of any specific real example or controversy",
+      "Treating all computational processing as equally deceptive, including basic noise reduction",
+      "Refusing to take a position at all"
+    ],
+    "followUps": ["Should a camera app be required to disclose which processing steps it applies to a photo?"]
+  },
+  {
+    "id": "prog-photography-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Copyright and ownership",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["law", "copyright", "professional-practice"],
+    "question": "If you take a photo at a friend's wedding as a guest, not as the hired photographer, who owns the copyright, and what does that actually let you do with the image?",
+    "lookingFor": "Basic but accurate grasp of copyright as tied to the person who pressed the shutter, and its practical implications.",
+    "idealAnswer": {
+      "bullets": [
+        "State that copyright generally belongs to the photographer who created the image, not the subject or the event host",
+        "Note that ownership doesn't automatically override the subject's own rights, like privacy or publicity in some contexts",
+        "Give a practical implication, such as needing permission to sell or use it commercially even though you own the copyright"
+      ],
+      "modelAnswer": "As I understand it, copyright generally belongs to whoever pressed the shutter, so if I took the photo as a guest I'd technically own it, not the couple and not the hired photographer. That said, owning the copyright isn't the same as having free rein, if I wanted to sell that image commercially or use it in advertising I'd still need the people in it to sign a release, because their right to control their own likeness is a separate issue from who owns the copyright. In practice for something like a friend's wedding I'd just ask them before posting or sharing it widely anyway, because the legal right doesn't remove the social courtesy."
+    },
+    "commonMistakes": [
+      "Assuming the event host or hired photographer automatically owns every image taken there",
+      "Confusing copyright ownership with unrestricted usage rights",
+      "Not knowing the basic default rule at all"
+    ],
+    "followUps": ["Does the answer change if you were using the venue's camera rather than your own?"]
+  },
+  {
+    "id": "prog-photography-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Motion and shutter speed reasoning",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["technical", "shutter-speed", "reasoning"],
+    "question": "You want to photograph a waterfall so the water looks silky and blurred, in bright midday sun. Walk me through the problem you'd run into and how you'd solve it.",
+    "lookingFor": "Understanding that a slow shutter in bright light causes overexposure, and knowledge of the actual fix, not just naming a slow shutter speed.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that a slow shutter speed needed for blur will overexpose the image in bright sun",
+        "Explain that stopping down the aperture alone likely won't be enough",
+        "Propose the real solution: a neutral density filter to cut light without changing the desired shutter speed"
+      ],
+      "modelAnswer": "To get that silky water look I need a slow shutter, something like half a second or slower, but in bright midday sun that much light hitting the sensor for that long would massively overexpose the shot even with the aperture closed all the way down and ISO at its lowest. The real fix is a neutral density filter, essentially sunglasses for the lens, which cuts down the light reaching the sensor without forcing me to change the shutter speed I actually want. I'd probably use a six or ten stop ND depending on how strong the midday light is, then meter and adjust from there."
+    },
+    "commonMistakes": [
+      "Only naming 'use a slow shutter speed' without addressing the exposure problem it causes",
+      "Suggesting to simply lower ISO as if that alone solves it",
+      "Not knowing what a neutral density filter is for"
+    ],
+    "followUps": ["What would change about your approach at dusk instead of midday?"]
+  },
+  {
+    "id": "prog-photography-b-012",
+    "category": "Ethics & Situational",
+    "subtopic": "Photographing vulnerable subjects",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["ethics", "vulnerability", "documentary"],
+    "question": "You're doing a project on homelessness and a subject agrees to be photographed but seems to be under the influence of something at the time of consent. Do you go ahead with the shoot?",
+    "lookingFor": "Careful ethical reasoning about the validity of consent under impairment, prioritising the subject's dignity over getting the shot.",
+    "idealAnswer": {
+      "bullets": [
+        "Question whether consent given under impairment is genuinely informed",
+        "Prioritise the subject's dignity and long-term interest over the value of the image",
+        "Propose a practical alternative, like waiting and reconfirming consent later"
+      ],
+      "modelAnswer": "I don't think I could treat that as real informed consent, someone who's impaired might agree to something in the moment they'd regret or not even remember agreeing to later, and using that image would feel like exploiting the situation rather than documenting it honestly. I'd rather come back another time, explain the project again clearly, and only proceed if they consent to it in a state where I'm confident they understand what they're agreeing to and how the images might be used. Getting a powerful photo isn't worth it to me if I can't be sure the person behind it was truly able to say yes."
+    },
+    "commonMistakes": [
+      "Treating any verbal agreement as sufficient consent regardless of the person's state",
+      "Refusing to engage with the project at all rather than reasoning through the specific situation",
+      "Focusing only on legal risk rather than the ethical question of dignity"
+    ],
+    "followUps": ["How would you handle it if the subject later couldn't be found again to reconfirm?"]
+  },
+  {
+    "id": "prog-photography-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "White balance and colour temperature",
+    "program": "Photography",
+    "difficulty": "easy",
+    "tags": ["technical", "white-balance", "fundamentals"],
+    "question": "Why does a photo taken indoors under tungsten bulbs sometimes come out with an orange cast if the camera is set to auto white balance, and how would you fix it?",
+    "lookingFor": "Solid grasp of colour temperature and how white balance settings correct for different light sources.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain tungsten light is warmer in colour temperature than daylight",
+        "Note auto white balance can misjudge mixed or unusual lighting",
+        "Give the fix: manual tungsten white balance setting or a custom white balance using a grey card"
+      ],
+      "modelAnswer": "Tungsten bulbs put out much warmer, more orange light than daylight, and auto white balance is essentially guessing what should be neutral in the scene, so it sometimes doesn't fully correct for that warmth, especially if the room has mixed light sources confusing it. The fix is usually to just switch off auto and pick the tungsten white balance preset, which tells the camera to cool the image down to compensate. If I want it really accurate I'll shoot a grey card under the same light and set a custom white balance from that instead of relying on a preset."
+    },
+    "commonMistakes": [
+      "Saying it's just 'a camera setting issue' with no explanation of colour temperature",
+      "Confusing white balance with exposure",
+      "Not knowing any correction method beyond editing it later"
+    ],
+    "followUps": ["Why might shooting in RAW make this problem less stressful to deal with?"]
+  },
+  {
+    "id": "prog-photography-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: image manipulation in photojournalism",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "photojournalism", "ethics"],
+    "question": "World Press Photo has disqualified award entries in past years over manipulation concerns, including cases involving removed or added elements. Where do you personally think the line sits between acceptable processing and disqualifying manipulation in photojournalism?",
+    "lookingFor": "Specific awareness of real photojournalism integrity controversies and a clear, defensible personal standard.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference real awareness of photojournalism manipulation controversies, not a vague generalisation",
+        "Separate acceptable global adjustments like exposure and contrast from unacceptable content changes",
+        "State a clear personal standard for where the line sits"
+      ],
+      "modelAnswer": "Cases like the World Press Photo disqualifications stick with me because they show how blurry this can get, some entries were pulled for things like cloning out a distracting object in the corner, which sounds minor but breaks the basic promise that this is what the camera actually saw. My own line is that global adjustments like exposure, contrast, and even careful dodging and burning for emphasis are fine because they don't change what was in the frame, but removing, adding, or moving actual content crosses into fabrication regardless of how small it seems. I think photojournalism specifically has to hold a stricter line than other genres because the entire value of the image depends on the audience trusting it's unaltered content."
+    },
+    "commonMistakes": [
+      "Vague awareness with no specific real case or organisation named",
+      "Treating any editing at all, including basic exposure correction, as equally dishonest",
+      "No clear personal standard, just describing the controversy"
+    ],
+    "followUps": ["Should the same strict standard apply to a photo essay that isn't breaking news, like a long-term documentary project?"]
+  },
+  {
+    "id": "prog-photography-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Histogram interpretation",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["technical", "histogram", "exposure"],
+    "question": "You check your histogram after a shot and see a tall spike pressed against the right edge. What does that tell you, and what would you actually do about it?",
+    "lookingFor": "Ability to read a histogram as a diagnostic tool and translate it into a concrete corrective action on the camera.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the spike against the right edge as clipped or blown highlights",
+        "Explain why that detail is likely unrecoverable, especially in JPEG",
+        "Give the practical fix: reduce exposure, check for a specific bright element, and reshoot"
+      ],
+      "modelAnswer": "A spike pressed right up against the right edge usually means I've clipped the highlights, there's a chunk of the image that's pure white with no detail left in it, and unlike shadow detail that's often recoverable, blown highlights genuinely can't be brought back, especially if I'm shooting JPEG. I'd immediately dial down exposure compensation or check if it's one small bright element like a light source that's throwing off the reading, and reshoot to bring that spike back off the edge. It's basically the histogram doing the job my eyes can't reliably do on a small bright screen outdoors."
+    },
+    "commonMistakes": [
+      "Confusing a right-edge spike with underexposure instead of overexposure",
+      "Saying it can always be fixed in post regardless of file format",
+      "Describing the histogram without translating it into an action"
+    ],
+    "followUps": ["Why might you tolerate a small clipped spike in some situations, like a bright window in a portrait?"]
+  },
+  {
+    "id": "prog-photography-b-016",
+    "category": "Ethics & Situational",
+    "subtopic": "Selling images of identifiable people",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["ethics", "consent", "commercial-use"],
+    "question": "You take a striking street photograph of a stranger and a stock photo agency wants to license it for a print advertisement. What do you need before you can say yes?",
+    "lookingFor": "Understanding of the distinction between editorial and commercial use, and the practical need for a model release.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish editorial or artistic use from commercial advertising use",
+        "State that commercial use of an identifiable person generally requires a signed model release",
+        "Acknowledge the practical difficulty this creates for street photography and how photographers handle it"
+      ],
+      "modelAnswer": "The moment it's going into an advertisement rather than being shown as editorial or art, the rules change, because now the person's likeness is being used to sell something, and I'd need a signed model release from them to license it that way. Practically that's the tricky part of street photography, you rarely have a release from a stranger you photographed in passing, so a lot of striking street shots end up unusable for that kind of commercial licensing even though they're perfectly fine to exhibit or publish editorially. If I wanted images I could commercially license, I'd need to plan for that upfront, approaching people, explaining the use, and getting the release on the spot."
+    },
+    "commonMistakes": [
+      "Assuming taking the photo in a public place means it can be used for anything",
+      "Not knowing what a model release actually is",
+      "Confusing copyright ownership with permission to use someone's likeness commercially"
+    ],
+    "followUps": ["Would your answer be different if the photo were used in a news article instead of an ad?"]
+  },
+  {
+    "id": "prog-photography-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "RAW versus JPEG trade-offs",
+    "program": "Photography",
+    "difficulty": "easy",
+    "tags": ["technical", "file-formats", "workflow"],
+    "question": "What are you actually giving up if you shoot JPEG instead of RAW, and is there ever a good reason to choose JPEG anyway?",
+    "lookingFor": "Accurate understanding of the technical trade-off plus a realistic, non-dogmatic view of when JPEG is a sensible choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain RAW retains more sensor data, giving far more latitude to correct exposure and white balance later",
+        "Note JPEG is processed and compressed in-camera, discarding that recoverable data",
+        "Give a genuine practical reason to still choose JPEG, like speed, storage, or sports burst shooting"
+      ],
+      "modelAnswer": "With JPEG the camera has already processed and compressed the file, baking in decisions like white balance and throwing away a lot of the extra sensor data, so if I get the exposure wrong there's much less room to recover it in editing compared to RAW, which keeps far more of that original information. That said, I don't think RAW is always the answer, if I'm shooting a fast sports burst and need a huge number of frames per second with quick turnaround, or filling memory cards on a long trip with limited storage, JPEG's smaller file size and faster processing are genuinely useful trade-offs. It really comes down to how much I expect to need to fix afterward versus how much speed and storage I need."
+    },
+    "commonMistakes": [
+      "Claiming JPEG has no legitimate use case at all",
+      "Not explaining what data is actually lost",
+      "Confusing RAW with a specific brand's file extension only"
+    ],
+    "followUps": ["How does this trade-off change for a wedding photographer shooting thousands of frames in a day?"]
+  },
+  {
+    "id": "prog-photography-b-018",
+    "category": "Curveball/Personality",
+    "subtopic": "Discipline-relevant hypothetical",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "creativity", "constraint"],
+    "question": "If you could only shoot with one lens, one focal length, for the rest of your course, which would you pick and what would that force you to get better at?",
+    "lookingFor": "Genuine technical understanding of focal length trade-offs and honest reflection on personal creative weaknesses.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a specific focal length with a reasoned justification, not just 'my favourite'",
+        "Explain what that focal length is good and bad at",
+        "Reflect honestly on what skill the constraint would force them to develop"
+      ],
+      "modelAnswer": "I'd pick a 35mm, because it's wide enough to include context and environment but not so wide it distorts faces or feels detached like an ultra wide, so it works for street, portrait, and even a bit of landscape work. What it would force me to get better at is actually moving, since I couldn't zoom to fix a composition I'd have to walk closer or further and think harder about framing before I press the shutter. Honestly my biggest weakness right now is that I lean on a zoom lens to be lazy about positioning, so this constraint would fix exactly that habit."
+    },
+    "commonMistakes": [
+      "Naming a focal length with no reasoning for the choice",
+      "Ignoring the follow-up about what skill it would develop",
+      "Picking an extreme focal length like a macro lens with no acknowledgment of its narrow use case"
+    ],
+    "followUps": ["What genre of photography would that focal length make almost impossible for you?"]
+  },
+  {
+    "id": "prog-photography-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Flash sync and ambient balance",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["technical", "flash", "lighting"],
+    "question": "Explain what flash sync speed is and why you can't just use any shutter speed you want when firing an external flash.",
+    "lookingFor": "Correct technical understanding of curtain sync mechanics, not just a memorised number.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that most cameras use a focal plane shutter with two curtains that scan across the sensor",
+        "State that above the sync speed, the sensor is never fully uncovered at once, so a normal flash pulse only lights part of the frame",
+        "Mention high speed sync as the workaround, with its light output trade-off"
+      ],
+      "modelAnswer": "Most cameras use a focal plane shutter made of two curtains, and at fast shutter speeds the second curtain actually starts closing before the first has finished opening, so only a moving slit of the sensor is ever exposed at one time rather than the whole sensor at once. A normal flash fires one quick burst of light, and if the shutter speed is faster than the sync speed, that burst only lights the part of the frame that happened to be exposed in that instant, giving you a black band across the image. To shoot flash faster than sync speed you need high speed sync, which pulses the flash rapidly throughout the whole curtain travel instead of one burst, though it costs you a fair bit of the flash's power output."
+    },
+    "commonMistakes": [
+      "Reciting a sync speed number with no explanation of the mechanism",
+      "Confusing flash sync speed with general shutter speed limits",
+      "Not knowing high speed sync exists as a workaround"
+    ],
+    "followUps": ["Why does this problem not exist with continuous LED lighting?"]
+  },
+  {
+    "id": "prog-photography-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: social platforms and image compression",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "digital-platforms", "technical"],
+    "question": "A lot of photographers complain that their work looks noticeably worse once posted to Instagram or similar platforms. What's actually happening technically, and does it change how you'd prepare an image for online display versus print?",
+    "lookingFor": "Practical awareness of platform compression and colour space issues, plus a concrete workflow adaptation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that platforms recompress and downsize images, often stripping detail and shifting colour",
+        "Mention colour space mismatches, like Adobe RGB files being misread when they should be sRGB for web",
+        "Describe a concrete adjustment to sharpening, contrast, or export settings for online display"
+      ],
+      "modelAnswer": "A lot of it comes down to platforms recompressing whatever you upload to save on server space and bandwidth, which can soften detail and sometimes shift colours or contrast slightly from what you exported. A common mistake is also exporting in Adobe RGB instead of sRGB, since most web platforms assume sRGB and will render an Adobe RGB file with duller, slightly off colours if it's not converted first. So for web I'll export in sRGB, sharpen a touch more aggressively than I would for print because compression softens detail, and size the file to roughly what the platform actually displays rather than uploading something huge and letting their algorithm decide how to shrink it."
+    },
+    "commonMistakes": [
+      "Vaguely blaming 'Instagram ruins quality' with no technical explanation",
+      "Not knowing what a colour space mismatch actually causes visually",
+      "No concrete change described for online export workflow"
+    ],
+    "followUps": ["Why might a print of the same image look noticeably better than the online version even on a good screen?"]
+  },
+  {
+    "id": "prog-photography-b-021",
+    "category": "Ethics & Situational",
+    "subtopic": "Competing with an unpaid, exploitative brief",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["ethics", "professional-practice", "industry"],
+    "question": "A small local business offers you 'exposure' instead of payment for a full day shoot, but says it could lead to more paid work later. As a student building a portfolio, how do you decide whether to take it?",
+    "lookingFor": "A reasoned framework for evaluating unpaid work rather than a blanket yes or no, showing professional maturity.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid a blanket rule, instead identify specific factors that would make it worthwhile",
+        "Weigh genuine portfolio or relationship value against the risk of normalising unpaid work",
+        "Set a boundary, like limiting scope or time given for free"
+      ],
+      "modelAnswer": "I don't think it's a flat yes or no, it depends on whether the work actually fills a real gap in my portfolio, and whether there's something concrete beyond a vague promise, like them agreeing in writing to a specific paid follow-up or letting me shoot exactly what I need for my book rather than just what they want. What worries me about 'exposure' as payment generally is that it can normalise not paying photographers at all, so if I did take it I'd want to keep the scope tight, maybe two hours rather than a full day, so I'm not giving away a huge amount of unpaid labour on a vague promise. Basically I'd treat it as a small, bounded trade for something specific I actually need, not an open ended favour."
+    },
+    "commonMistakes": [
+      "An absolute rule either always refusing or always accepting unpaid work",
+      "Not identifying any concrete criteria for when it might be worth it",
+      "Ignoring the industry-wide effect of normalising unpaid labour"
+    ],
+    "followUps": ["How would you handle it if, after the free shoot, the paid work never actually materialised?"]
+  },
+  {
+    "id": "prog-photography-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Diffraction and lens sharpness limits",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["technical", "optics", "aperture"],
+    "question": "If a smaller aperture gives more depth of field, why don't photographers just always shoot at something like f/22 to keep everything sharp?",
+    "lookingFor": "Understanding of diffraction as a real physical limit that trades depth of field for overall sharpness at very small apertures.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain diffraction as light bending around the edges of a very small aperture opening",
+        "Note that beyond a certain point this softens the whole image, counteracting the depth of field benefit",
+        "Mention practically staying near a lens's sharpest apertures, often in the middle of its range"
+      ],
+      "modelAnswer": "It sounds like a free win because you get more in focus, but at very small apertures like f/22 the light has to squeeze through such a tiny opening that it actually bends around the edges, an effect called diffraction, and that softens the entire image rather than just blurring the out of focus background. So you're trading one kind of sharpness for another, you get more depth of field but the overall resolution and micro contrast across the frame drops. In practice most lenses are actually sharpest somewhere in the middle of their aperture range, often around f/8 to f/11, and I'd only push to f/16 or narrower when I really need the depth of field and I'm willing to accept the small sharpness cost."
+    },
+    "commonMistakes": [
+      "Saying smaller apertures are always sharper with no awareness of diffraction",
+      "Confusing diffraction with camera shake or motion blur",
+      "Not naming a practical sweet spot aperture range"
+    ],
+    "followUps": ["How would sensor resolution affect how visible diffraction actually is in your final image?"]
+  },
+  {
+    "id": "prog-photography-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Curatorial reasoning and sequencing",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["curation", "storytelling", "portfolio"],
+    "question": "You have forty strong images from a shoot but can only submit twelve for a portfolio. What actually goes into deciding the order and the cut, beyond just picking your favourites?",
+    "lookingFor": "Understanding of editing and sequencing as a deliberate craft distinct from simply liking individual photos.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish individually strong images from images that work together as a coherent set",
+        "Mention avoiding repetition, so similar shots don't cancel each other out",
+        "Describe sequencing logic, such as pacing, rhythm, or a narrative arc across the set"
+      ],
+      "modelAnswer": "The first thing I do is actually cut duplicates, if I have three great shots of basically the same moment I keep the strongest one and drop the rest, because a set with repetition feels weaker even if every individual image is good. Then I think about how the images talk to each other, not just whether each one is strong alone, so I'll look for variety in pacing, a wide establishing shot, some tighter details, a quiet moment next to a busier one, so the set has rhythm rather than feeling like twelve versions of the same energy. I usually print small thumbnails and physically move them around on a table, because sequencing is something I genuinely find easier to feel by rearranging than by scrolling through a screen."
+    },
+    "commonMistakes": [
+      "Describing selection purely as picking the twelve 'best' images individually",
+      "No mention of avoiding redundancy across the set",
+      "No consideration of order or pacing at all"
+    ],
+    "followUps": ["How would your sequencing logic change for a gallery wall versus a printed photo book?"]
+  },
+  {
+    "id": "prog-photography-b-024",
+    "category": "Curveball/Personality",
+    "subtopic": "Discipline-relevant hypothetical",
+    "program": "Photography",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "ethics", "judgement"],
+    "question": "You're photographing a public protest and capture a clear image of someone committing a minor act of vandalism. A journalist later asks to buy that specific image. Do you sell it?",
+    "lookingFor": "Careful weighing of press freedom, consequences for an identifiable individual, and the photographer's own responsibility for how an image is used.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between documenting truth and potential real consequences for an identifiable person",
+        "Consider factors like the severity of the act and public interest in the story",
+        "Reach a reasoned position rather than avoiding the decision"
+      ],
+      "modelAnswer": "This one genuinely pulls me in two directions, on one hand documenting what actually happened at a protest, including the uglier moments, is part of honest photojournalism and I don't think I get to selectively hide truth I don't like. On the other hand a single act of minor vandalism could follow that person for years once it's tied to their face in a news photo, which feels disproportionate for something small. I think I'd weigh the severity, if it were minor and the person isn't a public figure I'd lean toward not selling that specific frame or at least pushing to obscure their identity, but if it were something more serious with real public interest, like violence, I think the documentary responsibility would outweigh that individual's discomfort."
+    },
+    "commonMistakes": [
+      "Giving a flat 'I'd never sell it' or 'I'd always sell it' with no reasoning",
+      "Ignoring the proportionality between the act shown and the consequence to the person",
+      "Treating this as purely a business decision about payment"
+    ],
+    "followUps": ["Does it matter whether the vandalism was against property or against a person?"]
+  },
+  {
+    "id": "prog-photography-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Print versus screen colour management",
+    "program": "Photography",
+    "difficulty": "medium",
+    "tags": ["technical", "colour-management", "print"],
+    "question": "Why might a print come back from the lab looking noticeably different from how the image looked on your monitor, even though you didn't change any settings?",
+    "lookingFor": "Understanding of colour management, monitor calibration, and the gamut differences between screen and print media.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that uncalibrated monitors can display colour and brightness inaccurately",
+        "Mention that print and screen use different colour gamuts and reproduction methods, so some colours simply can't be printed as displayed",
+        "Give a practical response, like calibrating the monitor and using a soft proof before sending to print"
+      ],
+      "modelAnswer": "Part of it is that most monitors, especially laptop screens, aren't calibrated out of the box, so what looks correct on my screen might genuinely not match a properly colour managed reference. But even with a calibrated screen, prints and screens use different methods to make colour, a screen emits light directly while a print reflects light off ink or dye on paper, and the printable gamut is actually smaller in some colour ranges, so certain vivid blues or greens on screen just cannot be reproduced identically in ink. Now I calibrate my monitor regularly and use a soft proofing view for the specific printer profile before sending files off, so I can see roughly what the print will look like and adjust for it in advance rather than being surprised."
+    },
+    "commonMistakes": [
+      "Blaming the print lab entirely with no understanding of the technical cause",
+      "Not knowing what monitor calibration means",
+      "Assuming screen and print gamuts are identical"
+    ],
+    "followUps": ["What is soft proofing, and why is it useful before sending a file to print?"]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-radiography-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "ALARA and dose justification",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "radiation-protection",
+      "dose",
+      "principles"
+    ],
+    "question": "What does the ALARA principle mean in practice, and why can't we just always use the lowest possible dose?",
+    "lookingFor": "Understanding that dose reduction is balanced against diagnostic image quality, not an absolute minimum.",
+    "idealAnswer": {
+      "bullets": [
+        "Define ALARA as keeping dose as low as reasonably achievable, not as low as physically possible",
+        "Explain the trade-off between dose and image quality (noise, contrast, diagnostic value)",
+        "Mention practical levers: collimation, exposure factors, shielding, patient positioning"
+      ],
+      "modelAnswer": "ALARA means every exposure should be as low as reasonably achievable while still producing an image that actually answers the clinical question, not the absolute lowest dose technically possible. If you drop the dose too far the image gets noisy and you risk missing the pathology, which could mean a repeat exposure and doubling the dose anyway. So in practice it's about optimising, using tight collimation, the right kVp and mAs for the patient's size, and shielding, rather than chasing a single lowest number. I find that balance genuinely interesting because it's not a fixed rule, it's a judgment call every single time."
+    },
+    "commonMistakes": [
+      "Saying ALARA means using the lowest dose possible full stop",
+      "Not mentioning image quality at all",
+      "Giving a textbook definition with no practical example"
+    ],
+    "followUps": [
+      "How would that balance change for a paediatric patient?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "CT versus MRI physics",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "imaging-modalities",
+      "physics",
+      "ct-mri"
+    ],
+    "question": "In simple terms, how does an MRI scanner form an image differently from a CT scanner?",
+    "lookingFor": "Clear grasp that CT uses ionising X-rays and attenuation while MRI uses magnetic fields and hydrogen proton behaviour, with no ionising radiation.",
+    "idealAnswer": {
+      "bullets": [
+        "CT builds images from X-ray attenuation through tissue, using ionising radiation",
+        "MRI uses a strong magnetic field to align hydrogen protons, then radiofrequency pulses to measure their relaxation as they realign",
+        "Note the practical consequence: MRI has no ionising radiation but has different safety concerns (magnetic field, metal, claustrophobia)"
+      ],
+      "modelAnswer": "CT sends X-rays through the body from many angles and reconstructs an image from how much each tissue absorbs or attenuates that radiation, so it's built on ionising radiation and density differences. MRI works completely differently, it puts the body in a strong magnetic field that lines up the hydrogen protons in our tissue, then fires radiofrequency pulses that knock them out of alignment, and the image comes from measuring how quickly different tissues relax back. That's why MRI has no radiation dose at all, but it brings its own risks like anything ferromagnetic becoming a projectile near the magnet. I think it's a nice example of how two modalities can answer similar clinical questions through completely different physics."
+    },
+    "commonMistakes": [
+      "Saying MRI uses radiation",
+      "Vague answer with no mention of protons or attenuation",
+      "Confusing MRI contrast mechanism with CT contrast media"
+    ],
+    "followUps": [
+      "Why might a doctor choose MRI over CT for a soft tissue knee injury?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Image quality versus dose trade-off",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "exposure-factors",
+      "image-quality",
+      "physics"
+    ],
+    "question": "If you increase kVp but keep mAs the same, what happens to the image and to patient dose, and why?",
+    "lookingFor": "Applied understanding of exposure factors rather than memorised definitions, with reasoning about penetration and contrast.",
+    "idealAnswer": {
+      "bullets": [
+        "Higher kVp increases beam penetration, generally reducing patient dose for the same mAs",
+        "Higher kVp reduces image contrast because more scatter and less differential absorption between tissues",
+        "Frame it as a trade-off radiographers manage constantly, not a fixed rule"
+      ],
+      "modelAnswer": "Increasing kVp gives the X-ray beam more energy, so it penetrates the patient more easily, which actually tends to reduce the dose absorbed because fewer photons are being absorbed rather than passing through. But that penetration comes at a cost to image contrast, because with a higher energy beam there's less difference in how bone and soft tissue absorb the radiation, so the image looks flatter and there's more scatter. So a radiographer choosing exposure factors is constantly weighing that penetration and dose benefit against the contrast you need to actually see the pathology. It's the kind of trade-off I find genuinely interesting rather than something to just memorise from a chart."
+    },
+    "commonMistakes": [
+      "Saying dose simply increases with kVp with no nuance",
+      "Not mentioning the contrast trade-off",
+      "Confusing kVp's effect with mAs's effect on the image"
+    ],
+    "followUps": [
+      "When would you deliberately choose a lower kVp technique?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Recognising image artifacts",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "artifacts",
+      "image-quality",
+      "practical"
+    ],
+    "question": "What causes motion artifact on a radiograph, and what would you do differently to avoid it on a repeat exposure?",
+    "lookingFor": "Practical problem-solving that connects a technical fault to patient-facing communication and technique adjustment.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain motion artifact as blurring caused by patient movement during the exposure",
+        "Identify fixes: shorter exposure time, clear breath-hold or immobilisation instructions, patient comfort",
+        "Show awareness that repeating means extra dose, so getting it right matters"
+      ],
+      "modelAnswer": "Motion artifact happens when the patient moves, even slightly, during the exposure, so the image blurs because the anatomy isn't in the same place for the whole capture. If I saw that on a review image, my first thought would be to shorten the exposure time if the equipment allows it, and to give clearer instructions before the next attempt, like a firm breath-hold cue or explaining exactly when to hold still and for how long. I'd also think about why they moved in the first place, whether they were in pain or anxious, because fixing that root cause matters more than just repeating the same shot and hoping. Every repeat is extra dose, so I'd want to get the second attempt right."
+    },
+    "commonMistakes": [
+      "Only naming the cause without a fix",
+      "Ignoring the dose implication of repeating an exposure",
+      "Not considering the patient's comfort or understanding as a cause"
+    ],
+    "followUps": [
+      "How would your approach differ with a confused elderly patient who can't follow breath-hold instructions?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Contrast media reactions",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "contrast-media",
+      "patient-safety",
+      "clinical-knowledge"
+    ],
+    "question": "A patient having a contrast CT tells you, moments before injection, that they had a strange reaction to contrast years ago but can't remember details. What goes through your mind?",
+    "lookingFor": "Structured clinical caution: escalate, don't proceed blindly, weigh risk against urgency, involve the radiologist.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise patient safety over keeping to schedule",
+        "Recognise the need to pause and escalate to the radiologist or referring clinician rather than deciding alone",
+        "Consider alternatives: premedication protocols, different contrast agent, or non-contrast imaging depending on urgency"
+      ],
+      "modelAnswer": "My first instinct would be to stop and not just proceed on the assumption it'll probably be fine, because an unclear history of a reaction is exactly the kind of thing that needs a second opinion before contrast goes in. I'd flag it immediately to the radiologist or requesting clinician, because it isn't my call alone whether the benefit of contrast outweighs an uncertain allergy risk. Depending on how urgent the scan is, there might be options like a premedication protocol, a different agent, or even proceeding without contrast if that still answers the clinical question safely. I'd rather take five extra minutes to get that right than risk a reaction that was preventable."
+    },
+    "commonMistakes": [
+      "Proceeding with the injection because the patient seems unsure it was serious",
+      "Not mentioning escalation to a radiologist or clinician",
+      "Ignoring that alternatives to contrast might exist"
+    ],
+    "followUps": [
+      "What if the scan was for a suspected pulmonary embolism and time really mattered?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital imaging and PACS",
+    "program": "Radiography",
+    "difficulty": "easy",
+    "tags": [
+      "digital-imaging",
+      "pacs",
+      "workflow"
+    ],
+    "question": "What is PACS, and why has moving from film to digital imaging mattered so much for patient care?",
+    "lookingFor": "Basic but accurate awareness of how digital workflow changes speed, access, and image manipulation, not just 'it's more convenient'.",
+    "idealAnswer": {
+      "bullets": [
+        "Define PACS as the picture archiving and communication system that stores and transmits digital images",
+        "Explain benefits: instant access across departments and sites, no lost films, post-processing like windowing",
+        "Show awareness this isn't just convenience, it changes clinical decision speed"
+      ],
+      "modelAnswer": "PACS is the picture archiving and communication system, basically the digital network that stores images and lets clinicians pull them up on any authorised screen instead of waiting for a physical film to be walked to a ward. What strikes me is how much that changes patient care in practice, a surgeon can review a scan from theatre, a specialist in another hospital can be consulted in minutes, and nothing gets physically lost in a filing room. Digital images can also be windowed and adjusted after the fact to bring out soft tissue or bone detail without needing a whole new exposure. I think that shift from a single physical film to something instantly shareable is one of the quieter revolutions in modern healthcare."
+    },
+    "commonMistakes": [
+      "Saying digital is just 'faster' with no specifics",
+      "Not knowing what the acronym stands for",
+      "Missing the post-processing or windowing benefit"
+    ],
+    "followUps": [
+      "What downsides or risks come with a fully digital system?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in radiology reporting",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "ai",
+      "current-debate",
+      "future-of-profession"
+    ],
+    "question": "AI algorithms are increasingly used to flag abnormalities on chest X-rays and CT scans. Do you think this will make radiographers less important, and why or why not?",
+    "lookingFor": "A balanced, informed view of AI as decision support rather than replacement, showing awareness of current developments and their own reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that AI tools currently assist, flag, and prioritise rather than replace human judgement",
+        "Recognise the radiographer's role extends beyond image acquisition to patient care, positioning, and communication",
+        "Reason through both the opportunity and the risk of over-reliance, rather than giving a one-sided answer"
+      ],
+      "modelAnswer": "I don't think AI makes radiographers less important, but I do think it changes what the role looks like. Right now these tools are mostly used to triage, for example flagging a suspected pneumothorax so it gets reported faster, but they still need a trained person to acquire a diagnostic-quality image in the first place and to sanity check what the algorithm flags, because false positives and false negatives both happen. What AI can't do is manage an anxious patient, adapt positioning for someone in pain, or catch something outside what it was trained to look for. I actually find it exciting rather than threatening, because it could free radiographers to spend more time on the parts of the job that need a human, but I'd want to go in with my eyes open about the risk of people trusting it too much."
+    },
+    "commonMistakes": [
+      "Dismissing AI as irrelevant to the profession",
+      "Being purely alarmist about job loss with no nuance",
+      "Showing no actual awareness of how these tools are used today"
+    ],
+    "followUps": [
+      "What safeguards do you think should exist around AI-flagged results?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Radiographer image interpretation and red dot systems",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "scope-of-practice",
+      "current-debate",
+      "professional-development"
+    ],
+    "question": "In some countries radiographers are being trained to formally report on certain X-rays, not just take them. What do you make of that shift in scope of practice?",
+    "lookingFor": "Awareness of an active professional debate, with a considered view on training, accountability, and patient benefit.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that reporting radiographers or advanced practitioners already exist in some health systems",
+        "Weigh the benefit (faster turnaround, easing radiologist workload) against the need for proper training and accountability",
+        "Give a genuine personal view, not just a neutral summary"
+      ],
+      "modelAnswer": "I think it makes a lot of sense given how stretched radiology departments are, a radiographer who's done additional training to formally report on straightforward cases, like an ankle or a wrist, can free up radiologists for the more complex work and get patients their results faster. What matters to me is that it's built on proper extended training and clear accountability, not just assumed competence because someone's been taking the images for years. I find it an encouraging direction for the profession because it shows radiography isn't just a technical role, it can grow into more clinical responsibility, and that's part of why the career appeals to me long term."
+    },
+    "commonMistakes": [
+      "No awareness that this is happening in real health systems",
+      "Treating it as purely a workload fix with no mention of training or safety",
+      "Refusing to give any personal opinion"
+    ],
+    "followUps": [
+      "Would you want to pursue reporting responsibilities yourself one day?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Radiation protection principles",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "radiation-protection",
+      "safety",
+      "fundamentals"
+    ],
+    "question": "What are the three basic ways to reduce radiation exposure, and how would you apply them as a radiographer protecting yourself, not just the patient?",
+    "lookingFor": "Correct recall of time, distance, and shielding, applied practically to the radiographer's own occupational exposure.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the three principles: time, distance, shielding",
+        "Apply each specifically to occupational exposure, not just patient dose",
+        "Show awareness of tools like lead aprons, lead-lined booths, and dosimeters"
+      ],
+      "modelAnswer": "The three basic principles are time, distance, and shielding, minimising how long you're exposed, maximising your distance from the source, and putting a barrier between you and the radiation. For myself as the radiographer that means stepping behind the lead-lined screen or leaving the room for a standard exposure rather than standing close, and wearing a lead apron and a dosimeter badge whenever I do need to be near the beam, like during a mobile X-ray on a ward. It's a good reminder that radiation protection isn't only something we do for the patient, it's something I'd be responsible for managing for myself every single shift over a whole career."
+    },
+    "commonMistakes": [
+      "Only discussing patient protection, not occupational protection",
+      "Missing one of the three principles",
+      "No mention of practical equipment like dosimeters or lead screens"
+    ],
+    "followUps": [
+      "Why is cumulative occupational exposure tracked over a career rather than just per shift?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "MRI safety screening",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "mri-safety",
+      "patient-safety",
+      "practical"
+    ],
+    "question": "Why is screening a patient before an MRI scan so much more critical than before an X-ray?",
+    "lookingFor": "Understanding of the specific hazards of a strong static magnetic field, not just general safety caution.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the projectile risk from ferromagnetic objects near a strong magnet",
+        "Mention implanted devices that may be incompatible, such as certain pacemakers or metal fragments",
+        "Note this is a unique risk profile compared to X-ray, which has no magnetic field"
+      ],
+      "modelAnswer": "An MRI scanner has an enormously strong, always-on magnetic field, so anything ferromagnetic in the room, or on or inside the patient, can become a serious hazard, there are documented cases of things like oxygen cylinders becoming projectiles. It's also about what's inside the patient, certain pacemakers, some aneurysm clips, or metal fragments from an old injury can be unsafe or can heat up or move in the field, which is why screening questionnaires ask such specific questions. An X-ray doesn't have that ongoing magnetic hazard, the radiation risk is only during the exposure itself, so the pre-scan checklist for MRI has to be far more thorough and can't be skipped even for a quick scan."
+    },
+    "commonMistakes": [
+      "Giving a vague 'MRI is more dangerous' answer with no mechanism",
+      "Confusing MRI risk with radiation dose",
+      "Not mentioning implanted devices"
+    ],
+    "followUps": [
+      "What would you do if a patient mentioned an old metal fragment in their eye from years ago, just before their scan?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Ultrasound versus X-ray for the same query",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "imaging-modalities",
+      "clinical-reasoning",
+      "ultrasound"
+    ],
+    "question": "For a suspected soft tissue lump, why might a clinician choose ultrasound over an X-ray, given both are available?",
+    "lookingFor": "Understanding of modality selection based on tissue type and diagnostic question, not just dose avoidance.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain X-ray shows differences in density well but has poor soft tissue contrast",
+        "Explain ultrasound uses sound waves and is well suited to differentiating soft tissue, cystic versus solid",
+        "Mention the dose-free, real-time nature of ultrasound as a secondary benefit"
+      ],
+      "modelAnswer": "An X-ray is great at showing differences in density, like bone against air or soft tissue, but soft tissue against soft tissue barely shows up because the densities are too similar, so a lump would likely be nearly invisible. Ultrasound uses sound waves rather than radiation, and it's actually very good at telling apart different soft tissue structures, like distinguishing a fluid-filled cyst from a solid mass, and you can watch it move in real time and even use it to guide a needle if a biopsy is needed. It's also radiation free and quick, so for a soft tissue query it usually makes far more clinical sense than reaching for an X-ray at all."
+    },
+    "commonMistakes": [
+      "Only citing dose avoidance without explaining the tissue contrast reason",
+      "Confusing ultrasound with MRI",
+      "Suggesting X-ray would show the lump clearly"
+    ],
+    "followUps": [
+      "When would you still reach for an X-ray in a soft tissue case?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Requesting an X-ray on a possibly pregnant patient",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "pregnancy",
+      "risk-benefit"
+    ],
+    "question": "A patient needing an urgent abdominal X-ray after a fall isn't sure if she might be pregnant. The referring doctor is pushing for the scan now. What do you do?",
+    "lookingFor": "Structured ethical and clinical reasoning that neither blindly refuses nor blindly complies, involving proper protocol and communication.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between urgency of the fall injury and the precautionary principle around potential pregnancy",
+        "Follow established protocol: ask directly, consider a pregnancy test if time allows, discuss risk-benefit with the referrer and patient",
+        "Land on a reasoned position rather than an automatic yes or no"
+      ],
+      "modelAnswer": "I wouldn't just proceed because the doctor is pushing, and I also wouldn't refuse outright without finding out more, I'd want to actually ask the patient directly and sensitively, and follow whatever local protocol exists, which often means a pregnancy test if there's genuinely time for one. If the injury looks serious enough that delay could cause real harm, then the conversation shifts to weighing that urgent risk against the theoretical risk to a possible early pregnancy, and that's a decision I'd want to make together with the referring doctor and the patient, not alone and not under pressure. What I care about most is that the decision is made with full information and isn't rushed just because someone with more seniority wants it done quickly."
+    },
+    "commonMistakes": [
+      "Automatically refusing the scan without weighing genuine urgency",
+      "Complying immediately just because a doctor requested it",
+      "Not mentioning direct communication with the patient"
+    ],
+    "followUps": [
+      "Does your answer change if the fall injury looks life-threatening?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Suspected non-accidental injury",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "safeguarding",
+      "judgement"
+    ],
+    "question": "While X-raying a young child's fractured arm, you notice several older fractures in different stages of healing on the image. The parent seems anxious and is watching closely. What do you do?",
+    "lookingFor": "Calm, structured safeguarding awareness that avoids confrontation but ensures the concern is escalated appropriately.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as a potential safeguarding concern that must not be acted on alone or confronted directly with the parent in the moment",
+        "Prioritise staying calm and professional, finishing the clinical task without alarming anyone",
+        "Escalate promptly through the correct safeguarding channel, such as the radiologist and the department's safeguarding lead"
+      ],
+      "modelAnswer": "My priority in the moment would be to stay completely calm and professional, finish the imaging as normal, and not say anything to the parent that suggests suspicion, because jumping to conclusions or confronting them could be wrong and could also compromise a proper safeguarding process. As soon as I could, I'd flag what I'd seen to the reporting radiologist and follow the department's safeguarding protocol, which usually means it gets escalated to a safeguarding lead who can look at the full clinical picture, not just the images. It's not my job to make the final judgement about what happened, but it absolutely is my job to notice something concerning and make sure it's raised through the right channel without delay."
+    },
+    "commonMistakes": [
+      "Confronting the parent directly in the room",
+      "Deciding to say nothing because it's 'not my place'",
+      "No clear escalation pathway mentioned"
+    ],
+    "followUps": [
+      "What would you do if you felt your concern was being dismissed by a senior colleague?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Colleague skipping dose protocols",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "professional-conduct",
+      "patient-safety"
+    ],
+    "question": "You notice a senior colleague regularly using higher exposure settings than protocol requires, saying it just gives 'cleaner images'. What would you do?",
+    "lookingFor": "Willingness to challenge unsafe practice through proper channels despite seniority, balanced with a fair, non-accusatory approach.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise unnecessary dose as a genuine patient safety issue, not a minor stylistic difference",
+        "Consider raising it directly and respectfully with the colleague first, if appropriate",
+        "Know when and how to escalate through official channels if it continues"
+      ],
+      "modelAnswer": "I wouldn't just let it go because they're more senior, unnecessary dose isn't a style preference, it's a patient safety issue, and every unjustified exposure adds real cumulative risk over a patient's lifetime. Depending on how comfortable the environment felt, I'd probably start by asking them about it directly and non-confrontationally, maybe genuinely curious why they've moved away from protocol, because there might be a reason I'm not aware of. But if that didn't change anything or if raising it directly felt inappropriate given seniority, I know I'd have a responsibility to escalate it through my department's proper reporting channel, because patient safety has to come before an easy working relationship."
+    },
+    "commonMistakes": [
+      "Deciding to say nothing because the colleague is senior",
+      "Immediately escalating to management with no attempt at direct conversation first",
+      "Treating higher dose as a harmless preference"
+    ],
+    "followUps": [
+      "What if you were the newest, most junior member of the team?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Consent and a frightened patient",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "consent",
+      "communication"
+    ],
+    "question": "An adult patient with full mental capacity is refusing a chest X-ray their doctor has ordered, saying they're too scared. What's your approach?",
+    "lookingFor": "Respect for patient autonomy alongside genuine effort to understand and address the fear, without coercion.",
+    "idealAnswer": {
+      "bullets": [
+        "Affirm that a capacitated adult has the right to refuse, and that right must be respected",
+        "Show a genuine attempt to understand and address the fear through communication, not pressure",
+        "Know to document and inform the referring clinician of the outcome either way"
+      ],
+      "modelAnswer": "If they have capacity, the decision is genuinely theirs to make, and I wouldn't pressure or guilt them into it, that would cross a line. What I would do is slow down and actually find out what's frightening them, whether it's the machine, a past bad experience, or something about the diagnosis they're afraid to hear, because often a calm explanation of exactly what will happen and why it matters can change someone's mind without any pressure at all. If they still said no after that, I'd respect it, document it clearly, and make sure the referring doctor knew, because they might need to discuss alternatives or the clinical implications with the patient directly."
+    },
+    "commonMistakes": [
+      "Trying to talk the patient into it through pressure rather than understanding",
+      "Ignoring patient autonomy and proceeding anyway",
+      "Not mentioning documentation or informing the referrer"
+    ],
+    "followUps": [
+      "Would your approach change if the doctor suspected something life-threatening?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Incidental finding outside referral",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "scope-of-practice",
+      "communication"
+    ],
+    "question": "While taking a wrist X-ray you notice something on the edge of the image that looks concerning but is completely unrelated to the reason for the scan. What do you do?",
+    "lookingFor": "Awareness that radiographers flag concerns rather than diagnose, and take the concern seriously without overstepping scope.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise it's not the radiographer's role to diagnose or alarm the patient directly",
+        "Ensure the finding is clearly flagged to the reporting radiologist so it isn't missed",
+        "Stay calm and professional with the patient without speculating about what it might be"
+      ],
+      "modelAnswer": "I wouldn't say anything to the patient about what I think it might be, because that's not my role and I could easily be wrong or cause needless panic. What I would absolutely do is make sure it's clearly flagged, both in how I annotate or comment on the image and directly to the reporting radiologist, so it doesn't just slip past because it's outside the area everyone was focused on. It's a good reminder that part of the job is staying alert to the whole image, not just the part you were asked to look at, while knowing exactly where your responsibility ends and the radiologist's begins."
+    },
+    "commonMistakes": [
+      "Telling the patient a diagnosis or speculation",
+      "Assuming someone else will notice it without actively flagging it",
+      "Ignoring it because it's outside the referral"
+    ],
+    "followUps": [
+      "How would you word raising it with the radiologist without over-claiming what you saw?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Uncooperative anxious patient",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "patient-care",
+      "communication"
+    ],
+    "question": "You're trying to get a chest X-ray from an elderly patient with dementia who is frightened and keeps pulling away from the machine. What would you actually do, step by step?",
+    "lookingFor": "Practical, patient-centred problem solving that shows patience and adaptability rather than forcing compliance.",
+    "idealAnswer": {
+      "bullets": [
+        "Slow down, use simple calm language, involve a carer or family member if present",
+        "Adapt technique if needed, such as a different positioning or shorter exposure, rather than forcing the standard approach",
+        "Know when to pause and try again rather than pushing through distress"
+      ],
+      "modelAnswer": "First I'd slow right down, get to their eye level, use short simple sentences, and try to build a bit of trust before touching the equipment at all, because dementia often means the fear is about not understanding what's happening rather than the X-ray itself. If a family member or carer is there, I'd bring them in to help reassure the patient, since a familiar voice often works better than mine. If they're still distressed, I'd think about whether the standard positioning is really necessary or whether an alternative, like an image taken with them seated rather than standing, would still answer the clinical question. And if none of that worked in the moment, I'd rather pause and try again shortly after than force it and get a poor image that needs repeating anyway."
+    },
+    "commonMistakes": [
+      "Describing forcing the patient into position",
+      "No mention of involving family or carers",
+      "Ignoring the option of adapting technique"
+    ],
+    "followUps": [
+      "What would you do if the patient became genuinely distressed, not just resistant?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Equipment malfunction mid-procedure",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "equipment",
+      "problem-solving"
+    ],
+    "question": "Halfway through a CT scan, you notice the console is showing an error and the exposure didn't complete correctly. The patient is still on the table. What's your immediate priority?",
+    "lookingFor": "Clear prioritisation: patient safety and communication first, technical troubleshooting second, with awareness of not repeating exposure unnecessarily.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise the patient's physical safety and reassurance immediately",
+        "Check what was actually captured before assuming a repeat is needed",
+        "Escalate to engineering or a senior colleague rather than trying to force the equipment to continue"
+      ],
+      "modelAnswer": "My very first move would be to check on the patient, reassure them calmly that everything is fine and we're just sorting out a technical issue, because lying still in a scanner while something clearly goes wrong on the console is unsettling. Then I'd check exactly what data was actually captured before assuming the whole scan needs repeating, because sometimes the images are fine and it's the console display that's glitched. If there's a genuine fault, I'd follow protocol and call engineering or a senior radiographer rather than trying to restart or force it myself, since guessing with imaging equipment could risk an incorrect or unsafe scan. Keeping the patient informed throughout matters just as much as fixing the technical problem."
+    },
+    "commonMistakes": [
+      "Focusing only on the technical fault and forgetting the patient on the table",
+      "Assuming a full repeat scan is automatically needed",
+      "Trying to fix a hardware fault without escalating"
+    ],
+    "followUps": [
+      "How would you explain the delay to the patient without causing alarm?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Mass casualty imaging priorities",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "triage",
+      "critical-thinking"
+    ],
+    "question": "Imagine your imaging department suddenly receives five patients from a major road accident at once. How would you think about prioritising who gets imaged first?",
+    "lookingFor": "Logical triage reasoning connected to clinical urgency, not just first-come-first-served, and awareness this decision isn't made in isolation.",
+    "idealAnswer": {
+      "bullets": [
+        "Base priority on clinical urgency and instability, not arrival order",
+        "Recognise this is a team decision made with clinicians, not a solo call",
+        "Show awareness of practical constraints, like which patients can safely wait versus need immediate imaging"
+      ],
+      "modelAnswer": "I'd want the priority to be driven by clinical urgency, not who arrived first, so the patient who's haemodynamically unstable or has a suspected internal bleed needs to jump the queue over someone with a likely simple limb fracture who's stable and in less immediate danger. That said, I wouldn't be making that call alone, it would be a fast conversation with the trauma team and lead clinicians, because they have the full clinical picture and I'd be one part of a coordinated response, not the sole decision maker. Practically it also means thinking about which modality each patient actually needs urgently, some might need an immediate CT while others could safely wait twenty minutes for a straightforward X-ray, so it's about matching urgency to the right resource, not just working through a list in order."
+    },
+    "commonMistakes": [
+      "Suggesting a first-come-first-served approach",
+      "Presenting it as a decision made entirely alone",
+      "No distinction between urgent and stable cases"
+    ],
+    "followUps": [
+      "What would you do if two patients seemed equally urgent and you only had one scanner free?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Patient requests to see their own images",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "communication",
+      "scope-of-practice"
+    ],
+    "question": "A patient asks you, right after their scan, 'so is it broken?' What do you say?",
+    "lookingFor": "Honest, kind handling of a scope boundary without being cold or dismissive, showing communication skill.",
+    "idealAnswer": {
+      "bullets": [
+        "Be honest that formal diagnosis isn't the radiographer's role, without sounding evasive or robotic",
+        "Show empathy and acknowledge the patient's anxiety rather than just reciting a policy line",
+        "Explain what happens next so the patient isn't left feeling abandoned"
+      ],
+      "modelAnswer": "I'd be honest and say that I'm not the person who gives the official diagnosis, that's the radiologist's job once they've had a proper look, but I wouldn't just leave it there and walk off, because I know how anxious that wait can feel. I'd explain clearly what happens next, how quickly the report usually comes back and who they'll hear from, so they at least know what to expect rather than being left in limbo. I think it's possible to be completely honest about the boundaries of my role while still being warm and reassuring about the process, and that combination matters a lot to patients in that moment."
+    },
+    "commonMistakes": [
+      "Giving an actual diagnosis or guess",
+      "A cold, purely procedural refusal with no empathy",
+      "Leaving the patient with no idea what happens next"
+    ],
+    "followUps": [
+      "What if the patient became visibly upset when you said you couldn't tell them?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Weighing a repeat exposure decision",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "dose",
+      "clinical-judgement"
+    ],
+    "question": "You've taken an X-ray and the image is slightly underexposed but arguably still diagnostically usable. Do you repeat it or send it as is? Walk me through your thinking.",
+    "lookingFor": "Structured reasoning that weighs diagnostic adequacy against unnecessary dose, rather than a reflexive answer either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh whether the image genuinely answers the clinical question despite imperfections",
+        "Consider dose implications of a repeat versus the risk of a missed or delayed diagnosis from a marginal image",
+        "Know when to consult a senior colleague or the reporting radiologist rather than deciding alone in a genuinely borderline case"
+      ],
+      "modelAnswer": "I'd start by asking myself honestly whether the image actually answers the clinical question, not whether it looks perfect, because a slightly underexposed image that still clearly shows the area of interest doesn't need to become extra dose to the patient just for the sake of a nicer-looking picture. But if there's real doubt, if the underexposure means something subtle could genuinely be missed, then I think the risk of a delayed or wrong diagnosis outweighs the small additional dose of a repeat. In a genuinely borderline case like that, I wouldn't just decide alone, I'd rather show it to a senior colleague or flag it to the reporting radiologist, because a second opinion on 'is this good enough' feels like exactly the kind of judgement that benefits from another set of eyes."
+    },
+    "commonMistakes": [
+      "Automatically repeating every imperfect image regardless of diagnostic adequacy",
+      "Automatically accepting any image to avoid the extra dose",
+      "Not mentioning consulting a colleague in a genuinely borderline case"
+    ],
+    "followUps": [
+      "How would that decision change if the patient were a child?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Language barrier during a scan",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "communication",
+      "patient-care"
+    ],
+    "question": "A patient arrives for an X-ray speaking very little English, and no interpreter is immediately available. How do you make sure they're safe and informed?",
+    "lookingFor": "Resourceful, patient-centred problem-solving that doesn't skip informed consent just because communication is harder.",
+    "idealAnswer": {
+      "bullets": [
+        "Use available resources: translation services, phone interpreters, visual aids, family members with caution",
+        "Never skip safety-critical checks like pregnancy status or metal implants just because it's harder to ask",
+        "Use simple gestures, demonstration, and patience to build understanding"
+      ],
+      "modelAnswer": "I wouldn't rush ahead just because a proper interpreter isn't there yet, safety questions like pregnancy status or metal implants for certain scans are too important to guess at or skip, so I'd try a phone interpreter service if the department has one, since that's usually faster than it sounds. If nothing formal was available in the moment, I'd use simple gestures, point to the area being imaged, demonstrate positioning with my own body, and go slowly, checking their expression to see if they actually understood rather than just assuming a nod means yes. I'd be cautious about relying on a family member for anything sensitive or safety-critical, since that can create pressure or inaccuracy, and I'd rather take a little longer than proceed on an assumption."
+    },
+    "commonMistakes": [
+      "Skipping safety questions because asking is inconvenient",
+      "Relying entirely on a family member for sensitive information without caution",
+      "Giving up and just proceeding without any communication effort"
+    ],
+    "followUps": [
+      "What would you do if you genuinely couldn't confirm they understood the risks?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear medicine versus diagnostic radiography",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "nuclear-medicine",
+      "physics",
+      "imaging-modalities"
+    ],
+    "question": "How is nuclear medicine imaging, like a bone scan, fundamentally different from a standard X-ray in terms of where the radiation actually comes from?",
+    "lookingFor": "Correct understanding that nuclear medicine images emission from radioactive tracer inside the patient, versus X-ray transmission through the patient from an external source.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain X-ray as an external source with radiation passing through the patient onto a detector",
+        "Explain nuclear medicine as an internal radioactive tracer injected or ingested, with the patient becoming the source of emission",
+        "Note the clinical consequence: nuclear medicine shows function and metabolism, X-ray shows structure and density"
+      ],
+      "modelAnswer": "With a standard X-ray, the radiation source is external, the machine fires X-rays through the patient and a detector on the other side captures what gets through, so it's fundamentally about transmission and density. Nuclear medicine flips that around, the patient is given a small amount of a radioactive tracer, often injected, and the patient themselves becomes the source of radiation, with a gamma camera detecting what's emitted from inside the body as the tracer collects in a particular tissue, like bone that's actively remodelling. That's why nuclear medicine is so good at showing function and metabolic activity rather than just structure, a bone scan can show a stress fracture that looks completely normal on a standard X-ray because it's picking up on biological activity, not just density. I find that distinction between imaging structure and imaging function one of the most interesting parts of the whole field."
+    },
+    "commonMistakes": [
+      "Saying nuclear medicine uses an external radiation source",
+      "Not explaining the functional versus structural distinction",
+      "Confusing nuclear medicine with CT contrast"
+    ],
+    "followUps": [
+      "What extra radiation safety considerations come with a patient who has just had a nuclear medicine scan?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Low-dose CT lung screening debate",
+    "program": "Radiography",
+    "difficulty": "hard",
+    "tags": [
+      "current-debate",
+      "screening",
+      "public-health"
+    ],
+    "question": "Low-dose CT screening for lung cancer in high-risk smokers is becoming more common. What's the tension between the benefits of catching cancer early and the risks of widespread screening?",
+    "lookingFor": "Awareness of a genuine, current public-health debate around overdiagnosis, false positives, and cumulative radiation, not a one-sided answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that early detection genuinely improves survival for a disease often caught too late",
+        "Recognise the risks: false positives leading to unnecessary invasive follow-up, overdiagnosis, and cumulative radiation from repeat screening",
+        "Land on a reasoned, not purely enthusiastic, view of population screening"
+      ],
+      "modelAnswer": "The obvious benefit is that lung cancer is often caught very late because it's asymptomatic early on, so screening high-risk smokers with low-dose CT can genuinely catch it while it's still treatable, and the evidence for that survival benefit is real. But it's not a free win, screening at a population level inevitably finds some nodules that look suspicious but turn out to be nothing, and that can lead to anxiety and invasive follow-up procedures like a biopsy that carries its own risk, for something that was never actually going to harm the patient. There's also the question of cumulative dose if someone is screened annually for years, even though each individual scan is low-dose. I think the honest answer is that it's a genuinely difficult trade-off, which is exactly why eligibility criteria for these programmes tend to be so specific rather than opening it up to everyone."
+    },
+    "commonMistakes": [
+      "Only presenting the benefit with no mention of overdiagnosis or false positives",
+      "Dismissing screening entirely with no acknowledgement of its real benefit",
+      "Showing no awareness this is an actual ongoing debate in healthcare policy"
+    ],
+    "followUps": [
+      "How would you explain 'overdiagnosis' to a worried patient in plain language?"
+    ]
+  },
+  {
+    "id": "prog-radiography-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Positioning and anatomical accuracy",
+    "program": "Radiography",
+    "difficulty": "medium",
+    "tags": [
+      "positioning",
+      "anatomy",
+      "practical"
+    ],
+    "question": "Why does even a small rotation of the patient matter so much when positioning for a chest X-ray?",
+    "lookingFor": "Applied anatomical understanding of how rotation distorts cardiac silhouette and mediastinal assessment, not just 'it looks wrong'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that rotation distorts the apparent size and shape of the heart and mediastinum",
+        "Connect this to real diagnostic consequences, such as a falsely enlarged-looking heart",
+        "Mention practical checks radiographers use, like symmetry of the clavicles, to verify positioning"
+      ],
+      "modelAnswer": "Even a small rotation changes how the heart and mediastinum project onto the image, because you're no longer looking at them straight on, and that can make the heart look artificially enlarged or the mediastinum look shifted when actually the patient's anatomy is completely normal, they were just turned slightly. That matters clinically because cardiomegaly or mediastinal shift are genuine diagnostic findings someone might act on, so a positioning error could lead to an incorrect conclusion or an unnecessary follow-up scan. That's part of why radiographers check things like the symmetry of the clavicles relative to the spinous processes before accepting an image, it's a quick, reliable way to confirm the patient was actually straight, and it's a good example of how a seemingly small technical detail carries real clinical weight."
+    },
+    "commonMistakes": [
+      "Saying rotation just makes the image 'look bad' with no clinical consequence",
+      "Not mentioning a specific structure affected, like the heart or mediastinum",
+      "No mention of a practical check radiographers actually use"
+    ],
+    "followUps": [
+      "What other common positioning error would you watch for on an abdominal X-ray?"
+    ]
+  }
+]

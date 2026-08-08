@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-neuroscience-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Action potential mechanism",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "physiology",
+      "fundamentals"
+    ],
+    "question": "Walk me through what happens, ion by ion, when a neuron fires an action potential.",
+    "lookingFor": "Accurate sequencing of depolarisation and repolarisation with the right channels and gradients, not just the word 'sodium'.",
+    "idealAnswer": {
+      "bullets": [
+        "Resting potential is maintained by the Na+/K+ pump and leak channels, around -70mV",
+        "Voltage-gated Na+ channels open at threshold, causing rapid depolarisation, then inactivate",
+        "Voltage-gated K+ channels open more slowly, repolarising and briefly hyperpolarising the membrane"
+      ],
+      "modelAnswer": "At rest the neuron sits around minus seventy millivolts because the sodium potassium pump keeps sodium mostly outside and potassium mostly inside. When a stimulus pushes the membrane past threshold, voltage-gated sodium channels snap open and sodium floods in, which is the sharp upstroke you see on a trace. Those channels then inactivate almost immediately, and voltage-gated potassium channels open more slowly, letting potassium leave and bringing the membrane back down, usually overshooting into a brief hyperpolarisation. What I find elegant is that the whole thing is self-limiting, the same depolarisation that opens the channels is what eventually shuts them again."
+    },
+    "commonMistakes": [
+      "Saying sodium and potassium both flow in the same direction",
+      "Forgetting that sodium channels inactivate rather than simply closing",
+      "Describing the resting potential as zero rather than negative"
+    ],
+    "followUps": [
+      "Why does the action potential only travel in one direction along the axon?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Synaptic plasticity and learning",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "plasticity",
+      "memory"
+    ],
+    "question": "How does long-term potentiation give us a plausible cellular basis for memory?",
+    "lookingFor": "Understanding of Hebbian plasticity and why strengthened synaptic connections are a credible substrate for storing information.",
+    "idealAnswer": {
+      "bullets": [
+        "State the Hebbian principle: cells that fire together wire together",
+        "Explain that repeated correlated firing strengthens a synapse, often via NMDA receptor and calcium signalling",
+        "Connect this to memory by noting the strengthened pathway makes future firing along it easier"
+      ],
+      "modelAnswer": "The basic idea is Hebb's rule, that when one neuron repeatedly helps fire another, the connection between them gets stronger. Mechanistically, in the hippocampus that often runs through NMDA receptors, which only let calcium in when the postsynaptic cell is already depolarised and glutamate is bound, so it's a coincidence detector for correlated activity. That calcium influx triggers changes that insert more receptors and strengthen the synapse, so the same input produces a bigger response next time. What makes this a plausible memory mechanism is that the change is specific to the pathway that was active and it persists, which is exactly the property you'd want if a memory is really a pattern of strengthened connections rather than something stored in one place."
+    },
+    "commonMistakes": [
+      "Describing LTP without ever mentioning what makes it a memory mechanism",
+      "Confusing potentiation with simple continuous firing",
+      "Treating memory as stored in a single neuron rather than a distributed pattern"
+    ],
+    "followUps": [
+      "What would you expect long-term depression to contribute alongside LTP?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Neurotransmitters vs neuromodulators",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "pharmacology",
+      "concept"
+    ],
+    "question": "What's the functional difference between a neurotransmitter and a neuromodulator like dopamine?",
+    "lookingFor": "A clear distinction based on speed, specificity, and mechanism, rather than just naming examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Classic fast neurotransmitters act at a single synapse, ionotropic receptors, millisecond timescale",
+        "Neuromodulators diffuse more broadly and act through metabotropic receptors, altering the probability or gain of firing",
+        "Note dopamine can act as both depending on context, so the distinction is functional not just chemical"
+      ],
+      "modelAnswer": "A classic fast neurotransmitter like glutamate acts at one specific synapse, binds an ionotropic receptor, and changes the membrane potential within a millisecond, so it's really about point-to-point signalling. A neuromodulator like dopamine tends to act more diffusely, often through metabotropic receptors that trigger second messenger cascades, and instead of directly causing a spike it changes how likely other inputs are to cause one, over a slower timescale of seconds. What I think is interesting is that dopamine can technically do both jobs depending on the receptor and circuit, so the neurotransmitter versus neuromodulator label is really describing a role rather than a fixed chemical identity."
+    },
+    "commonMistakes": [
+      "Treating the categories as strictly separate molecules rather than functional roles",
+      "Ignoring timescale as part of the distinction",
+      "Only naming examples without explaining the mechanistic difference"
+    ],
+    "followUps": [
+      "Why might a diffuse, slow signal be useful for something like motivation or mood?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Role of glial cells",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "glia",
+      "concept"
+    ],
+    "question": "Neuroscience used to treat glial cells as just structural support. Why has that view changed?",
+    "lookingFor": "Awareness that glia are now known to be active participants in signalling, not passive scaffolding.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention astrocytes regulating synaptic activity and forming the tripartite synapse",
+        "Mention microglia's role in immune surveillance and synaptic pruning",
+        "Note oligodendrocytes actively regulating conduction speed via myelin, not just insulating"
+      ],
+      "modelAnswer": "The old picture was that glia just held neurons in place and fed them nutrients, but that's turned out to badly undersell them. Astrocytes actually wrap around synapses and can release their own signalling molecules that modulate transmission, which is why people now talk about a tripartite synapse rather than just two neurons. Microglia turned out to be doing active immune surveillance and even pruning weaker synapses during development, which links them directly to how circuits get refined. I find it a nice example of how a field can carry an assumption for decades simply because the tools to see the activity weren't there yet."
+    },
+    "commonMistakes": [
+      "Naming glial cell types without describing their active functions",
+      "Confusing microglia with astrocytes",
+      "Treating myelin's only function as passive insulation"
+    ],
+    "followUps": [
+      "What might go wrong developmentally if microglial pruning is disrupted?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "fMRI versus EEG trade-offs",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "methods",
+      "imaging"
+    ],
+    "question": "If you were designing a study on decision-making, would you choose fMRI or EEG, and why?",
+    "lookingFor": "Understanding of the spatial versus temporal resolution trade-off and the ability to reason about which matters for a given question.",
+    "idealAnswer": {
+      "bullets": [
+        "State that fMRI gives good spatial resolution but poor temporal resolution due to the slow BOLD signal",
+        "State that EEG gives millisecond temporal resolution but poor spatial localisation",
+        "Reason about the choice based on whether the research question is about where or when"
+      ],
+      "modelAnswer": "It really depends on what part of decision-making I'm asking about. fMRI measures blood oxygenation, which lags the actual neural activity by several seconds, so it's great for telling me which regions like the prefrontal cortex or striatum are involved, but useless for catching something that unfolds in under a second. EEG has the opposite problem, it can catch a shift in neural activity within milliseconds but the signal is smeared across the scalp so localising the source is much harder. If I wanted to know whether a decision is influenced before someone reports being aware of it, I'd lean toward EEG for the timing, but if I wanted to map which brain networks differ between impulsive and cautious deciders, I'd want fMRI. Honestly the strongest studies I've read often combine both to get spatial and temporal information together."
+    },
+    "commonMistakes": [
+      "Claiming one method is simply better without context",
+      "Confusing spatial and temporal resolution",
+      "Not connecting the method choice back to the specific research question"
+    ],
+    "followUps": [
+      "What would MEG offer that neither of those two methods does well?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Localisation versus distributed processing",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "cognition",
+      "debate"
+    ],
+    "question": "Is it accurate to say a specific brain region is 'the' area for a function like language or fear?",
+    "lookingFor": "Nuanced understanding that goes beyond phrenology-style localisation toward networks and degrees of specialisation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge historical evidence for some localisation, like Broca's and Wernicke's areas",
+        "Explain that modern evidence points to distributed networks rather than single centres",
+        "Use a specific example, like the amygdala's role in fear being necessary but not sufficient alone"
+      ],
+      "modelAnswer": "There's real evidence for some localisation, patients with damage to Broca's area have quite specific speech production problems, so it's not that function is spread evenly everywhere. But I think it's misleading to say one area is 'the' centre for something like fear or language, because lesion and imaging studies usually show a whole network lighting up, and damage to different nodes in that network can produce different pieces of the deficit. The amygdala is a good example, it's clearly important for fear responses, but patients with amygdala damage don't lose fear entirely, and fear conditioning also involves the hippocampus and prefrontal cortex. I'd say the honest answer is that regions specialise in a component of the function, but the function itself emerges from the network."
+    },
+    "commonMistakes": [
+      "Defaulting to pure phrenology-style single-area claims",
+      "Overcorrecting to say localisation has no evidence at all",
+      "Failing to give a concrete supporting example"
+    ],
+    "followUps": [
+      "What kind of evidence would convince you a function really is localised?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical periods and plasticity",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "development",
+      "plasticity"
+    ],
+    "question": "Why do critical periods exist, and what does it mean that the brain becomes less plastic afterward?",
+    "lookingFor": "Understanding of the developmental trade-off between plasticity and stability, with a concrete example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain critical periods as windows where experience strongly shapes circuit wiring, often citing ocular dominance",
+        "Note the trade-off: high plasticity early allows tuning to the environment, reduced plasticity later gives stability",
+        "Mention that plasticity doesn't vanish entirely, it changes form and requires more effort or different mechanisms"
+      ],
+      "modelAnswer": "Critical periods exist because certain circuits need real-world input to calibrate properly, the classic example is ocular dominance in the visual cortex, where depriving one eye early on permanently skews the balance of cortical territory toward the other eye. Biologically it makes sense as a trade-off, you want high plasticity early so the brain can tune itself to whatever environment it's actually born into, but if that stayed wide open forever, established memories and skills would be constantly at risk of being overwritten. It's not that plasticity disappears completely in adulthood, it's more that it becomes more effortful and relies on different mechanisms like structural changes with repeated practice rather than the rapid rewiring you see in a developing brain. That's actually part of why I'm drawn to rehabilitation neuroscience, understanding how to reopen some of that plasticity deliberately feels like one of the field's more promising directions."
+    },
+    "commonMistakes": [
+      "Claiming the adult brain has zero plasticity",
+      "Giving no concrete example like ocular dominance",
+      "Missing the trade-off logic between flexibility and stability"
+    ],
+    "followUps": [
+      "What approaches are being explored to reopen critical-period-like plasticity in adults?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Blood-brain barrier and drug delivery",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "pharmacology",
+      "translational"
+    ],
+    "question": "Why does the blood-brain barrier make treating neurological disease so much harder than treating disease elsewhere in the body?",
+    "lookingFor": "Understanding of the barrier's structure and function, and its direct implication for therapeutic design.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the tight junctions between endothelial cells that restrict paracellular movement",
+        "Explain that this protects the brain but also blocks most large or hydrophilic drug molecules",
+        "Connect to real translational challenges, like why many promising drugs fail once they need to cross into the brain"
+      ],
+      "modelAnswer": "The blood-brain barrier is made of endothelial cells joined by very tight junctions, so unlike capillaries elsewhere in the body, molecules can't just slip between the cells, they mostly have to be small and lipid soluble enough to pass through the cell membranes directly, or be actively transported. That's obviously protective, it keeps toxins and pathogens out of a very sensitive organ, but it means a huge number of otherwise promising drugs, especially larger molecules like antibodies, simply never reach useful concentrations in the brain. It's part of why so much current research is going into things like nanoparticle carriers or transient ways to open the barrier, because you can have a drug that works beautifully in a dish and still fail in a patient purely because it can't get where it needs to go."
+    },
+    "commonMistakes": [
+      "Describing the barrier vaguely without mentioning tight junctions or endothelial cells",
+      "Not connecting the biology to a real drug development consequence",
+      "Implying the barrier is absolute with no transport mechanisms at all"
+    ],
+    "followUps": [
+      "What strategies have you read about for getting therapeutics past the barrier?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Validity of animal models",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "methods",
+      "translational"
+    ],
+    "question": "A lot of neuroscience findings come from mouse models. How confident should we be that those findings apply to human brains?",
+    "lookingFor": "Critical, balanced reasoning about the strengths and limits of animal models rather than blanket acceptance or rejection.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine value: conserved basic mechanisms, controlled genetic and environmental manipulation",
+        "Identify real limits: differences in cortical complexity, behaviour, and disease presentation, and the translation failure rate in drug trials",
+        "Land on a nuanced position rather than dismissing animal work entirely"
+      ],
+      "modelAnswer": "I don't think it's right to dismiss mouse work, a lot of basic cellular mechanisms, like how an action potential fires or how a synapse strengthens, really are conserved across mammals, and you simply cannot do the invasive, controlled manipulations in humans that let you establish causation. But I'd be honest that the translation record is patchy, especially in areas like Alzheimer's or depression, where you can cure a mouse of something that looks like the disease and then watch the equivalent human drug fail in trials, partly because mouse models often model a symptom or a pathology marker rather than the full human condition, and partly because the human cortex is so much more expanded and its disorders often involve things like language or complex social cognition that a mouse simply doesn't have. My honest answer is that mouse models are a necessary and genuinely useful step, but they're a hypothesis generator for human biology, not a substitute for it."
+    },
+    "commonMistakes": [
+      "Treating animal models as either perfectly predictive or worthless",
+      "Not citing a concrete example of translation failure",
+      "Ignoring what animal models are genuinely good for, like causal manipulation"
+    ],
+    "followUps": [
+      "What kind of human research method could partly substitute for what animal models offer?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Reductionism in neuroscience",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "philosophy",
+      "reasoning"
+    ],
+    "question": "Some critics argue neuroscience can never fully explain things like love or moral judgement because it reduces experience to chemistry. How would you respond?",
+    "lookingFor": "The ability to engage seriously with a philosophical objection to the field rather than dismissing or over-conceding it.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the objection seriously rather than brushing it off",
+        "Distinguish levels of explanation: a chemical account and a psychological account can both be true and complementary",
+        "Give a considered personal position, acknowledging what neuroscience can and can't currently claim"
+      ],
+      "modelAnswer": "I think the objection has a real point buried in it, even a complete map of every neurotransmitter involved in love wouldn't feel like it's told you what love actually is to the person experiencing it, and I don't want to pretend that gap doesn't exist. But I don't think that means neuroscience and lived experience are competing explanations, I think they're operating at different levels, the way explaining a song in terms of air pressure waves doesn't make the emotional experience of the song less real, it's just a different level of description. What neuroscience can honestly claim is the mechanism, why certain chemicals and circuits reliably accompany certain states, and I think that's genuinely valuable even if it never closes what philosophers call the explanatory gap for subjective experience. I'd rather be upfront about that limit than oversell what a dopamine reading can tell you about somebody's marriage."
+    },
+    "commonMistakes": [
+      "Dismissing the objection as unscientific without engaging with it",
+      "Fully conceding that neuroscience explains nothing meaningful about experience",
+      "Giving a vague answer with no clear personal position"
+    ],
+    "followUps": [
+      "Do you think a complete neural account would ever make concepts like free will unnecessary?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Free will and determinism",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "philosophy",
+      "free-will"
+    ],
+    "question": "Studies like Libet's showed brain activity preceding a decision before people report being consciously aware of choosing. Does that mean free will is an illusion?",
+    "lookingFor": "Careful, informed reasoning that knows the actual evidence and its limits, rather than a snap philosophical verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Accurately describe what Libet-style studies actually show, and their real limits, such as the simple, unplanned nature of the tested action",
+        "Distinguish between undermining a naive dualist notion of a conscious 'first cause' and undermining free will in any meaningful sense",
+        "Reach a reasoned, non-glib position"
+      ],
+      "modelAnswer": "I'd want to be careful here because the Libet experiments are often overstated in how they get reported. What they actually show is that for a very simple, unplanned action like flicking your wrist whenever you feel like it, measurable brain activity precedes the moment someone reports deciding, by a few hundred milliseconds. That's a real problem for the idea of a conscious self as some kind of uncaused first mover that sits outside the brain's own processes, but I don't think it proves free will is meaningless, because complex, deliberated decisions, the kind that actually matter morally, look nothing like flicking a wrist on command. My honest position is that it challenges a very specific, almost dualist picture of free will, but it doesn't show that our deliberate reasoning, weighing options over time, doesn't causally shape what we do, it just shows that reasoning is itself happening in the brain rather than somewhere outside it."
+    },
+    "commonMistakes": [
+      "Overstating what a single simple-action study proves about all decision-making",
+      "Giving a purely philosophical answer with no reference to actual evidence",
+      "Refusing to take any position at all"
+    ],
+    "followUps": [
+      "Would your answer change for a more complex, deliberated decision than a simple finger movement?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "The hard problem of consciousness",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "consciousness",
+      "philosophy"
+    ],
+    "question": "What do people mean by the 'hard problem' of consciousness, and do you think neuroscience will ever solve it?",
+    "lookingFor": "Correct grasp of Chalmers' distinction between the easy and hard problems, plus a considered, honest opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly distinguish the easy problems, explaining mechanisms of attention or reportability, from the hard problem of why there's subjective experience at all",
+        "Give examples of current approaches, like integrated information theory or global workspace theory, and their limits",
+        "Offer a genuine, reasoned opinion rather than dodging the question"
+      ],
+      "modelAnswer": "The easy problems, which aren't actually easy in practice, are things like explaining how the brain integrates information or produces a reportable perception, and I think neuroscience is making real progress there. The hard problem, as Chalmers framed it, is different, it's asking why any of that processing is accompanied by subjective experience at all, why there's something it's like to see red rather than the information just being processed in the dark, so to speak. Theories like global workspace or integrated information try to describe the structure that correlates with consciousness, but I don't think either of them actually explains why that structure should feel like anything from the inside, they're describing correlates, not the bridge itself. My honest guess is that neuroscience will keep getting better at predicting and even manipulating conscious states, but I'm genuinely unsure whether closing that explanatory gap is even the kind of thing empirical science can do, which is part of why I find the question so interesting rather than settled."
+    },
+    "commonMistakes": [
+      "Conflating the hard problem with simply not yet knowing enough neuroscience",
+      "Naming a theory without explaining what it actually claims",
+      "Avoiding giving any personal view"
+    ],
+    "followUps": [
+      "Do you think a sufficiently detailed neural correlate would count as an explanation, or just a correlation?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Split-brain studies",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "cognition",
+      "case-study"
+    ],
+    "question": "What do split-brain patients tell us about whether we have a single, unified sense of self?",
+    "lookingFor": "Knowledge of the classic corpus callosotomy findings and an ability to reason about their implications for identity.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the basic finding: cutting the corpus callosum can produce two hemispheres that process information and even respond somewhat independently",
+        "Give a concrete example, such as the left hand acting on information the verbal left hemisphere cannot report",
+        "Reason carefully about what this does and doesn't say about unified selfhood in everyday life"
+      ],
+      "modelAnswer": "In split-brain patients, where the corpus callosum connecting the hemispheres has been cut, usually to treat severe epilepsy, you can show an object only to the left visual field, which projects to the right hemisphere, and the patient will say they saw nothing, because language is mostly on the left side, but their left hand, controlled by the right hemisphere, can still pick out that object from a group. That's a striking demonstration that under specific experimental conditions the two hemispheres can process and act on information somewhat independently. Where I'd be careful is in over-extending that to claim we normally house two separate selves, because in daily life the corpus callosum keeps the hemispheres constantly integrated, and even in these patients, behaviour outside the lab is largely coordinated. I think the honest takeaway is that our sense of a single unified self is partly a product of that constant integration rather than something that would exist automatically no matter how the brain is wired."
+    },
+    "commonMistakes": [
+      "Describing the classic finding inaccurately, such as claiming both hemispheres always report full awareness",
+      "Overgeneralising to claim everyone secretly has two separate consciousnesses",
+      "Giving no concrete experimental detail"
+    ],
+    "followUps": [
+      "Does this change how you'd think about consciousness in someone with a different kind of brain injury?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Adult neurogenesis controversy",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "current-debate",
+      "neurogenesis"
+    ],
+    "question": "There's been genuine scientific disagreement about whether adult humans actually generate new neurons in the hippocampus. What's your take on that debate?",
+    "lookingFor": "Awareness of a real, contested area of the field and the ability to weigh conflicting evidence rather than state one side as settled fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that studies have reached genuinely conflicting conclusions, some finding robust adult neurogenesis, others finding it drops off sharply after childhood",
+        "Identify a methodological reason for the disagreement, such as tissue preservation quality affecting marker detection",
+        "Reach a measured position that reflects genuine scientific uncertainty rather than false confidence"
+      ],
+      "modelAnswer": "This is one of those areas where I think it's important to admit the field itself is divided rather than pretend there's a clean answer. Some studies using markers for young neurons in post-mortem hippocampal tissue found evidence of ongoing neurogenesis well into old age, while other well-conducted studies found the signal drops off dramatically after childhood and is nearly undetectable in adults. From what I've read, a lot of the disagreement seems to trace back to how quickly and how well the brain tissue was preserved after death, since the markers used are sensitive to degradation, which is a humbling reminder that a result can hinge on something as unglamorous as sample handling. I don't think the question is fully resolved, and I'd rather say that honestly than confidently pick a side, because I think being able to sit with real scientific uncertainty is part of what this field actually demands."
+    },
+    "commonMistakes": [
+      "Stating one side as definitively proven when the debate is genuinely unresolved",
+      "Being unaware the debate exists at all",
+      "Giving no reason for why credible studies might disagree"
+    ],
+    "followUps": [
+      "Why does it matter clinically whether adult neurogenesis is real?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Amyloid hypothesis controversy",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "alzheimers",
+      "current-debate"
+    ],
+    "question": "The amyloid hypothesis has dominated Alzheimer's research for decades but has faced serious challenges, including allegations of fabricated data in a key foundational study. What does this episode tell you about how the field should move forward?",
+    "lookingFor": "Awareness of a real, current controversy in the field and the ability to draw a thoughtful lesson about scientific practice, not just recite the scandal.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness that a highly cited 2006 amyloid study came under serious scrutiny for image manipulation, alongside decades of disappointing anti-amyloid drug trials",
+        "Avoid the trap of concluding the amyloid hypothesis is simply wrong, since some newer anti-amyloid antibodies have shown modest clinical effects",
+        "Draw a genuine lesson, such as the danger of a field converging too heavily on one dominant hypothesis and underfunding alternatives"
+      ],
+      "modelAnswer": "What struck me about that episode is that it wasn't just one bad paper, it landed on top of decades of anti-amyloid drugs failing in trial after trial, which had already made a lot of researchers uneasy about how dominant the hypothesis had become. I don't think the right conclusion is that amyloid is irrelevant, some of the newer antibody drugs have shown real, if modest, effects on cognitive decline, so there's probably something real there. What worries me more is the funding and attention pattern, if one hypothesis becomes so dominant that alternative mechanisms like tau pathology, neuroinflammation, or vascular contributions get comparatively starved of resources, then a single fraudulent or flawed paper can do outsized damage simply because so much had already been built on top of it. I think the honest lesson is less about any one villain and more about keeping a field genuinely pluralistic even when one theory looks winning."
+    },
+    "commonMistakes": [
+      "Not knowing the controversy exists or being vague about what actually happened",
+      "Concluding the entire amyloid hypothesis is now disproven",
+      "Treating it as pure gossip with no substantive lesson about scientific practice"
+    ],
+    "followUps": [
+      "What alternative mechanisms for Alzheimer's do you find most promising?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Psychedelic-assisted therapy",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "current-debate",
+      "mental-health"
+    ],
+    "question": "Psychedelic-assisted therapy has moved from taboo to serious clinical research in the last decade. What's driving that shift, and what are you skeptical about?",
+    "lookingFor": "Awareness of the current clinical trial landscape and a balanced view that isn't purely enthusiastic or purely dismissive.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention specific drivers: promising trial results for psilocybin and MDMA in depression, PTSD, and end-of-life anxiety, alongside decades of stalled progress with conventional antidepressants",
+        "Identify a genuine limitation, such as small trial sizes, difficulty blinding participants, or unclear durability of effects",
+        "Show a balanced, not purely enthusiastic, stance"
+      ],
+      "modelAnswer": "Part of what's driving the shift is frustration, conventional antidepressants often take weeks to work and don't help everyone, while trials of psilocybin for treatment-resistant depression and MDMA for PTSD have shown fairly striking, sometimes rapid effects in a subset of patients. That's genuinely exciting, but I'd want to flag a real methodological problem, it's very hard to properly blind a trial when the participant clearly knows whether they've had a powerful psychoactive experience or a placebo, which can inflate the apparent effect through expectation alone. I'm also cautious about durability, a lot of the striking early results come from small samples with fairly short follow-up, and I'd want to see how those effects hold up at scale and over years before treating this as a settled breakthrough rather than a genuinely promising but still early line of research."
+    },
+    "commonMistakes": [
+      "Treating psychedelics as an already-proven miracle treatment",
+      "Dismissing the research entirely as unserious",
+      "Not identifying a real methodological limitation like blinding"
+    ],
+    "followUps": [
+      "How would you design a trial to address the blinding problem?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Brain-computer interfaces",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "current-debate",
+      "technology"
+    ],
+    "question": "Companies are now implanting brain-computer interfaces in humans that let paralysed patients control a cursor or a robotic arm with thought alone. How does this technology actually work at a basic level, and what's the biggest obstacle to it going mainstream?",
+    "lookingFor": "Basic technical understanding of how BCIs decode neural activity, plus a realistic sense of the current bottlenecks.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic principle: electrodes record patterns of neural firing, usually in motor cortex, which a decoding algorithm translates into intended movement",
+        "Identify a real current obstacle, such as electrode degradation over time, signal drift, or the invasiveness of surgery",
+        "Show awareness this is an active, imperfect field rather than a solved technology"
+      ],
+      "modelAnswer": "At a basic level, electrodes implanted in motor cortex pick up the firing patterns of neurons that would normally drive arm or hand movement, and a decoding algorithm, trained by having the patient imagine specific movements, learns to translate those patterns into commands for a cursor or a robotic limb. What I think doesn't get talked about enough is how much these systems currently degrade, the brain's immune response tends to scar tissue around the electrode over months, which weakens the signal, so a lot of current research is really about biocompatible materials and better decoding algorithms that can adapt to a drifting signal rather than about the initial proof of concept, which already works reasonably well in controlled settings. There's also the basic fact that this still requires invasive brain surgery, which is a real barrier to it becoming something offered outside of severe paralysis cases."
+    },
+    "commonMistakes": [
+      "Describing the technology as already fully solved and widely deployable",
+      "Giving no explanation of how the actual decoding works",
+      "Confusing invasive cortical implants with simple non-invasive EEG headsets"
+    ],
+    "followUps": [
+      "What ethical questions do you think a fully mainstream version of this technology would raise?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and neuroscience convergence",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "current-debate",
+      "ai"
+    ],
+    "question": "Artificial neural networks were originally inspired by the brain, and now some neuroscientists use them as models to understand real neural circuits. Do you think that comparison is actually useful, or overstated?",
+    "lookingFor": "A thoughtful, informed view on where the brain-AI analogy holds and where it breaks down.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine usefulness, such as deep networks predicting visual cortex responses reasonably well",
+        "Identify real disanalogies, such as backpropagation's biological implausibility and vast differences in energy efficiency and learning from few examples",
+        "Reach a balanced, specific conclusion rather than a sweeping claim either way"
+      ],
+      "modelAnswer": "I think the comparison is genuinely useful in a narrow, testable sense, deep convolutional networks trained on image recognition end up developing internal representations that predict activity in visual cortex neurons surprisingly well, which is a real, falsifiable finding, not just a loose metaphor. But I'd be careful not to oversell it, the learning rule that trains most artificial networks, backpropagation, requires precise, global error signals that don't have an obvious biological equivalent, and biological brains learn from far fewer examples using far less energy, which suggests the brain is solving the problem in a genuinely different way, not just a messier version of the same algorithm. My honest take is that artificial networks are a useful tool for generating hypotheses about what kind of computation a circuit might be doing, but treating them as literal models of how the brain learns is probably overstating the analogy."
+    },
+    "commonMistakes": [
+      "Claiming the brain literally works like a modern artificial neural network",
+      "Dismissing the comparison as having no scientific value at all",
+      "Giving a vague answer with no specific evidence either way"
+    ],
+    "followUps": [
+      "What would convince you the analogy is closer or further than you currently think?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Brain organoids and moral status",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "ethics",
+      "organoids"
+    ],
+    "question": "Lab-grown brain organoids have started showing organised electrical activity resembling that of a developing brain. At what point, if any, should that raise ethical concern?",
+    "lookingFor": "Structured ethical reasoning about a genuinely unresolved question, weighing scientific value against uncertainty about experience.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the scientific value of organoids for studying development and disease without using animals or human subjects directly",
+        "Reason about what markers might actually indicate morally relevant experience, such as integrated, sustained activity resembling sentience, rather than any electrical signal at all",
+        "Land on a precautionary but proportionate position rather than dismissing the concern or overreacting to it"
+      ],
+      "modelAnswer": "I think organoids are genuinely valuable, they let researchers study things like autism-related developmental disruptions or drug toxicity without the ethical weight of animal or human subject research, so I don't want to treat any electrical activity in them as automatically alarming. But I don't think the concern is baseless either, the honest answer is that we don't have a clean marker for when organised neural activity starts correlating with anything like experience, so I'd want the field to set a precautionary line based on specific features, like sustained, integrated activity patterns similar to those associated with consciousness in a developing brain, rather than waiting until we're certain, because by definition we might not get clear warning. My own position is that current organoids are almost certainly far too small and disorganised to raise real concern, but I think it's exactly the kind of question that should be monitored proactively by an ethics body rather than only addressed once it's obviously too late."
+    },
+    "commonMistakes": [
+      "Dismissing the concern entirely because organoids are 'just cells'",
+      "Treating any electrical activity as proof of experience with no reasoning",
+      "Failing to weigh the genuine scientific benefit against the uncertainty"
+    ],
+    "followUps": [
+      "Who do you think should be responsible for setting that precautionary line?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Deep brain stimulation and personality change",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "ethics",
+      "dbs"
+    ],
+    "question": "Deep brain stimulation for conditions like Parkinson's or severe depression sometimes changes a patient's personality, occasionally in ways they say they don't recognise as themselves. If a treatment relieves the disease but the patient reports feeling like a different person, should that treatment continue?",
+    "lookingFor": "Careful ethical reasoning weighing autonomy, wellbeing, and identity, rather than a snap answer either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the genuine tension between symptom relief and preserving the patient's sense of self",
+        "Reason about who should decide, emphasising ongoing informed consent and the patient's own evolving judgement rather than only the treating team's",
+        "Avoid a simple 'always continue' or 'always stop' answer, and propose a process, like adjustable stimulation parameters and regular re-consent"
+      ],
+      "modelAnswer": "I don't think there's a clean universal answer here, because it depends heavily on what the patient themselves says once they can reflect on the change, and that's exactly what makes it hard, since the stimulation itself might be altering the very judgement they'd use to evaluate it. I'd want the decision to sit primarily with the patient through an ongoing consent process rather than being decided purely on the clinical team's assessment that symptoms have improved, because relief from tremor or depression doesn't automatically outweigh a patient's own sense that they've lost something essential about who they are. Practically, I think this points toward treating DBS as adjustable rather than all-or-nothing, using programmable parameters and scheduled check-ins specifically built around the identity question, not just symptom scores, so the patient can meaningfully renegotiate the trade-off over time rather than facing one irreversible choice."
+    },
+    "commonMistakes": [
+      "Assuming symptom relief automatically settles the question",
+      "Ignoring that the stimulation itself might affect the patient's judgement about the stimulation",
+      "Giving a binary answer with no process for ongoing reassessment"
+    ],
+    "followUps": [
+      "What if the patient's family strongly disagrees with the patient's own wishes here?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Neuroenhancement fairness",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "ethics",
+      "enhancement"
+    ],
+    "question": "Should healthy students be allowed to use prescription stimulants like Adderall to boost focus during exams?",
+    "lookingFor": "Structured ethical reasoning about fairness, coercion, and health risk, going beyond a simple yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh the fairness argument, that unequal access creates pressure on students who'd rather not use them",
+        "Consider health and consent issues around using a prescription drug off-label without medical supervision",
+        "Reach a reasoned position, potentially distinguishing personal autonomy from systemic fairness concerns"
+      ],
+      "modelAnswer": "My instinct is to separate two different questions that often get bundled together. As a matter of pure personal autonomy, I find it hard to build a knockdown argument against an individual choosing to use a legal, prescribed substance on their own body, especially compared to something like caffeine which we don't regulate this way. But the fairness problem is real and different, once enough students are using stimulants competitively, it stops being a free personal choice and starts becoming quiet pressure on everyone else to do the same just to stay level, which especially disadvantages students who can't access a prescription or don't want to take the health risk. I'd lean toward not permitting it in exam contexts specifically, not because the individual choice is wrong in isolation, but because the systemic effect on a supposedly level playing field is what actually worries me, and I think that's a different, stronger argument than just saying stimulants are risky."
+    },
+    "commonMistakes": [
+      "Only discussing health risk without addressing the fairness dimension",
+      "Treating individual autonomy and systemic fairness as the same argument",
+      "Giving a flat yes or no with no reasoning chain"
+    ],
+    "followUps": [
+      "Does your answer change for something non-prescription, like high-dose caffeine tablets?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Neuroscience evidence in criminal justice",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "ethics",
+      "neurolaw"
+    ],
+    "question": "A defendant's lawyer presents a brain scan showing damage to the prefrontal cortex, an area linked to impulse control, and argues this should reduce criminal responsibility for a violent act. How should a court weigh that evidence?",
+    "lookingFor": "Reasoned engagement with the limits of using group-level neuroscience findings to make individual legal judgements.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the scan is genuinely relevant evidence, not irrelevant, since prefrontal damage is linked to impulse control problems at a population level",
+        "Identify the core limitation: population-level correlations don't establish that this particular scan explains this particular act, and most people with such damage don't commit violent acts",
+        "Propose a reasoned role for the evidence, such as informing sentencing or mitigation rather than serving as a simple determinism defence"
+      ],
+      "modelAnswer": "I don't think the scan should be dismissed as irrelevant, there's real evidence linking prefrontal damage to impulse control problems, so it's not junk science, but I think the court has to be very careful about what that evidence can and can't actually prove for one specific person. The core problem is that this is a population-level correlation, most people with prefrontal damage never commit violent crimes, so the scan alone can't establish that the damage caused this particular act rather than simply being present alongside it. I'd want it treated as one relevant piece of mitigating evidence about the defendant's capacity, weighed alongside their history and the specifics of the act, rather than as a determinism argument that responsibility simply evaporates, because I think the law has to hold both things at once, that biology shapes behaviour and that we still need a workable concept of responsibility for a society to function."
+    },
+    "commonMistakes": [
+      "Treating a group-level correlation as proof for an individual case",
+      "Dismissing the neuroscience evidence as entirely irrelevant to responsibility",
+      "Concluding the scan should fully excuse the act with no reasoning about degree"
+    ],
+    "followUps": [
+      "Should this kind of evidence be allowed to affect sentencing even if it can't affect the verdict itself?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Informed consent with cognitive impairment",
+    "program": "Neuroscience",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "ethics",
+      "consent"
+    ],
+    "question": "How should researchers handle informed consent when studying patients with dementia, who may not fully understand what they're agreeing to?",
+    "lookingFor": "Awareness of real safeguards used in this situation, such as advance directives and ongoing assent, rather than a simplistic 'get a family member to sign' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the core tension: excluding these patients entirely would mean dementia research never reflects the people it's meant to help",
+        "Mention real safeguards, such as advance research directives made while capacity was intact, surrogate consent from a designated decision-maker, and ongoing assent",
+        "Emphasise that consent should be treated as continuous, watching for signs of distress or refusal even after initial consent"
+      ],
+      "modelAnswer": "I think the tempting shortcut is to say a family member can just consent on the patient's behalf, but I don't think that's sufficient on its own, because it can drift into deciding for someone rather than with them. What I've read about better practice involves patients, while they still have capacity early in the disease, completing something like an advance research directive that specifies what kinds of studies they'd be willing to take part in later, combined with a legally designated surrogate for decisions beyond that scope. Even then, I think researchers have an obligation to keep checking for ongoing assent in the moment, watching for distress or resistance during the study itself, because someone who can't fully reason through a consent form can still clearly communicate that they don't want to continue, and I think that has to be respected even if it complicates the study."
+    },
+    "commonMistakes": [
+      "Assuming family consent alone fully resolves the ethical issue",
+      "Concluding these patients should simply be excluded from research entirely",
+      "Ignoring the need for ongoing assent after initial consent is given"
+    ],
+    "followUps": [
+      "What would you do if a patient who previously consented now seems distressed during a session?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a consciousness test",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "hypothetical",
+      "consciousness"
+    ],
+    "question": "You're asked to help design a way to tell whether a patient in an unresponsive state, who shows no outward signs of awareness, might still be conscious. What would you actually try?",
+    "lookingFor": "Applied reasoning that draws on real methods, like the active fMRI paradigm, while showing awareness of the interpretive difficulty.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a concrete approach, such as asking the patient to imagine a specific task, like playing tennis, while monitoring fMRI for the expected motor or spatial activity pattern",
+        "Explain the logic: a consistent, task-specific response suggests the patient can understand instructions and choose to comply, which implies awareness",
+        "Acknowledge the interpretive limits, such as a negative result not ruling out awareness, only ruling out this particular channel of detecting it"
+      ],
+      "modelAnswer": "The approach I'd actually reach for is based on real work in this area, where you put the patient in an fMRI scanner and ask them to imagine playing tennis, which reliably activates motor and premotor regions in people who can consciously follow the instruction, versus imagining walking through their house, which activates different spatial regions. If you see that specific, differentiated pattern show up reliably when you ask for one task versus the other, that's hard to explain as anything other than the patient understanding the instruction and choosing to comply, which is a strong signal of awareness even without any outward movement. What I'd be careful about is a negative result, if you don't see the pattern, that doesn't prove the patient isn't aware, it might just mean this particular channel of communication isn't available to them, so I'd want to be honest with a family that a negative doesn't settle the question the way a positive result does."
+    },
+    "commonMistakes": [
+      "Proposing only behavioural observation with no idea for detecting covert awareness",
+      "Treating a negative result as proof of no consciousness",
+      "Describing the imagery task vaguely without explaining why it indicates awareness"
+    ],
+    "followUps": [
+      "How would you communicate an ambiguous result to the patient's family?"
+    ]
+  },
+  {
+    "id": "prog-neuroscience-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Mind uploading and identity",
+    "program": "Neuroscience",
+    "difficulty": "hard",
+    "tags": [
+      "neuroscience",
+      "hypothetical",
+      "identity"
+    ],
+    "question": "Imagine a future technology could scan every synapse in your brain and create a perfect digital copy that thinks it's you. Would that copy actually be you?",
+    "lookingFor": "Genuine philosophical reasoning grounded in what we know about the brain, not just a gut reaction.",
+    "idealAnswer": {
+      "bullets": [
+        "Engage with the question seriously, considering what continuity of identity would require, physical, psychological, or something else",
+        "Raise the copy problem, that if the original brain still exists too, there'd be two entities each convinced they're you, which suggests 'sameness' can't just mean psychological similarity",
+        "Land on a considered personal view rather than dodging the question"
+      ],
+      "modelAnswer": "My first instinct is that the copy would believe it's me, remember what I remember, and behave exactly as I would, but I don't think that settles whether it is me in any deep sense. What makes me doubt it is the copy problem, if the scanning process doesn't destroy my original brain, then for a moment there'd be two entities, both with an equally strong claim to being me, both convinced of it, and they can't both literally be the same continuous person since they'd immediately start having different experiences and diverging. That suggests to me that what we actually care about when we say 'identity' isn't just an exact pattern match, it's some kind of continuous physical process, so my honest view is that the digital copy would be a genuine person, with real claims to moral consideration, but I don't think it would be me experiencing a continuation, I think it would be starting a new thread of experience that happens to remember being me."
+    },
+    "commonMistakes": [
+      "Giving a snap yes or no with no reasoning",
+      "Ignoring the duplication problem where original and copy could coexist",
+      "Treating the question as unanswerable and refusing to commit to a view"
+    ],
+    "followUps": [
+      "Does your answer change if the scanning process destroys the original brain?"
+    ]
+  }
+]

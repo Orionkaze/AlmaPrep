@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-materials-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Solid solution vs precipitation strengthening",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["mechanical-properties", "alloys", "dislocations"],
+    "question": "Why does adding a second element to a pure metal usually make it stronger, and are all strengthening mechanisms doing the same thing at the atomic level?",
+    "lookingFor": "Understanding that strengthening works by hindering dislocation motion, and that different mechanisms (solid solution, precipitation, grain refinement) do this in genuinely different ways.",
+    "idealAnswer": {
+      "bullets": [
+        "Strength comes down to how easily dislocations can move through the lattice",
+        "Solid solution atoms distort the lattice locally and create a drag on dislocations passing through",
+        "Precipitates act as discrete obstacles that dislocations must either cut through or bow around, which is a different physical mechanism"
+      ],
+      "modelAnswer": "Pure metals are soft because dislocations glide through a nearly perfect lattice with very little resistance. When you dissolve a second element in, each solute atom sits in the lattice and either compresses or stretches the surrounding atoms depending on its size, and that local strain field snags a moving dislocation as it passes. Precipitation strengthening is a different story: you're growing small second-phase particles that a dislocation physically has to cut through or loop around, and the Orowan looping mechanism is what actually sets the strength once particles get big enough. I find it interesting that both get called strengthening but they're really solving the same problem, blocking dislocation motion, through completely different geometry."
+    },
+    "commonMistakes": [
+      "Saying alloying 'makes the metal harder' without explaining a mechanism",
+      "Treating all strengthening mechanisms as interchangeable",
+      "Forgetting that dislocation motion is the underlying variable being controlled"
+    ],
+    "followUps": ["What happens to a precipitation-strengthened alloy if you overage it?"]
+  },
+  {
+    "id": "prog-materials-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Diffusion and case hardening",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["diffusion", "heat-treatment", "kinetics"],
+    "question": "Case hardening gives a steel gear a hard wear-resistant surface with a tougher core underneath. What's actually happening physically, and why can't you just harden the whole thing?",
+    "lookingFor": "A grasp of diffusion-driven carburising and the practical reasoning for why a graded structure is often better than a uniformly hard part.",
+    "idealAnswer": {
+      "bullets": [
+        "Carbon atoms diffuse into the surface from a carbon-rich atmosphere, driven by a concentration gradient",
+        "Diffusion depth and time follow roughly a square-root-of-time relationship, so you control case depth by time and temperature",
+        "A fully hardened part would be uniformly brittle, so the soft core is deliberately kept to absorb impact and resist cracking"
+      ],
+      "modelAnswer": "In carburising you heat the steel in a carbon-rich environment and carbon atoms diffuse into the surface layer, moving from high concentration outside to low concentration inside, and the depth they reach scales roughly with the square root of time. Quenching afterward turns that carbon-enriched surface into hard martensite while the low-carbon core stays comparatively soft and tough. If you hardened the whole gear uniformly it would be wear resistant everywhere, but it would also be brittle everywhere, and a gear tooth under repeated impact needs some ductility in the core to absorb shock without cracking. So the graded structure isn't a limitation of the process, it's actually the point."
+    },
+    "commonMistakes": [
+      "Describing case hardening as just 'heating the surface'",
+      "Missing that diffusion depth depends on time and temperature, not just temperature",
+      "Assuming a fully hard part is always the better engineering choice"
+    ],
+    "followUps": ["How would doubling the treatment time affect case depth?"]
+  },
+  {
+    "id": "prog-materials-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Fracture mechanics and stress concentration",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["fracture", "toughness", "failure"],
+    "question": "A material can have a high tensile strength and still fail catastrophically at a stress far below that strength. How is that possible?",
+    "lookingFor": "Understanding of stress concentration at flaws and fracture toughness as a property distinct from strength.",
+    "idealAnswer": {
+      "bullets": [
+        "Real components contain small flaws or cracks, and stress concentrates sharply at their tips",
+        "Whether a crack grows catastrophically depends on fracture toughness, not on bulk tensile strength",
+        "A strong but low-toughness material like a ceramic can fail suddenly from a flaw too small to see"
+      ],
+      "modelAnswer": "Tensile strength is measured on a smooth, defect-free test bar, but real parts almost always have some flaw, a scratch, a pore, a weld defect, and stress doesn't distribute evenly around a sharp flaw, it concentrates at the tip, sometimes by a factor of ten or more depending on the geometry. Whether that concentrated stress actually triggers a crack to run depends on fracture toughness, which measures how much energy the material can absorb before a crack propagates, and that's a genuinely separate property from strength. That's exactly why glass can be strong in a lab test yet shatter from a tiny scratch, the flaw turns an ordinary stress into a locally enormous one, and glass has very little toughness to resist it running."
+    },
+    "commonMistakes": [
+      "Conflating strength and toughness as the same property",
+      "Ignoring the role of pre-existing flaws entirely",
+      "Assuming a stronger material is always safer against fracture"
+    ],
+    "followUps": ["Why does fracture toughness matter more for a ceramic than for a ductile metal?"]
+  },
+  {
+    "id": "prog-materials-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Weibull statistics for brittle materials",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["ceramics", "statistics", "reliability"],
+    "question": "Why do engineers test dozens of identical ceramic samples and report a strength distribution, rather than testing one sample and quoting a single number like they might for a metal?",
+    "lookingFor": "Understanding that brittle fracture is flaw-controlled and statistical, unlike ductile yielding, which motivates Weibull-style reliability analysis.",
+    "idealAnswer": {
+      "bullets": [
+        "Ceramic failure is governed by the worst flaw present, and flaw size and location vary randomly between samples",
+        "This makes ceramic strength inherently scattered, unlike ductile metal yielding which is far more repeatable",
+        "Weibull statistics let engineers predict a failure probability at a given stress rather than pretend there's one true strength value"
+      ],
+      "modelAnswer": "A metal yields in a fairly repeatable way because plastic deformation is a bulk process, but a ceramic fractures from whichever flaw happens to be the worst one in that particular sample, and flaw size, shape and location are essentially random from one piece to the next. That means one test coupon might fail at a much lower stress than an identical looking one right next to it, purely due to chance. Reporting a single average strength would hide how risky that variability actually is, so instead engineers fit a Weibull distribution to a batch of results, which gives you the probability of failure at a given stress and a sense of how consistent the material really is. It's a reminder that for brittle materials the question isn't 'how strong is it' so much as 'how likely is it to survive this stress.'"
+    },
+    "commonMistakes": [
+      "Treating ceramic strength as a fixed material constant like yield strength",
+      "Not connecting the statistics back to flaw-controlled fracture",
+      "Assuming more testing is just about reducing measurement error rather than capturing real variability"
+    ],
+    "followUps": ["How would you expect sample size to affect the measured strength distribution?"]
+  },
+  {
+    "id": "prog-materials-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Glass transition and polymer behaviour",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["polymers", "thermal-properties", "molecular-structure"],
+    "question": "A rubber band goes brittle if you put it in a freezer. What's happening to the polymer chains that causes such a dramatic change in behaviour?",
+    "lookingFor": "A clear molecular picture of the glass transition and how chain mobility governs mechanical response.",
+    "idealAnswer": {
+      "bullets": [
+        "Above the glass transition temperature, polymer chains have enough thermal energy to wriggle and slide past each other, giving flexibility",
+        "Below it, chain segments freeze in place and the material behaves like a rigid, brittle glass",
+        "This is a change in molecular mobility, not a change in chemical bonding"
+      ],
+      "modelAnswer": "At room temperature a rubber band's polymer chains have enough thermal energy for segments of the chain to constantly wriggle and slide past their neighbours, which is what lets the whole network stretch and spring back. Cooling it below its glass transition temperature takes away that thermal energy, so the chain segments effectively freeze in place, unable to rearrange under load. Nothing has changed chemically, the covalent bonds and cross-links are identical, it's purely a change in molecular mobility, but mechanically the material now behaves like a glass instead of a rubber, and that's why it snaps instead of stretching. It's one of my favourite examples of how a property most people think of as fixed is actually completely temperature dependent."
+    },
+    "commonMistakes": [
+      "Confusing the glass transition with melting",
+      "Implying a chemical change occurs during cooling",
+      "Describing the effect without reference to chain mobility"
+    ],
+    "followUps": ["Why do amorphous polymers have a glass transition but no sharp melting point?"]
+  },
+  {
+    "id": "prog-materials-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Nucleation, growth, and grain size control",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["solidification", "microstructure", "kinetics"],
+    "question": "Why does cooling a molten metal quickly tend to give you a fine-grained structure, while cooling it slowly gives coarse grains?",
+    "lookingFor": "Understanding of the competition between nucleation rate and growth rate during solidification.",
+    "idealAnswer": {
+      "bullets": [
+        "Solidification requires both nucleation of new solid grains and growth of existing ones, and the two rates respond differently to cooling conditions",
+        "Rapid cooling produces high undercooling, which strongly favours a high nucleation rate, so many small grains form before they can grow large",
+        "Slow cooling allows fewer nuclei to form and each one has time to grow, giving fewer, larger grains"
+      ],
+      "modelAnswer": "When a metal solidifies, two things are happening at once, new solid nuclei are forming and existing grains are growing, and how fast cooling happens changes the balance between them. Rapid cooling creates a large undercooling below the melting point, and nucleation rate is extremely sensitive to undercooling, so lots of nuclei pop up almost simultaneously, and none of them get much chance to grow before they run into their neighbours, which is why you end up with a fine grain structure. Slow cooling keeps the system close to equilibrium, so fewer nuclei form, but each one has plenty of time to grow before it meets another grain, giving a coarser structure. That's really why processes like sand casting and die casting produce noticeably different grain sizes even for identical alloys."
+    },
+    "commonMistakes": [
+      "Only mentioning growth rate and ignoring nucleation rate",
+      "Assuming grain size is purely about how fast atoms can move, not about undercooling",
+      "Getting the direction backwards and thinking slow cooling gives finer grains"
+    ],
+    "followUps": ["Why might a manufacturer deliberately add a grain refiner to a casting alloy?"]
+  },
+  {
+    "id": "prog-materials-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Creep in high-temperature service",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["creep", "high-temperature", "turbine-materials"],
+    "question": "A turbine blade in a jet engine can slowly deform over months even though the stress on it is well below its yield strength at room temperature. What's going on, and why is yield strength the wrong number to worry about here?",
+    "lookingFor": "Understanding of creep as a time and temperature dependent deformation mechanism distinct from conventional yielding.",
+    "idealAnswer": {
+      "bullets": [
+        "At high homologous temperature, atoms have enough mobility for diffusion-driven mechanisms to allow slow permanent deformation under sustained stress",
+        "This happens well below the yield strength measured at room temperature, so yield strength isn't the relevant design limit",
+        "Engineers instead need creep data, stress and temperature dependent time to a given strain or to rupture"
+      ],
+      "modelAnswer": "Yield strength tells you the stress at which a material deforms plastically in a quick test at a given temperature, but it says nothing about what happens if you hold a lower stress on the material for months at high temperature. Near a significant fraction of its melting point, atoms and vacancies become mobile enough that mechanisms like grain boundary sliding and dislocation climb let the material slowly and permanently deform even under stresses well below yield, and that's creep. A turbine blade sits at both high stress from rotation and extreme temperature from the combustion gases, exactly the conditions where creep dominates, so what actually matters for design isn't the room temperature yield strength but creep rate and time to rupture at the operating temperature. It's a good example of how the 'right' material property completely depends on the service conditions, not just on what's easiest to test."
+    },
+    "commonMistakes": [
+      "Treating creep as just a slower version of ordinary yielding",
+      "Not mentioning temperature relative to melting point as the key variable",
+      "Assuming a material safe by yield strength is automatically safe long term"
+    ],
+    "followUps": ["Why are nickel superalloys specifically favoured for turbine blades over steel?"]
+  },
+  {
+    "id": "prog-materials-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Martensitic transformation in shape memory alloys",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["smart-materials", "phase-transformation", "shape-memory"],
+    "question": "A shape memory alloy like nitinol can be bent out of shape and then snap back to its original form when heated. What's the underlying transformation that makes that possible?",
+    "lookingFor": "A grasp of the diffusionless martensitic transformation and why it is reversible, unlike ordinary plastic deformation.",
+    "idealAnswer": {
+      "bullets": [
+        "The alloy switches between two crystal structures, austenite at higher temperature and martensite at lower temperature, through a diffusionless shear transformation",
+        "Deforming the martensite phase reorients its internal structure rather than permanently breaking bonds or moving dislocations irreversibly",
+        "Heating back through the transformation temperature drives the crystal back to austenite, which has a single fixed shape, recovering the original geometry"
+      ],
+      "modelAnswer": "Nitinol can exist in two crystal structures, a higher symmetry austenite phase above a certain temperature and a lower symmetry martensite phase below it, and the switch between them happens by a coordinated shearing of atoms rather than by atoms diffusing around individually, which is why it can happen almost instantly. When you bend the alloy while it's in the martensite phase, you're not breaking bonds or generating permanent dislocation damage the way you would in an ordinary metal, you're just reorienting the different martensite variants relative to each other, so the deformation is stored rather than truly permanent. Heat it above the transformation temperature and the crystal reverts to the single, fixed austenite structure, which forces the material back into its original shape. What I find genuinely elegant about it is that the 'memory' isn't some vague material property, it's a direct consequence of the crystallography of that phase transformation."
+    },
+    "commonMistakes": [
+      "Describing the effect as if it were ordinary elastic recovery",
+      "Missing that the transformation is diffusionless and shear based",
+      "Not distinguishing martensite variant reorientation from conventional plastic deformation"
+    ],
+    "followUps": ["Where do you think this property is genuinely useful, beyond being a neat demonstration?"]
+  },
+  {
+    "id": "prog-materials-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Band theory and doped semiconductors",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["semiconductors", "electronic-structure", "band-theory"],
+    "question": "Doping silicon with a tiny fraction of phosphorus can increase its conductivity by orders of magnitude. Why does such a small change in composition have such a huge effect, when alloying a metal with a similar small amount of impurity barely changes its conductivity?",
+    "lookingFor": "Understanding of how doping introduces donor states near the band edge in a semiconductor, contrasted with why metals already have abundant free carriers.",
+    "idealAnswer": {
+      "bullets": [
+        "In a metal, free electrons are already abundant, so a small amount of impurity mainly just scatters existing carriers and slightly reduces conductivity",
+        "In a semiconductor, intrinsic carrier density is very low, so adding donor atoms that contribute extra free electrons close to the conduction band massively increases the number of available charge carriers",
+        "This is why conductivity in a semiconductor can be tuned over many orders of magnitude by doping, while a metal's conductivity is comparatively insensitive to small compositional changes"
+      ],
+      "modelAnswer": "A metal already has a huge sea of free electrons available to conduct, so adding a small amount of impurity mostly just introduces scattering sites that slightly reduce conductivity, it doesn't meaningfully change how many carriers there are. Silicon, in contrast, has very few free carriers at room temperature because its valence band is essentially full and its conduction band essentially empty, separated by a real energy gap. Phosphorus has one more valence electron than silicon, so when it sits on a silicon lattice site that extra electron is only loosely bound and sits in an energy state very close to the conduction band, meaning it takes almost no thermal energy to promote it into the conduction band as a free carrier. Because the starting carrier density is so low, adding even a tiny fraction of donor atoms multiplies the number of available carriers enormously, which is exactly why doping is such a powerful lever in semiconductors and such a weak one in metals."
+    },
+    "commonMistakes": [
+      "Explaining doping without contrasting it against the metal case",
+      "Vaguely saying doping 'adds electrons' without linking it to the band gap",
+      "Confusing donor doping with acceptor doping"
+    ],
+    "followUps": ["What would change if you doped silicon with boron instead of phosphorus?"]
+  },
+  {
+    "id": "prog-materials-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "High-entropy alloys as a new design paradigm",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["alloy-design", "current-research", "microstructure"],
+    "question": "Traditional alloy design starts from one main element and adds small amounts of others. High-entropy alloys mix several elements in near-equal proportions instead. Why might that actually work, rather than just producing a brittle mess of competing phases?",
+    "lookingFor": "Awareness of the configurational entropy argument for phase stability and genuine engagement with why the field has drawn attention, not just a name-drop.",
+    "idealAnswer": {
+      "bullets": [
+        "Mixing several elements in near-equal proportions raises configurational entropy, which can thermodynamically favour a single simple solid solution phase over a mix of many brittle intermetallics",
+        "The resulting lattice has severe local distortion because atoms of different sizes sit on the same sites, which can give unusually good combinations of strength and toughness",
+        "It's still an active research area with real open questions about processing cost, high-temperature stability, and which compositions actually deliver on the promise"
+      ],
+      "modelAnswer": "The intuition that mixing five elements should just produce a mess of brittle intermetallic phases makes sense from classical alloy design, but the idea behind high-entropy alloys is that if you mix several elements in roughly equal amounts, the configurational entropy of the solid solution becomes large enough to thermodynamically favour a single simple crystal structure over that mess of competing phases, especially at the temperatures where the alloy is used. What you get is a lattice where atoms of noticeably different sizes are all sitting on equivalent sites, creating severe local lattice distortion, and that distortion turns out to be very effective at impeding dislocation motion, which is part of why some of these alloys show unusual combinations of strength and toughness that don't normally go together. I'd be honest that it's still a genuinely open research area, a lot of the excitement outran the processing and cost reality, and I think that tension between a beautiful thermodynamic idea and the practical question of whether you can actually manufacture it affordably is what makes it interesting to follow."
+    },
+    "commonMistakes": [
+      "Reciting the term without explaining the entropy argument",
+      "Overselling high-entropy alloys as already commercially proven",
+      "Ignoring processing cost and practicality entirely"
+    ],
+    "followUps": ["What would make you skeptical of a headline claiming a new high-entropy alloy 'beats titanium'?"]
+  },
+  {
+    "id": "prog-materials-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "2D materials beyond graphene",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["2d-materials", "current-research", "electronic-materials"],
+    "question": "Graphene got enormous attention for its properties, but it doesn't have a band gap, which limits its use in digital electronics. What kinds of 2D materials are being explored to fill that gap, and why does the missing band gap actually matter?",
+    "lookingFor": "Awareness that transistor logic needs an on/off switching behaviour that a gapless material can't provide, and some concrete knowledge of alternatives like transition metal dichalcogenides.",
+    "idealAnswer": {
+      "bullets": [
+        "A digital transistor needs to be switched fully off, which requires a real band gap, and graphene's zero gap means current never fully switches off",
+        "Materials like molybdenum disulfide and other transition metal dichalcogenides are being studied because they're similarly thin and 2D but do have a usable band gap",
+        "The appeal is combining graphene-like thinness and flexibility with actual semiconductor switching behaviour"
+      ],
+      "modelAnswer": "Graphene is an extraordinary conductor and mechanically remarkable, but it has zero band gap, which means there's no stress at which it truly switches off, so a graphene transistor never gives you a clean on and off state, which is exactly what digital logic depends on. That's a big part of why attention shifted toward other 2D materials like molybdenum disulfide and other transition metal dichalcogenides, which keep the atomically thin, flexible geometry that makes 2D materials exciting but do have a real, tunable band gap, so they can actually behave like a semiconductor in a transistor. What draws me to this area is that it's not really a story of graphene failing, it's more that no single material does everything, and a lot of the current research is about finding the right material for each specific job rather than chasing one wonder material."
+    },
+    "commonMistakes": [
+      "Treating graphene as strictly superior with no limitations",
+      "Not explaining why a band gap matters for transistor switching",
+      "Naming no actual alternative material"
+    ],
+    "followUps": ["Can you think of an application where graphene's lack of a band gap is actually an advantage?"]
+  },
+  {
+    "id": "prog-materials-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Solid-state batteries as a current development",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["batteries", "current-development", "electrochemistry"],
+    "question": "A lot of companies are racing to commercialise solid-state batteries. What materials problem are they actually trying to solve, and what's stopping it from being easy?",
+    "lookingFor": "A concrete understanding of the safety and energy density motivation, plus honest awareness of the real materials challenges like interfacial resistance and dendrite formation.",
+    "idealAnswer": {
+      "bullets": [
+        "Replacing the flammable liquid electrolyte with a solid one removes a major fire risk and can allow use of a lithium metal anode for higher energy density",
+        "The core difficulty is maintaining good ionic contact at a solid-solid interface, which is much harder than at a solid-liquid one",
+        "Lithium dendrites can still grow through some solid electrolytes over repeated cycling, which is one of the reasons commercialisation has taken longer than early headlines suggested"
+      ],
+      "modelAnswer": "Conventional lithium-ion batteries use a flammable liquid electrolyte, and the reason there's so much interest in solid-state alternatives is that swapping in a solid electrolyte removes that fire risk and, potentially, allows the use of a pure lithium metal anode instead of graphite, which would meaningfully boost energy density. The catch is that ionic conduction across a solid-solid interface between electrode and electrolyte is much harder to maintain than at a liquid interface, any tiny gap or particle-to-particle mismatch dramatically increases resistance, and manufacturing that interface reliably at scale is genuinely difficult. On top of that, some solid electrolytes still allow lithium dendrites to grow through grain boundaries or micro-cracks during cycling, which can short the cell just as it can in a liquid system, so the safety benefit isn't automatic just because the electrolyte is solid. I think it's a good example of a technology where the materials science problem is well understood in principle but stubbornly hard in practice, which is part of why the timelines keep slipping."
+    },
+    "commonMistakes": [
+      "Assuming solid electrolytes automatically solve dendrite problems",
+      "Only mentioning safety without energy density, or vice versa",
+      "Treating commercialisation delays as evidence the idea doesn't work rather than a manufacturing challenge"
+    ],
+    "followUps": ["Why might energy density matter more for some applications than others?"]
+  },
+  {
+    "id": "prog-materials-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Room-temperature superconductor claims",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["current-debate", "superconductivity", "scientific-method"],
+    "question": "In 2023 a paper claimed to have discovered a room-temperature, ambient-pressure superconductor called LK-99, which got huge public attention before other labs failed to reproduce the result. What does that episode tell you about how you should evaluate a dramatic scientific claim?",
+    "lookingFor": "Level-headed scientific reasoning about extraordinary claims, replication, and peer review, rather than either uncritical excitement or dismissiveness.",
+    "idealAnswer": {
+      "bullets": [
+        "A genuinely extraordinary claim, like ambient superconductivity, should be weighed against how well it matches established physics and how it was tested",
+        "Independent replication by other labs is the real test, not the excitement of the initial announcement or media coverage",
+        "It's worth engaging with why the initial data looked partially promising, rather than treating the whole episode as either an obvious hoax or a near miss"
+      ],
+      "modelAnswer": "What struck me about LK-99 was how fast the excitement spread online, sometimes based on a single unreviewed preprint, before there had been any real time for independent labs to try to reproduce it. Superconductivity at room temperature and ambient pressure would be genuinely revolutionary, and claims of that scale deserve real scrutiny precisely because they'd overturn a lot of established understanding, so I try to hold off on getting swept up until multiple independent groups have tried the synthesis themselves. In this case several labs did reproduce the material and found it wasn't a superconductor at all, the resistance drop and partial levitation people saw seem to have come from other effects like a structural phase transition or ferromagnetic impurities, which is a useful reminder that a striking result can have a mundane explanation. I don't think the lesson is to be cynical about bold claims, it's that replication, not the size of the announcement, is what actually tells you if something is real."
+    },
+    "commonMistakes": [
+      "Dismissing the whole episode as an obvious fraud with no nuance",
+      "Uncritically repeating the original excitement without mentioning replication",
+      "Showing no awareness that the claim was later not confirmed"
+    ],
+    "followUps": ["Why do you think a claim like this spreads faster on social media than through peer review?"]
+  },
+  {
+    "id": "prog-materials-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Recycling composite materials",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["sustainability", "composites", "current-debate"],
+    "question": "Wind turbine blades are made of tough, durable fibre-reinforced composites, and thousands of them are reaching end of life with very few good ways to recycle them. Why is a material that's brilliant during its working life turning into a disposal problem, and what would a real solution need to look like?",
+    "lookingFor": "Understanding that the very properties that make thermoset composites useful, chemical cross-linking and fibre-matrix bonding, are what make them hard to separate and reprocess, plus realistic thinking about possible solutions.",
+    "idealAnswer": {
+      "bullets": [
+        "Thermoset resins are cross-linked during curing, which is exactly what gives them strength and durability, but it also means they can't simply be melted down and reformed like a thermoplastic",
+        "Separating the glass or carbon fibre from the cured resin without destroying the fibre's properties is chemically and economically difficult at scale",
+        "Real solutions being explored include thermoplastic composites that can be reprocessed, chemical recycling that breaks the resin down, and simply designing the blade with end-of-life in mind from the start"
+      ],
+      "modelAnswer": "The problem is baked into the same chemistry that makes the blade good at its job in the first place. Thermoset resin cures into a permanently cross-linked network, which is why it can survive decades of fatigue loading out on a turbine, but that same cross-linking means you can't just melt it down and remould it the way you could a thermoplastic, so mechanical recycling usually just shreds the composite into a lower-value filler material rather than recovering the fibre. Getting the actual carbon or glass fibre back out intact, without degrading its strength, generally needs a chemical or pyrolysis process to break down the resin, and doing that economically at the scale of a whole decommissioned blade is still an unsolved problem for most facilities. I think the honest answer is that recycling isn't going to fully fix this on its own, some of the more promising directions are actually about designing the next generation of blades with recyclable thermoplastic resins from the start, so end of life is considered at the design stage rather than left as someone else's problem later."
+    },
+    "commonMistakes": [
+      "Suggesting composites can simply be melted and reused like a thermoplastic",
+      "Treating this as solely a policy or logistics problem with no materials chemistry involved",
+      "Offering no realistic path forward, only naming the problem"
+    ],
+    "followUps": ["Do you think designing for recyclability should ever come at the cost of in-service performance?"]
+  },
+  {
+    "id": "prog-materials-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical minerals supply chains",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["current-debate", "supply-chain", "sustainability"],
+    "question": "Electric vehicle batteries and wind turbine magnets depend heavily on materials like cobalt, lithium, and rare earth elements that are concentrated in a small number of countries. How should that shape the way materials scientists approach designing new technologies?",
+    "lookingFor": "Awareness that materials availability and geopolitics are a real design constraint, and some sense of how the field is responding, not just naming the problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Supply concentration creates both price volatility and strategic vulnerability, so relying on a single critical element is a genuine design risk, not just an economic detail",
+        "Researchers are actively working on substitution, such as reducing or eliminating cobalt in battery cathodes, and on recovering these materials through recycling",
+        "Materials scientists have a real role to play here by designing for supply resilience, not just for raw performance"
+      ],
+      "modelAnswer": "It's easy to treat materials selection as purely a performance question, pick whatever gives the best energy density or magnetic strength, but if that material is mined in one or two countries, you've built a strategic vulnerability into the whole technology, and prices can swing wildly with geopolitics regardless of how good the material is technically. That's part of why there's been such a push toward cobalt-reduced or cobalt-free cathode chemistries in batteries, and why rare-earth-free magnet designs are an active research area even though they currently give up some performance. I think it changes how I'd approach a materials problem, it's not enough to ask what performs best in isolation, you also have to ask whether the world can actually supply it reliably and ethically at the scale the technology needs, and increasingly recycling and urban mining are being treated as part of the supply chain rather than an afterthought."
+    },
+    "commonMistakes": [
+      "Treating this as purely a political or economic issue with no materials science angle",
+      "Naming the problem without any awareness of substitution or recycling efforts",
+      "Assuming performance should always be optimised first regardless of supply risk"
+    ],
+    "followUps": ["Can you think of a case where a 'worse performing' material might be the right engineering choice anyway?"]
+  },
+  {
+    "id": "prog-materials-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "PFAS and the performance vs harm trade-off",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "sustainability", "polymers"],
+    "question": "PFAS compounds give non-stick coatings, waterproof fabrics, and firefighting foam properties that are genuinely hard to replace, but they're also persistent in the environment and linked to health harms. If you were researching alternatives, how would you weigh continuing to use PFAS in an application where no substitute performs as well yet?",
+    "lookingFor": "Structured ethical reasoning that takes both the genuine performance value and the environmental harm seriously, rather than dismissing either side.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that PFAS properties are genuinely difficult to replace in some critical applications, not just convenient",
+        "Weigh persistence and exposure risk seriously rather than treating 'still in use somewhere' as proof it's fine",
+        "Favour a staged approach: phase out non-essential uses fast, keep pushing on genuinely hard cases while funding substitute research and better containment"
+      ],
+      "modelAnswer": "I wouldn't want to be glib about this either way. PFAS chemistry has properties, extreme chemical stability and low surface energy, that come from the same carbon-fluorine bond strength that makes them so persistent in soil and water, so the trade-off is real, it's not just industry being lazy about safer alternatives. Where I'd draw a line is by application, uses like non-stick cookware or stain-resistant carpet don't have a strong enough justification to keep exposing people and ecosystems to persistent chemicals when reasonable alternatives already exist, but something like aviation firefighting foam, where the substitute genuinely doesn't yet perform at the same level and lives are directly on the line, deserves a more careful phase-out timeline paired with real investment in finding a working alternative rather than an abrupt ban. I think the honest position is that PFAS shouldn't be treated as universally necessary or universally disposable, the ethics depend on weighing the specific harm against the specific, verified benefit."
+    },
+    "commonMistakes": [
+      "Calling for an immediate blanket ban with no acknowledgment of genuine performance trade-offs",
+      "Defending continued use everywhere without engaging with the environmental and health evidence",
+      "Refusing to commit to any actual position"
+    ],
+    "followUps": ["Who do you think should bear the cost of developing a safer alternative, industry, government, or researchers?"]
+  },
+  {
+    "id": "prog-materials-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering a safety flaw before launch",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "situational", "safety"],
+    "question": "Imagine you're on a university project team testing a new material for a consumer product, and a week before the results are due to be presented to an interested manufacturer, you notice a fatigue test result that suggests the material could fail earlier than the rest of the data implies. Everyone else on the team wants to present the strong headline results and treat your result as an outlier. What do you do?",
+    "lookingFor": "Willingness to raise a genuine safety concern even under social and time pressure, with a reasoned process rather than a snap decision either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the anomalous result seriously rather than assuming the team's preference for a clean story is correct",
+        "Try to understand it first, repeat the test or check for an experimental error before assuming it's real",
+        "If it holds up, argue for disclosing it honestly rather than letting a favourable but incomplete picture go forward"
+      ],
+      "modelAnswer": "My first step would be to actually check whether the result is a genuine outlier or a real signal, so I'd want to rerun that fatigue test or at least review the setup for anything that might explain it away, because jumping to a conclusion either way before checking the data would be a mistake. If it held up under scrutiny, I don't think I could just let the team present a clean story that quietly drops it, even under deadline pressure, because a manufacturer making a decision based on our data deserves to know about a result that could affect real product safety, not just the results that make our project look best. I'd try to raise it constructively with the team rather than going around them, explaining that flagging it now protects our credibility far more than having it surface later would, and I'd push for presenting it honestly alongside the rest of the data with an explanation of what we think it means and what more testing would clarify."
+    },
+    "commonMistakes": [
+      "Assuming the anomalous result is definitely wrong without investigating it",
+      "Going straight to escalation without first raising it with the team",
+      "Agreeing to suppress it to avoid conflict or protect the deadline"
+    ],
+    "followUps": ["What would you do if the team lead told you to leave it out and you were overruled?"]
+  },
+  {
+    "id": "prog-materials-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Industry-funded research and unfavourable results",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "research-integrity", "funding"],
+    "question": "Suppose your university lab's materials research is partly funded by a company, and your results turn out to be less favourable to their product than they were hoping for. What tension does that create, and how should it be handled?",
+    "lookingFor": "Recognition of the conflict between funder interest and scientific integrity, with a clear stance favouring honest reporting and transparency about funding.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the real tension honestly: a funder's commercial interest can create pressure, explicit or implicit, to shade results favourably",
+        "Scientific integrity means reporting what the data actually shows, even if it disappoints the sponsor",
+        "Transparency about the funding relationship itself, in any publication or presentation, is part of doing this properly"
+      ],
+      "modelAnswer": "There's a real tension here, the company is paying for the work and understandably wants results that support their product, and even without anyone saying so directly, that can create quiet pressure to interpret ambiguous data generously or to downplay a weak result. I think the only defensible position is that the data has to be reported as it actually came out, because the whole value of materials testing depends on it being trustworthy, and a result that's been softened to please a funder isn't actually useful to anyone, including the company, if their product genuinely has a weakness. I'd also want any published or presented findings to clearly disclose who funded the work, because a reader deserves the ability to weigh that context themselves. If a company pushed back hard on unfavourable results, I think the ethical answer is to hold the line on what the data shows, even if that risks the relationship, rather than let commercial interest quietly edit the science."
+    },
+    "commonMistakes": [
+      "Treating funder pressure as irrelevant or assuming it never happens",
+      "Suggesting results should be softened to keep a sponsor happy",
+      "Missing the importance of disclosing the funding relationship itself"
+    ],
+    "followUps": ["Would your answer change if the negative result could end your lab's funding entirely?"]
+  },
+  {
+    "id": "prog-materials-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a material for an extreme environment",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "material-selection", "extreme-environments"],
+    "question": "Imagine you're asked to choose the structural material for the outer shell of a habitat on Mars, which has to survive huge daily temperature swings, thin CO2 atmosphere, radiation, and dust storms, while being light enough to actually transport there. Walk me through how you'd think about it.",
+    "lookingFor": "Structured reasoning that weighs multiple competing constraints rather than naming a single 'best' material, and shows awareness of real trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "List the actual constraints in order of what would kill the mission versus what's merely inconvenient: radiation shielding and thermal cycling fatigue are safety-critical, mass is a hard transport limit",
+        "Consider how large daily temperature swings drive thermal fatigue and demand a low thermal expansion coefficient or a design that tolerates cyclic stress",
+        "Recognise that no single material does everything, so a real answer is likely a layered or composite system rather than one material"
+      ],
+      "modelAnswer": "I'd start by ranking the constraints, because they pull in different directions, mass is a hard limit set by launch costs, but I wouldn't let that dominate over the structural failure modes that could actually kill people, like fatigue from the daily temperature swings, which on Mars can be over a hundred degrees between day and night. That kind of cycling really punishes a material with a high thermal expansion coefficient or poor fatigue resistance, so I'd be looking at something like a fibre-reinforced composite or an aluminium-lithium alloy for lower density and reasonable fatigue behaviour, but I'd want a separate radiation shielding layer, probably a hydrogen-rich material or local regolith, because no single structural material both shields effectively and is light enough to launch economically. Honestly I think the realistic answer is a layered shell rather than one wonder material, structural composite on the inside, radiation shielding built from something in-situ if possible, which is also a more materials-science way of thinking about it than assuming one material has to do every job."
+    },
+    "commonMistakes": [
+      "Naming a single material with no reasoning about the actual constraints",
+      "Ignoring the mass constraint entirely",
+      "Treating the problem as solvable with only structural strength, ignoring radiation or thermal cycling"
+    ],
+    "followUps": ["Which constraint would you sacrifice performance on if you genuinely had to pick one?"]
+  },
+  {
+    "id": "prog-materials-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Diagnosing an everyday material failure",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "failure-analysis", "reasoning"],
+    "question": "Your bike's aluminium frame snaps cleanly near a welded joint after two years of normal riding, with no crash involved. If you had to reason through what most likely happened, without a lab, how would you start?",
+    "lookingFor": "Logical failure-analysis thinking, starting from the most probable mechanism given the location and history, rather than guessing randomly.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that failure right at a weld, after repeated normal use with no single overload event, points strongly toward fatigue rather than a one-off overload fracture",
+        "Consider that welding locally alters the microstructure and can introduce residual stress or a heat-affected zone that's weaker than the parent metal",
+        "Describe what you'd want to check even without lab equipment: the fracture surface appearance, and whether the crack likely grew slowly over time"
+      ],
+      "modelAnswer": "The fact that it failed at the weld rather than in the middle of a tube is the first big clue, welds are almost always the weakest point because the heat locally changes the grain structure and can leave residual stresses behind, so that's already where I'd expect a crack to start over a strong intact tube. Failing after two years of ordinary riding with no crash points toward fatigue rather than one big overload, aluminium doesn't have a true fatigue limit the way steel does, so even stresses well below yield strength can slowly grow a crack over thousands of loading cycles until it's big enough to fail suddenly. Without lab equipment I'd still want to look closely at the fracture surface, a fatigue fracture typically shows a smoother region where the crack grew slowly, sometimes with visible arc-shaped lines, next to a rougher region where the remaining material tore quickly once the crack got large enough, and that pattern alone would tell me a lot even before any formal testing."
+    },
+    "commonMistakes": [
+      "Jumping to 'bad material' or 'manufacturing defect' without reasoning from the failure location",
+      "Not connecting the failure to fatigue given the repeated-use, no-crash context",
+      "Assuming nothing can be learned without formal lab equipment"
+    ],
+    "followUps": ["Why does aluminium not have a true fatigue limit, unlike steel?"]
+  },
+  {
+    "id": "prog-materials-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Unlimited resources thought experiment",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "reflection", "research-direction"],
+    "question": "If you had genuinely unlimited funding and time to pursue one open materials problem, what would you choose to work on, and why that one over all the others?",
+    "lookingFor": "Genuine reflection revealing what the applicant actually finds compelling about the field, with reasoning for the choice, not just naming a trendy topic.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a genuinely open problem, not something already essentially solved",
+        "Explain the reasoning for why it matters, connecting to a real consequence if solved",
+        "Show self-awareness about why this particular problem, not just any impressive-sounding one"
+      ],
+      "modelAnswer": "I'd want to work on genuinely low-cost, scalable carbon capture materials, something like engineered porous solids that can pull CO2 out of ordinary air efficiently rather than only from concentrated industrial streams, because the chemistry that works well in a lab often falls apart economically or degrades too fast for real deployment at scale. What draws me to it specifically is that it isn't really one problem, it's a materials science problem stacked on an economics problem stacked on a durability problem, and I like that it forces you to hold several constraints in your head at once rather than optimising a single number. I'll admit part of the appeal is honestly that it feels like the kind of problem where a genuinely new material, not just an incremental improvement, could change what's actually possible, and that's the kind of open-ended challenge that got me interested in this field in the first place."
+    },
+    "commonMistakes": [
+      "Naming a trendy topic with no explanation of why it specifically appeals",
+      "Picking a problem that's essentially already solved",
+      "Giving an answer with no personal reasoning behind it, just a general 'it's important' claim"
+    ],
+    "followUps": ["What's the biggest practical obstacle standing between the current state of that field and your goal?"]
+  },
+  {
+    "id": "prog-materials-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Self-healing materials: realistic or overhyped",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["smart-materials", "current-development", "critical-thinking"],
+    "question": "Self-healing materials get a lot of media attention, sometimes described as if a cracked phone screen could repair itself overnight. What's actually realistic about self-healing materials right now, and what's closer to science fiction?",
+    "lookingFor": "The ability to separate genuine, demonstrated mechanisms from exaggerated media framing, with a specific example of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Real self-healing mechanisms exist, such as embedded microcapsules of healing agent that rupture and seal a crack, or reversible bonds that reform under mild heat",
+        "Current self-healing works mainly on microcracks under controlled conditions, not on catastrophic damage or arbitrary everyday impacts",
+        "Media coverage often implies full autonomous repair of any damage, which overstates what's actually been demonstrated"
+      ],
+      "modelAnswer": "There's real science behind this, one well-established approach embeds tiny microcapsules of a healing agent inside a polymer, and when a microcrack propagates through the material it ruptures the capsules, releases the agent into the crack, and it polymerises to seal the gap, and there's also work on polymers built with reversible bonds that can reform under mild heat or light to close small damage. What's usually overstated in media coverage is the scale and generality of it, these mechanisms are genuinely good at sealing microcracks before they grow into something dangerous, but they're not repairing a shattered phone screen or a snapped structural beam back to full strength overnight, that's a much bigger leap than what's been demonstrated. I think the honest framing is that self-healing materials are a genuinely useful tool for extending the fatigue life of a component by catching damage early, not a general fix for arbitrary destruction, and I find that more interesting than the sci-fi version because it's a real engineering trade-off rather than magic."
+    },
+    "commonMistakes": [
+      "Treating all self-healing claims as equally overhyped or equally real",
+      "Giving no specific mechanism, just describing the concept vaguely",
+      "Assuming current self-healing works on any scale of damage"
+    ],
+    "followUps": ["What would you want to see demonstrated before you believed a stronger self-healing claim?"]
+  },
+  {
+    "id": "prog-materials-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Biodegradable polymers replacing conventional plastics",
+    "program": "Materials Science",
+    "difficulty": "medium",
+    "tags": ["polymers", "sustainability", "current-debate"],
+    "question": "Biodegradable plastics like PLA are marketed as an environmentally friendly alternative to conventional packaging plastics. Is that claim as straightforward as it sounds?",
+    "lookingFor": "Nuanced awareness that biodegradability depends heavily on conditions, and that a genuinely fair comparison needs to weigh the whole lifecycle, not just the end-of-life label.",
+    "idealAnswer": {
+      "bullets": [
+        "Materials like PLA typically only biodegrade properly under industrial composting conditions, specific temperature and microbial exposure, not in a typical landfill or the ocean",
+        "If it ends up in the wrong waste stream, it can behave almost like conventional plastic while also contaminating conventional plastic recycling if mixed in",
+        "A fair evaluation needs to consider the whole lifecycle, feedstock, production emissions, and realistic end-of-life infrastructure, not just the biodegradable label"
+      ],
+      "modelAnswer": "The label 'biodegradable' does a lot of work that isn't always earned, because something like PLA generally only breaks down at a meaningful rate under industrial composting conditions, specific heat and microbial activity that most consumers don't have access to, so if it ends up in a landfill or the ocean it can persist for a very long time, not so differently from conventional plastic. It also creates a genuine practical problem if it gets mixed into conventional plastic recycling streams, because it can contaminate a batch of recyclable polymer and make the whole batch harder to process. I don't think that makes it a bad material, it's a real improvement when the composting infrastructure and consumer behaviour actually line up with how it's designed to be disposed of, but claiming it's simply 'better for the environment' without that infrastructure in place is misleading, and I think materials scientists have some responsibility to be honest about that gap rather than let the marketing outrun the reality."
+    },
+    "commonMistakes": [
+      "Accepting the biodegradable label at face value with no conditions attached",
+      "Dismissing biodegradable polymers as entirely useless or a scam",
+      "Ignoring the recycling stream contamination issue"
+    ],
+    "followUps": ["What would need to change for biodegradable packaging to actually deliver on its promise at scale?"]
+  },
+  {
+    "id": "prog-materials-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Metamaterials and engineered properties",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["metamaterials", "structure-property", "current-research"],
+    "question": "A metamaterial can have properties, like a negative refractive index or a negative Poisson's ratio, that no natural material exhibits. How can engineering a structure produce a property that doesn't exist in the base material it's made from?",
+    "lookingFor": "Understanding that metamaterial properties arise from carefully designed geometry and structure at a scale smaller than the relevant wavelength or deformation, not from unusual chemistry.",
+    "idealAnswer": {
+      "bullets": [
+        "Metamaterial behaviour comes from the geometric arrangement of structural units, not from any exotic chemistry of the base material itself",
+        "The structural unit has to be smaller than the relevant length scale, such as the wavelength of light for optical metamaterials, so the material behaves as an effective continuum with new bulk properties",
+        "A concrete example, such as an auxetic re-entrant honeycomb structure that gets thicker when stretched instead of thinner, helps ground the explanation"
+      ],
+      "modelAnswer": "What makes metamaterials interesting is that the exotic property isn't coming from unusual chemistry at all, it's coming from the geometry of a repeating structural unit that's engineered to respond to a field or a load in a way an ordinary solid piece of the same material never would. For that to work, the structural unit generally has to be smaller than the relevant length scale, for an optical metamaterial that means smaller than the wavelength of light being manipulated, so from the outside the material behaves as if it has some new effective bulk property, even though locally it's still made of an ordinary material like copper or a polymer. A mechanical example I find easier to hold in my head is an auxetic structure, a re-entrant honeycomb where the internal geometry is shaped so that stretching the material pulls the internal ribs outward instead of inward, giving a negative Poisson's ratio, so the material actually gets thicker when you stretch it, which is the opposite of how almost every everyday material behaves. It's a good reminder that in materials science, structure and geometry are just as much a design variable as chemical composition."
+    },
+    "commonMistakes": [
+      "Implying the base material itself somehow has the exotic property",
+      "Not mentioning the requirement that the unit cell be smaller than the relevant length scale",
+      "Giving no concrete example to ground the explanation"
+    ],
+    "followUps": ["Can you think of a practical application where a negative Poisson's ratio material would actually be useful?"]
+  },
+  {
+    "id": "prog-materials-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use research and armour materials",
+    "program": "Materials Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "dual-use", "defence-research"],
+    "question": "A lot of advanced materials research, lightweight armour, ballistic ceramics, blast-resistant composites, has both protective and offensive military applications. If you were offered a fully funded research placement developing next-generation body armour materials, how would you think through whether to take it?",
+    "lookingFor": "Genuine ethical reasoning about dual-use research that weighs the protective intent against the broader military context, rather than an automatic yes or an automatic refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that the research itself is protective in framing but sits inside a broader defence context that can't be fully separated from that",
+        "Think through who funds it, how the results could be used or restricted, and whether the applicant is comfortable with that chain of use",
+        "Land on a genuine personal position rather than avoiding the question, while acknowledging reasonable people could land differently"
+      ],
+      "modelAnswer": "My instinct is that armour research is easier to sit with ethically than weapons research because its direct purpose is protecting people, soldiers or civilians, rather than causing harm, but I don't think that fully resolves the question, because that same lightweight ceramic or composite knowledge often has offensive applications too, and the funding body and how the results get used afterward matter as much as the stated purpose of the project. I'd want to actually look into who's funding it, whether the work would be published openly or classified, and whether I'd have any visibility into how the material ends up being used, because 'it's technically defensive' isn't a complete answer if the broader programme it sits inside isn't something I'd be comfortable with. If those details checked out, I think I'd take it, protecting people from injury is a purpose I can stand behind, but I'd want to have actually done that thinking rather than assuming the word 'armour' automatically makes it fine."
+    },
+    "commonMistakes": [
+      "Refusing to engage with the dilemma and giving a flat yes or no with no reasoning",
+      "Treating 'it's protective, not offensive' as a complete answer with no further scrutiny",
+      "Assuming all defence-adjacent research is equally unethical regardless of specifics"
+    ],
+    "followUps": ["Would your answer change if the funding came directly from a weapons manufacturer rather than a government safety agency?"]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-data-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias-variance tradeoff",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "statistics",
+      "modeling",
+      "fundamentals"
+    ],
+    "question": "Can you explain the bias-variance tradeoff, and give an example of a model choice that shifts that balance?",
+    "lookingFor": "A precise grasp of the concept, not just the phrase, plus a concrete modeling example showing applied understanding.",
+    "idealAnswer": {
+      "bullets": [
+        "Define bias as underfitting and variance as sensitivity to the training data",
+        "Explain that total error is a combination of both, and reducing one often raises the other",
+        "Give a real example, such as tree depth or polynomial degree, showing the shift"
+      ],
+      "modelAnswer": "Bias is how far a model's assumptions are from reality, so a high bias model is too simple and underfits. Variance is how much the model's predictions swing if you trained it on a slightly different sample, so high variance means it overfits the noise in the training set. I ran into this directly building a decision tree for a school project. A shallow tree kept missing patterns in the data, but the moment I let it grow deep, accuracy on the training set shot up while it fell apart on new data. What fixed it was pruning the tree and using cross validation to find a depth that balanced the two rather than chasing training accuracy alone."
+    },
+    "commonMistakes": [
+      "Defining the terms but never connecting them to a real model",
+      "Confusing variance in this sense with statistical variance of a dataset",
+      "Claiming you can minimise both simultaneously with no tradeoff"
+    ],
+    "followUps": [
+      "How would you diagnose which one is the problem, just from a learning curve?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Misreading statistical significance",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "statistics",
+      "inference",
+      "reasoning"
+    ],
+    "question": "A news article says a study found a result with a p-value of 0.03 and calls it proof the effect is real. What's wrong with that framing?",
+    "lookingFor": "Correct understanding of what a p-value actually measures and healthy scepticism toward overclaiming from a single test.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that a p-value is not the probability the finding is true or false",
+        "Note it says nothing about effect size or practical importance",
+        "Mention that a low p-value can still occur by chance, especially with multiple testing"
+      ],
+      "modelAnswer": "A p-value of 0.03 just means that if there were truly no effect, you'd see data this extreme or more about 3 percent of the time by chance. It doesn't tell you the probability the effect is real, and it says nothing about how big or meaningful that effect actually is. A tiny, practically useless effect can still produce a low p-value if the sample is large enough. Calling that proof skips past sample size, effect size, and whether the study was even the only test run, which matters a lot if researchers tried several comparisons before finding one that crossed 0.05."
+    },
+    "commonMistakes": [
+      "Saying a p-value gives the probability the hypothesis is true",
+      "Treating statistical significance as the same thing as importance",
+      "Not mentioning multiple testing or replication at all"
+    ],
+    "followUps": [
+      "What would make you more confident the finding is genuine?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Correlation versus causation",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "statistics",
+      "causal-reasoning",
+      "fundamentals"
+    ],
+    "question": "Give me an example where two variables are strongly correlated but neither one causes the other, and explain what's actually going on.",
+    "lookingFor": "Ability to reason about confounders and spurious correlation with a genuine example, not a memorised textbook line.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a real or plausible example rather than restating the concept abstractly",
+        "Identify the likely confounding variable driving both",
+        "Explain what evidence would help distinguish causation from coincidence"
+      ],
+      "modelAnswer": "Ice cream sales and drowning deaths rise and fall together over the year, but eating ice cream doesn't cause drowning. The real driver is hot weather, which pushes up both ice cream sales and the number of people swimming, which increases drowning risk. If you only looked at the correlation you'd miss that entirely. To actually test causation you'd want something like a controlled experiment, or at least a natural experiment where the confounder is held roughly constant, so you can see if the relationship survives once you control for temperature or season."
+    },
+    "commonMistakes": [
+      "Using the exact textbook ice cream example with no independent reasoning offered",
+      "Confusing confounding with reverse causation",
+      "Not proposing any way to actually test for causation"
+    ],
+    "followUps": [
+      "How would you design a study to test whether the relationship is causal?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Overfitting and generalisation",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "modeling",
+      "validation",
+      "fundamentals"
+    ],
+    "question": "How would you know your model is overfitting, and what would you actually do about it?",
+    "lookingFor": "A working understanding of diagnostic signals and concrete mitigation techniques, not just the vocabulary.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the telltale sign: high training performance, much lower validation performance",
+        "Name at least two concrete fixes, such as regularisation, more data, or simpler models",
+        "Mention cross validation as the tool for catching it early"
+      ],
+      "modelAnswer": "The clearest sign is a big gap between training accuracy and validation accuracy, where the model looks great on data it has already seen but noticeably worse on data it hasn't. In a project predicting exam performance from study habits, my first model hit almost perfect accuracy on training data but dropped sharply on the held out set, which was the giveaway. I fixed it by adding regularisation to penalise overly complex weights, cutting some noisy features, and using k-fold cross validation so I wasn't just getting lucky with one train-test split. Getting a smaller but more honest gap mattered more to me than chasing the highest training score."
+    },
+    "commonMistakes": [
+      "Only naming the symptom without any mitigation strategy",
+      "Suggesting simply adding more model complexity as the fix",
+      "Ignoring cross validation entirely and relying on one split"
+    ],
+    "followUps": [
+      "What would you do differently if you genuinely had very little data to work with?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Central Limit Theorem intuition",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "statistics",
+      "probability",
+      "intuition"
+    ],
+    "question": "Why does the Central Limit Theorem matter in practice, in plain language, without just reciting the formal definition?",
+    "lookingFor": "Genuine intuition for why the theorem underpins so much of applied statistics, expressed accessibly.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that averages of samples tend toward a normal distribution regardless of the original distribution's shape",
+        "Connect this to why confidence intervals and hypothesis tests are allowed to assume normality",
+        "Note the caveat around sample size and heavily skewed underlying distributions"
+      ],
+      "modelAnswer": "It says that if you take enough samples from almost any distribution and look at their averages, those averages start to look like a normal bell curve, even if the original data was lopsided or weird shaped. That matters practically because it's why so many statistical tools, like confidence intervals and t-tests, are allowed to lean on the normal distribution even when the underlying data clearly isn't normal. I found this genuinely surprising when I simulated averages from a heavily skewed dataset in a school project and watched the histogram of sample means turn bell shaped almost immediately. The one caveat I'd flag is that with very small samples or extremely skewed data, you need a bigger sample size before that approximation is actually trustworthy."
+    },
+    "commonMistakes": [
+      "Reciting the formal statement with no intuitive explanation",
+      "Confusing the distribution of the data itself with the distribution of sample means",
+      "Missing the caveat about sample size for skewed distributions"
+    ],
+    "followUps": [
+      "How large a sample would you want before trusting that approximation, and why?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Bayesian versus frequentist thinking",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "statistics",
+      "probability",
+      "philosophy-of-inference"
+    ],
+    "question": "What's the core difference between Bayesian and frequentist approaches to probability, and does it actually change how you'd approach a real problem?",
+    "lookingFor": "Understanding that the split is about how probability itself is interpreted, plus a practical sense of when it matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain frequentist probability as long-run frequency versus Bayesian as degree of belief that updates with evidence",
+        "Note that Bayesian methods let you incorporate prior knowledge directly",
+        "Give a practical scenario where the choice actually changes the answer or workflow"
+      ],
+      "modelAnswer": "Frequentists treat probability as the long-run frequency of an event if you repeated the experiment many times, while Bayesians treat it as a degree of belief that you update as new evidence comes in, starting from some prior. The practical difference showed up for me in a small project estimating disease prevalence from a tiny sample. A frequentist confidence interval was so wide it was almost useless, but a Bayesian approach let me fold in prior knowledge from published prevalence rates, which narrowed the estimate to something actually usable. I don't think one is universally right, but when you have real prior information and a small sample, the Bayesian framing felt like the more honest one."
+    },
+    "commonMistakes": [
+      "Describing the difference as purely academic with no practical consequence",
+      "Saying Bayesian methods are just 'more modern' without explaining why",
+      "Getting the definitions backwards"
+    ],
+    "followUps": [
+      "Where might a strong prior actually mislead you?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Imbalanced classification",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "modeling",
+      "evaluation",
+      "classification"
+    ],
+    "question": "If you were building a model to detect a rare disease that affects one in a thousand patients, why would accuracy be a bad metric, and what would you use instead?",
+    "lookingFor": "Recognition that accuracy is misleading on imbalanced data and fluency with better alternatives.",
+    "idealAnswer": {
+      "bullets": [
+        "Point out that a model predicting 'no disease' for everyone would already be 99.9 percent accurate and useless",
+        "Name better metrics such as precision, recall, F1, or the area under the precision-recall curve",
+        "Discuss the real tradeoff between false positives and false negatives in this context"
+      ],
+      "modelAnswer": "With a one in a thousand base rate, a model that just predicted 'healthy' for every single patient would score 99.9 percent accuracy while catching zero actual cases, so accuracy is basically meaningless here. I'd look at recall to see what fraction of true cases the model actually catches, precision to see how many flagged cases are real, and probably the area under the precision-recall curve since it handles the imbalance better than ROC does. The bigger judgment call is where you sit on the tradeoff. For a disease screen I'd lean toward prioritising recall, because missing a real case feels far more costly than a false alarm that gets ruled out with a follow up test."
+    },
+    "commonMistakes": [
+      "Not noticing the trivial 'predict majority class' model beats the naive accuracy target",
+      "Naming precision or recall without explaining the tradeoff between them",
+      "Suggesting oversampling as the whole answer with no evaluation metric discussion"
+    ],
+    "followUps": [
+      "How would you decide the right balance between precision and recall for this case?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Flawed A/B test design",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "experimentation",
+      "reasoning",
+      "study-design"
+    ],
+    "question": "A company runs an A/B test for two weeks, sees the new version win, and ships it immediately. What could be wrong with that decision, purely from a data standpoint?",
+    "lookingFor": "Structured critique of experimental design flaws, showing you can spot problems beyond the headline result.",
+    "idealAnswer": {
+      "bullets": [
+        "Raise the possibility the result isn't statistically significant or the test wasn't run long enough for reliable power",
+        "Mention novelty effects, weekday or seasonal cycles, and peeking at results early",
+        "Note the risk of not checking for interaction effects or segment-level differences"
+      ],
+      "modelAnswer": "Two weeks might just not be enough time or sample size to reach real statistical power, so the 'win' could be noise rather than a true effect. There's also a real risk of a novelty effect, where users react differently just because something is new, and that reaction fades once the change becomes familiar. If the team was checking results daily and stopped as soon as they saw a win, that's a classic peeking problem that inflates the false positive rate. I'd also want to know if the result held across different user segments and days of the week, because an average win can hide a change that actually hurt an important subgroup."
+    },
+    "commonMistakes": [
+      "Only mentioning sample size without any other design flaw",
+      "Assuming any positive result must be trustworthy",
+      "Not considering segment-level or time-based effects"
+    ],
+    "followUps": [
+      "How would you redesign the test to avoid these problems?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Feature engineering and dimensionality",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "modeling",
+      "features",
+      "practical"
+    ],
+    "question": "Why might adding more features to a model actually make it worse, and how would you decide what to keep?",
+    "lookingFor": "Understanding of the curse of dimensionality and practical judgment about feature selection.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that more features can add noise, encourage overfitting, and dilute genuinely predictive signal",
+        "Mention the curse of dimensionality making distance-based or sparse-data methods less reliable",
+        "Describe a practical approach to selection, such as domain reasoning plus a statistical or model-based check"
+      ],
+      "modelAnswer": "Every extra feature is another opportunity for the model to latch onto noise instead of signal, especially if the dataset isn't huge relative to the number of features, and that pushes it toward overfitting. Some algorithms also genuinely struggle as dimensions grow, because the data becomes sparse and distances between points stop being meaningful, which is the curse of dimensionality. When I was working on a small housing price dataset, I started by reasoning about which variables should plausibly matter, like location and size, rather than throwing in every column available. Then I used feature importance scores from a simple model and correlation checks to drop things that were redundant or clearly irrelevant, which actually improved performance on the held out set."
+    },
+    "commonMistakes": [
+      "Assuming more features always means more information and better performance",
+      "Not connecting the issue back to overfitting",
+      "Giving no concrete method for choosing which features to drop"
+    ],
+    "followUps": [
+      "How would your approach change with a dataset that had thousands of features and very few rows?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-010",
+    "category": "Ethics & Situational",
+    "subtopic": "Bias in an algorithmic hiring tool",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "bias",
+      "fairness"
+    ],
+    "question": "You're building a model to screen job applicants, and you discover it's rejecting a protected group at a noticeably higher rate, even though you never included that attribute as a feature. What do you do?",
+    "lookingFor": "Awareness that bias can enter through proxy variables, and a structured, honest response rather than a quick technical patch.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that removing the protected attribute isn't enough because proxies can still encode it",
+        "Describe investigating which features are driving the disparity before deciding on a fix",
+        "Weigh the tension between raw predictive accuracy and fairness, and commit to flagging the issue rather than shipping quietly"
+      ],
+      "modelAnswer": "The fact that I never included the protected attribute doesn't mean it's not in the model indirectly, because things like zip code or the name of a school can act as proxies for it. My first step would be to actually dig into which features are driving the disparity, using something like disaggregated performance metrics across groups, rather than assuming I already know the cause. Once I understood it, I'd have to weigh accuracy against fairness honestly, and I don't think shipping a model that discriminates is acceptable just because it scores well on paper. I'd flag the finding clearly to whoever owns the decision, propose fixes like reweighting or removing the proxy features, and I wouldn't feel comfortable staying quiet about it even if that slowed the project down."
+    },
+    "commonMistakes": [
+      "Assuming excluding the protected attribute automatically solves the problem",
+      "Jumping to a fix without first diagnosing the actual cause",
+      "Treating it purely as a PR problem rather than a genuine ethical issue"
+    ],
+    "followUps": [
+      "What would you do if fixing the bias meaningfully reduced the model's overall accuracy?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-011",
+    "category": "Ethics & Situational",
+    "subtopic": "Data privacy versus model performance",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "privacy",
+      "tradeoffs"
+    ],
+    "question": "You find that a model would perform noticeably better if you included a sensitive personal attribute that users never explicitly agreed to have used this way. What's your reasoning?",
+    "lookingFor": "Ethical reasoning that treats consent and privacy as real constraints, not obstacles to route around.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between better performance and respecting how data was actually consented to be used",
+        "Reason about purpose limitation, not just legality",
+        "Land on a position, likely against using it without explicit renewed consent, while considering alternatives"
+      ],
+      "modelAnswer": "Performance gains don't automatically justify using data in a way people never agreed to, even if it's technically accessible. If users consented to their data being used for one purpose, quietly repurposing it for a different, more sensitive use feels like a breach of trust regardless of whether it's strictly illegal. I'd want to explore whether there's a version of the model that gets most of the benefit from less sensitive proxies, or whether the right move is actually going back and asking for explicit consent for that specific use. If neither is possible, I'd rather ship a slightly weaker model that respects what people actually agreed to than one that quietly crosses that line for a performance bump."
+    },
+    "commonMistakes": [
+      "Treating 'it's technically available in the data' as sufficient justification",
+      "Ignoring the difference between legal and ethical use of data",
+      "Refusing to engage with the real performance tradeoff at all"
+    ],
+    "followUps": [
+      "Does your answer change if the sensitive attribute could be inferred indirectly from other data you do have consent for?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-012",
+    "category": "Ethics & Situational",
+    "subtopic": "Informed consent in data collection",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "privacy",
+      "consent"
+    ],
+    "question": "How would you think about informed consent when collecting data for a research project involving real people's personal information?",
+    "lookingFor": "A genuine grasp of consent as an ongoing responsibility, not just a checkbox at data collection.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that consent needs to cover what data is collected and specifically how it will be used",
+        "Mention the importance of allowing people to withdraw and understand re-use of their data",
+        "Show awareness that vulnerable populations need extra care"
+      ],
+      "modelAnswer": "I think real informed consent means people actually understand what's being collected and what it will be used for, not just agreeing to a long form nobody reads. That includes being upfront if the data might be reused later for a different analysis, since that's a separate decision from the original purpose. When I helped run a small survey for a school psychology project, we made sure participants knew they could withdraw their responses even after submitting, and we anonymised anything sensitive before it left our hands. I'd take that same care further with any group that's more vulnerable, like minors or medical patients, where the stakes of getting consent wrong are much higher."
+    },
+    "commonMistakes": [
+      "Treating a signed form as the end of the consent question",
+      "Not mentioning the right to withdraw",
+      "Ignoring extra care needed for vulnerable groups"
+    ],
+    "followUps": [
+      "What would you do if a participant asked to withdraw after you'd already used their data in an analysis?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-013",
+    "category": "Ethics & Situational",
+    "subtopic": "Accountability when a model causes harm",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "accountability",
+      "responsibility"
+    ],
+    "question": "If a model you helped build makes a decision that causes real harm to someone, who do you think is responsible, and does that change how you'd build it in the first place?",
+    "lookingFor": "Thoughtful engagement with distributed responsibility rather than a glib deflection to 'the algorithm' or 'the company'.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the idea that responsibility disappears once a decision is automated",
+        "Acknowledge responsibility is shared across builders, deployers, and overseers, without using that as an excuse",
+        "Connect it to concrete practice, such as building in human review or documenting known limitations upfront"
+      ],
+      "modelAnswer": "I don't think you can just say 'the algorithm did it' and walk away, because a model doesn't build or deploy itself. Responsibility is genuinely shared between the people who built it, the people who decided to deploy it without enough oversight, and the organisation that chose to use it for a high stakes decision, but that shared nature isn't an excuse for anyone to shrug. For me personally, it means I'd want to document a model's known limitations honestly rather than overselling its accuracy, and I'd push for a human review step on any decision that could seriously affect someone's life. Knowing that harm is possible changes how carefully I'd want to test edge cases before anything goes live, not just chase the best average performance."
+    },
+    "commonMistakes": [
+      "Blaming the algorithm as if no person is accountable",
+      "Placing all responsibility on one party with no nuance",
+      "Giving an abstract answer with no link to actual practice"
+    ],
+    "followUps": [
+      "Should there be a human in the loop for every high-stakes automated decision? Why or why not?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Fairness constraint versus accuracy demand",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "fairness",
+      "situational"
+    ],
+    "question": "A manager asks you to remove a fairness constraint from a credit scoring model because it's costing the company approvals it would otherwise profitably make. How do you respond?",
+    "lookingFor": "Willingness to push back constructively on a real ethical pressure, with reasoning rather than blind compliance or blind refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the business pressure seriously rather than dismissing it outright",
+        "Explain clearly what removing the constraint would actually cause and why that matters",
+        "Propose a constructive path forward rather than simply refusing"
+      ],
+      "modelAnswer": "I'd want to actually understand the business pressure rather than just refusing outright, because I know constraints have real costs and that's a legitimate thing for a manager to weigh. But I'd also want to walk through exactly what removing the constraint would mean in practice, showing which groups would be affected and by how much, so the decision is made with the full picture rather than just a headline profit number. I'd propose alternatives too, like seeing if a different model architecture could close some of the accuracy gap without the same fairness cost. If the answer after all that was still to remove it and I genuinely believed it caused real harm, I'd feel obligated to escalate my concern rather than quietly comply."
+    },
+    "commonMistakes": [
+      "Immediately refusing with no attempt to understand the business context",
+      "Complying without raising any concern at all",
+      "Offering no constructive alternative"
+    ],
+    "followUps": [
+      "What would make you decide this was serious enough to escalate further?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-015",
+    "category": "Current Events / Field Awareness",
+    "subtopic": "Trusting large language model outputs",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "current-events",
+      "llms",
+      "reliability"
+    ],
+    "question": "Large language models are increasingly used to answer factual questions even though they can confidently produce wrong information. As someone entering this field, how do you think about that tension?",
+    "lookingFor": "Informed, balanced awareness of a live debate, not a one-line dismissal or uncritical enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of why hallucination happens, at least at a conceptual level",
+        "Discuss the real-world stakes when confident wrong answers are trusted in high stakes settings",
+        "Offer a considered view on responsible use, such as verification, grounding, or human review"
+      ],
+      "modelAnswer": "These models are trained to produce fluent, plausible sounding text, and fluency isn't the same as accuracy, so confident wrong answers are a structural risk rather than a rare bug. What worries me is that fluency itself is persuasive, so people are more likely to trust an answer that sounds authoritative even when it's wrong, especially in areas like medical or legal questions where the stakes are high. I think the field is moving toward things like grounding answers in retrieved sources and building in more visible uncertainty, and I find that direction more honest than just making the model sound even more confident. Personally I'd want to be someone who builds systems that make it easy for a user to check the answer, rather than ones that just optimise for how convincing the output sounds."
+    },
+    "commonMistakes": [
+      "Dismissing the whole technology instead of engaging with the actual tradeoff",
+      "Showing no awareness of why hallucination happens at all",
+      "Offering no view on what responsible use would actually look like"
+    ],
+    "followUps": [
+      "What's one thing you'd want a system to do before you trusted its answer to a factual question?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-016",
+    "category": "Current Events / Field Awareness",
+    "subtopic": "AI regulation",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "current-events",
+      "regulation",
+      "policy"
+    ],
+    "question": "Governments are moving to regulate AI systems more directly, with things like risk-tiered rules for high-stakes uses. What's your view on regulation in this space?",
+    "lookingFor": "Awareness that regulatory debate is active and substantive, plus a genuine, reasoned personal position rather than a rehearsed neutral stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic awareness that regulation is being built around risk level rather than a blanket rule for all AI",
+        "Weigh the tension between innovation speed and public safety honestly",
+        "Land on a genuine, reasoned personal opinion rather than staying purely neutral"
+      ],
+      "modelAnswer": "From what I've read, the general direction is toward tiering rules by risk, so something like a spam filter faces very little scrutiny while a system used in hiring or medical diagnosis faces much stricter requirements around testing and transparency. I understand the worry that heavy rules could slow down smaller teams or startups who don't have the resources for extensive compliance, and that's a real cost. But I lean toward thinking that for the highest stakes uses, some friction is worth it, because the harm from an unaccountable system making decisions about someone's job or health is bigger than the cost of a slower rollout. I'd rather work in a field that takes that seriously early than one that has to clean up damage after the fact."
+    },
+    "commonMistakes": [
+      "Giving a vague 'regulation is good' or 'regulation is bad' answer with no reasoning",
+      "Showing no awareness that current approaches are typically risk-tiered rather than blanket",
+      "Refusing to state any actual opinion"
+    ],
+    "followUps": [
+      "Should the same rules apply to a small research team as to a large company?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-017",
+    "category": "Current Events / Field Awareness",
+    "subtopic": "Synthetic data",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "current-events",
+      "synthetic-data",
+      "practice"
+    ],
+    "question": "More teams are training models on synthetic data generated by other models rather than real-world data. What do you make of that trend?",
+    "lookingFor": "Awareness of a genuinely current practical debate, with balanced understanding of both the appeal and the risks.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the appeal: privacy protection, filling data gaps, cost, and scale",
+        "Raise the risk of model collapse or amplified bias when models train on their own outputs repeatedly",
+        "Show a balanced view rather than treating synthetic data as either a free lunch or a dead end"
+      ],
+      "modelAnswer": "The appeal is obvious to me. Synthetic data can protect privacy since it doesn't come from real individuals, it can fill in gaps where real examples are rare, like rare diseases or fraud cases, and it's a lot cheaper to generate at scale than collecting real data. But I've also read about the risk of model collapse, where models trained repeatedly on data generated by earlier models start drifting away from the real distribution and can quietly amplify whatever biases or errors were already in the generating model. I don't think that makes synthetic data useless, but it does mean I'd treat it as a supplement to real data rather than a full replacement, and I'd want to keep validating against genuine real-world examples to catch that drift early."
+    },
+    "commonMistakes": [
+      "Treating synthetic data as a costless substitute for real data with no downside",
+      "Dismissing the whole idea without acknowledging genuine use cases like privacy",
+      "Showing no awareness of model collapse or bias amplification risk"
+    ],
+    "followUps": [
+      "In what situation would you refuse to rely on synthetic data at all?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-018",
+    "category": "Current Events / Field Awareness",
+    "subtopic": "Open versus closed foundation models",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "current-events",
+      "foundation-models",
+      "debate"
+    ],
+    "question": "There's an ongoing debate between open-weight and closed, proprietary large models. Where do you land on that, and why?",
+    "lookingFor": "Substantive engagement with a real, current industry tension, including safety and access tradeoffs, rather than a surface-level preference.",
+    "idealAnswer": {
+      "bullets": [
+        "Articulate the case for open models: transparency, reproducibility, wider access for researchers and smaller teams",
+        "Articulate the case for closed models: safety controls, misuse prevention, and sustaining investment",
+        "Offer a genuine, reasoned position rather than sitting entirely on the fence"
+      ],
+      "modelAnswer": "Open weight models let researchers actually inspect and reproduce results, which matters a lot for scientific credibility, and they give smaller teams or students like me access to tools we could never otherwise afford to build. The case for closed models is that once weights are fully public, it's much harder to prevent misuse, and companies argue they need the revenue from proprietary access to fund the next round of research. I lean toward favouring more openness for research and education specifically, because the ability to verify claims and build on shared work has driven most scientific progress historically, but I do think there's a real case for keeping the most capable, potentially dangerous systems more tightly controlled until we understand their risks better."
+    },
+    "commonMistakes": [
+      "Only presenting one side of the tradeoff",
+      "Giving a purely technical answer with no engagement with the safety or access debate",
+      "Refusing to state a genuine personal view"
+    ],
+    "followUps": [
+      "Should there be a size or capability threshold above which a model shouldn't be released openly?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-019",
+    "category": "Hypothetical / Scenario",
+    "subtopic": "Diagnosing a messy dataset",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "data-cleaning",
+      "practical"
+    ],
+    "question": "You're handed a dataset with missing values, some obviously wrong entries, and inconsistent formatting, and asked to build a model from it by next week. Walk me through your first moves.",
+    "lookingFor": "A sensible, prioritised process rather than jumping straight to modeling, showing practical data literacy.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with exploratory analysis to understand the scale and pattern of the problems before fixing anything",
+        "Distinguish between missing at random and missing for a systematic reason, since that changes the right fix",
+        "Set a realistic plan that fits the time available, being honest about what can't be fully resolved"
+      ],
+      "modelAnswer": "Before touching anything, I'd want to actually look at the data and understand what I'm dealing with, so I'd check how much is missing, where the obviously wrong entries cluster, and whether the formatting issues are a handful of columns or scattered everywhere. I'd try to figure out whether values are missing randomly or missing for a reason, like a sensor failing under certain conditions, because that changes whether I can just impute them or need to treat the gap itself as informative. Given only a week, I'd rather fix the issues that clearly affect a lot of rows or a few important columns thoroughly, document anything I couldn't fully resolve, and be upfront in my results about which parts of the analysis to trust less because of the underlying data quality."
+    },
+    "commonMistakes": [
+      "Jumping straight into model building without exploring the data first",
+      "Treating all missing data the same way regardless of cause",
+      "Not acknowledging time constraints or being upfront about unresolved issues"
+    ],
+    "followUps": [
+      "How would you decide whether to drop a column entirely versus trying to fix it?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-020",
+    "category": "Hypothetical / Scenario",
+    "subtopic": "Model works in testing, fails in production",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "deployment",
+      "diagnostics"
+    ],
+    "question": "Your model performed well in testing but is making noticeably worse predictions once it's actually deployed. What are the possible explanations, and how would you investigate?",
+    "lookingFor": "A structured diagnostic process covering data drift, leakage, and evaluation mismatch, showing real deployment thinking.",
+    "idealAnswer": {
+      "bullets": [
+        "Consider data or concept drift, where the real-world distribution has shifted from training data",
+        "Consider data leakage that inflated test performance artificially",
+        "Describe a concrete investigation plan, comparing live input distributions against training data"
+      ],
+      "modelAnswer": "A few things could be happening at once. The real-world data hitting the model now might have drifted from what it was trained on, so patterns it learned no longer hold, which is common if user behaviour or the environment changed since training. There's also a real chance my test performance was inflated by some kind of leakage, like a feature that indirectly encoded the target and wouldn't be available in the same form at prediction time. I'd start by comparing the distribution of live inputs against the training data feature by feature, checking for anything unusual, and I'd also go back and audit my feature pipeline carefully for anything that could have leaked information from the future or from the label itself."
+    },
+    "commonMistakes": [
+      "Only mentioning one possible cause instead of considering several",
+      "No concrete plan for how to actually investigate, just naming possibilities",
+      "Assuming the model itself must be flawed rather than checking the data pipeline"
+    ],
+    "followUps": [
+      "How would you tell the difference between drift and a genuine leakage problem?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-021",
+    "category": "Hypothetical / Scenario",
+    "subtopic": "Explainability versus accuracy",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "explainability",
+      "tradeoffs"
+    ],
+    "question": "You have two models: a highly accurate one that's essentially a black box, and a slightly less accurate one you can fully explain. For a loan approval system, which would you recommend, and why?",
+    "lookingFor": "Ability to reason through a genuine tradeoff with attention to context and stakes, not a blanket rule applied without thought.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that the right answer depends on the stakes and regulatory context of the decision",
+        "Weigh the cost of an unexplainable wrong decision against the value of the accuracy gain",
+        "Land on a reasoned recommendation rather than refusing to choose"
+      ],
+      "modelAnswer": "For something like loan approval, where a rejected applicant deserves a real reason and where regulations in a lot of places actually require some explanation, I'd lean toward the more explainable model unless the accuracy gap is genuinely large. Being denied credit without any understandable reason feels like a real harm on its own, separate from whether the decision was statistically correct, and it also means mistakes are much harder to catch and appeal. If the accuracy gap were small, I don't think it's worth trading away explainability for it, but if the black box model were dramatically better, I'd want to explore tools like SHAP values to add some interpretability on top rather than accepting either extreme outright."
+    },
+    "commonMistakes": [
+      "Picking the more accurate model with no consideration of context or stakes",
+      "Refusing to make a recommendation at all",
+      "Not mentioning any middle ground like post-hoc interpretability tools"
+    ],
+    "followUps": [
+      "Would your answer change for a lower-stakes use case, like a movie recommendation system?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Simpson's paradox",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "statistics",
+      "reasoning",
+      "aggregation"
+    ],
+    "question": "Can you explain what Simpson's paradox is, and why it's dangerous if you only look at aggregated data?",
+    "lookingFor": "Solid grasp of a genuinely subtle statistical phenomenon and its practical implications for analysis.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the paradox: a trend appearing in separate groups can reverse or disappear when the groups are combined",
+        "Give a concrete example showing how this happens",
+        "Explain the practical implication for how you'd actually analyse grouped data"
+      ],
+      "modelAnswer": "Simpson's paradox is when a trend that shows up clearly within every individual subgroup of data actually reverses once you combine all the groups together. A classic example is a hospital where treatment A has a higher success rate than treatment B in both mild and severe cases separately, but treatment B looks better overall, because it happened to be given to far more mild cases which have naturally higher success rates regardless of treatment. It's dangerous because a single aggregated number can look completely convincing while hiding a confounding variable, in this case severity, that's actually driving the result. Practically it means I'd always want to check whether an important grouping variable exists before trusting an overall trend, and break the analysis down by that group before drawing a conclusion."
+    },
+    "commonMistakes": [
+      "Describing the phenomenon vaguely without a concrete example",
+      "Confusing it with simple confounding without the specific reversal element",
+      "Not connecting it to any practical takeaway for real analysis"
+    ],
+    "followUps": [
+      "How would you check for this in a dataset before publishing a headline result?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Detecting data leakage",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "modeling",
+      "validation",
+      "practical"
+    ],
+    "question": "What is data leakage, and how would you actively check for it before trusting a model's results?",
+    "lookingFor": "Concrete understanding of leakage as a distinct failure mode, with a genuine checking process rather than a vague awareness.",
+    "idealAnswer": {
+      "bullets": [
+        "Define leakage as information about the target sneaking into features in a way that wouldn't be available at prediction time",
+        "Give an example, such as a feature computed using future information or the label itself",
+        "Describe practical checks, like reviewing suspiciously perfect performance or auditing the feature pipeline timeline"
+      ],
+      "modelAnswer": "Data leakage is when information that wouldn't actually be available at the time of prediction sneaks into your training features, which makes the model look far better than it really is. A common example is including a feature that was calculated after the outcome was already known, like using final account balance to predict whether an account will default, when that balance already reflects the default. My first check is always suspicion of unusually high performance. If a model scores near perfectly on a genuinely hard problem, that's a red flag rather than a celebration, and I'd trace every feature back to when it would actually be available in a real deployment to make sure nothing from after the prediction point snuck in."
+    },
+    "commonMistakes": [
+      "Confusing leakage with overfitting when they're distinct problems",
+      "Giving no concrete example of how leakage happens",
+      "Treating suspiciously good results as purely good news rather than a signal to investigate"
+    ],
+    "followUps": [
+      "How would leakage differ between a one-off analysis and a model that's retrained regularly in production?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-024",
+    "category": "Ethics & Situational",
+    "subtopic": "Scraping publicly available data",
+    "program": "Data Science",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "privacy",
+      "data-collection"
+    ],
+    "question": "If you can technically scrape someone's public social media posts to build a dataset, does that mean it's fine to use them for a research project without asking?",
+    "lookingFor": "Recognition that technical accessibility and ethical appropriateness are different questions, with reasoned nuance.",
+    "idealAnswer": {
+      "bullets": [
+        "Separate the question of what's technically possible from what's ethically appropriate",
+        "Consider the original context the data was shared in and whether the new use respects that context",
+        "Discuss practical safeguards like anonymisation, aggregation, or seeking consent where feasible"
+      ],
+      "modelAnswer": "Being technically able to scrape something doesn't automatically make using it fine, because people posting publicly on a platform are usually imagining an audience of friends or followers, not researchers building a dataset for an unrelated study. I think about it in terms of context. If someone shared something expecting it to be seen by their own network in a specific way, repurposing it for something totally different can violate that expectation even if it's not illegal. In practice I'd lean toward anonymising and aggregating the data so no individual is identifiable, avoiding especially sensitive posts, and being transparent in any published work about exactly how the data was collected, rather than assuming public equals fair game for anything."
+    },
+    "commonMistakes": [
+      "Equating technical accessibility with ethical permission",
+      "Giving no consideration to the original context data was shared in",
+      "Offering no practical safeguards for actually using the data responsibly"
+    ],
+    "followUps": [
+      "Would your answer change if the posts came from a public figure rather than a private individual?"
+    ]
+  },
+  {
+    "id": "prog-data-science-b-025",
+    "category": "Hypothetical / Scenario",
+    "subtopic": "Metric gaming",
+    "program": "Data Science",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "metrics",
+      "reasoning"
+    ],
+    "question": "You're optimising a model to maximise user engagement time on a platform, and you notice the model has learned to recommend increasingly divisive content because it keeps people watching longer. What would you do?",
+    "lookingFor": "Ability to recognise a metric that's technically succeeding while causing a real harm, and reason toward a responsible response.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that the model is optimising exactly what it was told to, and the problem is the metric itself, not a bug",
+        "Explain the real-world harm of optimising engagement time without any guardrail",
+        "Propose a concrete change, such as adding a constraint or a different objective that captures wellbeing or quality alongside engagement"
+      ],
+      "modelAnswer": "The model isn't malfunctioning here, it's actually doing exactly what it was told to do, which is the real problem. Engagement time is a proxy for something we actually care about, like people finding value in the platform, but divisive content keeps people scrolling for reasons that have nothing to do with real value and can genuinely harm people's wellbeing or push them toward more extreme content over time. I wouldn't just quietly ship it because the metric looks good. I'd push to add a different signal into the objective, like a wellbeing survey score or an explicit penalty for known divisive or misleading content categories, so the model is optimising for something closer to what we actually intend rather than a proxy that's easy to game."
+    },
+    "commonMistakes": [
+      "Treating this as a technical glitch rather than a metric design problem",
+      "Ignoring the real-world harm and focusing purely on the technical curiosity of the behaviour",
+      "Proposing no concrete change to the objective or system"
+    ],
+    "followUps": [
+      "How would you actually measure something as fuzzy as 'wellbeing' well enough to put it into an objective function?"
+    ]
+  }
+]

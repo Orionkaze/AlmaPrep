@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-actuarial-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Claim frequency and the Poisson distribution",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["probability", "insurance", "claims"],
+    "question": "Why do actuaries often model the number of claims in a year using a Poisson distribution rather than, say, a normal distribution?",
+    "lookingFor": "Correct grasp of why Poisson fits count data, plus awareness of where the mean-equals-variance assumption can break down.",
+    "idealAnswer": {
+      "bullets": [
+        "State Poisson models counts of rare, roughly independent events over a fixed period, which claim counts are",
+        "Note claim counts can't be negative or fractional, unlike a normal distribution",
+        "Mention Poisson assumes mean equals variance, and where that breaks down in real data (overdispersion)"
+      ],
+      "modelAnswer": "The number of claims in a year is a count, it can only be zero, one, two, three claims and so on, it can never be negative or a fraction, so a Poisson distribution fits that shape naturally in a way a normal distribution doesn't. Poisson also assumes each claim is a rare, roughly independent event happening at some average rate, which is a reasonable starting assumption for something like car accidents across a big book of policies. One thing I find interesting is that Poisson assumes the variance equals the mean, and in real claims data the variance is often bigger than that, which actuaries call overdispersion, so they sometimes reach for something like a negative binomial distribution instead once that assumption breaks down."
+    },
+    "commonMistakes": [
+      "Suggesting a normal distribution is fine for count data without noting it allows negative or fractional values",
+      "Not mentioning independence or rare-event assumptions underlying Poisson",
+      "Reciting the term Poisson with no sense of what it actually models"
+    ],
+    "followUps": ["What would make you suspect the Poisson assumption doesn't hold for a particular dataset?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Beyond expected value: why variance matters",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["risk", "statistics", "pricing"],
+    "question": "Two insurance products have the same expected claims cost, but one has much higher variance than the other. Why might an actuary price them differently even though the expected cost is identical?",
+    "lookingFor": "Understanding that variance affects the capital an insurer must hold, not just the average outcome.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise higher variance means a wider range of possible outcomes even with the same average",
+        "Explain the insurer needs more capital held against the riskier product to survive a bad year",
+        "Connect that extra capital cost to a higher risk margin built into the premium"
+      ],
+      "modelAnswer": "Even if both products cost the same on average, the one with higher variance is far less predictable year to year, so the insurer could get unlucky and face a much bigger loss than expected in any given year. To stay solvent through that kind of bad year, the insurer has to hold more capital in reserve for the riskier product, and holding capital isn't free, it has a cost. That extra cost of capital gets built into the premium as a risk margin, so the riskier product ends up priced higher even though the expected claims are identical."
+    },
+    "commonMistakes": [
+      "Assuming identical expected value means identical fair price",
+      "Not connecting variance to capital requirements",
+      "Describing variance only vaguely as 'more risk' with no mechanism"
+    ],
+    "followUps": ["How might reinsurance change this pricing decision?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Adverse selection vs moral hazard",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["insurance", "risk", "concept"],
+    "question": "What's the difference between adverse selection and moral hazard, and why do both matter to how an insurance product is designed?",
+    "lookingFor": "Correct distinction between pre-purchase information asymmetry and post-purchase behaviour change, with design responses to each.",
+    "idealAnswer": {
+      "bullets": [
+        "Adverse selection is about who chooses to buy, riskier people are more likely to buy given asymmetric information",
+        "Moral hazard is about behaviour changing after purchase, because the consequences of risk are now covered",
+        "Give a design response to each, like underwriting for adverse selection and excesses for moral hazard"
+      ],
+      "modelAnswer": "Adverse selection happens before the policy is bought, it's the problem that people who know they're higher risk are more likely to want the insurance in the first place, like someone who already suspects they're ill being more likely to buy life cover. Moral hazard happens after the policy exists, it's the idea that once you're covered you might behave a bit more carelessly, like driving less cautiously once your car is insured, because you don't bear the full cost of a crash yourself anymore. Insurers fight adverse selection with underwriting questions and medical checks before they'll offer cover, and fight moral hazard with things like excesses or no-claims discounts that keep some of the cost on the policyholder even after they're insured."
+    },
+    "commonMistakes": [
+      "Mixing up which one happens before versus after the policy is taken out",
+      "Giving no concrete example for either",
+      "Treating them as the same problem"
+    ],
+    "followUps": ["Can you think of an insurance product where both problems are especially severe?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Credibility theory",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["statistics", "pricing", "credibility"],
+    "question": "If a small company applies for group health insurance, an insurer might blend that company's own claims history with the wider industry average to set the premium. What's the actuarial idea behind that blending, and why not just use the company's own data?",
+    "lookingFor": "Introduces credibility theory, explains why small samples are unreliable, and describes the weighting logic.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a small company's own claims history is too small a sample to be statistically reliable alone",
+        "Introduce credibility, weighting between own experience and a wider baseline depending on data volume",
+        "Note more weight shifts to the company's own experience as it grows or accumulates more years of data"
+      ],
+      "modelAnswer": "With only a small company, one or two unlucky years, like a couple of expensive hospital claims, could make the average look far worse than the company's true underlying risk, so their own data alone isn't statistically reliable yet. That's basically what credibility theory is about, blending the company's own experience with a wider industry baseline, weighted by how much data you actually trust from each source. A brand new tiny company might get almost all its premium based on the industry average, but as it grows and years of its own claims history build up, the weighting shifts more towards its own experience because that data becomes more credible on its own."
+    },
+    "commonMistakes": [
+      "Suggesting the company's own data should always be used because it's more specific",
+      "Not addressing why small samples are unreliable",
+      "No mention of the weighting shifting as data accumulates"
+    ],
+    "followUps": ["Roughly how many years of data do you think it would take before you'd trust a company's own claims experience heavily?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Stochastic vs deterministic modelling",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["modelling", "statistics", "reserving"],
+    "question": "What's the difference between a deterministic model and a stochastic model, and why has the profession moved towards using stochastic models for things like pension reserving?",
+    "lookingFor": "Correct distinction between single-scenario and distribution-of-outcomes modelling, plus the practical benefit of quantifying uncertainty.",
+    "idealAnswer": {
+      "bullets": [
+        "Deterministic model produces one single output from one fixed set of assumptions",
+        "Stochastic model runs many scenarios with varying assumptions to produce a range or distribution of outcomes",
+        "Explain the benefit: shows likelihood of bad outcomes, not just a single best guess, which matters for capital or margins"
+      ],
+      "modelAnswer": "A deterministic model takes one set of assumptions, say a fixed interest rate and a fixed mortality rate, and produces one single answer, like exactly how much a pension fund needs today. A stochastic model instead lets those assumptions vary randomly according to some distribution, runs the calculation thousands of times, and gives you a whole range of possible outcomes with probabilities attached. The reason the profession leans on stochastic modelling more now is that a single number hides how much uncertainty there really is, whereas a range tells you, for example, that there's a five percent chance the fund falls short even under reasonable assumptions, which is far more useful for deciding how much of a safety margin to hold."
+    },
+    "commonMistakes": [
+      "Describing stochastic modelling as simply 'using more data'",
+      "Not explaining what running many scenarios actually achieves",
+      "Confusing stochastic modelling with just adding a fixed margin of prudence"
+    ],
+    "followUps": ["What's a downside or practical difficulty of relying on stochastic models?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Reinsurance structures",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["reinsurance", "insurance", "risk"],
+    "question": "What's the difference between quota share and excess of loss reinsurance, and when might an insurer prefer one over the other?",
+    "lookingFor": "Correct distinction between proportional sharing and threshold-triggered protection, with reasoning about use cases.",
+    "idealAnswer": {
+      "bullets": [
+        "Quota share is proportional, the reinsurer takes a fixed percentage of every premium and every claim",
+        "Excess of loss only pays out once a claim or aggregate loss crosses a set threshold, targeting large losses",
+        "Explain a reason to prefer one, such as smoothing volume with quota share or guarding catastrophic spikes with excess of loss"
+      ],
+      "modelAnswer": "Quota share reinsurance is proportional, so if the reinsurer takes forty percent of the risk, they get forty percent of the premium and pay forty percent of every claim, big or small. Excess of loss works differently, the reinsurer only pays out once a loss goes above an agreed threshold, so it's designed to protect against a rare but very large claim rather than sharing every claim proportionally. An insurer entering a new market with volatile results might prefer quota share because it smooths their overall book from day one, while an insurer that's already comfortable with normal claims but worried about one catastrophic event, like a major flood, would lean towards excess of loss because that's specifically what it's built to guard against."
+    },
+    "commonMistakes": [
+      "Describing both as essentially the same thing",
+      "Not mentioning the threshold trigger for excess of loss",
+      "No sense of why an insurer would choose one structure over the other"
+    ],
+    "followUps": ["Which of these do you think a small new insurer would need more, and why?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Why insurers hold capital beyond expected claims",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["capital", "regulation", "solvency"],
+    "question": "If an insurer prices its products correctly so that premiums cover expected claims, why does it still need to hold additional capital on top of that?",
+    "lookingFor": "Understanding of the gap between average outcomes and adverse deviations, tail risk, and the regulatory rationale.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain expected claims is just the average outcome, but actual results vary year to year",
+        "Note the capital absorbs a genuinely bad year without the insurer becoming unable to pay claims",
+        "Mention regulators require this explicitly so policyholders are protected even in adverse scenarios"
+      ],
+      "modelAnswer": "Pricing to the expected claims cost only covers you on average, but any given year could turn out worse than average, maybe a bad storm season or a spike in claims nobody predicted, and if the insurer only had exactly enough money to cover the average case it would run out of money the first time reality came in above that average. The extra capital is essentially a buffer that lets the insurer keep paying valid claims even through a genuinely bad year, not just an ordinary one. Regulators actually require insurers to hold capital calculated to survive quite extreme scenarios, something like a one in two hundred year event, precisely so policyholders aren't left unprotected just because a single bad year happened to hit."
+    },
+    "commonMistakes": [
+      "Assuming correct average pricing alone is sufficient to guarantee solvency",
+      "Not distinguishing between an average outcome and a bad-year outcome",
+      "No mention of regulatory requirements around capital"
+    ],
+    "followUps": ["What do you think happens to an insurer's capital requirement if it takes on a more volatile line of business?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "IBNR and reserving uncertainty",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["reserving", "insurance", "concept"],
+    "question": "What does IBNR stand for in insurance, and why does it make setting reserves genuinely difficult?",
+    "lookingFor": "Correct definition of incurred but not reported claims, plus explanation of the reporting lag and estimation challenge.",
+    "idealAnswer": {
+      "bullets": [
+        "Define IBNR as claims that have already happened but haven't yet been reported to the insurer",
+        "Explain the reporting lag problem, some claims take months or years to surface",
+        "Note reserving involves estimating claims the insurer doesn't yet know exist, based on how past claims developed"
+      ],
+      "modelAnswer": "IBNR stands for incurred but not reported, it's claims that have actually already happened out in the world but haven't been reported to the insurer yet, which is different from a claim that's been reported but not yet paid. Some types of claims, like certain liability or industrial disease claims, can take years to surface because the person affected doesn't realise there's a problem straight away. That makes reserving genuinely hard, because the actuary has to estimate the cost of claims they don't even know exist yet, usually by looking at how claims from previous years gradually emerged over time and applying that pattern forward, which is inherently an estimate rather than a certainty."
+    },
+    "commonMistakes": [
+      "Confusing IBNR with claims that are reported but not yet settled",
+      "Not explaining why the reporting lag actually happens",
+      "Describing reserving as simple bookkeeping rather than an estimation problem"
+    ],
+    "followUps": ["What kind of insurance do you think has the longest IBNR reporting lag, and why?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Valuing an annuity",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["finance", "reasoning", "annuity"],
+    "question": "Roughly, without a calculator, how would you go about estimating what it would cost today to guarantee someone one thousand pounds a year for the next twenty years?",
+    "lookingFor": "Clear discounting reasoning worked out aloud, showing understanding of present value even without an exact numeric answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise you can't just multiply one thousand by twenty because future payments are worth less today",
+        "Describe discounting each year's payment back to today using an assumed interest rate and summing them",
+        "Show awareness a higher assumed interest rate lowers the total cost today, and vice versa"
+      ],
+      "modelAnswer": "My instinct is that it's definitely less than twenty thousand pounds, because a payment in year twenty is worth much less today than a payment next year, so I can't just multiply one thousand by twenty. Roughly, I'd think of it as discounting each year's one thousand pounds back to today using some assumed interest rate, so the near payments count almost at full value and the distant ones count for much less, then adding all twenty discounted amounts together. If I assumed a reasonably typical long-term interest rate, I'd guess the total lands somewhere in the low teens of thousands rather than close to twenty thousand, though I know actually pinning down the exact figure needs the real annuity formula rather than my rough intuition."
+    },
+    "commonMistakes": [
+      "Simply multiplying 1000 by 20 with no discounting",
+      "Not being able to explain why the answer should be less than 20000",
+      "Freezing up rather than reasoning aloud through an approximate answer"
+    ],
+    "followUps": ["If interest rates rose sharply, would that make this guaranteed payment more or less expensive to provide today?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetic testing and underwriting",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "genetics", "underwriting"],
+    "question": "Should insurers be allowed to use a person's genetic test results, showing they carry a gene linked to a serious illness, when deciding how much to charge them for life insurance?",
+    "lookingFor": "Structured ethical reasoning weighing actuarial accuracy against discrimination and public health concerns, not a snap verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between actuarial accuracy and fairness or discrimination concerns",
+        "Consider wider consequences, like people avoiding genetic testing for fear of higher premiums",
+        "Reach a reasoned position, perhaps noting many countries already restrict this by law"
+      ],
+      "modelAnswer": "From a pure pricing accuracy standpoint, genetic information can be a real predictor of risk, so ignoring it goes against the actuarial instinct to price risk as accurately as possible. But I think the bigger issue is what happens to society if we allow it freely, because people might avoid genetic testing altogether out of fear it will make their insurance unaffordable, which would be a real public health cost, since early testing can also lead to earlier treatment. I lean towards restricting its use, similar to how several countries already limit or ban it for most policies, because the harm of discouraging genetic testing seems to outweigh the pricing precision gained, though I can see the argument getting harder for very large policies where the insurer's exposure is genuinely huge."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'insurers should never use it' with no engagement with pricing accuracy",
+      "Ignoring the public health argument about discouraging testing entirely",
+      "Treating this as settled with no acknowledgment of real-world legal variation"
+    ],
+    "followUps": ["Does your answer change for a very large life insurance policy, say five million pounds, versus a modest one?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Gender-based pricing",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "fairness", "pricing"],
+    "question": "Statistically, young male drivers have more accidents than young female drivers on average, and men and women have different life expectancies. Should insurers be allowed to price policies differently based on gender?",
+    "lookingFor": "Reasoning that weighs statistical accuracy against fairness, with awareness that some jurisdictions have banned gender-based pricing.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the statistical difference is real, which is why insurers historically used it",
+        "Weigh the fairness argument, that pricing by group average penalises safe individuals within a higher-risk group",
+        "Show awareness some jurisdictions have banned gender-based pricing, and reason about the trade-off"
+      ],
+      "modelAnswer": "The statistical pattern is genuinely real, it isn't insurers making it up, so from a pure risk-pricing view using gender does improve accuracy on average. But the fairness problem is that an individual careful young male driver gets charged more purely because of the group he belongs to, even if his own actual risk looks nothing like the average, and that starts to feel like discrimination rather than fair pricing. I know the EU actually banned gender-based insurance pricing for exactly this reason, which shows regulators have already decided the fairness concern outweighs the loss in pricing precision, and on balance I think I agree with that, because using more direct measures of individual behaviour, like telematics data on how someone actually drives, feels like a fairer way to get similar accuracy without relying on gender as a proxy."
+    },
+    "commonMistakes": [
+      "Denying the statistical pattern exists at all",
+      "Treating pricing accuracy as the only value that matters",
+      "Not knowing that some jurisdictions have already legislated on this"
+    ],
+    "followUps": ["If gender can't be used, what alternative factors might capture similar risk information more fairly?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Big data and pricing discrimination",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "data", "privacy"],
+    "question": "Insurers increasingly have access to non-traditional data, like social media activity or supermarket loyalty card purchases, that could indirectly reveal health or lifestyle risk. Is it ethical for insurers to use that kind of data to price policies?",
+    "lookingFor": "Reasoning about proxy discrimination and consent, not just a blanket yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as proxy discrimination, where innocuous data can indirectly reveal protected characteristics",
+        "Raise the consent and transparency problem, people don't expect loyalty card data to affect their insurance",
+        "Land on a reasoned position, such as requiring transparency and limiting proxies for legally protected factors"
+      ],
+      "modelAnswer": "The tricky part is that data like supermarket purchases might look completely unrelated to insurance on the surface, but it can quietly act as a proxy for things like health habits or even protected characteristics that insurers aren't allowed to use directly, so it can smuggle in exactly the kind of discrimination the rules were trying to prevent. There's also a real consent problem, because someone signing up for a loyalty card almost certainly isn't expecting that data to eventually affect their insurance premium, which feels like a use of their information they never really agreed to. I think insurers should be required to be transparent about what data feeds into a price and should have to check that a given data source isn't just acting as a hidden proxy for a factor they're banned from using directly, otherwise the whole point of those bans gets quietly undermined."
+    },
+    "commonMistakes": [
+      "Treating any data source as fine as long as it improves pricing accuracy",
+      "Not identifying the proxy discrimination risk at all",
+      "Ignoring consent or transparency concerns entirely"
+    ],
+    "followUps": ["How would you actually test whether a data source is secretly acting as a proxy for a banned factor like ethnicity?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and machine learning in underwriting",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "ai", "underwriting"],
+    "question": "Insurers are increasingly using machine learning models to price risk instead of traditional actuarial models. What's your view on the trade-offs that creates?",
+    "lookingFor": "Balanced awareness of the accuracy versus interpretability tension and the risk of learned bias.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the benefit, machine learning can find complex patterns in large datasets traditional models might miss",
+        "Raise the interpretability problem, complex models can become a black box hard to justify to a regulator or customer",
+        "Mention the bias risk, a model trained on historical data can quietly learn and repeat past unfair patterns"
+      ],
+      "modelAnswer": "The appeal is obvious, machine learning models can spot complex patterns across huge datasets that a traditional actuarial model built on a handful of clear variables might just miss, which in theory means more accurate pricing. But the trade-off that worries me is interpretability, a lot of these models become genuine black boxes where even the actuary who built it struggles to explain exactly why one customer got a higher price than another, and that's a real problem when a regulator or a customer asks for a justification. There's also the risk that if the model is trained on historical data, it can end up quietly learning and repeating whatever unfair patterns existed in the past, so I think the profession is right to be cautious and to keep pushing for models that are accurate but still explainable, rather than chasing accuracy at any cost."
+    },
+    "commonMistakes": [
+      "Treating machine learning as an unambiguous improvement with no downsides",
+      "Not mentioning the black box or interpretability issue",
+      "No awareness that bias can be learned from historical data"
+    ],
+    "followUps": ["How might a regulator go about checking whether a machine learning pricing model is unfairly biased?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate change and insurability",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "climate", "risk"],
+    "question": "In parts of the world, insurers are withdrawing from offering home insurance in areas at high risk of wildfire or flood. Why is that happening, and what does it mean for actuaries?",
+    "lookingFor": "Understanding of how a fast-changing, correlated risk can outpace historical data, plus awareness of policy responses.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain climate change is shifting frequency and severity faster than historical data can reliably capture",
+        "Note the risk can become so concentrated that a fair price becomes unaffordable or the area becomes essentially uninsurable",
+        "Mention real responses, like government-backed insurance pools stepping in where private insurers won't"
+      ],
+      "modelAnswer": "Historical claims data assumes the future will roughly resemble the past, but climate change is shifting how often and how severely these events happen faster than that assumption can keep up, so a model built on the last thirty years can genuinely understate next year's risk. In the very highest risk areas the honest actuarial price ends up so high that almost nobody could afford it, or the risk is so concentrated that one bad wildfire season could threaten the insurer's solvency, so some insurers choose to withdraw from the area entirely rather than misprice it. It's pushed governments in some regions to step in with backstop schemes, like state-run insurance pools, because there's a real policy question about what happens to homeowners in places the private market simply won't cover anymore, and I think that tension between actuarial honesty and social access to insurance is one of the more interesting live debates in the field right now."
+    },
+    "commonMistakes": [
+      "Assuming insurers are withdrawing purely for profit reasons with no risk basis",
+      "Not mentioning that historical data becomes less reliable as climate changes",
+      "No awareness of any real-world policy response like government backstops"
+    ],
+    "followUps": ["Do you think governments should force insurers to keep covering these areas, or is withdrawal the more honest response?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Telematics and usage-based insurance",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "telematics", "fairness"],
+    "question": "Usage-based car insurance, where a device or app tracks how someone actually drives, is becoming more common. What's the debate around it?",
+    "lookingFor": "Balanced awareness of the fairness benefit against privacy and behavioural concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the fairness upside, pricing based on actual driving behaviour rather than broad group averages",
+        "Raise the privacy concern, continuous tracking is a significant amount of personal data for an insurer to hold",
+        "Mention behavioural effects, like people driving differently, or gaming the score, once they know they're monitored"
+      ],
+      "modelAnswer": "The appeal is that it replaces broad group-based pricing, like charging every young driver more because young drivers on average have more accidents, with something based on how an individual actually drives, which feels fairer to a careful young driver stuck paying a high premium under the old system. But it does mean handing over a continuous stream of location and driving data to an insurer, and I think it's fair to ask how comfortable people should be with that level of tracking, and what happens to that data afterwards. There's also an interesting behavioural question, whether people genuinely drive more safely because of it, which would be a real social good, or whether some just learn to game the scoring system around the specific behaviours being measured without actually becoming safer drivers overall."
+    },
+    "commonMistakes": [
+      "Describing it as purely positive with no privacy concern raised",
+      "Not mentioning the behavioural or gaming angle at all",
+      "Vague description with no sense of what's actually being debated"
+    ],
+    "followUps": ["Would you personally be comfortable with that level of tracking in exchange for a lower premium?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Defined benefit vs defined contribution pensions",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["pensions", "risk", "concept"],
+    "question": "What's the fundamental difference in who bears the risk between a defined benefit pension and a defined contribution pension?",
+    "lookingFor": "Correct identification that defined benefit shifts investment and longevity risk to the employer, defined contribution shifts it to the individual.",
+    "idealAnswer": {
+      "bullets": [
+        "Defined benefit promises a specific retirement income regardless of investment performance",
+        "Defined contribution only guarantees what goes into the pot, the eventual income depends on performance and longevity",
+        "Identify who bears the risk in each: the employer or scheme versus the individual"
+      ],
+      "modelAnswer": "In a defined benefit scheme, the promise is about the output, you're told you'll get, say, two-thirds of your final salary each year in retirement, and it's the employer or the pension scheme that has to make sure there's enough money to deliver that, no matter how investments perform or how long people end up living. Defined contribution flips that around, what's guaranteed is only the input, a fixed amount going into your pot each month, and what comes out at retirement depends entirely on how those investments grew and how long your own pot needs to last, so the risk sits with the individual rather than the employer. That's actually a big part of why defined benefit schemes have become rarer, because the employer was carrying open-ended investment and longevity risk that turned out to be very expensive as people started living longer."
+    },
+    "commonMistakes": [
+      "Confusing which party bears the risk in each type of scheme",
+      "Not mentioning longevity risk as part of the risk being shifted",
+      "Describing them as basically similar with only minor differences"
+    ],
+    "followUps": ["Why do you think defined benefit schemes have become less common over the last few decades?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Catastrophe bonds",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["reinsurance", "capital-markets", "risk"],
+    "question": "What's a catastrophe bond, and why might an insurer use one instead of traditional reinsurance?",
+    "lookingFor": "Correct grasp of cat bonds as capital-markets risk transfer with a trigger-based payout, and reasoning about why insurers diversify sources of risk transfer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a catastrophe bond transfers risk to capital market investors, who lose principal if a defined catastrophe occurs",
+        "Note investors are drawn by returns largely uncorrelated with normal financial markets",
+        "Give a reason an insurer might use one, such as accessing more capacity than reinsurance alone offers"
+      ],
+      "modelAnswer": "A catastrophe bond is essentially a way of passing catastrophic risk to investors in the capital markets rather than to a traditional reinsurer, investors buy the bond and earn an attractive interest rate, but if a predefined disaster happens, like an earthquake above a certain size, they lose some or all of their principal instead of the insurer paying out of pocket. Investors are often drawn to them because the returns don't move with the stock market or interest rates in the usual way, a hurricane doesn't care what the economy is doing, so it's a genuinely diversifying asset for their portfolio. An insurer might use one alongside normal reinsurance because it taps a completely different pool of capital, the whole capital markets rather than just the handful of big reinsurers, which matters a lot for genuinely enormous risks where reinsurance capacity alone might not be enough."
+    },
+    "commonMistakes": [
+      "Describing it as identical to ordinary reinsurance with no real distinction",
+      "Not explaining what happens to the investor's money if the catastrophe occurs",
+      "No sense of why an insurer would want this extra source of capacity"
+    ],
+    "followUps": ["What kind of event do you think would be too unpredictable to structure a catastrophe bond around?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Technical provisions vs capital",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["reserving", "capital", "regulation"],
+    "question": "What's the difference between an insurer's technical provisions and its capital, and why does the distinction matter?",
+    "lookingFor": "Correct distinction between the best estimate of what's owed and the buffer for adverse deviation, with the regulatory reason it matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Define technical provisions as the best estimate of what's expected to be paid out on business already written, plus a margin",
+        "Define capital as the additional buffer held above that, specifically to absorb worse-than-expected outcomes",
+        "Explain regulators assess both separately to judge if an insurer can meet obligations and survive a bad scenario"
+      ],
+      "modelAnswer": "Technical provisions are the insurer's best estimate of what it actually expects to pay out on the policies it's already written, plus a bit of a margin, so it's essentially money already earmarked to cover known and anticipated obligations. Capital sits on top of that, it's the extra buffer specifically there to absorb the difference if actual results come in worse than that best estimate, covering the genuinely bad scenarios rather than the expected ones. The distinction matters because a regulator checking whether an insurer is healthy needs to know both things separately, whether the provisions realistically reflect what's owed, and separately whether there's enough capital on top to survive a real shock, because an insurer could have adequate provisions for the expected case and still be dangerously thin if it has no real capital buffer above that."
+    },
+    "commonMistakes": [
+      "Treating provisions and capital as the same pool of money",
+      "Not explaining what each is actually meant to cover",
+      "No sense of why regulators care about assessing them separately"
+    ],
+    "followUps": ["What might cause a regulator to decide an insurer's technical provisions are understated?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Tail risk and heavy-tailed distributions",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["statistics", "risk", "extreme-events"],
+    "question": "What do actuaries mean by 'tail risk', and why might using a normal distribution understate it for something like earthquake losses?",
+    "lookingFor": "Correct understanding of tail risk and why normal distributions underestimate extreme outcomes compared with heavier-tailed alternatives.",
+    "idealAnswer": {
+      "bullets": [
+        "Define tail risk as the risk of rare but extreme outcomes at the far end of a probability distribution",
+        "Explain a normal distribution assumes extreme outcomes become vanishingly unlikely very fast, understating real extremes",
+        "Mention actuaries use heavier-tailed distributions, like lognormal or Pareto, to capture extreme events more realistically"
+      ],
+      "modelAnswer": "Tail risk is about the rare, extreme outcomes sitting right out at the edges of a probability distribution, the once-in-a-generation events rather than the everyday ones near the average. A normal distribution assumes that as you move further from the average, the probability drops off extremely fast, so genuinely huge outcomes are treated as almost impossible, but real-world catastrophic losses like a major earthquake don't actually behave that way, extreme events happen more often than a bell curve would predict. That's why actuaries often reach for heavier-tailed distributions instead, something like a lognormal or Pareto distribution, which allow for those extreme outcomes to be rare but still meaningfully possible, so the model doesn't quietly understate how bad the worst case could really be."
+    },
+    "commonMistakes": [
+      "Defining tail risk vaguely as just 'big risk' with no connection to distribution shape",
+      "Not explaining specifically why normal distributions understate extreme outcomes",
+      "No mention of any alternative distribution used to correct for this"
+    ],
+    "followUps": ["Can you think of a real financial crisis often blamed partly on underestimating tail risk?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Term vs whole life insurance",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["life-insurance", "pricing", "concept"],
+    "question": "What's the actuarial difference between term life insurance and whole life insurance, and why is whole life so much more expensive?",
+    "lookingFor": "Correct distinction between temporary, non-guaranteed cover and certain eventual payout, with the pricing implication.",
+    "idealAnswer": {
+      "bullets": [
+        "Term life only pays out if death occurs within a fixed period, and most policies expire with no payout",
+        "Whole life guarantees an eventual payout, since death is certain at some point, just uncertain when",
+        "Explain this certainty, plus any savings element built into whole life, is why it's priced much higher"
+      ],
+      "modelAnswer": "Term life only pays out if the person dies within the fixed period the policy covers, say twenty years, and if they outlive that term the policy simply expires with nothing paid out, so a lot of the premium pool from people who don't die within the term effectively covers those who do. Whole life is different because it covers you for your entire life, so the insurer is certain to eventually pay out, the only real uncertainty is exactly when, not whether. That certainty of an eventual payout, combined with the fact that whole life policies often build up a cash or investment value over time, is why the premiums are so much higher, you're not just buying protection against an uncertain event anymore, you're guaranteed to get value back eventually."
+    },
+    "commonMistakes": [
+      "Not identifying that term life usually pays out nothing if the insured survives the term",
+      "Missing the certainty-of-eventual-payout reasoning for whole life pricing",
+      "Treating them as differing only in how long the cover lasts, with no pricing implication"
+    ],
+    "followUps": ["Why might someone rationally choose term life over whole life despite the lower guarantee?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Pricing a brand-new product with no data",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "pricing", "judgement"],
+    "question": "Imagine your employer wants to launch a completely new insurance product, say covering damage from drone accidents, and there's no historical claims data at all to base pricing on. How would you go about it?",
+    "lookingFor": "Structured reasoning under genuine data scarcity: proxy data, expert judgement, prudence, and a plan to revisit pricing.",
+    "idealAnswer": {
+      "bullets": [
+        "Look for the closest available proxy data, such as claims experience from similar risks, and adapt it",
+        "Bring in expert or engineering judgement where data genuinely doesn't exist, rather than false precision",
+        "Build in a larger margin of prudence, and plan to review pricing quickly once real claims experience arrives"
+      ],
+      "modelAnswer": "Without any direct claims history, I'd start by looking for the closest proxy data I could find, maybe accident or damage data from other aerial or remote-controlled equipment, or general liability claims involving similar kinds of property damage, and try to adapt that as a reasonable starting point rather than starting from nothing. Where the data genuinely doesn't exist, like how often a specific new type of drone malfunctions, I think you have to bring in expert judgement, maybe engineers or people who actually understand the technology, rather than pretending a spreadsheet alone can produce a confident number. I'd also want to build in a bigger margin of prudence than usual precisely because the uncertainty is so much higher than normal, and treat the initial pricing as genuinely provisional, planning to review it quickly once real claims data starts coming in rather than treating day-one pricing as if it were solid."
+    },
+    "commonMistakes": [
+      "Claiming you'd just estimate confidently with no acknowledgment of the extra uncertainty",
+      "Not mentioning proxy data or judgement as a starting point",
+      "No plan to revisit pricing once real data becomes available"
+    ],
+    "followUps": ["How would you decide when you finally have enough real data to stop relying so heavily on judgement?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Advising a pension fund in deficit",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "pensions", "judgement"],
+    "question": "Imagine you're advising the trustees of a company pension fund that doesn't have enough assets to cover what it's promised to pay out. What kinds of options would you want them to consider?",
+    "lookingFor": "Awareness of the practical menu of options and their trade-offs, not a single silver-bullet fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention increasing employer or employee contributions to close the gap over time",
+        "Mention adjusting investment strategy, noting the trade-off between higher expected return and higher risk",
+        "Mention lengthening the recovery period or, in serious cases, a buy-in or buy-out with an insurer"
+      ],
+      "modelAnswer": "I'd want the trustees to see the full menu rather than reaching for one fix, so I'd start with the most direct option, asking the employer to increase contributions to close the gap over an agreed number of years. I'd also want to look at the investment strategy, because moving towards higher-expected-return assets could help close the deficit faster, but I'd be honest that this also increases risk, so it isn't a free option, it just trades one kind of risk for another. If the deficit was very serious, I'd want them to understand more drastic options too, like extending the recovery period, or eventually looking at a buy-in with an insurer, where the pension fund pays an insurer to take on some of the risk directly, though that's usually expensive and a longer-term move rather than an immediate fix."
+    },
+    "commonMistakes": [
+      "Suggesting only one option, like cutting benefits, with no wider menu",
+      "Presenting a higher-risk investment strategy as a free solution with no trade-off",
+      "Showing no awareness of practical tools like buy-ins or extended recovery periods"
+    ],
+    "followUps": ["Whose interests might conflict here, the employer's or the pension scheme members', and how would you balance that?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Structuring a parametric flood insurance product",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "insurance", "product-design"],
+    "question": "Imagine you're asked to help design a flood insurance product for a coastal town where claims after a real flood are notoriously slow and disputed. You're told to consider a parametric structure, where payout is triggered by a measurable event rather than assessed damage. How would you think that through?",
+    "lookingFor": "Understanding of parametric insurance versus indemnity-based cover, and reasoning about the main trade-off, basis risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain payout is triggered automatically by a defined, measurable event rather than assessed damage",
+        "Note the main benefit, speed and certainty of payout with far less room for dispute",
+        "Raise basis risk, where payout might not exactly match an individual's actual loss, and how to reduce that mismatch"
+      ],
+      "modelAnswer": "The core idea I'd want to build around is that instead of sending assessors out to value each individual's damage after a flood, which is exactly the slow, disputed process the town is trying to avoid, the policy pays out automatically once some agreed, measurable trigger happens, like the river gauge crossing a specific height. The big advantage is speed and certainty, people could get paid within days instead of months, and there's much less room for the kind of dispute that comes from arguing over the value of specific damage. The trade-off I'd want the town to understand clearly is basis risk, someone whose house happens to be on slightly higher ground might get a payout despite modest damage, while someone just outside the trigger zone might get nothing despite real losses, so I'd want to spend real effort choosing a trigger, maybe combining river height with rainfall data, that tracks actual damage as closely as possible."
+    },
+    "commonMistakes": [
+      "Not explaining what makes parametric structures different from traditional claims-assessed insurance",
+      "Ignoring basis risk entirely",
+      "Describing the speed benefit without acknowledging any downside"
+    ],
+    "followUps": ["How would you go about choosing a trigger level that fairly reflects real flood damage across the whole town?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Discount rate choice and its consequences",
+    "program": "Actuarial Science",
+    "difficulty": "hard",
+    "tags": ["finance", "judgement", "reserving"],
+    "question": "When valuing a long-term liability like a pension promise, actuaries have to choose a discount rate. Why is that choice so contentious, and what happens if the rate chosen is too high?",
+    "lookingFor": "Understanding that the discount rate has huge leverage over long time horizons, plus awareness of the consequences of overly optimistic assumptions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain small differences in the discount rate compound into very large differences over decades",
+        "Note the incentive pull, a higher rate makes the liability look smaller today, which is tempting for whoever funds it",
+        "Explain too high a rate leaves the fund underfunded relative to what it will actually owe, hidden until it matters"
+      ],
+      "modelAnswer": "Because pension promises stretch decades into the future, even a small change in the assumed discount rate compounds enormously over that time, so the choice has huge leverage over how big the liability looks today, far more than it might seem at first glance. That creates a real incentive problem, because whoever is funding the pension, an employer or a government, would generally prefer a higher discount rate, since it makes today's liability look smaller and requires less money to be put in now. The danger is that if the rate chosen turns out to be too optimistic, the fund ends up quietly underfunded relative to what it will genuinely owe, and that gap often stays hidden for years until the fund actually needs to start paying out and the shortfall becomes painfully real."
+    },
+    "commonMistakes": [
+      "Treating the discount rate choice as a minor technical detail",
+      "Not identifying the incentive to prefer a higher rate",
+      "No explanation of what actually goes wrong if the rate is too optimistic"
+    ],
+    "followUps": ["Who do you think should have the final say over what discount rate a pension fund uses, and why?"]
+  },
+  {
+    "id": "prog-actuarial-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Cyber insurance and correlated, evolving risk",
+    "program": "Actuarial Science",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "cyber", "risk"],
+    "question": "Cyber insurance is one of the fastest-growing but hardest to price areas of insurance right now. Why is it so difficult, and what makes it different from something like car insurance?",
+    "lookingFor": "Understanding of sparse historical data, a fast-evolving threat landscape, and correlated, systemic risk potential.",
+    "idealAnswer": {
+      "bullets": [
+        "Note there's very little long-run historical data compared with something like car insurance",
+        "Explain the threat landscape evolves fast, so old data can go stale quickly",
+        "Highlight correlated risk, a single software vulnerability could trigger simultaneous claims across many policyholders"
+      ],
+      "modelAnswer": "Car insurance benefits from decades of relatively stable data, the way people drive and crash hasn't changed dramatically, but cyber risk is different because the underlying threat landscape keeps evolving, new types of attack and vulnerability appear constantly, so historical data from even a couple of years ago might already be somewhat out of date. There's also barely any long track record to build a reliable model on in the first place, since this is still a young line of business compared with something like motor or property insurance. What worries me most as a risk is how correlated it can get, a single flaw in one very widely used piece of software could trigger claims from thousands of completely unrelated companies all at once, which breaks the usual assumption that individual policyholders' risks are roughly independent of each other, and that's exactly the kind of correlated risk that's hardest for an insurer to absorb."
+    },
+    "commonMistakes": [
+      "Treating cyber risk as basically similar to any other liability line",
+      "Not mentioning the evolving nature of the threat as a distinct challenge",
+      "Missing the correlated, systemic risk angle entirely"
+    ],
+    "followUps": ["How might an insurer try to protect itself against that kind of correlated cyber event?"]
+  }
+]

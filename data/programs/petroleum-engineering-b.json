@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-petroleum-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Porosity vs permeability",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "reservoir",
+      "fundamentals",
+      "rock-properties"
+    ],
+    "question": "Explain the difference between porosity and permeability, and why a reservoir can have high porosity but still fail to produce oil economically.",
+    "lookingFor": "A clear conceptual separation of storage capacity from flow capacity, with a real example of where the two diverge.",
+    "idealAnswer": {
+      "bullets": [
+        "Define porosity as the fraction of void space that stores fluid, and permeability as how well those pores are connected so fluid can actually flow",
+        "Give a concrete case where porosity is high but permeability is poor, such as chalk or shale with fine, poorly connected pore throats",
+        "Connect it to production strategy, why such a rock might need stimulation to be economic at all"
+      ],
+      "modelAnswer": "Porosity tells you how much oil the rock can hold, it's just the fraction of the rock that's empty space. Permeability tells you how easily that oil can actually move through the rock to reach the wellbore, which depends on how well the pores are connected, not just how many there are. Shale is the classic example, it can have decent porosity but the pore throats are so tiny that permeability is measured in nanodarcies, which is why you need horizontal wells and hydraulic fracturing to make it produce at all. It's the mismatch between the two that I find most interesting about reservoir characterization."
+    },
+    "commonMistakes": [
+      "Treating porosity and permeability as interchangeable terms",
+      "Assuming high porosity alone guarantees good production rates",
+      "Forgetting to mention pore connectivity or pore throat size as the actual driver of flow"
+    ],
+    "followUps": [
+      "How would hydraulic fracturing change the effective permeability of a rock like that?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Reservoir drive mechanisms",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "reservoir",
+      "drive-mechanism",
+      "recovery"
+    ],
+    "question": "What are the main natural drive mechanisms in an oil reservoir, and which one typically gives the best recovery factor?",
+    "lookingFor": "Correct recall of the main drive types with an accurate sense of their relative recovery efficiency, not just memorised definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the main types: solution gas drive, gas cap drive, water drive, and gravity drainage",
+        "Explain briefly how each maintains reservoir pressure and pushes oil toward the well",
+        "Identify water drive as generally giving the highest recovery because it sustains pressure longest, while solution gas drive is usually the weakest"
+      ],
+      "modelAnswer": "The main ones are solution gas drive, where dissolved gas expands as pressure drops and pushes oil out, gas cap drive, where an overlying gas cap expands, water drive, where an aquifer pushes up from below, and gravity drainage. Solution gas drive is usually the weakest because the pressure falls off quickly once gas starts coming out of solution, often only recovering five to thirty percent of the oil in place. Water drive tends to give the best recovery because the aquifer keeps replenishing pressure for much longer, which is part of why engineers sometimes inject water deliberately to mimic it when nature doesn't provide it."
+    },
+    "commonMistakes": [
+      "Confusing gas cap drive with solution gas drive",
+      "Assuming solution gas drive is strongest because gas expands the most dramatically",
+      "Forgetting that most real reservoirs are produced under a combination of mechanisms, not just one"
+    ],
+    "followUps": [
+      "Why might an operator inject water even into a reservoir that already has some natural water drive?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Decline curve behaviour",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "production",
+      "decline-curve",
+      "forecasting"
+    ],
+    "question": "If a well's production decline flattens out over time instead of falling in a straight line on a semi-log plot, what does that tell you, and how would you model it?",
+    "lookingFor": "Recognition that this is hyperbolic or harmonic decline rather than exponential, with an idea of what physically causes the flattening.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that a straight semi-log line is exponential decline, while flattening indicates hyperbolic or harmonic behaviour",
+        "Reference the Arps decline equations and the b-exponent that controls the curvature",
+        "Suggest physical causes, such as a changing drive mechanism, a workover, or a choke change, rather than assuming the well is simply behaving oddly"
+      ],
+      "modelAnswer": "A straight line on a semi-log plot is exponential decline, so if the curve is flattening instead, that usually points to hyperbolic or harmonic decline, which Arps captures with the b-exponent between zero and one. Before I trust the curve shape, though, I'd want to check whether something operational changed, like a choke adjustment or a workover, because those can mimic a shift in decline type without reflecting a real change in the reservoir. If the shift genuinely is reservoir-driven, it often means a stronger drive mechanism, like an aquifer, is kicking in and slowing the pressure fall."
+    },
+    "commonMistakes": [
+      "Assuming production decline is always a straight exponential line",
+      "Reciting the Arps equation without explaining what the b-exponent physically represents",
+      "Ignoring operational changes as a simpler explanation before invoking a reservoir mechanism"
+    ],
+    "followUps": [
+      "What risk comes with over-fitting a hyperbolic model to early-time data?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Kick detection and well control",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "drilling",
+      "well-control",
+      "safety"
+    ],
+    "question": "During drilling, what surface signs would alert you that the well is taking a kick, and why does fast detection matter so much?",
+    "lookingFor": "Concrete, correct indicators of an influx and an understanding of how quickly a kick can escalate into a blowout if missed.",
+    "idealAnswer": {
+      "bullets": [
+        "Name real indicators: a sudden pit volume gain, flow continuing with the pumps off, a drilling break, or a drop in pump pressure",
+        "Explain the physics, formation fluid entering the wellbore displaces mud and reduces the hydrostatic column, which lets more fluid in",
+        "Explain the consequence of delay, an undetected kick grows and can outrun the blowout preventer's ability to safely shut it in"
+      ],
+      "modelAnswer": "A kick usually shows up as a pit gain, the mud pits suddenly have more volume than they should because formation fluid is entering the wellbore, or as flow continuing at surface even after the pumps are shut off. A drilling break, where the rate of penetration suddenly increases, can also be an early warning that you've drilled into a higher pressure zone. Speed matters because it's a feedback loop, the influx displaces mud and reduces the hydrostatic pressure holding the formation back, which lets in even more fluid, so a kick that's caught in minutes is a routine shut-in, and one that's missed for longer can become a full blowout."
+    },
+    "commonMistakes": [
+      "Naming only one indicator instead of the full set of surface signs",
+      "Using 'kick' and 'blowout' as if they mean the same thing",
+      "Not mentioning shutting in the well with the blowout preventer as the actual response"
+    ],
+    "followUps": [
+      "What is the blowout preventer actually doing once the well is shut in?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Casing design and cementing",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "well-design",
+      "casing",
+      "cementing"
+    ],
+    "question": "Why does a typical well have several concentric strings of casing rather than just one, and what does the cement job actually achieve beyond holding the casing in place?",
+    "lookingFor": "Understanding of progressive casing design for pressure control and the cement's role in zonal isolation, not just its structural function.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the progression, conductor, surface, intermediate, and production casing, each set to isolate a different pressure zone as you drill deeper",
+        "Note that surface casing specifically protects freshwater aquifers from contamination",
+        "Explain that cement provides zonal isolation, preventing fluids from different formations migrating up or down the annulus, not just anchoring the pipe"
+      ],
+      "modelAnswer": "You run multiple strings because pressure conditions change as you go deeper, so surface casing seals off the shallow zone and protects freshwater aquifers, and then intermediate and production casing isolate progressively deeper, higher pressure formations as drilling continues. Each string lets you safely increase mud weight for the next section without risking the shallower, weaker zones. The cement isn't just glue holding the pipe in place, its real job is zonal isolation, stopping fluids from different formations migrating up the annulus and contaminating each other or reaching the surface, which is why a bad cement job is treated as a serious well integrity problem."
+    },
+    "commonMistakes": [
+      "Describing casing as purely structural support for the wellbore",
+      "Omitting aquifer protection as a reason for surface casing",
+      "Reducing cement's purpose to just holding pipe in place instead of zonal isolation"
+    ],
+    "followUps": [
+      "What would you worry about if a cement bond log showed poor bonding behind a casing string?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Artificial lift selection",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "production",
+      "artificial-lift",
+      "engineering-judgement"
+    ],
+    "question": "A mature well's reservoir pressure has dropped so it can no longer flow naturally. How would you decide between gas lift and an electric submersible pump?",
+    "lookingFor": "Reasoned comparison based on actual well conditions rather than a memorised preference for one method.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh fluid characteristics, an ESP struggles with high gas-oil ratio and sand production, while gas lift tolerates both better",
+        "Consider infrastructure, gas lift needs a gas supply and compression, ESP needs reliable electrical power",
+        "Factor in flexibility and cost, gas lift is easier to adjust and cheaper to intervene on, ESP gives higher lift volumes but has a shorter run life in harsh conditions"
+      ],
+      "modelAnswer": "I'd start with the fluid the well is producing, if there's a lot of free gas or sand, I'd lean toward gas lift because an ESP's impellers can be damaged by both. If the well needs a lot of lift and there's reliable power on site, an ESP can move much larger volumes efficiently. I'd also think about intervention cost, gas lift valves are relatively cheap to service, while pulling and replacing an ESP is expensive, so on a marginal well I'd probably favour gas lift unless the production rate really justifies the ESP's higher upfront cost."
+    },
+    "commonMistakes": [
+      "Picking one method without referencing the well's actual fluid or gas conditions",
+      "Ignoring the effect of sand or high gas-oil ratio on ESP reliability",
+      "Not considering surface infrastructure like power or gas availability"
+    ],
+    "followUps": [
+      "What would change your answer if the well were highly deviated?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Skin factor",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "well-testing",
+      "productivity",
+      "near-wellbore"
+    ],
+    "question": "What is skin factor in well testing, and what could cause it to be strongly positive versus negative?",
+    "lookingFor": "Correct understanding of skin as an additional near-wellbore pressure drop, with accurate causes on each side of the sign convention.",
+    "idealAnswer": {
+      "bullets": [
+        "Define skin as the extra pressure drop near the wellbore beyond what the reservoir's bulk permeability would predict",
+        "Give causes of positive skin, such as drilling mud invasion, fines migration, or perforation damage",
+        "Give causes of negative skin, such as acidizing or hydraulic fracturing that stimulate flow near the well"
+      ],
+      "modelAnswer": "Skin factor captures the extra pressure drop right around the wellbore that you wouldn't predict just from the reservoir's bulk permeability, it's essentially a measure of near-wellbore damage or improvement. Positive skin usually means something is choking flow close to the well, like drilling mud that invaded the formation or fines that migrated and clogged pore throats. Negative skin means the near-wellbore zone has actually been improved beyond the natural rock, which you'd see after acid stimulation or hydraulic fracturing, since both create extra flow paths right where the pressure drop matters most."
+    },
+    "commonMistakes": [
+      "Getting the sign convention backwards, treating positive skin as an improvement",
+      "Describing skin only as 'well damage' without covering the stimulated, negative case",
+      "Failing to connect skin factor to its effect on the well's productivity index"
+    ],
+    "followUps": [
+      "How would a well test actually let you calculate skin from measured pressure data?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Mud weight window",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "drilling",
+      "geomechanics",
+      "wellbore-stability"
+    ],
+    "question": "What is the mud weight window in drilling, and what happens if you drill outside it on either side?",
+    "lookingFor": "Clear understanding that mud weight must stay between pore pressure and fracture pressure, with correct failure modes on each side.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the window as the range between pore pressure or collapse pressure on the low end and fracture gradient on the high end",
+        "Explain that mud weight too low risks a kick or wellbore collapse",
+        "Explain that mud weight too high risks fracturing the formation and losing circulation"
+      ],
+      "modelAnswer": "The mud weight window is the safe range of mud density you can drill with, bounded below by the pore pressure, or sometimes the collapse pressure of the rock, and bounded above by the fracture gradient. If you drill too light, formation fluid can flow into the wellbore and you risk a kick, or the wellbore walls can physically collapse inward. If you drill too heavy, the mud pressure exceeds what the rock can withstand and you fracture the formation, which causes lost circulation as mud disappears into the new fractures instead of coming back up. What makes deep, high-pressure wells hard is that this window can get very narrow, sometimes just a fraction of a pound per gallon."
+    },
+    "commonMistakes": [
+      "Only discussing one side of the window, usually the kick risk, and ignoring lost circulation",
+      "Conflating pore pressure and collapse pressure as the same limit",
+      "Not mentioning that the window tends to narrow with depth or wellbore deviation"
+    ],
+    "followUps": [
+      "Why would this window typically get narrower as you drill deeper?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Bubble point and PVT behaviour",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "pvt",
+      "reservoir-fluids",
+      "productivity"
+    ],
+    "question": "Why does a reservoir's bubble point pressure matter to a petroleum engineer, and what happens to a well's productivity once reservoir pressure drops below it?",
+    "lookingFor": "Correct grasp of bubble point as the onset of free gas, and its practical effect on flow behaviour and productivity.",
+    "idealAnswer": {
+      "bullets": [
+        "Define bubble point as the pressure at which dissolved gas first starts coming out of solution as free gas",
+        "Explain that below bubble point, free gas reduces the relative permeability to oil and changes fluid mobility",
+        "Connect this to observable field behaviour, such as a rising gas-oil ratio and declining oil rate"
+      ],
+      "modelAnswer": "Bubble point is the pressure at which dissolved gas starts breaking out of the oil as a separate free gas phase, and it matters because everything about how the fluid flows changes once you cross it. Above bubble point the fluid moves as a single liquid phase, but below it you get two phases competing for the same pore space, which lowers the relative permeability to oil specifically. In the field that usually shows up as a rising gas-oil ratio and a falling oil rate, which is often the first diagnostic sign an engineer uses to tell that reservoir pressure has dropped below bubble point."
+    },
+    "commonMistakes": [
+      "Confusing bubble point with dew point, which applies to gas condensate systems",
+      "Not connecting bubble point to relative permeability or mobility changes",
+      "Missing gas-oil ratio increase as the practical field signal of crossing bubble point"
+    ],
+    "followUps": [
+      "Why might an operator want to keep reservoir pressure above bubble point deliberately?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Conventional vs unconventional reservoirs",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "unconventional",
+      "shale",
+      "completions"
+    ],
+    "question": "How does producing oil from a shale reservoir differ fundamentally from producing from a conventional sandstone reservoir?",
+    "lookingFor": "Understanding that the difference is rooted in permeability, requiring different well architecture and giving a very different production profile.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast the permeability scale, nanodarcies in shale versus millidarcies or more in conventional sands",
+        "Explain why this forces horizontal wells with multistage hydraulic fracturing to create enough surface area for flow",
+        "Note the different production profile, a steep initial decline followed by a long low-rate tail, changing economics and well spacing decisions"
+      ],
+      "modelAnswer": "The core difference is permeability, conventional sandstone might flow naturally through the rock's own pore network, but shale permeability is so low, often in the nanodarcy range, that oil basically can't move through the matrix on its own. That's why shale wells are drilled horizontally and hydraulically fractured in multiple stages, essentially creating thousands of feet of artificial surface area for the oil to reach. It also changes the production profile completely, shale wells tend to have a very steep decline in the first year and then a long low-rate tail, which means the economics and well spacing decisions look completely different from a conventional field."
+    },
+    "commonMistakes": [
+      "Describing shale production as the same techniques just applied at greater depth",
+      "Failing to explain why fracturing is necessary rather than just naming it",
+      "Not mentioning how the decline curve shape differs from conventional wells"
+    ],
+    "followUps": [
+      "How does well spacing in a shale play get decided given that steep decline?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Enhanced oil recovery trade-offs",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "eor",
+      "waterflood",
+      "co2-injection"
+    ],
+    "question": "Compare CO2 injection and waterflooding as enhanced oil recovery methods. What trade-offs would you weigh before recommending one over the other?",
+    "lookingFor": "A reasoned comparison covering mechanism, cost, and practical constraints, not just naming both methods.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain waterflooding as immiscible displacement that maintains pressure and sweeps oil, relatively cheap with widely available injectant",
+        "Explain CO2 flooding's potential for miscible displacement above minimum miscibility pressure, which can recover more of the remaining oil",
+        "Weigh the trade-offs, CO2 supply and infrastructure cost, reservoir heterogeneity and sweep efficiency, and the added consideration of carbon storage value"
+      ],
+      "modelAnswer": "Waterflooding is the more established option, it maintains reservoir pressure and physically pushes oil toward producing wells through immiscible displacement, and water is cheap and usually already on site as produced water. CO2 flooding can do more, if you inject above the minimum miscibility pressure, the CO2 actually mixes with the oil and reduces its viscosity, which can recover oil that water alone would leave behind. The trade-off is that CO2 supply and the pipeline or capture infrastructure to deliver it are expensive and not available everywhere, and I'd also want to know how heterogeneous the reservoir is, because either fluid can bypass oil in an unswept layer if the geology is complicated. Today I'd also factor in that CO2 flooding has a second value stream, since it can double as a form of carbon storage."
+    },
+    "commonMistakes": [
+      "Treating the two methods as interchangeable with no discussion of mechanism",
+      "Not mentioning minimum miscibility pressure as the condition for CO2's extra recovery",
+      "Ignoring reservoir heterogeneity and sweep efficiency as a real constraint on either method"
+    ],
+    "followUps": [
+      "How might CO2 flooding today connect to carbon capture and storage policy?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Diagnosing a simulation mismatch",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "reservoir-simulation",
+      "hypothetical",
+      "diagnostics"
+    ],
+    "question": "Your reservoir simulation predicted a certain production rate, but the real field is declining faster than the model expected. As the engineer, what would you check first?",
+    "lookingFor": "A structured diagnostic process that starts with data quality and mechanical causes before assuming the geological model is wrong.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with data quality, verify measured rates, pressures, and well test data are correct before questioning the model",
+        "Check mechanical or near-wellbore causes, such as increasing skin, scale, or early water breakthrough",
+        "Only then revisit geological assumptions, like unmodelled faults, poorer connectivity, or an overestimated aquifer support"
+      ],
+      "modelAnswer": "I wouldn't jump straight to blaming the geological model, I'd first check whether the production and pressure data feeding the mismatch are actually reliable, since a bad gauge reading or a mislabelled well test can look exactly like a reservoir problem. Next I'd look at mechanical causes close to the well, like rising skin from scale or fines, or early water breakthrough that the model didn't anticipate. If the data and mechanical checks come back clean, then I'd go back to the geological assumptions, maybe there's a fault compartmentalising part of the reservoir, or the aquifer support was overestimated, and I'd want to history match again with those revised assumptions rather than just accepting the original forecast."
+    },
+    "commonMistakes": [
+      "Concluding the simulation model is simply wrong without checking the underlying data first",
+      "Ignoring mechanical or near-wellbore explanations in favour of jumping straight to geology",
+      "Proposing a workover or recompletion before actually diagnosing the cause"
+    ],
+    "followUps": [
+      "What would early water breakthrough actually look like in the production data?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: safety versus schedule pressure",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "safety",
+      "situational"
+    ],
+    "question": "You're a junior engineer on a rig site and your supervisor wants to skip a scheduled pressure test to save four hours and stay on schedule. What would you do?",
+    "lookingFor": "Willingness to prioritise safety protocol over schedule pressure, with a realistic sense of how to raise the concern within a hierarchy rather than just refusing outright.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension between schedule pressure and a junior engineer's position",
+        "Explain why skipping a pressure test specifically is a well control risk, not just paperwork",
+        "Describe raising it clearly to the supervisor first, and escalating through the proper safety channel if overruled, rather than silently complying or just walking away"
+      ],
+      "modelAnswer": "I understand schedule pressure is real and four hours matters on a rig, but a pressure test exists specifically to catch a well control problem before it becomes a serious one, so skipping it isn't really a time trade-off, it's a safety trade-off. I'd say clearly to my supervisor that I'm not comfortable skipping it and explain why, in case it's a case of the pressure just not being visible to them in the moment. If they still wanted to proceed, I'd use the site's stop-work authority or safety escalation process rather than either silently complying or just refusing and walking off, because the goal is to actually stop the risk, not just protect myself."
+    },
+    "commonMistakes": [
+      "Deferring entirely to the supervisor's authority without raising the concern",
+      "Refusing dramatically with no practical next step if overruled",
+      "Treating the pressure test as a bureaucratic formality rather than explaining its safety purpose"
+    ],
+    "followUps": [
+      "What would you do if your supervisor overruled you and proceeded anyway?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: underreported well data",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "integrity",
+      "data"
+    ],
+    "question": "You discover a colleague underreported a well test result to make a development proposal look more favourable to management. What do you do?",
+    "lookingFor": "Recognition of the downstream risk of decisions built on false data, and a considered path that raises the issue without either staying silent or escalating unfairly.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why the underreporting matters, decisions on drilling and spending will be made on wrong numbers",
+        "Favour speaking to the colleague directly first to understand what happened before assuming bad intent",
+        "If unresolved, describe raising it through the appropriate channel because the risk is too consequential to let slide"
+      ],
+      "modelAnswer": "My first reaction is that this isn't a small thing, if that well test data feeds a development decision, an entire drilling programme could get sized around a number that isn't real. I'd talk to my colleague privately first, partly because I'd want to understand whether it was a genuine mistake or a deliberate choice, and give them the chance to correct it themselves. If they brushed it off or refused to fix it, I think I'd have to raise it further, because letting inaccurate data drive an investment decision isn't something I could just let go, even though I know that's an uncomfortable position to be in as a junior person."
+    },
+    "commonMistakes": [
+      "Staying silent to avoid an awkward conflict with a colleague",
+      "Escalating publicly or accusatorially before having a private conversation first",
+      "Assuming as a junior team member it isn't their place to say anything at all"
+    ],
+    "followUps": [
+      "Does your answer change if the underreporting was clearly accidental rather than deliberate?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: community concerns near a frac site",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "community",
+      "hydraulic-fracturing"
+    ],
+    "question": "A hydraulic fracturing project you're assigned to is near a community that has raised concerns about groundwater contamination, but the geological data suggests minimal risk given proper well isolation. How would you approach communicating this?",
+    "lookingFor": "Balancing technical confidence with genuine engagement, avoiding both dismissiveness and false certainty.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the community's concern as legitimate rather than dismissing it as uninformed",
+        "Explain the technical basis for confidence honestly, including what the well isolation actually protects against and what its limits are",
+        "Propose transparency measures, such as independent groundwater monitoring, rather than just asserting the risk is low"
+      ],
+      "modelAnswer": "I wouldn't want to just tell people the risk is low and expect that to be reassuring, because from their side they have no way to verify that, so I'd want to actually explain what the well isolation does, that proper casing and cement are designed to separate the fracturing zone from any shallow aquifer, and be honest that no engineering is completely risk free rather than overselling certainty. I think the stronger move is proposing independent baseline and ongoing groundwater monitoring, so the community has actual data they can trust rather than just my word for it. Being upfront that we'd act on that data if it changed would matter more to me than winning the argument in the room."
+    },
+    "commonMistakes": [
+      "Dismissing the community's concern as simply uninformed",
+      "Overstating certainty instead of being honest about residual risk",
+      "Offering no concrete transparency or monitoring measure, just reassurance"
+    ],
+    "followUps": [
+      "What would you do if independent testing later found an anomaly?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: skills transfer to CCS",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "ccs",
+      "energy-transition",
+      "current-affairs"
+    ],
+    "question": "Petroleum engineering skills are increasingly used in carbon capture and storage projects. What specifically about your discipline's toolkit transfers directly to CCS?",
+    "lookingFor": "Genuine, specific awareness of the overlap, not a vague claim that engineers can adapt to anything.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific transferable skills, reservoir characterisation, injectivity analysis, caprock integrity, and well integrity monitoring",
+        "Explain that CO2 storage projects need the same subsurface trapping and containment analysis as oil and gas reservoirs",
+        "Show this is informed engagement with the field, not a generic statement"
+      ],
+      "modelAnswer": "A lot of it maps across almost directly, working out whether a caprock will actually contain injected CO2 over geological time uses the same seal integrity analysis engineers already use to know an oil reservoir hasn't leaked for millions of years. Injectivity testing, working out how much fluid a formation can accept without fracturing it, is essentially the same calculation whether you're injecting water for a waterflood or CO2 for storage. Even well integrity monitoring carries over, since a CCS well still needs the same kind of cement bond and casing corrosion checks as a production well, just with CO2's corrosive behaviour as an added wrinkle."
+    },
+    "commonMistakes": [
+      "Giving a vague 'engineers can do anything' answer with no specific skill named",
+      "Being unaware that CCS uses petroleum engineering methods at all",
+      "Confusing CCS with unrelated renewable energy technologies like wind or solar"
+    ],
+    "followUps": [
+      "What's different about CO2 injection compared to water injection that an engineer would need to account for?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: peak oil demand forecasts",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "demand-forecasting",
+      "energy-transition"
+    ],
+    "question": "The IEA and OPEC have published very different forecasts on when global oil demand will peak. Which view do you find more convincing, and why?",
+    "lookingFor": "Awareness that the debate exists, plus the ability to reason about the underlying assumptions rather than just picking a side.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that the two organisations disagree meaningfully on timing, not just by a year or two",
+        "Identify the assumptions driving the gap, such as EV adoption rates, emerging market demand growth, and petrochemical use",
+        "Reach a reasoned position rather than treating either forecast as simple fact"
+      ],
+      "modelAnswer": "I know the IEA has projected demand peaking this decade, largely on the back of faster EV adoption and efficiency gains, while OPEC's outlook pushes that much further out because it weighs continued demand growth in the developing world and petrochemicals more heavily. I lean toward thinking the truth is somewhere in between, EV adoption has genuinely surprised on the upside in some markets, but global demand for transport fuel in fast-growing economies isn't going away as quickly as EV growth alone would suggest. What I find more useful than picking a winner is noticing that both organisations have an institutional lens on the numbers, so I try to read the forecasts alongside who's publishing them."
+    },
+    "commonMistakes": [
+      "Stating a personal opinion with no reasoning behind it",
+      "Being unaware that a meaningful forecasting disagreement exists at all",
+      "Treating either organisation's forecast as neutral fact rather than one view among several"
+    ],
+    "followUps": [
+      "What would have to be true for the more aggressive peak-demand forecast to actually happen?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: methane and flaring reduction",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "emissions",
+      "regulation"
+    ],
+    "question": "Regulators and investors are pushing hard on methane emissions and routine flaring. How is that actually changing decisions on the ground for petroleum engineers?",
+    "lookingFor": "Specific, current awareness of monitoring technology and design changes, not just a general statement that emissions matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention satellite and aerial methane detection making leaks and flares far more visible than before",
+        "Explain design changes, such as capturing and reinjecting associated gas instead of flaring it where economically viable",
+        "Connect this to real project decisions, like facility design or investor pressure changing what gets approved"
+      ],
+      "modelAnswer": "Satellite monitoring has genuinely changed the game, methane plumes that used to be invisible are now trackable by third parties, which means flaring and leaks aren't just an internal metric anymore, they're publicly visible and tied to investor scrutiny. On the ground that's pushing engineers toward designing for gas capture and reinjection instead of just flaring associated gas, and toward tighter leak detection and repair programmes on existing facilities. I've read that some operators are even choosing not to develop stranded gas fields specifically because they can't get flaring intensity low enough to satisfy investors or regulators, which shows it's moving from a compliance issue to an actual project economics issue."
+    },
+    "commonMistakes": [
+      "A vague statement that emissions 'matter more now' with no concrete mechanism",
+      "Not knowing satellite-based methane monitoring exists",
+      "Treating this purely as a public relations issue rather than an engineering and economics one"
+    ],
+    "followUps": [
+      "What trade-offs would an operator weigh when deciding whether to capture gas versus flare it?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: shale revolution and geopolitics",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "geopolitics",
+      "shale"
+    ],
+    "question": "How did the shale revolution change the global geopolitics of oil and gas over the last fifteen years or so?",
+    "lookingFor": "Awareness of the shift from a purely domestic story to a global one, with reasonably accurate facts.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the US shift from a major importer to the world's largest producer and a net exporter",
+        "Explain the effect on pricing power, reducing OPEC's ability to move prices by cutting supply alone",
+        "Connect it to leverage shifts, such as US LNG becoming an alternative supply option for Europe away from Russian gas"
+      ],
+      "modelAnswer": "Before shale, the US was a major oil and gas importer, and OPEC could move global prices fairly reliably by adjusting output. Shale flipped that, the US became the largest producer in the world and a net exporter, which meant OPEC's cuts had less leverage because US shale producers could ramp up relatively quickly to fill any gap, shale acting almost like a swing producer of its own. It also reshaped alliances, US LNG exports gave Europe a real alternative to Russian gas, which became strategically important after the invasion of Ukraine, so what started as a domestic drilling technology story ended up reshaping energy security calculations well beyond the US."
+    },
+    "commonMistakes": [
+      "Discussing only the domestic US economic effect without the geopolitical dimension",
+      "Being too vague to demonstrate real knowledge of the timeline or players involved",
+      "Getting basic facts wrong, such as the direction of the US import or export shift"
+    ],
+    "followUps": [
+      "Do you think shale's swing producer role is a stable long-term feature of the market, or temporary?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: digital oilfield and AI",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-affairs",
+      "digitalization",
+      "drilling"
+    ],
+    "question": "'Digital oilfield' and AI-assisted drilling are common buzzwords now. Give a concrete example of how data or AI is actually used in drilling or reservoir management today.",
+    "lookingFor": "A specific, real example rather than buzzword repetition, showing the applicant has actually looked into the field.",
+    "idealAnswer": {
+      "bullets": [
+        "Give one concrete example, such as real-time rate of penetration optimisation, predictive maintenance on ESPs, or automated well test interpretation",
+        "Explain briefly how the data or model actually improves a decision, not just that AI is 'used'",
+        "Avoid overclaiming that AI replaces engineering judgement entirely"
+      ],
+      "modelAnswer": "One example I read about is using real-time sensor data from the drill string to predict and adjust rate of penetration on the fly, models trained on past drilling parameters can flag when the bit is likely to be wearing down or when vibration patterns suggest a problem before it causes a costly failure. Another is predictive maintenance on electric submersible pumps, where continuous monitoring of current draw and vibration data can flag a pump that's about to fail weeks in advance instead of finding out when it stops. I don't think this replaces engineering judgement, it's more that it surfaces patterns in huge datasets faster than a person scanning charts could, which frees the engineer to focus on deciding what to actually do about it."
+    },
+    "commonMistakes": [
+      "Using buzzwords like 'AI' or 'big data' with no concrete example behind them",
+      "Claiming AI fully automates engineering decisions with no human judgement involved",
+      "Showing no awareness of any real application in the industry at all"
+    ],
+    "followUps": [
+      "What could go wrong if an operator trusted a predictive model without an engineer sanity-checking it?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: sour gas well",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "h2s",
+      "safety"
+    ],
+    "question": "You're assigned to a well known to contain H2S, sour gas. Walk me through how that changes your approach to well design and site safety.",
+    "lookingFor": "Correct awareness that H2S is both toxic and corrosive, requiring changes to metallurgy, monitoring, and emergency planning, not just an added warning sign.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the toxicity risk, H2S is lethal at low concentrations and requires gas detection and personal protective equipment on site",
+        "Explain the material risk, sour service requires H2S-resistant metallurgy because it causes sulfide stress cracking in standard steel",
+        "Describe planning for contingencies, evacuation routes, wind direction awareness, and a response plan, not just equipment specs"
+      ],
+      "modelAnswer": "H2S changes almost every layer of the plan, not just one detail. On the toxicity side, it's lethal at fairly low concentrations and can deaden your sense of smell at higher ones, so the site needs continuous gas detection, breathing apparatus, and clear evacuation routes that account for wind direction. On the materials side, standard carbon steel is vulnerable to sulfide stress cracking in a sour environment, so casing, wellhead, and tubing all need to be specified in H2S-resistant metallurgy rated for the expected concentration. I'd also want a documented emergency response plan and crew training specific to H2S, because the margin for error with a toxic gas is much smaller than with most other drilling hazards."
+    },
+    "commonMistakes": [
+      "Treating H2S as just an extra safety sign or checklist item rather than a design driver",
+      "Forgetting the corrosion and metallurgy implications, focusing only on personnel safety",
+      "Not describing any evacuation or emergency response planning"
+    ],
+    "followUps": [
+      "Why is H2S particularly dangerous compared to other toxic gases you might encounter on a site?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: stuck pipe",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "drilling",
+      "problem-solving"
+    ],
+    "question": "The drill string suddenly gets stuck downhole while tripping out. Talk me through how you'd reason through the possible causes before deciding what to do.",
+    "lookingFor": "A structured process of elimination across the main causes of stuck pipe, rather than jumping straight to a fix.",
+    "idealAnswer": {
+      "bullets": [
+        "List the main categories of cause, differential sticking, mechanical sticking such as a keyseat or wellbore geometry, and cuttings pack-off from poor hole cleaning",
+        "Explain how you'd narrow it down, checking drilling parameters, mud weight relative to pore pressure, and where in the string the stuck point is",
+        "Note that the right freeing method depends entirely on correctly diagnosing which type it is first"
+      ],
+      "modelAnswer": "I wouldn't want to start pulling or jarring on the string without first narrowing down which kind of stuck pipe this is, because the wrong response can make some causes worse. If mud weight is high relative to formation pressure and the string got stuck while stationary, that points toward differential sticking, where the pipe is pressed against the wellbore wall by pressure difference. If it happened while moving through a doglegged section, that looks more like mechanical sticking from a keyseat or wellbore geometry issue. And if hole cleaning has been marginal and cuttings have been accumulating, pack-off around the string is another real possibility. I'd want to check the drilling parameters log and where along the string the point of sticking is before choosing a freeing method, because a technique that helps with differential sticking, like reducing mud weight, could be the wrong move for a mechanical problem."
+    },
+    "commonMistakes": [
+      "Jumping to one cause and a freeing method without a process of elimination",
+      "Ignoring the link between mud weight and differential sticking specifically",
+      "Suggesting aggressive freeing actions before diagnosing what type of sticking occurred"
+    ],
+    "followUps": [
+      "What drilling parameter would most quickly point you toward differential sticking specifically?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: conflicting subsurface data",
+    "program": "Petroleum Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "petrophysics",
+      "data-reconciliation"
+    ],
+    "question": "Your core samples from a well show significantly lower porosity than the wireline log readings for the same interval. How would you reconcile the two before trusting either?",
+    "lookingFor": "Understanding that both measurements can be individually imperfect, with specific reasons the two methods might disagree.",
+    "idealAnswer": {
+      "bullets": [
+        "Consider core-side issues, such as stress relaxation or fluid loss once the core is brought to surface, which can alter measured porosity",
+        "Consider log-side issues, such as calibration, borehole washout, or invaded zone effects near the wellbore",
+        "Note the difference in measurement scale, a core plug samples a tiny volume compared to the larger rock volume a log effectively averages"
+      ],
+      "modelAnswer": "I wouldn't assume either measurement is automatically right, both have known failure modes. On the core side, bringing rock up from depth relieves the confining stress it was under, which can actually change the pore structure slightly, and any fluid loss during recovery can bias the measured porosity too. On the log side, tool calibration, borehole washout, or the mud filtrate invaded zone near the wellbore can all skew a porosity log if they're not corrected for properly. I'd also remember that a core plug samples an inch or two of rock while a log is effectively averaging over a larger volume, so if there's fine-scale heterogeneity, some disagreement is actually expected rather than a sign either measurement is wrong."
+    },
+    "commonMistakes": [
+      "Assuming the core sample is automatically more trustworthy just because it's a physical sample",
+      "Ignoring the difference in measurement scale between a core plug and a log reading",
+      "Not mentioning calibration or environmental correction issues that affect logs"
+    ],
+    "followUps": [
+      "Which measurement would you weight more heavily if you had to make a quick decision, and why?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Reflecting on the industry's climate tension",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "energy-transition",
+      "reflection"
+    ],
+    "question": "Given the urgency around decarbonisation, how do you personally think about choosing a degree that trains you to find and produce more oil and gas?",
+    "lookingFor": "Honest, examined reflection on a real tension, not a defensive dismissal or a rehearsed line that avoids engaging with the question.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension honestly rather than deflecting or getting defensive",
+        "Articulate a genuinely considered position, whether that's the discipline's transitional role, energy security, or subsurface skills transferring to CCS and geothermal",
+        "Show this is a personally examined view rather than a rehearsed industry talking point"
+      ],
+      "modelAnswer": "I don't think it's a fair question to wave away, I've thought about it, and I don't pretend it fully resolves. Part of my answer is that global energy demand isn't dropping to zero overnight, and the transition itself needs reliable energy in the meantime, but I don't want to hide behind that as if it settles everything. What actually drew me to this specific degree is that the subsurface skills, reservoir characterisation, well integrity, fluid flow, are exactly what CCS and geothermal projects need too, so I see this as training that keeps options open rather than locking me into one path. I'd rather be honest that I'll keep re-examining that choice as the industry changes than pretend I have it fully figured out now."
+    },
+    "commonMistakes": [
+      "Getting defensive or treating the question as unfair rather than engaging with it",
+      "Reciting an industry talking point with no personal reflection behind it",
+      "Refusing to take any position at all to avoid controversy"
+    ],
+    "followUps": [
+      "Would you feel differently working on a project that expands extraction versus one focused on CCS or geothermal?"
+    ]
+  },
+  {
+    "id": "prog-petroleum-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Hydraulic fracture containment",
+    "program": "Petroleum Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hydraulic-fracturing",
+      "geomechanics",
+      "completions"
+    ],
+    "question": "What determines whether a hydraulic fracture stays contained within the target formation, versus growing vertically into a zone you didn't want it to reach?",
+    "lookingFor": "Understanding of in-situ stress contrasts between rock layers as the actual containment mechanism, not an assumption that fractures naturally stay put.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that fracture height growth is governed by contrasts in the minimum horizontal stress between adjacent rock layers, which act as stress barriers",
+        "Note that a bounding shale or a different lithology with higher stress can arrest upward growth, while a weak contrast allows the fracture to keep growing",
+        "Connect this to the practical need for geomechanical characterisation before designing a frac job, not treating design as one-size-fits-all"
+      ],
+      "modelAnswer": "Fractures don't just naturally stay inside the target zone, what actually contains them is a contrast in minimum horizontal stress between rock layers, a bounding formation with meaningfully higher stress acts as a barrier the fracture has to work much harder to break through. If the stress contrast between the target zone and the layer above it is small, the fracture can keep growing vertically and reach a zone you didn't intend, which is a real concern near shallow aquifers or existing wellbores. That's why frac design isn't something you can template across wells, you need a geomechanical model of the local stress profile first, and I find it interesting that so much of hydraulic fracturing engineering is really about predicting where rock will and won't want to break."
+    },
+    "commonMistakes": [
+      "Assuming fractures automatically stay within the target zone without any containment mechanism",
+      "Not identifying stress contrast between layers as the actual physical driver of containment",
+      "Treating frac design as a standard recipe rather than something requiring site-specific geomechanical data"
+    ],
+    "followUps": [
+      "What data would you want before drilling to build confidence in the local stress profile?"
+    ]
+  }
+]

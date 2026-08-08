@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-geology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Plate tectonics and hazard distribution",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["plate-tectonics", "hazards", "reasoning"],
+    "question": "Plate tectonics is often described as the unifying theory of geology. How does it explain why earthquakes and volcanoes are concentrated where they are, and can you think of an exception?",
+    "lookingFor": "Understanding that most seismicity and volcanism trace plate boundaries, plus awareness of intraplate exceptions like hotspots.",
+    "idealAnswer": {
+      "bullets": [
+        "Map earthquakes and volcanoes onto convergent, divergent, and transform boundaries with why each produces them",
+        "Explain the mechanism, such as subduction melting, ridge decompression, or boundary friction",
+        "Name at least one intraplate exception, such as Hawaii, and explain why it doesn't fit the boundary pattern"
+      ],
+      "modelAnswer": "Most earthquakes and volcanoes cluster along plate boundaries because that's where the crust is being pulled apart, pushed together, or ground past itself. At a subduction zone the descending slab dehydrates the mantle wedge above it, which lowers the melting point and produces the volcanic arcs you see around the Pacific. But Hawaii breaks that pattern completely, it sits in the middle of the Pacific plate, which is why geologists explain it with a stationary mantle plume instead of a boundary process. That exception is actually what convinced me the theory is stronger for having anomalies it can still account for."
+    },
+    "commonMistakes": [
+      "Only listing boundary types without explaining the physical mechanism",
+      "Forgetting that intraplate volcanism or seismicity exists at all",
+      "Confusing convergent and divergent boundary processes"
+    ],
+    "followUps": ["How would you explain a hotspot trail like the Hawaiian-Emperor chain?"]
+  },
+  {
+    "id": "prog-geology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Evidence for continental drift",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["continental-drift", "evidence", "history-of-science"],
+    "question": "Wegener's continental drift was rejected for decades before plate tectonics rescued it. What evidence convinced geologists beyond the jigsaw fit of the coastlines?",
+    "lookingFor": "Knowledge of independent lines of evidence, especially paleomagnetism and seafloor spreading, and why a mechanism mattered.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite paleomagnetic polar wander evidence and matching apparent pole paths across continents",
+        "Cite seafloor spreading evidence such as magnetic striping and age-symmetry around mid-ocean ridges",
+        "Explain that Wegener's idea lacked a plausible driving mechanism until mantle convection and plate tectonics supplied one"
+      ],
+      "modelAnswer": "The coastline fit alone was always suggestive but not proof, what actually convinced people was paleomagnetism, when you measure the magnetic minerals frozen into rocks of different ages on separate continents, the apparent path of the pole only makes sense if the continents themselves moved. Then the discovery of symmetric magnetic striping either side of mid-ocean ridges gave a mechanism, seafloor was being created and spreading apart, which is something Wegener never had. I find it a good lesson that a correct observation can still get rejected for decades if nobody can explain why it happens."
+    },
+    "commonMistakes": [
+      "Citing only the coastline fit as if that were sufficient evidence",
+      "Not mentioning paleomagnetism at all",
+      "Missing the point that lack of a mechanism was the real obstacle"
+    ],
+    "followUps": ["Why did geologists find 'no mechanism' such a serious objection?"]
+  },
+  {
+    "id": "prog-geology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Field identification of rock types",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["mineralogy", "field-skills", "rock-identification"],
+    "question": "You're handed a hand specimen in the field with no label. What features would you check, in what order, to work out whether it's igneous, sedimentary, or metamorphic?",
+    "lookingFor": "A systematic field method rather than a guess, showing understanding of texture as the key diagnostic.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with texture: interlocking crystals versus grains and cement versus foliation or banding",
+        "Check for diagnostic features like vesicles, bedding, or aligned metamorphic minerals such as mica",
+        "Use grain size and any fossils or sorting as secondary clues, and admit some rocks are genuinely ambiguous in hand specimen"
+      ],
+      "modelAnswer": "The first thing I'd look at is texture, because it tells you the story of formation faster than mineralogy does. Interlocking, non-sorted crystals point to igneous, rounded grains held together by cement point to sedimentary, and a banded or foliated fabric with aligned minerals like mica points to metamorphic. I'd then look for confirming detail, vesicles or a glassy groundmass for volcanic rock, visible bedding or fossils for sedimentary, or crenulated foliation for metamorphic. I'd also be honest if a specimen is ambiguous, some fine grained rocks genuinely need thin section work under a microscope to be sure."
+    },
+    "commonMistakes": [
+      "Jumping straight to mineral identification instead of texture",
+      "Ignoring the possibility of ambiguous or metamorphosed sedimentary rocks",
+      "Assuming color is a reliable diagnostic feature"
+    ],
+    "followUps": ["What would change your interpretation if the specimen were metamorphosed sedimentary rock?"]
+  },
+  {
+    "id": "prog-geology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Mechanism of mountain building",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["orogeny", "tectonics", "structural-geology"],
+    "question": "Explain what actually builds a mountain range like the Himalayas, and why the range is still rising today even though India and Asia collided millions of years ago.",
+    "lookingFor": "Understanding of continental collision, crustal thickening, isostatic uplift, and ongoing convergence as a continuing process, not a single event.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain continental collision replacing subduction once both plates are buoyant continental crust",
+        "Describe crustal thickening through folding, faulting, and stacking of crust, with isostasy pushing thickened crust upward",
+        "Note that India is still converging with Asia today, so uplift and erosion are both ongoing, not historical"
+      ],
+      "modelAnswer": "Once India collided with Asia, the oceanic crust that had been subducting was used up and you were left with two buoyant continental plates that couldn't easily go under one another, so the crust folded, faulted and stacked instead, doubling in thickness in places. Because thicker crust is less dense than the mantle beneath, isostasy pushes that thickened crust upward, which is a big part of why the range stands so high. What surprised me when I read into it is that India is still moving north into Asia at a few centimeters a year, so the collision isn't a historical event, it's a process that's still actively raising the range even as erosion tries to wear it down."
+    },
+    "commonMistakes": [
+      "Describing it as a one-off collision event in the past rather than an ongoing process",
+      "Confusing collision orogeny with volcanic arc building at a subduction zone",
+      "Omitting isostasy as part of why the crust rises"
+    ],
+    "followUps": ["Why doesn't erosion simply cancel out the uplift over time?"]
+  },
+  {
+    "id": "prog-geology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Dating rocks without fossils",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["geochronology", "radiometric-dating", "reasoning"],
+    "question": "How do geologists assign an age to an igneous rock that contains no fossils at all?",
+    "lookingFor": "Grasp of radiometric dating principles, including closure temperature and choosing an appropriate isotope system.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain radioactive decay of a parent isotope to a daughter isotope at a known, constant rate",
+        "Mention that the clock starts at the mineral's closure temperature, when it cools enough to trap the daughter product",
+        "Show awareness that different isotope systems suit different rock ages and compositions, for example potassium-argon versus uranium-lead"
+      ],
+      "modelAnswer": "Without fossils you rely on radiometric dating, which uses the fact that a radioactive parent isotope decays into a daughter isotope at a fixed, known rate regardless of temperature or pressure. What you're actually measuring is the time since the mineral cooled below its closure temperature and started trapping that daughter product, so it's really a cooling age rather than a formation age in the strictest sense. You pick the isotope system to suit the rock, potassium argon works well for relatively young volcanic rocks, while uranium lead in zircon can date material billions of years old because zircon is so chemically robust."
+    },
+    "commonMistakes": [
+      "Saying radiometric dating gives a formation age with no mention of closure temperature",
+      "Naming only one isotope system as if it applied universally",
+      "Confusing relative dating methods with absolute radiometric dating"
+    ],
+    "followUps": ["Why is zircon particularly useful for uranium-lead dating?"]
+  },
+  {
+    "id": "prog-geology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Isostasy and topography",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["isostasy", "geophysics", "glacial-rebound"],
+    "question": "Why does removing a kilometre of ice sheet from a landmass cause the land to rise, sometimes for thousands of years afterward?",
+    "lookingFor": "Understanding of isostatic equilibrium, crustal floating on the mantle, and the slow viscous response of the mantle.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that crust floats on the denser, ductile mantle in isostatic equilibrium, like ice on water",
+        "Describe how loading with ice pushes crust down, and removing the load lets it rise back toward equilibrium",
+        "Explain the lag is due to the mantle's high viscosity, so rebound takes thousands of years"
+      ],
+      "modelAnswer": "Crust effectively floats on the mantle in the same way ice floats on water, so when a thick ice sheet loads a landmass, the extra weight pushes the crust down into the mantle to keep it in equilibrium. Once the ice melts, that load is removed and the crust wants to rise back to where it would sit unloaded, but it can't happen instantly. The mantle underneath behaves like an extremely viscous fluid rather than a rigid solid, so it flows back into place slowly, which is why places like Scandinavia are still visibly rising today, thousands of years after the last ice sheet melted."
+    },
+    "commonMistakes": [
+      "Treating the crust as rigid with no explanation for the lag",
+      "Confusing isostatic rebound with sea level rise from melting ice",
+      "Not identifying mantle viscosity as the reason for the slow timescale"
+    ],
+    "followUps": ["How could you measure present-day rebound rates?"]
+  },
+  {
+    "id": "prog-geology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Seismic waves and Earth's interior",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["seismology", "earth-structure", "geophysics"],
+    "question": "How do seismic waves reveal that the Earth's outer core is liquid?",
+    "lookingFor": "Understanding of P and S wave behavior, particularly that S waves cannot travel through fluids, and the resulting shadow zone.",
+    "idealAnswer": {
+      "bullets": [
+        "State that S waves are shear waves and cannot propagate through a fluid",
+        "Explain the S wave shadow zone, where no S waves are recorded on the far side of the Earth from a large earthquake",
+        "Mention the P wave shadow zone and bending as complementary evidence of a core with different properties"
+      ],
+      "modelAnswer": "S waves are shear waves, they need a material with rigidity to transmit that side to side motion, and a liquid simply can't support shear. So when seismologists noticed that stations on the opposite side of the planet from a major earthquake recorded no S waves at all, that shadow zone was strong evidence the wave had hit something fluid on the way through and couldn't get across it. P waves can travel through liquid but they refract sharply at the core boundary because the material properties change so much, which produces its own shadow zone and gives a second, independent line of evidence for a liquid outer core."
+    },
+    "commonMistakes": [
+      "Not explaining why S waves specifically fail in a liquid",
+      "Confusing the states of the inner and outer core",
+      "Describing the shadow zone vaguely without the physical reasoning"
+    ],
+    "followUps": ["Why do we think the inner core, despite being hotter, is solid?"]
+  },
+  {
+    "id": "prog-geology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Magma viscosity and eruption style",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["volcanology", "magma", "hazards"],
+    "question": "Why do some volcanoes erupt violently and others ooze lava relatively gently? What's the underlying control?",
+    "lookingFor": "Understanding that silica content controls viscosity and gas retention, which controls explosivity.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify silica content as the main control on magma viscosity",
+        "Explain that high viscosity magma traps gas, building pressure toward an explosive eruption",
+        "Connect magma composition to volcano type, basaltic shield volcanoes versus andesitic or rhyolitic stratovolcanoes"
+      ],
+      "modelAnswer": "It mostly comes down to silica content and how that affects viscosity. Basaltic magma is relatively low in silica, so it's runny and gas can escape easily, which is why places like Hawaii tend to produce effusive, flowing eruptions rather than violent ones. Magma that's higher in silica, like andesite or rhyolite, is far more viscous, so gas bubbles get trapped instead of escaping smoothly, and pressure builds until it releases explosively, which is the pattern you see at stratovolcanoes like Mount St Helens. It's a nice example of how one chemical variable can explain such a huge difference in hazard."
+    },
+    "commonMistakes": [
+      "Attributing eruption style to temperature alone rather than composition",
+      "Confusing shield and stratovolcano characteristics",
+      "Leaving out the role of dissolved gas and pressure buildup"
+    ],
+    "followUps": ["Why might monitoring gas emissions help forecast an eruption?"]
+  },
+  {
+    "id": "prog-geology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Reconstructing past climate",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["paleoclimate", "proxies", "evidence"],
+    "question": "If you wanted to reconstruct what Earth's climate was doing 100,000 years ago, what evidence would you actually use, and how reliable is it?",
+    "lookingFor": "Awareness of multiple proxy records and a critical sense of their resolution and limitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least two proxies, for example ice cores using oxygen isotopes and trapped gas, and ocean sediment cores using foraminifera isotopes",
+        "Explain what each proxy actually measures and how it's converted into a temperature or CO2 signal",
+        "Show awareness of limitations such as dating uncertainty, resolution, and regional versus global signals"
+      ],
+      "modelAnswer": "Ice cores are probably the strongest single record for that timeframe, the ratio of oxygen isotopes in the ice layers tracks past temperature, and the air bubbles trapped inside actually preserve a sample of the ancient atmosphere itself, so you get temperature and greenhouse gas concentration from the same core. Ocean sediment cores add another layer, the isotopic composition of foraminifera shells reflects both temperature and ice volume at the time they formed. I'd be careful not to treat any single proxy as gospel though, dating gets less precise further back, and a record from one ice sheet or ocean basin can reflect a regional signal rather than a truly global one, so the strongest reconstructions combine several independent proxies that agree with each other."
+    },
+    "commonMistakes": [
+      "Naming only one proxy with no cross-check",
+      "Treating a single core as globally representative",
+      "Ignoring dating uncertainty in deep time records"
+    ],
+    "followUps": ["Why do scientists cross-check ice core and ocean core records against each other?"]
+  },
+  {
+    "id": "prog-geology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Reading geological history from an outcrop",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["stratigraphy", "unconformity", "reasoning"],
+    "question": "You're looking at a cliff face with horizontal sedimentary layers sitting directly on top of tilted, eroded layers below. What is that surface, and what does it tell you about the gap in the rock record?",
+    "lookingFor": "Recognition of an angular unconformity and understanding of the sequence of events it implies, including missing time.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the feature as an angular unconformity",
+        "Sequence the events: deposition, tilting or deformation, uplift and erosion, then renewed deposition",
+        "Explain that the surface represents a gap in the rock record, missing time not directly recorded in strata"
+      ],
+      "modelAnswer": "That's an angular unconformity, and it's really a story told in four steps. First the lower layers were deposited horizontally like any normal sedimentary sequence, then they were tilted and deformed, probably by tectonic activity, after which they were uplifted and eroded flat before the sea or another environment came back and deposited the horizontal layers on top. What I find most interesting about a surface like that is it represents missing time, potentially millions of years that simply aren't recorded anywhere in the rock, because nothing was being deposited or it was all eroded away, so the rock record is really a record of gaps as much as it is of deposition."
+    },
+    "commonMistakes": [
+      "Confusing an angular unconformity with a simple bedding plane or disconformity",
+      "Getting the order of tilting and erosion wrong",
+      "Not recognizing that the surface represents missing time"
+    ],
+    "followUps": ["How could you estimate how much time is actually missing at that surface?"]
+  },
+  {
+    "id": "prog-geology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Why some earthquakes cause tsunamis",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["seismology", "tsunami", "hazards"],
+    "question": "Two earthquakes have the same magnitude, but only one triggers a tsunami. What factors would explain that difference?",
+    "lookingFor": "Understanding that vertical seafloor displacement, fault type, depth, and location relative to the ocean matter more than magnitude alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that tsunamis need vertical displacement of the seafloor, so thrust faults at subduction zones are far more effective than strike-slip faults",
+        "Note that depth matters, since shallow earthquakes displace the seafloor more directly than deep ones",
+        "Mention that the earthquake must occur under or near the ocean, and that bathymetry affects wave propagation"
+      ],
+      "modelAnswer": "Magnitude alone tells you how much energy was released, but a tsunami depends specifically on whether that energy moved the seafloor up or down. A thrust fault at a subduction zone can heave a huge slab of seafloor vertically in seconds, which displaces the water column above it and generates a tsunami, whereas a strike-slip earthquake of the same magnitude mostly shears the crust sideways with much less vertical motion, so it's far less likely to produce a significant wave. Depth matters too, a shallow rupture transmits displacement to the seafloor much more directly than a deep one, and obviously the earthquake needs to actually be under or near the ocean in the first place."
+    },
+    "commonMistakes": [
+      "Assuming magnitude alone determines tsunami risk",
+      "Not distinguishing thrust faulting from strike-slip faulting",
+      "Ignoring the requirement for the earthquake to be near or under the ocean"
+    ],
+    "followUps": ["Why are subduction zone earthquakes disproportionately responsible for major tsunamis?"]
+  },
+  {
+    "id": "prog-geology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Interpreting a marine to terrestrial sedimentary sequence",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["sedimentology", "sequence-stratigraphy", "reasoning"],
+    "question": "A borehole through a sedimentary sequence shows marine limestone at the bottom, grading up through sandstone, into terrestrial mudstone with root traces at the top. What's happening geologically, and what would you check to confirm it?",
+    "lookingFor": "Ability to interpret a regressive, shallowing-upward sequence and propose evidence to test the interpretation.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify this as a regressive, shallowing-upward sequence, consistent with relative sea level fall or basin infilling",
+        "Explain the depositional environment implied by each unit, from offshore marine limestone through nearshore sandstone to floodplain mudstone",
+        "Propose confirming evidence, for example fossil assemblages, sedimentary structures like cross-bedding, or correlation across boreholes"
+      ],
+      "modelAnswer": "That upward sequence from limestone to sandstone to rooted mudstone looks like a classic regression, where relative sea level was falling or the basin was simply filling in faster than it was subsiding, so the environment shallowed over time from open marine, through a nearshore or shoreface setting, to eventually dry land with soil forming on top. To confirm that story I'd want to look at the fossils in each unit, marine fauna should give way to something more brackish or terrestrial, and I'd check the sandstone for sedimentary structures like cross bedding that would support a shoreface or deltaic origin rather than, say, a river channel unrelated to sea level at all. Ideally I'd also correlate the same sequence across several boreholes to check it isn't just a local, one-off feature."
+    },
+    "commonMistakes": [
+      "Describing the sequence without naming it as regressive or shallowing-upward",
+      "Not proposing any way to actually test the interpretation",
+      "Assuming sea level change is the only possible cause without considering sediment supply"
+    ],
+    "followUps": ["What would a transgressive sequence look like instead?"]
+  },
+  {
+    "id": "prog-geology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Weathering versus erosion in landscape evolution",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["geomorphology", "weathering", "landscape"],
+    "question": "What's the actual difference between weathering and erosion, and why does that distinction matter for why some landscapes have dramatic cliffs while others are gentle and rounded?",
+    "lookingFor": "Clear conceptual distinction plus application to explain differential landscape features.",
+    "idealAnswer": {
+      "bullets": [
+        "Define weathering as in-place breakdown of rock, physical, chemical, or biological, versus erosion as the removal and transport of material",
+        "Explain that landscape form depends on the balance and rate of both processes acting on rocks of different resistance",
+        "Give a concrete example of a resistant or weak rock producing a distinctive landscape feature"
+      ],
+      "modelAnswer": "Weathering is the rock breaking down where it sits, whether that's frost wedging it apart physically or rainwater dissolving it chemically, while erosion is a separate step where wind, water or ice actually picks up and carries that broken material away. The distinction matters because a landscape's shape depends on the balance between them, a resistant rock like granite weathers slowly, so if erosion nearby is fast you're left with a sharp cliff because the rock simply can't break down fast enough to be smoothed off. Softer rock like shale weathers quickly into fine debris that erosion then removes at roughly the same rate, which tends to produce gentler, more rounded slopes."
+    },
+    "commonMistakes": [
+      "Using weathering and erosion interchangeably",
+      "Not connecting the distinction to an actual landscape outcome",
+      "Ignoring rock resistance as a variable"
+    ],
+    "followUps": ["Why might a resistant rock still form a gentle slope in a very dry climate?"]
+  },
+  {
+    "id": "prog-geology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of the rock cycle model",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["rock-cycle", "critical-thinking", "petrology"],
+    "question": "The rock cycle is usually drawn as a neat loop between igneous, sedimentary and metamorphic rock. In what ways is that a misleading simplification?",
+    "lookingFor": "Willingness to critique a textbook model, showing understanding that pathways aren't equal, linear, or evenly timed.",
+    "idealAnswer": {
+      "bullets": [
+        "Point out that rocks can skip steps or take multiple different paths, not just one fixed loop",
+        "Note that timescales vary hugely between pathways",
+        "Mention that any rock type can be weathered directly, or metamorphosed and re-melted, so it isn't a strict one-directional cycle"
+      ],
+      "modelAnswer": "The diagram makes it look like a single loop you always travel around in order, but real rocks don't respect that at all, an igneous rock can be weathered straight into sediment, or it can be buried and metamorphosed without ever passing through a sedimentary stage, so there are really many possible pathways rather than one cycle. The timescales involved are also wildly uneven, weathering a granite outcrop into sediment might take far less time than the deep burial and heating needed to metamorphose a rock, so treating every arrow on the diagram as equivalent hides how differently paced these processes are. I think the diagram is still useful as a starting mental model, I just try not to let it make me think rocks move through a fixed, evenly timed sequence."
+    },
+    "commonMistakes": [
+      "Defending the rock cycle diagram as fully accurate with no critique",
+      "Failing to give a specific example of a skipped or alternate pathway",
+      "Not addressing the uneven timescales involved"
+    ],
+    "followUps": ["Can you give a specific real rock whose history breaks the simple loop?"]
+  },
+  {
+    "id": "prog-geology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Deep-sea mining debate",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["deep-sea-mining", "resources", "current-debate"],
+    "question": "Deep-sea mining for polymetallic nodules is a live debate right now. What's actually at stake geologically and environmentally, and where do you land on it?",
+    "lookingFor": "Awareness of the current debate's substance, weighing metal demand against poorly understood deep ocean ecosystems, and a reasoned, non-dogmatic position.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what polymetallic nodules are and why they're valuable, containing cobalt, nickel, and manganese for batteries and renewable technology",
+        "Set out the environmental concern, disturbance of poorly studied abyssal ecosystems and wide-reaching sediment plumes",
+        "Give a considered position rather than a flat yes or no, acknowledging the trade-off and what would change your mind"
+      ],
+      "modelAnswer": "Polymetallic nodules on the ocean floor contain cobalt, nickel and manganese, all of which are in growing demand for batteries and renewable energy technology, so there's real pressure to mine them rather than rely entirely on land-based sources that come with their own environmental and labor problems. The concern is that we know remarkably little about deep ocean ecosystems at those depths, and mining would disturb sediment over an area far larger than the extraction site itself, potentially affecting organisms we haven't even properly catalogued yet. My honest position is that I'd want a lot more baseline ecological survey work done before large scale extraction begins, because the risk isn't necessarily that mining is wrong in principle, it's that we'd be doing it before we understand what we might be destroying."
+    },
+    "commonMistakes": [
+      "Giving a flat opinion with no geological substance",
+      "Not naming the actual minerals or their use",
+      "Treating it as a purely environmental question with no resource-demand context"
+    ],
+    "followUps": ["How would better baseline surveys actually change the calculus here?"]
+  },
+  {
+    "id": "prog-geology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Anthropocene golden spike debate",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["stratigraphy", "anthropocene", "current-debate"],
+    "question": "Geologists have been debating whether to formally define the Anthropocene as a new epoch. Why is that surprisingly contentious, and what would you need to define it properly?",
+    "lookingFor": "Understanding of formal stratigraphic definition requirements and why picking a single global start point for human impact is scientifically and politically difficult.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that formally defining a geological time unit requires a Global Boundary Stratotype Section and Point, a physically identifiable marker in the rock or sediment record",
+        "Note the difficulty of picking one date, since human impact on Earth systems has been gradual and geographically uneven",
+        "Show awareness this is genuinely debated among working geologists, mentioning a candidate marker such as plutonium isotopes from nuclear testing"
+      ],
+      "modelAnswer": "What makes it contentious is that formally naming a geological time unit isn't just a label, it requires agreeing on a single physical marker somewhere in the world, a golden spike, that future geologists could point to in the rock or sediment record forever. Human impact on the planet doesn't have one clean starting line though, you could argue for early agriculture thousands of years ago, the industrial revolution, or the mid twentieth century when nuclear testing left a detectable layer of plutonium isotopes almost everywhere on Earth simultaneously, which is actually the leading candidate marker being discussed. I find the debate itself fascinating because it shows that even something as apparently objective as geological time depends on human judgment calls about what counts as significant."
+    },
+    "commonMistakes": [
+      "Not knowing what a golden spike or GSSP actually is",
+      "Treating the Anthropocene as already formally adopted",
+      "Giving no candidate marker or timeframe for the proposed start"
+    ],
+    "followUps": ["Do you think a formal Anthropocene epoch would change how the public understands climate change?"]
+  },
+  {
+    "id": "prog-geology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical minerals supply chains",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["economic-geology", "critical-minerals", "current-debate"],
+    "question": "Lithium, cobalt and rare earth elements are suddenly described as 'critical minerals.' As a geologist, what does that term actually mean, and why has it become such a geopolitical issue?",
+    "lookingFor": "Understanding of resource geology combined with awareness of supply concentration and the energy transition driving demand.",
+    "idealAnswer": {
+      "bullets": [
+        "Define critical minerals as materials essential to modern technology or the economy where supply is at risk of disruption",
+        "Explain the current driver, demand from batteries, electric vehicles, and renewable energy technology",
+        "Note the geopolitical dimension, that viable deposits and processing capacity are geographically concentrated in a small number of countries"
+      ],
+      "modelAnswer": "A critical mineral is basically one that's essential to modern technology or the economy but where the supply is fragile, either because there aren't many viable deposits, or because processing is concentrated in very few places. Lithium and cobalt have become critical specifically because of the battery demand driving the shift to electric vehicles and renewable energy storage, and rare earths are needed for the magnets in wind turbines and electric motors. The geopolitical issue is that geology doesn't distribute these resources evenly, a huge share of cobalt comes from one country and a huge share of rare earth processing happens in another, so countries without domestic supply are effectively dependent on a handful of others for materials the entire energy transition relies on."
+    },
+    "commonMistakes": [
+      "Defining critical minerals purely by rarity rather than supply risk and importance",
+      "Not connecting the demand to the energy transition specifically",
+      "Ignoring the geographic concentration that creates the geopolitics"
+    ],
+    "followUps": ["Should a country prioritize mining critical minerals domestically even with environmental costs, to reduce that dependence?"]
+  },
+  {
+    "id": "prog-geology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Induced seismicity and public risk",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["induced-seismicity", "ethics", "current-debate"],
+    "question": "A geothermal energy project near a town causes a series of small earthquakes that residents can feel. As the geologist advising the project, what would you recommend, and how do you weigh the project's benefits against the risk?",
+    "lookingFor": "Structured reasoning about traffic light protocols, honest risk communication, and balancing clean energy benefits against felt seismic risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Recommend a monitoring and response framework such as a traffic light protocol that pauses or adjusts operations based on real-time seismicity",
+        "Emphasize transparent communication with residents rather than downplaying the risk",
+        "Weigh the trade-off explicitly, geothermal's climate benefit against the real, if usually small, local hazard, rather than dismissing either side"
+      ],
+      "modelAnswer": "I'd want the project running under a strict traffic light protocol, where injection rates are automatically reduced or paused if seismicity crosses defined thresholds, because that gives you a responsive system instead of just hoping problems don't escalate. I'd also push hard for transparent communication with residents, telling them honestly what's being felt and why, rather than letting the company downplay it, because trust breaks down fast once people feel something is being hidden from them. On the actual trade-off, geothermal is a genuinely low-carbon energy source and induced quakes at that scale are usually more unsettling than dangerous, but I wouldn't wave that away either, if the felt seismicity kept increasing despite mitigation, I'd recommend actually pausing the project rather than treating the climate benefit as an automatic trump card."
+    },
+    "commonMistakes": [
+      "Dismissing residents' concerns because the earthquakes are small",
+      "Recommending no concrete monitoring or response mechanism",
+      "Treating the climate benefit as automatically outweighing local risk with no conditions"
+    ],
+    "followUps": ["How would you decide the magnitude threshold at which the project should actually stop?"]
+  },
+  {
+    "id": "prog-geology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Geological carbon storage",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["carbon-storage", "current-development", "energy"],
+    "question": "Carbon capture and storage relies on injecting CO2 into deep rock formations. What geological conditions make a site suitable, and what could go wrong?",
+    "lookingFor": "Understanding of reservoir and seal geology applied to CCS, plus awareness of leakage and induced seismicity risks.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the need for a porous, permeable reservoir rock overlain by an impermeable caprock or seal",
+        "Mention depth and pressure requirements so CO2 stays in a dense, supercritical state",
+        "Discuss risks such as leakage through faults or old wellbores, and induced seismicity from injection pressure"
+      ],
+      "modelAnswer": "You need a reservoir rock that's porous and permeable enough to actually hold and let CO2 flow into it, like a depleted gas field or a saline aquifer, sitting underneath an impermeable caprock that can seal it in over geological timescales. It also needs to be deep enough, generally over about eight hundred meters, so the pressure keeps the CO2 in a dense, supercritical state rather than behaving like a buoyant gas that's constantly trying to escape upward. What could go wrong is mostly about pathways you didn't account for, an old, poorly sealed well bore or an undetected fault could let CO2 migrate back up, and injecting fluid at pressure into the subsurface always carries some risk of inducing small earthquakes, which is exactly the kind of thing you'd want monitored continuously rather than assumed away."
+    },
+    "commonMistakes": [
+      "Not mentioning the caprock or seal requirement",
+      "Ignoring depth and pressure requirements for supercritical CO2",
+      "Failing to identify realistic failure modes like faults or old wells"
+    ],
+    "followUps": ["How would you monitor a storage site to detect leakage early?"]
+  },
+  {
+    "id": "prog-geology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of disclosing environmental risk to an employer",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["ethics", "mining", "professional-responsibility"],
+    "question": "You're working as a geologist for a mining company and your survey uncovers a real risk of heavy metal contamination reaching a nearby water supply, something the company would rather not have made public before the permit is finalized. What do you do?",
+    "lookingFor": "Structured ethical reasoning that prioritizes public safety and professional integrity over short-term loyalty to an employer, without being naive about how to raise it.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between professional obligation to the employer and duty of care to public and environmental safety",
+        "Reason through steps: raise it formally within the company first, document findings, escalate if ignored",
+        "Land on prioritizing safety and honesty, treating external reporting as a last resort rather than a first move"
+      ],
+      "modelAnswer": "My first step would be to document the finding properly and raise it formally within the company, because it's possible this is just not on the right person's desk yet rather than a deliberate cover up. But I wouldn't let it drop if I were told to sit on it, geologists have a professional and, frankly, a moral responsibility that findings affecting public water supply get taken seriously, and staying quiet to protect a permit timeline isn't something I could live with if contamination actually happened later. If internal escalation genuinely failed, I'd feel obligated to report it to the relevant regulator, even though I understand that could cost me the job, because the alternative is knowingly letting a real risk to people's water go unaddressed."
+    },
+    "commonMistakes": [
+      "Jumping straight to quitting and going to the press with no attempt at internal resolution first",
+      "Prioritizing loyalty to the employer over public safety with no reservations",
+      "Giving a vague answer that avoids actually committing to a course of action"
+    ],
+    "followUps": ["What would you do if the company then pressured you to change your report?"]
+  },
+  {
+    "id": "prog-geology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of fossil fuel exploration work",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["ethics", "energy", "climate"],
+    "question": "Would you be willing to work as an exploration geologist for an oil company, given what we know about climate change? How do you think through that?",
+    "lookingFor": "Nuanced reasoning that doesn't dodge the tension, showing awareness of the industry's role in both the problem and the energy transition, and personal reflection rather than a rehearsed line.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension rather than dismissing the question",
+        "Reason through the nuance, since current energy systems still depend heavily on fossil fuels, and subsurface skills also apply to geothermal and carbon storage",
+        "Reach a considered, personal position rather than a purely diplomatic non-answer"
+      ],
+      "modelAnswer": "I won't pretend there's no tension there, I care about climate change and I'm aware the fossil fuel industry has been central to causing it. But I also think the honest picture is more complicated than refusing to touch it, energy systems still depend heavily on oil and gas today whether or not any individual geologist works in the sector, and a lot of the subsurface skills, understanding reservoirs, seals, and fluid flow, are exactly what you need for things like geothermal energy or carbon storage. If I did work in that space, I think I'd want it to be somewhere actively investing in that transition, because I'd rather use the expertise to help move things forward than pretend I can opt out of the industry's existence entirely by refusing to engage with it."
+    },
+    "commonMistakes": [
+      "Giving a flat yes or no with no reasoning shown",
+      "Refusing to engage with the tension at all",
+      "Pretending the industry has no role in current energy systems"
+    ],
+    "followUps": ["Do you think geologists have a special responsibility here compared to other professions?"]
+  },
+  {
+    "id": "prog-geology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Indigenous land rights and mineral extraction",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["ethics", "land-rights", "resource-extraction"],
+    "question": "A mineral deposit with major economic value sits under land that indigenous communities consider sacred and have opposed developing. How should a geologist think about that conflict?",
+    "lookingFor": "Recognition that geological value doesn't automatically override community consent, and a reasoned view rather than a purely technical answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that economic or geological significance doesn't automatically outweigh a community's rights or consent",
+        "Reference the principle of free, prior and informed consent as the standard that should govern the decision",
+        "Show that a geologist's role is to provide accurate information, not to make the ultimate extraction decision alone"
+      ],
+      "modelAnswer": "My instinct is that finding a valuable deposit doesn't create an automatic right to extract it, the fact that something is geologically significant doesn't override a community's right to decide what happens to land they consider sacred. I think the right framework is free, prior and informed consent, meaning the community gets full, honest information about the deposit and the impacts, and a genuine ability to say no, not just a token consultation before a decision that's already been made. As a geologist my job would be to provide the most accurate assessment I can of what's there and what extracting it would actually involve, but the decision about whether to proceed isn't mine to make unilaterally, and I'd be uncomfortable working for a company that treated community opposition as an obstacle to route around rather than a legitimate answer."
+    },
+    "commonMistakes": [
+      "Treating the deposit's economic value as the deciding factor",
+      "Dismissing the ethical dimension as outside a geologist's job",
+      "Not naming any actual standard or process like free, prior and informed consent"
+    ],
+    "followUps": ["What would you do if you personally disagreed with the community's decision to refuse development?"]
+  },
+  {
+    "id": "prog-geology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Interpreting an unfamiliar rock sequence",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "sedimentology", "field-reasoning"],
+    "question": "Imagine you're handed a core sample showing alternating thin layers of fine sand and mud, each pair only a few millimeters thick, repeating for the whole length of the core. What environment might that represent, and how would you test your idea?",
+    "lookingFor": "Ability to reason from an unfamiliar description to a plausible depositional environment and propose a way to test it.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a plausible interpretation, such as rhythmic tidal or seasonal deposition, given the fine, regular, repeating layering",
+        "Explain the reasoning, that alternating grain size suggests alternating energy conditions pointing to a cyclic process",
+        "Propose a test, such as counting layers against a known cycle length or checking for other cyclic indicators"
+      ],
+      "modelAnswer": "The regular, millimeter scale alternation between sand and mud makes me think of a cyclic depositional process rather than a random one, something like tidal rhythmites, where each pair of layers records a change in current energy between tides, or possibly seasonal varves if this were a lake setting instead. My reasoning is that mud only settles out when the water is calm enough for the finest particles to drop, so you need alternating high and low energy conditions happening regularly for that pattern to build up consistently through the whole core. To actually test the idea I'd want to count how many layer pairs occur over an interval and see if that number matches a known cycle, roughly twenty-nine pairs per lunar month for tides for example, and I'd also look for other cyclic evidence like seasonal changes in organic content if it looked more like a lake environment."
+    },
+    "commonMistakes": [
+      "Giving a vague answer like 'it formed slowly' with no specific environment",
+      "Proposing an interpretation with no way to test it",
+      "Not connecting grain size alternation to changes in energy condition"
+    ],
+    "followUps": ["What would make you doubt the tidal interpretation and favor something else?"]
+  },
+  {
+    "id": "prog-geology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Fieldwork data contradicting an established model",
+    "program": "Geology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "scientific-integrity", "reasoning"],
+    "question": "Suppose your undergraduate mapping project produces field evidence that seems to contradict the accepted structural model for the area, one that's been published by respected researchers. What would you actually do?",
+    "lookingFor": "Scientific humility combined with confidence in one's own observations, showing a process for checking before either dismissing the data or overclaiming.",
+    "idealAnswer": {
+      "bullets": [
+        "First response should be to check for errors in your own measurement, mapping, or interpretation before assuming the published model is wrong",
+        "If the discrepancy holds up, seek a second opinion from a supervisor and revisit the site to gather more data",
+        "Show intellectual honesty either way, willing to report a genuine anomaly, but not overclaiming a paradigm shift from one dataset"
+      ],
+      "modelAnswer": "My first move wouldn't be to assume I'd found something that overturns established research, it would be to go back through my own measurements and mapping first, because a field discrepancy is far more often a measurement error or a misread outcrop than a genuine flaw in a well established model. If I checked everything and the contradiction still held up, I'd take it to my supervisor and go back out to the site for more data, because a single anomalous reading isn't enough to challenge published work, but a pattern across several locations is a different matter. I think the honest position is to stay genuinely open to both possibilities, I could be wrong, or the model could be incomplete for this specific area, and either way the right response is to gather more evidence rather than jump straight to a conclusion in either direction."
+    },
+    "commonMistakes": [
+      "Assuming your own data must be wrong without checking it properly",
+      "Overclaiming a major discovery from a single, unverified observation",
+      "Not mentioning consulting a supervisor or seeking a second opinion"
+    ],
+    "followUps": ["How would you decide how much additional data is 'enough' before drawing a conclusion?"]
+  },
+  {
+    "id": "prog-geology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Anomalous fossil age hypothetical",
+    "program": "Geology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "stratigraphy", "critical-thinking"],
+    "question": "You're examining a rock layer and find a fossil that appears to be millions of years older than the age the surrounding strata should allow. Before concluding you've found something extraordinary, what would you check?",
+    "lookingFor": "A methodical, skeptical approach that rules out mundane explanations, such as reworking or contamination, before entertaining an extraordinary conclusion.",
+    "idealAnswer": {
+      "bullets": [
+        "Check for reworking, where the fossil could have eroded out of an older rock and been redeposited into younger sediment",
+        "Check the dating of the surrounding strata itself for error, rather than assuming the fossil age is the anomaly",
+        "Rule out contamination or mislabeling of the sample before considering that the accepted timeline needs revising"
+      ],
+      "modelAnswer": "Before getting excited I'd want to rule out the boring explanations first, the most common one is reworking, where an older fossil erodes out of an older rock unit and gets redeposited into much younger sediment, which would make it look wildly out of place without actually breaking anything about the timeline. I'd also double check the dating of the surrounding strata itself, since it's just as possible the age constraint on the layer is the thing that's wrong rather than the fossil, and I'd check the specimen and its labeling carefully for any chance of contamination or mix up during collection. Only once I'd genuinely ruled out those mundane explanations would I start taking the extraordinary interpretation seriously, and even then I'd want independent confirmation before treating it as a real finding rather than a fluke."
+    },
+    "commonMistakes": [
+      "Jumping straight to an extraordinary conclusion without ruling out reworking",
+      "Not considering that the strata's dating itself could be wrong",
+      "Ignoring simple explanations like contamination or mislabeling"
+    ],
+    "followUps": ["What physical evidence in the rock would help you tell reworking apart from an in-place fossil?"]
+  }
+]

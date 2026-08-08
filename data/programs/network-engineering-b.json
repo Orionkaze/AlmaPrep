@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-network-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Spanning Tree Protocol reasoning",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["switching", "loops", "protocols"],
+    "question": "If you connect two switches together with two cables for redundancy, what goes wrong without Spanning Tree Protocol, and how does STP fix it?",
+    "lookingFor": "Understanding of broadcast storms and loop dynamics at Layer 2, plus how STP's blocking mechanism prevents them, reasoned rather than memorized.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a loop lets frames circulate endlessly, causing a broadcast storm",
+        "Describe how STP elects a root bridge and blocks redundant paths to prevent loops",
+        "Note the tradeoff: STP sacrifices some path redundancy for loop safety, and mention faster variants like RSTP"
+      ],
+      "modelAnswer": "Without STP, that redundant link creates a loop, and because Ethernet frames don't have a hop limit like IP packets do, a broadcast frame just keeps circulating and duplicating until it saturates the switches, which is a broadcast storm. STP solves this by having the switches elect a root bridge and then calculate the shortest path to it, blocking any port that would create a second path while keeping it ready as a backup. It's a neat trade, you give up some of the redundancy in normal operation so that if the primary link ever fails, the blocked port can activate and traffic reroutes automatically. I know RSTP was designed later because classic STP's convergence time of around thirty seconds was too slow for modern networks."
+    },
+    "commonMistakes": [
+      "Confusing STP with routing protocols like OSPF",
+      "Saying STP prevents redundancy rather than managing it",
+      "Not knowing why loops are catastrophic at Layer 2 specifically"
+    ],
+    "followUps": ["Why is a Layer 2 loop worse than a Layer 3 routing loop?"]
+  },
+  {
+    "id": "prog-network-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "TCP congestion control and bufferbloat",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["tcp", "congestion", "performance"],
+    "question": "Your video call is smooth but web pages feel sluggish whenever a large file is uploading in the background on the same connection. What's likely happening, and how would you explain it using what you know about TCP?",
+    "lookingFor": "Understanding of bufferbloat, queueing delay, and how TCP's congestion control interacts with oversized buffers.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that large router or modem buffers let TCP fill the queue before dropping packets, causing bufferbloat",
+        "Explain how TCP keeps increasing its send rate until it sees loss, so it deliberately fills any buffer it's given",
+        "Suggest a fix such as QoS and traffic shaping, or active queue management like CoDel"
+      ],
+      "modelAnswer": "That's a classic sign of bufferbloat. TCP's congestion control is designed to keep pushing more data until it detects a dropped packet, which it reads as a sign of congestion, but if the router in between has a large buffer, packets just queue up instead of getting dropped, so TCP never backs off and the queue keeps growing. That queueing delay adds latency to everything else sharing the link, which is why your call survives on priority but ordinary web requests feel like they're crawling. The practical fixes are things like active queue management, for example CoDel, which drops packets earlier to signal congestion sooner, or just applying QoS so real time traffic gets priority over the bulk upload. I find it a nice example of how a well-intentioned design choice, a bigger buffer to avoid drops, can actually make performance worse."
+    },
+    "commonMistakes": [
+      "Blaming bandwidth alone without mentioning queueing delay",
+      "Not knowing what bufferbloat is",
+      "Suggesting only 'buy more bandwidth' without addressing the buffering mechanism"
+    ],
+    "followUps": ["How would QoS specifically address this without adding more bandwidth?"]
+  },
+  {
+    "id": "prog-network-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "BGP trust model and route hijacking",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["bgp", "routing", "security"],
+    "question": "BGP, the protocol that decides how traffic moves between networks across the internet, largely runs on trust rather than verification. Why is that a problem, and what does a real-world BGP hijack look like?",
+    "lookingFor": "Grasp of BGP's lack of built-in authentication and the practical consequence of route hijacking.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that BGP routers largely accept route announcements from peers without cryptographically verifying who owns the address space",
+        "Describe a hijack scenario where an operator or attacker announces a more specific route for prefixes they don't own, pulling traffic toward them",
+        "Mention mitigations like RPKI, route origin validation, and note adoption is still not universal"
+      ],
+      "modelAnswer": "BGP was built in an era where the internet was a small, trusted set of networks, so it assumes any route your neighbor announces is legitimate rather than checking it against who actually owns that address space. In a hijack, someone, sometimes by misconfiguration and sometimes maliciously, announces a route for IP addresses that belong to another organisation, and because routers often prefer the more specific route, traffic for that whole block can get pulled toward the wrong network, sometimes for interception and sometimes it just breaks connectivity entirely. There have been real incidents where a country's traffic briefly rerouted through another nation's networks this way. The fix that's slowly rolling out is RPKI, which lets a network cryptographically prove it's authorised to announce a given prefix, but adoption has been gradual because it requires coordination across thousands of independent operators, which is really the core challenge of internet-scale trust."
+    },
+    "commonMistakes": [
+      "Confusing BGP hijacking with DNS spoofing",
+      "Vague answer without a concrete mechanism like the more-specific-prefix preference",
+      "Not knowing RPKI or any mitigation exists"
+    ],
+    "followUps": ["Why has RPKI adoption been slow if the fix already exists?"]
+  },
+  {
+    "id": "prog-network-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Variable-length subnet design",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["subnetting", "ip-addressing", "design"],
+    "question": "A company gives you 172.16.0.0/24 to split across three departments needing 100, 50, and 20 hosts. How would you allocate it, and why not just split it into three equal subnets?",
+    "lookingFor": "Applied understanding of VLSM and efficient address allocation, not just formula recitation.",
+    "idealAnswer": {
+      "bullets": [
+        "Size each subnet to the nearest block that fits the requirement, a /25 for 100 hosts, /26 for 50, /27 for 20",
+        "Explain why equal splitting wastes addresses for the smaller departments",
+        "Order the allocation largest-to-smallest to avoid fragmenting the space"
+      ],
+      "modelAnswer": "I'd start with the biggest requirement first. A hundred hosts needs a /25, which gives 126 usable addresses, so I'd assign 172.16.0.0/25 to that department. The fifty-host department needs a /26, giving 62 usable addresses, so that becomes 172.16.0.128/26. The twenty-host department only needs a /27, giving 30 usable addresses, so that's 172.16.0.192/27, and that still leaves 172.16.0.224/27 free for future growth. If I'd just split the /24 into three equal chunks, everyone would get a /26 with 62 addresses each, which wastes a lot of space on the twenty-host department and, worse, doesn't leave room to grow the hundred-host one. Sizing to actual need and allocating largest-first is what VLSM is really for."
+    },
+    "commonMistakes": [
+      "Splitting evenly without considering actual host counts",
+      "Forgetting to reserve network and broadcast addresses",
+      "Allocating smallest-first and running out of contiguous space"
+    ],
+    "followUps": ["What would you do if the 100-host department later needed 130 hosts?"]
+  },
+  {
+    "id": "prog-network-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Quality of Service prioritization tradeoffs",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["qos", "traffic-management"],
+    "question": "If you could only prioritize one type of traffic on a congested office network, video calls or a large software update download, which would you pick and why?",
+    "lookingFor": "Reasoning about latency-sensitive versus throughput-sensitive traffic, not just a gut pick.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish latency-sensitive real-time traffic from throughput-sensitive bulk traffic",
+        "Explain that video calls degrade with jitter and delay while downloads just take longer without breaking",
+        "Acknowledge the tradeoff honestly, prioritizing calls slows the download visibly"
+      ],
+      "modelAnswer": "I'd prioritise the video call every time, because the two types of traffic fail in very different ways. A download that gets less bandwidth just takes longer, it doesn't actually break, whereas a video call is sensitive to latency and jitter, so if packets get delayed even briefly the call starts stuttering or dropping, and that's a much worse experience for however many people are in that meeting. QoS lets me mark real-time traffic for priority queuing so it jumps ahead of the bulk download when the link is congested, and the tradeoff is honest, the download will crawl while the call is happening, but that's the right cost to pay since nobody can catch up a broken conversation the way they can just wait for a file."
+    },
+    "commonMistakes": [
+      "Treating all traffic as equally sensitive to delay",
+      "Not knowing the difference between latency and throughput",
+      "Assuming QoS can make both perfect simultaneously with no tradeoff"
+    ],
+    "followUps": ["How would you configure this without manually flagging every application?"]
+  },
+  {
+    "id": "prog-network-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "MTU mismatch and packet fragmentation",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["mtu", "fragmentation", "troubleshooting"],
+    "question": "A user can browse most websites fine but certain pages hang or load partially, and ping works perfectly. What might be going on, and how does it relate to MTU?",
+    "lookingFor": "Recognition of the classic MTU black-hole symptom where small packets succeed but larger ones vanish.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that small ping packets succeed while larger data packets get silently dropped, pointing to an MTU mismatch",
+        "Explain that routers may need to fragment oversized packets, and if fragmentation or the ICMP message needed to trigger it is blocked, packets just vanish",
+        "Suggest a fix like MSS clamping or checking that ICMP fragmentation-needed messages aren't being filtered by a firewall"
+      ],
+      "modelAnswer": "That pattern, small pings working but real page loads hanging, is a classic symptom of an MTU black hole. Ping uses small packets, so they fit through every link along the path, but a full web page load sends larger packets that might exceed the MTU somewhere in between, maybe a VPN or tunnel that adds overhead and shrinks the effective MTU. Normally a router would send back an ICMP fragmentation needed message so the sending host can shrink its packets, but if a firewall along the way is blocking ICMP, that signal never arrives, and the oversized packets just get silently dropped instead of fragmented. I'd check for a firewall filtering that ICMP message first, and if that's not fixable I'd look at MSS clamping on the router to force TCP to negotiate a smaller segment size from the start."
+    },
+    "commonMistakes": [
+      "Jumping straight to a DNS explanation without engaging with the ping-works clue",
+      "Not knowing what ICMP fragmentation-needed messages are for",
+      "Suggesting a fix unrelated to MTU, like just restarting the router"
+    ],
+    "followUps": ["Why would a VPN tunnel specifically be a common cause of this?"]
+  },
+  {
+    "id": "prog-network-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "ARP spoofing mechanics",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["security", "arp", "man-in-the-middle"],
+    "question": "ARP has no authentication built in. Walk me through how an attacker on the same local network could use that to intercept someone else's traffic.",
+    "lookingFor": "Clear mechanistic explanation of ARP spoofing and the resulting man-in-the-middle position, not just naming the attack.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain ARP's role in mapping IP to MAC addresses and that devices trust any reply without verification",
+        "Describe how an attacker sends forged ARP replies claiming to own the gateway's IP, redirecting traffic through themselves",
+        "Mention a mitigation, such as dynamic ARP inspection, static ARP entries, or switch port security"
+      ],
+      "modelAnswer": "ARP's whole job is resolving an IP address to a MAC address on the local network, but it just trusts whatever reply comes back, there's no signature or check against who's actually authorised to answer for that IP. So an attacker on the same subnet can send out unsolicited ARP replies telling the victim's machine that the attacker's MAC address belongs to the default gateway's IP, and telling the gateway that the attacker's MAC belongs to the victim's IP. Both sides update their ARP tables and start sending traffic through the attacker without either of them asking for it, which lets the attacker sit in the middle, read or even modify traffic, before quietly forwarding it on so nothing looks broken. On a managed switch you can mitigate this with dynamic ARP inspection, which checks ARP replies against a trusted binding table, or in smaller setups just using static ARP entries for critical devices."
+    },
+    "commonMistakes": [
+      "Confusing ARP spoofing with DNS spoofing or IP spoofing",
+      "A vague 'hacker intercepts the traffic' with no actual mechanism",
+      "Not knowing any mitigation"
+    ],
+    "followUps": ["Would this attack work across two different subnets? Why or why not?"]
+  },
+  {
+    "id": "prog-network-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Load balancing algorithm tradeoffs",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["load-balancing", "scalability"],
+    "question": "A load balancer can spread requests round robin, or route each user to whichever server has the fewest active connections. When might round robin actually be the worse choice?",
+    "lookingFor": "Understanding that simple algorithms fail when requests have unequal cost.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain round robin distributes requests equally in count but ignores how long or heavy each request is",
+        "Show that if request sizes vary a lot, round robin can overload one server while others sit idle",
+        "Contrast with least-connections, which adapts to actual current load"
+      ],
+      "modelAnswer": "Round robin works well when requests are roughly equal in cost, but it just counts requests, it doesn't know anything about how long each one takes. So if one server happens to get a run of expensive requests, like large video transcodes, while another gets a run of quick lookups, round robin will happily keep sending new requests to the already-overloaded server just because it's its turn. Least-connections avoids that because it actually looks at how many requests each server is currently handling and sends new ones to whichever is least busy, so it self-corrects for uneven load in a way round robin structurally can't. I'd pick round robin for simple, uniform workloads because it's cheap and predictable, but for anything with variable request cost I'd lean toward least-connections or something even smarter like weighted response time."
+    },
+    "commonMistakes": [
+      "Assuming round robin is always fair because it distributes equally",
+      "Not connecting the answer to request cost variability",
+      "Confusing load balancing with failover"
+    ],
+    "followUps": ["What would make even least-connections insufficient?"]
+  },
+  {
+    "id": "prog-network-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Network partitions and consistency tradeoffs",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["distributed-systems", "reliability", "design"],
+    "question": "If a network link between two data centers running the same service goes down, the system can either stay available on both sides with possibly inconsistent data, or become unavailable on one side to guarantee consistency. Which would you choose for a banking system versus a social media like counter, and why?",
+    "lookingFor": "Reasoning about the availability-consistency tradeoff during network partitions, applied contextually rather than abstractly.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize this as a network-partition tradeoff between consistency and availability",
+        "Argue banking needs consistency, avoiding double-spending or phantom balances, even at the cost of availability",
+        "Argue the like counter can tolerate temporary inconsistency in exchange for staying available"
+      ],
+      "modelAnswer": "This is really a question about what a network partition costs you if you get it wrong. For a banking system I'd choose consistency over availability, because if both data centers keep accepting withdrawals independently during a split, you risk someone withdrawing the same money twice, and reconciling that after the fact is a mess nobody wants, financially or legally, so I'd rather the affected side goes read only or unavailable until the link is restored. A like counter on a social post is the opposite case, if the two sides briefly disagree on the exact count during a partition, nobody's harmed, the numbers just get reconciled once connectivity returns, so I'd keep both sides available and accept the temporary inconsistency, because staying up matters more than being exactly right for a few seconds. The network is the thing forcing the choice, you can't have perfect consistency and perfect availability once it's actually partitioned, so the right answer depends entirely on what a wrong number actually costs you."
+    },
+    "commonMistakes": [
+      "Picking the same answer for both without reasoning about consequences",
+      "Not connecting the answer to the network partition specifically",
+      "Overcomplicating with unrelated distributed systems jargon"
+    ],
+    "followUps": ["Once the link comes back, how would you reconcile the diverged data?"]
+  },
+  {
+    "id": "prog-network-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Software-defined networking architecture",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["sdn", "architecture", "emerging"],
+    "question": "In traditional networking, each router makes its own forwarding decisions. What does software-defined networking change about that, and what's the actual benefit?",
+    "lookingFor": "Understanding of control-plane and data-plane separation and centralized programmability, with an honest look at the tradeoff.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain SDN separates the control plane, decision-making, from the data plane, packet forwarding, and centralizes control",
+        "Describe the benefit, network-wide policy can be programmed and changed centrally rather than device by device",
+        "Note a realistic limitation, such as the controller becoming a single point of failure or a bottleneck if not designed carefully"
+      ],
+      "modelAnswer": "In a traditional network, every router runs its own control plane, working out its routing table independently and talking to its neighbours, so if you want to change a policy across the network you're touching every device one by one. SDN separates that decision-making, the control plane, from the actual packet forwarding, the data plane, and centralises it in a controller that has a full view of the network and pushes forwarding rules down to the switches, often using something like OpenFlow. The real benefit is programmability, you can write software that reacts to conditions and reconfigures the whole network's behaviour from one place instead of manually touching each box, which is a big part of why data centres and cloud providers adopted it. The obvious risk is that the controller becomes a single point of failure or a bottleneck, so in practice it needs to be redundant and it has to make decisions fast enough not to become the thing slowing packets down."
+    },
+    "commonMistakes": [
+      "Describing SDN as just cloud networking with no mechanism",
+      "Not distinguishing the control plane from the data plane",
+      "Ignoring the failure-mode tradeoff of centralization"
+    ],
+    "followUps": ["Why might a large enterprise be slow to adopt SDN despite the benefits?"]
+  },
+  {
+    "id": "prog-network-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Zero trust network segmentation",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["security", "zero-trust", "segmentation"],
+    "question": "Traditional network security often trusts anything already inside the office network. What's the reasoning behind zero trust instead, and what would you actually change on the network to implement it?",
+    "lookingFor": "Understanding of perimeter-trust weakness and a concrete segmentation or verification mechanism, not just the buzzword.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that perimeter-based trust fails once an attacker or compromised device is already inside",
+        "Describe zero trust's principle, verify every request regardless of network location, and grant least-privilege access",
+        "Give a concrete network-level change, like microsegmentation or per-application access control"
+      ],
+      "modelAnswer": "The old model treats the network perimeter like a castle wall, once you're inside the office network you're broadly trusted, but that falls apart the moment one device gets compromised, a phishing victim or an infected laptop, because from there an attacker can often move sideways to anything else on the same network with very little resistance. Zero trust flips that assumption and says location doesn't grant trust, every request has to be verified and every device only gets access to exactly what it needs, nothing implicit. On the actual network I'd implement that with microsegmentation, breaking the flat network into small zones so a device in one segment can't reach another unless there's an explicit policy allowing it, combined with things like certificate-based device authentication so it's not just being on the office wifi that grants trust. It's more operational overhead, but it means one compromised laptop doesn't become a free pass to everything else."
+    },
+    "commonMistakes": [
+      "Describing zero trust as purely a buzzword with no mechanism",
+      "Confusing it with just using a VPN",
+      "Not giving any concrete network-level implementation detail"
+    ],
+    "followUps": ["What's the main practical cost of implementing this?"]
+  },
+  {
+    "id": "prog-network-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "TLS handshake reasoning",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["tls", "encryption", "security"],
+    "question": "When your browser connects to a secure website, it and the server have never met before and share no secret. How do they end up agreeing on an encryption key that nobody eavesdropping can figure out?",
+    "lookingFor": "Conceptual grasp of asymmetric key exchange bootstrapping symmetric encryption.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the server presents a certificate with a public key to prove its identity",
+        "Describe that a key exchange like Diffie-Hellman lets both sides agree on a shared secret without ever transmitting it directly",
+        "Note the handshake then switches to fast symmetric encryption for the actual session using that shared secret"
+      ],
+      "modelAnswer": "It works because they don't need to already share a secret to create one together. The server presents a certificate containing its public key, and modern TLS typically uses something like a Diffie-Hellman exchange, where both sides each generate some private randomness, exchange certain public values, and each independently computes the same shared secret using maths that an eavesdropper watching the exchanged values can't reverse. So even though someone watching every byte of that handshake sees the public values going back and forth, they can't derive the resulting shared key from them. Once that shared secret exists, the connection switches to symmetric encryption for the actual data, because symmetric encryption is far faster than doing asymmetric operations on every packet. The certificate part is really about proving the server is who it claims to be, and the key exchange part is what actually creates the shared secret."
+    },
+    "commonMistakes": [
+      "Saying the server just sends the password over an encrypted channel, which is circular",
+      "Not distinguishing asymmetric key exchange from symmetric session encryption",
+      "Confusing certificates, which prove identity, with the actual key exchange mechanism"
+    ],
+    "followUps": ["What stops an attacker from just presenting their own certificate to the browser?"]
+  },
+  {
+    "id": "prog-network-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Anycast routing",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["routing", "dns", "cdn"],
+    "question": "Major DNS root servers and CDNs use the same IP address advertised from many different physical locations around the world. How does the internet know which physical server to actually send you to?",
+    "lookingFor": "Understanding of anycast and how ordinary BGP routing resolves it to the nearest instance.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain anycast means the same IP is announced from multiple locations simultaneously",
+        "Describe that normal BGP routing, shortest AS path, naturally sends each user to whichever announcing location is topologically closest",
+        "Note the benefit, this gives both load distribution and resilience, since a failed site simply withdraws its route"
+      ],
+      "modelAnswer": "The trick is that it's the same IP address being announced from lots of different physical locations at once, and it's ordinary BGP routing that sorts out which one you actually reach, because each network along the path just picks whichever announcement of that address looks closest by its normal routing metrics, typically shortest AS path. So someone in Tokyo and someone in London both send traffic to the same address, but the routers along the way naturally steer each of them to whichever site is topologically nearest, without either user doing anything special. It's a really elegant use of an existing mechanism, and it gives you two things at once, load gets naturally distributed because everyone routes to their nearest site, and resilience improves because if one location goes down it simply stops announcing that route and traffic silently reroutes to the next nearest one, so there's no single point of failure the way there would be with one server at one address."
+    },
+    "commonMistakes": [
+      "Confusing anycast with a DNS-based load balancer, which is a different mechanism",
+      "Not explaining why routing naturally picks the nearest instance",
+      "Missing the resilience benefit when one site fails"
+    ],
+    "followUps": ["What's a downside of anycast for something like a TCP connection rather than DNS lookups?"]
+  },
+  {
+    "id": "prog-network-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Wireless channel planning and interference",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["wifi", "wireless", "interference"],
+    "question": "You're setting up Wi-Fi access points across three overlapping rooms. Why can't you just leave every access point on the same channel for simplicity, or use three channels that are close together numerically?",
+    "lookingFor": "Understanding of co-channel interference and the need for genuinely non-overlapping channel reuse.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that access points on the same or overlapping channel within range of each other compete for airtime and interfere",
+        "Note that on 2.4GHz, channels need real spacing, like 1, 6, 11, because numerically close channels still overlap in frequency",
+        "Describe the practical fix, non-overlapping channels for overlapping coverage, and consider the 5GHz band for more headroom"
+      ],
+      "modelAnswer": "If every access point sits on the same channel, they're all sharing one radio frequency in the areas where their coverage overlaps, so devices essentially have to take turns talking, which tanks throughput even though each AP individually looks fine. Numerically close channels don't actually solve it on the 2.4 gigahertz band either, because the channels are spaced only 5 megahertz apart while each one is 20 megahertz wide, so channels like 1 and 3 actually overlap in frequency and still interfere, which is why the standard advice is to only use 1, 6, and 11, the three channels that don't overlap at all. So for three overlapping rooms I'd assign 1, 6, and 11 to the access points so that any device caught in an overlap zone is hearing genuinely separate frequencies rather than two APs stepping on each other. If the hardware supports it I'd also push more devices onto 5 gigahertz, since it has far more non-overlapping channels and much less interference from neighbouring networks and other devices."
+    },
+    "commonMistakes": [
+      "Assuming any distinct channel number is non-overlapping",
+      "Not knowing the difference between 2.4GHz channel width and channel spacing",
+      "Ignoring the option of the 5GHz band"
+    ],
+    "followUps": ["How would your plan change in a densely packed apartment building with many neighboring networks?"]
+  },
+  {
+    "id": "prog-network-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Multicast use cases",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["multicast", "efficiency", "protocols"],
+    "question": "A company wants to stream the same live video to 500 employees across its internal network. Why might multicast be a better choice than just sending 500 separate unicast streams, and when would multicast not be worth the trouble?",
+    "lookingFor": "Understanding of multicast's bandwidth efficiency and its real-world adoption limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain multicast sends one stream that network devices replicate only where needed, instead of duplicating traffic per viewer",
+        "Note the tradeoff, multicast requires network-wide support like IGMP and multicast routing, which is hard to guarantee across the open internet",
+        "Recognize why real streaming services mostly use unicast through CDNs instead"
+      ],
+      "modelAnswer": "With 500 separate unicast streams, the source has to send the same video 500 times, and that traffic multiplies with every link it crosses, which can saturate the network even though everyone's watching identical content. Multicast solves this by sending a single stream to a multicast group address, and it's the routers and switches along the way that replicate it only at the points where the tree actually branches toward different receivers, so the source only sends once and the network does the fan-out efficiently. Where it falls apart is that every device in the path needs to support multicast routing and group management protocols like IGMP, and that's realistic to guarantee on a controlled internal network but not across the open internet, where you can't count on every ISP's equipment cooperating. That's exactly why big streaming platforms use unicast through CDNs instead, even though it's less bandwidth efficient in theory, because it actually works reliably end to end without depending on every network in between supporting the same feature."
+    },
+    "commonMistakes": [
+      "Confusing multicast with broadcast",
+      "Not mentioning the internet-wide support limitation",
+      "Assuming multicast is always strictly better with no tradeoff"
+    ],
+    "followUps": ["What's the difference between multicast and just broadcasting to everyone?"]
+  },
+  {
+    "id": "prog-network-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering unauthorized network monitoring",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "privacy", "security"],
+    "question": "During a work placement, you're given admin access to the network for a routine task, and you notice the company is quietly capturing and storing every employee's browsing traffic without their knowledge. What do you do?",
+    "lookingFor": "Structured ethical reasoning weighing employer trust, employee privacy, and appropriate escalation, not a snap verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between staying inside the scope of granted access and the discomfort of what's been found",
+        "Reason through it, first check whether there's a legitimate policy or legal basis before assuming wrongdoing",
+        "Land on responsible escalation through the right channel rather than ignoring it or acting unilaterally"
+      ],
+      "modelAnswer": "My first move wouldn't be to assume the worst, some companies do have a documented monitoring policy that employees technically consented to even if it's not well publicised, so I'd try to find out whether this is actually covered by a policy or a legal requirement before treating it as clearly wrong. But if I found no such policy, or it was clearly outside anything reasonable, I wouldn't just quietly carry on as if I hadn't seen it, because that access was given to me for a specific task and using it to go digging further would be its own problem, so I'd stop there and raise what I'd already seen with my supervisor or, if that felt unsafe, with someone like HR or a compliance contact. I'd stay factual rather than accusatory, and I'd avoid taking matters into my own hands like copying evidence or telling employees myself, because as a placement student I don't have the full picture, and escalating through a proper channel is more likely to actually fix it than acting alone."
+    },
+    "commonMistakes": [
+      "Jumping straight to telling all coworkers without escalating through proper channels",
+      "Assuming it's automatically illegal without checking for policy or jurisdiction",
+      "Deciding to just ignore it because it's not their problem"
+    ],
+    "followUps": ["What would you do differently if your supervisor was the one who told you to set this up?"]
+  },
+  {
+    "id": "prog-network-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Encryption backdoors for law enforcement",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "encryption", "policy"],
+    "question": "Governments sometimes argue that messaging apps should build in a backdoor so law enforcement can access encrypted communications during investigations. As someone who'd be building these systems, where do you stand?",
+    "lookingFor": "A reasoned position weighing legitimate law enforcement need against the security cost of a backdoor, not a one-line verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between legitimate investigative need and the security cost of a backdoor",
+        "Explain the technical reality, a backdoor built for the right people is a vulnerability anyone can eventually find and use",
+        "Land on a position with reasoning, such as opposing mandated backdoors while naming alternative investigative tools"
+      ],
+      "modelAnswer": "I understand the instinct behind it, there are real cases where encrypted communication has shielded genuinely serious crimes, and I don't think that concern is dishonest. But from an engineering standpoint, I don't think you can build a backdoor that only works for the right people, any deliberate weakness in an encryption system is a weakness that exists for anyone who finds it, whether that's a foreign intelligence service, a criminal group, or just a researcher who publishes it, and there's a long history of exactly that happening with supposedly controlled access mechanisms. So I'd come down against mandated backdoors, not because I don't take the investigative need seriously, but because I think the actual outcome is that you weaken security for every ordinary user of the system to catch a small number of bad actors who can often move to other tools anyway. I think the more honest answer for law enforcement lies in metadata analysis, device-level access with a warrant, and old-fashioned investigative work, rather than architecting a hole into the encryption itself."
+    },
+    "commonMistakes": [
+      "Giving no actual position, just listing both sides",
+      "Not engaging with the technical reason backdoors can't stay selective",
+      "Dismissing law enforcement's concern as illegitimate rather than engaging with it"
+    ],
+    "followUps": ["Does your answer change for a case involving child safety specifically?"]
+  },
+  {
+    "id": "prog-network-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Net neutrality and traffic prioritization",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["ethics", "policy", "net-neutrality"],
+    "question": "An internet provider wants to let companies pay extra so their traffic gets faster delivery to customers, while everyone else's traffic stays as is. Is that a fair way to run a network?",
+    "lookingFor": "A reasoned position on net neutrality that considers both the ISP's technical case and the fairness or competition concern.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the legitimate technical point, prioritization is a real engineering tool used for good reasons like QoS",
+        "Identify the fairness concern, prioritizing by who paid rather than the traffic's nature disadvantages smaller players",
+        "Land on a reasoned position rather than a flat yes or no"
+      ],
+      "modelAnswer": "Technically, prioritising traffic isn't inherently wrong, that's literally what QoS is for, giving latency-sensitive traffic priority over bulk downloads makes a network work better for everyone. What makes this different is that it's not prioritising by the nature of the traffic, it's prioritising by who paid, which turns the network from something that treats data on its technical merits into something that treats it on its budget. I think that's a real problem for fairness, because a small startup with a genuinely better product can't out-fund an established company for faster delivery to its own customers, and that's exactly the kind of gatekeeping the open internet was supposed to avoid. I'd lean against allowing paid prioritisation between competing services, though I do think there's a legitimate case for providers being able to prioritise clearly latency-critical categories of traffic, like emergency services or real time medical data, based on the nature of the traffic rather than who's paying for it."
+    },
+    "commonMistakes": [
+      "Treating all prioritization as identical, missing the technical versus commercial distinction",
+      "Giving no clear stance",
+      "Ignoring the competitive or fairness dimension entirely"
+    ],
+    "followUps": ["How would you distinguish fair technical prioritization from anticompetitive prioritization in practice?"]
+  },
+  {
+    "id": "prog-network-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "IPv6 adoption stalling",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["ipv6", "current-events", "infrastructure"],
+    "question": "IPv6 has been available for over 25 years and solves IPv4 address exhaustion, yet global adoption is still well under half of all traffic. Why do you think it's taken this long?",
+    "lookingFor": "Awareness of the real structural reasons for slow adoption, not just people being lazy.",
+    "idealAnswer": {
+      "bullets": [
+        "Point to NAT as the reason the exhaustion problem was masked, reducing urgency to switch",
+        "Mention the coordination and cost problem, upgrading requires everyone in a chain to move together, plus the ongoing cost of running dual stack",
+        "Show awareness this is genuinely still an active issue, not a solved one"
+      ],
+      "modelAnswer": "I think the honest answer is that NAT quietly solved the crisis that IPv6 was meant to fix. Once network address translation let one public IPv4 address cover an entire home or office of devices, the pressure that should have forced migration mostly disappeared, so organisations were left facing a real cost, retraining staff, upgrading old hardware and software that only understood IPv4, running both protocols side by side during the transition, for a benefit that felt abstract rather than urgent. It's also a coordination problem, moving to IPv6 only pays off fully once enough of the internet supports it, so individual networks had limited incentive to go first. I don't think this is a solved problem at all, mobile networks have actually pushed adoption a lot further than fixed-line ones have, but there are still plenty of legacy systems and ISPs that haven't made the jump, and I find it a good example of how a purely better technical solution can still lose to inertia if the pain of not switching is spread out and postponable."
+    },
+    "commonMistakes": [
+      "Not knowing NAT is the reason urgency dropped",
+      "Treating it as a solved or finished transition",
+      "No structural reasoning, just saying people don't want to change"
+    ],
+    "followUps": ["What might finally force full IPv6 adoption?"]
+  },
+  {
+    "id": "prog-network-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Encrypted DNS and enterprise visibility",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["dns", "privacy", "current-events"],
+    "question": "Encrypting DNS lookups with DNS-over-HTTPS protects users from eavesdroppers, but network administrators and some security teams have pushed back against it. Why would encrypting something as basic as a DNS lookup be controversial?",
+    "lookingFor": "Awareness of the real debate on both sides, not just a reflexive 'encryption is good' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the privacy benefit, DNS lookups reveal every site visited, and encrypting them stops local eavesdropping or tampering",
+        "Explain the administrator's concern, enterprise networks rely on DNS visibility for security filtering and malware detection",
+        "Show balanced awareness that both concerns are legitimate rather than dismissing one side"
+      ],
+      "modelAnswer": "Encrypting DNS closes a real gap, ordinary DNS lookups are sent in plain text, so anyone on the path, your ISP, someone on public wifi, can see literally every domain you visit even if the site itself uses HTTPS, and DNS-over-HTTPS fixes that by wrapping the lookup in the same encryption as normal web traffic. The pushback comes from network administrators who legitimately rely on seeing DNS queries to do their job, schools filtering harmful content, companies detecting malware calling out to a command server, and if every device on the network encrypts its DNS and often routes it to a different resolver entirely, that visibility just disappears, and some of that filtering can be bypassed outright. There's also a subtler concern, if everyone funnels their DNS lookups through one or two big encrypted resolvers instead of their ISP's, that actually concentrates a huge amount of browsing data in fewer hands, which isn't obviously a privacy win either. I don't think there's a clean answer, it's really a genuine trade between individual privacy from local eavesdroppers and an organisation's need to see and control what's happening on its own network."
+    },
+    "commonMistakes": [
+      "Only seeing the privacy side and dismissing enterprise concerns as controlling",
+      "Not knowing what DoH actually protects against",
+      "Missing the nuance of trust becoming concentrated in fewer resolvers"
+    ],
+    "followUps": ["How might an enterprise network reconcile both concerns?"]
+  },
+  {
+    "id": "prog-network-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in network operations",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["ai", "automation", "current-events"],
+    "question": "Network vendors are increasingly marketing AI-driven tools that can automatically detect anomalies and even reconfigure the network without a human approving each change. What excites you about that, and what worries you?",
+    "lookingFor": "Balanced awareness of both the operational benefit and the real risk of automated network changes.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the benefit, faster anomaly detection and response than a human watching dashboards, especially at scale",
+        "Identify the risk, an AI system acting on a misclassified anomaly could make a bad change faster than any human could catch",
+        "Suggest a sensible middle ground, such as human approval for high-impact changes and autonomy only for low-risk, reversible ones"
+      ],
+      "modelAnswer": "What excites me is the speed and scale, a human watching dashboards just can't catch a subtle traffic anomaly across thousands of devices as fast as a model trained to spot deviations from normal patterns can, and for things like detecting the early signs of a DDoS attack, faster reaction genuinely matters. What worries me is exactly that speed when it's wrong, a human misreading a graph might make one bad call, but an AI system automatically reconfiguring routing or blocking traffic across a whole network based on a misclassified anomaly could cause an outage faster than anyone could notice and intervene, and network changes aren't always easy to instantly undo cleanly. I think the sensible middle ground is tiering it by risk, let the system act autonomously on things that are low-impact and easily reversible, like temporarily throttling a suspicious flow, but require a human to approve anything that's high-impact or hard to reverse, like a major routing change, at least until the system has a long track record of being trustworthy in that specific environment."
+    },
+    "commonMistakes": [
+      "All enthusiasm with no risk awareness, or the reverse",
+      "A vague 'AI is scary' with no specific network failure mode",
+      "Not proposing any practical safeguard"
+    ],
+    "followUps": ["How would you build trust in such a system before giving it more autonomy?"]
+  },
+  {
+    "id": "prog-network-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantum computing threat to network encryption",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["quantum", "encryption", "current-events"],
+    "question": "There's growing discussion about quantum computers eventually breaking the encryption that secures internet traffic today. If that's still years away, why are network and security teams already worrying about it?",
+    "lookingFor": "Awareness of harvest-now-decrypt-later risk and the practical urgency despite the threat itself being non-immediate.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a sufficiently powerful quantum computer could break the asymmetric cryptography underpinning most key exchange",
+        "Identify harvest-now-decrypt-later, traffic captured today could be stored and decrypted once quantum computers are capable",
+        "Mention the practical response, migrating cryptography across the internet's infrastructure takes years, so the transition has to start early"
+      ],
+      "modelAnswer": "The threat itself might be years off, but the risk isn't purely future-dated, because of something called harvest now, decrypt later. An adversary can capture and store encrypted traffic today even without being able to break it yet, and simply wait until a capable quantum computer exists to decrypt it retroactively, so anything that needs to stay confidential for a long time, government communications, medical records, long-term corporate secrets, is already exposed to that risk the moment it's transmitted with today's encryption. On top of that, migrating the cryptography underlying the entire internet, the algorithms baked into browsers, certificates, VPNs, hardware, realistically takes years of coordinated effort even once a replacement standard exists, so waiting until quantum computers actually arrive would mean starting the fix far too late. That's why NIST has already standardised post-quantum algorithms and why some organisations are starting hybrid approaches now, combining classical and post-quantum encryption, so they're not caught unprepared."
+    },
+    "commonMistakes": [
+      "Treating it as a non-issue because quantum computers aren't there yet",
+      "Not knowing about harvest-now-decrypt-later",
+      "Missing the multi-year migration timeline as the actual driver of urgency"
+    ],
+    "followUps": ["What kind of data would you prioritise protecting first if you were in charge of this transition?"]
+  },
+  {
+    "id": "prog-network-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a zero-downtime hospital network",
+    "program": "Network Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "design", "reliability"],
+    "question": "You're asked to design the network for a new hospital wing, where losing connectivity could directly affect patient monitoring and care. Walk me through how you'd approach it.",
+    "lookingFor": "Structured design thinking that prioritizes redundancy, segmentation, and failure isolation over a generic feature checklist.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize redundancy at every layer, dual internet links, redundant core switches, physically diverse cabling paths",
+        "Segment critical systems like patient monitors onto isolated VLANs separate from staff or guest traffic",
+        "Plan for graceful degradation and regular failover testing, not just theoretical redundancy"
+      ],
+      "modelAnswer": "I'd start from the assumption that something will eventually fail, and design so that no single failure can take down anything patient-critical. That means redundancy at every layer that matters, two separate internet connections from different providers if possible, redundant core switches so one hardware failure doesn't isolate a ward, and cabling run through physically different paths so one cut cable or one construction accident can't sever both. Then I'd segment aggressively, patient monitoring and life support devices would sit on their own tightly locked-down VLAN, separate from staff laptops and definitely separate from guest wifi, so a compromised laptop or a saturated guest network can never touch anything that affects patient safety. Beyond just building in redundancy, I'd insist on actually testing failover regularly, pulling a cable or failing over a switch deliberately in a controlled way, because redundancy that's never been tested tends to fail exactly when you need it. I think the mindset that matters most here is treating this as a life-safety system first and a normal office network second."
+    },
+    "commonMistakes": [
+      "Listing generic network features without prioritizing what's actually critical",
+      "No segmentation between critical and non-critical systems",
+      "Designing for redundancy without mentioning testing or verification of failover"
+    ],
+    "followUps": ["How would you handle the tradeoff between security segmentation and clinicians needing fast access in an emergency?"]
+  },
+  {
+    "id": "prog-network-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Emergency connectivity with no existing infrastructure",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "design", "resilience"],
+    "question": "An earthquake has just destroyed the cell towers and internet infrastructure in a region, and relief teams need to communicate and coordinate. What kind of network would you set up, and what constraints are you working around?",
+    "lookingFor": "Practical understanding of infrastructure-independent networking under real constraints like power and portability.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose an infrastructure-independent solution, such as a wireless mesh network of portable nodes",
+        "Consider a satellite uplink to reach the outside world since ground infrastructure is gone",
+        "Acknowledge real-world constraints, like power availability, and prioritize critical communication over general use"
+      ],
+      "modelAnswer": "With the ground infrastructure gone, I wouldn't try to rebuild anything that depends on fixed towers or cabling, I'd look at a mesh network instead, portable nodes that each relay traffic to their neighbours, so as long as relief teams are spread out with a node each, the network can cover an area without depending on any single point of infrastructure, and it can keep working even if individual nodes go down because traffic just reroutes through others. For reaching the outside world, since local internet and cell infrastructure is destroyed, I'd rely on a satellite uplink at one or two central points, like a mobile satellite terminal, to bridge the local mesh out to wider coordination and emergency services. The constraints I'd be designing around are power, since there's likely no reliable electricity, so I'd want battery or solar-powered nodes, and simplicity, because whoever's deploying this in the middle of a disaster response needs it to work without a network engineer configuring every node individually. I'd also prioritise bandwidth for coordination and medical communication over anything else, since that's genuinely what's life-critical in the first hours."
+    },
+    "commonMistakes": [
+      "Assuming normal cell or internet infrastructure can just be quickly repaired",
+      "Ignoring power constraints in a disaster scenario",
+      "No mention of a mesh or infrastructure-independent approach"
+    ],
+    "followUps": ["How would you prevent the network from being overwhelmed once ordinary citizens also try to use it?"]
+  },
+  {
+    "id": "prog-network-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Scaling a network under sudden viral load",
+    "program": "Network Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "scalability", "design"],
+    "question": "A small app you helped network-engineer for a university project unexpectedly goes viral overnight and traffic spikes a thousand-fold. What would actually break first, and how would you respond in the first few hours?",
+    "lookingFor": "Realistic understanding of what fails under sudden load and pragmatic triage, not a rebuild-everything answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify what typically breaks first, a single origin server or database connection limit, not usually raw bandwidth",
+        "Describe immediate triage, put a CDN or caching layer in front of static content, add a load balancer and more instances behind it",
+        "Show awareness that the immediate response is about surviving and buying time, with proper redesign coming afterward"
+      ],
+      "modelAnswer": "Realistically, it's rarely the network pipe itself that breaks first, it's usually the single origin server, most likely the database running out of connections or the application server running out of capacity to handle concurrent requests, because a small project is usually built assuming dozens of users, not thousands hitting it at once. In the first few hours I'd focus on buying time rather than rebuilding, so I'd put any static content, images, the front end bundle, behind a CDN or a caching layer immediately, since that alone can remove a huge chunk of the load hitting the origin. Then I'd look at whether I can quickly spin up more instances of whatever's serving dynamic requests behind a load balancer, even a rough one, rather than trying to perfectly re-architect anything under pressure. I think the honest answer is that the first few hours are about triage and survival, keeping the thing up in whatever imperfect way works, and the proper redesign, like actually fixing the database bottleneck or building real auto-scaling, happens once the immediate fire is out."
+    },
+    "commonMistakes": [
+      "Assuming bandwidth is the bottleneck rather than server or database capacity",
+      "Jumping to rebuilding the whole architecture instead of pragmatic short-term triage",
+      "No mention of caching or a CDN as the fastest lever"
+    ],
+    "followUps": ["What would you actually redesign once the immediate crisis has passed?"]
+  }
+]

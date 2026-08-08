@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-electrical-engineering-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for electrical engineering",
+    "program": "Electrical Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "electrical-engineering"],
+    "question": "What first got you interested in electrical engineering?",
+    "lookingFor": "A specific, personal moment of curiosity that turned into sustained interest, not a vague love of gadgets.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment, project, or experience that sparked it",
+        "Show the interest has continued and deepened over time",
+        "Avoid generic claims like 'I've always loved technology'"
+      ],
+      "modelAnswer": "I took apart an old radio when I was about twelve because it stopped working, and I got completely absorbed trying to figure out which component had failed. That curiosity turned into building small circuits with my dad's old multimeter, and by the time I got to sixth form I was choosing physics options specifically because they touched on electromagnetism. It's stayed consistent rather than being a passing phase, which is why I'm confident this is the right subject for me."
+    },
+    "commonMistakes": [
+      "Saying 'I've always liked gadgets' with no specific story",
+      "Describing an interest that sounds more like computer science or coding",
+      "Giving an answer with no timeline showing sustained interest"
+    ],
+    "followUps": ["What have you done since then to keep exploring that interest?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why electrical over other engineering disciplines",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["motivation", "comparison", "program-fit"],
+    "question": "Why electrical engineering rather than mechanical or civil engineering?",
+    "lookingFor": "A clear-eyed comparison showing the applicant understands what distinguishes electrical engineering, not just a preference by elimination.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify what is genuinely distinct about electrical engineering as a discipline",
+        "Reference a specific experience that pointed toward electrical rather than the alternatives",
+        "Show respect for the other disciplines rather than dismissing them"
+      ],
+      "modelAnswer": "I looked seriously at mechanical engineering too, since I enjoy building things, but what pulled me toward electrical was a school project on renewable energy where I had to design a small solar charge controller. I liked that the problem was invisible in a way mechanical systems aren't, you have to reason about voltage and current you can't directly see, and that abstraction appealed to me more than moving parts. I still respect mechanical engineering enormously, it just wasn't where my curiosity kept returning."
+    },
+    "commonMistakes": [
+      "Answering only by process of elimination with no positive reason",
+      "Showing a shaky grasp of what mechanical or civil engineering actually involves",
+      "Sounding dismissive of the other disciplines"
+    ],
+    "followUps": ["Is there any overlap between electrical engineering and those fields that interests you?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's program",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation", "research"],
+    "question": "Why do you want to study electrical engineering here specifically?",
+    "lookingFor": "Evidence of real research into the course structure, labs, or staff, connected to the applicant's own goals.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific course feature, lab, or module rather than generic praise",
+        "Connect that feature to a concrete personal interest or project",
+        "Show understanding of what sets this course apart from similar ones"
+      ],
+      "modelAnswer": "Your course lets students take a power systems specialisation from second year, which is unusual this early, and that matters to me because I spent last summer volunteering with a group installing solar panels in a rural community and I want to go deeper into grid integration. I also read about the microgrid testbed in your power lab, which is exactly the kind of hands-on facility I haven't had access to before. It felt like the course was built for someone who already knows which direction they want to specialise in."
+    },
+    "commonMistakes": [
+      "Praise that would apply equally to any university's engineering course",
+      "Citing rankings or reputation instead of course content",
+      "Naming a facility or module that doesn't actually exist in the course"
+    ],
+    "followUps": ["What would you want to specialise in if you had a free choice in your final year?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant hands-on experience",
+    "program": "Electrical Engineering",
+    "difficulty": "easy",
+    "tags": ["experience", "hands-on", "projects"],
+    "question": "Tell us about a project or hobby where you've applied electrical engineering ideas.",
+    "lookingFor": "A genuine, specific project that shows practical engagement, including what went wrong and how it was fixed.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific build with enough technical detail to show real involvement",
+        "Mention a problem encountered and how it was diagnosed or solved",
+        "Explain what was learned, not just what was completed"
+      ],
+      "modelAnswer": "I built a simple line-following robot using an Arduino, an H-bridge motor driver, and two infrared sensors. The first version kept overshooting the line because I hadn't accounted for motor response lag, so I ended up reading about proportional control and adding a basic feedback loop that scaled motor speed to how far off the line the sensors read. It was the first time I really understood feedback control as more than a textbook diagram, because I had to debug it by watching the robot fail repeatedly."
+    },
+    "commonMistakes": [
+      "Describing a project too vaguely to prove real involvement",
+      "Claiming full credit for a heavily guided kit or school assignment",
+      "Skipping over any problems, making it sound suspiciously smooth"
+    ],
+    "followUps": ["What would you change if you built it again?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and current developments",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "current-events"],
+    "question": "What have you read or watched recently that relates to electrical engineering, and what did you take from it?",
+    "lookingFor": "Evidence of genuine intellectual engagement beyond the syllabus, with a considered personal reaction rather than a summary.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, credible source rather than something vague",
+        "Summarise the core idea briefly rather than at length",
+        "Give a personal opinion or connection to their own thinking"
+      ],
+      "modelAnswer": "I read an IEEE Spectrum article on gallium nitride power transistors replacing silicon in chargers and power supplies. What struck me was how a materials change at the semiconductor level can ripple all the way through to smaller, cooler consumer electronics, which I hadn't really connected before. It made me want to understand semiconductor physics properly rather than just treating transistors as black-box switches, which is part of why I'm drawn to a course with a strong device physics component."
+    },
+    "commonMistakes": [
+      "Naming a source but being unable to explain its actual content",
+      "Choosing something too basic or too far outside electrical engineering",
+      "Summarising with no personal reaction or opinion"
+    ],
+    "followUps": ["Did the article raise any questions you'd want to investigate further?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Ohm's law and basic circuits",
+    "program": "Electrical Engineering",
+    "difficulty": "easy",
+    "tags": ["circuits", "fundamentals", "concept"],
+    "question": "Can you explain Ohm's law and how you'd use it to find the current in a simple circuit?",
+    "lookingFor": "A clear statement of V = IR with correct reasoning about how the quantities relate, applied to a concrete example.",
+    "idealAnswer": {
+      "bullets": [
+        "State the relationship correctly: voltage equals current times resistance",
+        "Explain what each quantity physically represents",
+        "Walk through applying it to find an unknown value in a simple example"
+      ],
+      "modelAnswer": "Ohm's law says voltage equals current multiplied by resistance, so V equals I times R. Voltage is the push driving charge round the circuit, resistance is how much the material opposes that flow, and current is the resulting rate of charge flow. So if I have a nine volt battery connected to a three ohm resistor, I can rearrange to get current equals voltage over resistance, which gives three amps. It's the relationship I reach for first whenever I'm trying to sanity check any circuit."
+    },
+    "commonMistakes": [
+      "Mixing up which variable is which in the formula",
+      "Stating the formula without being able to apply it to numbers",
+      "Confusing resistance with power"
+    ],
+    "followUps": ["How does that change if you add a second resistor in series?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "AC versus DC",
+    "program": "Electrical Engineering",
+    "difficulty": "easy",
+    "tags": ["circuits", "fundamentals", "power"],
+    "question": "What's the difference between alternating current and direct current, and why do we use AC for mains power?",
+    "lookingFor": "Correct technical distinction plus a practical reason grounded in transmission efficiency, not just a memorised fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that DC flows in one direction while AC periodically reverses",
+        "Connect AC to the ability to transform voltage levels efficiently",
+        "Link that to reduced transmission losses over long distances"
+      ],
+      "modelAnswer": "Direct current flows steadily in one direction, like from a battery, while alternating current reverses direction periodically, usually as a sine wave at fifty or sixty hertz. We use AC for mains power mainly because transformers let us step voltage up and down easily, and stepping voltage up for transmission means less current for the same power, which cuts resistive losses in the cables. DC transmission exists too for very long distance links, but AC's ease of transformation is what made it the historical winner for the grid."
+    },
+    "commonMistakes": [
+      "Only describing the waveform shape with no mention of why AC won historically",
+      "Confusing frequency with voltage",
+      "Claiming DC can't be transformed at all rather than explaining it's harder"
+    ],
+    "followUps": ["Where do you still see DC being used despite AC dominating the grid?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Capacitor behaviour",
+    "program": "Electrical Engineering",
+    "difficulty": "easy",
+    "tags": ["circuits", "components", "concept"],
+    "question": "What does a capacitor do in a circuit, and how does it behave differently to a resistor?",
+    "lookingFor": "Correct physical understanding of charge storage and the time-dependent, frequency-dependent behaviour compared to a resistor's fixed opposition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a capacitor stores energy in an electric field between plates",
+        "Note that its opposition to current depends on frequency, unlike a resistor's fixed resistance",
+        "Give a practical use such as smoothing or filtering"
+      ],
+      "modelAnswer": "A capacitor stores energy by building up charge on two plates separated by an insulator, rather than dissipating energy as heat the way a resistor does. Its opposition to current, its impedance, isn't fixed like resistance, it depends on frequency, so it blocks DC once charged but lets higher frequency AC signals through more easily. That's why you see capacitors used for smoothing out ripples in a power supply, they charge and discharge to fill in the gaps left by rectified AC."
+    },
+    "commonMistakes": [
+      "Describing a capacitor as if it behaves exactly like a resistor",
+      "Forgetting that a fully charged capacitor blocks steady DC current",
+      "Giving no real-world application"
+    ],
+    "followUps": ["What happens to a capacitor's impedance as frequency increases?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Inductors and energy storage",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["circuits", "components", "concept"],
+    "question": "How does an inductor store energy, and why does it resist sudden changes in current?",
+    "lookingFor": "Understanding that inductors store energy in a magnetic field and that induced EMF opposes rapid current change, tied to Lenz's law.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain energy storage in the magnetic field of a coil",
+        "Connect resistance to sudden current change to induced back EMF",
+        "Reference Lenz's law or the underlying physical principle"
+      ],
+      "modelAnswer": "An inductor stores energy in the magnetic field that builds up around a coil of wire as current flows through it. If you try to change that current quickly, the changing magnetic field induces a voltage that opposes the change, which is essentially Lenz's law in action, the induced EMF always fights whatever caused it. That's why inductors resist sudden current changes and why you get a voltage spike if you abruptly break a circuit with an inductive load, which is something you have to design around in switching circuits."
+    },
+    "commonMistakes": [
+      "Confusing inductors with capacitors and their storage mechanism",
+      "Stating the effect without any physical reasoning",
+      "Omitting the practical consequence, like voltage spikes on sudden switching"
+    ],
+    "followUps": ["Where have you seen this cause a practical problem, like arcing at a switch?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Kirchhoff's laws",
+    "program": "Electrical Engineering",
+    "difficulty": "easy",
+    "tags": ["circuits", "fundamentals", "analysis"],
+    "question": "What do Kirchhoff's current and voltage laws state, and why are they useful?",
+    "lookingFor": "Accurate statement of both laws with an intuitive grasp of the conservation principles behind them.",
+    "idealAnswer": {
+      "bullets": [
+        "State the current law: current into a node equals current out",
+        "State the voltage law: voltages around any closed loop sum to zero",
+        "Connect both to conservation of charge and energy"
+      ],
+      "modelAnswer": "Kirchhoff's current law says the total current flowing into a junction has to equal the total flowing out, which is really just conservation of charge, current can't pile up or vanish at a node. Kirchhoff's voltage law says that if you go around any closed loop in a circuit, the sum of the voltage rises and drops has to be zero, which reflects conservation of energy. Together they're the backbone of solving more complicated circuits with multiple loops and branches, because they give you enough equations to find every unknown current and voltage."
+    },
+    "commonMistakes": [
+      "Mixing up which law applies to current and which to voltage",
+      "Stating the laws without any physical justification",
+      "Not being able to explain why they're useful for analysis"
+    ],
+    "followUps": ["How would you use these laws to analyse a circuit with two loops?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Diodes and semiconductor basics",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["semiconductors", "components", "concept"],
+    "question": "How does a diode work, and why does it only conduct in one direction?",
+    "lookingFor": "Basic but accurate grasp of the p-n junction and depletion region, connected to the practical one-way conduction behaviour.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the p-n junction and the depletion region it creates",
+        "Explain forward bias shrinking the depletion region to allow current flow",
+        "Explain reverse bias widening it and blocking current"
+      ],
+      "modelAnswer": "A diode is built from a junction between p-type and n-type semiconductor material, and where they meet, a depletion region forms with no free charge carriers, which normally blocks current. When you forward bias it, applying positive voltage to the p-side, that depletion region shrinks and eventually current flows freely once you're past the material's threshold voltage. In reverse bias the depletion region widens instead, so almost no current flows, which is why the diode acts as a one-way valve for current."
+    },
+    "commonMistakes": [
+      "Describing the diode purely as a black box that 'lets current through one way'",
+      "Confusing forward and reverse bias",
+      "Not mentioning the depletion region at all"
+    ],
+    "followUps": ["What happens to a diode if you exceed its reverse breakdown voltage?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Transistors as switches and amplifiers",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["semiconductors", "components", "electronics"],
+    "question": "In simple terms, how can a transistor act as both a switch and an amplifier?",
+    "lookingFor": "Understanding that a small control signal governs a larger current, applied differently depending on operating region.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a small base or gate signal controls a much larger current",
+        "Distinguish switching, driving the transistor fully on or off, from amplification, keeping it in the linear region",
+        "Give a simple practical example of each use"
+      ],
+      "modelAnswer": "A transistor lets a small current or voltage at the base or gate control a much larger current flowing between the other two terminals. If you drive it hard between fully on and fully off, it behaves like a switch, which is how digital logic gates and power control circuits work. If instead you keep it in between, in its linear region, small changes in the input signal produce proportionally larger changes in the output current, which is how it amplifies a weak signal, like in an audio preamp."
+    },
+    "commonMistakes": [
+      "Only describing the switching use and forgetting amplification, or vice versa",
+      "Confusing which terminal controls which in a BJT or MOSFET",
+      "Giving no concrete example of either application"
+    ],
+    "followUps": ["What determines whether a transistor is operating in its linear region rather than as a switch?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Operational amplifiers",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["electronics", "op-amps", "concept"],
+    "question": "What is an op-amp, and what are the two golden rules you'd use to analyse one in a feedback circuit?",
+    "lookingFor": "Familiarity with the idealised op-amp model and confidence applying the standard analysis shortcuts.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe an op-amp as a high-gain differential amplifier",
+        "State the two golden rules: no current into the inputs, and the inputs are at equal voltage under negative feedback",
+        "Mention a simple configuration, like an inverting or non-inverting amplifier"
+      ],
+      "modelAnswer": "An op-amp is a high gain differential amplifier, it amplifies the difference between its two input terminals by an enormous factor. When it's used with negative feedback, you can analyse it using two golden rules, no current flows into either input terminal, and the two input terminals sit at essentially the same voltage. Using those two rules on something like an inverting amplifier lets you derive the gain just from the ratio of the feedback and input resistors, without needing to know the op-amp's actual internal gain."
+    },
+    "commonMistakes": [
+      "Describing an op-amp as if it just passes the input through unchanged",
+      "Forgetting the golden rules only hold under negative feedback",
+      "Being unable to connect the rules to an actual circuit example"
+    ],
+    "followUps": ["How would the golden rules change if the op-amp were in positive feedback instead?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Power factor",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["power", "ac-circuits", "concept"],
+    "question": "What is power factor, and why does a low power factor matter to a utility company?",
+    "lookingFor": "Understanding of real versus apparent power and the practical, economic consequence of a poor power factor.",
+    "idealAnswer": {
+      "bullets": [
+        "Define power factor as the ratio of real power to apparent power",
+        "Explain that it arises from phase difference between voltage and current in reactive loads",
+        "Connect a low power factor to higher current for the same useful power, and the resulting infrastructure cost"
+      ],
+      "modelAnswer": "Power factor is the ratio of real power, the power actually doing useful work, to apparent power, which is just voltage times current. It drops below one whenever there's a phase difference between voltage and current, which happens with inductive loads like motors. A low power factor matters to utilities because it means more current has to flow to deliver the same real power, which increases losses in cables and transformers, so many industrial customers get penalised on their bill if their power factor is too low without correction."
+    },
+    "commonMistakes": [
+      "Defining power factor only as a number with no physical meaning",
+      "Confusing real power with apparent power",
+      "Not connecting it to any practical or economic consequence"
+    ],
+    "followUps": ["How would you go about correcting a poor power factor in an industrial plant?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Transformer operation",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["power", "electromagnetism", "concept"],
+    "question": "How does a transformer step voltage up or down, and why does it only work with AC?",
+    "lookingFor": "Correct grasp of mutual induction between windings and why a changing flux is required, ruling out steady DC.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain mutual induction between primary and secondary windings via a shared magnetic core",
+        "Reference the turns ratio determining the voltage ratio",
+        "Explain why a steady DC current produces no changing flux and therefore no induced voltage"
+      ],
+      "modelAnswer": "A transformer has two coils wound around a shared magnetic core, and a changing current in the primary coil creates a changing magnetic flux that induces a voltage in the secondary coil. The ratio of turns between the two coils sets the ratio between primary and secondary voltage, so more turns on the secondary steps voltage up. It only works with AC because the induction depends on the flux actually changing over time, a steady DC current produces a constant flux with no rate of change, so nothing gets induced in the secondary."
+    },
+    "commonMistakes": [
+      "Explaining transformers as if they work through direct electrical connection between windings",
+      "Forgetting to mention the turns ratio",
+      "Being unable to explain why DC doesn't work"
+    ],
+    "followUps": ["What happens to current when voltage is stepped up, and why does that matter for efficiency?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Analog versus digital signals",
+    "program": "Electrical Engineering",
+    "difficulty": "easy",
+    "tags": ["signals", "fundamentals", "concept"],
+    "question": "What's the difference between an analog and a digital signal, and why might you convert one to the other?",
+    "lookingFor": "Clear distinction between continuous and discrete representation, plus a practical reason for conversion such as noise resilience.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain analog as continuously varying and digital as discrete levels",
+        "Give a reason for converting, such as noise immunity or ease of processing and storage",
+        "Mention where conversion actually happens, like an ADC"
+      ],
+      "modelAnswer": "An analog signal varies continuously and can take any value within a range, like the voltage from a microphone. A digital signal instead represents information as discrete levels, usually binary, sampled at set intervals. We convert analog to digital using an analog to digital converter, mainly because digital signals are far more resistant to noise and much easier to process, store, and transmit accurately with modern computing hardware, even though we lose some information through sampling and quantisation."
+    },
+    "commonMistakes": [
+      "Saying digital signals are simply 'more accurate' with no real explanation",
+      "Confusing analog with just being 'old technology'",
+      "Not mentioning the trade-off of information loss through sampling"
+    ],
+    "followUps": ["What determines how much information you lose when sampling an analog signal?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Interest in renewable energy and grid",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["power", "renewables", "motivation"],
+    "question": "What do you see as the biggest electrical engineering challenge in integrating renewable energy into the grid?",
+    "lookingFor": "An informed, specific technical challenge rather than a vague sustainability sentiment, showing genuine engagement with the field.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a specific technical challenge, such as intermittency or grid stability",
+        "Explain why it's genuinely difficult from an engineering standpoint",
+        "Show awareness of at least one approach being used to address it"
+      ],
+      "modelAnswer": "I think the hardest part is intermittency and how it affects grid stability, wind and solar output doesn't match demand the way a dispatchable gas or coal plant does, and the grid needs constant frequency and voltage regulation to stay stable. That's a real engineering problem, not just a policy one, because inverter-based generation doesn't naturally provide the rotational inertia that traditional generators gave the grid for free. I've been reading about grid-forming inverters as one way to synthesise that stability, which is the kind of control problem I'd love to work on."
+    },
+    "commonMistakes": [
+      "Staying at the level of 'renewables are good for the planet' with no engineering substance",
+      "Naming a challenge but being unable to explain why it's hard",
+      "Confusing generation technology with grid infrastructure issues"
+    ],
+    "followUps": ["How does energy storage help address that challenge?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Electromagnetic induction",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["electromagnetism", "fundamentals", "concept"],
+    "question": "Can you explain Faraday's law of electromagnetic induction and give an everyday example of it in action?",
+    "lookingFor": "Correct statement of the relationship between changing flux and induced EMF, with a genuine real-world application.",
+    "idealAnswer": {
+      "bullets": [
+        "State that a changing magnetic flux through a loop induces an EMF",
+        "Note that the induced EMF is proportional to the rate of change of flux",
+        "Give a real example such as a generator, induction hob, or wireless charger"
+      ],
+      "modelAnswer": "Faraday's law says that a changing magnetic flux through a circuit induces an electromotive force in that circuit, and the size of that EMF is proportional to how fast the flux is changing. It's the principle behind a generator, spinning a coil in a magnetic field constantly changes the flux through it and induces a voltage, which is how mechanical energy gets converted into electrical energy. I also think about it every time I use a wireless phone charger, since that's really just induction between two coils without any physical contact."
+    },
+    "commonMistakes": [
+      "Stating the law without connecting flux change to the induced voltage",
+      "Confusing Faraday's law with Ohm's law",
+      "Giving no real-world example, or an incorrect one"
+    ],
+    "followUps": ["What does Lenz's law add to this picture?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Feedback in control systems",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["control-systems", "feedback", "concept"],
+    "question": "What is negative feedback in a control system, and why is it generally preferred over open-loop control?",
+    "lookingFor": "Solid conceptual grasp of closed-loop correction and its advantages over uncorrected open-loop operation, with awareness of trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that negative feedback compares output to a desired reference and corrects the error",
+        "Contrast this with open-loop control, which has no way to correct for disturbances",
+        "Show awareness that feedback introduces its own challenges, like potential instability"
+      ],
+      "modelAnswer": "Negative feedback means you measure the actual output, compare it against the desired reference, and feed the difference, the error, back into the system to correct it, like a thermostat adjusting heating based on measured room temperature. Open-loop control has no such correction, it just applies a fixed input and hopes the result matches expectations, which fails badly if there are disturbances or the system's behaviour isn't perfectly known. The trade-off is that feedback systems can become unstable if the gain and delays aren't tuned properly, so designing a good controller means balancing responsiveness against the risk of oscillation."
+    },
+    "commonMistakes": [
+      "Describing feedback vaguely as 'checking the output' with no mention of error correction",
+      "Failing to name a concrete real-world example",
+      "Missing the trade-off around stability entirely"
+    ],
+    "followUps": ["What could cause a feedback system to become unstable?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Intuition for signal frequency content",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["signals", "frequency-domain", "concept"],
+    "question": "In simple terms, what does it mean to look at a signal in the frequency domain rather than the time domain, and why is that useful?",
+    "lookingFor": "An intuitive, correct explanation of decomposing a signal into frequency components, with a practical reason for doing so.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that any signal can be thought of as a sum of sine waves at different frequencies",
+        "Contrast time domain, showing value over time, with frequency domain, showing which frequencies are present",
+        "Give a practical reason it's useful, such as filtering or identifying noise"
+      ],
+      "modelAnswer": "In the time domain you're looking at how a signal's value changes moment to moment, but almost any signal can also be described as a combination of simple sine waves added together at different frequencies and amplitudes, which is what the frequency domain shows you. It's useful because some problems are much clearer that way, if you want to remove a specific hum or noise frequency from an audio signal, it's far easier to spot and filter it out when you can see exactly which frequency it sits at, rather than trying to see it buried in a messy time-domain waveform."
+    },
+    "commonMistakes": [
+      "Reciting 'Fourier transform' with no intuitive explanation of what it does",
+      "Confusing frequency domain with just 'pitch' in an overly narrow, audio-only sense",
+      "Giving no practical reason why the frequency view is useful"
+    ],
+    "followUps": ["Can you think of an everyday device that relies on this idea?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Current challenges facing electrical engineers",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["current-events", "industry", "critical-thinking"],
+    "question": "What do you think is the biggest challenge facing electrical engineers over the next decade?",
+    "lookingFor": "An informed, well-reasoned opinion on a genuine industry challenge, showing awareness of engineering trade-offs rather than headlines alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a real, specific challenge rather than something too broad or vague",
+        "Explain the engineering dimension of the problem, not just the social or economic angle",
+        "Offer a considered, even if tentative, view on how it might be addressed"
+      ],
+      "modelAnswer": "I'd say it's decarbonising the electricity grid while keeping it reliable, because electrifying transport and heating is going to roughly double electricity demand in a lot of countries at the same time we're retiring dispatchable fossil generation. That's a genuinely hard control and infrastructure problem, not just a policy target, since you need enough storage, flexible demand, and smarter grid control to keep supply and demand balanced without the inertia that old spinning generators used to provide for free. I don't think there's one clean answer yet, which is honestly part of why I find it so compelling to want to work on."
+    },
+    "commonMistakes": [
+      "Naming a challenge that's really a general societal issue with no engineering content",
+      "Reciting a headline with no personal reasoning behind it",
+      "Claiming to have a complete, confident solution to a genuinely unresolved problem"
+    ],
+    "followUps": ["What role do you think you personally could play in addressing that?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics and safety in electrical design",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety", "situational"],
+    "question": "Imagine you're testing a circuit design and notice it technically passes the safety spec but you're uneasy about a corner case. What would you do?",
+    "lookingFor": "Sound ethical reasoning that prioritises genuine safety over minimum compliance, with a realistic account of how to raise the concern.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that passing a spec is not the same as being genuinely safe",
+        "Describe a concrete step, like documenting the concern and raising it with a supervisor or mentor",
+        "Show they wouldn't just quietly let it go, nor act unilaterally without more investigation"
+      ],
+      "modelAnswer": "Passing a spec on paper doesn't mean the design is actually safe in every situation, specs are usually written for common cases and can miss edge conditions, so I wouldn't just wave it through. I'd document exactly what the corner case is and why it worries me, then raise it clearly with whoever is supervising the project rather than either staying silent or trying to unilaterally redesign it myself. Electrical faults can genuinely hurt people, so I'd rather be the person who over-communicates a concern than the one who assumed someone else would catch it."
+    },
+    "commonMistakes": [
+      "Saying they'd simply ignore it because it technically passes",
+      "Jumping to drastic unilateral action without raising it through proper channels",
+      "Treating the question as purely hypothetical with no concrete plan"
+    ],
+    "followUps": ["What would you do if your supervisor dismissed your concern?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Role of programming in electrical engineering",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["programming", "embedded-systems", "skills"],
+    "question": "How important do you think programming is for an electrical engineer, and where have you used it yourself?",
+    "lookingFor": "Realistic understanding of where software meets hardware in the field, backed by genuine personal experience if any exists.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain where programming genuinely intersects with electrical engineering, such as embedded systems or simulation",
+        "Avoid overstating it as the whole discipline, since electrical engineering is broader than software",
+        "Give a specific, honest example of their own experience with it"
+      ],
+      "modelAnswer": "I think programming matters a lot in areas like embedded systems, control, and signal processing, where you're writing the code that actually runs on a microcontroller talking to real hardware, but I wouldn't say it's the whole of electrical engineering, plenty of power and analog design work is much more about physical circuit behaviour. I taught myself some C for an Arduino project where I had to write the code controlling motor speed based on sensor readings, and debugging timing issues between the code and the actual electrical signals was where I learned the two sides really do depend on each other."
+    },
+    "commonMistakes": [
+      "Claiming electrical engineering is essentially the same as software engineering",
+      "Dismissing programming as unimportant to the discipline",
+      "Giving a generic answer with no actual personal example"
+    ],
+    "followUps": ["What's a bug you ran into where the problem turned out to be hardware, not code?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Electrical engineering versus computer science",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["comparison", "motivation", "program-fit"],
+    "question": "A lot of students interested in technology end up choosing computer science. Why did you choose electrical engineering instead?",
+    "lookingFor": "A thoughtful comparison showing the applicant actually weighed the alternative, not a reflexive dismissal of computer science.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge computer science as a genuine alternative they considered seriously",
+        "Identify what specifically pulls them toward the physical and electrical side rather than pure software",
+        "Ground the choice in a concrete experience rather than an abstract preference"
+      ],
+      "modelAnswer": "I actually considered computer science quite seriously, since I enjoy coding, but what I kept missing in pure software projects was the physical layer, actually reasoning about voltage, current, and real components rather than working entirely in an abstraction. Building a small power supply for a school project made that clear, I liked the parts where I had to measure real signals with an oscilloscope and figure out why my theoretical calculations didn't quite match what I was seeing. Electrical engineering lets me keep the problem-solving I enjoy from coding while staying grounded in the physical world, which is the combination I actually want."
+    },
+    "commonMistakes": [
+      "Dismissing computer science as somehow lesser or 'not real engineering'",
+      "Giving an answer with no concrete grounding, just abstract preference",
+      "Sounding as if they haven't actually thought about the alternative"
+    ],
+    "followUps": ["Is there a part of computer science you'd still want to bring into your electrical engineering work?"]
+  },
+  {
+    "id": "prog-electrical-engineering-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "A recent development that excites them",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["current-events", "innovation", "motivation"],
+    "question": "What recent development in electrical engineering do you find most exciting, and why?",
+    "lookingFor": "Genuine, informed enthusiasm for a specific real development, with an understanding of why it matters technically, not just that it's trendy.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, real, and reasonably current development",
+        "Explain the underlying technical reason it's significant, not just its popularity",
+        "Connect it honestly to their own interests or goals"
+      ],
+      "modelAnswer": "I've been following the shift toward wide-bandgap semiconductors like silicon carbide and gallium nitride in power electronics, because they can switch faster and handle higher voltages with less energy lost as heat than traditional silicon devices. That matters practically because it's making electric vehicle inverters and fast chargers smaller and more efficient, which is a real bottleneck in EV adoption right now. I find it exciting because it's a case where a fairly fundamental materials science change is having an immediate, visible impact on a technology I care about."
+    },
+    "commonMistakes": [
+      "Naming something too vague or buzzword-heavy, like 'AI' with no electrical engineering connection",
+      "Being unable to explain the technical reason it matters",
+      "Sounding like they read one headline with no deeper engagement"
+    ],
+    "followUps": ["What do you see as the main obstacle to that technology becoming mainstream?"]
+  }
+]

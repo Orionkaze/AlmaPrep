@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-music-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Deceptive cadence reasoning",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["harmony", "cadence", "analysis"],
+    "question": "A deceptive cadence resolves V to vi instead of V to I. Why does that small substitution change the emotional effect so much, and can you give an example of a piece that uses it well?",
+    "lookingFor": "Genuine grasp of harmonic function and how theory maps onto emotional effect, not just chord-naming.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that V creates strong tension expecting resolution to I, the tonic",
+        "Note that vi shares two pitches with I but lacks the root, so the ear hears an unresolved surprise instead of closure",
+        "Give a concrete example and describe the expressive effect it produces there"
+      ],
+      "modelAnswer": "A perfect cadence gives you full closure because the dominant resolves exactly where your ear expects, onto the tonic. A deceptive cadence swaps in the submediant instead, which shares two notes with the tonic chord so it sounds related, but it's missing the root, so your ear registers surprise rather than rest. I think of the phrase before the final cadence in a lot of Bach chorales, where a deceptive cadence extends the harmonic journey just when you thought it was over, which makes the eventual real resolution feel more earned. It's basically a way of postponing satisfaction on purpose."
+    },
+    "commonMistakes": [
+      "Naming the chords correctly but not explaining why the effect feels different",
+      "Confusing deceptive cadence with a plagal or half cadence",
+      "Giving no real musical example to anchor the explanation"
+    ],
+    "followUps": ["Can you think of a pop song that uses a similar trick of avoided resolution?"]
+  },
+  {
+    "id": "prog-music-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Sonata form structure",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["form", "classical", "analysis"],
+    "question": "Can you walk me through the three main sections of sonata-allegro form, and explain why the development section is often considered the most important part?",
+    "lookingFor": "Clear structural understanding plus an ability to explain why development matters musically, not just list section names.",
+    "idealAnswer": {
+      "bullets": [
+        "Name exposition, development, and recapitulation and what happens in each",
+        "Explain that the development is where themes are fragmented, transformed, and put through unstable keys",
+        "Connect that instability to why the eventual return in the recapitulation feels satisfying"
+      ],
+      "modelAnswer": "The exposition lays out your themes, usually a first theme in the home key and a contrasting second theme in a related key. The development is where the composer takes those themes apart, moving through distant keys and combining fragments in ways the exposition never did, so it's really the section where the real compositional argument happens. The recapitulation then brings both themes back in the home key, which resolves the harmonic tension the development built up. I think the development matters most because without that instability, the return in the recapitulation wouldn't mean anything, it's the tension that makes the resolution feel earned."
+    },
+    "commonMistakes": [
+      "Listing the three sections with no explanation of what actually happens in each",
+      "Treating the recapitulation as just a repeat rather than a resolution of tension",
+      "Confusing sonata form with sonata as a genre, a whole multi-movement piece"
+    ],
+    "followUps": ["Can you name a piece where a composer broke this structure deliberately, and why?"]
+  },
+  {
+    "id": "prog-music-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Modulation technique",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["harmony", "modulation", "theory"],
+    "question": "What's the difference between a pivot-chord modulation and a chromatic-mediant modulation, and can you think of an example of each?",
+    "lookingFor": "Precise technical understanding of two distinct modulation techniques and their different sonic character.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain pivot-chord modulation uses a chord common to both keys as a smooth hinge",
+        "Explain chromatic-mediant modulation jumps to a key a third away sharing little or no diatonic function, producing a more abrupt or colorful shift",
+        "Offer at least one concrete musical example for either technique"
+      ],
+      "modelAnswer": "A pivot-chord modulation finds a chord that exists in both the old key and the new key and uses it as a hinge, so the transition feels smooth because your ear doesn't register a hard break. A chromatic-mediant modulation instead jumps to a key a third away that shares few or no common tones with the original, which is much more jarring and colorful, you hear it a lot in film scoring for a sudden shift in mood. I actually like using chromatic-mediant shifts in my own writing when I want a moment to feel like the ground shifted under the listener rather than just moved logically."
+    },
+    "commonMistakes": [
+      "Confusing modulation with tonicization, a brief touch on a new key that doesn't stick",
+      "Being unable to give any real musical example",
+      "Describing the mechanics correctly but not the different emotional effect"
+    ],
+    "followUps": ["Why might a composer choose the more jarring option deliberately?"]
+  },
+  {
+    "id": "prog-music-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Twelve-tone technique reasoning",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["20th-century", "serialism", "analysis"],
+    "question": "Schoenberg's twelve-tone method was meant to give equal structural weight to all twelve pitches instead of a tonal hierarchy. Do you think that goal actually succeeded as music, or did it just replace one set of rules with another?",
+    "lookingFor": "Ability to engage critically with a major compositional idea rather than just define it, showing independent musical judgment.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate understanding of what the twelve-tone method actually does, tone rows and their prime, inversion, and retrograde forms",
+        "Take a genuine position on whether it succeeded, rather than staying neutral to avoid risk",
+        "Support the position with a specific piece or listening experience, not just abstract theory"
+      ],
+      "modelAnswer": "The method does what it sets out to do technically, it stops any one pitch from functioning as a tonal center by cycling through a fixed row and its transformations. But I don't think it actually escapes hierarchy, it just replaces harmonic hierarchy with a different kind of structural rule that the listener can't consciously track, so a lot of the meaning ends up living in the score rather than the ear. I still find pieces like Berg's Violin Concerto genuinely moving though, because Berg lets the row shape something closer to tonal gestures, which suggests to me the technique works best when it's bent rather than followed strictly."
+    },
+    "commonMistakes": [
+      "Defining the technique correctly but refusing to take any actual position when asked",
+      "Dismissing atonal music as noise with no real engagement",
+      "Confusing twelve-tone technique with atonality in general"
+    ],
+    "followUps": ["Would you ever use a technique like this in your own composing? Why or why not?"]
+  },
+  {
+    "id": "prog-music-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Species counterpoint rules",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["counterpoint", "theory", "voice-leading"],
+    "question": "In species counterpoint, parallel fifths and octaves between voices are forbidden. Why, and do you think that rule still matters for someone writing music today?",
+    "lookingFor": "Understanding of the acoustic and perceptual reason behind a historical rule, plus willingness to question its modern relevance.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that parallel fifths and octaves collapse the independence of the two voices because they move in exact acoustic lockstep",
+        "Note the rule was designed to preserve the sense of multiple independent melodic lines, not as an arbitrary restriction",
+        "Give a view on whether the rule still applies today, with reasoning either way"
+      ],
+      "modelAnswer": "Perfect fifths and octaves are so acoustically pure that when two voices move in parallel fifths, your ear tends to fuse them into one thickened line instead of hearing two independent voices, which defeats the whole point of counterpoint. It's not an arbitrary rule, it comes directly from what actually happens perceptually. That said, I don't think it's a fixed law for every style, plenty of rock and modal folk music use parallel fifths deliberately for that fused, powerful sound, like power chords. So I'd say the rule matters enormously if your goal is independent voices, and matters much less if your goal is a different kind of texture."
+    },
+    "commonMistakes": [
+      "Stating the rule without explaining the acoustic reasoning behind it",
+      "Treating the rule as an absolute law that applies to all music everywhere",
+      "Confusing parallel fifths with parallel thirds or sixths, which are allowed"
+    ],
+    "followUps": ["Can you think of a genre or style where breaking this rule is actually the point?"]
+  },
+  {
+    "id": "prog-music-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Meter and perceived feel",
+    "program": "Music",
+    "difficulty": "easy",
+    "tags": ["rhythm", "meter", "fundamentals"],
+    "question": "What's the perceptual difference between a piece in 6/8 and one in 3/4, even though both can have the same number of eighth notes per bar?",
+    "lookingFor": "Understanding that meter is about grouping and felt accent, not just counting subdivisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain 6/8 groups into two big beats of three, a duple feel, while 3/4 groups into three beats of two, a triple feel",
+        "Note that the difference is about where the accent falls, not the raw number of notes",
+        "Give an example of each to show the different felt pulse"
+      ],
+      "modelAnswer": "Even though 6/8 and 3/4 can both contain six eighth notes in a bar, they group differently, 6/8 feels like two big beats each divided into three, so it has a rolling, duple swing to it, like a jig. 3/4 feels like three separate beats each divided into two, so it has a more even waltz feel. You really notice the difference if you try conducting both, 6/8 wants a big down-up two-pattern and 3/4 wants a clear three-pattern. It's a good reminder that meter is about where the accents land, not just how many notes are in the bar."
+    },
+    "commonMistakes": [
+      "Saying they're basically the same because the note count matches",
+      "Being unable to name or hum an example of either feel",
+      "Confusing meter with tempo"
+    ],
+    "followUps": ["Can you clap or tap the difference between the two?"]
+  },
+  {
+    "id": "prog-music-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Orchestration and timbre choice",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["orchestration", "timbre", "composition"],
+    "question": "If you had to orchestrate a slow, melancholic melody, would you give it to a solo oboe or a solo clarinet, and why?",
+    "lookingFor": "Genuine ear-based reasoning about timbre and expressive character, not a memorized fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the actual sonic difference between the two instruments, the oboe's reedy, nasal, piercing quality versus the clarinet's warmer, rounder, more even tone",
+        "Connect the timbral choice to the specific emotional color wanted",
+        "Acknowledge that register and dynamic also matter, not just the instrument name"
+      ],
+      "modelAnswer": "I'd lean toward the oboe if I wanted the melancholy to feel exposed and almost vulnerable, its reedy, slightly nasal tone carries an ache that cuts through a texture in a very human way, it's why composers reach for it so often for a lonely melody. The clarinet is beautiful too but its tone is rounder and more covered, which to me reads as more introspective than outright plaintive. Honestly the actual decision would depend on register as well, an oboe low in its range sounds strained in an interesting way, while a clarinet's low chalumeau register has this dark, hollow color that could be exactly right depending on the specific mood I'm after."
+    },
+    "commonMistakes": [
+      "Picking an instrument with no explanation of its actual timbral character",
+      "Ignoring that register changes an instrument's color dramatically",
+      "Treating the question as if there's one objectively correct answer"
+    ],
+    "followUps": ["How would your answer change if the melody needed to be heard over a full orchestra?"]
+  },
+  {
+    "id": "prog-music-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Aural skills, identifying harmony by ear",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["ear-training", "aural-skills", "practice"],
+    "question": "How would you go about working out a chord progression by ear, without an instrument in front of you?",
+    "lookingFor": "A real, usable process for aural analysis, showing genuine trained listening rather than a vague claim of good ears.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe starting with the bass line and root motion, since that anchors harmonic function",
+        "Mention listening for tension and resolution cues, like dominant pull and cadence points, to locate structural chords",
+        "Reference internalized reference points, like solfege or interval recognition, as the actual mechanism"
+      ],
+      "modelAnswer": "I usually start with the bass line, because root motion tells you most of the harmonic story even before you've worked out the upper voices. Then I listen for where the tension sits, a dominant chord has that pull toward resolution that's hard to miss once you're used to listening for it, so I use those moments as anchor points in the progression. From there I sing through the chord tones against a mental sense of the key using solfege, which helps me place exactly which scale degrees are stacked. It's slower without an instrument, but honestly it forces me to actually hear the harmony instead of just finding it by feel on a keyboard."
+    },
+    "commonMistakes": [
+      "Claiming to just know it with no describable method",
+      "Ignoring bass motion and jumping straight to guessing chord names",
+      "Describing a process that only works with an instrument in hand"
+    ],
+    "followUps": ["What do you find hardest to identify by ear, and why?"]
+  },
+  {
+    "id": "prog-music-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Reception of musical innovation",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["history", "beethoven", "analysis"],
+    "question": "Beethoven's late string quartets confused a lot of his contemporaries and weren't fully appreciated for decades. Why do you think that happened, and what does it tell you about how musical innovation gets received?",
+    "lookingFor": "Genuine historical and analytical understanding, plus the ability to draw a broader insight rather than just recite facts.",
+    "idealAnswer": {
+      "bullets": [
+        "Point to specific features of the late quartets that broke convention, like unusual forms, extreme contrasts, dense fugal writing, and unresolved harmonic ambiguity",
+        "Explain that audiences trained on Classical-era expectations lacked the listening framework to process those choices at the time",
+        "Draw a broader point about how innovation often needs the audience, not just the work, to catch up"
+      ],
+      "modelAnswer": "The late quartets do things audiences at the time simply hadn't been trained to hear, movements that don't resolve where expected, fugal writing of real density, and forms that don't map onto the balanced phrase structures people expected from a string quartet. Contemporaries had built their listening habits on Haydn and early Beethoven, so the late quartets sounded almost incoherent rather than deliberately radical. What strikes me is that the music itself hadn't changed by the time it was recognized as visionary, the listening framework around it had to catch up instead. I think that's true of a lot of innovation, the work is often ahead of the ears that need to receive it."
+    },
+    "commonMistakes": [
+      "Vague claims that the music was too advanced with no specific musical detail",
+      "Treating the initial poor reception as proof the work was flawed",
+      "Failing to connect the historical example to a broader idea"
+    ],
+    "followUps": ["Can you think of a more recent example of music that was initially misunderstood?"]
+  },
+  {
+    "id": "prog-music-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Bebop vs swing harmonic language",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["jazz", "harmony", "history"],
+    "question": "How did the harmonic language of bebop differ from swing-era jazz, and what musical problem was bebop actually trying to solve?",
+    "lookingFor": "Real subject depth in jazz history and harmony, not a surface-level bebop-is-faster answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Note bebop's use of denser chord substitutions, extended and altered chords, and faster harmonic rhythm compared to swing's simpler triadic changes",
+        "Explain bebop musicians were reacting against big-band arrangements that left little room for individual improvisation",
+        "Connect the harmonic complexity to the goal of reclaiming the music as a soloist's art form"
+      ],
+      "modelAnswer": "Swing harmony mostly sat on simple triads and dominant sevenths moving at a relatively relaxed pace, which worked well for danceable big-band arrangements. Bebop players like Parker and Gillespie pushed toward extended and altered chords, tritone substitutions, and a much faster harmonic rhythm, partly because they wanted changes dense enough to say something new over, changes a soloist could actually improvise real ideas through rather than just decorate. I think the deeper problem bebop was solving wasn't just musical, it was about reclaiming ownership, big bands had turned jazz into arranged entertainment music, and bebop's harmonic complexity made it much harder to play casually, which pushed it back toward being a serious improviser's art form."
+    },
+    "commonMistakes": [
+      "Reducing the difference to tempo alone",
+      "Naming musicians correctly with no actual harmonic detail",
+      "Missing the social and artistic motivation behind the harmonic shift"
+    ],
+    "followUps": ["Do you think that same tension between accessibility and artistic complexity still exists in music today?"]
+  },
+  {
+    "id": "prog-music-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Minimalism as reaction",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["20th-century", "minimalism", "history"],
+    "question": "Minimalist composers like Steve Reich and Philip Glass were reacting against something specific happening in mid-century composition. What were they pushing back against, and how did their music respond to it?",
+    "lookingFor": "Understanding of minimalism's historical context, not just its surface features like repetition.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that they were reacting against the complexity and inaccessibility of serialism and academic modernism",
+        "Explain how minimalism replaced that with steady pulse, tonal or modal material, and gradual, audible process",
+        "Connect the stylistic choice to a broader intent around audience accessibility"
+      ],
+      "modelAnswer": "By the mid-twentieth century a lot of serious composition had gone deep into serialism, which was intellectually rigorous but often nearly impossible for a general listener to follow structurally. Reich and Glass pushed back by writing music built on steady pulse, simple tonal or modal material, and processes you could actually hear unfolding in real time, like a phrase gradually shifting out of phase with itself. It wasn't a rejection of rigor, Reich's phasing pieces are extremely systematic, but the system was made audible instead of hidden in a score only a specialist could parse. I find that appealing, the idea that complexity and accessibility don't have to be opposites."
+    },
+    "commonMistakes": [
+      "Describing minimalism as just repetitive music with no historical context",
+      "Confusing minimalism with ambient or background music",
+      "Missing the specific reaction against serialism"
+    ],
+    "followUps": ["Do you think minimalism has aged well, or does it feel dated to you now?"]
+  },
+  {
+    "id": "prog-music-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Acoustics of timbre",
+    "program": "Music",
+    "difficulty": "easy",
+    "tags": ["acoustics", "physics", "timbre"],
+    "question": "Why does a violin and a trumpet playing the exact same pitch and volume still sound completely different to your ear?",
+    "lookingFor": "Basic understanding of timbre as a function of overtone content, showing genuine curiosity about the physics of sound.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that pitch is the fundamental frequency, but timbre comes from the mix and relative strength of overtones above it",
+        "Note each instrument's shape and material produce a different overtone spectrum, and that's the actual source of tone color",
+        "Mention that attack and envelope, how the sound starts and decays, also shape what we perceive as timbre"
+      ],
+      "modelAnswer": "Two instruments playing the same pitch are producing the same fundamental frequency, but each also generates a whole stack of overtones above it, and it's the specific mix of those overtones that gives an instrument its tone color. A violin's string produces a very different set of overtone strengths than a trumpet's brass tube and vibrating lips, so even at the same fundamental the sound waves look completely different. On top of that, how a sound starts and fades, its attack and envelope, adds a lot to what our ear reads as identity, a plucked string versus a bowed one still sound distinct even before you factor in overtones at all."
+    },
+    "commonMistakes": [
+      "Saying they sound different because they're different instruments, with no actual mechanism",
+      "Confusing pitch with timbre",
+      "Leaving out the role of overtones entirely"
+    ],
+    "followUps": ["Why do you think a recording sometimes fails to capture that same distinction well?"]
+  },
+  {
+    "id": "prog-music-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Comparing performance interpretations",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["performance", "interpretation", "critical-listening"],
+    "question": "If you listened to two different pianists play the same Chopin nocturne, what specific musical choices would tell you they had different interpretations, beyond just tempo?",
+    "lookingFor": "Detailed, ear-trained critical listening vocabulary, showing the applicant actually engages closely with recordings.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific interpretive elements beyond tempo, such as rubato placement, pedaling, voicing, and dynamic shaping",
+        "Explain how those choices change the emotional narrative of the same notated piece",
+        "Show this comes from actual listening experience, ideally referencing a real comparison"
+      ],
+      "modelAnswer": "Tempo is the obvious thing to notice, but what really separates two pianists for me is where they place rubato, whether they stretch time right at the peak of a phrase or hold back just before it, which changes where the emotional weight of the phrase sits. Pedaling matters enormously too, how much blur a pianist allows between harmonies can make the same passage sound either dreamlike or muddy. I remember comparing Rubinstein and Pogorelich on the same nocturne once, Rubinstein kept the melody singing on top with very clear voicing, while Pogorelich took much more extreme dynamic risks that made it feel almost unstable in a way I found genuinely gripping. Same notes on the page, completely different emotional stories."
+    },
+    "commonMistakes": [
+      "Only mentioning tempo as the difference",
+      "Using vague language like one was more emotional with no specific musical detail",
+      "Speaking only in generalities with no evidence of actually comparing real recordings"
+    ],
+    "followUps": ["Which of those two approaches would you personally lean toward, and why?"]
+  },
+  {
+    "id": "prog-music-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Memorization process",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["performance", "practice", "technique"],
+    "question": "How do you actually go about memorizing a long piece for performance? Walk me through your process.",
+    "lookingFor": "A specific, structured personal process, showing real performance experience rather than a hypothetical answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe more than one type of memory used, such as muscle, aural, analytical, and visual, not relying on one alone",
+        "Mention practicing in sections or starting from unexpected points, not just playing start to finish",
+        "Show awareness that memorization is a safeguard for performance stress, not just repetition"
+      ],
+      "modelAnswer": "I don't trust muscle memory alone, because it's the first thing that fails under nerves, so I build in analytical memory too, actually knowing the harmonic structure and where each section is going so I could theoretically reconstruct it even if my hands forgot. I practice in short sections and deliberately start from the middle of phrases sometimes, not just from the top, because if you can only start from the beginning you don't actually know the piece, you know a habit. I also try playing it slowly away from the instrument in my head, which sounds strange, but if I can hear it clearly in my head I know it's actually secure rather than just automatic."
+    },
+    "commonMistakes": [
+      "Relying only on muscle memory with no backup strategy",
+      "Only ever practicing from the beginning of the piece",
+      "Giving a vague answer with no real specificity or personal experience"
+    ],
+    "followUps": ["What do you do if your memory actually fails you mid-performance?"]
+  },
+  {
+    "id": "prog-music-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Score fidelity vs interpretive freedom",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["interpretation", "performance-practice", "analysis"],
+    "question": "Do you think a performer should stay strictly faithful to a piece's original markings and the composer's intent, or is there a point where personal interpretation is not just allowed but necessary?",
+    "lookingFor": "Nuanced independent thinking about the tension between fidelity and interpretation, not a one-line dismissal either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between respecting the composer's notation and bringing something personal to a performance",
+        "Recognize that notation itself is an imperfect, incomplete record that always requires interpretive choices",
+        "Land on a considered position, ideally with a limiting principle for where freedom should stop"
+      ],
+      "modelAnswer": "I don't think total fidelity is even possible, notation is already an incomplete map of what the composer heard in their head, tempo markings and dynamics leave huge gaps that a performer has to fill with judgment whether they want to or not. So some interpretation isn't optional, it's built into the act of performing at all. Where I'd draw the line is changing something that alters the actual structural meaning of the piece, like cutting a repeat that's structurally essential just because it's convenient, that crosses from interpretation into something closer to rewriting. So my honest answer is that fidelity to the spirit of the piece matters more to me than fidelity to every literal marking."
+    },
+    "commonMistakes": [
+      "Taking an absolute position, always follow the score exactly, with no nuance",
+      "Treating notation as if it fully captures the composer's intent with no interpretive gaps",
+      "Refusing to commit to any actual position"
+    ],
+    "followUps": ["Can you think of a specific performance where you felt a performer crossed that line?"]
+  },
+  {
+    "id": "prog-music-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Originality and unconscious influence",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["ethics", "originality", "composition"],
+    "question": "You've written a piece for a school composition showcase, and a week before the performance a friend points out it sounds almost identical to a song you probably heard on a playlist months ago. You genuinely don't remember copying it. What do you do?",
+    "lookingFor": "Mature, honest reasoning about unconscious influence and originality, weighing integrity against the practical stakes of a looming performance.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the concern seriously rather than dismissing it defensively",
+        "Actually compare the two pieces honestly before deciding anything, rather than assuming guilt or innocence",
+        "Choose a course of action that protects integrity even if it's inconvenient, such as revising, crediting, or informing the organizers"
+      ],
+      "modelAnswer": "My first reaction would probably be defensive, but I'd force myself to actually sit down and compare the two pieces properly rather than just brushing it off. Unconscious influence is real, melodies get lodged in your head without you tracking the source, so I wouldn't assume I'm either completely innocent or a plagiarist without checking. If the similarity turned out to be more than coincidental, I think the honest move is to either substantially rework the passage or be upfront with whoever's running the showcase about where the resemblance might have come from, even if that's uncomfortable a week out. Performing something I'm not sure is really mine isn't worth the discomfort of a difficult conversation."
+    },
+    "commonMistakes": [
+      "Immediately assuming either total guilt or total innocence without actually checking",
+      "Deciding to just perform it anyway and hope nobody notices",
+      "Treating the friend's concern as an attack rather than useful information"
+    ],
+    "followUps": ["Would your answer change if the deadline were tomorrow instead of a week away?"]
+  },
+  {
+    "id": "prog-music-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Performing content you find objectionable",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["ethics", "artistic-integrity", "performance"],
+    "question": "Your choir director assigns a piece for the spring concert whose lyrics you find genuinely uncomfortable, maybe outdated or offensive in a way that bothers you personally. What do you do?",
+    "lookingFor": "Ability to navigate a real tension between artistic obligation, personal conscience, and constructive dialogue, rather than either silent compliance or refusal to engage.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the discomfort seriously rather than suppressing it to avoid conflict",
+        "Choose to raise it directly and specifically with the director rather than complaining elsewhere or quietly opting out",
+        "Show willingness to accept a reasonable outcome even if it isn't the one you'd have chosen, as long as the conversation happened"
+      ],
+      "modelAnswer": "I wouldn't just perform it and swallow the discomfort, because I think that discomfort is worth naming, but I also wouldn't refuse outright without first understanding why the piece was chosen, sometimes there's historical or artistic context I'm missing. I'd go talk to the director directly, explain specifically what's bothering me, and ask if there's room to discuss it, maybe there's a way to introduce the piece with context, or maybe there's a genuinely good reason I hadn't considered. If after that conversation I still felt strongly, I'd ask whether I could be excused from that specific piece rather than making it a bigger conflict, but I'd want to have that honest conversation first rather than assuming the worst."
+    },
+    "commonMistakes": [
+      "Either performing it silently with real resentment, or refusing outright with no conversation",
+      "Escalating publicly before raising it privately with the person who made the decision",
+      "Treating personal discomfort as automatically overriding any other consideration with no dialogue"
+    ],
+    "followUps": ["What if the director disagreed with you after hearing you out? Would you still perform it?"]
+  },
+  {
+    "id": "prog-music-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "AI voice cloning of an artist",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["ethics", "ai", "technology"],
+    "question": "AI tools can now recreate a specific singer's voice well enough to have them perform a song they never actually sang, sometimes after their death. If you had access to a tool that could recreate the voice of an artist you admired, would you use it in your own music, and where would you draw the line?",
+    "lookingFor": "Thoughtful ethical reasoning about consent, artistic identity, and the difference between homage and exploitation, not a flat yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish between using such a tool with consent or estate authorization versus without it",
+        "Address the deeper issue of an artist's voice as part of their identity and legacy, not just a sound to be used",
+        "Land on a clear personal line, such as needing explicit consent or limiting use to something like private study rather than public release"
+      ],
+      "modelAnswer": "I think there's a real difference between admiring someone's voice enough to study and be influenced by it, and actually generating new performances in their voice without their consent, the second one feels like it crosses into using someone's identity without their say. If I had access to that tool, honestly the line I'd draw is I wouldn't release anything publicly using a real artist's cloned voice unless there was clear authorization from them or their estate, because their voice isn't just a sound, it's tied to their actual artistic choices and legacy which they never got to weigh in on for that specific piece. I might use it privately just to experiment and learn how a phrase might have been sung differently, but that stays in my own practice room, not on a platform where it could be mistaken for something they actually did."
+    },
+    "commonMistakes": [
+      "Answering with a flat yes or no with no reasoning about consent",
+      "Treating a voice purely as a technical sound with no acknowledgment of artistic identity",
+      "Failing to distinguish private experimentation from public release"
+    ],
+    "followUps": ["Does your answer change if the artist is still alive and could theoretically object?"]
+  },
+  {
+    "id": "prog-music-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-generated music and copyright",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["ai", "copyright", "current-debate"],
+    "question": "Major record labels have sued AI music generators like Suno and Udio over training on copyrighted recordings without permission. Where do you land on that dispute?",
+    "lookingFor": "Awareness of a live, real industry debate plus a considered personal position rather than a fence-sitting summary.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness of the actual dispute, that labels allege unauthorized use of copyrighted recordings to train generative models",
+        "Weigh both sides genuinely, the argument that training is transformative versus the argument it's built on uncompensated use of real artists' work",
+        "State a clear personal position with reasoning, not just it's complicated"
+      ],
+      "modelAnswer": "I know the core claim is that these AI companies trained on huge catalogues of copyrighted recordings without licensing them, and the companies argue that training is a transformative use, similar to how a human musician learns by listening to lots of music. I don't find that comparison fully convincing though, a human absorbing influence over years and a system that can reproduce statistically close approximations of an artist's style on demand at scale aren't really doing the same thing, and the scale is exactly what makes it economically threatening to the artists whose work trained the model. I lean toward thinking there should be licensing and compensation built in, because otherwise you're asking the people whose work created the value to bear all the downside with none of the upside."
+    },
+    "commonMistakes": [
+      "Not actually knowing the specifics of the real dispute",
+      "Refusing to state any actual opinion when asked directly",
+      "Treating it as purely a technology question with no acknowledgment of the artists affected"
+    ],
+    "followUps": ["Do you think the answer should be different for a student using AI tools to learn, versus a company selling the output?"]
+  },
+  {
+    "id": "prog-music-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Streaming royalty economics",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["streaming", "industry", "current-debate"],
+    "question": "Streaming platforms pay a fraction of a cent per play, which means most working musicians can't live on streaming income alone. How do you think that's changing what it actually means to build a career as a young musician today?",
+    "lookingFor": "Real awareness of current music-industry economics and thoughtful reflection on how it shapes career strategy, not just a complaint about low pay.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness that streaming per-play payouts are extremely low and don't scale like older sales models did",
+        "Identify how musicians are adapting, such as leaning more on live performance, sync licensing, merchandise, or direct fan support platforms",
+        "Reflect personally on how this reality might shape the applicant's own approach to a music career"
+      ],
+      "modelAnswer": "Streaming pays out such a small fraction per play that unless you're getting truly massive numbers, it functions more like discovery and promotion than an actual income source, which is a real shift from when album and single sales were the main revenue engine. I think that's why so many musicians now build income around things streaming can't easily replace, touring, merchandise, sync placements in film and ads, and direct fan platforms like Patreon or Bandcamp where a smaller dedicated audience pays meaningfully more per person. For me personally it changes how I think about a career, I don't think I can plan around one single revenue source, so building an actual direct relationship with an audience feels more important than just chasing streams."
+    },
+    "commonMistakes": [
+      "Vague complaining about streaming being unfair with no actual numbers or specifics",
+      "Not knowing any of the alternative income models musicians actually use",
+      "Failing to connect the debate to their own personal thinking about a career"
+    ],
+    "followUps": ["Do you think that pressure changes the kind of music that gets made, not just how it's sold?"]
+  },
+  {
+    "id": "prog-music-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Diversifying the classical canon",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["classical-music", "repertoire", "current-debate"],
+    "question": "There's an ongoing push in classical music programming to move beyond the traditional canon of mostly white European male composers and include more historically overlooked composers. What's your take on that shift?",
+    "lookingFor": "Genuine awareness of a real programming debate in classical music, plus a considered, specific position rather than a generic platitude.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that this is an active, real shift happening in orchestras and conservatories, not a hypothetical",
+        "Give a specific reasoning for the position taken, addressing both artistic merit and historical access and opportunity",
+        "Avoid treating it as purely a box-ticking exercise or dismissing the traditional canon entirely"
+      ],
+      "modelAnswer": "I think it's overdue, and it's not really about lowering a bar, it's about recognizing that composers like Florence Price or Fanny Mendelssohn were genuinely excellent and were shut out of performance and publishing opportunities that their male contemporaries had, so their absence from the canon was never purely a merit-based outcome in the first place. I don't think it means abandoning Beethoven or Brahms, I still love that music, it's about widening the pool of what gets taken seriously enough to be programmed and studied. When I actually went and listened to Price's symphonies, I wasn't listening out of obligation, I genuinely think they hold up next to anything from that period, which is really the whole point."
+    },
+    "commonMistakes": [
+      "Treating the shift as purely symbolic with no engagement with actual composers or works",
+      "Dismissing it as lowering standards without engaging with the historical access argument",
+      "Giving a vague, safe non-answer with no real position"
+    ],
+    "followUps": ["Can you name a specific overlooked composer whose work you've actually listened to?"]
+  },
+  {
+    "id": "prog-music-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Adapting an ensemble under pressure",
+    "program": "Music",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "arranging", "problem-solving"],
+    "question": "You're the student music director for a small chamber concert, and the night before the show your lead violinist gets sick and can't perform. The piece was written specifically around that violin part. What do you actually do?",
+    "lookingFor": "Practical creative problem-solving under real time pressure, showing musical resourcefulness rather than panic or giving up.",
+    "idealAnswer": {
+      "bullets": [
+        "Assess what's actually salvageable, is there another player who could take the part, or does it need rearranging",
+        "Consider concrete alternatives, transposing the part to another available instrument, simplifying it, or adjusting the program",
+        "Show calm prioritization of what matters most for the audience and the remaining performers, not just personal panic"
+      ],
+      "modelAnswer": "First I'd figure out honestly what's actually possible in one night, is there anyone in the group or the wider student body who could sight-read or quickly learn that part on violin or a similar instrument. If not, I'd look at whether the part could be transposed for something we do have available, a viola or even a flute, accepting that the color changes but the piece can still function. If neither of those work in the time we have, I'd rather cut that piece from the program and adjust the run order than force a performance that isn't ready, because a shorter but solid concert serves everyone better than one weak link dragging down the whole evening. I'd rather make that call early in the night than scramble in the final hour."
+    },
+    "commonMistakes": [
+      "Insisting on performing the piece exactly as written regardless of the constraint",
+      "Panicking with no actual plan or fallback option",
+      "Not considering the option of simply adjusting the program instead of forcing a fix"
+    ],
+    "followUps": ["How would you communicate that change to the rest of the ensemble and the audience?"]
+  },
+  {
+    "id": "prog-music-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Composing under constraint",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "composition", "creativity"],
+    "question": "If I told you to write a one-minute piece using only three pitches and no instrument you've ever played before, how would you even start?",
+    "lookingFor": "Creative, structured thinking about how constraint can generate rather than limit ideas, showing genuine compositional instinct.",
+    "idealAnswer": {
+      "bullets": [
+        "Reframe the constraint as a generative tool rather than purely a limitation",
+        "Describe a concrete starting approach, such as exploring rhythm, register, and dynamics since pitch options are fixed",
+        "Show awareness that unfamiliarity with the instrument is itself something to research or lean into rather than avoid"
+      ],
+      "modelAnswer": "Honestly I'd treat the limits as the whole point rather than a problem to work around, with only three pitches I can't rely on melodic variety, so I'd push everything into rhythm, register, and dynamics instead, using the same three notes at wildly different speeds, octaves, and intensities to create contrast. For an unfamiliar instrument I'd actually go find recordings and maybe a fingering chart first, because writing idiomatically for something I don't know how to play means understanding what's actually comfortable or awkward on it, otherwise I'd just be guessing. I think constraints like this are honestly where I do my best writing, having infinite options is what actually paralyzes me."
+    },
+    "commonMistakes": [
+      "Treating the constraint as impossible or refusing to engage with the challenge",
+      "Ignoring the instrument-specific research needed to write idiomatically",
+      "Only discussing pitch options and ignoring rhythm, dynamics, and register as tools"
+    ],
+    "followUps": ["Which three pitches would you actually pick, and why those?"]
+  },
+  {
+    "id": "prog-music-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Adapting a program for a new audience",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "programming", "audience"],
+    "question": "Say you're asked to put together a 30-minute recital for an audience of young children who have never been to a concert before. How would you actually choose and structure the program?",
+    "lookingFor": "Practical, audience-aware programming instinct, balancing musical substance with genuine accessibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Consider concrete choices like shorter pieces, varied tempo and character, and pieces with clear narrative or imagery",
+        "Think about structuring the whole set, not just individual pieces, including pacing, variety, and moments of interaction",
+        "Avoid condescension, treating the audience as genuinely capable of engaging with real music, just needing a different frame"
+      ],
+      "modelAnswer": "I'd pick pieces that are short and have a clear character or story a child could latch onto, something like Saint-Saens' Carnival of the Animals works really well because each movement paints an obvious picture. I'd also think hard about pacing the whole thirty minutes, alternating fast and slow, loud and soft, so attention doesn't flatline, and I'd probably build in a moment where I talk briefly or ask a question between pieces rather than just performing straight through in silence. What I wouldn't do is water down the actual musical quality, kids pick up on being condescended to, I'd rather give them something genuinely good framed in a way that's inviting."
+    },
+    "commonMistakes": [
+      "Assuming children need simplified or lower-quality music rather than a different framing",
+      "Ignoring pacing and treating the recital as just a list of pieces",
+      "No consideration of engagement or interaction beyond straight performance"
+    ],
+    "followUps": ["What would you do if you noticed the children losing attention halfway through?"]
+  },
+  {
+    "id": "prog-music-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Recovering from a mistake live",
+    "program": "Music",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "performance", "resilience"],
+    "question": "You're performing a memorized piece in front of an audience and your mind suddenly goes blank halfway through. What would you actually do in that moment?",
+    "lookingFor": "Realistic, composed problem-solving under live pressure, and self-awareness about how to prepare for that risk in advance.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a concrete in-the-moment strategy, such as relying on harmonic or structural memory to improvise a path back to the notated material",
+        "Emphasize staying physically calm and continuing to move rather than stopping dead or apologizing to the audience",
+        "Mention preparing for this risk in advance, such as knowing multiple entry points into the piece, not just hoping it won't happen"
+      ],
+      "modelAnswer": "The instinct is to freeze, but I've trained myself that the priority in that moment is to keep the music moving even if it's not exactly what's on the page, because a confident continuation reads far better to an audience than a dead stop. If I actually lose the next notes, I'd lean on my sense of the harmony and where the phrase is probably heading and improvise a bridge back to a spot I know solidly, rather than stopping to visibly search for it. That's honestly why I practice starting from multiple points in a piece, not just the beginning, so I always have several places I can land on and rejoin the music from if my memory drops out."
+    },
+    "commonMistakes": [
+      "Saying they would simply stop and restart, which is rarely actually possible mid-performance",
+      "Having no real strategy beyond hoping it never happens",
+      "Focusing only on the emotional panic with no practical recovery method"
+    ],
+    "followUps": ["How do you specifically practice to reduce the chance of that happening?"]
+  }
+]

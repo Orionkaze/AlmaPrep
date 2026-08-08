@@ -1,0 +1,748 @@
+[
+  {
+    "id": "prog-music-technology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Sampling theorem",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "dsp",
+      "sampling",
+      "fundamentals"
+    ],
+    "question": "Explain why CD audio uses a 44.1 kHz sample rate. What would actually happen if you recorded a violin at 30 kHz instead?",
+    "lookingFor": "A working grasp of the Nyquist theorem and the ability to reason through the consequence of violating it, not just a memorized number.",
+    "idealAnswer": {
+      "bullets": [
+        "State the Nyquist-Shannon principle: sample rate must be at least twice the highest frequency you want to capture",
+        "Explain 44.1 kHz covers human hearing up to roughly 20 kHz with headroom for the anti-aliasing filter",
+        "Describe what happens at 30 kHz: frequencies above 15 kHz fold back down as aliasing, producing inharmonic artifacts rather than just disappearing"
+      ],
+      "modelAnswer": "Nyquist says you need at least double the highest frequency you're trying to capture, so 44.1 kHz gives you clean coverage up to just past 20 kHz, which is roughly the top of human hearing, plus a bit of room for the anti-aliasing filter to roll off before it hits the Nyquist limit. If you sampled that violin at 30 kHz, anything in the recording above 15 kHz wouldn't just get cut off, it would fold back down and show up as false, inharmonic frequencies mixed in with the real signal. That's aliasing, and it's genuinely nasty because it doesn't sound like a missing top end, it sounds like distortion baked into the note itself. I actually tested this once on a cheap field recorder and could hear the harshness before I understood why it was happening."
+    },
+    "commonMistakes": [
+      "Reciting '44.1 kHz because CDs use it' with no reasoning behind the number",
+      "Assuming under-sampling just makes audio quieter or duller instead of introducing aliasing",
+      "Confusing sample rate with bit depth"
+    ],
+    "followUps": [
+      "Why do professional studios often record at 48 kHz or 96 kHz instead of 44.1 kHz?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Bit depth vs sample rate",
+    "program": "Music Technology",
+    "difficulty": "easy",
+    "tags": [
+      "digital-audio",
+      "fundamentals"
+    ],
+    "question": "What's the practical difference between increasing bit depth and increasing sample rate, and which one actually gives you more dynamic range?",
+    "lookingFor": "Clear separation of the two axes of digital audio quality and correct attribution of dynamic range to bit depth.",
+    "idealAnswer": {
+      "bullets": [
+        "Sample rate controls how often you measure amplitude in time, affecting frequency range captured",
+        "Bit depth controls how precisely each measurement is recorded, affecting dynamic range and noise floor",
+        "State that bit depth, not sample rate, is what governs dynamic range"
+      ],
+      "modelAnswer": "Sample rate is about time, it's how many snapshots of the waveform you take per second, and that determines how high a frequency you can accurately capture. Bit depth is about precision, it's how many possible amplitude values each snapshot can have, and that's what sets your dynamic range and how low your noise floor is. So if I want a wider gap between the quietest whisper and the loudest peak without adding hiss, I need more bits, not a higher sample rate. That's why 24-bit recording became the standard for tracking even though most listeners can't hear past 48 kHz, the extra headroom is what actually protects the recording from clipping and noise."
+    },
+    "commonMistakes": [
+      "Saying higher sample rate improves dynamic range",
+      "Treating the two parameters as interchangeable",
+      "Not connecting bit depth to noise floor or headroom in practice"
+    ],
+    "followUps": [
+      "Why might you still record at 24-bit even if your final release will be 16-bit?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Lossy compression and psychoacoustics",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "compression",
+      "psychoacoustics",
+      "codecs"
+    ],
+    "question": "How does an MP3 encoder decide what audio information to throw away, and why does it usually get away with it?",
+    "lookingFor": "Understanding that lossy codecs exploit psychoacoustic masking rather than simply removing quiet sounds.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain psychoacoustic masking: a loud sound at one frequency hides a quieter sound nearby in frequency or time",
+        "The encoder uses a perceptual model to identify what a human ear likely can't hear given the surrounding content",
+        "It discards or heavily reduces that masked data, which shrinks file size with minimal perceived loss, though it can fail on complex or sparse material"
+      ],
+      "modelAnswer": "An MP3 encoder isn't just cutting quiet parts, it's using a model of human hearing called psychoacoustic masking, where a loud tone at one frequency makes a nearby quieter tone effectively inaudible even though it's technically still in the signal. The encoder analyzes the audio in short frames, predicts what's masked given everything else happening at that moment, and allocates fewer bits to those masked regions since your ear won't notice their loss anyway. That's how it shrinks a file dramatically while sounding close to the original on busy material like a full mix. Where it falls apart is on sparse, exposed sounds like a solo cymbal decay or acoustic guitar, because there's nothing masking the artifacts and you can hear the encoder's compromises directly."
+    },
+    "commonMistakes": [
+      "Saying MP3 just deletes high frequencies or quiet parts",
+      "Not mentioning psychoacoustic masking at all",
+      "Claiming lossy compression is always audibly transparent regardless of source material"
+    ],
+    "followUps": [
+      "Why do lossy artifacts tend to be more audible on cymbals and reverb tails than on a bass line?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Synthesis method comparison",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "synthesis",
+      "sound-design"
+    ],
+    "question": "Compare subtractive synthesis and FM synthesis. Why does FM tend to sound harsher or more metallic even at settings that seem comparable?",
+    "lookingFor": "Real technical understanding of how each method generates timbre, not just genre associations like 'FM sounds like 80s digital pianos'.",
+    "idealAnswer": {
+      "bullets": [
+        "Subtractive synthesis starts with a harmonically rich waveform and removes content with filters",
+        "FM synthesis generates new harmonics by using one oscillator to modulate another's frequency, creating sidebands mathematically related to the carrier and modulator ratio",
+        "Explain that FM's sidebands can land at inharmonic frequencies depending on the ratio, which is what produces the metallic, bell-like or harsh character"
+      ],
+      "modelAnswer": "Subtractive synthesis takes a waveform that's already harmonically dense, like a sawtooth, and sculpts it down using filters and envelopes, so you're always working with a fixed, harmonic overtone series and shaping it. FM synthesis works completely differently, it uses one oscillator, the modulator, to rapidly vary the frequency of another, the carrier, and that interaction actually generates new frequency components called sidebands. Whether those sidebands land on harmonic or inharmonic points depends entirely on the ratio between the carrier and modulator frequencies, and it's those inharmonic sidebands that give FM its glassy, bell-like or metallic quality that subtractive synthesis structurally can't produce. I spent a while on a Yamaha DX7 emulator just changing ratios by tiny amounts and hearing completely different timbral characters emerge, which is when FM really clicked for me as generative rather than sculptural."
+    },
+    "commonMistakes": [
+      "Describing FM only by genre association without explaining the sideband mechanism",
+      "Confusing FM with amplitude modulation or ring modulation",
+      "Treating both synthesis types as functionally the same, just with different presets"
+    ],
+    "followUps": [
+      "What happens to the timbre if you change the carrier-to-modulator ratio from a simple integer ratio to something irrational?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Latency and buffer size",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "latency",
+      "dsp",
+      "workflow"
+    ],
+    "question": "A producer complains their DAW feels laggy when they play a virtual instrument live from a MIDI keyboard. Walk me through what's actually happening and how you'd fix it.",
+    "lookingFor": "Technical understanding of audio buffer size and its trade-off between latency and CPU stability.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the audio interface processes sound in blocks (the buffer), and larger buffers mean more delay between playing a note and hearing it",
+        "Note the trade-off: smaller buffers reduce latency but increase CPU load and risk of clicks or dropouts",
+        "Recommend lowering the buffer size for tracking and recognizing you may need to raise it again for heavy mixing sessions"
+      ],
+      "modelAnswer": "What's happening is the audio interface isn't processing sound continuously, it's working in small chunks called the buffer, and every chunk has to be filled before it gets sent out, which creates a delay between hitting a key and hearing the note. If their buffer size is set high, maybe 512 or 1024 samples, that delay becomes noticeable enough to throw off their timing while playing live. The fix is to drop the buffer size down to something like 64 or 128 samples for tracking, which cuts the latency close to unnoticeable, but that puts more strain on the CPU since it has to process more often, so if the session is already loaded with plugins they might start hearing crackles instead. I'd tell them to keep a low-latency buffer while playing and recording, then raise it back up once they're mixing and don't need to play in real time anymore."
+    },
+    "commonMistakes": [
+      "Blaming the MIDI keyboard or cable instead of the audio buffer",
+      "Not mentioning the CPU load trade-off of lowering buffer size",
+      "Suggesting a fix without explaining why the problem happens at all"
+    ],
+    "followUps": [
+      "Why might increasing the buffer size actually be the right call once you're finished recording and start mixing?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Loudness normalization and LUFS",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "mastering",
+      "loudness",
+      "industry"
+    ],
+    "question": "Streaming platforms normalize loudness to around minus 14 LUFS. How has that actually changed the way engineers approach mastering compared to the loudness-war era?",
+    "lookingFor": "Awareness of a specific, current mastering practice and reasoning about its effect on creative decisions, not just a definition of LUFS.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain LUFS measures perceived loudness rather than peak level, and platforms turn down anything mastered louder than their target",
+        "Note that mastering a track hotter than minus 14 LUFS no longer makes it sound louder on streaming, it just gets turned down and can lose dynamics for nothing",
+        "Discuss the resulting shift toward mastering for dynamics and tonal balance rather than maximum loudness, though genre and platform still create exceptions"
+      ],
+      "modelAnswer": "LUFS measures how loud a track actually sounds to a listener over time, not just its peak level, and streaming platforms use it to turn every track down or up to roughly the same perceived loudness, usually around minus 14 LUFS. That completely undercuts the old loudness-war logic, because if you slam a master to minus 6 LUFS to sound louder than the next song, the platform just turns it down to match everyone else, so all you've actually done is squash the dynamics for no competitive benefit. What's changed is that a lot of mastering engineers now deliberately master with more dynamic range and let the platform's normalization do the leveling, because a track with real punch and space tends to translate better once it's brought down to the target loudness than a brick-walled one does. I still see some genres, like certain EDM subgenres, push loud anyway for the in-your-face effect on non-normalized playback like club systems, so it's not a universal rule, but it's a real shift in mindset."
+    },
+    "commonMistakes": [
+      "Defining LUFS correctly but not connecting it to any actual change in mastering behavior",
+      "Assuming loudness normalization means loud mastering no longer matters at all in any context",
+      "Confusing LUFS with peak dBFS metering"
+    ],
+    "followUps": [
+      "Does loudness normalization mean dynamic range is dead as a mixing concern, or does it matter for a different reason now?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "MIDI fundamentals",
+    "program": "Music Technology",
+    "difficulty": "easy",
+    "tags": [
+      "midi",
+      "fundamentals"
+    ],
+    "question": "If a MIDI file carries no actual sound, what exactly is being sent, and why can the same MIDI file sound completely different on two computers?",
+    "lookingFor": "Correct conceptual model of MIDI as a control protocol, distinct from the sound source that interprets it.",
+    "idealAnswer": {
+      "bullets": [
+        "MIDI transmits performance data: note on/off, velocity, pitch bend, control changes, not audio waveforms",
+        "Playback sound depends entirely on the synth or sample library receiving those messages",
+        "Two computers with different default synths or sound banks will produce very different timbres from identical MIDI data"
+      ],
+      "modelAnswer": "MIDI is basically a set of instructions, not sound at all, it's messages like note on, note off, how hard the key was pressed, pitch bend, and various control changes for things like modulation or sustain pedal. None of that says what an instrument should actually sound like, it's just telling something else what to play and how. So the reason the same file sounds different on two computers is that each one is routing those instructions to a different sound source, maybe one machine's default synth is a basic sine-wave patch and the other has a full sample-based piano library, and they're interpreting identical data completely differently. It's a bit like handing two different orchestras the same sheet music, the notation is identical but the performance depends entirely on who's playing it."
+    },
+    "commonMistakes": [
+      "Saying MIDI files contain compressed audio",
+      "Not distinguishing between the protocol and the sound-generating device",
+      "Assuming MIDI only carries pitch information and not velocity or control data"
+    ],
+    "followUps": [
+      "What's an example of a MIDI control change message besides note on and off?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Frequency masking in a mix",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "mixing",
+      "eq",
+      "frequency-domain"
+    ],
+    "question": "You're mixing a track and the bass and kick drum are fighting for space, muddying the low end. What's actually happening in the frequency domain, and how would you address it?",
+    "lookingFor": "Ability to diagnose a common mixing problem in terms of overlapping frequency content and describe a concrete corrective technique.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that the kick and bass likely share overlapping fundamental or harmonic energy in the same low-frequency range, causing masking and lack of definition",
+        "Describe carving complementary space, for example a slight EQ cut in the bass where the kick's punch lives and vice versa, or sidechain compression",
+        "Mention using reference monitoring or a spectrum analyzer to identify the actual overlap rather than guessing"
+      ],
+      "modelAnswer": "What's usually happening is the kick's punch and the bass's fundamental are sitting in a similar frequency zone, often somewhere between 60 and 120 Hz, so instead of two distinct sounds you get one smeared low end where neither instrument reads clearly. I'd pull up a spectrum analyzer to actually see where the overlap is instead of guessing, then carve a small complementary notch, maybe cutting the bass slightly where the kick's attack is strongest and doing the opposite in the kick where the bass's sustain lives, so each one has its own pocket. If that's not enough I'd add subtle sidechain compression, ducking the bass just a touch every time the kick hits, which keeps the kick's transient punch audible without permanently thinning the bass. It's less about EQ as decoration and more about making sure two sounds aren't trying to occupy the exact same space at the exact same time."
+    },
+    "commonMistakes": [
+      "Suggesting only 'turn one of them down' without addressing the frequency overlap",
+      "Not mentioning any way of identifying where the overlap actually is",
+      "Ignoring sidechain compression as a tool entirely"
+    ],
+    "followUps": [
+      "How would your approach change if the genre was something with a very sparse arrangement, like a stripped-back ballad, versus a dense EDM track?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Room acoustics and low-frequency problems",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "acoustics",
+      "room-modes"
+    ],
+    "question": "Why do small, untreated rooms cause the worst problems specifically in the low end, rather than evenly across the whole spectrum?",
+    "lookingFor": "Understanding of room modes and standing waves as a physical, wavelength-dependent phenomenon.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that low frequencies have long wavelengths that are comparable to or larger than typical room dimensions, causing standing waves and room modes",
+        "High frequencies have short wavelengths and are more easily absorbed or scattered by furniture and soft surfaces, so they cause fewer severe issues",
+        "Describe the practical effect: bass response varies wildly depending on listening position, with nulls and buildups at specific spots in the room"
+      ],
+      "modelAnswer": "It comes down to wavelength versus room size. A low note like 50 Hz has a wavelength of around 22 feet, which is often longer than the room itself, so the sound wave reflects off walls and reinforces or cancels itself at specific points, creating what are called room modes or standing waves. High frequencies have much shorter wavelengths, sometimes just inches, so they get absorbed or scattered by furniture, curtains, even the shape of your head, and don't build up the same way. That's why you can walk a few feet in a small untreated room and hear the bass practically disappear in one spot and boom in another, while the mids and highs stay relatively consistent. It's also why bass trapping in the corners, where those low-frequency waves tend to pile up, is usually the first thing worth investing in over general foam panels."
+    },
+    "commonMistakes": [
+      "Saying foam panels alone fix bass problems",
+      "Not connecting the issue to wavelength versus room dimensions",
+      "Treating all frequencies as equally affected by an untreated room"
+    ],
+    "followUps": [
+      "Why is foam generally ineffective at treating bass problems compared to bass traps?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Analog versus digital debate",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "analog",
+      "digital",
+      "debate"
+    ],
+    "question": "Some producers insist analog gear sounds warmer than a digital emulation of the same circuit. Is there a real technical basis for that, or is it mostly psychological?",
+    "lookingFor": "Balanced, technically grounded reasoning that doesn't fall into either dogmatic camp, showing awareness of harmonic distortion, component behavior, and modeling limitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge real technical differences: analog circuits introduce nonlinear harmonic distortion, transformer saturation, and subtle noise that early digital modeling often failed to capture accurately",
+        "Note that modern digital modeling, especially component-level and neural network based emulation, has closed much of that gap",
+        "Recognize the psychological and contextual factors too, expectation bias, workflow feel, and visual and tactile interaction with hardware, without dismissing the technical side entirely"
+      ],
+      "modelAnswer": "I don't think it's purely psychological, there's a real technical basis for part of it. Analog circuits, especially things like tape saturation or transformer-based preamps, introduce nonlinear harmonic distortion and subtle noise that early digital plugins genuinely failed to replicate well, because they were modeling the circuit at too simple a level. That said, modern emulations, particularly ones using component-level modeling or machine learning trained on real hardware, have gotten remarkably close, close enough that blind tests often show engineers can't reliably tell them apart. So I think the honest answer is it's both, there's a shrinking but real technical gap, and on top of that there's a genuine psychological and workflow effect where knowing you're using a piece of vintage hardware, and physically turning a real knob, changes how carefully and confidently you make decisions. I'd be wary of anyone who claims it's entirely one or entirely the other."
+    },
+    "commonMistakes": [
+      "Dismissing the debate as purely psychological with no technical grounding",
+      "Insisting analog is objectively and always superior with no acknowledgment of modern modeling quality",
+      "Giving no specific technical mechanism, like harmonic distortion or saturation, to back up either side"
+    ],
+    "followUps": [
+      "Have you ever done or read about a blind A/B test between analog gear and its digital emulation? What did it show?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "AI music generation and copyright",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "ai",
+      "copyright",
+      "current-events"
+    ],
+    "question": "Tools like Suno and Udio can generate a finished song from a text prompt, and major record labels have sued them over how they were trained. Where do you stand on that, and how do you think it changes what a music technologist actually does for a living?",
+    "lookingFor": "Awareness of a genuinely current industry debate, an independently reasoned position rather than a rehearsed take, and reflection on personal career implications.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness of the core issue: these tools were trained on copyrighted recordings without licensing, which is the basis of the label lawsuits",
+        "Take a reasoned position rather than a flat yes or no, weighing artist compensation against genuine technical innovation",
+        "Reflect honestly on how it might reshape the field, for example shifting value toward curation, taste, sound design, and post-production rather than raw generation"
+      ],
+      "modelAnswer": "The core issue as I understand it is that these models were trained on huge catalogs of copyrighted recordings without licensing them, so the lawsuits are really about whether that training counts as fair use or as uncompensated exploitation of an artist's work, and I lean toward thinking artists deserve to be compensated or at least asked, because their work is the actual product being learned from. At the same time I don't think the technology itself is the enemy, plenty of tools in music history, from samplers to autotune, were controversial at first and then became normal creative instruments once the rights questions got sorted out. What I think it does to the field is push the value away from simply being able to generate a competent track, since a prompt can do that now, and toward the things a machine can't easily fake, like a genuinely original creative vision, taste in arrangement, and knowing when something actually feels right rather than statistically plausible. I want to go into this field understanding both the tools and the ethics well enough to be part of shaping that answer rather than just reacting to it."
+    },
+    "commonMistakes": [
+      "Vague awareness without naming the actual legal or technical issue, like training data licensing",
+      "A flat 'AI is bad' or 'AI is just progress' answer with no nuance",
+      "Not connecting the debate to their own future in the field at all"
+    ],
+    "followUps": [
+      "Do you think there's a meaningful difference between a human sampling a two-second drum loop and an AI model training on millions of songs?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "AI voice cloning ethics dilemma",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "ai",
+      "voice-cloning"
+    ],
+    "question": "A client asks you to use AI voice-cloning software to make a demo vocal sound like a specific famous singer, without that singer's permission, purely to pitch the song to their label. What do you do?",
+    "lookingFor": "Structured ethical reasoning that weighs the client's practical goal against consent, legal risk, and industry norms, landing on a defensible position rather than an easy yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the real tension: it's a common industry practice for pitch demos, but using a specific person's cloned voice without consent raises consent and likeness rights issues that go beyond simple copyright",
+        "Propose a concrete alternative, such as using a soundalike session singer or a generic AI voice rather than a clone of a named, identifiable artist",
+        "Land on a clear position while acknowledging the pressure the client is under, rather than refusing to take a stance"
+      ],
+      "modelAnswer": "I understand why the client wants it, hearing a demo in the target artist's actual voice helps a label imagine the pitch, and that's a real and common practice in songwriting. But cloning a specific, identifiable person's voice without their consent is different from just writing in their style, because it uses their actual likeness, and that's the kind of thing that's increasingly landing artists and companies in legal and reputational trouble, so I wouldn't do it as asked. I'd suggest an alternative that gets them most of the way there without the risk, either hiring a soundalike session vocalist who can capture the tone and phrasing legitimately, or using a generic AI voice model that isn't trained on or marketed as a specific named artist. If the client pushed back and insisted, I'd be honest that I'm not comfortable doing it and explain why, because protecting a working relationship isn't worth building on something that could blow up on both of us later."
+    },
+    "commonMistakes": [
+      "Agreeing without any hesitation because 'it's just a demo, nobody will hear it'",
+      "Refusing outright with no attempt to solve the client's actual underlying need",
+      "Confusing style imitation, which is common and generally acceptable, with a direct unauthorized voice clone of a named artist"
+    ],
+    "followUps": [
+      "Would your answer change if the demo was never going to be released or distributed, only played once in a private label meeting?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Uncleared sampling ethics dilemma",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "sampling",
+      "copyright"
+    ],
+    "question": "While producing a track for a paying client, you recognize a chopped-up sample lifted from another artist's unreleased demo that leaked online. The client says nobody will notice. How do you handle it?",
+    "lookingFor": "Ethical reasoning that treats an unreleased leaked work as still belonging to its creator, plus a practical path forward rather than a purely moralizing refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that a leak doesn't remove the original creator's rights or consent, unreleased status makes it more sensitive, not less",
+        "Raise the issue directly and honestly with the client rather than quietly complying or quietly refusing without explanation",
+        "Suggest a constructive path, such as reworking the sample into something transformative, seeking clearance, or replacing it entirely, while being honest that continuing to use it as is puts them both at risk"
+      ],
+      "modelAnswer": "The fact that it leaked doesn't change that it's someone else's unreleased, uncredited work, if anything using a leak feels worse because that artist never chose to put it out into the world at all. I'd raise it with the client directly and calmly rather than either silently going along with it or silently refusing, explaining that beyond it being wrong, it's a real legal and reputational risk if the track gets any traction and the original artist or their label notices. I'd offer a way forward instead of just shutting the idea down, either replacing the sample with something we create ourselves that captures a similar feel, or transforming it enough that it's genuinely a new piece of work rather than a recognizable lift. If the client insisted on keeping it exactly as is after that conversation, I'd have to be honest that I'm not willing to put my name on it, because that's not a compromise I think is worth the risk to either of us."
+    },
+    "commonMistakes": [
+      "Treating a leak as fair game since it's already public",
+      "Refusing without offering the client any alternative or explanation",
+      "Ignoring that this is also a legal risk to themselves as the producer, not just an abstract ethics question"
+    ],
+    "followUps": [
+      "Does your answer change if the sample was from a released, commercially available track instead of a leaked demo?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Spatial audio and Dolby Atmos adoption",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "spatial-audio",
+      "atmos",
+      "current-events"
+    ],
+    "question": "Dolby Atmos Music is being pushed hard by streaming services and labels right now. What does mixing in Atmos actually require that stereo mixing doesn't, and do you think the format will genuinely change how people listen to music?",
+    "lookingFor": "Real technical understanding of object-based spatial audio versus channel-based stereo, plus a grounded opinion on adoption, not just enthusiasm for the buzzword.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that Atmos is object-based, treating each sound as an object with position metadata rendered to whatever speaker or headphone setup is playing it, rather than being locked to two fixed channels",
+        "Note the practical mixing shift: thinking in height and depth as well as left-right, and the fact most listeners hear it through binaural headphone rendering, not a real surround room",
+        "Give a grounded, non-hype opinion on whether it changes listening habits, acknowledging both its creative potential and the practical adoption barriers"
+      ],
+      "modelAnswer": "Stereo mixing locks every sound into a fixed balance between two channels, but Atmos is object-based, meaning each sound carries metadata about where it's positioned in a 3D space, and the playback system renders that position dynamically depending on whether you're on a full surround setup or just headphones using a binaural render. Practically, that means as a mixer I'm not just thinking left to right and front to back in level, I'm thinking about height and depth too, deciding whether a pad sound lives above the listener's head or a vocal stays anchored dead center no matter what device is playing it. I do think it has real creative potential, especially for genres that lean into atmosphere, but I'm honestly skeptical it fully changes casual listening habits any time soon, because most people are still consuming it through the binaural headphone version rather than an actual object-based room, and the audible difference from a well-done stereo mix isn't always dramatic on a phone speaker. I think it'll stay a meaningful tool for certain genres and flagship releases rather than becoming the universal default the way stereo did."
+    },
+    "commonMistakes": [
+      "Describing Atmos as just '5.1 surround' or 'more speakers' without mentioning object-based rendering",
+      "Pure hype with no acknowledgment of adoption barriers or how most people actually hear it",
+      "Not distinguishing between mixing for a physical surround room and the binaural render most consumers actually experience"
+    ],
+    "followUps": [
+      "If most listeners experience Atmos through a binaural headphone render rather than real speakers, does that undercut the point of mixing in 3D space?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Streaming royalty model debate",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "streaming",
+      "royalties",
+      "industry-debate"
+    ],
+    "question": "Some streaming platforms have shifted toward artist-centric payout models instead of a pure pro-rata stream share. What problem is that trying to solve, and do you think it actually helps working musicians?",
+    "lookingFor": "Awareness of a real, current shift in streaming economics and the ability to reason about who actually benefits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the pro-rata problem: all streams go into one pool divided by total share, meaning huge volumes of low-value background listening and even fraudulent streams dilute payouts to genuine artists",
+        "Describe the artist-centric idea: weighting payouts toward tracks with a minimum engagement threshold from real, identifiable listeners, aiming to reduce the value of fraud and low-effort noise content",
+        "Give a grounded opinion on effectiveness, noting it likely helps mid-tier and niche artists more than it dramatically transforms the biggest superstar catalogs or completely solves the underlying low per-stream rate"
+      ],
+      "modelAnswer": "The old pro-rata model pools all subscriber revenue together and splits it by total share of streams platform-wide, which sounds fair but actually lets huge volumes of background noise content, white noise playlists, or outright bot-driven fraud siphon meaningful money away from real artists, since a stream is a stream regardless of who or what generated it. Artist-centric models try to fix that by only counting streams from real, actively engaged listeners past some minimum threshold and by excluding non-music noise content from competing in the same pool as songs, so the goal is really about redirecting money away from fraud and filler and back toward genuine listening. I think it does help, particularly smaller and mid-tier artists who were getting diluted by that noise, but I'm not convinced it solves the bigger complaint most musicians have, which is that the per-stream rate itself is still tiny, so it's more of a fairness fix within the existing pie than a fix for the size of the pie."
+    },
+    "commonMistakes": [
+      "Not knowing what pro-rata means or how streaming payouts are pooled",
+      "Assuming artist-centric models directly raise the per-stream rate rather than redistributing an existing pool",
+      "Giving an opinion with no reasoning about who specifically benefits or doesn't"
+    ],
+    "followUps": [
+      "Who do you think loses out under an artist-centric model compared to the old system?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Plugin architecture and CPU load",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "plugins",
+      "dsp",
+      "cpu"
+    ],
+    "question": "What's actually happening inside a computer when a VST plugin processes audio in real time, and why can loading too many plugins cause your session to crackle or drop out?",
+    "lookingFor": "Understanding of real-time DSP processing constraints and why plugin count and complexity strain a system.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a plugin runs its DSP algorithm on every buffer of audio in real time, within the strict deadline set by the buffer size",
+        "More plugins, or more computationally heavy ones, mean more calculations have to finish before the next buffer is due, competing for CPU cycles",
+        "Crackles and dropouts happen when the processing can't finish in time, causing the audio engine to miss its deadline"
+      ],
+      "modelAnswer": "A VST plugin is running its own signal processing code on every single buffer of audio that passes through it, and it has to finish that calculation before the next buffer is due, because audio has to keep flowing in real time with no gaps. Each plugin you add is more math the CPU has to do within that same tight window, so a few lightweight EQs might be no problem, but stacking several heavy convolution reverbs or complex synths starts eating into that deadline. When the processing can't finish in time, the audio engine has nothing to send out for that buffer, and that's the click, pop, or dropout you hear, it's essentially a missed deadline made audible. That's also why freezing or bouncing tracks to audio, which removes the live plugin processing, is such a common trick to free up headroom in a heavy session."
+    },
+    "commonMistakes": [
+      "Vaguely saying 'it uses too much memory' without addressing the real-time processing deadline",
+      "Not connecting buffer size to why the deadline exists at all",
+      "Treating all plugins as equally CPU-intensive regardless of what they're doing"
+    ],
+    "followUps": [
+      "Why does freezing a track to audio help, and what do you lose by doing it?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Compressor attack and release",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "dynamics",
+      "mixing",
+      "technical"
+    ],
+    "question": "Explain what a compressor's attack and release settings are actually doing to a waveform, using a snare drum as your example.",
+    "lookingFor": "A precise, mechanistic explanation of dynamics processing rather than a vague description of 'making it punchier'.",
+    "idealAnswer": {
+      "bullets": [
+        "Attack time is how long the compressor waits after the signal crosses the threshold before it starts reducing gain",
+        "Release time is how long it takes the compressor to stop reducing gain and return to unity after the signal falls back below threshold",
+        "Apply it to a snare specifically: a slower attack lets the initial transient crack through before compression kicks in, shaping perceived punch, while release length affects how the tail and sustain are shaped"
+      ],
+      "modelAnswer": "The threshold is the level a compressor starts reacting to, but attack and release control the timing of that reaction. Attack time is how long the compressor waits after the signal crosses the threshold before it actually starts turning the level down, so on a snare, a slow attack, something like 20 to 30 milliseconds, lets that sharp initial crack of the hit pass through completely uncompressed before the gain reduction kicks in, which is actually how you get a punchier, more aggressive-sounding snare rather than a squashed one. Release time is how long it takes the compressor to let go and return to normal gain once the signal drops back below the threshold, and on that same snare, a fast release lets it recover quickly and pump back up in volume between hits, adding energy, while a slow release smooths the tail out and can add sustain but risks dulling the next hit if it hasn't recovered yet. So the two settings together are really shaping the transient versus the body of the sound, not just how much it's compressed overall."
+    },
+    "commonMistakes": [
+      "Describing attack and release only as 'fast' or 'slow' with no connection to what happens to the transient versus the sustained part of the sound",
+      "Confusing attack with threshold",
+      "Giving a generic answer with no concrete example like the snare"
+    ],
+    "followUps": [
+      "What would happen to the snare's punch if you set the attack time extremely fast, almost instant?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Tuning systems and microtonality",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "tuning",
+      "music-theory",
+      "synthesis"
+    ],
+    "question": "Most Western music software defaults to twelve-tone equal temperament. What are you giving up by defaulting to that, and have you ever worked with alternate tunings?",
+    "lookingFor": "Awareness that equal temperament is a compromise system rather than a natural law, and curiosity about tuning as a creative parameter.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain equal temperament divides the octave into 12 equal steps as a practical compromise so instruments can play in any key, at the cost of true just intonation intervals",
+        "Note what's lost: the pure, beatless harmonic ratios found in just intonation, and the distinct color that different keys had under older tuning systems",
+        "Connect it to actual practice, such as working with microtonal scales, alternate tunings in software synths, or music from traditions outside the Western 12-tone system"
+      ],
+      "modelAnswer": "Equal temperament splits the octave into twelve mathematically identical steps so that any instrument can play in any key without needing to be retuned, but that's a compromise, because true harmonic ratios like a perfect fifth or major third in just intonation are slightly different from their equal-tempered versions, and those pure ratios produce a beatless, almost glassy consonance that equal temperament slightly detunes in exchange for flexibility. What you lose is that purity, and historically you also lost the fact that different keys used to have genuinely distinct emotional colors under older tuning systems, since equal temperament makes every key sound structurally identical just transposed. I've experimented with microtonal scales in a modular synth patch, retuning oscillators to just intonation ratios for a drone piece, and the difference in how the harmonics locked together was honestly striking, it made me want to explore tuning as a real creative parameter rather than something fixed in the background."
+    },
+    "commonMistakes": [
+      "Not knowing that equal temperament is a compromise rather than the 'correct' or only tuning system",
+      "Confusing microtonality with simply using more notes or a different scale within 12-tone equal temperament",
+      "No personal engagement or curiosity, treating it as purely trivia"
+    ],
+    "followUps": [
+      "Can you name a musical tradition or genre that doesn't use twelve-tone equal temperament?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative versus algorithmic composition",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "generative-music",
+      "ai",
+      "composition"
+    ],
+    "question": "What's the difference between a piece of music that's AI-generated and one that's algorithmically composed using rules a human explicitly wrote? Does that distinction actually matter to you?",
+    "lookingFor": "Clear conceptual separation between rule-based generative systems and machine-learned models, plus a genuine, considered opinion on authorship.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe algorithmic composition as following explicit, human-authored rules or constraints, where the composer can trace exactly why each decision was made",
+        "Describe AI generation, especially modern machine learning models, as producing output from patterns learned statistically from training data, where the exact reasoning isn't fully traceable or intentional in the same way",
+        "Offer a genuine opinion on whether the distinction matters, engaging with questions of authorship, intent, and where creative credit belongs"
+      ],
+      "modelAnswer": "Algorithmic composition, like the generative systems Brian Eno or early computer music pioneers built, follows explicit rules that a human wrote, so even if the output feels unpredictable, you can trace exactly why a given note happened back to a rule the composer chose, the human intent is baked directly into the system's logic. AI generation from a machine learning model is different, it's producing patterns statistically learned from huge amounts of training data, and while a human chose the prompt or the training set, nobody can point to a specific rule that explains why one particular note came out rather than another, the reasoning is distributed across the model in a way that isn't really traceable. I do think the distinction matters to me, not to gatekeep what counts as 'real' music, but because I think authorship and intent are actually part of what music means to a listener, and I'd want to be honest about which kind of process made something rather than blur the two together. That said, I don't think one is automatically more valid than the other, a good algorithmic system is also, in a sense, a human decision expressed indirectly, so the line is genuinely blurrier than it first looks."
+    },
+    "commonMistakes": [
+      "Treating 'algorithmic' and 'AI-generated' as synonyms",
+      "Refusing to take any position on whether the distinction matters",
+      "Dismissing algorithmic or generative composition as not real composition without engaging with the reasoning"
+    ],
+    "followUps": [
+      "Would you personally feel comfortable putting your name as sole composer on a piece generated entirely by an AI model from your prompt?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Binaural audio and HRTF",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "binaural",
+      "psychoacoustics",
+      "spatial-audio"
+    ],
+    "question": "How does a binaural recording trick your brain into perceiving sound behind or above you, when it's only ever coming out of two speakers or headphones?",
+    "lookingFor": "Understanding of the head-related transfer function and the specific cues the brain uses to localize sound, applied correctly to the binaural technique.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the head-related transfer function: the shape of the outer ear, head, and shoulders subtly filters sound differently depending on its direction before it reaches the eardrum",
+        "Describe how binaural recording, typically using a dummy head with microphones placed in ear-shaped positions, captures those same filtering cues onto two channels",
+        "Note the practical requirement: this illusion works best over headphones, since speaker playback introduces crosstalk between ears that disrupts the encoded directional cues"
+      ],
+      "modelAnswer": "Your brain figures out where a sound is coming from using more than just which ear it's louder in, the actual shape of your outer ear, head, and shoulders filters the sound slightly differently depending on the direction it's arriving from, subtly boosting or cutting certain frequencies and adding tiny timing differences, and that whole filtering signature is called the head-related transfer function. A binaural recording captures that same effect directly, usually by recording with microphones placed inside the ears of a dummy head or a specially shaped mic rig, so the two channels already contain those same directional filtering cues baked in before you even listen. When you play that back over headphones, your brain reads those cues exactly the way it would in real life and reconstructs a sense of sound coming from behind you or above you, even though physically it's only ever two drivers sitting right next to your ears. It really only works properly on headphones though, because playing it over speakers introduces crosstalk, where each ear hears both speakers instead of just one, which scrambles the precise cues the recording relied on."
+    },
+    "commonMistakes": [
+      "Confusing binaural audio with simple stereo panning",
+      "Not mentioning the head-related transfer function or the role of ear and head shape in filtering sound",
+      "Missing that the effect breaks down over speakers due to crosstalk"
+    ],
+    "followUps": [
+      "Why might a generic HRTF used in a commercial binaural product not sound perfectly convincing for every listener?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: limited-budget home studio",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "studio-design",
+      "practical"
+    ],
+    "question": "You have three hundred dollars and a bedroom to build a home studio that needs to produce release-ready vocals. What do you prioritize spending on, and what do you deliberately skip?",
+    "lookingFor": "Practical, prioritized reasoning about signal chain fundamentals under a real constraint, showing understanding of where quality actually comes from.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize the weakest link in the signal chain first, typically acoustic treatment or a decent audio interface and microphone, rather than glamorous extras",
+        "Explain the reasoning for the trade-offs made, referencing that a great mic in a bad room sounds worse than a modest mic in a treated space",
+        "Name specific things deliberately skipped and why, showing an understanding of diminishing returns"
+      ],
+      "modelAnswer": "I'd actually spend a real chunk of that budget on basic acoustic treatment before I spent much on the microphone itself, because a mediocre mic in a treated space will out-record an expensive mic in an untreated bedroom full of reflective surfaces every time. So I'd put maybe eighty to a hundred dollars into some cheap absorption panels and a reflection filter behind the mic position, then split the rest between a solid entry-level interface with a clean preamp and a reliable large-diaphragm condenser mic, something like an audio-technica or a used entry Neumann-style clone, since that combination will get me a genuinely clean, usable vocal signal. What I'd deliberately skip is fancy outboard hardware, expensive monitor speakers, and extra plugins, because I can mix on decent headphones for now and add plugins later almost for free, but I can't cheaply fix a bad room or a noisy signal after the fact. The core idea is that money spent fixing problems before they happen in the signal chain is worth more than money spent trying to polish a bad recording afterward."
+    },
+    "commonMistakes": [
+      "Spending the entire budget on a flashy microphone while ignoring the room or interface",
+      "No clear prioritization logic, just listing gear",
+      "Ignoring acoustic treatment entirely as if it doesn't matter for a small budget"
+    ],
+    "followUps": [
+      "If you had to cut the budget in half again to one hundred fifty dollars, what would you sacrifice first?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: salvaging a bad live recording",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "mixing",
+      "problem-solving"
+    ],
+    "question": "You're handed multitrack stems from a live concert recording where the drummer's mic bled heavily into every other channel and the crowd noise is inconsistent throughout. How would you approach mixing it?",
+    "lookingFor": "Structured, realistic problem-solving under imperfect real-world conditions, showing knowledge of specific techniques rather than a vague 'I'd clean it up' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Diagnose the two distinct problems separately, bleed reducing clarity and separation, inconsistent crowd noise disrupting perceived continuity and energy",
+        "Propose concrete techniques for bleed, such as gating, spectral editing, or embracing some bleed as natural room glue where it doesn't hurt clarity",
+        "Address the crowd noise issue with a practical strategy like layering in a consistent crowd bed or automating the room mic level to smooth transitions"
+      ],
+      "modelAnswer": "I'd treat this as two separate problems rather than one big mess. For the drum bleed, I wouldn't try to eliminate it completely, since some bleed in a live recording actually helps everything glue together and sound like it happened in one room, so I'd use gates or clip gain automation on the worst offenders, like the vocal mic picking up snare hits, just to tame it in the sections where it's actually hurting clarity, and accept it elsewhere. For the inconsistent crowd noise, I'd probably record or source a consistent ambient crowd bed that I can blend underneath the inconsistent room mics, then automate the balance between the real room mic and that bed so the transitions between songs or sections don't have jarring jumps in perceived crowd energy. Throughout I'd keep referencing the raw stems against a rough bounce regularly, because it's easy to over-fix a live recording and end up with something that sounds sterile and loses the reason it was a live recording in the first place. The goal isn't a perfectly clean studio mix, it's making the imperfections feel intentional rather than like mistakes."
+    },
+    "commonMistakes": [
+      "Trying to gate or eliminate all bleed completely, losing the live cohesion",
+      "Not addressing the crowd noise inconsistency as its own distinct issue",
+      "Treating a live recording like it should be scrubbed to sound exactly like a studio session"
+    ],
+    "followUps": [
+      "At what point would you decide a section is too compromised to fix and consider re-recording or replacing it entirely?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: accessible sound design",
+    "program": "Music Technology",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "accessibility",
+      "sound-design"
+    ],
+    "question": "You're asked to redesign the audio for a video game where several gameplay-critical cues, like an enemy approaching from behind, currently rely entirely on sound, for a version aimed at deaf and hard-of-hearing players. How would you rethink the sound design?",
+    "lookingFor": "Creative problem-solving that treats accessibility as a genuine design constraint, connecting audio information to alternative or complementary channels.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the underlying information the sound cue conveys, such as direction, urgency, and distance, separate from the sound itself",
+        "Propose translating that information into a visual or haptic equivalent, such as directional screen indicators, controller vibration patterns, or subtitle-style cue text",
+        "Show awareness that this isn't just about volume or subtitles for dialogue, but about redesigning the underlying information architecture of the game's feedback"
+      ],
+      "modelAnswer": "The first thing I'd do is stop thinking about the sound itself and instead ask what information that sound is actually communicating, in this case direction, distance, and urgency of an approaching enemy, because that's the real design problem, not the audio waveform. I'd translate that information into other channels a hard-of-hearing player can perceive just as reliably, so directional information could become a subtle vector indicator or pulse on the edge of the screen pointing toward the threat, urgency could be represented by how fast that indicator pulses or its color intensity, and I'd pair it with distinct haptic feedback patterns through the controller so a player could almost feel the difference between a nearby threat and a distant one. I'd also make sure this isn't treated as a bolt-on subtitle system, since dialogue captions solve a different problem than gameplay-critical spatial cues, this needs its own dedicated feedback language that's consistent and learnable throughout the whole game. The bigger lesson for me is that accessibility work often reveals that a lot of game feel is really information design wearing an audio costume, and that reframing makes you a better sound designer for every player, not just the ones who need the alternative."
+    },
+    "commonMistakes": [
+      "Suggesting only subtitles or turning up the volume, without addressing directional or spatial information",
+      "Treating accessibility as an afterthought bolted onto the existing sound design rather than a redesign of the underlying information",
+      "No mention of haptics or visual alternatives as genuine substitutes for spatial audio cues"
+    ],
+    "followUps": [
+      "How would you test whether your alternative cue system actually conveys direction and urgency as effectively as the original audio did?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Networked audio and the limits of latency",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "latency",
+      "networked-audio",
+      "technical"
+    ],
+    "question": "Two musicians in different countries want to jam together live over the internet in real time. What's the fundamental physical limit stopping that from feeling like they're in the same room, and can technology ever fully solve it?",
+    "lookingFor": "Correct identification of the speed-of-light and network-hop limitation as distinct from a solvable engineering bottleneck, plus reasoned speculation about workarounds.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that round-trip network latency over long distances is bounded by the physical speed of data transmission and routing hops, not just by better software or hardware",
+        "Note that human perception of timing starts to feel disjointed once round-trip latency exceeds roughly 20 to 30 milliseconds, a threshold that intercontinental distances routinely blow past",
+        "Reason about whether it's fully solvable, distinguishing between technology that minimizes latency and the hard physical floor it can never go below over a given distance"
+      ],
+      "modelAnswer": "The core limit is physical, not just a matter of better software, because data traveling across a long-distance network still has to cover real distance through cables and routing hops, and even at close to the speed of light, a signal going from say the US to Australia and back takes tens of milliseconds minimum just from the round trip distance alone. Human timing perception is sensitive enough that once round-trip latency creeps past around 20 to 30 milliseconds, musicians start to feel like they're fighting the beat instead of locking into it together, and intercontinental connections are almost always well past that threshold even under ideal network conditions. So I don't think it's something a faster codec or a clever piece of software can ever fully eliminate for genuinely distant locations, what tools like low-latency audio-over-IP protocols actually do is get as close to that physical floor as possible and minimize everything else added on top of it, like processing delay and jitter, rather than beating the speed of light. Where I do think there's real room for creative solutions is in changing the nature of the collaboration itself, like predictive or asynchronous techniques, rather than pretending the physical latency isn't there."
+    },
+    "commonMistakes": [
+      "Blaming the problem entirely on internet speed or bandwidth rather than distance and the speed-of-light floor",
+      "Claiming better technology will eventually eliminate the latency entirely for any distance",
+      "Not giving a concrete latency threshold for when timing starts to feel disjointed"
+    ],
+    "followUps": [
+      "Have you heard of any creative workaround musicians use to collaborate remotely despite this limitation?"
+    ]
+  },
+  {
+    "id": "prog-music-technology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Reflective: art versus engineering trade-off",
+    "program": "Music Technology",
+    "difficulty": "medium",
+    "tags": [
+      "reflection",
+      "craft",
+      "judgement"
+    ],
+    "question": "Music technology sits between the creative and the technical. When those two pull in different directions, like a technically correct mix that feels lifeless versus a flawed one that feels right, which do you trust?",
+    "lookingFor": "Genuine, reflective self-awareness about how the applicant navigates the tension between technical rigor and creative instinct, grounded in a real example rather than an abstract platitude.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid a glib 'always trust your ears' answer, engage honestly with the real tension between the two",
+        "Use a specific personal example where the applicant faced this exact trade-off",
+        "Land on a considered position, such as technical knowledge being a tool that serves the feeling, not the other way around, while acknowledging when rules genuinely matter"
+      ],
+      "modelAnswer": "Honestly I used to think the answer was always trust your ears, but I've learned it's more specific than that, because a lot of the time what feels wrong is actually a genuine technical problem, like phase cancellation or masking, that's worth fixing properly rather than dismissing with instinct. I remember mixing a demo where I kept chasing a technically pristine EQ curve and compression setting, and the vocal ended up perfectly clean but completely flat emotionally, and when I went back and left in some of the original room tone and a slightly inconsistent compression setting the singer had actually performed to, it suddenly felt alive again even though it measured worse on paper. So I've landed on thinking of technical knowledge as a tool that should serve the feeling rather than replace it, I want the skill to diagnose exactly why something feels off so I can choose deliberately whether to fix it or leave it, instead of either blindly following rules or blindly trusting instinct without understanding what's actually happening. That distinction, knowing the rule well enough to choose when to break it, feels like the actual skill I'm trying to build."
+    },
+    "commonMistakes": [
+      "A generic 'I always trust my ears' answer with no real engagement with the tension",
+      "The opposite extreme, insisting technical correctness should always win, showing no creative sensibility",
+      "No concrete example, staying entirely abstract"
+    ],
+    "followUps": [
+      "Can you think of a technical rule you'd never break, no matter how good the flawed version sounded?"
+    ]
+  }
+]

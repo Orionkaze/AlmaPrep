@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-linguistics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Phonetics vs phonology",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["phonetics", "phonology", "fundamentals"],
+    "question": "What's the difference between phonetics and phonology, and why does a linguist need both?",
+    "lookingFor": "A clear grasp that phonetics is the physical description of sound and phonology is the mental system of contrasts, plus a concrete example showing the two working together.",
+    "idealAnswer": {
+      "bullets": [
+        "Phonetics describes the physical, articulatory or acoustic properties of speech sounds",
+        "Phonology studies how sounds function as a system within a specific language, including which contrasts are meaningful",
+        "Give an example where the same phonetic difference is meaningful in one language and not another"
+      ],
+      "modelAnswer": "Phonetics is basically the physics and anatomy of speech, how the tongue and lips move and what the sound wave looks like, and it's the same toolkit whatever language you're describing. Phonology asks which of those physical differences actually matter to speakers of a particular language, so it's about the mental system rather than the raw sound. The example that made this click for me is aspiration in English versus Thai. In English the aspirated and unaspirated p in pin and spin are just two versions of the same sound to a native speaker, but in Thai that exact same phonetic difference changes the word entirely, so it's phonemic there and not here."
+    },
+    "commonMistakes": [
+      "Treating the two terms as interchangeable",
+      "Giving a definition with no example to anchor it",
+      "Describing phonology as just 'the rules of pronunciation'"
+    ],
+    "followUps": ["Can you think of a sound contrast in another language you've studied that English speakers struggle to hear?"]
+  },
+  {
+    "id": "prog-linguistics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Poverty of the stimulus",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["syntax", "acquisition", "theory"],
+    "question": "Chomsky's poverty of the stimulus argument claims children acquire grammar despite limited input. Can you explain the argument and one serious objection to it?",
+    "lookingFor": "Accurate statement of the argument for innate grammatical knowledge, plus genuine engagement with a real counterargument rather than dismissing either side.",
+    "idealAnswer": {
+      "bullets": [
+        "State the argument: children generalise correctly to complex structures they were never explicitly taught or corrected on",
+        "Use a concrete example like structure-dependence in question formation",
+        "Present a real objection, such as usage-based learning from richer input than assumed, or statistical learning models"
+      ],
+      "modelAnswer": "The argument is that children end up knowing things about grammar that the input alone doesn't seem to justify, the classic example being that when they form a question from a sentence with an embedded clause, like turning 'the man who is tall is happy' into a question, they never wrongly move the first 'is' even though a simple linear rule would predict that mistake sometimes. Chomsky's conclusion is that some abstract, structure-dependent principle must be innate rather than learned from scratch. The objection I find most serious is from usage-based and connectionist researchers who argue the input isn't actually that poor, that children get more structured evidence than the argument assumes, and that statistical learning over large amounts of child-directed speech can pick up these patterns without positing an innate grammar module. I don't think that fully settles it, but it does show the argument depends heavily on how impoverished the input really is, which is an empirical question as much as a theoretical one."
+    },
+    "commonMistakes": [
+      "Restating the conclusion without explaining the actual argument",
+      "Treating it as settled fact rather than a contested claim",
+      "Giving an objection with no specifics, like just saying 'some people disagree'"
+    ],
+    "followUps": ["Do you think corpus studies of child-directed speech have weakened or strengthened this argument?"]
+  },
+  {
+    "id": "prog-linguistics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Minimal pairs and phoneme inventories",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["phonology", "method"],
+    "question": "How would you use minimal pairs to figure out the phoneme inventory of a language you'd never encountered before?",
+    "lookingFor": "Understanding of minimal pairs as a discovery procedure and awareness of its limits, such as gaps in the data or near-minimal pairs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a minimal pair is two words differing in exactly one sound and one meaning",
+        "Describe the process: collect a wordlist, look for pairs differing by a single sound, and treat that sound difference as phonemic if meaning changes",
+        "Acknowledge limitations, like sounds that never happen to contrast because of accidental gaps in the vocabulary"
+      ],
+      "modelAnswer": "I'd start collecting a wordlist from a speaker and look for pairs of words that differ in only one sound but mean different things, like English bat and pat, which shows b and p are separate phonemes rather than variants of one sound. If I found two sounds that were phonetically similar but I could never find a pair where swapping them changed meaning, I'd suspect they were allophones of the same phoneme instead, especially if they showed up in predictable, non-overlapping environments. The tricky part is that a language can genuinely lack a minimal pair for two sounds just by accident of vocabulary, so I'd also want near-minimal pairs and a look at the overall distribution before concluding anything for certain."
+    },
+    "commonMistakes": [
+      "Defining minimal pairs correctly but not explaining what you'd actually do with them",
+      "Assuming any two similar sounds must be separate phonemes without checking distribution",
+      "Ignoring that accidental gaps can mislead the analysis"
+    ],
+    "followUps": ["What would make you suspect two sounds are allophones rather than separate phonemes?"]
+  },
+  {
+    "id": "prog-linguistics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Linguistic relativity",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["semantics", "cognition", "relativity"],
+    "question": "How would you distinguish the strong and weak versions of the Sapir-Whorf hypothesis, and what evidence actually supports the weak version?",
+    "lookingFor": "Precision about what linguistic determinism versus linguistic relativity actually claim, and a real example of empirical support without overclaiming.",
+    "idealAnswer": {
+      "bullets": [
+        "Define strong version (language determines thought, thought is impossible without the categories your language provides) versus weak version (language influences habitual thought and attention, without strictly limiting it)",
+        "Cite a real study, such as colour categorisation differences or spatial reference frames in different languages",
+        "Be careful not to overstate what the evidence shows"
+      ],
+      "modelAnswer": "The strong version says language actually determines what thoughts are possible for you, so if your language has no word for a concept you literally can't think it, and that version has basically been rejected because people clearly can perceive and reason about distinctions their language doesn't lexicalise. The weak version, linguistic relativity, says language shapes habitual attention and how quickly or easily you categorise things, without making anything impossible. The evidence I find most convincing is the work on languages that use absolute spatial terms like north and south instead of left and right for everyday orientation, where speakers turn out to have noticeably better cardinal-direction dead reckoning, which suggests habitual linguistic categories really do train certain cognitive skills. I'd be careful not to claim this proves language controls thought, just that it nudges which distinctions become cognitively automatic."
+    },
+    "commonMistakes": [
+      "Conflating the strong and weak versions as if they're the same claim",
+      "Citing pop-science claims like 'Eskimos have fifty words for snow' as if that's real evidence",
+      "Overclaiming that the evidence proves language determines thought"
+    ],
+    "followUps": ["Why do you think the strong version has largely been abandoned by linguists?"]
+  },
+  {
+    "id": "prog-linguistics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Garden path sentences",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["syntax", "parsing", "psycholinguistics"],
+    "question": "Why does a sentence like 'the horse raced past the barn fell' trip people up, and what does that tell us about how we process language in real time?",
+    "lookingFor": "Understanding of garden path effects, incremental parsing, and reanalysis, with a correct explanation of why this particular sentence causes trouble.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that we parse incrementally, committing to a structure before the sentence finishes",
+        "Show why 'raced' is initially read as the main verb rather than a reduced relative clause",
+        "Connect this to the idea that comprehension involves active prediction, not just passive decoding"
+      ],
+      "modelAnswer": "That sentence is a classic garden path because when you hit 'raced' your parser has already committed to reading it as the main verb, so 'the horse raced past the barn' looks like a complete sentence about a horse that raced. Then 'fell' arrives and there's nowhere for it to go, forcing you to go back and reanalyse 'raced' as part of a reduced relative clause, meaning the horse that was raced past the barn. What it tells us is that we don't wait until the end of a sentence to build structure, we're making commitments word by word based on the most likely interpretation, which is efficient most of the time but occasionally leads us completely astray. It's a nice window into the fact that comprehension is prediction under uncertainty, not just decoding."
+    },
+    "commonMistakes": [
+      "Saying the sentence is 'just badly written' rather than explaining the parsing mechanism",
+      "Not identifying the reduced relative clause structure",
+      "Missing the connection to incremental, predictive processing"
+    ],
+    "followUps": ["Can you think of another type of ambiguous sentence that causes a similar effect?"]
+  },
+  {
+    "id": "prog-linguistics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Descriptivism, prescriptivism, and dialect stigma",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["sociolinguistics", "prescriptivism", "dialect"],
+    "question": "Linguists are trained to be descriptive, not prescriptive, but a lot of society still judges people on 'correct' grammar. How do you reconcile the two?",
+    "lookingFor": "Ability to hold the scientific descriptivist stance while taking the real social consequences of prescriptivism seriously, rather than dismissing either side.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain descriptivism: all natural dialects are rule-governed systems, not degraded versions of a standard",
+        "Acknowledge that prescriptive standards still carry real social and economic power, which linguists can't just wish away",
+        "Land on a defensible position, such as teaching the standard as an additional register rather than treating other dialects as wrong"
+      ],
+      "modelAnswer": "As a linguist I'd say every dialect, including something like African American Vernacular English, has its own consistent internal grammar, it's not sloppy standard English, it just follows different rules, and that's the descriptivist point I'd defend without hesitation. But I don't think that means prescriptivism doesn't matter, because in the real world people get judged and even lose opportunities over which dialect they speak, and pretending that power doesn't exist would be naive. My own reconciliation is that schools should teach the standard dialect as a useful additional code for certain contexts, the way you'd teach a second language, rather than teaching students that their home dialect is simply incorrect. That way you respect the linguistics and still equip people for the world as it actually is."
+    },
+    "commonMistakes": [
+      "Dismissing prescriptivism entirely as if social reality doesn't matter",
+      "Caving to prescriptivism and implying nonstandard dialects are inferior",
+      "Giving a vague 'both sides have a point' answer with no actual position"
+    ],
+    "followUps": ["Should standardized tests be adjusted for students who speak a non-standard dialect at home?"]
+  },
+  {
+    "id": "prog-linguistics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Fieldwork ethics and data ownership",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "fieldwork", "endangered-languages"],
+    "question": "You're doing fieldwork documenting an endangered language, and an elder shares a story but later asks you not to include a sacred section of it in your published corpus. Your supervisor says the recording is valuable data and should stay in for completeness. What do you do?",
+    "lookingFor": "Structured ethical reasoning that puts the community's consent and ownership above academic completeness, while acknowledging the real tension with a supervisor's expectations.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that ongoing, informed consent overrides prior consent, especially for sacred or culturally sensitive material",
+        "Weigh the academic value of complete data against the harm of violating trust with the community you depend on for future work",
+        "Propose a concrete path: honour the elder's request, and push back on the supervisor with the ethical and practical reasoning"
+      ],
+      "modelAnswer": "I'd honour the elder's request without much internal debate, because consent isn't something you get once and then own forever, someone can withdraw part of what they shared, especially something sacred, and respecting that is more important than any single recording. I'd go back to my supervisor and explain that data completeness isn't worth breaking trust with a community whose cooperation the whole documentation project depends on long term, and that publishing it against the elder's wishes could shut down access for the next researcher entirely, not just me. Practically, I'd suggest we note in the archive that a restricted portion exists and isn't publicly available, which is honest about the record without violating what was asked. If my supervisor still pushed, I'd escalate to the institution's ethics process rather than just comply."
+    },
+    "commonMistakes": [
+      "Prioritising data completeness over the community's stated wishes",
+      "Simply deferring to the supervisor without pushing back",
+      "Framing this as a minor issue rather than a genuine ethical breach if handled wrong"
+    ],
+    "followUps": ["What would you do if the supervisor insisted and you had no real institutional recourse?"]
+  },
+  {
+    "id": "prog-linguistics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Do large language models 'understand' language",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["computational-linguistics", "llm", "current-debate"],
+    "question": "There's an ongoing debate about whether large language models like GPT actually understand language or are just very good statistical predictors. What's your take, and why does it matter for linguistics?",
+    "lookingFor": "Awareness of the actual debate, including arguments like the Chinese Room and grounding problem, plus a reasoned position rather than a pop-science verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the core positions, such as the symbol grounding problem or the Chinese Room argument versus the view that meaning can emerge from distributional patterns",
+        "Note a concrete way LLMs succeed or fail that's relevant to the question, like generating fluent but factually ungrounded text",
+        "Explain why this matters for linguistics, not just for AI, such as what it implies about the relationship between form and meaning"
+      ],
+      "modelAnswer": "I lean towards thinking these models are extraordinarily good at capturing statistical regularities in how words co-occur, which lets them produce fluent, often useful language, but that's different from understanding in the sense of having grounded meaning tied to reference, intention, or a model of the world, which is basically the symbol grounding problem applied to a modern system. What convinces me of that is how confidently they can generate fluent but factually wrong content, which suggests the fluency and the truth-tracking are somewhat decoupled processes. For linguistics I think this matters because it's an unplanned, large-scale test of distributional semantics, the idea that meaning can be approximated from co-occurrence patterns, and the fact that it gets you remarkably far without grounding tells us something real about how much of language structure is learnable from form alone, even if it doesn't settle what 'understanding' fully requires."
+    },
+    "commonMistakes": [
+      "Giving a purely technological answer with no linguistic framing",
+      "Dismissing the question with 'it's just autocomplete' with no argument behind it",
+      "Claiming certainty on a genuinely unresolved question"
+    ],
+    "followUps": ["Do you think a model could ever satisfy a demanding definition of understanding without embodiment or sensory grounding?"]
+  },
+  {
+    "id": "prog-linguistics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "First steps documenting an undocumented language",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["fieldwork", "documentation", "hypothetical"],
+    "question": "Suppose you learn of a language with only a handful of elderly speakers left, never recorded by a linguist. If you were leading the first documentation trip, what would your first steps actually be?",
+    "lookingFor": "Practical, ethically grounded fieldwork thinking, showing the applicant knows documentation isn't just showing up with a microphone.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with community engagement and consent before any recording, including explaining what the project is for",
+        "Describe the early practical steps, such as building a basic wordlist and phoneme inventory, and working with a bilingual consultant if possible",
+        "Show awareness of urgency without being extractive, respecting the speakers' time and wishes about how the material is used"
+      ],
+      "modelAnswer": "Before I'd record anything, I'd want to spend real time with the community explaining who I am, what the project is for, and what will happen to the recordings, and get informed consent that's actually understood, not just a signature. Practically, my early sessions would probably start with basic elicitation, a core wordlist and simple sentences, to sketch out the sound system and rough grammar, ideally working alongside someone in the community who's bilingual and can help bridge explanations. I'd also want to ask directly what the speakers themselves want out of this, whether that's a dictionary for their grandchildren or just a personal archive, because with so few speakers left the priority should be what serves them, not just what's convenient for my thesis."
+    },
+    "commonMistakes": [
+      "Jumping straight to technical methodology with no mention of consent or community relationship",
+      "Treating the speakers purely as data sources rather than people with their own goals for the project",
+      "Assuming urgency justifies skipping proper groundwork"
+    ],
+    "followUps": ["How would you handle it if the community wanted the language kept private rather than published?"]
+  },
+  {
+    "id": "prog-linguistics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Morphemes and agglutination",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["morphology", "typology"],
+    "question": "What's a morpheme, and can you explain how an agglutinative language like Turkish or Swahili builds words differently from English?",
+    "lookingFor": "Correct definition of morpheme, and a clear grasp of agglutination as one word carrying many discrete, segmentable meaningful units.",
+    "idealAnswer": {
+      "bullets": [
+        "Define morpheme as the smallest unit that carries meaning or grammatical function",
+        "Explain agglutination: morphemes attach in a fairly clean, one-meaning-per-piece way, often building long words",
+        "Contrast with English or a fusional language, where one affix can bundle multiple meanings"
+      ],
+      "modelAnswer": "A morpheme is the smallest piece of a word that carries meaning on its own, so 'cats' has two, the root 'cat' and the plural '-s'. In an agglutinative language like Turkish, words get built by stringing together morphemes fairly transparently, each one adding a distinct piece of meaning, so a single word can express what English would need a whole phrase for, like tense, person, and negation all as separate, cleanly separable suffixes stacked onto the root. That's different from a fusional language, or even English to some extent, where one ending can fuse several meanings together at once, like '-s' in a Spanish verb encoding person, number, and tense all in one indivisible piece rather than as separate add-ons."
+    },
+    "commonMistakes": [
+      "Confusing morpheme with syllable",
+      "Describing agglutination vaguely as 'long words' without explaining the one-meaning-per-piece structure",
+      "Failing to contrast it with fusional or analytic languages"
+    ],
+    "followUps": ["Where would you place English on the spectrum between agglutinative and fusional?"]
+  },
+  {
+    "id": "prog-linguistics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Nativism vs usage-based grammar",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["syntax", "theory", "current-debate"],
+    "question": "There's a live debate between generative, nativist approaches to grammar and usage-based, constructionist approaches. Where do you currently stand, and what would change your mind?",
+    "lookingFor": "Genuine engagement with a real theoretical divide in the field, a defensible current position, and honest acknowledgment of what evidence would move the applicant.",
+    "idealAnswer": {
+      "bullets": [
+        "Characterise both camps accurately: innate universal grammar constraining acquisition versus grammar emerging from usage patterns and general cognitive learning",
+        "Take a position, or explain a genuinely undecided stance, with reasons",
+        "Name a specific kind of evidence that would shift that position"
+      ],
+      "modelAnswer": "Generative approaches argue there's an innate, domain-specific grammar module that constrains what structures a child can even hypothesise, while usage-based approaches argue grammar emerges gradually from exposure to constructions in actual usage, using general learning mechanisms rather than a language-specific module. I currently lean more usage-based, mostly because of how well construction grammar accounts for irregular, idiomatic patterns that a purely rule-based universal grammar struggles to explain elegantly, and because cross-linguistic diversity in basic word order and structure seems larger than a tight universal template would predict. What would change my mind is strong evidence of genuinely universal structural constraints that show up even in understudied, typologically unusual languages regardless of the input those children receive, because that's exactly the kind of finding usage-based theories would struggle to explain."
+    },
+    "commonMistakes": [
+      "Presenting only one side as if the debate is settled",
+      "Taking a position with no reasons behind it",
+      "Being unable to name any evidence that would change their mind, suggesting the position isn't actually reasoned"
+    ],
+    "followUps": ["Can you name a specific construction that's difficult for one of these approaches to explain?"]
+  },
+  {
+    "id": "prog-linguistics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Interpreter neutrality vs advocacy",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "interpreting", "applied-linguistics"],
+    "question": "You're interpreting for a patient in a medical appointment, and you can tell the doctor's explanation is confusing the patient in a way that could affect their decision, but your role is to interpret exactly, not to intervene. What do you do?",
+    "lookingFor": "Understanding of the professional norm of fidelity in interpreting, weighed honestly against the real human stakes, landing on a defensible resolution.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the professional norm: interpreters are meant to convey meaning faithfully, not act as a third party in the conversation",
+        "Acknowledge the genuine tension when fidelity risks a patient making a poorly informed decision",
+        "Propose a defensible action that stays within the interpreter role, like flagging the confusion transparently to both parties rather than editorialising"
+      ],
+      "modelAnswer": "My job as an interpreter is to convey what's actually said, not to decide what the patient should understand or believe, and stepping outside that role risks distorting the conversation and undermining trust in interpreters generally. That said, I wouldn't just let a patient nod along confused, so what I'd actually do is stay within role but make the confusion visible, something like interpreting faithfully and then, transparently to both sides, saying I'm noticing the patient may not have understood and asking the doctor to check or rephrase, rather than silently rewording the explanation myself. That keeps me from putting words in anyone's mouth while still surfacing the problem so the people actually responsible for the decision, the doctor and the patient, can address it directly."
+    },
+    "commonMistakes": [
+      "Deciding to unilaterally simplify or add explanation on their own",
+      "Ignoring the confusion entirely because 'it's not my job'",
+      "Not distinguishing between staying neutral and staying silent about a visible problem"
+    ],
+    "followUps": ["Does your answer change if the stakes were a legal proceeding instead of a medical one?"]
+  },
+  {
+    "id": "prog-linguistics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Technology and language revitalization",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["revitalization", "technology", "sociolinguistics"],
+    "question": "A number of endangered-language communities are now using apps and AI tools to help revitalize their language. What do you see as the real opportunities and the real risks in that?",
+    "lookingFor": "Balanced awareness of a genuinely current development in the field, not just enthusiasm or just skepticism.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete opportunity, such as lowering the barrier to daily practice, spaced repetition apps, or AI-assisted transcription speeding up documentation",
+        "Name a concrete risk, such as data extraction without community control, or technology substituting for actual intergenerational transmission",
+        "Show a nuanced overall view rather than treating technology as simply good or bad"
+      ],
+      "modelAnswer": "The opportunity I find most real is how much documentation and drilling work AI can now speed up, things like automatic transcription of archival recordings or spaced-repetition apps that make daily practice accessible to younger community members who don't have a nearby fluent speaker to learn from. But the risk I'd take seriously is that a lot of these tools are built and hosted by outside companies, which raises real questions about who ends up controlling the data and the recordings of elders' voices, and there's a subtler risk that an app can start to feel like revitalization is happening even when it's not replacing the actual intergenerational transmission that keeps a language genuinely alive. I think the technology is genuinely useful, but only when the community controls the data and it's supporting real human transmission rather than substituting for it."
+    },
+    "commonMistakes": [
+      "Treating the technology as an unambiguous solution to language endangerment",
+      "Dismissing it as inauthentic with no acknowledgment of real benefits",
+      "Not mentioning data ownership or community control as an issue"
+    ],
+    "followUps": ["Who do you think should own the recordings and data generated by these revitalization tools?"]
+  },
+  {
+    "id": "prog-linguistics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing an orthography for an unwritten language",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["orthography", "standardization", "hypothetical"],
+    "question": "Imagine you're asked to help design a writing system for a language that has never had one, and the language has several distinct regional dialects. What decisions would you have to make, and how would you approach the dialect question?",
+    "lookingFor": "Awareness that orthography design is a linguistic and social decision, with sensitivity to the political weight of choosing one dialect as 'standard'.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the core technical decisions: script choice, how phonemic or how morphophonemic the system should be, how to represent tone or other features if relevant",
+        "Recognise the dialect question as fundamentally a community decision, not just a technical one",
+        "Propose a defensible process, such as consulting representatives across dialects rather than imposing one variety unilaterally"
+      ],
+      "modelAnswer": "Technically I'd need to decide on a script, whether to base spelling closely on the phoneme inventory or allow some morphophonemic spelling that keeps related words visually similar even when pronunciation shifts, and how to handle any features like tone that a lot of scripts don't naturally represent well. But the harder decision is whose dialect becomes the basis for the standard spelling, because that choice can end up privileging one region and effectively marginalising the others every time someone reads or writes, which is a real political weight, not just a technical one. I wouldn't make that call myself. I'd want to bring together speakers from the different dialect regions and let them negotiate it, possibly by choosing spellings that are somewhat neutral across dialects where that's linguistically feasible, and being upfront that any choice will involve some trade-off rather than pretending there's a purely neutral technical answer."
+    },
+    "commonMistakes": [
+      "Treating orthography design as a purely technical, apolitical exercise",
+      "Assuming the linguist should simply pick the 'most common' dialect without community input",
+      "Ignoring practical issues like how the script handles features such as tone"
+    ],
+    "followUps": ["What would you do if the dialect groups couldn't reach agreement?"]
+  },
+  {
+    "id": "prog-linguistics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Code-switching vs code-mixing",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["sociolinguistics", "bilingualism"],
+    "question": "What's the difference between code-switching and code-mixing, and why do bilingual speakers do either?",
+    "lookingFor": "Accurate distinction between the two phenomena and an understanding that switching is systematic and socially meaningful, not random or a sign of poor proficiency.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish code-switching (alternating between languages, often at clause or sentence boundaries) from code-mixing (blending languages within a single utterance or even a single word)",
+        "Explain that switching often serves social functions, like signalling identity, group membership, or emphasis",
+        "Push back on the misconception that it reflects incomplete competence in either language"
+      ],
+      "modelAnswer": "Code-switching usually refers to alternating between two languages across sentences or clauses, like starting a sentence in English and finishing the next one in Hindi, while code-mixing is more about blending them within a single utterance, sometimes even within a single word, like adding an English suffix onto a word from another language. Bilingual speakers do this for real communicative reasons, not because they've forgotten a word, things like signalling in-group identity, softening or emphasising a point, or because a concept simply feels more natural in one language for that particular context. I think the biggest misconception people have is that switching shows someone doesn't fully know either language, when actually it usually takes strong competence in both to switch in a way that stays grammatical and socially appropriate."
+    },
+    "commonMistakes": [
+      "Treating the two terms as synonyms with no real distinction",
+      "Framing code-switching as evidence of limited proficiency",
+      "Giving no social function or motivation for why speakers do it"
+    ],
+    "followUps": ["Have you noticed code-switching in your own life or community, and what triggers it?"]
+  },
+  {
+    "id": "prog-linguistics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Semantics, pragmatics, and Gricean maxims",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["semantics", "pragmatics", "gricean-maxims"],
+    "question": "If someone asks 'do you know what time it is?' and you reply 'yes,' that's technically true but unhelpful. How does the distinction between semantics and pragmatics explain what's going wrong there?",
+    "lookingFor": "Correct application of truth-conditional semantics versus pragmatic inference, ideally referencing Gricean maxims or conversational implicature.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that 'yes' is semantically true, satisfying the literal truth conditions of the question",
+        "Bring in pragmatics: what's communicated goes beyond literal meaning, via implicature",
+        "Reference a relevant Gricean maxim, such as the maxim of quantity or relevance, being violated"
+      ],
+      "modelAnswer": "Semantically, 'yes' is a perfectly true answer to the literal question of whether I know the time, so nothing is false or ill-formed at that level. The problem is pragmatic, it violates what Grice called the cooperative principle, specifically the maxim of quantity, because a cooperative speaker is expected to give as much information as is needed for the purpose of the exchange, and everyone understands that the real communicative intent behind 'do you know what time it is' is a request for the time itself, not a yes or no question about my knowledge. That gap between the literal semantic content and the intended communicative meaning is exactly what conversational implicature is about, we routinely infer more than what's literally said based on shared assumptions about cooperative conversation."
+    },
+    "commonMistakes": [
+      "Saying the answer is simply 'rude' without any theoretical framing",
+      "Confusing semantics and pragmatics or using the terms interchangeably",
+      "Not naming a specific Gricean maxim or mechanism"
+    ],
+    "followUps": ["Can you think of a maxim other than quantity that a joke or sarcastic remark might deliberately violate?"]
+  },
+  {
+    "id": "prog-linguistics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical period hypothesis",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["acquisition", "psycholinguistics"],
+    "question": "What is the critical period hypothesis for language acquisition, and how strong is the evidence for it?",
+    "lookingFor": "Correct statement of the hypothesis and honest engagement with mixed evidence, particularly around second-language acquisition versus first-language acquisition.",
+    "idealAnswer": {
+      "bullets": [
+        "State the hypothesis: there's a biologically limited window, roughly up to puberty, after which language acquisition becomes markedly harder, especially for native-like phonology and grammar",
+        "Bring in supporting evidence, such as feral or severely deprived children failing to fully acquire language, or age-of-acquisition effects in second-language accent",
+        "Acknowledge complicating evidence, such as adults who do reach very high proficiency, or debate over whether the decline is a sharp cutoff or gradual"
+      ],
+      "modelAnswer": "The critical period hypothesis says there's a window, roughly ending around puberty, during which the brain is especially primed to acquire language, and after which full native-like acquisition, especially of phonology and certain grammatical subtleties, becomes much harder even with plenty of exposure. Cases like Genie, the child deprived of language input until she was found in her teens, are often cited as tragic support, since she never fully acquired native-like grammar despite intensive later intervention, and there's also solid evidence that age of first exposure to a second language predicts how native-like a person's eventual accent and grammatical intuitions become. What complicates it is that the decline looks more gradual than a hard cutoff, and some late learners do reach remarkably high proficiency, so a lot of researchers now talk about multiple, possibly different-timed windows for different aspects of language, like phonology closing earlier than syntax, rather than one single critical period for everything at once."
+    },
+    "commonMistakes": [
+      "Treating the hypothesis as fully proven with no complications",
+      "Confusing first-language deprivation cases with normal second-language learning",
+      "Describing the cutoff as absolute rather than acknowledging gradience and debate"
+    ],
+    "followUps": ["Do you think the critical period is the same for phonology as it is for syntax?"]
+  },
+  {
+    "id": "prog-linguistics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Comparative method and proto-language reconstruction",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["historical-linguistics", "comparative-method"],
+    "question": "How does the comparative method let linguists reconstruct a proto-language like Proto-Indo-European when no one ever recorded it?",
+    "lookingFor": "Understanding of systematic sound correspondences across related languages as the core evidence, with a concrete example, and awareness of what the method can and can't establish.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core method: find regular, recurring sound correspondences between cognates across related languages",
+        "Give a concrete example, such as the correspondence between certain consonants across Latin, Greek, and Sanskrit cognates",
+        "Note the limits, such as reconstruction giving plausible forms rather than a certain historical recording"
+      ],
+      "modelAnswer": "The method works by comparing words that are likely cognates across related languages and looking for sound correspondences that show up over and over rather than once, because a single similar-sounding word could be coincidence but a systematic pattern across dozens of words is strong evidence of common descent. The textbook example is comparing words like Latin pater, Greek pater, and Sanskrit pitar, where the recurring p to p correspondence, alongside similar patterns in many other words, lets linguists reconstruct a proto-form and also predict, correctly, that in the Germanic branch that same proto-sound would regularly show up as an f instead, as in English father, because of a documented systematic sound shift. What I think is important to be honest about is that the reconstructed forms are the most probable ancestor given the comparative evidence, not a literal transcription of a language nobody ever recorded, so there's always some reconstructive uncertainty built in."
+    },
+    "commonMistakes": [
+      "Describing reconstruction as guesswork rather than a systematic method",
+      "Confusing cognates with simple loanwords or coincidental similarity",
+      "Overclaiming the reconstructed proto-language is definitively 'what was spoken'"
+    ],
+    "followUps": ["Why does a single similar-looking word pair not count as strong evidence on its own?"]
+  },
+  {
+    "id": "prog-linguistics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Machine translation vs human translators",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["machine-translation", "translation", "current-debate"],
+    "question": "Machine translation has gotten remarkably good in recent years. What do you think it still genuinely struggles with, and does that change what you think the role of human translators should be?",
+    "lookingFor": "Concrete, specific awareness of current MT limitations, not vague skepticism, plus a reasoned view on the evolving role of human translators.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific area where MT genuinely struggles, such as pragmatics, cultural nuance, idiom, ambiguity resolution requiring real-world knowledge, or low-resource languages",
+        "Avoid both extremes of 'MT has solved translation' and 'MT is useless'",
+        "Give a view on the evolving human role, such as shifting toward post-editing, cultural adaptation, or high-stakes and creative translation"
+      ],
+      "modelAnswer": "I think MT is genuinely excellent now at everyday, fairly literal text, but it still struggles with things that need real-world or cultural knowledge to resolve, like ambiguous pronoun reference across long documents, idioms that don't map cleanly, or tone and register in something like literary or legal text where the wrong word choice changes the whole effect. It also still performs noticeably worse on low-resource languages that simply don't have the training data volume that English or Chinese has. I don't think that makes human translators obsolete, but I do think the role is shifting toward things machines are worse at, like post-editing for nuance, creative and literary translation, and high-stakes contexts like legal or diplomatic translation where a subtle error has real consequences, rather than translators spending their time on routine, low-stakes text that MT already handles well."
+    },
+    "commonMistakes": [
+      "Vague skepticism with no specific example of what MT struggles with",
+      "Claiming MT has essentially solved translation",
+      "Not addressing how the human translator's role might be changing rather than disappearing"
+    ],
+    "followUps": ["What's a specific type of ambiguity you think MT handles particularly badly?"]
+  },
+  {
+    "id": "prog-linguistics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Dialect bias in education",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "dialect", "education"],
+    "question": "A teacher marks down a student's essay for using features of a nonstandard dialect like African American Vernacular English, calling them grammatical errors. As someone trained in linguistics, how would you respond if asked to weigh in?",
+    "lookingFor": "Ability to combine linguistic accuracy, that AAVE is rule-governed, with a practical, respectful way of engaging a teacher who may not share that framing.",
+    "idealAnswer": {
+      "bullets": [
+        "State the linguistic fact plainly: AAVE has consistent, describable grammatical rules, it isn't standard English with errors",
+        "Acknowledge the practical stakes, that fluency in standard written English still matters for the student's opportunities",
+        "Propose a constructive way to raise this with the teacher, rather than just being dismissive of the teacher's concern"
+      ],
+      "modelAnswer": "I'd want to start from the linguistic fact that AAVE features like habitual 'be' or copula deletion aren't random mistakes, they follow consistent, rule-governed patterns, so calling them 'errors' misdescribes what's actually going on grammatically. At the same time I wouldn't dismiss the teacher's underlying concern, because command of standard written English genuinely affects a student's opportunities, so the goal shouldn't be pretending that doesn't matter. What I'd actually suggest is reframing it as code-switching rather than correction, explicitly teaching standard English as an additional register for certain contexts like formal essays, while being clear with the student that their home dialect isn't wrong, it's just a different, equally valid system that isn't what's being assessed in this particular exercise. I think that gets the linguistics right without leaving the student worse off practically."
+    },
+    "commonMistakes": [
+      "Focusing only on the linguistic fact and ignoring the real stakes of standard English fluency for the student",
+      "Simply validating the teacher's framing that it's 'bad grammar'",
+      "Offering no concrete, constructive suggestion for how to handle it"
+    ],
+    "followUps": ["How would you explain the concept of code-switching to the student themselves in a way that doesn't feel like a put-down?"]
+  },
+  {
+    "id": "prog-linguistics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Forensic linguistics and authorship analysis",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["forensic-linguistics", "hypothetical", "method"],
+    "question": "Suppose you were asked to analyse an anonymous threatening letter to help identify features of the likely author's linguistic background. What would you actually look for, and what are the limits of what that analysis can responsibly claim?",
+    "lookingFor": "Concrete forensic-linguistic method, such as idiolectal features, plus real caution about overclaiming certainty in a context with serious consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific features analysed, such as spelling patterns, punctuation habits, syntactic quirks, regional or dialectal markers, and consistent idiosyncrasies across the text",
+        "Explain the logic of idiolect, that individuals have somewhat distinctive, consistent linguistic habits that can be compared against known writing samples",
+        "Be explicit about the limits, that this yields probabilistic profiling or comparison, not definitive proof of identity, and misuse can cause real harm"
+      ],
+      "modelAnswer": "I'd look at things like spelling and punctuation habits, syntactic patterns such as sentence length and clause structure, word choice and any regionalisms or dialect markers, and any distinctive recurring quirks, because the underlying idea is that each person has a somewhat consistent idiolect, their own habitual patterns of language use, that can be compared against known samples if there's a suspect text to compare it to. But I'd be very careful about what conclusions that supports. This kind of analysis can suggest a profile, like likely regional background or education level, or support a comparison between two texts as consistent or inconsistent with common authorship, but it isn't fingerprint-level proof of a specific person's identity, and treating it that way in a case with real legal consequences would be genuinely irresponsible. I'd want any findings framed as probabilistic evidence to be weighed alongside everything else, not a standalone verdict."
+    },
+    "commonMistakes": [
+      "Claiming linguistic analysis can definitively identify a specific individual",
+      "Giving only vague features with no concrete linguistic detail",
+      "Not addressing the ethical stakes of overclaiming certainty in a legal context"
+    ],
+    "followUps": ["How would your confidence change if you only had the anonymous letter and no comparison sample from a suspect?"]
+  },
+  {
+    "id": "prog-linguistics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Phoneme vs allophone",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["phonology", "phonetics"],
+    "question": "Can you explain the difference between a phoneme and an allophone using the aspirated and unaspirated p sounds in English?",
+    "lookingFor": "Correct application of the phoneme/allophone distinction with the standard English aspiration example, including the concept of complementary distribution.",
+    "idealAnswer": {
+      "bullets": [
+        "Define phoneme as the abstract, meaning-distinguishing unit in the mental system, and allophone as one of its physical realisations",
+        "Apply it correctly: aspirated and unaspirated p are allophones of the same phoneme /p/ in English",
+        "Explain complementary distribution, why aspirated p appears word-initially and unaspirated p appears after s"
+      ],
+      "modelAnswer": "A phoneme is the abstract sound category that speakers treat as meaningfully distinct, while an allophone is one of the actual physical variants that phoneme can be pronounced as, depending on context. In English, the aspirated p in 'pin,' where there's a little puff of air, and the unaspirated p in 'spin,' where there isn't, are both allophones of the single phoneme /p/, because swapping them never changes the meaning of a word to a native English speaker, they just sound like the same sound said slightly differently. They're in what's called complementary distribution, meaning each version shows up in a predictable environment and never in the other's, aspirated at the start of a stressed syllable and unaspirated after s, so English speakers don't even consciously notice the difference exists, whereas in a language like Thai that same phonetic distinction actually separates different words."
+    },
+    "commonMistakes": [
+      "Getting the aspirated/unaspirated environments backwards",
+      "Defining the terms correctly but failing to apply them to the specific example",
+      "Not mentioning complementary distribution or predictability of environment"
+    ],
+    "followUps": ["Why might a native Thai speaker learning English notice this distinction more readily than a native English speaker?"]
+  },
+  {
+    "id": "prog-linguistics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Innateness vs emergentism",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["syntax", "cognition", "current-debate"],
+    "question": "Some researchers argue syntax is a specialised, innate module in the brain, while others argue it emerges from general-purpose cognitive abilities like memory and pattern recognition. What's currently pulling the debate in each direction?",
+    "lookingFor": "Up-to-date awareness of the nativism vs emergentism debate, with specific evidence types on each side rather than a purely abstract summary.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe evidence pulling toward a specialised module, such as certain language-specific deficits like some forms of specific language impairment, or apparent structural universals",
+        "Describe evidence pulling toward emergentism, such as statistical and connectionist models learning grammatical patterns from general learning mechanisms, or evidence that other animals show related sequencing and pattern-learning abilities",
+        "Show awareness that this remains actively contested rather than resolved"
+      ],
+      "modelAnswer": "Pulling toward a specialised module, there's evidence like certain developmental language disorders that seem to selectively impair grammatical ability while leaving general cognition largely intact, which some researchers take as evidence that language draws on dedicated machinery rather than purely general cognition. Pulling the other way, there's been real progress in showing that statistical and neural network models trained with fairly general learning mechanisms, not language-specific rules, can acquire surprisingly sophisticated grammatical patterns from exposure to text, which weakens the claim that you need an innate, language-specific module to explain the outcome. There's also comparative work on other species showing related sequencing and pattern-learning abilities that aren't language-specific, which suggests some of the underlying cognitive machinery might be shared rather than uniquely human and uniquely linguistic. I don't think either side has closed the case, and honestly I find that unresolved tension one of the more exciting parts of the field right now."
+    },
+    "commonMistakes": [
+      "Discussing the debate in the abstract with no concrete evidence on either side",
+      "Presenting the debate as if one side has already clearly won",
+      "Confusing this debate with the separate question of whether all languages share universal features"
+    ],
+    "followUps": ["Do you think advances in neural network language models count as evidence for or against innate grammar?"]
+  },
+  {
+    "id": "prog-linguistics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Publishing a grammar of a minority language",
+    "program": "Linguistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "documentation", "endangered-languages"],
+    "question": "Documenting and publishing a full grammar of a minority language can help preserve it, but that same detailed record could also be used by outside authorities in ways the community never intended, for example in assimilationist policy or surveillance. How would you think through that tension if it were your project?",
+    "lookingFor": "Genuine engagement with a real ethical tension in documentary linguistics, not a one-sided answer, and a defensible, community-centred resolution.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both real goods honestly: documentation supports preservation, education, and community pride, while also being a potential tool for outside misuse",
+        "Reject the idea that the researcher alone should decide how to weigh this",
+        "Propose a concrete practical response, such as tiered access, community control over publication and distribution, or involving the community in deciding what's public versus restricted"
+      ],
+      "modelAnswer": "I wouldn't pretend this is a false dilemma, because a thorough grammar really can support education and pride in the language, but the same detailed record really could be misused by outside institutions in ways that have nothing to do with what the community wants. I don't think it's my call to make alone as the researcher, so my approach would be to put the decision-making with the community itself, asking directly what should be publicly available versus what should stay restricted or archived with limited access. Practically that might mean a tiered publication model, a general grammar sketch that's public, alongside more sensitive material, like specific speaker identities or culturally restricted content, kept under community-controlled access rather than open academic publication. I think the underlying principle is that documentation should serve the community's own goals for their language, not just the academic goal of a complete public record."
+    },
+    "commonMistakes": [
+      "Only addressing the benefits of documentation and ignoring the misuse risk",
+      "Treating the decision as purely the researcher's academic call",
+      "Giving no concrete mechanism, like tiered access, for actually resolving the tension"
+    ],
+    "followUps": ["Who do you think should have the final say if the community itself is divided on what should be public?"]
+  },
+  {
+    "id": "prog-linguistics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a constructed language for global use",
+    "program": "Linguistics",
+    "difficulty": "medium",
+    "tags": ["typology", "hypothetical", "design"],
+    "question": "If you had to design an auxiliary language meant to be genuinely easy for people from very different language backgrounds to learn, what design choices would you make, and what trade-offs would you run into?",
+    "lookingFor": "Applied typological thinking, showing awareness that 'easy' is relative to a learner's native language, and honest engagement with real trade-offs like Esperanto's history.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify design choices aimed at cross-linguistic accessibility, such as a small, regular phoneme inventory, fully regular morphology, and flexible or simple word order",
+        "Acknowledge that 'easy' is relative to your native language, so no design is neutral for everyone",
+        "Reference a real trade-off or precedent, such as Esperanto's heavy reliance on European vocabulary and grammar making it easier for European speakers than others"
+      ],
+      "modelAnswer": "I'd aim for a small, cross-linguistically common phoneme inventory so most people could actually pronounce it without new sounds, fully regular morphology with no irregular verbs or exceptions to memorise, and a word order and grammar kept as simple and consistent as possible, maybe agglutinative so meaning stays transparent piece by piece. But I'd go in honest that no such design is actually neutral, because 'easy' always depends on what your native language already gives you, which is exactly the criticism Esperanto has faced, since its vocabulary and grammar draw heavily on European languages, making it noticeably easier for European learners than for someone whose first language is, say, Mandarin or Swahili. If I were serious about it I'd try to deliberately draw phoneme choices and basic grammatical patterns from typologically diverse language families rather than defaulting to what's familiar to me, even though that would make the language harder to design cleanly and probably less elegant than picking from one family."
+    },
+    "commonMistakes": [
+      "Assuming a design is neutral or equally easy for everyone",
+      "Listing design features with no acknowledgment of real precedent or trade-offs",
+      "Ignoring that vocabulary source, not just grammar, biases learnability"
+    ],
+    "followUps": ["How would you decide which language families to draw sounds and structures from, given you can't include all of them?"]
+  }
+]

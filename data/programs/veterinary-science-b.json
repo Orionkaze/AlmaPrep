@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-veterinary-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Antimicrobial resistance in animals",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["amr", "pharmacology", "public-health"],
+    "question": "Antimicrobial resistance is often called one of the biggest threats facing veterinary medicine. Why does it matter so much in animals specifically, and what role would you see a vet playing in tackling it?",
+    "lookingFor": "Understanding that AMR is a One Health problem, not just a human medicine issue, plus reasoning about the vet's specific leverage points.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that resistant bacteria can pass between animals, food, environment and humans",
+        "Recognise farm animal medicine, especially routine or prophylactic dosing, as a major historical driver",
+        "Identify what a vet can actually control: judicious prescribing, diagnostics before antibiotics, client education"
+      ],
+      "modelAnswer": "What struck me reading about this is that resistance doesn't respect species lines, a resistant bacterium that develops on a dairy farm can end up in the food chain or the water table and eventually affect human treatment options, which is why it's framed as a One Health issue rather than just an animal health one. Livestock medicine gets a lot of scrutiny because historically antibiotics were used routinely rather than only when an animal was actually sick, and that's exactly the kind of blanket use that breeds resistance fastest. I think the vet's real leverage is at the prescribing decision itself, taking the time to culture and confirm what you're treating rather than reaching for a broad-spectrum drug out of convenience, and being honest with farmers when a herd problem is really a management issue that no antibiotic will fix. It's not a glamorous part of the job but it's probably one of the most consequential."
+    },
+    "commonMistakes": [
+      "Treating it as purely a human-medicine problem",
+      "No mention of livestock or agricultural use as a driver",
+      "Vague 'use fewer antibiotics' with no mechanism for how a vet actually achieves that"
+    ],
+    "followUps": ["Should governments restrict antibiotic use in farming even if it raises costs for farmers?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "One Health framework",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["one-health", "zoonoses", "public-health"],
+    "question": "What do you understand by the term 'One Health', and why is it particularly relevant to veterinary medicine?",
+    "lookingFor": "Clear grasp of the concept linking animal, human and environmental health, with a concrete example.",
+    "idealAnswer": {
+      "bullets": [
+        "Define One Health as the interconnection of human, animal and environmental health",
+        "Give a concrete example, such as a zoonotic disease or antimicrobial resistance",
+        "Explain why vets specifically sit at that intersection"
+      ],
+      "modelAnswer": "One Health is the idea that human health, animal health and environmental health can't really be treated as separate boxes, because so many of the biggest health threats move between them, things like zoonotic diseases, antimicrobial resistance or how deforestation changes which viruses spill over into new hosts. Something like avian flu jumping into dairy cattle is a good recent example, it started as an animal health story but very quickly became relevant to public health surveillance. I think vets are unusually placed in that picture because we're often the first professionals to see a disease pattern in animals before anyone realises it has implications for people, so the profession has a genuine responsibility that goes beyond individual animal welfare."
+    },
+    "commonMistakes": [
+      "Defining it too narrowly as just zoonotic disease",
+      "No concrete real-world example",
+      "Not connecting it back to why a vet specifically matters here"
+    ],
+    "followUps": ["Can you think of a disease where the One Health approach has clearly changed how it's managed?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Euthanasia dilemma",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "euthanasia", "client-relations"],
+    "question": "An owner asks a vet to put down a perfectly healthy dog because they're moving abroad and can't take it with them. How should a vet think through a request like that?",
+    "lookingFor": "Structured ethical reasoning weighing animal welfare, professional conscience, and realistic alternatives, not a snap refusal or snap compliance.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between owner autonomy and the vet's duty to the animal",
+        "Explore concrete alternatives before landing on a position, such as rehoming or fostering",
+        "Reach a considered stance rather than an absolute rule"
+      ],
+      "modelAnswer": "My instinct is that a healthy animal's life shouldn't be ended for pure convenience, but I'd want to actually understand the situation rather than judge it from the outside, because the owner might genuinely believe they've exhausted their options. I'd want the vet to slow the conversation down, ask about rehoming charities, breed-specific rescues, or even a temporary foster while the move is sorted, since most of the time there is a workable alternative if someone helps look for it. If it turned out there really was no other route and the dog would otherwise be abandoned or suffer badly, I think I'd rather a vet retain the right to decline and refer elsewhere than be forced into ending a healthy life, because that's also part of what it means to take the profession's ethics seriously. It's an uncomfortable position either way, and I don't think good vets get to avoid that discomfort."
+    },
+    "commonMistakes": [
+      "Immediately saying 'I would just refuse' with no exploration",
+      "Ignoring the owner's actual constraints and judging them",
+      "No consideration of alternatives like rehoming"
+    ],
+    "followUps": ["Does your answer change if the dog has a behavioural issue that makes rehoming unlikely?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Treatment limited by owner's finances",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "client-communication", "welfare"],
+    "question": "A family brings in an injured cat but can't afford the surgery that would give it the best chance of recovery. How should a vet balance the animal's welfare against what the owner can pay?",
+    "lookingFor": "Realistic understanding that veterinary medicine is constrained by cost, and reasoning about how to navigate that honestly rather than pretending money is never a factor.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge this is one of the most common real tensions in practice",
+        "Discuss options such as staged treatment, payment plans, or charities",
+        "Recognise welfare has to be judged against realistic alternatives, not an idealised gold standard"
+      ],
+      "modelAnswer": "I think it's important to admit upfront that cost is a real constraint in nearly every practice, and pretending the ideal treatment is always available isn't honest. I'd want the vet to lay out the full range of options clearly, the gold-standard surgery but also a cheaper alternative that might give a worse but still reasonable outcome, and be upfront about what each one actually means for the animal rather than making the family feel judged. Charities exist for exactly this gap and I'd want that raised early rather than as a last resort. Ultimately the welfare question isn't really best possible outcome versus nothing, it's making sure whatever is chosen doesn't leave the animal in prolonged suffering, and that sometimes means humane euthanasia is kinder than an underfunded attempt at treatment."
+    },
+    "commonMistakes": [
+      "Assuming money is never a barrier in real practice",
+      "No mention of practical options like payment plans or charities",
+      "Framing it as the owner being the problem rather than a structural constraint"
+    ],
+    "followUps": ["Should veterinary care be subsidised more like human healthcare, and what would the trade-offs be?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Livestock welfare vs farm economics",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "livestock", "welfare"],
+    "question": "Higher welfare farming standards usually cost more. How should that tension between animal welfare and farm profitability be resolved?",
+    "lookingFor": "Balanced awareness of farming economics as well as welfare, not a purely idealistic answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding that farmers operate on thin margins, not simply choosing cruelty",
+        "Discuss mechanisms beyond blaming individual farmers, such as consumer pricing or welfare-linked subsidies",
+        "Land on a reasoned position rather than an absolute"
+      ],
+      "modelAnswer": "Spending time on a farm during work experience changed how I think about this, because the farmer I shadowed cared enormously about her animals but was still making decisions under real financial pressure, so I don't think this is really a story of good welfare versus bad farmers. I think the more useful lever is on the demand side, clearer welfare labelling and consumers actually willing to pay a bit more, alongside subsidies that reward welfare improvements rather than just penalising farms that fall short. Vets have a role too, not just in inspection but in showing farmers that some welfare investments, like reduced stress lowering disease rates, actually pay for themselves over time. I don't think there's a clean answer, but I'd rather work on making higher welfare economically viable than just demand it and leave farmers to absorb the cost alone."
+    },
+    "commonMistakes": [
+      "Blaming farmers individually without acknowledging economic pressure",
+      "No mention of any structural solution such as labelling or subsidy",
+      "An answer with no personal grounding or reflection"
+    ],
+    "followUps": ["Who do you think should bear the cost of higher welfare standards, consumers, farmers, or government?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Clinical reasoning without a verbal history",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["clinical-reasoning", "diagnostics"],
+    "question": "Unlike a doctor, a vet can't ask the patient what's wrong. How does that change the way a vet has to approach diagnosis?",
+    "lookingFor": "Understanding of the extra weight placed on observation, history-taking from the owner, and systematic examination.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the owner becomes the main history source, and that history can be unreliable or incomplete",
+        "Emphasise physical examination, behaviour observation, and diagnostic tests carrying more weight",
+        "Show awareness that species differences complicate interpreting the same symptom"
+      ],
+      "modelAnswer": "It means almost all of the history has to come secondhand through the owner, who might not have noticed the early signs or might describe them inaccurately, so a vet has to ask very targeted questions and treat the account as a starting point rather than the full picture. Physical examination and observed behaviour end up doing much more of the diagnostic work than they would in human medicine, things like how an animal moves, how it holds itself, subtle changes in appetite that an owner might have missed. What I find interesting is that the same symptom can mean different things across species, a cat hiding is often just being a cat, but in a rabbit hiding away can be a genuine emergency sign, so you also need a working knowledge of species-specific normal behaviour to know what's actually worth worrying about. It makes the observational and knowledge-based side of the job feel much more central than I originally appreciated."
+    },
+    "commonMistakes": [
+      "Not considering that owner history can be unreliable",
+      "Ignoring species-specific differences in how illness presents",
+      "Treating it as purely a knowledge gap rather than a different diagnostic process"
+    ],
+    "followUps": ["Can you think of a species where hiding signs of illness is a particular risk, and why that happens evolutionarily?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Ruminant vs monogastric digestion",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["physiology", "livestock", "biology"],
+    "question": "Can you explain, in outline, why a cow's digestive system is so different from a dog's, and why that matters clinically?",
+    "lookingFor": "Solid grasp of ruminant physiology, including multi-chambered stomach and microbial fermentation, and why it changes disease risk and treatment.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic ruminant system: rumen fermentation by microbes before true digestion",
+        "Contrast with a monogastric or simple stomach like a dog's",
+        "Connect to a clinical implication such as bloat or acidosis"
+      ],
+      "modelAnswer": "A cow is essentially fermenting its food before it properly digests it, the rumen is a huge chamber full of microbes that break down cellulose the cow itself can't digest, and only afterwards does material move on to the true stomach and intestines for the kind of digestion a dog does in one simple stomach. That microbial ecosystem is actually the reason cattle can live on grass at all, but it also creates risks that don't exist in a dog, things like bloat if gas builds up and can't escape, or acidosis if a diet shifts too quickly toward grain and the microbial population can't adjust in time. It matters clinically because you're not just treating the animal, in a sense you're managing an entire microbial population, which is part of why sudden diet changes on farms are treated so cautiously. I found that idea genuinely fascinating when I first read about it, that so much of a cow's health depends on organisms it's hosting rather than its own tissue."
+    },
+    "commonMistakes": [
+      "Vague answer with no mention of the rumen or fermentation",
+      "No clinical implication given",
+      "Confusing ruminant anatomy with other multi-stomach systems"
+    ],
+    "followUps": ["Why might a sudden switch to a high-grain diet be dangerous for cattle?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Vaccine hesitancy in animal owners",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["current-debate", "vaccination", "client-communication"],
+    "question": "Vaccine hesitancy isn't just a human medicine issue, some pet and livestock owners are increasingly declining routine vaccinations. What do you think is driving that, and how should it be handled?",
+    "lookingFor": "Awareness of a genuine current trend, empathetic but evidence-based reasoning about addressing it.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness this is a real, growing issue in companion animal practice",
+        "Suggest plausible drivers such as misinformation spillover or cost concerns",
+        "Propose a constructive communication approach rather than dismissiveness"
+      ],
+      "modelAnswer": "I read about this a while back and it surprised me, some of the same hesitancy that shows up around human vaccines has spilled over into pet ownership, with a small but growing number of owners worried about over-vaccination or influenced by misinformation they've seen online. I think cost plays a role too, especially with combined vaccines and annual boosters adding up, so it's not always pure ideology. I don't think dismissing those owners works, a vet is more likely to bring them round by explaining the actual disease risk in plain terms, maybe pointing to titer testing as a middle ground where it's clinically appropriate, rather than just insisting on the standard protocol. It's a reminder that being right scientifically isn't enough if you can't communicate it in a way that respects the owner's concerns."
+    },
+    "commonMistakes": [
+      "Dismissing the trend as not real or not relevant to vet medicine",
+      "No plausible explanation for the driver",
+      "No constructive approach to communication, just insisting owners are wrong"
+    ],
+    "followUps": ["Should there be any circumstances where a vet declines to treat an animal whose owner refuses vaccination?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene editing in livestock",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["genetics", "current-development", "livestock"],
+    "question": "Gene editing tools like CRISPR are now being used to breed livestock resistant to certain diseases. What's your view on this development?",
+    "lookingFor": "Awareness of the technology and its stated benefits, balanced against welfare, ecological and ethical concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic understanding of what the technology does, such as breeding disease-resistant pigs",
+        "Weigh genuine benefits, like reduced antibiotic use, against concerns like reduced genetic diversity",
+        "Reach a considered position rather than a purely enthusiastic or purely rejecting one"
+      ],
+      "modelAnswer": "I've read about pigs being edited for resistance to PRRS, a virus that causes real suffering and huge losses in the pig industry, and on one level that seems like an unambiguous welfare win, fewer animals getting sick and less need for reactive antibiotic use. What gives me pause is the same question that comes up with any selective intensification of livestock, whether editing for narrower traits reduces genetic diversity in a way that creates new vulnerabilities down the line, and whether it makes it easier to keep animals in denser, more intensive systems because we've engineered around one welfare cost rather than addressing the system itself. I don't think that makes the technology wrong, but I'd want to see it paired with proper welfare standards rather than used as a substitute for them. It's the kind of development where the science is moving faster than the ethical conversation around it."
+    },
+    "commonMistakes": [
+      "Purely enthusiastic with no consideration of risks",
+      "Purely rejecting without acknowledging genuine welfare benefits",
+      "No specific example, only vague statements about genetic modification generally"
+    ],
+    "followUps": ["Should gene-edited livestock require different labelling for consumers than conventionally bred animals?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Exotic pet trade and conservation",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "conservation", "exotic-animals"],
+    "question": "The exotic pet trade puts vets in a difficult position, treating animals whose ownership they might think is problematic for welfare or conservation reasons. How would you think through that tension?",
+    "lookingFor": "Nuanced reasoning that separates the animal's immediate welfare needs from views on the trade itself.",
+    "idealAnswer": {
+      "bullets": [
+        "Separate the individual animal's welfare from a judgement about the trade or the owner",
+        "Recognise the vet's role is still to treat the animal in front of them",
+        "Consider a broader role in advocacy or education beyond the individual consultation"
+      ],
+      "modelAnswer": "I think the key distinction is that whatever I feel about the exotic pet trade as a whole, the animal on the table didn't choose to be there and still deserves the best care I can give it, so refusing treatment as a form of protest would really just be punishing the animal for a system it has no part in. That said, I don't think that means staying silent, if an owner clearly doesn't understand a species' needs, and a lot of exotic pet welfare problems come from genuine ignorance rather than cruelty, I'd see educating them as part of the job. Where I'd want to be more actively involved is upstream of the consultation room, supporting stricter licensing or import controls through professional bodies, because that's where the actual leverage over the trade exists, not in how I treat an individual iguana with a calcium deficiency."
+    },
+    "commonMistakes": [
+      "Suggesting a vet should refuse treatment as protest",
+      "No distinction between the individual animal and the wider trade",
+      "No consideration of an advocacy role beyond the clinic"
+    ],
+    "followUps": ["Should certain exotic species simply be banned from private ownership altogether?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Avian influenza spillover into mammals",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["epidemiology", "current-debate", "zoonoses"],
+    "question": "Highly pathogenic avian flu has recently been found spreading in dairy cattle and other mammals, which is unusual. Why is that development concerning to people in animal and public health?",
+    "lookingFor": "Genuine current-affairs awareness combined with basic epidemiological reasoning about spillover and mutation risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the actual recent development, H5N1 spreading in cattle",
+        "Explain why mammal-to-mammal spread raises pandemic concern",
+        "Avoid overstating certainty while still conveying why experts are watching closely"
+      ],
+      "modelAnswer": "What made this notable is that H5N1 had mostly been a bird disease with occasional spillover into individual mammals, but seeing it spread cow to cow in dairy herds suggested it had adapted in a way that let it move more efficiently between mammals, which is a different and more worrying step. The concern isn't that cattle themselves pose a huge direct risk to humans, it's that every time the virus replicates in a new mammalian host it gets more opportunities to pick up mutations that could make it better adapted to humans, and dairy workers in close contact with infected cattle are the most exposed group. I don't think it means a human pandemic is inevitable, surveillance and containment have improved a lot since earlier outbreaks, but it's exactly the kind of animal health story that has genuine public health stakes, and it's a good example of why I find the epidemiology side of this field as interesting as the clinical side."
+    },
+    "commonMistakes": [
+      "Not knowing about the actual cattle outbreak development",
+      "Overstating it as a certain coming pandemic",
+      "No explanation of why mammal-to-mammal spread specifically raises concern"
+    ],
+    "followUps": ["What surveillance measures do you think should be in place on farms to catch something like this early?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Routine antibiotic use in farming",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "amr", "livestock"],
+    "question": "Should vets ever prescribe antibiotics to a whole herd prophylactically, before any animals show signs of illness?",
+    "lookingFor": "Reasoned position that weighs animal welfare and disease prevention against AMR risk, showing awareness of current regulatory trends.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge legitimate historical reasons for prophylaxis, like preventing predictable outbreaks",
+        "Weigh that against AMR risk and current regulatory direction away from routine use",
+        "Land on a conditional, reasoned position rather than an absolute yes or no"
+      ],
+      "modelAnswer": "I understand why it happened historically, if you know a group of newly weaned piglets is highly likely to get a particular respiratory infection, treating before symptoms appear can prevent real suffering and production loss. But I think the evidence on resistance has shifted the calculus, blanket prophylactic use is one of the clearest drivers of resistant bacteria, and regulation in places like the EU has moved firmly away from it for exactly that reason. My own view is that prophylaxis should be the exception justified by strong clinical evidence for a specific, predictable risk, not a routine management tool, and that the emphasis should shift toward the underlying causes, better ventilation, less crowding, cleaner weaning practices, that reduce the need for antibiotics in the first place rather than reaching for them as a substitute for good husbandry."
+    },
+    "commonMistakes": [
+      "Absolute yes with no acknowledgment of AMR risk",
+      "Absolute no with no acknowledgment of legitimate historical welfare reasons",
+      "No awareness of actual regulatory trends"
+    ],
+    "followUps": ["How would you respond to a farmer who says removing prophylactic antibiotics will just mean more animal suffering?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Recognising pain in prey species",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["welfare", "clinical-reasoning", "biology"],
+    "question": "Why might it be harder to recognise pain in a rabbit than in a dog, and why does that matter?",
+    "lookingFor": "Understanding of prey-species behaviour, particularly masking illness, and its clinical welfare consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the evolutionary logic that prey animals hide weakness to avoid predation",
+        "Contrast with a species like a dog that shows pain more overtly",
+        "Connect this to real clinical consequences such as delayed presentation"
+      ],
+      "modelAnswer": "As a prey species, a rabbit's evolutionary instinct is to hide any sign of weakness, because in the wild looking vulnerable is what gets you picked off, so pain and illness often stay masked until the animal is genuinely very unwell. A dog, by contrast, is much more likely to limp, whimper or otherwise visibly signal discomfort, which is partly why dogs tend to get to the vet earlier in the course of a problem. The clinical consequence is that with rabbits, and other prey species like guinea pigs, a vet has to be trained to read much subtler signs, reduced eating, a hunched posture, grinding teeth, rather than waiting for an obvious display of pain, because by the time that appears the animal may already be in serious trouble. It's a good example of how understanding a species' natural behaviour isn't just interesting biology, it directly changes how urgently you should act."
+    },
+    "commonMistakes": [
+      "No evolutionary reasoning given for why prey species hide pain",
+      "Treating all species as displaying pain the same way",
+      "No connection to clinical urgency or consequence"
+    ],
+    "followUps": ["What subtle signs might indicate pain in a rabbit that an inexperienced owner would likely miss?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Welfare of performance and working animals",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "welfare", "working-animals"],
+    "question": "Racing and other performance sports raise welfare questions for the animals involved. Where do you personally draw the line between acceptable use of animals for sport and work, and exploitation?",
+    "lookingFor": "A thoughtful, non-absolutist personal position with reasoning, not just a slogan for or against a sport.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid a purely absolutist ban-everything or defend-everything stance",
+        "Propose a workable criterion, such as injury or fatality rates and life after the career",
+        "Show awareness of an ongoing reform debate in a specific sport"
+      ],
+      "modelAnswer": "I don't think the presence of a sport automatically makes it exploitative, working and performing with humans has been part of some species' relationship with us for a long time, and plenty of animals seem to genuinely engage with training and competition. Where I'd draw the line is around injury and fatality rates that are known and accepted as a cost of doing business, and what happens to the animal once its racing or working career ends. Horseracing is the clearest example I've followed, the debate over whip use and the number of catastrophic injuries on certain tracks has pushed some jurisdictions toward real reform, and I think that's the right direction, tightening the sport until the welfare cost is genuinely minimised rather than just managed and accepted. If an industry can't show it's actively reducing harm over time, I'd be much less comfortable calling it acceptable."
+    },
+    "commonMistakes": [
+      "Absolutist stance with no reasoning, either banning all animal sport or defending it uncritically",
+      "No concrete criterion offered for where the line sits",
+      "No awareness of an actual ongoing reform debate"
+    ],
+    "followUps": ["Should a vet working for a racing stable have a different set of obligations than one in general practice?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Wildlife reservoirs and disease control debates",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["epidemiology", "current-debate", "livestock"],
+    "question": "Bovine TB control has involved culling badgers in parts of the UK, which remains controversial. What's your understanding of the debate, and where do you land on it?",
+    "lookingFor": "Genuine awareness of a real, specific policy debate and the ability to reason about competing evidence rather than take a purely emotional stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate understanding of the basic issue, badgers as a wildlife TB reservoir",
+        "Acknowledge the scientific uncertainty and disagreement over culling's actual effectiveness",
+        "Offer a reasoned personal position while acknowledging the counterarguments"
+      ],
+      "modelAnswer": "The core issue is that badgers can carry and transmit bovine TB, and since cattle keep getting reinfected even after herds are cleared, culling badgers was introduced as a way to reduce that wildlife reservoir. What makes it genuinely contested is that the scientific evidence on how much culling actually reduces TB in cattle is mixed, some trials showed modest benefit while others suggested perturbation effects can actually spread infected badgers further and worsen things locally. My own view leans toward vaccination-based approaches, both cattle and badger vaccination, being the more defensible long-term direction, because culling is expensive, ethically contentious and the evidence for its effectiveness isn't as strong as I'd want before supporting mass wildlife killing. I hold that view while recognising farmers dealing with repeated TB breakdowns have a genuinely difficult, high-stakes problem that I shouldn't be dismissive of."
+    },
+    "commonMistakes": [
+      "Not knowing the basic facts of the actual debate",
+      "A purely emotional anti-culling stance with no engagement with the science",
+      "No acknowledgment of the farmer's perspective or the genuine uncertainty in the evidence"
+    ],
+    "followUps": ["What would convince you that culling is or isn't working?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Corporate consolidation of veterinary practices",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["current-debate", "industry", "ethics"],
+    "question": "A growing share of veterinary practices are being bought up by large corporate groups rather than staying independently owned. What do you think that trend means for the profession?",
+    "lookingFor": "Balanced awareness of a real structural trend in the profession and its trade-offs, not naive positivity or blanket cynicism.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness that this consolidation trend is real and significant",
+        "Identify genuine upsides like investment and downsides like pricing pressure on clinical decisions",
+        "Reflect on what it might mean personally as a future professional"
+      ],
+      "modelAnswer": "I read that a large share of UK practices are now corporately owned rather than independent, which surprised me because the image I had of a vet was still the small local practice. There are real upsides, better access to equipment and CPD, more structured career progression, less of the isolation that comes with running a small business alone. But the concern I keep coming back to is the pressure that can come from corporate targets, whether recommendations for tests or treatments stay purely clinical when there's a revenue target attached, and what that does to trust with clients over time. I think it's something I'd want to be alert to wherever I end up working, not to assume corporate ownership is automatically bad, but to actually notice if clinical decisions ever start bending toward numbers rather than the animal in front of me."
+    },
+    "commonMistakes": [
+      "No awareness the trend exists at all",
+      "Purely negative with no acknowledgment of genuine benefits",
+      "No personal reflection on what it means for them as a future vet"
+    ],
+    "followUps": ["How would you personally guard against commercial pressure influencing a clinical recommendation?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Compassion fatigue and mental health in the profession",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["wellbeing", "reflective", "profession-awareness"],
+    "question": "Veterinary medicine has one of the highest rates of mental health struggles of any profession. What do you think drives that, and how are you thinking about it as you consider this career?",
+    "lookingFor": "Honest, mature awareness of a serious issue in the profession, and evidence of genuine reflection rather than performative concern.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness this is a well-documented, serious issue, not exaggeration",
+        "Suggest plausible contributing factors such as euthanasia exposure, client conflict, or isolation",
+        "Reflect honestly on how they personally plan to build resilience, without pretending it away"
+      ],
+      "modelAnswer": "It's something I've read about seriously rather than just noted in passing, vets face a mix of things that don't line up in most other jobs, regular exposure to death and euthanasia decisions, client conflict over cost and outcomes, long unsociable hours, and unfortunately easier access to the means of suicide through the drugs in a practice, which is a grim but well-documented factor. I don't think I can pretend that awareness alone protects me from it, so what I've tried to do already is build habits I know I'll need, talking honestly about difficult days rather than just pushing through, and I plan to use support structures at university and later at work rather than seeing it as separate from clinical competence. I'd rather go into this with eyes open about the toll than assume my love of animals will somehow be enough to carry me through the harder parts of the job."
+    },
+    "commonMistakes": [
+      "Downplaying the seriousness of the issue",
+      "Naming no specific contributing factors, just vague acknowledgment",
+      "No genuine personal reflection, just a rehearsed-sounding answer"
+    ],
+    "followUps": ["What would you do if you noticed a coursemate or colleague struggling?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of veterinary telemedicine",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["current-debate", "technology", "clinical-reasoning"],
+    "question": "Veterinary telemedicine has grown a lot recently. What do you see as its genuine value, and where does it clearly fall short?",
+    "lookingFor": "Realistic, non-hyped understanding of a current technology trend and its clinical limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify genuine value such as triage, follow-up, and access in remote areas",
+        "Identify clear limits such as no hands-on exam and risk of missed diagnosis",
+        "Show balanced judgement rather than uncritical enthusiasm or dismissal"
+      ],
+      "modelAnswer": "I think telemedicine genuinely helps with triage, deciding quickly whether something needs an in-person visit today or can wait, and with follow-up checks after a known condition, where you're mostly confirming things are on track rather than searching for something new. It can also make a real difference for owners in rural areas without an easy in-person option, or for animals that get genuinely stressed by travel and clinic visits. But I keep coming back to the point about a vet not being able to ask the patient what's wrong, and over video you also lose the physical examination, palpation, listening to the chest, checking for subtle physical signs, which is often where the real diagnostic information comes from. I'd see it as a genuinely useful extra layer of access rather than a replacement for hands-on veterinary care, and I'd be cautious of any push to expand it further than that."
+    },
+    "commonMistakes": [
+      "Uncritical enthusiasm with no limits identified",
+      "Blanket dismissal with no acknowledgment of genuine value",
+      "No connection made to why physical examination specifically matters in animals"
+    ],
+    "followUps": ["Should there be legal limits on what a vet can prescribe based on a telemedicine consult alone?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering neglect during a routine farm visit",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "hypothetical", "welfare"],
+    "question": "Imagine you're on a farm visit for a routine check and you notice several animals in clearly poor condition that seem unrelated to why you were called. What would you do?",
+    "lookingFor": "Structured reasoning that balances the welfare duty to report against professional relationships, showing awareness of the actual reporting process.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise animal welfare and the professional obligation to act, not just observe",
+        "Describe a sensible escalation path, raising it with the farmer first and documenting it",
+        "Show awareness this is a genuine professional and legal obligation, not merely a moral preference"
+      ],
+      "modelAnswer": "My first step wouldn't be to jump straight to reporting, it would be raising it directly with the farmer there and then, because sometimes what looks like neglect from the outside has an explanation, a recent illness in the family, a specific animal that's just started declining, and most farmers do want to fix a genuine problem once it's pointed out clearly. I'd document what I saw properly regardless, dates, condition, photos if appropriate, because that record matters whatever happens next. But if the farmer was dismissive or the same issues turned up again on a later visit, I think a vet has a professional and often legal obligation to escalate, whether that's through their regulatory body or the relevant welfare authority, and I don't think personal discomfort about damaging the relationship is a good enough reason not to. The animals in front of you don't get to wait for that relationship to feel less awkward."
+    },
+    "commonMistakes": [
+      "Jumping straight to reporting without a professional first step of raising it directly",
+      "Deciding to say nothing to avoid conflict",
+      "Not recognising there's an actual professional or legal reporting duty involved"
+    ],
+    "followUps": ["What would you do if the farmer was a close friend of the practice's most senior vet?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Triage in a mass-casualty scenario",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "triage", "clinical-reasoning"],
+    "question": "Suppose there's a fire at a boarding kennel and several animals arrive at a clinic at once with varying injuries, but only limited staff and equipment. How would you think about deciding who gets treated first?",
+    "lookingFor": "Understanding of basic triage logic, survivability and resource allocation, applied sensibly to a non-human context.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the goal shifts from best individual outcome to greatest overall benefit given constraints",
+        "Apply sensible triage logic, prioritising animals most likely to survive with intervention",
+        "Acknowledge the emotional difficulty without letting it override the logic"
+      ],
+      "modelAnswer": "I understand triage in this kind of situation isn't about treating whoever arrived first or whoever's owner is most distressed, it's about honestly assessing each animal and directing the limited resources where they'll do the most good. That usually means the animals who are critical but have a realistic chance of stabilising with quick intervention get seen first, ahead of both the ones who are stable enough to wait a short while and, as hard as it is, the ones whose injuries are so severe that treating them would use resources better spent saving another animal that can actually be saved. I think the hardest part isn't understanding that logic, it's actually applying it in the moment when every owner is asking about their own animal, so I'd want a system, ideally decided calmly before any emergency happens, of clear criteria and a designated person making triage calls rather than everyone deciding individually under pressure."
+    },
+    "commonMistakes": [
+      "Treating triage as first-come-first-served or based on emotional pressure",
+      "Not recognising the goal is greatest overall benefit given real constraints",
+      "No acknowledgment of the emotional difficulty of the decision"
+    ],
+    "followUps": ["How would you handle an owner who is furious that their animal isn't being seen first?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Breeding for extreme traits and hereditary disease",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "genetics", "breeding"],
+    "question": "Breeds like French Bulldogs are hugely popular but are prone to serious hereditary health problems because of how they've been bred. What responsibility, if any, do you think falls on vets in that situation?",
+    "lookingFor": "Understanding of the genetics behind breed-specific conditions, combined with a reasoned view on professional responsibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic understanding of the genetic or anatomical cause, such as selection for extreme facial structure",
+        "Discuss the vet's possible roles, from honest client education to advocacy for breed standard reform",
+        "Avoid a simplistic 'ban the breed' answer with no nuance"
+      ],
+      "modelAnswer": "The core problem is that traits people find appealing, the flat face, the compact body, have been selected for so intensely that they come bundled with real anatomical costs, narrowed airways causing breathing difficulty, skin fold infections, spinal problems in some lines, so the popularity of the breed and its poor welfare are directly connected rather than separate issues. I don't think an individual vet can single-handedly fix a breeding and demand problem that large, but I do think there's a responsibility to be honest with prospective owners before they buy, rather than only dealing with the consequences afterward, and to support the wider professional push, which some vet bodies have already started, toward revising breed standards and even restricting import or insurance in the most extreme cases. I'd rather be part of that structural pressure for reform than just treat the downstream health problems one dog at a time and call that neutral."
+    },
+    "commonMistakes": [
+      "No understanding of the actual genetic or anatomical mechanism",
+      "Jumping to 'ban the breed' with no nuance about individual dogs already existing",
+      "Treating it as solely an owner education issue with no structural dimension"
+    ],
+    "followUps": ["Should vets refuse to breed or facilitate breeding of dogs with known severe hereditary conditions?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Reasoning through an unexplained poisoning case",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["clinical-reasoning", "toxicology", "diagnostics"],
+    "question": "A dog is brought in collapsed with no known history of what it might have eaten. How would you think a vet approaches working out what's happened?",
+    "lookingFor": "Systematic clinical reasoning under uncertainty, showing awareness that toxicology often has to work backward from symptoms and pattern recognition.",
+    "idealAnswer": {
+      "bullets": [
+        "Emphasise stabilising the animal first regardless of the unknown cause",
+        "Describe working from clinical signs and pattern recognition toward likely toxin categories",
+        "Mention practical detective work, such as location and access to common household toxins"
+      ],
+      "modelAnswer": "The first priority has to be stabilising the animal, airway, breathing, circulation, before worrying about the exact cause, because plenty of supportive treatment doesn't require knowing the specific toxin. After that I understand a vet works almost like a detective, matching the pattern of symptoms, seizures, particular changes in heart rate, specific reflex changes, against known toxin profiles, because different poisons tend to produce recognisable clusters of signs even without a confirmed history. Alongside that, asking the owner very specific questions about the environment, was the dog in a garden with certain plants, near antifreeze, could it have got into rat bait, often narrows things down faster than lab tests can. I find that combination of clinical detective work and hard physiology genuinely appealing, it's not just applying a known protocol, it's reasoning your way to the right one under real time pressure."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'run every test' with no prioritisation of stabilisation",
+      "No mention of clinical sign pattern recognition",
+      "Ignoring the value of environmental or history detective work"
+    ],
+    "followUps": ["Can you name a common household toxin that's particularly dangerous to dogs, and why?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Herd immunity applied to livestock",
+    "program": "Veterinary Science",
+    "difficulty": "medium",
+    "tags": ["epidemiology", "vaccination", "livestock"],
+    "question": "How does the concept of herd immunity apply differently on a farm compared to in a human population?",
+    "lookingFor": "Solid grasp of the epidemiological concept and the ability to apply it to a livestock-specific context, including density and turnover.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic herd immunity concept, that enough immune individuals interrupts transmission",
+        "Identify livestock-specific factors that change the picture, such as high density and animal turnover",
+        "Note the practical implication for vaccination strategy on farms"
+      ],
+      "modelAnswer": "The underlying idea is the same as in humans, once enough of a population is immune, a pathogen struggles to find enough susceptible hosts to keep spreading, which protects even the animals that aren't vaccinated. What's different on a farm is the constant turnover, animals are born, sold, moved between sites and slaughtered on a timescale that's much faster than a human population changes, so herd immunity isn't a stable state you reach once, it has to be actively maintained through an ongoing vaccination schedule rather than a one-off campaign. Density matters more too, animals are often kept much closer together than humans typically are, so the threshold needed to interrupt transmission tends to be higher, and a single unvaccinated group brought in from outside can undermine protection for the whole herd very quickly. It's a good example of a concept that sounds identical on paper but plays out quite differently once you factor in how livestock populations actually function."
+    },
+    "commonMistakes": [
+      "Only defining herd immunity generically with no livestock-specific reasoning",
+      "Ignoring turnover or mixing as a factor unique to farm settings",
+      "No practical implication drawn for vaccination scheduling"
+    ],
+    "followUps": ["Why might a newly introduced group of animals pose a particular risk to herd immunity?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Animals in biomedical research and xenotransplantation",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "current-debate", "research"],
+    "question": "Pig organs have recently been used in experimental transplants into humans. What's your view on using animals this way for medical research?",
+    "lookingFor": "Awareness of the specific current development, plus genuine ethical reasoning about animal research more broadly rather than a reflex position.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the actual development, genetically modified pig heart and kidney xenotransplants",
+        "Engage honestly with the ethical tension between saving human lives and using animals as a means to an end",
+        "Reach a reasoned, not purely reflexive, position"
+      ],
+      "modelAnswer": "I followed the story of the genetically modified pig hearts and kidneys being transplanted into human patients, which is remarkable science, editing out genes that would trigger immediate rejection and adding human genes to make the organ more compatible. The ethical tension for me isn't abstract, it's that these are pigs bred and raised specifically to be a source of organs, which sits uncomfortably with how I think about animal welfare even though I recognise the potential to save human lives waiting on transplant lists is enormous. I don't think that discomfort should stop the research, given the alternative for organ recipients is often death, but I do think it means the standard for how those animals are bred and kept has to be genuinely rigorous, not treated as incidental to the medical achievement. I'd rather hold both things at once, real enthusiasm for the science and a real insistence that the animal welfare side isn't an afterthought, than pretend there's no tension there at all."
+    },
+    "commonMistakes": [
+      "No awareness of the actual recent development",
+      "A purely enthusiastic answer with no ethical engagement",
+      "A purely rejecting answer that ignores the genuine human medical benefit"
+    ],
+    "followUps": ["Do you think there's a meaningful ethical difference between this and more traditional lab animal research?"]
+  },
+  {
+    "id": "prog-veterinary-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Client insisting on an unnecessary procedure",
+    "program": "Veterinary Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "informed-consent", "hypothetical"],
+    "question": "An owner insists on an elective procedure for their pet that you don't think is medically necessary and may carry more risk than benefit, say declawing or an unnecessary cosmetic surgery. What would you do?",
+    "lookingFor": "Reasoning that balances client autonomy against the vet's own professional and ethical judgement, without simply deferring or simply refusing outright.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the vet is not obliged to perform a procedure they consider unjustified",
+        "Prioritise explaining risk and benefit clearly rather than quietly complying or lecturing",
+        "Consider a reasonable next step, such as declining and explaining, or offering alternatives"
+      ],
+      "modelAnswer": "I don't think a vet is obliged to perform any procedure just because an owner requests it and can pay for it, informed consent runs both ways, and part of professional judgement is being willing to say a procedure isn't in the animal's interest even if the owner disagrees. I'd want the conversation to start with genuinely understanding why they want it, sometimes there's a real underlying concern, like a behavioural problem they think declawing would solve, that has a better and less invasive solution once it's actually addressed directly. If after that conversation they still wanted to proceed with something I considered unjustified, I think the right call is to decline and be honest about why, rather than reluctantly agreeing to avoid an awkward conversation, even if that means the client goes elsewhere. It's uncomfortable to lose a client over it, but I'd rather be consistent about not performing procedures I can't professionally justify."
+    },
+    "commonMistakes": [
+      "Simply deferring to the client because they're paying",
+      "Refusing outright with no attempt to understand or address the underlying concern",
+      "No consideration of what happens next, such as referral or losing the client"
+    ],
+    "followUps": ["Does your position change if the procedure is legal but ethically contested, versus one that's outright banned in your country?"]
+  }
+]

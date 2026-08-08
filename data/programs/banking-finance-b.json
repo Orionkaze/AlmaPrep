@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-banking-finance-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "NPV versus IRR conflict",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["valuation", "capital-budgeting", "reasoning"],
+    "question": "If NPV and IRR rank two mutually exclusive projects differently, which do you trust and why?",
+    "lookingFor": "Understanding that NPV is the more reliable decision rule because it uses a realistic reinvestment assumption, not just rote recall of both formulas.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that IRR assumes cash flows are reinvested at the IRR itself, which can be unrealistic for high-IRR projects",
+        "State that NPV assumes reinvestment at the cost of capital, which better reflects what a firm can actually earn",
+        "Conclude that NPV should generally win because it directly measures value added in currency terms, not a percentage"
+      ],
+      "modelAnswer": "I'd trust NPV over IRR when they disagree. IRR quietly assumes you can reinvest every future cash flow at that same high rate, which is rarely realistic, especially for a project with a very high IRR but a small scale. NPV assumes reinvestment at the cost of capital instead, and it tells you directly how much value in rupees or dollars the project adds, which is what shareholders actually care about. I'd only lean on IRR as a secondary check, maybe to sanity-test that the project clears the hurdle rate by a comfortable margin."
+    },
+    "commonMistakes": [
+      "Saying IRR is always better because it's a percentage and easier to compare",
+      "Not knowing the reinvestment assumption behind each method",
+      "Giving no clear final answer on which rule wins"
+    ],
+    "followUps": ["What situation would make IRR give a genuinely misleading answer?"]
+  },
+  {
+    "id": "prog-banking-finance-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Inverted yield curve",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["macro", "bonds", "recession-signal"],
+    "question": "Why does an inverted yield curve get treated as a recession warning?",
+    "lookingFor": "A clear explanation of what a yield curve is and why inversion signals market expectations of falling future rates or growth.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the normal yield curve shape and what inversion means (short rates above long rates)",
+        "Explain that inversion reflects investors expecting central banks to cut rates later because growth or inflation will slow",
+        "Note the limits of the signal, such as timing lag or false positives"
+      ],
+      "modelAnswer": "Normally longer-term bonds pay more than short-term ones because you're locking up money for longer and taking on more uncertainty. When the curve inverts, it means investors are willing to accept less for a ten-year bond than a two-year one, which usually happens because they expect the central bank to be cutting rates within a few years to fight a slowdown. It's really the bond market pricing in weaker future growth or inflation before it shows up in the data. I'd add that the lead time before an actual recession has varied a lot historically, so it's a useful signal, not a precise clock."
+    },
+    "commonMistakes": [
+      "Describing inversion without explaining why it predicts recessions",
+      "Treating the signal as infallible with no caveats",
+      "Confusing the yield curve with the stock market"
+    ],
+    "followUps": ["Can you think of a reason the curve might invert without a recession following?"]
+  },
+  {
+    "id": "prog-banking-finance-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Purpose of bank capital requirements",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["regulation", "banking", "risk"],
+    "question": "Why do regulators require banks to hold capital, and why can't a bank just fund itself entirely with deposits?",
+    "lookingFor": "Understanding of capital as a loss-absorbing buffer that protects depositors and the system, not just a compliance box to tick.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain capital as equity that absorbs losses before depositors or creditors are hit",
+        "Connect this to systemic risk and the fact that bank failures spread contagion through the financial system",
+        "Mention the trade-off: more capital is safer but can reduce lending capacity or returns to shareholders"
+      ],
+      "modelAnswer": "Capital is the cushion of a bank's own money, mostly shareholder equity, that has to absorb losses before depositors lose a rupee. If a bank funded itself purely with deposits, any bad loan losses would eat straight into money that belongs to ordinary savers, and because banks are so interconnected, one failure can cascade into others very fast. Regulators like the Basel framework set minimum capital ratios so banks have enough of their own skin in the game to survive a downturn without needing a bailout. The trade-off is that holding more capital is costly for banks, so there's a constant tension between safety and how much they can lend out."
+    },
+    "commonMistakes": [
+      "Confusing capital requirements with reserve requirements or liquidity rules",
+      "Not mentioning systemic risk or contagion",
+      "Ignoring the cost side of the trade-off"
+    ],
+    "followUps": ["What happens to lending in the economy if regulators raise capital requirements sharply?"]
+  },
+  {
+    "id": "prog-banking-finance-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Too big to fail and moral hazard",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["moral-hazard", "systemic-risk", "policy"],
+    "question": "Does bailing out a failing systemically important bank solve the immediate crisis or make the next one more likely?",
+    "lookingFor": "Ability to hold both sides of the trade-off: short-term stabilisation versus long-term moral hazard, with a reasoned position.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the short-term case for a bailout: preventing contagion and protecting depositors and the wider economy",
+        "Explain moral hazard: banks and their creditors may take bigger risks knowing they'll be rescued",
+        "Offer a more nuanced position, like bailouts paired with stricter regulation or wind-down mechanisms rather than a flat yes or no"
+      ],
+      "modelAnswer": "It genuinely does both. In the moment, letting a systemically important bank collapse can freeze credit markets and hurt people who had nothing to do with the risk-taking, so a bailout can be the least bad option to stop contagion. But if everyone in the system learns that being big enough and connected enough guarantees rescue, that quietly encourages exactly the excessive risk-taking that caused the problem in the first place. I think the honest answer is that a bailout without consequences is dangerous, but a bailout paired with things like resolution regimes, higher capital charges for systemically important banks, and consequences for management can reduce that moral hazard without letting the whole system burn."
+    },
+    "commonMistakes": [
+      "Taking a purely ideological stance with no engagement with the trade-off",
+      "Not defining moral hazard clearly",
+      "Ignoring real-world tools like resolution regimes or living wills"
+    ],
+    "followUps": ["Should the executives of a bailed-out bank ever keep their bonuses? Why or why not?"]
+  },
+  {
+    "id": "prog-banking-finance-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Unsuitable product ethics",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "conflict-of-interest", "situational"],
+    "question": "As a trainee at a bank, your manager tells you to push a high-commission investment product to clients even when a simpler, cheaper option would suit them better. What do you do?",
+    "lookingFor": "Clear prioritisation of client interest over internal pressure, with a realistic and non-naive plan for navigating hierarchy.",
+    "idealAnswer": {
+      "bullets": [
+        "State plainly that recommending unsuitable products for personal or firm gain is a breach of trust, not a grey area",
+        "Describe a realistic first step, like raising the concern directly with the manager or compliance rather than either complying silently or going straight to the regulator",
+        "Show awareness of the power imbalance as a trainee and how you'd handle it professionally"
+      ],
+      "modelAnswer": "I wouldn't push a product I genuinely believe is wrong for a client just because it pays a bigger commission, because the whole basis of that relationship is that the client trusts my advice to be about them, not my payslip. As a trainee I know I can't just override my manager, so I'd first ask directly, in a non-confrontational way, whether there's a suitability rationale I'm missing, since maybe I'm wrong. If the answer really is just commission and my manager insists, I'd escalate to compliance, because most banks have a formal channel exactly for this, and staying quiet would make me complicit. I'd rather be the trainee who asked an awkward question than the one who sold something I knew was wrong."
+    },
+    "commonMistakes": [
+      "Saying you'd just follow instructions because you're junior",
+      "Jumping straight to whistleblowing externally without using internal channels first",
+      "Treating it as a minor issue rather than a breach of fiduciary duty"
+    ],
+    "followUps": ["What would you do if compliance sided with your manager?"]
+  },
+  {
+    "id": "prog-banking-finance-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering internal fraud",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "whistleblowing", "situational"],
+    "question": "During an internship you notice a colleague is quietly backdating loan approval documents to hit a target. No one else seems to have noticed. What would you do?",
+    "lookingFor": "Willingness to act on integrity even at personal cost, balanced with a sensible, proportionate process rather than instant public accusation.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as falsifying records, which is a serious integrity and possibly legal issue, not a minor shortcut",
+        "Describe verifying what you actually saw before acting, since accusations need to be accurate",
+        "Choose a proportionate path, such as raising it with a trusted supervisor or through a formal reporting channel"
+      ],
+      "modelAnswer": "Backdating approval documents isn't a shortcut, it's falsifying records, and in banking that can touch real regulatory and legal lines, not just internal politics. Before I did anything I'd want to be sure of what I actually saw, because as an intern I don't have full context and I wouldn't want to make a serious accusation on a misunderstanding. But if I was confident about what I'd seen, I'd raise it with a supervisor I trusted or through whatever formal channel the bank has, rather than staying silent or confronting the colleague myself. It would be uncomfortable as an intern, but staying quiet about something like that would make me part of the problem if it ever came out."
+    },
+    "commonMistakes": [
+      "Deciding to ignore it because you're 'just an intern'",
+      "Confronting the colleague publicly before verifying the facts",
+      "Treating falsified records as a minor procedural issue"
+    ],
+    "followUps": ["Would your answer change if the colleague was a close friend who helped you get the internship?"]
+  },
+  {
+    "id": "prog-banking-finance-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Central bank digital currency debate",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["cbdc", "current-affairs", "policy"],
+    "question": "Several central banks are piloting their own digital currencies. What problem is a CBDC actually trying to solve, and what's the main worry critics raise?",
+    "lookingFor": "Awareness of a live policy debate, with a grasp of both the stated rationale and a genuine counterargument, not just headline familiarity.",
+    "idealAnswer": {
+      "bullets": [
+        "State a plausible rationale, such as faster and cheaper payments, financial inclusion, or reducing dependence on private stablecoins",
+        "Raise a genuine concern, like privacy and surveillance risk, or disintermediation of commercial banks if people hold funds directly with the central bank",
+        "Show a balanced, reasoned view rather than a purely positive or purely negative take"
+      ],
+      "modelAnswer": "A CBDC is mainly pitched as a way to modernise payments, cut settlement costs, and give people who don't have full bank access a digital, central-bank-backed alternative, while keeping the central bank in control rather than leaving that space entirely to private stablecoins. The concern I find most serious is privacy, since a retail CBDC could let a central bank see every transaction a citizen makes, which is a very different power than physical cash ever gave it. There's also a worry that if people move deposits out of commercial banks into CBDC accounts, that could shrink the funding banks rely on to lend. I think the design choices, like whether it's account-based or token-based and how much privacy is built in, matter more than the concept itself."
+    },
+    "commonMistakes": [
+      "Confusing CBDC with cryptocurrency like Bitcoin",
+      "Only giving the positive case with no critique",
+      "No awareness that this is an active, ongoing policy discussion"
+    ],
+    "followUps": ["Would you personally trust a CBDC with your everyday spending? Why or why not?"]
+  },
+  {
+    "id": "prog-banking-finance-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Buy now pay later regulation",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["fintech", "consumer-credit", "current-affairs"],
+    "question": "Buy now pay later services have grown fast and regulators are now moving to bring them under stricter credit rules. Do you think that's the right call?",
+    "lookingFor": "Understanding of why BNPL sat outside traditional credit regulation and a reasoned view on the trade-off between innovation and consumer protection.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why BNPL grew outside traditional lending rules, often by structuring as short-term interest-free instalments",
+        "Identify the consumer protection concern, like stacking multiple BNPL debts without affordability checks",
+        "Give a reasoned position, weighing consumer protection against the risk of regulation killing useful innovation"
+      ],
+      "modelAnswer": "BNPL grew so fast partly because it structured itself as short, interest-free instalments, which let it dodge a lot of the disclosure and affordability rules that apply to credit cards or personal loans. The real risk I see is that someone can quietly stack four or five BNPL plans across different apps with no single lender seeing the full picture of what they owe, which is exactly the kind of blind spot regulation is meant to catch. So yes, I think bringing it under proper credit rules, at least basic affordability checks and credit reporting, is the right call, even though it will slow down the checkout experience that made BNPL popular. Consumer protection should win over convenience when the product looks and behaves like credit, even if it's marketed as something friendlier."
+    },
+    "commonMistakes": [
+      "Not knowing what BNPL is or how it differs from a credit card",
+      "Taking a one-sided stance with no engagement with the innovation trade-off",
+      "Treating this as settled history rather than an ongoing debate"
+    ],
+    "followUps": ["How would you design an affordability check that doesn't kill the speed BNPL is known for?"]
+  },
+  {
+    "id": "prog-banking-finance-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias in algorithmic credit scoring",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["fintech", "ethics", "ai", "current-affairs"],
+    "question": "Banks increasingly use AI models to decide who gets a loan. What's the risk that these models could discriminate even without anyone intending them to?",
+    "lookingFor": "Understanding that bias can enter through proxy variables in training data, and awareness of the tension between predictive accuracy and fairness.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that models trained on historical data can learn patterns tied to protected characteristics through proxy variables like postcode",
+        "Note that removing the protected variable directly isn't enough if correlated proxies remain",
+        "Discuss the tension between model accuracy and fairness, and mention some mitigation like auditing or fairness constraints"
+      ],
+      "modelAnswer": "Even if a model never sees someone's gender or race directly, it can still discriminate through proxies like postcode, the type of phone they use, or spending patterns that happen to correlate with those characteristics, because it's trained on historical lending data that carries the bias of past decisions. Just removing the protected variable doesn't fix it, since the correlated signals are still there for the model to pick up on. There's a real tension because the most predictive model isn't automatically the fairest one, and banks have to actively test outcomes across different groups and sometimes accept a small accuracy trade-off to close unfair gaps. I find this genuinely interesting because it means fairness in lending has become as much a data science problem as a legal one."
+    },
+    "commonMistakes": [
+      "Assuming removing the protected characteristic from the dataset solves the problem",
+      "Treating AI models as neutral simply because they're mathematical",
+      "No mention of the accuracy versus fairness trade-off"
+    ],
+    "followUps": ["Who should be accountable if an AI credit model turns out to be discriminatory, the bank or the vendor that built it?"]
+  },
+  {
+    "id": "prog-banking-finance-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Social-media-driven bank runs",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["banking-crisis", "current-affairs", "systemic-risk"],
+    "question": "The 2023 collapse of Silicon Valley Bank saw depositors withdraw billions in hours, partly driven by panic spreading on social media and instant mobile banking apps. What does that change about how regulators need to think about bank runs?",
+    "lookingFor": "Awareness of a real recent case and an understanding of how technology has compressed the timeline of classic bank-run dynamics.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the actual dynamic: fast digital withdrawals plus social media amplifying panic among a concentrated depositor base",
+        "Contrast this with the older model of bank runs, which played out over days with people physically queuing",
+        "Suggest an implication for regulation, like faster liquidity monitoring or rethinking deposit insurance limits and speed"
+      ],
+      "modelAnswer": "What made SVB different from the classic bank-run image of people queuing outside a branch was speed and concentration, since a huge share of its depositors were startups in the same tight-knit network, and word spread on platforms like Twitter and in group chats within hours, not days, and withdrawals happened instantly through mobile apps rather than requiring a physical visit. That compresses the window regulators and the bank itself have to react from days down to essentially one business day. I think it means liquidity monitoring needs to become closer to real time rather than relying on periodic reporting, and it raises real questions about whether deposit insurance limits and the speed of insurance payouts are still matched to how fast money can now move. It's a reminder that a lot of banking regulation was designed for a slower, more physical world."
+    },
+    "commonMistakes": [
+      "No specific knowledge of the case, only vague general statements",
+      "Describing it as identical to older bank runs with no acknowledgment of what's different",
+      "Not connecting it to any regulatory implication"
+    ],
+    "followUps": ["Should deposit insurance limits be raised in response to this kind of risk? What would that cost?"]
+  },
+  {
+    "id": "prog-banking-finance-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Elderly client wants a risky product",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "situational", "client-protection"],
+    "question": "An elderly client insists on putting most of their retirement savings into a volatile product you don't think suits their situation. They're legally entitled to make that choice. What do you do?",
+    "lookingFor": "Respect for client autonomy balanced against professional duty to inform and protect, without either overriding them or rubber-stamping a harmful decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the client's legal right to choose while taking seriously your duty to make sure they understand the risk",
+        "Describe concretely checking understanding, such as walking through downside scenarios in plain terms, not just disclosures they'll skim",
+        "Explain what you'd do if they still insist, including documentation and possibly involving a supervisor for a case this significant"
+      ],
+      "modelAnswer": "I can't make the decision for them, and I don't think I should try to, but I do think my job is to make absolutely sure they understand what they're choosing, in plain language, not just a disclosure form they sign without reading. I'd walk through a real downside scenario with them, something like what happens to their monthly income if the product drops thirty percent right when they need to draw on it, and I'd ask questions to check they'd actually processed that, not just nodded along. If they still want to go ahead after that, it's their money and their right, but I'd document clearly that I raised the concern and, given how much is at stake for their retirement, I'd loop in a senior colleague or compliance so it isn't just my judgment call alone on something this consequential."
+    },
+    "commonMistakes": [
+      "Simply refusing to process the client's instruction without any real conversation",
+      "Processing it silently without raising the concern at all",
+      "No mention of documentation or escalation for a high-stakes case"
+    ],
+    "followUps": ["Does it change your approach if you suspect a family member is pressuring them into this?"]
+  },
+  {
+    "id": "prog-banking-finance-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Mistaken large deposit",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["situational", "operational-risk", "reasoning"],
+    "question": "Imagine you're a junior officer at a branch and you notice a transfer of a large sum was mistakenly credited to the wrong customer's account this morning due to a system error. The customer hasn't noticed yet. What do you do?",
+    "lookingFor": "A clear, prompt, procedurally sound response prioritising correction and transparency over convenience or delay.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise flagging and correcting the error quickly through proper channels rather than waiting to see if it resolves itself",
+        "Recognise that the money isn't the customer's to keep even though it's in their account, and that early action limits harm",
+        "Mention documenting what happened for the bank's records and following up to make sure both accounts are made right"
+      ],
+      "modelAnswer": "I'd flag it immediately to my supervisor and the operations team rather than waiting, because the longer a misdirected credit sits there, the more likely the customer spends some of it or it gets tangled up in other transactions, which makes the fix messier for everyone including the customer themselves. The money in that account was never legally theirs, it's a processing error, so it needs to be reversed through the proper correction process, not quietly left alone hoping no one notices. I'd also make sure it's logged clearly so there's a record of when the error happened and when it was caught, partly to protect the bank and partly so the correct account holder isn't left waiting longer than necessary for their funds."
+    },
+    "commonMistakes": [
+      "Suggesting you'd wait to see if the customer notices before acting",
+      "Not recognising this needs to go through supervisors or operations, not be handled informally",
+      "No mention of documentation or protecting the rightful account holder"
+    ],
+    "followUps": ["What would you do differently if you discovered the error only after the customer had already spent some of the money?"]
+  },
+  {
+    "id": "prog-banking-finance-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Advising a small business client in a downturn",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["situational", "credit-risk", "client-advisory"],
+    "question": "A small business client who has always been reliable comes to you asking for a loan to expand right as leading indicators suggest a recession is coming. How do you approach that conversation?",
+    "lookingFor": "Ability to balance genuine client relationship with honest risk assessment, showing you'd inform rather than either rubber-stamp or flatly refuse.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between wanting to support a good client and the real risk the timing creates",
+        "Describe actually walking through the numbers with them, including a downside scenario for their cash flow",
+        "Land on a constructive approach, such as adjusting loan size, structure, or timing rather than a flat yes or no"
+      ],
+      "modelAnswer": "I wouldn't want to just say no because they've been a reliable client, but I also wouldn't want to wave the loan through without being honest that the timing is riskier than usual. I'd sit down with them and actually model what their cash flow looks like if revenue dropped fifteen or twenty percent for a couple of quarters, since that's a realistic scenario if the leading indicators play out, and see whether the expansion still makes sense at that level. Depending on what that shows, I might suggest a smaller initial loan with a follow-on tranche tied to milestones, or a longer amortisation period that gives them more breathing room, rather than either the full amount or a flat refusal. The goal is to keep supporting a client I believe in without setting them up to fail if the economy turns."
+    },
+    "commonMistakes": [
+      "Treating loyalty to the client as the only factor and ignoring macro risk",
+      "Giving a flat refusal with no attempt at a constructive alternative",
+      "No concrete numbers or stress-testing in the answer"
+    ],
+    "followUps": ["What specific leading indicators would make you most cautious right now?"]
+  },
+  {
+    "id": "prog-banking-finance-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Efficient market hypothesis versus behavioral finance",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["theory", "behavioral-finance", "reasoning"],
+    "question": "If markets are efficient, how do you explain bubbles like the dot-com crash or GameStop? Does the efficient market hypothesis still hold up?",
+    "lookingFor": "Nuanced understanding that EMH and behavioral finance aren't fully contradictory, with a specific example used correctly.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what EMH claims (prices reflect available information quickly) and its different forms (weak, semi-strong, strong)",
+        "Use a specific bubble example to show how herd behaviour, narrative, and limits to arbitrage can drive prices from fundamentals",
+        "Offer a balanced conclusion, like EMH being a reasonable baseline that behavioral finance meaningfully complicates rather than fully disproves"
+      ],
+      "modelAnswer": "The efficient market hypothesis says prices reflect available information quickly, but it doesn't actually claim investors are always rational, just that it's hard to consistently beat the market by trading on public information. GameStop is a good example of where that gets stretched, because the price moved on coordinated retail enthusiasm and a short squeeze more than on any change in the company's fundamentals, and short sellers who were fundamentally right still lost money because the market stayed irrational longer than their capital could survive, which is the limits-to-arbitrage problem. I don't think that disproves EMH outright, but it shows that market efficiency isn't instant or guaranteed, especially when herd behaviour and social coordination can temporarily overwhelm fundamentals. I'd say EMH is a useful baseline assumption, but behavioral finance explains the gap between theory and what actually happens during these episodes."
+    },
+    "commonMistakes": [
+      "Claiming EMH says investors are always rational, which is a common misreading",
+      "Using a bubble example without explaining the actual mechanism",
+      "Taking an extreme stance that either fully dismisses or fully accepts EMH"
+    ],
+    "followUps": ["Do you think an individual investor can reliably beat the market? What would that require?"]
+  },
+  {
+    "id": "prog-banking-finance-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Diversification logic",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["portfolio-theory", "risk", "fundamentals"],
+    "question": "Why does adding more assets to a portfolio reduce risk, and does that keep working no matter how many assets you add?",
+    "lookingFor": "Correct grasp of diversification through imperfect correlation, plus the important nuance that systematic risk can't be diversified away.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that diversification works because asset returns aren't perfectly correlated, so losses in one can offset gains in another",
+        "Distinguish unsystematic risk, which diversification reduces, from systematic or market risk, which it can't",
+        "Note diminishing returns to adding more assets past a certain point"
+      ],
+      "modelAnswer": "Diversification works because different assets don't move in perfect lockstep, so when one holding has a bad quarter, another might be flat or up, and the ups and downs partly cancel out at the portfolio level rather than adding straight together. But that only works for what's called unsystematic risk, the risk specific to one company or sector. It doesn't touch systematic risk, the kind that hits the whole market at once, like a broad recession or a rate shock, because in that scenario most assets tend to fall together. And practically, the benefit of adding more assets shrinks fast after maybe twenty to thirty holdings, so beyond that you're mostly adding complexity without much extra risk reduction."
+    },
+    "commonMistakes": [
+      "Implying diversification eliminates all risk",
+      "Not distinguishing systematic from unsystematic risk",
+      "Suggesting more assets always means proportionally less risk with no limit"
+    ],
+    "followUps": ["What kind of asset would you add to a portfolio specifically to hedge against systematic risk?"]
+  },
+  {
+    "id": "prog-banking-finance-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Time value of money quick reasoning",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "quantitative", "reasoning"],
+    "question": "Would you rather receive one lakh rupees today or one lakh ten thousand rupees in one year? Walk me through how you'd decide.",
+    "lookingFor": "Correct application of discounting logic tied to an opportunity cost or interest rate, not just an instinctive answer.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the answer depends on the discount rate or what you could otherwise earn on the money",
+        "Show the actual comparison logic, roughly a ten percent implied return on waiting a year",
+        "Conclude with a reasoned choice tied to a realistic benchmark rate, acknowledging the answer isn't fixed"
+      ],
+      "modelAnswer": "It depends entirely on what rate I could otherwise earn on that one lakh if I took it today. Waiting a year for one lakh ten thousand is implicitly offering about a ten percent return, so I'd compare that to what a safe alternative, like a fixed deposit or government bond, is currently paying. If I could only get six or seven percent elsewhere, I'd take the one lakh ten thousand later, because the implied return beats my opportunity cost. But if safe rates were sitting at eleven or twelve percent, I'd rather take the money today and invest it myself, since I'd end up with more in a year that way."
+    },
+    "commonMistakes": [
+      "Picking one answer without doing any actual comparison",
+      "Not connecting the decision to a discount rate or opportunity cost",
+      "Ignoring risk, such as assuming the future payment is guaranteed with no counterparty risk"
+    ],
+    "followUps": ["Does the certainty of the future payment change your answer?"]
+  },
+  {
+    "id": "prog-banking-finance-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Credit risk versus interest rate risk",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["fixed-income", "risk", "fundamentals"],
+    "question": "A bond's price can fall for two very different reasons. Can you explain the difference between credit risk and interest rate risk for a bondholder?",
+    "lookingFor": "Precise separation of two commonly conflated risks, with an example that shows the mechanism for each.",
+    "idealAnswer": {
+      "bullets": [
+        "Define credit risk as the chance the issuer fails to pay, tied to the issuer's own financial health",
+        "Define interest rate risk as price sensitivity to market-wide rate changes, unrelated to the issuer's health",
+        "Illustrate with an example, showing a bond can fall in price from rate risk even if the issuer is perfectly solvent"
+      ],
+      "modelAnswer": "Credit risk is about the issuer specifically, the chance that the company or government behind the bond can't or won't make its interest or principal payments, and it's tied to things like their earnings, debt levels, or in a sovereign's case, their fiscal position. Interest rate risk is completely different, it's about the market as a whole, because when overall rates rise, existing bonds with lower fixed coupons become less attractive and their price falls, purely from the math of discounting future cash flows at a higher rate. A perfectly solid government bond can still lose ten percent of its value if central bank rates jump, even though there's zero doubt the government will pay it back, and that's purely interest rate risk at work, not credit risk."
+    },
+    "commonMistakes": [
+      "Conflating the two risks as if they're the same thing",
+      "Giving definitions with no concrete example",
+      "Assuming government bonds have zero risk of any kind"
+    ],
+    "followUps": ["Which of the two risks matters more for a long-duration government bond, and why?"]
+  },
+  {
+    "id": "prog-banking-finance-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Central bank tools against inflation",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["macro", "monetary-policy", "fundamentals"],
+    "question": "How does raising interest rates actually bring down inflation? Walk me through the mechanism.",
+    "lookingFor": "A step-by-step causal chain from policy rate to borrowing cost to demand to inflation, not just a memorized conclusion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a higher policy rate raises borrowing costs across the economy, from mortgages to business loans",
+        "Connect higher borrowing costs to reduced spending and investment, which cools demand",
+        "Close the loop by explaining that weaker demand relative to supply eases upward pressure on prices, with a note on the lag involved"
+      ],
+      "modelAnswer": "When a central bank raises its policy rate, banks pass that through to what they charge on mortgages, car loans, and business credit, so borrowing becomes more expensive across the board. That makes both households and businesses pull back, people delay big purchases they'd normally finance, and companies postpone expansion plans, which slows overall demand in the economy. With demand cooling relative to supply, businesses have less room to keep raising prices, so inflation gradually eases. The catch is that this doesn't happen instantly, it usually takes several quarters to fully show up, which is why central banks have to act on forecasts rather than waiting for inflation to already be falling."
+    },
+    "commonMistakes": [
+      "Stating the conclusion (rates go up, inflation goes down) without the causal steps",
+      "Ignoring the time lag between policy action and effect",
+      "Confusing interest rate policy with fiscal policy tools"
+    ],
+    "followUps": ["What's the risk of raising rates too aggressively to fight inflation?"]
+  },
+  {
+    "id": "prog-banking-finance-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Negative interest rate policy debate",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["monetary-policy", "current-affairs", "reasoning"],
+    "question": "Some central banks experimented with negative interest rates in the last decade. What were they trying to achieve, and why do you think most have since moved away from it?",
+    "lookingFor": "Understanding of the logic behind an unconventional policy and a reasoned view of why it has practical limits, showing awareness of real-world outcomes.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the intent: pushing banks to lend rather than hoard reserves, and weakening the currency to support exports and inflation",
+        "Identify a real problem it caused, such as squeezed bank profitability or savers effectively paying to hold deposits",
+        "Give a reasoned view on why most central banks have since pulled back from it"
+      ],
+      "modelAnswer": "The idea behind negative rates was to push banks to actually lend out reserves rather than just parking them at the central bank, and to weaken the currency a bit to help exports and nudge inflation up toward target when normal rate cuts had run out of room. In practice it squeezed bank profitability hard, because banks generally couldn't pass negative rates onto ordinary depositors without risking them pulling cash out entirely, so the banks absorbed the cost themselves, which discouraged lending rather than encouraging it. I think that's a big part of why most central banks have since moved away from it, the policy fought against the very banking system it needed to transmit through, and it also sent an odd signal to the public that the economy was in a fairly desperate state. It's a good example of a policy that made sense on a whiteboard but ran into real friction once it hit the actual banking system."
+    },
+    "commonMistakes": [
+      "Not knowing what negative rates are meant to achieve",
+      "Only describing the policy with no critique or reasoning about its limits",
+      "Confusing negative interest rates with quantitative easing"
+    ],
+    "followUps": ["Do you think negative rates could make a comeback? Under what conditions?"]
+  },
+  {
+    "id": "prog-banking-finance-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Currency devaluation hypothetical",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["macro", "currency", "hypothetical"],
+    "question": "Suppose you're advising the finance ministry of a country whose currency is under heavy pressure and losing value fast. What options would you weigh, and what would you actually recommend?",
+    "lookingFor": "Ability to reason through multiple policy levers with real trade-offs rather than reciting one textbook fix, and to commit to a recommendation.",
+    "idealAnswer": {
+      "bullets": [
+        "Lay out at least two real options, such as raising interest rates to attract capital, using foreign exchange reserves to intervene, or imposing capital controls",
+        "Weigh the trade-offs of each honestly, including damage to growth, reserve depletion, or investor confidence",
+        "Commit to a recommendation with reasoning rather than listing options with no conclusion"
+      ],
+      "modelAnswer": "I'd weigh three main levers. Raising interest rates can attract foreign capital seeking better returns and support the currency, but it slows domestic growth and makes servicing existing debt more expensive right when the economy is already under stress. Spending foreign exchange reserves to buy the currency directly can steady things quickly, but reserves are finite and if markets sense they're running low, it can actually accelerate the panic rather than calm it. Capital controls can stop the bleeding fast, but they scare off future investment and can take years to fully undo the reputational damage. Given that, I'd lean toward a measured rate increase paired with clear, credible communication about the country's fiscal plan, saving reserve intervention and controls as a last resort, because credibility is often what actually stops a currency slide, not just the mechanics of any one tool."
+    },
+    "commonMistakes": [
+      "Naming only one lever with no real trade-off discussion",
+      "Refusing to commit to an actual recommendation",
+      "Ignoring the credibility and confidence dimension of currency crises"
+    ],
+    "followUps": ["What would change your recommendation if the country's foreign reserves were already critically low?"]
+  },
+  {
+    "id": "prog-banking-finance-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Overhearing insider information",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "insider-trading", "situational"],
+    "question": "You overhear, entirely by accident, that a company you personally hold shares in is about to announce a major acquisition that will likely send the price up. What do you do?",
+    "lookingFor": "Clear recognition that acting on material non-public information is prohibited regardless of how it was obtained, plus a sensible practical response.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that trading on it, or telling anyone else to trade on it, would be insider trading even though you overheard it by accident",
+        "Explain the reasoning: markets only work fairly if everyone trades on the same public information",
+        "Describe a sensible practical step, such as simply not trading around that stock until the information is public, and possibly documenting that you were exposed to it"
+      ],
+      "modelAnswer": "Even though I overheard it completely by accident, acting on it, whether by buying more, selling before a drop scenario, or tipping off a friend, would still be insider trading, because what matters legally and ethically is what I knew and when, not how I came to know it. The whole reason markets are considered fair is that everyone is meant to be trading on the same public information, and using something like this would give me an edge nobody else has access to. So the only right move is to simply do nothing with my existing position around that stock until the announcement is public, and if I'm in a professional role where this kind of thing could come up, I'd actually flag to compliance that I was inadvertently exposed to it, just so there's a clear record that I didn't act on it."
+    },
+    "commonMistakes": [
+      "Assuming it's fine because the information was overheard accidentally rather than deliberately sought",
+      "Saying you'd just sell a small amount so it's less noticeable",
+      "Not considering informing compliance or keeping a record"
+    ],
+    "followUps": ["Does it matter that you already owned the shares before you overheard the information?"]
+  },
+  {
+    "id": "prog-banking-finance-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Financial inclusion versus profitability",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["financial-inclusion", "reasoning", "policy"],
+    "question": "Serving low-income or rural customers is often less profitable for a bank than serving wealthy urban ones. Should banks be expected to serve everyone anyway, and who should bear that cost?",
+    "lookingFor": "Balanced reasoning about the tension between commercial banking and financial inclusion, with awareness of real mechanisms that address it.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine commercial reality that low-balance, small-transaction customers cost more to serve relative to revenue",
+        "Make the case for inclusion, such as its role in economic development and its long-term customer base value",
+        "Discuss who should bear the cost, referencing real mechanisms like priority-sector lending mandates, subsidies, or cross-subsidisation, rather than assuming banks alone should absorb it"
+      ],
+      "modelAnswer": "It's true that a rural customer with a small, infrequent balance costs a bank more per transaction to serve than a wealthy urban client with large deposits and multiple products, so purely commercial logic would push banks to underserve that segment. But I don't think banks should get to opt out entirely, because financial inclusion has real spillover benefits for the whole economy, and today's small rural customer can be tomorrow's growing small business account. I don't think the full cost should sit with banks alone though, which is part of why many countries use tools like priority-sector lending mandates, subsidised infrastructure for digital banking access, or letting banks cross-subsidise from profitable urban segments. I'd want that balance to be explicit and regulated, rather than left purely to individual banks' discretion, or the segment that's least profitable ends up quietly neglected."
+    },
+    "commonMistakes": [
+      "Taking a purely idealistic stance with no engagement with commercial reality",
+      "Taking a purely commercial stance with no engagement with the social case",
+      "Not naming any real mechanism for sharing the cost"
+    ],
+    "followUps": ["Do you think mobile and digital banking has changed this trade-off? How?"]
+  },
+  {
+    "id": "prog-banking-finance-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Cryptocurrency in a diversified portfolio",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["crypto", "current-affairs", "portfolio-theory"],
+    "question": "Would you recommend cryptocurrency as part of a diversified investment portfolio? Why or why not?",
+    "lookingFor": "A reasoned, non-ideological view that engages with both the diversification argument and the real risks, rather than blanket enthusiasm or blanket dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Engage with the diversification argument, such as low or shifting correlation with traditional assets",
+        "Weigh real risks honestly, including extreme volatility, regulatory uncertainty, and the lack of intrinsic cash flow",
+        "Land on a proportionate, reasoned position rather than an extreme yes or no"
+      ],
+      "modelAnswer": "I wouldn't dismiss it outright, because there's a real argument that its correlation with stocks and bonds has at times been low enough to offer some diversification benefit, and plenty of serious institutional investors now hold small allocations. But I'd be honest that it's extremely volatile, it doesn't generate any cash flow the way a stock or bond does so valuing it is genuinely difficult, and the regulatory environment is still shifting in ways that could change its risk profile overnight. If I were advising someone, I'd frame it as a small, deliberate allocation, something like one to five percent of a portfolio, that they're comfortable potentially losing entirely, rather than a core holding. I don't think ignoring it makes sense anymore given how mainstream it's become, but treating it like a normal diversified asset class would be overstating how well understood its risk really is."
+    },
+    "commonMistakes": [
+      "Either dismissing crypto entirely as worthless or recommending it enthusiastically with no risk discussion",
+      "Not mentioning volatility or the lack of cash flow",
+      "Giving no concrete sense of appropriate allocation size"
+    ],
+    "followUps": ["How would you explain crypto's risk to a client who has never invested in anything but fixed deposits?"]
+  },
+  {
+    "id": "prog-banking-finance-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Dividends versus share buybacks",
+    "program": "Banking & Finance",
+    "difficulty": "medium",
+    "tags": ["corporate-finance", "reasoning", "capital-allocation"],
+    "question": "If a company has surplus cash, when should it return that money through dividends versus through share buybacks?",
+    "lookingFor": "Understanding of the practical and tax differences between the two, and the ability to reason about which fits which situation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that dividends signal a stable, recurring commitment and suit companies with steady, predictable cash flow",
+        "Explain that buybacks offer more flexibility, since they aren't a recurring promise, and can be timed when management believes the stock is undervalued",
+        "Note the tax and signalling angle, and that cutting a dividend later is seen very negatively by markets, which buybacks avoid"
+      ],
+      "modelAnswer": "Dividends work best for companies with steady, predictable cash flow, because the market treats a dividend as an ongoing commitment, and cutting one later sends a strong negative signal about the company's health even if the cut is for sensible reasons. Buybacks are more flexible since there's no expectation of repeating them every quarter, so they suit a company that has a one-off surplus, or that believes its own stock is genuinely undervalued and wants to return value without locking itself into a recurring promise. There's also often a tax angle, since buybacks can be more tax-efficient for shareholders in some jurisdictions because the return comes as a capital gain rather than taxable dividend income. I'd say the real judgment call for a company is less about which method is objectively better and more about how confident management is in the durability of that cash flow going forward."
+    },
+    "commonMistakes": [
+      "Treating the two as functionally identical with no distinction",
+      "Ignoring the signalling risk of cutting a dividend later",
+      "Not mentioning flexibility or tax considerations at all"
+    ],
+    "followUps": ["Why do some investors criticise buybacks as a poor use of corporate cash?"]
+  },
+  {
+    "id": "prog-banking-finance-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Lessons from the 2008 financial crisis",
+    "program": "Banking & Finance",
+    "difficulty": "hard",
+    "tags": ["systemic-risk", "history", "reasoning"],
+    "question": "What do you think was the single most important structural lesson from the 2008 financial crisis, and do you think it's actually been fixed?",
+    "lookingFor": "Ability to identify a genuine structural cause, not just 'banks were greedy', and a reasoned view on whether regulation has actually addressed it.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a specific structural cause, such as the mismatch between how mortgage risk was originated, packaged, and rated versus its true underlying risk, or excessive leverage combined with opaque interconnections between institutions",
+        "Explain why that specific issue mattered systemically, not just at one firm",
+        "Give a reasoned view on whether post-crisis regulation like Basel III or Dodd-Frank has actually addressed it, with a specific gap or improvement named"
+      ],
+      "modelAnswer": "I'd point to the disconnect between who originated mortgage risk and who ultimately bore it. Banks originated loans, packaged them into securities, and often sold them off almost immediately, so the people making lending decisions had very little skin in the game if those loans eventually failed, and rating agencies compounded it by stamping complex, opaque products as safe when the underlying assets clearly weren't. That mattered systemically because it meant risk had spread invisibly across the whole financial system rather than staying contained where it was created, so when defaults started, nobody quite knew who was exposed to what. I think regulation since then, like higher capital requirements and stress testing under Basel III, has genuinely improved bank resilience, but I'm less convinced the incentive problem is fully fixed, because securitisation and rating agency conflicts of interest still exist in some form, they've just moved to newer corners of the market like some private credit structures."
+    },
+    "commonMistakes": [
+      "Giving a vague answer like 'banks took too much risk' with no specific mechanism",
+      "Only describing the cause with no assessment of whether it's since been fixed",
+      "Confusing correlation and causation, like blaming low interest rates alone with no mention of securitisation or incentives"
+    ],
+    "followUps": ["Where do you think the next systemic risk in finance is most likely to come from?"]
+  }
+]

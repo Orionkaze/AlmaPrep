@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-real-estate-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Cap rate mechanics",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["valuation", "income-property", "math"],
+    "question": "How would you explain what a capitalization rate is, and how would you use it to compare two rental properties?",
+    "lookingFor": "Correct grasp of cap rate as net operating income over price, and can apply it to compare risk and return across properties.",
+    "idealAnswer": {
+      "bullets": [
+        "Define cap rate as net operating income divided by property value",
+        "Explain that a lower cap rate usually implies the market sees the property as lower risk, which pushes its price up relative to income",
+        "Note limitations: cap rate ignores financing, future appreciation, and differences in risk between properties"
+      ],
+      "modelAnswer": "Cap rate is a property's net operating income divided by its purchase price, so it tells you the unlevered return you'd get from the income alone. If two apartment buildings generate similar income but one trades at a 4 percent cap rate and the other at a 7 percent cap rate, the second one is priced cheaper relative to its income, which usually signals the market sees it as riskier, maybe a rougher location or an older building. I'd never use cap rate alone though, because it ignores financing costs and how the income might change over time, so I'd pair it with a look at the rent roll and the neighborhood trend."
+    },
+    "commonMistakes": [
+      "Confusing cap rate with the mortgage interest rate",
+      "Assuming a lower cap rate always means a worse deal",
+      "Ignoring that cap rate excludes debt service and future appreciation"
+    ],
+    "followUps": ["If a property's cap rate looks unusually high compared to similar buildings nearby, what would you want to check before getting excited?"]
+  },
+  {
+    "id": "prog-real-estate-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Three appraisal approaches",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["valuation", "appraisal", "methodology"],
+    "question": "An appraiser can use three different approaches to value the same property, sales comparison, income, and cost. Why might they give different answers, and which would you trust for a fifty year old single family home?",
+    "lookingFor": "Understands the logic of each approach and can reason about which is most reliable for a given property type.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain each approach briefly: comparable sales, income capitalization, replacement cost minus depreciation",
+        "Recognize why they diverge, since each relies on different data and fits different property types best",
+        "Justify sales comparison as most reliable for a typical owner-occupied home given an active market of comparable sales"
+      ],
+      "modelAnswer": "The sales comparison approach looks at what similar homes nearby have actually sold for, the income approach values a property based on the rent it could generate, and the cost approach asks what it would cost to rebuild the structure today minus depreciation, plus land value. For an old single family home in a neighborhood with plenty of recent sales, I'd trust sales comparison most, because it directly reflects what real buyers are paying for comparable homes, while the income approach doesn't really apply since it's not typically rented, and the cost approach struggles to estimate depreciation accurately on a fifty year old structure."
+    },
+    "commonMistakes": [
+      "Treating all three approaches as always equally valid regardless of property type",
+      "Not knowing the income approach is meant for income-producing property",
+      "Forgetting land value has to be added separately in the cost approach"
+    ],
+    "followUps": ["When would the income approach actually be the most reliable one?"]
+  },
+  {
+    "id": "prog-real-estate-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Interest rates and housing demand",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["macro", "interest-rates", "market-cycle"],
+    "question": "When the central bank raises interest rates, what happens to housing prices, and why doesn't it happen instantly?",
+    "lookingFor": "A causal chain connecting rates to affordability to prices, with awareness of lag and stickiness in the market.",
+    "idealAnswer": {
+      "bullets": [
+        "Higher rates raise the monthly payment for the same loan amount, reducing what buyers can afford",
+        "Reduced demand should cool price growth, but supply is often constrained too",
+        "Prices are sticky because sellers resist cutting prices, and owners with old low rates are reluctant to sell at all"
+      ],
+      "modelAnswer": "When rates go up, the same monthly payment buys a smaller loan, so buyers can afford less house and demand cools off. In theory that should bring prices down, but it's not instant because sellers are often reluctant to lower their asking price, and a lot of current owners are locked into low rates from before, so they simply don't sell rather than sell at a lower price. That's actually something I've read is happening right now, transaction volume drops sharply before prices actually fall much, because both sides are waiting each other out."
+    },
+    "commonMistakes": [
+      "Assuming prices fall immediately and proportionally with rate hikes",
+      "Ignoring the lock-in effect of existing low-rate mortgages",
+      "Confusing interest rates with property taxes"
+    ],
+    "followUps": ["What would you expect to happen to rents during the same period, and why might that diverge from home prices?"]
+  },
+  {
+    "id": "prog-real-estate-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "1031 exchange logic",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["tax", "investment", "instrument"],
+    "question": "What is a 1031 exchange and why might it distort what properties investors choose to buy?",
+    "lookingFor": "Understands the tax deferral mechanism and can reason about its second-order effects on investor behavior.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a 1031 exchange lets an investor defer capital gains tax by reinvesting proceeds into a like-kind property within strict deadlines",
+        "Note it encourages investors to keep rolling capital into real estate rather than cashing out",
+        "Reason about the distortion: time pressure to find a replacement property within the deadline can push investors toward suboptimal deals"
+      ],
+      "modelAnswer": "A 1031 exchange lets an investor sell a property and roll the proceeds into another investment property without paying capital gains tax right away, as long as they follow strict rules about timing and use a qualified intermediary. It's a huge reason so much real estate stays locked inside the investment cycle instead of being sold to owner-occupants, because cashing out triggers a big tax bill. The part I find interesting is the pressure it creates, because investors only have forty five days to identify a replacement property, so I'd imagine that pushes some people into buying something that isn't quite the ideal deal just to avoid the tax hit."
+    },
+    "commonMistakes": [
+      "Confusing a 1031 exchange with a tax exemption rather than a deferral",
+      "Not knowing the strict timing windows involved",
+      "Missing the behavioral distortion it creates in investor decisions"
+    ],
+    "followUps": ["Who ultimately bears the deferred tax, and when?"]
+  },
+  {
+    "id": "prog-real-estate-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "REITs vs direct ownership",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["reits", "investment", "risk"],
+    "question": "Why might an investor choose to buy shares in a REIT instead of buying a rental property directly?",
+    "lookingFor": "Clear comparison of liquidity, diversification, management burden, and control trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "REITs offer liquidity, trading like stocks, versus illiquid direct property ownership",
+        "REITs allow diversification across many properties and markets with smaller capital",
+        "Trade-off: less control over which properties you own, and correlation with stock market swings"
+      ],
+      "modelAnswer": "A REIT lets someone get exposure to real estate income without the hassle of finding tenants, fixing a broken boiler at midnight, or tying up a huge amount of capital in one building. You can buy and sell REIT shares almost instantly and spread your money across hundreds of properties in different cities, which direct ownership just can't match unless you're extremely wealthy. The trade-off is that you give up control over which properties you own, and REIT share prices tend to move with the stock market more than local property values do, so you're not fully insulated from broader market swings."
+    },
+    "commonMistakes": [
+      "Thinking REITs are risk-free just because they're diversified",
+      "Not knowing REITs must distribute most of their income as dividends",
+      "Assuming direct ownership always outperforms REITs"
+    ],
+    "followUps": ["What happens to REIT share prices when interest rates rise sharply, and why?"]
+  },
+  {
+    "id": "prog-real-estate-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "NIMBY vs YIMBY debate",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["housing-policy", "zoning", "current-debate"],
+    "question": "There's an ongoing fight in many cities between residents who oppose new development near them and advocates who push for more building to ease the housing shortage. Where do you come down, and why?",
+    "lookingFor": "Awareness of the actual policy debate and the ability to weigh both sides rather than repeat a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of what each side actually argues, from local concerns like infrastructure to supply and affordability",
+        "Take a reasoned position rather than a purely emotional one",
+        "Acknowledge legitimate concerns on both sides instead of dismissing opposition as simply selfish"
+      ],
+      "modelAnswer": "I lean toward wanting more building on the basic economics, because in cities where I've read prices have grown fastest, permitting for new housing has barely moved, and restricting supply while demand keeps rising is a pretty direct way to keep prices high. That said, I don't think local opposition is always just selfishness, sometimes people are genuinely worried about infrastructure like schools and traffic not keeping pace, and that's a fair planning question. My actual position is that cities need to build more, but pair it with real investment in the infrastructure that makes density livable, rather than treating opposition as something to just steamroll."
+    },
+    "commonMistakes": [
+      "Reducing the debate to opponents being simply selfish",
+      "Having no actual position, just describing both sides",
+      "Not connecting the debate to concrete supply and affordability dynamics"
+    ],
+    "followUps": ["What's one policy tool a city could use to build more without triggering as much local opposition?"]
+  },
+  {
+    "id": "prog-real-estate-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Non-disclosure ethics",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["ethics", "disclosure", "agency"],
+    "question": "A seller you're representing asks you not to mention a leak in the basement that was repaired last year but might still be a concern to a buyer. What do you do?",
+    "lookingFor": "Structured ethical reasoning that balances client loyalty with disclosure duty and long-term reputation.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the legal and professional disclosure obligations that typically override a client's preference to hide known issues",
+        "Reason through the tension between serving the client and acting honestly",
+        "Propose a practical path, such as advising the seller on disclosure requirements and documenting the repair"
+      ],
+      "modelAnswer": "My first move would be to explain to the seller that in most places known material defects have to be disclosed, and that hiding it isn't just an ethics problem but a legal one that could come back on both of us if the buyer found out later. I wouldn't just go along with staying quiet, because that puts my license and integrity on the line for a problem that isn't even mine. I'd rather help the seller present it honestly, maybe with the repair documentation to reassure the buyer it was fixed properly, because in my experience a defect that's disclosed and explained is far less damaging than one that's discovered after the sale."
+    },
+    "commonMistakes": [
+      "Agreeing to stay silent to please the client",
+      "Failing to recognize the legal disclosure obligation, treating it as purely a moral choice",
+      "Being unable to suggest any practical resolution"
+    ],
+    "followUps": ["What would you do if the seller insisted and threatened to find another agent?"]
+  },
+  {
+    "id": "prog-real-estate-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual agency conflict",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["ethics", "agency", "conflict-of-interest"],
+    "question": "In some places an agent can represent both the buyer and the seller in the same transaction. What's the ethical problem with that, and would you ever agree to it?",
+    "lookingFor": "Recognizes the structural conflict of interest and reasons about whether or how it could be managed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that an agent's duty is to negotiate the best price and terms for their client, which is structurally opposed for buyer versus seller",
+        "Identify the risk that neither party gets full advocacy and information could be misused",
+        "Give a reasoned position on whether disclosed, limited dual agency could ever be acceptable"
+      ],
+      "modelAnswer": "The core problem is that a buyer wants the lowest price and best terms while a seller wants the opposite, so one person genuinely cannot fight equally hard for both at once, it's a structural conflict, not just a perception problem. Even if the agent tries to stay neutral, they inevitably know things from one side, like a seller's bottom line or a buyer's maximum budget, that would obviously help the other side if leaked. I think I'd only be comfortable with it if both parties fully understood and consented to a strictly limited, transaction-facilitator role rather than pretending full advocacy still exists, and honestly I'd rather avoid it and refer one side to another agent when I can."
+    },
+    "commonMistakes": [
+      "Not identifying the actual structural conflict, just saying it seems unfair",
+      "Assuming disclosure alone fully solves the problem",
+      "Refusing to engage with when it might still be defensible"
+    ],
+    "followUps": ["How would you explain this conflict to a first time buyer who doesn't understand why it matters?"]
+  },
+  {
+    "id": "prog-real-estate-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Rent control debate",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["policy", "affordability", "current-debate"],
+    "question": "Economists are often skeptical of rent control, yet many cities keep expanding it. How do you make sense of that gap between the research and the policy?",
+    "lookingFor": "Ability to hold a technical critique and a human reality in the same answer without collapsing into one side.",
+    "idealAnswer": {
+      "bullets": [
+        "Summarize the standard economic critique, that capping rents can reduce the incentive to build or maintain housing",
+        "Acknowledge the real, immediate problem it's trying to solve, namely displacement and affordability for existing tenants",
+        "Offer a nuanced take, such as distinguishing short-term tenant protection from long-term supply effects"
+      ],
+      "modelAnswer": "The classic economic argument is that capping rents discourages new construction and can lead landlords to under-maintain units since raising rent to fund repairs gets harder, so over time it can actually shrink the usable housing stock. But I understand why cities keep doing it, because for someone who's about to be priced out of the only home they can afford, a supply argument that plays out over ten years doesn't help them next month. My own view is that rent control can make sense as an emergency stabilizer for existing tenants, but it has to be paired with policies that actually get more housing built, otherwise you're just protecting today's renters at the expense of tomorrow's."
+    },
+    "commonMistakes": [
+      "Dismissing rent control entirely without acknowledging the real problem it addresses",
+      "Only sympathizing with tenants without engaging the supply-side critique",
+      "Presenting no personal synthesis, just restating both sides"
+    ],
+    "followUps": ["What's a policy you'd pair with rent control to offset its downsides?"]
+  },
+  {
+    "id": "prog-real-estate-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Remote work and office real estate",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["commercial", "current-development", "market-shift"],
+    "question": "Office vacancy rates in a lot of major cities have stayed elevated since remote and hybrid work became common. What do you think happens to that office stock over the next decade?",
+    "lookingFor": "Awareness of the ongoing shift in commercial real estate and the ability to reason about plausible outcomes.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize hybrid work has structurally reduced office demand, not just caused a temporary dip",
+        "Discuss possible responses, such as conversion to residential, price correction, and flight to quality",
+        "Note real obstacles like conversion costs and zoning that complicate the obvious solution"
+      ],
+      "modelAnswer": "I think what's happening now isn't a temporary dip, it looks structural, because companies that shifted to hybrid work aren't rushing back to full occupancy even years later. What I find most interesting is the split it's creating, newer amenity-rich buildings are still leasing reasonably well while older class B and C towers are struggling badly, so it's really a flight to quality more than a uniform collapse. Everyone talks about converting empty offices into apartments, but I've read the floor plates and plumbing often make that far more expensive than it sounds, so I'd expect a lot of that older stock to sit half empty or get demolished before it gets meaningfully repurposed."
+    },
+    "commonMistakes": [
+      "Treating it as a purely temporary pandemic effect that will fully reverse",
+      "Assuming office to residential conversion is simple and cheap",
+      "No distinction between different quality tiers of office buildings"
+    ],
+    "followUps": ["What would make office to residential conversion more financially viable?"]
+  },
+  {
+    "id": "prog-real-estate-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Short-term rental regulation",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["airbnb", "policy", "housing-supply"],
+    "question": "Several cities have restricted or banned short-term rentals, arguing they worsen the housing shortage. Do you think that argument holds up?",
+    "lookingFor": "Ability to evaluate a specific policy claim with reasoning rather than a simple reaction for or against.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism: units pulled from long-term rental stock into short-term use reduce available housing in tight markets",
+        "Acknowledge counterpoints, including economic benefits to owners and that the effect size varies a lot by city",
+        "Reach a qualified conclusion rather than an absolute one"
+      ],
+      "modelAnswer": "The argument does have a real mechanism behind it, if an owner can earn more from short-term guests than a long-term tenant, some units genuinely get pulled out of the regular rental pool, which tightens supply in already tight markets. But I don't think it's the whole story everywhere, in places with a lot of vacation-specific housing stock that was never going to be a family's long-term home anyway, banning short-term rentals probably does less to fix affordability than people hope. I'd want to see the actual share of a city's housing that's in short-term use before deciding how big a lever this really is compared to just building more."
+    },
+    "commonMistakes": [
+      "Treating short-term rentals as the sole or main cause of a housing shortage",
+      "Dismissing the argument entirely without engaging the actual mechanism",
+      "No acknowledgment that impact varies significantly by market"
+    ],
+    "followUps": ["How would you actually measure how much a ban would help, before a city commits to one?"]
+  },
+  {
+    "id": "prog-real-estate-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Leverage and risk",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["finance", "leverage", "risk-management"],
+    "question": "Real estate investors often use a lot of debt to buy property. How does leverage change the risk of an investment, not just the potential return?",
+    "lookingFor": "Sound grasp of how leverage amplifies both gains and losses, plus awareness of the cash flow risk from fixed debt service.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain leverage magnifies returns on equity in both directions, gains and losses",
+        "Note the added risk of fixed debt service regardless of how the property performs",
+        "Mention the risk of being unable to refinance or ending up underwater if values fall"
+      ],
+      "modelAnswer": "If you put down 20 percent and the property value rises 10 percent, your actual return on the cash you put in is close to 50 percent because you're only measuring the gain against your small equity slice, but the same math works in reverse if the value falls. What people forget is that debt service is fixed no matter what happens to rents or vacancy, so a leveraged property can go from profitable to cash flow negative pretty fast if things turn. The scariest version is when a loan comes up for refinancing at a bad time and the owner can't get a new loan on similar terms, which is basically what caused a lot of the pain in 2008."
+    },
+    "commonMistakes": [
+      "Only discussing leverage's upside without the downside risk",
+      "Ignoring fixed debt service as an ongoing cash flow risk",
+      "Not connecting leverage risk to refinancing risk"
+    ],
+    "followUps": ["How would you decide how much leverage is too much for a given deal?"]
+  },
+  {
+    "id": "prog-real-estate-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "2008 crisis causes",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["history", "risk", "subject-knowledge"],
+    "question": "In your own words, what actually went wrong in the housing market in 2008?",
+    "lookingFor": "A coherent causal chain, not just buzzwords like subprime repeated without explanation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the chain: loose lending and risky mortgages packaged into securities sold as safe, on the assumption prices would keep rising",
+        "Note the trigger: rising defaults once prices stopped rising exposed how connected the system was",
+        "Show understanding that it became a financial system crisis, not just a housing problem, because of leverage and interconnection"
+      ],
+      "modelAnswer": "Lenders were giving out mortgages to people who couldn't really afford them, often with low introductory rates that later reset much higher, on the assumption that home prices would just keep rising forever and refinancing would always bail everyone out. Those risky loans got bundled into mortgage-backed securities and sold off as safe investments, so the risk didn't stay with the original lender, it spread through the whole financial system without most buyers of those securities really understanding what was inside them. When prices stopped rising and a wave of those risky loans started defaulting at once, it turned out banks and investment firms around the world were far more exposed to those losses than anyone had priced in, which is why a housing problem turned into a global financial crisis."
+    },
+    "commonMistakes": [
+      "Using the word subprime without explaining the actual mechanism",
+      "Treating it as purely a housing problem, missing the financial system connection",
+      "No mention of why the risk spread so widely through securitization"
+    ],
+    "followUps": ["What's one regulatory change since then meant to prevent a repeat?"]
+  },
+  {
+    "id": "prog-real-estate-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Coastal climate risk and insurance",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["climate", "insurance", "current-development"],
+    "question": "Insurance companies have been pulling out of some coastal and wildfire-prone markets, or raising premiums sharply. What does that mean for property values in those areas over time?",
+    "lookingFor": "Reasoning through a live market phenomenon and its downstream effects on affordability and values.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism: rising insurance cost or unavailability raises the true cost of ownership even if the sale price hasn't moved",
+        "Reason about downstream effects, since buyers factoring in higher carrying costs should eventually pressure prices down",
+        "Note complications, such as government-backed insurers of last resort and buyers who discount long-term risk"
+      ],
+      "modelAnswer": "If insurance becomes unavailable or triples in cost, the real cost of owning that home goes up even though the sale price hasn't moved yet, so buyers who actually do the math should start paying less for it, or some deals should fall through entirely when a lender requires insurance the buyer can't get. In practice I think it's happening more slowly than the pure economics suggest, because state-backed insurers of last resort step in and keep some of that risk hidden from the price, and plenty of buyers just don't price in a wildfire or flood that hasn't happened to them yet. My guess is that over the next decade you'll see a real divergence, with insurable, lower-risk areas holding value better than places where insurers keep pulling out."
+    },
+    "commonMistakes": [
+      "Ignoring insurance cost as part of the real cost of ownership",
+      "Assuming the price effect happens instantly and cleanly",
+      "Not mentioning government backstops that delay the market signal"
+    ],
+    "followUps": ["Who ends up bearing the cost if a state-backed insurer keeps premiums artificially low?"]
+  },
+  {
+    "id": "prog-real-estate-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Gentrification trade-offs",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["urban-planning", "ethics", "displacement"],
+    "question": "When a neighborhood gentrifies, property values and the tax base often rise while long-time residents sometimes get priced out. How do you think about that trade-off?",
+    "lookingFor": "Balanced reasoning that doesn't romanticize or villainize the process, with some idea of policy mitigation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge real benefits like investment and tax revenue alongside real harms like displacement and loss of community",
+        "Avoid treating gentrification as simply good or simply bad",
+        "Suggest a concrete way cities try to manage the trade-off, such as inclusionary zoning or tenant protections"
+      ],
+      "modelAnswer": "I don't think it's fair to call gentrification simply good or simply bad, because the same process that brings in investment, better upkeep, and more tax revenue for schools is often the exact thing that prices out the people who made the neighborhood worth investing in to begin with. What bothers me most is when the benefits and costs land on completely different people, so the original residents absorb the displacement while new arrivals get the improved neighborhood. I think the more honest goal for a city is to let investment happen but pair it with tools like community land trusts or long-term tenant protections, so existing residents actually get to share in the upside instead of just being pushed out by it."
+    },
+    "commonMistakes": [
+      "Framing gentrification as purely positive economic development",
+      "Framing it as purely a moral wrong with no acknowledgment of real benefits",
+      "Offering no concrete policy idea to manage the tension"
+    ],
+    "followUps": ["Who do you think should decide how much protection existing residents get, the city or the market?"]
+  },
+  {
+    "id": "prog-real-estate-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Eminent domain hypothetical",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["law", "ethics", "hypothetical"],
+    "question": "Imagine a city wants to use eminent domain to take a block of family homes to build a light rail station that would benefit thousands of commuters. The homeowners don't want to sell. How should the city weigh that decision?",
+    "lookingFor": "Structured reasoning that weighs public benefit against individual property rights, referencing fair compensation and process.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the genuine tension between broad public benefit and harm to specific individuals losing their homes",
+        "Bring in considerations like fair compensation, relocation support, and whether alternatives were genuinely explored",
+        "Land on a reasoned position rather than dodging the question"
+      ],
+      "modelAnswer": "I think the city has to take this seriously as a real cost, not just a line item, because losing your home isn't something fair compensation fully undoes, there's history and community tied up in a place that money doesn't replace. That said, I don't think individual property rights are absolute when the benefit is genuinely broad, like a transit station thousands of people would use for decades, so I wouldn't rule out eminent domain entirely. What I'd want is proof that the city actually explored alternative routes first, that compensation is well above bare market value to account for the disruption, and that there's real relocation support, because eminent domain used as a first resort feels very different from one used as a last resort."
+    },
+    "commonMistakes": [
+      "Treating eminent domain as automatically justified by public benefit",
+      "Treating individual property rights as absolute with no room for public interest",
+      "Giving no concrete criteria for what would make it acceptable"
+    ],
+    "followUps": ["Does your answer change if the project were a private shopping mall instead of public transit?"]
+  },
+  {
+    "id": "prog-real-estate-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Housing supply inelasticity",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["economics", "housing-supply", "subject-knowledge"],
+    "question": "Why do prices in cities like San Francisco or London stay high and keep climbing even during periods when demand seems to be cooling, while prices in other cities are much more responsive to demand changes?",
+    "lookingFor": "Understanding of supply elasticity, zoning constraints, and geography as drivers of price behavior, not just high demand.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain supply elasticity: how easily new housing can be built in response to demand",
+        "Identify specific constraints in the harder markets, such as restrictive zoning, height limits, and geographic limits",
+        "Contrast with more elastic markets, where supply responds to demand and prices are more stable"
+      ],
+      "modelAnswer": "It comes down to how elastic the supply is, meaning how easily builders can add new units when demand rises. In a place like San Francisco, you've got the bay limiting how far the city can sprawl plus really restrictive zoning that caps height and density in most neighborhoods, so even when demand climbs, the housing stock barely grows to absorb it, and prices take the pressure instead. A city with open land and permissive zoning, somewhere in the Sun Belt for example, can just build more housing when demand rises, so the extra demand gets absorbed into new supply rather than bidding up the price of existing homes. That's why I think zoning reform gets discussed so much as a lever, because it's really the main thing standing between demand and new supply in the most expensive cities."
+    },
+    "commonMistakes": [
+      "Explaining high prices purely through high demand without addressing supply",
+      "Not distinguishing geographic constraints from policy constraints like zoning",
+      "No comparison to a more elastic market to show contrast"
+    ],
+    "followUps": ["If a city relaxed zoning tomorrow, how quickly would you expect prices to actually respond?"]
+  },
+  {
+    "id": "prog-real-estate-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Distressed-sale investment ethics",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["ethics", "investment-strategy", "community-impact"],
+    "question": "Some investors specialize in buying distressed homes cheaply from owners in financial trouble, often elderly or facing foreclosure, then reselling quickly at a profit. Is there anything ethically wrong with that business model?",
+    "lookingFor": "Nuanced reasoning that distinguishes a legitimate service from a predatory practice, without a blanket condemnation or defense.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the model can provide genuine value, such as fast cash for a seller who needs to move quickly",
+        "Identify where it crosses into predatory territory, like targeting vulnerable sellers or misrepresenting value",
+        "Propose a standard for what makes it acceptable versus exploitative"
+      ],
+      "modelAnswer": "I don't think the business model itself is inherently wrong, because sometimes a seller genuinely needs speed and certainty more than the absolute top price, like someone facing foreclosure who just needs the sale done in two weeks instead of two months. Where it turns predatory is when investors specifically target people who don't know what their home is actually worth and use pressure or misleading urgency to get a price far below fair value, especially with elderly or distressed sellers who have fewer options to compare offers. I'd draw the line at transparency, if the investor is upfront about the trade-off between speed and price and the seller genuinely understands their alternatives, I think it's a legitimate service, but if it depends on the seller staying uninformed, that's exploitation."
+    },
+    "commonMistakes": [
+      "Condemning the entire business model without acknowledging legitimate cases",
+      "Defending it without acknowledging real predatory patterns that exist",
+      "Failing to propose any concrete standard for what makes it acceptable"
+    ],
+    "followUps": ["How would you design a rule or disclosure requirement that protects vulnerable sellers without banning the model outright?"]
+  },
+  {
+    "id": "prog-real-estate-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Advising an investor vs community interest",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["ethics", "hypothetical", "conflicting-interests"],
+    "question": "Say you're advising an investor client who wants to buy a row of small, affordable rental buildings in a working class neighborhood, renovate them, and raise rents substantially. It's a legal and profitable deal, but you know it will likely displace the current tenants. What do you do?",
+    "lookingFor": "Ability to reason about professional duty to a client alongside broader ethical awareness, without blind compliance or refusing to engage.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the deal is legal and the client has a legitimate right to pursue it",
+        "Reason about what the advisor's own role and responsibility actually is versus the client's decision",
+        "Suggest a concrete way to act with integrity, such as being transparent about the human cost or ensuring legal obligations are met"
+      ],
+      "modelAnswer": "I'd be honest with myself that this isn't illegal and the client has every right to make this investment, so I can't just refuse to do my job because I don't love the outcome. But I don't think being a good advisor means staying silent either, so I'd make sure the client actually understands the human side of the decision, not to guilt them, but because a client who walks in blind to that reality is more likely to handle the renovation and tenant transition badly, which usually ends up costing them in bad press or legal trouble anyway. Practically, I'd push hard to make sure every legal notice period and relocation assistance requirement is followed properly, and honestly, if a client wanted to cut corners on tenants' legal rights, that's where I'd have to decide whether I'm willing to keep advising them at all."
+    },
+    "commonMistakes": [
+      "Refusing to engage with a legal client decision purely on personal discomfort",
+      "Ignoring the ethical dimension entirely because it's legal",
+      "Not proposing any concrete action, only expressing discomfort"
+    ],
+    "followUps": ["Would your answer change if the client planned to skip the legally required relocation notice?"]
+  },
+  {
+    "id": "prog-real-estate-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Commercial vs residential risk profile",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["investment", "risk", "comparative"],
+    "question": "How would you compare the risk profile of investing in commercial real estate versus residential real estate?",
+    "lookingFor": "Clear comparative reasoning across lease structure, tenant concentration, cycle sensitivity, and liquidity.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast lease length and tenant concentration, since commercial often has fewer, longer leases with higher impact per lost tenant",
+        "Note commercial's higher sensitivity to economic cycles and business conditions versus residential's steadier, need-based demand",
+        "Mention differences in financing terms, liquidity, and management complexity"
+      ],
+      "modelAnswer": "Residential demand is fairly need-based since people always need somewhere to live, so vacancy tends to be more stable and losing one tenant out of many units is a small hit. Commercial is much lumpier, a single office building might have three tenants, so losing one of them can wipe out a big chunk of income at once, and commercial demand is also more tied to the broader economy, since businesses expand or contract office and retail space based on how they're doing. On top of that, commercial financing terms are usually stricter and the properties are less liquid to sell, so overall I'd say commercial carries higher risk and higher potential reward, while residential tends to be steadier but with a lower ceiling."
+    },
+    "commonMistakes": [
+      "Assuming commercial and residential carry similar risk profiles",
+      "Ignoring tenant concentration as a key risk driver",
+      "Not mentioning cycle sensitivity tied to business conditions"
+    ],
+    "followUps": ["Within commercial, would you expect retail, office, and industrial to carry the same risk level? Why or why not?"]
+  },
+  {
+    "id": "prog-real-estate-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "PropTech and AI in real estate",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["proptech", "technology", "current-development"],
+    "question": "AI-driven valuation tools are increasingly used by lenders, buyers, and even some sellers instead of a human appraiser. What do you think gets better and what gets worse when you replace a human appraiser with an algorithm?",
+    "lookingFor": "Balanced view of technology's strengths, like speed and consistency, and weaknesses, like context blindness and bias risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify strengths of automated valuation, such as speed, lower cost, and consistency across large volumes",
+        "Identify weaknesses, such as missing qualitative context and the risk of baking in historical bias from training data",
+        "Reach a reasoned view on where automation is appropriate and where human judgment still matters"
+      ],
+      "modelAnswer": "An algorithm can process thousands of comparable sales instantly and give a consistent, cheap estimate, which is genuinely useful for something like a quick refinance check where speed matters more than precision. What it misses is the stuff a human notices standing in the property, like a renovation done with cheap materials that looks nice in photos but won't hold up, or a busy road that technically doesn't show up in the data but clearly affects how desirable the home is. I'd also worry that if the model is trained on historical sales data, it can quietly bake in old patterns of underinvestment in certain neighborhoods, so I think automated valuation is great as a first pass or a sanity check, but I wouldn't want it making the final call on anything high stakes without a human review."
+    },
+    "commonMistakes": [
+      "Treating automated valuation as purely an upgrade with no downsides",
+      "Not mentioning bias risk from historical training data",
+      "No concrete example of what a human appraiser catches that a model would miss"
+    ],
+    "followUps": ["How would you actually test whether a valuation model is biased against certain neighborhoods?"]
+  },
+  {
+    "id": "prog-real-estate-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Property tax vs market value",
+    "program": "Real Estate",
+    "difficulty": "medium",
+    "tags": ["taxation", "valuation", "reasoning"],
+    "question": "A homeowner's property tax bill is based on an assessed value that's often different from what the home would actually sell for on the open market. Why does that gap exist, and is it a problem?",
+    "lookingFor": "Understanding of assessment cycles versus real-time market pricing, and reasoned judgment on fairness.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain assessed value is often set periodically using mass appraisal rather than a full individual appraisal each time",
+        "Note the gap grows in fast-moving markets and can create fairness issues between neighbors",
+        "Reason about whether and how the gap should be addressed"
+      ],
+      "modelAnswer": "Assessed value usually comes from a mass appraisal done on some fixed cycle, maybe every one to three years, using formulas applied across a whole area, while market value is whatever a buyer would actually pay today, and those two things drift apart especially in a market that's moving fast. The fairness problem I find most interesting is that it can create a real gap between neighbors, someone who's owned their home for twenty years might be taxed on a much lower assessed value than a neighbor who just bought an identical house at today's market price, even though they're using the same city services. I don't think the gap itself is inherently wrong, since constant reassessment would be expensive and volatile for homeowners to budget around, but I do think cities owe it to residents to be transparent about how stale the assessed value actually is."
+    },
+    "commonMistakes": [
+      "Assuming assessed value and market value should always be identical",
+      "Not identifying the fairness or equity angle between neighbors",
+      "No reasoning about the trade-off of frequent versus infrequent reassessment"
+    ],
+    "followUps": ["Who do you think is disadvantaged more by a slow reassessment cycle, long-time owners or recent buyers?"]
+  },
+  {
+    "id": "prog-real-estate-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Inclusionary zoning trade-off",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["policy", "affordable-housing", "hypothetical"],
+    "question": "A city proposes requiring that any new building of more than fifty units include twenty percent affordable units priced below market rent. Developers say this will make many projects financially unworkable and they'll simply build less. How would you evaluate whether the policy is a good idea?",
+    "lookingFor": "Ability to reason through a genuine policy trade-off using both sides' incentives rather than picking a side reflexively.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the core tension: the mandate helps affordability directly but could reduce total housing built if it makes projects unprofitable",
+        "Identify factors that determine which effect dominates, like the required percentage and whether the city offers offsets",
+        "Reach a reasoned, conditional judgment rather than a flat yes or no"
+      ],
+      "modelAnswer": "The honest answer is it depends on the numbers, because if twenty percent affordable units genuinely makes a project unprofitable and developers really do walk away, the city could end up with less total housing, including less affordable housing, than if it had just let more market-rate building happen. But if the city pairs the mandate with something like a density bonus, letting developers build taller or with reduced parking requirements to offset the lost revenue from the affordable units, the math can work out fine for both sides. So I wouldn't evaluate the policy in isolation, I'd want to know whether it comes with those offsets, and I'd want to see what happened to total permits filed in other cities that tried something similar, rather than just trusting either side's prediction."
+    },
+    "commonMistakes": [
+      "Taking the developers' claim or the city's intention at face value without examining incentives",
+      "Ignoring the possibility that the mandate could reduce total housing supply",
+      "Giving a flat yes or no without conditions or evidence to check"
+    ],
+    "followUps": ["What real-world evidence would actually change your mind on this?"]
+  },
+  {
+    "id": "prog-real-estate-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Fair housing steering scenario",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["ethics", "fair-housing", "discrimination"],
+    "question": "A client tells you they'd prefer to only be shown homes in neighborhoods with people like them. How do you handle that conversation?",
+    "lookingFor": "Clear ethical and legal awareness of fair housing law against steering, handled with tact rather than a lecture.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize this touches fair housing law, which prohibits steering clients based on protected characteristics",
+        "Reason about redirecting the conversation to clarify what they actually want, like schools, price, or commute",
+        "Show willingness to decline the request if it's clearly about excluding people based on a protected class"
+      ],
+      "modelAnswer": "That phrase raises a flag for me because fair housing law makes it illegal to steer clients toward or away from neighborhoods based on race, religion, or other protected characteristics, so I couldn't just quietly act on it even if the client meant it innocently. I'd try to redirect the conversation by asking what they actually care about, whether that's school ratings, commute time, or a certain price range, because usually there's a legitimate criterion underneath a vague comment like that. But if it became clear the client genuinely wanted me to exclude neighborhoods based on who lives there, I'd have to be direct that I'm not able to do that, both because it's against the law and because it's not something I'd be comfortable doing regardless."
+    },
+    "commonMistakes": [
+      "Not recognizing this as a fair housing or steering issue at all",
+      "Silently complying to keep the client happy",
+      "Handling it so bluntly that it shuts down the conversation instead of redirecting it"
+    ],
+    "followUps": ["What would you do if the client got upset and said they'd just find another agent who would help them?"]
+  },
+  {
+    "id": "prog-real-estate-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Foreclosure wave hypothetical",
+    "program": "Real Estate",
+    "difficulty": "hard",
+    "tags": ["macro", "hypothetical", "market-cycle"],
+    "question": "Imagine unemployment spikes sharply and foreclosures start rising fast in a city you're advising investors in. Walk me through how you'd think about whether this is a buying opportunity or a warning sign.",
+    "lookingFor": "Structured, multi-factor reasoning under a stress scenario rather than a simple buy the dip or run away instinct.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that rising foreclosures alone isn't enough information; distinguish a temporary local shock from a structural decline",
+        "Identify what else to check, such as the cause of the unemployment spike and local population and job growth trends",
+        "Show ability to reason about downside risk and timing rather than assuming either extreme"
+      ],
+      "modelAnswer": "Rising foreclosures alone wouldn't tell me much on its own, so the first thing I'd want to understand is why unemployment spiked, if it's one factory closing versus a broader recession hitting every industry in the city, because those imply very different recoveries. I'd also want to look at whether people are actually leaving the area or just going through a rough patch, since population and job growth trends tell you a lot about whether demand eventually comes back. If it looks like a temporary, localized shock in a city with underlying strong fundamentals, that could genuinely be a buying opportunity because prices often overcorrect during the panic, but if it's a structural decline with people leaving for good, buying into falling foreclosures is just catching a falling knife, and I'd rather wait until the trend actually stabilizes."
+    },
+    "commonMistakes": [
+      "Treating rising foreclosures as automatically either a buying signal or a reason to flee",
+      "Not distinguishing a local, temporary shock from a structural, permanent decline",
+      "No mention of checking population or job growth trends before deciding"
+    ],
+    "followUps": ["What signal would make you decide it's time to buy rather than keep waiting?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-environmental-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Greenhouse effect mechanism",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["climate", "atmospheric-science", "mechanism"],
+    "question": "Explain, mechanistically, why carbon dioxide warms the planet but doesn't just let heat back out the way it let sunlight in.",
+    "lookingFor": "A correct grasp of the wavelength asymmetry behind the greenhouse effect, not just the word 'trapping heat'.",
+    "idealAnswer": {
+      "bullets": [
+        "Incoming solar radiation is mostly short-wave and passes through CO2 largely unabsorbed",
+        "The Earth re-emits energy as long-wave infrared, which CO2 molecules do absorb and re-radiate",
+        "Explain that re-radiation happens in all directions, so some returns to the surface instead of escaping to space"
+      ],
+      "modelAnswer": "Sunlight arrives mostly as short-wave visible radiation, and CO2 is basically transparent to that, so it passes straight through to warm the surface. The Earth then re-emits that energy as long-wave infrared, and CO2's molecular structure happens to absorb strongly at exactly those wavelengths. When it absorbs a photon it doesn't just hold onto the heat, it re-emits infrared in a random direction, so roughly half of it goes back down to the surface instead of escaping to space. That asymmetry between what gets in easily and what struggles to get out is the whole mechanism, and it's why more CO2 means a warmer equilibrium, not an instant one."
+    },
+    "commonMistakes": [
+      "Saying CO2 forms a physical 'blanket' or 'layer' that blocks heat, which is not the actual mechanism",
+      "Confusing the ozone layer's UV absorption with CO2's infrared absorption",
+      "Failing to mention the wavelength difference between incoming and outgoing radiation"
+    ],
+    "followUps": ["Why does water vapour not get the same policy attention as CO2 despite being a stronger greenhouse gas?"]
+  },
+  {
+    "id": "prog-environmental-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Ecosystem services vs intrinsic value",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "conservation-philosophy", "valuation"],
+    "question": "Should we justify protecting a species by the ecosystem services it provides, or does that framing undermine conservation in the long run?",
+    "lookingFor": "Ability to hold two conservation philosophies in tension and reason about the risks of each rather than picking a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that services-based valuation is persuasive to policymakers and funders because it speaks their language",
+        "Identify the risk that anything without measurable economic value becomes disposable under that logic",
+        "Propose that the two arguments can be used strategically together rather than treated as mutually exclusive"
+      ],
+      "modelAnswer": "I think ecosystem services language is genuinely useful because it gets conservation into rooms where the pure intrinsic-value argument doesn't land, like a finance ministry weighing a wetland against a development project. But I'm wary of it as the sole justification, because it implicitly accepts that anything we can't monetise is expendable, and plenty of species with no obvious service still matter ecologically or ethically. My own view is that we should use the economic argument tactically to win specific fights, while keeping the intrinsic-value argument as the actual foundation, so we don't lose species the moment someone finds a cheaper substitute for their service."
+    },
+    "commonMistakes": [
+      "Treating this as a simple either/or without acknowledging the strategic uses of both",
+      "Dismissing ecosystem services valuation as purely cynical",
+      "Giving no example of where the services framing actually fails a species"
+    ],
+    "followUps": ["Can you name a species that has no obvious ecosystem service but you'd still argue for protecting?"]
+  },
+  {
+    "id": "prog-environmental-science-b-003",
+    "category": "Ethics & Situational",
+    "subtopic": "Development vs conservation trade-off",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "policy", "equity"],
+    "question": "A proposed dam would bring electricity to a poor region but flood a forest that's home to an endangered species and several villages. How do you think through a decision like that?",
+    "lookingFor": "Structured reasoning that weighs human welfare, ecological cost, and who bears the cost, rather than a snap verdict either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Separate the question into who benefits, who pays the cost, and whether the cost is reversible",
+        "Ask whether alternatives (decentralised solar, smaller-scale hydro) were seriously assessed before defaulting to the dam",
+        "Insist that the displaced villagers and not just the species get a real seat in the decision, not just compensation after the fact"
+      ],
+      "modelAnswer": "I wouldn't want to answer with a blanket yes or no, because both the electricity and the forest are real, weighable goods. I'd first ask whether the environmental impact assessment seriously considered alternatives like distributed solar or micro-hydro that could deliver power without a single irreversible flood. If the dam really is the only viable option, I'd want to know that the villagers being displaced were consulted early and have genuine resettlement and compensation, not just informed after the decision was made. The species loss weighs heavily on me because it's irreversible, so I'd push hard for a smaller design or relocation programme before accepting the trade-off as unavoidable."
+    },
+    "commonMistakes": [
+      "Picking a side immediately without exploring alternatives",
+      "Treating the ecological and human costs as interchangeable when one is irreversible",
+      "Ignoring the question of who actually gets consulted in the decision"
+    ],
+    "followUps": ["What would change your mind if the species were not endangered but the human need were more urgent?"]
+  },
+  {
+    "id": "prog-environmental-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: geoengineering",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "geoengineering", "risk"],
+    "question": "Countries and private ventures have started experimenting with solar radiation management, like reflecting sunlight with aerosols. What's your view on this as a climate strategy?",
+    "lookingFor": "Awareness of the actual debate, including moral hazard and governance concerns, not just a for-or-against opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that solar radiation management addresses temperature symptoms, not the underlying CO2 problem",
+        "Raise the moral hazard risk that it could reduce pressure to cut emissions",
+        "Flag the governance problem: unilateral deployment by one country or company affects the whole planet's weather"
+      ],
+      "modelAnswer": "I find it worrying less because of the physics and more because of the governance gap around it. Reflecting sunlight can lower temperatures without touching ocean acidification or the root cause, CO2 concentration, so it treats a symptom while the underlying problem keeps building. I'm also concerned about moral hazard, since the mere existence of a backstop could quietly ease pressure on emissions cuts. And there's no international body currently equipped to decide who gets to alter global rainfall patterns, which any one country's unilateral aerosol programme effectively does for everyone. I think it's worth researching as a last-resort option, but treating it as a primary strategy feels premature and risky."
+    },
+    "commonMistakes": [
+      "Dismissing geoengineering outright with no acknowledgment of why it's being researched",
+      "Endorsing it uncritically as a quick fix without mentioning governance or moral hazard",
+      "Confusing solar radiation management with carbon capture, which is a different approach"
+    ],
+    "followUps": ["Who do you think should have the authority to approve a large-scale geoengineering trial?"]
+  },
+  {
+    "id": "prog-environmental-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Feedback loops and tipping points",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["climate-systems", "tipping-points", "nonlinearity"],
+    "question": "Can you explain what a climate tipping point is, and give an example of a positive feedback loop that could push us past one?",
+    "lookingFor": "Correct understanding that tipping points involve self-reinforcing, potentially irreversible change, illustrated with a real mechanism.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a tipping point as a threshold beyond which a system shifts to a new state, often abruptly and irreversibly on human timescales",
+        "Give a specific worked feedback loop, such as Arctic sea ice albedo loss",
+        "Note that multiple tipping points can interact, which is part of why scientists worry about cascading effects"
+      ],
+      "modelAnswer": "A tipping point is a threshold where a system stops responding gradually to more forcing and instead flips into a qualitatively different state that's very hard to reverse. Arctic sea ice is the clearest example I know: ice is reflective, so it bounces sunlight back to space, but as it melts it exposes darker ocean water that absorbs more heat, which melts more ice, which exposes more dark water. That's a self-reinforcing loop, and past a certain point the system can keep melting even if we stopped emitting entirely, because the loop is now driving itself. What worries me more is that tipping points like this one and permafrost thaw aren't isolated, they can trigger each other, which is part of why the risk isn't just linear warming."
+    },
+    "commonMistakes": [
+      "Describing a tipping point as simply 'a lot of warming' without the self-reinforcing mechanism",
+      "Giving a vague example with no actual causal chain",
+      "Treating tipping points as reversible once emissions stop"
+    ],
+    "followUps": ["Why is it so hard to pin an exact global temperature number to a tipping point?"]
+  },
+  {
+    "id": "prog-environmental-science-b-006",
+    "category": "Ethics & Situational",
+    "subtopic": "Whistleblowing on an environmental violation",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "workplace", "integrity"],
+    "question": "Say you're doing a field internship and you discover the company is quietly discharging wastewater above the legal limit, but reporting it could end the internship placement for future students. What would you do?",
+    "lookingFor": "Willingness to prioritise environmental and public harm over personal or institutional convenience, reasoned through rather than declared.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between institutional relationships and the actual harm being caused",
+        "Describe checking facts and going through internal channels first where reasonable, before escalating externally",
+        "Land on the position that ongoing illegal discharge affecting a water source outweighs the placement relationship"
+      ],
+      "modelAnswer": "My instinct is that a legal violation causing real harm to a water source isn't something I can sit on, even though I understand the pressure not to jeopardise the placement for others. I'd first make sure I actually had the facts right, maybe by checking discharge logs or asking a supervisor a genuine question rather than accusing anyone outright. If that confirmed the problem and internal reporting went nowhere, I'd feel obliged to escalate it, whether to the university, a regulator, or both, because ongoing pollution affects people downstream who never agreed to that risk. I'd try to do it in a way that protects the internship programme's future access where possible, but I wouldn't let that consideration override the harm being done."
+    },
+    "commonMistakes": [
+      "Staying silent purely to protect the placement for future cohorts",
+      "Jumping straight to a regulator without first verifying facts or trying internal channels",
+      "Treating this as a purely legal question with no acknowledgment of the human and ecological stakes"
+    ],
+    "followUps": ["Would your answer change if the discharge was a minor, first-time technical breach rather than ongoing?"]
+  },
+  {
+    "id": "prog-environmental-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Trophic cascades",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["ecology", "food-webs", "case-study"],
+    "question": "Can you explain what a trophic cascade is, using an example you find compelling?",
+    "lookingFor": "Correct grasp of indirect, multi-level ecological effects, backed by a specific, accurately described case.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a trophic cascade as an effect that ripples down or up through multiple levels of a food web from a change at one level",
+        "Use a specific, accurate example such as wolf reintroduction in Yellowstone",
+        "Explain the actual causal chain, not just the headline result"
+      ],
+      "modelAnswer": "A trophic cascade is when a change at one level of a food web, usually a predator, ripples down through several other levels in ways that aren't obvious at first. The example that got me interested in ecology is wolves in Yellowstone. When wolves were reintroduced in the 1990s, elk stopped grazing so freely in open river valleys because they were more exposed to predation there, which let willow and aspen saplings recover. That vegetation recovery stabilised riverbanks and even changed the shape of some rivers over time. What I find compelling isn't just the result, it's that a single predator's return rearranged the physical landscape through a chain nobody could have fully predicted in advance."
+    },
+    "commonMistakes": [
+      "Citing the Yellowstone example but overstating it as scientifically undisputed rather than a widely cited but debated case",
+      "Describing only two trophic levels rather than a genuine cascade",
+      "Giving a vague definition with no worked example"
+    ],
+    "followUps": ["Why do some ecologists say the Yellowstone story is more complicated than the popular version?"]
+  },
+  {
+    "id": "prog-environmental-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: carbon tax vs cap-and-trade",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["policy", "economics", "current-affairs"],
+    "question": "Two common tools for pricing carbon are a straightforward carbon tax and a cap-and-trade system. Which do you find more effective, and why?",
+    "lookingFor": "Understanding of the trade-off between price certainty and quantity certainty, applied with a reasoned preference.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a carbon tax fixes the price and lets emissions float, while cap-and-trade fixes the emissions cap and lets price float",
+        "Note practical issues like political volatility of taxes versus market manipulation or over-allocation risk in cap-and-trade",
+        "Give a reasoned preference rather than a purely textbook comparison"
+      ],
+      "modelAnswer": "A carbon tax sets a fixed price per tonne and lets total emissions respond to that, which gives businesses predictability but no guarantee we actually hit a specific emissions target. Cap-and-trade does the opposite, it fixes the total emissions allowed and lets the price of permits float, which gives more certainty on outcomes but has been vulnerable in practice to over-allocation, like early phases of the EU ETS where permits were too cheap to bite. I lean toward a carbon tax for its simplicity and transparency, especially in a country without strong regulatory capacity to monitor a trading market properly, but I recognise a well-designed cap-and-trade system with a shrinking cap and no giveaways can be very effective too."
+    },
+    "commonMistakes": [
+      "Confusing which mechanism fixes price versus quantity",
+      "Treating one option as flatly better with no acknowledgment of implementation risk",
+      "Giving no real-world example of either succeeding or failing"
+    ],
+    "followUps": ["What happens to a carbon tax's effectiveness if it's set too low to change behaviour?"]
+  },
+  {
+    "id": "prog-environmental-science-b-009",
+    "category": "Curveball/Personality",
+    "subtopic": "Hypothetical: contaminated village well",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "public-health", "decision-making"],
+    "question": "You're advising a small village whose only well has just tested positive for a contaminant above safe limits, but shutting it down means a two-hour walk to the nearest alternative source. What do you recommend, and how do you decide?",
+    "lookingFor": "Ability to reason under real constraint, balancing immediate health risk against practical hardship, not just cite a rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Ask what the contaminant actually is and at what level, since the right response scales with the specific risk, not just a pass/fail test",
+        "Consider interim mitigation, like boiling, filtration, or transporting water, rather than only the binary of open or closed",
+        "Involve the village in the decision rather than imposing a shutdown from outside"
+      ],
+      "modelAnswer": "Before recommending anything I'd want to know exactly what the contaminant is and how far above the safe limit it is, because a slightly elevated nitrate level and an acute bacterial contamination call for very different urgency. If it's an acute risk I'd push for an immediate interim fix, like distributing a simple filtration or boiling protocol and arranging water transport, rather than just closing the well and leaving people to walk two hours with no support. Longer term I'd want to trace the contamination source, because closing one well without fixing the cause just delays the same problem. I'd also make sure the village itself is part of that decision, since they're the ones living with whichever trade-off I recommend."
+    },
+    "commonMistakes": [
+      "Giving a flat answer without asking what the contaminant or concentration is",
+      "Treating the choice as purely binary between open and closed with no interim options",
+      "Deciding unilaterally on behalf of the village with no mention of consulting them"
+    ],
+    "followUps": ["How would your answer change if the contaminant were arsenic rather than a bacterial pathogen?"]
+  },
+  {
+    "id": "prog-environmental-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: climate finance and pledges",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "policy", "climate-finance"],
+    "question": "What's your take on the gap between countries' net-zero pledges and their actual current policies?",
+    "lookingFor": "Genuine awareness of the implementation gap debate, with specifics rather than vague climate-news awareness.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that pledged targets are often decades out while near-term policy commitments lag far behind",
+        "Mention a concrete mechanism, like nationally determined contributions under the Paris framework, and why they're not binding",
+        "Offer a view on what would actually close the gap, such as shorter accountability cycles or independent verification"
+      ],
+      "modelAnswer": "What strikes me is how many net-zero pledges are set for 2050, which is comfortably beyond most current leaders' careers, while the nearer-term policies needed to actually get there are often far weaker. Under the Paris framework countries submit nationally determined contributions, but those aren't legally binding and there's no real enforcement if a country simply misses them. I think the gap will only close if pledges come with shorter, legally accountable interim targets, maybe five-year checkpoints with independent verification, so a government can't just push the hard decisions onto whoever's in office in 2049. I follow this partly because I think credibility, not ambition, is the actual bottleneck in climate policy right now."
+    },
+    "commonMistakes": [
+      "Vague awareness that 'countries aren't doing enough' with no specific mechanism named",
+      "Confusing pledges with binding law",
+      "No concrete idea for what would close the implementation gap"
+    ],
+    "followUps": ["Can you name a country you think is actually on track, and one that clearly isn't?"]
+  },
+  {
+    "id": "prog-environmental-science-b-011",
+    "category": "Ethics & Situational",
+    "subtopic": "Renewable energy land-use trade-off",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "renewables", "land-use"],
+    "question": "A large solar farm is proposed on farmland that local farmers rely on. Is converting farmland to renewable energy infrastructure justified?",
+    "lookingFor": "Nuanced reasoning about competing land uses rather than treating renewables as automatically justified because they're green.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the assumption that 'renewable' automatically means 'unambiguously good' for any given site",
+        "Raise alternatives like agrivoltaics, rooftop solar, or degraded land siting that reduce the conflict",
+        "Weigh food security and farmer livelihoods as real costs, not footnotes"
+      ],
+      "modelAnswer": "I don't think being renewable automatically wins the argument, because taking productive farmland out of food production has real consequences for local food security and for the farmers' livelihoods, and those costs shouldn't be waved away just because the project is green. I'd want to know first whether degraded or marginal land nearby could host the same solar capacity instead, or whether agrivoltaics, growing certain crops under elevated panels, could let the land do both jobs at once. If neither is feasible and the energy need is genuine, I'd want to see the farmers properly compensated and consulted rather than the project imposed on them because renewable energy sounds unimpeachable."
+    },
+    "commonMistakes": [
+      "Assuming renewable energy projects are automatically justified because they fight climate change",
+      "Ignoring alternatives like agrivoltaics or brownfield siting",
+      "Treating farmer livelihoods as a minor obstacle rather than a real cost"
+    ],
+    "followUps": ["What would make you comfortable overriding the farmers' objection?"]
+  },
+  {
+    "id": "prog-environmental-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: nuclear power",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "energy-policy", "nuclear"],
+    "question": "Some environmentalists now argue nuclear power is essential to decarbonisation, while others still oppose it. Where do you stand?",
+    "lookingFor": "Evidence of engaging with the actual current split within environmental circles, not a stale for-or-against from the 1980s.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real split among environmentalists today, not treat opposition as universal",
+        "Weigh nuclear's low operational carbon footprint against build time, cost overruns, and waste storage",
+        "Give a reasoned personal position with an honest caveat"
+      ],
+      "modelAnswer": "I think the environmental movement genuinely split on this, and I find myself more sympathetic to the pro-nuclear side than I expected to be. Nuclear has a very low operational carbon footprint and provides reliable baseload power that intermittent renewables still struggle to match without heavy storage. What holds me back from full endorsement is the track record on cost and timeline, plants routinely run years late and billions over budget, and long-term waste storage is still not fully solved anywhere at scale. My honest position is that I'd support nuclear as part of the mix, especially newer smaller reactor designs, while being clear-eyed that it's not a silver bullet and the delivery problems are real, not just anti-nuclear propaganda."
+    },
+    "commonMistakes": [
+      "Treating the environmental movement as uniformly anti-nuclear",
+      "Ignoring cost overruns and build-time issues in favour of a purely emissions argument",
+      "Refusing to state a personal position at all"
+    ],
+    "followUps": ["How would you weigh nuclear waste storage risk against the certainty of ongoing fossil fuel emissions?"]
+  },
+  {
+    "id": "prog-environmental-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Precautionary principle",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["policy", "risk", "philosophy-of-science"],
+    "question": "What is the precautionary principle, and can you think of a situation where applying it too strictly might itself cause harm?",
+    "lookingFor": "Correct definition plus willingness to critique the principle rather than treat it as an unqualified good.",
+    "idealAnswer": {
+      "bullets": [
+        "State the principle correctly: when an action risks serious or irreversible harm, lack of full scientific certainty shouldn't be used to postpone protective measures",
+        "Give a genuine example where over-applying it has a real cost, such as delayed approval of a beneficial technology",
+        "Show that the principle requires proportionate judgement, not automatic blanket bans"
+      ],
+      "modelAnswer": "The precautionary principle says that when an action could cause serious or irreversible harm, the absence of full scientific certainty shouldn't be used as a reason to delay protective action. I think it's a sound default, but applied too rigidly it can itself cause harm, like some early resistance to genetically modified crops that could have reduced pesticide use and improved yields in places facing real food insecurity, where the delay had its own human cost. I don't think that means abandoning the principle, but it does mean applying it proportionately, weighing the risk of acting against the risk of not acting, rather than treating any uncertainty as an automatic veto."
+    },
+    "commonMistakes": [
+      "Stating the principle vaguely as 'better safe than sorry' without the irreversibility and certainty framing",
+      "Refusing to acknowledge any downside to strict application",
+      "Confusing the precautionary principle with cost-benefit analysis"
+    ],
+    "followUps": ["How would you decide when uncertainty is high enough to justify delay versus not?"]
+  },
+  {
+    "id": "prog-environmental-science-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Invasive species management",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "conservation", "ecology"],
+    "question": "Culling an invasive species is sometimes the only effective way to save a native ecosystem, but it means deliberately killing large numbers of animals. How do you think about that ethically?",
+    "lookingFor": "Comfort holding an uncomfortable but scientifically grounded position, with acknowledgment of the ethical weight involved.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid glib dismissal of the ethical discomfort just because the science supports culling",
+        "Distinguish between the invasive species as individual animals, which didn't choose to be introduced, and the ecological harm they cause",
+        "Support culling as a last resort after genuinely assessing non-lethal alternatives"
+      ],
+      "modelAnswer": "I don't think it's something to wave away just because the ecological case is strong. The animals didn't choose to be introduced, that was a human decision, so there's real discomfort in making them bear the consequence through culling. That said, if a native ecosystem is being pushed toward collapse or extinction and non-lethal options like sterilisation or relocation have genuinely been assessed and ruled out as impractical at scale, I think culling can be the ethically defensible choice, because inaction also has victims, just less visible ones. I'd want any programme to be as targeted and humane as possible, and I'd be uneasy with anyone who treats the decision as easy."
+    },
+    "commonMistakes": [
+      "Treating the decision as ethically trivial once the ecological justification is established",
+      "Opposing all culling without engaging with the ecological stakes of inaction",
+      "Not distinguishing individual animal welfare from ecosystem-level harm"
+    ],
+    "followUps": ["Would your view change if the invasive species were, say, feral cats rather than an insect or plant?"]
+  },
+  {
+    "id": "prog-environmental-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Environmental impact assessment critique",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["policy", "assessment", "critique"],
+    "question": "Environmental Impact Assessments are meant to catch problems before a project goes ahead. What do you see as their biggest weakness in practice?",
+    "lookingFor": "Real critical engagement with EIA processes, not just a definition of what EIAs are supposed to do.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine structural weakness, such as the assessment often being commissioned and paid for by the project developer",
+        "Note the difficulty of assessing cumulative or long-term effects versus a single project's immediate footprint",
+        "Suggest a concrete fix rather than only criticising"
+      ],
+      "modelAnswer": "The biggest weakness I keep coming back to is who pays for the assessment. In most systems the developer commissions and funds the EIA, which creates an obvious incentive problem even when the consultants doing the work are competent and honest. There's also a structural issue with cumulative impact, an EIA usually looks at one project in isolation, so it can miss the fact that this is the fifth similar development in a watershed and the combined effect is what actually matters. If I were redesigning the system I'd want assessments commissioned through an independent fund that developers pay into but don't directly select the assessor from, plus a requirement to model cumulative regional impact, not just the project's own footprint."
+    },
+    "commonMistakes": [
+      "Reciting the textbook purpose of an EIA without identifying a real weakness",
+      "Naming a weakness with no suggested improvement",
+      "Ignoring the funding conflict-of-interest issue, which is the most commonly cited critique"
+    ],
+    "followUps": ["Who do you think should be responsible for funding an independent assessment process?"]
+  },
+  {
+    "id": "prog-environmental-science-b-016",
+    "category": "Curveball/Personality",
+    "subtopic": "Hypothetical: national park vs land rights",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "indigenous-rights", "conservation"],
+    "question": "A government wants to declare a biodiverse forest a national park, but an indigenous community has lived on and managed that land for generations and would be displaced. How would you approach advising on this?",
+    "lookingFor": "Recognition that conservation and indigenous land rights are not automatically opposed, and reasoning that avoids a paternalistic default.",
+    "idealAnswer": {
+      "bullets": [
+        "Challenge the framing that protection requires removing the people who have often sustained the biodiversity in question",
+        "Raise co-management or community-led conservation as a real alternative, citing that indigenous-managed lands often have strong biodiversity outcomes",
+        "Insist that any final decision requires the community's free, prior and informed consent, not just consultation after the plan is set"
+      ],
+      "modelAnswer": "I'd start by questioning the premise that protecting the forest requires removing the people who've lived there, because in a lot of cases indigenous land management is exactly why the biodiversity is intact in the first place. I'd push for exploring a co-management model, where the community retains rights and involvement and the government provides legal protection and resources against outside extraction, rather than a park model that displaces the very people who've been the de facto stewards. Any path forward has to be built on the community's free, prior and informed consent, not a plan decided elsewhere and then presented to them. I think that's not just more ethical, it's usually also better conservation."
+    },
+    "commonMistakes": [
+      "Assuming displacement is a necessary trade-off for protection status",
+      "Not mentioning free, prior and informed consent or an equivalent standard",
+      "Treating this as purely a legal or bureaucratic question with no ethical weight"
+    ],
+    "followUps": ["What would you do if the community itself were divided on whether to accept park status?"]
+  },
+  {
+    "id": "prog-environmental-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Overconsumption vs overpopulation debate",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "population", "consumption"],
+    "question": "Is population growth or consumption the bigger driver of environmental damage, and does it matter which one we blame?",
+    "lookingFor": "Ability to critique a common but ethically loaded framing with actual data-informed reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Point out that per-capita consumption varies enormously by country, so raw population numbers alone are misleading",
+        "Note the ethically fraught history of overpopulation framing, which has often blamed poorer, higher-birth-rate countries for a problem driven by wealthier, lower-birth-rate ones",
+        "Land on consumption and production patterns, especially in wealthy countries, as the more defensible primary lever"
+      ],
+      "modelAnswer": "I think the framing of 'overpopulation' is doing a lot of quiet ethical work that doesn't hold up well under scrutiny. The countries with the highest population growth generally have very low per-capita emissions, while the environmental damage is disproportionately driven by consumption in wealthier, often lower-birth-rate countries. Historically the overpopulation argument has also had an uncomfortable tendency to point at poorer countries for a problem mostly caused elsewhere. That doesn't mean population is irrelevant, more people does mean more absolute demand eventually, but I think consumption patterns and production systems in high-income countries are the more honest and more actionable place to focus, both because that's where the numbers point and because it avoids blaming the people least responsible."
+    },
+    "commonMistakes": [
+      "Treating population growth as the primary driver without engaging with per-capita consumption data",
+      "Ignoring the ethically loaded history of overpopulation arguments",
+      "Refusing to acknowledge population plays any role at all"
+    ],
+    "followUps": ["Does that mean population policy has no place in environmental strategy at all?"]
+  },
+  {
+    "id": "prog-environmental-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: plastics treaty",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "pollution", "policy"],
+    "question": "Negotiations for a global plastics treaty have been ongoing, with disagreement over whether to cap production or focus on recycling and waste management. Where do you land on that?",
+    "lookingFor": "Genuine awareness of the actual negotiating split, and a reasoned position on upstream versus downstream intervention.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that the core disagreement is between production caps and downstream waste management approaches",
+        "Cite the fact that recycling rates have remained low globally despite decades of downstream focus",
+        "Give a reasoned position, ideally favouring upstream production limits alongside downstream improvements"
+      ],
+      "modelAnswer": "The split I follow is between countries and industry groups that want the treaty to focus on waste management and recycling, and others pushing for actual caps on virgin plastic production. I lean toward believing production limits have to be part of it, because global recycling rates have stayed stubbornly low for decades despite huge investment in downstream systems, which suggests the problem is partly that we're just producing more plastic than any waste system can realistically handle. I don't think that means abandoning recycling and cleanup, those still matter for existing waste, but treating production limits as off the table feels like it's addressing the symptom while the tap stays fully open."
+    },
+    "commonMistakes": [
+      "Only discussing recycling and littering without mentioning the production-cap debate",
+      "Assuming recycling has been broadly successful globally when actual rates remain low",
+      "No clear personal position on the upstream versus downstream question"
+    ],
+    "followUps": ["What's a realistic obstacle to getting major plastic-producing countries to agree to a cap?"]
+  },
+  {
+    "id": "prog-environmental-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "GMOs in conservation",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["biotechnology", "conservation", "ethics"],
+    "question": "Gene editing has been proposed to help species like the American chestnut resist disease, or even to suppress invasive species through gene drives. Do you support using genetic engineering as a conservation tool?",
+    "lookingFor": "Willingness to engage seriously with a genuinely contested technology rather than reflexive support or rejection.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish between different applications, such as disease resistance in a single species versus a self-propagating gene drive that could spread uncontrollably",
+        "Weigh the potential ecological benefit against the risk of irreversible, hard-to-predict downstream effects",
+        "Land on a conditional position based on containment and reversibility rather than a blanket yes or no"
+      ],
+      "modelAnswer": "I don't think this is one question, because engineering disease resistance into a single struggling species like the American chestnut is very different from releasing a self-propagating gene drive meant to suppress an invasive population across an entire ecosystem. The first feels more like an extension of selective breeding aimed at helping one species survive a threat, and I'm broadly supportive of it with proper field trials. Gene drives worry me more, because they're designed to spread and are extremely hard to reverse once released, and a small design flaw or unexpected gene flow to a related species could cause damage on a scale we can't easily undo. My honest position is cautious support for contained, reversible applications, and real hesitation about self-propagating ones until reversal mechanisms are much more proven."
+    },
+    "commonMistakes": [
+      "Treating all genetic engineering applications as ethically identical",
+      "Rejecting the technology outright with no engagement with its potential conservation benefit",
+      "Endorsing gene drives without acknowledging their irreversibility risk"
+    ],
+    "followUps": ["What would a responsible field trial process look like before releasing a gene drive?"]
+  },
+  {
+    "id": "prog-environmental-science-b-020",
+    "category": "Curveball/Personality",
+    "subtopic": "Hypothetical: factory jobs vs river pollution",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "livelihoods", "pollution"],
+    "question": "A struggling town's only major employer is a factory that's polluting the river everyone depends on for fishing and drinking water. Closing it would cost hundreds of jobs overnight. As an environmental advisor to the town council, what do you recommend?",
+    "lookingFor": "Ability to propose a staged, realistic path rather than an idealistic instant shutdown or a dismissal of the pollution.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the binary of immediate closure versus doing nothing, and look for a phased compliance path",
+        "Consider regulatory tools like an enforceable timeline for pollution controls, backed by penalties, rather than voluntary goodwill",
+        "Address the livelihood question directly, for example retraining or transition funding, rather than treating job loss as someone else's problem"
+      ],
+      "modelAnswer": "I wouldn't recommend an immediate shutdown, because hundreds of families losing income overnight is a real and serious harm, not a footnote to the environmental problem. I'd push for a legally binding timeline requiring the factory to install proper treatment infrastructure within a set period, with real penalties if it misses milestones, so the pressure is enforceable rather than just a promise. Alongside that I'd want the town council to pursue transition funding, maybe from state environmental remediation budgets, to support retraining or a temporary bridge for workers if the compliance costs do end up reducing the workforce. Drinking water and fish stocks can't be treated as negotiable, but neither can the town's only source of income, so the answer has to hold both at once rather than sacrificing one for the other."
+    },
+    "commonMistakes": [
+      "Recommending immediate closure with no plan for the workers or transition",
+      "Recommending no action out of sympathy for the jobs, ignoring the water contamination",
+      "Proposing voluntary compliance with no enforcement mechanism"
+    ],
+    "followUps": ["What would you do if the factory simply ignored the compliance deadline?"]
+  },
+  {
+    "id": "prog-environmental-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Biodiversity loss vs climate change priority",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["biodiversity", "climate", "prioritisation"],
+    "question": "If you had to choose where limited global funding should go first, climate change mitigation or halting biodiversity loss, which would you prioritise and why?",
+    "lookingFor": "Recognition that the two crises are deeply linked, plus a reasoned prioritisation rather than treating the question as a false choice to dodge.",
+    "idealAnswer": {
+      "bullets": [
+        "Point out the two crises are mechanistically linked, so framing them as fully separate is somewhat artificial",
+        "Still engage honestly with the forced-choice nature of the question rather than only deflecting",
+        "Give a reasoned prioritisation, acknowledging what's sacrificed by the choice"
+      ],
+      "modelAnswer": "I'll be honest that I find the premise a bit artificial, since climate change is itself one of the biggest drivers of biodiversity loss through habitat shift and ocean warming, so funding one often helps the other. But if I'm forced to actually choose where a marginal dollar goes, I'd lean toward climate mitigation, because a stable climate baseline is what conservation efforts depend on long term, and a lot of well-funded biodiversity projects could still be undone by runaway warming. I say that while being uneasy about it, because biodiversity loss is arguably more immediately irreversible, extinction is forever in a way that a degree of warming, while catastrophic, technically isn't. I don't think it's a comfortable answer, but I'd rather give a real one than dodge the question."
+    },
+    "commonMistakes": [
+      "Only saying 'they're linked' as a way to avoid actually answering the forced-choice question",
+      "Picking one with no acknowledgment of what's sacrificed",
+      "Treating extinction and warming as equivalently reversible"
+    ],
+    "followUps": ["Does your answer change for funding allocated at a national versus a global level?"]
+  },
+  {
+    "id": "prog-environmental-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Circular economy and degrowth debate",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["economics", "sustainability", "current-affairs"],
+    "question": "Some argue a circular economy can decouple growth from environmental harm, while degrowth advocates say continuous economic growth is fundamentally incompatible with planetary limits. What's your take?",
+    "lookingFor": "Familiarity with the actual academic and policy debate, plus a defensible, examined personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly characterise both positions: circular economy assumes decoupling is achievable through better design and material loops, degrowth doubts decoupling can happen fast or fully enough",
+        "Cite the empirical uncertainty, since absolute decoupling at the scale and speed needed has been rare so far",
+        "Give a considered personal position rather than a fence-sitting non-answer"
+      ],
+      "modelAnswer": "The circular economy view is essentially a bet that better design, material reuse, and closed-loop systems can let economic activity keep growing while its environmental footprint shrinks, what economists call absolute decoupling. Degrowth advocates are skeptical that decoupling can happen fast enough or completely enough, and the empirical record so far mostly backs their skepticism, we've seen relative decoupling in some wealthy economies but genuine absolute decoupling at the pace planetary limits require is still rare. My honest position is that I don't think full degrowth is politically realistic in the timeframe we have, but I also don't think circular economy advocates have proven decoupling can happen fast enough on its own, so I'd want to see growth in wealthy economies deliberately capped in carbon-intensive sectors specifically, rather than betting everything on efficiency gains alone."
+    },
+    "commonMistakes": [
+      "Confusing relative decoupling, where footprint per unit of GDP falls, with absolute decoupling, where total footprint falls",
+      "Presenting only one side of the debate as if it were settled fact",
+      "Refusing to state any personal position"
+    ],
+    "followUps": ["What's an example of a sector where relative decoupling has actually happened?"]
+  },
+  {
+    "id": "prog-environmental-science-b-023",
+    "category": "Curveball/Personality",
+    "subtopic": "Hypothetical: climate-displaced community",
+    "program": "Environmental Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "climate-migration", "ethics"],
+    "question": "A low-lying island nation is becoming uninhabitable due to sea level rise, and its people will need to relocate permanently to another country. Whose responsibility is it to accept and support them, and why?",
+    "lookingFor": "Reasoned engagement with climate justice and responsibility, not a vague appeal to 'the international community' with no content.",
+    "idealAnswer": {
+      "bullets": [
+        "Connect historical emissions responsibility to an obligation on high-emitting countries, not a generic 'everyone should help'",
+        "Address the practical and legal gap, since current refugee law doesn't clearly cover climate displacement",
+        "Propose something concrete, such as binding resettlement quotas tied to historical emissions share"
+      ],
+      "modelAnswer": "I think responsibility should track historical emissions fairly directly, the island nation being displaced has typically contributed almost nothing to the warming causing this, while a handful of large industrialised economies account for most of the cumulative emissions driving sea level rise. I'd want to see binding resettlement and support commitments from those high-emitting countries specifically, not a vague appeal to international goodwill, because goodwill hasn't reliably delivered so far. Part of the difficulty is that current refugee law, going back to the 1951 convention, doesn't clearly recognise climate displacement as grounds for asylum, so there's a real legal gap that needs new treaty language, ideally with resettlement quotas proportional to a country's historical emissions share rather than left to case-by-case discretion."
+    },
+    "commonMistakes": [
+      "Answering with only 'the international community should help' with no specific mechanism",
+      "Ignoring the legal gap around climate refugees not being covered by existing refugee conventions",
+      "Not connecting responsibility to historical emissions"
+    ],
+    "followUps": ["How would you handle a country that refuses to accept its share of relocated people?"]
+  },
+  {
+    "id": "prog-environmental-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: AI in conservation",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["technology", "current-affairs", "conservation"],
+    "question": "AI tools are increasingly used for things like camera-trap species identification and satellite deforestation monitoring. Where do you think this technology genuinely helps, and where is it overhyped?",
+    "lookingFor": "Specific, current examples plus a critical eye on limitations, not blanket techno-optimism.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific real application, such as automated species identification from camera-trap images or near-real-time satellite deforestation alerts",
+        "Acknowledge a genuine limitation, like data bias toward well-studied regions or species, or the gap between detection and actual enforcement",
+        "Show a balanced view rather than presenting AI as a solution in itself"
+      ],
+      "modelAnswer": "I think it genuinely helps with scale problems that humans physically can't keep up with, like sorting millions of camera-trap images or flagging deforestation from satellite imagery within days instead of the months manual review used to take. Where I think it's overhyped is the assumption that detection alone solves the problem, a satellite can flag illegal logging in near-real time, but if the country's enforcement agency doesn't have the resources or political will to act on the alert, the technology hasn't actually stopped anything. There's also a real bias issue, since these models are usually trained on data from well-studied, well-funded regions, so they tend to work less reliably in the places, often the Global South, that need the tool most. I'd want to see funding for AI conservation tools paired with funding for the enforcement capacity to actually use them."
+    },
+    "commonMistakes": [
+      "Vague enthusiasm about 'AI helping the environment' with no specific application named",
+      "Ignoring the gap between detection and actual enforcement",
+      "Not mentioning data bias or unequal access to the technology"
+    ],
+    "followUps": ["How would you address the data bias problem in training these models?"]
+  },
+  {
+    "id": "prog-environmental-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Scientific literacy and uncertainty communication",
+    "program": "Environmental Science",
+    "difficulty": "medium",
+    "tags": ["science-communication", "uncertainty", "public-trust"],
+    "question": "Scientists often express findings in terms of probability and confidence intervals, but the public tends to hear 'we don't really know.' How would you communicate genuine scientific uncertainty about, say, a regional climate projection without losing public trust?",
+    "lookingFor": "Understanding that uncertainty is a normal feature of good science, plus a practical approach to communicating it honestly without inviting dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish uncertainty about magnitude or timing from uncertainty about the underlying phenomenon being real",
+        "Use concrete framing, such as a range with a most-likely estimate, rather than a bare probability figure that invites misreading",
+        "Address the trust risk directly, since vague hedging can be exploited to suggest the science itself is shaky"
+      ],
+      "modelAnswer": "I'd be careful to separate what's actually uncertain from what isn't, because the uncertainty in a regional projection is usually about magnitude or exact timing, not about whether warming or sea level rise is happening at all, and conflating those two is exactly how the 'we don't really know' misreading takes hold. In practice I'd present a range with a clearly stated most-likely outcome, something like 'most likely thirty to forty centimetres of rise by this date, with a smaller chance it's higher,' rather than a bare percentage that people either round to a false certainty or dismiss as a guess. I think being upfront that uncertainty is normal in good science, not a weakness, actually builds more durable trust than false precision does, because the latter collapses the moment reality doesn't match the number exactly."
+    },
+    "commonMistakes": [
+      "Treating uncertainty communication as simply a PR problem to soften rather than a substantive framing choice",
+      "Presenting projections with false precision to sound more confident",
+      "Not distinguishing uncertainty in magnitude from uncertainty in the core phenomenon"
+    ],
+    "followUps": ["How would you respond to someone who cites scientific uncertainty as a reason to delay any climate policy at all?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-microbiology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Antibiotic resistance mechanisms",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["antibiotic-resistance", "genetics", "clinical"],
+    "question": "Can you explain two different mechanisms by which bacteria become resistant to antibiotics?",
+    "lookingFor": "Accurate mechanistic understanding beyond the vocabulary word 'resistance', showing the applicant knows how resistance actually arises at the molecular level.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish target modification from enzymatic drug inactivation (or efflux, or reduced permeability)",
+        "Give a concrete example of each, ideally with a named organism or drug class",
+        "Show awareness that resistance can be intrinsic or acquired, and spread horizontally"
+      ],
+      "modelAnswer": "One mechanism is enzymatic inactivation, like beta-lactamases that chemically break open the beta-lactam ring in penicillins before the drug ever reaches its target. Another is target site modification, which is how MRSA works, altering the penicillin-binding protein so the antibiotic can no longer bind effectively even though the pathway itself still functions. What I find striking is that these mechanisms rarely arise fresh each time, they usually spread between bacteria on plasmids, which is part of why resistance moves so much faster than mutation alone would predict. That horizontal spread is what makes stewardship as important as drug discovery."
+    },
+    "commonMistakes": [
+      "Saying 'the bacteria adapt' with no mechanism",
+      "Confusing antibiotic resistance with antibiotic tolerance or persistence",
+      "Naming only one mechanism when asked for two"
+    ],
+    "followUps": ["How does horizontal gene transfer make this spread faster than mutation alone?"]
+  },
+  {
+    "id": "prog-microbiology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Gram stain and cell wall structure",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["cell-biology", "staining", "fundamentals"],
+    "question": "Why does the Gram stain separate bacteria into two groups, and what does that difference actually reflect biologically?",
+    "lookingFor": "Understanding that the stain result is a proxy for a real structural difference in the cell envelope, not an arbitrary lab trick.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the peptidoglycan layer thickness difference between Gram-positive and Gram-negative walls",
+        "Describe why crystal violet is retained in one and washed out in the other",
+        "Connect the structural difference to something clinically relevant, like outer membrane and antibiotic penetration"
+      ],
+      "modelAnswer": "The stain works because Gram-positive bacteria have a thick peptidoglycan layer that traps the crystal violet-iodine complex even after the decolourising step, so they stay purple. Gram-negative bacteria have a much thinner peptidoglycan layer sandwiched behind an outer membrane, so the decolouriser strips the dye out and they only pick up the pink counterstain. What made this click for me is that it is not just a colour code, the outer membrane in Gram-negatives is also why some antibiotics that work beautifully on Gram-positives cannot get through, which is a direct clinical consequence of a structural detail."
+    },
+    "commonMistakes": [
+      "Memorising 'purple means Gram-positive' with no mechanism",
+      "Forgetting the outer membrane exists in Gram-negative bacteria",
+      "Treating the stain result as a fixed, unchangeable identity of the organism"
+    ],
+    "followUps": ["Why do some organisms, like Mycobacterium, not stain reliably with Gram stain at all?"]
+  },
+  {
+    "id": "prog-microbiology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Horizontal gene transfer",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["genetics", "evolution", "antibiotic-resistance"],
+    "question": "What are the main routes by which bacteria share genetic material with each other, and why does this matter for how we think about bacterial evolution?",
+    "lookingFor": "Command of transformation, transduction and conjugation, plus the conceptual leap that bacterial evolution is not purely vertical.",
+    "idealAnswer": {
+      "bullets": [
+        "Name and briefly describe transformation, transduction and conjugation",
+        "Explain that this makes bacterial evolution partly a network rather than a strict tree",
+        "Link it to a real consequence, such as rapid spread of resistance genes across species"
+      ],
+      "modelAnswer": "There are three main routes: transformation, where a cell takes up naked DNA from its environment, transduction, where a bacteriophage accidentally packages host DNA and delivers it to the next cell it infects, and conjugation, where a plasmid moves directly through a pilus between two cells in contact. What matters conceptually is that this breaks the usual assumption of evolution being a strict tree passed only from parent to offspring, bacteria can pick up a useful gene from a completely unrelated species in one step. That is exactly how resistance genes hop between species so fast, and it is part of why I find bacterial evolution more interesting than the textbook Darwinian picture most people learn first."
+    },
+    "commonMistakes": [
+      "Confusing transduction with transformation",
+      "Describing conjugation without mentioning the plasmid or pilus",
+      "Missing the bigger evolutionary implication and just listing terms"
+    ],
+    "followUps": ["Which of these three routes do you think poses the biggest public health risk, and why?"]
+  },
+  {
+    "id": "prog-microbiology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Are viruses alive?",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["virology", "conceptual", "definitions"],
+    "question": "Would you say viruses are alive? Walk me through your reasoning.",
+    "lookingFor": "A reasoned position that engages with the actual criteria for life, rather than a one-word answer.",
+    "idealAnswer": {
+      "bullets": [
+        "State the standard criteria for life (metabolism, reproduction, response to stimuli, homeostasis) and check viruses against them",
+        "Acknowledge the genuine ambiguity rather than forcing a clean yes or no",
+        "Reach a defensible position and explain why it matters, not just that it is debatable"
+      ],
+      "modelAnswer": "By the usual checklist, things like independent metabolism and reproduction without a host, viruses fail on both counts, they cannot replicate or generate energy outside a cell they have hijacked. But they do evolve, they carry genetic information, and some have startlingly sophisticated machinery for recognising and entering specific hosts, so calling them simply inert chemistry feels wrong too. My own position is that viruses sit at the boundary and that the question itself is more useful than the answer, because it forces you to interrogate what we actually mean by life rather than just reciting a checklist. I think that boundary case is part of why virology attracts people who like conceptual as well as experimental problems."
+    },
+    "commonMistakes": [
+      "Giving a flat yes or no with no criteria discussed",
+      "Confusing viruses with viroids or prions",
+      "Treating this as a trick question with no real answer worth reasoning through"
+    ],
+    "followUps": ["Does your answer change for giant viruses like Mimivirus, which have far more genes than typical viruses?"]
+  },
+  {
+    "id": "prog-microbiology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "CRISPR's bacterial origin",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["crispr", "molecular-biology", "immunity"],
+    "question": "CRISPR-Cas9 is now famous as a gene-editing tool, but what was it originally doing inside bacteria?",
+    "lookingFor": "Understanding that CRISPR is a natural bacterial immune system before it became a lab tool, showing depth beyond pop-science framing.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain CRISPR as an adaptive immune system that stores fragments of past phage DNA",
+        "Describe how Cas proteins use that stored sequence to recognise and cut matching invading DNA",
+        "Note the conceptual leap from natural bacterial defence to a programmable editing tool"
+      ],
+      "modelAnswer": "CRISPR is originally a bacterial immune system against bacteriophages. When a bacterium survives an infection, it clips a small piece of the phage's DNA and stores it in its own genome as a spacer, a kind of genetic mugshot, so that Cas proteins can recognise and destroy that same sequence if the phage attacks again. What is remarkable is that this is adaptive immunity in an organism with no immune cells at all, it is entirely molecular. The leap to gene editing came from realising that if you swap the stored spacer sequence for one you choose, you can direct Cas9 to cut almost any DNA sequence you want, which is why I find it such a satisfying example of basic microbiology turning into a transformative technology."
+    },
+    "commonMistakes": [
+      "Jumping straight to gene-editing applications without explaining the natural function",
+      "Confusing CRISPR arrays with the Cas enzymes themselves",
+      "Implying bacteria have an immune system like humans do"
+    ],
+    "followUps": ["What ethical questions does the human application of this technology raise for you?"]
+  },
+  {
+    "id": "prog-microbiology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Livestock antibiotic use dilemma",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["ethics", "antibiotic-resistance", "public-health"],
+    "question": "A farmer you know routinely adds antibiotics to healthy livestock feed to boost growth and prevent disease. If you had the chance to talk to him about it, what would you say?",
+    "lookingFor": "Structured ethical reasoning that balances a real economic interest against the public-health cost of resistance, not a lecture.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the farmer's genuine incentive rather than dismissing it as ignorance",
+        "Explain the mechanism connecting prophylactic use to resistance spreading beyond the farm",
+        "Land on a constructive position, such as targeted treatment or alternatives, rather than a blanket condemnation"
+      ],
+      "modelAnswer": "I would start by acknowledging that he is not doing this out of carelessness, prophylactic antibiotics genuinely reduce losses and are legal in a lot of places, so his incentive is real. But I would want to explain the mechanism, every dose that is not treating an actual infection is still selecting for resistant bacteria, and those bacteria do not stay on the farm, they move through waste, water and food into the wider environment and eventually into human pathogens. I would not expect him to just stop overnight, so I would rather talk about targeted treatment of sick animals only, better sanitation to reduce disease pressure in the first place, and whether vaccines could replace some of the prophylactic use. It is a case where the individually rational choice and the collectively rational choice pull in opposite directions, and I think that tension is worth naming honestly rather than moralising at him."
+    },
+    "commonMistakes": [
+      "Treating the farmer as simply wrong with no acknowledgment of his incentives",
+      "Ignoring the mechanism connecting farm use to human antibiotic resistance",
+      "Offering no practical alternative, just criticism"
+    ],
+    "followUps": ["Should this be a matter of individual choice or government regulation? Why?"]
+  },
+  {
+    "id": "prog-microbiology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Gut microbiome and dysbiosis",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["microbiome", "health", "ecology"],
+    "question": "What do we actually mean when we say someone's gut microbiome is 'unhealthy' or in dysbiosis?",
+    "lookingFor": "Nuanced understanding that dysbiosis is about ecological balance and function, not the presence of 'bad' bacteria.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the simple 'good bacteria vs bad bacteria' framing in favour of diversity and balance",
+        "Mention functional consequences, such as reduced short-chain fatty acid production or barrier integrity",
+        "Show awareness that causation is still debated, dysbiosis can be cause or consequence of disease"
+      ],
+      "modelAnswer": "It is tempting to think of it as good bacteria being outnumbered by bad ones, but the more accurate picture is a loss of overall diversity and balance in an ecosystem that normally does real functional work, breaking down fibre into short-chain fatty acids, training the immune system, and maintaining gut barrier integrity. Dysbiosis usually means that ecosystem has shifted, often with a drop in diversity and an overgrowth of a few opportunistic species, and that shift is associated with things like inflammatory bowel disease. What I think is genuinely underappreciated is that we still do not fully know whether dysbiosis usually causes the disease or is a downstream effect of it, and I find that unresolved cause-and-effect question one of the more interesting open problems in the field."
+    },
+    "commonMistakes": [
+      "Reducing it to a simple good bacteria versus bad bacteria story",
+      "Ignoring the functional role of the microbiome, only naming species",
+      "Overstating current scientific certainty about causation"
+    ],
+    "followUps": ["How would you design a study to test whether dysbiosis causes a disease rather than just correlating with it?"]
+  },
+  {
+    "id": "prog-microbiology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Vaccine hesitancy conversation",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["ethics", "vaccines", "communication"],
+    "question": "A close family member tells you they are refusing a vaccine because they read it 'overwhelms the immune system'. As someone who wants to study microbiology, how would you respond?",
+    "lookingFor": "Ability to combine accurate scientific correction with respectful, non-dismissive communication, showing maturity rather than just being 'right'.",
+    "idealAnswer": {
+      "bullets": [
+        "Correct the specific misconception with a concrete comparison, without being condescending",
+        "Acknowledge the underlying worry as reasonable even if the conclusion is wrong",
+        "Prioritise the relationship and their autonomy over winning the argument"
+      ],
+      "modelAnswer": "I would not start by telling them they are wrong, I would ask what worries them specifically, because 'overwhelms the immune system' usually comes from a real fear about safety rather than not caring about health. Then I would gently point out that the immune system deals with thousands of antigens every single day just from normal exposure, and the handful in a vaccine are a tiny fraction of that load, so the concern does not match how the immune system actually scales. I would rather leave them with one clear, honest fact and the offer to talk more than win the conversation in one go, because trust matters more than being right in the moment, especially with family. I think that patience is actually a scientific skill too, not just a personal one."
+    },
+    "commonMistakes": [
+      "Being dismissive or condescending about the family member's concern",
+      "Giving no correct scientific information at all, just being 'nice'",
+      "Assuming one conversation will fully change their mind"
+    ],
+    "followUps": ["What would you do if, after this conversation, they still refused?"]
+  },
+  {
+    "id": "prog-microbiology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Gain-of-function research debate",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["ethics", "biosafety", "current-debate"],
+    "question": "There's ongoing debate about gain-of-function research, deliberately making pathogens more transmissible or virulent to study them. What's your view?",
+    "lookingFor": "Awareness of the actual debate's substance, ability to weigh scientific benefit against biosafety risk, and a defensible personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what gain-of-function research is and why scientists argue it has value, such as pandemic preparedness",
+        "Articulate the genuine risk side, accidental release or dual-use misuse",
+        "Reach a considered position, ideally involving proportionate oversight rather than a blanket yes or no"
+      ],
+      "modelAnswer": "Gain-of-function research deliberately alters pathogens to be more transmissible or virulent, and the argument for it is real, understanding how a virus might evolve to jump species or spread more easily can genuinely help us prepare vaccines and surveillance ahead of a pandemic rather than after one starts. But the risk side is just as real, this research has to happen in high-containment labs, and even a rare accidental release of an engineered, more dangerous pathogen could be catastrophic in a way that is very hard to reverse. My own view is that I do not think it should be banned outright, because the knowledge gained is genuinely valuable, but I think it needs a level of independent biosafety oversight and transparency that goes beyond what any single lab or country should decide alone. It is one of the clearest cases in science where the scale of a rare downside has to weigh more heavily than usual cost-benefit thinking would suggest."
+    },
+    "commonMistakes": [
+      "Giving a flat 'ban it' or 'it's fine' answer with no reasoning",
+      "Not knowing what gain-of-function research actually involves",
+      "Ignoring the biosafety and dual-use risk side entirely"
+    ],
+    "followUps": ["Who do you think should have authority to approve this kind of research, a single institution or an international body?"]
+  },
+  {
+    "id": "prog-microbiology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Biofilms and clinical relevance",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["biofilms", "clinical", "antibiotic-resistance"],
+    "question": "Why are biofilms such a problem in clinical settings, like on catheters or implants?",
+    "lookingFor": "Understanding of biofilm structure and why it confers protection beyond simple genetic resistance.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe biofilms as bacteria embedded in a self-produced extracellular matrix",
+        "Explain why this physically and physiologically protects them from antibiotics and immune cells",
+        "Give a concrete clinical example, catheter-associated infection or chronic wound"
+      ],
+      "modelAnswer": "A biofilm is a community of bacteria that attaches to a surface and produces its own extracellular matrix, essentially a self-built shelter of sugars and proteins around itself. That matrix physically blocks a lot of antibiotics from penetrating, and bacteria deep inside it are often in a slow-growing, almost dormant state that most antibiotics, which target actively dividing cells, are not very good at killing. That is exactly why something like a catheter-associated infection can be so stubborn, you are not fighting individual free-floating bacteria, you are fighting a fortified community, and it often needs mechanical removal of the device rather than antibiotics alone to actually resolve. I find it a good example of how a purely genetic view of resistance misses half the picture."
+    },
+    "commonMistakes": [
+      "Describing biofilm resistance as purely genetic, missing the matrix and dormancy angle",
+      "Not connecting it to a real clinical scenario",
+      "Confusing biofilms with simple bacterial colonies on agar"
+    ],
+    "followUps": ["What strategies are being explored to disrupt biofilms rather than just kill the bacteria within them?"]
+  },
+  {
+    "id": "prog-microbiology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of Koch's postulates",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["history-of-science", "methodology", "pathogenesis"],
+    "question": "Koch's postulates are still taught as the classic way to prove a microbe causes a disease. Where do they break down?",
+    "lookingFor": "Ability to critique a foundational framework, not just recite it, showing scientific maturity.",
+    "idealAnswer": {
+      "bullets": [
+        "State the postulates briefly before critiquing them",
+        "Give at least one genuine case where they fail, such as unculturable organisms, asymptomatic carriers, or viruses",
+        "Show awareness of how modern microbiology has adapted the framework, for example molecular Koch's postulates"
+      ],
+      "modelAnswer": "Koch's postulates say the microbe must be found in every case of the disease, isolated in pure culture, cause the disease again when introduced into a healthy host, and then be re-isolated from that host. The problem is that plenty of important pathogens simply cannot be grown in pure culture, Mycobacterium leprae is a classic example, so the second postulate fails immediately even though we are confident it causes leprosy. Asymptomatic carriers break the first postulate, because the microbe can be present without disease, and viruses need a living host cell rather than a culture plate at all, which the original framework never anticipated. Modern microbiology has largely moved to genetic evidence, like Falkow's molecular Koch's postulates, which focus on specific virulence genes rather than requiring the whole classical procedure, and I think that shift says something honest about how science should treat its own founding rules as provisional."
+    },
+    "commonMistakes": [
+      "Reciting the postulates without identifying any actual limitation",
+      "Not knowing any real example where they fail",
+      "Treating the postulates as still fully valid and unquestioned"
+    ],
+    "followUps": ["How would you try to establish causation for a disease where the pathogen cannot be cultured at all?"]
+  },
+  {
+    "id": "prog-microbiology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "mRNA vaccine mechanism",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["immunology", "vaccines", "current-development"],
+    "question": "Can you explain how an mRNA vaccine actually works, and why it was such a fast development compared to traditional vaccines?",
+    "lookingFor": "Correct mechanistic understanding plus awareness of what specifically made the platform faster to deploy.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the mechanism, lipid nanoparticle delivering mRNA that host cells translate into the target antigen",
+        "Explain that the immune system then responds to that antigen as if from an infection",
+        "Explain the speed advantage, no need to grow the actual pathogen or antigen protein in the lab"
+      ],
+      "modelAnswer": "An mRNA vaccine delivers a piece of messenger RNA, wrapped in a lipid nanoparticle so it survives long enough to enter cells, that codes for a specific viral protein, the spike protein for COVID for example. The person's own cells read that mRNA and briefly manufacture the protein themselves, which the immune system then recognises as foreign and mounts a response against, building memory without ever encountering the actual virus. The speed advantage comes from the fact that once you know a pathogen's genetic sequence, you can design the mRNA almost immediately, you do not need to grow the virus itself or purify a protein antigen in bulk the way older vaccine platforms require, which is why COVID vaccines moved from sequence to clinical trials in a matter of weeks rather than years."
+    },
+    "commonMistakes": [
+      "Claiming mRNA vaccines alter a person's DNA",
+      "Vague description with no mention of the lipid nanoparticle delivery",
+      "Not explaining why the platform is faster than traditional approaches"
+    ],
+    "followUps": ["What are the main storage and stability challenges with mRNA vaccines, and why do they exist?"]
+  },
+  {
+    "id": "prog-microbiology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Phage therapy as an antibiotic alternative",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["current-development", "phage-therapy", "antibiotic-resistance"],
+    "question": "There's renewed interest in phage therapy, using viruses to kill bacteria, as antibiotic resistance grows. Why do you think it hasn't become mainstream yet?",
+    "lookingFor": "Awareness of a genuine current development plus realistic understanding of its practical obstacles, not just enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic idea, bacteriophages that specifically infect and lyse target bacteria",
+        "Identify at least one real obstacle, such as narrow host specificity, regulatory pathway, or bacterial resistance to phages too",
+        "Show balanced interest rather than uncritical hype"
+      ],
+      "modelAnswer": "Phage therapy uses bacteriophages, viruses that infect only bacteria, to target and destroy a specific pathogen, and it is appealing partly because that specificity means it does not wipe out someone's whole microbiome the way broad-spectrum antibiotics can. The main obstacle I keep coming back to is that same specificity works against it clinically, a phage that kills one strain of Pseudomonas might do nothing against a slightly different strain, so treatment often needs to be matched to the exact bacterial isolate, which does not fit neatly into how drug regulation and mass manufacturing normally work. There is also the fact that bacteria can evolve resistance to phages too, so it is not a permanent fix, just a different arms race. I think it will end up as a genuinely useful tool for specific, resistant infections rather than a wholesale replacement for antibiotics, and that combination approach is what I find most realistic."
+    },
+    "commonMistakes": [
+      "Presenting phage therapy as a simple, already-solved replacement for antibiotics",
+      "Not knowing any real obstacle to widespread adoption",
+      "Confusing bacteriophages with antiviral drugs"
+    ],
+    "followUps": ["How might phage therapy and antibiotics be used together rather than as alternatives?"]
+  },
+  {
+    "id": "prog-microbiology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Outbreak investigation hypothetical",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "epidemiology", "diagnostics"],
+    "question": "Imagine twenty students in your dorm come down with sudden vomiting and diarrhoea within twelve hours of each other. As someone with a microbiology background, what would you actually want to know first?",
+    "lookingFor": "Logical, staged investigative thinking, source, timeline, and transmission route, rather than jumping to a diagnosis.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise establishing a common exposure and timeline before guessing a pathogen",
+        "Distinguish between hypotheses, food-borne toxin versus person-to-person viral spread, based on the short incubation window",
+        "Mention the practical next step, sample collection and notifying appropriate health authorities"
+      ],
+      "modelAnswer": "The very short incubation window, symptoms within twelve hours, is actually a big clue on its own, because that timeframe points more toward a pre-formed toxin like Staphylococcus aureus or Bacillus cereus than toward most viral gastroenteritis, which usually takes a bit longer to show symptoms. So the first thing I would want is a shared exposure history, did everyone eat at the same dining hall meal, and if so which specific dish, because food-borne toxin outbreaks usually cluster tightly around one shared food item rather than spreading gradually person to person. I would also want to know if new cases keep appearing over the following days, since that would suggest ongoing person-to-person spread, like norovirus, rather than a single contaminated meal. Practically I know this is beyond what I could diagnose myself, so the real next step would be reporting it to student health services quickly so they can collect stool samples and food samples before the evidence disappears, because timing matters enormously in outbreak investigation."
+    },
+    "commonMistakes": [
+      "Jumping straight to naming a specific pathogen with no supporting reasoning",
+      "Ignoring the incubation period as a diagnostic clue",
+      "Not mentioning the need to involve actual health authorities rather than self-diagnosing"
+    ],
+    "followUps": ["If new cases kept appearing over the next week, how would that change your hypothesis?"]
+  },
+  {
+    "id": "prog-microbiology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use research publication dilemma",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["ethics", "biosafety", "dual-use"],
+    "question": "Suppose you were part of a research team that discovered a way to make a common pathogen significantly more transmissible, purely as a side effect of legitimate research. Would you support publishing the full method?",
+    "lookingFor": "Structured reasoning about dual-use research of concern, weighing open science against misuse risk, without an easy default answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the genuine tension between scientific openness and the risk of misuse",
+        "Propose a middle path, such as restricted-access publication or redacted methodology, rather than a binary choice",
+        "Show awareness that this is an actual, ongoing debate in the field, not a hypothetical invented for the interview"
+      ],
+      "modelAnswer": "My instinct as a scientist is that open publication is how the field checks itself and builds on results, so full transparency is the default I would want to defend. But this specific case, a method that increases transmissibility of a pathogen, is exactly the kind of dual-use research of concern that the field has real, established review processes for, because the same information that helps other scientists understand transmission could also help someone cause harm deliberately. I would not want to make that call alone, I would want it to go through an institutional biosafety review, and I think a reasonable middle ground is publishing the findings and their significance while restricting the exact technical method to vetted researchers, similar to how the H5N1 transmissibility studies were eventually handled. It is uncomfortable because it goes against the instinct that science should be fully open, but I think some findings carry enough asymmetric risk that access needs to be earned rather than automatic."
+    },
+    "commonMistakes": [
+      "Defaulting to 'publish everything, science should be open' with no engagement with the risk",
+      "Defaulting to 'never publish' with no engagement with scientific value",
+      "Not knowing this is a real, documented debate in the field, e.g. the H5N1 controversy"
+    ],
+    "followUps": ["Who should have the authority to decide, the researchers themselves, the journal, or a government body?"]
+  },
+  {
+    "id": "prog-microbiology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Industrial fermentation microbiology",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["industrial", "fermentation", "applied"],
+    "question": "Beyond beer and bread, where else is microbial fermentation used industrially, and why choose microbes over chemical synthesis?",
+    "lookingFor": "Awareness of applied microbiology beyond food examples, and a real understanding of why biological production can beat chemical routes.",
+    "idealAnswer": {
+      "bullets": [
+        "Give at least one non-food example, pharmaceuticals, biofuels, or industrial enzymes",
+        "Explain a genuine advantage of microbial production, specificity, mild reaction conditions, or renewable feedstocks",
+        "Show awareness of a real trade-off or limitation too"
+      ],
+      "modelAnswer": "Insulin is a good example, most of it today is produced by genetically engineered E. coli or yeast fermenting in large bioreactors rather than extracted from animal pancreases, which used to be the norm. The advantage is that microbes can build complex, precisely folded molecules at mild temperatures and in water, where the equivalent chemical synthesis route would often need harsh reagents, high temperatures, and produce far more waste byproducts. The trade-off is that fermentation processes can be slower to scale and more sensitive to contamination than a controlled chemical reactor, so it is not automatically the cheaper option, it depends heavily on the molecule you are trying to make. I find it a nice example of how choosing biology over chemistry is really an economics and precision decision, not just an environmental one."
+    },
+    "commonMistakes": [
+      "Only mentioning food and drink examples when asked for 'beyond' those",
+      "Vague claims about microbes being 'more natural' with no real mechanism",
+      "Not acknowledging any downside to microbial production"
+    ],
+    "followUps": ["What kind of contamination risks does a large-scale bioreactor need to guard against?"]
+  },
+  {
+    "id": "prog-microbiology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Sterilization limits",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["sterilization", "lab-technique", "fundamentals"],
+    "question": "An autoclave kills essentially all microbial life through heat and pressure. Can you think of anything that might survive it, or any situation where autoclaving alone isn't enough?",
+    "lookingFor": "Depth beyond 'autoclaving kills everything', showing awareness of prions and practical sterilization limitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic principle of autoclaving, saturated steam under pressure denaturing proteins",
+        "Identify prions as a genuine exception, since they are misfolded proteins, not organisms with nucleic acid",
+        "Mention a practical limitation, like inadequate contact time, trapped air pockets, or biofilm-protected spores"
+      ],
+      "modelAnswer": "An autoclave works by using steam under pressure to reach temperatures well above boiling, usually around 121 degrees Celsius, which denatures proteins and destroys nucleic acids reliably enough to kill bacteria, viruses, and even resistant endospores given enough exposure time. Prions are the genuine exception that surprised me when I first learned it, they are misfolded proteins with no genetic material at all, and they are so structurally stable that standard autoclave cycles do not reliably destroy their infectivity, which is why prion-contaminated instruments need extended cycles or chemical treatment instead. Practically, autoclaving can also fail simply from poor technique, if items are packed too tightly or there is a trapped air pocket, the steam never actually reaches every surface at the right temperature, so 'we autoclaved it' is not automatically the same as 'it is sterile'. That gap between the theoretical method and real-world execution is something I think about a lot in lab protocols generally."
+    },
+    "commonMistakes": [
+      "Claiming autoclaving kills absolutely everything with no exceptions",
+      "Not knowing prions are protein-based and resistant to standard sterilization",
+      "Ignoring practical failure modes like air pockets or overpacking"
+    ],
+    "followUps": ["How is prion-contaminated equipment actually decontaminated, if autoclaving alone isn't reliable?"]
+  },
+  {
+    "id": "prog-microbiology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "PCR versus culture diagnostics",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["diagnostics", "molecular-biology", "clinical"],
+    "question": "For diagnosing an infection, when would you choose PCR testing over traditional culture, and when might culture still be the better choice?",
+    "lookingFor": "Understanding the genuine trade-offs, speed and sensitivity versus information about viability and antibiotic susceptibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain PCR's advantage, speed and sensitivity, detecting even small amounts of genetic material",
+        "Explain culture's advantage, it shows a live, viable organism and allows susceptibility testing",
+        "Give a concrete scenario for each choice"
+      ],
+      "modelAnswer": "PCR is the better choice when speed matters or the organism is slow-growing or hard to culture, TB is a classic example, since PCR can give a result in hours rather than the weeks a culture might take, and it can detect fragments of genetic material even from a small or partially treated sample. But culture is often still better when you need to know the organism is actually alive and functionally active, and critically, when you need antibiotic susceptibility testing, because PCR can tell you a resistance gene is present but culture is what actually shows you whether that translates into the organism surviving a specific drug at a specific concentration. So in practice, for something like a suspected bloodstream infection, I would want both, PCR for a fast initial answer and culture running in parallel to guide the actual antibiotic choice with real susceptibility data."
+    },
+    "commonMistakes": [
+      "Treating PCR as strictly 'better' with no acknowledgment of what culture uniquely provides",
+      "Not mentioning antibiotic susceptibility testing as a reason to still culture",
+      "Vague answer with no concrete clinical scenario"
+    ],
+    "followUps": ["Can a PCR test give a positive result even after the infection is no longer active? Why might that happen?"]
+  },
+  {
+    "id": "prog-microbiology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Environmental spread of resistance genes",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["antibiotic-resistance", "environment", "public-health"],
+    "question": "Antibiotic resistance genes have been found in rivers and wastewater far from any hospital. How do you think they get there, and why does that matter?",
+    "lookingFor": "Understanding of the environmental dimension of AMR, connecting human, animal, and ecological reservoirs.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify plausible routes, hospital and farm wastewater, human excretion of antibiotics and resistant bacteria, agricultural runoff",
+        "Explain why environmental reservoirs matter, they act as mixing grounds where genes can transfer between species",
+        "Connect it to the 'One Health' framing that AMR isn't contained by hospital walls"
+      ],
+      "modelAnswer": "A lot of it comes down to excretion, when someone takes an antibiotic, a significant portion passes through the body largely unmetabolised and ends up in wastewater, along with any resistant bacteria already living in their gut, and treatment plants are not designed to specifically remove either of those. Add in agricultural runoff from farms using antibiotics in livestock, and rivers become a genuinely mixed reservoir where bacteria from completely different sources and species end up in close contact. That matters because those environments are exactly where horizontal gene transfer can happen between species that would never normally meet, so a resistance gene that evolved in an environmental bacterium could end up in a human pathogen through that shared water. It is one of the clearest arguments for what is called a One Health approach, treating human, animal, and environmental health as one interconnected system rather than separate problems, because resistance clearly does not respect those boundaries."
+    },
+    "commonMistakes": [
+      "Assuming resistance genes only spread through hospitals or clinical settings",
+      "Not explaining a plausible mechanism for how genes reach the environment",
+      "Missing the connection to horizontal gene transfer between environmental and clinical bacteria"
+    ],
+    "followUps": ["What would you want a wastewater treatment plant to do differently to reduce this risk?"]
+  },
+  {
+    "id": "prog-microbiology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Fecal transplant donor consent",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["ethics", "microbiome", "research-consent"],
+    "question": "Fecal microbiota transplants use stool from a healthy screened donor to treat patients with severe gut infections. What ethical considerations do you think go into recruiting and screening a donor?",
+    "lookingFor": "Awareness that this unusual sample type raises real consent, privacy, and safety questions, and ability to reason through them.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the need for rigorous health screening given transmission risk of undetected pathogens",
+        "Discuss donor privacy and dignity given the unusually personal nature of the sample",
+        "Consider ongoing consent, since a donor's microbiome or health status can change over time"
+      ],
+      "modelAnswer": "The most obvious concern is safety, a donor has to be screened extremely thoroughly, not just for known pathogens but ideally for things we do not yet fully understand the transmission risk of, because you are essentially transplanting an entire microbial ecosystem into someone whose gut defences may already be compromised. There is also a privacy and dignity dimension that I think gets less attention, stool donation is unusually personal and can carry a stigma, so donors need clear, respectful communication about how the material will be used and stored, not just a clinical consent form. I would also want screening to be treated as ongoing rather than one-time, since a donor's health and microbiome composition can change, so a sample that was safe six months ago is not automatically safe today. It strikes me as a good example of how microbiology research ethics has to think about the body in ways that feel unusually intimate compared to, say, a blood draw."
+    },
+    "commonMistakes": [
+      "Only discussing medical screening and ignoring privacy or dignity concerns",
+      "Assuming one-time screening is sufficient for an ongoing donor relationship",
+      "Treating this as ethically identical to blood or organ donation with no distinct considerations"
+    ],
+    "followUps": ["Should donors be compensated for repeated donations? What risk does that introduce?"]
+  },
+  {
+    "id": "prog-microbiology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Livestock antibiotics and public health policy",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["current-debate", "public-health", "policy"],
+    "question": "Several countries have banned routine antibiotic use for growth promotion in livestock, while others still allow it. Where do you stand on this policy debate?",
+    "lookingFor": "Awareness of the actual current policy landscape, and a position that weighs food production and economics against resistance risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that this is a real, uneven global policy split, not a hypothetical",
+        "Weigh the economic and food-security argument against the resistance and public-health argument",
+        "Reach a defensible position, ideally with nuance about enforcement and global coordination"
+      ],
+      "modelAnswer": "This is genuinely a live policy split, the EU banned antibiotic growth promoters back in 2006, while use for that purpose is still legal in a lot of other countries, and that inconsistency itself is part of the problem, because resistant bacteria do not respect national borders. I understand the economic argument, growth-promoting antibiotics genuinely increase yield and lower costs, and in places where food security is a tighter constraint than in wealthier countries, banning them outright without support is a real burden on farmers. But given how directly this practice is linked to environmental and eventually human resistance, I lean toward supporting a ban, paired with genuine investment in alternatives like improved sanitation and vaccines so farmers are not just left worse off. I think the honest answer is that a ban in one country without global coordination only partly solves the problem, which is uncomfortable but true."
+    },
+    "commonMistakes": [
+      "Not knowing this is an actual, documented policy split between countries",
+      "Ignoring the legitimate economic argument for use",
+      "Taking a strong position with no engagement with enforcement or global coordination challenges"
+    ],
+    "followUps": ["Should wealthier countries subsidize alternatives for farmers in countries that can't easily absorb the cost of a ban?"]
+  },
+  {
+    "id": "prog-microbiology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Pan-resistant isolate hypothetical",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "antibiotic-resistance", "lab-safety"],
+    "question": "Imagine you're working in a diagnostic lab and a patient sample tests resistant to every antibiotic on the panel you have. What would you actually do, step by step?",
+    "lookingFor": "Calm, procedural thinking under a serious scenario, showing awareness of both clinical escalation and biosafety protocol.",
+    "idealAnswer": {
+      "bullets": [
+        "Rule out technical error first, repeat testing and confirm with a reference lab before treating it as real",
+        "Describe appropriate escalation, alerting clinicians and infection control, not just filing a routine report",
+        "Show awareness of biosafety handling given the seriousness of a pan-resistant organism"
+      ],
+      "modelAnswer": "My first instinct would not be to panic, it would be to double check the result, because a pan-resistant result is unusual enough that a testing error or contamination is genuinely more likely than a truly untreatable organism, so I would want to repeat the susceptibility testing and ideally confirm it against a reference laboratory before treating it as certain. If it held up, I would escalate it immediately and directly to the treating clinician and the hospital's infection control team, not just log it as a routine result, because the implications for both the patient's treatment options and for isolating them to prevent spread are urgent. I would also want to make sure the sample itself was being handled with appropriately heightened biosafety precautions given how serious a truly pan-resistant organism would be if it spread within the facility. It is the kind of scenario where the procedural discipline of double-checking before escalating matters just as much as the microbiology itself."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'call the news' or dramatic reactions instead of procedural steps",
+      "Not considering that a testing error is more likely than a genuine pan-resistant result",
+      "Ignoring infection control and patient isolation implications"
+    ],
+    "followUps": ["What last-resort treatment options exist for genuinely pan-resistant infections?"]
+  },
+  {
+    "id": "prog-microbiology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Extremophiles and astrobiology",
+    "program": "Microbiology",
+    "difficulty": "medium",
+    "tags": ["extremophiles", "astrobiology", "ecology"],
+    "question": "Why do microbiologists studying extremophiles, organisms living in extreme heat, acidity, or radiation, matter to the search for life beyond Earth?",
+    "lookingFor": "Ability to connect a specific microbiology subfield to a broader scientific question, showing genuine intellectual reach.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what extremophiles are and give a concrete example, thermophiles, halophiles, or radiation-resistant Deinococcus",
+        "Connect their biochemistry to expanding what conditions we consider potentially habitable elsewhere",
+        "Show awareness that this reshapes the definition of a habitable environment, not just 'life is tough'"
+      ],
+      "modelAnswer": "Extremophiles are organisms that thrive in conditions that would kill most life, Deinococcus radiodurans can survive radiation doses thousands of times higher than would be lethal to a human, and hyperthermophiles like Thermus aquaticus live happily in near-boiling hydrothermal vent water. What makes them relevant to astrobiology is that they force us to keep revising our assumptions about what a habitable environment actually looks like, if life on Earth can run its core chemistry at those extremes, then places like the subsurface oceans of Europa or the sulfuric clouds of Venus stop looking automatically uninhabitable and start looking like real candidates worth studying. I think that is the quietly exciting part of extremophile research, it is not really about aliens directly, it is about recalibrating the boundary conditions we use to even ask the question of where else life might exist."
+    },
+    "commonMistakes": [
+      "Vague statement that extremophiles are 'tough' with no specific example",
+      "Not connecting the biochemistry to habitability criteria used in astrobiology",
+      "Overstating the connection as if extremophile research directly proves alien life exists"
+    ],
+    "followUps": ["Which extraterrestrial environment do you find most plausible for microbial life, and why?"]
+  },
+  {
+    "id": "prog-microbiology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Quorum sensing",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["cell-signaling", "microbial-behavior", "clinical"],
+    "question": "What is quorum sensing, and why might it be a smarter target for new antimicrobials than trying to kill bacteria directly?",
+    "lookingFor": "Correct mechanistic explanation plus reasoning about the strategic advantage of anti-virulence approaches over direct killing.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain quorum sensing, bacteria releasing and detecting signalling molecules to coordinate behaviour once a population density threshold is reached",
+        "Give a concrete example of coordinated behaviour it triggers, biofilm formation or toxin release",
+        "Explain the strategic logic, disrupting communication doesn't kill bacteria so it applies less direct selective pressure for resistance"
+      ],
+      "modelAnswer": "Quorum sensing is how bacteria communicate through small signalling molecules, they constantly release these into their environment, and once the local concentration crosses a threshold, meaning the population has reached a certain density, the whole community switches its behaviour together, often triggering things like coordinated toxin release or biofilm formation. What makes it an appealing antimicrobial target is that a drug which blocks quorum sensing does not actually kill the bacteria, it just stops them acting collectively, so there is far less direct selective pressure pushing survivors toward resistance the way a lethal antibiotic does. I find that a genuinely elegant strategic shift, rather than trying to win an arms race against evolution by killing harder, you are trying to make the bacteria individually harmless by disrupting their coordination, which is a fundamentally different kind of pressure to put on a population."
+    },
+    "commonMistakes": [
+      "Describing quorum sensing vaguely as 'bacteria talking' with no mechanism",
+      "Not explaining why targeting communication reduces resistance pressure compared to killing",
+      "Missing a concrete example of a behaviour quorum sensing controls"
+    ],
+    "followUps": ["Can you think of a downside or limitation to anti-quorum-sensing drugs compared to traditional antibiotics?"]
+  },
+  {
+    "id": "prog-microbiology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Confidentiality versus public health reporting",
+    "program": "Microbiology",
+    "difficulty": "hard",
+    "tags": ["ethics", "public-health", "confidentiality"],
+    "question": "A patient tests positive for a notifiable infectious disease like tuberculosis and asks you, hypothetically as someone working in the lab, to keep it quiet because they're worried about losing their job. How do you think through that?",
+    "lookingFor": "Recognition that individual confidentiality and public health reporting obligations can conflict, and structured reasoning to a defensible resolution.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the patient's fear as genuine and understandable, not dismiss it",
+        "Explain why notifiable diseases exist as a legal and public health category that overrides individual preference",
+        "Land on a position that honours both, honest disclosure of the obligation plus support in managing the consequence"
+      ],
+      "modelAnswer": "I would take the fear seriously, losing a job over a diagnosis is a real and understandable worry, and I do not think the right response is to just cite policy at them coldly. But TB is a notifiable disease precisely because it is transmissible and a public health risk beyond the individual, that is what separates it from something like a routine private diagnosis, the reporting requirement exists because the harm of staying silent extends to other people who have not consented to that risk. What I would want to do is be honest with the patient upfront that I am obligated to report it, before they even ask me to hide it, and then focus my energy on connecting them with whatever support exists, employment protections, treatment resources, ways to manage disclosure to an employer, so the reporting requirement is not experienced as pure punishment. I think the ethical resolution is not choosing between the patient and the public, it is being transparent about the obligation early and doing everything else possible to reduce the cost to the patient."
+    },
+    "commonMistakes": [
+      "Agreeing to hide the diagnosis out of misplaced loyalty to the patient",
+      "Citing policy with no empathy for the patient's genuine fear",
+      "Not explaining why notifiable diseases are legally treated differently from private diagnoses"
+    ],
+    "followUps": ["Does your answer change for a disease that's less transmissible but still notifiable, like a certain sexually transmitted infection?"]
+  }
+]

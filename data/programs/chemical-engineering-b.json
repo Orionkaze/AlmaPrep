@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-chemical-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Steady-state mass balance",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["mass-balance", "fundamentals", "process"],
+    "question": "If a continuous process is running at steady state, what does that actually tell you about what's happening inside the equipment, and what does it not tell you?",
+    "lookingFor": "Understanding that steady state means accumulation is zero and properties don't change with time, not that nothing is changing physically inside.",
+    "idealAnswer": {
+      "bullets": [
+        "Define steady state correctly: rate in equals rate out, accumulation term is zero",
+        "Distinguish it from static conditions or chemical equilibrium, since reaction and flow are still happening",
+        "Note what steady state doesn't guarantee, such as uniform conditions or no spatial gradients inside the vessel"
+      ],
+      "modelAnswer": "Steady state means that at any fixed point in the system, properties like concentration, temperature and flow rate aren't changing with time, so my accumulation term in the mass balance drops to zero and mass in equals mass out. It doesn't mean nothing is happening inside the equipment though, there could still be reaction, mixing or temperature gradients across the vessel, just nothing that varies with time at a given location. I'd also be careful not to confuse it with equilibrium, since a reactor at steady state can be far from chemical equilibrium and still be perfectly stable to operate."
+    },
+    "commonMistakes": [
+      "Equating steady state with chemical equilibrium",
+      "Assuming steady state means uniform properties throughout the vessel",
+      "Forgetting that startup and shutdown are inherently unsteady"
+    ],
+    "followUps": ["How would your mass balance change during startup?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Second law and real inefficiency",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "entropy", "efficiency"],
+    "question": "Why can't a chemical plant ever achieve one hundred percent energy efficiency, even in principle?",
+    "lookingFor": "Grasp of the second law of thermodynamics as a hard physical limit, not just an engineering shortfall.",
+    "idealAnswer": {
+      "bullets": [
+        "Invoke the second law: entropy of an isolated system can't decrease",
+        "Explain that some energy is always degraded to a less useful form, such as heat lost across a finite temperature difference",
+        "Distinguish this fundamental limit from merely fixable inefficiencies like poor insulation"
+      ],
+      "modelAnswer": "Even with perfect equipment and no friction, the second law of thermodynamics says any real process involving heat transfer or mixing increases the entropy of the universe, and that increase corresponds to energy becoming less available to do useful work. So there's always some irreversibility built in, separate from practical losses like a leaky pipe or bad insulation which we could in theory eliminate. It means engineers aren't chasing one hundred percent efficiency, we're chasing the best achievable efficiency given the process's inherent irreversibilities, and that distinction matters when deciding where to actually spend money improving a plant."
+    },
+    "commonMistakes": [
+      "Blaming only friction or heat loss, missing the fundamental thermodynamic limit",
+      "Confusing energy conservation, the first law, with the efficiency limit from the second law",
+      "Claiming a fully reversible process is achievable in real plants"
+    ],
+    "followUps": ["Where in a real process would you look first to improve efficiency?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "CSTR vs PFR selection",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["reaction-engineering", "reactor-design"],
+    "question": "For the same reaction and the same final conversion, why might an engineer choose a plug flow reactor over a stirred tank, or vice versa?",
+    "lookingFor": "Understanding of residence time distribution and how it affects reactor volume, selectivity and conversion for different reaction orders.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the concentration profile difference: PFR has a gradient along its length, CSTR is uniform at the outlet concentration",
+        "Note that for most reaction orders a PFR needs less volume for the same conversion",
+        "Bring in a practical reason to prefer a CSTR anyway, like temperature control or handling viscous or solid-containing streams"
+      ],
+      "modelAnswer": "In a plug flow reactor the concentration is high near the inlet and drops as you move along, so the reaction rate stays higher on average, which usually means less reactor volume is needed than a stirred tank for the same conversion, especially above first order. A CSTR operates at the low, outlet concentration everywhere inside it, which sounds wasteful, but that's actually useful when the reaction is very exothermic, because the tank is easier to cool uniformly and you avoid hot spots that could run away. I'd also pick a CSTR if the stream is viscous or has solids, since a stirred tank handles that far better than pushing a slurry through a long pipe."
+    },
+    "commonMistakes": [
+      "Assuming one reactor type is universally better",
+      "Ignoring temperature control and mixing practicalities",
+      "Getting the residence time distribution logic backwards"
+    ],
+    "followUps": ["What would change your answer if the reaction were autocatalytic?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Distillation's energy cost",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["separations", "energy", "distillation"],
+    "question": "Distillation is one of the most energy-intensive processes in the chemical industry. Why do we still rely on it so heavily, and what's being done to reduce its energy footprint?",
+    "lookingFor": "Awareness of why distillation persists despite its cost, and current alternatives like membrane separation or process intensification.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why distillation is so energy-hungry, since it relies on repeated vaporisation and condensation",
+        "Justify why it's still dominant: robustness, scalability, and well-understood design at almost any purity",
+        "Name at least one real alternative or improvement being pursued, such as dividing-wall columns, heat integration, or membranes"
+      ],
+      "modelAnswer": "Distillation works by repeatedly boiling and condensing a mixture, and boiling anything takes a lot of latent heat, so column reboilers end up being some of the biggest energy consumers in a whole plant. We still use it everywhere because it's incredibly well understood, it scales to huge throughputs, and it can hit very high purities reliably, which newer technologies can't always promise yet. That said, there's real movement toward reducing the cost, things like dividing-wall columns that combine two separations into one shell, tighter heat integration between hot and cold streams on site, and membrane separations for cases like ethanol dehydration where they can replace part of the distillation train entirely."
+    },
+    "commonMistakes": [
+      "Not being able to explain why distillation is energy-intensive in the first place",
+      "Dismissing distillation as outdated without acknowledging why it persists",
+      "Vague answer with no concrete alternative named"
+    ],
+    "followUps": ["Can you think of a separation where distillation would be a poor choice from the start?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Laminar vs turbulent flow in design",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["fluid-mechanics", "reynolds-number", "design"],
+    "question": "How does knowing whether a flow is laminar or turbulent actually change how you'd design a piece of equipment?",
+    "lookingFor": "Practical link between Reynolds number and real design decisions like pressure drop, mixing and heat transfer.",
+    "idealAnswer": {
+      "bullets": [
+        "Define laminar vs turbulent via Reynolds number and what physically differs, orderly layers versus chaotic mixing",
+        "Connect it to a real consequence: pressure drop, heat transfer coefficients, or mixing time differ hugely between regimes",
+        "Give a concrete example of a design decision that depends on it"
+      ],
+      "modelAnswer": "The Reynolds number tells you whether inertial forces dominate over viscous ones, and below about 2100 in a pipe you get smooth, orderly laminar flow while above roughly 4000 you get turbulent, chaotic mixing. That matters practically because heat transfer coefficients and mixing rates are much higher in turbulent flow, so if I'm designing a heat exchanger I actually want turbulence to get good heat transfer, even though it costs more pressure drop and pumping energy. On the other hand, if I'm handling a shear-sensitive fluid, like some biological products, I might deliberately keep the flow laminar to avoid damaging it, accepting a bigger, slower piece of equipment as the trade-off."
+    },
+    "commonMistakes": [
+      "Reciting the Reynolds number formula without connecting it to a design consequence",
+      "Assuming turbulent flow is always the goal",
+      "Confusing Reynolds number with other dimensionless groups"
+    ],
+    "followUps": ["What would you do if you needed good mixing but couldn't afford the pressure drop of turbulent flow?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Heat exchanger fouling",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["heat-transfer", "fouling", "maintenance"],
+    "question": "A heat exchanger's performance degrades over months of operation even though nothing mechanical has broken. What's likely going on, and how would you account for it at the design stage?",
+    "lookingFor": "Understanding of fouling as a real, quantifiable design consideration, not just a maintenance afterthought.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify fouling, such as scale, corrosion products, or biological growth, as the likely cause of declining heat transfer",
+        "Explain the mechanism: a resistive layer builds up and adds thermal resistance",
+        "Describe how designers plan for it, using a fouling factor and oversizing, plus operational fixes like cleaning cycles"
+      ],
+      "modelAnswer": "That's almost certainly fouling, some kind of deposit like mineral scale, corrosion product or even biological growth building up on the heat transfer surface over time and adding an extra layer of thermal resistance the heat has to get through. Because it's predictable in a general sense even if not in exact timing, designers include a fouling factor in the overall heat transfer coefficient calculation and deliberately oversize the exchanger so it still meets duty even when somewhat fouled. But that's not a substitute for operations, you'd still want a cleaning schedule, and possibly water treatment upstream if scaling is the issue, because oversizing alone just delays the problem rather than solving it."
+    },
+    "commonMistakes": [
+      "Jumping to a mechanical failure explanation without considering fouling",
+      "Treating fouling as purely an operations problem with no design implication",
+      "Not knowing what a fouling factor is or how it's used"
+    ],
+    "followUps": ["How would you decide whether to clean the exchanger or replace it?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Catalyst deactivation",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["catalysis", "reaction-engineering", "selectivity"],
+    "question": "A catalytic process starts losing conversion over time even though feed composition and operating conditions haven't changed. Walk me through how you'd think about the possible causes.",
+    "lookingFor": "Structured reasoning through catalyst deactivation mechanisms, showing genuine grasp of catalysis rather than a memorised list.",
+    "idealAnswer": {
+      "bullets": [
+        "Name plausible mechanisms: poisoning by a trace contaminant, sintering from thermal exposure, and fouling by coke deposition",
+        "Explain that diagnosis matters because the fix differs completely by mechanism",
+        "Show a reasoning process for what data or tests would distinguish between the causes"
+      ],
+      "modelAnswer": "My first instinct would be catalyst deactivation, and there are a few different ways that happens so I'd want to narrow it down rather than guess. It could be poisoning, where some trace contaminant in the feed binds irreversibly to active sites, sintering, where the active metal particles have agglomerated into larger, less active clusters from prolonged heat exposure, or coking, where carbon deposits are physically blocking the surface. I'd check whether regenerating the catalyst, say by burning off coke, restores activity, because that would rule out sintering, which is usually permanent, and I'd also check the feed analysis for any new trace impurity that lines up with when the decline started."
+    },
+    "commonMistakes": [
+      "Naming only one deactivation mechanism without considering alternatives",
+      "No plan for actually diagnosing which mechanism is at play",
+      "Confusing deactivation with simple mass transfer limitations"
+    ],
+    "followUps": ["If regeneration restores most but not all activity, what does that suggest?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Runaway exothermic reaction risk",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["process-safety", "thermodynamics", "risk"],
+    "question": "What makes an exothermic reaction dangerous from a process safety standpoint, and what design features would you want in place to prevent a runaway?",
+    "lookingFor": "Grasp of the positive feedback loop behind thermal runaway and concrete engineering controls, showing safety is designed in rather than bolted on.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the feedback mechanism: heat generation rate rises with temperature faster than heat removal capacity, so a small deviation can escalate",
+        "Name at least two concrete design or control measures, such as cooling capacity margin, temperature interlocks, or emergency relief",
+        "Show awareness that this is why case studies like Bhopal get taught, as design lessons rather than trivia"
+      ],
+      "modelAnswer": "Exothermic reactions are dangerous because the rate of heat generation typically increases exponentially with temperature, following something like the Arrhenius relationship, while the rate of heat removal through cooling usually only increases linearly with the temperature difference. That mismatch means if cooling ever falls a little behind, temperature rises, which raises the reaction rate further, which raises heat generation further, and you get a runaway that can escalate in minutes. To design against it I'd want generous cooling capacity margin above the worst credible heat load, high and low temperature interlocks that can automatically add a reaction-quenching agent or cut off feed, and a properly sized emergency relief system as the last line of defence. Reading about incidents like the Bhopal disaster made it clear these aren't abstract exam concepts, they're the actual reason a plant has the layers of protection it does."
+    },
+    "commonMistakes": [
+      "Only mentioning 'add more cooling' without explaining the underlying feedback mechanism",
+      "Treating relief systems as the primary control rather than the last resort",
+      "No awareness of real incidents that motivate these design practices"
+    ],
+    "followUps": ["Why is relief valve sizing alone not considered sufficient protection?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Scale-up unpredictability",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["scale-up", "process-design", "mixing"],
+    "question": "A reaction works beautifully in a small lab flask but performs very differently once scaled up to a plant reactor. Why does that happen, and what does it teach you about process design?",
+    "lookingFor": "Understanding that scale-up isn't linear, particularly around mixing, heat transfer, and surface-area-to-volume ratio.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that surface-area-to-volume ratio shrinks with scale, changing heat removal capability dramatically",
+        "Note that mixing and mass transfer don't scale the same way stoichiometry does",
+        "Conclude that pilot-scale testing and careful use of dimensionless groups are how engineers de-risk scale-up"
+      ],
+      "modelAnswer": "In a small flask, heat generated by the reaction has a huge surface area relative to volume to escape through, so temperature control is almost trivial, but as you scale up, volume grows with the cube of size while surface area only grows with the square, so a plant reactor has far less relative surface to dissipate the same heat, and hot spots or even runaway become much more likely. Mixing is similar, in a small flask a magnetic stirrer gets everything uniform almost instantly, but achieving the same uniformity in a large vessel takes real engineering, and if mixing is poor, local concentration and temperature can differ wildly from the bulk average. That's exactly why chemical engineers don't jump straight from bench to full plant, we go through pilot-scale trials and use dimensionless groups to make sure the physics that mattered in the lab still holds at the next size up."
+    },
+    "commonMistakes": [
+      "Assuming scale-up is just a linear multiplication of quantities",
+      "Not mentioning the surface-area-to-volume ratio issue",
+      "Skipping the role of pilot plants in de-risking scale-up"
+    ],
+    "followUps": ["What would a pilot plant trial specifically tell you that lab data couldn't?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Feedback control with dead time",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["process-control", "instrumentation", "dynamics"],
+    "question": "You're controlling the temperature of a reactor using a feedback loop, but there's a significant time delay between when you adjust the cooling and when the sensor registers the change. Why is that delay a problem, and how would you deal with it?",
+    "lookingFor": "Understanding of dead time in control loops and practical strategies to handle it, showing real grasp of process dynamics.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why dead time destabilises feedback control, since the controller keeps correcting based on stale information",
+        "Note the risk of oscillation or overshoot if the controller is tuned too aggressively for the delay",
+        "Suggest at least one mitigation, such as relocating the sensor, adding feedforward control, or using a dead-time compensation strategy"
+      ],
+      "modelAnswer": "The problem with dead time is that the controller is always reacting to information that's already out of date, so if it keeps making corrections based on where the temperature was a while ago rather than where it is now, it can easily overcorrect and push the system into oscillation, or even instability if the loop is tuned aggressively. The first thing I'd check is whether the sensor can physically be moved closer to where the temperature actually matters, since sometimes the delay is just a placement problem. Beyond that I'd want to detune the feedback loop to be more conservative given the delay, and ideally add a feedforward element that reacts to a disturbance, like a change in feed flow, before it even shows up as a temperature change, rather than relying purely on feedback after the fact."
+    },
+    "commonMistakes": [
+      "Not recognising that dead time specifically causes instability, not just general noise",
+      "Suggesting only 'tune the controller better' without addressing the root delay",
+      "Confusing dead time with a slow but immediate response"
+    ],
+    "followUps": ["Why might feedforward control alone not be enough on its own?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Material selection under corrosion",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["materials", "corrosion", "cost"],
+    "question": "How would you decide what material to build a reactor vessel out of when the process fluid is corrosive?",
+    "lookingFor": "Awareness that material choice is a genuine engineering trade-off between corrosion resistance, cost, and mechanical properties, not a simple lookup.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the relevant factors: chemical compatibility, temperature, pressure, and cost",
+        "Mention that the most corrosion-resistant material isn't automatically the right choice because of cost or fabrication limits",
+        "Bring in a practical mitigation short of full exotic-alloy construction, like linings or coatings"
+      ],
+      "modelAnswer": "I'd start from the actual chemistry, what's the fluid, its concentration, temperature and whether there are trace impurities like chlorides that are notorious for attacking certain stainless steels through pitting. From there I'd look at corrosion resistance data for candidate materials, but I wouldn't just pick the most resistant one automatically, something like a high nickel alloy might resist corrosion beautifully but cost far more and be harder to weld and fabricate than the process can justify. In a lot of real cases the answer isn't solid exotic metal at all, it's a cheaper carbon steel shell with a corrosion-resistant lining or coating on the inside, which gets most of the protection at a fraction of the cost, so I'd want to weigh that option seriously before committing to the most expensive material."
+    },
+    "commonMistakes": [
+      "Picking the single most corrosion-resistant material without weighing cost",
+      "Ignoring fabrication and welding practicality",
+      "Not considering linings or coatings as an alternative to solid exotic alloys"
+    ],
+    "followUps": ["What would make you choose solid alloy construction over a lining anyway?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Le Chatelier's principle in ammonia synthesis",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "equilibrium", "haber-process"],
+    "question": "The Haber process for making ammonia is run at high pressure and only moderately high temperature, even though the reaction is exothermic and would favour ammonia more at lower temperature. Why the compromise?",
+    "lookingFor": "Ability to apply Le Chatelier's principle alongside kinetics to explain a real industrial trade-off, not just recite the principle.",
+    "idealAnswer": {
+      "bullets": [
+        "State that lower temperature favours the exothermic forward reaction thermodynamically, giving a higher equilibrium yield",
+        "Explain that at low temperature the reaction rate is impractically slow, so a catalyst and moderate temperature are used instead",
+        "Note that high pressure favours the side with fewer moles of gas, which is ammonia, so it's used to push yield up without needing very low temperature"
+      ],
+      "modelAnswer": "Thermodynamically, lower temperature would give a higher equilibrium yield of ammonia because the forward reaction is exothermic, but at low temperature the reaction rate is far too slow to be commercially useful, even with a catalyst, so purely chasing equilibrium yield would mean waiting forever for very little product. The compromise is to run at a moderate temperature, high enough that the iron catalyst gives a workable reaction rate, and to make up for the sacrificed equilibrium yield by using very high pressure instead, since the forward reaction reduces the number of gas moles, so pressure pushes the equilibrium toward ammonia without needing to sacrifice rate. It's a nice example of an industrial process being optimised on economics, balancing capital cost of high-pressure equipment against the value of faster throughput, rather than chasing the theoretical maximum yield."
+    },
+    "commonMistakes": [
+      "Only discussing equilibrium and ignoring kinetics, or vice versa",
+      "Not explaining why high pressure specifically favours ammonia",
+      "Treating it as a purely academic equilibrium question with no economic angle"
+    ],
+    "followUps": ["Why is the actual operating pressure not even higher than it is?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Carbon capture and storage viability",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["ccs", "climate", "current-debate"],
+    "question": "Carbon capture and storage is often presented as a key tool for decarbonising heavy industry, but it's also controversial. What's your honest read on where it stands right now?",
+    "lookingFor": "Balanced, informed awareness of a live industry debate, showing the applicant reads beyond the textbook rather than reciting a one-sided position.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic technical understanding of what CCS actually does: capturing CO2 from flue gas or air, then compressing and storing it, typically underground",
+        "Acknowledge the genuine case for it, since some industries like cement and steel have no easy alternative to fossil-based process heat or chemistry",
+        "Acknowledge the genuine criticism, namely the high energy penalty, cost, and the risk it delays transitioning away from fossil fuels"
+      ],
+      "modelAnswer": "As I understand it, carbon capture and storage takes CO2, usually from flue gas at a large point source, separates it out chemically or physically, then compresses it for transport and injection deep underground for long-term storage. I think there's a genuine case for it in sectors like cement and steel, where the CO2 doesn't just come from burning fuel but from the chemistry of the process itself, so there isn't yet an easy way to just switch to renewable electricity and be done with it. At the same time I'm aware of the criticism, that capture is energy intensive and expensive, and that some worry it gives fossil fuel-heavy industries a reason to delay real change rather than an actual solution, so I'd want to see it used specifically where there's no better alternative rather than as a blanket excuse."
+    },
+    "commonMistakes": [
+      "Only reciting the pro or only the con, with no balance",
+      "Not knowing what CCS technically involves",
+      "Treating it as a solved problem or dismissing it entirely without nuance"
+    ],
+    "followUps": ["Which industries do you think should be prioritised for CCS, and why?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Green hydrogen vs blue hydrogen debate",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["hydrogen", "energy", "current-debate"],
+    "question": "There's a lot of talk about a 'hydrogen economy', with people arguing over green versus blue hydrogen. What's the actual difference, and does it matter which one we build infrastructure around?",
+    "lookingFor": "Clear technical distinction plus reasoned opinion on the strategic implications, showing engagement with a live industry debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Define both correctly: green hydrogen from electrolysis using renewable electricity, blue hydrogen from natural gas reforming with carbon capture",
+        "Note the trade-off: blue is currently cheaper and available at scale, green is genuinely low carbon but expensive and constrained by renewable electricity supply",
+        "Give a reasoned view on why the choice matters for the long-term direction of infrastructure and investment"
+      ],
+      "modelAnswer": "Green hydrogen is made by electrolysing water using renewable electricity, so if the electricity is genuinely clean, the hydrogen is close to zero carbon end to end. Blue hydrogen instead comes from reforming natural gas, which produces a lot of CO2, but that CO2 is meant to be captured and stored rather than released, so it's lower carbon than untreated grey hydrogen but not as clean as green, and it depends heavily on how effective the capture actually is in practice. I do think it matters which one we build infrastructure around, because blue hydrogen locks in continued natural gas demand and depends on carbon capture working as well as promised, while green hydrogen is more expensive today but scales with renewable electricity getting cheaper, so I'd rather see blue treated as a bridge rather than the destination."
+    },
+    "commonMistakes": [
+      "Confusing green and blue hydrogen definitions",
+      "Not engaging with the strategic 'does it matter' part of the question",
+      "Presenting hydrogen colours as if only two options exist, ignoring grey or pink hydrogen entirely"
+    ],
+    "followUps": ["What would need to be true for blue hydrogen to actually be a responsible bridge fuel?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Chemical recycling of plastics",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["sustainability", "polymers", "recycling"],
+    "question": "Chemical recycling, breaking plastics back down to their monomers or feedstocks rather than just melting and reshaping them, is being promoted as a solution to the plastics waste problem. Are you convinced?",
+    "lookingFor": "Critical engagement with a genuinely contested current development, weighing technical promise against real limitations like energy cost and scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish chemical recycling, which depolymerises or pyrolyses back to feedstock, from mechanical recycling, which melts and reforms",
+        "Note the real advantage: it can handle mixed or contaminated plastic streams mechanical recycling can't",
+        "Raise a genuine limitation, such as energy intensity, cost, and current lack of proven scale, without dismissing it outright"
+      ],
+      "modelAnswer": "Chemical recycling breaks the polymer back down, either through pyrolysis or depolymerisation, into monomers or feedstock that can be rebuilt into virgin-quality plastic, whereas mechanical recycling just melts and reshapes it, degrading the polymer chains a bit more each cycle. What genuinely excites me about the chemical route is that it can handle mixed and contaminated waste streams that mechanical recycling simply can't process cleanly, which is most of real-world plastic waste. I'm not fully convinced it's the solution yet though, a lot of the processes are energy intensive and haven't been proven at the scale needed to make a dent in the actual waste problem, so I'd treat it as a promising complement to reducing plastic use and improving mechanical recycling, not a silver bullet that lets us keep producing at the same rate."
+    },
+    "commonMistakes": [
+      "Not distinguishing chemical recycling from mechanical recycling",
+      "Uncritically praising it as a total solution",
+      "Dismissing it entirely without acknowledging its genuine advantage over mechanical recycling"
+    ],
+    "followUps": ["What would convince you it's ready to scale?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: pressure to under-report emissions",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "environment", "integrity"],
+    "question": "Imagine you're on a plant team and your manager asks you to round emissions figures down slightly, staying just inside the legal limit but understating what you actually measured, because a true report would trigger costly upgrades before a deadline. What would you do?",
+    "lookingFor": "Structured ethical reasoning that recognises this as falsification regardless of legality, and a realistic escalation path rather than either blind compliance or an unworkable dramatic gesture.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that deliberately misreporting measured data is falsification, distinct from a legitimate rounding or measurement uncertainty question",
+        "Reason through the stakeholders affected: the environment, public trust, and personal professional integrity",
+        "Describe a realistic course of action: raise it directly with the manager first, then escalate through proper channels if unresolved"
+      ],
+      "modelAnswer": "My first move would be to separate the two things being conflated, staying within the legal limit is fine, but deliberately reporting a lower number than what was actually measured is falsifying data, and that's a different category of problem entirely regardless of whether the true figure would still technically be compliant. I'd want to raise it directly with my manager first, partly because I might be missing context, but mainly to be clear that I'm not comfortable submitting a number that doesn't match what the instruments actually recorded. If they pushed back and insisted, I'd escalate it through whatever internal compliance or ethics channel exists, because falsified environmental data isn't just a personal integrity issue, it affects public trust in the whole reporting system and potentially real environmental harm downstream."
+    },
+    "commonMistakes": [
+      "Treating this as acceptable because the true figure is still within the legal limit",
+      "Jumping straight to an external regulator or media without trying internal channels first",
+      "Refusing to take a clear position at all"
+    ],
+    "followUps": ["What would you do if internal escalation went nowhere?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: whistleblowing on falsified safety data",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety", "whistleblowing"],
+    "question": "Suppose you discover that a colleague falsified a routine safety inspection log to hit a deadline, and the equipment in question is probably fine, but you can't be certain. What do you do?",
+    "lookingFor": "Recognition that safety-critical falsification carries a different weight than ordinary dishonesty, with reasoning that goes beyond 'report everything' or 'stay loyal'.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the specific danger: safety data being unreliable removes the whole point of the inspection system",
+        "Reason through why 'probably fine' isn't good enough justification to stay silent given the stakes",
+        "Land on a concrete next step: verify or re-inspect if possible, then report through the proper safety channel"
+      ],
+      "modelAnswer": "The thing that makes this different from an ordinary honesty question is that safety inspections exist precisely to catch cases where something looks fine but isn't, so a falsified log doesn't just mean my colleague cut a corner, it means the safety system has a hole in it that nobody knows about. I wouldn't feel comfortable just assuming it's probably fine, because that's exactly the assumption the inspection was meant to test rather than rely on. I'd first see if the equipment could genuinely be re-inspected quickly and quietly to close the uncertainty, and I'd talk to my colleague about what happened, but I'd still report it through the proper safety channel regardless of the outcome of that conversation, because the point isn't to punish them, it's to make sure the equipment gets checked and the reporting system stays something people can trust."
+    },
+    "commonMistakes": [
+      "Treating 'probably fine' as sufficient reason to let it go",
+      "Framing this purely as a loyalty-versus-rules problem without engaging the safety stakes",
+      "No concrete next step, just a vague statement of disapproval"
+    ],
+    "followUps": ["Does it change your answer if reporting it would likely get your colleague fired?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: pollution control equipment cost",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "environment", "cost"],
+    "question": "A plant could install additional pollution control equipment that would meaningfully reduce harmful emissions beyond the legal minimum, but at a cost that would cut into funds for other safety upgrades. How would you think through that trade-off?",
+    "lookingFor": "Genuine engagement with competing legitimate goods, environmental harm reduction versus worker safety, rather than a glib answer that ignores the real tension.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both sides are genuinely valuable, not a strawman where one option is obviously wrong",
+        "Bring in a way to reason about it, like relative harm reduced per dollar, or whether both can be phased in over time",
+        "Avoid a purely hypothetical stance and show how you'd actually gather information before deciding"
+      ],
+      "modelAnswer": "I wouldn't want to pretend this is an easy call, because both options genuinely protect people, one protects the surrounding community and environment, the other protects the people working inside the plant, and treating either as obviously less important feels wrong. I'd want to actually quantify both options as best I could, how much harm does each pound spent reduce, and whether either issue has an urgency the other doesn't, like a safety upgrade addressing something that's already caused near misses versus a pollution reduction that's precautionary. If the numbers were close I'd lean toward whichever addresses the more immediate or severe risk to human life first, but I'd also push to find out whether phasing both in over a slightly longer timeline is actually possible before accepting it as a strict either-or choice."
+    },
+    "commonMistakes": [
+      "Picking one side immediately without acknowledging the genuine trade-off",
+      "Refusing to engage and saying 'it depends' with no framework",
+      "Ignoring the possibility of a phased or partial solution to both"
+    ],
+    "followUps": ["Who do you think should ultimately make that call, and why?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: desalination process design",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "separations", "design"],
+    "question": "You're asked to design a small desalination plant for a coastal town with no reliable grid electricity but strong, consistent sunlight. Walk me through how you'd start thinking about it.",
+    "lookingFor": "Structured engineering reasoning under real constraints, weighing process options against the specific limitation given rather than defaulting to a textbook answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that the energy constraint, intermittent grid power but strong solar, should drive the process choice rather than defaulting to reverse osmosis",
+        "Compare at least two real options: reverse osmosis, which is efficient but needs steady electrical power, versus solar thermal distillation, which matches the available energy source",
+        "Show awareness of secondary constraints, such as brine disposal, remote maintenance, and capital versus operating cost for a small community"
+      ],
+      "modelAnswer": "The first thing that jumps out is that the energy situation should really drive the process choice rather than being an afterthought, reverse osmosis is the most energy-efficient option per litre of fresh water but it wants a steady, reliable electrical supply, which is exactly what this town doesn't have. Given strong consistent sunlight, I'd seriously consider a solar thermal or solar still-based distillation approach instead, it's less energy-efficient per litre, but it matches the energy source that's actually reliable here, and it avoids needing battery storage or backup generation to keep an RO system running through cloudy stretches. I'd also want to think past just the water production step, what happens to the concentrated brine, whether local operators can maintain the equipment without specialist parts flown in, and whether a hybrid, some RO backed by a smaller solar-charged battery system, might actually beat either pure option once I looked at real numbers."
+    },
+    "commonMistakes": [
+      "Defaulting straight to reverse osmosis without addressing the stated energy constraint",
+      "Ignoring brine or waste stream disposal entirely",
+      "No consideration of maintainability in a remote, low-resource setting"
+    ],
+    "followUps": ["How would you handle the concentrated brine byproduct?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: early warning sign vs shutdown cost",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "safety", "judgement"],
+    "question": "You're monitoring a reactor and notice a small, unexplained temperature drift that's still well within the normal operating band. Shutting down to investigate would cost the plant a significant amount in lost production. What do you do?",
+    "lookingFor": "Sound judgement that treats an unexplained anomaly seriously without being reckless or needlessly alarmist, and reasoning about escalation rather than a snap decision either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that 'unexplained' is the key word, not the fact that it's within limits",
+        "Reason through intermediate options before an immediate full shutdown: increased monitoring, checking instrumentation, consulting a senior engineer",
+        "Show willingness to actually shut down if the drift continues or the cause can't be identified, rather than letting cost pressure override safety"
+      ],
+      "modelAnswer": "What would concern me isn't that it's outside the normal band, it isn't, it's that it's unexplained, and an unexplained deviation in a reactor is worth taking seriously even while it's still small, because that's often exactly what a developing problem looks like before it becomes an obvious one. I wouldn't jump straight to a full shutdown though, I'd first increase monitoring frequency, double check the instrumentation itself isn't drifting or faulty, and loop in a senior engineer or the process safety team to see if there's a known, benign explanation, like a feed composition shift that's already accounted for elsewhere. But if the drift continued or nobody could explain it with confidence, I'd push for a controlled shutdown to investigate properly, because production cost is a real consideration but it's not one I think should outweigh acting on a genuine unknown in a reactor."
+    },
+    "commonMistakes": [
+      "Ignoring the anomaly because it's within the normal operating band",
+      "Jumping straight to full shutdown without trying intermediate diagnostic steps",
+      "Letting production cost silently win without stating a clear threshold for action"
+    ],
+    "followUps": ["Who should have the authority to call the shutdown, and why?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: plant siting trade-off",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "ethics", "siting"],
+    "question": "You're advising on where to site a new chemical plant. One option is cheaper and closer to raw materials but near a low-income residential area with weaker existing environmental infrastructure. The other is more expensive but away from any residential community. How would you think about it?",
+    "lookingFor": "Awareness of environmental justice considerations in real siting decisions, reasoned rather than performative, with an honest acknowledgment that engineers do influence these outcomes.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the environmental justice dimension explicitly: proximity to a vulnerable community changes the ethical calculus, not just the cost calculus",
+        "Avoid treating this as purely a cost-benefit spreadsheet problem, weighing the disproportionate burden on a community with less power to object",
+        "Land on a reasoned position, acknowledging engineers don't decide siting alone but do have a voice in raising these considerations"
+      ],
+      "modelAnswer": "I'd want to be honest that this isn't purely a cost-benefit spreadsheet question, siting a plant next to a low-income community that already has weaker environmental infrastructure means that if anything goes wrong, or even at normal operation with routine emissions, that community bears a disproportionate burden it didn't really get a meaningful say in, compared to a community with more resources to push back or relocate. I don't think engineers make these calls entirely alone, but I do think we have a real voice in flagging that dimension explicitly rather than letting it get buried under logistics and cost figures, and pushing for things like genuine community consultation and enhanced environmental controls if that site is chosen anyway. My honest view is I'd lean toward the costlier site or toward investing part of the savings into much stronger environmental safeguards at the cheaper one, because I don't think proximity to raw materials should come at the expense of a community with the least power to object."
+    },
+    "commonMistakes": [
+      "Treating it as a pure cost optimisation problem with no ethical dimension",
+      "Overclaiming that the engineer alone decides siting",
+      "No reasoned position taken, just naming both sides without a conclusion"
+    ],
+    "followUps": ["What would genuine community consultation actually look like to you?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Chemical engineering vs chemistry",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["reflection", "discipline-boundary", "subject-fit"],
+    "question": "A lot of applicants say they love chemistry, but chemical engineering is a genuinely different discipline. In your own words, where does the chemistry stop and the engineering begin?",
+    "lookingFor": "Genuine understanding of what distinguishes the discipline, not a rehearsed motivation line, showing the applicant has thought past 'I like chemistry' toward what engineers actually do.",
+    "idealAnswer": {
+      "bullets": [
+        "Articulate the core distinction: chemistry asks what reaction happens and why, chemical engineering asks how to make it happen reliably, safely, and economically at scale",
+        "Give a concrete example of something an engineer worries about that a chemist typically doesn't, such as heat removal, mixing, cost, or scale-up",
+        "Avoid dismissing chemistry as lesser, showing that both are necessary and different"
+      ],
+      "modelAnswer": "I think chemistry is fundamentally about understanding what happens at the molecular level and why, the mechanism, the thermodynamics, the kinetics of a reaction in isolation. Chemical engineering takes that understanding as a starting point and asks a completely different set of questions, how do you actually remove the heat that reaction generates when you're not working with a small flask anymore, how do you keep it safe, how do you make it economically viable at a scale that matters, how do you separate and purify the product afterward. I don't think one is more valuable than the other, a chemist can discover a beautiful reaction that never becomes anything real without engineering, and an engineer without genuine chemical understanding would be building processes blind, but what pulled me specifically toward the engineering side is that I care as much about making something work in the real world as understanding why it works at all."
+    },
+    "commonMistakes": [
+      "Vague answer that doesn't actually distinguish the two fields",
+      "Putting down chemistry to elevate engineering",
+      "Falling back into a generic 'I like problem solving' answer that avoids the actual question"
+    ],
+    "followUps": ["Can you think of a real product where the chemistry was known for decades before the engineering made it viable?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Reflection: biggest challenge facing the field",
+    "program": "Chemical Engineering",
+    "difficulty": "medium",
+    "tags": ["reflection", "current-debate", "industry-awareness"],
+    "question": "What do you think is the single biggest challenge chemical engineers will have to grapple with over the next decade?",
+    "lookingFor": "An informed, specific opinion rather than a generic sustainability answer, showing the applicant has actually thought about the field's direction.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific challenge rather than a vague buzzword, such as decarbonising hard-to-abate sectors or retrofitting existing plants rather than building new",
+        "Explain why it's genuinely hard, not just important",
+        "Show personal engagement with why this particular challenge interests the applicant"
+      ],
+      "modelAnswer": "I'd say it's decarbonising the parts of the industry where the CO2 doesn't come from burning fuel but from the chemistry itself, cement and some petrochemical processes are the clearest examples, because you can't just swap in renewable electricity and call it solved, the emissions are baked into the reaction. What makes it genuinely hard rather than just important is that most of the existing capital is sunk into plants built around the current chemistry, so it's not a green-field problem, it's a retrofit and transition problem happening while those plants still have to keep running and making money. That's actually the part of chemical engineering I find most interesting, not designing something new from a blank page, but figuring out how to change the chemistry underneath an industry that can't just stop operating while you do it."
+    },
+    "commonMistakes": [
+      "Answering with just 'sustainability' or 'climate change' with no specificity",
+      "Naming a challenge but not explaining why it's hard",
+      "No personal connection to why it matters to the applicant"
+    ],
+    "followUps": ["What's one specific technology you think could help address that?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantitative reasoning: heat duty trade-off",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["heat-transfer", "quantitative", "design"],
+    "question": "If you wanted to transfer the same amount of heat in a shorter time in a heat exchanger, without changing the fluids involved, what are your options, and what do they each cost you?",
+    "lookingFor": "Applied understanding of the heat transfer relationship Q equals UA times delta T and the real trade-offs behind each lever, not just naming the formula.",
+    "idealAnswer": {
+      "bullets": [
+        "State the governing relationship: heat duty depends on the overall heat transfer coefficient, area, and temperature driving force",
+        "Explain the trade-off of increasing each lever: bigger area costs capital, higher velocity for better U costs pumping energy and pressure drop, and a bigger temperature difference may not be free either",
+        "Show it's a genuine optimisation, not a free lunch on any one lever"
+      ],
+      "modelAnswer": "Heat duty in an exchanger comes down to Q equals U times A times the temperature driving force, so to move more heat in the same time I've really got three levers, increase the area, increase the overall heat transfer coefficient U, or increase the temperature difference between the streams. Increasing area is straightforward but it's a bigger, more expensive piece of equipment, and there are diminishing returns since a lot of the coefficient depends on the flow regime, not just surface. Increasing U usually means pushing the fluid faster to get more turbulence, but that costs pumping energy and increases pressure drop, and pushing too hard risks erosion of the tubes over time. Increasing the temperature difference sounds appealing but it's often not free either, you might need a hotter or colder utility stream, which itself costs energy to generate, so realistically I'd be optimising across all three rather than expecting one lever to solve it without a cost somewhere else."
+    },
+    "commonMistakes": [
+      "Stating Q equals UA delta T without discussing the real trade-off behind each variable",
+      "Treating one lever as a free win with no downside",
+      "Confusing the overall heat transfer coefficient with just flow rate"
+    ],
+    "followUps": ["Which lever would you reach for first if capital cost were the binding constraint?"]
+  },
+  {
+    "id": "prog-chemical-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Reflection: yield vs sustainability trade-off",
+    "program": "Chemical Engineering",
+    "difficulty": "hard",
+    "tags": ["reflection", "sustainability", "process-design"],
+    "question": "Suppose the most economically efficient way to run a process, the one that gives the best yield and lowest cost, also happens to generate more waste than a less efficient alternative. How should an engineer think about that tension?",
+    "lookingFor": "Reasoned reflection on the fact that 'optimal' in engineering isn't purely economic, and that the applicant has thought about how they'd personally weigh competing objectives.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the framing that the economic optimum and the 'best' process are automatically the same thing",
+        "Bring in the idea that waste has a real cost too, even if it isn't always priced into the immediate economics",
+        "Land on a genuine personal view of how that trade-off should be weighed, not just 'it depends'"
+      ],
+      "modelAnswer": "I don't think the process that gives the best yield and lowest immediate cost is automatically the 'best' process, that's really the economically optimal process under whatever's currently being priced, and waste disposal or environmental harm often isn't fully priced into that calculation even though it's a real cost to someone, whether that's downstream ecosystems, a community, or the company itself later through regulation or cleanup. I think a good engineer's job is partly to make that hidden cost visible, to actually quantify what the waste stream costs to treat or its environmental impact, and put it next to the efficiency gain so the trade-off is an honest, informed choice rather than the waste being invisible in the decision. My own view is that I'd lean toward the higher-waste option only if the waste can genuinely be treated or reused responsibly, and I'd be uncomfortable defaulting to 'most efficient' as the only criterion that matters, because I think that's exactly the kind of reasoning that's gotten industries into trouble in the past."
+    },
+    "commonMistakes": [
+      "Answering 'it depends' with no actual position",
+      "Assuming economic efficiency and the right choice are synonymous",
+      "Ignoring that waste has real costs even when not currently priced in"
+    ],
+    "followUps": ["Who should bear the cost of making that hidden waste cost visible, the company or the regulator?"]
+  }
+]

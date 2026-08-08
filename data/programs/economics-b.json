@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-economics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Opportunity cost in practice",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["opportunity-cost", "microeconomics", "reasoning"],
+    "question": "Give me a real decision you made recently and walk me through its opportunity cost.",
+    "lookingFor": "Applies opportunity cost correctly to a genuine personal decision, not just cash cost.",
+    "idealAnswer": {
+      "bullets": [
+        "Define opportunity cost as the next best alternative given up, not just money spent",
+        "Pick a real decision with a genuine trade-off",
+        "Show that the cost includes time or other options, not only cash"
+      ],
+      "modelAnswer": "Last year I chose to spend my summer doing an unpaid research placement with a professor instead of a paid retail job. The opportunity cost wasn't really the pay I lost, it was the alternative experience of earning independence and workplace skills that a job would have given me. I decided the research skills and reference letter were worth more to me long term, but I was very aware I was trading off certain short-term income for uncertain longer-term value. That's basically opportunity cost in action, weighing the best alternative rather than just what something costs on paper."
+    },
+    "commonMistakes": [
+      "Equating opportunity cost with money spent",
+      "Picking a trivial decision with no real trade-off",
+      "Ignoring the value of the alternative given up"
+    ],
+    "followUps": ["How would you have decided differently if you had less financial cushion?"]
+  },
+  {
+    "id": "prog-economics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Price elasticity of demand",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["elasticity", "demand", "microeconomics"],
+    "question": "Why might a train operator raise fares and still see revenue increase, while a bus operator raising fares sees revenue fall?",
+    "lookingFor": "Understands elasticity drives revenue response to price changes, with substitutes reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain price elasticity of demand: percentage change in quantity demanded over percentage change in price",
+        "Link inelastic demand for trains, fewer substitutes, to revenue rising with price",
+        "Link elastic demand for buses, more substitutes, to revenue falling with price"
+      ],
+      "modelAnswer": "It comes down to elasticity of demand. If commuters have few substitutes for the train, say the road is congested or there's no other line, demand is relatively inelastic and a price rise causes only a small drop in ridership, so total revenue goes up. Buses often compete with cheaper alternatives like walking, cycling or ride shares, so demand is more elastic there, meaning a price rise causes a bigger proportional drop in passengers and revenue falls. It really is about how easily people can switch away when the price changes."
+    },
+    "commonMistakes": [
+      "Confusing elastic and inelastic demand direction",
+      "Ignoring substitutes as the reason for different elasticities",
+      "Assuming price and revenue always move the same way"
+    ],
+    "followUps": ["What would happen to revenue if the good had perfectly elastic demand?"]
+  },
+  {
+    "id": "prog-economics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Negative externalities",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["externalities", "market-failure", "policy"],
+    "question": "Explain why an unregulated market tends to overproduce pollution, and what a Pigouvian tax is meant to fix.",
+    "lookingFor": "Clear grasp of externalities, marginal social cost vs private cost, and the tax's corrective logic.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish private cost from social cost when a negative externality exists",
+        "Explain firms produce where marginal private cost equals price, ignoring the externality, causing overproduction",
+        "Explain a Pigouvian tax aims to internalize the externality by raising private cost to match social cost"
+      ],
+      "modelAnswer": "A factory that pollutes only counts its own private costs, like labour and materials, when deciding how much to produce, but it ignores the cost it imposes on everyone else through dirty air or water. Because the market price doesn't reflect that extra social cost, the firm keeps producing past the point that's actually efficient for society, so we end up with too much pollution. A Pigouvian tax tries to fix that by charging the firm roughly the value of the externality, so its private cost finally lines up with the true social cost and it produces closer to the socially optimal quantity. The tricky part in practice is that regulators rarely know the exact value of that externality, so the tax is often an estimate rather than a precise fix."
+    },
+    "commonMistakes": [
+      "Saying pollution should simply be banned rather than priced",
+      "Confusing private and social cost",
+      "Ignoring the measurement difficulty of setting the right tax"
+    ],
+    "followUps": ["What could go wrong if the tax is set too high or too low?"]
+  },
+  {
+    "id": "prog-economics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Bounded rationality vs the rational agent",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["behavioral-economics", "rationality", "critique"],
+    "question": "Traditional economics assumes rational, utility-maximizing agents. Give me a real example where people clearly don't behave that way, and tell me whether that breaks the whole model.",
+    "lookingFor": "Can cite a genuine behavioral bias, and reasons about whether it undermines or merely refines standard theory.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite a specific documented bias, such as loss aversion, present bias, or anchoring",
+        "Explain the actual deviation from rational choice predictions",
+        "Reason about whether this invalidates rational-agent models or just means they're useful simplifications"
+      ],
+      "modelAnswer": "People systematically undersave for retirement even when they know the numbers, which behavioral economists explain through present bias, we weight immediate rewards far more heavily than future ones, more than a purely rational discounting model predicts. I don't think that breaks classical economics entirely though, because models like the rational agent are deliberately simplified to make problems tractable, the same way physics uses frictionless planes. What behavioral economics does is show where the simplification breaks down badly enough to matter for policy, like defaulting people into pension schemes rather than relying on them opting in rationally. So I'd say it's less a demolition of the model and more a really useful correction for specific, predictable irrationalities."
+    },
+    "commonMistakes": [
+      "Only naming the bias without explaining the mechanism",
+      "Claiming behavioral economics completely invalidates mainstream theory with no nuance",
+      "Giving a vague example with no economic reasoning"
+    ],
+    "followUps": ["Can you think of a policy that exploits one of these biases for good?"]
+  },
+  {
+    "id": "prog-economics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Prisoner's dilemma applied to real markets",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["game-theory", "oligopoly", "strategy"],
+    "question": "Two firms in a duopoly could both profit more by cooperating and keeping prices high, but they usually end up competing prices down. Explain why, using game theory.",
+    "lookingFor": "Applies prisoner's dilemma logic correctly to oligopoly pricing with dominant strategy reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Set up the payoff structure: mutual cooperation beats mutual defection, but each has an incentive to undercut",
+        "Explain that undercutting is a dominant strategy regardless of what the rival does",
+        "Note how repeated interaction or collusion can change the outcome"
+      ],
+      "modelAnswer": "It's basically a prisoner's dilemma. If both firms keep prices high they both do well, but each firm individually does even better by quietly cutting its price while the other stays high, because it grabs the rival's customers. Since that logic holds no matter what the other firm chooses, undercutting becomes the dominant strategy for both, and they end up in the worse equilibrium of low prices even though high prices were mutually better. What's interesting is that in real markets this game isn't played just once, it's repeated, so firms sometimes sustain higher prices through tacit collusion or retaliation strategies, which is exactly why regulators watch oligopolies so closely for price signalling."
+    },
+    "commonMistakes": [
+      "Describing the scenario without naming the dominant strategy logic",
+      "Assuming firms always collude successfully",
+      "Ignoring that repeated games change the incentive structure"
+    ],
+    "followUps": ["How might regulators detect illegal collusion in a market like this?"]
+  },
+  {
+    "id": "prog-economics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Central bank inflation targets",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["monetary-policy", "inflation", "current-debate"],
+    "question": "Several central banks are being urged to abandon strict 2 percent inflation targets given recent shocks. Where do you stand on that debate?",
+    "lookingFor": "Awareness of the actual policy debate and a reasoned position, not a memorized fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that the 2 percent target has been questioned after recent supply shocks and volatile inflation",
+        "Weigh the credibility and anchoring benefits of a fixed target against the flexibility of a range or higher target",
+        "Land on a reasoned, own position rather than reciting both sides with no conclusion"
+      ],
+      "modelAnswer": "I think the 2 percent target has value mainly because it's simple and anchors expectations, businesses and households know roughly what to plan around, and central banks built decades of credibility defending it. But a lot of the recent inflation came from supply shocks like energy prices and supply chains, which interest rates don't fix well, so hitting the target hard risked unnecessary damage to growth and jobs. My own view is that a target range rather than a single number, maybe two to three percent, would let central banks respond to supply shocks without constantly undermining their own credibility. I don't think abandoning targets altogether is wise though, because the anchoring effect is genuinely valuable."
+    },
+    "commonMistakes": [
+      "Not knowing what the current debate actually is",
+      "Reciting textbook monetary policy with no opinion",
+      "Confusing inflation targeting with interest rate setting mechanics"
+    ],
+    "followUps": ["What's the risk of losing central bank credibility if the target is loosened?"]
+  },
+  {
+    "id": "prog-economics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Public debt sustainability",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["fiscal-policy", "public-debt", "macroeconomics"],
+    "question": "Is a rising government debt-to-GDP ratio always a problem? What actually determines whether it's sustainable?",
+    "lookingFor": "Understands debt sustainability depends on growth vs interest rate differential, not just the debt level itself.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the simplistic view that any debt rise is automatically bad",
+        "Explain the growth-versus-interest-rate logic that governs whether the ratio rises or falls over time",
+        "Mention what the debt was used for, and borrowing conditions, as relevant factors"
+      ],
+      "modelAnswer": "I don't think a rising ratio is automatically alarming, what matters more is the relationship between the interest rate the government pays and how fast the economy is growing. If growth outpaces the interest rate, debt as a share of GDP can actually shrink over time even while borrowing continues, which is roughly what happened after some wars historically. It also matters what the debt financed, borrowing to build productive infrastructure is different from borrowing to cover recurring spending. So I'd want to know the growth-interest gap and the use of funds before calling a rising ratio a genuine problem rather than just quoting the headline number."
+    },
+    "commonMistakes": [
+      "Treating any debt increase as inherently bad",
+      "Ignoring the growth versus interest rate comparison",
+      "Not distinguishing productive investment from current spending"
+    ],
+    "followUps": ["What role does who holds the debt, domestic versus foreign, play in this?"]
+  },
+  {
+    "id": "prog-economics-b-008",
+    "category": "Ethics & Situational",
+    "subtopic": "Central bank independence dilemma",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["ethics", "central-banks", "democracy"],
+    "question": "Central banks make decisions that affect millions of livelihoods, yet they're deliberately insulated from elected politicians. Is that democratically defensible?",
+    "lookingFor": "Weighs the tension between technocratic independence and democratic accountability with genuine reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension: unelected officials wielding major economic power",
+        "Explain the argument for independence, avoiding short-term political manipulation of rates before elections",
+        "Reach a reasoned position, perhaps qualified independence with accountability mechanisms"
+      ],
+      "modelAnswer": "There's a genuine tension here, unelected officials are setting interest rates that shape mortgages, jobs and prices for everyone, and that's a huge amount of power without a direct vote behind it. The classic argument for independence is that politicians facing an election have every incentive to cut rates and juice growth right before voting day even if it stores up inflation later, so insulating the central bank protects long-term stability from short-term political pressure. I think that argument is genuinely strong, but I'd still want independence paired with real accountability, clear mandates set by elected governments, transparent minutes, and regular testimony to parliament, so it's independence within democratic guardrails rather than unchecked power. Pure insulation with no oversight at all does feel hard to justify."
+    },
+    "commonMistakes": [
+      "Treating independence as either fully good or fully bad with no nuance",
+      "Ignoring the political business cycle argument for independence",
+      "Not proposing any accountability mechanism"
+    ],
+    "followUps": ["Should central bankers ever be removed if voters strongly disagree with their decisions?"]
+  },
+  {
+    "id": "prog-economics-b-009",
+    "category": "Ethics & Situational",
+    "subtopic": "Redistribution and the efficiency-equity trade-off",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["inequality", "redistribution", "ethics"],
+    "question": "Higher taxes to fund redistribution can reduce the incentive to work and invest. How would you decide how much redistribution is enough?",
+    "lookingFor": "Engages with the efficiency-equity trade-off honestly rather than picking an ideological side reflexively.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real trade-off between incentive effects and reducing inequality",
+        "Reference a framework for thinking about it, such as diminishing marginal utility of income or a veil-of-ignorance argument",
+        "Avoid a purely ideological answer, show genuine weighing"
+      ],
+      "modelAnswer": "I don't think there's a clean formula, but I'd think about it through diminishing marginal utility, a pound means far more to someone with very little than to someone very wealthy, so some redistribution genuinely raises overall welfare even if it slightly blunts incentives at the top. The question is where the curve bends, past a certain tax rate the disincentive effects on work and investment start costing more than the equity gain is worth, and that point is really an empirical question about how responsive people actually are to tax rates, not a moral one. I find the veil of ignorance thought experiment useful too, if you didn't know which income group you'd be born into, what tax and welfare system would you design, that tends to produce more redistribution than a purely efficiency-focused view but less than full equalization."
+    },
+    "commonMistakes": [
+      "Picking an ideological extreme with no engagement with trade-offs",
+      "Ignoring behavioral responses to taxation entirely",
+      "Treating the question as having one objectively correct numeric answer"
+    ],
+    "followUps": ["How would you actually measure whether a tax rate has crossed into too high?"]
+  },
+  {
+    "id": "prog-economics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Automation and the labor market",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["labor-market", "automation", "current-debate"],
+    "question": "Economists are split on whether AI will be net job-destroying like past fears about automation, or different this time. What's your read?",
+    "lookingFor": "Shows awareness of the historical automation debate and reasons about what might differ with AI specifically.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the historical pattern that past automation displaced jobs but also created new ones",
+        "Identify what might be genuinely different about AI, breadth across cognitive tasks, not just manual ones",
+        "Give a reasoned, hedged own view rather than a confident prediction"
+      ],
+      "modelAnswer": "Historically, automation fears haven't fully played out because new technologies destroy some jobs but also create new ones and raise productivity that generates demand elsewhere, think about how many jobs exist today that didn't exist before computers. What might be different with AI is that it's reaching into cognitive and creative tasks that used to be considered automation-proof, like drafting text or analysis, so the range of jobs exposed is much wider than with previous mechanical automation. I lean toward thinking the same adjustment pattern will eventually apply, new roles will emerge around directing and checking AI output, but I do think the transition could be faster and more disruptive than past waves, and that speed is the part policy probably isn't ready for."
+    },
+    "commonMistakes": [
+      "Confidently predicting mass unemployment or no effect at all with no nuance",
+      "Ignoring the historical precedent of past automation waves",
+      "Not engaging with what's actually different about AI specifically"
+    ],
+    "followUps": ["What policy would you put in place to manage that transition?"]
+  },
+  {
+    "id": "prog-economics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Post-pandemic inflation causes",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["inflation", "cost-of-living", "current-debate"],
+    "question": "What do you think actually drove the recent global cost of living surge, supply shocks, excess demand, or something else?",
+    "lookingFor": "Nuanced, multi-causal explanation of recent inflation rather than a single cause narrative.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention supply-side shocks, energy prices and disrupted supply chains",
+        "Mention demand-side factors, pandemic stimulus and pent-up spending",
+        "Recognize it was likely a combination rather than one clean cause, and that this matters for the right policy response"
+      ],
+      "modelAnswer": "I don't think it was really one clean story, it looks like a combination of a demand surge from pandemic stimulus and pent-up savings hitting an economy whose supply side was still tangled up in shipping delays and factory shutdowns, and then energy prices spiked on top of that. That combination matters a lot for policy, because if it's mostly demand you'd want interest rates to cool spending, but if it's mostly supply, higher rates don't really fix a blocked shipping lane and mostly just slow the economy without solving the actual bottleneck. My own sense is central banks probably had to raise rates anyway to stop inflation expectations becoming unanchored, even though a meaningful chunk of the original shock wasn't something rates could directly cure."
+    },
+    "commonMistakes": [
+      "Attributing inflation to a single cause only",
+      "Confusing supply-side and demand-side policy remedies",
+      "Showing no awareness of the actual recent inflation episode"
+    ],
+    "followUps": ["Why does it matter whether inflation is transitory or persistent for policy?"]
+  },
+  {
+    "id": "prog-economics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Industrial policy and tariffs",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["trade", "protectionism", "current-debate"],
+    "question": "A number of governments are moving back toward tariffs and industrial subsidies after decades of free trade orthodoxy. Is that a mistake?",
+    "lookingFor": "Balances classical free trade gains against genuine strategic or political-economy arguments for intervention.",
+    "idealAnswer": {
+      "bullets": [
+        "State the classical case for free trade, comparative advantage and efficiency gains",
+        "Give a genuine counter-argument, supply chain resilience, national security, or protecting emerging industries",
+        "Reach a nuanced own position rather than defaulting purely to textbook free trade"
+      ],
+      "modelAnswer": "The classical case for free trade is strong, comparative advantage really does raise overall output by letting countries specialize, and decades of trade opening coincided with big falls in global poverty. But I don't think the recent shift is purely a mistake, the pandemic showed how fragile some supply chains were when a single region made almost all of a critical component, so there's a genuine resilience argument for some diversification, even if it costs some efficiency. Where I get more sceptical is when tariffs are used to protect politically favoured industries with no real strategic case, that usually just raises costs for consumers and invites retaliation. So I'd separate targeted resilience policy in genuinely strategic sectors from broad protectionism, which I think is much harder to justify economically."
+    },
+    "commonMistakes": [
+      "Defaulting to pure free trade orthodoxy with no engagement with the counterarguments",
+      "Endorsing all protectionism without qualification",
+      "Not distinguishing strategic sectors from general protectionism"
+    ],
+    "followUps": ["What's the risk of other countries retaliating against these policies?"]
+  },
+  {
+    "id": "prog-economics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Cryptocurrency and central bank digital currencies",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["cryptocurrency", "monetary-policy", "current-debate"],
+    "question": "Should central banks be worried about cryptocurrencies undermining their control over monetary policy?",
+    "lookingFor": "Grasp of how monetary transmission depends on control of the currency, and realistic assessment of crypto's current role.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that monetary policy works through control of the money supply and interest rates in the national currency",
+        "Note that widespread crypto adoption for everyday transactions could weaken that transmission mechanism",
+        "Give a realistic, current assessment, most crypto is used as an asset rather than a medium of exchange, plus mention central bank digital currencies as a response"
+      ],
+      "modelAnswer": "Monetary policy really depends on the central bank controlling the supply and price of the currency people actually use to spend and save, so if a lot of everyday transactions moved to a currency the central bank doesn't control, it would genuinely weaken their ability to manage inflation or demand. In practice though I think that risk is still fairly limited today, most crypto is held as a speculative asset rather than used to actually buy groceries, its value is far too volatile to be a reliable medium of exchange for most people. What I find more interesting is that central banks are responding proactively anyway, several are piloting central bank digital currencies partly to make sure they stay the ones providing the digital money people trust, rather than ceding that ground."
+    },
+    "commonMistakes": [
+      "Treating crypto adoption as already widespread for daily transactions",
+      "Not explaining the actual mechanism by which crypto could undermine policy",
+      "No awareness of central bank digital currency initiatives"
+    ],
+    "followUps": ["What would change your assessment if crypto adoption grew a lot?"]
+  },
+  {
+    "id": "prog-economics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Minimum wage employment effects",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["minimum-wage", "labor-market", "current-debate"],
+    "question": "The old textbook view says minimum wages cause unemployment, but a lot of recent empirical research finds little effect. How do you square that?",
+    "lookingFor": "Understands the shift from the simple competitive labor market model to monopsony-based explanations, grounded in real debate.",
+    "idealAnswer": {
+      "bullets": [
+        "State the simple competitive model prediction, a price floor above equilibrium causes a surplus of labor, meaning unemployment",
+        "Explain the monopsony counter-argument, employers with wage-setting power may absorb a moderate minimum wage without cutting jobs",
+        "Note the empirical debate is genuinely contested and depends on how large the increase is"
+      ],
+      "modelAnswer": "The simple textbook model treats the labor market like any competitive market, so a wage floor set above equilibrium should create a surplus of workers, meaning unemployment. But a lot of real labor markets aren't perfectly competitive, some employers, especially in local or less mobile job markets, actually have some wage-setting power, which economists call monopsony, and in that setting a moderate minimum wage can raise pay without necessarily costing jobs, because it's correcting underpayment rather than distorting an efficient price. I think the honest answer is it depends a lot on how big the increase is relative to the local labor market, moderate rises in already competitive-ish markets seem to have shown pretty small job losses in recent studies, but very large jumps probably would behave more like the textbook prediction."
+    },
+    "commonMistakes": [
+      "Only knowing the simple competitive model with no awareness of monopsony",
+      "Claiming minimum wage definitely never causes job losses",
+      "Ignoring that the size of the increase matters"
+    ],
+    "followUps": ["What data would you want to see to judge the effect in a specific country?"]
+  },
+  {
+    "id": "prog-economics-b-015",
+    "category": "Curveball/Personality",
+    "subtopic": "Policy hypothetical, stagflation",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "stagflation", "policy-tradeoffs"],
+    "question": "Imagine you're advising a government facing stagflation, high inflation and high unemployment at the same time. Standard tools pull in opposite directions. What would you actually recommend?",
+    "lookingFor": "Recognizes the genuine policy bind of stagflation and reasons toward a sequenced or targeted response rather than a single lever.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that raising rates to fight inflation worsens unemployment, and stimulating growth worsens inflation",
+        "Consider supply-side measures that could ease both, like reducing bottlenecks or energy costs",
+        "Propose some sequencing or targeted approach rather than claiming one tool solves both"
+      ],
+      "modelAnswer": "The honest starting point is that stagflation is genuinely hard because the usual tools work against each other, tightening policy to cool inflation makes unemployment worse, and stimulating the economy to fix unemployment adds more inflation. I'd want to know first how much of the inflation is coming from a supply shock, like energy or food prices, because if that's the source, targeted supply-side measures, like temporarily easing energy costs or fixing specific bottlenecks, can lower inflation without needing to crush demand and jobs. I'd be cautious about using interest rates as the only tool, and would probably accept a slower, more gradual tightening path than usual, tolerating somewhat higher inflation for longer in exchange for protecting employment, while pairing it with targeted support, like fuel subsidies or worker support, for the people hit hardest in the interim."
+    },
+    "commonMistakes": [
+      "Proposing only one tool, like rate hikes, and ignoring the trade-off it creates elsewhere",
+      "Not acknowledging why this is a genuinely hard economic problem",
+      "Giving vague answers with no concrete policy suggestion"
+    ],
+    "followUps": ["What's the political risk of accepting higher inflation for longer?"]
+  },
+  {
+    "id": "prog-economics-b-016",
+    "category": "Curveball/Personality",
+    "subtopic": "Policy hypothetical, carbon pricing design",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "climate-policy", "carbon-pricing"],
+    "question": "You're asked to advise a government choosing between a carbon tax and a cap-and-trade scheme. Which would you recommend, and why?",
+    "lookingFor": "Compares the two mechanisms on price certainty versus quantity certainty and practical implementation issues.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a carbon tax gives price certainty but uncertain emissions reduction, while cap-and-trade gives emissions certainty but volatile prices",
+        "Consider practical factors, ease of implementation, administrative complexity, and political acceptability",
+        "Land on a reasoned recommendation given some stated context or trade-off"
+      ],
+      "modelAnswer": "The core trade-off is that a carbon tax fixes the price of emitting and lets the quantity reduced float depending on how firms respond, while cap-and-trade fixes the total quantity of emissions allowed and lets the price float depending on demand for permits. If the government's priority is hitting a specific emissions target with certainty, say meeting an international commitment, I'd lean toward cap-and-trade, because it directly caps the quantity. But a carbon tax is usually simpler to administer, more predictable for businesses planning investment, and harder to game through complicated permit markets, so if the priority is stability and ease of rollout I'd recommend a tax, probably with a credible commitment to raise it steadily over time so businesses can plan around a known trajectory."
+    },
+    "commonMistakes": [
+      "Not knowing the fundamental price-versus-quantity distinction between the two",
+      "Recommending one mechanism with no justification tied to actual policy goals",
+      "Ignoring implementation and political feasibility"
+    ],
+    "followUps": ["What would you do about the risk of carbon leakage to countries with no carbon price?"]
+  },
+  {
+    "id": "prog-economics-b-017",
+    "category": "Curveball/Personality",
+    "subtopic": "Policy hypothetical, universal basic income trial",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "ubi", "welfare-policy"],
+    "question": "If you were designing a trial to test universal basic income in a city, what would you actually want to measure, and what's the hardest thing to get right?",
+    "lookingFor": "Thinks like a researcher, identifies outcome measures beyond just income, and spots a real methodological challenge.",
+    "idealAnswer": {
+      "bullets": [
+        "Name concrete outcomes to measure, employment behavior, mental health, spending patterns, not just poverty rates",
+        "Identify a genuine methodological difficulty, like selecting a comparable control group or general equilibrium effects",
+        "Show awareness that a small local trial may not capture the effects of a nationwide rollout"
+      ],
+      "modelAnswer": "I'd want to measure more than just whether poverty falls, things like whether people's work hours actually change, whether they take more risks starting a business or retraining because they have a safety net, and effects on stress and mental health, since a lot of the argued benefits of UBI are about security rather than pure income. The hardest thing to get right is probably the control group and scale problem, a small trial in one city can tell you how individuals behave, but it can't really tell you what happens to local prices or the labor market if literally everyone in a whole country received the payment, because those general equilibrium effects only show up at full scale. I'd try to be upfront in reporting the results that a city-level pilot is a useful first step but can't fully answer the national policy question."
+    },
+    "commonMistakes": [
+      "Only proposing to measure income or poverty with no behavioral outcomes",
+      "Not recognizing the limits of small-scale trials for predicting national effects",
+      "Vague methodology with no mention of a control group"
+    ],
+    "followUps": ["How would you fund a UBI scheme if it were rolled out nationally?"]
+  },
+  {
+    "id": "prog-economics-b-018",
+    "category": "Ethics & Situational",
+    "subtopic": "Ethics of low-wage manufacturing in global supply chains",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["ethics", "globalization", "labor"],
+    "question": "Factories in poorer countries that Western consumers call sweatshops often pay wages that are low by our standards but relatively high locally, and closing them can leave workers worse off. How do you think about that ethically?",
+    "lookingFor": "Resists a simplistic verdict, weighs the real counterfactual for workers against legitimate concerns about conditions and exploitation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the uncomfortable empirical point, that these jobs are often better than local alternatives, and closing them isn't automatically a win for workers",
+        "Distinguish low wages from actively unsafe or coercive conditions, which is a separate and less defensible issue",
+        "Reach a reasoned position, favoring improving standards and bargaining power over simply boycotting or shutting factories down"
+      ],
+      "modelAnswer": "I think the honest starting point is that a low wage by Western standards isn't automatically evidence of exploitation, if it's genuinely a better option than the local alternatives available to that worker, then shutting the factory down or boycotting it can leave them worse off, not better, which is a real and uncomfortable fact. That said, I don't think low pay and unsafe or coercive conditions are the same issue, a factory can pay a relatively decent local wage and still lock fire exits or ignore basic safety, and that's a distinct ethical failure that doesn't get excused just because the wage looks acceptable. So my instinct is that the better lever isn't outright boycotts, which mostly punish workers, but pushing for enforceable safety and labor standards alongside continued market access, and supporting things like worker organizing power so wages can rise through bargaining rather than being fixed by whoever set up the factory."
+    },
+    "commonMistakes": [
+      "Treating any low wage as straightforwardly exploitative with no counterfactual reasoning",
+      "Conflating low wages with unsafe conditions as the same problem",
+      "Jumping to boycotts as an obviously correct solution"
+    ],
+    "followUps": ["Would your view change if the workers were children?"]
+  },
+  {
+    "id": "prog-economics-b-019",
+    "category": "Ethics & Situational",
+    "subtopic": "Price gouging during a crisis",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["ethics", "price-gouging", "markets"],
+    "question": "After a natural disaster, a shop triples the price of bottled water because demand has spiked. Economically that's just the market allocating a scarce resource. Is it wrong?",
+    "lookingFor": "Weighs the efficiency argument for price signals against fairness and access concerns in an emergency.",
+    "idealAnswer": {
+      "bullets": [
+        "Present the efficiency argument honestly, higher prices ration scarce goods and can pull in more supply",
+        "Raise the fairness counterpoint, essentials during emergencies aren't allocated well by ability to pay alone",
+        "Reach a reasoned own position rather than picking one side reflexively"
+      ],
+      "modelAnswer": "There's a real economic logic to it, a higher price does ration a genuinely scarce good toward those who need it most urgently, and it can encourage suppliers elsewhere to rush in more stock because there's now a profit incentive to do so. But I don't think that settles the ethical question, because in an emergency, ability to pay isn't the same as need, a family with less cash isn't less thirsty, and a tripled price for something as essential as water can mean real harm rather than just an efficient allocation. My own view is that some price rise is probably fine and even useful as a signal, but there's a point past which it becomes exploiting desperation rather than allocating scarcity, which is roughly why a lot of places have anti-price-gouging laws specifically for emergencies, even though economists are generally uneasy about price controls."
+    },
+    "commonMistakes": [
+      "Only giving the efficiency argument with no ethical weighing",
+      "Dismissing the economic logic entirely as purely greedy",
+      "Not reaching any actual position"
+    ],
+    "followUps": ["Would you support a legal cap on price increases during emergencies?"]
+  },
+  {
+    "id": "prog-economics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Comparative vs absolute advantage",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["trade", "comparative-advantage", "fundamentals"],
+    "question": "A country can produce everything more efficiently than its trading partner. Does it still make sense for it to trade?",
+    "lookingFor": "Correctly explains comparative advantage as distinct from absolute advantage, with opportunity cost reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "State that absolute advantage in everything doesn't rule out gains from trade",
+        "Explain comparative advantage rests on relative opportunity cost, not absolute productivity",
+        "Give a concrete illustrative example"
+      ],
+      "modelAnswer": "Yes, it still makes sense, because trade is driven by comparative advantage, not absolute advantage. Even if one country is better at producing literally everything, it still has a lower opportunity cost in whichever good it's relatively best at, and specializing there frees up its resources for the thing it's most efficient at, while the other country specializes where its relative disadvantage is smallest. A classic way to see it is imagining a brilliant surgeon who also types faster than anyone else, it still makes sense for her to hire a typist and spend her own time on surgery, because her opportunity cost of typing, measured in lost surgery time, is far higher than the typist's. The same logic scales up to whole countries trading with each other."
+    },
+    "commonMistakes": [
+      "Confusing absolute advantage with comparative advantage",
+      "Concluding a more efficient country has nothing to gain from trade",
+      "Explaining the concept with no concrete example"
+    ],
+    "followUps": ["What could stop a country from actually realizing these gains from trade in practice?"]
+  },
+  {
+    "id": "prog-economics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Public goods and the free-rider problem",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["public-goods", "market-failure", "fundamentals"],
+    "question": "Why won't a purely private market reliably provide something like a lighthouse or national defense?",
+    "lookingFor": "Correctly identifies non-excludability and non-rivalry as the source of underprovision via free-riding.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the two properties of a public good, non-excludable and non-rival",
+        "Explain why non-excludability leads to free-riding and underprovision if left purely to private markets",
+        "Note the usual solution, government provision or funding through taxation"
+      ],
+      "modelAnswer": "A lighthouse is a good textbook example because it's non-excludable, you can't really stop a passing ship from using its light even if it didn't pay for it, and it's non-rival, one ship benefiting doesn't reduce the light available to another. Because of that, if a private firm tried to build one and charge for it, most ships would just use the light for free without paying, so there's no way to charge users directly and profitably fund it, which means a private market tends to underprovide or not provide it at all even though everyone benefits. That's usually the textbook justification for government providing or funding this kind of good through general taxation, so it gets built even though no individual firm has a private incentive to build it themselves."
+    },
+    "commonMistakes": [
+      "Only naming non-excludability without mentioning non-rivalry",
+      "Confusing public goods with goods that are simply provided by government for other reasons",
+      "Not explaining the free-rider mechanism clearly"
+    ],
+    "followUps": ["Can you think of a modern example where this problem shows up, other than defense?"]
+  },
+  {
+    "id": "prog-economics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Information asymmetry, the market for lemons",
+    "program": "Economics",
+    "difficulty": "medium",
+    "tags": ["information-asymmetry", "market-failure", "microeconomics"],
+    "question": "Why might a used car market end up dominated by low-quality cars, even though sellers of good cars also want to sell?",
+    "lookingFor": "Applies Akerlof's lemons logic, adverse selection driving good sellers out of the market.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain buyers can't distinguish good cars from bad ones before purchase, an information asymmetry",
+        "Show that buyers, unable to tell quality, offer an average price, which undervalues good cars and overvalues bad ones",
+        "Conclude sellers of good cars exit, leaving a market skewed toward low quality, known as adverse selection"
+      ],
+      "modelAnswer": "The problem is that the seller knows the true quality of their car but the buyer doesn't, so buyers can only really offer a price based on the average quality they expect across the whole market. That average price undervalues genuinely good cars and overvalues bad ones, so owners of good cars start to think it's not worth selling at that price and pull out of the market, which drags the average quality, and therefore the average price buyers are willing to pay, down even further. Over time that spiral can leave the market dominated by low-quality cars, which is basically George Akerlof's lemons problem, and it's why things like warranties, vehicle history reports or professional inspections exist, they're mechanisms to signal quality and get around the information gap."
+    },
+    "commonMistakes": [
+      "Not identifying the information asymmetry as the actual cause",
+      "Confusing adverse selection with moral hazard",
+      "Giving no mechanism for how the market unravels"
+    ],
+    "followUps": ["What's the difference between adverse selection and moral hazard?"]
+  },
+  {
+    "id": "prog-economics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Nash equilibrium concept",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["game-theory", "nash-equilibrium", "fundamentals"],
+    "question": "What is a Nash equilibrium, and why isn't it necessarily the best outcome for the people involved?",
+    "lookingFor": "Correct technical definition plus the insight that Nash equilibria can be collectively suboptimal, ideally with an example.",
+    "idealAnswer": {
+      "bullets": [
+        "Define Nash equilibrium precisely, no player can improve their outcome by unilaterally changing strategy given the others' choices",
+        "Clarify that this is about individual best response, not collective welfare",
+        "Give an example, such as the prisoner's dilemma, showing the equilibrium is worse for everyone than another achievable outcome"
+      ],
+      "modelAnswer": "A Nash equilibrium is a set of strategies where no single player can do better by changing their own choice, assuming everyone else's choices stay fixed, so everyone is doing the best they individually can given what everyone else is doing. The key thing is that it's defined purely by individual best responses, not by whether the outcome is actually good for the group, so it's entirely possible for an equilibrium to leave everyone worse off than some other outcome they could have reached together. The prisoner's dilemma is the classic case, both players defecting is a Nash equilibrium because neither can improve by unilaterally switching to cooperation, even though both cooperating would have made them both better off, they just can't get there individually without risking being exploited."
+    },
+    "commonMistakes": [
+      "Confusing Nash equilibrium with the socially optimal outcome",
+      "Giving an imprecise definition that ignores the unilateral deviation condition",
+      "Not offering an example that illustrates the suboptimality"
+    ],
+    "followUps": ["Can a game have more than one Nash equilibrium? What does that imply?"]
+  },
+  {
+    "id": "prog-economics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "GDP as a measure of progress",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["gdp", "degrowth", "current-debate"],
+    "question": "There's a growing degrowth movement arguing GDP growth itself is the wrong goal given climate limits. Do you think that's right?",
+    "lookingFor": "Engages seriously with a genuine current economic debate rather than dismissing or endorsing it reflexively.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the degrowth argument, that indefinite GDP growth may be incompatible with ecological limits",
+        "Raise a serious counterpoint, GDP growth has historically driven poverty reduction and funds the green transition itself",
+        "Reach a nuanced own position, perhaps distinguishing growth measurement from growth as a goal"
+      ],
+      "modelAnswer": "I take the degrowth critique seriously in one sense, GDP as currently measured doesn't capture environmental depletion or wellbeing, so a country can show growth while actually running down its natural capital, and that mismatch is a real measurement problem worth fixing, which is part of why alternative measures like green GDP or wellbeing indices have gained traction. Where I'm more sceptical is the idea that growth itself needs to stop, because historically growth has been the main force pulling billions of people out of poverty, and a lot of the technology we need for decarbonizing, like renewable energy and efficient batteries, needs investment that itself shows up as growth. My own view is that the actual goal should be decoupling growth from emissions rather than abandoning growth altogether, since for lower income countries especially, some growth still seems essential rather than optional."
+    },
+    "commonMistakes": [
+      "Dismissing the degrowth argument without engaging with its actual claims",
+      "Endorsing degrowth with no acknowledgment of growth's role in poverty reduction",
+      "Confusing GDP growth with environmental damage as if they're mechanically identical"
+    ],
+    "followUps": ["Is decoupling growth from emissions actually happening in practice?"]
+  },
+  {
+    "id": "prog-economics-b-025",
+    "category": "Curveball/Personality",
+    "subtopic": "Policy hypothetical, negative interest rates",
+    "program": "Economics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "monetary-policy", "negative-rates"],
+    "question": "Imagine an economy stuck at zero growth and near-zero inflation even after rates are cut to zero. Would you recommend the central bank go negative, and what's the catch?",
+    "lookingFor": "Understands the logic and the practical limits of negative rates, especially the effective lower bound and bank behavior.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the intended logic, negative rates encourage lending and spending rather than hoarding cash",
+        "Identify a real catch, the effective lower bound problem where people can just hold physical cash, or banks squeeze margins and pass costs to savers awkwardly",
+        "Give a reasoned recommendation or alternative, rather than treating it as an easy fix"
+      ],
+      "modelAnswer": "The idea behind going negative is to push banks to lend rather than sit on reserves, and in theory to nudge savers toward spending or investing rather than hoarding cash that's now effectively losing value. The catch is that there's a limit to how negative you can realistically go, because if rates get too negative people and firms can just hold physical cash instead of keeping money in a bank account, which doesn't lose value the same way, so the tool loses its bite past a certain point. There's also a real risk that banks, unable to pass negative rates fully onto ordinary depositors without scaring them into withdrawing cash, end up squeezed on their own margins instead, which can actually make them lend less rather than more. I'd be cautious recommending it as a first choice, I'd probably want to try other unconventional tools first, like quantitative easing or clearer forward guidance, before pushing into negative territory."
+    },
+    "commonMistakes": [
+      "Not knowing what negative rates actually mean in practice",
+      "Ignoring the effective lower bound and cash-holding constraint",
+      "Recommending negative rates with no discussion of the drawback"
+    ],
+    "followUps": ["Why might quantitative easing be preferred as an alternative tool?"]
+  }
+]

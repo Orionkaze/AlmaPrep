@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-accounting-finance-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Accrual vs cash accounting",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["accounting-fundamentals", "accrual", "cash-flow"],
+    "question": "A company records a sale in December but doesn't get paid until February. Walk me through how that sale would appear differently under cash accounting versus accrual accounting, and why the difference matters to an investor.",
+    "lookingFor": "Clear grasp of accrual vs cash basis and why accrual gives a more accurate economic picture despite the cash-flow risk it can mask.",
+    "idealAnswer": {
+      "bullets": [
+        "Define accrual (revenue recognized when earned) vs cash (recognized when money changes hands)",
+        "Trace through the December sale example to each method's income statement",
+        "Explain why accrual can flatter a company that isn't actually collecting cash"
+      ],
+      "modelAnswer": "Under cash accounting the sale wouldn't show up until February when the payment actually lands, so December's income statement would look weaker than it really was. Under accrual accounting the revenue is recognized in December because that's when the sale was earned and the obligation created, even though no cash has moved yet. That matters to an investor because accrual accounting is meant to match revenue to the period it was actually generated, but it can also hide the fact that a company is racking up sales it hasn't actually collected cash for, which is exactly why I'd always want to look at the cash flow statement alongside the income statement rather than trusting profit figures alone."
+    },
+    "commonMistakes": [
+      "Confusing which method delays recognition until cash is received",
+      "Assuming accrual accounting is simply 'wrong' or manipulative",
+      "Forgetting to mention the cash flow statement as the check on accrual profits"
+    ],
+    "followUps": ["If a company shows strong accrual profits but weak operating cash flow for several quarters running, what would that make you want to investigate?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Debt vs equity financing",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["capital-structure", "financing", "trade-offs"],
+    "question": "If you were advising a growing company on whether to raise money through debt or equity, what factors would shape your recommendation?",
+    "lookingFor": "Structured reasoning about cost of capital, risk, dilution and control, not a one-line preference.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh cost (interest, tax-deductibility) against dilution of ownership and control",
+        "Factor in the company's cash flow stability and ability to service debt",
+        "Recognize that most real decisions blend both rather than picking one extreme"
+      ],
+      "modelAnswer": "I'd start by looking at how stable and predictable the company's cash flows are, because debt only makes sense if you're confident you can meet the repayments even in a bad quarter. Debt is usually cheaper than equity because interest is tax-deductible and you're not giving away a slice of future profits, but it adds fixed obligations and financial risk that equity doesn't. Equity dilutes ownership and control, which existing shareholders and founders often resist, but it gives the company breathing room if things don't go to plan. In practice I'd probably recommend a mix, leaning more on equity while the business is still proving itself and shifting toward debt once cash flows are more predictable."
+    },
+    "commonMistakes": [
+      "Treating debt as simply 'cheaper' without mentioning risk",
+      "Ignoring the impact of dilution on existing owners",
+      "Giving a single-word answer with no reasoning shown"
+    ],
+    "followUps": ["How would your answer change if interest rates were rising sharply?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics dilemma, pressure to smooth earnings",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "earnings-management", "integrity"],
+    "question": "Imagine you're an accounting intern and a senior manager asks you to delay recording a known expense into next quarter so this quarter's numbers look better for a loan renewal. What would you do?",
+    "lookingFor": "Structured ethical reasoning that recognizes the request as earnings management, weighs pressure against integrity, and lands on a defensible course of action.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the request as a breach of accrual matching and potentially misleading to the lender",
+        "Acknowledge the real pressure of hierarchy without excusing the action",
+        "Describe an escalation path rather than either silent compliance or dramatic confrontation"
+      ],
+      "modelAnswer": "I'd recognize straight away that shifting a known expense into the wrong period isn't a grey area, it's misstating the accounts to make the business look healthier than it is to a lender who's relying on those numbers. I understand the pressure an intern would feel in that position, but I'd explain to the manager, respectfully, that I didn't think I could record it that way and ask if there was a legitimate reason I was missing. If they insisted, I'd raise it with someone more senior or with whoever handles compliance, because the fact that I was asked to do it doesn't change that it's my name on the entry too. I'd rather have an uncomfortable conversation now than be part of misleading a lender."
+    },
+    "commonMistakes": [
+      "Complying without objection because a superior asked",
+      "Refusing to engage with the manager at all and going straight to reporting",
+      "Missing that the real issue is misleading a third party, not just an internal rule"
+    ],
+    "followUps": ["What if the manager framed it as 'just a timing difference that evens out next quarter anyway'?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate, AI and automation in accounting",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["technology", "auditing", "current-affairs"],
+    "question": "There's a lot of talk about AI automating bookkeeping and even parts of auditing. What do you think will actually change for accountants, and what won't?",
+    "lookingFor": "Informed, balanced view of automation's real impact, distinguishing routine tasks from judgement-heavy work.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify which tasks are genuinely automatable (data entry, reconciliation, anomaly flagging)",
+        "Identify what stays human (judgement calls, client relationships, ethical decisions, interpreting ambiguous situations)",
+        "Show awareness this is a live, evolving debate rather than a settled answer"
+      ],
+      "modelAnswer": "I think the routine, high-volume work like data entry, transaction matching and even flagging unusual patterns for review is already being automated and that trend is only going to accelerate. What I don't think changes as quickly is the judgement side, things like deciding whether a transaction is genuinely fraudulent or just unusual, having a difficult conversation with a client about a going concern issue, or applying professional scepticism to something that looks technically fine but feels off. If anything I think it raises the bar for accountants, because the parts of the job that survive automation are the parts that actually require training and ethics, not just following a checklist. That's part of why I want to study this now, because the profession I'll graduate into won't look exactly like the one today."
+    },
+    "commonMistakes": [
+      "Claiming AI will 'replace accountants entirely' with no nuance",
+      "Dismissing AI's impact as irrelevant to the profession",
+      "Giving a vague answer with no specific examples of tasks affected"
+    ],
+    "followUps": ["Do you think that changes what skills a student like you should be prioritising now?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Time value of money reasoning",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["finance-fundamentals", "tvm", "reasoning"],
+    "question": "Why is a dollar today worth more than a dollar in a year, and how would that principle actually change a decision someone makes?",
+    "lookingFor": "Solid grasp of time value of money beyond the textbook phrase, applied to a real decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core reasons (opportunity cost, inflation, risk of non-payment)",
+        "Connect to discounting future cash flows to compare choices fairly",
+        "Give a concrete decision the principle would change"
+      ],
+      "modelAnswer": "A dollar today is worth more because you can invest it and have it grow, because inflation will erode what a dollar buys by next year, and because there's always some risk you won't actually receive that future dollar at all. That's why finance uses discounting, you shrink future cash flows down to what they're worth in today's terms so you can compare options fairly. A practical example is choosing between an investment that pays a lump sum in five years versus smaller payments starting now, you can't just compare the raw totals, you have to discount the future amounts back and see which one actually wins once you account for time. It's a principle that sounds obvious once you say it, but I think people ignore it constantly, like when someone celebrates a lottery win's headline number without realising the annuity version pays out over decades."
+    },
+    "commonMistakes": [
+      "Only naming inflation and forgetting opportunity cost or risk",
+      "Reciting the phrase without explaining the mechanism",
+      "Failing to give a concrete example of the principle in action"
+    ],
+    "followUps": ["How would a much higher interest rate environment change how you'd value that future payment?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical, inventory valuation choice",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["inventory", "fifo-lifo", "hypothetical"],
+    "question": "Suppose a company switches from FIFO to LIFO inventory accounting during a period of rising prices. What happens to its reported profit, and why might management want to make that switch?",
+    "lookingFor": "Correct mechanical understanding of FIFO/LIFO effects plus insight into the incentive behind the choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain FIFO matches older, cheaper costs against revenue in rising prices, inflating profit",
+        "Explain LIFO matches newer, more expensive costs against revenue, lowering reported profit",
+        "Identify the likely motive, usually reducing taxable income, and note LIFO isn't allowed everywhere"
+      ],
+      "modelAnswer": "Under FIFO in a period of rising prices, the cost of goods sold is based on the older, cheaper inventory, so profit looks higher than it really reflects current costs. If a company switches to LIFO, it starts matching the newest, more expensive inventory against revenue, which pushes reported profit down. Management might want that specifically to lower taxable income, since a lower reported profit under LIFO usually means a smaller tax bill in that same rising price environment. It's a good example of how an accounting policy choice isn't just a technical detail, it can be a deliberate lever, though I know LIFO isn't permitted under IFRS, only under US GAAP, which is itself an interesting divergence between the two systems."
+    },
+    "commonMistakes": [
+      "Getting the direction of the profit effect backwards",
+      "Not identifying the tax motive as the likely driver",
+      "Treating the accounting choice as purely mechanical with no strategic angle"
+    ],
+    "followUps": ["Why do you think IFRS disallows LIFO while US GAAP permits it?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development, ESG and sustainability reporting",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["esg", "regulation", "current-affairs"],
+    "question": "Regulators in several regions are now requiring companies to disclose climate and sustainability data alongside financial statements. Do you think that belongs in the same report as the financial accounts, or should it stay separate?",
+    "lookingFor": "Awareness of the ESG reporting debate with a reasoned position, not just a stated opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that mandatory ESG/climate disclosure is an active, real regulatory development",
+        "Weigh the case for integration (financial materiality of climate risk) against practical concerns (measurement standards, comparability, cost)",
+        "Reach a reasoned position rather than a flat yes or no"
+      ],
+      "modelAnswer": "I think there's a strong case for including it because climate risk is genuinely financially material now, a company with major exposure to carbon pricing or physical climate risk has a real liability that investors deserve to see alongside the balance sheet. What worries me is that sustainability metrics don't yet have the same rigor and comparability as financial ones, an emissions figure can be measured several different ways, so bundling loosely defined numbers next to audited financials risks giving them false credibility. My honest view is that it belongs in the same report but needs the same assurance standards financial statements go through before I'd fully trust it, and I think that's exactly the direction regulators like the ISSB are pushing toward."
+    },
+    "commonMistakes": [
+      "Treating ESG reporting as a fad rather than an active regulatory shift",
+      "Giving no position, just describing both sides with no landing point",
+      "Confusing ESG disclosure requirements with voluntary corporate marketing"
+    ],
+    "followUps": ["Who do you think should be responsible for auditing sustainability data, the same auditors as financial statements or a separate specialist body?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Ratio analysis interpretation",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["ratios", "liquidity", "analysis"],
+    "question": "Two companies in the same industry both have a current ratio of 2.5. Does that automatically mean they're equally healthy? Walk me through your reasoning.",
+    "lookingFor": "Understanding that a single ratio in isolation can mislead, and the ability to reason about what's behind the number.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what current ratio measures and why 2.5 alone isn't conclusive",
+        "Identify composition of current assets as the key hidden variable (cash vs slow-moving inventory or bad receivables)",
+        "Suggest a complementary ratio like the quick ratio to sharpen the picture"
+      ],
+      "modelAnswer": "Not necessarily, because the current ratio only tells you that current assets are two and a half times current liabilities, it doesn't tell you what those current assets actually are. One company's current assets could be mostly cash and easily collectible receivables, while the other's could be sitting in slow-moving or even obsolete inventory that might never convert to cash at anywhere near its book value. That's why I'd want to look at the quick ratio too, which strips out inventory, to see if the underlying liquidity is really comparable. A ratio is a starting question, not a final answer, and I think that's true of most financial metrics, they're only as good as the composition behind them."
+    },
+    "commonMistakes": [
+      "Assuming identical ratios mean identical financial health",
+      "Not knowing what current ratio actually measures",
+      "Failing to suggest a follow-up ratio or deeper look"
+    ],
+    "followUps": ["What industry would make you especially cautious about relying on the current ratio alone?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics dilemma, insider information",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "insider-trading", "integrity"],
+    "question": "You overhear at a family dinner that a relative's company is about to announce a merger that will likely send the share price up. What would you do with that information?",
+    "lookingFor": "Clear understanding that acting on material non-public information is insider trading, reasoned through rather than just recited as a rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the information as material and non-public, and that trading on it is illegal, not just unethical",
+        "Reason about why the rule exists (fairness to other market participants) rather than just citing it",
+        "Address the temptation honestly rather than pretending it wouldn't be there"
+      ],
+      "modelAnswer": "I wouldn't trade on it and I wouldn't tell anyone else to either, because that's a textbook case of insider trading, using material information that isn't public yet to get an advantage in the market. I think it's worth being honest that the temptation is real, especially if it's family and the gain feels almost accidental rather than deliberately stolen, but the reason the rule exists is that markets only work if everyone is trading on the same public information, and acting on this would mean profiting unfairly at the expense of everyone else in that market. I'd also be careful about even casually mentioning it to friends, because passing it on is its own violation even if I never traded myself. It's the kind of situation where the right answer is simple but genuinely uncomfortable to follow."
+    },
+    "commonMistakes": [
+      "Framing it as only unethical rather than also illegal",
+      "Suggesting it's fine as long as you don't personally profit from it directly",
+      "Not acknowledging the realistic temptation, making the answer feel rehearsed"
+    ],
+    "followUps": ["Does it change your answer if the information turned out to be wrong and the deal fell through?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Depreciation methods and their effects",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["depreciation", "financial-statements", "judgement"],
+    "question": "Why might a company choose straight-line depreciation for its financial statements but an accelerated method for tax purposes?",
+    "lookingFor": "Understanding that depreciation method choice affects reported profit and taxable income differently, and that using different methods for different purposes is legitimate.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain straight-line spreads cost evenly, giving smoother, more predictable reported earnings",
+        "Explain accelerated depreciation front-loads expense, reducing taxable income earlier",
+        "Recognize this dual approach is legal and common, not evidence of manipulation"
+      ],
+      "modelAnswer": "Straight-line depreciation spreads the cost of an asset evenly over its life, which gives investors a smoother, more predictable earnings picture that's easier to compare year to year. Accelerated depreciation, on the other hand, front-loads more of the expense into the early years, which lowers taxable income sooner and effectively defers some of the tax bill, which is valuable to a company because of the time value of money we talked about earlier. Using straight-line for the financial statements and an accelerated method for tax isn't some kind of trick, it's a legitimate difference in purpose, one is meant to represent economic reality to investors and the other is following the tax code's specific rules to legally manage cash flow. It's actually one of the reasons deferred tax liabilities show up on the balance sheet, because the two methods diverge and eventually need to reconcile."
+    },
+    "commonMistakes": [
+      "Assuming using two different methods is inherently dishonest",
+      "Not connecting the tax method to the timing benefit for cash flow",
+      "Missing the link to deferred tax liabilities"
+    ],
+    "followUps": ["What happens to that gap between the two methods over the life of the asset?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical, going concern and burn rate",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["going-concern", "startups", "hypothetical"],
+    "question": "A startup has eighteen months of cash left at its current spending rate but no clear path to profitability yet. As someone analyzing its financial statements, what would you want to know before deciding if it's a going concern risk?",
+    "lookingFor": "Structured financial reasoning about going concern assessment beyond just quoting the cash runway number.",
+    "idealAnswer": {
+      "bullets": [
+        "Go beyond runway to examine burn rate trend, revenue growth trajectory and controllability of costs",
+        "Consider financing options realistically available (further funding rounds, credit lines, cost cuts)",
+        "Show understanding that going concern is a judgement call weighing multiple signals, not a single trigger"
+      ],
+      "modelAnswer": "Eighteen months sounds like a clear number but on its own it doesn't tell me much, so I'd want to know whether the burn rate is stable, shrinking, or accelerating, because a company burning less each quarter as revenue grows is a very different story from one where costs are climbing. I'd also want to look at revenue growth and gross margins, because a startup that's losing money but growing fast with improving unit economics is in a fundamentally different position than one whose losses aren't narrowing at all. Beyond the numbers themselves I'd want to understand its access to further financing, whether it has investors likely to fund another round, or credit facilities available, because a company that can't self-fund but has strong future backing isn't necessarily in trouble. Going concern isn't really about one scary number, it's about weighing the trend and the realistic options against it."
+    },
+    "commonMistakes": [
+      "Treating the eighteen-month figure as the entire answer",
+      "Ignoring revenue trajectory and unit economics",
+      "Not considering realistic financing options as part of the assessment"
+    ],
+    "followUps": ["What specific red flag in the cash flow statement would worry you most?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development, cryptocurrency accounting",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["crypto", "standards", "current-affairs"],
+    "question": "How should a company that holds Bitcoin on its balance sheet account for it, and why has this been a contentious accounting question?",
+    "lookingFor": "Awareness of the real accounting standards debate around crypto assets and the practical problems it creates.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that crypto has historically been treated as an intangible asset, tested for impairment, with no upward revaluation allowed under older rules",
+        "Explain why that treatment frustrated companies (losses recognized on price drops, gains not recognized until sale)",
+        "Note recent moves toward fair value accounting for crypto and why that's considered an improvement"
+      ],
+      "modelAnswer": "For a long time, under US GAAP, companies holding Bitcoin had to treat it as an indefinite-lived intangible asset, which meant if the price dropped they had to record an impairment loss, but if the price recovered or went higher they weren't allowed to write the value back up until they actually sold it. That created a strange, asymmetric picture where a company's balance sheet could understate the real value of its holdings for years, which frustrated companies like the ones that made large Bitcoin treasury purchases. It's been contentious because crypto doesn't cleanly fit the existing categories, it's not quite cash, not a traditional financial instrument, and not really an intangible like a patent either. I know FASB moved to require fair value accounting for crypto assets more recently, which lets both gains and losses flow through, and I think that's a good example of accounting standards genuinely lagging behind a new kind of asset until enough real companies forced the question."
+    },
+    "commonMistakes": [
+      "Assuming crypto has always been marked to fair value",
+      "Not knowing why the old treatment was considered a problem",
+      "Vague answer with no reference to actual standards or their evolution"
+    ],
+    "followUps": ["Do you think the same fair value logic should apply to other volatile assets a company might hold?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics dilemma, whistleblowing",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "whistleblowing", "integrity"],
+    "question": "If you discovered, early in your career, that your firm's official financial statements understated a liability in a way that seemed deliberate, what would guide your decision about what to do?",
+    "lookingFor": "Structured ethical reasoning weighing loyalty, career risk, and legal/professional duty, with a defensible course of action.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish between an honest error and something that looks deliberate, and describe how to verify which it is",
+        "Weigh personal and career risk honestly rather than pretending it's an easy decision",
+        "Land on using internal channels first, escalating externally only if those fail and the issue is serious"
+      ],
+      "modelAnswer": "The first thing I'd try to establish is whether this genuinely looks deliberate or whether there's an innocent explanation I'm missing, because I wouldn't want to escalate something that turns out to be a legitimate judgement call I didn't fully understand yet. If I still believed after that it was a deliberate misstatement, I'd raise it through whatever internal channel exists, whether that's a manager I trust or a compliance or audit function, because most firms have a process built exactly for this. I won't pretend that's an easy decision, especially early in a career when you're worried about your job and your reputation, but understating a liability misleads everyone relying on those statements, investors, lenders, even employees. If internal channels didn't take it seriously and the issue was material, I think the responsibility shifts toward reporting it externally, because staying quiet at that point makes me complicit too."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'I'd go to the regulator' with no internal step first",
+      "Pretending career risk isn't a real factor in the decision",
+      "Treating any discrepancy as automatically deliberate fraud"
+    ],
+    "followUps": ["What would change if the amount involved was small enough that it wouldn't be considered 'material'?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Behavioral finance vs efficient markets",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["behavioral-finance", "markets", "theory"],
+    "question": "The efficient market hypothesis says asset prices reflect all available information, yet we still see bubbles and crashes. How do you reconcile those two things?",
+    "lookingFor": "Ability to hold two competing frameworks in tension and reason about their limits rather than dismissing one outright.",
+    "idealAnswer": {
+      "bullets": [
+        "State the core claim of EMH accurately",
+        "Explain how behavioral finance challenges it (herding, overconfidence, loss aversion) with real examples",
+        "Reach a nuanced position rather than declaring one framework simply 'wrong'"
+      ],
+      "modelAnswer": "The efficient market hypothesis argues that because so many rational, informed participants are trading and competing to find mispriced assets, prices should quickly reflect all available information, which makes it very hard to consistently beat the market. But behavioral finance points out that investors aren't purely rational, we see herding where people pile into an asset because everyone else is, overconfidence where investors overestimate what they know, and loss aversion that makes people hold onto losing positions too long, all of which can push prices away from anything justified by fundamentals, which is basically what happened in the dot-com bubble. I don't think the two views fully cancel each other out, I think markets are efficient most of the time in the sense that it's genuinely hard to find easy mispricing, but that doesn't mean they're always rational, especially when emotion and crowd behavior take over at extremes. It's less a contradiction and more that efficient markets describe the average case and behavioral finance explains the tails."
+    },
+    "commonMistakes": [
+      "Declaring one theory entirely correct and the other entirely wrong",
+      "No concrete historical example of a bubble or crash",
+      "Vague hand-waving without naming a specific behavioral bias"
+    ],
+    "followUps": ["Can you name a specific behavioral bias and how it might affect an individual investor's decisions?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Budgeting and variance analysis",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["budgeting", "variance", "managerial-accounting"],
+    "question": "A department comes in significantly under budget for the quarter. Is that automatically good news? How would you think about it?",
+    "lookingFor": "Nuanced reasoning about variance analysis, recognizing underspending isn't automatically positive.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize favorable variance isn't automatically good, could signal delayed spending, underinvestment or missed targets",
+        "Suggest investigating the cause (deferred projects, hiring freezes, genuine efficiency) before judging",
+        "Connect to the idea that budgets are planning tools, not just performance scorecards"
+      ],
+      "modelAnswer": "Not automatically, because underspending could mean the department found a genuinely more efficient way to do its work, which would be good news, but it could just as easily mean a project got delayed, a hire didn't happen on schedule, or spending needed for growth simply didn't get made, none of which are actually good outcomes even though they look favorable on a variance report. I'd want to dig into what specifically drove the gap before drawing any conclusion, because a budget variance is really just a symptom, not a diagnosis on its own. That's part of why I find managerial accounting interesting, the numbers only tell you where to look, they don't tell you the story behind it, and the story is usually where the real judgement comes in."
+    },
+    "commonMistakes": [
+      "Assuming a favorable variance is unambiguously positive",
+      "Not proposing any way to investigate the underlying cause",
+      "Confusing variance analysis with simple over/under spending with no context"
+    ],
+    "followUps": ["What about an unfavorable variance, when might that actually be the right call for a manager to have made?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical, profit versus cash flow",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["cash-flow", "profit-quality", "hypothetical"],
+    "question": "Two companies report identical net profit this year, but one has strong positive operating cash flow and the other has negative operating cash flow. Which would you consider the healthier business, and why?",
+    "lookingFor": "Understanding that profit and cash flow can diverge and that cash flow often signals earnings quality more reliably.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize identical net profit can mask very different underlying realities",
+        "Explain how negative operating cash flow despite reported profit often points to rising receivables, inventory build-up, or aggressive revenue recognition",
+        "Conclude the company with strong operating cash flow is generally healthier, while flagging the need to investigate the other further"
+      ],
+      "modelAnswer": "On the surface identical profit looks like identical performance, but I'd be far more comfortable with the company generating strong positive operating cash flow, because that means the profit it's reporting is actually translating into real cash coming through the door. Negative operating cash flow alongside a reported profit is a flag worth investigating, it often means receivables are piling up and customers aren't actually paying, or inventory is building faster than it's selling, or in the worst cases that revenue is being recognized more aggressively than the underlying cash reality supports. I wouldn't necessarily assume the second company is doing something wrong, sometimes a fast-growing business legitimately ties up cash in working capital as it scales, but I'd want to see that gap narrowing over time rather than persisting. Cash is much harder to manipulate than profit, so when the two disagree I generally trust the cash flow statement more."
+    },
+    "commonMistakes": [
+      "Treating identical net profit as proof the two companies are equally healthy",
+      "Not identifying specific reasons operating cash flow could diverge from profit",
+      "Assuming negative operating cash flow always means fraud rather than considering legitimate growth explanations"
+    ],
+    "followUps": ["What line item in the cash flow statement would you check first to explain that gap?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Opportunity cost and sunk cost reasoning",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["opportunity-cost", "sunk-cost", "decision-making"],
+    "question": "A company has already spent two million on a project that clearly isn't going to work, but finishing it would cost another five hundred thousand. Some executives want to finish it because 'we've already put so much in.' How would you respond to that reasoning?",
+    "lookingFor": "Clean application of sunk cost fallacy reasoning to a realistic business decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the two million as a sunk cost that's irrelevant to the forward-looking decision",
+        "Reframe the decision purely around the incremental five hundred thousand against expected future value",
+        "Acknowledge the psychological pull of sunk cost thinking even while rejecting it as a basis for decisions"
+      ],
+      "modelAnswer": "I'd point out that the two million is already spent no matter what we decide now, it doesn't come back whether we finish the project or cancel it, so it genuinely shouldn't factor into the decision at all even though it feels like it should. The real question is only whether spending the additional five hundred thousand from this point forward is expected to generate more than five hundred thousand in value, completely independent of how much came before it. I understand why executives feel the pull of that reasoning, walking away from something you've invested heavily in feels like admitting failure, but letting that feeling drive the decision usually means throwing good money after bad. I'd try to reframe the conversation entirely around the forward-looking numbers and separate the emotional weight of the sunk cost from the actual financial decision in front of us."
+    },
+    "commonMistakes": [
+      "Agreeing that the prior spend should influence the decision",
+      "Not clearly separating the sunk cost from the incremental decision",
+      "Dismissing the psychological pull as simply irrational without acknowledging why people feel it"
+    ],
+    "followUps": ["Can you think of a personal example where you nearly fell into sunk cost thinking?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate, mandatory audit firm rotation",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["auditing", "regulation", "current-affairs"],
+    "question": "Some regulators have debated requiring companies to rotate their audit firm every several years to protect independence. Do you think that's a good idea?",
+    "lookingFor": "Awareness of a live regulatory debate in auditing with a reasoned, balanced position.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of why rotation is proposed (long relationships risk cozy familiarity undermining scepticism)",
+        "Weigh the counterargument (loss of accumulated knowledge of the business, higher transition costs, first-year audit quality dips)",
+        "Reach a considered position rather than a flat yes or no"
+      ],
+      "modelAnswer": "The argument for rotation makes sense to me, when the same audit firm has worked with a company for fifteen or twenty years, there's a real risk that the relationship becomes too comfortable, and the auditor's professional scepticism can quietly erode even without anyone intending it to. But I think the counterargument is genuinely strong too, a new auditor has to spend real time and cost just understanding a complex business, and there's research suggesting audit quality actually dips in the first year or two after a firm changes because they haven't built up that institutional knowledge yet. My honest view is that mandatory rotation of the lead audit partner within a firm, which several jurisdictions already require, captures most of the independence benefit without losing all the accumulated expertise, so full firm rotation feels like it might be solving the problem in a costlier way than necessary."
+    },
+    "commonMistakes": [
+      "Giving a one-word yes or no with no reasoning",
+      "Not knowing the actual counterargument around lost institutional knowledge",
+      "Confusing partner rotation with full firm rotation"
+    ],
+    "followUps": ["Do you think investors would actually notice or care if a company changed its audit firm?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Risk and diversification concept",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["risk", "diversification", "portfolio-theory"],
+    "question": "Why doesn't diversification eliminate all investment risk, even in a very large portfolio?",
+    "lookingFor": "Understanding the distinction between diversifiable and non-diversifiable (systematic) risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain diversification removes company-specific (unsystematic) risk by spreading across many holdings",
+        "Explain systematic, market-wide risk (recessions, interest rate shifts, geopolitical shocks) affects nearly everything and can't be diversified away",
+        "Give a concrete example of systematic risk affecting a broad portfolio"
+      ],
+      "modelAnswer": "Diversification is really good at cancelling out the risk that's specific to one company, if one holding has a factory fire or a bad product launch, the rest of a well spread portfolio barely notices. What it can't get rid of is systematic risk, the risk that affects almost everything at once, like a recession, a sharp rise in interest rates, or a geopolitical shock, because in those situations most asset classes tend to move together, sometimes in ways that surprise people who assumed their diversification would protect them. Two thousand and eight is the obvious example, stocks across nearly every sector fell together because the risk driving the decline was systemic to the financial system, not something specific to any one company you could have diversified away from. That's really the whole idea behind beta in finance, it's trying to measure exactly how much of that undiversifiable market risk a particular asset carries."
+    },
+    "commonMistakes": [
+      "Claiming diversification eliminates risk entirely if you hold enough assets",
+      "Not distinguishing systematic from unsystematic risk by name or concept",
+      "No concrete real-world example of systematic risk in action"
+    ],
+    "followUps": ["How does beta relate to the risk you can't diversify away?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics dilemma, client wants aggressive tax position",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["ethics", "tax", "professional-judgement"],
+    "question": "A client asks you to take a very aggressive interpretation of a tax rule that's technically defensible but clearly against the spirit of the law. What considerations would weigh on your decision?",
+    "lookingFor": "Nuanced professional ethics reasoning distinguishing legal tax avoidance from the spirit of the rule, and awareness of professional standards.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish legal tax minimization from what feels like exploiting a loophole against the rule's intent",
+        "Weigh professional and reputational risk against the client's short-term wishes",
+        "Reference the idea of professional judgement and standards rather than just personal comfort"
+      ],
+      "modelAnswer": "I'd want to separate two different questions, whether the position is technically legal, and whether I'd be comfortable defending it if it were challenged and examined closely, because those aren't always the same thing. Just because something is defensible on a technicality doesn't mean it reflects what the rule was actually meant to achieve, and professionals in accounting and tax are generally held to a standard of reasonable interpretation, not just the most aggressive interpretation that hasn't yet been struck down. I'd think about the reputational and professional risk to myself and the firm if that position was ever challenged by a regulator, because 'technically defensible' can still mean 'confidently wrong' if it's later disallowed with penalties attached. I think I'd be honest with the client about the risk level involved rather than simply refusing outright, because ultimately it's their decision to take that risk, but I wouldn't want to sign off on something I believed genuinely undermined the intent of the law without them fully understanding what they were choosing."
+    },
+    "commonMistakes": [
+      "Treating 'technically legal' as automatically meaning 'fine to proceed'",
+      "Refusing outright without engaging in the professional judgement involved",
+      "Ignoring the reputational and regulatory risk dimension entirely"
+    ],
+    "followUps": ["Would your answer change if the client threatened to take their business elsewhere?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development, interest rates and market behavior",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["macro", "interest-rates", "current-affairs"],
+    "question": "When central banks raise interest rates, why do growth stocks typically fall more than value stocks?",
+    "lookingFor": "Applied understanding of discounting and valuation connecting macro policy to market behavior, showing live market awareness.",
+    "idealAnswer": {
+      "bullets": [
+        "Connect higher rates to a higher discount rate applied to future cash flows",
+        "Explain growth stocks derive more of their value from cash flows far in the future, making them more sensitive to the discount rate",
+        "Explain value stocks generate more near-term cash flow, making them less exposed to that effect"
+      ],
+      "modelAnswer": "A stock's price is essentially the present value of all its future cash flows discounted back to today, and when central banks raise interest rates, the discount rate used in that calculation goes up too. Growth stocks get most of their valuation from cash flows expected many years in the future, profits that are currently small or even negative but expected to grow substantially later, and those far-off cash flows lose a disproportionate amount of value when the discount rate rises, the same way a payment decades away is hit much harder by a higher interest rate than a payment due next year. Value stocks, by contrast, tend to generate steadier cash flow closer to the present, so a higher discount rate shrinks their valuation less dramatically in comparison. That's exactly why we saw a lot of high growth tech names sell off hard during the rate hiking cycles, it wasn't necessarily that their businesses got worse, it's that the math behind valuing distant future profits became less forgiving."
+    },
+    "commonMistakes": [
+      "Not connecting the discount rate mechanism to why timing of cash flows matters",
+      "Vaguely saying 'growth stocks are riskier' without the valuation mechanism",
+      "Confusing the direction of the relationship between rates and valuations"
+    ],
+    "followUps": ["How would falling interest rates be expected to affect that same relationship?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical, red flags in financial statements",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["fraud-detection", "analysis", "hypothetical"],
+    "question": "If you were reviewing a company's financial statements and noticed revenue growing steadily every quarter while receivables were growing even faster, what would that make you think, and what would you want to check next?",
+    "lookingFor": "Ability to spot a classic fraud/earnings-quality red flag and propose a sensible next step, not just name the flag.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize receivables outpacing revenue growth as a common red flag for aggressive revenue recognition or channel stuffing",
+        "Propose checking days sales outstanding trend and the cash flow statement to see if cash collection matches reported sales",
+        "Avoid jumping straight to 'fraud' without acknowledging legitimate explanations too"
+      ],
+      "modelAnswer": "That pattern would definitely catch my attention, because in a healthy business receivables and revenue usually grow roughly together, and receivables consistently outpacing revenue can be a sign that the company is booking sales more aggressively than customers are actually able or willing to pay for, sometimes called channel stuffing, where extra product gets pushed to distributors near quarter end just to hit a number. The first thing I'd check is the trend in days sales outstanding over several quarters, because a steadily lengthening collection period would support that concern, and I'd also look at operating cash flow relative to net income, since genuine sales should eventually show up as cash. I'd want to be careful not to jump straight to calling it fraud though, there are legitimate explanations too, like a company deliberately extending payment terms to win a big new customer or expanding into a market with slower typical payment cycles, so I'd treat it as a flag that demands investigation rather than a verdict on its own."
+    },
+    "commonMistakes": [
+      "Not identifying days sales outstanding or a similar concrete metric to check",
+      "Jumping straight to 'this is fraud' with no acknowledgment of legitimate causes",
+      "Missing why receivables outpacing revenue is meaningful in the first place"
+    ],
+    "followUps": ["What other financial statement item might you check alongside receivables to build the full picture?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Valuing unprofitable but growing companies",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["valuation", "growth", "hypothetical"],
+    "question": "How would you even begin to value a company that's losing money but growing revenue fast, when traditional metrics like P/E don't work because there's no positive earnings?",
+    "lookingFor": "Awareness of alternative valuation approaches for growth or pre-profit companies, showing genuine subject depth.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why P/E breaks down with negative or near-zero earnings",
+        "Offer alternative approaches, such as revenue multiples, discounted cash flow with a longer forecast horizon, or unit economics",
+        "Show awareness these methods carry more uncertainty and require judgement about the path to eventual profitability"
+      ],
+      "modelAnswer": "Price to earnings just doesn't work when earnings are negative, dividing by a negative or near zero number either gives a meaningless ratio or a wildly distorted one, so analysts usually lean on other tools instead. One common approach is a revenue multiple, comparing the company's value to its sales rather than its profit, though that only really works well when comparing similar companies at a similar stage. A more rigorous approach is a discounted cash flow model that forecasts further out, essentially projecting when the company is expected to become profitable and modeling the cash flows from there, discounted back to today, though that obviously involves a lot of assumptions and uncertainty the further out you go. I'd also want to look at the underlying unit economics, things like customer acquisition cost against lifetime value, because those tell you whether the business model actually works at a small scale even before it's profitable overall, which I think matters more than the headline growth number by itself."
+    },
+    "commonMistakes": [
+      "Trying to force P/E onto a loss-making company anyway",
+      "Naming only one alternative method with no acknowledgment of its limitations",
+      "Ignoring unit economics as a way to sanity check the growth story"
+    ],
+    "followUps": ["What unit economics specifically would make you optimistic versus worried about a fast-growing but unprofitable company?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate, IFRS versus US GAAP convergence",
+    "program": "Accounting & Finance",
+    "difficulty": "medium",
+    "tags": ["standards", "ifrs-gaap", "current-affairs"],
+    "question": "The US and most of the rest of the world still use different accounting standards, GAAP versus IFRS. Do you think full convergence will ever happen, and does it matter?",
+    "lookingFor": "Genuine awareness of the ongoing standards convergence debate and its practical stakes for comparability.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness convergence efforts have stalled after real progress in the 2000s and 2010s",
+        "Explain why it matters (comparability for global investors, cost for multinational companies preparing dual reports)",
+        "Give a reasoned view on whether full convergence is realistic"
+      ],
+      "modelAnswer": "There was real momentum toward convergence in the two thousands, with the FASB and the International Accounting Standards Board working jointly on things like revenue recognition, but full convergence has largely stalled, and the US doesn't look close to adopting IFRS outright any time soon. I think it genuinely matters, because it means a global investor comparing a US company to a European one has to understand real differences, like the LIFO inventory point we talked about earlier, or how leases and certain financial instruments are treated, and multinational companies often have to maintain figures under both standards, which is expensive and adds room for confusion. My honest view is that full convergence probably won't happen, not because the standards can't be reconciled technically, but because it would mean the US ceding some control over its own accounting rules to an international body, and that's a political decision as much as a technical one. I think what's more realistic is continued gradual alignment on specific big topics, like we saw with revenue recognition, rather than one dramatic merger of the two systems."
+    },
+    "commonMistakes": [
+      "Assuming convergence already happened or is imminent",
+      "Only describing the history with no view on whether full convergence is realistic",
+      "Not connecting the debate to a concrete practical consequence like dual reporting costs"
+    ],
+    "followUps": ["Can you name one specific area where IFRS and GAAP still meaningfully differ?"]
+  },
+  {
+    "id": "prog-accounting-finance-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical, short-term earnings versus long-term value",
+    "program": "Accounting & Finance",
+    "difficulty": "hard",
+    "tags": ["strategy", "short-termism", "hypothetical"],
+    "question": "A public company could hit this quarter's earnings target by cutting its research and development budget, or miss the target by investing in R&D that should pay off in three years. As someone thinking about how markets should reward companies, which would you want the company to choose, and why?",
+    "lookingFor": "Ability to reason about short-termism versus long-term value creation, showing awareness of a live tension in corporate finance and markets.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the tension between meeting short-term market expectations and building long-term value",
+        "Reason about how markets sometimes punish long-term investment with short-term share price drops, even when it's the right call",
+        "Take a position while acknowledging the real career and reputational pressure managers face to hit quarterly numbers"
+      ],
+      "modelAnswer": "If I were purely thinking about long-term shareholder value, I'd want the company to keep investing in the research and development, because cutting a valuable long-term project just to hit a quarterly number is sacrificing real future value for a number that, on its own, doesn't actually make the business worth more. The tricky part is that markets don't always reward that patience in the short term, a company that misses earnings can see its share price fall even if the market eventually comes around to appreciating the investment, and that creates real pressure on managers whose compensation or job security might be tied to hitting those quarterly numbers. I think that tension is exactly why some investors and researchers argue quarterly guidance itself encourages short-termism, and why a few companies have deliberately stopped giving quarterly guidance to reduce that specific pressure. My honest answer is I'd want the company to protect the R&D, but I recognize that's a much easier position to hold as an outside observer than as an executive facing the market's actual reaction that quarter."
+    },
+    "commonMistakes": [
+      "Only considering one side of the tension without engaging the real market pressure",
+      "Being naive about the actual career risk managers face for missing targets",
+      "Not connecting the scenario to the real debate around quarterly guidance and short-termism"
+    ],
+    "followUps": ["Do you think eliminating quarterly earnings guidance altogether would help or just shift the problem elsewhere?"]
+  }
+]

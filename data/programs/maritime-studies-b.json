@@ -1,0 +1,653 @@
+[
+  {
+    "id": "prog-maritime-studies-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Ship stability concept",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["stability", "naval architecture", "physics"],
+    "question": "Can you explain what metacentric height is and why it matters for a ship's safety?",
+    "lookingFor": "Clear grasp of a core stability concept with correct terminology and a sense of the real-world safety stakes.",
+    "idealAnswer": {
+      "bullets": [
+        "Define metacentric height as the distance between the center of gravity and the metacenter",
+        "Explain that a larger GM gives a stiffer, more stable ship but can cause uncomfortable rolling, while too small or negative GM risks capsizing",
+        "Connect it to a real scenario like cargo loading or the free surface effect"
+      ],
+      "modelAnswer": "Metacentric height, or GM, is basically the distance between a ship's center of gravity and its metacenter, and it tells you how the ship will react when it heels over. A larger GM means the righting force kicks in strongly, so the ship is stable but can roll quite sharply in waves, while a small or negative GM means the ship might not right itself at all, which is genuinely dangerous. I read about the Herald of Free Enterprise disaster, where poor stability management played a role, and that is what made this concept click for me, it is not just theory, it decides whether a ship survives bad weather. I find it fascinating that something you can calculate on paper has such direct consequences for the people on board."
+    },
+    "commonMistakes": [
+      "Confusing center of gravity with center of buoyancy",
+      "Assuming higher GM is always better without mentioning the rolling comfort trade-off",
+      "Giving a textbook definition with no real-world stakes attached"
+    ],
+    "followUps": [
+      "How does free surface effect from a partially filled tank affect GM?",
+      "What would you do differently if you were loading cargo and noticed stability margins were tight?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "COLREGs crossing situation",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["colregs", "navigation", "rules of the road"],
+    "question": "Say you're on watch and the radar shows another vessel on a crossing course with risk of collision. How would the collision regulations decide who has to give way, and what would you actually do?",
+    "lookingFor": "Working knowledge of the COLREGs crossing rule and a sensible, safety-first account of watchkeeping action, not just rule recitation.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the crossing rule, the vessel that has the other on her own starboard side is the give-way vessel and must take early, substantial action",
+        "Explain the stand-on vessel's duty to keep course and speed but act if collision becomes imminent",
+        "Mention practical steps like continuous radar plotting, early and clear action, and sound signals if needed"
+      ],
+      "modelAnswer": "Under the crossing rule, if I have the other vessel on my starboard side, I am the give-way vessel and I need to act early and obviously, usually by altering course to pass astern rather than cutting in front. If I am the stand-on vessel I should hold my course and speed so the other ship can predict my movement, but if it becomes clear they are not giving way I still have a duty to act to avoid collision once it is imminent. I would keep plotting the other vessel's bearing to check if it is steady, because a steady bearing with decreasing range is the real warning sign of risk of collision. What draws me to this is that the rules only work if both sides trust the other to follow them, so good seamanship is really about predictability."
+    },
+    "commonMistakes": [
+      "Saying whoever is bigger or faster has right of way",
+      "Forgetting the stand-on vessel still has to act once collision is imminent",
+      "Not mentioning how they would actually detect risk of collision, like a steady compass bearing"
+    ],
+    "followUps": [
+      "What would you do if the give-way vessel still hadn't acted by the time you were quite close?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "IMO decarbonization targets",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["decarbonization", "imo", "current affairs"],
+    "question": "The IMO has set targets to cut shipping's greenhouse gas emissions, aiming for net-zero around mid-century. What do you think is the biggest obstacle to actually hitting that target?",
+    "lookingFor": "Awareness of the current decarbonization debate in shipping and ability to reason about a genuine obstacle, not just recite the target.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the IMO's revised GHG strategy and net-zero-by-around-2050 ambition",
+        "Identify a credible obstacle, fuel availability and cost, retrofit expense, or the fact that ships have decades-long lifespans",
+        "Reason about it rather than just listing it, weighing who bears the cost"
+      ],
+      "modelAnswer": "I think the biggest obstacle is that no single alternative fuel is ready at scale yet, green ammonia and methanol are promising but production capacity and bunkering infrastructure are years behind the ambition. On top of that, ships last twenty five to thirty years, so owners are cautious about investing in engines built for a fuel that might not be the winner. I've read arguments that a global carbon levy on shipping fuel could help close that cost gap by making cleaner fuels competitive, but getting agreement between developing and developed flag states on who pays has been the sticking point at IMO negotiations. It's a genuinely hard coordination problem, not just an engineering one."
+    },
+    "commonMistakes": [
+      "Treating it purely as an engineering problem with no mention of economics or politics",
+      "Vague statements like ships should just use cleaner fuel with no obstacle identified",
+      "Not knowing the rough IMO target timeframe at all"
+    ],
+    "followUps": [
+      "Which alternative fuel do you think is most likely to win out, and why?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Ballast water and invasive species",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["environment", "ballast water", "regulation"],
+    "question": "Untreated ballast water has been blamed for spreading invasive species between ports. Why is this such a hard problem to solve, given there's already a Ballast Water Management Convention in force?",
+    "lookingFor": "Understanding that a convention on paper doesn't automatically solve enforcement and cost problems, plus basic knowledge of why ballast water spreads species.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what ballast water does and why organisms hitch a ride in it",
+        "Note the convention exists but retrofitting treatment systems is expensive and older ships get phased compliance deadlines",
+        "Mention enforcement difficulty, port states have to actually inspect and test, which is resource intensive"
+      ],
+      "modelAnswer": "Ships take on ballast water for stability when they're empty of cargo and discharge it at the next port, and that water can carry larvae, algae, or small organisms that become invasive when released somewhere with no natural predators. The Ballast Water Management Convention requires treatment systems, but retrofitting an existing ship with a treatment plant is expensive, so a lot of owners pushed for the longest compliance windows the rules allowed. Even where systems are installed, port states have limited capacity to actually test discharge water, so enforcement relies a lot on self-reporting and spot checks. I think it's a good example of how a strong rule on paper still needs money and inspection capacity behind it to actually change outcomes."
+    },
+    "commonMistakes": [
+      "Not knowing why ballast water carries organisms at all",
+      "Assuming the convention alone has solved the problem",
+      "Ignoring the cost burden on older or smaller vessels"
+    ],
+    "followUps": [
+      "Who do you think should bear the cost of retrofitting older ships, the owner or the industry collectively?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Panama Canal drought and shipping routes",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["canal", "logistics", "climate"],
+    "question": "The Panama Canal has had to restrict the number and draft of ships passing through because of low water levels. What does an event like that tell you about modern shipping's vulnerabilities?",
+    "lookingFor": "Ability to connect a current event to broader structural insight about chokepoints and supply chain fragility.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what happened, drought reduced Gatun Lake levels, forcing transit restrictions and lighter loading",
+        "Identify the deeper point, global trade depends on a small number of chokepoints",
+        "Discuss knock-on effects like rerouting, higher freight costs, or congestion elsewhere"
+      ],
+      "modelAnswer": "The canal relies on freshwater from Gatun Lake to operate its locks, and when rainfall dropped the authority had to cut the number of daily transits and cap how deep ships could load, which meant real delays and forced some operators to reroute around the Cape or shift cargo to rail. What strikes me is how much of global trade quietly depends on a handful of chokepoints like Panama, Suez, and the Strait of Hormuz, so a local weather problem in one place becomes a global freight cost problem within weeks. It also made me think about climate resilience as a shipping issue, not just an environmental one, canals and ports may need to plan around rainfall variability the same way they plan around storms."
+    },
+    "commonMistakes": [
+      "Not knowing the drought was the actual cause of the restrictions",
+      "Treating it as an isolated event with no broader chokepoint insight",
+      "Confusing the Panama Canal's freshwater lock system with a sea-level canal like Suez"
+    ],
+    "followUps": [
+      "Can you think of another maritime chokepoint and what could disrupt it?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Red Sea shipping disruption",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["geopolitics", "suez", "security"],
+    "question": "Attacks on shipping in the Red Sea have pushed a lot of vessels to reroute around the Cape of Good Hope instead of using the Suez Canal. What are the trade-offs in that decision for a shipping line?",
+    "lookingFor": "Grasp of a live geopolitical disruption to shipping and the ability to reason through the cost-safety trade-off a line actually faces.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that security threats in the Red Sea and Bab el Mandeb led many lines to avoid Suez",
+        "Weigh the trade-off, longer Cape route means more days, more fuel, more crew cost, but lower risk exposure and often lower insurance premiums",
+        "Mention knock-on effects like reduced capacity, higher freight rates, and delivery delays"
+      ],
+      "modelAnswer": "When attacks on commercial vessels in the Red Sea increased, a lot of major lines chose to send ships around the Cape of Good Hope instead of through Suez, even though that adds one to two weeks of sailing time depending on the route. The trade-off is straightforward on paper, you pay more in fuel and crew days, but you avoid the security risk and often the war-risk insurance premiums that spiked for the Suez route. What I find interesting is the second-order effect, longer voyages effectively remove capacity from the global fleet, which tightened freight rates everywhere, not just on that specific route. It's a good example of how a regional security problem becomes a pricing problem for cargo owners on the other side of the world."
+    },
+    "commonMistakes": [
+      "Not knowing which chokepoint or region the disruption involves",
+      "Only mentioning cost and ignoring the safety and insurance angle",
+      "Missing the global ripple effect on freight capacity"
+    ],
+    "followUps": [
+      "If you were advising a shipping line, how would you decide when it's safe enough to go back through Suez?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Autonomous and remotely operated vessels",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["autonomy", "technology", "future of shipping"],
+    "question": "Some companies are trialing autonomous or remotely crewed cargo ships. Do you think fully autonomous ocean shipping is realistic in the next couple of decades?",
+    "lookingFor": "Balanced, informed reasoning about the technical, legal, and human factors, not blind hype or blanket dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge real trials happening, like short coastal or ferry routes, while noting deep-sea autonomy is much harder",
+        "Identify concrete obstacles, COLREGs assumes a human lookout, liability in an incident is unresolved, cybersecurity risk",
+        "Give a considered opinion rather than a flat yes or no"
+      ],
+      "modelAnswer": "I think limited autonomy on short, well-monitored routes, like the Yara Birkeland style coastal ships, is realistic fairly soon, but fully unmanned deep-sea shipping in the next twenty years feels optimistic to me. The rules themselves are a real obstacle, COLREGs was written assuming a human keeping a proper lookout, and nobody has fully settled who's liable if an autonomous ship causes a collision, the software maker, the owner, or the shore-based operator. There's also the cybersecurity angle, a remotely controlled fleet is a much bigger target than one with a crew who can act on backup systems. My honest view is that the technology will probably outpace the legal and insurance frameworks, so the limiting factor won't be engineering, it'll be who's willing to take on the liability."
+    },
+    "commonMistakes": [
+      "Answering with pure hype, autonomous ships will replace everything soon",
+      "Dismissing it entirely without acknowledging real current trials",
+      "Ignoring the regulatory and liability dimension"
+    ],
+    "followUps": [
+      "Who do you think should be liable if an autonomous ship causes a collision?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Falsifying the ship's log",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "integrity", "safety"],
+    "question": "Imagine you're a junior officer and your captain asks you to record in the log that a safety drill took place, when it actually didn't because the weather was bad. What would you do?",
+    "lookingFor": "Structured ethical reasoning about the integrity of official records versus deference to a superior, weighing safety consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the log is a legal safety document, not a formality, so falsifying it has real consequences",
+        "Show respect for the chain of command while not simply complying",
+        "Propose a constructive path, raise it directly with the captain, suggest rescheduling the drill, escalate only if refused"
+      ],
+      "modelAnswer": "I'd start by understanding that the log isn't just paperwork, it's the record port state control and investigators rely on if something ever goes wrong, so signing off a drill that didn't happen puts everyone at real risk, not just a technical one. I wouldn't want to publicly challenge the captain in front of the crew, but I'd ask to speak privately and explain that I'm not comfortable recording something that didn't happen, and suggest we simply reschedule the drill for the next safe window instead of skipping it. If the captain insisted, I think I'd still have to decline to falsify my own entry, because my signature makes it my responsibility too, and I'd document my concern honestly. It's uncomfortable to push back on a superior, but an entry like that isn't really a small thing."
+    },
+    "commonMistakes": [
+      "Simply complying because the captain outranks them",
+      "Treating it as a trivial paperwork issue with no safety weight",
+      "Jumping straight to reporting the captain without first raising it directly"
+    ],
+    "followUps": [
+      "Does it change your answer if the captain says this is just how it's always done on this ship?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Cargo overloading pressure",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety", "commercial pressure"],
+    "question": "A shipping company pressures you, as the loading officer, to accept cargo that would put the vessel slightly over its safe load line, saying everyone does it and the margins are conservative anyway. How do you respond?",
+    "lookingFor": "Firm ethical grounding on safety limits despite commercial pressure, with realistic understanding of the load line's purpose.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that load line limits exist precisely because margins already account for worst-case conditions, so it isn't as conservative as it sounds",
+        "Refuse to compromise on the safety limit even under commercial pressure",
+        "Suggest a constructive alternative, like negotiating the extra cargo for the next sailing"
+      ],
+      "modelAnswer": "I'd explain that the load line isn't an arbitrary conservative buffer, it's calculated around reserve buoyancy and stability in genuinely bad weather, so treating it as padding misunderstands what it's for. I wouldn't sign off on exceeding it, because if that ship met a real storm with less freeboard than it's designed for, the consequences could be catastrophic, and my signature would be on the loading plan. I'd tell the company clearly that I can't authorize it, but I'd try to be useful about it, offering to check if a lighter routing or splitting the cargo across two sailings could work commercially. I think the pressure to say everyone does it is exactly the kind of normalized shortcut that precedes real accidents."
+    },
+    "commonMistakes": [
+      "Caving to the argument that everyone does it",
+      "Not understanding what the load line margin actually protects against",
+      "Refusing with no constructive alternative offered"
+    ],
+    "followUps": [
+      "What would you do if your refusal meant you were likely to be replaced by someone who would sign off on it?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Stowaway discovery hypothetical",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "crew welfare", "law"],
+    "question": "Say you're a deck officer and during a routine check at sea you discover a stowaway hiding in a cargo hold. Walk me through what you'd actually do.",
+    "lookingFor": "Practical, humane, procedurally sound handling of a realistic maritime scenario, balancing safety, law, and welfare.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize immediate safety and basic welfare, food, water, medical check, without assuming guilt or danger",
+        "Follow proper procedure, inform the captain immediately, document the discovery, notify the flag state and next port authorities",
+        "Recognize the legal complexity, stowaways can't just be put ashore anywhere, disembarkation depends on international and port rules"
+      ],
+      "modelAnswer": "My first move would be to make sure the person is safe and not a danger to themselves or the ship, so I'd get them somewhere secure, offer water and basic care, and inform the captain right away rather than trying to handle it alone. I know stowaway cases have to be properly documented and reported to the flag state and to the authorities at the next port of call, because you can't just disembark someone wherever it's convenient, there are real legal obligations around who's responsible for them. I'd also want to treat the person decently through all of that, they're often fleeing something genuinely desperate, and the procedure exists to protect everyone, not to punish someone for being scared. It's the kind of situation where following the process carefully actually is the humane choice."
+    },
+    "commonMistakes": [
+      "Focusing only on security or punishment with no welfare consideration",
+      "Assuming the ship can just drop the stowaway at the nearest port",
+      "Not mentioning informing the captain or proper documentation"
+    ],
+    "followUps": [
+      "What tension do you see between the ship's legal obligations and treating the stowaway humanely?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Piracy response hypothetical",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "piracy", "decision making"],
+    "question": "Your vessel is transiting a known high-risk piracy area and the watch spots a small skiff approaching fast on an intercept course. What would you expect the crew to do, and what's the reasoning behind those steps?",
+    "lookingFor": "Knowledge of realistic anti-piracy protocol and calm, structured reasoning under pressure.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention early detection and reporting, alerting the master, raising the alarm, contacting the relevant naval or coordination center",
+        "Reference passive defensive measures, increasing speed, evasive maneuvering, razor wire, citadel procedures, rather than confrontation",
+        "Emphasize crew safety over cargo or schedule"
+      ],
+      "modelAnswer": "I'd expect the officer of the watch to immediately alert the master and raise the ship's alarm, and to contact the relevant regional naval coordination center to report the position and description of the approaching skiff. Best management practice in high-risk areas usually means increasing speed to the maximum, making sharp evasive maneuvers to create wash that makes it harder for a small boat to come alongside, and getting all non-essential crew into the citadel, a secured area, rather than anyone trying to physically confront the attackers. The whole approach is built around avoiding direct contact and buying time for naval assistance, because crew lives are worth far more than the cargo or the schedule. I find it striking that so much of maritime security is about disciplined avoidance rather than confrontation."
+    },
+    "commonMistakes": [
+      "Suggesting the crew should try to fight off or confront the pirates directly",
+      "Not knowing what a citadel or basic best management practice measures are",
+      "Prioritizing cargo protection over crew safety"
+    ],
+    "followUps": [
+      "Why do you think avoiding confrontation is usually the recommended approach rather than arming the crew?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Seafarer crew change crisis",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["seafarer welfare", "labor", "current affairs"],
+    "question": "During the pandemic hundreds of thousands of seafarers were stuck on ships past their contracts because of border closures. What does that episode tell you about how the industry treats its workforce?",
+    "lookingFor": "Awareness of the crew change crisis as a real historical event and thoughtful reflection on seafarer welfare structurally.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the crew change crisis, seafarers stranded on board for many months beyond contract due to border and quarantine restrictions",
+        "Reflect on the structural reason, seafarers are essential to global trade but largely invisible and have weak political voice",
+        "Connect it to broader welfare issues, mental health, isolation, fatigue regulation"
+      ],
+      "modelAnswer": "During the pandemic a huge number of seafarers, at one point estimated around four hundred thousand, were stuck on board well past their contracts because countries closed borders and wouldn't let crews fly home or fly on replacements, even though those same ships were carrying essential goods the whole time. It struck me how invisible seafarers are politically, everyone depended on shipping continuing to run, but almost nobody was advocating loudly for the people actually running it, which is a strange contradiction. I think it exposed a deeper pattern where seafarer welfare, mental health, fatigue, isolation, gets treated as secondary to keeping cargo moving, and the IMO and ILO had to push hard afterward to get governments to recognize seafarers as key workers. It made me want to understand the human side of this industry, not just the logistics side."
+    },
+    "commonMistakes": [
+      "Not knowing the crew change crisis happened at all",
+      "Treating it as purely a logistics story with no welfare angle",
+      "Overgeneralizing without any specific detail"
+    ],
+    "followUps": [
+      "What structural change would you propose to prevent something similar happening again?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Flags of convenience",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["regulation", "flag state", "law"],
+    "question": "What's your understanding of why a shipowner might register a vessel under a flag of convenience, and do you think the practice is a problem?",
+    "lookingFor": "Correct factual understanding of flag registration plus a balanced, reasoned view on its costs and benefits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what a flag of convenience is, registering in a country other than the owner's for lower cost, lighter tax, or lighter regulation",
+        "Give a balanced view, cheaper and more flexible, but can weaken enforcement of safety and labor standards",
+        "Mention port state control as the main check on this weakness"
+      ],
+      "modelAnswer": "A flag of convenience is when a shipowner registers their vessel in a country like Panama, Liberia, or the Marshall Islands rather than their home country, usually because registration fees and taxes are lower and crewing and inspection rules can be lighter. I don't think it's automatically a bad thing, it's part of why global shipping is as efficient and flexible as it is, but I do think it can be a problem when a flag state doesn't have the capacity or the will to properly inspect and enforce safety standards on its own registry. That's really why port state control exists, so that even a ship under a loose flag still gets checked when it calls at a port with stricter enforcement, like in Europe or Australia. I think the honest answer is it's a trade-off between commercial flexibility and consistent safety enforcement, and the system only works as well as the port state inspections backing it up."
+    },
+    "commonMistakes": [
+      "Confusing flag of convenience with just any foreign registration",
+      "Taking an absolute position, either it's fine or it's entirely corrupt, with no nuance",
+      "Not knowing port state control exists as the counterbalance"
+    ],
+    "followUps": [
+      "Can you name a flag state commonly used as a flag of convenience?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Just-in-time shipping and port congestion",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["logistics", "supply chain", "economics"],
+    "question": "The pandemic-era port congestion, with dozens of container ships anchored outside Los Angeles and Long Beach, exposed weaknesses in just-in-time shipping. What did that teach you about how global supply chains are designed?",
+    "lookingFor": "Understanding of just-in-time logistics and the ability to reason about resilience versus efficiency trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what just-in-time shipping optimizes for, low inventory cost, tight scheduling",
+        "Identify why that made the system fragile, no slack capacity to absorb a shock like a demand surge or a closed factory",
+        "Reflect on the resilience versus efficiency trade-off the industry has been discussing since"
+      ],
+      "modelAnswer": "Just-in-time supply chains are built to minimize inventory sitting in warehouses, so goods arrive close to when they're needed, which keeps costs down in normal times but leaves almost no slack to absorb a shock. When demand for goods spiked while factories and ports were running at reduced capacity, the whole system had no buffer, and that's part of why so many ships ended up anchored outside Los Angeles and Long Beach waiting weeks to unload. It made me think about the trade-off between efficiency and resilience, a leaner system is cheaper until the one time it really matters, and I've read that some companies have since started holding more safety stock or diversifying suppliers even though it costs more. I think that tension between lean and resilient is going to be a defining question for logistics for a while yet."
+    },
+    "commonMistakes": [
+      "Not connecting just-in-time principles to why the system had no slack",
+      "Only describing the congestion without explaining the underlying design choice that caused it",
+      "Suggesting there's an easy fix with no trade-off"
+    ],
+    "followUps": [
+      "If you were advising a retailer today, would you tell them to hold more inventory or stay lean?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Alternative marine fuels trade-offs",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["fuels", "engineering", "sustainability"],
+    "question": "Ammonia, methanol, and LNG are all being trialed as alternative marine fuels. What are the trade-offs between them?",
+    "lookingFor": "Solid comparative technical understanding of alternative fuel options and their real drawbacks, not just naming them.",
+    "idealAnswer": {
+      "bullets": [
+        "LNG, mature technology and existing infrastructure, but still emits methane and CO2, so it's a bridge fuel at best",
+        "Methanol, easier to handle and store, lower emissions, but toxic and typically not carbon neutral unless produced from green sources",
+        "Ammonia, potentially zero carbon at point of use, but highly toxic, lower energy density, and combustion technology is still immature"
+      ],
+      "modelAnswer": "LNG is the most mature option, engines and bunkering infrastructure already exist, but it's really a bridge fuel because burning it still releases CO2 and there's a real risk of methane slip, which is a potent greenhouse gas itself. Methanol is easier to store and handle than the other two, liquid at normal temperature, and Maersk has ordered a number of methanol-fueled ships, but it's toxic to handle and only genuinely low carbon if it's produced from renewable sources rather than natural gas. Ammonia is the one that could get closest to zero carbon at the point of combustion, but it's seriously toxic if it leaks, has a much lower energy density than fuel oil so you need more storage volume, and combustion engines for it are still mostly at demonstration stage. My honest view is there probably won't be one winner, different fuels will suit different routes and ship types depending on availability and range."
+    },
+    "commonMistakes": [
+      "Naming the fuels with no real trade-off analysis",
+      "Assuming LNG is a fully clean fuel",
+      "Not knowing that ammonia is toxic, treating it like a straightforward drop-in replacement"
+    ],
+    "followUps": [
+      "Which fuel would you bet on for long-haul deep-sea shipping specifically, and why?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Search and rescue versus migrant crisis",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "search and rescue", "migration"],
+    "question": "Commercial ships are legally obliged to rescue people in distress at sea, but rescuing a large group of migrants can leave a ship without a clear port willing to accept them, sometimes for days. If you were the captain, how would you think through that situation?",
+    "lookingFor": "Careful ethical reasoning that holds the humanitarian duty firmly while acknowledging the real operational and diplomatic bind captains face.",
+    "idealAnswer": {
+      "bullets": [
+        "Affirm the duty to rescue under maritime law is not optional, regardless of the disembarkation difficulty",
+        "Acknowledge the genuine practical bind, food, medical needs, crew capacity, and no guaranteed port of safety",
+        "Reason through the captain's realistic response, rescue first, then work every available channel, shipping company, flag state, coordination centers, to find a port"
+      ],
+      "modelAnswer": "I'd start from the position that the duty to rescue people in distress at sea isn't something a captain gets to weigh against convenience, it's a basic legal and moral obligation under SOLAS, so the rescue itself isn't really the dilemma. The real difficulty comes after, when no country wants to designate a port of safety, and the ship is stuck with limited food, medical supplies, and crew who aren't trained for a humanitarian situation of that scale. As captain I think the responsible path is to keep pressing every channel, the shipping company, the flag state, and international coordination centers, to find a port, while doing everything possible on board to keep people fed, safe, and medically cared for in the meantime. It's a genuinely awful position for a captain to be in, being legally and morally right about the rescue but politically stuck on the outcome, and I don't think there's a clean answer beyond not compromising on the rescue itself."
+    },
+    "commonMistakes": [
+      "Suggesting the ship could just refuse to rescue because of the disembarkation difficulty",
+      "Ignoring the real logistical strain a large rescue puts on a commercial vessel",
+      "Treating this as purely a political problem with no practical captain-level response"
+    ],
+    "followUps": [
+      "Do you think the disembarkation burden should fall on the nearest country, the flag state, or be shared internationally?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Port state control detention scenario",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "inspection", "compliance"],
+    "question": "Say your ship is inspected by port state control and they find a deficiency serious enough to detain the vessel until it's fixed. As the officer who signed off on that equipment's last check, what would you do?",
+    "lookingFor": "Honest accountability and a constructive, professional response to a real compliance failure, not defensiveness.",
+    "idealAnswer": {
+      "bullets": [
+        "Take ownership rather than becoming defensive or blaming the inspector",
+        "Investigate what was actually missed and why, to understand if it was a genuine oversight or a systemic gap",
+        "Cooperate fully with rectification and reflect on what changes to check procedure would prevent a repeat"
+      ],
+      "modelAnswer": "My first reaction would be uncomfortable honestly, because a detention reflects directly on a check I signed off, but I think the right response is to own it rather than get defensive with the inspector or try to argue the finding away. I'd want to actually understand what was missed and why, whether it was a one-off oversight under time pressure or a gap in how we were doing that particular check generally, because those need different fixes. Then I'd cooperate fully with getting it rectified quickly, since every extra day in detention costs the company real money and delays cargo, and afterward I'd want to review my own checklist process so the same thing doesn't slip through again. I think how you respond to a mistake like that says more about you as an officer than never making one in the first place."
+    },
+    "commonMistakes": [
+      "Getting defensive or blaming the inspector's judgment",
+      "Treating it as purely the ship's problem, not personal responsibility",
+      "No reflection on how to prevent recurrence"
+    ],
+    "followUps": [
+      "How would you rebuild trust with your captain after something like that?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "General average concept",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["maritime law", "insurance", "economics"],
+    "question": "Can you explain what general average is in maritime law, and why the principle behind it makes sense?",
+    "lookingFor": "Correct grasp of a foundational maritime law concept plus reasoning about why it's structured that way.",
+    "idealAnswer": {
+      "bullets": [
+        "Define general average, a voluntary sacrifice or expense made to save the ship and cargo as a whole in an emergency, shared proportionally by all cargo owners and the shipowner",
+        "Give an example, like jettisoning cargo to save a sinking ship, or salvage costs after a grounding",
+        "Explain the underlying logic, it prevents unfairly burdening whoever's cargo was sacrificed to save everyone else's"
+      ],
+      "modelAnswer": "General average is the principle that if the ship's master makes a deliberate sacrifice or incurs an extraordinary expense to save the ship and all the cargo from a common danger, like jettisoning some containers to keep a ship from sinking, the cost of that sacrifice gets shared proportionally among everyone whose cargo and ship value were saved, not dumped entirely on whichever cargo owner happened to lose their goods. What makes sense to me about it is the fairness logic, without that rule, a captain in an emergency might hesitate to make the right call because it would unfairly ruin one particular cargo owner, so spreading the cost protects the incentive to make the safest decision fast. It's one of those maritime law concepts that's centuries old but the underlying reasoning still holds up completely today."
+    },
+    "commonMistakes": [
+      "Confusing general average with ordinary insurance claims",
+      "Giving the definition with no example",
+      "Missing the fairness reasoning behind why the cost is shared"
+    ],
+    "followUps": [
+      "Who typically ends up adjusting and calculating a general average claim after an incident?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Arctic shipping routes",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["arctic", "climate", "geopolitics"],
+    "question": "Melting Arctic sea ice is opening up the Northern Sea Route as a shorter path between Europe and Asia. What are the implications of that, in your view?",
+    "lookingFor": "Awareness of the emerging Arctic shipping debate and the ability to weigh commercial opportunity against environmental and geopolitical concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the commercial appeal, a significantly shorter route between Europe and Asia compared with Suez",
+        "Raise environmental concerns, increased traffic and emissions in a fragile ecosystem, risk of spills in a region with minimal cleanup infrastructure",
+        "Mention the geopolitical dimension, Russia controls much of the route and requires icebreaker escort and permits, and other states are watching sovereignty and access questions closely"
+      ],
+      "modelAnswer": "The Northern Sea Route can cut the Europe to Asia voyage by close to a third compared with going through Suez, so the commercial appeal is obvious, especially for bulk and energy cargoes. But I think the environmental cost is significant too, more traffic in a fragile Arctic ecosystem raises the risk of oil spills in a region with very little cleanup infrastructure and increases black carbon deposits on ice, which itself accelerates melting. There's also a real geopolitical dimension, Russia effectively controls navigation along much of that route and requires icebreaker escort and permits, so it's not simply an open shipping lane, it's tied up with sovereignty questions that other Arctic and non-Arctic states are watching closely. I find it a genuinely uncomfortable case where climate change is creating a commercial opportunity out of an environmental loss."
+    },
+    "commonMistakes": [
+      "Discussing only the commercial upside with no environmental or political dimension",
+      "Not knowing which country largely controls the Northern Sea Route",
+      "Confusing the Northern Sea Route with the Northwest Passage"
+    ],
+    "followUps": [
+      "Do you think increased Arctic shipping should be restricted on environmental grounds, even if it's commercially attractive?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Mega container ship trade-offs",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["container shipping", "economics", "port infrastructure"],
+    "question": "Container ships keep getting bigger, some now carry over 24,000 TEU. What are the downsides of that trend that people don't talk about as much as the efficiency gains?",
+    "lookingFor": "Ability to move beyond the obvious economies-of-scale story and identify genuine, less-discussed downsides.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the efficiency gain, lower cost per container carried",
+        "Identify downsides, ports need deeper channels and bigger cranes, and fewer ports can actually handle them, concentrating traffic",
+        "Mention risk concentration, an incident like the Ever Given grounding in Suez shows how one mega-ship failure can disrupt global trade disproportionately"
+      ],
+      "modelAnswer": "The efficiency argument is real, cost per container carried drops as ships get bigger, but the downsides get less attention. Ports need to dredge deeper channels and buy taller cranes to handle these ships, which means only a shrinking number of ports worldwide can actually berth the largest vessels, concentrating traffic and creating bottlenecks at those few hubs. There's also a risk concentration problem, the Ever Given grounding in the Suez Canal in 2021 blocked a huge share of global trade for almost a week because one ship that size getting stuck can back up the entire canal, which wouldn't happen the same way with smaller vessels. I think the industry sometimes treats bigger as simply better, but every step up in scale also concentrates risk in fewer, larger, harder to recover from failure points."
+    },
+    "commonMistakes": [
+      "Only discussing efficiency gains with no downside",
+      "Not mentioning port infrastructure constraints",
+      "Not knowing or referencing a real example like Ever Given"
+    ],
+    "followUps": [
+      "Do you think there's a practical ceiling on how big container ships can keep getting?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Fishing grounds versus shipping lanes conflict",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "marine spatial planning", "stakeholders"],
+    "question": "Imagine you're advising a port authority that wants to widen a shipping channel through an area that's also a traditional fishing ground the local community depends on. How would you approach that conflict?",
+    "lookingFor": "Structured stakeholder reasoning and awareness that maritime spatial planning involves competing legitimate interests, not a purely technical fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both interests as legitimate, economic growth and navigation safety versus a community's livelihood and cultural ties to the fishing ground",
+        "Propose a process, proper consultation with the fishing community early, not after the plan is finalized, and looking at alternative routing or seasonal restrictions",
+        "Recognize there may not be a fully win-win outcome and that fair compensation or phased implementation might be needed"
+      ],
+      "modelAnswer": "I'd start by treating both sides as genuinely legitimate rather than assuming the port's economic case automatically wins, because the fishing community's livelihood and often generations of local knowledge are real stakes too. I'd want the fishing community involved in the planning process from the start, not consulted after the channel design is already finalized, and I'd look at whether alternative alignments, seasonal fishing restrictions instead of a permanent exclusion, or narrower dredging could reduce the impact while still serving the shipping need. I think it's honest to say there might not be a solution that fully satisfies everyone, so if some disruption is unavoidable, fair compensation or a phased approach that gives the community time to adapt matters a lot. What I'd want to avoid is treating this as a purely engineering problem when it's really a stakeholder problem with an engineering component."
+    },
+    "commonMistakes": [
+      "Treating it as a purely technical dredging problem with no stakeholder dimension",
+      "Assuming the port's economic interest automatically outweighs the fishing community's",
+      "Offering no concrete process for consultation or compromise"
+    ],
+    "followUps": [
+      "What would you do if the fishing community rejected every compromise offered?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Cybersecurity threat to navigation systems",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["cybersecurity", "navigation", "technology"],
+    "question": "There have been reported cases of GPS spoofing affecting ships' navigation systems. How much of a concern do you think cybersecurity is for modern shipping?",
+    "lookingFor": "Awareness of a real emerging risk in maritime navigation and sensible reasoning about mitigation, not alarmism or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what GPS spoofing is, false signals that make a ship's system report an incorrect position",
+        "Note real reported cases, particularly in areas like the Black Sea and the Persian Gulf",
+        "Discuss mitigation, cross-checking GPS against radar, visual fixes, and other independent systems rather than relying on a single source"
+      ],
+      "modelAnswer": "GPS spoofing is when a false signal tricks a ship's navigation system into reporting a position that's wrong, sometimes by a significant distance, and there have been credible reports of this happening in places like the Black Sea and parts of the Persian Gulf. I think it's a real and growing concern precisely because modern bridges have become so dependent on electronic systems, and a crew that's used to trusting the chart plotter might not immediately catch a spoofed position. The mitigation I've read about is really about not relying on any single source, cross-checking GPS against radar returns, visual bearings, and depth soundings, which is basically traditional seamanship discipline applied to a new kind of threat. I find it a good example of how good practice in shipping often means not fully trusting the newest technology, even when it usually works well."
+    },
+    "commonMistakes": [
+      "Not knowing what GPS spoofing actually is",
+      "Treating it as a purely hypothetical risk with no real examples",
+      "No mention of practical cross-checking or backup navigation methods"
+    ],
+    "followUps": [
+      "What traditional navigation skill do you think becomes more important as ships rely more on electronics?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Salvage and duty to assist",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["maritime law", "salvage", "duty"],
+    "question": "If your ship passed a vessel that was clearly in distress but rescuing it would cost you significant time and fuel, and possibly some risk, what would you do, and what does maritime law actually say about it?",
+    "lookingFor": "Correct understanding that there's a legal duty to render assistance, balanced against realistic judgment about safe execution.",
+    "idealAnswer": {
+      "bullets": [
+        "State the legal position, under SOLAS and general maritime law, a master is obliged to render assistance to those in distress at sea, as long as it doesn't seriously endanger their own ship and crew",
+        "Distinguish duty to assist from salvage rights, which is a separate, mostly commercial concept for saving property",
+        "Reason through a real decision, assess the danger honestly rather than using cost as an excuse to avoid a genuine duty"
+      ],
+      "modelAnswer": "Maritime law is actually clear here, under SOLAS a master has a legal duty to go to the aid of anyone found in distress at sea, and that duty doesn't get overridden just because it's inconvenient or costs time and fuel, only if going to help would seriously endanger my own ship and crew. So the honest answer is I wouldn't treat cost as a legitimate reason to sail past, I'd assess the actual risk to my vessel, and if it was manageable, I'd divert to help and report the situation to the relevant coordination center. Separately, if I recovered property, like a vessel or cargo, rather than just people, there's a whole different legal concept called salvage, where the rescuer can claim a reward, but that's not the reason to help, it's really just a separate commercial mechanism. I think the duty to assist is one of the clearest ethical bright lines in this whole field, and that clarity is actually reassuring."
+    },
+    "commonMistakes": [
+      "Suggesting cost or delay is a legitimate reason to ignore distress",
+      "Confusing the duty to assist with salvage rights",
+      "Not knowing SOLAS establishes this as a legal, not just moral, duty"
+    ],
+    "followUps": [
+      "What would change your calculation if helping put your own crew at serious risk?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Ship speed versus whale strikes",
+    "program": "Maritime Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "environment", "economics"],
+    "question": "Studies show that slowing ships down in certain coastal zones significantly reduces fatal collisions with whales, but slower speed also means higher costs and longer transit times for shipping lines. How do you think that trade-off should be resolved?",
+    "lookingFor": "Willingness to actually weigh economic cost against environmental and animal welfare harm rather than dodge the trade-off.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the trade-off honestly, slower speed reduces whale strikes but adds real time and fuel cost",
+        "Reason about who should bear the cost, voluntary versus mandatory speed zones, incentive programs",
+        "Land on a reasoned position rather than avoiding the question"
+      ],
+      "modelAnswer": "I don't think this is a trade-off you can wish away, slowing down in known migration corridors really does cut whale strike deaths substantially, but it genuinely costs shipping lines time and fuel, and voluntary speed reduction programs have historically had pretty low compliance because there's no real incentive to follow them. My honest view is that voluntary schemes haven't worked well enough, so I lean toward mandatory seasonal speed limits in the highest-risk corridors, similar to what's been tried off the US West Coast, paired with public recognition or fee incentives for lines that comply well, since goodwill alone hasn't been enough on its own. I know that adds cost, and I don't think that's a small thing for an industry running on thin margins, but a small number of endangered whale species means each individual death is a much bigger loss than the marginal cost increase to a shipping line. It's a case where I think the harm on one side is different in kind, not just in degree, from the cost on the other."
+    },
+    "commonMistakes": [
+      "Refusing to actually pick a position, just describing both sides",
+      "Dismissing the economic cost to shipping lines as irrelevant",
+      "Not knowing that voluntary compliance programs have generally underperformed"
+    ],
+    "followUps": [
+      "Should governments subsidize the extra cost, or should it fall entirely on the shipping line?"
+    ]
+  },
+  {
+    "id": "prog-maritime-studies-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Pandemic-era supply chain lessons",
+    "program": "Maritime Studies",
+    "difficulty": "medium",
+    "tags": ["supply chain", "resilience", "hypothetical"],
+    "question": "If you were asked to redesign one part of how global container shipping operates, based on what the pandemic-era disruptions exposed, what would you change and why?",
+    "lookingFor": "Synthesis of current knowledge into a concrete, reasoned proposal, showing the applicant can move from awareness to constructive thinking.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific, real disruption as the basis, container shortages, port congestion, or blank sailings during the pandemic",
+        "Propose one concrete, defensible change rather than a vague wish list",
+        "Acknowledge a realistic trade-off or limitation of their own proposal"
+      ],
+      "modelAnswer": "I'd focus on container repositioning, because one of the clearest problems during the pandemic was empty containers piling up in the wrong places, in the US after imports surged, while exporters elsewhere couldn't get boxes to ship their own goods, which pushed freight rates up dramatically. I'd want to see shared, pooled container tracking data across carriers rather than each line optimizing its own fleet in isolation, since a lot of the imbalance came from carriers prioritizing their fastest, most profitable turnaround rather than the system-wide flow. I know that's a hard sell commercially, because carriers compete with each other and sharing data feels like giving up an edge, so realistically it would probably need to start as an industry consortium or a regulatory nudge rather than pure goodwill. I think it's a good example of how a coordination problem, not a capacity problem, was actually behind a lot of that crisis."
+    },
+    "commonMistakes": [
+      "Proposing something vague like better planning with no specific mechanism",
+      "Not referencing a real, specific disruption to ground the proposal",
+      "Ignoring that their proposed fix has its own trade-off or resistance"
+    ],
+    "followUps": [
+      "What incentive would you offer carriers to actually agree to share that data?"
+    ]
+  }
+]

@@ -1,0 +1,605 @@
+[
+  {
+    "id": "prog-botany-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "C3, C4 and CAM photosynthesis",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["photosynthesis", "physiology", "biochemistry"],
+    "question": "What is the biochemical difference between a C3, a C4 and a CAM plant, and why does it matter where each type tends to grow?",
+    "lookingFor": "A clear mechanistic explanation that links the biochemistry to ecological distribution, not just memorised labels.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that C3 plants fix CO2 directly via RuBisCO in mesophyll cells, which causes wasteful photorespiration in hot, dry conditions",
+        "Explain that C4 plants separate initial fixation (via PEP carboxylase in mesophyll cells) from the Calvin cycle (in bundle sheath cells) in space, to concentrate CO2 around RuBisCO",
+        "Explain that CAM plants separate the same two steps in time rather than space, fixing carbon at night to cut water loss"
+      ],
+      "modelAnswer": "A C3 plant like wheat fixes carbon dioxide straight into a three carbon compound using RuBisCO, but RuBisCO also binds oxygen, so in hot dry weather the plant wastes energy on photorespiration. C4 plants like maize get around this by first fixing carbon in mesophyll cells with an enzyme that ignores oxygen, then shuttling that carbon into bundle sheath cells where RuBisCO works in a concentrated, low oxygen environment. CAM plants like cacti use a similar trick, but instead of splitting it across two cell types they split it across day and night, opening their stomata only at night to save water. That is why C4 and CAM plants tend to dominate hot, dry or high light habitats where a C3 plant would lose too much water or energy trying to survive."
+    },
+    "commonMistakes": [
+      "Mixing up spatial separation in C4 with temporal separation in CAM",
+      "Claiming C4 plants avoid RuBisCO entirely rather than just concentrating CO2 around it",
+      "Reciting the pathway steps without connecting them to habitat or climate"
+    ],
+    "followUps": [
+      "Why hasn't C4 photosynthesis evolved naturally in a crop like rice or wheat?",
+      "What would happen to a CAM plant's carbon uptake if you kept it under constant light?"
+    ]
+  },
+  {
+    "id": "prog-botany-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "The RuBisCO problem",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["evolution", "enzymes", "reasoning"],
+    "question": "RuBisCO is often called an inefficient enzyme because it also catalyses a wasteful reaction with oxygen. If it's so flawed, why hasn't evolution replaced it with something better after billions of years?",
+    "lookingFor": "Evolutionary reasoning about constraint and trade-off, not just a description of photorespiration.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that RuBisCO evolved when the atmosphere had very little oxygen, so the oxygenase side reaction wasn't costly then",
+        "Explain that evolution optimises for existing conditions, not a theoretical ideal, and there's no selective path to a wholesale redesign once a system is entrenched",
+        "Bring in that plants have instead evolved workarounds around RuBisCO, like C4 and CAM concentrating mechanisms, rather than replacing the enzyme itself"
+      ],
+      "modelAnswer": "RuBisCO isn't badly designed for the world it evolved in, it's a poor fit for the world it now finds itself in, because it evolved billions of years ago when there was almost no free oxygen for it to accidentally bind. Evolution can't jump straight to an ideal enzyme, it can only tinker with small mutations on top of what already exists, and RuBisCO is so central to the Calvin cycle that a drastic redesign would likely be lethal along the way. So instead of replacing the enzyme, plants evolved cheaper fixes around it, like C4 and CAM pathways that pump CO2 to where RuBisCO works, which is a very typical evolutionary pattern of patching rather than rebuilding."
+    },
+    "commonMistakes": [
+      "Just describing what photorespiration is instead of answering why it persists",
+      "Assuming evolution optimises for long term efficiency rather than immediate fitness",
+      "Not mentioning that oxygen levels were different when RuBisCO first evolved"
+    ],
+    "followUps": ["Do you think gene editing could succeed where evolution hasn't, by engineering a more selective RuBisCO?"]
+  },
+  {
+    "id": "prog-botany-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Secondary metabolites",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["chemical-ecology", "defence", "physiology"],
+    "question": "Plants invest a lot of energy producing chemicals like tannins or alkaloids that don't directly help them grow or reproduce. Why would that trait be favoured by natural selection?",
+    "lookingFor": "Understanding of cost-benefit trade-offs in plant defence and how indirect fitness benefits still count as selection.",
+    "idealAnswer": {
+      "bullets": [
+        "Frame secondary metabolites as a defensive investment, not a wasted one, since being eaten reduces reproductive success too",
+        "Mention the cost-benefit trade-off between growth and defence, and how it varies with herbivory pressure",
+        "Give a concrete example, like tannins deterring browsers or alkaloids being toxic to insects"
+      ],
+      "modelAnswer": "Those chemicals look wasteful only if you ignore what happens to a plant that doesn't make them, since being eaten down to nothing is just as costly to reproduction as spending energy on growth. Producing tannins or alkaloids is an investment that trades some growth rate for a lower chance of being stripped by herbivores, and in habitats with heavy grazing pressure that trade-off clearly pays off. You can see the same logic play out in real plants, tobacco plants ramp up nicotine production specifically after insect damage, which shows the cost is switched on only when it's needed rather than paid constantly."
+    },
+    "commonMistakes": [
+      "Treating secondary metabolites as evolutionary accidents with no function",
+      "Ignoring that defence has a real energetic cost that trades off against growth",
+      "Giving no concrete example to ground the reasoning"
+    ],
+    "followUps": ["Why might a plant induce these defences only after being attacked, rather than producing them constantly?"]
+  },
+  {
+    "id": "prog-botany-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Hormone crosstalk",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["hormones", "signalling", "physiology"],
+    "question": "Auxin and cytokinin often act as a ratio rather than in isolation, one favouring root growth and the other shoot growth. Why would a plant evolve to read a ratio of two hormones instead of just responding to one signal directly?",
+    "lookingFor": "Reasoning about robustness and context-sensitivity in biological signalling, beyond naming the two hormones.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic auxin/cytokinin antagonism in root and shoot development",
+        "Reason that a ratio-based system is more robust to noise than an absolute-level system, since both hormones fluctuate with metabolism and environment",
+        "Connect it to the plant's need to balance growth between root and shoot depending on what resource is limiting"
+      ],
+      "modelAnswer": "High auxin relative to cytokinin tends to promote root formation, and the reverse favours shoots, which is the basis for how tissue culture labs control regeneration. Reading a ratio rather than one absolute hormone level makes the system more robust, because both hormones naturally rise and fall with general metabolic activity, so a single threshold would trigger false signals all the time. A ratio effectively cancels out that shared noise and lets the plant respond to the relative balance instead, which fits its real problem, deciding whether it currently needs more roots to find water and nutrients or more shoot to capture light."
+    },
+    "commonMistakes": [
+      "Only stating what each hormone does without addressing why a ratio makes sense",
+      "Treating the two hormones as unrelated rather than antagonistic",
+      "Missing the link between the root-shoot balance and resource allocation"
+    ],
+    "followUps": ["How would you test experimentally whether a plant is responding to the ratio rather than to absolute cytokinin levels?"]
+  },
+  {
+    "id": "prog-botany-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Plant colonisation of land",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["evolution", "adaptation", "history-of-life"],
+    "question": "What physical problems did the first plants have to solve to move from water onto land, and what structures evolved to solve them?",
+    "lookingFor": "A structured account connecting specific challenges to specific evolved solutions, showing real understanding rather than a memorised list.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify desiccation as the core problem, solved by a waxy cuticle and stomata to control water loss while still allowing gas exchange",
+        "Identify structural support against gravity without water's buoyancy, solved by lignified vascular tissue",
+        "Identify reproduction without water as a transport medium, eventually solved by pollen and seeds"
+      ],
+      "modelAnswer": "The single biggest problem was drying out, since water had always both supported plant tissue and carried gametes around, and land offered neither. Early land plants evolved a waxy cuticle to stop water evaporating through the surface, paired with stomata that could open to let carbon dioxide in and close to limit water loss. They also needed a way to stand up without water's buoyancy, which lignin and vascular tissue solved by giving stems real structural strength, and eventually reproduction had to be freed from needing a film of water for sperm to swim through, which is what pollen and later seeds achieved."
+    },
+    "commonMistakes": [
+      "Listing structures like cuticle and vascular tissue without explaining what problem each one solves",
+      "Skipping reproduction and only discussing water loss and support",
+      "Conflating early bryophytes with later vascular plants as if they solved the same problems the same way"
+    ],
+    "followUps": ["Why do mosses still need standing water for reproduction even though they live on land?"]
+  },
+  {
+    "id": "prog-botany-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Polyploidy and speciation",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["genetics", "evolution", "speciation"],
+    "question": "Polyploidy, having extra whole sets of chromosomes, is far more common in plants than in animals and can create a new species almost instantly. Why is that route to speciation so much more available to plants?",
+    "lookingFor": "Reasoning that connects plant reproductive biology to why polyploid speciation is viable, not just a definition of polyploidy.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that polyploidy instantly creates reproductive isolation from the parent species, since offspring with mismatched chromosome numbers usually can't produce fertile hybrids",
+        "Note that many plants can self-fertilise or reproduce asexually, so a single polyploid individual can found a new lineage without needing a mate of the same ploidy",
+        "Contrast with animals, where polyploidy often disrupts sex determination and most animals need an outcrossing mate, making the same event far more often lethal or a dead end"
+      ],
+      "modelAnswer": "When a plant's chromosome number doubles, it usually can no longer produce fertile offspring with the original diploid population, which means reproductive isolation, the core requirement for a new species, happens in a single generation rather than gradually. What makes this actually work in plants is that many species can self-pollinate or reproduce clonally, so a lone polyploid individual doesn't need to find another polyploid mate to start a new lineage, it can just propagate itself. Animals rarely have that option, most need an outcrossing partner and polyploidy often scrambles sex chromosome balance in ways that are simply lethal, which is a big part of why this shortcut to speciation is so much rarer outside the plant kingdom."
+    },
+    "commonMistakes": [
+      "Defining polyploidy correctly but never explaining why it leads to a new species",
+      "Ignoring the role of self-fertilisation or clonal reproduction in making a single polyploid individual viable as a founder",
+      "Assuming polyploidy is equally common and consequence-free across all kingdoms"
+    ],
+    "followUps": ["Can you name a crop plant that is a well known polyploid, and what that means for its genetics?"]
+  },
+  {
+    "id": "prog-botany-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "The wood wide web debate",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["ecology", "current-debate", "mycorrhizae"],
+    "question": "The idea of a 'wood wide web', trees using mycorrhizal fungal networks to share resources and warnings, has become very popular in the media. Some researchers now argue the evidence has been overstated. What's your take?",
+    "lookingFor": "Awareness of a live scientific debate and the ability to hold a balanced, evidence-weighted position rather than just repeating the popular narrative.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that mycorrhizal networks connecting trees are real and well documented, but claims about deliberate resource sharing or 'communication' go beyond what most controlled studies show",
+        "Mention that a lot of the strongest popular claims trace back to a small number of field studies that are hard to replicate and control for confounds like root grafting",
+        "Land on a balanced position: the underlying biology is genuinely interesting, but popular science writing has outpaced the strength of the evidence"
+      ],
+      "modelAnswer": "I think the underlying fungal networks are real, mycorrhizal fungi genuinely do connect the root systems of multiple trees and carbon can move through those connections, that part is well supported. Where I get more cautious is the leap to language like trees 'warning' each other or deliberately 'nursing' their offspring through the network, because a lot of that comes from a smaller set of field experiments that are genuinely difficult to control, since you can't easily isolate fungal transfer from root grafting or just correlate soil chemistry. I find it a great example of good biology getting ahead of itself in popular retelling, and I would want to look at replication before treating it as settled rather than just an appealing story."
+    },
+    "commonMistakes": [
+      "Repeating the popular 'trees talk to each other' framing uncritically",
+      "Dismissing the whole phenomenon as fake rather than distinguishing solid findings from overreach",
+      "Showing no awareness that this is an actively contested area of ecology"
+    ],
+    "followUps": ["What kind of experiment would convince you the resource-sharing interpretation is correct?"]
+  },
+  {
+    "id": "prog-botany-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene-edited crop regulation",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["biotechnology", "policy", "current-debate"],
+    "question": "Some countries regulate CRISPR gene-edited crops the same way as older GMOs, while others, including the UK since 2023, treat gene-edited plants differently if no foreign DNA is inserted. Where do you stand on that distinction?",
+    "lookingFor": "Awareness of a real current regulatory debate plus the ability to reason about it, not just a for-or-against GMO opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness that the regulatory distinction hinges on whether foreign DNA is introduced versus editing existing genes",
+        "Weigh the scientific argument, that a gene edit can be indistinguishable from a natural mutation, against the precautionary argument, that novel traits still deserve scrutiny regardless of method",
+        "Reach a reasoned position rather than a flat yes or no, acknowledging trade-offs like public trust and traceability"
+      ],
+      "modelAnswer": "I understand the reasoning behind treating gene-edited crops differently from older transgenic GMOs, a precise edit that just tweaks an existing gene can produce a change that's genetically indistinguishable from a mutation that could have arisen naturally, so regulating it identically to inserting a whole foreign gene from another species can feel disproportionate. That said, I don't think the method alone should settle the question, because what actually matters for safety is the resulting trait, not just the technique used to get there, and I'd worry that loosening oversight also makes it harder to trace and label products for consumers who want that transparency. My honest position is that streamlined but still trait-based review makes more sense than exempting a whole method category outright."
+    },
+    "commonMistakes": [
+      "Confusing gene editing with older transgenic GMO methods and treating them as identical",
+      "Taking a purely emotional anti-GMO or pro-GMO stance without engaging the actual regulatory argument",
+      "Not knowing that this is a live and shifting area of policy"
+    ],
+    "followUps": ["Should consumers still have a right to know a product was gene-edited, even if regulators decide it isn't a GMO?"]
+  },
+  {
+    "id": "prog-botany-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of destructive specimen collection",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["ethics", "conservation", "fieldwork"],
+    "question": "You're on a field expedition and find what might be a previously undescribed, possibly very rare plant species. Standard taxonomic practice calls for collecting a physical specimen, which means killing at least one individual. Only a handful of plants are visible. What do you do?",
+    "lookingFor": "Structured ethical reasoning weighing scientific documentation against conservation risk, not a snap answer either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between rigorous documentation, which traditionally needs a voucher specimen, and the risk of harming a possibly critically small population",
+        "Bring in alternatives, like high resolution photography, tissue sampling for DNA barcoding, and GPS-tagged monitoring, as ways to partially substitute for a full destructive collection",
+        "Land on a proportionate response, such as consulting protocols or a herbarium authority before collecting, rather than either automatically collecting or automatically refusing"
+      ],
+      "modelAnswer": "My instinct is that documentation matters enormously, an undescribed species can't be protected if nobody can prove it exists, but if I'm only seeing a handful of individuals then collecting one for a full voucher specimen could meaningfully threaten the population, so I wouldn't just default to standard practice without thinking about it. I'd try to minimise damage first, taking detailed photographs, GPS coordinates, and a small non-lethal tissue sample for DNA barcoding rather than removing a whole plant, and I would flag the find to a herbarium or conservation authority to get guidance before doing anything irreversible. If a full specimen really was scientifically necessary, I'd rather that decision be made jointly with people who have conservation expertise than by me alone in the field."
+    },
+    "commonMistakes": [
+      "Automatically defaulting to 'always collect a specimen, that's the protocol' with no reflection on population size",
+      "Refusing to collect anything at all and undervaluing the scientific case for documentation",
+      "Not mentioning any non-destructive alternatives like photography or tissue sampling"
+    ],
+    "followUps": ["Does your answer change if the plant turns out to be on land slated for development next month?"]
+  },
+  {
+    "id": "prog-botany-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Biopiracy and benefit-sharing",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["ethics", "ethnobotany", "policy"],
+    "question": "A pharmaceutical company develops a valuable drug from a plant compound identified using traditional knowledge from an indigenous community, then patents it without compensating that community. As a botanist, how should this situation be handled?",
+    "lookingFor": "Awareness of biopiracy as a real, documented problem and reasoning grounded in fairness and existing frameworks, not just a moral reaction.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the core issue as unfair appropriation of traditional ecological knowledge without consent or benefit-sharing",
+        "Reference the existence of frameworks like the Nagoya Protocol on access and benefit-sharing, showing awareness this is a governed, not purely hypothetical, issue",
+        "Propose what fair practice looks like: informed consent, co-authorship or acknowledgement, and negotiated compensation before commercialisation"
+      ],
+      "modelAnswer": "This is a classic case of biopiracy, where knowledge that took generations to accumulate gets extracted and monetised while the people who held it see none of the benefit, and I think that's straightforwardly unfair even when everything the company did was technically legal in whatever jurisdiction it operated in. There are frameworks meant to prevent exactly this, the Nagoya Protocol requires prior informed consent and benefit-sharing agreements before genetic resources or associated traditional knowledge are used commercially, so part of the failure here is likely that those steps were skipped or exploited a legal gap. As a researcher I would want any collaboration with a community's traditional knowledge to start with a clear consent and benefit-sharing agreement before any sample is even collected, not negotiated after the value has already been captured."
+    },
+    "commonMistakes": [
+      "Treating this as a purely hypothetical moral dilemma with no awareness of real legal frameworks like Nagoya",
+      "Blaming only the company without discussing what a fair process would actually look like upfront",
+      "Assuming legality automatically means the arrangement is ethical"
+    ],
+    "followUps": ["What would you do if you personally identified the compound during fieldwork and later learned your university intended to patent it without informing the community?"]
+  },
+  {
+    "id": "prog-botany-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene drives against invasive plants",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["biotechnology", "ecology", "current-debate"],
+    "question": "Gene drives, genetic elements designed to spread a trait through a wild population faster than normal inheritance, are being discussed as a way to suppress invasive plants. What's your view on using them for that purpose?",
+    "lookingFor": "Balanced awareness of an emerging technology's promise and risk, showing the applicant can reason about ecological irreversibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the appeal: gene drives could suppress an invasive plant far faster and more precisely than chemical or manual control",
+        "Raise the core risk: because a gene drive is designed to spread and self-propagate, it's very hard to contain or reverse once released, especially if the species can hybridise with related plants",
+        "Reach a reasoned position, likely favouring extreme caution or containment trials, rather than outright rejection or uncritical enthusiasm"
+      ],
+      "modelAnswer": "I can see the appeal, invasive plants like some knotweed or purple loosestrife populations cost enormous amounts to manage with herbicides and manual removal, and a gene drive that spread a self-limiting trait through the population could in theory be far more targeted and effective. What worries me is that a gene drive is engineered specifically to defy normal Mendelian inheritance and spread aggressively, so once it's released you largely lose the ability to recall it, and if the invasive species can hybridise with a native relative that trait could jump into a population you never intended to touch. I would want to see this restricted to physically isolated trial sites, ideally islands, with a genuine reversal mechanism built in and tested, before I'd support field release into a connected ecosystem."
+    },
+    "commonMistakes": [
+      "Only discussing the benefits without engaging the irreversibility problem",
+      "Rejecting the technology outright without acknowledging the genuine ecological cost of invasive species",
+      "Confusing gene drives with ordinary genetic modification, missing what makes drives uniquely risky"
+    ],
+    "followUps": ["How would you design a containment trial to test a gene drive before any open release?"]
+  },
+  {
+    "id": "prog-botany-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Investigating phytoremediation",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "phytoremediation", "experimental-design"],
+    "question": "You find a plant thriving in soil so contaminated with heavy metals that almost nothing else grows there. How would you go about working out what's letting it survive?",
+    "lookingFor": "A logical, testable experimental plan showing genuine understanding of plant stress physiology, not a vague description of interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with basic characterisation: soil and tissue analysis to see whether the plant is excluding the metal from its roots or actually accumulating it in its tissue",
+        "Propose comparative controlled experiments, growing the same species and a non-tolerant relative in varying metal concentrations to isolate the mechanism",
+        "Mention looking for candidate physiological or molecular mechanisms, like metal-binding proteins, cell wall sequestration, or symbiotic fungi, and how you'd test each"
+      ],
+      "modelAnswer": "The first thing I would do is chemically analyse both the soil and the plant's tissue, because that tells me immediately whether it's a metal excluder, keeping the toxin largely out of its roots, or a hyperaccumulator, actually concentrating the metal in its shoots, and those point to completely different mechanisms. I'd then grow it alongside a closely related but non-tolerant species under controlled, graded metal concentrations in a greenhouse to confirm the tolerance is real and heritable rather than just a quirk of that one patch of soil. From there I'd look for candidate mechanisms, testing for metal-binding compounds like phytochelatins, checking whether the metal is being locked away in the cell wall or vacuole, and checking whether a mycorrhizal partner is actually doing some of the filtering work before I credit the plant alone."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'it must be a hyperaccumulator' without proposing how to test that",
+      "Describing enthusiasm about phytoremediation with no actual experimental design",
+      "Ignoring the possibility that a fungal or microbial partner, not the plant alone, is responsible"
+    ],
+    "followUps": ["If the plant does turn out to be a hyperaccumulator, what practical use could that have for contaminated sites?"]
+  },
+  {
+    "id": "prog-botany-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Studying a new invasive species",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "ecology", "invasive-species"],
+    "question": "You spot a plant on your university campus that you don't recognise and suspect might be a new invasive species spreading through the grounds. What would you actually do, step by step?",
+    "lookingFor": "A methodical, realistic plan showing practical understanding of identification, verification, and appropriate escalation.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with careful identification: photographs, key features, comparison against a regional flora or app, without disturbing the site",
+        "Assess scale and spread before acting: map how many individuals and where, rather than assuming from one sighting",
+        "Escalate appropriately to a qualified botanist, herbarium, or local invasive species authority rather than attempting removal alone"
+      ],
+      "modelAnswer": "I'd start by documenting it properly rather than acting on a hunch, taking clear photos of the leaves, flowers, and growth habit and checking them against a regional flora guide or a verified plant identification database. If I genuinely couldn't place it, I would walk the surrounding area to see whether it's a single plant or already establishing in multiple spots, since that changes how urgent the response needs to be. Rather than pulling it up myself, which could actually spread some invasive species through fragments, I'd report it with my photos and location to the campus grounds team or a local botanist, because correct identification and a coordinated response matter far more than me acting alone."
+    },
+    "commonMistakes": [
+      "Jumping straight to pulling the plant out, which can spread some species by fragmentation",
+      "Assuming identification from memory without documenting or checking properly",
+      "Not considering who to actually report a suspected find to"
+    ],
+    "followUps": ["What features would make you suspect a plant is invasive rather than just unfamiliar to you?"]
+  },
+  {
+    "id": "prog-botany-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Stomatal trade-offs",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["physiology", "water-relations", "reasoning"],
+    "question": "Stomata have to open to let carbon dioxide in for photosynthesis, but opening them also lets water vapour escape. How does a plant actually manage that conflict?",
+    "lookingFor": "Understanding of guard cell mechanics and environmental integration, showing the trade-off is actively regulated, not fixed.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe guard cells regulating stomatal aperture via turgor pressure changes driven by ion and water movement",
+        "Explain the plant integrates multiple signals, light, CO2 concentration, humidity, and hormones like abscisic acid under drought stress",
+        "Note it's a dynamic, moment-to-moment balance rather than a single fixed setting, and that different species set that balance differently"
+      ],
+      "modelAnswer": "Stomata are controlled by pairs of guard cells that change shape as they gain or lose water and ions, potassium moving into the guard cells draws water in by osmosis, making them bow outward and open the pore, and the reverse closes it. The plant doesn't just react to one signal, it integrates several at once, opening more in bright light and higher CO2 demand, but closing down under high humidity loss risk or when abscisic acid rises as a drought stress signal from the roots. It really is a constant balancing act rather than a fixed setting, and species from drier habitats generally tune that balance toward keeping stomata closed more of the time, even at some cost to how fast they can photosynthesise."
+    },
+    "commonMistakes": [
+      "Describing stomata as simply open or closed with no mechanism for the switch",
+      "Leaving out abscisic acid or drought signalling entirely",
+      "Treating the trade-off as solved rather than continuously balanced"
+    ],
+    "followUps": ["What would you predict happens to a plant's growth rate if you genetically forced its stomata to stay permanently wide open?"]
+  },
+  {
+    "id": "prog-botany-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Seed dormancy",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["reproduction", "physiology", "adaptation"],
+    "question": "Why would a seed evolve to delay germination, sometimes for years, rather than simply sprouting as soon as conditions look survivable?",
+    "lookingFor": "Reasoning about risk-spreading and environmental cueing in plant reproductive strategy, not just a definition of dormancy.",
+    "idealAnswer": {
+      "bullets": [
+        "Frame dormancy as a bet-hedging strategy against unpredictable environments, spreading germination risk across time",
+        "Mention specific germination cues that ensure timing matches real opportunity, like fire, cold stratification, or gut passage through an animal",
+        "Note the trade-off, a delayed seed risks predation or decay but gains a much better shot at surviving once it does germinate"
+      ],
+      "modelAnswer": "If every seed germinated the moment conditions looked briefly favourable, a single unlucky season, a late frost or a short dry spell, could wipe out an entire generation at once, so dormancy works as a form of bet-hedging, spreading germination across multiple years so the population isn't gambling everything on one outcome. Many seeds also use very specific triggers to make sure the timing is actually right rather than just delayed randomly, some need a period of cold before they'll germinate so they don't sprout right before winter, and some fire-adapted species only germinate after heat cracks the seed coat, which reliably signals a newly cleared, less competitive environment. The cost is real, a dormant seed sitting in the soil bank risks being eaten or rotting before its chance comes, but that's outweighed by dramatically better odds of survival once conditions genuinely are right."
+    },
+    "commonMistakes": [
+      "Defining dormancy without explaining the adaptive logic behind it",
+      "Ignoring specific environmental cues like stratification or fire cues",
+      "Not acknowledging the real cost side of the trade-off, like predation risk in the seed bank"
+    ],
+    "followUps": ["Can you think of a specific plant whose seeds require fire to germinate, and why that adaptation makes sense there?"]
+  },
+  {
+    "id": "prog-botany-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Plant innate immunity",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["pathology", "immunity", "molecular-biology"],
+    "question": "Plants don't have an adaptive immune system like animals do, no antibodies, no memory cells. How do they actually defend themselves against pathogens at the molecular level?",
+    "lookingFor": "Genuine grasp of plant innate immunity concepts, showing subject depth beyond GCSE-level plant biology.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain pattern recognition receptors detecting general microbial signatures at the cell surface, triggering a first line of defence",
+        "Explain the second, more specific layer, resistance proteins detecting pathogen effector molecules inside the cell, often triggering a localised hypersensitive response",
+        "Mention systemic signalling, like salicylic acid triggering systemic acquired resistance in tissue beyond the initial infection site"
+      ],
+      "modelAnswer": "Plants rely on a two-tier innate system rather than an adaptive one. The first layer uses receptors on the cell surface that recognise general molecular patterns common across many pathogens, like fragments of bacterial flagella, which triggers a broad, fast defensive response. Pathogens that get past this often inject effector proteins to suppress it, so plants evolved a second layer, resistance proteins inside the cell that can detect those specific effectors, and when they do, the plant often triggers a hypersensitive response, deliberately killing the infected cells to wall off the pathogen. On top of that, a signal like salicylic acid can spread from the infection site through the rest of the plant, priming distant tissue to respond faster if the same pathogen shows up there, which is called systemic acquired resistance and is about as close as plants get to an immune memory."
+    },
+    "commonMistakes": [
+      "Claiming plants have no defence mechanism at all since they lack antibodies",
+      "Only mentioning the physical barriers, like the cuticle, without any molecular immune detail",
+      "Confusing the hypersensitive response with the pathogen's effect rather than the plant's own defensive strategy"
+    ],
+    "followUps": ["Why might deliberately killing your own cells be an effective way to stop an infection from spreading?"]
+  },
+  {
+    "id": "prog-botany-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Large plant genomes",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["genetics", "genomics", "reasoning"],
+    "question": "Some plant genomes, like the Paris japonica lily, are over ten times larger than the human genome, despite the plant not being especially complex. What could explain that?",
+    "lookingFor": "Reasoning about non-coding DNA, transposable elements, and polyploidy, showing genome size isn't a proxy for complexity.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that genome size doesn't track with organismal complexity, this is the C-value paradox",
+        "Explain the main driver in plants is usually repeated transposable elements and non-coding DNA accumulation, not more genes",
+        "Bring in polyploidy as a second major contributor, whole genome duplications stacking on top of each other"
+      ],
+      "modelAnswer": "The first thing to say is that genome size just doesn't correlate well with how complex an organism looks, that mismatch even has a name, the C-value paradox, so a huge genome in a lily doesn't mean it has more genes doing more sophisticated things than we do. In plants, most of that extra size tends to come from transposable elements, repetitive sequences that copy and reinsert themselves through the genome over evolutionary time, and plants seem to be relatively permissive about tolerating that accumulation compared to some other lineages. Polyploidy compounds it further, since many plant lineages have undergone repeated whole genome duplications stacked on top of each other, so a plant like Paris japonica likely carries several duplicated genome copies plus a heavy load of repetitive DNA, rather than actually being genetically more sophisticated than us."
+    },
+    "commonMistakes": [
+      "Assuming a bigger genome means a more complex or more advanced organism",
+      "Explaining only polyploidy or only transposable elements, missing that both usually contribute",
+      "Not naming or being unaware of the C-value paradox as the relevant concept"
+    ],
+    "followUps": ["Why might a large genome actually be a disadvantage for a plant in terms of cell division speed or resource cost?"]
+  },
+  {
+    "id": "prog-botany-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Vertical farming debate",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["current-debate", "agriculture", "sustainability"],
+    "question": "Vertical farming is often pitched as a major part of the future of food production. Do you think it's realistically going to scale up to replace much of conventional agriculture, or is it overhyped?",
+    "lookingFor": "A grounded, evidence-aware opinion that weighs real constraints rather than either uncritical optimism or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine advantages: water efficiency, no pesticides, year-round yield independent of weather, proximity to urban markets",
+        "Raise the real constraint: energy cost of artificial lighting and climate control, which limits it economically to high value, fast-growing crops like leafy greens and herbs",
+        "Reach a balanced conclusion, useful niche rather than wholesale replacement, especially not viable yet for staple calorie crops like wheat or rice"
+      ],
+      "modelAnswer": "I think vertical farming genuinely solves real problems, it uses a fraction of the water conventional farming does, avoids a lot of pesticide use, and produces food close to where people actually live, which cuts transport losses and emissions. But the constraint that keeps coming up in the numbers is energy, replacing sunlight with LED lighting and running climate control is expensive, which is why almost every vertical farm operating today grows fast, light, high value crops like lettuce or basil rather than anything calorie-dense like wheat or rice. My honest view is that it's a genuinely useful niche for certain crops and certain urban contexts, not a wholesale replacement for conventional agriculture, at least not until energy costs and renewable supply change the economics."
+    },
+    "commonMistakes": [
+      "Uncritically repeating the promotional framing that vertical farming will replace conventional agriculture",
+      "Dismissing it entirely without acknowledging its genuine water and pesticide advantages",
+      "Not mentioning the energy cost constraint, which is the central limiting factor"
+    ],
+    "followUps": ["What would have to change for vertical farming to become viable for a staple crop like wheat?"]
+  },
+  {
+    "id": "prog-botany-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Tree planting and carbon capture",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["current-debate", "ecology", "climate"],
+    "question": "Large-scale tree planting programmes are often promoted as a climate solution, but ecologists have criticised some of them for planting fast-growing monocultures rather than restoring real ecosystems. What's your view on this criticism?",
+    "lookingFor": "Awareness of a live ecological controversy and the ability to distinguish carbon accounting from genuine ecosystem restoration.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the appeal of monoculture plantations: fast growth, easy to measure carbon uptake, cheap and simple to implement at scale",
+        "Explain the ecological criticism: low biodiversity, poor soil and water outcomes, and vulnerability to disease or fire compared to diverse native forest",
+        "Land on a reasoned distinction between planting trees for carbon credits versus genuine ecological restoration, which usually requires different species mixes and different goals"
+      ],
+      "modelAnswer": "I understand why fast-growing monocultures, often a single non-native species like eucalyptus, get planted at scale, they grow quickly, the carbon sequestration is easy to measure and report, and it's operationally simple compared to restoring a mixed native forest. The criticism is fair though, a monoculture plantation usually supports far less biodiversity than the ecosystem it replaces, can actually deplete local water tables, and is more vulnerable to a single disease or fire wiping out the whole stand at once, so it captures carbon on paper without delivering most of the other benefits a real forest provides. I think the key distinction that gets blurred in a lot of these programmes is that planting trees for a carbon credit and restoring an ecosystem are genuinely different goals that call for different species choices, and treating them as interchangeable is where the criticism really lands."
+    },
+    "commonMistakes": [
+      "Treating all tree planting programmes as equally good simply because trees absorb carbon",
+      "Dismissing tree planting entirely rather than distinguishing well-designed from poorly-designed programmes",
+      "Not engaging with the biodiversity and ecosystem service angle beyond carbon"
+    ],
+    "followUps": ["What would a well-designed reforestation programme look like, in terms of species choice, compared to a poorly designed one?"]
+  },
+  {
+    "id": "prog-botany-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Apical dominance",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["hormones", "growth", "reasoning"],
+    "question": "If you pinch off the growing tip of a plant, side shoots further down often start growing that were previously dormant. What's actually happening physiologically, and why would a plant evolve to suppress its own side branches in the first place?",
+    "lookingFor": "Mechanistic explanation of apical dominance plus reasoning about its adaptive value, not just the gardening fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the apical bud produces auxin, which travels downward and suppresses lateral bud growth",
+        "Explain that removing the tip removes the auxin source, releasing lateral buds from suppression so they begin growing",
+        "Reason about the adaptive value: prioritising upward growth toward light before investing in lateral spread is often the better bet in a competitive canopy"
+      ],
+      "modelAnswer": "The growing tip produces auxin that moves down the stem and suppresses the growth of lateral buds below it, so as long as that tip is intact and healthy, the plant is effectively investing its resources into one dominant upward shoot rather than several. Pinch off the tip and you remove the source of that auxin, which releases the nearby lateral buds from suppression and they start growing outward instead. It makes sense as a strategy because in a crowded environment, racing upward toward light before a neighbouring plant shades you out is often the higher priority, and only once that tip is damaged or removed does it make sense to hedge bets by branching out instead."
+    },
+    "commonMistakes": [
+      "Stating the observation, pinching causes branching, without explaining the hormonal mechanism",
+      "Getting the direction of auxin transport or its effect on lateral buds backwards",
+      "Not offering any adaptive reasoning for why this suppression evolved"
+    ],
+    "followUps": ["How would you design a simple experiment to prove auxin, specifically, is responsible for this effect?"]
+  },
+  {
+    "id": "prog-botany-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Engineering drought tolerance",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "biotechnology", "physiology"],
+    "question": "Suppose you were asked to help engineer a staple crop like maize to be more drought tolerant. What traits would you actually target, and what trade-offs would you expect to run into?",
+    "lookingFor": "Ability to reason across multiple physiological levers and honestly weigh trade-offs, not just name a single gene fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Name concrete candidate traits: deeper or more efficient root architecture, improved stomatal regulation, osmotic adjustment via compatible solutes, and better water use efficiency",
+        "Acknowledge trade-offs directly, such as tighter stomatal control often reducing CO2 uptake and yield under normal, non-drought conditions",
+        "Show awareness that a trait engineered in isolation rarely works cleanly, since drought tolerance is polygenic and involves whole-plant coordination"
+      ],
+      "modelAnswer": "I'd look first at root architecture, breeding or editing for deeper, more extensive roots that can reach water further down the soil profile, since that's often the single biggest lever for drought survival. I'd also look at stomatal regulation, tuning guard cell sensitivity so the plant closes stomata earlier under water stress to conserve moisture, and at osmotic adjustment, boosting compatible solutes like proline that help cells retain turgor under stress. The honest trade-off is that tighter stomatal control usually costs you some carbon uptake and yield in a normal, well-watered season, so you're essentially betting on drought years at some cost in good years, and because drought tolerance is genuinely polygenic, I wouldn't expect a single gene edit to work cleanly without also checking it doesn't disrupt other traits the plant needs."
+    },
+    "commonMistakes": [
+      "Naming only one trait, like deep roots, with no discussion of trade-offs",
+      "Treating drought tolerance as a single-gene problem rather than a polygenic, whole-plant trait",
+      "Not acknowledging that gains under drought often come at some cost under normal conditions"
+    ],
+    "followUps": ["Why might a trait that helps in a controlled greenhouse fail to translate into real yield gains in the field?"]
+  },
+  {
+    "id": "prog-botany-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Plant variety patents and seed-saving",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["ethics", "policy", "agriculture"],
+    "question": "Many commercial crop varieties are now patented, and in some countries farmers can be legally restricted from saving and replanting seed from their own harvest. Do you think that's a fair system?",
+    "lookingFor": "Balanced ethical reasoning that weighs innovation incentives against farmer autonomy and food security, not a one-sided rant.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the legitimate argument for patents: breeding a new variety, especially with modern biotech, is expensive and companies need a return to keep investing",
+        "Acknowledge the counter-argument: restricting seed-saving can concentrate power over the food supply and burden smallholder farmers who have saved seed for generations",
+        "Land on a nuanced position, potentially favouring different rules for smallholder subsistence farming versus large commercial operations, rather than a single blanket rule"
+      ],
+      "modelAnswer": "I can see the logic for the companies, developing a new variety, especially one with disease resistance or drought tolerance built in through years of breeding or gene editing, is genuinely expensive, and if farmers can just save and resell that seed freely there's less incentive to keep investing in new varieties at all. But I'm uneasy with how that plays out for smallholder farmers, who have saved and adapted seed locally for generations, and for whom losing that right can mean real dependency on a handful of suppliers for something as basic as their own harvest. If I had to land somewhere, I'd favour a system that protects breeder investment for large commercial operations while carving out real exemptions for subsistence and small-scale farmers, rather than one blanket rule applied to everyone regardless of scale."
+    },
+    "commonMistakes": [
+      "Taking a purely anti-corporate or purely pro-patent stance without weighing both sides",
+      "Not distinguishing between smallholder and large commercial farming contexts",
+      "Ignoring the genuine cost of breeding new varieties as a reason patents exist at all"
+    ],
+    "followUps": ["Does your answer change for a variety developed using public research funding rather than private investment?"]
+  },
+  {
+    "id": "prog-botany-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Pollination syndromes",
+    "program": "Botany",
+    "difficulty": "medium",
+    "tags": ["coevolution", "reproduction", "ecology"],
+    "question": "How can you often tell what pollinates a flower just by looking at its physical features, without ever seeing it visited?",
+    "lookingFor": "Concrete knowledge of pollination syndromes and the coevolutionary logic behind them, with real examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that flower traits, colour, scent, shape, and reward, often correlate with a particular pollinator's sensory and physical capabilities",
+        "Give specific examples, like tubular red scentless flowers suited to birds, or pale strongly scented night-blooming flowers suited to moths",
+        "Note this is coevolution, the flower's traits and the pollinator's preferences shape each other over time, though it's a correlation and confirmation still needs observation"
+      ],
+      "modelAnswer": "Flowers tend to advertise themselves in ways matched to what their intended pollinator can actually perceive and use, so you can often read those traits like clues. A long, tubular, bright red flower with no strong scent is a classic sign of bird pollination, since birds have excellent colour vision but a weak sense of smell and need a shape that fits a long beak, while a pale, heavily scented flower that opens at night is more likely moth-pollinated, since moths navigate largely by smell in the dark. This is coevolution at work, the flower and its pollinator have shaped each other's traits over a long time, though I'd still want to actually observe visitors before treating the inference as proven rather than just a strong hypothesis."
+    },
+    "commonMistakes": [
+      "Naming pollination syndromes without giving a concrete example",
+      "Treating the correlation as certain rather than a strong but not guaranteed inference",
+      "Confusing which sensory traits matter to which pollinator, like assuming bees prefer red, which they generally can't see well"
+    ],
+    "followUps": ["Why can't bees see red well, and how does that show up in the flowers they typically pollinate?"]
+  },
+  {
+    "id": "prog-botany-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Engineering C4 rice",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["current-development", "biotechnology", "photosynthesis"],
+    "question": "There's an ongoing international project trying to engineer C4 photosynthesis into rice, which is naturally a C3 plant, to boost yields. What would that actually require, and why has it proven so difficult?",
+    "lookingFor": "Awareness of a real, ongoing research programme and genuine understanding of why the engineering challenge is hard, not just enthusiasm about the goal.",
+    "idealAnswer": {
+      "bullets": [
+        "State the goal accurately: converting rice's photosynthetic pathway to reduce photorespiration and boost yield, potentially by a large margin",
+        "Explain the difficulty is not just inserting a few enzymes, C4 photosynthesis requires distinct leaf anatomy, specifically Kranz anatomy with differentiated bundle sheath cells, not just biochemistry",
+        "Note that this makes it a multi-gene, developmental engineering problem rather than a single-gene edit, which is why progress has been slow despite years of funded research"
+      ],
+      "modelAnswer": "The goal of the C4 Rice Project is to give rice the same CO2-concentrating trick that maize and sugarcane already have, which could meaningfully raise yield by cutting the energy rice currently wastes on photorespiration. What makes it so hard is that C4 photosynthesis isn't just a different set of enzymes, it depends on a specific leaf anatomy called Kranz anatomy, where bundle sheath cells are enlarged and tightly packed around the veins so the concentrated CO2 doesn't just leak away, so you can't get the benefit by inserting the biochemical enzymes alone without also re-engineering how the leaf develops. That turns it into a coordinated, multi-gene developmental engineering problem rather than a single edit, which is a big part of why a project running for well over a decade still hasn't delivered a finished C4 rice variety."
+    },
+    "commonMistakes": [
+      "Assuming the fix is just inserting the C4 enzymes without addressing leaf anatomy",
+      "Being unaware this is a real, long-running, internationally funded research programme",
+      "Overstating how close the project is to a finished commercial variety"
+    ],
+    "followUps": ["What broader lesson does the difficulty of this project teach about engineering complex traits generally?"]
+  },
+  {
+    "id": "prog-botany-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Herbicide resistance evolution",
+    "program": "Botany",
+    "difficulty": "hard",
+    "tags": ["evolution", "agriculture", "reasoning"],
+    "question": "Weeds resistant to widely used herbicides like glyphosate have spread rapidly across farmland worldwide. Why does resistance evolve so fast in agricultural weeds, and how would you design a management strategy that slows it down?",
+    "lookingFor": "Applied evolutionary reasoning connecting selection pressure to a practical, multi-pronged management strategy.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the evolutionary logic: intense, repeated, uniform selection pressure over large weed populations with short generation times rapidly selects for any resistance mutation already present",
+        "Note that monoculture reliance on a single herbicide mode of action accelerates this, since there's no variation in the selective pressure for resistant individuals to fail against",
+        "Propose a management strategy grounded in that logic: rotating or combining herbicide modes of action, integrating non-chemical control, and preserving some susceptible individuals to dilute resistance genes"
+      ],
+      "modelAnswer": "Weeds tend to have huge population sizes, short generation times, and produce enormous numbers of seeds, so even a very rare resistance mutation is likely to already exist somewhere in the population, and spraying the same herbicide repeatedly across a whole region applies constant, uniform selection pressure that lets that rare resistant individual out-reproduce everything else fast. The problem is compounded when farms rely almost entirely on one herbicide mode of action, because there's no variation in the selective pressure for a resistant plant to fail against, it just keeps winning every season. If I were designing a management strategy I would push for rotating between herbicides with different modes of action, combining chemical control with mechanical weeding or cover cropping so no single pressure dominates, and deliberately not spraying to complete eradication in some areas, since leaving some susceptible weeds alive actually dilutes the resistance genes in the overall population rather than concentrating them."
+    },
+    "commonMistakes": [
+      "Describing resistance evolving without connecting it to selection pressure and population genetics",
+      "Proposing only 'use a stronger herbicide' as the fix, which just restarts the same evolutionary race",
+      "Missing that reliance on a single mode of action, specifically, is what accelerates resistance"
+    ],
+    "followUps": ["Why might deliberately leaving a small refuge of untreated, susceptible weeds actually help slow resistance overall?"]
+  }
+]

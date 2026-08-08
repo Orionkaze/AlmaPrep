@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-horticulture-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Self-incompatibility in fruit crops",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["pollination", "fruit-set", "genetics"],
+    "question": "Many apple varieties are self-incompatible and need a different variety nearby for pollination. Can you explain why, and what this means for orchard design?",
+    "lookingFor": "Understanding of self-incompatibility genetics and its practical implication for orchard layout and pollinator management.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that self-incompatibility is a genetic mechanism where the plant's own pollen tube fails to grow on its own stigma, usually via S-allele recognition",
+        "Note this is common in many top fruit species like apple and pear, requiring compatible pollinator varieties",
+        "Connect to orchard design: interplanting compatible cultivars, crab apple pollinizers, and managing bee activity"
+      ],
+      "modelAnswer": "Self-incompatibility happens because the plant recognises its own pollen through S-allele proteins in the stigma and style, and it triggers a rejection response so the pollen tube stops growing before it reaches the ovule. It is the plant's way of forcing outcrossing to keep genetic diversity up, and apples and pears are classic examples. For an orchard that means you cannot just plant one variety; you need a compatible pollinizer nearby, often a crab apple with a long flowering window, and enough healthy bee activity to actually move the pollen between rows. I found this fascinating when I read about orchard layout because it turns pollination from a biology fact into an actual design problem."
+    },
+    "commonMistakes": [
+      "Confusing self-incompatibility with simple lack of pollinators",
+      "Not mentioning the genetic/S-allele mechanism at all",
+      "Missing the practical orchard-design implication"
+    ],
+    "followUps": ["What role do pollinating insects play beyond just moving pollen?"]
+  },
+  {
+    "id": "prog-horticulture-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Rootstock and scion compatibility",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["grafting", "rootstock", "propagation"],
+    "question": "Why do commercial fruit growers graft a desired variety onto a different rootstock instead of just growing that variety on its own roots?",
+    "lookingFor": "Grasp of why rootstocks are chosen for traits other than fruit quality, and awareness of graft compatibility limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain rootstocks control vigour, size, disease resistance and soil adaptation, separate from the scion's fruit traits",
+        "Mention dwarfing rootstocks enabling high-density orchards and earlier cropping",
+        "Acknowledge compatibility is not universal, taxonomically related species graft best"
+      ],
+      "modelAnswer": "Grafting lets a grower keep the exact fruit quality of a proven variety while getting a completely different set of root traits, like dwarfing size, drought tolerance or resistance to a soil pathogen the variety itself is weak against. Dwarfing rootstocks are a big reason modern orchards can be planted at high density and start fruiting within a couple of years instead of six or seven. It only works within a compatible relationship though, you generally need the rootstock and scion to be closely related, otherwise the graft union fails or breaks down over time. I think it is a neat example of separating a plant's above ground performance from its below ground one."
+    },
+    "commonMistakes": [
+      "Saying grafting is only about propagation speed",
+      "Ignoring rootstock's role in disease/pest resistance",
+      "Assuming any two plants can be grafted together"
+    ],
+    "followUps": ["What could go wrong years after a graft union initially takes?"]
+  },
+  {
+    "id": "prog-horticulture-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Photoperiod control of flowering",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["photoperiodism", "flowering", "floriculture"],
+    "question": "How would you explain photoperiodism to a grower who wants chrysanthemums to flower for a specific market date, and what practical control does it give them?",
+    "lookingFor": "Solid grasp of short-day/long-day flowering response and its commercial application via light manipulation.",
+    "idealAnswer": {
+      "bullets": [
+        "Define photoperiodism as a plant's flowering response to relative day/night length, sensed via phytochrome",
+        "Identify chrysanthemum as a short-day (long-night) plant needing uninterrupted darkness to initiate flowering",
+        "Explain commercial control: black-out cloth to shorten days, or night-break lighting to delay flowering"
+      ],
+      "modelAnswer": "Photoperiodism is how a plant reads day and night length through a pigment called phytochrome and uses that to decide when to switch from vegetative growth into flowering. Chrysanthemum is a short day plant, which really means it needs a long enough uninterrupted dark period before it will initiate flower buds. Growers exploit that directly, they can pull black-out cloth over the crop each afternoon to artificially shorten the day and force flowering earlier for a target date, or use a brief night break light to interrupt darkness and hold the crop back if they need it to flower later. It is one of the clearest examples I know of understanding a plant's biology well enough to schedule it like a production line."
+    },
+    "commonMistakes": [
+      "Mixing up short-day and long-day plant behaviour",
+      "Explaining it only in terms of light received, ignoring the dark period is the actual trigger",
+      "No mention of a real commercial technique like black-out or night-break"
+    ],
+    "followUps": ["What would happen if the black-out cloth had a light leak one night during the critical period?"]
+  },
+  {
+    "id": "prog-horticulture-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Post-harvest ripening physiology",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["post-harvest", "ripening", "ethylene"],
+    "question": "What is the difference between a climacteric and a non-climacteric fruit, and why does it matter for how each is harvested and transported?",
+    "lookingFor": "Correct biology of ethylene-driven ripening and its practical link to harvest timing and supply chains.",
+    "idealAnswer": {
+      "bullets": [
+        "Define climacteric fruit as showing a respiration and ethylene burst that drives ripening after harvest, e.g. banana, tomato, apple",
+        "Define non-climacteric fruit as not ripening further once picked, e.g. citrus, grape, strawberry",
+        "Connect to practice: climacteric fruit can be picked mature-green and ripened in transit, non-climacteric must be picked ripe"
+      ],
+      "modelAnswer": "Climacteric fruits like bananas or tomatoes produce a burst of ethylene and a spike in respiration once they start ripening, and that process can actually continue after the fruit is picked. Non-climacteric fruits like citrus or strawberries do not get that ethylene surge, so once you take them off the plant they are essentially as ripe as they will ever get. That difference is huge for logistics, it is why bananas can be shipped green across the world and gassed with ethylene to ripen just before they reach the shop, while strawberries have to be picked at exactly the eating-ripe stage and moved fast because they will not improve afterward. It changes the whole harvest and cold-chain strategy for a crop."
+    },
+    "commonMistakes": [
+      "Saying all fruit ripens the same way after picking",
+      "Mixing up which category a common fruit belongs to",
+      "Not connecting the biology to the harvest/transport decision"
+    ],
+    "followUps": ["Why might growers deliberately delay ethylene exposure during storage?"]
+  },
+  {
+    "id": "prog-horticulture-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Diagnosing nutrient lockout from soil pH",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["soil-ph", "nutrient-deficiency", "diagnosis"],
+    "question": "A grower shows you rhododendrons with yellowing leaves and green veins, growing in soil that tested at pH 7.8. What is likely going on, and what would you recommend?",
+    "lookingFor": "Ability to connect a visual symptom to a nutrient availability mechanism driven by soil chemistry, not just guess a fertiliser fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify interveinal chlorosis as a classic iron deficiency symptom",
+        "Explain that at high pH, iron becomes chemically unavailable to acid-loving plants like rhododendron even if present in the soil",
+        "Recommend addressing the root cause, lowering pH with sulphur or using chelated iron, rather than just adding more fertiliser"
+      ],
+      "modelAnswer": "Interveinal chlorosis, yellow leaf with the veins staying green, is a textbook sign of iron deficiency, and rhododendrons are acid-loving plants that struggle badly above pH seven. At pH 7.8 the iron in the soil is very likely still there, it has just become chemically locked up into a form the roots cannot take up, so simply adding more iron fertiliser would not fix the underlying problem. I would recommend either lowering the soil pH gradually with elemental sulphur, or in the short term using a chelated iron product that stays available even at higher pH, alongside testing whether the site is even suitable long term for an acid-loving species. Treating the symptom without fixing the pH would just mean the problem comes back."
+    },
+    "commonMistakes": [
+      "Recommending more fertiliser without addressing pH",
+      "Misidentifying the deficiency symptom",
+      "Not recognising rhododendron's specific acid soil requirement"
+    ],
+    "followUps": ["Which other common nutrients become less available at high soil pH?"]
+  },
+  {
+    "id": "prog-horticulture-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Pesticide use and grower responsibility",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["ipm", "pesticides", "ethics"],
+    "question": "A commercial grower you are shadowing sprays broad-spectrum insecticide on a fixed weekly schedule regardless of actual pest levels, because it is simpler than monitoring. What is your view?",
+    "lookingFor": "Ability to weigh practical grower pressures against ecological and resistance risks, landing on integrated pest management as the sounder practice.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the grower's real pressure, time, labour, risk aversion, not dismiss it",
+        "Explain the downside: resistance build-up, killing beneficial insects and pollinators, unnecessary cost and residue",
+        "Advocate for monitoring-based IPM as the better long-term approach, while being realistic about adoption barriers"
+      ],
+      "modelAnswer": "I understand why calendar spraying is tempting, monitoring pests properly takes time and expertise the grower might not have spare, so it feels like the safer bet against losing a crop. But spraying on a schedule rather than in response to actual pest thresholds tends to accelerate resistance, wipes out the natural predators that would otherwise help keep pests down, and adds cost and chemical load the crop did not need. I would lean toward integrated pest management, using traps or scouting to spray only when pest counts justify it, because it protects the long-term effectiveness of the chemicals as well as the beneficial insect population. I would not judge the grower harshly though, I think the more useful response is understanding what support, training or time would make monitoring actually feasible for them."
+    },
+    "commonMistakes": [
+      "Condemning the grower without acknowledging real constraints",
+      "Giving a purely theoretical IPM answer with no practical empathy",
+      "Failing to mention resistance or beneficial insect harm as the core problem"
+    ],
+    "followUps": ["How would you convince a skeptical grower to switch to a monitoring-based approach?"]
+  },
+  {
+    "id": "prog-horticulture-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene editing in horticultural crops",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["gene-editing", "crispr", "current-debate"],
+    "question": "Gene editing tools like CRISPR are being used to develop disease-resistant fruit varieties without inserting foreign DNA. Do you think these should be regulated the same way as older GMOs?",
+    "lookingFor": "Awareness of the current gene-editing regulatory debate and ability to reason about it rather than give a one-line opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that CRISPR-edited plants can alter existing genes without adding foreign DNA, unlike transgenic GMOs",
+        "Present both sides: some regulators/countries treat it as distinct and lighter-touch, others still classify it under GMO rules",
+        "Reach a considered position while acknowledging the legitimate concerns on both sides, e.g. consumer trust and unintended effects"
+      ],
+      "modelAnswer": "CRISPR editing usually just tweaks a gene the plant already has, switching off a susceptibility gene for a fungal disease for example, rather than inserting DNA from an entirely different species the way older GMOs did. That distinction is exactly why some countries have started regulating gene-edited crops more lightly than transgenic ones, while others, including parts of the EU, still treat them under the same strict GMO framework. My own view is that the science genuinely is different enough to deserve its own risk-based framework rather than blanket rules, but I do not think that means skipping scrutiny, because consumer trust matters as much as the biology, and off-target edits still need proper testing. I find it one of the more interesting live debates in the field because it sits right at the intersection of science and public perception."
+    },
+    "commonMistakes": [
+      "Treating CRISPR and traditional GMOs as identical with no distinction",
+      "Giving a snap opinion with no awareness of the actual regulatory debate",
+      "Ignoring the consumer trust and public perception dimension"
+    ],
+    "followUps": ["Should gene-edited produce be labelled differently to consumers than conventionally bred produce?"]
+  },
+  {
+    "id": "prog-horticulture-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Water-intensive crops and export ethics",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["water-footprint", "export-crops", "ethics"],
+    "question": "Crops like avocados are often grown for export in regions that are themselves water-stressed. Is it ethical for horticulture to prioritise these export crops there?",
+    "lookingFor": "Balanced reasoning about local livelihoods versus resource strain, not a simplistic verdict either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension: export crops bring income and jobs to growers, but strain a scarce local resource",
+        "Bring in specifics like avocado's high water demand per kilogram compared to staple crops",
+        "Reach a nuanced position, e.g. supporting better water governance and crop choice rather than a blanket ban"
+      ],
+      "modelAnswer": "It is a genuinely hard trade-off, export crops like avocado bring real income into regions that need it, but avocado needs a lot of water per kilogram compared to a staple crop, and in places already under water stress that can mean local wells running dry to supply an export market. I do not think the answer is simply banning the crop, because that ignores the livelihoods depending on it, but I do think it is unethical to keep expanding that production without proper water governance, monitoring extraction and making sure local domestic and agricultural needs are protected first. Horticulture as a field has a responsibility to push for more water-efficient irrigation and crop zoning that reflects actual water availability, not just market demand. I think about this a lot because it shows how a decision made for a supermarket shelf on the other side of the world has a very direct local cost."
+    },
+    "commonMistakes": [
+      "Giving a simple ban-it-or-allow-it answer with no nuance",
+      "Not naming a specific example or water figure",
+      "Ignoring the livelihood/income side of the argument"
+    ],
+    "followUps": ["What horticultural practices could reduce that water footprint without abandoning the crop?"]
+  },
+  {
+    "id": "prog-horticulture-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Greenhouse production trade-offs",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["protected-cultivation", "sustainability", "glasshouse"],
+    "question": "Growing tomatoes in a heated glasshouse lets a country produce them locally year-round instead of importing. Is that actually the more sustainable option?",
+    "lookingFor": "Ability to weigh food miles against energy costs of protected cultivation rather than assume local is automatically greener.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that heated glasshouses can have a higher carbon footprint than importing from a naturally warm climate, depending on energy source",
+        "Weigh this against reduced transport emissions, freshness and food security benefits of local production",
+        "Conclude the answer depends on specifics, energy source, glasshouse efficiency, distance and mode of import transport"
+      ],
+      "modelAnswer": "It is not automatically true that local is greener, a glasshouse tomato grown in a cold climate that needs constant gas heating can actually have a bigger carbon footprint than one grown outdoors in a warm country and shipped over by boat, because heating a glasshouse through winter takes a lot of energy. On the other hand, local production cuts transport emissions, gives fresher produce and reduces reliance on long supply chains that can be disrupted. So for me the honest answer is it depends, what matters most is the energy source heating the glasshouse, whether it is fossil fuel or renewable, and whether the import alternative travels by ship or by air freight, since air freight changes the calculation completely. I think the sustainability question in horticulture is rarely as simple as local versus imported."
+    },
+    "commonMistakes": [
+      "Assuming local production is automatically more sustainable",
+      "Not mentioning glasshouse heating energy as a major factor",
+      "Ignoring the difference between sea and air freight for imports"
+    ],
+    "followUps": ["How could a grower reduce the carbon footprint of heated glasshouse production?"]
+  },
+  {
+    "id": "prog-horticulture-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Micropropagation for disease-free stock",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["micropropagation", "tissue-culture", "disease-free"],
+    "question": "Why might a nursery use tissue culture to propagate a crop like banana or strawberry instead of conventional cuttings or division?",
+    "lookingFor": "Understanding of micropropagation's core advantages: disease-free, true-to-type, scale, alongside awareness of its cost and limitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain tissue culture allows mass production of genetically identical, disease-free plantlets from a small amount of starting material",
+        "Note it is especially valuable for crops prone to viral disease spread through vegetative propagation, like banana",
+        "Mention trade-offs: cost, technical skill, and risk of somaclonal variation"
+      ],
+      "modelAnswer": "Tissue culture lets a nursery take a tiny piece of meristem tissue from a clean mother plant and multiply it into thousands of genetically identical plantlets in a sterile lab environment, which is a scale conventional cuttings just cannot match. It is especially useful for something like banana, which is normally propagated vegetatively and easily passes viral diseases like banana bunchy top virus down through suckers, so starting from virus-indexed tissue culture stock protects the whole planting. The trade-off is that it needs specialist equipment and skilled staff, it costs more per plant than a simple cutting, and there is a small risk of somaclonal variation where plants come out slightly different from the parent. For a grower planting a large commercial block though, the disease-free guarantee usually makes it worth the extra cost."
+    },
+    "commonMistakes": [
+      "Describing tissue culture vaguely as just faster propagation with no disease angle",
+      "Not mentioning any drawback or limitation",
+      "Confusing tissue culture with simple cutting propagation"
+    ],
+    "followUps": ["What could cause somaclonal variation to appear in a tissue-cultured batch?"]
+  },
+  {
+    "id": "prog-horticulture-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Sudden pest outbreak decision-making",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["biosecurity", "pest-outbreak", "hypothetical"],
+    "question": "You are running the propagation section of a nursery and discover a highly contagious pest, say spotted lanternfly, on a batch of plants ready for sale this week. What do you do?",
+    "lookingFor": "Structured crisis reasoning that prioritises containment and honesty over short-term sales, showing understanding of biosecurity.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise immediate containment/quarantine of the affected batch before anything else",
+        "Commit to reporting to the relevant plant health authority rather than quietly destroying evidence or selling on",
+        "Address the business consequence honestly, lost sales versus wider biosecurity risk"
+      ],
+      "modelAnswer": "My first move would be to stop that batch moving anywhere, isolate it physically from the rest of the stock and the loading area immediately, because the biggest risk with something like spotted lanternfly is it spreading to other plants or leaving the site entirely. I would report it to the plant health authority straight away rather than quietly trying to treat it and ship it out on schedule, even though I know that means real financial loss for the nursery that week. It would be tempting to just spray and hope, but an established pest outbreak that gets shipped to customers' gardens is a much bigger problem than one week of lost sales, both for the wider industry and for the nursery's reputation if it were later traced back to us. I think biosecurity only works if everyone actually reports early rather than hoping it is a one-off."
+    },
+    "commonMistakes": [
+      "Prioritising the sale over containment or reporting",
+      "No mention of a plant health authority or formal reporting process",
+      "Treating it as a purely chemical/technical problem with no business or ethical dimension"
+    ],
+    "followUps": ["How would you communicate this to the customers already scheduled to receive plants that week?"]
+  },
+  {
+    "id": "prog-horticulture-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Balancing urban greening against invasive risk",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["urban-greening", "invasive-species", "ethics"],
+    "question": "A city wants to fast-track a large tree-planting programme using a fast-growing ornamental species that has become invasive in similar climates elsewhere. How would you advise them?",
+    "lookingFor": "Ability to weigh genuine environmental and social benefits of urban greening against the longer-term ecological risk of introducing an invasive species.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the real value of urban greening: shade, air quality, wellbeing, and the pressure to move fast",
+        "Flag the invasive risk specifically, citing that behaviour in similar climates elsewhere is a strong predictor",
+        "Recommend a practical alternative: native or non-invasive fast-growing species, or a risk assessment before scaling up"
+      ],
+      "modelAnswer": "I understand the appeal, a fast growing species gets visible shade and green cover quickly, and cities under pressure to show results often want that speed. But if that same species has already become invasive in a climate similar to this city's, that is a strong warning sign, and once it establishes and spreads it is far harder and more expensive to remove than it would have been to choose differently at the start. I would push the city to run a proper risk assessment first and look at native or non-invasive fast-growing alternatives that could deliver a similar shade benefit within a comparable timeframe. Short-term visible wins should not come at the cost of a long-term ecological problem the next generation has to deal with."
+    },
+    "commonMistakes": [
+      "Dismissing the programme's genuine social benefit entirely",
+      "Not naming climate-analogue invasive behaviour as the key evidence",
+      "Offering no practical alternative species or process"
+    ],
+    "followUps": ["How would you assess whether a species is likely to become invasive before it is planted at scale?"]
+  },
+  {
+    "id": "prog-horticulture-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Plant variety protection and farmer access",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["plant-breeders-rights", "ip", "ethics"],
+    "question": "New fruit varieties are often protected by plant breeders' rights, meaning growers must pay royalties or cannot save propagating material. Is this fair?",
+    "lookingFor": "Balanced reasoning about incentivising breeding investment against grower access and cost, not a one-sided verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the incentive argument: breeding a new variety takes years and investment that needs protection to be viable",
+        "Raise the counterpoint: royalties and propagation restrictions can burden smaller growers and limit access",
+        "Land on a nuanced view, e.g. time-limited protection or tiered fees rather than an absolute stance"
+      ],
+      "modelAnswer": "Breeding a genuinely new fruit variety can take ten or fifteen years of crossing and trialling, and without some form of protection there is little financial incentive for anyone to invest that time, since a grower could otherwise just propagate the result for free the moment it is released. At the same time I can see how royalty payments and restrictions on saving propagating material fall hardest on smaller growers who have less room to absorb that cost compared to large commercial operations. I do not think the system is unfair in principle, protecting an investment for a limited period seems reasonable, but I would want to see it paired with things like reduced fees for smallholders or time limits that eventually let the variety enter wider free use. It is the kind of policy question where the underlying goal, more innovation, and the access concern both have a legitimate claim."
+    },
+    "commonMistakes": [
+      "Treating plant breeders' rights as purely exploitative with no incentive argument",
+      "Defending the system with no acknowledgment of access barriers for small growers",
+      "Giving no concrete idea for how the tension could be balanced"
+    ],
+    "followUps": ["Should the rules be different for staple food crops than for ornamental varieties?"]
+  },
+  {
+    "id": "prog-horticulture-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate change and fruit tree chilling hours",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["climate-change", "chilling-hours", "dormancy"],
+    "question": "Many temperate fruit trees need a minimum number of chilling hours in winter to flower and fruit properly the following year. What happens as winters warm, and what can growers do about it?",
+    "lookingFor": "Subject knowledge of dormancy/chilling requirement linked to a genuine current climate impact, plus awareness of adaptation strategies.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain chilling requirement, accumulated hours below a threshold temperature needed to break dormancy properly",
+        "Identify the consequence of insufficient chilling: erratic or delayed bud break, poor flowering, reduced yield",
+        "Offer adaptation strategies: low-chill cultivars, dormancy-breaking chemical sprays, or shifting production regions"
+      ],
+      "modelAnswer": "Fruit trees like apple, cherry or pistachio need to accumulate a certain number of hours below around seven degrees celsius over winter before their buds will break dormancy evenly the following spring. As winters warm, orchards in traditionally cool-temperate regions are increasingly falling short of that chilling requirement, and the result is patchy, delayed bud break and uneven flowering, which directly hits yield and fruit quality. Growers are responding a few ways, breeding and planting low-chill cultivars developed for warmer climates, using dormancy-breaking sprays like hydrogen cyanamide to compensate artificially, or in some cases shifting production to higher altitude or more northern sites where the chilling still reliably occurs. It is one of the clearest examples I have come across of climate change forcing a rethink of what a region can actually grow."
+    },
+    "commonMistakes": [
+      "Not defining chilling requirement accurately",
+      "Assuming warmer winters are simply good news for fruit growing",
+      "Offering no concrete adaptation strategy"
+    ],
+    "followUps": ["Which fruit crops are likely most vulnerable to this shift, and why?"]
+  },
+  {
+    "id": "prog-horticulture-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Biocontrol agents versus chemical control",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["biocontrol", "ipm", "pest-management"],
+    "question": "A glasshouse grower is deciding between releasing a predatory mite to control spider mites or spraying a miticide. What factors should shape that decision?",
+    "lookingFor": "Practical understanding of biocontrol trade-offs: speed, cost, compatibility with other treatments, and resistance risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Note biocontrol works more slowly and needs a suitable environment and pest threshold to establish, but is sustainable long-term",
+        "Note chemical control acts faster but risks resistance and can kill the biocontrol agent if used together carelessly",
+        "Highlight compatibility: any chemical use has to be checked against the biocontrol programme to avoid wiping it out"
+      ],
+      "modelAnswer": "The predatory mite works more slowly than a spray, it needs the pest population to be at a level where the predator can actually find its prey and establish, so it is not a good emergency option if spider mite numbers are already exploding. A miticide acts fast, but repeated use risks building resistance in the spider mite population and can wipe out any beneficial insects already present in the glasshouse, including that same predatory mite if it were introduced later. I would want to know the current pest pressure and timeline before deciding, if it is caught early biocontrol is the more sustainable long-term choice, but if the population is already high a targeted, selective chemical to knock numbers down first, followed by biocontrol for ongoing management, is often the more realistic combination. The two are not necessarily mutually exclusive if the chemical choice is compatible with the biocontrol agent."
+    },
+    "commonMistakes": [
+      "Presenting it as strictly either biocontrol or chemical, not both",
+      "Ignoring the compatibility issue between chemicals and living biocontrol agents",
+      "Not considering current pest pressure/timeline as a deciding factor"
+    ],
+    "followUps": ["What would you check on a pesticide label to see if it is compatible with a biocontrol programme?"]
+  },
+  {
+    "id": "prog-horticulture-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Cut-flower air freight and sustainability",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["floriculture", "carbon-footprint", "current-debate"],
+    "question": "Roses flown in from Kenya or Colombia can sometimes have a lower carbon footprint than roses grown in a heated glasshouse in Northern Europe. Does that surprise you, and how would you explain it?",
+    "lookingFor": "Awareness of a genuine current sustainability debate in floriculture, with correct reasoning about energy sources versus transport.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite the actual comparison: field-grown flowers in a naturally warm, sunny climate need little added energy, even accounting for air freight",
+        "Explain that heated glasshouses running on fossil fuel energy through a Northern European winter can outweigh the transport emissions",
+        "Reach a considered conclusion that avoids treating either option as automatically the greener one"
+      ],
+      "modelAnswer": "It did surprise me the first time I read a life-cycle study on it, because I would have assumed flying flowers across an ocean was obviously worse. But field-grown roses in Kenya benefit from natural sunlight and warmth all year, so they need very little additional energy input, and even with the emissions from air freight added on, the total can come out lower than roses grown in a Dutch glasshouse that is being artificially heated and lit through a cold, dark winter. It really comes down to where the energy in the system is coming from, sunlight is free, gas heating is not, and transport emissions, while real, are often smaller than people assume relative to a whole winter of glasshouse heating. It has made me much more cautious about assuming local automatically means lower carbon in horticulture."
+    },
+    "commonMistakes": [
+      "Assuming transport emissions always dominate the comparison",
+      "Not mentioning the energy source behind heated glasshouse production",
+      "Giving a purely intuitive answer with no actual reasoning"
+    ],
+    "followUps": ["What other factors, beyond carbon, might still make local flower production worth supporting?"]
+  },
+  {
+    "id": "prog-horticulture-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Managing an unexpected pre-harvest heatwave",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["heat-stress", "harvest-management", "hypothetical"],
+    "question": "You manage an orchard and a sudden heatwave is forecast three days before your main harvest window. Walk me through what you would do.",
+    "lookingFor": "Practical, prioritised decision-making under time pressure that shows understanding of heat stress effects on fruit quality.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the specific risk: sunscald, accelerated ripening/softening, water stress on the trees",
+        "Propose concrete mitigation: irrigation scheduling, evaporative cooling or shade netting if available, reassessing harvest timing",
+        "Show judgement about triaging, which blocks or varieties are most at risk and prioritising those first"
+      ],
+      "modelAnswer": "The first thing I would do is walk the orchard and work out which blocks are most exposed, south or west facing rows and any varieties known to be sensitive to sunscald would be my priority. I would increase irrigation frequency in the days before the heat hits to make sure the trees are not water stressed on top of heat stressed, since that combination is what really damages fruit quality, and if overhead or evaporative cooling equipment is available I would run it during the hottest part of the day. I would also seriously reconsider the harvest schedule itself, heat can push fruit to over-ripen or soften faster than planned, so I might need to bring the harvest forward on the most exposed blocks even if it means picking slightly earlier than ideal. It is a case where you cannot fix the weather, so the job is triage, protect what you can and adjust your plan around what you cannot."
+    },
+    "commonMistakes": [
+      "Suggesting no proactive action, just waiting to assess damage afterward",
+      "Treating all orchard blocks as equally at risk",
+      "Ignoring the possibility of moving up the harvest date"
+    ],
+    "followUps": ["How would you assess and report the damage afterward if some fruit was affected despite your efforts?"]
+  },
+  {
+    "id": "prog-horticulture-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Organic yield and sustainability trade-offs",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["organic-farming", "yield", "sustainability"],
+    "question": "Organic horticultural production generally has lower yields per hectare than conventional. Does that undermine the case for organic farming?",
+    "lookingFor": "Nuanced reasoning that weighs yield against other sustainability metrics, avoiding a simplistic yes/no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the yield gap is real and documented, particularly for some crops",
+        "Bring in counterbalancing factors: soil health, biodiversity, reduced input pollution, and long-term land productivity",
+        "Avoid a blanket verdict, note the answer varies by crop, region and what outcome is being optimised for"
+      ],
+      "modelAnswer": "The yield gap is real, plenty of studies show organic yields running somewhere between ten and twenty percent lower than conventional for many crops, so I would not want to pretend that away. But yield per hectare is not the only measure that matters, organic systems tend to build soil organic matter and biodiversity over time and avoid the water pollution and pollinator harm that comes with heavy synthetic input use, and those things have long-term value that a single season's yield figure does not capture. I do not think it is a case of one system simply winning, for a land-scarce region trying to maximise calories per hectare right now, conventional may be the more defensible choice, but for a region more concerned about long-term soil health or biodiversity loss, organic's other benefits can outweigh the yield cost. I think the honest answer is that yield alone is the wrong single metric to judge the whole question by."
+    },
+    "commonMistakes": [
+      "Denying the yield gap exists at all",
+      "Ignoring yield entirely and only praising organic's other benefits",
+      "Declaring one system universally better with no context dependence"
+    ],
+    "followUps": ["Could a hybrid approach capture benefits from both systems? What would that look like?"]
+  },
+  {
+    "id": "prog-horticulture-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Precision horticulture and sensor-driven management",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["precision-agriculture", "technology", "current-development"],
+    "question": "Some growers are now using soil moisture sensors, drones and yield-mapping software to manage their crops. What is your view on how much this technology actually changes horticultural decision-making?",
+    "lookingFor": "Current awareness of precision agriculture trends in horticulture and a realistic view of its benefits and limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of specific tools: soil moisture/tension sensors, multispectral drone imagery, yield mapping",
+        "Explain the core benefit: targeted input use, catching problems, like water stress or disease, earlier and site-specifically",
+        "Note realistic limits: upfront cost, data interpretation skill needed, it supports rather than replaces grower judgement"
+      ],
+      "modelAnswer": "I think the technology is genuinely useful, soil moisture sensors let a grower irrigate a specific zone based on what the roots actually need rather than a blanket schedule, and drone imagery using near infrared can flag a patch of crop under stress days before it would be visible to the human eye walking the field. Yield mapping over several seasons can also reveal that part of a field consistently underperforms, which might point to a drainage or soil issue worth investigating properly rather than just accepting as normal variation. Where I am more cautious is that the technology generates a lot of data, and it only helps if someone actually has the skill to interpret it and turn it into a decision, so I see it as sharpening a grower's judgement rather than replacing it. The upfront cost is also real, so smaller operations adopting it more slowly makes sense to me."
+    },
+    "commonMistakes": [
+      "Describing the technology as a magic fix with no limitations",
+      "Not naming any specific tool or example",
+      "Ignoring the cost or skill barrier to adoption"
+    ],
+    "followUps": ["How would a smallholder grower without this technology stay competitive?"]
+  },
+  {
+    "id": "prog-horticulture-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Allocating limited research resources",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["research-design", "resource-allocation", "hypothetical"],
+    "question": "Your university's horticulture research plot has funding for only one of two trials this season, a disease-resistance trial on an existing staple crop, or an exploratory trial on a promising new drought-tolerant variety. How would you decide?",
+    "lookingFor": "Structured decision-making that weighs near-term certainty against longer-term exploratory value, showing research judgement.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the real trade-off: near-certain incremental value versus higher-risk, higher-potential-payoff research",
+        "Propose a concrete way to decide, e.g. stakeholder need, funding conditions, or a partial/staged approach",
+        "Show willingness to commit to a reasoned choice rather than refuse to decide"
+      ],
+      "modelAnswer": "I would first ask what problem is more urgent for the growers this research is meant to serve, if the disease is already causing real yield losses this season, that argues for prioritising the resistance trial because the value is concrete and needed now. But if drought stress is the bigger looming threat for the region over the next decade, an exploratory trial on a drought-tolerant variety could matter more even though the payoff is less certain and further off. If the funding terms allowed it, I would actually look at whether a smaller-scale version of both was possible, running the drought trial on a reduced number of plots while still doing the full disease trial, rather than treating it as strictly one or the other. But if I genuinely had to pick just one, I would lean toward the disease trial, because addressing a known, present problem for real growers should usually come before a promising but unproven direction."
+    },
+    "commonMistakes": [
+      "Refusing to actually commit to a decision",
+      "Ignoring stakeholder need as a factor",
+      "Not considering a staged or partial-scale compromise"
+    ],
+    "followUps": ["How would you justify that decision to a grower group hoping for the other trial?"]
+  },
+  {
+    "id": "prog-horticulture-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Monoculture risk versus polyculture design",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["monoculture", "biodiversity", "crop-design"],
+    "question": "Large-scale horticultural operations often rely on monoculture blocks of a single variety for efficiency. What are the risks of that approach, and how might polyculture or intercropping address them?",
+    "lookingFor": "Solid grasp of monoculture's disease/pest vulnerability and a realistic view of polyculture's benefits and management complexity.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain monoculture risk: genetic uniformity makes a whole block vulnerable to the same pest or disease at once",
+        "Describe polyculture/intercropping benefits: pest disruption, better resource use, resilience to a single threat wiping out the crop",
+        "Acknowledge the trade-off: polyculture is harder to manage and mechanise at scale, which is why monoculture persists commercially"
+      ],
+      "modelAnswer": "Monoculture makes a block efficient to plant, spray and harvest because every plant is identical and on the same schedule, but that same genetic uniformity means if a pest or disease can attack one plant, it can potentially attack every plant in the block at once, which is exactly what happened historically with things like the Irish potato blight. Polyculture or intercropping, planting a mix of species or varieties together, breaks that up, a pest specialised to one crop has a harder time spreading when its host plants are interspersed with something it cannot use, and the diversity can also improve soil health and resource use across the plot. The honest trade-off is that mixed plantings are much harder to manage mechanically, you cannot always spray, irrigate or harvest a mixed block with the same simple equipment, which is a big part of why large commercial operations still lean toward monoculture despite the risk. I think the more realistic middle ground growers are exploring is variety diversification within the same crop, rather than full species mixing, to get some resilience without losing all the efficiency."
+    },
+    "commonMistakes": [
+      "Describing polyculture as a costless upgrade with no management downside",
+      "Not giving a concrete historical or biological example of monoculture risk",
+      "Treating it as an all-or-nothing choice"
+    ],
+    "followUps": ["What is a realistic middle ground between full monoculture and full polyculture for a commercial grower?"]
+  },
+  {
+    "id": "prog-horticulture-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethical use of plant growth regulators in ornamentals",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["plant-growth-regulators", "ethics", "ornamentals"],
+    "question": "Growth regulators are commonly used to keep potted ornamental plants compact and attractive for retail, even though the plant would naturally grow taller. Is there anything ethically questionable about that?",
+    "lookingFor": "Thoughtful reasoning about consumer transparency and plant welfare-adjacent concerns without over-dramatising a routine horticultural practice.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge growth regulators are a routine, generally safe practice, not comparable to harming an animal",
+        "Raise the legitimate question: does it mislead a consumer about how the plant will actually grow and perform at home",
+        "Land on a reasonable position, e.g. fine as standard practice, but better paired with clear grower guidance for the buyer"
+      ],
+      "modelAnswer": "I do not think there is anything inherently unethical about using a growth regulator, it is a routine, well tested horticultural tool, and a plant is not a sentient being that can suffer, so I would not put it in the same category as an animal welfare question. Where I think there is a legitimate concern is consumer transparency, if a customer buys a compact, bushy plant expecting it to keep that shape and it later grows leggy and different once the regulator wears off at home, that is a bit of a mismatch between what was sold and what they actually get long term. My view is the practice itself is fine, but garden centres and growers have a responsibility to give buyers a realistic idea of how the plant will behave after the treatment fades, rather than let the point-of-sale appearance imply that is its permanent form. It is more a labelling and honesty issue than an ethical problem with the technique itself."
+    },
+    "commonMistakes": [
+      "Treating the question as if plant welfare is equivalent to animal welfare",
+      "Dismissing the question as having no ethical dimension at all",
+      "Not identifying consumer transparency as the actual issue"
+    ],
+    "followUps": ["Should garden centres be required to disclose growth regulator use on plant labels?"]
+  },
+  {
+    "id": "prog-horticulture-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "No-till and regenerative practices in vegetable production",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["regenerative-agriculture", "soil-health", "no-till"],
+    "question": "No-till and regenerative practices are gaining attention in horticulture as alternatives to conventional tillage. What problem are they actually trying to solve, and what is the catch?",
+    "lookingFor": "Current awareness of the regenerative horticulture trend with a realistic sense of its benefits and adoption barriers.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the problem: repeated tillage degrades soil structure, organic matter and microbial life over time",
+        "Describe the no-till/regenerative response: minimal soil disturbance, cover cropping, compost, to rebuild soil health",
+        "Note the catch: weed control becomes harder without tillage, and transition can mean a yield dip in the first years"
+      ],
+      "modelAnswer": "Repeated tillage year after year breaks down soil structure, burns through organic matter faster than it can rebuild, and disrupts the fungal and microbial networks that actually help plants take up nutrients, so over decades a conventionally tilled vegetable plot can end up needing more and more input just to get the same yield. No-till and regenerative approaches try to reverse that by disturbing the soil as little as possible, using cover crops and compost to keep it covered and feeding it organically instead of relying on the plough to prepare each bed. The catch is that tillage was also doing a lot of the weed control, so a no-till grower has to find other ways to manage weeds, usually more hand labour or mulching, and there is often a yield dip in the first couple of transition years while the soil biology rebuilds. I think it is a genuinely promising direction, but it is not a simple swap, it changes the whole labour and management model of the farm."
+    },
+    "commonMistakes": [
+      "Describing no-till as a pure upgrade with no downside",
+      "Not explaining what specifically tillage damages",
+      "Ignoring the weed management or transition-period challenge"
+    ],
+    "followUps": ["How might a grower manage the weed control challenge without resorting to more herbicide?"]
+  },
+  {
+    "id": "prog-horticulture-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering contamination in a food-growing project",
+    "program": "Horticulture",
+    "difficulty": "hard",
+    "tags": ["food-safety", "contamination", "hypothetical"],
+    "question": "You are volunteering on a school's kitchen garden project and soil tests reveal the compost used contains herbicide residue that is stunting the vegetable seedlings. What do you do?",
+    "lookingFor": "Responsible, transparent crisis handling that prioritises safety and honest communication over minimising the problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise stopping use of the contaminated compost immediately and assessing the extent of affected beds",
+        "Commit to informing the school/relevant adults honestly rather than quietly reworking the plan",
+        "Address the food safety angle specifically, since this is a garden feeding into meals or lessons involving children"
+      ],
+      "modelAnswer": "I would stop using that compost batch immediately and figure out exactly which beds it went into, because herbicide residue in compost, often from grass clippings treated with certain lawn herbicides, can persist for a surprisingly long time and keep affecting whatever is planted there. I would tell the teacher or garden coordinator straight away what the test showed rather than quietly trying to replant and hope it resolves itself, because this is a food growing project involving children, and if anything from those beds were ever eaten it needs to be flagged honestly. Practically I would recommend removing the affected soil where feasible rather than just topping it up, since herbicide residue does not necessarily go away with dilution, and I would want any harvest from those specific beds withheld until we could confirm the contamination had cleared. I think the instinct to just quietly fix it is understandable, but with children and food involved, transparency has to come first."
+    },
+    "commonMistakes": [
+      "Trying to quietly manage the problem without informing responsible adults",
+      "Underestimating how long herbicide residue can persist in soil",
+      "Not treating the food-safety-for-children angle as significant"
+    ],
+    "followUps": ["How would you go about identifying the source of the contaminated compost to prevent it happening again?"]
+  },
+  {
+    "id": "prog-horticulture-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Vernalization compared to photoperiod requirement",
+    "program": "Horticulture",
+    "difficulty": "medium",
+    "tags": ["vernalization", "photoperiod", "flowering"],
+    "question": "Both vernalization and photoperiodism can control when a plant flowers. What is the difference between the two, and can you give an example of a horticultural crop that relies on each?",
+    "lookingFor": "Clear conceptual distinction between temperature-based and light-based flowering triggers, backed by correct examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Define vernalization as a required period of cold exposure that a plant needs before it can flower",
+        "Define photoperiodism as the flowering response to relative day/night length, separate from temperature",
+        "Give a correct example of each, e.g. tulip/biennial crops for vernalization, chrysanthemum/poinsettia for photoperiod"
+      ],
+      "modelAnswer": "Vernalization is about temperature, a plant like a tulip bulb or a biennial vegetable needs to experience a sustained period of cold before it becomes able to flower at all, which is why bulbs are often chilled artificially before forcing them for an out of season display. Photoperiodism is a completely separate trigger based on day and night length rather than temperature, chrysanthemum and poinsettia are the classic examples, they need long uninterrupted dark periods to initiate flowering regardless of how warm or cold it is. The two can actually interact in some species, where a plant needs both a cold period and then the right day length before it will flower, but they are distinct mechanisms responding to different environmental cues. I find it useful to think of vernalization as the plant checking that winter has passed, while photoperiodism is the plant checking what time of year it currently is."
+    },
+    "commonMistakes": [
+      "Conflating the two mechanisms as the same thing",
+      "Using an incorrect or mismatched example for one",
+      "Not mentioning that some species require both in sequence"
+    ],
+    "followUps": ["Why might a grower deliberately chill bulbs artificially before selling them?"]
+  }
+]

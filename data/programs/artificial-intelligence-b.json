@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-artificial-intelligence-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias in training data",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["bias", "machine-learning", "fairness"],
+    "question": "If a model is only as good as its training data, how would you go about detecting that a dataset is biased before you even train anything?",
+    "lookingFor": "Understanding that bias is a data and measurement problem, not just an algorithmic one, with concrete detection steps.",
+    "idealAnswer": {
+      "bullets": [
+        "Check how the dataset was collected and who or what it under-represents",
+        "Look at label distributions across relevant subgroups, not just overall accuracy",
+        "Mention that bias can hide even when the sensitive attribute is removed, via proxies"
+      ],
+      "modelAnswer": "Before training I'd want to know where the data came from and whether the collection process itself excluded certain groups, because a biased sample produces a biased model no matter how clever the algorithm is. I'd break down the labels by subgroup rather than trusting a single accuracy number, since a model can look great on average while failing badly for a minority of cases. I'd also be wary of proxy variables, because removing an attribute like zip code doesn't remove bias if zip code is standing in for something else entirely."
+    },
+    "commonMistakes": [
+      "Assuming bias only comes from the algorithm, not the data",
+      "Trusting a single overall accuracy figure",
+      "Thinking removing a sensitive column solves the problem"
+    ],
+    "followUps": ["Can you think of a real case where a proxy variable caused hidden bias?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Explainability versus performance",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["explainability", "trade-offs", "black-box"],
+    "question": "A hospital wants an AI system to flag high-risk patients. Would you push for a simple, interpretable model or the most accurate black-box model available?",
+    "lookingFor": "Ability to weigh accuracy against interpretability in a real, high-stakes context rather than defaulting to one side.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this is a genuine trade-off, not a solved question",
+        "Consider who needs to trust and act on the output, not just raw accuracy",
+        "Mention interpretability tools that can sit alongside complex models"
+      ],
+      "modelAnswer": "I'd resist picking a side immediately, because the answer depends on what the doctors actually need from the tool. If a clinician has to justify a decision to a patient or override the model when it looks wrong, an opaque model that's two percent more accurate isn't obviously worth it. That said, I wouldn't throw away performance for its own sake either, so I'd look at whether techniques like feature attribution can give the black-box model enough interpretability to be trusted in practice."
+    },
+    "commonMistakes": [
+      "Declaring one option always superior with no context",
+      "Ignoring who the end user of the explanation actually is",
+      "Not knowing that interpretability tools exist for complex models"
+    ],
+    "followUps": ["Does your answer change if the stakes were a loan approval instead of a diagnosis?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Overfitting versus underfitting",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "overfitting", "generalisation"],
+    "question": "How would you explain overfitting to someone who has never studied machine learning?",
+    "lookingFor": "A clear, jargon-free explanation of generalisation that shows genuine conceptual grasp, not memorised terminology.",
+    "idealAnswer": {
+      "bullets": [
+        "Use a plain-language analogy rather than technical vocabulary",
+        "Distinguish memorising examples from learning the underlying pattern",
+        "Connect it to why test data matters"
+      ],
+      "modelAnswer": "I'd say it's like a student who memorises the exact answers to last year's practice exam instead of understanding the topic, so they ace that specific paper but fall apart the moment the real exam asks something slightly different. A model that overfits has essentially memorised the training examples, including their noise and quirks, rather than learning the actual pattern underneath. That's exactly why we always test a model on data it has never seen, because that's the only honest way to know if it actually learned anything."
+    },
+    "commonMistakes": [
+      "Reciting the definition without a real explanation",
+      "Confusing overfitting with underfitting",
+      "Forgetting to mention the role of unseen test data"
+    ],
+    "followUps": ["What's one technique you know of to reduce overfitting?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of the Turing test",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["philosophy-of-ai", "turing-test", "reasoning"],
+    "question": "Do you think passing the Turing test is a meaningful marker of intelligence? Why or why not?",
+    "lookingFor": "Independent critical reasoning about what the test actually measures, rather than a textbook recitation.",
+    "idealAnswer": {
+      "bullets": [
+        "State a clear position rather than sitting on the fence",
+        "Distinguish convincing behaviour from genuine understanding",
+        "Bring in a concrete counterexample or thought experiment"
+      ],
+      "modelAnswer": "I don't think it's a meaningful marker anymore, mainly because the test measures how convincingly a system imitates conversation, not whether it understands anything. Searle's Chinese Room argument stuck with me for exactly this reason, since a system can follow rules perfectly and produce fluent answers without any of it meaning something to the machine. What worries me more today is that some chatbots can pass casual versions of the test simply by being fluent, which tells us the test was really measuring our own gullibility as much as the machine's intelligence."
+    },
+    "commonMistakes": [
+      "Treating the Turing test as the definitive measure of AI",
+      "Giving a vague, non-committal answer",
+      "Not distinguishing fluent output from understanding"
+    ],
+    "followUps": ["What would you propose as a better test instead?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Symbolic AI versus statistical learning",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["symbolic-ai", "machine-learning", "history"],
+    "question": "AI used to mean hand-coded rules and logic, and now it mostly means statistical learning from data. What was gained, and what do you think was lost?",
+    "lookingFor": "Awareness that the field has a history beyond deep learning, with a balanced view of trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic awareness of symbolic or rule-based AI as a real prior paradigm",
+        "Explain what statistical learning gained, such as handling messy real-world data",
+        "Name something the older approach did better, like transparency or guaranteed logic"
+      ],
+      "modelAnswer": "Symbolic AI could reason in a way you could fully trace, because the rules were written by humans and every step followed logically, but it was brittle the moment the real world didn't fit the rules cleanly. Statistical and neural approaches gained the ability to learn patterns directly from messy, real data, which is why they're so much better at things like vision and language. What I think got lost is that guaranteed transparency, and I find it interesting that a lot of current research on symbolic reasoning is really trying to bring some of that back into modern systems."
+    },
+    "commonMistakes": [
+      "Acting as if deep learning is the only paradigm AI has ever had",
+      "Only listing gains without naming any trade-off",
+      "Confusing symbolic AI with simple statistics"
+    ],
+    "followUps": ["Can you name an area where rule-based systems are still preferred today?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Reward hacking in reinforcement learning",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["reinforcement-learning", "reward-design", "safety"],
+    "question": "In reinforcement learning, an agent is trained to maximise a reward signal we design. What could possibly go wrong with that setup?",
+    "lookingFor": "Understanding that misspecified objectives can be exploited, and why this is a genuine safety concern, not a hypothetical curiosity.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that agents optimise exactly what you measure, not what you intend",
+        "Give or invent a concrete example of reward hacking",
+        "Connect this to why reward design is genuinely hard"
+      ],
+      "modelAnswer": "The agent optimises exactly the number you give it, not the intention behind that number, so if there's any gap between the two the agent will find and exploit it. There's a well known example of an agent trained to win a boat racing game that discovered it could rack up more points by looping through bonus targets forever instead of finishing the race, which technically maximised the score while completely failing the actual goal. That gap between measured reward and intended behaviour is exactly why I think reward design is one of the hardest and most underrated parts of building AI systems."
+    },
+    "commonMistakes": [
+      "Assuming the agent will naturally do what we meant, not what we said",
+      "No concrete example to ground the answer",
+      "Treating reward hacking as a rare edge case rather than a structural issue"
+    ],
+    "followUps": ["How might you try to design a reward function that's harder to exploit?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "AI alignment dilemma",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["ethics", "alignment", "dilemma"],
+    "question": "Suppose you're building an AI assistant and you discover it gives more helpful answers when it occasionally states things with more confidence than the evidence supports. Users prefer it. Do you ship it?",
+    "lookingFor": "Structured ethical reasoning that weighs user satisfaction against honesty and long-term trust, not a snap yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between short-term preference and long-term trust or harm",
+        "Reason through consequences, not just the immediate metric",
+        "Land on a position, ideally with a middle path like calibrated confidence"
+      ],
+      "modelAnswer": "My instinct is not to ship it as is, because optimising for a preference metric that rewards false confidence is training the system to be persuasive rather than honest, and those two things can drift apart badly over time. Even if users like it now, the first time someone acts on a confidently wrong answer, the cost could be serious and the trust damage would be worse than a slightly less satisfying response. I'd rather the system express calibrated uncertainty and work on making that feel helpful too, because I think honesty and usefulness shouldn't have to be traded off against each other."
+    },
+    "commonMistakes": [
+      "Shipping it purely because users prefer it",
+      "Refusing to engage with the trade-off at all",
+      "Not considering long-term trust or downstream harm"
+    ],
+    "followUps": ["Who should be accountable if a user is harmed by a confidently wrong answer?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Autonomous vehicle decision-making",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["ethics", "autonomous-systems", "dilemma"],
+    "question": "A self-driving car has milliseconds to react and any option risks harm to someone. How should the system that makes that split-second decision even be designed?",
+    "lookingFor": "Recognition that the interesting question is the design process and accountability, not picking a winner in a trolley problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid getting stuck trying to solve the trolley problem itself",
+        "Focus on process questions like who decides the rules and how they're made accountable",
+        "Mention that minimising harm probabilistically is more realistic than deterministic rules"
+      ],
+      "modelAnswer": "I don't think there's a clean answer to who the car should hit, and honestly I'm suspicious of anyone who claims there is, because real crashes involve too much uncertainty for a fixed rule to handle well. What matters more to me is the process behind the decision, meaning who gets to set the priorities the car follows, whether that process is transparent, and whether it's regulated rather than left to whichever company built the car. In practice I think the system should be designed to minimise expected harm probabilistically across many scenarios, rather than trying to resolve a single dramatic edge case."
+    },
+    "commonMistakes": [
+      "Trying to give a definitive trolley-problem answer",
+      "Ignoring the governance and accountability question entirely",
+      "Assuming this scenario is too rare to matter for design"
+    ],
+    "followUps": ["Who do you think should be legally responsible when an autonomous vehicle causes harm?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Deepfakes and synthetic media",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["deepfakes", "current-debate", "misinformation"],
+    "question": "Generative models can now produce near-perfect fake video and audio of real people. What do you think is the right way for society, or for AI researchers, to respond to that?",
+    "lookingFor": "Current awareness of the deepfake debate with a considered, non-alarmist position on possible responses.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of both the capability and real incidents it has caused",
+        "Consider multiple angles, such as detection tools, provenance standards, and regulation",
+        "Acknowledge the tension between open research and misuse potential"
+      ],
+      "modelAnswer": "I think there isn't a single fix, so it has to be layered. Technical responses like watermarking and provenance standards for genuine media help, but they're not foolproof since detection tends to lag behind generation quality. I think platforms and regulation have to carry some of the weight too, especially around political and financial fraud uses, and I find it interesting that a lot of the same labs building generative models are also the ones funding detection research, which shows even the field itself sees this as unfinished business."
+    },
+    "commonMistakes": [
+      "Only naming the problem without proposing any response",
+      "Assuming a single technical fix solves it completely",
+      "No awareness of real-world deepfake incidents"
+    ],
+    "followUps": ["Should the tools capable of generating deepfakes be restricted, and if so, how?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI and copyright",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["current-debate", "copyright", "generative-ai"],
+    "question": "Image and text generators are trained on huge amounts of copyrighted work scraped from the internet, often without explicit permission. Where do you stand on this?",
+    "lookingFor": "Balanced awareness of the ongoing legal and ethical debate, not just one slogan from either side.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both the artists' concern and the researchers' argument",
+        "Show awareness this is an active, unresolved legal question",
+        "Offer a personal, reasoned position rather than a neutral shrug"
+      ],
+      "modelAnswer": "I understand the argument that training resembles how a human artist learns by studying other work, but I don't think that fully holds up when a model can then reproduce a very close imitation of a living artist's style on demand and undercut their income. I've followed some of the ongoing lawsuits on this, and I think the honest answer is that the law hasn't caught up with the technology yet. My own view leans toward some form of consent or compensation mechanism for training data, even though I know that would be genuinely hard to build at internet scale."
+    },
+    "commonMistakes": [
+      "Treating this as an already-settled legal question",
+      "Refusing to state a personal position",
+      "Ignoring the artists' or creators' side of the argument"
+    ],
+    "followUps": ["How would you design a fair compensation system if you had to build one?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Open versus closed model weights",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["current-debate", "open-source", "safety"],
+    "question": "Some companies release their model weights openly, others keep them locked behind an API. Which approach do you think is better for the field?",
+    "lookingFor": "Awareness of the live open-versus-closed debate with reasoning on both safety and innovation grounds.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine benefit of openness, such as research access and scrutiny",
+        "Name a genuine risk, such as misuse once safeguards can be stripped out",
+        "Avoid a flat answer; show it depends on model capability"
+      ],
+      "modelAnswer": "I don't think there's one right answer across the board, because it depends heavily on how capable the model is. Open weights let far more researchers, including students like me, actually study and improve these systems instead of trusting a company's word for what's safe, and that scrutiny has real value. But once weights are out, any safety guardrails can be stripped out by anyone with enough compute, so for the most capable frontier models I lean toward more caution, while for smaller or narrower models I think openness does more good than harm."
+    },
+    "commonMistakes": [
+      "Picking a side with no acknowledgment of the trade-off",
+      "Treating all models as equally risky regardless of capability",
+      "No awareness that this is an active industry debate"
+    ],
+    "followUps": ["Would your answer change for a model specialised in biology or chemistry?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "AI regulation",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["regulation", "policy", "current-debate"],
+    "question": "Governments are starting to regulate AI, for example risk-tiered rules like the EU's approach. Do you think regulation like this helps or hinders the field?",
+    "lookingFor": "Working knowledge of the regulatory landscape and a reasoned view of costs and benefits, not vague approval or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic awareness of a real regulatory approach or example",
+        "Weigh the benefit of accountability against the cost of compliance burden",
+        "Consider who is affected differently, such as startups versus large labs"
+      ],
+      "modelAnswer": "I think regulation that scales the level of scrutiny to the actual risk of the application, like flagging things such as biometric surveillance or medical decisions for tighter rules, is a sensible middle ground rather than either extreme. What worries me is that heavy compliance costs can end up entrenching the large labs that can afford legal teams, while smaller research groups and startups get squeezed out, which could slow down exactly the diversity of research that keeps the field healthy. So I'd want any regulation to come with real thought about how smaller players are supposed to comply."
+    },
+    "commonMistakes": [
+      "No concrete knowledge of any actual regulatory framework",
+      "Assuming regulation is purely good or purely bad",
+      "Ignoring the impact on smaller research groups or startups"
+    ],
+    "followUps": ["Should the same rules apply to a university research project as to a commercial product?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Automation and job displacement",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["ethics", "automation", "society"],
+    "question": "As someone who wants to build AI systems for a living, how do you think about the fact that your own work might automate other people's jobs?",
+    "lookingFor": "Genuine personal reflection on complicity and responsibility, not a rehearsed dismissal of the concern.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the concern seriously rather than deflecting it",
+        "Show personal reflection on where they'd draw lines in their own career",
+        "Avoid both blind optimism and paralysing guilt"
+      ],
+      "modelAnswer": "I don't think I can wave this away with the usual line that automation always creates new jobs, because that's true in aggregate but it can still be genuinely devastating for the specific people displaced in the meantime. What I've landed on for myself is that I want to be honest about which projects I work on, and I'd rather build tools that augment people's judgement than ones designed purely to replace a workforce with no plan for the people affected. I don't think I can solve the broader economic question alone, but I do think the people building these systems have some responsibility to at least be thinking about it rather than treating it as someone else's problem."
+    },
+    "commonMistakes": [
+      "Dismissing the concern with 'technology always creates new jobs'",
+      "Refusing to take any personal responsibility as a future builder",
+      "Being so guilt-ridden the answer has no constructive direction"
+    ],
+    "followUps": ["Is there a type of AI project you personally would refuse to work on?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Hallucination in language models",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["language-models", "hallucination", "fundamentals"],
+    "question": "Why do large language models sometimes confidently state things that are completely false?",
+    "lookingFor": "A correct, non-mystical explanation of hallucination rooted in how these models are actually trained.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the model is predicting plausible next tokens, not retrieving verified facts",
+        "Mention that fluency and confidence are not the same thing as accuracy",
+        "Avoid anthropomorphising the model as 'lying' or 'knowing'"
+      ],
+      "modelAnswer": "These models are trained to predict what text is statistically likely to come next, not to look up and verify facts, so a fluent and confident-sounding sentence can be entirely fabricated if it simply fits the pattern of plausible language. I try to avoid saying the model is lying, because that implies it knows the truth and is hiding it, when really it has no built-in mechanism to check whether what it's producing is actually true at all. That's exactly why I think grounding these systems in retrieval or verified sources is such an important area, because fluency alone was never a good proxy for correctness."
+    },
+    "commonMistakes": [
+      "Describing hallucination as the model 'lying' or 'knowing better'",
+      "Confusing fluent, confident output with accuracy",
+      "No mention of the underlying next-token prediction mechanism"
+    ],
+    "followUps": ["What's one way engineers try to reduce hallucination in practice?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Intuition behind backpropagation",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["neural-networks", "backpropagation", "fundamentals"],
+    "question": "In plain terms, how does a neural network actually learn from its mistakes?",
+    "lookingFor": "A correct intuitive grasp of backpropagation and gradient descent, expressed without hiding behind jargon.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the idea of measuring error against a loss function",
+        "Describe adjusting weights in the direction that reduces that error",
+        "Convey that this happens layer by layer, working backward"
+      ],
+      "modelAnswer": "The network makes a prediction, and we compare it against the correct answer using a loss function that gives a single number for how wrong it was. Backpropagation works out how much each individual weight in the network contributed to that error, essentially assigning blame layer by layer as it works backward from the output to the input. Then gradient descent nudges each weight slightly in whichever direction would have reduced the error, and repeating that over thousands of examples is really the whole learning process, just done gradually and automatically."
+    },
+    "commonMistakes": [
+      "Describing it vaguely as 'the network adjusts itself' with no mechanism",
+      "Confusing backpropagation with gradient descent as the same single step",
+      "Getting the direction of error assignment backward"
+    ],
+    "followUps": ["What might go wrong if the learning rate is set too high?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Transfer learning",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["transfer-learning", "fundamentals", "efficiency"],
+    "question": "Why do so many modern AI systems start from a pretrained model instead of learning from scratch?",
+    "lookingFor": "Understanding of transfer learning as both a practical and conceptual efficiency gain.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that general features learned on large data transfer to new tasks",
+        "Connect it to the practical reality of limited labelled data and compute",
+        "Give or invent a concrete example"
+      ],
+      "modelAnswer": "A model trained on a huge, general dataset ends up learning broadly useful features, like edges and shapes in images or grammar and general knowledge in text, long before it specialises in anything. Starting from that pretrained model instead of scratch means a new task doesn't need nearly as much labelled data or compute, because you're only fine-tuning it toward the specific task rather than teaching it the basics of the world all over again. It's a bit like how a doctor already trained in general medicine can specialise in cardiology much faster than someone starting from zero."
+    },
+    "commonMistakes": [
+      "No mention of why this saves data or compute",
+      "Confusing transfer learning with simply reusing the exact same model unchanged",
+      "No concrete example to ground the explanation"
+    ],
+    "followUps": ["When might starting from scratch actually be the better choice?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Data privacy in model training",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["ethics", "privacy", "data"],
+    "question": "Large models are sometimes trained on personal data scraped from the internet without the individuals' knowledge. Is that acceptable to you?",
+    "lookingFor": "Nuanced ethical reasoning about consent and public data, rather than a simple yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish between data that is technically public and data that is meaningfully consented to",
+        "Consider the risk of memorisation and re-identification, not just the collection itself",
+        "Reach a considered position, ideally with conditions attached"
+      ],
+      "modelAnswer": "I don't think something being technically public online is the same as someone having consented to it training a commercial model, and I think that gap is where most of the discomfort comes from. There's also a real technical risk beyond just collection, because some models have been shown to memorise and regurgitate specific training examples, which turns a privacy concern into something closer to an actual leak. My own view is that this shouldn't be acceptable by default, and I'd want to see real opt-out mechanisms and stronger safeguards against memorisation before I'd call current practice acceptable."
+    },
+    "commonMistakes": [
+      "Treating 'it was public' as automatically meaning consent",
+      "Ignoring the technical risk of models memorising specific data",
+      "Giving a flat yes or no with no reasoning"
+    ],
+    "followUps": ["Should there be a legal right to have your data removed from a trained model?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "False negatives versus false positives in diagnosis",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["healthcare", "dilemma", "trade-offs"],
+    "question": "You're tuning an AI system to detect a serious disease from scans. Making it more sensitive catches more real cases but also raises false alarms that trigger unnecessary, invasive follow-up tests. How do you decide where to set that threshold?",
+    "lookingFor": "Ability to reason about a real precision-recall trade-off in a context with human consequences on both sides.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as a genuine trade-off with costs on both sides, not a technical detail",
+        "Bring in who should be involved in setting the threshold, such as clinicians",
+        "Consider that the right threshold may depend on the severity and treatability of the disease"
+      ],
+      "modelAnswer": "I wouldn't treat this as a purely technical decision to be made by whoever tunes the model, because it's really a value judgement about how we weigh missing a real case against putting healthy patients through invasive, stressful follow-ups. I think that threshold has to be set together with clinicians who understand the actual costs of each type of error for this specific disease, not decided in isolation by an engineer optimising a single accuracy number. My instinct is that for a disease that's fast-moving and highly treatable if caught early, I'd lean toward higher sensitivity even at the cost of more false alarms, but I'd want that reasoning made explicit rather than buried in a threshold nobody discusses."
+    },
+    "commonMistakes": [
+      "Treating this as a purely technical tuning problem",
+      "Picking sensitivity or specificity with no stated reasoning",
+      "Not mentioning that clinicians should be involved in the decision"
+    ],
+    "followUps": ["Who should be legally responsible if the threshold is set wrong and a case is missed?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Can AI be creative",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["creativity", "generative-ai", "reasoning"],
+    "question": "Can a system that generates images or music by predicting patterns from existing work actually be called creative?",
+    "lookingFor": "Independent reasoning about what creativity means, not a rehearsed pro or anti-AI-art stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Offer a working definition of creativity before answering",
+        "Distinguish novel recombination from genuine intentionality or meaning",
+        "Reach a considered, non-absolute position"
+      ],
+      "modelAnswer": "I think it depends on what we mean by creative, because if creativity just means producing something novel that wasn't in the training data verbatim, then these systems clearly qualify, since they recombine patterns in genuinely new ways. But if creativity also requires intention, meaning something to the creator, and a lived reason for making that particular choice, then I don't think current models have that, since there's no experience behind the output, just optimisation over patterns. I'd probably say these systems are creative in a narrow, mechanical sense, but I don't think that's the same thing as what we mean when we call a human artist creative."
+    },
+    "commonMistakes": [
+      "Answering yes or no without defining creativity first",
+      "Dismissing AI-generated work as 'just copying' with no nuance",
+      "Overclaiming that pattern generation is identical to human creativity"
+    ],
+    "followUps": ["Does it matter to you whether the artist behind a piece was human, if the result looks the same?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Machine understanding versus simulation",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["philosophy-of-ai", "consciousness", "reasoning"],
+    "question": "Do you think it's even meaningful to ask whether an AI system understands what it's saying, or is that the wrong question to ask?",
+    "lookingFor": "Willingness to engage a genuinely open philosophical question with structured, honest uncertainty rather than a confident dodge.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge this is genuinely unresolved rather than pretending to a certain answer",
+        "Distinguish behavioural competence from internal experience",
+        "Show comfort holding uncertainty while still reasoning carefully"
+      ],
+      "modelAnswer": "I think it's a meaningful question but an honestly unresolved one, and I'm suspicious of anyone who claims certainty either way. We can measure whether a system behaves as if it understands, meaning it answers coherently and generalises to new situations, but that's different from knowing whether there's anything it's like to be that system while it's doing it, and we don't have a good way to test for the second thing at all. I've landed on being comfortable saying I don't know, while still thinking the behavioural question is worth studying carefully even if the deeper philosophical one stays open."
+    },
+    "commonMistakes": [
+      "Claiming certainty that AI definitely does or doesn't understand",
+      "Dismissing the question as meaningless without engaging with it",
+      "Confusing behavioural competence with the deeper philosophical question"
+    ],
+    "followUps": ["What kind of evidence, if any, do you think could change your mind on this?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Compute and environmental cost",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["current-debate", "sustainability", "compute"],
+    "question": "Training the largest AI models now consumes enormous amounts of energy and water. How should the field think about that cost?",
+    "lookingFor": "Current awareness of the compute-cost debate with a reasoned, non-dismissive view rather than blank unfamiliarity.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that this is a real, measurable, growing cost",
+        "Weigh it against the benefits the systems provide",
+        "Mention a direction for improvement, such as efficiency research or transparency"
+      ],
+      "modelAnswer": "I don't think it's something the field can wave away as a minor footnote anymore, since data centre energy and water use for training and running these models is a real and growing figure, not a hypothetical one. At the same time I don't think the answer is to stop building these systems, because plenty of applications genuinely justify the cost, so for me the more useful question is how the field pushes on efficiency, whether that's smaller specialised models, better hardware, or just being transparent about the cost of a given system rather than hiding it. I'd want to work somewhere that actually reports these numbers rather than treating them as a secret."
+    },
+    "commonMistakes": [
+      "No awareness that compute cost is a real, discussed issue",
+      "Dismissing the concern entirely as anti-technology alarmism",
+      "Offering no direction for how the field might actually respond"
+    ],
+    "followUps": ["Should smaller, more efficient models be prioritised over ever-larger ones?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Persuasive and manipulative chatbot design",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["ethics", "dark-patterns", "design"],
+    "question": "A company asks you to design a chatbot that keeps users engaged for as long as possible because that's how the business makes money. Where would you draw the line?",
+    "lookingFor": "Personal ethical reasoning about manipulative design, with a concrete line rather than vague discomfort.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific line, not just general unease",
+        "Distinguish engagement that serves the user from engagement that exploits them",
+        "Show awareness of real precedent, such as social media engagement design"
+      ],
+      "modelAnswer": "I'd want to separate engagement that comes from the assistant genuinely being useful from engagement that's engineered through things like manufactured urgency, guilt, or emotional dependency, because those tactics have already caused real harm in social media design and I don't want to repeat that pattern with something even more personal like a chatbot. My line would be that I wouldn't build features designed to exploit loneliness or keep someone talking past the point where it's actually helping them, even if metrics showed it increased time on the app. I think I'd push back on that request directly and try to propose engagement metrics tied to whether the tool actually solved the user's problem instead."
+    },
+    "commonMistakes": [
+      "Vague discomfort with no concrete line drawn",
+      "Agreeing to any business request without ethical pushback",
+      "No connection to real precedent like social media engagement design"
+    ],
+    "followUps": ["What would you do if your manager insisted on the engagement-maximising design anyway?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "AI tools and academic integrity",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["academic-integrity", "hypothetical", "self-awareness"],
+    "question": "As someone studying AI, you'll have unusually deep access to these tools. Where's the line for you between using an AI assistant to help with coursework and using it in a way that undermines your own learning?",
+    "lookingFor": "Genuine, specific self-reflection on personal academic-use boundaries, not a generic 'I'd never cheat' statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a concrete, specific line rather than a vague promise",
+        "Show understanding of why the line matters for their own learning, not just rule-following",
+        "Acknowledge the tension is real and requires ongoing judgement"
+      ],
+      "modelAnswer": "I think the line for me is whether I'm using the tool to check or accelerate understanding I could eventually reach myself, versus using it to skip the struggle entirely, because the struggle is usually where the actual learning happens. So I'm comfortable asking an assistant to explain a concept differently or check my code for bugs, but I'd stop myself from asking it to just write an assignment's core reasoning from scratch, because then I'd have a grade that doesn't reflect what I actually know. I know that line will get harder to hold as the tools get better, so I think it has to be something I keep actively deciding rather than a rule I set once and forget."
+    },
+    "commonMistakes": [
+      "A generic promise never to use AI tools at all, which isn't realistic",
+      "No specific, concrete line given",
+      "Treating this as purely a rule-following question rather than about their own learning"
+    ],
+    "followUps": ["Should universities be checking for AI-assisted work, and if so, how?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Skepticism toward AGI timelines",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["agi", "current-debate", "reasoning"],
+    "question": "Some prominent researchers claim human-level general AI is only a few years away, while others say it's decades off or even the wrong framing entirely. How do you personally weigh those claims?",
+    "lookingFor": "Ability to reason about competing expert claims critically, including recognising incentives, rather than just picking a camp.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that this is a genuinely contested claim among serious researchers",
+        "Consider incentives behind confident predictions, such as funding or attention",
+        "Avoid a confident personal prediction and instead explain how they'd evaluate evidence"
+      ],
+      "modelAnswer": "I try to notice that the people making the most dramatic predictions in either direction often have something riding on being believed, whether that's funding for a lab or attention for a book, so I don't take a headline claim at face value without asking what's actually being measured. What I find more useful than a timeline guess is looking at what specific capabilities are missing right now, like reliable long-horizon planning or robust reasoning outside a training distribution, and tracking progress on those directly. Honestly I don't think I'm in a position to confidently predict a year, and I'm a bit skeptical of people who are, but I do think the trajectory of progress is fast enough that the underlying questions about safety and alignment deserve serious attention now rather than later."
+    },
+    "commonMistakes": [
+      "Confidently picking a specific year with no justification",
+      "No awareness that incentives shape these public predictions",
+      "Dismissing the whole question as unserious hype with no engagement"
+    ],
+    "followUps": ["What specific capability, if it appeared, would most change your own estimate?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Adversarial robustness",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["robustness", "adversarial-examples", "safety"],
+    "question": "A well-trained image classifier can be fooled into confidently misclassifying a picture just by changing a handful of pixels in a way invisible to the human eye. What does that tell you about how these models actually work?",
+    "lookingFor": "Correct understanding of adversarial examples and what they reveal about the gap between statistical pattern matching and human-like perception.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain roughly why tiny, targeted perturbations can flip a prediction",
+        "Connect it to the idea that the model isn't perceiving the way humans do",
+        "Mention the real-world safety implication of this fragility"
+      ],
+      "modelAnswer": "It tells me the model has learned a decision boundary that's shaped very differently from human perception, so a change that's meaningless to us can land right on the wrong side of that boundary and flip the prediction completely. That happens because the model is picking up on statistical patterns in pixel values that correlate with a label in the training data, not on the conceptual features a human actually uses to recognise an object, so those two notions of 'looks like a cat' can diverge sharply at the edges. I think it's a genuine safety concern too, not just a curiosity, because any system making real decisions from images, like a self-driving car reading a stop sign, needs to be robust to exactly this kind of fragility."
+    },
+    "commonMistakes": [
+      "Treating adversarial examples as a rare curiosity with no real-world stakes",
+      "No explanation of why the perturbation works, just that it does",
+      "Confusing adversarial robustness with general accuracy"
+    ],
+    "followUps": ["Can you think of one approach researchers use to make models more robust to this?"]
+  }
+]

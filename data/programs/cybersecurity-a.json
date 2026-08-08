@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-cybersecurity-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for cybersecurity",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["motivation", "cybersecurity"],
+    "question": "Why do you want to study cybersecurity?",
+    "lookingFor": "A specific, informed motivation for security over general computing, not just a fascination with 'hacking'.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment or experience that pulled you toward security specifically",
+        "Show you understand it is broader than breaking into systems",
+        "Connect the motivation to what you actually want to learn or do"
+      ],
+      "modelAnswer": "I got interested after our school network was hit by a phishing scam that locked staff out of their email for two days, and I remember being more curious about how it happened than annoyed by the disruption. I started reading about how attackers actually get in, and realised it is less about clever code and more about understanding people and systems together. That mix of technical depth and human behaviour is what I want to study properly, not just pick up from articles."
+    },
+    "commonMistakes": [
+      "Saying it just 'sounds cool' or citing hacking movies with nothing concrete",
+      "Talking only about offense with no awareness of defense, policy, or risk",
+      "Giving an answer that could apply to computer science generally"
+    ],
+    "followUps": ["What part of that experience made you want to study it rather than just read about it?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this course and university",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation"],
+    "question": "Why did you choose this cybersecurity course at our university specifically?",
+    "lookingFor": "Evidence of real research into the course content, not just general interest in the subject.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific module, lab, certification pathway, or research group",
+        "Explain why that feature matters to your own goals",
+        "Show you compared it to alternatives rather than applying generically"
+      ],
+      "modelAnswer": "I looked at a few security courses and most front-load theory for two years before you touch a real system. Yours has a hands-on penetration testing lab from first year and a placement year option, and I want to be tested against real vulnerable systems early rather than only in the final project. I also noticed the course maps onto industry certifications like Security Plus, which tells me it is built with employability and not just theory in mind. That combination of early practical work and recognised credentials is why I ranked it first."
+    },
+    "commonMistakes": [
+      "Generic praise about reputation that would fit any university",
+      "No mention of any specific module, lab, or feature",
+      "Confusing the course with a general computer science degree"
+    ],
+    "followUps": ["What would you want to get out of the placement year specifically?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Origin of interest",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story"],
+    "question": "When did you first realise you wanted to work in security, and what triggered it?",
+    "lookingFor": "A genuine, specific turning point that shows sustained rather than sudden interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a real, specific moment rather than a vague 'always interested'",
+        "Show what you did next, not just how you felt",
+        "Demonstrate the interest has continued and deepened since"
+      ],
+      "modelAnswer": "It was during a school computing lesson when a teacher showed us how weak default router passwords could be found online in seconds. I went home and checked our own router that evening and it was still on the factory password. That small moment of 'this is actually exploitable, not theoretical' is what hooked me, and I have been reading security blogs and doing small home lab exercises ever since to understand more of how it works."
+    },
+    "commonMistakes": [
+      "Claiming lifelong interest with no specific trigger",
+      "Describing curiosity but no follow-up action",
+      "An answer that sounds rehearsed rather than personal"
+    ],
+    "followUps": ["What have you done since then to build on that interest?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant hands-on experience",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["experience", "hands-on"],
+    "question": "Have you done anything hands-on in security, like a CTF, a home lab, or a coding project? Tell us about it.",
+    "lookingFor": "Genuine self-directed practical exposure, described with enough technical detail to prove it happened.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific activity with enough detail to sound credible",
+        "Explain what you actually learned, technically",
+        "Reflect on a limitation or mistake, not just a success"
+      ],
+      "modelAnswer": "I set up a small home lab using two old laptops and a virtual machine running a deliberately vulnerable web app called DVWA. I worked through the SQL injection and cross-site scripting exercises and got a basic login bypass working, which sounds small but it was the first time an attack I'd only read about actually worked in front of me. I also tried a beginner CTF on TryHackMe and got stuck for hours on a privilege escalation challenge, which taught me how much I still don't know about Linux permissions."
+    },
+    "commonMistakes": [
+      "Vague claims of 'I've done some hacking' with no specifics",
+      "Only listing course assignments with no self-directed work",
+      "Describing only successes, never a struggle or mistake"
+    ],
+    "followUps": ["What was the hardest part of getting that working?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and current awareness",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "current-events"],
+    "question": "What have you read or followed recently that relates to cybersecurity?",
+    "lookingFor": "Evidence of genuine ongoing engagement with the field beyond the syllabus.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific source, book, podcast, or reported incident",
+        "Summarise what you took from it in your own words",
+        "Show a considered opinion, not just a summary"
+      ],
+      "modelAnswer": "I've been following the Darknet Diaries podcast, and the episode on the Colonial Pipeline ransomware attack stuck with me because it wasn't a technically brilliant attack, it exploited a single reused password with no multi-factor authentication. It made me realise how often breaches come down to basic hygiene rather than nation-state-level skill, which changed how I think about where the real risk sits in most organisations. I've since started reading a bit about credential management as a result."
+    },
+    "commonMistakes": [
+      "Naming a source but unable to say anything specific about it",
+      "Only citing something read specifically to prepare for this interview",
+      "No personal opinion or takeaway, just a summary"
+    ],
+    "followUps": ["Did that change how you think about anything in the field?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "CIA triad",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "concept"],
+    "question": "Can you explain the CIA triad and give an example of each part?",
+    "lookingFor": "A clear grasp of confidentiality, integrity and availability with concrete, distinct examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Define confidentiality, integrity and availability accurately",
+        "Give a distinct real-world example for each",
+        "Show you understand these can trade off against each other"
+      ],
+      "modelAnswer": "Confidentiality means only authorised people can see the data, like encrypting a hospital's patient records. Integrity means the data hasn't been tampered with, like a checksum confirming a downloaded file matches the original. Availability means the system is actually accessible when needed, which is why a DDoS attack is a real threat even though it doesn't steal or change anything. What I find interesting is that these three can pull against each other, tight confidentiality controls can slow down availability during an emergency."
+    },
+    "commonMistakes": [
+      "Naming the three letters but not defining them accurately",
+      "Giving the same example twice for two different letters",
+      "Not recognising availability as a real security concern"
+    ],
+    "followUps": ["Can you think of a case where improving one weakens another?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Symmetric vs asymmetric encryption",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["cryptography", "fundamentals"],
+    "question": "What's the difference between symmetric and asymmetric encryption?",
+    "lookingFor": "A correct technical distinction plus an understanding of why both are used together in practice.",
+    "idealAnswer": {
+      "bullets": [
+        "State that symmetric uses one shared key, asymmetric uses a public and private key pair",
+        "Note the speed and key-distribution trade-off between them",
+        "Mention that real systems like HTTPS use both together"
+      ],
+      "modelAnswer": "Symmetric encryption uses the same key to encrypt and decrypt, so it's fast, but both sides need to already share that key securely, which is the hard part. Asymmetric encryption uses a public key to encrypt and a private key to decrypt, so you can share the public key openly, but the maths involved makes it much slower for large amounts of data. That's why something like HTTPS actually uses asymmetric encryption just to securely exchange a symmetric key, and then switches to symmetric encryption for the rest of the session because it's faster."
+    },
+    "commonMistakes": [
+      "Mixing up which one uses a key pair",
+      "Not explaining why both are needed in practice",
+      "Confusing encryption with hashing"
+    ],
+    "followUps": ["Why not just use asymmetric encryption for everything?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Phishing",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["social-engineering", "fundamentals"],
+    "question": "What is phishing, and why does it still work so well against organisations with strong technical defences?",
+    "lookingFor": "A correct definition plus insight that phishing succeeds by targeting people, not technical gaps.",
+    "idealAnswer": {
+      "bullets": [
+        "Define phishing accurately as deceptive communication to obtain information or access",
+        "Explain that it targets human trust and urgency rather than a technical flaw",
+        "Give a realistic example or variant, like spear phishing"
+      ],
+      "modelAnswer": "Phishing is when an attacker sends a message, usually an email, pretending to be someone trustworthy to get you to click a link, hand over credentials, or open a malicious file. It works even against well-defended organisations because it doesn't attack the firewall, it attacks a person's trust and their instinct to respond quickly to something that looks urgent, like a fake invoice or a message pretending to be from IT. Spear phishing is even more effective because it's personalised using information about the specific target, which makes it much harder to spot as fake."
+    },
+    "commonMistakes": [
+      "Defining phishing only as 'a scam email' with no mechanism",
+      "Treating it purely as a technical problem to patch",
+      "Not distinguishing phishing from spam"
+    ],
+    "followUps": ["What's one thing an organisation can do beyond technical filters to reduce this risk?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Firewalls and VPNs",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["network-security", "fundamentals"],
+    "question": "What does a firewall actually do, and how is that different from what a VPN does?",
+    "lookingFor": "A clear distinction between traffic filtering and secure tunnelling, not just buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a firewall filters traffic based on rules, blocking or allowing it",
+        "Explain a VPN creates an encrypted tunnel for data in transit",
+        "Note that they solve different problems and are often used together"
+      ],
+      "modelAnswer": "A firewall sits at the boundary of a network and decides what traffic gets in or out based on rules, like blocking a port that shouldn't be exposed to the internet. A VPN doesn't decide what's allowed, it encrypts the connection between you and another network so that anyone intercepting the traffic on the way, like on public wifi, can't read it. So a firewall is about controlling access and a VPN is about protecting data in transit, and a company will usually use both rather than treating either as a full solution on its own."
+    },
+    "commonMistakes": [
+      "Treating a VPN as making you 'anonymous' or fully secure",
+      "Describing a firewall only as antivirus software",
+      "Not being able to say what problem each one actually solves"
+    ],
+    "followUps": ["Would a VPN protect you from a phishing email? Why or why not?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Types of malware",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["malware", "fundamentals"],
+    "question": "Can you explain the difference between a virus, a worm, and ransomware?",
+    "lookingFor": "Correct distinctions in how each spreads and what it does, not just that they are all 'bad software'.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish a virus by needing a host file and human action to spread",
+        "Distinguish a worm by self-propagating across a network with no host needed",
+        "Define ransomware by its goal, encrypting data and demanding payment, which either could deliver"
+      ],
+      "modelAnswer": "A virus attaches itself to a legitimate file or program and needs a person to run that file to spread, like opening an infected attachment. A worm doesn't need that, it can self-replicate and spread across a network on its own, which is why worms can cause damage so quickly, like WannaCry spreading between machines without anyone clicking anything. Ransomware is defined by its goal rather than how it spreads, it encrypts the victim's files and demands payment, and it can actually be delivered as either a virus or a worm depending on the attack."
+    },
+    "commonMistakes": [
+      "Using virus as a catch-all term for all malware",
+      "Not knowing that worms self-propagate without user action",
+      "Confusing ransomware's delivery method with its definition"
+    ],
+    "followUps": ["Why do you think worms can cause damage faster than viruses?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "SQL injection",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["web-security", "vulnerabilities"],
+    "question": "What is a SQL injection attack, and why does it happen?",
+    "lookingFor": "Understanding of the root cause, unsanitised input reaching a database query, with a plausible example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain user input is inserted directly into a database query without validation",
+        "Give a simple example of malicious input changing the query's meaning",
+        "Mention at least one defence, like parameterised queries or input validation"
+      ],
+      "modelAnswer": "SQL injection happens when an application takes user input, like a login field, and inserts it directly into a database query without properly checking or escaping it. So if a login form builds a query by just concatenating the username string in, an attacker can type something like a quote followed by 'OR 1=1' and change the actual logic of the query so it returns true for every row instead of checking credentials. The fix is to use parameterised queries, which treat user input strictly as data rather than as part of the executable query, so it can't change the query's structure."
+    },
+    "commonMistakes": [
+      "Describing it vaguely as 'hacking a database' with no mechanism",
+      "Not being able to name any defence at all",
+      "Confusing it with cross-site scripting"
+    ],
+    "followUps": ["What's the difference between SQL injection and cross-site scripting?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Password hashing and salting",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["cryptography", "authentication"],
+    "question": "Why shouldn't a website store passwords in plain text, and what does salting a hash actually do?",
+    "lookingFor": "Understanding that hashing protects stored passwords and salting defeats precomputed attacks like rainbow tables.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain plain text storage means a single database breach exposes every password",
+        "Explain hashing stores a one-way derived value instead of the password itself",
+        "Explain salting adds unique random data per password so identical passwords don't produce identical hashes"
+      ],
+      "modelAnswer": "If passwords are stored in plain text, one database breach hands the attacker every user's actual password, which is catastrophic given how many people reuse passwords across sites. Hashing instead stores a one-way mathematical transformation of the password, so even if the database leaks, the attacker only has the hash, not the password itself. Salting adds a unique random value to each password before hashing, so two users with the same password get completely different hashes, which stops attackers from using precomputed rainbow tables to crack many accounts at once."
+    },
+    "commonMistakes": [
+      "Saying hashing and encryption are the same thing",
+      "Not knowing what problem salting specifically solves",
+      "Thinking hashing alone makes reused weak passwords safe"
+    ],
+    "followUps": ["Why is hashing described as one-way, and why does that matter here?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Multi-factor authentication",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["authentication", "fundamentals"],
+    "question": "Why is multi-factor authentication considered so much stronger than a password alone?",
+    "lookingFor": "Understanding of the different factor categories and why combining them raises the bar for an attacker.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the general factor categories: something you know, have, and are",
+        "Explain a stolen password alone becomes insufficient if a second factor is required",
+        "Acknowledge MFA isn't unbreakable, just significantly harder to defeat"
+      ],
+      "modelAnswer": "A password alone is 'something you know', and the problem is that knowledge can be phished, guessed, or leaked in a breach without the user even realising. Multi-factor authentication adds a second category, like something you have, a phone generating a one-time code, or something you are, a fingerprint. Even if an attacker steals the password, they still need physical access to that second factor, which is a much higher bar. It isn't perfect, SIM-swapping and MFA fatigue attacks exist, but it removes the single point of failure a password represents on its own."
+    },
+    "commonMistakes": [
+      "Treating MFA as unbreakable rather than significantly harder",
+      "Not naming what the actual second factor categories are",
+      "Confusing two passwords with true multi-factor authentication"
+    ],
+    "followUps": ["Can you think of a way multi-factor authentication itself can be attacked?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Social engineering",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["social-engineering", "human-factor"],
+    "question": "Why do you think humans are often described as the weakest link in security?",
+    "lookingFor": "A nuanced view of human factors in security, not a dismissive or blame-focused answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that technical controls can be bypassed by exploiting trust, urgency, or authority",
+        "Give a concrete example of social engineering rather than an abstract claim",
+        "Push back a little, arguing the phrase can unfairly shift blame from poor system design"
+      ],
+      "modelAnswer": "Attackers exploit social engineering because it's usually far easier to get someone to hand over a password by impersonating IT support than to break strong encryption. A classic example is pretexting, where an attacker calls pretending to be from the helpdesk and creates urgency, saying an account will be locked unless the person confirms their credentials right now. That said, I think calling humans 'the weakest link' can be a bit unfair, if a system makes it easy to make that mistake and hard to verify who's really calling, that's partly a design failure, not just individual error."
+    },
+    "commonMistakes": [
+      "Giving a purely technical answer with no human element",
+      "Blaming users with no acknowledgment of design responsibility",
+      "No concrete example of a social engineering technique"
+    ],
+    "followUps": ["What would you change about a system's design to reduce that risk?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Zero-day vulnerabilities",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["vulnerabilities", "fundamentals"],
+    "question": "What's a zero-day vulnerability, and why is it particularly dangerous?",
+    "lookingFor": "Correct definition and understanding of why no patch existing changes the risk calculation.",
+    "idealAnswer": {
+      "bullets": [
+        "Define it as a vulnerability unknown to the vendor with no patch available",
+        "Explain why this removes the usual defence of patching",
+        "Mention that a zero-day exploit is the actual code used to take advantage of it"
+      ],
+      "modelAnswer": "A zero-day vulnerability is a flaw the vendor doesn't know about yet, so there is zero days of warning before it could be exploited, and critically, no patch exists to fix it. That's what makes it dangerous, normal defence relies heavily on keeping software patched, and that option simply isn't available yet. There's also a distinction between the vulnerability itself and a zero-day exploit, which is the actual working code an attacker uses to take advantage of that flaw before defenders even know it exists."
+    },
+    "commonMistakes": [
+      "Confusing zero-day with any recently discovered vulnerability that already has a patch",
+      "Not explaining why patching doesn't help here",
+      "Mixing up vulnerability and exploit as the same thing"
+    ],
+    "followUps": ["If patching isn't an option, what could an organisation do to reduce this risk?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Vulnerability, threat, risk and exploit",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["risk", "terminology"],
+    "question": "How would you distinguish between a vulnerability, a threat, a risk, and an exploit?",
+    "lookingFor": "Precise use of core risk terminology, showing conceptual clarity rather than treating the words as interchangeable.",
+    "idealAnswer": {
+      "bullets": [
+        "Define vulnerability as a weakness, threat as a potential source of harm, and exploit as the mechanism used to abuse the weakness",
+        "Define risk as the combination of likelihood and impact, not just the presence of a weakness",
+        "Show with an example how the same vulnerability can carry different risk depending on context"
+      ],
+      "modelAnswer": "A vulnerability is a weakness in a system, like unpatched software. A threat is something or someone that could exploit that weakness, like an attacker group actively scanning for that software version. An exploit is the actual tool or technique used to take advantage of the vulnerability. Risk is different from all three, it's the combination of how likely that threat is to act and how much damage it would cause, so the same vulnerability on an internet-facing server carries far more risk than the identical vulnerability on an isolated internal machine nobody can reach."
+    },
+    "commonMistakes": [
+      "Using the four terms interchangeably",
+      "Defining risk as simply 'a bad thing that could happen' without likelihood and impact",
+      "No example showing how context changes risk for the same vulnerability"
+    ],
+    "followUps": ["Give an example of a vulnerability with almost no real risk attached to it."]
+  },
+  {
+    "id": "prog-cybersecurity-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethical hacking",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["ethics", "penetration-testing"],
+    "question": "What's the difference between a white hat and a black hat hacker, and where would you place yourself?",
+    "lookingFor": "Clear understanding of authorisation as the defining line, plus honest reflection on personal intent.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the technical skills can be identical, the difference is authorisation and intent",
+        "Mention grey hat as a middle category to show nuance",
+        "Give a genuine, specific answer about where you see yourself"
+      ],
+      "modelAnswer": "The techniques a white hat and a black hat use can be almost identical, the real difference is authorisation and intent. A white hat has explicit permission to find weaknesses and reports them to help fix them, a black hat exploits them without permission for personal gain or harm. There's also a grey area, someone who finds a flaw without permission but discloses it responsibly rather than exploiting it, which raises interesting ethical questions. I'd place myself firmly as wanting to work within authorised boundaries, the puzzle-solving is what excites me, not the lack of consequences."
+    },
+    "commonMistakes": [
+      "Defining the difference by skill level rather than authorisation",
+      "Not acknowledging grey hat as a real, debated category",
+      "Giving a vague or evasive answer about personal intent"
+    ],
+    "followUps": ["What would you do if you found a real vulnerability in a system you weren't authorised to test?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Denial of service attacks",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["network-security", "availability"],
+    "question": "What is a DDoS attack, and why can it be effective even against a well-secured system?",
+    "lookingFor": "Correct explanation of the mechanism and understanding that it attacks availability, not confidentiality.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain it as overwhelming a system with traffic from many sources so real users can't get through",
+        "Distinguish DDoS, distributed, from a simple DoS from one source",
+        "Note that it doesn't require breaching the system's defences at all"
+      ],
+      "modelAnswer": "A DDoS attack floods a server or network with so much traffic, often from thousands of compromised devices in a botnet, that it can't respond to legitimate requests anymore. It's distributed because the traffic comes from many sources at once, which makes it much harder to block than traffic from a single IP address. What makes it effective against even a well-secured system is that it doesn't need to break through any authentication or encryption, it just needs to exhaust the resource, so all the strongest encryption in the world doesn't stop the site from going down."
+    },
+    "commonMistakes": [
+      "Not distinguishing DDoS from a single-source DoS attack",
+      "Assuming strong encryption or access control would prevent it",
+      "Vague description with no mention of a botnet or traffic volume"
+    ],
+    "followUps": ["What's one mitigation a company could put in place against this?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Analysing a real breach",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["case-study", "ransomware", "critical-thinking"],
+    "question": "Talk us through a real cybersecurity breach you've followed, and what you think could have prevented it.",
+    "lookingFor": "Genuine familiarity with a real case plus the ability to reason critically about root cause, not just retell headlines.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific real incident with accurate technical detail",
+        "Identify the actual root cause, often a basic control failure rather than sophistication",
+        "Give a specific, plausible prevention measure rather than a vague 'better security'"
+      ],
+      "modelAnswer": "I followed the Colonial Pipeline ransomware attack in 2021 fairly closely. It shut down fuel supply across a large part of the US East Coast, and what struck me was that the root cause wasn't some advanced zero-day, it was a single compromised password on a VPN account that didn't have multi-factor authentication enabled. That tells me the failure wasn't a lack of sophisticated tools, it was a basic control gap on a legacy account nobody had properly retired. Enforcing multi-factor authentication on every remote access point, and regularly auditing which accounts still have active access, would likely have stopped that specific entry point."
+    },
+    "commonMistakes": [
+      "Giving only a vague summary with no accurate technical detail",
+      "Blaming sophistication when the real cause was a basic control failure",
+      "Suggesting only a generic fix like 'better security' with no specifics"
+    ],
+    "followUps": ["Why do you think basic control failures like that one are still so common?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Security versus usability trade-off",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["risk", "usability", "judgement"],
+    "question": "Security often makes systems harder to use. How would you decide how much friction is acceptable?",
+    "lookingFor": "Mature reasoning about balancing risk against real user behaviour, not an absolutist 'security first, always' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that excessive friction can push users toward risky workarounds",
+        "Argue the right level of friction should scale with what's actually being protected",
+        "Give a concrete example of getting the balance right or wrong"
+      ],
+      "modelAnswer": "I don't think 'more security is always better' actually holds up, if a password policy is so painful that people start writing passwords on sticky notes, the control has made things worse, not better. I'd want the level of friction to scale with what's actually being protected, a banking transfer over a large amount deserves more steps than checking a weather app. A good example is how some banks now use risk-based authentication, only asking for extra verification when a login looks unusual, rather than making every single login painful regardless of context. That feels like the right instinct, protect proportionally rather than uniformly."
+    },
+    "commonMistakes": [
+      "Insisting security should always take priority with no nuance",
+      "Not acknowledging that excessive friction creates its own new risks",
+      "No concrete example to ground the reasoning"
+    ],
+    "followUps": ["Can you think of a case where you think a company got this balance wrong?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Offense versus defense career interest",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["career-interest", "red-team", "blue-team"],
+    "question": "Are you more drawn to offensive security, like penetration testing, or defensive security, like a security operations centre? Why?",
+    "lookingFor": "Genuine self-awareness about which side appeals and why, with realistic understanding of what each actually involves.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate understanding of what each role actually involves day to day",
+        "Give a genuine personal reason for the preference, not a guessed 'correct' answer",
+        "Show openness to the course changing that view"
+      ],
+      "modelAnswer": "Right now I lean toward offensive security, the puzzle of thinking like an attacker and finding the one overlooked entry point is what got me into this in the first place. But I know penetration testing is a small slice of the actual field, and defensive work like monitoring, incident response, and threat hunting is where most of the day-to-day job actually is. I'm genuinely open to that changing, a friend who works in a security operations centre says the detective work of spotting an anomaly in a sea of normal traffic scratches a similar itch, and I want the course to actually test that preference rather than assume it."
+    },
+    "commonMistakes": [
+      "Only knowing about offensive security from popular culture, not what it involves day to day",
+      "Giving an answer that sounds like guessing what the panel wants to hear",
+      "Treating the choice as fixed with no openness to changing"
+    ],
+    "followUps": ["What do you think is the hardest part of defensive security work specifically?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Public key infrastructure",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["cryptography", "pki"],
+    "question": "When you visit a secure website, how does your browser know it's actually talking to the real site and not an imposter?",
+    "lookingFor": "Understanding of digital certificates and certificate authorities as the trust mechanism behind HTTPS.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the site presents a digital certificate containing its public key",
+        "Explain a trusted certificate authority has signed that certificate, vouching for its identity",
+        "Mention the browser checks that chain of trust against certificates it already trusts"
+      ],
+      "modelAnswer": "The site presents a digital certificate that contains its public key and identity information, and that certificate has been digitally signed by a trusted certificate authority. My browser already trusts a set list of these authorities, so it checks whether the certificate's signature traces back to one of them, forming a chain of trust. If it does, and the domain name matches, the browser accepts it as genuine and proceeds to set up the encrypted connection. If someone tried to impersonate the site with a self-signed or invalid certificate, the browser would flag it with a warning because that chain of trust breaks."
+    },
+    "commonMistakes": [
+      "Saying HTTPS alone guarantees the site is trustworthy with no mention of certificates",
+      "Not knowing what a certificate authority actually does",
+      "Confusing this mechanism with the encryption of the data itself"
+    ],
+    "followUps": ["What would happen if a certificate authority itself was compromised?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Responsible disclosure dilemma",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["ethics", "situational", "disclosure"],
+    "question": "Say you found a serious security flaw in your school or university's website while poking around out of curiosity, with no permission to test it. What would you do?",
+    "lookingFor": "Structured ethical reasoning that respects the law and consent while still taking the discovery seriously.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that testing without authorisation carries real legal and ethical risk, even with good intent",
+        "Choose responsible disclosure to the institution rather than public exposure or silence",
+        "Recognise the tension between wanting credit or proof and doing the responsible thing quietly"
+      ],
+      "modelAnswer": "I'd stop actively testing it further the moment I realised it might be a real flaw, because continuing without authorisation could cross a legal line even if my intent was good. I would report it privately and specifically, probably to IT services or whoever manages the site, describing exactly what I found and how, without publicising it or trying to prove I could go further. I know it might be tempting to want credit or to test how deep the flaw goes, but the responsible thing is to flag it clearly and let the people actually authorised to investigate take it from there."
+    },
+    "commonMistakes": [
+      "Continuing to test further to 'prove' the vulnerability is real",
+      "Posting about it publicly or on social media before reporting it",
+      "Ignoring it entirely out of fear of getting in trouble"
+    ],
+    "followUps": ["Would your answer change if the organisation ignored your report?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Data protection regulation awareness",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["regulation", "privacy", "gdpr"],
+    "question": "What do you know about data protection regulations like GDPR, and why do they matter to a security professional?",
+    "lookingFor": "Basic accurate awareness that security work operates within legal and privacy obligations, not just technical ones.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic accurate knowledge of what GDPR requires, like consent and breach notification",
+        "Explain why security teams specifically care, breaches can trigger legal and financial consequences",
+        "Connect regulation to practical security decisions, not just as background context"
+      ],
+      "modelAnswer": "GDPR sets rules for how organisations in or dealing with the EU handle personal data, including that they need a lawful basis to collect it and, importantly for security, that they must report certain data breaches to a regulator within a strict time window, usually seventy two hours. It matters to security professionals because a breach isn't just a technical failure anymore, it can trigger serious fines and legal exposure, which is part of why organisations invest in incident response plans and not just prevention. It changes the job from purely 'stop attackers' to also 'be ready to respond and report correctly when something does get through.'"
+    },
+    "commonMistakes": [
+      "Only knowing the name GDPR with no actual content",
+      "Treating regulation as someone else's problem, unrelated to a technical security role",
+      "Confusing data protection law with general company policy"
+    ],
+    "followUps": ["Why do you think a strict reporting deadline like that exists?"]
+  },
+  {
+    "id": "prog-cybersecurity-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Misconceptions about hacking",
+    "program": "Cybersecurity",
+    "difficulty": "easy",
+    "tags": ["misconceptions", "critical-thinking"],
+    "question": "What's the biggest misconception people have about hacking, based on how it's portrayed in films or TV?",
+    "lookingFor": "Ability to critically separate media portrayal from technical reality, showing genuine subject understanding.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, common misconception rather than a vague complaint about accuracy",
+        "Contrast it with what real security work is actually like",
+        "Show this understanding through a specific example, not just an assertion"
+      ],
+      "modelAnswer": "The biggest one is probably the idea that hacking is a single dramatic moment, someone typing furiously for thirty seconds and breaking into a system with a green progress bar. The reality is that most successful attacks are slow, patient, and quite boring, weeks of reconnaissance, checking for a reused password or an unpatched server, and often the actual entry point is a phishing email rather than a clever technical exploit at all. I think that misconception is part of why some organisations underinvest in the boring stuff, like patch management and staff training, because it doesn't match the dramatic picture of what an attack looks like."
+    },
+    "commonMistakes": [
+      "A vague complaint that films are 'unrealistic' with no specific example",
+      "Reinforcing the misconception rather than correcting it",
+      "Not connecting the misconception to any real consequence"
+    ],
+    "followUps": ["Do you think that portrayal affects public understanding of how to actually protect themselves?"]
+  }
+]

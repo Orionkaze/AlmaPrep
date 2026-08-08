@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-nuclear-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Criticality and chain-reaction control",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["reactor-physics", "criticality", "control-systems"],
+    "question": "Explain what it means for a reactor to be critical, and how operators keep the chain reaction stable rather than letting it run away.",
+    "lookingFor": "Correct grasp of k-effective and the physical feedback mechanisms that make a reactor self-regulating, not just memorized vocabulary.",
+    "idealAnswer": {
+      "bullets": [
+        "Define criticality as k-effective equal to one, where each fission sustains exactly one more",
+        "Explain control rods and moderator as the deliberate levers operators use",
+        "Mention negative feedback, like the temperature and void coefficients, that damps power swings automatically"
+      ],
+      "modelAnswer": "Critical just means the reactor is producing exactly one new fission for every fission that came before, so the neutron population and the power level stay steady rather than growing or dying out. Operators nudge that balance with control rods, which absorb neutrons and can be pulled or inserted to raise or lower power. What I find more elegant is that most modern designs are also built to correct themselves, because as fuel heats up the reactor physics itself pushes k-effective down, so a power spike tends to choke itself off even before an operator reacts. That built-in negative feedback is a big part of why I think reactor safety is really a design property, not just a procedure."
+    },
+    "commonMistakes": [
+      "Saying critical means 'about to melt down' rather than steady-state",
+      "Only mentioning control rods and ignoring inherent feedback effects",
+      "Confusing criticality with a supercritical bomb-like chain reaction"
+    ],
+    "followUps": ["What happens physically if a reactor briefly goes supercritical?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Fission versus fusion",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["fission", "fusion", "fundamentals"],
+    "question": "What's the fundamental physical difference between how fission and fusion release energy, and why is fusion so much harder to sustain?",
+    "lookingFor": "Clear understanding of the binding-energy curve and why fusion needs extreme conditions that fission does not.",
+    "idealAnswer": {
+      "bullets": [
+        "Fission splits heavy nuclei apart, fusion joins light nuclei together, both move toward more stable, tightly bound nuclei",
+        "Fusion needs to overcome electrostatic repulsion between nuclei, which needs extreme temperature and pressure",
+        "Fission is self-sustaining via neutrons at room-ish conditions, fusion has no equivalent easy chain reaction on Earth"
+      ],
+      "modelAnswer": "Both reactions are really about the same thing, moving nuclei toward the most tightly bound, stable configuration, which sits around iron on the periodic table. Fission gets there by splitting a heavy nucleus like uranium into two lighter ones, and a stray neutron is enough to trigger it because the nucleus is already close to unstable. Fusion has to force two light nuclei together against their mutual electrostatic repulsion, which needs temperatures like the sun's core, so on Earth you need enormous energy input just to get particles close enough to fuse. That's why fission reactors have existed commercially since the 1950s while fusion is still fighting to produce more energy than it consumes."
+    },
+    "commonMistakes": [
+      "Saying fusion is 'cleaner so it's just easier to build'",
+      "Not mentioning the Coulomb barrier as the actual obstacle",
+      "Confusing which reaction produces more waste versus which is harder to trigger"
+    ],
+    "followUps": ["Why does fusion still produce some radioactive waste even without fission products?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "PWR versus BWR trade-off",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["reactor-design", "engineering-tradeoffs"],
+    "question": "Compare a pressurized water reactor and a boiling water reactor. What's the key engineering trade-off between them?",
+    "lookingFor": "Understanding that the trade-off is complexity versus contamination risk, not just a surface-level naming difference.",
+    "idealAnswer": {
+      "bullets": [
+        "PWR keeps water under high pressure so it never boils, transferring heat through a secondary loop to make steam",
+        "BWR lets water boil directly in the core and sends that steam straight to the turbine",
+        "Trade-off: PWR is more complex and expensive but keeps the turbine loop radiation-free, BWR is simpler but the turbine sees slightly radioactive steam"
+      ],
+      "modelAnswer": "A PWR keeps its primary coolant under enough pressure that it can't boil even at reactor temperature, and it uses a steam generator to pass that heat into a completely separate loop that actually spins the turbine. A BWR skips that separation and just lets the water boil right in the core, sending the steam directly to the turbine. The trade-off is that PWRs are mechanically more complex and expensive because of the extra loop, but that separation means the turbine hall stays clean of radioactivity, whereas in a BWR the turbine has to be shielded and maintained as part of the radioactive system. It's a nice example of how a design choice ripples into cost, maintenance, and even where workers can safely stand."
+    },
+    "commonMistakes": [
+      "Describing only one reactor type in detail and guessing at the other",
+      "Missing that BWR turbines become part of the radioactive boundary",
+      "Treating the difference as purely about pressure with no consequence explained"
+    ],
+    "followUps": ["Why might a utility still choose a BWR despite that downside?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Half-life calculation",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["radioactive-decay", "quantitative", "problem-solving"],
+    "question": "A radioactive sample has a half-life of 8 days. If you start with 800 grams, roughly how much is left after 32 days? Show your reasoning.",
+    "lookingFor": "Ability to reason through exponential decay under pressure, not just recall the formula.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize 32 days is exactly 4 half-lives (32 divided by 8)",
+        "Halve the quantity four times: 800 to 400 to 200 to 100 to 50",
+        "State the answer clearly and sanity-check it makes sense as a small fraction of the original"
+      ],
+      "modelAnswer": "Thirty-two days divided by an eight-day half-life gives exactly four half-lives, so I just halve the amount four times. Eight hundred grams becomes four hundred after the first half-life, then two hundred, then one hundred, then fifty grams after the fourth. So roughly fifty grams should be left, which is one sixteenth of the original amount, and that checks out since two to the fourth power is sixteen. I like that this kind of problem is really just careful bookkeeping once you spot how many half-lives have passed."
+    },
+    "commonMistakes": [
+      "Using linear subtraction instead of halving each period",
+      "Miscounting the number of half-lives in 32 days",
+      "Reaching for a calculator instead of reasoning through the halving out loud"
+    ],
+    "followUps": ["How would your answer change if the half-life were 10 days instead of 8?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Neutron moderation",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["reactor-physics", "moderator", "fundamentals"],
+    "question": "Why do most reactors need a moderator to slow neutrons down, and why does water work well for that job?",
+    "lookingFor": "Understanding of thermal versus fast neutrons and why light nuclei make efficient moderators.",
+    "idealAnswer": {
+      "bullets": [
+        "Fast neutrons from fission are far less likely to cause further fission in U-235 than slow, thermal neutrons",
+        "A moderator slows neutrons through elastic collisions, transferring energy most efficiently to light nuclei",
+        "Water's hydrogen nuclei are close in mass to a neutron, so collisions are efficient, and water also doubles as coolant"
+      ],
+      "modelAnswer": "Neutrons come out of fission moving very fast, but U-235 is actually much more likely to fission when it absorbs a slow, thermal neutron, so you need something to bleed off that speed. A moderator does that through elastic collisions, and the physics works out that you transfer the most energy per collision when you hit something close to your own mass, which is why light nuclei like hydrogen are so effective compared to something heavy like lead. Water happens to be full of hydrogen, it's cheap, and it can also carry heat away as coolant, so it does two jobs at once, which is a big part of why light water reactors became the dominant design. The one catch is that ordinary water also absorbs some neutrons, which is why a few designs use heavy water instead to reduce that loss."
+    },
+    "commonMistakes": [
+      "Saying the moderator's job is to 'cool the reactor down' rather than slow neutrons",
+      "Not explaining why light nuclei are more efficient than heavy ones",
+      "Treating water's role as coolant and moderator as unrelated facts"
+    ],
+    "followUps": ["Why might a designer choose graphite or heavy water instead of ordinary water?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Void coefficient and Chernobyl",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["reactor-safety", "chernobyl", "reactor-physics"],
+    "question": "What is a void coefficient, and why does a reactor with a positive void coefficient worry engineers so much more than one with a negative coefficient?",
+    "lookingFor": "Ability to connect an abstract physics parameter to a real safety consequence, ideally referencing Chernobyl's RBMK design.",
+    "idealAnswer": {
+      "bullets": [
+        "Void coefficient describes how reactivity changes when coolant turns to steam bubbles, or voids",
+        "Negative coefficient means voiding reduces power, a self-correcting safety feature",
+        "Positive coefficient means voiding increases power, which can spiral if not caught, as in Chernobyl's RBMK"
+      ],
+      "modelAnswer": "The void coefficient tells you what happens to reactivity when some of the coolant turns to steam, so bubbles form instead of liquid. In a light water reactor that's usually negative, because water is both coolant and moderator, so losing water actually reduces moderation and power drops, which is a built-in brake. The RBMK design at Chernobyl used graphite as the moderator and water mainly as coolant, so when water turned to steam it stopped absorbing as many neutrons but the graphite kept moderating just fine, meaning power went up instead of down, and that positive feedback loop was a major reason the accident spiraled so fast. It's a good example of why I think reactor safety has to be designed into the physics itself, not just bolted on as a control system afterward."
+    },
+    "commonMistakes": [
+      "Confusing void coefficient with temperature coefficient without distinguishing them",
+      "Describing Chernobyl purely as 'operator error' with no physics explanation",
+      "Assuming all reactors have a negative void coefficient by default"
+    ],
+    "followUps": ["What other design or operational factors made the Chernobyl accident worse?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear fuel cycle",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["fuel-cycle", "enrichment", "engineering-process"],
+    "question": "Walk me through what happens to uranium between being mined and being loaded into a reactor as fuel.",
+    "lookingFor": "A clear sequential grasp of the front end of the fuel cycle, showing genuine engagement with the subject beyond the reactor itself.",
+    "idealAnswer": {
+      "bullets": [
+        "Mining and milling produce yellowcake, a concentrated uranium oxide",
+        "Conversion to uranium hexafluoride gas enables enrichment to raise U-235 concentration",
+        "Enriched uranium is converted to fuel pellets, packed into rods, and assembled into fuel bundles"
+      ],
+      "modelAnswer": "It starts with mining and milling the ore into a concentrate called yellowcake, which is mostly uranium oxide but still has U-235 at its natural concentration of less than one percent. That's then converted into uranium hexafluoride gas, because gas form is what lets you spin it through centrifuges to enrich the U-235 up to a few percent for a power reactor. The enriched uranium is converted back into a solid, pressed into small ceramic pellets, stacked inside long zirconium alloy tubes to make fuel rods, and then bundled together into fuel assemblies that actually get lowered into the reactor core. What strikes me is how many separate industrial steps and countries are usually involved before the fuel ever reaches the plant."
+    },
+    "commonMistakes": [
+      "Jumping straight from mining to 'the reactor' with no enrichment step",
+      "Confusing enrichment with reprocessing",
+      "Vague hand-waving instead of naming the actual process stages"
+    ],
+    "followUps": ["Why does the fuel need to be in a gas form specifically for enrichment?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Enrichment and proliferation",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["proliferation", "enrichment", "policy"],
+    "question": "Why is uranium enrichment technology treated as such a proliferation risk, even when a country says it only wants power reactor fuel?",
+    "lookingFor": "Understanding of dual-use technology and why the same centrifuges scale toward weapons-grade material.",
+    "idealAnswer": {
+      "bullets": [
+        "Power reactor fuel needs only a few percent U-235, weapons need roughly 90 percent",
+        "The same centrifuge cascades can keep running to reach weapons-grade levels, it's a matter of degree not a different technology",
+        "This is why international safeguards focus on enrichment capacity itself, not just declared intent"
+      ],
+      "modelAnswer": "The uncomfortable fact is that enrichment for power and enrichment for weapons use exactly the same technology, just run for longer. Reactor fuel needs U-235 enriched to maybe three to five percent, but a country that already has centrifuges capable of that can, in principle, keep cascading the same material further to reach the roughly ninety percent needed for a weapon. So the risk isn't really about intent at any given moment, it's about capability, because intentions can change but a working enrichment plant doesn't disappear. That's why the IAEA safeguards system focuses so heavily on monitoring enrichment facilities and stockpiles directly, rather than just trusting a country's stated purpose."
+    },
+    "commonMistakes": [
+      "Saying enrichment for power and weapons are 'completely different technologies'",
+      "Ignoring the role of international inspection and safeguards regimes",
+      "Treating this as a purely political issue with no technical grounding"
+    ],
+    "followUps": ["What alternatives exist to let countries have nuclear power without their own enrichment capability?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Deep geological disposal",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["nuclear-waste", "current-events", "policy"],
+    "question": "Finland's Onkalo facility is close to opening as the world's first deep geological repository for spent fuel. What makes permanent disposal such a hard engineering and political problem?",
+    "lookingFor": "Awareness of a live development in the field plus genuine reasoning about the combined technical and social challenge.",
+    "idealAnswer": {
+      "bullets": [
+        "Spent fuel stays hazardous for thousands of years, far beyond any institution's normal planning horizon",
+        "Engineering challenge involves stable geology, waste containment, and preventing water intrusion over that timescale",
+        "Political challenge involves public trust and siting, most countries have struggled to agree on a location at all"
+      ],
+      "modelAnswer": "The technical problem is that spent fuel stays dangerously radioactive for tens of thousands of years, which is a timescale almost no human institution has ever tried to plan across, so you need geology that's been stable for that long and a container design that won't corrode or crack even that far out. But I think the harder part is actually political, because most countries have spent decades unable to agree on where to put a repository, since no community wants to be known as the place that stores the nation's nuclear waste. Finland managed it partly through a very long, patient consent process with the local community at Olkiluoto, and I think that's the real lesson, that the engineering only matters once you've solved the trust problem first."
+    },
+    "commonMistakes": [
+      "Treating this purely as a technical rock-stability problem",
+      "Not mentioning why so few countries have managed to open a repository",
+      "Being unaware that Onkalo or a comparable project exists at all"
+    ],
+    "followUps": ["Why do you think most countries, including the US, still don't have an operating repository?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Chernobyl versus Fukushima causes",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["reactor-safety", "case-study", "critical-thinking"],
+    "question": "Fukushima and Chernobyl are often mentioned in the same breath, but the failures were quite different. Can you explain what actually went wrong in each?",
+    "lookingFor": "Ability to distinguish two major accidents accurately rather than lumping them into a vague 'nuclear disaster' category.",
+    "idealAnswer": {
+      "bullets": [
+        "Chernobyl was a design flaw combined with a reckless safety test, causing a power excursion and explosion while the reactor was operating",
+        "Fukushima was an external natural disaster that knocked out backup power, leading to loss of cooling in already-shutdown reactors",
+        "Contrast the two: an active reactivity accident versus a cooling failure after safe shutdown"
+      ],
+      "modelAnswer": "Chernobyl happened because operators were running an unauthorized safety test that pushed the RBMK reactor into an unstable low-power state, and the reactor's positive void coefficient meant a small power surge fed on itself and caused an explosion while the core was actively running. Fukushima was completely different in cause, the reactors actually shut down safely the moment the earthquake hit, but the tsunami that followed flooded the backup diesel generators, so there was no power left to keep pumping cooling water, and the fuel overheated and melted over the following days. So one was a reactivity accident caused by a flawed design being pushed outside its safe operating window, and the other was a loss-of-cooling accident caused by an external disaster overwhelming backup systems. I think keeping that distinction straight actually matters, because the fixes the industry drew from each were quite different."
+    },
+    "commonMistakes": [
+      "Describing both accidents with identical causes",
+      "Saying Fukushima's reactors 'exploded from the reaction' rather than from hydrogen buildup after cooling loss",
+      "No mention of the design or procedural factor specific to each site"
+    ],
+    "followUps": ["What design changes came out of Fukushima specifically?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Small modular reactors",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["smr", "current-events", "industry-trends"],
+    "question": "Small modular reactors are getting a lot of attention right now. What do you think is genuinely new about them, and where do you think people might be overselling the idea?",
+    "lookingFor": "Balanced, informed opinion on a live industry debate, not just repeating marketing language.",
+    "idealAnswer": {
+      "bullets": [
+        "Genuine advantage: factory-built modularity could cut the cost overruns that plague large custom-built plants",
+        "Genuine advantage: smaller size and passive safety features suit sites that couldn't host a gigawatt-scale plant",
+        "Overselling risk: unproven at commercial scale, cost-per-megawatt is still uncertain until several are actually built and operated"
+      ],
+      "modelAnswer": "What I find genuinely promising is the factory-built model, because a lot of the cost overruns on projects like Vogtle came from one-off construction problems, and building smaller units on an assembly line could bring the kind of learning curve you see in other manufactured products. The smaller footprint and passive safety systems also open up sites, like retiring coal plants or remote grids, that could never host a traditional gigawatt-scale reactor. Where I'd push back a little on the hype is that almost none of these designs have actually been built and operated at commercial scale yet, so a lot of the cost claims are still projections rather than proven numbers, and history with nuclear projects suggests I should be cautious about first-of-a-kind cost estimates. I think SMRs are worth being excited about, just not uncritically."
+    },
+    "commonMistakes": [
+      "Reciting marketing claims with no critical distance",
+      "Dismissing SMRs entirely as hype with no acknowledgment of real advantages",
+      "Not knowing what SMR stands for or why size matters"
+    ],
+    "followUps": ["Which SMR design or company would you point to as furthest along, and why?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Fusion ignition milestone",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["fusion", "current-events", "ignition"],
+    "question": "The National Ignition Facility announced net energy gain from a fusion reaction in 2022. Why hasn't that translated into fusion power plants yet?",
+    "lookingFor": "Awareness of the milestone plus accurate understanding of why scientific gain differs from a practical power plant.",
+    "idealAnswer": {
+      "bullets": [
+        "NIF's gain was measured against the laser energy hitting the fuel, not the total energy the facility drew from the wall",
+        "Laser fusion currently fires one shot at a time, a power plant needs repeated shots many times per second reliably",
+        "Engineering challenges remain around cost-effective lasers, target manufacturing, and converting fusion heat into usable electricity at scale"
+      ],
+      "modelAnswer": "That result was a genuinely big scientific milestone because it was the first time a fusion reaction released more energy than the laser energy delivered directly to the fuel capsule. But that's not the same as the whole facility being net positive, because the lasers themselves are hugely inefficient, so the total electricity drawn from the wall was still far more than what came out. On top of that, NIF fires a single shot and then needs time to reset, whereas a power plant would need to repeat that reaction many times a second, reliably and cheaply, and nobody has built a system that manufactures and fires targets at that rate yet. So I think of it as proof that the physics works, which is enormous, but the engineering path from there to an actual power plant is still a long one."
+    },
+    "commonMistakes": [
+      "Saying NIF proved fusion power plants are now imminent",
+      "Not distinguishing 'laser energy in' from 'total facility energy in'",
+      "Being unaware of the milestone entirely"
+    ],
+    "followUps": ["How does inertial confinement fusion, like NIF, differ from magnetic confinement approaches like ITER?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear versus renewables for decarbonization",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["climate", "energy-policy", "debate"],
+    "question": "Some climate advocates argue nuclear is essential to decarbonize fast, others argue money is better spent on renewables. Where do you land, and why?",
+    "lookingFor": "A reasoned, non-dogmatic position that engages with the actual trade-offs rather than picking a side by default.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real trade-off: nuclear gives reliable baseload but is slow and capital-intensive to build, renewables are fast and cheap to add but need storage or backup for intermittency",
+        "Avoid treating them as strictly either-or, many grid studies model them as complementary",
+        "Land on a considered position tied to a specific factor, like grid needs or build timelines, rather than a slogan"
+      ],
+      "modelAnswer": "I don't think this has to be either-or, because the two technologies solve different problems, renewables are now genuinely cheap and fast to deploy but they're intermittent, while nuclear is slow and expensive to build but gives you steady, weather-independent output. Where I lean is that for a grid trying to fully decarbonize, you probably need both, because renewables alone need huge amounts of storage or backup to cover calm, cloudy stretches, and that backup gap is exactly where nuclear's steady baseload is most valuable. What worries me about an either-or framing is that arguing over which one deserves the money can slow down building either, when the climate timeline really needs both moving at once. So my honest answer is that I'd rather see the debate shift from 'which one' to 'how do we build both faster.'"
+    },
+    "commonMistakes": [
+      "Picking a side purely on ideology without engaging the trade-offs",
+      "Ignoring cost and build-time differences entirely",
+      "Presenting the two as mutually exclusive with no mention of complementary grid roles"
+    ],
+    "followUps": ["What would change your mind on this?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "ALARA principle",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["radiation-protection", "alara", "safety-culture"],
+    "question": "What does the ALARA principle mean in radiation protection, and why do engineers apply it even when a dose is already below the legal limit?",
+    "lookingFor": "Understanding that radiation safety culture goes beyond compliance to genuine risk minimization.",
+    "idealAnswer": {
+      "bullets": [
+        "ALARA stands for As Low As Reasonably Achievable, keeping exposure minimized, not just under the legal ceiling",
+        "Reflects that there's no fully 'safe' threshold, risk scales with dose, so lower is always better where practical",
+        "Weighed against cost and benefit, so it's not zero exposure at any cost, but continual effort to reduce it"
+      ],
+      "modelAnswer": "ALARA means As Low As Reasonably Achievable, and the idea is that legal dose limits are a ceiling you must never cross, but they're not a target to aim for, because the honest scientific view is that there's no dose small enough to call completely risk-free. So engineers keep looking for ways to shave exposure down further even when they're already well under the limit, whether that's better shielding, remote handling tools, or just spending less time near a source. The 'reasonably achievable' part matters too, because it's balanced against practical cost and benefit, so it's not about chasing zero dose at infinite expense, it's about not accepting exposure you could have avoided cheaply. I think that mindset, treating the legal limit as a backstop rather than a goal, says a lot about how seriously the field takes safety culture."
+    },
+    "commonMistakes": [
+      "Treating the legal limit as the actual safety target",
+      "Not knowing what the acronym stands for",
+      "Implying ALARA means zero radiation exposure regardless of cost"
+    ],
+    "followUps": ["Can you give an example of an ALARA measure you've read about, like time, distance, or shielding?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear project cost overruns",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["economics", "project-management", "current-events"],
+    "question": "Nuclear plants are notorious for cost overruns and delays, look at Vogtle or Hinkley Point C. What do you think actually drives that, beyond just 'bureaucracy'?",
+    "lookingFor": "A grounded understanding of the real engineering and industrial causes behind nuclear cost growth.",
+    "idealAnswer": {
+      "bullets": [
+        "Most large plants are still first-of-a-kind or near first-of-a-kind builds, so there's little repeated learning curve",
+        "Supply chains for specialized components and skilled labor have atrophied in countries that haven't built reactors in decades",
+        "Financing costs compound over long construction timelines, so delays themselves become a major cost driver"
+      ],
+      "modelAnswer": "I think the deeper cause is that most recent Western projects are essentially first-of-a-kind builds, so you don't get the repeated learning curve that usually drives costs down in manufacturing, every project is relearning lessons the last one already knew. On top of that, countries like the US and UK hadn't built new reactors in decades, so the specialized supply chains and skilled welders and engineers had partly disappeared, and rebuilding that capacity mid-project is slow and expensive. There's also a compounding effect where delays themselves cost money, because a multi-billion dollar project sitting half-built is racking up financing interest the whole time, so a schedule slip doesn't just cost time, it directly inflates the budget. I think that's why SMRs and standardized designs get so much attention now, the industry is trying to buy back that lost learning curve."
+    },
+    "commonMistakes": [
+      "Blaming regulation alone with no engineering or industrial explanation",
+      "Not connecting schedule delay to financing cost",
+      "Assuming cost overruns are inherent to nuclear physics rather than project execution"
+    ],
+    "followUps": ["Do you think standardized reactor designs would meaningfully fix this?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Radiation shielding materials",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["radiation-protection", "materials", "fundamentals"],
+    "question": "Why can't you shield against neutron radiation the same way you shield against gamma rays?",
+    "lookingFor": "Correct grasp that different radiation types interact with matter differently, so shielding materials must be matched to the hazard.",
+    "idealAnswer": {
+      "bullets": [
+        "Gamma rays are best attenuated by dense, high atomic number materials like lead through absorption and scattering",
+        "Neutrons are better slowed by light, hydrogen-rich materials like water or polyethylene through elastic collisions",
+        "Effective shielding often needs layers targeting both, since neutron capture can itself produce gamma rays"
+      ],
+      "modelAnswer": "Gamma rays are electromagnetic radiation, so they're attenuated best by dense materials with lots of electrons to interact with, which is why lead works so well as a compact gamma shield. Neutrons are physical particles, so they don't interact the same way with dense heavy atoms, they're slowed down through the same kind of collisions I mentioned earlier for moderators, and that works best against light nuclei like hydrogen, so water or polyethylene are actually better neutron shields than lead. It gets more interesting because a neutron absorbed by a nucleus can itself trigger a gamma ray as the nucleus settles down, so a well-designed shield often layers hydrogen-rich material to slow and capture neutrons with a denser layer behind it to catch the resulting gammas. I think that layering is a nice example of how radiation shielding is really a materials engineering problem as much as a physics one."
+    },
+    "commonMistakes": [
+      "Assuming lead is a universally good shield for all radiation types",
+      "Not mentioning that neutron capture can produce secondary gamma radiation",
+      "Confusing shielding mechanism with moderation without connecting the two"
+    ],
+    "followUps": ["Why is concrete such a common shielding material in reactor buildings?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Whistleblowing on a safety shortcut",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety-culture", "situational"],
+    "question": "Imagine you're on a work placement at a plant and you notice a supervisor quietly overlooking a minor but real safety violation because reporting it would delay a shutdown. What would you do?",
+    "lookingFor": "Structured ethical reasoning that takes safety seriously without being naive about workplace dynamics or reporting channels.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension between hierarchy, career risk, and the seriousness of nuclear safety",
+        "Reason through steps: raise it directly first, then use formal reporting channels if unresolved",
+        "Land firmly on not staying silent, given how the nuclear industry's safety culture depends on exactly this kind of reporting"
+      ],
+      "modelAnswer": "As a placement student I'd feel real pressure to stay quiet, because I'd be the newest and least powerful person in the room, and I'd worry about seeming difficult. But nuclear safety culture exists precisely because small overlooked violations are how larger accidents start, so I don't think 'it's minor' is actually my call to make alone. I'd first try raising it directly and privately with the supervisor, in case there's context I'm missing, but if it wasn't addressed I think I'd be obligated to use the plant's formal reporting or safety hotline, because that's exactly the channel built for situations where the normal chain of command isn't working. I'd rather be the awkward placement student who asked a question than stay silent about something in a facility where the margin for error is genuinely small."
+    },
+    "commonMistakes": [
+      "Immediately going over the supervisor's head with no attempt at direct conversation",
+      "Deciding to stay silent because it's 'not my place' as a student",
+      "Giving no concrete next step, just abstract discomfort"
+    ],
+    "followUps": ["What if the supervisor told you afterward that you'd damaged your chances of a job offer?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use research and weapons work",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "dual-use", "weapons"],
+    "question": "Nuclear engineering sits right next to weapons technology. If you were offered a highly-paid research role that you knew fed into weapons design, how would you think it through?",
+    "lookingFor": "Genuine ethical reasoning about dual-use technology, showing the student has actually thought about the field's darker edge, not just a reflexive yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the dual-use nature of the field honestly rather than dismissing the question",
+        "Weigh personal values against factors like deterrence arguments, oversight, and what specifically the role involves",
+        "Reach a considered position, acknowledging it would depend on the specifics rather than a blanket answer"
+      ],
+      "modelAnswer": "I wouldn't pretend this is a simple question, because nuclear engineering has always sat right beside weapons work, that's part of the field's history and I don't think I can study it and act surprised the option exists. My honest answer is it would depend heavily on what the role actually involved, since there's a real difference between something like maintaining the safety and security of an existing deterrent stockpile under strict civilian oversight, and directly designing new weapons capability. I'd want to think hard about oversight, accountability, and whether I could live with the purpose of the work, not just the paycheck, and for me personally I think I'd lean toward staying on the civilian power and research side of the field. But I respect that reasonable people in this field land differently on that line, and I don't think it's a question you get to answer once and never revisit."
+    },
+    "commonMistakes": [
+      "Refusing to engage with the question by claiming it's irrelevant to them",
+      "Giving a glib 'I would never' with no actual reasoning",
+      "Treating weapons work as automatically fine because of pay or prestige"
+    ],
+    "followUps": ["Does the deterrence argument, that weapons work can prevent wider conflict, change your thinking at all?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Public risk perception gap",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["risk-perception", "public-communication", "critical-thinking"],
+    "question": "Statistically nuclear power has one of the lowest deaths-per-unit-of-energy of any source, yet public fear of it is much higher than of coal or gas. As a future engineer, how would you think about that gap?",
+    "lookingFor": "Ability to reason about risk perception with empathy rather than simply dismissing public concern as irrational.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the statistic while taking the fear seriously rather than mocking it as ignorance",
+        "Explain the psychology: dread of rare, catastrophic, invisible harm outweighs familiar, chronic risk in how people perceive danger",
+        "Connect it to engineers' responsibility to communicate honestly and design for public trust, not just statistical safety"
+      ],
+      "modelAnswer": "The statistic is real and I think it's important, but I don't think the right response is to tell people their fear is irrational and move on, because psychologically humans tend to fear rare, catastrophic, involuntary risks like a reactor accident far more than familiar, spread-out risks like coal pollution, even when the second one quietly kills more people every year. Radiation is also invisible and hard to intuit, which makes it feel especially uncontrollable compared to something like a car crash. As a future engineer I think that means part of my job isn't just making the numbers safe, it's communicating honestly and being transparent when something does go wrong, because trust, once broken like it was after Chernobyl and Fukushima, is what actually drives public opposition, more than the underlying statistics do."
+    },
+    "commonMistakes": [
+      "Dismissing public fear as simple ignorance",
+      "Citing the statistic without engaging with why the perception gap exists",
+      "No mention of the engineer's own responsibility in communication or trust"
+    ],
+    "followUps": ["What's one thing the industry could do differently to close that trust gap?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Siting a country's first plant",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "siting", "risk-assessment"],
+    "question": "Suppose you're advising a country building its first nuclear power plant. What factors would you weigh in choosing where to site it?",
+    "lookingFor": "Structured, multi-factor reasoning that balances technical, environmental, and social considerations like a real siting study would.",
+    "idealAnswer": {
+      "bullets": [
+        "Technical factors: seismic stability, access to cooling water, grid connection, flood and tsunami risk",
+        "Social factors: population density nearby, evacuation feasibility, community consent",
+        "Long-term factors: political and regulatory stability, waste storage plans, workforce and supply chain access"
+      ],
+      "modelAnswer": "I'd start with the hard technical constraints, so I'd want a geologically stable site with a reliable source of cooling water, whether that's coastal or a large river, but also well above any realistic flood or tsunami risk given what happened at Fukushima. Then I'd weigh population factors, ideally somewhere with lower nearby population density so an evacuation plan is actually workable if it were ever needed, but still close enough to transmission infrastructure that connecting to the grid isn't its own enormous project. I'd also take community consent seriously rather than just picking a technically ideal spot and imposing it, because sites chosen without buy-in tend to face years of opposition and legal battles. Finally I'd think long-term, about whether the country has or can build the regulatory capacity and workforce to run the plant safely for sixty years and eventually deal with its waste, because a good site choice can't fix weak institutions around it."
+    },
+    "commonMistakes": [
+      "Only mentioning technical factors like seismic risk with no social dimension",
+      "Ignoring evacuation feasibility and population density entirely",
+      "Treating siting as a purely engineering decision with no institutional or political dimension"
+    ],
+    "followUps": ["How would your answer change for a country with a small, weak electrical grid?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Loss-of-coolant accident",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["reactor-safety", "defense-in-depth", "hypothetical"],
+    "question": "Talk me through, in broad terms, what a loss-of-coolant accident is and why reactor designs build in so many layers of defense against it.",
+    "lookingFor": "Understanding of decay heat and the defense-in-depth philosophy, showing the student sees safety as layered rather than single-point.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that even after shutdown, fuel keeps producing decay heat that must be actively removed",
+        "A loss-of-coolant accident is when that cooling path is interrupted, risking fuel overheating and damage",
+        "Defense-in-depth means multiple independent, redundant systems, so no single failure alone causes core damage"
+      ],
+      "modelAnswer": "Even once you shut a reactor down and stop the chain reaction, the fuel keeps generating decay heat from the radioactive fission products already inside it, and that heat has to be actively carried away for days or it will damage the fuel. A loss-of-coolant accident is when that cooling path gets interrupted, whether from a pipe break or, like at Fukushima, a loss of power to the pumps, and if nothing intervenes the fuel can overheat and eventually melt. That's exactly why designs build in defense-in-depth, meaning multiple independent and redundant cooling and power systems, so that no single failure, like one pump or one power line going down, is enough on its own to cause core damage. I think that layered philosophy, assuming any one system will eventually fail and designing so that failure alone still isn't catastrophic, is probably the single idea I find most important in the whole field."
+    },
+    "commonMistakes": [
+      "Forgetting that decay heat continues even after shutdown",
+      "Describing only one safety system rather than the layered, redundant philosophy",
+      "Confusing loss-of-coolant with loss-of-power without connecting the two"
+    ],
+    "followUps": ["What's one specific backup system, like an emergency core cooling system, that you'd expect to see in a modern design?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Reprocessing versus direct disposal",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["fuel-cycle", "reprocessing", "waste-policy"],
+    "question": "France reprocesses spent fuel, the US largely doesn't. What's the trade-off between reprocessing fuel and just storing it as waste?",
+    "lookingFor": "Understanding of the technical, economic, and proliferation trade-offs behind a real policy divergence.",
+    "idealAnswer": {
+      "bullets": [
+        "Reprocessing recovers usable uranium and plutonium, reducing waste volume and extending fuel resources",
+        "Downside: separated plutonium is a proliferation concern, which is a major reason the US moved away from it in the 1970s",
+        "Cost is also a factor, reprocessing plants are expensive, and with uranium currently cheap the economic case is weaker without policy support"
+      ],
+      "modelAnswer": "Reprocessing chemically separates spent fuel back into reusable uranium and plutonium plus a smaller volume of genuinely high-level waste, so in principle it stretches fuel resources further and shrinks the disposal problem. The catch is that it produces separated plutonium, which is directly weapons-usable material, and that proliferation concern is a big part of why the US stepped back from civilian reprocessing in the 1970s, choosing instead to treat spent fuel as waste to be stored rather than a resource to be recovered. There's also a straightforward economics angle, reprocessing plants are hugely expensive to build and run, and with natural uranium still relatively cheap to mine, the cost savings from recovered fuel don't always justify that investment without a government backing the policy for other reasons, like France's push for energy independence. So it's really a three-way trade-off between resource efficiency, proliferation risk, and cost, and different countries have reasonably weighted those differently."
+    },
+    "commonMistakes": [
+      "Treating reprocessing as an unambiguously better choice with no downside",
+      "Not mentioning the proliferation risk of separated plutonium",
+      "Ignoring the economic dimension entirely"
+    ],
+    "followUps": ["Do you think the proliferation risk of reprocessing outweighs its resource benefits?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Safety culture beyond systems",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["safety-culture", "organizational", "reflection"],
+    "question": "Why do you think 'safety culture', not just safety systems, gets so much attention in nuclear engineering?",
+    "lookingFor": "Recognition that engineered safety systems can be undermined by organizational or human factors, showing maturity beyond pure technical thinking.",
+    "idealAnswer": {
+      "bullets": [
+        "Even well-engineered systems can be defeated by complacency, normalization of deviance, or pressure to cut corners",
+        "Reference how major accidents often trace back to organizational decisions, not just component failures",
+        "Safety culture means everyone, regardless of rank, feels able and obligated to raise concerns"
+      ],
+      "modelAnswer": "I think it's because the history of the field shows that even very well engineered safety systems can be undermined by the people and organization around them, not by the hardware failing on its own. A lot of major accidents trace back to organizational pressure, like Chernobyl's operators being pushed to complete a test on schedule, or a culture where raising a concern feels risky to your career. So safety culture is really about making sure the human and organizational layer doesn't quietly erode the protection the engineering provides, by making it normal and expected for anyone, no matter how junior, to flag something that looks wrong. I find that idea genuinely humbling, that a reactor is only as safe as the willingness of the people running it to speak up."
+    },
+    "commonMistakes": [
+      "Treating safety culture as a soft, secondary concern compared to hardware",
+      "No reference to how organizational pressure has contributed to real accidents",
+      "Vague platitudes with no concrete mechanism explained"
+    ],
+    "followUps": ["How would you personally build good safety habits early in your training?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear applications beyond power",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["applications", "medicine", "curiosity"],
+    "question": "Nuclear engineering isn't only about power plants. Can you tell me about another application of nuclear technology that interests you?",
+    "lookingFor": "Genuine curiosity beyond the obvious reactor focus, showing breadth of interest in the field.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific non-power application, like medical isotopes, food irradiation, or space propulsion",
+        "Explain the underlying nuclear principle involved, not just the use case",
+        "Show authentic enthusiasm rather than a rehearsed line"
+      ],
+      "modelAnswer": "The application that genuinely fascinates me is nuclear medicine, specifically how isotopes like technetium-99m are used in diagnostic imaging. The idea that you can inject a tiny, carefully chosen amount of a radioactive tracer, let it concentrate in a specific organ or tumor, and then detect the gamma rays it emits to build a picture of what's happening inside the body without surgery still feels almost magical to me even once I understood the physics. What pulled me in further is learning that the isotope's half-life has to be tuned precisely, long enough to get the imaging done but short enough that the patient isn't carrying radioactive material around for days, which is exactly the kind of engineering trade-off I find myself drawn to.  It's a good reminder that this field touches medicine and industry just as much as it touches power generation."
+    },
+    "commonMistakes": [
+      "Naming an application with no explanation of how it actually works",
+      "Sticking only to power generation despite the question asking for something else",
+      "Sounding rehearsed with no genuine personal interest shown"
+    ],
+    "followUps": ["Why does the half-life of the isotope matter so much for that application specifically?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Safety upgrade versus capacity expansion budget dilemma",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "hypothetical", "resource-allocation"],
+    "question": "Imagine you're a junior engineer and your plant's budget only allows for one of two projects this year: a safety system upgrade that's precautionary but not urgent, or a capacity upgrade that would generate more revenue. How would you approach making that case?",
+    "lookingFor": "Structured reasoning that treats safety as non-negotiable in principle while still engaging honestly with the organizational reality of budget trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the temptation and business pressure toward the revenue-generating option without pretending it doesn't exist",
+        "Reason that precautionary safety work should be argued for on its own merits, using risk data rather than fear alone",
+        "Land on prioritizing safety, but describe building an actual case, not just asserting authority as a junior engineer"
+      ],
+      "modelAnswer": "As a junior engineer I know I wouldn't have the final call, and I'd want to be honest that the revenue argument would be genuinely tempting to management, so I couldn't just say 'safety always wins' and expect that to persuade anyone on its own. I'd want to build a real case, quantifying what the precautionary upgrade is actually protecting against, even if the failure it prevents is low-probability, because low-probability nuclear failures still tend to be high-consequence, and that's a different kind of risk than a normal business trade-off. I'd present that analysis clearly to whoever owns the budget decision rather than trying to force it through myself, but I would also be honest that if I felt the safety case was being dismissed for purely financial reasons, that's exactly the kind of concern I'd feel obligated to escalate rather than let quietly slide. I think the actual skill here isn't just believing safety matters, it's being able to make that case persuasively with evidence."
+    },
+    "commonMistakes": [
+      "Giving a simplistic 'safety always wins, full stop' with no reasoning about how that gets decided",
+      "Ignoring the real organizational and financial pressures entirely",
+      "Assuming as a junior engineer they would personally make the final call"
+    ],
+    "followUps": ["What would you do if you made that case and management still chose the capacity upgrade?"]
+  }
+]

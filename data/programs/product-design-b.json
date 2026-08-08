@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-product-design-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Dieter Rams' good design",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["design-principles", "minimalism", "critique"],
+    "question": "Dieter Rams argued good design is as little design as possible. Do you agree, or is that principle outdated for how we design today?",
+    "lookingFor": "Critical engagement with a canonical design philosophy, weighed against contemporary product complexity, rather than recitation.",
+    "idealAnswer": {
+      "bullets": [
+        "State what Rams' principle actually means, removing anything that doesn't serve the user",
+        "Weigh it against counterexamples where added complexity serves users, like customization or accessibility",
+        "Land on a considered position, not a flat yes or no"
+      ],
+      "modelAnswer": "I think Rams' idea holds up more than people give it credit for, but I don't take it as an absolute rule. Stripping away decoration that doesn't help the user is still the right instinct, and most bloated apps prove his point. But I'd push back a little, some added complexity, like customizable accessibility settings, actually serves the user even though it adds surface area. So I read 'as little design as possible' as being about intentionality, not literal minimalism."
+    },
+    "commonMistakes": [
+      "Reciting the quote without engaging with it",
+      "Treating minimalism as always correct with no nuance",
+      "Not being able to name what the principle actually means"
+    ],
+    "followUps": ["Can you give an example of a product that violates this principle and gets away with it?"]
+  },
+  {
+    "id": "prog-product-design-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Affordances and signifiers",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "norman", "usability"],
+    "question": "What's the difference between an affordance and a signifier in design, and why does the distinction matter?",
+    "lookingFor": "Clear grasp of Don Norman's terminology and why the distinction is practically useful, not just definitional recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Define affordance, what an object actually allows you to do, versus signifier, the cue that communicates that possibility",
+        "Give a concrete example, ideally one where they're mismatched, like a push door with a pull handle",
+        "Explain why confusing the two leads to bad design"
+      ],
+      "modelAnswer": "An affordance is what an object actually lets you do, like a flat plate affording pushing, while a signifier is the cue that tells you that's what to do, like a printed word 'push'. The classic bad example is a door with a handle you have to pull that's actually meant to be pushed, the handle signifies the wrong action. I think the distinction matters because a lot of design failures aren't about the object being incapable, they're about it lying to the user through the wrong signifiers."
+    },
+    "commonMistakes": [
+      "Using the two terms interchangeably",
+      "Giving a definition with no real example",
+      "Missing that the problem is usually a mismatch, not an absence"
+    ],
+    "followUps": ["Can you think of a digital interface example of this mismatch?"]
+  },
+  {
+    "id": "prog-product-design-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Form follows function",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["design-history", "theory", "critique"],
+    "question": "'Form follows function' is one of the oldest slogans in design. Where do you think it breaks down?",
+    "lookingFor": "Awareness that the maxim is contested, plus a specific argument for where it fails.",
+    "idealAnswer": {
+      "bullets": [
+        "Show they know the origin and meaning of the phrase",
+        "Identify a case where form does something function can't explain, like emotional resonance or status",
+        "Avoid dismissing the principle entirely"
+      ],
+      "modelAnswer": "It breaks down whenever a product's job includes making someone feel something, not just do something. A lot of furniture design succeeds because of how it looks in a room, which has very little to do with its functional performance. I don't think that makes the slogan wrong, just incomplete, function should probably include emotional and cultural function, not only mechanical function."
+    },
+    "commonMistakes": [
+      "Only defining the phrase without critiquing it",
+      "Dismissing function entirely as unimportant",
+      "Confusing form-follows-function with minimalism"
+    ],
+    "followUps": ["Can you name a product where form actively works against function?"]
+  },
+  {
+    "id": "prog-product-design-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Design thinking process critique",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["process", "design-thinking", "critical-thinking"],
+    "question": "The design thinking process is usually taught as empathize, define, ideate, prototype, test. What's wrong with treating it as a strict sequence?",
+    "lookingFor": "Understanding that design thinking is iterative in practice, and the ability to critique a taught framework rather than just recite it.",
+    "idealAnswer": {
+      "bullets": [
+        "Show fluency with the five stages",
+        "Explain why real projects loop back, for instance testing reveals the problem was misdefined",
+        "Note the risk of using it as a checkbox exercise rather than a mindset"
+      ],
+      "modelAnswer": "Treating it as a straight line makes it sound like you only empathize once and move on, but in practice testing usually sends you straight back to redefining the problem. On a project I did designing a bag for cyclists, our first prototype test revealed our whole problem definition was wrong, people didn't want more storage, they wanted faster access. I think the five words are useful as a vocabulary, but if you follow them like a recipe you end up polishing the wrong problem."
+    },
+    "commonMistakes": [
+      "Reciting the five stages with no critique",
+      "Claiming the process is useless rather than nonlinear",
+      "No personal example of iteration"
+    ],
+    "followUps": ["Tell me about a time your own process didn't go in that order."]
+  },
+  {
+    "id": "prog-product-design-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Qualitative vs quantitative research",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["research-methods", "ux-research"],
+    "question": "When would you trust a focus group over usage data, and when would you trust the opposite?",
+    "lookingFor": "Understanding of what each method is good and bad at, not a blanket preference for one.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what qualitative methods reveal that data can't, the why behind behavior",
+        "Explain what quantitative data reveals that a small group can't, scale and blind spots in self-report",
+        "Give a scenario suited to each"
+      ],
+      "modelAnswer": "I'd trust a focus group when I need to understand why people are behaving a certain way, like why they abandon a product mid-use, because people can tell you their reasoning even if it's messy. I'd trust usage data more when I need to know how common a behavior actually is, because people are unreliable narrators of their own habits, someone might tell you they never skip instructions and the data says otherwise. Ideally I'd use the group to generate hypotheses and the data to test how widely they hold."
+    },
+    "commonMistakes": [
+      "Picking one method as universally superior",
+      "No concrete scenario for either",
+      "Confusing sample size with reliability"
+    ],
+    "followUps": ["What would you do if the two sources contradicted each other?"]
+  },
+  {
+    "id": "prog-product-design-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Critiquing an everyday object",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["critique", "observation", "fundamentals"],
+    "question": "Name a product you think is badly designed, and tell us specifically what's wrong with it.",
+    "lookingFor": "Sharp, specific critique grounded in design reasoning, not just personal annoyance.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick something concrete and describe the actual failure, not a vague complaint",
+        "Explain the design decision that likely caused it, like cost-cutting or an untested assumption",
+        "Suggest, briefly, what a better approach would look like"
+      ],
+      "modelAnswer": "The universal charging cable that came with my old laptop is a good example, the plug end and the cable end look almost identical in the dark, so I'd regularly plug it in backwards. I think it happened because the designers optimized for a clean symmetrical look rather than testing it in low light or by feel. A small ridge or texture on one side would have fixed it without touching the aesthetic at all, that's the kind of oversight that only shows up when you actually watch someone use the thing."
+    },
+    "commonMistakes": [
+      "Vague complaints like 'it's just annoying' with no mechanism",
+      "Picking something they clearly haven't examined closely",
+      "No suggested fix or improvement"
+    ],
+    "followUps": ["How would you test whether your proposed fix actually works?"]
+  },
+  {
+    "id": "prog-product-design-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Low-fidelity vs high-fidelity prototyping",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["prototyping", "iteration", "methods"],
+    "question": "When would a cardboard mockup tell you more than a polished digital prototype?",
+    "lookingFor": "Understanding that fidelity should match the question being asked, not just the project stage.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what low fidelity is good at, fast iteration, testing scale and ergonomics, cheap failure",
+        "Explain what high fidelity is good at, testing detail and near-final usability",
+        "Show awareness that polish can bias feedback toward surface issues"
+      ],
+      "modelAnswer": "A cardboard mockup tells you more when the question is about scale, ergonomics, or basic layout, because people react to the size and shape of a thing before they ever notice the finish. I built a rough foam model of a kitchen tool once and immediately saw the grip was wrong, something a rendering would never have shown me. High fidelity is better once you're past those structural questions and want to know if people trust the material or find the color right, because at that point the finish is the actual variable you're testing."
+    },
+    "commonMistakes": [
+      "Assuming higher fidelity is always more informative",
+      "No example of what low fidelity specifically revealed",
+      "Confusing fidelity with project timeline stage only"
+    ],
+    "followUps": ["What's the risk of showing a stakeholder a high-fidelity prototype too early?"]
+  },
+  {
+    "id": "prog-product-design-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Design for manufacture constraints",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["materials", "manufacturing", "constraints"],
+    "question": "How does manufacturing process change the way you'd design the same object, say a plastic injection-molded part versus a 3D-printed one?",
+    "lookingFor": "Real understanding that manufacturing method imposes design constraints, not just a material or aesthetic preference.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of a real constraint each method imposes, like draft angles for molding or supports for printing",
+        "Explain how that constraint changes actual design decisions, not just material choice",
+        "Avoid treating manufacturing as an afterthought to form"
+      ],
+      "modelAnswer": "Injection molding forces you to think about draft angles and consistent wall thickness up front, because a part that can't release from the mold or that warps from uneven cooling is a very expensive mistake to discover late. 3D printing is much more forgiving on shape complexity, but you have to design around support structures and layer strength, which is why printed parts often need reinforced ribs where a molded part wouldn't. I try to pick the process early precisely because it changes the geometry I'm allowed to draw, not just how I make it."
+    },
+    "commonMistakes": [
+      "Treating manufacturing as a downstream detail unrelated to design",
+      "Naming a constraint without explaining its design consequence",
+      "Confusing the two processes' actual limitations"
+    ],
+    "followUps": ["What would you change about a design meant for mass production if it were a one-off prototype instead?"]
+  },
+  {
+    "id": "prog-product-design-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Universal and inclusive design",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["accessibility", "inclusive-design", "fundamentals"],
+    "question": "What's the difference between designing for accessibility and designing for universal use, and why might the distinction matter to you as a designer?",
+    "lookingFor": "Nuanced understanding that accessibility and universal design are different strategies with different outcomes.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish accessibility as often an added accommodation from universal design as a default that serves everyone",
+        "Give an example where universal design benefited a wider group than intended, like curb cuts",
+        "Show they see this as central to good design, not an optional add-on"
+      ],
+      "modelAnswer": "Accessibility is usually about adding a feature or workaround for people the main design didn't account for, like an accessible entrance built around the back. Universal design tries to build the solution so it works for the widest range of people from the start, the way curb cuts were made for wheelchairs but end up used by parents with strollers and delivery workers with carts. I want to design that way by default because I think retrofitting exclusion is both less elegant and less ethical than not excluding people in the first place."
+    },
+    "commonMistakes": [
+      "Treating the two terms as synonyms",
+      "No concrete example of universal design benefiting beyond its original target",
+      "Framing accessibility as a compliance checkbox rather than a design value"
+    ],
+    "followUps": ["Can you think of a product you use that fails at this?"]
+  },
+  {
+    "id": "prog-product-design-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Norman's emotional design levels",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["emotional-design", "norman", "theory"],
+    "question": "Don Norman describes three levels of emotional design, visceral, behavioral, and reflective. Can you explain them and give an example of a product that gets one right but another wrong?",
+    "lookingFor": "Solid grasp of the framework applied to a real, specific product rather than abstract restatement.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the three levels accurately, immediate feel, ease and pleasure of use, and the story after use",
+        "Apply them to a specific product, not a generic industry",
+        "Identify a genuine mismatch between levels in that product"
+      ],
+      "modelAnswer": "Visceral is the gut reaction to how something looks or feels before you've used it, behavioral is whether it's actually satisfying to use, and reflective is the story it lets you tell about yourself afterward. A lot of minimalist smart home devices nail the visceral level, they look beautiful on a shelf, but fail behaviorally because the controls are hidden behind gestures nobody remembers. I think that gap is why some gorgeous products get returned, the first impression sells them and the daily use loses them."
+    },
+    "commonMistakes": [
+      "Mixing up which level is which",
+      "Giving only a generic industry example instead of a specific product",
+      "Only describing the framework without applying it to a mismatch"
+    ],
+    "followUps": ["Which of the three levels do you personally find hardest to design for?"]
+  },
+  {
+    "id": "prog-product-design-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Dark patterns dilemma",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["ethics", "dark-patterns", "dilemma"],
+    "question": "Your manager at a design internship asks you to make the 'cancel subscription' button intentionally hard to find, because it improves retention numbers. What do you do?",
+    "lookingFor": "Structured ethical reasoning that weighs professional pressure against user harm, landing on a defensible position rather than a snap answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the practice for what it is, a dark pattern, and articulate the harm to the user",
+        "Consider the real pressure of being junior or an intern before dismissing it",
+        "Propose a concrete response, like raising the concern, rather than just refusal or silent compliance"
+      ],
+      "modelAnswer": "I'd recognize that as a dark pattern, it might improve short-term retention numbers but it does that by trapping people rather than earning their loyalty, and I don't think I could build that in good conscience. As an intern I know I don't have much power to just refuse, so I'd try to raise it directly, maybe by asking whether we could look at why people are cancelling in the first place, since that's a healthier lever for the same goal. If I was pushed to build it anyway, I'd want to voice my discomfort clearly rather than pretend I agreed, even if I couldn't stop it."
+    },
+    "commonMistakes": [
+      "A flat 'I'd refuse and walk out' with no acknowledgment of real power dynamics",
+      "Silent compliance with no ethical reasoning shown",
+      "Not naming the practice or its actual harm"
+    ],
+    "followUps": ["What would you do if raising the concern got you nowhere?"]
+  },
+  {
+    "id": "prog-product-design-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Planned obsolescence dilemma",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["ethics", "sustainability", "dilemma"],
+    "question": "Is there ever a legitimate design reason to make a product harder to repair, or is that always just planned obsolescence dressed up?",
+    "lookingFor": "Ability to hold a genuinely contested question with nuance rather than moralizing in one direction.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge legitimate cases, like waterproofing or miniaturization, that genuinely trade off against repairability",
+        "Distinguish those from cases that are simply revenue-motivated",
+        "Land on a position, ideally favoring repairability as the default"
+      ],
+      "modelAnswer": "I don't think it's always cynical, sealing a device to make it waterproof is a real trade-off, not a trick, and I'd rather have a phone that survives rain than one that's easy to open but breaks in the first storm. But I think that's genuinely rare compared to how often it's used as cover, gluing a battery in mostly just guarantees a replacement sale. My rule of thumb would be that repairability should be the default, and a design should have to earn the exception with a real functional reason, not just a business one."
+    },
+    "commonMistakes": [
+      "Treating all reduced repairability as equally cynical or equally justified",
+      "No real distinction between legitimate trade-offs and revenue motives",
+      "Refusing to take any position"
+    ],
+    "followUps": ["How would you convince a client to prioritize repairability if it added cost?"]
+  },
+  {
+    "id": "prog-product-design-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Client versus user conflict",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["ethics", "stakeholders", "dilemma"],
+    "question": "What do you do when what your client wants and what your user research tells you the user needs are in direct conflict?",
+    "lookingFor": "Recognition of the real tension between commercial pressure and user advocacy, with a workable process rather than idealism alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the client pays and has legitimate business goals that can't just be ignored",
+        "Show a process for making the case with evidence rather than opinion",
+        "Recognize that sometimes the designer has to accept the client's call and say so honestly"
+      ],
+      "modelAnswer": "I'd try not to frame it as a fight I have to win, because the client's business goals are real constraints, not just obstacles. What I'd do is bring the research itself into the room, show them what users actually said or did, and try to reframe the disagreement around a shared goal like retention rather than my opinion versus theirs. If they still choose to go against the research after seeing it clearly, I think that's their call to make as the client, but I'd want it on record that I flagged the risk rather than just going along quietly."
+    },
+    "commonMistakes": [
+      "Framing it as user advocacy always winning no matter what",
+      "No concrete method for making the case, just stating an opinion is right",
+      "Caving immediately with no attempt to advocate for the user"
+    ],
+    "followUps": ["Have you ever actually experienced a version of this tension, even in a school project?"]
+  },
+  {
+    "id": "prog-product-design-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Cultural sensitivity in design",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["ethics", "culture", "global-design"],
+    "question": "A color or symbol that reads as positive in one culture can read as offensive or unlucky in another. How would you design a product meant to launch in multiple countries at once?",
+    "lookingFor": "Awareness that visual language is not universal, plus a practical process for handling it.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a concrete example of a symbol or color meaning differently across cultures",
+        "Describe a process, like local user testing, rather than assuming their own intuition generalizes",
+        "Recognize the limits of one universal design versus adapting per market"
+      ],
+      "modelAnswer": "White is associated with purity in a lot of Western contexts but with mourning in parts of East Asia, so a 'clean, simple' white packaging choice can land very differently depending on where it ships. I wouldn't trust my own instincts on this at all, I'd want to test the design with actual users or local design partners in each target market before locking anything in. Sometimes that means the honest answer is that one universal design isn't right, and the product needs a few deliberately localized variants rather than a single global compromise."
+    },
+    "commonMistakes": [
+      "Giving a vague 'be culturally sensitive' answer with no concrete example",
+      "Assuming their own cultural intuition generalizes to other markets",
+      "Not proposing any actual process for catching this"
+    ],
+    "followUps": ["How would you balance the cost of localizing a design against a tight budget?"]
+  },
+  {
+    "id": "prog-product-design-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI in the design process",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["ai", "current-debate", "process"],
+    "question": "Tools like generative AI can now produce dozens of design concepts in seconds. What do you think that changes about what a product designer actually does?",
+    "lookingFor": "Informed, non-alarmist engagement with a live debate in the field, showing genuine thought rather than a headline-borrowed opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what generative tools are actually good at, rapid variation, and bad at, judgment and taste",
+        "Articulate what they think remains distinctly human in the process",
+        "Avoid both blind enthusiasm and blanket dismissal"
+      ],
+      "modelAnswer": "I think it changes the bottleneck from generating options to judging them, a tool can give me fifty chair silhouettes in a minute, but it can't tell me which one actually fits how someone gets up from a low seat with bad knees, that still needs a human who's watched people struggle with a chair. I'm not scared of it, I actually use it to get past blank-page paralysis faster. But I think the designers who'll matter most are the ones who get sharper at framing the right problem and judging output, because the tool has made generation cheap and judgment more valuable, not less."
+    },
+    "commonMistakes": [
+      "Either dismissing AI tools entirely or treating them as replacing designers wholesale",
+      "No specific claim about what remains human in the process",
+      "Sounding like they haven't actually used or thought about these tools"
+    ],
+    "followUps": ["Have you used any of these tools yourself? What did you learn from that?"]
+  },
+  {
+    "id": "prog-product-design-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Right to repair movement",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["current-debate", "sustainability", "policy"],
+    "question": "There's a growing right-to-repair movement pushing companies to make products easier to fix. What's your view on how far that should go?",
+    "lookingFor": "Awareness of a live regulatory and design debate, with reasoning about its trade-offs rather than a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what the movement actually pushes for, like spare parts and repair manuals",
+        "Weigh a real trade-off, such as safety or security, rather than treating it as costless",
+        "Land on a position with reasoning"
+      ],
+      "modelAnswer": "I broadly support it, I think a phone or an appliance shouldn't become landfill because one part failed and the company made it deliberately hard to open. Where I'd push back a little is that unrestricted repair access can create real safety and security issues, batteries especially, so I don't think 'design for repair' means zero barriers, it means the barriers should be about safety rather than profit. I'd rather see mandated standards like accessible fasteners and published repair manuals than a rule that removes every protective seal."
+    },
+    "commonMistakes": [
+      "Treating the movement as an unqualified good with no trade-offs",
+      "Not knowing what the movement actually asks for concretely",
+      "Dismissing it as anti-business with no engagement on user harm"
+    ],
+    "followUps": ["How would this affect the way you'd design a product's casing?"]
+  },
+  {
+    "id": "prog-product-design-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and the future of design careers",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["ai", "current-debate", "career-honesty"],
+    "question": "Some people say AI tools will make entry-level design jobs disappear. Does that worry you about pursuing this course?",
+    "lookingFor": "Honest, thought-through engagement with a real anxiety in the field rather than a rehearsed reassurance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the concern is real rather than dismissing it",
+        "Show specific reasoning for why they're pursuing it anyway",
+        "Avoid sounding naive or falsely certain about the future"
+      ],
+      "modelAnswer": "Honestly, it does cross my mind, and I'd rather be honest about that than pretend I have it all figured out. What keeps me committed is that the parts of design I care most about, understanding a real user's frustration and making judgment calls under constraints, seem like the hardest things to automate well. I think the entry-level jobs that disappear will mostly be the ones that were pure execution anyway, and that pushes me to make sure I'm building judgment and research skills early, not just software fluency."
+    },
+    "commonMistakes": [
+      "Pretending to have no worry at all, which reads as unconsidered",
+      "Sounding fatalistic about the whole field",
+      "No specific reasoning, just optimism with nothing behind it"
+    ],
+    "followUps": ["What skill do you think will matter most for you to build because of this?"]
+  },
+  {
+    "id": "prog-product-design-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing for an underserved user",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "accessibility", "problem-solving"],
+    "question": "Design, in broad strokes, a kitchen tool for someone with arthritis who has lost a lot of grip strength. Walk us through your thinking.",
+    "lookingFor": "Structured design reasoning under a real constraint, moving from user understanding to concrete feature decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Start from the actual physical constraint rather than jumping to a solution",
+        "Propose specific, plausible features tied to that constraint, like a wider handle or a lever mechanism",
+        "Show awareness of a trade-off, like cost or size, rather than treating the design as free"
+      ],
+      "modelAnswer": "I'd start by actually understanding what grip strength loss changes day to day, it's not just weakness, it's often pain with sustained pressure or twisting motion, so a tool that needs a tight pinch grip is the real enemy, not just a heavy one. I'd design toward a wider, textured handle that spreads force across the palm instead of the fingers, and I'd try to replace any twisting action with a rocking or lever motion, the way some jar openers use a lever instead of a twist. The trade-off is that a bigger handle costs more material and takes more counter space, so I'd want to test whether users actually prioritize the grip improvement enough to accept that."
+    },
+    "commonMistakes": [
+      "Jumping straight to a solution without describing the actual constraint",
+      "Vague answers like 'make it ergonomic' with no specific mechanism",
+      "Ignoring any trade-off, as if the redesign has no cost"
+    ],
+    "followUps": ["How would you test whether your design actually works for this user?"]
+  },
+  {
+    "id": "prog-product-design-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing under a hard cost constraint",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "constraints", "materials"],
+    "question": "You're asked to design a durable school desk for a rural classroom, but the material budget is a third of what you'd normally use. What do you do?",
+    "lookingFor": "Creative problem-solving that treats the constraint as a design driver, not just an obstacle to complain about.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify what to prioritize, like durability and safety, versus what to cut, like finish",
+        "Propose a concrete way to work within budget, like local materials or simplified joinery",
+        "Show awareness that constraint often produces better, more honest design"
+      ],
+      "modelAnswer": "I'd first decide what absolutely can't be compromised, which for a school desk is structural durability and safety, kids will lean, climb, and drop things on it. To hit the budget I'd look at using a locally available material even if it's less refined, and simplify the joinery so it needs fewer separate parts and less skilled labor to assemble, which usually saves more than cutting material thickness does. I actually think a tight budget forces good discipline, it stops you from over-designing with features nobody in that classroom actually needed."
+    },
+    "commonMistakes": [
+      "Treating the constraint as purely negative with no creative response",
+      "No concrete strategy, just 'I'd make it simpler' with no specifics",
+      "Sacrificing safety or durability to hit the number"
+    ],
+    "followUps": ["What's the first thing you'd cut, and why that over something else?"]
+  },
+  {
+    "id": "prog-product-design-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Recovering from a failed launch",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "failure", "process"],
+    "question": "Imagine a product you designed launches and users are abandoning it within the first week because onboarding is confusing. What's your process for figuring out what went wrong?",
+    "lookingFor": "A methodical diagnostic process rather than jumping straight to a redesign guess.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with data before assumptions, finding exactly where in onboarding people drop off",
+        "Combine quantitative drop-off data with qualitative follow-up, the why not just the where",
+        "Propose a specific, testable fix rather than a full redesign from scratch"
+      ],
+      "modelAnswer": "Before I changed anything, I'd want to know exactly where in onboarding people are dropping, not just that they are, because 'confusing' could mean five completely different problems. I'd pull the funnel data to find the specific step with the steepest drop-off, then talk to a handful of users who abandoned there to understand what they were thinking at that moment. Only after that would I propose a fix, and I'd want it to be something small and testable first, like rewording one screen, rather than assuming the whole flow needs to be rebuilt."
+    },
+    "commonMistakes": [
+      "Jumping straight to redesigning without diagnosing the specific failure point",
+      "Relying only on data or only on opinion, not both",
+      "Proposing a total overhaul before testing a minimal fix"
+    ],
+    "followUps": ["What would you do if the data and the user interviews pointed to different problems?"]
+  },
+  {
+    "id": "prog-product-design-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Conflicting stakeholder requirements",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "stakeholders", "problem-solving"],
+    "question": "Engineering tells you a feature you designed is technically impossible within the timeline. Marketing has already promised it to customers. What do you do in that meeting?",
+    "lookingFor": "Calm, structured mediation that treats this as a design problem to solve rather than a fight to referee.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid taking a side immediately, first understand the actual technical constraint",
+        "Look for a scoped-down version of the feature that preserves the core user value",
+        "Show willingness to be the one who communicates the trade-off honestly to both sides"
+      ],
+      "modelAnswer": "My first move would be to actually understand what part of the feature is technically impossible, because often it's one specific piece and not the whole idea. I'd try to find a smaller version that still delivers the core benefit the marketing promise was really about, so customers get something true rather than a broken promise or a delayed date. And I think part of my job in that room is to be the one willing to say plainly what's actually achievable, rather than let engineering and marketing just talk past each other."
+    },
+    "commonMistakes": [
+      "Picking a side reflexively instead of investigating the actual constraint",
+      "No attempt to find a scoped compromise",
+      "Avoiding the hard conversation instead of facilitating it"
+    ],
+    "followUps": ["What would you do if no scoped-down version was possible at all?"]
+  },
+  {
+    "id": "prog-product-design-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Design movement influence",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["design-history", "theory", "influence"],
+    "question": "What's a design movement or era, like Bauhaus or Memphis, that you think still shapes products today, and how?",
+    "lookingFor": "Genuine subject knowledge connected to a live, specific example, not a memorized textbook fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate basic knowledge of the movement's actual principles",
+        "Draw a specific, credible line from that movement to a product or trend today",
+        "Avoid a purely academic answer with no connection to the present"
+      ],
+      "modelAnswer": "Bauhaus is the one I keep coming back to, because its idea that form should serve function and that good design should be reproducible for everyone, not just the wealthy, is basically the philosophy behind a huge amount of flat, minimal tech product design today. You can see it directly in how a lot of interface design strips away ornament and standardizes components so the same design language can scale across a whole product line. I think what's interesting is that the movement's original argument was partly political, about democratizing design, and that thread is easy to lose when people just copy the aesthetic."
+    },
+    "commonMistakes": [
+      "Reciting facts about the movement with no connection to today's products",
+      "Getting basic facts about the movement wrong",
+      "Naming a movement they clearly can't say much about beyond the name"
+    ],
+    "followUps": ["Is there anything about that movement's ideas you'd push back on?"]
+  },
+  {
+    "id": "prog-product-design-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Icons and visual language",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["semiotics", "interface-design", "fundamentals"],
+    "question": "How do you decide whether to use an icon, a word, or both, when designing an interface control?",
+    "lookingFor": "Practical understanding of when visual symbols communicate clearly versus when they need textual reinforcement.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that icon meaning is learned and conventional, not universally obvious",
+        "Give a case for icon-only versus needing a label",
+        "Mention testing with real users as the actual decider, not personal taste"
+      ],
+      "modelAnswer": "I try to remember that icons only feel obvious to the person who already knows what they mean, a floppy disk for save makes sense to me but means nothing to someone who's never seen one. For very common, well-established actions like a trash can for delete, I'll often let the icon stand alone because most users have learned it already. But for anything less standard or higher stakes, I'd pair it with a short label, and honestly the real answer is I'd rather test it with a few actual users than trust my own instinct on which icons are 'obvious'."
+    },
+    "commonMistakes": [
+      "Assuming icon meaning is self-evident or universal",
+      "No distinction between common and unusual actions",
+      "Relying purely on personal taste instead of testing"
+    ],
+    "followUps": ["Can you think of an icon that's commonly misunderstood?"]
+  },
+  {
+    "id": "prog-product-design-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Learning from a failed prototype",
+    "program": "Product Design",
+    "difficulty": "medium",
+    "tags": ["iteration", "reflection", "process"],
+    "question": "Tell us about a time one of your own design prototypes just didn't work, and what you actually did with that failure.",
+    "lookingFor": "Honest account of a real design failure with a specific, credible lesson, not a disguised success story.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a genuine prototype failure with a specific mechanism, not a vague setback",
+        "Explain what testing or feedback revealed about why it failed",
+        "Show the concrete change made afterward"
+      ],
+      "modelAnswer": "I designed a phone stand with an adjustable hinge for a school project, and in testing it looked great but the hinge loosened after about ten uses so the phone would slowly tip forward. It stung because I'd been proud of the mechanism, but watching it fail in front of the class taught me I'd only tested it a handful of times, not enough cycles to catch fatigue. I redesigned it with a ratcheted joint instead of a friction hinge, which held up through repeated testing, and I learned to actually stress-test a mechanism properly instead of trusting that it worked because it worked once."
+    },
+    "commonMistakes": [
+      "Choosing a 'failure' that's secretly a humble-brag",
+      "No specific technical reason for the failure",
+      "Stopping at the failure with no described fix or lesson"
+    ],
+    "followUps": ["How do you decide how much testing is enough before you trust a design?"]
+  },
+  {
+    "id": "prog-product-design-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Trusting intuition against data",
+    "program": "Product Design",
+    "difficulty": "hard",
+    "tags": ["judgement", "research", "reasoning"],
+    "question": "If user testing data says one thing but your design instinct says another, whose side do you take?",
+    "lookingFor": "Nuanced reasoning about when data should override intuition and when it legitimately shouldn't, rather than a dogmatic answer either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid a flat 'always trust data' or 'always trust instinct' answer",
+        "Explain a case where small-sample or leading test data can mislead, warranting some instinct",
+        "Explain a case where instinct is clearly just personal bias masquerading as taste"
+      ],
+      "modelAnswer": "My default is to trust the data, because instinct is often just my own taste, and I'm not the user. But I don't follow it blindly, if the sample was tiny or the test itself was poorly framed, like a leading question, I'd want to dig into why the result came out that way before I acted on it. Where I'd actually lean on instinct is in things data struggles to measure well, like whether something feels delightful, but even then I'd try to find a way to test that feeling rather than just assume I'm right."
+    },
+    "commonMistakes": [
+      "A dogmatic 'data always wins' or 'trust your gut' with no nuance",
+      "Not identifying any case where the data itself might be flawed",
+      "Using 'instinct' as a cover for refusing to test at all"
+    ],
+    "followUps": ["Can you recall a specific moment this actually happened to you?"]
+  }
+]

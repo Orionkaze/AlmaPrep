@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-biochemistry-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme inhibition kinetics",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["enzymes", "kinetics", "pharmacology"],
+    "question": "How would you tell competitive and non-competitive inhibition apart on a Michaelis-Menten plot, and why does that distinction matter when designing a drug?",
+    "lookingFor": "Accurate recall of Km/Vmax behaviour under each inhibition type, linked to a real pharmacological consequence rather than recited definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Competitive inhibition raises apparent Km but Vmax is unchanged because enough substrate can still out-compete the inhibitor",
+        "Non-competitive inhibition lowers Vmax but leaves Km unchanged because the inhibitor binds a separate site regardless of substrate concentration",
+        "Connect this to drug design: a competitive inhibitor's effect can be overwhelmed by high substrate levels in the body, which non-competitive inhibitors resist"
+      ],
+      "modelAnswer": "On a Lineweaver-Burk plot, competitive inhibitors give lines that all cross on the y-axis because Vmax stays the same while the x-intercept shifts, showing Km has increased. Non-competitive inhibitors instead share the same x-intercept but have different y-intercepts, since Vmax drops but Km is untouched. That matters clinically because a competitive inhibitor can, in principle, be swamped if substrate builds up in the tissue, whereas a non-competitive one keeps working regardless, which is part of why allosteric drugs are often preferred when you need reliable inhibition."
+    },
+    "commonMistakes": [
+      "Mixing up which parameter changes for which inhibition type",
+      "Describing the plots without explaining the biological reasoning behind the shift",
+      "Ignoring the applied drug-design angle and stopping at the textbook definition"
+    ],
+    "followUps": ["What would uncompetitive inhibition look like on the same plot?"]
+  },
+  {
+    "id": "prog-biochemistry-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Protein folding and Anfinsen's dogma",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["protein-folding", "thermodynamics", "structure"],
+    "question": "Anfinsen's dogma says a protein's sequence determines its native structure. Given that, why do cells need chaperone proteins at all?",
+    "lookingFor": "Understanding that thermodynamic determinism and kinetic accessibility are separate problems, showing real conceptual depth beyond memorised definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "State Anfinsen's dogma correctly: sequence determines the thermodynamically favoured native fold in principle",
+        "Explain that inside a crowded cell, folding pathways can get kinetically trapped in misfolded intermediates before reaching that global minimum",
+        "Describe chaperones as preventing aggregation and giving the protein a protected environment to find the correct fold, not overriding the sequence's information"
+      ],
+      "modelAnswer": "Anfinsen showed that a denatured protein can refold correctly on its own, so the sequence does contain all the information needed for the native structure in principle. The catch is that this was shown in dilute, controlled conditions, and a real cell is incredibly crowded with other proteins, so a folding chain is at constant risk of exposing hydrophobic patches and aggregating with its neighbours before it ever reaches that correctly folded state. Chaperones like GroEL don't add folding information, they just shield the protein or give it repeated attempts in an isolated cavity so kinetics don't trap it in a misfolded dead end. So the dogma is about thermodynamic possibility, and chaperones are about kinetic reality."
+    },
+    "commonMistakes": [
+      "Claiming chaperones actively dictate the final structure themselves",
+      "Not distinguishing kinetic trapping from thermodynamic instability",
+      "Reciting Anfinsen's experiment without addressing why it doesn't fully describe in-cell folding"
+    ],
+    "followUps": ["What happens to a cell when chaperone systems are overwhelmed, as in heat shock?"]
+  },
+  {
+    "id": "prog-biochemistry-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "AlphaFold and structural biology",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["current-development", "structural-biology", "ai"],
+    "question": "AlphaFold can now predict protein structures with remarkable accuracy. Has it made experimental structural biology, like X-ray crystallography, obsolete?",
+    "lookingFor": "Awareness of a live development in the field plus balanced reasoning about what computational prediction can and cannot yet replace.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what AlphaFold actually does well: predicting a static, often single, folded state from sequence",
+        "Identify what it still struggles with: conformational dynamics, complexes with ligands or other proteins, disordered regions, and genuinely novel folds",
+        "Conclude it is a powerful complement that redirects experimental effort rather than a full replacement"
+      ],
+      "modelAnswer": "I don't think it's obsolete at all, but AlphaFold has genuinely changed what structural biologists spend their time on. It's extraordinary at predicting a likely folded state from sequence alone, which used to take months of crystallisation trial and error, so a lot of routine structure prediction has been overtaken. But it mostly gives you one static snapshot, and biology often cares about how a protein moves, binds a drug, or changes shape when a ligand attaches, which is where X-ray and cryo-EM still do things prediction can't. I see it as freeing up experimental time to focus on the harder, more dynamic questions rather than replacing the need for real structures."
+    },
+    "commonMistakes": [
+      "Answering with no actual knowledge of what AlphaFold is or does",
+      "Overclaiming that computation has fully replaced experiment",
+      "Dismissing AlphaFold's impact without giving it credit"
+    ],
+    "followUps": ["What kind of protein would you still trust experimental structure determination over a prediction for?"]
+  },
+  {
+    "id": "prog-biochemistry-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Germline gene editing dilemma",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["ethics", "crispr", "gene-editing"],
+    "question": "CRISPR now makes germline editing of human embryos technically achievable. If a couple wanted to edit an embryo to remove a serious inherited disease, where would you personally draw the line, and why?",
+    "lookingFor": "Structured ethical reasoning that separates therapeutic intent from enhancement, and acknowledges the irreversibility of germline changes across generations.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish somatic editing, which affects only the individual, from germline editing, which is heritable and affects future generations who cannot consent",
+        "Weigh the case for severe monogenic disease against the risk of a slippery slope toward trait selection or enhancement",
+        "Reach a defensible position while acknowledging genuine uncertainty, rather than a flat yes or no"
+      ],
+      "modelAnswer": "I'd separate this from ordinary gene therapy straight away, because editing an embryo changes the germline, so the consequences pass to children who never had any say in the decision. For a genuinely severe, well-characterised monogenic disease with no other option, I can see a strong case for permitting it under tight regulation, similar to how some countries already allow mitochondrial donation. But I'd be uneasy the moment it drifts toward less severe conditions or non-medical traits, because the same technology doesn't distinguish disease correction from enhancement, and once you cross that line it's hard to draw it again. So my line is severity plus lack of alternative, decided by an independent panel rather than the couple or the clinic alone."
+    },
+    "commonMistakes": [
+      "Giving an absolute yes or no with no reasoning about severity or reversibility",
+      "Ignoring that germline changes affect people who cannot consent",
+      "Failing to mention any regulatory or oversight mechanism"
+    ],
+    "followUps": ["Does your answer change if the condition is serious but not life-threatening, like a heritable form of deafness?"]
+  },
+  {
+    "id": "prog-biochemistry-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Exceptions to the central dogma",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["molecular-biology", "central-dogma", "prions"],
+    "question": "The central dogma describes information flowing from DNA to RNA to protein. Can you give me an example that breaks that flow, and explain how?",
+    "lookingFor": "Genuine understanding of the dogma's limits, using a correct and well-explained example rather than a name-drop.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly state the standard central dogma direction",
+        "Give a valid exception such as reverse transcription in retroviruses, or prions propagating structure without nucleic acid at all",
+        "Explain mechanistically why it counts as breaking the usual flow"
+      ],
+      "modelAnswer": "The classic flow is DNA to RNA to protein, but retroviruses like HIV break that by using reverse transcriptase to copy their RNA genome back into DNA, which then integrates into the host genome, so information is flowing backwards from RNA to DNA. Prions are an even stranger case, because a misfolded prion protein can convert a normally folded copy of the same protein into its own misfolded shape just by contact, propagating a trait with no nucleic acid involved at all. I find prions the more radical exception, because it shows heritable information doesn't even need to be encoded in a sequence, just in a conformation."
+    },
+    "commonMistakes": [
+      "Naming reverse transcription without explaining the mechanism",
+      "Confusing the central dogma's original statement with common oversimplifications of it",
+      "Giving an example that doesn't actually violate the dogma, like alternative splicing"
+    ],
+    "followUps": ["Why did prions take so long to be accepted as a legitimate biological mechanism?"]
+  },
+  {
+    "id": "prog-biochemistry-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Allosteric feedback regulation",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["metabolism", "regulation", "allostery"],
+    "question": "Why does it make more metabolic sense for a cell to regulate a pathway by inhibiting an early enzyme, rather than the last one, when the end product builds up?",
+    "lookingFor": "Applied reasoning about metabolic efficiency, not just naming feedback inhibition as a term.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify this as feedback inhibition, usually at the first committed step of a pathway",
+        "Explain that inhibiting late leaves earlier intermediates accumulating pointlessly, wasting resources and potentially causing toxic buildup",
+        "Note that inhibiting early conserves substrate and energy for other uses when the product isn't needed"
+      ],
+      "modelAnswer": "If the cell only shut off the final enzyme once the end product was abundant, all the intermediate steps before that point would keep running and building up intermediates that are now going nowhere, which wastes both the starting substrate and the energy spent making them. By inhibiting the first committed step instead, usually through the end product binding an allosteric site on that early enzyme, the cell stops the whole pathway at its entrance and can redirect that substrate to other uses. It's a much more economical control point, which is why you see it in pathways like isoleucine synthesis being shut off by isoleucine itself acting on the first enzyme."
+    },
+    "commonMistakes": [
+      "Only defining feedback inhibition without explaining the efficiency argument",
+      "Confusing allosteric regulation with competitive inhibition at the active site",
+      "Not giving or attempting a concrete pathway example"
+    ],
+    "followUps": ["What's the difference between an allosteric site and the active site in this context?"]
+  },
+  {
+    "id": "prog-biochemistry-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Active transport energetics",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["membranes", "transport", "thermodynamics"],
+    "question": "Why does moving a solute against its concentration gradient always require energy, in thermodynamic terms?",
+    "lookingFor": "Correct link between entropy, free energy, and the direction of spontaneous diffusion, applied to membrane transport.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that diffusion down a gradient increases entropy and is thermodynamically spontaneous, releasing free energy",
+        "State that moving against the gradient decreases entropy locally, which requires an input of free energy to be favourable overall",
+        "Connect this to real mechanisms like ATP hydrolysis in primary active transport, or a coupled downhill gradient in secondary active transport"
+      ],
+      "modelAnswer": "Molecules naturally spread from high to low concentration because that increases the entropy of the system, which is exactly why it's spontaneous and releases free energy that can even be harnessed, like in facilitated diffusion. Pushing a solute the other way, from low to high concentration, is decreasing entropy in that local region, and by the second law that can't happen spontaneously, so it needs an input of free energy to make the overall change favourable. That's why the sodium-potassium pump directly couples the process to ATP hydrolysis, while something like the sodium-glucose cotransporter cheats a bit by coupling glucose's uphill movement to sodium's downhill movement instead, so the net entropy change of the whole coupled system still works out."
+    },
+    "commonMistakes": [
+      "Saying it 'just needs energy' without explaining the entropy argument",
+      "Confusing primary and secondary active transport",
+      "Ignoring the coupling mechanism when discussing secondary active transport"
+    ],
+    "followUps": ["What would happen to a cell's ability to do secondary active transport if the sodium-potassium pump stopped working?"]
+  },
+  {
+    "id": "prog-biochemistry-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "mRNA vaccine mechanism and development",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["current-development", "immunology", "vaccines"],
+    "question": "mRNA vaccines were a major biochemical development of the last few years. Can you explain, at a molecular level, why the mRNA had to be chemically modified before it could be used safely in people?",
+    "lookingFor": "Real technical understanding of a topical breakthrough, not just headline familiarity with 'the COVID vaccine'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that unmodified synthetic mRNA is recognised by innate immune sensors as foreign, triggering a strong inflammatory response",
+        "Name the key fix: substituting a modified nucleoside like pseudouridine for uridine to reduce that innate immune activation",
+        "Connect this to the wider achievement, including lipid nanoparticle delivery, and why it mattered for making the vaccine both effective and tolerable"
+      ],
+      "modelAnswer": "Plain synthetic mRNA gets flagged by the cell's innate immune sensors, things like toll-like receptors, as a sign of viral infection, which triggers inflammation and can degrade the mRNA before it's even translated. Kariko and Weissman's key insight was that swapping uridine for a modified nucleoside like pseudouridine makes the mRNA far less visible to those sensors while still being translated normally by the ribosome, which is what finally made mRNA vaccines practical rather than just an interesting idea. Pairing that with lipid nanoparticles to protect the mRNA and get it into cells is really what let the platform move from theory to a vaccine deployed at global scale within a year, which I think is one of the most striking biochemistry stories of my lifetime."
+    },
+    "commonMistakes": [
+      "Describing only what the vaccine does immunologically, with no molecular chemistry",
+      "Not knowing why unmodified mRNA is a problem in the first place",
+      "Confusing mRNA vaccines with viral vector vaccines"
+    ],
+    "followUps": ["Why can't the same platform simply be used to deliver any protein you want, like insulin?"]
+  },
+  {
+    "id": "prog-biochemistry-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Cryo-EM versus X-ray crystallography",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["structural-biology", "methods", "trade-offs"],
+    "question": "If you were trying to solve the structure of a large, flexible membrane protein complex, would you reach for X-ray crystallography or cryo-electron microscopy, and why?",
+    "lookingFor": "Genuine grasp of the practical trade-offs between two major structural techniques, applied to a specific case rather than recited generically.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that membrane proteins are notoriously hard to crystallise because they need a detergent or lipid environment that resists forming an ordered lattice",
+        "Explain that cryo-EM avoids the crystallisation step entirely and can resolve multiple conformational states from a single sample",
+        "Acknowledge the trade-off: cryo-EM traditionally needed larger complexes for good resolution, though that gap has narrowed a great deal recently"
+      ],
+      "modelAnswer": "I'd lean toward cryo-EM for something like that. Membrane proteins are famously difficult to crystallise because you need to strip them from the membrane with detergent while somehow keeping them stable enough to pack into an ordered crystal, and a large flexible complex makes that even harder since flexibility is the enemy of a good crystal lattice. Cryo-EM sidesteps crystallisation completely, you just flash-freeze the sample in solution, and because you're imaging many individual particles you can even computationally sort out different conformational states rather than being stuck with one rigid snapshot. The classic limitation was that cryo-EM needed a fairly large, high-mass complex to get good resolution, but detector and software improvements over the last decade have pushed that boundary down a lot, which is part of why it's become the default choice for exactly this kind of target."
+    },
+    "commonMistakes": [
+      "Picking X-ray crystallography with no acknowledgment of the crystallisation difficulty for membrane proteins",
+      "Describing cryo-EM's advantages with no mention of its historical resolution limitations",
+      "Giving a generic comparison of the two techniques with no connection to the specific case posed"
+    ],
+    "followUps": ["What has changed technically in the last decade that made cryo-EM so much more powerful?"]
+  },
+  {
+    "id": "prog-biochemistry-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing an experiment to test enzyme mechanism",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "experimental-design", "enzymes"],
+    "question": "Suppose you've isolated a new enzyme and suspect it uses a covalent intermediate during catalysis, rather than a direct one-step mechanism. How would you go about testing that hypothesis?",
+    "lookingFor": "Ability to design a logical experimental approach from first principles, showing real understanding of enzyme mechanism evidence rather than guessing.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a kinetic signature to look for, such as burst kinetics in a pre-steady-state assay, which suggests a fast first step followed by a slower rate-limiting step",
+        "Suggest trapping or directly detecting the intermediate, for example by rapid quench and mass spectrometry, or using a substrate analogue that gets stuck at the intermediate stage",
+        "Mention site-directed mutagenesis of the suspected catalytic residue to see if it abolishes the burst phase specifically"
+      ],
+      "modelAnswer": "The first thing I'd look for is a burst phase in the kinetics using stopped-flow or rapid-quench methods, because a covalent intermediate mechanism often shows an initial fast rate as the intermediate forms, followed by a slower steady-state rate that's limited by breaking that intermediate down, whereas a single-step mechanism should show a more uniform rate from the start. To get more direct evidence, I'd try to trap the intermediate itself, maybe using a substrate analogue that can form the covalent bond but can't be released, and then analyse it by mass spectrometry to see the mass shift matching a covalently modified enzyme. Finally I'd mutate the residue I suspect is doing the covalent chemistry, like a catalytic serine or cysteine, and check whether that specifically kills the burst phase while leaving basic substrate binding intact, which would tie the mechanism to that particular residue."
+    },
+    "commonMistakes": [
+      "Suggesting only structural methods with no kinetic reasoning",
+      "Proposing an experiment with no clear predicted result that would distinguish the two mechanisms",
+      "Vague hand-waving about 'testing it in the lab' with no specific technique"
+    ],
+    "followUps": ["What result would actually rule the covalent mechanism out rather than confirm it?"]
+  },
+  {
+    "id": "prog-biochemistry-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Research misconduct dilemma",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["ethics", "research-integrity", "dilemma"],
+    "question": "You're doing a summer research placement, and you notice your supervisor has quietly excluded a few inconvenient data points from a graph in a paper draft, without any stated justification. What would you do?",
+    "lookingFor": "Willingness to take research integrity seriously despite a power imbalance, with a reasoned escalation path rather than a snap decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the seriousness of selectively excluding data without justification, distinct from legitimate statistical outlier removal",
+        "Propose a first step of asking the supervisor directly and privately, since there may be a valid reason not yet stated",
+        "Describe an escalation route, such as a research integrity office or ethics contact, if the explanation isn't satisfactory or the behaviour continues"
+      ],
+      "modelAnswer": "I'd be careful not to assume bad faith immediately, because there are legitimate reasons to exclude a data point, like a known instrument fault, so my first move would be to ask my supervisor directly and privately what the reasoning was. If the explanation was thin or they brushed off the question, I'd feel a real obligation to take it further, because selectively dropping inconvenient results without justification is exactly the kind of thing that erodes trust in published science. I know raising it as a junior student on a placement is intimidating given the power imbalance, but most universities have a research integrity or ethics office set up precisely so a concern like this doesn't just depend on my willingness to confront a supervisor directly, and I'd use that route if needed."
+    },
+    "commonMistakes": [
+      "Deciding to report immediately with no attempt to understand the context first",
+      "Staying silent because of the power imbalance with a supervisor",
+      "Treating the question as purely hypothetical with no concrete plan of action"
+    ],
+    "followUps": ["What if raising it risked your reference letter or place in the lab?"]
+  },
+  {
+    "id": "prog-biochemistry-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Genome sequencing data interpretation",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["genomics", "bioinformatics", "sequencing"],
+    "question": "If whole genome sequencing tells us the complete DNA sequence of an organism, why do we still not fully understand what most genes actually do?",
+    "lookingFor": "Understanding that sequence data alone doesn't equal functional understanding, showing awareness of the gap between genomics and functional biochemistry.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish sequencing, which reads the order of bases, from functional annotation, which requires separate experimental or computational evidence",
+        "Mention that gene function often depends on context: expression timing, regulatory elements, protein interactions, and post-translational modification",
+        "Note that many genes are annotated only by sequence similarity to known genes, which is an inference, not direct proof of function"
+      ],
+      "modelAnswer": "Sequencing just tells you the order of the bases, it doesn't automatically tell you what a gene's product does, when it's switched on, or what it interacts with, so there's a real gap between having the sequence and understanding the biology. A lot of gene function is assigned by similarity to genes already characterised in other organisms, which is a reasonable starting hypothesis but not proof, and plenty of genes have no close match at all and stay as 'hypothetical proteins' for years. On top of that, function often depends on context that sequence alone can't capture, like which tissue expresses the gene, what post-translational modifications the protein gets, or which other proteins it has to bind to actually do its job, which is really why functional genomics as a whole field exists beyond just sequencing."
+    },
+    "commonMistakes": [
+      "Confusing sequencing accuracy or coverage with functional annotation",
+      "Assuming sequence similarity to a known gene counts as proven function",
+      "Giving no mention of regulatory or contextual factors affecting gene function"
+    ],
+    "followUps": ["How might you experimentally test the function of a gene with no known homologue?"]
+  },
+  {
+    "id": "prog-biochemistry-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Binding thermodynamics and entropy",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["thermodynamics", "binding", "drug-design"],
+    "question": "A drug can bind its target tightly even if that binding releases very little heat. How is that possible in thermodynamic terms?",
+    "lookingFor": "Ability to reason through the Gibbs free energy equation and recognise entropy-driven binding, rather than assuming binding is always enthalpy-driven.",
+    "idealAnswer": {
+      "bullets": [
+        "State that binding affinity depends on the total free energy change, delta G, which combines both enthalpy and entropy contributions",
+        "Explain that binding can be entropy-driven, for instance through the hydrophobic effect releasing ordered water molecules from a binding pocket",
+        "Note the practical implication: a favourable entropy change can compensate for weak or even unfavourable enthalpy, still giving tight binding"
+      ],
+      "modelAnswer": "Binding affinity comes from the overall change in Gibbs free energy, delta G equals delta H minus T delta S, so a small enthalpy change doesn't necessarily mean weak binding if the entropy term is doing the work instead. A common source of that is the hydrophobic effect, where a nonpolar part of a drug displaces ordered water molecules sitting in a hydrophobic pocket, and releasing those waters into bulk solution actually increases the overall entropy of the system even though it doesn't release much heat directly from the binding interaction itself. So a drug can bind very tightly through a favourable entropy change dominating, which is actually a design consideration medicinal chemists think about deliberately when they're trying to improve a compound's affinity."
+    },
+    "commonMistakes": [
+      "Assuming tight binding must always come from a large enthalpy release",
+      "Not mentioning the Gibbs free energy relationship explicitly",
+      "Describing the hydrophobic effect incorrectly as water molecules being attracted to the pocket rather than displaced from it"
+    ],
+    "followUps": ["Why might chemists still prefer to optimise a drug's enthalpy contribution rather than relying on entropy alone?"]
+  },
+  {
+    "id": "prog-biochemistry-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Lab-grown meat and synthetic biology scaling",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["current-development", "synthetic-biology", "debate"],
+    "question": "Cultivated meat grown from animal cells has been approved for sale in a few countries but hasn't scaled up commercially the way early predictions suggested. What biochemical bottlenecks do you think are behind that?",
+    "lookingFor": "Awareness of a genuinely current debate in applied biochemistry, with reasoning grounded in actual production constraints rather than vague optimism.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the cost and complexity of growth media, particularly replacing expensive components like fetal bovine serum at industrial scale",
+        "Mention the engineering challenge of growing thick, structured tissue rather than just proliferating cells in suspension, including oxygen and nutrient diffusion limits",
+        "Show balanced awareness that this is a live, unresolved debate rather than asserting a confident final answer"
+      ],
+      "modelAnswer": "A big part of it is the growth media, because the serum traditionally used to support animal cell growth is expensive and ethically awkward given it usually comes from animals itself, so companies have had to develop serum-free formulations that are cheaper but not always as effective at supporting robust growth. There's also a real structural problem beyond just multiplying cells, since making something that has the texture of actual meat means growing thicker tissue with proper muscle and fat structure, and diffusion of oxygen and nutrients gets much harder once you're not dealing with thin layers of cells in a dish. I think it's genuinely an open question whether these are solvable engineering problems on a reasonable timeline or more fundamental bottlenecks, and I find that uncertainty part of what makes it interesting rather than a settled success story."
+    },
+    "commonMistakes": [
+      "Treating the technology as either a guaranteed success or a total failure with no nuance",
+      "Not knowing any specific technical bottleneck beyond 'it's expensive'",
+      "Confusing cultivated meat with plant-based meat substitutes"
+    ],
+    "followUps": ["Do you think regulatory approval alone is enough to make consumers trust the product?"]
+  },
+  {
+    "id": "prog-biochemistry-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Diagnosing an unfamiliar metabolic disorder",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "metabolism", "reasoning"],
+    "question": "Imagine a patient presents with muscle weakness that gets worse with exercise, and blood tests show unusually high lactate but normal glucose. How might you reason through what's going wrong biochemically?",
+    "lookingFor": "Ability to reason from first principles about metabolic pathways under a novel scenario, rather than needing the answer already memorised.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that exercise-induced symptoms and high lactate point toward a problem in aerobic energy metabolism, forcing reliance on anaerobic glycolysis",
+        "Reason that normal glucose suggests the issue isn't in glucose supply or basic glycolysis itself, but somewhere downstream, such as the mitochondria or pyruvate processing",
+        "Propose plausible candidates, like a defect in the electron transport chain, pyruvate dehydrogenase, or a muscle glycogen storage disorder, and how you might narrow it down"
+      ],
+      "modelAnswer": "The pattern of symptoms getting worse with exercise plus high lactate makes me think the muscle is being forced to rely heavily on anaerobic glycolysis, which produces lactate, rather than efficiently using aerobic respiration to fully oxidise pyruvate. Since blood glucose is normal, I don't think the problem is in getting glucose to the tissue or in glycolysis itself, so I'd suspect something further downstream, maybe a defect in pyruvate dehydrogenase that stops pyruvate from properly entering the citric acid cycle, or a problem in the electron transport chain itself that limits how much ATP the mitochondria can actually produce aerobically. To narrow it down I'd want to know if lactate rises abnormally even at rest or only during exertion, and I'd look at whether other tissues that also depend heavily on oxidative phosphorylation, like the heart, show any signs of trouble too, since that would point more toward a systemic mitochondrial issue rather than something muscle-specific like a glycogen storage disorder."
+    },
+    "commonMistakes": [
+      "Jumping to a specific named disease with no reasoning shown",
+      "Not connecting the clinical clues to the underlying biochemical pathway logic",
+      "Ignoring the significance of normal glucose as a clue that narrows the possibilities"
+    ],
+    "followUps": ["What test could distinguish a mitochondrial electron transport chain defect from a pyruvate dehydrogenase defect?"]
+  },
+  {
+    "id": "prog-biochemistry-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Chirality in drug design",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["stereochemistry", "pharmacology", "drug-design"],
+    "question": "The thalidomide tragedy is often traced back to chirality. Can you explain why a molecule's mirror image can behave so differently in the body?",
+    "lookingFor": "Correct understanding of enantiomers and why biological systems are chirally selective, plus awareness of the historical and regulatory consequence.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that enantiomers have identical physical properties but differ in three-dimensional spatial arrangement",
+        "Note that biological receptors and enzymes are themselves chiral, built from L-amino acids, so they can bind one enantiomer very differently from its mirror image",
+        "Connect to thalidomide specifically: one enantiomer was the intended sedative while the other, or a metabolite formed from either, caused severe birth defects, and this reshaped drug regulation"
+      ],
+      "modelAnswer": "Enantiomers are mirror images of each other with the same chemical formula and the same physical properties like melting point, but they differ in how their atoms are arranged in three-dimensional space, similar to how your left and right hand are mirror images that can't be perfectly superimposed. Because proteins in the body, like enzymes and receptors, are themselves built from chiral L-amino acids, they're chiral structures too, so they can recognise and bind one enantiomer of a drug snugly while barely interacting with its mirror image, or interacting with it in a completely different, sometimes harmful, way. With thalidomide, one enantiomer had the intended sedative effect while the body could also interconvert between the two forms, and the teratogenic effects that caused severe birth defects are believed to come from this chiral behaviour, which is a huge part of why drug regulators now require much more rigorous testing of individual enantiomers rather than assuming a racemic mixture is safe just because one form works."
+    },
+    "commonMistakes": [
+      "Saying the two enantiomers are chemically identical with no explanation of spatial arrangement",
+      "Not connecting the concept to why biological receptors themselves are chirally selective",
+      "Getting the thalidomide history factually wrong or oversimplifying it to 'one good, one bad' with no nuance about interconversion"
+    ],
+    "followUps": ["What regulatory practices changed in drug development as a result of this history?"]
+  },
+  {
+    "id": "prog-biochemistry-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Epigenetics versus genetic determinism",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["epigenetics", "gene-expression", "development"],
+    "question": "Identical twins have the same DNA sequence but can end up with noticeably different disease risks later in life. How would you explain that biochemically?",
+    "lookingFor": "Clear grasp of epigenetic mechanisms as distinct from sequence-level genetics, with a concrete explanation of how they alter gene expression.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that identical sequence does not mean identical gene expression over a lifetime",
+        "Explain a specific epigenetic mechanism, such as DNA methylation or histone modification, and how it changes accessibility of genes without altering the sequence",
+        "Note that these marks can be influenced by environment and lifestyle over time, causing twins to diverge"
+      ],
+      "modelAnswer": "Having identical DNA sequence only means the instruction manual is the same, it doesn't mean every gene is being read at the same level throughout life, and that's really where epigenetics comes in. Chemical marks like DNA methylation, where a methyl group gets added to cytosine bases usually in gene promoter regions, or modifications to the histone proteins DNA is wrapped around, can silence or open up access to particular genes without changing a single base of the sequence itself. Over decades, twins accumulate different epigenetic marks because of different diets, environments, stresses, or even just chance during cell division, so a gene that's equally present in both of them can end up expressed very differently, which is a big part of why their disease risk can diverge even though their starting sequence was identical."
+    },
+    "commonMistakes": [
+      "Describing epigenetics vaguely as 'environment affecting genes' with no molecular mechanism",
+      "Confusing epigenetic changes with mutations to the DNA sequence itself",
+      "Not addressing why twins specifically would diverge despite identical starting DNA"
+    ],
+    "followUps": ["Can epigenetic marks be passed on to the next generation, and what would that imply?"]
+  },
+  {
+    "id": "prog-biochemistry-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Protein misfolding and amyloid disease",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["protein-structure", "neurodegeneration", "aggregation"],
+    "question": "Why can a protein that folds correctly for years suddenly start misfolding and aggregating into amyloid plaques later in life, as happens in conditions like Alzheimer's?",
+    "lookingFor": "Understanding of protein homeostasis as a dynamic, age-sensitive balance rather than a one-time folding event, with awareness of aggregation kinetics.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that folding is not a one-time event but an ongoing balance maintained by chaperones and degradation machinery, which is part of cellular protein homeostasis",
+        "Note that this balance can decline with age as chaperone efficiency and proteasome or autophagy activity drop, tipping the equilibrium toward misfolding",
+        "Describe aggregation as often following nucleation kinetics, where a small seed of misfolded protein can template further misfolding, explaining a delayed but then accelerating onset"
+      ],
+      "modelAnswer": "Protein folding isn't a single event that happens once and then the protein is safe forever, it's maintained continuously through what's called protein homeostasis, where chaperones help refold or stabilise proteins and quality control systems like the proteasome clear out anything that misfolds. As cells age, the efficiency of both of those systems tends to decline, so the equilibrium that used to favour correctly folded, cleared proteins can slowly tip toward accumulation of misfolded ones. Amyloid aggregation also tends to follow nucleation kinetics, meaning it can be very slow at first while a small seed of misfolded protein forms, but once that seed exists it can template the misfolding of nearby correctly folded copies much faster, which is part of why these diseases often show a long silent period followed by a more rapid accumulation of plaques once a threshold is crossed."
+    },
+    "commonMistakes": [
+      "Treating misfolding as a random, unexplained event with no reference to cellular quality control",
+      "Not mentioning why age specifically matters biochemically",
+      "Ignoring the seeded, templated nature of amyloid aggregation kinetics"
+    ],
+    "followUps": ["Why might targeting the aggregation seed be a more promising drug strategy than targeting mature plaques?"]
+  },
+  {
+    "id": "prog-biochemistry-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Animal testing dilemma",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["ethics", "animal-testing", "dilemma"],
+    "question": "A lot of biochemical and drug research still relies on animal testing before anything reaches human trials. Do you think that's still ethically justified, given the alternatives now emerging?",
+    "lookingFor": "A reasoned, non-absolutist position that weighs scientific necessity against animal welfare and shows awareness of emerging alternatives.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine ethical tension rather than dismissing animal welfare concerns or dismissing the scientific need outright",
+        "Show awareness of emerging alternatives, such as organ-on-chip systems or computational modelling, and their current limitations",
+        "Land on a defensible, conditional position, for example supporting the principle of the three Rs, reduce, refine, replace, rather than an absolute stance"
+      ],
+      "modelAnswer": "I don't think there's a comfortable answer here, because animal models have genuinely been essential for understanding whole-organism effects, like how a drug is metabolised or whether it's toxic to a developing fetus, in ways that isolated cells in a dish still can't fully replicate. At the same time, newer approaches like organ-on-chip systems and more sophisticated computational toxicology models are getting better at predicting some of that, and I think it's right that pressure is growing to replace animal testing wherever those alternatives are actually validated as reliable. My honest position is that I support the principle of reduce, refine, replace, using animals only where there's genuinely no adequate substitute yet, minimising suffering where they are used, and actively investing in the alternatives so that reliance keeps shrinking rather than staying static."
+    },
+    "commonMistakes": [
+      "Taking an absolutist position, either fully for or fully against, with no acknowledgment of the tension",
+      "Showing no awareness of any alternative methods currently being developed",
+      "Treating the question as settled science rather than an active ethical and regulatory debate"
+    ],
+    "followUps": ["What would it take for you to trust a computational or chip-based alternative as much as an animal study?"]
+  },
+  {
+    "id": "prog-biochemistry-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-designed proteins",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["current-development", "protein-design", "ai"],
+    "question": "Researchers can now use AI tools to design entirely new proteins that don't exist in nature, with functions chosen in advance. What do you find most significant about that, and what are its current limits?",
+    "lookingFor": "Awareness of a genuinely current frontier in biochemistry, with a reasoned view of both its promise and its practical constraints.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what de novo protein design tools actually do, generating novel sequences predicted to fold into a target structure or function",
+        "Identify significance, such as designing enzymes, binders, or vaccine components faster than trial-and-error evolution or screening",
+        "Note current limits, like the gap between a computationally plausible design and one that actually folds, functions, and is stable when expressed in the lab"
+      ],
+      "modelAnswer": "What strikes me most is that we've moved from only being able to study or tweak proteins nature already evolved, to genuinely inventing sequences that have never existed, built directly around a function you specify, like a binder for a particular target or a more stable enzyme scaffold. That's a real shift from reading biology to writing it. What still limits it is that a design being computationally plausible doesn't guarantee it behaves that way once you actually express and purify it, so there's still a real experimental validation step where a lot of designs don't fold as predicted or don't have the function hoped for, and I think closing that gap between prediction and reliable lab success is where a lot of the current work is focused."
+    },
+    "commonMistakes": [
+      "Vague enthusiasm about 'AI in biology' with no specific understanding of what de novo design actually does",
+      "Claiming designed proteins are always successful with no acknowledgment of the validation gap",
+      "Confusing protein design with structure prediction of existing proteins"
+    ],
+    "followUps": ["What kind of protein function do you think would be hardest for a design tool to get right?"]
+  },
+  {
+    "id": "prog-biochemistry-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Responding to a novel pathogen",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "virology", "reasoning"],
+    "question": "Suppose a new virus emerges and you're handed its full genome sequence on day one, with no other information yet. Walk me through what you'd want to figure out first, and how you'd start.",
+    "lookingFor": "Ability to reason through a real applied workflow using sequence data alone, showing structured thinking under an open-ended prompt.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose comparing the sequence to known viral families to infer likely structure and replication strategy by homology",
+        "Identify key features to search for, such as genes encoding surface proteins relevant to host entry, or an RNA-dependent RNA polymerase indicating an RNA virus",
+        "Outline a logical next step, such as predicting likely drug or vaccine targets based on that classification, while being honest that homology only gives a hypothesis, not certainty"
+      ],
+      "modelAnswer": "The first thing I'd do is run the sequence against known viral databases to see what it's most similar to, because even a rough classification, like whether it's related to coronaviruses or influenza, gives a strong starting hypothesis about its replication strategy and structure. I'd specifically look for genes I'd expect to matter clinically, like whatever encodes the surface protein it likely uses to enter host cells, since that's often both a diagnostic target and a vaccine target, and whether it carries its own RNA-dependent RNA polymerase, which would tell me it's an RNA virus and point toward existing polymerase inhibitor drug classes that might be worth testing first. I'd be careful to treat all of this as a working hypothesis based on homology rather than fact, and flag that experimental work, like actually expressing the surface protein and testing antibody binding, would be needed to confirm any of it before it could inform an actual response."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'develop a vaccine' with no intermediate reasoning steps",
+      "Ignoring that sequence-based classification is a hypothesis, not confirmed fact",
+      "Providing no biochemical specifics, staying at a purely public-health level of answer"
+    ],
+    "followUps": ["What would make you doubt the classification you got from sequence homology alone?"]
+  },
+  {
+    "id": "prog-biochemistry-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Direct-to-consumer genetic testing and privacy",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["ethics", "genomics", "privacy"],
+    "question": "Consumer DNA testing companies have used customer genetic data for purposes beyond ancestry, including law enforcement searches and pharmaceutical research partnerships. Do you think that's a fair use of the data customers submitted?",
+    "lookingFor": "Balanced ethical reasoning about consent, data ownership, and downstream use, rather than a reflexive privacy stance with no nuance.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish the different downstream uses, since research partnerships, commercial data sale, and law enforcement access raise different consent questions",
+        "Raise the issue that genetic data implicates relatives who never consented, not just the individual who submitted the sample",
+        "Land on a position centred on informed, specific consent and transparency rather than a blanket yes or no to all secondary uses"
+      ],
+      "modelAnswer": "I think these different uses actually deserve different answers rather than one blanket judgement. If a customer explicitly opted into a research partnership with clear information about what that meant, I'm reasonably comfortable with that being their choice. Law enforcement access troubles me more, because a customer submitting their own DNA for ancestry testing didn't necessarily consent to it being searchable in a criminal investigation, and because genetic data isn't just about the individual, it also reveals information about relatives who never agreed to anything at all. My overall position is that specific, informed consent for each distinct use matters a lot more than a single broad terms-of-service agreement buried at sign-up, and companies should be required to be much more transparent about exactly what customers are opting into."
+    },
+    "commonMistakes": [
+      "Treating all downstream uses of genetic data as equivalent with no distinction",
+      "Ignoring that genetic data reveals information about relatives, not just the individual",
+      "Giving a purely legal answer with no independent ethical reasoning"
+    ],
+    "followUps": ["Should relatives have any say in how a family member's genetic data gets used?"]
+  },
+  {
+    "id": "prog-biochemistry-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Electron transport chain and redox reasoning",
+    "program": "Biochemistry",
+    "difficulty": "medium",
+    "tags": ["metabolism", "redox", "bioenergetics"],
+    "question": "Cyanide is famously lethal because it blocks the electron transport chain. Talk me through, biochemically, why blocking one complex in that chain shuts down the whole cell's energy production.",
+    "lookingFor": "Solid mechanistic understanding of oxidative phosphorylation and why blocking a single step has such a catastrophic downstream effect.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that cyanide binds and inhibits cytochrome c oxidase, complex IV, preventing electrons from being passed to oxygen",
+        "State that this backs up the entire chain since electrons have nowhere to go, halting the proton gradient that drives ATP synthase",
+        "Connect this to the consequence: cells are forced into anaerobic metabolism, which is far less efficient and cannot sustain high-energy-demand tissues like the brain and heart"
+      ],
+      "modelAnswer": "Cyanide binds tightly to cytochrome c oxidase, which is complex IV, the final protein in the electron transport chain that's supposed to hand electrons off to oxygen to form water. Once that final step is blocked, electrons have nowhere to go, so the whole chain backs up like a traffic jam, and because the earlier complexes rely on passing electrons onward to keep pumping protons across the membrane, the proton gradient collapses and ATP synthase can no longer be driven to make ATP. Cells try to fall back on anaerobic glycolysis to survive, but that produces far less ATP per glucose molecule, and tissues like the brain and heart that have enormous constant energy demands and very little tolerance for that shortfall fail extremely quickly, which is exactly why cyanide poisoning is so fast and lethal."
+    },
+    "commonMistakes": [
+      "Naming the wrong complex that cyanide inhibits",
+      "Not explaining why blocking one complex affects the entire chain rather than just that one step",
+      "Leaving out the downstream physiological consequence for high-energy-demand tissues"
+    ],
+    "followUps": ["Why does cyanide poisoning cause a symptom of unusually pink or flushed skin rather than the blue tinge seen in ordinary oxygen deprivation?"]
+  },
+  {
+    "id": "prog-biochemistry-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Access and cost of gene therapies",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["ethics", "gene-therapy", "access"],
+    "question": "Some newly approved gene therapies cost several million dollars per patient. If you were advising a health system with limited funds, how would you think about whether to pay for one?",
+    "lookingFor": "Structured reasoning about resource allocation and equity, engaging with both the science and the ethics rather than picking a side reflexively.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between an individual patient's need for a curative treatment and the opportunity cost of that spending across a whole health system",
+        "Suggest concrete evaluative criteria, such as durability of benefit, quality of the supporting trial evidence, and cost-effectiveness compared to lifelong alternative treatment",
+        "Mention emerging solutions like outcomes-based payment models that only pay in full if the therapy continues to work over time"
+      ],
+      "modelAnswer": "I'd want to resist a purely emotional answer of course we should pay, no matter what, because every dollar spent on one very expensive treatment is a dollar not spent on care for many other patients, and a health system has to be honest about that trade-off. I'd want to look at concrete evidence, like how durable and well-proven the benefit actually is from trials, and compare the total lifetime cost against the alternative of years of ongoing treatment for the same condition, since a one-time cure can genuinely be cost-effective over a long enough horizon even at a high upfront price. I'd also push for outcomes-based payment arrangements, where the health system pays in instalments tied to the therapy continuing to work in that patient, rather than the full amount upfront regardless of the outcome, because that shares the financial risk more fairly between the system and the manufacturer."
+    },
+    "commonMistakes": [
+      "Answering purely emotionally with no acknowledgment of system-wide opportunity cost",
+      "Refusing to engage with any concrete evaluative criteria or evidence",
+      "Assuming the only options are pay in full or refuse entirely, missing alternative payment structures"
+    ],
+    "followUps": ["Should the price a company charges be regulated, given these are often the only treatment for a rare disease?"]
+  },
+  {
+    "id": "prog-biochemistry-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a biosensor",
+    "program": "Biochemistry",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "biosensors", "applied-design"],
+    "question": "Say you wanted to design a simple biosensor that changes colour in the presence of a specific toxin in drinking water. What biochemical components would you need, and what would you have to get right?",
+    "lookingFor": "Ability to apply core biochemical principles, molecular recognition, signal amplification, and specificity, to an open-ended applied design problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a recognition element specific to the toxin, such as an antibody, aptamer, or enzyme whose activity is affected by the toxin",
+        "Propose a mechanism to convert binding or inhibition into a visible signal, such as a coupled enzymatic colour reaction",
+        "Flag the key design challenges: specificity against similar molecules, sensitivity at relevant concentrations, and stability outside lab conditions"
+      ],
+      "modelAnswer": "I'd start with a recognition element that specifically binds or is affected by the toxin, which could be an antibody raised against it, an aptamer selected to bind it tightly, or, if the toxin is something like a heavy metal that inhibits a particular enzyme, I could actually use that inhibition directly as the sensing event. I'd then need to couple that recognition step to something visible, for example linking it to an enzyme that produces a coloured product, so that toxin binding either triggers or blocks colour development in a way you can read by eye or with a simple reader. The hard part would be getting specificity right so it doesn't false-flag on a similar but harmless molecule, getting sensitivity good enough to detect the toxin at the low concentrations that actually matter for safety, and making the whole thing stable enough to survive storage and use outside a lab, since a sensor that only works fresh out of a fridge isn't much use for a village water supply."
+    },
+    "commonMistakes": [
+      "Proposing a detection idea with no actual biochemical recognition mechanism specified",
+      "Ignoring the need to convert a binding event into a visible readout",
+      "Not addressing specificity, sensitivity, or real-world stability as genuine design challenges"
+    ],
+    "followUps": ["How would you test whether your sensor gives false positives with a chemically similar but harmless compound?"]
+  }
+]

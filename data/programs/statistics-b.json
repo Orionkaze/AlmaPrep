@@ -1,0 +1,653 @@
+[
+  {
+    "id": "prog-statistics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Multiple testing and p-hacking",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["hypothesis-testing", "p-hacking", "research-methods"],
+    "question": "If you run twenty independent tests at the five percent significance level, roughly how many would you expect to come back 'significant' by chance alone, and why does that matter for how research gets published?",
+    "lookingFor": "Understanding that repeated testing inflates the false positive rate, and awareness of why this matters for research integrity, not just arithmetic.",
+    "idealAnswer": {
+      "bullets": [
+        "Calculate roughly one in twenty tests will be significant purely by chance",
+        "Explain why this is a real problem when many hypotheses are tested and only the significant ones get reported",
+        "Mention a fix: Bonferroni correction, false discovery rate control, or preregistration"
+      ],
+      "modelAnswer": "With twenty independent tests at the five percent level, you'd expect about one to come back significant purely by chance, since five percent of twenty is one. That's the real danger behind p-hacking: if a researcher runs many comparisons and only writes up the ones that hit significance, they're essentially guaranteed to find something that looks real but isn't. Corrections like Bonferroni tighten the threshold to account for how many tests you ran, and preregistering which hypothesis you're testing before you see the data stops you from quietly searching for a result afterwards. I find it a bit unsettling how easy it would be to do this by accident, not even dishonestly, just by exploring a dataset too freely."
+    },
+    "commonMistakes": [
+      "Saying exactly one test will be significant instead of an expected number",
+      "Not connecting the arithmetic to why cherry-picked results mislead readers",
+      "Suggesting the fix is simply being more careful rather than a concrete method"
+    ],
+    "followUps": [
+      "What's the difference between the Bonferroni correction and controlling the false discovery rate?",
+      "Would preregistration have stopped this, and what does it cost a researcher to do it?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistical power and underpowered studies",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["power", "sample-size", "study-design"],
+    "question": "A psychology study of thirty people finds no significant effect and the paper concludes the treatment doesn't work. What's wrong with that conclusion?",
+    "lookingFor": "Grasp of statistical power: absence of significance in a small sample is not evidence of absence.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a small sample gives low power to detect a real but modest effect",
+        "Distinguish failing to find evidence of an effect from finding evidence of no effect",
+        "Note the fix is a power calculation before running the study, or honestly reporting a wide confidence interval"
+      ],
+      "modelAnswer": "The problem is that with only thirty people, the study probably didn't have enough power to detect anything but a huge effect, so failing to find significance doesn't mean the treatment does nothing. Not finding evidence for an effect is completely different from finding evidence against one, and the paper is treating those as the same thing. A proper power calculation before the study would have told the researchers roughly how many participants they needed to have a reasonable chance of detecting a realistic effect size. I'd want to see the confidence interval around their estimate, because it probably includes both no effect and a meaningful effect, which is a much more honest way to report it."
+    },
+    "commonMistakes": [
+      "Confusing not significant with proven no effect",
+      "Not mentioning sample size or power calculations at all",
+      "Assuming a bigger sample always fixes any study problem"
+    ],
+    "followUps": [
+      "How would you go about calculating the sample size needed before running a study?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "The reproducibility crisis",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["reproducibility", "research-methods", "current-debate"],
+    "question": "Large replication projects have found that a big share of published psychology and biomedical findings don't hold up when other labs try to repeat them. As someone about to study statistics, what do you think is driving that, and what would you change?",
+    "lookingFor": "Awareness of a live methodological debate and ability to connect it to concrete statistical causes, not just vague hand-wringing about bad science.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least one concrete driver: p-hacking, publication bias, underpowered studies, flexible analysis choices",
+        "Show awareness this is a genuine live debate, not settled or fixed",
+        "Suggest a real proposed remedy: preregistration, larger samples, registered reports, open data"
+      ],
+      "modelAnswer": "I think a lot of it comes down to incentives rather than dishonesty: journals reward surprising, significant results, so there's pressure to run flexible analyses until something crosses the threshold, and that combined with small sample sizes makes false positives far more common than people realise. What changed my mind about how serious this is was reading about registered reports, where journals accept a paper based on the method before the results are even known, which removes the incentive to fish for significance. I'd like to see that become more standard, along with routinely publishing null results, because right now a study that finds nothing basically disappears rather than correcting the record. It's one of the reasons I'm drawn to statistics itself rather than just using it as a tool, I want to understand the machinery well enough to spot when it's being misused."
+    },
+    "commonMistakes": [
+      "Blaming it entirely on fraud rather than incentives and methodology",
+      "Treating the crisis as already solved",
+      "Vague answer with no named mechanism or named remedy"
+    ],
+    "followUps": [
+      "Would you trust a single well-powered study over ten small significant ones? Why?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Retiring the 0.05 threshold debate",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["p-values", "current-debate", "significance"],
+    "question": "In 2019 a group of statisticians, including some behind the American Statistical Association's own guidance, argued the phrase 'statistically significant' should be abandoned altogether. What's the argument, and do you agree?",
+    "lookingFor": "Awareness of a real, current methodological debate and a defensible personal position, not just a definition of p-values.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core objection: a hard cutoff like 0.05 turns a continuous measure of evidence into a false binary",
+        "Mention the risk of two studies with p equal to 0.049 and 0.051 being treated as opposite conclusions",
+        "State a personal, reasoned position rather than sitting entirely on the fence"
+      ],
+      "modelAnswer": "The argument is that treating 0.05 as a bright line encourages people to read significant as true and not significant as nothing happened, when really a p-value of 0.049 and one of 0.051 are barely different in terms of actual evidence. I think they have a strong point, cutoffs invite exactly the kind of p-hacking we were just talking about, because a threshold gives people something to chase. Where I'm less convinced is that some decision has to get made eventually, a regulator can't approve a drug based on a vague sense of the evidence leans positive, so I think the fix is reporting effect sizes and confidence intervals alongside the p-value rather than dropping significance testing altogether."
+    },
+    "commonMistakes": [
+      "Not knowing what the debate actually is",
+      "Giving a definition of p-values instead of engaging with the argument",
+      "No personal position, just describing both sides with no view"
+    ],
+    "followUps": [
+      "What would you replace the 0.05 cutoff with, if anything?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Survivorship bias",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["bias", "sampling", "reasoning"],
+    "question": "During the Second World War, engineers wanted to add armour to returning bombers based on where they were hit. A statistician, Abraham Wald, told them they were reinforcing the wrong spots. What had they missed, and where else does that mistake show up?",
+    "lookingFor": "Understanding of survivorship bias and ability to generalise it to a new example unprompted.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that returning planes are a biased sample, the ones hit elsewhere didn't come back",
+        "State the correct conclusion: armour the spots with no bullet holes, since hits there were fatal",
+        "Give a fresh example of survivorship bias outside the bomber case"
+      ],
+      "modelAnswer": "The engineers were only looking at planes that survived and made it home, so the bullet holes they saw marked the places a plane could take damage and still fly. Wald's insight was that the missing data, the planes that never returned, told the real story, and those were presumably hit in the spots with no holes on the surviving planes, which is where the armour actually needed to go. I think about this every time someone tells me successful startups all share some trait like dropping out of college, because you're only looking at the survivors, not the far larger number who dropped out and failed. It's a good reminder that the data you don't have can matter more than the data you do."
+    },
+    "commonMistakes": [
+      "Explaining the anecdote without naming the underlying bias or generalising it",
+      "Getting the conclusion backwards, armouring the hit spots instead",
+      "Giving an example that's actually a different bias, like confirmation bias"
+    ],
+    "followUps": [
+      "Can you think of a survivorship bias problem in university admissions data itself?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Berkson's paradox",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["paradox", "selection-bias", "causal-inference"],
+    "question": "A hospital study finds that among its patients, having diabetes is negatively correlated with having heart disease, even though in the general population the two are positively correlated. How could that happen?",
+    "lookingFor": "Recognition that selection into the sample, such as being hospitalised, can create or reverse an association that doesn't exist in the wider population.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that hospital patients are a selected, non-random sample",
+        "Explain that being admitted for either disease makes the other less necessary as a reason to be there, creating a spurious negative link",
+        "Distinguish this selection effect from a genuine biological relationship"
+      ],
+      "modelAnswer": "This looks like Berkson's paradox, where restricting the data to people already selected on some condition, in this case being a hospital patient, can create a correlation that isn't there in the general population. If you're admitted with heart disease, you're in the sample regardless of your diabetes status, and the same is true the other way round, but someone with neither condition is far less likely to be in a hospital sample at all. That squeezes out the middle ground and can make two conditions look negatively related purely because of who ended up being studied, not because either disease protects against the other. It's a good reminder to ask where a sample came from before trusting a correlation in it."
+    },
+    "commonMistakes": [
+      "Assuming there must be a real biological mechanism",
+      "Confusing this with Simpson's paradox rather than a selection effect",
+      "Not identifying that the hospital population itself is the source of the distortion"
+    ],
+    "followUps": [
+      "How would you redesign the study to check if the effect is real?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Ecological fallacy",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["ecological-fallacy", "causal-inference", "aggregation"],
+    "question": "A country-level study finds that nations with higher chocolate consumption per person have more Nobel laureates per person. Why can't you use that to say individuals who eat more chocolate are more likely to win a Nobel Prize?",
+    "lookingFor": "Understanding that a relationship at the aggregate or group level doesn't automatically hold at the individual level.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the ecological fallacy: inferring individual-level relationships from group-level data",
+        "Suggest a plausible confounder operating at the country level, such as wealth or research investment",
+        "State what data would actually be needed to test the individual-level claim"
+      ],
+      "modelAnswer": "That's the ecological fallacy, where a pattern true across groups doesn't have to be true for the individuals inside them. Richer countries probably both consume more chocolate and invest more in research and education, so wealth is likely driving both numbers at the country level without either one causing the other. To actually test whether chocolate helps an individual's chances, you'd need data on individual people, their chocolate consumption and whether they went on to win prizes, and even then you'd have to control for things like access to a good university. I like this example because it shows how a correlation can be completely real at one level of aggregation and completely meaningless at another."
+    },
+    "commonMistakes": [
+      "Saying the correlation is just coincidence without naming the actual fallacy",
+      "Not suggesting a plausible confounder",
+      "Confusing this with Simpson's paradox"
+    ],
+    "followUps": [
+      "Give another real-world example where country-level data would mislead you about individuals."
+    ]
+  },
+  {
+    "id": "prog-statistics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Missing data: MCAR, MAR, MNAR",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["missing-data", "research-methods", "bias"],
+    "question": "A survey on income has a lot of missing responses, richer and poorer people are both more likely to skip the question than people in the middle. Why does that make this harder to handle than data that's simply missing at random?",
+    "lookingFor": "Understanding of missing data mechanisms and why the reason data is missing matters for how you handle it.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify this as missing not at random, since the probability of missingness depends on the value itself",
+        "Explain why standard fixes like mean imputation or listwise deletion assume missingness is unrelated to the value, and would bias results here",
+        "Mention that this kind of missingness is very hard to correct without external information"
+      ],
+      "modelAnswer": "This is data missing not at random, because whether someone answers the question depends on their actual income, not on some other variable you can observe and adjust for. That's a much harder problem than data missing completely at random, where you could just drop the missing rows or fill them in with the mean without biasing your estimate of the average income. Here, dropping those rows or imputing the mean would flatten the distribution and understate inequality, because you'd be systematically losing both tails. Honestly the best you can often do is be upfront about the limitation and try to bring in external data, like aggregate tax records, to sanity check the shape of the true distribution."
+    },
+    "commonMistakes": [
+      "Treating all missing data the same way regardless of mechanism",
+      "Suggesting mean imputation as a fix without noting it assumes the wrong mechanism here",
+      "Not naming the MCAR, MAR, MNAR distinction at all"
+    ],
+    "followUps": [
+      "How would 'missing at random' be different from what's described here?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Randomised trials vs observational studies",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["causal-inference", "study-design", "confounding"],
+    "question": "An observational study finds people who take a daily vitamin supplement live longer. A randomised controlled trial of the same supplement finds no effect. Which do you trust, and why does randomisation matter so much?",
+    "lookingFor": "Clear understanding of why randomisation controls for confounding, applied to a concrete case.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that people who choose to take supplements likely differ systematically from those who don't, in income, health habits, or access to care",
+        "State that randomisation balances both known and unknown confounders across groups on average",
+        "Conclude you'd trust the RCT more, while noting RCTs have their own limits like short follow-up or unrepresentative participants"
+      ],
+      "modelAnswer": "I'd trust the randomised trial more, because in the observational study, people who choose to take a daily supplement are probably already healthier or wealthier in ways that also affect lifespan, and no amount of statistical adjustment can be certain it's caught every one of those differences. Randomisation is powerful precisely because it balances out both the confounders you thought to measure and the ones you didn't, just by chance, across a large enough sample. That said, I wouldn't dismiss the observational finding entirely, the trial might have run for too short a time to catch a slow effect, or recruited a healthier group than the general population to begin with. So my honest answer is I'd trust the RCT's causal claim more, but I'd still want to understand why the two studies disagreed rather than just picking a winner."
+    },
+    "commonMistakes": [
+      "Trusting the observational study because the sample or effect seemed larger",
+      "Not explaining the actual mechanism of confounding",
+      "Treating RCTs as infallible with no limitations mentioned"
+    ],
+    "followUps": [
+      "What's a situation where running an RCT would be unethical or impossible?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Hidden confounders and instrumental variables",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["confounding", "causal-inference", "instrumental-variables"],
+    "question": "You can't randomise whether someone goes to university, so how might a statistician still try to estimate the causal effect of a degree on lifetime earnings, given that people who go to university probably differ from those who don't in ways you can't fully measure?",
+    "lookingFor": "Awareness that causal inference tools exist beyond RCTs, ideally naming instrumental variables or a natural experiment, with the intuition explained.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the confounding problem: ability, family background, ambition all affect both attendance and earnings",
+        "Name an approach: instrumental variables, natural experiments, or regression discontinuity",
+        "Explain the intuition in plain terms, not just the label"
+      ],
+      "modelAnswer": "The honest problem is that people who go to university probably differ in ambition or family background in ways that would affect their earnings even without the degree, so a simple comparison of graduates and non-graduates will overstate the effect. One approach statisticians use is an instrumental variable, something that affects the chance of going to university but has no direct effect on earnings except through that choice, like distance to the nearest university campus when someone was eighteen. If living further away made someone less likely to enrol, but living far away doesn't itself pay less, you can use that variation to isolate something closer to the causal effect of the degree itself. I find this kind of natural-experiment thinking really appealing, it's basically trying to find situations where life randomised something for you by accident."
+    },
+    "commonMistakes": [
+      "Suggesting you just control for more variables without addressing unmeasured confounding",
+      "Naming instrumental variables without any intuition for why it works",
+      "Picking an invalid instrument that plausibly affects earnings directly"
+    ],
+    "followUps": [
+      "What would make a bad instrumental variable, even if it's correlated with university attendance?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "The prosecutor's fallacy in court",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["probability", "ethics", "legal-statistics"],
+    "question": "A DNA match has a one in a million chance of occurring by coincidence. A prosecutor tells the jury this means there's only a one in a million chance the defendant is innocent. What's wrong with that statement?",
+    "lookingFor": "Recognition of the prosecutor's fallacy, confusing the probability of the evidence given innocence with the probability of innocence given the evidence, and its real-world stakes.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the fallacy: the one in a million figure is the chance of a random match, not the chance the defendant is innocent",
+        "Explain that in a city of a million people, you'd expect roughly one other coincidental match, so the true odds depend on the size of the suspect pool, not just the match statistic",
+        "Connect this to Bayes' theorem: you need a prior probability of guilt, not just the likelihood of the evidence"
+      ],
+      "modelAnswer": "The prosecutor has confused two different probabilities: a one in a million chance of a coincidental match is the probability of seeing this evidence if the defendant were innocent, not the probability the defendant is innocent given the evidence, and those are not the same thing. If the city has a million people, you'd actually expect around one other person to match by pure chance, so before you even look at how the defendant was identified as a suspect, there could easily be another explanation. Working out the real probability of guilt needs Bayes' theorem, combining that match statistic with a prior probability based on other evidence, like whether the defendant had any other connection to the crime. This is a case where getting the statistics wrong isn't just an academic error, it can genuinely send an innocent person to prison, which is part of why this stuff matters so much to me."
+    },
+    "commonMistakes": [
+      "Not naming the specific confusion between the two conditional probabilities",
+      "Accepting the prosecutor's number as basically correct",
+      "No mention of needing a prior or Bayes' theorem"
+    ],
+    "followUps": [
+      "How would the size of the suspect pool change your assessment?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Fairness in predictive algorithms",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "algorithmic-bias", "fairness"],
+    "question": "A risk-scoring algorithm used by courts to help decide bail is later found to flag black defendants as high risk almost twice as often as white defendants, for the same actual reoffending rate. The company that built it says the model is accurate for both groups. How can both of those things be true, and what would you do about it?",
+    "lookingFor": "Understanding that different fairness criteria can conflict mathematically, plus a thoughtful, non-glib position on what to do.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that calibration, meaning accuracy within each group, and equal false positive rates are different fairness definitions that can't always both be satisfied when base rates differ",
+        "Avoid a purely technical dodge, acknowledge the real human cost of the disparity",
+        "Land on a reasoned, honest position, not a confident fix that pretends the tension away"
+      ],
+      "modelAnswer": "This is actually a known result in the fairness literature, a model can be well calibrated within each group, meaning a given risk score means roughly the same thing for both groups, while still producing very different false positive rates between them if the underlying base rates of reoffending in the training data differ. Both claims can be mathematically true at once, and that's uncomfortable because it means you genuinely cannot satisfy every reasonable definition of fairness simultaneously, you have to choose which kind of unfairness you're more willing to accept. I don't think the answer is to throw statistics at the problem and declare it solved, I'd want to know whether the underlying arrest data the model was trained on itself reflects biased policing, because if it does then even a perfectly calibrated model is just automating that bias. My honest view is that decisions this consequential shouldn't be handed entirely to a score, it should inform a human judge's decision, not replace it."
+    },
+    "commonMistakes": [
+      "Claiming there's a technical fix that resolves the tension entirely",
+      "Treating it as purely a data problem with no discussion of the human stakes",
+      "Not recognising that the two fairness criteria can genuinely conflict"
+    ],
+    "followUps": [
+      "If you had to choose one fairness criterion to prioritise, which would you pick and why?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Differential privacy in the census",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["privacy", "current-development", "data-ethics"],
+    "question": "The US Census Bureau switched to using 'differential privacy', deliberately adding statistical noise to published data, to protect individuals while still releasing useful population statistics. What's the actual trade-off there, and do you think it was the right call?",
+    "lookingFor": "Awareness of a genuine current statistical development and understanding of the trade-off between privacy and data accuracy.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core idea: adding calibrated random noise so no individual's data can be confidently reconstructed, while aggregate patterns remain roughly accurate",
+        "Note the trade-off: more noise means better privacy but less accurate statistics, especially for small subgroups",
+        "Give a reasoned view, ideally noting who is most affected, like small towns or minority populations in a region"
+      ],
+      "modelAnswer": "Differential privacy works by adding a controlled amount of random noise to the data before it's released, calibrated so that no individual's information can be reliably reverse-engineered from the published statistics, even if someone tries to combine multiple releases. The trade-off is real, though, because that same noise makes small numbers less reliable, so a small town or a minority group within a small area can end up with statistics that are noticeably less accurate than a big city's, which matters a lot if that data decides funding or district lines. I think it was the right call in principle, because the old approach of just suppressing small cell counts wasn't actually safe against modern reconstruction attacks either, but I'd want the census bureau to be transparent about how much noise is being added so people using the data understand its real precision, especially in the smaller places where it seems to bite hardest."
+    },
+    "commonMistakes": [
+      "Describing it as simple anonymisation rather than adding calibrated noise",
+      "Not identifying who bears the accuracy cost, usually smaller populations",
+      "No personal view on whether the trade-off is justified"
+    ],
+    "followUps": [
+      "Why might simply removing names and addresses not be enough to protect privacy?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "A/B testing and the peeking problem",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["a-b-testing", "experimentation", "hypothesis-testing"],
+    "question": "A company runs an A/B test on their website and checks the results every day, stopping as soon as they see a significant result. What's wrong with that approach?",
+    "lookingFor": "Understanding that repeated significance testing on accumulating data inflates the false positive rate, similar to the multiple testing problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Connect this to multiple testing: each daily check is another chance to hit significance by chance",
+        "Explain that stopping the moment you see significance biases toward finding an effect that isn't real",
+        "Mention a proper fix: deciding sample size in advance, or using a sequential testing method designed for repeated looks"
+      ],
+      "modelAnswer": "This is really the same problem as running lots of hypothesis tests, just spread out over time. Every day you check the data is another chance for random noise to cross the significance threshold, so if you stop the very first time you see a significant result, you're far more likely to be stopping on a fluke than if you'd committed to checking once at a predetermined sample size. The proper fix is to decide your sample size or test duration in advance based on a power calculation, and stick to it, or if you really do want to check continuously, use a sequential testing method that's built to control the false positive rate even when you're peeking. It's a really practical example of how a statistical idea from an academic paper actually shows up in something as ordinary as a website redesign."
+    },
+    "commonMistakes": [
+      "Not connecting this to the general multiple testing problem",
+      "Suggesting the fix is just waiting longer with no principled stopping rule",
+      "Assuming checking daily is fine as long as you eventually get enough data"
+    ],
+    "followUps": [
+      "What is sequential testing, and how does it get around this problem?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias-variance tradeoff and overfitting",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["overfitting", "modelling", "machine-learning"],
+    "question": "A model fits the training data almost perfectly but performs badly on new data. What's going on, and how would you fix it?",
+    "lookingFor": "Solid grasp of overfitting and the bias-variance tradeoff, with concrete remedies.",
+    "idealAnswer": {
+      "bullets": [
+        "Name overfitting: the model has learned noise specific to the training set rather than the underlying pattern",
+        "Explain it in terms of the bias-variance tradeoff, a very flexible model has low bias but high variance",
+        "Give concrete fixes: more data, regularisation, a simpler model, cross-validation to detect it"
+      ],
+      "modelAnswer": "That's classic overfitting, the model is flexible enough to have essentially memorised the noise and quirks in the training set rather than learning the true underlying relationship, so it looks great on data it's already seen and falls apart on anything new. It's a good example of the bias-variance tradeoff, a very complex model has low bias because it can fit almost any pattern, but that flexibility gives it high variance, meaning small changes in the training data would produce a very different fitted model. To fix it I'd try simplifying the model or adding regularisation to penalise unnecessary complexity, getting more training data if possible, and using cross-validation from the start so I catch the gap between training and test performance before I trust the model at all."
+    },
+    "commonMistakes": [
+      "Only naming the symptom, overfitting, without explaining the mechanism",
+      "Suggesting the fix is simply getting more data without other remedies",
+      "Confusing this with underfitting"
+    ],
+    "followUps": [
+      "How does cross-validation actually help you detect this before deployment?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Publication bias and the file drawer problem",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["publication-bias", "meta-analysis", "research-methods"],
+    "question": "If you did a meta-analysis of published studies on a drug and found a strong positive effect, why might that overstate how well the drug actually works?",
+    "lookingFor": "Understanding of publication bias and how it distorts meta-analytic conclusions, plus awareness of detection methods.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that studies finding no effect are less likely to get published, the file drawer problem",
+        "Note the meta-analysis then draws only on a biased, non-representative sample of all studies actually conducted",
+        "Mention a detection method: funnel plots, or requiring trial preregistration so null results can't disappear"
+      ],
+      "modelAnswer": "The issue is that studies which find nothing interesting are much less likely to get submitted or accepted by journals in the first place, so what actually gets published is a biased sample tilted toward positive results, this is often called the file drawer problem. A meta-analysis built only from published studies inherits that same bias, so it can make a drug look more effective than it really is, even though every individual study in it was done honestly. Statisticians can check for this using something like a funnel plot, where you'd expect studies with smaller sample sizes to scatter symmetrically around the true effect, and a lopsided funnel is a red flag that negative results are missing. It's part of why clinical trial registries, which require every trial to be logged before it starts whether or not it gets published, matter so much for medicine."
+    },
+    "commonMistakes": [
+      "Blaming individual studies for being wrong rather than the selection into publication",
+      "Not naming a detection method like funnel plots",
+      "Vague answer about bias with no mechanism"
+    ],
+    "followUps": [
+      "What would a funnel plot showing publication bias actually look like?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Election polling failures",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["polling", "current-debate", "sampling"],
+    "question": "National polls before a close election can end up several points off the final result, even with large sample sizes. If the samples are big, why do the polls still get it wrong?",
+    "lookingFor": "Understanding that sample size alone doesn't fix systematic error, and that non-response and turnout modelling matter more than raw size.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a huge sample only shrinks random sampling error, it does nothing for systematic bias",
+        "Name a likely source of systematic error: differential non-response, where certain kinds of voters are less likely to answer pollsters",
+        "Mention the added difficulty of modelling who will actually turn out to vote, not just who says they support whom"
+      ],
+      "modelAnswer": "A big sample size shrinks the random noise around your estimate, but it does nothing to fix a systematic bias, and that's usually the real culprit in polling misses. If a certain kind of voter is consistently less willing to answer a pollster's call, whether because of distrust of institutions or something else, then no amount of extra sample size corrects for that, you're just measuring the wrong population more precisely. On top of that, pollsters have to guess who will actually show up to vote, and a small error in that turnout model can shift the topline number by more than the sampling error ever would. It's actually a great illustration that statistics is about more than crunching bigger numbers, the design of who you're sampling and how you weight them matters just as much."
+    },
+    "commonMistakes": [
+      "Assuming a bigger sample size would have fixed the problem",
+      "Not distinguishing sampling error from systematic bias",
+      "No mention of turnout modelling or differential non-response"
+    ],
+    "followUps": [
+      "How might a pollster try to correct for differential non-response after the fact?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "The statistician's role in the AI era",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["current-debate", "machine-learning", "career-awareness"],
+    "question": "Some people argue that with modern machine learning, you don't need classical statistics anymore, the algorithm finds the pattern for you. What do you think statistics still offers that a black-box model doesn't?",
+    "lookingFor": "A thoughtful, current view on what statistical training adds beyond fitting predictive models, showing genuine engagement with the field's relevance.",
+    "idealAnswer": {
+      "bullets": [
+        "Push back on the framing: machine learning still needs statistical thinking for design, evaluation, and uncertainty",
+        "Name something ML models are often weak on that statistics addresses directly: uncertainty quantification, interpretability, causal claims",
+        "Avoid dismissing machine learning outright, acknowledge where it genuinely does more"
+      ],
+      "modelAnswer": "I'd push back a little on that framing, because a lot of machine learning still leans on ideas from statistics underneath the surface, things like cross-validation, regularisation, and the bias-variance tradeoff came from statistical thinking long before they were rebranded as machine learning terms. What I think classical statistics still offers that a lot of black-box models don't is honest uncertainty, a well-built statistical model can usually give you a confidence interval or tell you when it's extrapolating beyond what it's seen, while a neural network will often give you a confident-sounding number even when it's completely out of its depth. I'm not trying to argue machine learning is somehow lesser, it's genuinely better at a lot of pattern recognition tasks that classical methods can't touch, but I think the two need each other, and that's actually part of why I want to study statistics rather than jump straight into a machine learning course, I want the foundations underneath it."
+    },
+    "commonMistakes": [
+      "Dismissing machine learning entirely as inferior",
+      "Agreeing that statistics is obsolete with no pushback",
+      "No specific example of what statistics adds, like uncertainty quantification"
+    ],
+    "followUps": [
+      "Can you give a concrete example where not knowing a model's uncertainty caused a real problem?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Pressure to drop inconvenient data",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "research-integrity", "dilemma"],
+    "question": "Say you're doing a summer research project and your supervisor asks you to drop three data points that are making the results 'messy' and not fitting the expected pattern, with no real justification beyond that. What would you do?",
+    "lookingFor": "Ethical reasoning that resists authority pressure to manipulate data, while handling the situation with tact rather than just refusing outright.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as a data integrity red flag, not a routine cleaning step, since there's no principled justification",
+        "Propose a constructive first move: ask for the reasoning, or offer to run the analysis both with and without the points",
+        "Show willingness to escalate or refuse if the pressure continues without justification"
+      ],
+      "modelAnswer": "My first move wouldn't be to refuse outright, it would be to ask what the actual justification is for removing those points, because there might be a real reason, like a known instrument error, that I'm just not aware of yet. But if the honest answer is just that they don't fit the expected pattern, that's not a legitimate reason to drop them, that's cherry-picking the data to match a conclusion, and I'd say so directly but respectfully. I'd probably offer to run the analysis both ways and show both results, since that's useful information either way and doesn't put me in the position of just refusing a request from someone supervising me. If they insisted on quietly dropping the points and presenting only the cleaned version as if that were the whole dataset, I think I'd have to escalate that, to a program coordinator or someone outside that direct relationship, because that crosses from an awkward disagreement into actual research misconduct."
+    },
+    "commonMistakes": [
+      "Complying without question because of the power imbalance",
+      "Refusing immediately with no attempt at a constructive conversation first",
+      "Not recognising this as a genuine integrity issue, treating it as a stylistic choice"
+    ],
+    "followUps": [
+      "Would your answer change if it were your own results you were tempted to clean up, not a supervisor's request?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing an experiment for a new teaching method",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["experimental-design", "hypothetical", "confounding"],
+    "question": "Your school wants to know whether a new revision app actually improves exam grades. How would you design a study to test that, and what would you watch out for?",
+    "lookingFor": "Ability to design a sound experiment from scratch: randomisation, control group, and awareness of realistic confounders.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose random assignment of students to app and no-app groups, not letting students self-select",
+        "Include a control group and specify a clear, measurable outcome, like grade improvement from a baseline test",
+        "Flag a realistic confounder or threat to validity: motivation differences, teacher effects, or the Hawthorne effect of just being watched"
+      ],
+      "modelAnswer": "I'd want to randomly assign students to either use the app or continue with their normal revision, rather than letting students opt in themselves, because the kind of student who volunteers for a new app is probably already more motivated and would likely improve anyway. I'd give everyone a baseline test before the trial starts so I'm measuring the change in each student's performance rather than just comparing final scores, since that controls for differences in where students started. The thing I'd watch out for most is that just knowing you're part of a study can change how hard you work, so I'd want both groups to know they're being observed for a revision study, not just the app group, to avoid that gap being about attention rather than the app itself. I'd also keep the two groups with the same teacher and same exam conditions, so any difference in the final result is more plausibly about the app and not something else entirely."
+    },
+    "commonMistakes": [
+      "Letting students self-select into groups instead of randomising",
+      "No baseline measurement, just comparing final exam scores",
+      "Not mentioning any threat to validity like the Hawthorne effect or teacher differences"
+    ],
+    "followUps": [
+      "How large a sample would you want, and how would you decide that?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Evaluating a small, promising trial",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "study-design", "critical-thinking"],
+    "question": "A pharmaceutical company hands you a trial result: out of eight patients given a new drug, seven improved, and they're calling it a breakthrough. As the statistician in the room, what do you say?",
+    "lookingFor": "Willingness to push back on a small, uncontrolled result with genuine statistical reasoning, without being needlessly dismissive.",
+    "idealAnswer": {
+      "bullets": [
+        "Flag the sample size as far too small to draw a reliable conclusion, and ask about a control or comparison group",
+        "Raise the possibility of regression to the mean or the placebo effect explaining part of the improvement",
+        "Suggest a concrete next step: a properly powered, randomised, ideally blinded trial before calling anything a breakthrough"
+      ],
+      "modelAnswer": "The first question I'd ask is whether there was a control group, because seven out of eight improving sounds dramatic, but if there's no comparison to patients who didn't get the drug, I have no way to know how many would have improved anyway, especially if these are patients who were selected because they were having a particularly bad flare-up, which tends to naturally improve over time regardless of treatment. Eight people is also just too small a sample for me to trust that proportion as a real effect size rather than a lucky run, the confidence interval around it would be enormous. I wouldn't say the result is worthless, it's a reasonable basis to justify running a proper randomised, blinded trial with a real control group and enough participants to have decent power, but I'd be very uncomfortable with anyone calling eight uncontrolled patients a breakthrough before that trial happens."
+    },
+    "commonMistakes": [
+      "Accepting the result at face value because the proportion looks impressive",
+      "Dismissing it entirely as meaningless rather than a reasonable early signal",
+      "Not mentioning the need for a control group or blinding"
+    ],
+    "followUps": [
+      "What would regression to the mean specifically look like in this scenario?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "When removing an outlier is legitimate",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["outliers", "data-cleaning", "judgement"],
+    "question": "You're analysing a dataset and find one data point way outside the rest. When is it legitimate to remove it, and when is that just cherry-picking your results?",
+    "lookingFor": "Clear, principled distinction between justified removal, such as measurement error, and unjustified removal, such as removing it because it's inconvenient.",
+    "idealAnswer": {
+      "bullets": [
+        "State the legitimate case: a documented, identifiable error, like a sensor fault or an obvious data entry mistake",
+        "State the illegitimate case: removing a point purely because it weakens the desired result",
+        "Mention the transparency practice: report the analysis both with and without the outlier, or use a robust statistical method instead of just deleting it"
+      ],
+      "modelAnswer": "I think it comes down to whether you can point to a specific, independent reason the point is wrong, separate from what it does to your conclusion. If I can trace it back to something like a sensor malfunction, a data entry typo, or a participant who clearly misunderstood the instructions, that's a legitimate reason grounded in the data collection process itself, not in the result I was hoping for. It becomes cherry-picking the moment the only justification is that the result looks better without it, because then you're just editing the evidence to match the conclusion you wanted. Even when removal is justified, I think the honest thing to do is show the analysis both with and without the point, or use a method that's naturally robust to outliers like a median instead of a mean, so a reader can judge for themselves rather than just trusting that I made the right call."
+    },
+    "commonMistakes": [
+      "No clear line between legitimate and illegitimate removal",
+      "Suggesting outliers should always be removed, or never removed",
+      "Not mentioning transparency, like reporting both versions of the analysis"
+    ],
+    "followUps": [
+      "What's a statistical method that's naturally robust to outliers, and how does it work?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Non-response bias in an online survey",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["sampling", "bias", "survey-design"],
+    "question": "A university puts an optional survey on its website asking students to rate their satisfaction, and gets a glowing average score. Why might that number be misleading?",
+    "lookingFor": "Understanding of non-response bias: who chooses to answer an optional survey is not representative of the full population.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that people with strong feelings, often either very happy or very unhappy, are more likely to respond to an optional survey",
+        "Note that a genuinely satisfied but indifferent majority is likely underrepresented in the responses",
+        "Suggest a fix: random sampling with a mandated or incentivised response, or at minimum comparing respondent demographics to the full student population"
+      ],
+      "modelAnswer": "The issue is that this is a self-selected sample, not a random one, and the students who bother to click through an optional survey tend to be the ones with the strongest opinions, which usually means either very happy students or very unhappy ones, while the large middle group who feel fine but not strongly enough to spend five minutes on a form just doesn't show up in the data at all. So a glowing average could just as easily mean a small enthusiastic group answered as it could mean the whole student body is thrilled, and you genuinely can't tell which from the number alone. A better approach would be to randomly sample a group of students and follow up until you get a solid response rate, or at least compare who responded against the overall student demographics to see if certain groups are missing. I'd also want to see the response rate itself reported next to the average score, because a glowing four point eight out of five means something very different if ten percent of students answered versus eighty percent."
+    },
+    "commonMistakes": [
+      "Assuming a large number of responses automatically means it's representative",
+      "Not naming who is likely over or underrepresented",
+      "No concrete suggestion for a better sampling method"
+    ],
+    "followUps": [
+      "How would you decide whether a response rate is good enough to trust the results?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Synthetic data for training AI models",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["current-development", "synthetic-data", "machine-learning"],
+    "question": "Some AI companies are now training models partly on synthetic data, data generated by another model rather than collected from the real world, because real data is running short or expensive to license. What statistical concerns does that raise for you?",
+    "lookingFor": "Awareness of a genuinely current issue in statistics and machine learning, with real reasoning about the risks, not just vague unease.",
+    "idealAnswer": {
+      "bullets": [
+        "Raise the risk of the synthetic data inheriting and amplifying the biases and errors of the model that generated it",
+        "Mention model collapse, where repeatedly training on generated data narrows the range of the output over successive generations",
+        "Note it's not purely negative, synthetic data can genuinely help in areas with too little real data, like rare medical conditions, if used carefully"
+      ],
+      "modelAnswer": "My main worry is that synthetic data isn't really independent evidence about the world, it's a reflection of whatever patterns and biases the generating model already picked up, so training a new model on it risks amplifying those same distortions rather than correcting them, almost like a photocopy of a photocopy losing detail each time. There's actually a documented effect called model collapse, where models trained repeatedly on their own or each other's outputs over several generations start losing the rarer, more unusual parts of the original data distribution and converge toward something blander and less representative. I don't think synthetic data is always a problem though, in a field like rare disease diagnosis where real examples are genuinely scarce, carefully generated synthetic cases can be a useful supplement as long as it's mixed with real data and you're honest about which is which. What worries me is when synthetic data quietly becomes the majority of what a model sees, because at that point you've lost track of how much of what looks like signal is really just the earlier model's assumptions echoing back."
+    },
+    "commonMistakes": [
+      "Vague unease with no specific mechanism named",
+      "Treating synthetic data as either purely bad or purely fine with no nuance",
+      "Not mentioning that this connects to bias amplification or distributional drift"
+    ],
+    "followUps": [
+      "How might a statistician actually detect that model collapse is happening?"
+    ]
+  },
+  {
+    "id": "prog-statistics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Choosing between overall accuracy and subgroup fairness",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["ethics", "fairness", "hypothetical"],
+    "question": "You've built two versions of a model predicting loan default. Model A is more accurate overall. Model B is slightly less accurate overall but performs much more evenly across income and ethnic groups, with fewer wrongly-denied applicants in groups that were already disadvantaged. Which would you recommend deploying, and how would you make that case?",
+    "lookingFor": "Ability to reason through a genuine value trade-off with statistical literacy, landing on a defensible recommendation rather than dodging the question.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this isn't a purely technical question, overall accuracy and distributional fairness are different objectives that can trade off against each other",
+        "Reason about the real-world cost of errors, wrongly denying a loan versus wrongly approving one, and who bears that cost",
+        "Commit to an actual recommendation with reasoning, while acknowledging it's a judgement call, not a purely statistical answer"
+      ],
+      "modelAnswer": "I'd lean toward recommending Model B, but I'd want to be upfront that this is a values decision dressed up as a technical one, not something the accuracy numbers alone can settle. A wrongly denied loan can shut someone out of buying a home or starting a business, and if those errors are concentrated in groups that are already disadvantaged, a small drop in overall accuracy seems like a reasonable price for spreading that harm more fairly, especially since overall accuracy can hide a lot of unevenness underneath a single headline number. I'd also want to understand exactly what's driving Model A's extra accuracy, if it's partly picking up historical lending patterns that were themselves discriminatory, then some of that accuracy is really just learning to repeat past bias more precisely. I wouldn't pretend this is a comfortable choice, a bank might reasonably push back that Model B costs them more in defaults, but I think a model this consequential for people's lives has to be judged on more than a single aggregate accuracy score."
+    },
+    "commonMistakes": [
+      "Picking Model A purely because more accurate sounds objectively better",
+      "Refusing to commit to a recommendation, just describing the trade-off",
+      "Treating this as a purely technical choice with no acknowledgment of values involved"
+    ],
+    "followUps": [
+      "How would you explain this trade-off to a bank executive who only cares about default rates?"
+    ]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-biomedical-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene expression regulation",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["genetics", "molecular-biology", "regulation"],
+    "question": "A gene's DNA sequence is identical in every cell in your body, yet a liver cell and a neuron look and behave completely differently. How is that possible, and what could go wrong in this system to cause disease?",
+    "lookingFor": "Understanding of differential gene expression through transcription factors and epigenetics, plus the ability to link the mechanism to a disease example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that cells express different subsets of genes despite identical DNA, via transcription factors and epigenetic marks (methylation, histone modification)",
+        "Give a concrete regulatory mechanism, such as promoters, enhancers, or chromatin accessibility",
+        "Link dysregulation of this system to a disease example, such as cancer or an imprinting disorder"
+      ],
+      "modelAnswer": "Every cell carries the same genome, but which genes actually get switched on depends on transcription factors binding specific promoters and enhancers, and on epigenetic marks like DNA methylation and histone acetylation that control how accessible the DNA is. A liver cell keeps metabolic genes open and neural genes tightly packed away, while a neuron does the reverse. When that regulation breaks down, for example when a tumour suppressor gene gets silenced by abnormal methylation, cells can lose the identity constraints that normally keep them behaving correctly, which is one route into cancer. I find it fascinating that the DNA sequence itself is almost the least interesting part of the story."
+    },
+    "commonMistakes": [
+      "Claiming different cells have different DNA",
+      "Describing transcription without mentioning what controls which genes are read",
+      "Naming epigenetics as a buzzword with no mechanism behind it"
+    ],
+    "followUps": ["Can you name a specific epigenetic mark and how it changes gene expression?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme kinetics reasoning",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["biochemistry", "enzymes", "reasoning"],
+    "question": "If you add more substrate to an enzyme-catalysed reaction, the rate keeps increasing, then plateaus. Why does that happen, and what would you expect if you then added more enzyme?",
+    "lookingFor": "A solid grasp of enzyme saturation kinetics and the ability to reason through a follow-on scenario rather than just recite Vmax.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that rate increases with substrate until active sites are saturated",
+        "Identify enzyme concentration as the limiting factor once saturation is reached",
+        "Predict that adding more enzyme raises the plateau, Vmax, rather than just speeding the initial rate"
+      ],
+      "modelAnswer": "At low substrate concentration there's spare capacity on the enzyme, so adding more substrate speeds the reaction almost linearly. But once every active site is occupied at any given moment, the enzyme is working as fast as it physically can, so adding more substrate just means more molecules queuing, and the rate plateaus at Vmax. If I then added more enzyme, I'd expect the plateau itself to rise, because there are simply more active sites available to process substrate at once. It's a nice example of how the limiting factor in a biological system can shift depending on what you change."
+    },
+    "commonMistakes": [
+      "Saying the reaction just 'slows down' without explaining saturation",
+      "Confusing Km with Vmax",
+      "Assuming adding more enzyme has no effect once the reaction has plateaued"
+    ],
+    "followUps": ["What would happen to the curve if a competitive inhibitor was present?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Adaptive immunity mechanisms",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["immunology", "physiology"],
+    "question": "Explain the difference between the humoral and cell-mediated arms of the adaptive immune response, and why you need both.",
+    "lookingFor": "A clear distinction between B-cell/antibody and T-cell mechanisms, with an understanding of why intracellular pathogens require a different strategy.",
+    "idealAnswer": {
+      "bullets": [
+        "Humoral: B cells producing antibodies that target extracellular pathogens and toxins",
+        "Cell-mediated: cytotoxic T cells killing infected or abnormal cells directly",
+        "Explain why antibodies alone can't handle pathogens hiding inside cells"
+      ],
+      "modelAnswer": "The humoral response relies on B cells producing antibodies that circulate and neutralise pathogens or toxins sitting outside cells, tagging them for destruction. The cell-mediated response uses cytotoxic T cells that recognise infected cells displaying viral fragments on their surface and kill the cell directly. You need both because antibodies can't reach a virus once it's hiding inside a host cell, so the immune system needs a separate mechanism that can identify and eliminate the infected cell itself rather than just the free virus. It's a good example of the immune system having a division of labour matched to where the threat actually is."
+    },
+    "commonMistakes": [
+      "Confusing which cell type does which job",
+      "Ignoring the intracellular versus extracellular distinction",
+      "Treating antibodies as sufficient for all infections"
+    ],
+    "followUps": ["How does a vaccine engage both arms of this response?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Antibiotic resistance mechanisms",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["microbiology", "public-health", "current-debate"],
+    "question": "Antimicrobial resistance is often called one of the biggest threats to global health. What actually drives resistance to spread so fast, and what do you think biomedical science can realistically do about it?",
+    "lookingFor": "Understanding of selection pressure and horizontal gene transfer, plus a realistic rather than utopian view of interventions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain selective pressure from antibiotic overuse and misuse driving survival of resistant strains",
+        "Mention horizontal gene transfer via plasmids spreading resistance between bacteria, even across species",
+        "Discuss realistic interventions, such as stewardship and better diagnostics, while acknowledging the weak drug-discovery pipeline"
+      ],
+      "modelAnswer": "Resistance spreads because every course of antibiotics is a selection event, the susceptible bacteria die and any that happen to carry a resistance gene survive and multiply, and we've applied that pressure enormously in both human medicine and agriculture. What makes it spread faster than mutation alone would suggest is horizontal gene transfer, where bacteria pass resistance genes to each other on plasmids, sometimes across completely different species. I think biomedical science can help most immediately through better rapid diagnostics that stop us prescribing broad-spectrum antibiotics on guesswork, because the honest problem is that the pipeline for genuinely new antibiotic classes has been slow and commercially unattractive for decades. It's not a problem with one clean fix."
+    },
+    "commonMistakes": [
+      "Saying bacteria 'become immune' without describing a mechanism",
+      "Ignoring horizontal gene transfer entirely",
+      "Proposing only 'make new antibiotics' with no acknowledgment of the pipeline problem"
+    ],
+    "followUps": ["Why might pharmaceutical companies be reluctant to invest in new antibiotics?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Cancer and apoptosis evasion",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["oncology", "cell-biology"],
+    "question": "Cancer cells are often described as cells that have 'forgotten how to die.' What does that mean biologically, and how might a drug exploit it?",
+    "lookingFor": "Understanding of apoptosis as a regulated process, how cancer cells evade it, and translation of that into a therapeutic idea.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain apoptosis as a controlled, programmed self-destruct process normally triggered by DNA damage or signalling",
+        "Describe how cancer cells accumulate mutations, such as in p53, that disable these checkpoints",
+        "Give an example of how a drug could restore or trigger apoptosis specifically in tumour cells"
+      ],
+      "modelAnswer": "Normally, if a cell's DNA is damaged beyond repair, checkpoint proteins like p53 trigger a controlled self-destruct programme called apoptosis, which stops that damaged cell from dividing and passing on faults. Cancer cells frequently carry mutations that disable p53 or overexpress anti-apoptotic proteins like Bcl-2, so they keep dividing despite damage that should have killed them. A drug like a Bcl-2 inhibitor works by removing that protective brake, effectively forcing the cell's own death machinery back into action so the tumour cell finally does what a damaged cell is supposed to do. I think that reframing, that cancer therapy is often about restoring a normal process rather than inventing an unnatural one, is one of the more elegant ideas in oncology."
+    },
+    "commonMistakes": [
+      "Describing apoptosis as simply 'cell death' with no regulation involved",
+      "Not naming any specific gene or checkpoint",
+      "Confusing apoptosis with necrosis"
+    ],
+    "followUps": ["What's the difference between apoptosis and necrosis, and why does that distinction matter clinically?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Germline gene editing",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "genetics", "crispr"],
+    "question": "CRISPR now makes it technically possible to edit a human embryo's genes to remove a disease-causing mutation, and that edit would be passed on to future generations. Should this be allowed?",
+    "lookingFor": "Structured ethical reasoning weighing therapeutic benefit against irreversibility and consent of future generations, not a flat yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish germline editing, which is heritable, from somatic editing, and explain why that distinction matters",
+        "Weigh the therapeutic case against the risks of irreversibility, off-target effects, and consent of unborn generations",
+        "Address the slippery slope toward non-therapeutic enhancement and the need for governance rather than a blanket technical ban"
+      ],
+      "modelAnswer": "I think the key distinction is between somatic editing, which only affects the patient and I'm broadly comfortable with, and germline editing, which changes every future generation's genome without ever being able to ask their consent. For a genuinely severe, well-understood single-gene disease the therapeutic case is real, but the technology isn't precise enough yet to rule out off-target effects that would also be inherited, and once you allow disease correction it becomes hard to draw a clean line before someone tries to edit for non-medical traits. My honest position is that it shouldn't be banned forever, but it needs international regulatory consensus and much better precision before clinical use, which is roughly where the scientific community landed after the He Jiankui case. I don't think biomedical science can settle this alone, it has to be worked out alongside ethicists and policymakers."
+    },
+    "commonMistakes": [
+      "Giving a flat 'yes, science should progress' with no ethical weighing",
+      "Not distinguishing germline from somatic editing",
+      "Being unaware of any real-world case or governance debate"
+    ],
+    "followUps": ["Does your answer change for editing an adult's genes versus an embryo's?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Placebo-controlled trials",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "clinical-trials", "research-methods"],
+    "question": "In a trial for a promising new drug for a serious illness, is it ethical to give some patients a placebo instead of the real treatment?",
+    "lookingFor": "Understanding of why placebo controls are scientifically necessary, balanced against patient welfare, informed consent, and clinical equipoise.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why placebo controls are needed to isolate a drug's true effect from natural recovery or psychological effects",
+        "Introduce clinical equipoise: it's only ethical when genuine uncertainty exists about which arm is better",
+        "Discuss safeguards such as informed consent, existing standard of care, and independent monitoring boards"
+      ],
+      "modelAnswer": "Placebo controls exist because a lot of what looks like a drug working is actually natural recovery or the placebo effect itself, so without a comparison arm you genuinely can't tell if the drug did anything. I think it's ethical as long as there's real clinical equipoise, meaning the medical community genuinely doesn't know yet whether the new drug is better, and patients aren't denied an existing effective standard of care just to test something new against nothing. It also depends on fully informed consent, patients knowing they might get placebo, and an independent monitoring board that can stop the trial early if one arm is clearly doing much worse. Where I'd draw a harder line is a fatal illness with an existing effective treatment, there placebo alone usually isn't justifiable."
+    },
+    "commonMistakes": [
+      "Saying placebo trials are simply unethical with no nuance",
+      "Not knowing why placebo controls are scientifically necessary",
+      "Ignoring safeguards like equipoise and independent monitoring"
+    ],
+    "followUps": ["What would you do if interim data showed the new drug was clearly working better mid-trial?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "mRNA vaccine technology",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["immunology", "vaccines", "current-development"],
+    "question": "mRNA vaccines were developed and deployed at record speed during the COVID-19 pandemic. How do they actually work, and why is this platform seen as significant beyond COVID?",
+    "lookingFor": "Accurate mechanistic understanding plus awareness of the platform's broader implications, such as personalised cancer vaccines.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism: a lipid nanoparticle delivers mRNA coding for a viral antigen, host cells produce the protein, the immune system responds",
+        "Contrast with traditional vaccines, such as live attenuated or protein subunit, in terms of speed and manufacturing",
+        "Mention wider significance, such as personalised cancer vaccines or a faster platform for future pathogens"
+      ],
+      "modelAnswer": "An mRNA vaccine packages messenger RNA coding for a piece of the pathogen, usually a surface protein like spike, inside a lipid nanoparticle that protects it and helps it get into cells. Once inside, the cell's own machinery reads that mRNA and briefly produces the protein, which the immune system then recognises as foreign and mounts a response against, without ever exposing you to the actual virus. What excites me about the platform beyond COVID is how fast it can be reconfigured, because once the delivery system is validated you're essentially just swapping the genetic sequence, and that's already being explored for personalised cancer vaccines built around a patient's own tumour mutations. It feels like one of those technologies where the pandemic was almost a forced early demonstration of something that was going to be significant regardless."
+    },
+    "commonMistakes": [
+      "Claiming mRNA vaccines alter your DNA",
+      "Describing the mechanism vaguely without mentioning antigen production",
+      "Not knowing any application beyond COVID"
+    ],
+    "followUps": ["Why can't the injected mRNA integrate into your genome?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Organ allocation dilemma",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "healthcare-systems", "situational"],
+    "question": "There is one donor liver available and two patients who both urgently need it. One is a 19-year-old with a genetic condition, the other is a 55-year-old whose liver failure was caused by years of alcohol use, and both have similar predicted survival odds. How should that decision be made, and should the cause of the illness matter?",
+    "lookingFor": "Structured reasoning about fairness criteria in scarce-resource allocation, with awareness this is a live policy debate and no snap moralistic judgement.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as a scarce-resource allocation problem with competing fairness principles",
+        "Explain why most transplant systems formally exclude cause of illness and instead use clinical urgency, prognosis, and time on the list",
+        "Show awareness that this is a genuinely contested real-world debate, not a question with one clean answer"
+      ],
+      "modelAnswer": "My honest instinct is that it feels unfair to hand someone a liver ahead of another patient purely because their illness was self-inflicted, but the reason most transplant systems formally exclude cause of illness from the allocation criteria is that it's almost impossible to apply consistently and fairly, you'd have to start judging obesity, smoking, and a hundred other lifestyle factors the same way. Instead they tend to rely on clinical criteria like predicted survival benefit, urgency, and time already waiting, which keeps the decision medical rather than moral. I think that's the right approach even though it feels emotionally uncomfortable in a case like this, because the alternative is a system where clinicians are constantly making judgements about who deserves treatment, and I don't think doctors should be put in that position."
+    },
+    "commonMistakes": [
+      "Making a purely moralistic judgement about the alcohol-related patient",
+      "Not knowing that real allocation systems use clinical, not moral, criteria",
+      "Refusing to engage with the dilemma at all"
+    ],
+    "followUps": ["Should age ever be a legitimate factor in transplant allocation?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in diagnostics",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["current-debate", "technology", "diagnostics"],
+    "question": "AI models can now outperform some radiologists at detecting certain cancers on scans. What's your view on the role AI should play in diagnosis, and what worries you about it?",
+    "lookingFor": "Balanced awareness of both the promise and the real limitations of AI in medicine, not blind enthusiasm or blanket rejection.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine strengths, such as consistent pattern detection at scale",
+        "Raise a real limitation, such as training-data bias, lack of explainability, or the accountability question",
+        "Land on a considered position, such as AI as decision support rather than a replacement"
+      ],
+      "modelAnswer": "I think AI is genuinely strong at spotting subtle patterns across huge numbers of images consistently, without the fatigue a radiologist might have at the end of a long shift, and there's good evidence it can catch things human readers occasionally miss. What worries me is that these models are trained on specific datasets, so if that dataset underrepresents certain populations or scanner types, the accuracy can quietly drop for exactly the patients who most need it to work. There's also the accountability question, if an AI misses something, it's not obvious whose responsibility that is. My view is that it works best as a second reader supporting a clinician's judgement rather than replacing it, at least until those explainability and bias issues are better understood."
+    },
+    "commonMistakes": [
+      "Uncritical enthusiasm with no mention of limitations",
+      "Blanket rejection of AI in medicine with no acknowledgment of real strengths",
+      "A vague answer with no specific concern named"
+    ],
+    "followUps": ["Who should be legally responsible if an AI diagnostic tool makes a mistake?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Embryonic stem cell research",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "stem-cells", "genetics"],
+    "question": "Embryonic stem cell research often requires destroying a human embryo to obtain the cells. How do you think about the ethics of that trade-off?",
+    "lookingFor": "Genuine engagement with the moral-status question, awareness of alternatives like iPSCs, and a reasoned rather than dismissive position.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the core tension between potential to treat serious disease and differing views on the moral status of an early embryo",
+        "Mention that many embryos used come from surplus IVF embryos otherwise discarded",
+        "Show awareness of induced pluripotent stem cells, iPSCs, as a technology that has partly reduced reliance on embryonic sources"
+      ],
+      "modelAnswer": "I think this is genuinely one of the harder questions in biomedical ethics because it depends on where you think moral status begins, and reasonable people land in different places. What I find relevant is that a lot of embryonic stem cell lines historically came from surplus embryos created during IVF that would otherwise be discarded, which for me shifts the calculation somewhat, since the choice isn't between the embryo living or not, it's between it being discarded or used for research with real therapeutic potential. That said, I think it's part of why induced pluripotent stem cells, which reprogram adult cells back into a stem-like state without touching an embryo at all, have been such an important development, because they let a lot of the research continue without that ethical tension. I don't think the debate is fully resolved by iPSCs though, since embryonic stem cells still have properties researchers haven't fully replicated."
+    },
+    "commonMistakes": [
+      "Dismissing the ethical tension entirely as unimportant",
+      "Not knowing what an iPSC is",
+      "Taking an absolutist position with no acknowledgment of the other side's reasoning"
+    ],
+    "followUps": ["Do iPSCs fully remove the need for embryonic stem cell research?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing an experiment",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["research-methods", "hypothetical", "reasoning"],
+    "question": "Suppose you notice that patients taking a common blood pressure medication seem to have a lower rate of a certain cancer in hospital records. How would you go about testing whether the drug is actually protective?",
+    "lookingFor": "Structured scientific reasoning that recognises confounding in observational data and designs a way to test causation, not just accepting the correlation.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the observation is only correlational and likely confounded, for example by age, other health conditions, or healthcare access",
+        "Propose a way to control for confounders, such as a matched cohort study or ideally a randomised controlled trial",
+        "Mention testing a plausible biological mechanism alongside the epidemiology, not statistics alone"
+      ],
+      "modelAnswer": "The first thing I'd want to do is resist the urge to assume causation, because patients on that medication probably differ systematically from those who aren't, in age, other conditions, or how often they see a doctor, any of which could explain the lower cancer rate on its own. I'd start with a large retrospective cohort study that matches patients on those known confounders as closely as possible to see if the association holds up, and ideally follow that with a randomised controlled trial, since randomisation is really the only way to rule out confounders you haven't even thought of. Alongside that I'd want a lab team looking for a plausible biological mechanism, because a statistical association that also has a believable mechanism behind it is far more convincing than either on its own. I think the excitement of a striking pattern in the data is exactly the moment to be most careful, not least."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'the drug prevents cancer' as a conclusion",
+      "Not mentioning confounding at all",
+      "Proposing a study design with no control group or randomisation"
+    ],
+    "followUps": ["What ethical issues would you need to consider in designing that randomised trial?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Biomedical science versus medicine",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["program-fit", "reflection"],
+    "question": "Biomedical science and medicine cover a lot of the same content in the first year or two. What specifically makes you want the research and lab side of this rather than clinical practice?",
+    "lookingFor": "A genuine, reflective distinction with real insight into what draws them to research and lab science specifically, not a disguised fallback answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Articulate a real, specific pull toward research or investigation rather than direct patient care",
+        "Show understanding of what a biomedical science career path actually looks like, such as research, diagnostics, industry, or further study",
+        "Avoid it sounding like a fallback choice"
+      ],
+      "modelAnswer": "What draws me is the question behind the patient rather than the patient in front of me, I find myself more interested in why a disease mechanism works the way it does than in the day-to-day of managing an individual case. A summer spent shadowing in a diagnostic pathology lab confirmed that for me, watching how a blood sample gets turned into an actual answer about what's wrong with someone was the part that genuinely excited me, more than the ward rounds did. I know this path could lead toward research, diagnostics, or industry, and I like that it stays close to patient impact without being clinical practice itself, that's the specific space I want to work in."
+    },
+    "commonMistakes": [
+      "Framing it as 'I couldn't get into medicine'",
+      "A vague answer that could apply to any science course",
+      "No awareness of actual career paths this leads to"
+    ],
+    "followUps": ["What part of a biomedical scientist's actual day-to-day work appeals to you most?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Homeostasis and negative feedback",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["physiology", "fundamentals"],
+    "question": "Explain how the body regulates blood glucose after a meal, and why negative feedback is the underlying principle.",
+    "lookingFor": "Accurate mechanistic explanation of insulin and glucagon regulation, with correct use of the term negative feedback.",
+    "idealAnswer": {
+      "bullets": [
+        "Insulin release from pancreatic beta cells in response to rising glucose, promoting uptake and storage",
+        "Glucagon's opposing role when glucose falls, releasing stored glucose from the liver",
+        "Explain negative feedback: a deviation triggers a response that counteracts it, restoring the set point"
+      ],
+      "modelAnswer": "After a meal, rising blood glucose is detected by beta cells in the pancreas, which release insulin, and insulin signals cells, especially in the liver and muscle, to take up glucose and store it as glycogen, bringing levels back down. If glucose falls too low between meals, alpha cells release glucagon instead, which triggers the liver to break glycogen back down into glucose and release it into the blood. That's negative feedback in action, a deviation from the set point triggers a response that pushes the system back toward it, rather than amplifying the change. I like that it's the same logic behind a thermostat, just running on hormones instead of a temperature sensor."
+    },
+    "commonMistakes": [
+      "Reversing the roles of insulin and glucagon",
+      "Not naming the pancreas or specific cell types",
+      "Describing the process without ever using or explaining negative feedback"
+    ],
+    "followUps": ["What goes wrong in type 1 versus type 2 diabetes in terms of this system?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Direct-to-consumer genetic testing",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "genetics", "current-debate"],
+    "question": "Companies now sell direct-to-consumer genetic tests that can tell someone their risk of developing conditions like Alzheimer's or certain cancers. Do you think people should have unrestricted access to that kind of information about themselves?",
+    "lookingFor": "Weighing autonomy against psychological harm, the accuracy and interpretation problem, and downstream issues like family implications or discrimination.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh the autonomy argument, a right to know your own health information, against potential psychological harm from unclear-risk results",
+        "Raise the accuracy and interpretation problem, since risk scores are probabilistic and easily misread without genetic counselling",
+        "Mention downstream implications, such as insurance or employment discrimination, or unwanted information about relatives"
+      ],
+      "modelAnswer": "I lean toward people having a right to their own genetic information, it's fundamentally about them, but I think unrestricted access without any support around it is where the problem lies. A raised risk score for something like Alzheimer's is probabilistic, not a diagnosis, and without proper genetic counselling people can easily misread a modest increase in risk as a certainty, which can cause real psychological harm for something they may never develop. There's also a wider issue that your genetic information isn't only about you, it can reveal risk for siblings or children who never consented to know, and there are real concerns about that data being used by insurers. My honest position is access should be paired with mandatory access to genetic counselling, not restricted outright, but also not sold with no support at all."
+    },
+    "commonMistakes": [
+      "Treating a raised risk percentage as equivalent to a diagnosis",
+      "Ignoring implications for family members who didn't consent",
+      "Taking an absolute position with no nuance either way"
+    ],
+    "followUps": ["Should insurance companies be allowed to ask for this data?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Reproducibility crisis",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["current-debate", "research-methods"],
+    "question": "You may have heard of the 'reproducibility crisis' in biomedical research, where a striking number of published findings can't be replicated. Why do you think that happens, and does it worry you about going into research?",
+    "lookingFor": "Awareness of a real, current methodological debate in the field, with honest and mature reflection rather than naive optimism or cynicism.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify real drivers, such as publication bias toward positive results, small sample sizes, and pressure to publish novel findings",
+        "Show that this doesn't undermine the value of science itself, but is a call for better methodology and transparency",
+        "Give an honest, reflective personal reaction rather than dismissing the issue"
+      ],
+      "modelAnswer": "A lot of it comes down to incentives, journals and career progression reward novel, positive findings far more than confirming or replicating existing ones, so there's pressure to publish something striking, sometimes from studies that were underpowered to begin with, and a temptation to keep testing until something crosses a significance threshold. It does concern me, but I don't think it makes the whole enterprise untrustworthy, if anything it's pushed the field toward pre-registration, larger sample sizes, and open data, which I think is a genuinely healthy correction. Honestly it makes me more conscious going in that I want to be rigorous about my own methods rather than chasing an exciting result, because the field seems to be actively rewarding that shift now."
+    },
+    "commonMistakes": [
+      "Saying it doesn't worry them at all with no reflection",
+      "Not naming any actual driver of the problem beyond vague 'bad science'",
+      "Concluding that science therefore can't be trusted at all"
+    ],
+    "followUps": ["What's one specific practice, like pre-registration, that helps address this?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Unexpected experimental result",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "research-methods", "reasoning"],
+    "question": "You run an experiment three times and get a result that contradicts a well-established finding in the literature. What do you do?",
+    "lookingFor": "A methodical, honest response that resists both blind deference to authority and overclaiming a breakthrough.",
+    "idealAnswer": {
+      "bullets": [
+        "Check for technical or methodological error first, such as contamination, calibration, or a faulty control",
+        "Consider whether a genuine biological difference in conditions or sample could explain it",
+        "Discuss appropriately, such as with a supervisor, and attempt independent replication before drawing big conclusions"
+      ],
+      "modelAnswer": "My first move wouldn't be to assume I've overturned established science, it would be to go back through my own method for something mundane, a contaminated reagent, a miscalibrated instrument, or a control that wasn't quite right, because those are far more common explanations than a genuine contradiction of well-replicated work. If the result held up after checking that, I'd think carefully about whether something specific about my sample or conditions could genuinely differ from the original studies, that's often where real discoveries hide. Only after that would I take it to a supervisor and think about an independent replication, ideally by someone else in the lab who doesn't know what result I got, before I'd feel comfortable saying out loud that the established finding might be wrong. I think the instinct to be excited by an anomaly is good, but it has to be paired with being your own harshest critic first."
+    },
+    "commonMistakes": [
+      "Immediately assuming the textbook or literature must be wrong",
+      "Not considering their own methodology as the likely source of error",
+      "Publishing or announcing the result without any verification"
+    ],
+    "followUps": ["Who would you tell first, and why?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Pharmacokinetics versus pharmacodynamics",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["pharmacology", "fundamentals"],
+    "question": "What's the difference between pharmacokinetics and pharmacodynamics, and why do both matter when developing a new drug?",
+    "lookingFor": "A clear distinction between what the body does to the drug and what the drug does to the body, with reasoning about why both matter for dosing.",
+    "idealAnswer": {
+      "bullets": [
+        "Pharmacokinetics: absorption, distribution, metabolism, excretion, what the body does to the drug",
+        "Pharmacodynamics: the drug's effect at its target and the dose-response relationship, what the drug does to the body",
+        "Explain why a drug can fail from either side, for example a good target effect but poor bioavailability"
+      ],
+      "modelAnswer": "Pharmacokinetics is essentially what the body does to the drug, how it's absorbed, distributed around tissues, metabolised, usually by the liver, and eventually excreted, and that determines how much of the drug actually reaches its target and for how long. Pharmacodynamics is the reverse, what the drug does to the body once it's there, how strongly it binds its target and what effect that produces at a given concentration. Both matter because a drug can be brilliant at one and fail completely at the other, you could have a compound that binds its target perfectly in a test tube but gets broken down by the liver so fast it never reaches an effective concentration in the body, which is actually one of the most common reasons promising drugs fail in development."
+    },
+    "commonMistakes": [
+      "Mixing up which term refers to which direction",
+      "Only defining one of the two terms",
+      "Giving definitions with no example of why the distinction is practically important"
+    ],
+    "followUps": ["What organ is usually most responsible for drug metabolism, and why does that matter for dosing patients with liver disease?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Correlation versus causation",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["epidemiology", "research-methods", "reasoning"],
+    "question": "A study finds that people who drink more coffee have a lower rate of a certain disease. What questions would you want answered before believing coffee is protective?",
+    "lookingFor": "Critical epidemiological reasoning that identifies confounders and reverse causation, rather than accepting the headline claim.",
+    "idealAnswer": {
+      "bullets": [
+        "Ask about confounding variables, such as income, smoking, or exercise, that correlate with coffee drinking",
+        "Consider reverse causation, whether early undiagnosed disease could reduce coffee consumption rather than the other way round",
+        "Ask about study design, sample size, and whether a dose-response relationship or mechanism supports it"
+      ],
+      "modelAnswer": "The first thing I'd want to know is what else correlates with coffee drinking, because coffee drinkers might differ systematically in income, activity levels, or smoking habits, and any of those could be doing the real work behind the association. I'd also want to rule out reverse causation, it's possible that people who are already in the early stages of the disease, even before diagnosis, change their habits and drink less coffee, which would make it look protective when it's actually the disease affecting behaviour. Beyond that I'd ask about the study design, was it a large well-controlled cohort or a small survey, is there a dose-response relationship where more coffee means proportionally lower risk, and is there a plausible biological mechanism, because a correlation with all of those behind it is a lot more convincing than a headline on its own."
+    },
+    "commonMistakes": [
+      "Accepting the finding as proof coffee is protective",
+      "Not naming a specific plausible confounder",
+      "Not considering reverse causation at all"
+    ],
+    "followUps": ["What kind of study design would let you get closer to a causal answer?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Biobank consent",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "genetics", "data-privacy"],
+    "question": "Large biobanks store genetic and health data from hundreds of thousands of volunteers for future research that hasn't been designed yet. Is it ethical to ask people to consent to research they don't yet know the details of?",
+    "lookingFor": "Understanding of broad consent as a practical compromise, weighed against fully informed consent, with awareness of real safeguards.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain broad consent as a practical compromise, since re-consent for every future study would make biobanks unworkable",
+        "Weigh this against the ideal of fully informed consent for each specific use",
+        "Mention real safeguards: independent ethics review of future studies, anonymisation, and the right to withdraw"
+      ],
+      "modelAnswer": "I think broad consent is a reasonable compromise rather than a compromise of ethics itself, because if you required a fresh, fully informed consent for every individual future study, biobanks with hundreds of thousands of participants would basically be unworkable, and a huge amount of valuable research would never happen. What makes it ethically defensible to me is that it's not a blank cheque, any specific study using the data still has to go through an independent ethics review before it's approved, participants' data is anonymised or pseudonymised, and most biobanks let people withdraw later if they change their mind. I think the honest trade-off is that participants are consenting to a governance process rather than to a specific study, and as long as that process is genuinely independent and transparent, I'm comfortable with that being sufficient."
+    },
+    "commonMistakes": [
+      "Saying broad consent is inherently unethical with no acknowledgment of the practical trade-off",
+      "Not knowing what safeguards, such as ethics review or anonymisation, actually exist",
+      "Treating this as a non-issue with no ethical tension at all"
+    ],
+    "followUps": ["Should participants be told and asked again if their data is used for something they might personally object to, like insurance risk research?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Lab-grown organs and organoids",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["current-development", "tissue-engineering"],
+    "question": "Scientists have grown miniature versions of organs, called organoids, from stem cells in the lab. What are these actually used for right now, and how far are we from growing a transplantable organ?",
+    "lookingFor": "Accurate, current understanding of organoids' real near-term use versus the much harder, further-off goal of whole transplantable organs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what organoids currently are: small 3D clusters of cells grown from stem cells that mimic some organ structure or function",
+        "Give a real current use, such as disease modelling or personalised drug testing",
+        "Show realistic understanding that whole functional transplantable organs, with vasculature and immune matching, are a much more distant goal"
+      ],
+      "modelAnswer": "Organoids are small three-dimensional clusters of cells grown from stem cells that partially mimic the structure and some function of a real organ, they're not full organs, more like working miniature models. Right now their biggest use is disease modelling and drug testing, you can grow an organoid from a patient's own cells to test how their specific tumour responds to different drugs before committing to a treatment, which is already changing how some cancer treatment decisions get made. I think a fully transplantable, whole-sized organ with proper vasculature and immune compatibility is still a genuinely distant goal, current organoids are usually a few millimetres across and lack a blood supply, so scaling that up safely is a much harder engineering problem than growing the initial cell cluster was."
+    },
+    "commonMistakes": [
+      "Claiming organoids are already used for full organ transplants",
+      "Not knowing any real current application",
+      "Overstating how close full organ transplantation actually is"
+    ],
+    "followUps": ["What's the biggest technical barrier standing between an organoid and a full transplantable organ?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Neurodegenerative disease mechanism",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["neuroscience", "molecular-biology"],
+    "question": "Explain, at a molecular level, why misfolded proteins are thought to be central to diseases like Alzheimer's, and why that makes them a difficult drug target.",
+    "lookingFor": "Understanding of protein misfolding and aggregation as a disease mechanism, plus the specific difficulty of targeting it therapeutically.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that proteins like amyloid-beta and tau misfold and aggregate into plaques and tangles that disrupt neuronal function",
+        "Note that aggregation can be self-propagating, spreading between cells in a prion-like way",
+        "Explain the drug-target difficulty: clearing aggregates after damage is done may be too late for symptoms already present"
+      ],
+      "modelAnswer": "In Alzheimer's, proteins like amyloid-beta and tau, which normally fold into a specific functional shape, misfold and start clumping together into plaques and tangles that physically disrupt how neurons communicate and eventually kill them. What makes this particularly nasty is that the aggregation seems to be somewhat self-propagating, a misfolded protein can act almost like a template that encourages nearby correctly folded proteins to misfold too, spreading through neural tissue in a way that's been compared to how prion diseases spread. That makes it a really difficult drug target because by the time a patient shows symptoms and gets diagnosed, a huge amount of that aggregation and neuronal damage has often already happened, so a drug that clears plaques at that stage may be intervening too late to reverse the cognitive decline, which is part of why so many amyloid-targeting trials have shown disappointing clinical results despite clearing plaques on scans."
+    },
+    "commonMistakes": [
+      "Describing Alzheimer's vaguely as 'brain plaques' with no protein-level mechanism",
+      "Not understanding why timing of intervention matters for drug efficacy",
+      "Confusing amyloid and tau, or not naming either specifically"
+    ],
+    "followUps": ["Why might a drug that successfully clears amyloid plaques still fail to improve a patient's symptoms?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Pandemic resource prioritisation",
+    "program": "Biomedical Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "hypothetical", "public-health"],
+    "question": "Imagine a new pandemic breaks out and there's only enough of a life-saving treatment for a fraction of the patients who need it. As someone advising on allocation, what principles would you use to decide who gets it first?",
+    "lookingFor": "Structured reasoning across competing ethical frameworks, applied to a realistic scarce-resource scenario, with a defensible landing position.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the competing principles at stake: maximising lives saved versus equal chance for all versus prioritising the most vulnerable",
+        "Discuss practical criteria used in real triage frameworks, such as likelihood of benefit and urgency, avoiding pure first-come-first-served",
+        "Land on a reasoned, defensible combination rather than a single absolute rule, and acknowledge the emotional weight of the decision"
+      ],
+      "modelAnswer": "I'd want to balance two principles that pull in different directions, maximising the total number of lives saved, which points toward prioritising patients most likely to actually benefit from the treatment, and treating people equally regardless of factors like age or social status, which points toward something like a lottery among eligible patients. In practice I think most defensible frameworks use clinical criteria first, likelihood of benefit and urgency, to filter who's actually a good candidate for the treatment at all, and only then use something like random allocation among equally eligible patients rather than first-come-first-served, because arrival time often just reflects who lives closest to a hospital, not who needs it most. I'd also want that framework set publicly and in advance by a panel, not improvised by an individual clinician in the moment, because that protects both patients and the clinicians who'd otherwise be carrying an impossible decision alone."
+    },
+    "commonMistakes": [
+      "Picking a single absolute rule, such as 'just save the youngest', with no engagement with the trade-offs",
+      "Not mentioning that criteria should be set in advance rather than improvised",
+      "Ignoring the emotional and practical burden on the clinicians making the call"
+    ],
+    "followUps": ["Should age ever be used as a tiebreaker, and if so, how would you justify that?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Precision medicine limitations",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["current-debate", "genetics", "healthcare-systems"],
+    "question": "Precision medicine promises treatments tailored to a patient's individual genetic profile. What's stopping this from being standard care for everyone right now?",
+    "lookingFor": "Realistic understanding of the practical barriers, such as cost, data diversity, and evidence base, rather than uncritical hype about the concept.",
+    "idealAnswer": {
+      "bullets": [
+        "Cost and infrastructure: sequencing and targeted therapies remain expensive and need specialised infrastructure and expertise",
+        "Data diversity: most genomic databases underrepresent non-European populations, limiting accuracy of risk models and drug response predictions",
+        "Evidence base: well-understood gene-drug interactions exist for only a handful of conditions, not yet generalisable"
+      ],
+      "modelAnswer": "I think the idea is genuinely powerful but a few practical things are holding it back from being standard care everywhere. Sequencing costs have dropped a lot, but interpreting a genome and matching it to an actual treatment decision still needs specialist infrastructure and expertise that a lot of health systems, especially outside wealthy countries, simply don't have yet. There's also a real diversity problem, most large genomic reference databases are built overwhelmingly from people of European ancestry, so risk predictions and drug response models can be noticeably less accurate for patients outside that group, which is the opposite of the equitable promise precision medicine is supposed to deliver. And honestly the evidence base itself is still uneven, we have really strong gene-drug matches for a handful of cancers, but for most conditions the science of exactly which genetic variant should change which treatment decision isn't there yet."
+    },
+    "commonMistakes": [
+      "Uncritical hype with no mention of any real barrier",
+      "Not knowing about the genomic database diversity problem",
+      "Assuming cost is the only barrier"
+    ],
+    "followUps": ["How might the lack of diversity in genomic databases actually cause harm, not just inconvenience?"]
+  },
+  {
+    "id": "prog-biomedical-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining science to a non-expert",
+    "program": "Biomedical Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "communication", "reflection"],
+    "question": "A worried relative asks you to explain, in plain terms, why a drug that worked in mice failed in human clinical trials. How would you explain that to them, and what does it reveal about a limitation of biomedical research?",
+    "lookingFor": "Ability to translate a real methodological limitation into accessible language, showing both scientific understanding and communication skill.",
+    "idealAnswer": {
+      "bullets": [
+        "Give an accessible explanation of how mouse biology, even in humanised models, differs from human biology in ways that matter",
+        "Mention practical reasons, such as dosing differences, immune system differences, or imperfect disease models",
+        "Reflect on what this reveals: animal models are a necessary but imperfect filter, which is why human trials exist"
+      ],
+      "modelAnswer": "I'd tell them that mice are incredibly useful for early testing because their biology is close enough to ours to give us a first real signal of whether something might work, but close enough isn't identical, and for a lot of drugs that gap is exactly where things fall apart. Their immune system, their metabolism, and even how a disease actually progresses in their body can differ from humans in ways that only show up once you test in people. What that reveals, I think, is that animal models are a necessary filter rather than a guarantee, they're good at ruling out things that are unsafe or clearly won't work, but passing that filter is still a long way from proof it'll work in us, which is honestly why the vast majority of drugs that succeed in mice still fail somewhere in human trials."
+    },
+    "commonMistakes": [
+      "An explanation too technical for a non-expert audience",
+      "Concluding that animal testing is therefore pointless",
+      "Not identifying any specific biological reason for the difference"
+    ],
+    "followUps": ["Does this make you question whether animal testing is still worth doing?"]
+  }
+]

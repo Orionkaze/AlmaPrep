@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-pharmacology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "PK vs PD distinction",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacokinetics", "pharmacodynamics", "fundamentals"],
+    "question": "In your own words, what is the difference between pharmacokinetics and pharmacodynamics, and why does a pharmacologist need to understand both?",
+    "lookingFor": "A clear distinction between the two with an example showing why treatment decisions depend on both together.",
+    "idealAnswer": {
+      "bullets": [
+        "Define PK as absorption, distribution, metabolism, excretion, what the body does to the drug",
+        "Define PD as the drug's effect on the body, receptor binding, dose-response",
+        "Explain why dosing decisions need both understood together"
+      ],
+      "modelAnswer": "Pharmacokinetics is what the body does to a drug, so absorption, distribution, metabolism and excretion, while pharmacodynamics is what the drug does to the body, like receptor binding and dose response. I think of PK as answering how much drug reaches its target and for how long, and PD as answering what that concentration actually does once it gets there. You need both to design a sensible dosing regimen, because a drug with brilliant pharmacodynamics is useless if its pharmacokinetics mean it's cleared before it can act."
+    },
+    "commonMistakes": [
+      "Only defining one term and assuming the other follows",
+      "Giving textbook definitions with no example",
+      "Confusing metabolism with mechanism of action"
+    ],
+    "followUps": ["Can you give an example where PK and PD pull in different directions?"]
+  },
+  {
+    "id": "prog-pharmacology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Narrow therapeutic index drugs",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["therapeutic-index", "dosing", "safety"],
+    "question": "What is a therapeutic index, and why do drugs like warfarin or digoxin need such careful monitoring?",
+    "lookingFor": "Correct definition of therapeutic index plus a link to why monitoring and patient variability matter for narrow-index drugs.",
+    "idealAnswer": {
+      "bullets": [
+        "Define therapeutic index as the gap between effective and toxic dose",
+        "Explain narrow TI means small dosing errors can cause toxicity or treatment failure",
+        "Note why monitoring and patient factors matter for these drugs"
+      ],
+      "modelAnswer": "The therapeutic index is roughly the ratio between the dose that causes toxicity and the dose that's actually effective, so a wide index gives you room for error and a narrow one doesn't. Warfarin and digoxin both have narrow therapeutic indices, meaning the gap between a dose that works and one that's dangerous is small, and that gap shifts with things like diet, kidney function or interacting drugs. That's why patients on warfarin get regular INR checks rather than just a fixed dose, because you're constantly re-finding that narrow window for each individual."
+    },
+    "commonMistakes": [
+      "Defining therapeutic index backwards",
+      "Failing to connect it to real monitoring practice",
+      "Assuming narrow TI just means 'strong' drug"
+    ],
+    "followUps": ["Why might two patients on the same warfarin dose end up with very different INR results?"]
+  },
+  {
+    "id": "prog-pharmacology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme-mediated drug interactions",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["metabolism", "interactions", "cyp450"],
+    "question": "How can one drug change how another drug is metabolised in the body?",
+    "lookingFor": "Understanding of CYP450 enzyme induction and inhibition with a real or plausible clinical consequence.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain liver enzymes, especially cytochrome P450, metabolise many drugs",
+        "Describe induction (speeds metabolism, lowers levels) vs inhibition (slows it, raises levels)",
+        "Give an example and its clinical consequence"
+      ],
+      "modelAnswer": "A lot of drugs are broken down by the same family of liver enzymes, the cytochrome P450 enzymes, so if one drug induces those enzymes it speeds up the breakdown of anything else sharing that pathway, lowering its levels. If a drug instead inhibits the enzyme, other drugs build up and can become toxic. A classic example is grapefruit juice inhibiting CYP3A4, which can push some statins to dangerous levels, and it's exactly why pharmacists check for interactions rather than just checking each drug in isolation."
+    },
+    "commonMistakes": [
+      "Confusing induction and inhibition effects",
+      "Vague answer with no named enzyme system",
+      "Ignoring the practical dosing consequence"
+    ],
+    "followUps": ["Why might this matter more for a drug with a narrow therapeutic index?"]
+  },
+  {
+    "id": "prog-pharmacology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Pharmacogenomics",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["pharmacogenomics", "personalized-medicine", "genetics"],
+    "question": "What role do you think genetics should play in deciding what dose of a drug someone receives?",
+    "lookingFor": "Awareness of pharmacogenomic variability with a concrete example, balanced against practical limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain genetic variation in metabolising enzymes changes drug response",
+        "Give a concrete example such as codeine and CYP2D6",
+        "Acknowledge practical limits like cost and testing turnaround"
+      ],
+      "modelAnswer": "Genetics can massively change how someone responds to a standard dose, because variants in enzymes like CYP2D6 mean some people are poor metabolisers and others are ultra-rapid. Codeine is the go-to example, since ultra-rapid metabolisers convert it to morphine so fast that a normal dose can be dangerous, while poor metabolisers barely get any pain relief at all. I think genetics should guide dosing wherever testing is fast and cheap enough to actually change a prescribing decision in time, but I don't think it's realistic yet for every drug given cost and turnaround."
+    },
+    "commonMistakes": [
+      "Treating genetic testing as a solved, universal solution",
+      "No concrete example of a gene-drug pair",
+      "Ignoring cost or practicality constraints"
+    ],
+    "followUps": ["What would need to change for pharmacogenomic testing to become routine?"]
+  },
+  {
+    "id": "prog-pharmacology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Antimicrobial resistance",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["antibiotics", "resistance", "public-health"],
+    "question": "Antibiotic resistance is often called one of the biggest threats to modern medicine. What do you think pharmacology can actually do about it?",
+    "lookingFor": "Understanding of resistance mechanisms plus awareness of stewardship and the economic disincentive for new antibiotics.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic understanding of how resistance develops and spreads",
+        "Discuss stewardship as a lever to reduce inappropriate use",
+        "Acknowledge the economic problem limiting new antibiotic development"
+      ],
+      "modelAnswer": "Resistance develops because bacteria are under constant selection pressure, and every unnecessary or incomplete course of antibiotics gives resistant strains an edge, so a big part of the answer is stewardship, making sure drugs are used only when needed and for the right duration. But pharmacology also has to keep producing new options, and that's where it gets difficult, because antibiotics are used briefly and cheaply compared to something like a cancer drug, so companies have little financial incentive to develop them. I think that mismatch between public health need and commercial incentive is actually the harder problem to solve than the science itself."
+    },
+    "commonMistakes": [
+      "Treating it purely as a lab science problem, ignoring economics",
+      "No mention of stewardship or appropriate use",
+      "Overly vague 'we need new antibiotics' with no reasoning"
+    ],
+    "followUps": ["Should governments intervene in the antibiotic market, and how?"]
+  },
+  {
+    "id": "prog-pharmacology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Off-label use ethics",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["ethics", "off-label", "prescribing"],
+    "question": "A doctor wants to prescribe a drug off-label for a condition it wasn't approved for, because early evidence looks promising. As someone training in pharmacology, how do you think about the ethics of that?",
+    "lookingFor": "Weighing patient benefit against evidence gaps, informed consent, and the responsibility to monitor outcomes.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge off-label use is legal and sometimes the best option available",
+        "Weigh the need for genuine informed consent about the uncertainty",
+        "Discuss the responsibility to monitor outcomes and feed back into the evidence base"
+      ],
+      "modelAnswer": "Off-label prescribing isn't inherently wrong, doctors do it often when the evidence is promising but a formal approval process just hasn't caught up yet. What matters ethically is that the patient understands they're getting something outside the tested indication, so genuine informed consent has to include the uncertainty, not just the potential benefit. I'd also want that use to be monitored and reported somehow, because every off-label case is really a small piece of evidence that could help future patients if it's tracked properly rather than left as an isolated decision."
+    },
+    "commonMistakes": [
+      "Treating off-label use as automatically unethical or automatically fine",
+      "Skipping informed consent entirely",
+      "No mention of monitoring or evidence contribution"
+    ],
+    "followUps": ["Does your answer change if the patient is a child who can't consent themselves?"]
+  },
+  {
+    "id": "prog-pharmacology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Placebo effect and trial design",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["clinical-trials", "placebo", "methodology"],
+    "question": "Why do clinical trials bother with a placebo arm at all, and is it ever ethical to give someone a placebo when they're unwell?",
+    "lookingFor": "Understanding of why placebo controls isolate true drug effect, plus ethical nuance around clinical equipoise and consent.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the placebo arm isolates the drug's true effect from expectation and natural recovery",
+        "Note the ethical requirement of clinical equipoise",
+        "Mention informed consent and blinding as safeguards"
+      ],
+      "modelAnswer": "People often get better, or think they get better, just from the expectation of treatment, so without a placebo arm you can't tell how much of an improvement is really the drug versus that effect or the natural course of the illness. Ethically I think it's only justified when there's genuine uncertainty about whether the treatment works, what's called clinical equipoise, and never when it means withholding a treatment already known to help. Participants also need to consent knowing they might get the placebo, which is why blinding and proper consent processes matter so much in trial design."
+    },
+    "commonMistakes": [
+      "Not explaining why a placebo is scientifically necessary",
+      "Saying placebos are always fine or always unethical with no nuance",
+      "Missing the concept of equipoise"
+    ],
+    "followUps": ["What would you say to a patient upset they were on the placebo arm?"]
+  },
+  {
+    "id": "prog-pharmacology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Clinical trial phases",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["clinical-trials", "drug-development", "fundamentals"],
+    "question": "Briefly walk me through what changes as a new drug moves from Phase 1 to Phase 3 trials, and why that order matters.",
+    "lookingFor": "Understanding of the escalating scale and purpose of each phase and the rationale for sequencing.",
+    "idealAnswer": {
+      "bullets": [
+        "Phase 1: small healthy volunteer group, focus on safety and dosing",
+        "Phase 2: larger patient group, focus on efficacy signal and side effects",
+        "Phase 3: large scale, compares against standard treatment, confirms efficacy and safety"
+      ],
+      "modelAnswer": "Phase 1 is mostly about safety, a small group, often healthy volunteers, to find a tolerable dose range and see how the body handles the drug. Phase 2 moves to actual patients with the condition, in bigger numbers, to get a first read on whether it actually works and to refine the dose. Phase 3 is much larger and usually compares the new drug against the current standard treatment or placebo, because you need that scale to be confident the effect is real and to catch rarer side effects before it reaches the wider public. The order matters because you're building confidence in safety before you ever risk efficacy testing on a large population."
+    },
+    "commonMistakes": [
+      "Mixing up the purpose of each phase",
+      "Forgetting Phase 1 usually uses healthy volunteers",
+      "Not explaining why the escalating scale is necessary"
+    ],
+    "followUps": ["Why do some effective drugs still fail in Phase 3?"]
+  },
+  {
+    "id": "prog-pharmacology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Opioid prescribing crisis",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["opioids", "ethics", "public-health"],
+    "question": "The opioid crisis has been linked partly to how these drugs were prescribed and marketed. What does that tell you about the responsibility of pharmacology as a field?",
+    "lookingFor": "Understanding of addiction mechanisms plus reflection on the responsibility of prescribers, marketing, and regulation.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of why opioids drive tolerance and dependence",
+        "Reflect on how downplaying addiction risk in marketing contributed to the crisis",
+        "Draw a lesson about pharmacology's responsibility to communicate risk honestly"
+      ],
+      "modelAnswer": "Opioids are genuinely powerful painkillers, but they also drive tolerance and physical dependence quite quickly, and part of the crisis came from marketing that downplayed how significant that addiction risk really was, alongside prescribing that didn't always match the severity of pain. It tells me pharmacology isn't just about proving a drug works, it's about being honest about the full risk profile even when that's commercially inconvenient. I think that's a responsibility that sits with researchers, companies and prescribers together, and it's made me much more alert to how easily good pharmacology can be undermined by how a drug gets marketed."
+    },
+    "commonMistakes": [
+      "Blaming only patients for addiction",
+      "Ignoring the marketing and regulatory failures",
+      "Giving a purely factual answer with no reflection on responsibility"
+    ],
+    "followUps": ["How should pain management change in light of this?"]
+  },
+  {
+    "id": "prog-pharmacology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in drug discovery",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["ai", "drug-discovery", "current-development"],
+    "question": "You've probably seen headlines about AI discovering new drug candidates or predicting protein structures. What's your honest take on how much this actually changes drug development?",
+    "lookingFor": "A balanced, informed view that names a real example and separates what AI speeds up from what it doesn't solve.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of a real example, such as AlphaFold or AI-assisted candidate screening",
+        "Explain where AI genuinely speeds things up",
+        "Note it doesn't remove the need for lengthy human safety and efficacy testing"
+      ],
+      "modelAnswer": "Tools like AlphaFold predicting protein structures have genuinely sped up the early stages, because understanding a target's shape used to take years of crystallography and now you can get a strong prediction quickly, and AI screening can narrow millions of candidate molecules down to a manageable shortlist far faster than traditional methods. But I don't think it changes the fundamental bottleneck, which is still clinical trials, because you can't predict how a real human body will respond long term just from a model. So I'd say AI is genuinely reshaping the front end of drug discovery, but it hasn't shortened the years it takes to actually prove a drug is safe and effective in people."
+    },
+    "commonMistakes": [
+      "Overhyping AI as replacing clinical trials entirely",
+      "Dismissing AI's role with no specific example",
+      "No awareness of any real AI drug discovery tool"
+    ],
+    "followUps": ["Where do you think AI could go wrong in this process?"]
+  },
+  {
+    "id": "prog-pharmacology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Orphan drug pricing ethics",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["ethics", "pricing", "rare-disease"],
+    "question": "Some drugs for rare diseases cost hundreds of thousands of dollars a year. How do you think about the ethics of pricing a drug that few people need but desperately depend on?",
+    "lookingFor": "Balanced reasoning on R&D cost recovery versus access, without a simplistic villain framing.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine cost of developing drugs for small patient populations",
+        "Weigh that against the problem of a life-saving drug being unaffordable",
+        "Bring in a structural solution such as subsidy or negotiated access"
+      ],
+      "modelAnswer": "I understand why the economics are hard, a rare disease means the company has to recover the same kind of research cost over a much smaller number of patients, which pushes the price up steeply. But I don't think that fully resolves the ethical problem, because you end up with a drug that works sitting out of reach for the very people it was designed for, which feels like a failure even if it's an explicable one. I think the more honest answer is that pricing alone shouldn't carry that weight, and there needs to be public subsidy or negotiated access alongside it, because leaving it purely to market pricing puts patients and companies in an impossible standoff."
+    },
+    "commonMistakes": [
+      "Simply condemning companies as greedy with no economic reasoning",
+      "Purely defending high prices with no acknowledgment of the access problem",
+      "Offering no structural solution at all"
+    ],
+    "followUps": ["Should governments cap drug prices for rare diseases?"]
+  },
+  {
+    "id": "prog-pharmacology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Animal testing in drug development",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["ethics", "animal-testing", "research"],
+    "question": "Where do you personally stand on the use of animal testing in developing new drugs?",
+    "lookingFor": "A nuanced position acknowledging current necessity, the 3Rs framework, and openness to alternatives.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge animal testing remains a required step before human trials for safety",
+        "Reference the 3Rs, replacement, reduction, refinement",
+        "Show openness to newer alternatives as they mature"
+      ],
+      "modelAnswer": "I think animal testing is currently a necessary stage, because there are things about whole-body toxicity and long-term effects that we can't yet reliably predict any other way, and it has caught real dangers before they reached humans. That said, I don't think that makes it ethically simple, and I like that the field actually has a working framework for it, the three Rs, replacing animal use where possible, reducing the numbers used, and refining procedures to minimise suffering. I'm genuinely hopeful about alternatives like organ-on-chip models, and I'd want to see the field keep moving toward them as they become reliable enough to trust for regulatory decisions."
+    },
+    "commonMistakes": [
+      "Taking an absolutist position either way with no engagement with the tension",
+      "Not knowing the 3Rs framework exists",
+      "No mention of emerging alternatives"
+    ],
+    "followUps": ["Would you personally be comfortable working in a lab that does animal testing?"]
+  },
+  {
+    "id": "prog-pharmacology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Bioavailability and first-pass metabolism",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["bioavailability", "metabolism", "pharmacokinetics"],
+    "question": "Why might a drug that works perfectly well when injected fail when given as a tablet?",
+    "lookingFor": "Understanding of first-pass metabolism and bioavailability, with awareness of route-of-administration effects.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain oral drugs pass through the gut wall and liver before reaching circulation",
+        "Define first-pass metabolism reducing the active drug that reaches the bloodstream",
+        "Note why some drugs are only given by injection or need much higher oral doses"
+      ],
+      "modelAnswer": "When you inject a drug it goes straight into the bloodstream, but a tablet has to survive the gut, get absorbed through the intestinal wall, and then pass through the liver before it even reaches general circulation, and that liver pass can metabolise a big chunk of the drug before it's done anything. That's called first-pass metabolism, and if it's extensive enough the oral dose that actually reaches its target can be a small fraction of what you swallowed. That's exactly why some drugs, like insulin, just aren't given as tablets, the bioavailability would be far too low to be useful."
+    },
+    "commonMistakes": [
+      "Not naming first-pass metabolism specifically",
+      "Confusing bioavailability with potency",
+      "No example of a drug affected by this"
+    ],
+    "followUps": ["How might a drug's formulation be changed to get around this problem?"]
+  },
+  {
+    "id": "prog-pharmacology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Polypharmacy in elderly patients",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["polypharmacy", "hypothetical", "clinical-reasoning"],
+    "question": "Imagine an 82 year old patient is on nine different medications for various conditions. As a pharmacologist, what concerns would you have, and how would you approach reviewing that list?",
+    "lookingFor": "Awareness of polypharmacy risks like interactions and prescribing cascades, plus a structured, collaborative review approach.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify risks: interactions, cumulative side effects, prescribing cascades",
+        "Describe a systematic review of each drug's current indication and duplication",
+        "Emphasize collaboration with the patient and other prescribers rather than unilateral changes"
+      ],
+      "modelAnswer": "Nine medications immediately worries me because the chance of interactions climbs fast, and it's easy for a prescribing cascade to happen, where a side effect of one drug gets treated with another drug rather than reconsidering the original one. I'd want to go through the list drug by drug, checking whether each one still has a clear current indication, whether any are duplicating effects, and whether the combined side effect burden might explain symptoms like dizziness or confusion that get mistaken for aging itself. I wouldn't just start stopping things though, I'd want that review done alongside the patient's other doctors and the patient themselves, because stopping a drug abruptly can be as risky as the polypharmacy itself."
+    },
+    "commonMistakes": [
+      "Suggesting drugs be stopped unilaterally without consulting other prescribers",
+      "Not mentioning prescribing cascades",
+      "Treating this as a purely mechanical checklist with no patient involvement"
+    ],
+    "followUps": ["What symptoms in an elderly patient might actually be a drug side effect rather than a new illness?"]
+  },
+  {
+    "id": "prog-pharmacology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Communicating vaccine pharmacology",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["vaccines", "public-communication", "current-debate"],
+    "question": "How would you explain to someone who's hesitant about vaccines why the rapid development of COVID-19 vaccines didn't mean corners were cut?",
+    "lookingFor": "Understanding that trial phases overlapped rather than were skipped, delivered with an empathetic communication approach.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain speed came from overlapping trial phases and parallel manufacturing scale-up, not skipped steps",
+        "Mention the existing mRNA and vaccine platform research that predated the pandemic",
+        "Show empathy for the hesitancy rather than dismissing it"
+      ],
+      "modelAnswer": "I'd start by acknowledging the concern is reasonable on the surface, because normally vaccines do take years. What actually changed was the process around the science, trial phases were run overlapping instead of waiting for each one to fully finish before starting the next, and manufacturing was scaled up in parallel at financial risk before approval was even certain, so none of the safety testing steps themselves were skipped. I'd also mention that mRNA vaccine technology wasn't invented overnight, it had been in development for over a decade, so the pandemic accelerated deployment of research that already had a real head start. I think the goal is to explain the mechanism honestly rather than just asking someone to trust the outcome."
+    },
+    "commonMistakes": [
+      "Dismissing the hesitancy instead of engaging with it",
+      "Claiming no trial phases changed at all",
+      "Not knowing what actually enabled the speed"
+    ],
+    "followUps": ["What would you say if they still didn't trust the answer?"]
+  },
+  {
+    "id": "prog-pharmacology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Generic drug bioequivalence",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["generics", "bioequivalence", "regulation"],
+    "question": "Some patients insist a brand-name drug 'works better' than the generic. Is there any pharmacological basis for that, or is it purely psychological?",
+    "lookingFor": "Understanding of bioequivalence standards with an honest acknowledgment of the narrow-TI exception.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain generics must meet bioequivalence standards within a defined range",
+        "Acknowledge most perceived difference is psychological or cosmetic",
+        "Note the exception for narrow therapeutic index drugs or excipient-sensitive patients"
+      ],
+      "modelAnswer": "Generics have to prove bioequivalence to the brand, meaning the rate and extent of absorption falls within an accepted range, so for most drugs there's genuinely no meaningful difference in effect. A lot of what patients report is likely psychological, tied to the different pill colour or packaging changing their expectation. That said, I wouldn't dismiss it completely for every case, because for narrow therapeutic index drugs, or patients sensitive to a different filler or coating, small formulation differences can occasionally have a real clinical effect, which is why switching is handled more carefully for those specific drugs."
+    },
+    "commonMistakes": [
+      "Claiming generics and brands are always identical with zero nuance",
+      "Dismissing patient reports entirely as 'just psychological'",
+      "Not knowing what bioequivalence actually means"
+    ],
+    "followUps": ["Why might switching brands matter more for a drug like levothyroxine than for ibuprofen?"]
+  },
+  {
+    "id": "prog-pharmacology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Post-market drug safety monitoring",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["pharmacovigilance", "adverse-reactions", "regulation"],
+    "question": "If a drug passes all its clinical trials, why do rare but serious side effects sometimes only show up years after it's approved?",
+    "lookingFor": "Understanding of trial sample size limits, narrower trial populations, and the role of pharmacovigilance.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain trials involve thousands at most, so rare effects may not appear",
+        "Note trial populations are narrower than the real world",
+        "Describe pharmacovigilance systems catching signals after approval"
+      ],
+      "modelAnswer": "Even a large Phase 3 trial might only involve a few thousand patients, so a side effect that happens in one in fifty thousand people statistically might never show up until millions of people are actually taking the drug. Trials also tend to exclude complicating factors, like pregnancy, other illnesses or elderly patients on lots of other medications, so the real world exposes the drug to combinations it was never really tested against. That's exactly why pharmacovigilance systems exist, collecting reports after approval so rare signals can be picked up and acted on, sometimes leading to new warnings or even withdrawal."
+    },
+    "commonMistakes": [
+      "Assuming trials should have caught every possible effect",
+      "Not understanding rare-event statistics relative to sample size",
+      "No mention of post-marketing surveillance systems"
+    ],
+    "followUps": ["Can you think of a real drug that was withdrawn or restricted after approval for this reason?"]
+  },
+  {
+    "id": "prog-pharmacology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene therapy as a new drug modality",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["gene-therapy", "current-development", "innovation"],
+    "question": "Gene therapies and mRNA-based treatments are sometimes called a completely different kind of medicine compared to traditional small-molecule drugs. What do you think is genuinely different about how pharmacologists need to think about them?",
+    "lookingFor": "Recognition that these modalities alter biological instructions, changing dosing, safety, and manufacturing considerations.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast small molecules modulating existing pathways with therapies that change what a cell produces",
+        "Note different safety concerns like immune response and durability of effect",
+        "Mention manufacturing and regulation are still adapting to this category"
+      ],
+      "modelAnswer": "A traditional small molecule usually nudges an existing pathway up or down and then gets cleared, so its effect is temporary and dose adjustable. Gene and mRNA therapies work differently, they're instructing the body's own cells to produce something, or in some gene therapy cases permanently altering DNA, so the effect can be much longer lasting and the usual dose-response thinking doesn't map on as neatly. That also changes the safety questions pharmacologists worry about, less about classic toxicity curves and more about immune reactions to the delivery vehicle or, for gene editing, where in the genome the change actually lands. I find it fascinating that the whole framework of pharmacology has to stretch to fit these newer modalities."
+    },
+    "commonMistakes": [
+      "Treating gene therapy as just a fancier small molecule",
+      "No mention of durability or immune response differences",
+      "Vague enthusiasm with no specific reasoning"
+    ],
+    "followUps": ["What ethical questions do you think permanent genetic changes raise that a normal drug doesn't?"]
+  },
+  {
+    "id": "prog-pharmacology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Drug chirality and historical lessons",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["chirality", "history", "ethics", "safety"],
+    "question": "The thalidomide tragedy is often taught as a turning point in drug regulation. What do you understand about what actually went wrong, and what it changed?",
+    "lookingFor": "Knowledge of the teratogenicity issue and inadequate testing at the time, plus understanding of the regulatory legacy.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain thalidomide was prescribed without adequate pregnancy testing, causing birth defects",
+        "Mention the chirality angle and that the two mirror-image forms interconvert in the body",
+        "Describe how this led to stronger regulatory requirements globally"
+      ],
+      "modelAnswer": "Thalidomide was marketed for morning sickness in the late 1950s without proper testing for its effects during pregnancy, and it turned out to cause severe limb malformations in thousands of babies before it was withdrawn. What's interesting pharmacologically is that it exists as two mirror-image forms, and even though one form seemed safer in later research, the body actually interconverts between the two, so it wasn't as simple as just using the 'good' one. The tragedy is really what led to the modern regulatory framework we have now, much stricter requirements around testing in pregnancy and far more rigorous approval processes before a drug reaches patients at all."
+    },
+    "commonMistakes": [
+      "Not knowing the chirality detail at all",
+      "Vague answer with no regulatory consequence mentioned",
+      "Treating it as ancient history irrelevant to modern practice"
+    ],
+    "followUps": ["Do you think today's regulatory framework has fully closed the gap that allowed this, or are there still blind spots?"]
+  },
+  {
+    "id": "prog-pharmacology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Compassionate use / expanded access",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["ethics", "compassionate-use", "access"],
+    "question": "A terminally ill patient wants access to an experimental drug that hasn't finished clinical trials. What are the competing considerations you'd want to weigh?",
+    "lookingFor": "Balanced reasoning between patient autonomy and the risks of unproven treatment, plus impact on trial evidence.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh patient autonomy against the real risk of an unproven treatment",
+        "Consider whether access outside a trial could undermine recruitment or evidence",
+        "Acknowledge existing compassionate use / expanded access frameworks"
+      ],
+      "modelAnswer": "I'd want to respect that a terminally ill patient has a strong claim to make their own choice about risk when there's little left to lose, and denying that access purely on bureaucratic grounds feels hard to justify. At the same time I'd worry about whether the drug could actually cause harm without the safeguards a trial provides, and whether giving access outside a formal trial pathway could pull patients away from the structured trials that are actually generating the evidence everyone eventually needs. I think that's why compassionate use programs exist as a middle path, they try to give access on a case by case basis while keeping some oversight, and I'd want to understand the specifics of the drug's early safety data before I felt comfortable with either extreme."
+    },
+    "commonMistakes": [
+      "Defaulting to 'just let them have it' with no consideration of risk or evidence impact",
+      "Refusing access purely on protocol grounds with no empathy",
+      "Not knowing compassionate use frameworks exist"
+    ],
+    "followUps": ["Should the patient's family have any say if the patient can no longer communicate?"]
+  },
+  {
+    "id": "prog-pharmacology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Drug repurposing",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["repurposing", "drug-development", "efficiency"],
+    "question": "During the COVID-19 pandemic, existing drugs like dexamethasone were repurposed rather than developing something entirely new. Why is drug repurposing often such an attractive strategy?",
+    "lookingFor": "Understanding of the time and safety advantage of known drugs, with awareness that efficacy still needs proving.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain repurposed drugs already have known safety profiles and manufacturing in place",
+        "Note it's especially valuable in emergencies where speed matters",
+        "Acknowledge existing drugs still need proper trials for the new indication"
+      ],
+      "modelAnswer": "Repurposing skips most of the early development timeline, because the safety profile, dosing range and manufacturing process are already established, sometimes after decades of use, so you can jump almost straight to testing efficacy for the new indication. That's incredibly valuable in an emergency like a pandemic, where waiting years for a brand new drug isn't really an option. The trade-off is that these drugs weren't designed with the new target in mind, so you still need proper trials to prove they actually work, dexamethasone worked for COVID but plenty of other repurposing attempts during the pandemic didn't pan out."
+    },
+    "commonMistakes": [
+      "Assuming repurposed drugs are automatically effective just because they're already approved",
+      "Not mentioning the time and cost savings clearly",
+      "No acknowledgment that trials are still needed"
+    ],
+    "followUps": ["Can you think of another well known example of drug repurposing?"]
+  },
+  {
+    "id": "prog-pharmacology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Agonists and antagonists",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["receptors", "pharmacodynamics", "fundamentals"],
+    "question": "Explain the difference between a drug acting as an agonist versus an antagonist at a receptor, and why that distinction matters clinically.",
+    "lookingFor": "Correct definitions of agonist and antagonist with a clinical example showing why the distinction matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Define agonist as binding and activating a receptor",
+        "Define antagonist as binding without activating, blocking the receptor",
+        "Give a clinical example such as naloxone reversing opioid overdose"
+      ],
+      "modelAnswer": "An agonist binds to a receptor and activates it, triggering the same kind of response the body's own natural signal would produce, whereas an antagonist binds to the receptor but doesn't activate it, and instead blocks it from being triggered by anything else. Naloxone is the clearest clinical example I know, it's an opioid receptor antagonist, so in an overdose it doesn't add any opioid effect itself, it displaces the opioid from the receptor and rapidly reverses the overdose. That distinction matters hugely in practice, because giving an agonist when you need an antagonist, or vice versa, would do the opposite of what's needed."
+    },
+    "commonMistakes": [
+      "Reversing the definitions of agonist and antagonist",
+      "No clinical example given",
+      "Confusing antagonist with 'inactive' rather than 'actively blocking'"
+    ],
+    "followUps": ["What is a partial agonist, and where might that be clinically useful?"]
+  },
+  {
+    "id": "prog-pharmacology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "GLP-1 drugs and access debate",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["obesity", "pricing", "current-debate"],
+    "question": "GLP-1 drugs like semaglutide have become hugely popular for weight loss and are in short supply partly because of that demand. What tensions does this create that you find interesting from a pharmacology and health policy perspective?",
+    "lookingFor": "Awareness of the drug's diabetes origin, the shortage impact on diabetic patients, and the pricing and access equity debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the drugs were originally developed for type 2 diabetes",
+        "Explain how weight-loss demand has contributed to shortages affecting diabetic patients",
+        "Discuss the equity tension around cost and insurance coverage"
+      ],
+      "modelAnswer": "What strikes me is that these drugs were originally developed and approved for type 2 diabetes, and the weight loss effect was almost a secondary discovery that then exploded in demand, to the point that diabetic patients who actually need it for glucose control have struggled with shortages. There's also a real equity question, because at the price point these drugs sit at, and with patchy insurance coverage for weight loss specifically, access ends up shaped more by who can pay out of pocket than by clinical need. I think it's a good example of how a genuine pharmacological breakthrough can create policy problems that have nothing to do with the science itself."
+    },
+    "commonMistakes": [
+      "Only discussing the weight loss angle with no mention of diabetes patients affected by shortage",
+      "No awareness of the pricing or access tension",
+      "Treating it as a purely positive development with no critical reflection"
+    ],
+    "followUps": ["How should manufacturers or health systems prioritise limited supply?"]
+  },
+  {
+    "id": "prog-pharmacology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Novel drug delivery systems",
+    "program": "Pharmacology",
+    "difficulty": "medium",
+    "tags": ["drug-delivery", "nanomedicine", "current-development"],
+    "question": "Why might how a drug is delivered to the body matter just as much as the drug molecule itself?",
+    "lookingFor": "Understanding that delivery systems affect targeting and side effects, with a concrete current example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain delivery affects how much drug reaches the target versus healthy tissue",
+        "Give an example such as lipid nanoparticles protecting mRNA",
+        "Note delivery innovation can rescue an otherwise unusable molecule"
+      ],
+      "modelAnswer": "A brilliant drug molecule is still limited by how it actually gets to where it needs to act, and a poor delivery system can mean most of the dose ends up affecting healthy tissue instead of the target, which is exactly why chemotherapy has historically caused so many side effects. Lipid nanoparticles are a good recent example, they're what actually protected the fragile mRNA in COVID vaccines long enough to get it into cells intact, without them the mRNA would have been broken down before it did anything useful. So I think of delivery almost as a second half of the invention, sometimes it's what turns a promising molecule that's too unstable or too toxic into something that's actually usable in patients."
+    },
+    "commonMistakes": [
+      "Treating delivery as a minor technical detail rather than central to efficacy",
+      "No concrete example given",
+      "Confusing drug delivery with drug formulation in a vague way"
+    ],
+    "followUps": ["Can you think of a drug that failed not because the molecule was wrong, but because delivery was the problem?"]
+  },
+  {
+    "id": "prog-pharmacology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Allocating a drug in short supply",
+    "program": "Pharmacology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "ethics", "resource-allocation"],
+    "question": "Imagine a hospital pharmacy has a sudden shortage of a critical medication and can't get more for several weeks. As someone thinking like a pharmacologist, how would you think through who gets priority?",
+    "lookingFor": "Structured ethical reasoning combining clinical criteria with a fairness principle, not an arbitrary snap judgment.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with clinical criteria: who has no alternative treatment",
+        "Bring in a fairness principle and a transparent protocol",
+        "Emphasize consistency and a multidisciplinary decision rather than one person deciding"
+      ],
+      "modelAnswer": "I'd want to start clinically, working out which patients have no reasonable alternative drug and would face the most serious harm without it, versus patients who could be safely switched to a substitute even if it's slightly less ideal. Beyond that clinical sorting, I don't think it should come down to one person's judgment call, I'd want a transparent protocol, maybe based on severity of need, agreed in advance by a multidisciplinary team, so decisions are consistent and defensible rather than arbitrary. I think the worst outcome would be quietly rationing case by case without anyone being able to explain the reasoning afterward."
+    },
+    "commonMistakes": [
+      "Suggesting a purely first-come-first-served approach with no clinical reasoning",
+      "Making the decision sound like it should rest on one individual's judgment",
+      "No mention of transparency or consistency of process"
+    ],
+    "followUps": ["Should age or expected years of benefit ever factor into that decision?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-textile-design-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Natural vs synthetic fibers",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["fiber-science", "materials", "fundamentals"],
+    "question": "What are the practical trade-offs between using a natural fiber like cotton or wool and a synthetic fiber like polyester in a design?",
+    "lookingFor": "Real understanding of fiber properties and how they drive design and end-use decisions, not just a moral preference for natural fibers.",
+    "idealAnswer": {
+      "bullets": [
+        "Compare properties such as breathability, drape, durability, and moisture handling",
+        "Mention cost, consistency, and dye behavior as practical factors",
+        "Avoid treating natural as automatically better; acknowledge synthetics solve real problems"
+      ],
+      "modelAnswer": "Cotton breathes well and takes dye beautifully but it creases and shrinks, while wool insulates and has great memory but can felt and needs careful washing. Polyester is consistent, cheap, and durable, and it takes really vivid disperse dyes, which is why it dominates activewear, but it doesn't breathe the same way and it sheds microplastics when washed. When I'm designing I try to think about what the garment actually needs to do rather than assuming natural fibers are automatically the better choice."
+    },
+    "commonMistakes": [
+      "Treating natural fibers as inherently superior with no functional reasoning",
+      "Not knowing basic properties like breathability or dye affinity",
+      "Ignoring cost and consistency as real design constraints"
+    ],
+    "followUps": ["Which fiber would you choose for a garment meant to be worn in humid heat, and why?"]
+  },
+  {
+    "id": "prog-textile-design-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Weave structure trade-offs",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["weaving", "construction", "fundamentals"],
+    "question": "Explain the difference between a plain weave, a twill, and a satin weave, and why a designer might choose one over another.",
+    "lookingFor": "Clear grasp of interlacement structure and how it changes drape, strength, and appearance.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the interlacement pattern for each weave type",
+        "Connect structure to properties like drape, strength, and sheen",
+        "Give a concrete example of when each would be chosen"
+      ],
+      "modelAnswer": "Plain weave alternates over one and under one, so it's strong and stable, which is why it's used for shirting and canvas. Twill floats the yarn over two or more before interlacing, giving that diagonal line, more drape, and better wrinkle resistance, which is why denim and suiting use it. Satin has even longer floats concentrated on one face, so it looks smooth and lustrous but is weaker and snags easily, which is why you see it in linings and eveningwear rather than workwear. I find it satisfying that something as simple as how a yarn crosses another can completely change what a fabric is good for."
+    },
+    "commonMistakes": [
+      "Confusing twill and satin structures",
+      "Describing the look without explaining the interlacement",
+      "Giving no real-world application for each"
+    ],
+    "followUps": ["Why is satin weave more prone to snagging than plain weave?"]
+  },
+  {
+    "id": "prog-textile-design-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Colorfastness and dye chemistry",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["dyeing", "color", "technical"],
+    "question": "Why might a dyed fabric look perfect off the loom but fade badly after a few washes? What would you check?",
+    "lookingFor": "Understanding that colorfastness depends on dye-fiber chemistry, not just achieving the right shade initially.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that dye class must match fiber type for good bonding",
+        "Mention factors like washing, light exposure, and rubbing fastness",
+        "Show awareness that a beautiful initial result doesn't guarantee durability"
+      ],
+      "modelAnswer": "If the dye class doesn't properly bond with the fiber, like using a direct dye on cotton without the right fixing, the color sits more on the surface than inside the fiber and washes out fast. I'd check whether the right dye class was used for that fiber, whether it was fixed and rinsed properly, and I'd actually test wash and rub fastness rather than just trusting how it looks on day one. It taught me that a gorgeous swatch means nothing if it doesn't survive the way people actually use the fabric."
+    },
+    "commonMistakes": [
+      "Assuming fading is only about dye quantity, not chemistry",
+      "Not knowing that different fibers need different dye classes",
+      "Ignoring the need to actually test fastness"
+    ],
+    "followUps": ["What's the difference between wash fastness and light fastness?"]
+  },
+  {
+    "id": "prog-textile-design-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Fast fashion and sustainability",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["sustainability", "fast-fashion", "current-debate"],
+    "question": "Fast fashion keeps getting criticized, yet it's also how a lot of people afford to dress well. As a designer, how do you think about that tension?",
+    "lookingFor": "Nuanced reasoning that holds both the environmental cost and the access argument, rather than a slogan-level answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real environmental and labor costs of overproduction",
+        "Recognize that affordability is a legitimate concern, not dismiss it",
+        "Offer a design-level response rather than just moralizing"
+      ],
+      "modelAnswer": "I don't think it's fair to just tell people to buy less when fast fashion is often the only affordable option, so I try not to be preachy about it. But the waste and the pressure on garment workers to hit impossible turnaround times are real problems that come from the business model, not from consumers being careless. As a designer I think the more honest lever is on my side of the table, designing for durability, better fiber choices, and pattern efficiency that cuts fabric waste, rather than expecting individual shoppers to solve a systemic problem."
+    },
+    "commonMistakes": [
+      "Purely moralizing about consumer choices with no systemic view",
+      "Dismissing affordability concerns entirely",
+      "Having no concrete idea of what a designer can actually do about it"
+    ],
+    "followUps": ["What's one design decision that could reduce fabric waste without raising cost much?"]
+  },
+  {
+    "id": "prog-textile-design-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Microplastics from synthetic textiles",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["microplastics", "sustainability", "current-debate"],
+    "question": "Synthetic fabrics shed microplastic fibers every time they're washed. How does that fact sit with you as someone who wants to design with them?",
+    "lookingFor": "Awareness of a live environmental issue in the field and honest, specific thinking about how a designer might respond, not denial or panic.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the microfiber shedding issue and its scale",
+        "Avoid both dismissing it and treating all synthetics as unusable",
+        "Mention possible responses like fiber blends, filters, or construction choices"
+      ],
+      "modelAnswer": "It genuinely troubles me, because synthetics like polyester and nylon are so useful for stretch and durability that I don't think the field can just abandon them. What I've read about is designers looking at tighter knit structures and different yarn twists that shed less, and washing machine filters helping on the consumer end, so I don't think the answer is purely material substitution. I'd rather understand the shedding data for a specific fabric before I specify it than treat all synthetics as equally guilty."
+    },
+    "commonMistakes": [
+      "Not knowing the issue exists at all",
+      "Treating it as a reason to reject all synthetic fiber use outright",
+      "Offering no concrete mitigation ideas"
+    ],
+    "followUps": ["Would you specify recycled polyester as a solution, or does that not really solve the shedding problem?"]
+  },
+  {
+    "id": "prog-textile-design-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Handloom versus power loom",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["craft", "handloom", "economics"],
+    "question": "Handloom weaving is often praised for its craftsmanship, but power looms can produce fabric far faster and cheaper. How do you think about the future of handloom textiles?",
+    "lookingFor": "A grounded view of the economic pressure on traditional craft that goes beyond nostalgia.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real cost and speed disadvantage handloom faces",
+        "Identify what handloom offers that power loom genuinely cannot replicate",
+        "Suggest realistic paths, like niche or heritage markets, rather than wishful thinking"
+      ],
+      "modelAnswer": "I don't think handloom survives by competing with power looms on price or speed, because it simply can't. What it has is irregularity and texture that a machine smooths away, and increasingly people are willing to pay for that as a marker of authenticity and craft. I think the realistic future is handloom moving toward premium, small-batch, and heritage-driven markets, supported by design collaborations, rather than trying to be mass-market fabric again."
+    },
+    "commonMistakes": [
+      "Purely romanticizing handloom with no economic reasoning",
+      "Assuming handloom will simply disappear with no nuance",
+      "Not identifying what actually differentiates the two"
+    ],
+    "followUps": ["How would you, as a designer, actually help a handloom weaving cluster stay viable?"]
+  },
+  {
+    "id": "prog-textile-design-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Smart and wearable textiles",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["smart-textiles", "innovation", "current-development"],
+    "question": "What do you make of the growing interest in smart textiles, like fabrics with embedded sensors or heating elements?",
+    "lookingFor": "Genuine familiarity with an emerging area and a considered view on its practical limits, not just enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic knowledge of what smart textiles actually are",
+        "Identify a realistic use case, not just novelty",
+        "Note a genuine limitation such as washability, cost, or comfort"
+      ],
+      "modelAnswer": "I've read about conductive yarns woven directly into fabric for things like heart rate monitoring in sportswear, and I think that's genuinely useful because it removes the bulky separate device. What worries me is durability, because most of us throw clothes in a washing machine without thinking twice, and a lot of these prototypes still can't survive that. I'm interested in it but I'd want to see it solve the boring problems, like washability and comfort against skin, before I'd call it ready for everyday wear."
+    },
+    "commonMistakes": [
+      "Vague enthusiasm with no specific knowledge",
+      "Not considering practical barriers like washability",
+      "Overselling the technology as already mainstream"
+    ],
+    "followUps": ["Where do you think smart textiles will find their first real mainstream use?"]
+  },
+  {
+    "id": "prog-textile-design-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital and 3D fabrication",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["3d-knitting", "digital-fabrication", "current-development"],
+    "question": "Whole-garment 3D knitting machines can produce a finished piece with almost no fabric waste and no cutting or sewing. What's your view on how this changes textile design?",
+    "lookingFor": "Understanding of the technology's real impact on waste and process, weighed against its current limitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what whole-garment knitting actually does differently",
+        "Connect it to waste reduction and changed design workflow",
+        "Acknowledge limits like aesthetic range, cost, or setup complexity"
+      ],
+      "modelAnswer": "Because the machine knits the entire garment shape directly rather than knitting flat fabric that then gets cut and sewn, you avoid the offcuts that traditional cut-and-sew always produces, which is a real sustainability win. It also changes the designer's job, since you're programming shape and structure together instead of designing fabric and pattern separately. What holds it back right now is the upfront cost of the machines and a slightly limited aesthetic range compared to woven fabric, so I see it growing fastest in performance and knitwear first."
+    },
+    "commonMistakes": [
+      "Not understanding what makes whole-garment knitting different from regular knitting",
+      "Overstating it as a total replacement for woven textiles",
+      "Ignoring the design-process shift it requires"
+    ],
+    "followUps": ["What kind of garment do you think is least suited to this technology, and why?"]
+  },
+  {
+    "id": "prog-textile-design-b-009",
+    "category": "Ethics & Situational",
+    "subtopic": "AI-generated pattern design",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["ai", "ethics", "current-debate"],
+    "question": "AI tools can now generate original-looking textile prints in seconds, trained partly on existing designers' work. How do you feel about using these tools in your own practice?",
+    "lookingFor": "Thoughtful engagement with a live ethical and professional debate in the field, not a reflexive embrace or rejection.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both the creative utility and the sourcing/consent problem",
+        "Take a personal position rather than staying entirely neutral",
+        "Show awareness of how it might change the value of a designer's own skill"
+      ],
+      "modelAnswer": "Part of me is excited about it as a fast way to explore variations of an idea, but I can't ignore that a lot of these tools were trained on designers' work without asking, which feels like it's undercutting the people it's built from. I think I'd be comfortable using it for early inspiration or moodboarding, but I'd want the final pattern to go through my own hand and judgment, partly for ethical reasons and partly because I don't think I'd trust a purely generated print to actually understand the fabric it's printed on. I think the field needs clearer rules about consent and attribution before this becomes normal practice."
+    },
+    "commonMistakes": [
+      "Uncritically celebrating AI tools with no ethical consideration",
+      "Rejecting all technology without engaging with its actual utility",
+      "Having clearly never thought about the training-data consent issue"
+    ],
+    "followUps": ["If a client asked you to submit an AI-generated print as your own original design, would you?"]
+  },
+  {
+    "id": "prog-textile-design-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Biofabricated materials",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["biofabrication", "innovation", "current-development"],
+    "question": "Materials like mushroom-based leather and lab-grown fibers are getting a lot of attention. Do you think they'll actually replace conventional materials, or is that overhyped?",
+    "lookingFor": "A realistic, informed take on the promise and current limitations of biofabricated textiles.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of specific examples like mycelium leather or lab-grown fibers",
+        "Weigh genuine promise against current cost and scalability limits",
+        "Avoid both blind hype and dismissiveness"
+      ],
+      "modelAnswer": "I think the science is genuinely promising, mycelium leather already has a decent hand feel and it avoids the water and chemical burden of tanning real leather, but scaling it up to compete on price with mass-market materials is still a real barrier. I don't think it replaces conventional materials outright any time soon, more that it carves out a premium, sustainability-conscious segment first, the way some innovations start in fine dining before reaching supermarkets. I'd want to actually handle these materials myself before I'd fully trust the marketing around them."
+    },
+    "commonMistakes": [
+      "No specific knowledge beyond having heard the term",
+      "Assuming full mainstream replacement is imminent",
+      "Being dismissive without engaging with the actual science"
+    ],
+    "followUps": ["What would need to change for a material like mycelium leather to become genuinely mainstream?"]
+  },
+  {
+    "id": "prog-textile-design-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Deadstock fabric and waste",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["waste", "circularity", "sustainability"],
+    "question": "How would you approach designing a collection using only deadstock fabric left over from other brands' production?",
+    "lookingFor": "Practical understanding of how material constraints shape the design process, not just enthusiasm for the sustainability angle.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that deadstock means limited, inconsistent quantities per fabric",
+        "Describe adapting the design process to start from material rather than sketch first",
+        "Show awareness this is a real, current sustainability practice, not a hypothetical trend"
+      ],
+      "modelAnswer": "With deadstock you can't sketch a design and then go source exactly what you need, because the fabric comes first and it's often only a few metres of any one thing. I'd probably design the collection around a small family of silhouettes that can flex to whatever quantity I've got, and lean into patchwork or trims to bridge fabrics that don't quite match. I actually think that constraint pushes creativity rather than limiting it, since some of the most interesting deadstock collections I've seen use the mismatch as the design language itself."
+    },
+    "commonMistakes": [
+      "Treating deadstock as identical to sourcing fabric normally",
+      "Not accounting for limited or inconsistent quantities",
+      "Framing it as purely a marketing angle rather than a design constraint"
+    ],
+    "followUps": ["What would you do if you ran out of a key fabric halfway through production?"]
+  },
+  {
+    "id": "prog-textile-design-b-012",
+    "category": "Ethics & Situational",
+    "subtopic": "Cultural motifs and appropriation",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["cultural-appropriation", "ethics", "design-practice"],
+    "question": "You fall in love with a traditional textile motif from a culture that isn't your own and want to use it in your portfolio collection. How do you approach that?",
+    "lookingFor": "Genuine ethical reflection on the difference between appreciation and appropriation, with a practical plan, not just guilt or avoidance.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the difference between respectful engagement and extraction",
+        "Describe concrete steps like research, attribution, or collaboration with the source community",
+        "Show willingness to change course if it can't be done respectfully"
+      ],
+      "modelAnswer": "I wouldn't just lift the motif and put it on a garment, because that flattens something that often carries specific meaning or history into decoration. I'd want to actually research where it comes from, understand what it means to the people who created it, and ideally credit or even collaborate with someone from that community rather than just referencing it from a distance. If I couldn't find an honest, respectful way to do that, I think the right call is to let the piece inspire my own original pattern language instead of copying the motif directly."
+    },
+    "commonMistakes": [
+      "Seeing no issue at all with directly copying the motif",
+      "Being so anxious about appropriation that they avoid all cross-cultural inspiration",
+      "Offering vague respect with no concrete action"
+    ],
+    "followUps": ["What's the difference, in your view, between inspiration and appropriation?"]
+  },
+  {
+    "id": "prog-textile-design-b-013",
+    "category": "Ethics & Situational",
+    "subtopic": "Supply chain labor conditions",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["ethics", "labor", "supply-chain"],
+    "question": "Say you find out that the factory producing a fabric you love for your final collection has documented labor violations. What do you do?",
+    "lookingFor": "Structured ethical reasoning that weighs the design opportunity against real harm, landing on a defensible decision rather than an easy dodge.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between opportunity and complicity honestly",
+        "Reason through alternatives such as sourcing elsewhere or raising it before deciding",
+        "Avoid both naive dismissal and performative outrage with no action"
+      ],
+      "modelAnswer": "As tempting as the fabric might be, I don't think I could use it once I knew that, because sourcing decisions are one of the few levers a student designer actually has, and using it anyway would make the violation my problem too, not just the factory's. I'd first try to find out if the information was verified and current, since these reports aren't always accurate, but if it held up I'd look for an alternative supplier or fabric, even if it meant changing part of my design. I think it's easy to say sustainability and ethics matter in an interview and harder to actually give something up for it, so I'd want to hold myself to that."
+    },
+    "commonMistakes": [
+      "Dismissing the concern because the fabric is aesthetically perfect",
+      "All talk with no willingness to actually change the design",
+      "Not considering verifying the claim before acting"
+    ],
+    "followUps": ["Would your answer change if the deadline made switching suppliers nearly impossible?"]
+  },
+  {
+    "id": "prog-textile-design-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Crediting artisan technique",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["craft", "attribution", "ethics"],
+    "question": "You worked closely with a local artisan who taught you a specific embroidery technique for your project. The technique makes your portfolio piece stand out. How do you credit that in your work?",
+    "lookingFor": "Awareness that craft knowledge has an origin and ownership that deserves acknowledgment, plus a practical way to give it.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the artisan's contribution as real intellectual and creative labor, not just a technical service",
+        "Describe a concrete way to credit them, in the portfolio text or presentation",
+        "Consider fair compensation, not credit alone, as part of the ethics"
+      ],
+      "modelAnswer": "I'd name them directly in my portfolio, explain what technique they taught me and where it comes from, rather than presenting the embroidery as something I invented myself. Credit alone doesn't fully solve it though, since their time and skill built the piece with me, so I'd also want to make sure they were paid fairly for the work, not just thanked. I think it's easy for a design education to treat artisans as a resource rather than collaborators, and I'd rather my portfolio reflect that they were the latter."
+    },
+    "commonMistakes": [
+      "Presenting the technique as the applicant's own innovation",
+      "Offering only vague thanks with no specific credit or compensation",
+      "Not considering the artisan's economic interest at all"
+    ],
+    "followUps": ["How would you handle it if the artisan didn't want their name publicly attached to a student project?"]
+  },
+  {
+    "id": "prog-textile-design-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Textile testing and quality standards",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["testing", "quality", "technical"],
+    "question": "Before a fabric goes into production, what kinds of tests would you expect it to go through, and why do they matter to a designer?",
+    "lookingFor": "Practical knowledge that design intent has to survive real-world testing, not just look good on a swatch.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific tests such as tensile strength, colorfastness, pilling, or shrinkage",
+        "Explain why these matter for how the final garment performs",
+        "Connect testing to avoiding costly failures after production"
+      ],
+      "modelAnswer": "I'd expect tests for things like colorfastness to washing and light, shrinkage after laundering, tensile and tear strength, and pilling resistance if it's a knit. These matter to me as a designer because a print or drape that looks perfect in the studio is worthless if the fabric shrinks two sizes after the first wash or pills within a month of wear. I'd rather catch that at the swatch stage than after a whole run has already been cut and sewn."
+    },
+    "commonMistakes": [
+      "Naming no specific tests at all",
+      "Treating testing as someone else's job that doesn't concern design",
+      "Not connecting testing to real consequences for the finished garment"
+    ],
+    "followUps": ["What would you do if a fabric you loved failed a shrinkage test?"]
+  },
+  {
+    "id": "prog-textile-design-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital printing vs traditional dyeing",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["printing", "sustainability", "technique"],
+    "question": "Digital textile printing is often marketed as more sustainable than traditional screen printing and dyeing. Do you think that claim holds up?",
+    "lookingFor": "Critical evaluation of a sustainability claim using actual knowledge of both processes, rather than accepting marketing at face value.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what digital printing actually saves, like water use and minimum order quantities",
+        "Acknowledge where the claim is oversimplified, such as ink chemistry or energy use",
+        "Show a willingness to question a widely repeated sustainability claim"
+      ],
+      "modelAnswer": "It holds up in some real ways, digital printing uses far less water than traditional dye baths and it doesn't need a full production run just to justify a design, which cuts a lot of waste from unsold fabric. But it's not automatically clean, because the inks and the energy used by the printers still have an impact that doesn't always get mentioned in the marketing. I'd want to actually look at the specific process and ink chemistry before repeating the sustainability claim as if it were settled."
+    },
+    "commonMistakes": [
+      "Accepting the sustainability claim uncritically",
+      "Not knowing any specific advantage of digital printing",
+      "Dismissing digital printing entirely with no evidence"
+    ],
+    "followUps": ["What would make you confident a specific digital printing process is genuinely more sustainable?"]
+  },
+  {
+    "id": "prog-textile-design-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Recycled fiber blends and circularity",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["circular-economy", "recycling", "current-debate"],
+    "question": "A lot of clothing is made from fiber blends, like cotton-polyester, which are notoriously hard to recycle. As a designer, how would you think about that problem?",
+    "lookingFor": "Understanding of a genuine technical barrier to circularity and evidence of design-level thinking about solving it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why blended fibers are difficult to separate for recycling",
+        "Discuss design-for-disassembly or mono-material approaches as a response",
+        "Balance the recyclability goal against the performance blends provide"
+      ],
+      "modelAnswer": "Blends are hard to recycle because most recycling technology needs to separate fibers chemically or mechanically, and cotton and polyester behave completely differently under those processes, so a lot of blended fabric just ends up landfilled or downcycled. As a designer I'd lean toward mono-material construction where I can, using stretch weaves or knit structures to get some of the give that elastane would normally provide, so the whole garment can go through one recycling stream at end of life. I know that's not always possible, since blends genuinely improve performance, so I'd treat it as a trade-off to make consciously rather than a rule to follow blindly."
+    },
+    "commonMistakes": [
+      "Not knowing why blended fibers are hard to recycle",
+      "Suggesting recycled polyester as if it fully solves blend recyclability",
+      "Ignoring that blends exist because they solve real performance problems"
+    ],
+    "followUps": ["Can you think of a structural way to get stretch into a fabric without using elastane?"]
+  },
+  {
+    "id": "prog-textile-design-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Natural dyes and water pollution",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["dyeing", "sustainability", "current-development"],
+    "question": "There's renewed interest in natural dyes as an alternative to synthetic ones, partly because of pollution from dye houses. Is that revival mostly practical, or mostly aesthetic?",
+    "lookingFor": "Balanced assessment of natural dyes' real environmental trade-offs, avoiding a romanticized view.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine pollution problem with some synthetic dye processes",
+        "Point out natural dyes' own limitations, like land use, water use, and colorfastness",
+        "Land on a nuanced view rather than declaring one side purely correct"
+      ],
+      "modelAnswer": "Synthetic dye runoff is a real and serious water pollution issue in a lot of textile-producing regions, so the impulse behind the revival is genuine, not just aesthetic. But natural dyes have their own footprint, they can need a lot of water and land to grow the dye plants, and getting even, reliable colorfastness at scale is genuinely harder than with synthetics. I think the honest answer is that natural dyes are part of the solution rather than a clean substitute, and the real fix has to include better wastewater treatment for synthetic dyeing too."
+    },
+    "commonMistakes": [
+      "Treating natural dyes as a pollution-free solution",
+      "Not knowing why synthetic dye runoff is a problem in the first place",
+      "Framing it as a purely aesthetic trend with no environmental substance"
+    ],
+    "followUps": ["What would it take to make natural dyeing viable at an industrial scale?"]
+  },
+  {
+    "id": "prog-textile-design-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Textile design vs fashion design",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["discipline-scope", "reasoning"],
+    "question": "How would you explain the difference between textile design and fashion design to someone who thinks they're the same thing?",
+    "lookingFor": "Clear understanding of the discipline's actual scope and how it relates to, but isn't the same as, garment design.",
+    "idealAnswer": {
+      "bullets": [
+        "Define textile design as concerned with the fabric itself, structure, print, and surface",
+        "Define fashion design as concerned with garment shape, silhouette, and construction",
+        "Show how the two disciplines depend on and inform each other"
+      ],
+      "modelAnswer": "Textile design is really about the fabric itself, the fiber, weave or knit structure, print, and surface treatment, before it ever becomes a garment. Fashion design takes that fabric and shapes it into silhouette, fit, and construction. They're deeply connected, a print designed without any sense of how it will drape on a body can fail completely once it's cut and sewn, which is actually why I'm drawn to textile design specifically, I want to understand the material at its source rather than only its final shape."
+    },
+    "commonMistakes": [
+      "Conflating the two disciplines entirely",
+      "Describing textile design only as pattern-making without mentioning structure",
+      "Not explaining how the two disciplines interact"
+    ],
+    "followUps": ["Can you think of a print that looked great flat but failed once made into a garment?"]
+  },
+  {
+    "id": "prog-textile-design-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Trend forecasting reasoning",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["trend-forecasting", "reasoning", "industry"],
+    "question": "How do you think trend forecasters actually predict what colors and textures will be popular two years from now?",
+    "lookingFor": "Understanding that forecasting is evidence-based pattern reading, not guesswork or pure intuition.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention concrete inputs like cultural shifts, economic mood, art, and runway signals",
+        "Show awareness of the long lead time between forecasting and retail",
+        "Avoid describing it as random guessing or pure gut feeling"
+      ],
+      "modelAnswer": "From what I understand, forecasters look at a mix of signals, art and design movements, shifts in culture and economic mood, what's showing up at trade fairs and on runways, and even things like political tone, and then trace patterns across those to predict where color and texture will head. It's not guessing, it's closer to reading early evidence before it becomes obvious, which is partly why the lead time is so long, because fabric has to be developed, tested, and produced well before it ever reaches a store. I find that detective-like process almost as interesting as the actual designing."
+    },
+    "commonMistakes": [
+      "Describing forecasting as pure intuition with no evidence basis",
+      "Not accounting for the long lead time in the supply chain",
+      "Naming no real input sources like culture or economics"
+    ],
+    "followUps": ["What's a current cultural shift you think might show up in textiles in a couple of years?"]
+  },
+  {
+    "id": "prog-textile-design-b-021",
+    "category": "Ethics & Situational",
+    "subtopic": "Design plagiarism dilemma",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["plagiarism", "ethics", "situational"],
+    "question": "A brand you admire launches a print that looks almost identical to a design in your portfolio, one you developed before their launch and never published publicly. What would you do?",
+    "lookingFor": "Level-headed reasoning about intellectual property and evidence, without jumping straight to accusation or giving up entirely.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the need for evidence, like dated sketches or files, before acting",
+        "Consider that coincidence in trend-driven fields is genuinely possible",
+        "Describe a measured next step rather than an extreme reaction"
+      ],
+      "modelAnswer": "My first instinct would probably be frustration, but I'd try to slow down and check my own dated files and process sketches first, because I'd need real evidence before assuming it was copied rather than a coincidence, and trend-driven fields do sometimes converge independently. If the similarity really was too close to be chance and I had solid documentation, I'd consider reaching out to the brand directly or a tutor for advice on next steps, rather than immediately going public with an accusation I couldn't fully back up. I think staying measured protects me more than jumping straight to outrage would."
+    },
+    "commonMistakes": [
+      "Immediately assuming theft with no consideration of coincidence",
+      "Having no idea how they would even prove the design was theirs first",
+      "Giving up and assuming nothing can be done"
+    ],
+    "followUps": ["How would you document your own design process to protect yourself from this kind of situation?"]
+  },
+  {
+    "id": "prog-textile-design-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical client brief",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "client-work", "sustainability"],
+    "question": "Imagine a client loves your design but insists on using a cheap, high-impact synthetic fabric that undermines the sustainable concept behind the collection. How do you handle that conversation?",
+    "lookingFor": "Ability to navigate a real professional tension between creative integrity and client demands, with a practical negotiation, not just a hard refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "Understand the client's underlying concern, likely cost or availability",
+        "Propose a concrete alternative rather than only objecting",
+        "Show willingness to compromise while explaining the trade-off honestly"
+      ],
+      "modelAnswer": "I'd want to understand why they're pushing for that fabric first, whether it's really about cost, availability, or they just don't see the conflict with the concept, because the response is different depending on the actual reason. If it's cost, I'd try to bring one or two alternative fabrics with similar price points that don't undercut the sustainable story, and be honest about the trade-offs of each option rather than pretending there's a perfect answer. If they still insisted after that conversation, I'd have to decide how much that compromise changes the integrity of the piece, but I'd rather negotiate toward a workable middle ground than just refuse outright."
+    },
+    "commonMistakes": [
+      "Refusing outright with no attempt to understand or negotiate",
+      "Caving immediately with no pushback or alternative offered",
+      "Not considering that cost might be a legitimate constraint, not carelessness"
+    ],
+    "followUps": ["What if no sustainable alternative existed at a price the client could afford?"]
+  },
+  {
+    "id": "prog-textile-design-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical constrained brief",
+    "program": "Textile Design",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "problem-solving", "constraints"],
+    "question": "If you were told to design a durable, weather-resistant textile using only fully biodegradable materials, where would you even start?",
+    "lookingFor": "Structured problem-solving under a genuine material constraint, showing knowledge of relevant fiber and finishing options.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that this is a real tension, since durability often relies on synthetic coatings",
+        "Suggest specific starting points like waxed cotton, wool, or biodegradable coatings",
+        "Acknowledge realistic limitations rather than promising a perfect solution"
+      ],
+      "modelAnswer": "I'd start by researching materials that already do part of this job, like waxed cotton canvas, which has been used for weatherproof outerwear for over a century using natural wax rather than synthetic coatings, or tightly woven wool that resists water through fiber structure alone. I'd probably prototype a few finishing options, testing plant-based waxes or biodegradable resin coatings for water resistance, and be upfront that I might not match a fully synthetic performance fabric on every metric. I think starting from a known historical solution and updating it is more realistic than trying to invent something from nothing."
+    },
+    "commonMistakes": [
+      "Immediately reaching for a synthetic solution that breaks the constraint",
+      "Having no specific material knowledge to draw from",
+      "Promising a perfect solution with no acknowledged trade-off"
+    ],
+    "followUps": ["What historical textile solved a similar problem before synthetic coatings existed?"]
+  },
+  {
+    "id": "prog-textile-design-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Craft heritage vs innovation",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["craft", "innovation", "reasoning"],
+    "question": "Some designers argue traditional textile crafts should be preserved exactly as they are. Others say they need to evolve or they'll die out. Where do you land?",
+    "lookingFor": "A considered, non-binary position on a genuine tension in the field, grounded in specific examples if possible.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize legitimate concerns on both sides of the tension",
+        "Distinguish between the craft's core technique and its surface application",
+        "Land on a specific, defensible position rather than sitting on the fence"
+      ],
+      "modelAnswer": "I don't think it has to be all or nothing. The core technique, like a specific knot or weave structure, is worth genuinely preserving because that knowledge is often centuries deep and easy to lose forever once the last practitioner stops. But how that technique gets applied, in what colors, patterns, or products, can evolve without betraying the craft, and honestly that evolution is often what keeps the artisans working and paid. I'd rather see the technique protected and the application allowed to breathe, than freeze the whole craft in a museum case where it eventually just disappears from lack of income."
+    },
+    "commonMistakes": [
+      "Taking an absolute position on either side with no nuance",
+      "Not distinguishing between technique and application",
+      "Ignoring that artisan livelihoods depend on this question, not just aesthetics"
+    ],
+    "followUps": ["Can you name a specific craft you think has evolved well without losing its core identity?"]
+  },
+  {
+    "id": "prog-textile-design-b-025",
+    "category": "Ethics & Situational",
+    "subtopic": "Greenwashing dilemma",
+    "program": "Textile Design",
+    "difficulty": "hard",
+    "tags": ["greenwashing", "ethics", "marketing"],
+    "question": "A brand you're interning with wants you to design a collection using a fabric blend that's only fifteen percent recycled content, but market it under a 'sustainable edit' label. What do you do?",
+    "lookingFor": "Willingness to identify and push back on misleading sustainability claims, balanced with realistic understanding of an intern's limited power.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize this as a greenwashing problem, not a purely design one",
+        "Describe a realistic way to raise the concern given limited seniority",
+        "Consider the reputational and ethical cost of staying silent"
+      ],
+      "modelAnswer": "Calling something a sustainable edit when it's fifteen percent recycled content is misleading, and I don't think I could stay quiet about that even as an intern, though I'd raise it carefully rather than accusatorially. I'd probably ask whoever's above me whether the marketing language could be more specific and honest, like naming the actual percentage instead of the vague label, since that's usually an easier ask than changing the fabric itself. If nothing changed, I'd at least be clear with myself that I flagged it, because I don't want my name attached to work I know is misleading, even in a junior role."
+    },
+    "commonMistakes": [
+      "Going along with it silently with no attempt to raise the issue",
+      "Assuming an intern has no realistic influence and giving up immediately",
+      "Not recognizing the vague label as a genuine greenwashing problem"
+    ],
+    "followUps": ["What would you do if raising the concern put your internship at risk?"]
+  }
+]

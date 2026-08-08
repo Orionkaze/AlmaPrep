@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-construction-management-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical path and float",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["scheduling", "fundamentals", "cpm"],
+    "question": "What's the difference between the critical path and float in a project schedule, and why does a project manager need to know which activities have zero float?",
+    "lookingFor": "A correct grasp of critical path method logic and why it drives where a manager's attention should go, not just a textbook definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Define critical path as the longest sequence of dependent activities that sets the minimum project duration",
+        "Explain float as the amount of slack a non-critical activity has before it delays the finish date",
+        "Show why zero-float activities deserve closer monitoring than activities with slack"
+      ],
+      "modelAnswer": "The critical path is the chain of tasks that has to happen back to back with no slack, because if any one of them slips, the whole project's finish date slips with it. Float is how much wiggle room a task off that path has before it starts eating into the deadline. What I find useful about that idea is it tells a manager where to actually spend their attention. A task with three weeks of float can wait for a phone call, but a zero-float task needs checking on every single day, because there's no cushion left if something goes wrong there."
+    },
+    "commonMistakes": [
+      "Saying the critical path is simply 'the most important tasks' rather than the longest dependency chain",
+      "Confusing float with contingency time built into the whole project",
+      "Not connecting the concept to how a manager would actually prioritise attention"
+    ],
+    "followUps": ["If a critical-path activity gets delayed by a week, what are your options as a manager?"]
+  },
+  {
+    "id": "prog-construction-management-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: covering for a colleague's mistake",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "site-dilemma", "judgement"],
+    "question": "Imagine you're doing work experience on a site and you overhear the superintendent telling the client a delay was caused by weather, when you know it was actually caused by a subcontractor's error. What would you do?",
+    "lookingFor": "Structured ethical reasoning that weighs loyalty to the team against honesty with the client, not a snap judgement.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between not wanting to overstep as a junior person and the dishonesty involved",
+        "Reason through options, such as raising it privately with the superintendent first, rather than going straight over their head",
+        "Land on a position that treats client trust as something that shouldn't be spent on a small excuse"
+      ],
+      "modelAnswer": "As the person with the least authority on that site, my instinct would be to stay quiet, but I don't think that's actually the right call. I'd want to raise it privately with the superintendent afterwards, not to accuse them, but to ask why weather was given as the reason when it looked like something else. Construction runs on trust between the contractor and the client, and a small false excuse now can turn into a much bigger credibility problem later if the pattern continues. I think the honest route is usually also the more professional one, even if it's uncomfortable to raise as the newest person in the room."
+    },
+    "commonMistakes": [
+      "Deciding to stay silent because it 'isn't my place' with no further reasoning",
+      "Jumping straight to reporting the superintendent without considering a quieter first step",
+      "Treating the lie as trivial because delays happen anyway"
+    ],
+    "followUps": ["Does your answer change if the superintendent is someone you'd need a reference from?"]
+  },
+  {
+    "id": "prog-construction-management-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Modular construction debate",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["current-debate", "modular", "productivity"],
+    "question": "Modular and offsite construction is often pitched as the fix for labour shortages and cost overruns. What do you think its real limitations are?",
+    "lookingFor": "Awareness that modular construction is genuinely useful but not a universal fix, showing balanced judgement rather than repeating hype.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge real benefits: factory conditions, less weather risk, faster on-site assembly",
+        "Identify at least one genuine limitation, such as transport constraints, design inflexibility, or high upfront capital for the factory",
+        "Show the debate is about which project types suit it, not whether it's good or bad in general"
+      ],
+      "modelAnswer": "I think modular construction genuinely solves some real problems, building in a controlled factory environment cuts weather delays and lets you use the same skilled crew repeatedly instead of chasing labour across sites. But it isn't a universal answer. Module size is limited by what can travel on a road or through a port, which restricts design flexibility, and a developer needs serious upfront volume to justify the factory investment, so it works better for repeatable building types like hotels or student housing than for a one-off complex design. I think the honest framing is that it's a good tool for the right project, not a replacement for traditional construction everywhere."
+    },
+    "commonMistakes": [
+      "Treating modular construction as a silver bullet with no downsides",
+      "Dismissing it entirely as 'not real construction'",
+      "Giving no concrete example of where it works well versus poorly"
+    ],
+    "followUps": ["What kind of project would you specifically recommend it for, and why?"]
+  },
+  {
+    "id": "prog-construction-management-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "BIM adoption gap",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["bim", "technology", "industry-practice"],
+    "question": "BIM is often described as essential now, yet a lot of smaller contractors still resist adopting it. Why do you think that gap exists?",
+    "lookingFor": "Understanding of BIM's actual value alongside realistic reasons for slow adoption, not just enthusiasm for the technology.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what BIM actually offers beyond 3D drawing, such as clash detection and shared model coordination",
+        "Identify realistic barriers for smaller firms: software cost, training time, and unclear return on investment for small jobs",
+        "Show that adoption pressure often comes from large clients or government mandates rather than firms choosing it independently"
+      ],
+      "modelAnswer": "What excites people about BIM is that it isn't just a fancier drawing, it's a shared model that lets you catch clashes between structural, mechanical, and electrical work before they become expensive problems on site. But for a small contractor doing a handful of house extensions a year, the licence cost and the time it takes to train staff can outweigh the benefit, especially if their clients never ask for a model in the first place. I think the gap closes fastest where big public clients start requiring BIM as a condition of the contract, because that forces the investment rather than leaving it as a nice-to-have."
+    },
+    "commonMistakes": [
+      "Describing BIM as just '3D modelling software' with no mention of coordination or clash detection",
+      "Assuming resistance is purely about stubbornness rather than cost and scale",
+      "No mention of what's actually driving adoption where it does happen"
+    ],
+    "followUps": ["Should BIM be mandated for all publicly funded projects regardless of size?"]
+  },
+  {
+    "id": "prog-construction-management-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Design-bid-build vs design-build",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["delivery-methods", "contracts", "fundamentals"],
+    "question": "How does design-bid-build differ from design-build, and why might an owner choose one over the other?",
+    "lookingFor": "Clear grasp of how responsibility and risk shift between the two delivery methods, backed by a sense of when each suits an owner.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain design-bid-build as sequential, with a separate designer and contractor and competitive bidding after design is complete",
+        "Explain design-build as a single entity holding both design and construction responsibility under one contract",
+        "Connect the choice to what the owner values: price certainty and control versus speed and single-point accountability"
+      ],
+      "modelAnswer": "In design-bid-build, the owner hires a designer to finish the drawings first, then puts the project out to competitive bid, so the contractor only comes in once the design is essentially locked. Design-build collapses that into one contract, where a single team is responsible for both designing and building, which usually speeds things up because construction can start on early phases while later details are still being finalised. I think an owner who wants tight cost certainty and full control over design decisions leans toward design-bid-build, while an owner who cares more about speed and wants one party accountable for the whole outcome, rather than a designer and contractor blaming each other, leans toward design-build."
+    },
+    "commonMistakes": [
+      "Describing the two methods without explaining who holds the risk in each",
+      "Claiming one method is simply 'better' with no context for the owner's priorities",
+      "Confusing design-build with construction management at risk"
+    ],
+    "followUps": ["What risk does an owner take on by choosing design-build?"]
+  },
+  {
+    "id": "prog-construction-management-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: pressure to sign off unfinished safety checks",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety", "situational"],
+    "question": "Suppose you're a site engineer and your supervisor asks you to sign off a safety inspection you haven't actually completed, because the crew is behind schedule and waiting on it. What would you do?",
+    "lookingFor": "Firm ethical reasoning that refuses to compromise on safety documentation while still handling the pressure professionally.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that signing off an incomplete inspection isn't a small shortcut, it removes the actual safety check it represents",
+        "Propose a practical alternative, such as fast-tracking the real inspection rather than falsifying it",
+        "Hold the position even under pressure, while explaining it respectfully rather than moralising at the supervisor"
+      ],
+      "modelAnswer": "I wouldn't sign it, and I'd say so directly but respectfully. A safety inspection isn't paperwork for its own sake, it's the thing standing between the crew and a genuine hazard, so signing off something I haven't actually checked defeats the entire point of doing it. What I'd offer instead is to do the inspection properly right away, even if that means working through a break, because the actual fix for the schedule pressure is finishing the real check quickly, not pretending it happened. If the pressure continued after that, I think it would be right to escalate to whoever oversees site safety, because that's exactly the kind of shortcut that ends up in an incident report."
+    },
+    "commonMistakes": [
+      "Agreeing to sign because it 'probably would have passed anyway'",
+      "Refusing without offering any practical way to actually solve the schedule pressure",
+      "Escalating immediately without first trying to resolve it directly with the supervisor"
+    ],
+    "followUps": ["What would you do if this happened more than once with the same supervisor?"]
+  },
+  {
+    "id": "prog-construction-management-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Embodied carbon in concrete",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["sustainability", "current-debate", "materials"],
+    "question": "Concrete production is one of the largest sources of global carbon emissions. Do you think the industry should be pushed to move away from it, even where that costs more?",
+    "lookingFor": "A reasoned position on a genuine industry trade-off, showing awareness of alternatives and their limits rather than a simple yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of why concrete is emissions-heavy, primarily the cement production process",
+        "Mention at least one real alternative or mitigation, such as low-carbon cement blends, mass timber, or carbon capture in cement plants",
+        "Take a position while acknowledging the trade-off, cost, structural performance, and fire safety all matter too"
+      ],
+      "modelAnswer": "I think the honest answer is it's not really about abandoning concrete, it's about making it less carbon-intensive, because concrete's strength, fire resistance, and cost still make it hard to fully replace for a lot of structures. What I find more realistic is pushing on things like low-carbon cement blends that cut clinker content, and using mass timber where it genuinely fits, like mid-rise buildings, instead of treating it as a like-for-like swap everywhere. I'd support a policy that pushes low-carbon options through building codes gradually, because a sudden mandate without proven alternatives at scale risks pushing costs up without actually reducing emissions much."
+    },
+    "commonMistakes": [
+      "Calling for concrete to simply be banned with no discussion of what would replace it structurally",
+      "Not mentioning why concrete production specifically produces so much CO2",
+      "Refusing to take any position on the trade-off"
+    ],
+    "followUps": ["Where do you think mass timber genuinely can't replace concrete or steel?"]
+  },
+  {
+    "id": "prog-construction-management-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Skilled labour shortage",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["current-debate", "workforce", "industry-trends"],
+    "question": "The construction industry in many countries is facing a serious skilled-labour shortage. What do you think is driving that, and how might firms respond?",
+    "lookingFor": "Grounded understanding of the real causes of the shortage and realistic industry responses, not a vague 'not enough workers' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least one real driver: an ageing trades workforce, fewer young people entering apprenticeships, or immigration policy changes",
+        "Discuss at least one industry response, such as apprenticeship investment, offsite methods that need fewer site-hours, or automation of repetitive tasks",
+        "Show this isn't a problem that solves itself quickly"
+      ],
+      "modelAnswer": "A big part of it is demographic, a lot of skilled tradespeople are reaching retirement age faster than apprenticeships are replacing them, partly because construction hasn't always been marketed as an attractive career path to younger people compared to other options. I think firms are responding on a few fronts at once, investing more seriously in apprenticeship pipelines, shifting some work offsite into factory settings that need fewer specialised trades on the actual site, and using automation for repetitive tasks like bricklaying robots on straightforward runs. None of those are quick fixes though, apprenticeships take years to produce a qualified tradesperson, so I think the shortage is something the industry will be managing for a while rather than solving outright."
+    },
+    "commonMistakes": [
+      "Blaming the shortage entirely on 'people not wanting to work in trades' with no deeper cause",
+      "Offering only one vague solution like 'pay more' with no structural response",
+      "Treating the shortage as a short-term problem that will resolve on its own"
+    ],
+    "followUps": ["Do you think automation is more likely to ease the shortage or reduce demand for tradespeople?"]
+  },
+  {
+    "id": "prog-construction-management-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: client change request mid-build",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "stakeholder-management", "budget"],
+    "question": "Imagine you're the project engineer and, midway through a build, the client asks for a major design change that would blow the budget and delay handover. How would you handle that conversation?",
+    "lookingFor": "A structured, realistic approach to a stakeholder conflict that balances honesty about cost and schedule with genuinely hearing the client's request.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by understanding why the client wants the change, not just refusing outright",
+        "Quantify the real cost and schedule impact before making any promises",
+        "Present clear options rather than a flat yes or no, letting the client make an informed decision"
+      ],
+      "modelAnswer": "I'd want to understand first what's actually driving the request, because sometimes what looks like a big change is really solving a smaller problem that could be addressed more cheaply. Once I understood the real ask, I'd get the cost and schedule impact worked out properly before saying anything definite, because giving a rough guess and then correcting it later damages trust more than taking a day to get the numbers right. Then I'd bring the client two or three real options, the full change with its cost and delay, a scaled-down version that gets closer to what they want for less, and the option to hold off and add it later, so they're deciding with the full picture instead of being told either yes or no."
+    },
+    "commonMistakes": [
+      "Agreeing to the change immediately to keep the client happy, without checking the real impact",
+      "Refusing outright without exploring why the client wants it",
+      "Presenting only one option instead of a genuine choice"
+    ],
+    "followUps": ["What would you do if the client insisted on the change without accepting the cost or delay?"]
+  },
+  {
+    "id": "prog-construction-management-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Quality control vs quality assurance",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["quality", "fundamentals", "site-process"],
+    "question": "What's the difference between quality control and quality assurance on a construction site?",
+    "lookingFor": "A precise distinction between checking finished work and the process designed to prevent defects in the first place.",
+    "idealAnswer": {
+      "bullets": [
+        "Define quality control as inspecting completed work against the specification",
+        "Define quality assurance as the planned process, standards, and procedures put in place beforehand to prevent defects",
+        "Explain why relying on QC alone, without QA, catches problems too late to be efficient"
+      ],
+      "modelAnswer": "Quality control is checking finished work, like inspecting a poured slab against the tolerances in the specification and rejecting it if it's out of range. Quality assurance is everything set up beforehand to stop that slab being out of range in the first place, things like approved method statements, checklists for the formwork crew, and training so the right process is followed the first time. I think the distinction actually matters practically, because if a site relies only on QC, it's catching mistakes after the concrete's already poured, when it's far more expensive to fix than if the process itself had prevented the error."
+    },
+    "commonMistakes": [
+      "Using the two terms interchangeably",
+      "Describing QC correctly but having no clear definition of QA",
+      "Not explaining why the distinction matters for cost or rework"
+    ],
+    "followUps": ["Can you give an example of a QA measure that would prevent a common site defect?"]
+  },
+  {
+    "id": "prog-construction-management-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: substandard delivered materials",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "materials", "situational"],
+    "question": "Say you discover a supplier has delivered rebar that doesn't actually meet the specified grade, but rejecting it would delay the pour by weeks and the schedule has no slack left. What would you do?",
+    "lookingFor": "A clear refusal to compromise on structural specification, paired with realistic thinking about how to manage the resulting delay.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that structural specification isn't negotiable, regardless of schedule pressure",
+        "Think through practical next steps, such as verifying with mill certificates, informing the structural engineer, and sourcing a compliant supply quickly",
+        "Show awareness that using it anyway shifts risk onto the building's long-term safety, not just this week's schedule"
+      ],
+      "modelAnswer": "I wouldn't let it go into the structure, no matter how much the delay hurts, because the specified grade exists for a real structural reason, and using the wrong material doesn't just risk a schedule problem, it risks the safety of the finished building for its whole life. Practically, I'd flag it immediately to the structural engineer and site manager with the mill certificates as evidence, and start working the supply chain in parallel for a compliant batch, rather than waiting until the delay is confirmed to start looking. I'd also want to understand how the wrong grade got onto site in the first place, because if it's a supplier process failure, it needs fixing before the next delivery, not just this one."
+    },
+    "commonMistakes": [
+      "Using the material anyway because the difference in grade 'is probably fine'",
+      "Rejecting it without any concrete plan for how to manage the resulting delay",
+      "Not involving the structural engineer in the decision"
+    ],
+    "followUps": ["Who else on the project should be informed, and how quickly?"]
+  },
+  {
+    "id": "prog-construction-management-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Robotics and automation in construction",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["current-debate", "automation", "workforce"],
+    "question": "Some people predict robotics and 3D printing will replace a large share of construction labour within a couple of decades. Do you believe that, and what would it mean for the industry?",
+    "lookingFor": "A grounded, evidence-based view of automation's realistic reach in construction rather than uncritical hype or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish between tasks that are genuinely repeatable and automatable versus the highly variable, site-specific nature of most construction work",
+        "Give a concrete example of where automation already works, such as bricklaying robots or 3D-printed wall sections",
+        "Discuss what it would mean for the workforce, shifting demand toward supervision and skilled trades rather than eliminating labour outright"
+      ],
+      "modelAnswer": "I'm sceptical it will replace a large share of labour that quickly, because most construction sites are messy and unpredictable in a way factories aren't, every site has different ground conditions, different access, different weather on the day. Where I do think automation genuinely works is on repeatable tasks, like bricklaying robots on long straight runs, or 3D-printed wall forms for simple geometries, because those tasks are controlled enough to automate reliably. What I think is more realistic is that it shifts what workers do rather than removing them, you still need people supervising the machine, handling the parts a robot can't reach, and doing the finishing work that needs judgement, so I'd expect a change in the mix of skills needed more than a mass replacement of labour."
+    },
+    "commonMistakes": [
+      "Predicting near-total automation with no acknowledgement of construction's site variability",
+      "Dismissing automation entirely with no real examples of where it already works",
+      "Not distinguishing between different types of construction tasks"
+    ],
+    "followUps": ["Which trade do you think is most at risk from automation, and which is least?"]
+  },
+  {
+    "id": "prog-construction-management-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: schedule risk from weather",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "risk-management", "scheduling"],
+    "question": "Imagine you're managing a project in a region prone to flooding, and the schedule has no float left before the rainy season starts. How would you plan around that risk?",
+    "lookingFor": "Practical risk-management thinking that goes beyond hoping the weather cooperates, including sequencing and contingency options.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify which activities are most weather-exposed and prioritise sequencing them before the rainy season starts",
+        "Discuss contingency options, such as temporary drainage, covered work areas, or accepting a schedule buffer earlier in the project",
+        "Show awareness that risk planning happens before the season arrives, not once the rain has already started"
+      ],
+      "modelAnswer": "I'd start by working out which activities are actually vulnerable to flooding, things like excavation, foundations, or any work that needs dry ground, and try to sequence those as early as possible so they're finished before the rains hit rather than running right up against the deadline. Where that's not fully possible, I'd look at practical mitigations, temporary site drainage, pumps on standby, and covered working areas for anything that has to continue through wet weather. But honestly, the real fix has to happen earlier than that moment, if there's genuinely no float left going into a known flood season, that's a sign the original schedule underestimated the risk, so I'd also want to flag that for future phasing so it isn't repeated."
+    },
+    "commonMistakes": [
+      "Treating the weather risk as something to react to only once it happens",
+      "Offering vague reassurance with no concrete sequencing or mitigation steps",
+      "Not acknowledging that a schedule with zero float going into a known risk season is itself a planning failure"
+    ],
+    "followUps": ["If the rains arrive early despite your planning, what would you do next?"]
+  },
+  {
+    "id": "prog-construction-management-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Retention in construction contracts",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["contracts", "fundamentals", "payment"],
+    "question": "What is retention in a construction contract, and why do owners withhold it?",
+    "lookingFor": "Clear understanding of retention as a financial safeguard against defects, including its practical downside for contractors.",
+    "idealAnswer": {
+      "bullets": [
+        "Define retention as a percentage of each payment withheld until the work is verified complete and defect-free",
+        "Explain the owner's rationale: leverage to ensure snagging and defects are actually fixed",
+        "Acknowledge the downside for contractors, particularly cash flow pressure, and why it's a point of tension in the industry"
+      ],
+      "modelAnswer": "Retention is when the owner holds back a percentage, often around five percent, of each payment due to the contractor, and only releases it once the work has passed final inspection and any defects during the liability period have been fixed. The logic is straightforward, it gives the owner leverage to make sure the contractor actually comes back and fixes snagging issues, rather than moving on to the next job and treating the defects list as someone else's problem. But I understand it's also a genuine source of tension in the industry, because retention can tie up a significant amount of a contractor's cash on a project they've already finished the physical work on, which is part of why there's been pushback and even legislation in some places pushing for retention to be held in a separate trust account."
+    },
+    "commonMistakes": [
+      "Confusing retention with a general contingency fund",
+      "Explaining the owner's side but not acknowledging the cash flow impact on contractors",
+      "Vague answer with no mention of the defects liability period"
+    ],
+    "followUps": ["What alternatives to retention have you come across, and do you think they're an improvement?"]
+  },
+  {
+    "id": "prog-construction-management-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: value engineering versus cutting corners",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "value-engineering", "judgement"],
+    "question": "Value engineering is meant to cut cost without cutting quality, but critics say it's sometimes used to quietly cut corners. Where do you think the line is?",
+    "lookingFor": "Nuanced reasoning that distinguishes genuine performance-neutral savings from disguised quality reduction, not a simple accusation either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a genuine example of legitimate value engineering, where a cheaper option performs equivalently",
+        "Give an example where a change actually reduces performance or longevity, even if marketed as value engineering",
+        "Propose a way to draw the line, such as requiring the same specification standard be met, not just a similar-looking material"
+      ],
+      "modelAnswer": "I think genuine value engineering is something like substituting a locally sourced material that meets the exact same specification as the one originally specced, so the owner saves money without giving anything up in performance. It crosses into cutting corners when the substitution doesn't actually meet the original performance standard, like thinner insulation that technically fits the budget line item but reduces the building's actual thermal performance below what was designed. I think the honest line is whether the substitution still meets the underlying performance requirement, not just whether it looks similar or costs less, and that's something an owner's engineer should be independently verifying rather than trusting the label 'value engineering' on its own."
+    },
+    "commonMistakes": [
+      "Treating all value engineering as suspicious or dishonest by default",
+      "Giving no concrete example of the difference, staying entirely abstract",
+      "Not proposing any way to actually distinguish the two in practice"
+    ],
+    "followUps": ["Who should be responsible for catching a value-engineering change that actually reduces performance?"]
+  },
+  {
+    "id": "prog-construction-management-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: community opposition versus deadline",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "stakeholder-management", "community-relations"],
+    "question": "Imagine a community group is protesting the noise and dust from your project, but pausing work each time to address it would blow the deadline. How would you balance that?",
+    "lookingFor": "Genuine engagement with a legitimate community concern rather than treating it purely as an obstacle to schedule.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the complaint seriously as a legitimate stakeholder concern, not just a scheduling nuisance",
+        "Propose concrete mitigation, such as adjusted working hours, dust suppression, or a direct communication channel with residents",
+        "Recognise that ignoring community concern can create bigger delays later through complaints, permits, or reputational damage"
+      ],
+      "modelAnswer": "My first instinct wouldn't be to treat the protest as something to push through, because the noise and dust are real and the residents living next to the site didn't sign up for it the way the project team did. I'd look at practical mitigations first, things like restricting the noisiest work to fixed hours, using dust suppression measures, and setting up a direct line so residents can raise issues before they escalate to a formal complaint. I think it's also worth remembering that ignoring the concern doesn't actually protect the schedule, an unresolved community complaint can turn into a stop-work order or a planning enforcement issue that costs far more time than a bit of upfront accommodation would have."
+    },
+    "commonMistakes": [
+      "Framing the community's concern purely as an obstacle to the deadline",
+      "Offering only vague reassurance with no concrete mitigation measures",
+      "Not recognising that ignoring the issue can create worse delays later"
+    ],
+    "followUps": ["What would you do if the mitigation measures still weren't enough to satisfy the residents?"]
+  },
+  {
+    "id": "prog-construction-management-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Lean construction",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["lean-construction", "scheduling", "fundamentals"],
+    "question": "What is lean construction, and how does it differ from a traditional master-schedule approach?",
+    "lookingFor": "Genuine understanding of lean principles like waste reduction and collaborative short-interval planning, not just a buzzword recognition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain lean construction's core aim: eliminating waste, in time, materials, and rework",
+        "Contrast it with a traditional top-down master schedule pushed from head office",
+        "Mention a concrete lean tool, such as the Last Planner System, and how it involves trade crews in short-term planning"
+      ],
+      "modelAnswer": "Lean construction is really about systematically cutting waste, not just material waste but wasted time, wasted motion, and rework caused by trades getting in each other's way. Where it differs most from a traditional approach is who does the planning, a traditional master schedule is often set centrally and pushed down to the site, whereas something like the Last Planner System gets the actual trade foremen involved in weekly planning, because they're the ones who know what's genuinely achievable given what's actually ready on site that day. I find that shift interesting because it treats the people doing the work as the best source of information about what will actually go wrong, rather than assuming a schedule set months in advance will hold."
+    },
+    "commonMistakes": [
+      "Defining lean construction only as 'being efficient' with no specific mechanism",
+      "Not naming a concrete lean tool or method",
+      "Confusing lean construction with fast-track scheduling"
+    ],
+    "followUps": ["What kind of waste do you think is hardest to eliminate on a typical site?"]
+  },
+  {
+    "id": "prog-construction-management-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Green building certification debate",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["sustainability", "current-debate", "certification"],
+    "question": "Certifications like LEED add cost to a project. Do you think they're genuinely worth it, or mostly marketing?",
+    "lookingFor": "A balanced, evidence-aware view of green certification's real value versus its limitations, not a purely cynical or purely enthusiastic take.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine benefits, such as forcing measurable performance targets and giving owners a credible external benchmark",
+        "Acknowledge legitimate criticism, such as certifications sometimes rewarding point-chasing over real operational performance",
+        "Land on a nuanced position rather than dismissing certification entirely or accepting it uncritically"
+      ],
+      "modelAnswer": "I think certification does something genuinely useful, it forces a project to hit measurable targets instead of just claiming to be sustainable, and it gives an owner a credible label that means something to tenants or investors who can't verify the building's performance themselves. But I also think the criticism has a real basis, because some rating systems let a project earn points from things like bike racks or a green roof while skipping deeper, harder-to-measure improvements like actual energy performance after occupancy. My honest take is that certification is worth it as a floor, not a ceiling, it's a useful minimum standard, but a genuinely sustainable project should be aiming past the point count, not just at it."
+    },
+    "commonMistakes": [
+      "Treating certification purely as marketing with no acknowledgement of its real function",
+      "Accepting the label uncritically without engaging with the point-chasing criticism",
+      "Giving no concrete example of what the criticism actually looks like in practice"
+    ],
+    "followUps": ["What would a rating system need to change to better reflect actual building performance?"]
+  },
+  {
+    "id": "prog-construction-management-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: structural error discovered post-pour",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "structural-defects", "situational"],
+    "question": "Imagine the concrete for a slab has already been poured when you discover the rebar spacing didn't match the structural drawings. What would you do next?",
+    "lookingFor": "Calm, methodical crisis response that prioritises structural verification and honest reporting over hiding or panicking.",
+    "idealAnswer": {
+      "bullets": [
+        "Stop and document the issue immediately rather than continuing work around it",
+        "Escalate to the structural engineer for an assessment before deciding on remediation",
+        "Recognise that transparency with the client and design team is necessary even though it's an uncomfortable conversation"
+      ],
+      "modelAnswer": "The first thing I'd do is stop any further work on that section and document exactly what the actual rebar spacing was, with photos and measurements, because the structural engineer is going to need real evidence to assess it, not just a description. I wouldn't try to guess whether it's actually fine, that's not my call to make, it needs to go to the structural engineer for a proper assessment of whether it still meets capacity, needs supplementary reinforcement, or has to be removed and repoured. I know that reporting it means an uncomfortable conversation with the client about cost and delay, but hiding a structural issue is exactly the kind of decision that can turn into a much bigger problem later, so I think honesty here isn't optional."
+    },
+    "commonMistakes": [
+      "Deciding on your own that the spacing error is probably fine without engineering assessment",
+      "Trying to quietly proceed without documenting or reporting the issue",
+      "Panicking without a clear next step"
+    ],
+    "followUps": ["Who should be told first: the client, the structural engineer, or your own project manager?"]
+  },
+  {
+    "id": "prog-construction-management-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Cost-plus versus lump-sum contracts",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["contracts", "fundamentals", "risk-allocation"],
+    "question": "Why might a contractor prefer a cost-plus contract over a fixed lump-sum contract, and why might an owner be wary of it?",
+    "lookingFor": "Clear understanding of how each contract type allocates financial risk between contractor and owner.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain lump-sum as fixed price, where the contractor bears the risk of cost overruns",
+        "Explain cost-plus as reimbursing actual costs plus a fee, shifting overrun risk toward the owner",
+        "Connect this to why a contractor would prefer cost-plus on uncertain-scope work, and why an owner needs strong cost controls to accept it"
+      ],
+      "modelAnswer": "In a lump-sum contract, the contractor commits to a fixed price for the defined scope, so if costs run over their own estimate, that risk sits with the contractor, not the owner. In a cost-plus contract, the owner reimburses the contractor's actual costs plus an agreed fee, which shifts a lot of that overrun risk onto the owner instead. A contractor would prefer cost-plus especially on a project where the scope isn't fully defined yet, because pricing a fixed lump sum against unclear scope means either underbidding and losing money or overbidding to cover the uncertainty. An owner should be wary of it because without strong cost controls and open-book auditing, there's less incentive for the contractor to actually control costs tightly, since they're reimbursed either way."
+    },
+    "commonMistakes": [
+      "Explaining one contract type but not the other",
+      "Not connecting the choice to how risk is actually distributed",
+      "Missing why scope certainty is the key variable in choosing between them"
+    ],
+    "followUps": ["What controls would you want in place as an owner accepting a cost-plus contract?"]
+  },
+  {
+    "id": "prog-construction-management-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: gifts from a bidding subcontractor",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "procurement", "judgement"],
+    "question": "A subcontractor bidding on your project offers you tickets to a major sporting event while their bid is still under evaluation. What would you do?",
+    "lookingFor": "A clear-headed refusal that recognises the conflict of interest, without being naive about how relationships genuinely work in the industry.",
+    "idealAnswer": {
+      "bullets": [
+        "Decline the gift while the bid is under evaluation, regardless of the subcontractor's intent",
+        "Explain the reasoning: it isn't really about whether you'd be influenced, it's about the appearance of a compromised process",
+        "Show awareness that transparency, such as disclosing the offer to a manager, protects both you and the fairness of the bid"
+      ],
+      "modelAnswer": "I'd decline it, and I'd say clearly that I appreciate the gesture but can't accept anything while their bid's being evaluated. It isn't really about whether I think I'd personally be swayed by a pair of tickets, it's that accepting it while a decision is still open compromises the fairness of the process for every other bidder, even if nothing was actually intended by it. I think the right move is also to mention it to whoever oversees the procurement process, partly to be transparent, and partly because if it's a pattern with that subcontractor, that's useful information for the wider evaluation, not just something between me and them."
+    },
+    "commonMistakes": [
+      "Accepting the gift on the reasoning that it 'won't actually affect the decision'",
+      "Refusing without recognising why disclosure to a manager also matters",
+      "Overreacting by assuming the subcontractor definitely intended bribery, rather than handling it professionally"
+    ],
+    "followUps": ["Does your answer change if the tickets were offered after the contract was already awarded?"]
+  },
+  {
+    "id": "prog-construction-management-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital twins and AI project monitoring",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["current-debate", "technology", "digital-twins"],
+    "question": "Digital twins and AI-based progress monitoring are being adopted by large construction firms. What do you think they can and can't actually do for a project?",
+    "lookingFor": "Realistic, specific understanding of what these tools automate versus where human judgement still matters, avoiding vague technology enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a concrete example of what these tools do well, such as comparing drone or camera footage against the BIM model to flag progress or discrepancies automatically",
+        "Identify a real limitation, such as the tool flagging a deviation but not understanding its cause or the right remediation",
+        "Show the technology supports decision-making rather than replaces the project manager's judgement"
+      ],
+      "modelAnswer": "What I find genuinely useful about them is the ability to compare a drone scan or site camera feed against the BIM model automatically, which can flag that a wall's out of position or a milestone is behind schedule far faster than someone walking the site with a checklist. But what it can't do is understand why that deviation happened, or judge the right response, a system can tell you the wall's off by four centimetres, but it can't tell you whether that's a fabrication error, a setting-out mistake, or something a structural engineer needs to look at before deciding it's even a problem. I think of it as a very good early-warning system rather than a replacement for the judgement of an experienced site manager."
+    },
+    "commonMistakes": [
+      "Describing the technology only in vague terms like 'AI helps efficiency' with no concrete mechanism",
+      "Assuming the technology can make decisions on its own",
+      "Ignoring genuine current use cases in favour of speculative future capability"
+    ],
+    "followUps": ["What would worry you about relying too heavily on automated progress monitoring?"]
+  },
+  {
+    "id": "prog-construction-management-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Earned value management",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["earned-value", "cost-control", "scheduling"],
+    "question": "How would you use earned value management to tell whether a project is actually on track, rather than just being on schedule?",
+    "lookingFor": "A real understanding that EVM combines cost and schedule performance, showing why looking at either alone can be misleading.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core idea: comparing planned value, earned value, and actual cost, not just tracking dates against a calendar",
+        "Show why a project can look on schedule but be over budget, or vice versa, and why that matters",
+        "Mention at least one derived indicator, such as cost performance index or schedule performance index, and what it signals"
+      ],
+      "modelAnswer": "Earned value management is useful precisely because a schedule that says 'we're on day forty of ninety' doesn't tell you whether the project's actually healthy, it only tells you time has passed. What EVM does is compare the value of work you planned to have done by now against the value of work you've actually completed, and against what you've actually spent doing it. That's how you catch a project that looks fine on the calendar but is quietly burning through budget faster than the work justifies, which shows up as a cost performance index below one even while the schedule looks on track. I think that's the real value of it, it separates 'are we keeping pace with time' from 'are we getting the value we're paying for', which aren't the same question at all."
+    },
+    "commonMistakes": [
+      "Confusing earned value management with simply tracking percent complete against a calendar",
+      "Not distinguishing cost performance from schedule performance",
+      "No mention of any concrete indicator or how it would actually be read"
+    ],
+    "followUps": ["If the cost performance index is below one but the schedule performance index is above one, what would you investigate first?"]
+  },
+  {
+    "id": "prog-construction-management-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: discovering falsified inspection records",
+    "program": "Construction Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "whistleblowing", "safety"],
+    "question": "You find out that a colleague has been signing off inspection reports without actually visiting the site to check the work. What would you do?",
+    "lookingFor": "Willingness to act on a serious integrity breach with structural safety implications, reasoned through rather than reflexively harsh or reflexively passive.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this isn't a minor shortcut, falsified inspections can mean real defects going unnoticed in a completed structure",
+        "Consider a first step, such as raising it directly with the colleague, while being honest that the severity may require going further",
+        "Land on a position that prioritises safety and record integrity over personal loyalty, given the stakes involved"
+      ],
+      "modelAnswer": "I think this is more serious than an ordinary workplace disagreement, because a falsified inspection record means nobody actually knows whether that work meets specification, and if it's structural or safety-related, that's a real risk sitting inside a finished building. I'd still want to talk to the colleague directly first, partly because there might be an explanation I'm missing, and partly because it's fairer to give them the chance to correct it themselves before it goes further. But if it turned out to be a genuine pattern of falsifying records rather than a one-off, I don't think I could just let that sit, because the risk isn't really about the colleague at that point, it's about whoever eventually occupies that building trusting that it was actually checked."
+    },
+    "commonMistakes": [
+      "Deciding to stay silent because reporting a colleague feels disloyal",
+      "Escalating immediately with no attempt to understand the situation first",
+      "Treating falsified inspections as a minor paperwork issue rather than a safety issue"
+    ],
+    "followUps": ["Would your answer change if the falsified inspection was for a minor cosmetic item rather than a structural one?"]
+  },
+  {
+    "id": "prog-construction-management-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Building codes and climate resilience",
+    "program": "Construction Management",
+    "difficulty": "medium",
+    "tags": ["current-debate", "resilience", "regulation"],
+    "question": "Extreme weather events are pushing some cities to rewrite building codes for greater resilience. Should developers be required to build beyond current code, even at extra cost?",
+    "lookingFor": "A reasoned position weighing upfront cost against long-term risk, showing awareness that code is a minimum, not a target.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that current code is a legal minimum, not necessarily an adequate resilience standard given changing climate risk",
+        "Weigh the trade-off honestly: higher upfront cost for developers against avoided future damage, insurance, and safety costs",
+        "Take a position, such as phased or location-based mandates rather than a blanket rule everywhere"
+      ],
+      "modelAnswer": "I think it's worth remembering that a building code is a legal floor, not a guarantee that the building is genuinely resilient to what the climate looks like by the end of its design life, so I'm sympathetic to the idea that code needs to catch up faster than it currently does in a lot of places. That said, I don't think a blanket requirement to build beyond code everywhere makes sense, a coastal city facing rising flood risk has a very different case for stricter standards than a low-risk inland area, and mandating the same extra cost everywhere would be hard to justify. I'd support requirements that scale with actual local risk, because that ties the extra upfront cost directly to the danger it's actually protecting against, which makes it easier to defend to developers and easier to enforce fairly."
+    },
+    "commonMistakes": [
+      "Treating current building code as automatically sufficient for climate resilience",
+      "Ignoring the real cost impact on developers and housing affordability",
+      "Proposing a blanket rule with no consideration of regional risk variation"
+    ],
+    "followUps": ["Who should bear the extra cost of resilience upgrades, the developer, the buyer, or the government?"]
+  }
+]

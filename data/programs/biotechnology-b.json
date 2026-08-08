@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-biotechnology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "CRISPR-Cas9 mechanism",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["genetics", "crispr", "mechanism"],
+    "question": "Can you explain how CRISPR-Cas9 actually finds and cuts a target sequence in DNA?",
+    "lookingFor": "A correct mechanistic explanation showing the applicant understands the tool beyond buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the guide RNA pairing with the complementary DNA sequence",
+        "Mention the PAM sequence requirement next to the target site",
+        "Explain the Cas9 enzyme creating a double-strand break, then repair by NHEJ or HDR"
+      ],
+      "modelAnswer": "The guide RNA is designed to be complementary to the target DNA sequence, so it base-pairs there and drags the Cas9 enzyme along with it. Cas9 only cuts if it also finds a short PAM sequence right next to the target, which is basically a safety check built into the bacterial system it came from. Once it binds correctly, Cas9 makes a double-strand break, and the cell's own repair machinery either patches it roughly through NHEJ, which usually disrupts the gene, or precisely through HDR if you supply a repair template. I find it fascinating that we borrowed this whole system from a bacterial immune defence against viruses."
+    },
+    "commonMistakes": [
+      "Saying CRISPR 'edits DNA' with no mention of the guide RNA or PAM site",
+      "Confusing CRISPR with gene therapy in general",
+      "Not knowing the difference between NHEJ and HDR outcomes"
+    ],
+    "followUps": ["Why does off-target cutting happen, and how would you check for it?"]
+  },
+  {
+    "id": "prog-biotechnology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Germline editing ethics dilemma",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ethics", "gene-editing", "dilemma"],
+    "question": "A couple carrying a severe genetic disease asks for CRISPR editing of their embryo before implantation. Should this be allowed?",
+    "lookingFor": "Structured ethical reasoning weighing patient autonomy against heritable risk, not a flat yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish somatic editing from heritable germline editing and why the stakes differ",
+        "Weigh the couple's autonomy and suffering against risks to future generations who cannot consent",
+        "Discuss the current scientific and regulatory reasons germline editing is restricted, like off-target effects and mosaicism"
+      ],
+      "modelAnswer": "I'd separate this from somatic gene therapy straight away, because editing an embryo changes every cell and gets passed down, so any mistake or unknown long-term effect isn't confined to one patient who consented. I completely understand the couple's motivation and I don't think it's wrong to want to spare a child a severe disease, but the science isn't precise enough yet, we still see off-target edits and mosaicism, and the person most affected, the future child, can't consent. I'd support continuing research toward safety and a narrow, tightly regulated pathway for serious monogenic diseases, but I wouldn't allow it broadly right now, and I'd draw a much harder line against using it for anything beyond disease prevention."
+    },
+    "commonMistakes": [
+      "Treating germline and somatic editing as the same thing",
+      "Giving a purely emotional answer with no mention of scientific risk",
+      "Not distinguishing disease prevention from enhancement"
+    ],
+    "followUps": ["Does your answer change if the disease were less severe, like a treatable condition?"]
+  },
+  {
+    "id": "prog-biotechnology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "GM crops and Golden Rice debate",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["gmo", "agriculture", "debate"],
+    "question": "Golden Rice was engineered to fight vitamin A deficiency decades ago but is still barely grown. Why do you think that is, and what does it tell you about biotechnology in the real world?",
+    "lookingFor": "Awareness that GM adoption is shaped by regulation, public trust, and politics, not just the science.",
+    "idealAnswer": {
+      "bullets": [
+        "Show knowledge of what Golden Rice does biologically, engineered beta-carotene production",
+        "Identify non-scientific barriers like regulatory delays, activism, and public distrust of GMOs",
+        "Reflect on what this means for how a biotechnologist should think about deployment, not just invention"
+      ],
+      "modelAnswer": "Golden Rice was engineered with genes to produce beta-carotene in the grain, which the body converts to vitamin A, so on paper it directly targets a real deficiency that still causes childhood blindness. But it got caught up in the broader anti-GMO movement, faced years of regulatory approval delays in the countries that needed it most, and public trust never really recovered even after safety was established. It taught me that being a good biotechnologist isn't just about the molecular biology, it's about anticipating that a technically sound solution can still fail if you don't take communication, regulation, and trust seriously from the start."
+    },
+    "commonMistakes": [
+      "Not knowing what Golden Rice actually does",
+      "Blaming only 'anti-science' attitudes with no nuance",
+      "Treating the case as purely a science story with no social dimension"
+    ],
+    "followUps": ["How would you try to build public trust for a new GM crop today?"]
+  },
+  {
+    "id": "prog-biotechnology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "mRNA vaccine platform",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["vaccines", "current-development", "immunology"],
+    "question": "mRNA vaccines went from a fringe idea to mainstream during the pandemic. What made that platform faster to develop than traditional vaccines, and what are its limitations?",
+    "lookingFor": "Genuine grasp of the platform's mechanism and honest awareness of its trade-offs, not just praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that only the genetic sequence of the antigen is needed, not growing the pathogen itself",
+        "Mention lipid nanoparticle delivery and cold-chain requirements as a real limitation",
+        "Note that the underlying platform had decades of prior research behind the seemingly sudden success"
+      ],
+      "modelAnswer": "What struck me is that once you know the genetic sequence of the target protein, you can design the mRNA almost immediately, you don't need to grow and inactivate the actual virus the way traditional vaccines do, which is what let developers move so fast once the sequence for the spike protein was published. The trade-off is that naked mRNA is fragile, so it needs lipid nanoparticles to get into cells and very cold storage to stay stable, which made distribution hard in places without reliable cold chains. I also think it's worth remembering the platform wasn't actually built overnight, it rode on decades of earlier research into mRNA stability that just hadn't had its moment yet."
+    },
+    "commonMistakes": [
+      "Describing it as if the technology appeared from nothing during the pandemic",
+      "Not mentioning delivery or storage challenges",
+      "Confusing mRNA vaccines with live attenuated vaccines"
+    ],
+    "followUps": ["What other diseases do you think this platform could realistically target next?"]
+  },
+  {
+    "id": "prog-biotechnology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene patenting ethics",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ethics", "ip", "policy"],
+    "question": "Should a company be allowed to patent a naturally occurring human gene it was first to identify and test for, like BRCA1?",
+    "lookingFor": "Balanced reasoning about incentivising research against restricting access to diagnosis and treatment.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the argument for patents, incentivising expensive discovery and testing infrastructure",
+        "Weigh it against the harm of restricted access, higher testing costs, blocked further research",
+        "Reference the real-world resolution, such as courts ruling naturally occurring genes aren't patentable but synthetic cDNA can be"
+      ],
+      "modelAnswer": "I understand the argument that a company invested real money identifying the BRCA1 mutation and building a reliable test, and patents are usually how we reward that kind of investment. But a naturally occurring gene isn't something anyone invented, and locking it up meant other labs couldn't offer testing or improve on it, which actually slowed down the science and made testing more expensive for patients who needed it. I think the actual court ruling got this roughly right, that you can't patent the gene itself because it's a product of nature, but you can patent something you genuinely engineered, like synthetic complementary DNA. It's a reminder that IP law in biotech has to keep drawing a careful line between rewarding invention and locking away discovery."
+    },
+    "commonMistakes": [
+      "Taking an absolute position with no acknowledgment of the counterargument",
+      "Not knowing this is a real, resolved legal case",
+      "Confusing gene patents with drug patents"
+    ],
+    "followUps": ["How would you design incentives for genetic research without allowing gene patents?"]
+  },
+  {
+    "id": "prog-biotechnology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Antibiotic resistance mechanisms",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["microbiology", "resistance", "public-health"],
+    "question": "Explain, at a molecular level, how bacteria develop resistance to an antibiotic, and why overuse accelerates it.",
+    "lookingFor": "Correct mechanistic understanding of resistance plus grasp of selective pressure as an evolutionary process.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe at least one concrete resistance mechanism, like enzyme inactivation, efflux pumps, or target modification",
+        "Explain horizontal gene transfer via plasmids as a way resistance spreads between bacteria",
+        "Connect overuse to selective pressure, killing susceptible strains and letting resistant ones dominate"
+      ],
+      "modelAnswer": "Resistance usually comes down to a few mechanisms, bacteria might produce an enzyme like beta-lactamase that inactivates the antibiotic, pump the drug back out through efflux pumps, or mutate the target site so the drug can't bind properly anymore. What makes it spread so fast is that resistance genes often sit on plasmids, which bacteria can transfer between each other even across species, not just pass down to their own offspring. Overusing antibiotics accelerates all of this because it's just selective pressure, you're killing off the susceptible bacteria and leaving the resistant ones with more room and fewer competitors to multiply, so the population you're left with is increasingly resistant."
+    },
+    "commonMistakes": [
+      "Saying antibiotics 'cause' mutations rather than select for existing ones",
+      "Not mentioning horizontal gene transfer",
+      "Giving a vague answer with no named mechanism"
+    ],
+    "followUps": ["What role could biotechnology play in solving the resistance crisis?"]
+  },
+  {
+    "id": "prog-biotechnology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Recombinant DNA and plasmid vectors",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["molecular-biology", "recombinant-dna", "technique"],
+    "question": "Walk me through, step by step, how you'd get a bacterium to produce human insulin.",
+    "lookingFor": "A logically ordered, technically accurate walkthrough of recombinant DNA technology.",
+    "idealAnswer": {
+      "bullets": [
+        "Isolate or synthesise the human insulin gene and cut it with restriction enzymes",
+        "Insert it into a plasmid vector using the same enzymes and DNA ligase, then transform it into bacteria",
+        "Select successfully transformed colonies, usually via an antibiotic resistance marker, then culture and purify the protein"
+      ],
+      "modelAnswer": "You'd start by isolating or synthesising the human insulin gene and cutting both it and a plasmid vector with the same restriction enzyme so you get matching sticky ends. Then you'd use DNA ligase to paste the insulin gene into the plasmid, creating a recombinant plasmid, and transform that into bacteria, usually E. coli, through something like heat shock. Not every bacterium takes up the plasmid, so you'd grow them on a plate with an antibiotic the plasmid also carries resistance for, so only successfully transformed colonies survive, and from there you'd scale up the culture and purify the insulin the bacteria are now expressing. It's the same basic logic behind most recombinant protein production, even though the details get more sophisticated for trickier proteins."
+    },
+    "commonMistakes": [
+      "Skipping the selection step and assuming every bacterium takes up the plasmid",
+      "Forgetting restriction enzymes need to produce compatible ends",
+      "Confusing this process with CRISPR-based editing"
+    ],
+    "followUps": ["Why might a bacterium struggle to properly fold or modify a more complex human protein?"]
+  },
+  {
+    "id": "prog-biotechnology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Synthetic biology biosafety hypothetical",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["synthetic-biology", "biosafety", "hypothetical"],
+    "question": "Imagine you've engineered a microbe to break down plastic waste efficiently and you want to release it into the ocean. What could go wrong, and how would you design around it?",
+    "lookingFor": "Systems-level risk thinking about ecological consequences, not just excitement about the application.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a realistic ecological risk, like uncontrolled spread, competing with native microbes, or unknown byproducts",
+        "Propose a containment strategy, such as a genetic kill switch or auxotrophy that limits survival outside a controlled setting",
+        "Show awareness that field release needs staged testing and regulatory review, not a jump straight to open water"
+      ],
+      "modelAnswer": "My first worry wouldn't be whether it works, it would be what happens once it's out of my control, an organism engineered to be really good at breaking down plastic might outcompete native microbes, disrupt a food web, or produce breakdown byproducts we haven't tested for at scale. I'd want to build in a genetic safeguard before even considering open release, something like an auxotrophy that makes it dependent on a nutrient not present in the wild, or a kill switch triggered by an environmental cue, so it can't persist or spread uncontrollably. And realistically I wouldn't go straight to the ocean, I'd want staged testing, closed bioreactors first, then contained field trials, with regulators and ecologists involved at every step, because the appeal of solving plastic pollution doesn't excuse skipping the containment work."
+    },
+    "commonMistakes": [
+      "Only discussing the benefit of the application, not the risk",
+      "Proposing no containment mechanism at all",
+      "Assuming lab success translates directly to safe environmental release"
+    ],
+    "followUps": ["What's the difference between a kill switch and auxotrophic containment, and which would you trust more?"]
+  },
+  {
+    "id": "prog-biotechnology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Embryonic stem cell research ethics",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ethics", "stem-cells", "dilemma"],
+    "question": "Embryonic stem cell research requires destroying early-stage embryos to obtain the cells. How do you think about the ethics of that trade-off?",
+    "lookingFor": "Thoughtful engagement with competing moral views rather than dismissing either side.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine moral weight some people place on early embryos",
+        "Present the counterbalancing case, the medical potential and the status of embryos that would otherwise be discarded from IVF",
+        "Show awareness of alternatives like induced pluripotent stem cells and why they don't fully replace the debate"
+      ],
+      "modelAnswer": "I don't think it's fair to wave away the ethical weight some people place on an early embryo, even at a few days old, because moral status isn't something science alone can settle. At the same time, a lot of the embryos used in research come from IVF clinics and would otherwise be discarded anyway, and embryonic stem cells have properties, particularly their pluripotency, that induced pluripotent stem cells still don't perfectly replicate even though they've narrowed the gap a lot. My own view is that using surplus IVF embryos under strict consent and oversight is defensible, but I think the field is right to keep pushing toward iPSCs and other alternatives, because it reduces the ethical burden without losing the science."
+    },
+    "commonMistakes": [
+      "Refusing to take any position at all",
+      "Ignoring that iPSCs exist as a partial alternative",
+      "Treating this as settled with no acknowledgment of genuine disagreement"
+    ],
+    "followUps": ["Do induced pluripotent stem cells make this debate obsolete? Why or why not?"]
+  },
+  {
+    "id": "prog-biotechnology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "PCR technique",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["technique", "molecular-biology", "fundamentals"],
+    "question": "Explain how PCR amplifies a specific piece of DNA, and why the three temperature steps matter.",
+    "lookingFor": "Accurate understanding of denaturation, annealing, and extension, and why each temperature does what it does.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe denaturation separating the double strand, annealing letting primers bind, extension building new strands",
+        "Explain why specific primers determine which sequence gets amplified",
+        "Mention the exponential doubling each cycle produces"
+      ],
+      "modelAnswer": "PCR works in repeating cycles of three temperature steps, first you heat the sample to around ninety-five degrees to denature the DNA, splitting the double helix into single strands. Then you cool it down so the primers, short sequences designed to match the target region, can anneal to their complementary spots, which is what makes the amplification specific rather than copying random DNA. Finally you raise the temperature slightly for the extension step, where a heat-stable polymerase like Taq builds a new complementary strand from each primer, and because both strands get copied each cycle, the amount of target DNA roughly doubles every round, so after thirty cycles you've gone from a tiny sample to billions of copies."
+    },
+    "commonMistakes": [
+      "Not explaining what the primers actually do",
+      "Confusing linear amplification with the real exponential doubling",
+      "Forgetting why a heat-stable polymerase like Taq is necessary"
+    ],
+    "followUps": ["Why did the discovery of Taq polymerase specifically make PCR practical?"]
+  },
+  {
+    "id": "prog-biotechnology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene drive dilemma",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ethics", "gene-drive", "ecology"],
+    "question": "Gene drive technology could wipe out malaria-carrying mosquito populations by spreading a self-propagating genetic change through the wild population. Should we deploy it?",
+    "lookingFor": "Balanced reasoning weighing a massive humanitarian benefit against irreversible ecological risk.",
+    "idealAnswer": {
+      "bullets": [
+        "State the potential humanitarian benefit clearly, malaria kills hundreds of thousands of people yearly, mostly children",
+        "Weigh the ecological risk of an irreversible, self-spreading change with unknown downstream effects on the food web",
+        "Discuss the governance question, that this crosses borders and no single country can consent on behalf of an ecosystem"
+      ],
+      "modelAnswer": "The humanitarian case is enormous, malaria still kills hundreds of thousands of people a year, mostly young children, so a tool that could actually eliminate a vector species is hard to dismiss. What makes me cautious is that a gene drive is designed to spread and it's very hard to reverse once it's out in a wild population, and we genuinely don't know what removing that mosquito species does to the food web or to other pathogens that might fill the gap. I'd also want to think hard about governance, because a released gene drive doesn't respect borders, so no single country or research group can really consent to it on behalf of an entire regional ecosystem. My instinct is cautious, staged deployment with strong regional consent and reversibility safeguards built in from the start, rather than either blanket approval or blanket refusal."
+    },
+    "commonMistakes": [
+      "Only weighing one side, either pure enthusiasm or pure caution",
+      "Not mentioning irreversibility as the key distinguishing risk",
+      "Ignoring the cross-border governance problem"
+    ],
+    "followUps": ["Who should have the authority to approve a release like this?"]
+  },
+  {
+    "id": "prog-biotechnology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Cultured meat debate",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["cultured-meat", "current-development", "sustainability"],
+    "question": "Lab-grown meat is now approved for sale in a few countries. What's the biotechnology behind it, and what's actually holding back wider adoption?",
+    "lookingFor": "Real technical grasp of the process plus honest awareness of practical barriers, not just enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic process, animal stem cells grown in a bioreactor on a scaffold with growth medium",
+        "Identify the real barrier, cost of growth media and scaling bioreactor production, not just consumer squeamishness",
+        "Show balanced awareness of both the environmental promise and the current limitations"
+      ],
+      "modelAnswer": "The basic idea is you take a small sample of animal muscle stem cells, grow them in a bioreactor on some kind of scaffold, and feed them a nutrient-rich growth medium so they multiply and differentiate into muscle and fat tissue without needing to raise a whole animal. What's actually holding it back isn't really consumer squeamishness, it's cost, growth media traditionally relied on fetal bovine serum which is expensive and ethically awkward for a product meant to reduce animal use, and scaling bioreactors up to produce meat at commodity prices is a genuinely hard bioprocess engineering problem, not just a lab trick. I think the environmental case is promising, but I'm cautious about timelines, because going from a lab demonstration to something that competes with factory farming on price is a much bigger jump than the headlines suggest."
+    },
+    "commonMistakes": [
+      "Assuming the main obstacle is public acceptance rather than cost and scale",
+      "Not knowing what growth medium or scaffolds are for",
+      "Overselling the environmental benefit without acknowledging current energy costs"
+    ],
+    "followUps": ["What would need to change for cultured meat to be price competitive with conventional meat?"]
+  },
+  {
+    "id": "prog-biotechnology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Biopiracy and traditional knowledge",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ethics", "biopiracy", "ip"],
+    "question": "A pharmaceutical company patents a drug derived from a plant compound that an indigenous community has used medicinally for generations, without compensating them. What's your view?",
+    "lookingFor": "Recognition of the fairness and justice issue, plus awareness of frameworks meant to address it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the core injustice, commercial profit from knowledge the community developed and shared without consent or benefit-sharing",
+        "Distinguish the value the company adds, isolation, testing, formulation, from the value the community already contributed",
+        "Reference the existence of frameworks like the Nagoya Protocol on access and benefit-sharing"
+      ],
+      "modelAnswer": "I think it's a real injustice, the community built and preserved that knowledge over generations, often at real cost to protecting the source plant and ecosystem, and then a company captures the commercial value with no consent and no benefit flowing back. I do think the company adds genuine value too, isolating the active compound, running safety trials, and formulating something usable is real scientific work, so I wouldn't say the patent itself is illegitimate. But there are frameworks like the Nagoya Protocol specifically meant to require prior informed consent and benefit-sharing agreements before this kind of bioprospecting happens, and I think any biotechnologist working with traditional or indigenous knowledge has a responsibility to actually use them rather than treat the knowledge as free raw material."
+    },
+    "commonMistakes": [
+      "Dismissing the community's contribution as 'not real science'",
+      "Not knowing any relevant framework or precedent exists",
+      "Framing it as purely a legal question with no ethical dimension"
+    ],
+    "followUps": ["How would you design a fair benefit-sharing agreement in a case like this?"]
+  },
+  {
+    "id": "prog-biotechnology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use research of concern",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["biosafety", "gain-of-function", "ethics"],
+    "question": "Some virology labs run gain-of-function research to study how pathogens might mutate to become more transmissible, arguing it helps pandemic preparedness. Others say it's too dangerous to justify. Where do you stand?",
+    "lookingFor": "Nuanced weighing of scientific benefit against catastrophic risk, and awareness this is a live, contested debate.",
+    "idealAnswer": {
+      "bullets": [
+        "State the preparedness argument accurately, understanding mutation pathways can inform vaccine and surveillance strategy",
+        "State the risk argument accurately, an accidental lab leak or misuse could itself trigger the pandemic it was meant to prevent",
+        "Land on a position that engages with biosafety level requirements and independent oversight rather than a flat yes or no"
+      ],
+      "modelAnswer": "I can see the genuine logic behind gain-of-function work, if you understand which mutations make a virus more transmissible before nature produces them naturally, you can build better surveillance and get a head start on vaccines. But the risk isn't hypothetical, a lab accident or a leak involving an enhanced pathogen could itself cause the exact catastrophe the research is meant to prevent, and history has shown biosafety failures do happen even at high-containment labs. I don't think the answer is banning the research outright, because some of it does have real preparedness value, but I do think it needs to sit under strict biosafety level four containment, and crucially under independent review that isn't just the same institution grading its own risk assessment. I'd rather see fewer such experiments done extremely carefully than a blanket ban that just pushes the same research somewhere less regulated."
+    },
+    "commonMistakes": [
+      "Taking an absolute stance with no acknowledgment of the other side's real argument",
+      "Not knowing what gain-of-function research actually involves",
+      "Ignoring the oversight and governance dimension of the debate"
+    ],
+    "followUps": ["Who should decide whether a specific gain-of-function experiment is worth the risk?"]
+  },
+  {
+    "id": "prog-biotechnology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Monoclonal antibody production",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["bioprocessing", "antibodies", "technique"],
+    "question": "How are monoclonal antibodies produced, and why can't you just extract them directly from a patient's blood?",
+    "lookingFor": "Understanding of hybridoma technology or recombinant expression and why a single, uniform antibody is needed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the hybridoma method, fusing an antibody-producing B cell with a myeloma cell to make an immortal line",
+        "Explain why this gives a single, identical antibody clone rather than the mixed polyclonal antibodies in blood",
+        "Mention modern recombinant approaches and humanisation to reduce immune rejection"
+      ],
+      "modelAnswer": "Blood contains a mix of thousands of different antibodies from different B cells, which is useless if you need a therapy that reliably targets one exact epitope every time. The classic method, hybridoma technology, fuses an antibody-producing B cell from an immunised animal with an immortal myeloma cell, so you get a hybrid cell line that both produces a single specific antibody and can be cultured indefinitely, which is where the 'monoclonal' name comes from. Modern production often skips the animal step entirely and uses recombinant expression in mammalian cell lines, plus humanisation techniques to swap out the non-human parts of the antibody so a patient's immune system doesn't reject it as foreign."
+    },
+    "commonMistakes": [
+      "Confusing monoclonal with polyclonal antibodies",
+      "Not knowing what 'hybridoma' means or how it's made",
+      "Forgetting why humanisation matters for therapeutic use"
+    ],
+    "followUps": ["Why might a fully mouse-derived antibody fail as a human drug even if it works in the lab?"]
+  },
+  {
+    "id": "prog-biotechnology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme kinetics",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["biochemistry", "enzymes", "fundamentals"],
+    "question": "If you doubled the substrate concentration in an enzyme-catalysed reaction, would you always double the reaction rate? Explain using Michaelis-Menten kinetics.",
+    "lookingFor": "Correct application of Michaelis-Menten reasoning, understanding saturation kinetics rather than linear intuition.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the relationship is not linear, it follows Michaelis-Menten saturation kinetics",
+        "Explain that at low substrate concentration the rate rises close to proportionally, but plateaus near Vmax as enzyme active sites saturate",
+        "Mention Km as the concentration at half-maximal rate and what it tells you about enzyme affinity"
+      ],
+      "modelAnswer": "No, not always, and that's actually the interesting part of Michaelis-Menten kinetics. At low substrate concentrations, most active sites are free, so adding more substrate does increase the rate almost proportionally. But as concentration keeps rising, more and more enzyme molecules are already occupied and working at capacity, so the rate curve bends and eventually plateaus at Vmax, where adding more substrate barely changes anything because there simply aren't more free active sites to use it. Km is the substrate concentration where you're at half of Vmax, and it's a useful number because a low Km tells you the enzyme has high affinity for its substrate, reaching half-speed even at low concentrations."
+    },
+    "commonMistakes": [
+      "Assuming rate always scales linearly with substrate concentration",
+      "Confusing Km with Vmax",
+      "Not mentioning enzyme saturation as the reason for the plateau"
+    ],
+    "followUps": ["How would a competitive inhibitor change the Km and Vmax you'd measure?"]
+  },
+  {
+    "id": "prog-biotechnology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in drug discovery",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["current-development", "ai", "structural-biology"],
+    "question": "AlphaFold can now predict protein structure from sequence with striking accuracy. What does this actually change for biotechnology, and what can it still not do?",
+    "lookingFor": "Real understanding of what structure prediction enables and honest limits, not hype.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what problem AlphaFold solves, predicting 3D folded structure from amino acid sequence, previously slow and experimental",
+        "Give a concrete downstream use, faster drug target identification or rational drug design without needing crystallography first",
+        "Name a genuine limitation, like predicting dynamic conformational changes, protein complexes, or the effect of specific mutations less reliably"
+      ],
+      "modelAnswer": "Before this, getting a protein's 3D structure usually meant slow, expensive experimental methods like X-ray crystallography or cryo-EM, so AlphaFold predicting a highly accurate structure directly from the amino acid sequence removes a huge bottleneck, especially for proteins that are hard to crystallise. That speeds up things like identifying drug targets or doing structure-based drug design, because researchers can get a reliable structural starting point almost instantly instead of waiting months. What it's still not great at is predicting how a protein actually moves and changes shape dynamically, or exactly how a specific point mutation might destabilise it, so I think of it as an incredible starting hypothesis rather than a replacement for experimental validation."
+    },
+    "commonMistakes": [
+      "Treating it as if it 'solves biology' with no remaining limitations",
+      "Not knowing what problem it actually solves relative to older methods",
+      "Confusing structure prediction with function prediction"
+    ],
+    "followUps": ["Where would you still want to run a wet-lab experiment even after getting an AlphaFold prediction?"]
+  },
+  {
+    "id": "prog-biotechnology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Xenotransplantation ethics",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ethics", "xenotransplantation", "dilemma"],
+    "question": "Genetically modified pig organs are now being trialled for human transplant to address the organ shortage. What ethical concerns would you want addressed before this becomes routine?",
+    "lookingFor": "Awareness of both the medical promise and the specific risks, including animal welfare and zoonotic disease.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real humanitarian driver, chronic shortage of human donor organs and long waiting lists",
+        "Raise the zoonotic disease risk, especially latent retroviruses that could cross species with unknown consequences",
+        "Raise animal welfare concerns around breeding and modifying pigs specifically as organ sources, and informed consent for recipients given how experimental this still is"
+      ],
+      "modelAnswer": "The shortage of donor organs is a genuine crisis, people die every year on waiting lists, so I understand why this research is moving fast. My biggest concern is the zoonotic risk, pigs can carry latent retroviruses that don't cause disease in pigs but might behave completely differently once inside a human immune system, and we can't fully predict that risk in advance. I'd also want the ethics of breeding and genetically modifying an animal specifically to be harvested for organs taken seriously, not dismissed, alongside making sure early human recipients genuinely understand how experimental this still is, given we don't yet have long-term data on organ rejection or unknown complications. I think the medical need is real and justifies continued careful trials, but 'routine' should wait until we have much longer safety follow-up."
+    },
+    "commonMistakes": [
+      "Focusing only on organ rejection and missing zoonotic disease risk",
+      "Ignoring animal welfare as a legitimate ethical dimension",
+      "Assuming current trial results mean it's already safe for routine use"
+    ],
+    "followUps": ["How would you weigh the animal welfare concern against a patient's life-or-death need for an organ?"]
+  },
+  {
+    "id": "prog-biotechnology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Biosimilars versus biologics",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["regulation", "biosimilars", "industry"],
+    "question": "Why can't a biosimilar be approved the same simple way a generic small-molecule drug is, just by proving it's chemically identical?",
+    "lookingFor": "Understanding that biologics are complex, manufactured proteins where exact replication isn't possible, unlike small molecules.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that biologics are large, complex molecules produced in living cells, so exact molecular replication isn't achievable the way it is for small chemical drugs",
+        "Note that manufacturing process differences, like cell line or purification, can cause subtle variations affecting folding or glycosylation",
+        "Describe why biosimilars need comparative clinical and immunogenicity data, not just a chemical identity test"
+      ],
+      "modelAnswer": "A small-molecule generic is a simple, well-defined chemical structure, so if you can prove yours matches atom for atom, it will behave identically. A biologic is produced by living cells and is a huge, complex protein, so even a different manufacturer using a different cell line or purification process is very unlikely to produce something molecule-for-molecule identical, subtle differences in folding or glycosylation can occur even between batches of the original product. That's why biosimilars go through comparative studies looking at things like immunogenicity and clinical performance rather than just a chemical equivalence test, the regulatory bar is 'highly similar with no clinically meaningful differences' rather than 'identical', because identical genuinely isn't achievable with biologics."
+    },
+    "commonMistakes": [
+      "Assuming biosimilars are approved exactly like generics",
+      "Not knowing biologics are produced in living cells rather than synthesised chemically",
+      "Ignoring the role of manufacturing process variability"
+    ],
+    "followUps": ["Why might switching a patient from the original biologic to a biosimilar require extra caution?"]
+  },
+  {
+    "id": "prog-biotechnology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Contained organism escape hypothetical",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "biosafety", "problem-solving"],
+    "question": "You're leading a student research project using a genetically modified strain of E. coli in the lab, and you discover the containment protocol was breached, waste from the culture may have gone down a regular drain instead of the autoclave. What do you do?",
+    "lookingFor": "Immediate, responsible, escalating action rather than minimising or hiding the mistake.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise immediate disclosure to a supervisor or biosafety officer over self-protection or minimising the incident",
+        "Describe practical next steps, documenting what happened, assessing the actual risk level of the specific modified strain",
+        "Show understanding that lab biosafety protocols exist precisely for moments like this, and following them matters more than looking competent"
+      ],
+      "modelAnswer": "My first move would be to stop and report it immediately to my supervisor or the lab's biosafety officer rather than trying to quietly fix it myself or hope it wasn't a big deal, because that's exactly the situation containment protocols are designed for. I'd document exactly what happened, when, and what strain and quantity was involved, since that information is what lets someone properly assess the actual risk, most lab strains of E. coli are engineered to be non-pathogenic and unable to survive well outside controlled conditions, but that's not my call to make alone. I think the instinct to protect your own reputation by staying quiet is understandable but it's exactly the wrong instinct in a lab, the whole point of a containment protocol is that it only works if people are honest the moment something goes wrong."
+    },
+    "commonMistakes": [
+      "Trying to handle or hide the breach without reporting it",
+      "Assuming all lab E. coli strains are automatically dangerous without reasoning about risk",
+      "Not mentioning documentation or immediate escalation"
+    ],
+    "followUps": ["How would your answer change if you weren't sure whether the breach actually happened?"]
+  },
+  {
+    "id": "prog-biotechnology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "CAR-T cell therapy",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["immunotherapy", "cancer", "technique"],
+    "question": "How does CAR-T cell therapy get a patient's own immune cells to attack cancer, and why is it currently so expensive?",
+    "lookingFor": "Correct grasp of the personalised cell engineering process and honest reasoning about why it costs so much.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe extracting a patient's T cells, engineering them to express a chimeric antigen receptor targeting a cancer marker, then reinfusing them",
+        "Explain that the receptor lets T cells recognise the cancer antigen independent of normal MHC restriction",
+        "Give the real cost driver, an individually manufactured, patient-specific product rather than a mass-produced drug"
+      ],
+      "modelAnswer": "CAR-T therapy starts by drawing a patient's own T cells and genetically engineering them, usually with a viral vector, to express a chimeric antigen receptor that recognises a specific marker on the cancer cells, often CD19 for certain blood cancers. That receptor lets the T cell target the cancer directly without needing normal antigen presentation through MHC, which is part of why it can be so effective even against cells the immune system was previously missing. It's expensive because it isn't a drug you manufacture once and distribute to everyone, each batch is made individually from that one patient's own cells in a dedicated facility, so you're essentially running a bespoke manufacturing process for every single patient, which is a completely different cost structure from a normal pharmaceutical."
+    },
+    "commonMistakes": [
+      "Describing it as if it works like a normal drug rather than a personalised cell product",
+      "Not explaining what the chimeric receptor actually does",
+      "Attributing the cost only to 'new technology' without naming the manufacturing model"
+    ],
+    "followUps": ["What happens if the cancer stops expressing the target antigen after treatment?"]
+  },
+  {
+    "id": "prog-biotechnology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Bioremediation ecological dilemma",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ecology", "bioremediation", "dilemma"],
+    "question": "An engineered microbe cleans up an oil spill far faster than natural bacteria, but early data suggests it may also outcompete a native species important to the local food chain. Do you recommend deploying it?",
+    "lookingFor": "Structured trade-off reasoning between immediate environmental harm and secondary ecological risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the urgency of the oil spill and the real cost of delay",
+        "Take the ecological risk seriously rather than dismissing 'early data' as unproven",
+        "Propose a middle path, more targeted testing, limited deployment, or engineering further to reduce competitive impact, rather than a binary yes or no"
+      ],
+      "modelAnswer": "An oil spill causes real, ongoing damage the longer it sits, so I understand the pressure to deploy the faster solution immediately. But 'early data suggests' is exactly the kind of signal I wouldn't want to ignore just because the alternative is inconvenient, if it's genuinely displacing a species that's important to the food chain, that's a second ecological harm layered on top of the first, and it might not be reversible. I'd push for a faster but still rigorous assessment of exactly how strong that competitive effect is and whether it's contained to one area, and if the answer is unclear, I'd lean toward a smaller, monitored pilot deployment rather than the full spill site, buying time to either confirm it's safe or adjust the strain. I don't think 'it works faster' is enough justification on its own when there's a plausible, specific ecological cost on the table."
+    },
+    "commonMistakes": [
+      "Dismissing the ecological risk because it's only 'early data'",
+      "Ignoring the real urgency and cost of the oil spill itself",
+      "Giving a binary answer with no middle-ground option"
+    ],
+    "followUps": ["How would you design a monitoring plan to catch this kind of risk earlier next time?"]
+  },
+  {
+    "id": "prog-biotechnology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Pharmacogenomics and personalised medicine",
+    "program": "Biotechnology",
+    "difficulty": "medium",
+    "tags": ["pharmacogenomics", "personalised-medicine", "genetics"],
+    "question": "Two patients given the same dose of the same drug can respond completely differently, one benefits, one has a severe reaction. How does pharmacogenomics explain that, and what's stopping it from being standard practice everywhere?",
+    "lookingFor": "Correct grasp of genetic variation in drug metabolism plus realistic awareness of practical adoption barriers.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain genetic variation in drug-metabolising enzymes, like cytochrome P450 variants, changing how fast a drug is broken down",
+        "Connect that to under- or over-exposure causing ineffectiveness or toxicity at a standard dose",
+        "Identify a real barrier to wider adoption, cost of testing, lack of infrastructure, or limited data outside certain populations"
+      ],
+      "modelAnswer": "A lot of it comes down to variation in the enzymes that metabolise drugs, cytochrome P450 enzymes are a classic example, and depending on someone's genetic variant they might be a fast metaboliser, an average one, or a poor metaboliser of a given drug. If you're a poor metaboliser, a standard dose can build up to toxic levels because your body isn't clearing it at the expected rate, while a fast metaboliser might clear it so quickly the standard dose barely does anything. What's holding back universal adoption isn't really the science, it's practical, genetic testing before every prescription adds cost and turnaround time that most healthcare systems aren't set up for yet, and a lot of the existing pharmacogenomic data is skewed toward certain populations, so the guidance doesn't generalise as well as it should."
+    },
+    "commonMistakes": [
+      "Not naming a specific mechanism like CYP450 variation",
+      "Assuming adoption is only blocked by lack of awareness, not cost or infrastructure",
+      "Confusing pharmacogenomics with gene therapy"
+    ],
+    "followUps": ["Which drugs do you know of where pharmacogenomic testing is already used in practice?"]
+  },
+  {
+    "id": "prog-biotechnology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a synthetic pathway hypothetical",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["synthetic-biology", "hypothetical", "problem-solving"],
+    "question": "Suppose you wanted to engineer yeast to produce a valuable plant compound that's normally extracted at huge cost from a slow-growing tree. Walk me through how you'd approach the problem.",
+    "lookingFor": "Structured problem-solving showing genuine understanding of metabolic engineering, not just a buzzword answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with identifying and characterising the full biosynthetic pathway for the compound in the plant",
+        "Discuss transferring the relevant genes into yeast and troubleshooting expression, like codon optimisation or missing enzymatic steps",
+        "Address yield optimisation and scale-up as a real bottleneck, not an afterthought"
+      ],
+      "modelAnswer": "I'd start by figuring out the plant's actual biosynthetic pathway for the compound, which enzymes convert which precursor into which intermediate, because you can't engineer what you haven't mapped. Then I'd clone the relevant genes and try expressing them in yeast, which usually isn't a clean copy-paste, plant enzymes often need codon optimisation for yeast, and some steps might just fail to work in a different cellular environment, so I'd expect to troubleshoot missing intermediate steps or add supporting enzymes to keep the pathway flowing. Even once you get the yeast to actually produce the compound, the real challenge is usually yield, getting it from a proof-of-concept trickle to something that's actually cheaper than extracting it from the tree, so I'd spend a lot of effort on things like promoter strength, precursor supply, and fermentation conditions rather than assuming success at the first step is the finish line."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'insert the gene' with no mention of pathway mapping",
+      "Ignoring that plant enzymes often don't work smoothly in a microbial host",
+      "Treating first successful expression as the end of the problem rather than yield optimisation"
+    ],
+    "followUps": ["What would you do if the yeast produced the compound but at far too low a yield to be commercially useful?"]
+  },
+  {
+    "id": "prog-biotechnology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Informed consent in clinical trials",
+    "program": "Biotechnology",
+    "difficulty": "hard",
+    "tags": ["ethics", "clinical-trials", "regulation"],
+    "question": "A terminally ill patient with no other options wants to enrol in an early-phase gene therapy trial that has only been tested in animals so far. Should they be allowed to, and what would genuinely informed consent look like here?",
+    "lookingFor": "Recognition of the tension between patient autonomy and protection from exploitation under desperation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the patient's autonomy and the real argument for expanded access when no other options exist",
+        "Raise the risk that desperation can undermine truly informed, voluntary consent",
+        "Describe what genuine informed consent requires here, honest disclosure of how limited the animal data really is and unknown risk"
+      ],
+      "modelAnswer": "I think there's a real case for letting them enrol, when someone has genuinely exhausted every other option, denying them access to something that might help feels paternalistic. But desperation changes the psychology of consent, someone facing a terminal diagnosis may agree to almost anything, so 'informed consent' can't just mean signing a form, it has to mean the research team is unusually careful to make sure the patient truly understands that animal data doesn't reliably predict human outcomes, that the risks are genuinely unknown, and that there's a real chance of harm with no benefit. I'd want a process that includes an independent bioethics review separate from the treating researchers, so someone without an incentive to enrol the patient is checking that the consent is actually voluntary and not just desperation being processed as agreement."
+    },
+    "commonMistakes": [
+      "Treating this as a simple 'yes, let them try anything' answer with no safeguard",
+      "Ignoring patient autonomy entirely in favour of pure paternalism",
+      "Not addressing what makes consent 'informed' beyond just signing paperwork"
+    ],
+    "followUps": ["Should the same standard apply if the treatment were a costly luxury rather than a genuine last resort?"]
+  }
+]

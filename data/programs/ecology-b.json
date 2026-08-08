@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-ecology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Keystone species vs ecosystem engineer",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "species-roles",
+      "concept"
+    ],
+    "question": "What's the difference between a keystone species and an ecosystem engineer? Can a species be both?",
+    "lookingFor": "Precise use of core ecological terms with a real example, not interchangeable buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Keystone species: disproportionate effect on community structure relative to its abundance",
+        "Ecosystem engineer: physically modifies habitat, creating or destroying niches for others",
+        "Give an example that is both, like the beaver, and explain why the categories overlap but aren't identical"
+      ],
+      "modelAnswer": "A keystone species has an effect on the community that's way out of proportion to how common it is, like sea otters controlling urchin populations and protecting kelp forests. An ecosystem engineer physically reshapes the habitat itself, the way beavers build dams and turn a stream into a wetland. Beavers are actually a good example of both, because the dam changes the physical structure and that structural change then ripples through the whole community. I think the distinction matters because losing a keystone species collapses interactions, while losing an engineer collapses the habitat those interactions depend on."
+    },
+    "commonMistakes": [
+      "Treating the two terms as synonyms",
+      "Giving a definition with no concrete species example",
+      "Assuming keystone always means largest or most abundant species"
+    ],
+    "followUps": [
+      "Is a keystone species always a predator? Give a counterexample if not."
+    ]
+  },
+  {
+    "id": "prog-ecology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Trophic cascades",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "trophic-cascade",
+      "reasoning"
+    ],
+    "question": "The reintroduction of wolves to Yellowstone is often cited as triggering a trophic cascade that changed river courses. How confident should we actually be in that story?",
+    "lookingFor": "Willingness to question a popular narrative and reason about confounded evidence rather than repeat the story uncritically.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the proposed mechanism: wolves reduce elk browsing pressure, willows and aspen recover, banks stabilise",
+        "Acknowledge the story is popular and partly supported but has been criticised as oversimplified and overstated",
+        "Mention confounds: climate, beaver recovery, changing elk hunting pressure, and that riverbank change take decades to attribute cleanly"
+      ],
+      "modelAnswer": "The mechanism is plausible and there is real evidence that elk behaviour changed with wolves back on the landscape, but I'd be cautious about the strong version of the story where wolves single-handedly reshaped rivers. A lot of ecologists have pointed out that climate variation, changes in elk hunting outside the park, and the slow recovery of beavers were happening at the same time, and beavers are probably doing more of the actual physical engineering than the wolves are. I find it a great teaching example of trophic cascades in principle, but I'd want to see the causal claim separated from the correlation before citing it as proof rather than illustration."
+    },
+    "commonMistakes": [
+      "Retelling the wolf-to-river story as settled fact",
+      "Dismissing the cascade concept entirely instead of nuancing it",
+      "Not naming any of the confounding variables"
+    ],
+    "followUps": [
+      "What kind of study design would let you test this causal claim more rigorously?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Population growth models",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "population-dynamics",
+      "modelling"
+    ],
+    "question": "When would you use a logistic growth model over an exponential one, and what's the biological meaning of carrying capacity?",
+    "lookingFor": "Clear conceptual grasp of density dependence and when each model applies, not just formula recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Exponential growth assumes unlimited resources; logistic growth introduces density-dependent limits",
+        "Carrying capacity, K, represents the population size the environment can sustain given resource limits",
+        "Explain that real populations often start exponential and slow as they approach K, or overshoot and crash"
+      ],
+      "modelAnswer": "Exponential growth is really only realistic early on, or in an empty environment with no resource limits, like a population colonising a new habitat. Logistic growth is more useful once you're modelling a population that's actually interacting with a finite environment, because it builds in that growth rate slows as resources get scarce. Carrying capacity, K, is the population size where births and deaths balance out given the available food, space, and other resources. What I find interesting is that real populations rarely sit neatly at K, they often overshoot it and crash, which is where you start needing more complex models with time lags built in."
+    },
+    "commonMistakes": [
+      "Reciting the equations without explaining the biological meaning",
+      "Assuming real populations follow logistic growth perfectly",
+      "Confusing carrying capacity with maximum possible population"
+    ],
+    "followUps": [
+      "What happens to the model if you add a time lag to the density-dependent response?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Island biogeography",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "biogeography",
+      "conservation-design"
+    ],
+    "question": "The theory of island biogeography is used to justify designing nature reserves as single large reserves rather than several small ones. Walk me through the logic, and tell me where it breaks down.",
+    "lookingFor": "Understanding of species-area relationships and colonisation-extinction equilibrium, plus critical awareness of the SLOSS debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core theory: larger and less isolated islands support more species at equilibrium because of higher immigration and lower extinction rates",
+        "State the SLOSS logic: single large reserves reduce edge effects and support species needing large ranges",
+        "Give the counterargument: several small reserves can capture more habitat heterogeneity and act as insurance against a single catastrophic event"
+      ],
+      "modelAnswer": "MacArthur and Wilson's model says species number on an island settles at an equilibrium between immigration and extinction, and bigger, closer islands support more species because immigration is higher and extinction is lower. Applied to reserve design, that argues for one large reserve because it holds bigger populations, has less edge relative to area, and can support species with large home ranges. But the SLOSS debate pushes back hard on this, because several small reserves spread across different habitat types can protect more overall diversity and species turnover, and they spread the risk so one fire or disease outbreak doesn't wipe out the whole protected population. In practice I think the honest answer is that the right design depends completely on the species and threats in question, and reserve networks with corridors often beat either extreme."
+    },
+    "commonMistakes": [
+      "Presenting island biogeography as settled and universally applicable",
+      "Not being able to name the SLOSS debate or its counterarguments",
+      "Ignoring the role of habitat corridors as a middle path"
+    ],
+    "followUps": [
+      "How does habitat corridor design change this calculation?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Niche theory",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "niche",
+      "competition"
+    ],
+    "question": "Explain the competitive exclusion principle, and describe a real mechanism by which two similar species avoid it.",
+    "lookingFor": "Correct statement of the principle plus a concrete coexistence mechanism, showing the theory isn't just abstract.",
+    "idealAnswer": {
+      "bullets": [
+        "State the principle: two species competing for exactly the same limiting resource cannot stably coexist",
+        "Explain that coexistence usually requires niche differentiation along some axis",
+        "Give a concrete example: resource partitioning by time, space, diet, or depth, such as warblers foraging in different parts of the same tree"
+      ],
+      "modelAnswer": "The competitive exclusion principle says that if two species need exactly the same limiting resource in exactly the same way, one will eventually outcompete and displace the other, there's no stable equilibrium where they share it identically. What actually lets similar species coexist in nature is niche differentiation, some way their resource use doesn't fully overlap. The classic example is MacArthur's warblers, where several species feed in the same spruce trees but forage in different zones of the canopy, so they're not really competing for the exact same insects even though they look like they're using the same resource. I like this example because it shows how fine-grained ecological differences can be, even when species look almost identical from the outside."
+    },
+    "commonMistakes": [
+      "Stating the principle without any real example",
+      "Confusing niche overlap with habitat overlap",
+      "Assuming similar species always compete strongly"
+    ],
+    "followUps": [
+      "What would you expect to happen if you removed one of the warbler species entirely?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Succession and disturbance",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "succession",
+      "disturbance"
+    ],
+    "question": "Why might a moderate level of disturbance actually increase biodiversity in an ecosystem, rather than reduce it?",
+    "lookingFor": "Grasp of the intermediate disturbance hypothesis and its logic, applied thoughtfully rather than recited.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that without disturbance, competitive dominants tend to exclude other species over time",
+        "Explain that too much disturbance removes most species entirely, favouring only fast colonisers",
+        "Describe the intermediate case: enough disturbance to reset dominance without wiping out the community, allowing early and late successional species to coexist"
+      ],
+      "modelAnswer": "If an ecosystem is left completely undisturbed, the strongest competitors gradually take over and squeeze out everything else, so diversity actually drops over time. If disturbance is too frequent or severe, only the fastest colonising species can persist, and you lose the slower growing specialists. The intermediate disturbance hypothesis says that at a moderate level, disturbance keeps resetting patches at different stages, so you get a mosaic where early successional and late successional species can coexist across the landscape at once. I think it's a nice example of how ecology often isn't about maximising stability, it's about maintaining the right amount of change."
+    },
+    "commonMistakes": [
+      "Assuming disturbance is always bad for biodiversity",
+      "Not explaining the mechanism, just naming the hypothesis",
+      "Ignoring that the hypothesis has been contested with mixed empirical support"
+    ],
+    "followUps": [
+      "What criticisms has the intermediate disturbance hypothesis faced in recent literature?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Ecosystem services valuation",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "ecosystem-services",
+      "economics"
+    ],
+    "question": "Some economists have tried to put a dollar value on entire ecosystems, like estimating global ecosystem services at tens of trillions of dollars a year. Is that a useful exercise for ecology, or a flawed one?",
+    "lookingFor": "Ability to weigh the practical usefulness of monetising nature against its conceptual and ethical problems.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the argument for valuation: it makes ecological loss legible to policymakers and economies that only respond to monetary metrics",
+        "Explain the argument against: many ecosystem functions are irreplaceable or non-substitutable, and pricing invites treating nature as tradeable",
+        "Land on a balanced, reasoned position rather than an absolute stance"
+      ],
+      "modelAnswer": "I think there's a real practical case for it, because a lot of decision-making happens in dollars, and a wetland that's protecting a city from flooding needs a number attached to it to compete with the number attached to building a shopping centre there. But I'm uneasy with it as a complete framework, because putting a price on something implies it could in principle be substituted or bought out, and a lot of ecological functions genuinely can't be replaced once they're gone, like extinction or the loss of a unique pollination network. My honest position is that valuation is a useful translation tool for getting ecology into rooms where it wouldn't otherwise be heard, but it shouldn't become the actual basis for deciding what's worth protecting."
+    },
+    "commonMistakes": [
+      "Taking a purely for or purely against stance with no nuance",
+      "Not engaging with why policymakers find monetary framing persuasive",
+      "Ignoring the irreplaceability argument entirely"
+    ],
+    "followUps": [
+      "Can you think of an ecosystem service that resists monetary valuation particularly badly?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Invasive species management",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "invasive-species",
+      "management"
+    ],
+    "question": "Not every non-native species that establishes itself causes harm. How would you decide whether an introduced species is actually a problem worth managing?",
+    "lookingFor": "Distinguishes non-native from invasive, and reasons about evidence-based criteria rather than assuming all newcomers are threats.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish non-native (simply not originally from that region) from invasive (spreading and causing demonstrable ecological or economic harm)",
+        "Name criteria: rate of spread, measurable impact on native species or ecosystem function, and whether harm is reversible",
+        "Acknowledge that management is costly and should be prioritised, not applied uniformly to every non-native species"
+      ],
+      "modelAnswer": "I'd want to separate simply being non-native from actually being invasive, because plenty of introduced species settle into a low-impact niche and never really spread or displace anything. What I'd look for is evidence of rapid range expansion, a measurable effect on native populations or ecosystem processes like nutrient cycling, and whether the impact is likely to be reversible if left alone. Given that eradication and control programmes are expensive and can have their own ecological side effects, I think the sensible approach is triage, focus resources on species that are spreading fast and causing clear documented harm, rather than treating every new arrival as automatically hostile."
+    },
+    "commonMistakes": [
+      "Treating all non-native species as inherently bad",
+      "Giving no concrete criteria for what counts as harmful",
+      "Ignoring the cost and side effects of intervention itself"
+    ],
+    "followUps": [
+      "Can you name a non-native species that is generally considered ecologically benign or even beneficial?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Metapopulation dynamics",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "metapopulation",
+      "fragmentation"
+    ],
+    "question": "How does habitat fragmentation threaten a species even if the total amount of remaining habitat stays the same?",
+    "lookingFor": "Understanding that fragmentation's harm is about connectivity and patch dynamics, not just total habitat area.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain metapopulation structure: local populations in patches connected by dispersal, with some patches going extinct and being recolonised over time",
+        "Explain that fragmentation increases isolation, reducing dispersal and recolonisation of patches that go locally extinct",
+        "Note edge effects and reduced effective patch size even when raw area is similar, plus genetic isolation over generations"
+      ],
+      "modelAnswer": "Even if the total hectares of habitat are unchanged, breaking it into smaller isolated patches disrupts the rescue effect that keeps a metapopulation going, where individuals from one patch recolonise another that's gone locally extinct. If patches become too far apart, dispersal drops, so local extinctions stop being replaced and the whole network can unravel one patch at a time. There's also the issue that smaller patches have proportionally more edge, which changes the microclimate and exposes species to predators or competitors they wouldn't meet in a continuous block, and over generations isolated populations lose genetic diversity too. So fragmentation is really a connectivity problem dressed up as an area problem, and that's why corridors matter as much as protecting raw acreage."
+    },
+    "commonMistakes": [
+      "Treating fragmentation as just a reduction in habitat area",
+      "Not mentioning dispersal or the rescue effect",
+      "Ignoring edge effects and genetic isolation"
+    ],
+    "followUps": [
+      "What role do wildlife corridors play in mitigating this, and what are their limitations?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Nutrient cycling",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "biogeochemistry",
+      "nutrient-cycling"
+    ],
+    "question": "Why is nitrogen usually the limiting nutrient in terrestrial ecosystems, while phosphorus more often limits growth in freshwater systems?",
+    "lookingFor": "Some grasp of biogeochemical cycling differences, showing subject depth beyond textbook food-chain ecology.",
+    "idealAnswer": {
+      "bullets": [
+        "Note nitrogen is abundant in the atmosphere but mostly unusable until fixed by specific bacteria, making biological availability the bottleneck on land",
+        "Note phosphorus has no significant atmospheric pool and enters ecosystems mainly through rock weathering and runoff, making it scarce especially in water bodies",
+        "Connect this to real consequences, like nitrogen fertiliser runoff driving freshwater phosphorus-limited systems into eutrophication"
+      ],
+      "modelAnswer": "On land, nitrogen makes up most of the atmosphere but plants can't use it in that gaseous form, so the limiting step is biological nitrogen fixation by specific bacteria, which keeps usable nitrogen scarce relative to demand. Phosphorus doesn't really have an atmospheric pool at all, it mostly comes from the slow weathering of rock, so in freshwater systems where nitrogen can wash in easily from runoff, phosphorus tends to be the scarcer nutrient instead. This actually matters practically, because agricultural fertiliser runoff often adds huge amounts of both, but it's usually the phosphorus load that tips a lake into eutrophication, since the system was phosphorus-limited to begin with and suddenly isn't."
+    },
+    "commonMistakes": [
+      "Assuming the same nutrient limits every ecosystem type",
+      "Not distinguishing atmospheric versus geological nutrient pools",
+      "Missing the practical link to eutrophication"
+    ],
+    "followUps": [
+      "How would you design a simple experiment to test which nutrient is limiting in a given lake?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Rewilding versus active management",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "rewilding",
+      "debate"
+    ],
+    "question": "Rewilding projects sometimes aim to remove human management entirely and let ecosystems find their own equilibrium. Do you think that's a coherent goal, given how much land use has already changed the baseline?",
+    "lookingFor": "Critical engagement with the idea of a 'natural' baseline and whether hands-off restoration is actually achievable or well-defined.",
+    "idealAnswer": {
+      "bullets": [
+        "Question what baseline 'natural' would even mean, given historical land use, extinct megafauna, and altered climate",
+        "Acknowledge the appeal of self-willed ecosystems and reduced management cost, but note that many landscapes now lack key species or processes needed for self-regulation",
+        "Suggest that most real rewilding projects use some active intervention, like reintroducing missing herbivores or predators, rather than pure hands-off management"
+      ],
+      "modelAnswer": "I think 'let nature find its own equilibrium' is a nice slogan but it hides a hard question, which is that there often isn't a single natural baseline to return to, especially in landscapes that lost their large herbivores or predators centuries ago and have been shaped by farming ever since. A truly hands-off approach in a place like that risks the ecosystem settling into something quite impoverished, because the species that would normally drive its dynamics are missing. That's actually why most serious rewilding projects I've read about, like the Dutch Oostvaardersplassen or the Knepp estate in England, still involve active choices, reintroducing grazers or predators to restart processes, and then stepping back. So I'd say the goal isn't really zero management, it's minimal management once the right processes are back in place, which is a more honest and more defensible version of the idea."
+    },
+    "commonMistakes": [
+      "Assuming there's an obvious, objective natural baseline to restore",
+      "Treating rewilding as automatically hands-off with no interventions",
+      "Not naming any real rewilding project or case"
+    ],
+    "followUps": [
+      "The Oostvaardersplassen project faced criticism over animal welfare during harsh winters. How would you weigh that against the rewilding goal?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Mutualism and mycorrhizal networks",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "mutualism",
+      "fungi"
+    ],
+    "question": "Mycorrhizal fungal networks are sometimes described in the popular press as forests 'communicating' or trees 'caring' for each other. What's your view of that framing?",
+    "lookingFor": "Ability to separate real mechanism from anthropomorphised popular science framing, showing scientific maturity.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the actual mechanism: fungal hyphae connect root systems and can transfer carbon, water, and chemical signals between plants",
+        "Push back on the framing of intent or care, since transfer can be driven by resource gradients and evolved self-interest, not conscious cooperation",
+        "Note that some of the more dramatic claims, like large-scale carbon sharing to nurse struggling trees, are still actively debated in the literature"
+      ],
+      "modelAnswer": "The underlying biology is real, mycorrhizal fungi do connect the root systems of different plants and there is evidence of carbon, water, and even chemical defence signals moving through those networks. What I'm more cautious about is the language of forests 'talking' or trees 'caring' for their young, because that implies intention, and a lot of the transfer can be explained by simple resource gradients or by the fungus itself moving resources to wherever benefits its own survival, not some cooperative plan by the trees. I also know some of the bigger claims about mother trees deliberately nursing seedlings have been challenged by other researchers trying to replicate the original field studies, so I'd want to present this as an exciting but still contested area rather than settled fact."
+    },
+    "commonMistakes": [
+      "Repeating anthropomorphised claims uncritically",
+      "Dismissing the entire phenomenon as fictional",
+      "Not knowing the mechanism (hyphal connections) at all"
+    ],
+    "followUps": [
+      "What would a rigorous experiment need to control for to demonstrate deliberate resource sharing rather than passive gradients?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "r and K selection",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "life-history",
+      "strategy"
+    ],
+    "question": "Explain the difference between r-selected and K-selected life history strategies, and why the framework has fallen somewhat out of favour with ecologists.",
+    "lookingFor": "Basic life-history knowledge plus awareness that modern ecology has largely moved past the simple dichotomy.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe r-selected species: many offspring, fast reproduction, little parental care, suited to unstable or unpredictable environments",
+        "Describe K-selected species: fewer offspring, slower reproduction, more parental investment, suited to stable environments near carrying capacity",
+        "Note the critique: the dichotomy is oversimplified, many species show mixed traits, and modern life-history theory uses more continuous, multidimensional trait frameworks"
+      ],
+      "modelAnswer": "R-selected species tend to produce lots of offspring quickly with little investment in each one, which works well in unstable or unpredictable environments where a lot of them won't survive anyway, think insects or weedy plants. K-selected species invest heavily in fewer offspring and are adapted to more stable environments near carrying capacity, like elephants or large trees. The framework is useful as a first mental model, but I know it's been criticised for being too binary, because real species often mix traits, and life-history theory now tends to look at a broader set of trade-offs, like offspring size versus number, or growth versus survival, rather than forcing everything onto a single r to K axis. I'd use it as a starting intuition rather than a strict classification."
+    },
+    "commonMistakes": [
+      "Presenting r and K selection as a strict, universally applicable classification",
+      "Giving no examples of species for either strategy",
+      "Not being aware the framework has been critiqued in the modern literature"
+    ],
+    "followUps": [
+      "Can you think of a species that doesn't fit neatly into either category?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Experimental design in field ecology",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "methodology",
+      "field-study"
+    ],
+    "question": "Field ecology experiments are notoriously hard to control compared to lab biology. What are the biggest threats to drawing a valid causal conclusion from a field study, and how would you guard against them?",
+    "lookingFor": "Genuine methodological awareness of confounds, pseudoreplication, and natural variability in ecological field research.",
+    "idealAnswer": {
+      "bullets": [
+        "Name pseudoreplication as a classic pitfall, treating repeated samples from one site as independent replicates",
+        "Name confounding environmental variables that vary alongside the treatment, like weather, soil, or unmeasured site history",
+        "Describe guards: true spatial replication across independent sites, randomised block designs, and long enough study duration to separate signal from natural year-to-year variability"
+      ],
+      "modelAnswer": "The classic trap in field ecology is pseudoreplication, where you take lots of measurements within one plot or one site and treat them as independent data points, when really they're all subject to the same underlying conditions, so your real sample size is much smaller than it looks. Beyond that, field sites almost never vary in just the one variable you're interested in, soil type, microclimate, and land-use history can all differ between a treatment and control site in ways that are hard to separate from the actual effect you're testing. I'd try to guard against this with proper spatial replication across genuinely independent sites, randomised block designs so treatments aren't confounded with any one gradient, and running the study long enough to see past a single unusually wet or dry year, because ecological systems have so much natural variability that one season rarely tells you much on its own."
+    },
+    "commonMistakes": [
+      "Not knowing the term pseudoreplication",
+      "Assuming field studies can be controlled as tightly as lab experiments",
+      "Suggesting no practical remedy beyond 'more data'"
+    ],
+    "followUps": [
+      "How would a BACI design, before-after-control-impact, help address some of these issues?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate-driven range shifts",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "climate-change",
+      "phenology"
+    ],
+    "question": "Climate change is causing many species to shift their ranges poleward or upslope. Why doesn't this simply mean every species survives, just in a new location?",
+    "lookingFor": "Understanding that range shift is constrained by dispersal ability, habitat availability, and interaction mismatches, not a frictionless relocation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain dispersal limits: slow-dispersing or immobile species, like many plants or soil organisms, can't track climate fast enough",
+        "Explain habitat and barrier constraints: suitable new range may not exist, or may be fragmented, urbanised, or blocked by geography",
+        "Explain phenological and interaction mismatch: species that move at different rates can decouple from pollinators, prey, or symbionts they depend on"
+      ],
+      "modelAnswer": "Range shifting sounds simple in theory but it assumes a species can actually move fast enough and that suitable habitat is waiting for it at the new location, and both of those often fail. Slow dispersers, like many trees or soil-dwelling invertebrates, simply can't relocate as fast as the climate envelope is moving, so they get left behind in conditions that are no longer suitable. Even for species that can move, the new area might be blocked by a city, farmland, a mountain range, or just not have the right soil or partner species there at all. And because different species in an interaction, like a flower and its specific pollinator, don't necessarily shift at the same rate or in the same direction, you can end up with mismatches where the relationships that used to hold an ecosystem together break apart even if both species technically survive somewhere."
+    },
+    "commonMistakes": [
+      "Assuming all species can track climate change at the same pace",
+      "Ignoring habitat fragmentation and land-use barriers to migration",
+      "Not mentioning phenological or interaction mismatch"
+    ],
+    "followUps": [
+      "What is assisted migration, and what are the risks of using it as a conservation tool?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Culling for conservation",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "ethics",
+      "wildlife-management"
+    ],
+    "question": "A native deer population has exploded because its natural predators were hunted out, and it's now destroying forest undergrowth that other species depend on. Culling would restore balance quickly, but many people find killing individual animals to protect a wider ecosystem hard to accept. Where do you land?",
+    "lookingFor": "Structured reasoning that weighs animal welfare, ecosystem-level consequences, and alternatives, rather than a snap verdict either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine ethical tension between individual animal welfare and ecosystem-level or species-level conservation goals",
+        "Weigh alternatives to culling, like predator reintroduction, fertility control, or fencing, and their practicality and cost against culling",
+        "Reach a reasoned, conditional position rather than a blanket yes or no, and note this is a value judgement as much as a scientific one"
+      ],
+      "modelAnswer": "I don't think there's a clean answer here, because it genuinely pits the welfare of individual animals against the survival of the wider ecosystem those animals are part of, and I don't think ecology alone can resolve that, it's partly a values question. My instinct is to ask first whether a less lethal option, like reintroducing a natural predator or a fertility control programme, could achieve the same result over a longer timeframe, because that would avoid the ethical cost of culling entirely. But if the damage is severe and urgent, and the undergrowth loss threatens other species that can't wait a decade for a predator population to rebuild, I think culling can be justified as long as it's done as humanely as possible and is treated as a stopgap while a longer-term, non-lethal solution is built. What I wouldn't accept is culling used indefinitely as a substitute for actually restoring a functioning predator-prey system."
+    },
+    "commonMistakes": [
+      "Giving an immediate yes or no with no reasoning",
+      "Ignoring non-lethal alternatives entirely",
+      "Treating it as a purely scientific question with no ethical dimension"
+    ],
+    "followUps": [
+      "Does your answer change if the deer population is itself an endangered subspecies?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "De-extinction",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "ethics",
+      "biotechnology"
+    ],
+    "question": "Some biotech companies are working on 'de-extinction', using gene editing to bring back traits of species like the woolly mammoth. Is this a good use of conservation resources and attention?",
+    "lookingFor": "Ability to weigh scientific plausibility, ecological risk, and opportunity cost against the emotional and publicity appeal of the idea.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the scientific reality: most projects create a hybrid with select ancestral traits, not a true resurrection of the extinct species",
+        "Raise the opportunity cost argument: funding and attention spent on de-extinction could instead protect currently endangered species and existing ecosystems",
+        "Consider possible ecological risks of releasing a novel hybrid organism into a modern ecosystem it never coevolved with"
+      ],
+      "modelAnswer": "My honest reaction is scepticism, mostly because what these projects actually produce is a hybrid animal with some ancestral traits edited in, not a genuine resurrection of the mammoth, so I think the framing oversells what's scientifically happening. What worries me more is opportunity cost, because that level of funding and media attention could support conservation work for species that are alive right now and in real trouble, where the return on investment for biodiversity is much clearer and faster. There's also an ecological risk question nobody has fully answered, which is what happens if you release an animal that never coevolved with the modern ecosystem it's being placed into. I think the underlying gene-editing science is genuinely impressive and might have real conservation uses, like boosting genetic diversity in a small endangered population, but I'd want that capability redirected toward species we're at risk of losing rather than ones we've already lost."
+    },
+    "commonMistakes": [
+      "Treating de-extinction as literally identical to bringing the extinct species back",
+      "Ignoring the opportunity cost of funding and attention",
+      "Dismissing the underlying gene-editing technology as worthless"
+    ],
+    "followUps": [
+      "Could the underlying technology have a legitimate use in conservation of species that aren't extinct yet?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Indigenous land rights and conservation",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "ethics",
+      "conservation-policy"
+    ],
+    "question": "Some of the world's best-preserved ecosystems are on land traditionally managed by indigenous communities, yet conservation policy has historically displaced those communities to create 'untouched' protected areas. How should ecologists think about this tension?",
+    "lookingFor": "Awareness that conservation science has real social and historical dimensions, and ability to reason about a fairer model without dismissing conservation goals.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the historical problem: fortress conservation models often excluded the very communities whose land management sustained the biodiversity",
+        "Cite evidence that indigenous-managed lands frequently show equal or better biodiversity outcomes than strict exclusion-based reserves",
+        "Argue for co-management or community-led conservation models as both more ethical and often more ecologically effective"
+      ],
+      "modelAnswer": "I think this is one of the places where ecology can't pretend to be separate from social justice, because a lot of protected area policy in the twentieth century assumed that removing people entirely was the way to preserve nature, when in many cases it was exactly that community's traditional land management that had sustained the biodiversity in the first place. There's a growing body of evidence that indigenous-managed lands often match or outperform strict no-access reserves on biodiversity outcomes, which pretty directly undermines the old fortress conservation logic. I think ecologists have a responsibility to push for co-management models where local and indigenous communities are partners with real authority in how the land is used, not just consulted after the plan is already made, both because it tends to be more effective ecologically and because it corrects a real historical wrong."
+    },
+    "commonMistakes": [
+      "Treating conservation as a purely technical, apolitical exercise",
+      "Not knowing that fortress conservation has been widely criticised",
+      "Dismissing indigenous land management as less rigorous than formal protected-area science"
+    ],
+    "followUps": [
+      "Can you think of a specific example of a co-managed protected area, or a case where displacement caused documented harm?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "30x30 biodiversity target",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "policy",
+      "current-affairs"
+    ],
+    "question": "Under the global biodiversity framework agreed at COP15, countries committed to protecting 30 percent of land and sea by 2030, the '30 by 30' target. What's your view on whether that target is achievable, and whether area alone is the right metric?",
+    "lookingFor": "Awareness of a real current policy debate, plus critical thinking about whether a simple area target captures what actually matters ecologically.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the target itself and its ambition relative to current protected area coverage",
+        "Question whether raw area percentage captures ecological quality, connectivity, or which habitats and species are actually protected",
+        "Raise the implementation gap: funding, enforcement, and the indigenous land rights question tied to how new protected areas get designated"
+      ],
+      "modelAnswer": "I know the 30 by 30 target came out of the Kunming-Montreal agreement, aiming to roughly double the amount of land and ocean under protection by the end of the decade, and it's genuinely ambitious given how far behind most countries currently are. My concern is that hitting a percentage target doesn't automatically mean protecting the right thirty percent, a country could protect a lot of remote, low-biodiversity land and technically meet the number while leaving the most threatened and species-rich habitats unprotected. I'd also want to know how the new protected areas are being designated and funded, because a protected area on paper with no enforcement budget or with local communities excluded from planning often doesn't deliver the ecological outcome the target is meant to achieve. So I think the ambition is right but the target needs to be paired with quality and connectivity metrics, not just raw hectares."
+    },
+    "commonMistakes": [
+      "Not being aware the target or the COP15 agreement exists",
+      "Treating the percentage figure alone as a sufficient measure of success",
+      "Giving an opinion with no reference to real implementation challenges"
+    ],
+    "followUps": [
+      "How would you measure protected area 'quality' beyond simple area coverage?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene drives for invasive species and disease vectors",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "biotechnology",
+      "current-affairs"
+    ],
+    "question": "Gene drive technology could, in theory, eliminate an invasive species or a disease-carrying mosquito population entirely by spreading a genetic trait through the whole population. What ecological risks would make you cautious about deploying it?",
+    "lookingFor": "Awareness of a live scientific debate plus ability to reason about ecological risk, irreversibility, and unintended consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic mechanism: a gene drive biases inheritance so a trait spreads through a population faster than normal Mendelian inheritance would allow",
+        "Raise irreversibility as the central risk: once released, a gene drive is very hard to recall or contain, especially if the species can cross international borders",
+        "Raise ecological knock-on effects: removing a species entirely can leave a gap in the food web or open a niche for something worse to fill"
+      ],
+      "modelAnswer": "A gene drive works by rigging inheritance so a genetic trait, like infertility or a lethal gene, spreads through nearly the whole population within a handful of generations instead of the usual fifty percent chance any offspring gets it. What makes me cautious is that this is one of the few conservation interventions that's genuinely hard to reverse once it's out in a wild population, and a lot of the target species, mosquitoes especially, don't respect national borders, so a release in one country effectively becomes a decision for the whole region. I'd also want to know what happens ecologically once you actually succeed, because if a species disappears entirely rather than just being reduced, something else fills that niche, and if predators depended on that species as a food source, or if the species itself was suppressing something worse, you could end up trading one problem for another. I think the technology deserves serious research, but I'd want extremely rigorous, reversible field trials and genuine international governance before any full release."
+    },
+    "commonMistakes": [
+      "Not knowing what a gene drive is or how it differs from normal genetics",
+      "Treating the technology as purely a public health win with no ecological downside",
+      "Ignoring the cross-border governance problem"
+    ],
+    "followUps": [
+      "Should the decision to release a gene drive require the consent of every country the target species is found in?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ocean acidification and coral resilience",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "climate-change",
+      "marine"
+    ],
+    "question": "There's been recent scientific interest in identifying and breeding heat-resistant coral strains to help reefs survive warming oceans. Do you see this as a genuine long-term solution, or a way of buying time?",
+    "lookingFor": "Grounded understanding of coral bleaching and assisted evolution, and clarity that it treats a symptom rather than the underlying cause.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the underlying problem: warming and acidifying oceans stress the coral-algae symbiosis, causing bleaching and eventual reef death if prolonged",
+        "Explain what heat-resistant strain breeding actually does: selects or assists evolution toward more thermally tolerant coral-algae pairings",
+        "Conclude it's a valuable stopgap that buys time and reduces local mortality, but does nothing to address the root cause of ocean warming and acidification"
+      ],
+      "modelAnswer": "Coral bleaching happens because warmer water stresses the symbiotic relationship between the coral and the algae living inside it, and if the stress lasts too long the coral expels the algae, loses its main energy source, and can die. Breeding or selecting for heat-resistant strains is essentially assisted evolution, trying to speed up the coral's natural adaptive capacity so reefs can survive water temperatures they'd otherwise bleach and die from. I think it's a genuinely valuable tool and probably one of the more promising near-term interventions we have, but I'd be careful not to call it a solution, because it doesn't touch the actual cause, which is ocean warming and acidification driven by rising carbon emissions. If emissions keep rising, even a heat-resistant coral eventually hits a limit, so I'd frame this as buying critical time for reefs while the harder work of cutting emissions catches up, not as a fix in itself."
+    },
+    "commonMistakes": [
+      "Describing it as a complete fix rather than a stopgap",
+      "Not explaining the actual mechanism of coral bleaching",
+      "Ignoring the root cause of ocean warming and acidification"
+    ],
+    "followUps": [
+      "What ecological risks might come from introducing selectively bred coral strains into a wild reef?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Insect decline debate",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "biodiversity-loss",
+      "current-affairs"
+    ],
+    "question": "Headlines have talked about an 'insect apocalypse', with dramatic figures like a 75 percent decline in flying insect biomass in parts of Europe. How would you evaluate a claim like that scientifically?",
+    "lookingFor": "Critical evaluation of a widely cited statistic, aware of methodological debate around it rather than repeating the headline number uncritically.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the origin of the figure, typically a specific regional study, and explain that a single striking number is often overgeneralised to a global claim",
+        "Raise methodological questions: consistency of trapping methods over time, weather variation between sampling years, and geographic representativeness",
+        "Land on a reasonable position: overall evidence points to real, serious declines in many regions, even if the single headline statistic shouldn't be treated as a precise global figure"
+      ],
+      "modelAnswer": "That particular figure comes from a set of nature reserves in Germany, and I think it's a real and important finding, but it gets stretched in the media into a global statistic in a way the original study never claimed. Before I'd treat any single number like that as gospel, I'd want to check things like whether the trapping method and locations were consistent across the years being compared, and whether weather variation between sampling seasons could account for some of the swing, because insect populations are naturally quite variable year to year. That said, I don't think the broader concern is unfounded, there's a growing body of independent studies from different regions and taxa pointing toward real declines linked to habitat loss, pesticide use, and climate change, so my honest take is that the direction of the finding is very likely correct even if the specific 75 percent figure shouldn't be quoted as a precise worldwide number."
+    },
+    "commonMistakes": [
+      "Repeating the exact statistic as an established global fact",
+      "Dismissing insect decline as media exaggeration with no real basis",
+      "Not being able to name any methodological concern with biomass trapping studies"
+    ],
+    "followUps": [
+      "What would a well-designed long-term monitoring programme for insect populations need to look like?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a reintroduction study",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "hypothetical",
+      "study-design"
+    ],
+    "question": "Imagine you're advising on reintroducing a locally extinct predator to a nature reserve. What ecological evidence would you want gathered before, during, and after release to judge whether it's working?",
+    "lookingFor": "Structured, practical thinking about baseline data, monitoring design, and defining success criteria in advance.",
+    "idealAnswer": {
+      "bullets": [
+        "Before: baseline surveys of prey populations, vegetation state, and existing predator-prey dynamics, plus habitat suitability and prey base assessment",
+        "During: tracking of released individuals, survival and reproduction rates, and early behavioural indicators like territory establishment",
+        "After: longer-term monitoring of prey population trends, vegetation recovery, and community-level effects, compared against pre-release baseline and a control site if possible"
+      ],
+      "modelAnswer": "Before release I'd want a solid baseline, several years if possible, of prey population numbers, vegetation condition, and how the ecosystem is currently functioning without the predator, plus an honest assessment of whether the habitat can actually support a viable predator population and prey base. During the release itself I'd track survival, movement, and reproduction of the released individuals closely, because early mortality or failure to establish territories tells you fast whether the release itself needs adjusting. In the years after, I'd want long-term monitoring of prey numbers and vegetation recovery compared against that original baseline, and ideally against a similar site without the predator as an informal control, because ecological change is slow and noisy and I wouldn't trust a conclusion from just one or two seasons of data."
+    },
+    "commonMistakes": [
+      "Jumping straight to post-release success with no baseline data plan",
+      "Ignoring the need for a comparison or control to interpret changes",
+      "Assuming success can be judged within a single season"
+    ],
+    "followUps": [
+      "What would make you conclude the reintroduction had failed, rather than just needed more time?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Novel ecosystem on a post-industrial site",
+    "program": "Ecology",
+    "difficulty": "hard",
+    "tags": [
+      "ecology",
+      "hypothetical",
+      "restoration"
+    ],
+    "question": "You're asked to restore an abandoned industrial site where the soil chemistry has been permanently altered and the original native ecosystem can no longer establish there. Would you try to force a return to the historic ecosystem, or accept and manage the novel one that's actually taking hold?",
+    "lookingFor": "Reasoning about restoration goals when historic baselines are no longer achievable, weighing cost, feasibility, and ecological value of novel ecosystems.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that forcing the historic ecosystem back may be prohibitively expensive or simply impossible given permanently altered soil chemistry",
+        "Introduce the concept of a novel ecosystem, one with a new species combination that can still provide real ecological function and value",
+        "Propose a pragmatic middle path: assess what functions matter most, such as pollinator habitat or erosion control, and manage toward achievable ecological goals rather than an unreachable historic target"
+      ],
+      "modelAnswer": "I'd start by being honest that if the soil chemistry is permanently changed, insisting on recreating the exact historic ecosystem is probably an expensive losing battle, and I'd rather put that budget toward something that can actually succeed. I'd look at what's naturally colonising the site already, because even a novel combination of species that wouldn't have occurred there historically can still provide real value, supporting pollinators, stabilising soil, or offering habitat, and pretending that value doesn't count just because it doesn't match a historical baseline seems like it prioritises nostalgia over actual ecological function. So my approach would be to define success around specific functions I want the site to deliver, rather than species composition, and then manage the emerging novel ecosystem toward those functional goals, while being upfront with stakeholders that this is a deliberate choice, not a failure to restore what was there before."
+    },
+    "commonMistakes": [
+      "Insisting on the historic baseline regardless of feasibility or cost",
+      "Not knowing the term or concept of a novel ecosystem",
+      "Assuming a novel ecosystem has zero ecological value simply because it's non-historic"
+    ],
+    "followUps": [
+      "How would you explain this decision to stakeholders who expected the site to look like it did fifty years ago?"
+    ]
+  },
+  {
+    "id": "prog-ecology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Pollinator decline on a farm",
+    "program": "Ecology",
+    "difficulty": "medium",
+    "tags": [
+      "ecology",
+      "hypothetical",
+      "agriculture"
+    ],
+    "question": "A farmer tells you their crop yields have been dropping for several years and they suspect declining pollinator visits. How would you go about testing whether that suspicion is actually correct?",
+    "lookingFor": "Practical, hypothesis-driven thinking that separates correlation from causation and considers alternative explanations.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose actually measuring pollinator visitation rates and diversity on the farm, rather than accepting the suspicion at face value",
+        "Consider alternative explanations for yield decline, like soil nutrient depletion, pesticide use, weather, or disease, that could be confounded with pollinator decline",
+        "Suggest a comparative or experimental approach, such as comparing yield in areas with different pollinator access, or pollinator exclusion plots, to isolate the actual cause"
+      ],
+      "modelAnswer": "Before assuming the farmer's suspicion is correct, I'd want to actually measure pollinator visitation rates and diversity on the farm across the growing season, because it's entirely possible something else, like soil nutrient depletion, a change in pesticide use, or a run of bad weather, is driving the yield drop instead or as well. To actually test the pollinator hypothesis specifically, I'd want some kind of comparison, maybe pollinator exclusion cages on a subset of plants versus open access plots, to see directly how much yield depends on pollinator visits under current conditions. I think the honest approach is to treat the farmer's suspicion as a hypothesis worth testing rather than a conclusion, because farmers are excellent at noticing that something changed, but pinning down the actual cause needs a bit more structure than observation alone."
+    },
+    "commonMistakes": [
+      "Accepting the farmer's suspicion as fact without proposing any test",
+      "Not considering confounding causes for the yield decline",
+      "Proposing a test with no comparison or control"
+    ],
+    "followUps": [
+      "If pollinator decline turned out to be the main cause, what interventions would you suggest to the farmer?"
+    ]
+  }
+]

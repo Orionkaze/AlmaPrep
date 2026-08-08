@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-immunology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Innate vs adaptive trade-offs",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["innate-immunity", "adaptive-immunity", "trade-offs"],
+    "question": "Innate immunity reacts within minutes but has no memory, while adaptive immunity takes days to ramp up but remembers for years. Why hasn't evolution just produced one system that's both fast and specific?",
+    "lookingFor": "Understanding that speed and specificity trade off against resource cost and genetic complexity, not just reciting the definitions of each arm.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise innate receptors are germline-encoded and limited in number, which is what makes them fast",
+        "Explain adaptive specificity requires random receptor generation and clonal expansion, which takes time",
+        "Note the two systems are complementary rather than redundant, and evolution optimised for coverage plus memory, not raw speed alone"
+      ],
+      "modelAnswer": "I think the honest answer is that fast and infinitely specific are almost mutually exclusive with the same molecular toolkit. Innate receptors are hard-coded in the genome, so there are only so many pattern recognition receptors you can carry, but that's exactly why they can fire instantly without any selection process. Adaptive immunity generates specificity through random gene rearrangement and then has to select and expand the useful clones, and that search process is inherently slow. What I find elegant is that the two systems aren't competing solutions to the same problem, they're solving different problems, buying time versus building precision, and the innate response's real job is often just to hold the line long enough for adaptive immunity to catch up."
+    },
+    "commonMistakes": [
+      "Simply restating what innate and adaptive immunity are without addressing the trade-off",
+      "Claiming adaptive immunity is strictly 'better' with no acknowledgement of its cost",
+      "Ignoring that the two systems actually communicate and depend on each other"
+    ],
+    "followUps": ["Can you give an example of the innate system directly shaping the adaptive response?"]
+  },
+  {
+    "id": "prog-immunology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Affinity maturation mechanism",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["antibodies", "germinal-centre", "b-cells"],
+    "question": "Talk me through how affinity maturation actually happens inside a germinal centre, and why the process necessarily produces a lot of 'failed' B cells along the way.",
+    "lookingFor": "A mechanistic grasp of somatic hypermutation, selection by follicular dendritic cells and T helper cells, and comfort with the idea that inefficiency is functionally necessary.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe somatic hypermutation introducing random mutations into the variable region during rapid B cell division",
+        "Explain that mutated B cells compete for limited antigen on follicular dendritic cells and limited T cell help, so only higher-affinity clones survive",
+        "Recognise that most mutations lower or destroy affinity, so apoptosis of unselected clones is not a flaw but the mechanism of selection itself"
+      ],
+      "modelAnswer": "Inside the germinal centre, activated B cells cycle rapidly through a dark zone where an enzyme called AID introduces mutations into the antibody variable region, essentially rolling the dice on the binding site. Those mutated B cells then move to the light zone and compete for a scarce resource, antigen displayed on follicular dendritic cells, and they need T follicular helper cells to give survival signals. Only the clones whose mutated receptor binds antigen well enough get that help and survive, everything else undergoes apoptosis, which sounds wasteful but it's actually the whole point, because you're running a Darwinian selection process in miniature. I find it striking that the system tolerates so much death because the alternative, keeping every mediocre clone around, would dilute the quality of the eventual antibody response."
+    },
+    "commonMistakes": [
+      "Describing somatic hypermutation without mentioning the selection step that follows it",
+      "Confusing affinity maturation with class switching",
+      "Treating apoptosis of unselected B cells as an inefficiency rather than the selective mechanism"
+    ],
+    "followUps": ["What would happen to the antibody response if T follicular helper cells were absent?"]
+  },
+  {
+    "id": "prog-immunology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "MHC restriction logic",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["mhc", "t-cells", "antigen-presentation"],
+    "question": "Why can't a CD8 T cell simply recognise a free viral protein floating in the blood? Why does it insist on seeing a fragment presented on MHC class I?",
+    "lookingFor": "Clear reasoning about MHC restriction as a mechanism for confirming that a specific cell is actually infected, not just detecting the presence of pathogen debris.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the T cell receptor is built to recognise a peptide-MHC complex together, not antigen alone",
+        "Explain the biological purpose: MHC I presentation reports what is happening inside a specific cell, so killing can be targeted precisely",
+        "Contrast with B cells and antibodies, which do recognise free antigen, to show the division of labour"
+      ],
+      "modelAnswer": "A CD8 T cell's receptor is essentially shaped to grip both the peptide and the MHC groove at once, so a free floating protein just doesn't fit the lock. I think the deeper reason is functional rather than structural though, because the whole point of a killer T cell is to destroy infected cells specifically, not to mop up loose viral debris, and MHC class I is the cell's way of constantly broadcasting a sample of what's being made inside it. If T cells reacted to free antigen the way antibodies do, you'd lose the ability to pinpoint which individual cell is actually harbouring the virus, and you'd risk collateral damage instead of surgical killing. That division of labour, antibodies handling extracellular threats and T cells handling intracellular ones via MHC, is what makes the two arms complementary rather than redundant."
+    },
+    "commonMistakes": [
+      "Only describing the structural fit without explaining the biological purpose",
+      "Confusing MHC class I with class II presentation",
+      "Forgetting to contrast with how B cells recognise antigen"
+    ],
+    "followUps": ["How does a virus that shuts down MHC class I expression try to exploit this system?"]
+  },
+  {
+    "id": "prog-immunology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Central vs peripheral tolerance",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["tolerance", "autoimmunity", "thymus"],
+    "question": "The thymus deletes most self-reactive T cells before they ever leave. So why do we still need a whole separate system of peripheral tolerance out in the body?",
+    "lookingFor": "Understanding that central tolerance is necessarily incomplete and peripheral mechanisms exist as a required backup, not a redundant afterthought.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the thymus cannot present every self-antigen expressed only in specific peripheral tissues, so some self-reactive clones inevitably escape",
+        "Describe peripheral mechanisms such as regulatory T cells, anergy, and lack of co-stimulation as the backstop",
+        "Connect failure of either layer to real autoimmune consequences, showing the two-tier system is functionally necessary"
+      ],
+      "modelAnswer": "Central tolerance is impressive but it's fundamentally limited by exposure, the thymus can only screen against self-antigens it actually encounters, and something like a protein only made in the pancreas or the retina might never show up there in useful quantities, even with the AIRE gene trying to force ectopic expression. So some autoreactive T cells are always going to slip through into the periphery. That's where mechanisms like regulatory T cells suppressing them, or T cells becoming anergic when they see antigen without proper co-stimulation, act as a second checkpoint closer to where the actual tissue is. I think the reason this matters clinically is that diseases like type 1 diabetes or multiple sclerosis often reflect a breakdown specifically in that peripheral layer, which tells you the two systems are catching genuinely different failure modes rather than doing the same job twice."
+    },
+    "commonMistakes": [
+      "Treating peripheral tolerance as redundant rather than necessary",
+      "Failing to name a concrete peripheral mechanism like Tregs or anergy",
+      "Not connecting the concept to an actual autoimmune disease"
+    ],
+    "followUps": ["What happens clinically when the AIRE gene itself is mutated?"]
+  },
+  {
+    "id": "prog-immunology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypersensitivity classification",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["hypersensitivity", "allergy", "classification"],
+    "question": "A peanut allergy and a nickel allergy from a wristwatch are both called allergic reactions, but they're actually completely different immune mechanisms. Can you explain the difference?",
+    "lookingFor": "Confident distinction between Type I IgE-mediated hypersensitivity and Type IV T cell-mediated delayed hypersensitivity, with correct timing and mechanism.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify peanut allergy as Type I, IgE bound to mast cells triggering rapid degranulation on re-exposure",
+        "Identify nickel allergy as Type IV, a delayed T cell-mediated response taking one to two days to develop",
+        "Explain why the timing difference directly follows from the different cellular mechanisms involved"
+      ],
+      "modelAnswer": "A peanut allergy is a Type I hypersensitivity, where someone's already sensitised so they have IgE antibodies sitting on mast cells, and when peanut protein cross-links that IgE the mast cells degranulate within minutes, which is why the reaction is so fast and can be so dangerous. A nickel allergy from a watch is Type IV, a delayed-type hypersensitivity that's entirely T cell driven rather than antibody driven, where nickel acts as a hapten binding to skin proteins and memory T cells take a day or two to recognise it and orchestrate the inflammation you see as contact dermatitis. What I think is genuinely interesting is that the word allergy gets used for both even though one is essentially instant and antibody led while the other is slow and cellular, and knowing which mechanism you're dealing with completely changes how you'd treat or test for it."
+    },
+    "commonMistakes": [
+      "Calling both reactions Type I hypersensitivity",
+      "Omitting the timing difference that follows from the mechanism",
+      "Forgetting that Type IV is T cell-mediated with no antibody involvement"
+    ],
+    "followUps": ["Which type of hypersensitivity is graft rejection typically closest to?"]
+  },
+  {
+    "id": "prog-immunology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Cytokine storm mechanism",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["cytokines", "inflammation", "car-t"],
+    "question": "Cytokine storms show up both in severe COVID-19 and as a side effect of CAR-T cell therapy. What's actually going wrong at the cellular level, and why is timing so critical when treating it?",
+    "lookingFor": "Understanding of positive feedback loops between immune cells and cytokines, and the clinical tension between suppressing the storm and preserving the therapeutic or protective immune response.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the positive feedback loop where activated immune cells release cytokines that recruit and activate more immune cells",
+        "Explain that the damage comes from systemic effects like vascular leak and organ stress, not from the pathogen or tumour directly",
+        "Discuss the timing dilemma: intervening too early blunts a needed response, too late allows organ damage, especially relevant when the therapy itself, like CAR-T, depends on that activation"
+      ],
+      "modelAnswer": "What's happening is a runaway positive feedback loop, activated macrophages and T cells release cytokines like IL-6 and TNF-alpha, those recruit and activate even more immune cells, which release more cytokines, and the loop amplifies faster than any regulatory mechanism can shut it down. The actual harm isn't the virus or the tumour at that point, it's things like vascular leak, hypotension and multi-organ stress caused by the immune response itself. The reason timing is so delicate, especially with CAR-T, is that the same T cell activation you're trying to control is also the thing doing the therapeutic work of killing the cancer, so giving something like tocilizumab too early could blunt the treatment, but waiting too long risks the patient going into organ failure. I think that tension is what makes cytokine storm management such a genuinely hard clinical judgment call rather than a fixed protocol."
+    },
+    "commonMistakes": [
+      "Describing cytokine storm as simply 'too much inflammation' without the feedback loop mechanism",
+      "Missing that organ damage is caused by the immune response, not the original pathogen or tumour",
+      "Not addressing the clinical timing trade-off, especially in the CAR-T context"
+    ],
+    "followUps": ["Why does IL-6 blockade specifically help without shutting down the entire immune response?"]
+  },
+  {
+    "id": "prog-immunology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Checkpoint inhibitor side effects",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["checkpoint-inhibitors", "cancer-immunotherapy", "autoimmunity"],
+    "question": "Checkpoint inhibitors like anti-PD-1 drugs are celebrated for unleashing the immune system against cancer, but a significant fraction of patients develop autoimmune-like side effects. What does that side effect actually tell you about how PD-1 normally functions?",
+    "lookingFor": "Insight that the side effects are not a random flaw but direct evidence of PD-1's physiological role in maintaining peripheral tolerance.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that PD-1 normally acts as a brake that prevents T cells from over-attacking, including self tissue",
+        "Reason that removing the brake to fight cancer necessarily removes some protection against autoreactivity elsewhere",
+        "Connect this to the broader principle that immune checkpoints exist as tolerance mechanisms, not just tumour evasion tools"
+      ],
+      "modelAnswer": "I think the side effects are actually the clearest possible evidence of what PD-1 does under normal conditions, which is act as a brake that keeps activated T cells from attacking tissue too aggressively, including tissue that carries self-antigens. Tumours hijack that brake by expressing PD-L1 to switch off the T cells attacking them, so when a checkpoint inhibitor blocks PD-1, you're deliberately releasing that brake system-wide, not just at the tumour. The trade-off is that some of the T cells that were being restrained from attacking normal tissue, like the thyroid or the gut lining, are now unrestrained too, which is why you see colitis or thyroiditis show up in some patients. What that tells me is that checkpoints aren't really cancer-specific machinery at all, they're general tolerance mechanisms that cancer happens to exploit, and that reframes the side effect as mechanistically predictable rather than an unlucky coincidence."
+    },
+    "commonMistakes": [
+      "Describing the side effects as an unrelated or unpredictable complication",
+      "Failing to connect PD-1's tumour evasion role to its normal tolerance function",
+      "Not distinguishing PD-1 checkpoint blockade from a general immune stimulant"
+    ],
+    "followUps": ["Would you expect combining CTLA-4 and PD-1 blockade to increase or decrease this risk, and why?"]
+  },
+  {
+    "id": "prog-immunology-b-008",
+    "category": "Ethics & Situational",
+    "subtopic": "Human challenge trials",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["ethics", "clinical-trials", "vaccine-development"],
+    "question": "During a fast-moving outbreak, researchers propose deliberately infecting healthy, informed volunteers with the pathogen to test a candidate vaccine faster than a normal field trial would allow. Would you support that approach?",
+    "lookingFor": "Balanced ethical reasoning weighing accelerated public benefit against deliberate harm to volunteers, with attention to consent quality and safeguards rather than a simple yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine scientific benefit: faster, cleaner efficacy data that could save many lives sooner",
+        "Weigh this against the ethical weight of deliberately causing harm, even with consent, especially if no rescue treatment exists",
+        "Land on a conditional position, tied to strict safeguards like low-risk volunteer selection, available treatment, true informed consent, and independent oversight"
+      ],
+      "modelAnswer": "My instinct is that the case for challenge trials is genuinely strong in a fast outbreak, because you can get efficacy data in weeks instead of the months or years a field trial needs, and that speed itself saves lives. But I don't think consent alone makes it automatically acceptable, because you're deliberately infecting a healthy person with something that could harm them, and informed consent under outbreak urgency isn't the same as consent given with time to reflect. I'd support it only with real safeguards, selecting low-risk volunteers, having an effective rescue treatment on standby, and independent ethical oversight that isn't under pressure to approve quickly. Without those conditions I think the speed benefit doesn't justify the harm, but with them, I'd say the ethical case tips in favour, because the alternative of a slower trial has its own real cost in lives lost while we wait."
+    },
+    "commonMistakes": [
+      "Giving a flat yes or no with no conditions attached",
+      "Ignoring that consent under outbreak pressure may not be fully voluntary",
+      "Not mentioning the need for a rescue treatment or low-risk volunteer pool as a precondition"
+    ],
+    "followUps": ["Would your answer change if no effective rescue treatment existed for the pathogen?"]
+  },
+  {
+    "id": "prog-immunology-b-009",
+    "category": "Ethics & Situational",
+    "subtopic": "Scarce therapy allocation",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["ethics", "resource-allocation", "public-health"],
+    "question": "A new monoclonal antibody therapy dramatically reduces severe disease from an emerging virus, but supply can only cover a fraction of those who need it. As someone who understands the immunology, how would you think about who gets it first?",
+    "lookingFor": "Structured ethical prioritisation reasoning grounded in immunological risk factors, not just a gut preference, and acknowledgement that any rule creates trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Ground prioritisation in immunological and clinical risk, such as immunocompromised status or lack of vaccine response, rather than arbitrary criteria",
+        "Consider competing allocation principles: greatest benefit, worst off first, and fairness of process",
+        "Acknowledge that no allocation rule is free of trade-offs and that transparency in the criteria matters as much as the criteria themselves"
+      ],
+      "modelAnswer": "I'd want to start from who benefits most immunologically, so people who are immunocompromised or who don't mount a good vaccine response themselves, because for them this therapy isn't a backup, it's often the only real protection they have. But I know that greatest benefit isn't the only fair principle, you could also argue for prioritising whoever is at highest risk of severe outcome regardless of vaccine status, and those two criteria won't always agree. I don't think there's a clean answer that satisfies every ethical framework at once, so what matters to me almost as much as which criteria you pick is that the criteria are public, consistent, and applied by clinicians rather than left to informal judgment, because an opaque process erodes trust in a way that outlasts any single shortage."
+    },
+    "commonMistakes": [
+      "Proposing a purely first-come-first-served or age-based rule with no immunological reasoning",
+      "Presenting only one allocation principle as obviously correct",
+      "Not acknowledging that transparency of process matters alongside the criteria chosen"
+    ],
+    "followUps": ["How would you factor in someone who is unvaccinated by choice into that prioritisation?"]
+  },
+  {
+    "id": "prog-immunology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "mRNA vaccine hesitancy",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["mrna-vaccines", "public-communication", "current-debate"],
+    "question": "A close friend tells you they're wary of mRNA vaccines because the technology feels too new and unproven compared to traditional vaccines. How would you respond, immunologically and otherwise?",
+    "lookingFor": "Ability to explain the actual mechanism accurately and respond to a genuine concern with empathy and evidence rather than dismissiveness.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain accurately that mRNA vaccines deliver instructions for a cell to transiently produce a viral protein, triggering both antibody and T cell responses, and the mRNA itself degrades quickly",
+        "Correct the 'unproven' framing with the real research history, decades of prior mRNA and lipid nanoparticle work before widespread deployment",
+        "Respond with empathy rather than lecturing, acknowledging the concern is reasonable even while addressing it with evidence"
+      ],
+      "modelAnswer": "I'd start by not dismissing the worry, because new technology being met with caution is a reasonable instinct, not an unreasonable one. Then I'd explain what's actually happening, the mRNA just gives your own cells brief instructions to make one viral protein so your immune system can learn to recognise it, and the mRNA itself breaks down within days, it doesn't touch your DNA and doesn't stick around. I'd also point out that the platform wasn't invented overnight, researchers had been working on mRNA delivery and lipid nanoparticles for over a decade before the pandemic, the emergency just accelerated deployment of groundwork that already existed. I think the goal isn't to win the conversation, it's to give my friend accurate information and let them make their own informed decision from there."
+    },
+    "commonMistakes": [
+      "Being dismissive or condescending about the friend's concern",
+      "Getting the mechanism factually wrong, such as implying the mRNA integrates into DNA",
+      "Overclaiming certainty rather than communicating honestly about what is and isn't known"
+    ],
+    "followUps": ["How would your explanation change if the friend was a parent asking about vaccinating a young child?"]
+  },
+  {
+    "id": "prog-immunology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "CAR-T in solid tumours",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["car-t", "cancer-immunotherapy", "current-development"],
+    "question": "CAR-T cell therapy has transformed treatment for some blood cancers but has struggled to work as well against solid tumours. Why is the solid tumour environment such a harder problem immunologically?",
+    "lookingFor": "Awareness of the specific biological barriers, physical, antigenic, and immunosuppressive, that distinguish solid tumours from liquid cancers, showing genuine engagement with current research challenges.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain physical barriers: solid tumours have dense stroma and abnormal vasculature that limit T cell infiltration",
+        "Describe antigen heterogeneity, unlike a uniform blood cancer marker such as CD19, solid tumours often lack one clean, universal target",
+        "Discuss the immunosuppressive tumour microenvironment, including Tregs, myeloid suppressor cells, and metabolic starvation of T cells"
+      ],
+      "modelAnswer": "With blood cancers, CAR-T cells are essentially swimming in the same compartment as their target, and CD19 is a fairly uniform marker across the cancer cells, which makes it a clean target. Solid tumours are a completely different physical problem, the tumour has dense stroma and disorganised blood vessels that physically block T cells from ever reaching the core, so even a perfectly designed CAR-T cell can struggle just to get there. On top of that, solid tumours are far more antigenically heterogeneous, so a single-target CAR-T cell might kill off part of the tumour and let antigen-negative cells regrow, and the tumour microenvironment itself is actively hostile, full of regulatory T cells, suppressive myeloid cells, and low oxygen and nutrients that exhaust the T cells that do get in. I think that's what makes solid tumour CAR-T such an active research area right now, it's not one problem to solve, it's at least three stacked on top of each other."
+    },
+    "commonMistakes": [
+      "Only naming one barrier, like antigen heterogeneity, without the others",
+      "Treating solid and liquid tumours as immunologically equivalent problems",
+      "Vague answers that don't reference the physical tumour microenvironment"
+    ],
+    "followUps": ["What strategies are being explored to get CAR-T cells to actually infiltrate a solid tumour?"]
+  },
+  {
+    "id": "prog-immunology-b-012",
+    "category": "Curveball/Personality",
+    "subtopic": "Designing a serology test",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "serology", "vaccine-development"],
+    "question": "Imagine a brand new virus has just emerged and you're asked to design a blood test that tells someone whether they have protective immunity to it. What would you actually need to know first, before you could build that test?",
+    "lookingFor": "Structured scientific reasoning under uncertainty, recognising that a simple antibody test is not automatically the same as a protection test.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the need to establish a correlate of protection, that is, which specific antibody response actually predicts immunity, not just any detectable antibody",
+        "Raise the question of neutralising versus non-neutralising antibodies, and possibly the role of T cell immunity that a simple antibody test would miss",
+        "Acknowledge this typically requires longitudinal data linking measured immune markers to actual infection outcomes, which takes time to establish"
+      ],
+      "modelAnswer": "The first thing I'd want to know is whether we even have a validated correlate of protection yet, because just detecting any antibody against the virus doesn't tell you someone is actually protected, you need to know which specific response, usually neutralising antibody titre against a particular protein, actually tracks with real world protection. I'd also want to think about whether antibodies are even the right thing to measure, because for some pathogens T cell immunity matters a lot and a blood antibody test would completely miss that contribution. Realistically, establishing that correlate needs longitudinal data, following a group of exposed or vaccinated people over time and seeing which lab measurement predicts who actually gets infected or stays protected, and that's not something you can shortcut, so an early test built without that data would really just be a proxy, not a guarantee."
+    },
+    "commonMistakes": [
+      "Assuming any positive antibody test automatically means the person is protected",
+      "Ignoring T cell immunity entirely",
+      "Not recognising that correlates of protection require real outcome data to establish"
+    ],
+    "followUps": ["How would your test change for a virus where reinfection is common despite antibody presence?"]
+  },
+  {
+    "id": "prog-immunology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Antigenic drift vs shift",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["influenza", "antigenic-variation", "vaccine-design"],
+    "question": "Why do we need a new flu vaccine every year, but only occasionally worry about an entirely new flu pandemic?",
+    "lookingFor": "Clear distinction between antigenic drift as a gradual, incremental process and antigenic shift as an abrupt reassortment event, with correct implications for each.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain antigenic drift as accumulated point mutations in surface proteins that gradually erode existing immunity",
+        "Explain antigenic shift as a sudden reassortment of genome segments, often between animal and human strains, producing a largely novel virus",
+        "Connect drift to annual vaccine updates and shift to pandemic risk because population immunity is essentially absent"
+      ],
+      "modelAnswer": "The annual vaccine update is really about antigenic drift, small point mutations accumulate in the surface proteins like haemagglutinin every season, so the strain circulating this year is subtly different from what most people's immune systems were primed against, and the vaccine has to chase that. Antigenic shift is a completely different kind of event, it happens when two different flu strains, say a human and an animal strain, infect the same cell and swap whole genome segments, producing an essentially new virus overnight rather than gradually. That matters so much more because with drift, most people still have partial cross-reactive immunity from past exposure, but with a shift event the new combination can be different enough that almost nobody has any pre-existing protection, and that's the scenario that actually creates pandemic potential."
+    },
+    "commonMistakes": [
+      "Using drift and shift interchangeably",
+      "Describing shift as just a bigger version of drift rather than a distinct reassortment mechanism",
+      "Not explaining why lack of pre-existing immunity is the key pandemic risk factor"
+    ],
+    "followUps": ["Why is a universal flu vaccine, targeting a conserved region, so much harder to develop than it sounds?"]
+  },
+  {
+    "id": "prog-immunology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Immune privilege and its exploitation",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["immune-privilege", "tumour-immunology", "transplantation"],
+    "question": "The eye and the testes are described as 'immune privileged' sites. What does that actually mean mechanistically, and why might a tumour benefit from mimicking that same privilege?",
+    "lookingFor": "Understanding immune privilege as an active suppressive mechanism rather than simple physical isolation, and the ability to extend that concept to tumour immune evasion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain immune privilege as active local suppression, including physical barriers, low MHC expression, and immunosuppressive molecules like FasL, not just anatomical isolation",
+        "Note the evolutionary logic: protecting tissues where inflammation would cause disproportionate damage, such as the eye risking blindness",
+        "Connect this to tumours that upregulate similar mechanisms, like PD-L1 or Treg recruitment, to create a locally suppressive niche that shields them from immune attack"
+      ],
+      "modelAnswer": "I used to think immune privilege just meant those tissues were physically walled off, like the blood-retinal barrier, but it's actually more active than that, sites like the eye and testes also express low levels of MHC and molecules like FasL that can induce apoptosis in attacking immune cells, so it's genuinely suppressive, not just isolated. The evolutionary logic makes sense to me too, inflammation in the eye could cause blindness and inflammation in the testes could compromise fertility, so the cost of an aggressive immune response there is unusually high, which is presumably why these tissues evolved extra tolerance mechanisms. What's striking is that tumours seem to have essentially learned this trick, they upregulate PD-L1 and recruit regulatory T cells to build a locally immunosuppressive microenvironment around themselves, which is functionally very similar to genuine immune privilege, except it's a stolen trick being used to protect something the body actually needs to destroy."
+    },
+    "commonMistakes": [
+      "Describing immune privilege as purely physical isolation with no active suppression",
+      "Failing to connect the concept to tumour immune evasion when asked",
+      "Not offering a specific mechanism like FasL or low MHC expression"
+    ],
+    "followUps": ["Why might immune privilege in the eye complicate treating an ocular tumour with immunotherapy?"]
+  },
+  {
+    "id": "prog-immunology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Molecular mimicry in autoimmunity",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["autoimmunity", "molecular-mimicry", "infection"],
+    "question": "Rheumatic fever can develop weeks after a strep throat infection has cleared, and it damages heart tissue the bacteria never actually reached. How does an infection end up causing that kind of autoimmune damage?",
+    "lookingFor": "Correct application of the molecular mimicry hypothesis, and awareness that this is a proposed mechanism among several, not an absolute certainty.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain molecular mimicry: antibodies or T cells raised against a bacterial protein cross-react with a structurally similar self-protein, in this case cardiac tissue",
+        "Note the delay makes sense because it takes time to mount an adaptive response and for cross-reactive damage to accumulate",
+        "Show appropriate scientific caution that mimicry is the leading explanation but the field also considers other contributing factors like bystander activation"
+      ],
+      "modelAnswer": "The leading explanation is molecular mimicry, the M protein on Streptococcus pyogenes happens to structurally resemble proteins found in cardiac tissue, so the antibodies and T cells the body correctly generates against the bacteria end up cross-reacting with heart valve tissue as a kind of unfortunate coincidence of shape. The delay actually fits that mechanism well, because it takes one to two weeks to build up a strong adaptive antibody and T cell response, so the damage only becomes apparent after the infection itself has already cleared, which is what makes it look so mysteriously delayed. I'd be careful not to present that as the complete picture though, because the field also considers other contributing mechanisms like bystander immune activation, so I think of molecular mimicry as the best supported explanation rather than a fully settled one."
+    },
+    "commonMistakes": [
+      "Claiming the bacteria directly infected the heart tissue",
+      "Not explaining why the immune response is delayed relative to the original infection",
+      "Presenting molecular mimicry as absolute fact rather than the leading hypothesis"
+    ],
+    "followUps": ["Can you think of another disease where molecular mimicry following infection has been proposed?"]
+  },
+  {
+    "id": "prog-immunology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Herd immunity threshold reasoning",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["herd-immunity", "epidemiology", "vaccination"],
+    "question": "Measles needs roughly 95 percent vaccination coverage for herd immunity, but seasonal flu needs nowhere near that. Why such a big difference?",
+    "lookingFor": "Correct application of the relationship between R0 and herd immunity threshold, showing genuine quantitative reasoning rather than a memorised figure.",
+    "idealAnswer": {
+      "bullets": [
+        "State the herd immunity threshold formula relates directly to R0: roughly 1 minus 1 over R0",
+        "Explain measles has an unusually high R0, often cited around 12 to 18, driving the threshold close to 95 percent",
+        "Contrast with flu's much lower R0, meaning a smaller proportion of immune individuals is enough to break the transmission chain"
+      ],
+      "modelAnswer": "The herd immunity threshold isn't a fixed number, it's directly tied to how contagious the pathogen actually is, roughly one minus one over the R0, so the more transmissible a disease is, the higher the proportion of the population that needs to be immune to stop it spreading. Measles is extraordinarily contagious, its R0 is often quoted somewhere between 12 and 18, meaning one infected person in a fully susceptible population could infect that many others, and plugging that into the formula is what pushes the threshold up near 95 percent. Flu's R0 is much lower, typically only one to two, so you don't need nearly as large a fraction of the population protected to break the chain of transmission, which is exactly why the coverage target looks so different even though both are respiratory viruses."
+    },
+    "commonMistakes": [
+      "Treating herd immunity thresholds as a fixed universal percentage",
+      "Not connecting the threshold quantitatively to R0",
+      "Confusing R0 with case fatality rate or severity"
+    ],
+    "followUps": ["How would a more transmissible variant of an existing virus change the herd immunity threshold?"]
+  },
+  {
+    "id": "prog-immunology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Tumour immune evasion",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["cancer-immunology", "immune-evasion", "tumour-microenvironment"],
+    "question": "If the immune system is constantly surveilling for abnormal cells, how does a tumour, made of cells the body should recognise as dangerous, ever manage to grow large enough to be diagnosed?",
+    "lookingFor": "Ability to describe multiple, layered evasion mechanisms and frame cancer development as a selection process, referencing the immunoediting concept if possible.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe specific evasion mechanisms: downregulating MHC I to avoid T cell detection, upregulating PD-L1, and recruiting immunosuppressive cells like Tregs",
+        "Introduce the concept of cancer immunoediting, where immune pressure selects for the least visible tumour clones over time",
+        "Frame the tumour that is eventually diagnosed as the survivor of an evolutionary bottleneck, not a cell that was simply ignored from the start"
+      ],
+      "modelAnswer": "I think the key idea is that immune surveillance does actually kill off most abnormal cells early, but the tumour you eventually see clinically is really the survivor of a selection process called cancer immunoediting, where immune pressure eliminates the most visible clones and inadvertently selects for the ones that evade detection best. Those surviving cells often downregulate MHC class I so cytotoxic T cells can't see their abnormal proteins presented, and many upregulate PD-L1 to directly switch off any T cell that does recognise them, while also recruiting regulatory T cells and suppressive myeloid cells to build a locally tolerant microenvironment around themselves. So it's not that the tumour was invisible from day one, it's that what remains after years of immune editing has essentially been bred by the immune system itself to be the version that can evade it, which I find both elegant and a bit unsettling as a piece of biology."
+    },
+    "commonMistakes": [
+      "Describing only one evasion mechanism instead of the layered, multi-pronged reality",
+      "Missing the immunoediting framing of selection over time",
+      "Implying the immune system simply fails to notice the tumour at all"
+    ],
+    "followUps": ["How does the concept of immunoediting inform the design of combination immunotherapies?"]
+  },
+  {
+    "id": "prog-immunology-b-018",
+    "category": "Ethics & Situational",
+    "subtopic": "Gene-edited immune cell therapy",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["ethics", "gene-editing", "crispr"],
+    "question": "Researchers are trialling CRISPR-edited CAR-T cells in children with relapsed leukaemia who have exhausted standard options. The therapy is experimental and its long-term effects on a developing immune system are unknown. How should informed consent work when the patient is a child?",
+    "lookingFor": "Careful reasoning about proxy consent, assent, and the ethical weight of last-resort experimental therapy in minors, without collapsing into either blanket permission or blanket refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish parental proxy consent from the child's own assent, and discuss how age-appropriate assent should still be sought where possible",
+        "Weigh the desperation of a last-resort context against the duty to fully disclose genuine uncertainty about long-term effects",
+        "Support the role of an independent ethics board precisely because parents facing a dying child may not be positioned to weigh risk dispassionately"
+      ],
+      "modelAnswer": "I think the core tension is that a parent facing a child who has run out of standard options is, understandably, not in a neutral position to weigh long-term unknown risk against near-certain progression of the disease, so consent can't rest on the parent's judgment alone. Where the child is old enough to understand in some form, I'd want genuine assent sought too, not just informing them after the decision is made, because even a child has some claim to understanding what's happening to their own body. I think that's exactly why an independent ethics review board matters so much here, its job is to hold the line on informed consent quality and genuinely weigh whether the experimental risk is justified, precisely because the family is in an emotionally impossible position to do that weighing alone. I don't think that removes the parents' role, but it means the decision isn't resting on their judgment in isolation."
+    },
+    "commonMistakes": [
+      "Treating parental consent alone as sufficient with no mention of the child's assent",
+      "Failing to acknowledge that desperation can compromise the quality of consent",
+      "Not mentioning the role of independent ethical oversight"
+    ],
+    "followUps": ["Should experimental therapies like this ever be offered outside a formal clinical trial structure?"]
+  },
+  {
+    "id": "prog-immunology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Antibiotic resistance and immune-based alternatives",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["antibiotic-resistance", "current-debate", "phage-therapy"],
+    "question": "With antibiotic resistance rising, some researchers argue we should be investing more in immune-based approaches, like phage therapy or monoclonal antibodies against bacterial toxins, rather than only searching for new antibiotics. What's your take?",
+    "lookingFor": "Ability to evaluate a live scientific debate with nuance, weighing the strengths and current limitations of alternative approaches rather than picking a side uncritically.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the appeal: these approaches can be highly targeted and sidestep some resistance mechanisms that affect broad-spectrum antibiotics",
+        "Acknowledge current limitations, such as narrow bacterial strain specificity for phages, and cost or manufacturing complexity for monoclonals",
+        "Reach a balanced conclusion that these are complementary tools rather than outright replacements, at least with current technology"
+      ],
+      "modelAnswer": "I think the appeal is genuine, phage therapy can target a specific bacterial strain very precisely, and antitoxin monoclonal antibodies can neutralise the harm a bacterium causes without necessarily trying to kill every last organism, which sidesteps some of the selection pressure that drives antibiotic resistance in the first place. But I don't think either is ready to replace antibiotics outright, phages tend to be so strain-specific that you often need a matched cocktail identified for the individual patient's infection, which is logistically difficult at scale, and monoclonal antibody production is expensive and slow compared to a course of pills. My honest view is that these are best thought of as complementary tools for specific, often resistant or severe cases, rather than a wholesale replacement, at least until manufacturing and matching technology catches up."
+    },
+    "commonMistakes": [
+      "Presenting phage therapy or monoclonals as a simple solved replacement for antibiotics",
+      "Dismissing the alternative approaches without engaging with their genuine advantages",
+      "Giving a one-sided answer with no acknowledgement of practical limitations"
+    ],
+    "followUps": ["What immunological challenge does repeated phage therapy dosing in the same patient raise?"]
+  },
+  {
+    "id": "prog-immunology-b-020",
+    "category": "Curveball/Personality",
+    "subtopic": "Diagnostic reasoning hypothetical",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "immunodeficiency", "diagnostic-reasoning"],
+    "question": "A patient keeps getting recurrent bacterial sinus and ear infections but has never had unusual viral or fungal infections. Immunologically, what kind of underlying problem would that pattern make you suspect, and why?",
+    "lookingFor": "Logical inference from an infection pattern to a likely category of immune defect, showing understanding of which arm of immunity handles which pathogen types.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise recurrent bacterial infections with normal viral and fungal defence points toward an antibody or complement deficiency rather than a T cell defect",
+        "Explain the reasoning: antibodies are particularly important for opsonising encapsulated bacteria, while T cell immunity is more central to controlling viruses and fungi",
+        "Suggest a plausible next step, such as checking immunoglobulin levels, without overclaiming a definitive diagnosis from the pattern alone"
+      ],
+      "modelAnswer": "That pattern, recurrent bacterial infections but normal handling of viruses and fungi, would make me think first of a humoral or antibody-related problem, something like common variable immunodeficiency, rather than a T cell defect. The reasoning is that antibodies are especially important for opsonising and clearing extracellular encapsulated bacteria, which are exactly the kind of organisms behind recurrent sinus and ear infections, whereas T cell immunity is more central to fighting viruses and fungi, so if that arm were compromised instead I'd expect the opposite infection pattern. I wouldn't want to claim that pattern alone gives a diagnosis, but it would make me want to check immunoglobulin levels and specific antibody responses as a sensible next step, because the type of pathogen someone keeps struggling against is often a genuinely useful clue to which part of the immune system isn't working."
+    },
+    "commonMistakes": [
+      "Jumping to a T cell deficiency despite the pattern pointing toward antibody function",
+      "Not explaining why the pathogen type is diagnostically informative",
+      "Overclaiming a definitive diagnosis rather than suggesting the next reasonable test"
+    ],
+    "followUps": ["How would the pattern change your suspicion if the patient also had unusual fungal infections?"]
+  },
+  {
+    "id": "prog-immunology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Hygiene hypothesis debate",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["microbiome", "hygiene-hypothesis", "current-debate"],
+    "question": "The hygiene hypothesis, that reduced early-life microbial exposure explains rising rates of allergy and autoimmune disease, is widely known but increasingly criticised as oversimplified. What's your view on where the theory still holds up and where it doesn't?",
+    "lookingFor": "Ability to engage critically with a popularised theory, distinguishing the core mechanistic insight from the oversimplified public version.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the underlying mechanistic idea: early microbial exposure helps shape regulatory immune development and a balanced Th1/Th2/Treg profile",
+        "Note the critique, that 'hygiene' framing is misleading since it isn't about cleanliness per se but about loss of diverse microbial and helminth exposure, hence the newer 'old friends' framing",
+        "Show awareness that correlation with rising allergy rates doesn't fully establish causation, and that other factors like diet and pollution are also implicated"
+      ],
+      "modelAnswer": "I think the core mechanistic insight still holds up reasonably well, early exposure to a diverse range of microbes seems to genuinely help train regulatory T cells and keep the immune system's Th1, Th2 and Treg balance in check, so its absence plausibly contributes to allergic and autoimmune conditions. Where I think the original framing falls short is the word hygiene itself, it implies cleanliness is the villain, when the more accurate story, sometimes called the old friends hypothesis, is really about losing exposure to specific things like helminths and diverse environmental microbiota that co-evolved with us, not about handwashing. I'd also be cautious about treating it as a complete explanation, because allergy and autoimmune disease rates have risen alongside a lot of other changes too, like diet, pollution and antibiotic use, so I see the hygiene hypothesis as one genuinely important piece of a more complicated multifactorial picture rather than the whole answer."
+    },
+    "commonMistakes": [
+      "Repeating the popular 'too clean' version without noting the more precise old friends framing",
+      "Treating correlation between reduced microbial exposure and rising allergy rates as proven causation",
+      "Dismissing the theory entirely rather than identifying what still holds mechanistic weight"
+    ],
+    "followUps": ["What kind of study design would actually let you test this hypothesis rigorously?"]
+  },
+  {
+    "id": "prog-immunology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Post-viral immune dysregulation",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["long-covid", "current-debate", "post-viral-syndrome"],
+    "question": "Long COVID remains poorly understood, and one leading hypothesis is that it involves ongoing immune dysregulation rather than persistent virus. Why is that kind of hypothesis so hard to prove or disprove?",
+    "lookingFor": "Awareness of a genuinely live, unresolved research debate and the methodological reasons it resists easy resolution, rather than presenting a confident settled answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the competing hypotheses, viral persistence in tissue reservoirs, autoimmunity triggered by molecular mimicry, and chronic immune activation or dysregulation",
+        "Explain the methodological difficulty: symptoms are heterogeneous and subjective, and there's no single validated biomarker to test against",
+        "Show scientific humility, treating this as an open question under active investigation rather than something with a settled mechanism"
+      ],
+      "modelAnswer": "What makes it so hard is that there isn't just one hypothesis in competition, there's viral persistence in some tissue reservoir, there's an autoimmune trigger through something like molecular mimicry, and there's chronic immune dysregulation or lingering inflammation, and these aren't mutually exclusive, different patients might genuinely have different underlying mechanisms lumped under one label. On top of that, long COVID symptoms are hugely heterogeneous and largely subjective, fatigue and brain fog don't have a single clean biomarker the way a raised antibody titre does, so researchers are trying to test mechanistic hypotheses without an agreed measurable endpoint to anchor the comparison. I think the honest position for me to take here is that this is a genuinely open question that serious immunologists disagree on right now, and I'd rather say that clearly than pretend there's a settled mechanism when there isn't."
+    },
+    "commonMistakes": [
+      "Presenting one hypothesis as definitively proven",
+      "Not acknowledging the lack of a validated biomarker as a core methodological obstacle",
+      "Overconfidence about a topic that is still genuinely unresolved in the literature"
+    ],
+    "followUps": ["What kind of biomarker discovery would most help resolve this debate?"]
+  },
+  {
+    "id": "prog-immunology-b-023",
+    "category": "Curveball/Personality",
+    "subtopic": "Novel pathogen response hypothetical",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "outbreak-response", "vaccine-design"],
+    "question": "A new virus has just jumped from animals to humans and is spreading. You're on the early scientific team trying to guide the response. What immunological questions would you want answered first, before anyone can design a vaccine?",
+    "lookingFor": "Structured prioritisation of the key unknowns that actually determine vaccine strategy, showing genuine grasp of how immunological uncertainty shapes early outbreak decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Ask which viral protein or epitope would be the target antigen, and whether it's likely to mutate quickly",
+        "Determine whether natural infection produces durable protective immunity at all, since that's not guaranteed for every pathogen",
+        "Establish the mode of transmission and dominant protective mechanism, antibody versus T cell, to guide what kind of vaccine platform and correlate of protection to pursue"
+      ],
+      "modelAnswer": "The first thing I'd want to know is whether people who survive natural infection actually develop durable protective immunity at all, because that's not automatic for every pathogen and it fundamentally shapes whether a vaccine is even a realistic near-term goal. Then I'd want to identify a stable target antigen, ideally a surface protein that's essential to the virus's function so it can't easily mutate away without losing fitness, because targeting something under high mutational pressure risks a vaccine that's outdated within a season. I'd also want early data on whether protection looks like it's mainly antibody-mediated or whether T cell immunity is doing a lot of the real work, since that changes which vaccine platform and which correlate of protection you'd even be able to measure success against. Getting those three things wrong early tends to be exactly what causes months of wasted effort later in a vaccine programme."
+    },
+    "commonMistakes": [
+      "Jumping straight to vaccine platform choice without first asking whether durable immunity is even achievable",
+      "Ignoring the question of antigenic stability of the target",
+      "Treating antibody response as the only immune mechanism worth investigating"
+    ],
+    "followUps": ["What would it mean for vaccine strategy if natural infection turned out not to produce lasting immunity?"]
+  },
+  {
+    "id": "prog-immunology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Why vaccines need adjuvants",
+    "program": "Immunology",
+    "difficulty": "medium",
+    "tags": ["adjuvants", "vaccine-design", "innate-immunity"],
+    "question": "Why can't you just inject someone with a purified piece of viral protein and expect a strong lasting immune response? Why do most vaccines need an adjuvant as well?",
+    "lookingFor": "Understanding that adaptive immunity requires innate activation as a prerequisite signal, and that purified antigen alone often fails to provide that danger signal.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a purified protein alone often lacks the pathogen-associated molecular patterns that trigger innate immune sensors",
+        "Describe adjuvants as providing that missing danger signal, activating antigen-presenting cells and improving co-stimulation to T cells",
+        "Note the consequence of skipping this: weak, short-lived antibody response or even tolerance rather than protective immunity"
+      ],
+      "modelAnswer": "A purified protein subunit is basically an antigen with no context attached, it doesn't carry the molecular patterns that a real pathogen would, the kind of signals that innate immune sensors like toll-like receptors are built to detect as a sign of genuine danger. Without that danger signal, dendritic cells don't get properly activated, so they don't upregulate the co-stimulatory molecules a T cell needs alongside antigen recognition to actually respond, and you can end up with a weak response or even a kind of tolerance instead of protection. That's exactly the gap an adjuvant fills, it mimics that danger signal, activating innate immune cells so they present the antigen properly and give T cells the full two-signal activation they need, which is why so many modern subunit vaccines simply wouldn't work well without one."
+    },
+    "commonMistakes": [
+      "Describing adjuvants as simply boosting antigen quantity rather than triggering innate activation",
+      "Not explaining the two-signal requirement for proper T cell activation",
+      "Assuming any antigen alone reliably produces strong lasting immunity"
+    ],
+    "followUps": ["Why might live attenuated vaccines often not need a separate adjuvant?"]
+  },
+  {
+    "id": "prog-immunology-b-025",
+    "category": "Ethics & Situational",
+    "subtopic": "Vaccine mandate dilemma",
+    "program": "Immunology",
+    "difficulty": "hard",
+    "tags": ["ethics", "vaccine-mandates", "public-health"],
+    "question": "Should governments ever be able to mandate a vaccine, given that it involves overriding an individual's choice about their own body?",
+    "lookingFor": "A structured ethical argument weighing individual autonomy against collective protection, grounded in actual immunological reasoning about herd effects and vulnerable populations rather than a purely political stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine weight of bodily autonomy as a starting value, not something to wave away",
+        "Bring in the immunological point that vaccination protects others too, particularly those who cannot be vaccinated or don't respond well, through herd immunity",
+        "Reach a conditional, proportionate position rather than an absolute one, distinguishing mandates for high-transmissibility, high-severity diseases from broader blanket policies"
+      ],
+      "modelAnswer": "I don't think bodily autonomy is a value to brush aside here, it's a genuinely important starting point, and I'd be uneasy with any framework that treats it as automatically overridden by public health goals. But immunologically, vaccination isn't purely a private choice in the way, say, diet is, because unvaccinated individuals in a population with a highly transmissible disease directly affect the exposure risk of people who can't be vaccinated themselves, like immunocompromised patients or newborns, through herd immunity. So my honest position is a conditional one, I think mandates can be ethically justified specifically for diseases that are highly transmissible and severe enough that unvaccinated individuals meaningfully endanger others, like measles in a school setting, but I wouldn't extend that same reasoning to every vaccine or every context, because the justification really rests on that specific harm-to-others argument, not on public health authority as a blanket principle."
+    },
+    "commonMistakes": [
+      "Giving a purely political answer with no immunological grounding",
+      "Treating autonomy or public health as the only value that matters, with no genuine weighing",
+      "An absolute stance either way with no distinction between different disease contexts"
+    ],
+    "followUps": ["Does your reasoning change for a vaccine that protects mainly the individual and not others around them?"]
+  }
+]

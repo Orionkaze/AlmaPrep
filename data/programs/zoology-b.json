@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-zoology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Convergent evolution",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["evolution", "convergent-evolution", "comparative-anatomy"],
+    "question": "Can you explain convergent evolution and give an example that isn't the classic 'wings' one?",
+    "lookingFor": "Correct grasp of convergent evolution as similar traits arising independently under similar selective pressures, illustrated with a fresh, well-understood example.",
+    "idealAnswer": {
+      "bullets": [
+        "Define convergent evolution: independent lineages evolving similar traits due to similar environmental pressures, not shared ancestry",
+        "Distinguish it clearly from homology (shared ancestry) using a specific example",
+        "Explain the selective pressure that produced the similarity"
+      ],
+      "modelAnswer": "Convergent evolution is when unrelated lineages independently evolve similar features because they're facing similar selection pressures, not because they share a common ancestor with that trait. A good example is the streamlined body shape of sharks, ichthyosaurs and dolphins, three groups from completely different lineages, fish, reptiles and mammals, that all converged on the same hydrodynamic solution for moving efficiently through water. What I find interesting is that the same problem, drag in a dense medium, essentially forces the same answer regardless of the starting genetic material. It's a nice reminder that evolution is constrained by physics as much as by history."
+    },
+    "commonMistakes": [
+      "Reaching for the same overused wing example instead of a well-understood alternative",
+      "Confusing convergent evolution with homologous structures",
+      "Failing to name the actual selective pressure driving the similarity"
+    ],
+    "followUps": ["How would you tell convergent similarity apart from shared ancestry if you only had the anatomy to go on?"]
+  },
+  {
+    "id": "prog-zoology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Homology vs analogy",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["comparative-anatomy", "homology", "evolution"],
+    "question": "What's the difference between a homologous structure and an analogous structure, and why does that distinction matter to a zoologist?",
+    "lookingFor": "Clear conceptual separation of shared-ancestry vs shared-function structures, with awareness of why the distinction matters for building phylogenies.",
+    "idealAnswer": {
+      "bullets": [
+        "Define homologous structures as sharing common ancestry regardless of current function",
+        "Define analogous structures as sharing function without common ancestry",
+        "Explain why this distinction is essential for building accurate phylogenetic trees"
+      ],
+      "modelAnswer": "Homologous structures come from a shared ancestor, so a bat's wing and a human arm are homologous even though they do completely different jobs, because the underlying bone arrangement traces back to the same tetrapod limb. Analogous structures do the opposite job, they look or function similarly, like a bird's wing and an insect's wing, but they evolved that similarity completely independently. It matters hugely for a zoologist because if you build a phylogenetic tree using analogous traits by mistake, you'll group unrelated animals together and get the evolutionary history wrong. That's actually why modern phylogenetics leans so heavily on molecular data now, DNA is much harder to fool than outward appearance."
+    },
+    "commonMistakes": [
+      "Mixing up which term applies to shared ancestry versus shared function",
+      "Giving definitions with no worked example",
+      "Not connecting the distinction to a practical consequence like phylogeny-building"
+    ],
+    "followUps": ["Can a structure be homologous at one level and analogous at another?"]
+  },
+  {
+    "id": "prog-zoology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetic drift in small populations",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["genetics", "population-biology", "conservation"],
+    "question": "Why can genetic drift matter more than natural selection in a small, isolated population?",
+    "lookingFor": "Understanding that drift's random effect scales inversely with population size, and its relevance to conservation of endangered species.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that drift is random change in allele frequency, strongest when population size is small",
+        "Contrast with selection, which is directional and more powerful in large populations",
+        "Connect it to a real consequence, like loss of genetic diversity in endangered species"
+      ],
+      "modelAnswer": "Genetic drift is just random sampling error in which alleles get passed on, and its effect is inversely proportional to population size, so in a tiny population even a fairly beneficial allele can be lost purely by chance, while in a large population selection usually wins out over that noise. That's a real problem for conservation, because when a species is reduced to a small remnant population, like cheetahs after their historical bottleneck, drift can strip out genetic variation regardless of what's actually adaptive. I think that's part of why conservation genetics cares so much about effective population size, not just headcount, because a population can look numerically stable while still losing diversity fast underneath."
+    },
+    "commonMistakes": [
+      "Describing drift and selection without linking either to population size",
+      "Ignoring the conservation-biology relevance",
+      "Assuming drift only matters over huge timescales"
+    ],
+    "followUps": ["How would you measure whether a population's diversity loss is due to drift rather than selection?"]
+  },
+  {
+    "id": "prog-zoology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Modes of speciation",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["speciation", "evolution", "biogeography"],
+    "question": "Explain the difference between allopatric and sympatric speciation, and tell me which you think is more common in animals and why.",
+    "lookingFor": "Solid grasp of speciation mechanisms plus a defensible, reasoned opinion rather than a flat recitation.",
+    "idealAnswer": {
+      "bullets": [
+        "Define allopatric speciation as geographic separation driving divergence",
+        "Define sympatric speciation as divergence without geographic barriers, usually via strong disruptive selection or behavioural/ecological isolation",
+        "Give a reasoned view on relative frequency with supporting evidence or example"
+      ],
+      "modelAnswer": "Allopatric speciation happens when a physical barrier, like a mountain range or a stretch of ocean, splits a population and the two groups accumulate enough genetic difference in isolation that they can no longer interbreed. Sympatric speciation is rarer and harder to prove, it happens without geographic separation, usually through something like strong host-plant specialisation or assortative mating splitting a population that's still living in the same place. I'd argue allopatric speciation is more common in animals because most animals move around enough that isolating mechanisms without a physical barrier are hard to maintain, whereas something like the apple maggot fly is one of the few sympatric cases with decent evidence, because host-plant fidelity itself acts almost like a barrier. I find it a genuinely contested area though, and I think improved genomic tools are turning up more sympatric candidates than we used to think existed."
+    },
+    "commonMistakes": [
+      "Defining the terms correctly but refusing to commit to an opinion when asked",
+      "Confusing sympatric speciation with parapatric speciation",
+      "Citing no example at all"
+    ],
+    "followUps": ["What kind of genetic evidence would convince you a case was truly sympatric rather than allopatric with subsequent contact?"]
+  },
+  {
+    "id": "prog-zoology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Kin selection and altruism",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["behavioral-ecology", "kin-selection", "evolution"],
+    "question": "How does kin selection explain altruistic behaviour in animals like worker bees that never reproduce themselves?",
+    "lookingFor": "Correct application of Hamilton's rule and inclusive fitness to explain apparently self-sacrificing behaviour.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain inclusive fitness: genes can propagate through relatives, not just direct offspring",
+        "State Hamilton's rule conceptually (benefit to relative times relatedness must exceed cost to self)",
+        "Apply it to a specific example like haplodiploidy in bees"
+      ],
+      "modelAnswer": "Kin selection says that a gene can increase its own representation in the next generation by helping relatives reproduce, not just by the individual reproducing directly, because relatives share a portion of that gene. Hamilton's rule captures this neatly, an altruistic act is favoured when the relatedness to the recipient multiplied by the benefit to them outweighs the cost to the altruist. Worker bees are the classic case because of haplodiploidy, sisters in a colony can be more related to each other than they would be to their own offspring, so from a gene's-eye view it can actually pay off more to help raise sisters than to reproduce individually. It's one of those ideas that completely reframes what 'selfish' behaviour even means at the genetic level."
+    },
+    "commonMistakes": [
+      "Explaining altruism as \"for the good of the species\" rather than gene-level reasoning",
+      "Getting Hamilton's rule backwards",
+      "Failing to mention haplodiploidy when using the bee example"
+    ],
+    "followUps": ["Does kin selection alone fully explain eusociality, or are there competing explanations you'd want to weigh against it?"]
+  },
+  {
+    "id": "prog-zoology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Sexual selection",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["sexual-selection", "evolution", "behavior"],
+    "question": "The peacock's tail seems to work against survival, so how does sexual selection explain why it persists?",
+    "lookingFor": "Understanding of sexual selection as a distinct force from natural survival selection, with awareness of specific hypotheses like the handicap principle.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish sexual selection (mating success) from natural selection (survival)",
+        "Explain the handicap principle: costly traits can be honest signals of quality",
+        "Note the trade-off between survival cost and reproductive benefit"
+      ],
+      "modelAnswer": "Natural selection would predict the tail should shrink because it's costly to grow, makes flying harder and attracts predators, but sexual selection operates on a different currency, mating success rather than pure survival, and those two forces can pull in opposite directions. The handicap principle explains why it persists, the tail is an honest signal precisely because it's costly, only a genuinely healthy male can afford to carry that burden and still survive, so peahens use it as a reliable indicator of good genes. So the trait persists as long as the reproductive payoff from attracting more mates outweighs the survival cost, and that balance is what evolution actually settles on rather than the 'fittest' being about survival alone."
+    },
+    "commonMistakes": [
+      "Treating sexual selection as identical to natural selection",
+      "Missing the honesty/cost logic of the handicap principle",
+      "Assuming the trait must have some hidden pure survival benefit"
+    ],
+    "followUps": ["Can you think of a case where sexual selection actually pushed a species toward extinction?"]
+  },
+  {
+    "id": "prog-zoology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Endothermy vs ectothermy trade-offs",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["physiology", "thermoregulation", "adaptation"],
+    "question": "What are the trade-offs between being endothermic and ectothermic, and why hasn't one strategy simply won out across the animal kingdom?",
+    "lookingFor": "Balanced understanding of the energetic costs and ecological benefits of each thermoregulatory strategy.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain endothermy's benefit (sustained activity regardless of ambient temperature) and cost (high metabolic energy demand)",
+        "Explain ectothermy's benefit (energy efficiency, can survive on far less food) and cost (activity limited by environment)",
+        "Explain why different niches favour different strategies, so neither is universally superior"
+      ],
+      "modelAnswer": "Endotherms like mammals and birds generate their own heat, which lets them stay active in the cold or at night and sustain high aerobic performance, but that costs an enormous amount of energy, endotherms can need five to ten times the food intake of a similarly sized ectotherm. Ectotherms rely on external heat, so their performance is at the mercy of the environment, but that trade-off buys them huge efficiency, a crocodile can go months between meals in a way no mammal of similar size could manage. Neither strategy has 'won' because different niches reward different things, a desert reptile's energy-frugal lifestyle is a genuinely superior strategy for its environment, it's just optimising for a different problem than a shrew is. I think that's the real lesson, fitness is always relative to a specific set of ecological pressures, not some universal scale of 'better'."
+    },
+    "commonMistakes": [
+      "Presenting endothermy as strictly \"more advanced\" or superior",
+      "Omitting the metabolic cost side of endothermy",
+      "No mention of specific ecological context shaping which strategy wins"
+    ],
+    "followUps": ["Where would you place something like a tuna, which is partially warm-bodied, on this spectrum?"]
+  },
+  {
+    "id": "prog-zoology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Osmoregulation in fish",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["physiology", "osmoregulation", "adaptation"],
+    "question": "How does a freshwater bony fish avoid swelling up with water, while a marine bony fish avoids drying out?",
+    "lookingFor": "Correct mechanistic understanding of osmoregulation as an active, energy-costing process shaped by the surrounding osmotic gradient.",
+    "idealAnswer": {
+      "bullets": [
+        "State the opposite osmotic gradients each fish faces relative to their body fluids",
+        "Explain the freshwater fish's strategy: dilute urine, active ion uptake through gills",
+        "Explain the marine fish's strategy: drinking seawater, concentrated urine, active salt excretion through gills"
+      ],
+      "modelAnswer": "A freshwater fish's body fluids are saltier than the surrounding water, so water constantly diffuses in through its gills by osmosis, and it deals with that by producing large amounts of very dilute urine while actively pumping ions back in through specialised gill cells to stop itself becoming too dilute internally. A marine fish faces exactly the opposite problem, the sea is saltier than its body, so it's constantly losing water outward, and it compensates by drinking seawater and then actively pumping the excess salt back out through its gills, producing very little, concentrated urine. What strikes me is that both strategies are actively energy-costly, osmoregulation isn't passive at all, it's a continuous physiological effort just to stay in balance with the environment. That's part of why a lot of species can't simply move between fresh and salt water without specific adaptations, like salmon have, to switch modes."
+    },
+    "commonMistakes": [
+      "Getting the direction of water movement backwards for one of the two environments",
+      "Describing osmoregulation as passive rather than active",
+      "Not distinguishing urine concentration differences between the two"
+    ],
+    "followUps": ["How do euryhaline fish like salmon manage to survive both environments across their life cycle?"]
+  },
+  {
+    "id": "prog-zoology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Balancing selection",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["genetics", "natural-selection", "polymorphism"],
+    "question": "Some traits, like shell colour polymorphism in banded snails, persist as stable variation in a population rather than one form taking over. How would you explain that with balancing selection?",
+    "lookingFor": "Understanding that heterozygote advantage or frequency-dependent selection can maintain genetic diversity rather than selection always driving fixation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that balancing selection maintains multiple alleles/phenotypes rather than fixing one",
+        "Give a mechanism: heterozygote advantage or frequency-dependent selection (e.g. predators forming search images for the common morph)",
+        "Note this contradicts the naive assumption that selection always pushes toward one \"best\" form"
+      ],
+      "modelAnswer": "Balancing selection is what keeps more than one form of a trait present in a population instead of the fittest variant simply sweeping through and fixing. With banded snails, one strong mechanism is frequency-dependent predation, birds build a search image for whichever shell pattern is currently most common, so that morph gets picked off disproportionately, and that gives rare morphs a survival edge until they become common enough to attract the same pressure. That negative feedback loop keeps the polymorphism stable rather than letting any one pattern dominate. I think it's a nice counterexample to the instinct that evolution always converges on a single optimum, sometimes the stable endpoint is genuinely a mix."
+    },
+    "commonMistakes": [
+      "Assuming selection must always eliminate variation rather than sometimes preserving it",
+      "Confusing balancing selection with genetic drift",
+      "Giving no concrete mechanism, just asserting \"it balances out\""
+    ],
+    "followUps": ["Can you think of a human example of heterozygote advantage that works the same way?"]
+  },
+  {
+    "id": "prog-zoology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Phylogenetics methods",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["phylogenetics", "cladistics", "molecular-biology"],
+    "question": "If morphological data and DNA sequence data gave you conflicting phylogenetic trees for the same group of animals, which would you trust more, and why?",
+    "lookingFor": "Nuanced reasoning about the strengths and pitfalls of each data type rather than a blanket preference for one.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge molecular data avoids convergent-evolution pitfalls that mislead morphological classification",
+        "Acknowledge molecular data has its own issues (e.g. long-branch attraction, incomplete lineage sorting)",
+        "Land on a reasoned answer, likely favouring molecular data generally but wanting corroboration from both"
+      ],
+      "modelAnswer": "I'd lean toward trusting the molecular tree more as a starting point, because morphology is much easier to fool through convergent evolution, two unrelated animals can end up looking similar simply because they solved the same ecological problem, which throws off trait-based classification. But molecular data isn't infallible either, things like long-branch attraction or incomplete lineage sorting can produce a misleading tree from DNA too, especially with rapid radiations. So honestly I wouldn't fully discard the morphological evidence, I'd want to know why the two disagree, is it a convergence problem on the morphology side or an artefact on the molecular side, because that disagreement itself is informative. The classic case that changed my thinking here was realising hippos are more closely related to whales than to pigs, which molecular data revealed and morphology alone never would have suggested."
+    },
+    "commonMistakes": [
+      "Blindly trusting DNA data with no acknowledgment of its own pitfalls",
+      "Not offering a real example to ground the reasoning",
+      "Treating the two data types as if they're never in tension"
+    ],
+    "followUps": ["What would incomplete lineage sorting actually look like in practice?"]
+  },
+  {
+    "id": "prog-zoology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Life history strategies",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["life-history", "ecology", "evolution"],
+    "question": "Why do some animals like salmon put everything into a single, massive reproductive event, while others like elephants reproduce slowly across a long life?",
+    "lookingFor": "Grasp of r- and K-selection or life-history trade-off theory, tied to environmental predictability and offspring investment.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the semelparous (single reproductive burst) versus iteroparous (repeated reproduction) strategies",
+        "Connect strategy to environmental stability and the trade-off between offspring quantity and parental investment",
+        "Note this maps loosely onto r-selected versus K-selected life histories"
+      ],
+      "modelAnswer": "Salmon are semelparous, they pour everything into one massive spawning event and die, which makes sense in an unpredictable, high-mortality environment where producing huge numbers of offspring and letting most die is the better bet than surviving to try again. Elephants are iteroparous, they spread reproduction across decades, investing heavily in each single calf with years of parental care, which pays off in a more stable environment where offspring survival really depends on that investment rather than on sheer numbers. It's basically a trade-off between quantity and quality of offspring, and it tracks environmental predictability quite closely, the more stable and competitive the environment, the more it favours fewer, better-invested offspring, which is roughly the r-selection versus K-selection idea. I find it a useful lens because it explains life-history variation across the whole animal kingdom without needing a separate story for each species."
+    },
+    "commonMistakes": [
+      "Explaining one strategy without contrasting it against the other",
+      "Treating r/K selection as a strict, universal rule rather than a rough continuum",
+      "Missing the environmental-predictability driver behind the trade-off"
+    ],
+    "followUps": ["Where would you place a strategy like sea turtles on this spectrum, and does it fit cleanly?"]
+  },
+  {
+    "id": "prog-zoology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Vestigial structures as evolutionary evidence",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["evolution", "comparative-anatomy", "evidence"],
+    "question": "Someone tells you vestigial structures, like a whale's tiny pelvic bones, don't actually prove evolution because we can't know their 'true' original purpose. How would you respond?",
+    "lookingFor": "Ability to defend the evolutionary interpretation of vestigial structures with actual evidence, not just assertion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what makes a structure genuinely vestigial: homology to a functional structure in related lineages plus reduced or altered function",
+        "Point to independent lines of evidence: fossil record, developmental biology, genetics",
+        "Respond to the specific objection with reasoned evidence rather than dismissing it"
+      ],
+      "modelAnswer": "I'd push back gently, because we're not just guessing at the original purpose, whale pelvic bones are homologous to fully functional hind-limb pelvises in terrestrial mammals, and we can trace that transition through a genuinely good fossil sequence, Pakicetus through to Basilosaurus, that shows the hind limbs shrinking step by step. It's not only anatomy either, whale embryos even develop tiny hind-limb buds early on that then regress, which lines up with the genetic pathway for limb development still being present but switched off. So it's not an argument from ignorance about an unknown ancestral purpose, it's convergent evidence from fossils, embryology and genetics all telling the same story. I think that's actually a strong example of how evolutionary biology works, it's rarely a single fact, it's multiple independent lines of evidence converging."
+    },
+    "commonMistakes": [
+      "Getting defensive rather than engaging with the objection on its merits",
+      "Citing only anatomy without mentioning fossil or developmental evidence",
+      "Overclaiming certainty rather than acknowledging some structures' original function is genuinely debated"
+    ],
+    "followUps": ["Is there a vestigial structure in humans you'd use to make the same argument?"]
+  },
+  {
+    "id": "prog-zoology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Testing animal cognition",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["animal-behavior", "cognition", "research-methods"],
+    "question": "How would you actually test whether a species is capable of self-awareness, and what are the limits of a test like the mirror test?",
+    "lookingFor": "Critical, methodologically aware thinking about animal cognition research rather than uncritical acceptance of a single classic test.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the mirror self-recognition test and what passing it is meant to indicate",
+        "Identify a genuine limitation, e.g. it's biased toward vision-dominant species and may fail animals that rely on other senses",
+        "Propose or reference an alternative or complementary approach"
+      ],
+      "modelAnswer": "The classic approach is the mirror test, you mark an animal somewhere it can't see without a mirror and see whether it uses the mirror to investigate the mark on its own body, which is meant to show it understands the reflection is itself. The problem is it's heavily biased toward vision-dominant, primate-like cognition, a dog can fail the mirror test and still clearly have a rich sense of self through smell, so a negative result might just mean we tested the wrong sensory channel rather than proving no self-awareness exists. That's why researchers have started developing modality-appropriate versions, like using scent-marking setups for dogs, to test the same underlying concept through the sense that species actually relies on. I think the bigger lesson is that cognition tests need to be designed around the animal's own sensory world, not just adapted versions of a human-centric test."
+    },
+    "commonMistakes": [
+      "Treating the mirror test as a definitive, universal measure",
+      "Not identifying a real methodological limitation",
+      "Vague hand-waving about \"animal intelligence\" without a specific proposed method"
+    ],
+    "followUps": ["Do you think self-recognition and self-awareness are actually the same thing?"]
+  },
+  {
+    "id": "prog-zoology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Population bottlenecks",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["genetics", "conservation", "population-biology"],
+    "question": "Cheetahs are famously genetically uniform, almost like they could accept skin grafts from unrelated individuals. What does that tell you, and why should conservationists be worried about it?",
+    "lookingFor": "Understanding of the population bottleneck concept and its practical consequences for disease resistance and adaptive potential.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that low genetic diversity reflects a severe historical population bottleneck",
+        "Connect low diversity to reduced disease resistance and lower adaptive potential",
+        "Note the practical conservation concern this raises going forward"
+      ],
+      "modelAnswer": "That level of genetic uniformity points to a severe historical bottleneck, at some point the cheetah population crashed down to a small number of individuals, and everyone alive today is descended from that narrow surviving pool, so there simply hasn't been the genetic raw material to rebuild much diversity since. It matters for conservation because low diversity means low resilience, a single disease outbreak or environmental shift could hit the whole population almost uniformly hard, there's no varied genetic toolkit to produce individuals who happen to be resistant. It also limits their capacity to adapt to future pressures like climate change or new pathogens, since adaptation needs standing genetic variation to select from. That's why a lot of current cheetah conservation work focuses specifically on genetic management, not just raw population numbers, because the numbers alone don't capture how fragile the species really is."
+    },
+    "commonMistakes": [
+      "Focusing only on population size rather than genetic diversity specifically",
+      "Not connecting low diversity to disease vulnerability",
+      "Assuming a population is \"safe\" once numbers recover without addressing diversity"
+    ],
+    "followUps": ["What conservation strategies would you consider to address a genetic bottleneck like this?"]
+  },
+  {
+    "id": "prog-zoology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Keystone species and trophic cascades",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["ecology", "trophic-cascade", "conservation"],
+    "question": "Explain how reintroducing wolves to Yellowstone is supposed to have changed the rivers. Do you find that explanation fully convincing?",
+    "lookingFor": "Understanding of trophic cascades and keystone species effects, combined with the critical thinking to question an oversimplified popular narrative.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the trophic cascade mechanism: wolves affecting elk behaviour and numbers, which affects vegetation, which affects river geomorphology",
+        "Show awareness that the popular version of this story has been criticised as oversimplified",
+        "Land on a balanced, evidence-aware position"
+      ],
+      "modelAnswer": "The popular story is that reintroducing wolves reduced elk numbers and changed their grazing behaviour, so elk spent less time browsing young willow and aspen near riverbanks, which let vegetation recover, stabilised the banks with root systems, and actually changed the physical course of the rivers. It's a great illustration of a trophic cascade and keystone species effects generally, but I don't think it's fully convincing as told, ecologists have pointed out that other factors, like changing elk populations from hunting and beaver reintroduction, were happening at the same time, so isolating wolves as the single cause overstates the certainty. I'd say the underlying mechanism, top predators shaping vegetation through both numbers and fear-driven behaviour change, is real and well supported elsewhere, but the specific 'wolves literally changed the rivers' framing is probably a simplified version of a more tangled, multi-cause story. I think that's actually a useful case for being skeptical of tidy ecological narratives, even well-intentioned ones."
+    },
+    "commonMistakes": [
+      "Repeating the popular narrative uncritically as settled fact",
+      "Missing the actual causal mechanism (behaviour-mediated as well as numbers-mediated)",
+      "Dismissing the whole concept of trophic cascades because one example is contested"
+    ],
+    "followUps": ["What kind of study design would let you separate the wolf effect from these other confounding factors?"]
+  },
+  {
+    "id": "prog-zoology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of invasive field research",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["ethics", "fieldwork", "animal-welfare"],
+    "question": "You're on a research team tracking an endangered species, and the tagging protocol causes the animal visible short-term distress. The data could meaningfully help its conservation. Do you go ahead?",
+    "lookingFor": "Structured ethical reasoning that weighs animal welfare against conservation benefit rather than a snap yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between individual animal welfare and population-level conservation benefit",
+        "Reason through mitigating factors: is distress minimised, is the protocol reviewed by an ethics board, is the data genuinely necessary",
+        "Land on a conditional, reasoned position rather than an absolute rule"
+      ],
+      "modelAnswer": "I wouldn't treat this as a simple yes or no, because there's a real tension between the welfare of an individual animal and the benefit to the whole population if the research genuinely improves conservation outcomes. I'd want to know first whether the protocol has already been through an ethics review and whether the distress is minimised as much as possible, and whether there's actually no less invasive way to get comparable data. If those checks are satisfied and the research question is one that could meaningfully change how the species is protected, I think the short-term cost to the individual is justifiable, but I wouldn't want that to become a blanket excuse, I'd want to keep asking whether the specific study still clears that bar each time, not just accept it as routine. I think the discomfort of that question is actually useful, it's what keeps researchers honest about proportionality."
+    },
+    "commonMistakes": [
+      "Giving an absolute answer with no conditions attached",
+      "Ignoring the existence of ethics review processes in real research",
+      "Treating animal welfare as irrelevant once conservation benefit is invoked"
+    ],
+    "followUps": ["Would your answer change if the species weren't endangered, just poorly studied?"]
+  },
+  {
+    "id": "prog-zoology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics in required coursework",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["ethics", "animal-welfare", "education"],
+    "question": "Imagine you're asked to perform a dissection as part of your course and you feel genuinely uneasy about the animal welfare implications of how the specimens were sourced. What would you do?",
+    "lookingFor": "Mature handling of a personal ethical concern within an academic requirement, balancing conviction with professionalism.",
+    "idealAnswer": {
+      "bullets": [
+        "Show willingness to raise the concern directly and respectfully rather than silently complying or silently refusing",
+        "Distinguish between opposing the practice in principle and having a specific sourcing concern",
+        "Show understanding of why dissection remains part of training and weigh that against the concern"
+      ],
+      "modelAnswer": "I wouldn't just go along with it quietly if it was genuinely bothering me, but I also wouldn't refuse outright without finding out more first, so I'd ask the course staff directly where the specimens come from and what welfare standards apply, since a lot of my unease might actually be about not knowing rather than there being a real problem. If it turned out the sourcing was legitimate, from animals that died naturally or as a by-product of an unrelated process like the food industry, I think I could reconcile that with the very real educational value, understanding real anatomy properly is hard to replace entirely with a model. If I still had a specific, well-founded concern after that, I'd raise it formally rather than just opting out silently, because a program should be able to explain and defend its own practices, and if it can't, that's actually useful information for me too."
+    },
+    "commonMistakes": [
+      "Framing this as a purely emotional reaction with no reasoning",
+      "Either blind compliance or outright refusal with no attempt to understand the practice first",
+      "Failing to distinguish a sourcing concern from opposition to dissection in principle"
+    ],
+    "followUps": ["Do you think dissection should remain compulsory in zoology training, or should alternatives always be offered?"]
+  },
+  {
+    "id": "prog-zoology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Trophy hunting and conservation funding",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["ethics", "conservation", "wildlife-management"],
+    "question": "Some conservation programs are partly funded by legal trophy hunting permits, arguing the revenue protects far more animals than the hunts kill. Where do you land on that?",
+    "lookingFor": "Willingness to engage with a genuinely uncomfortable, evidence-dependent trade-off rather than a purely emotional dismissal or endorsement.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the discomfort of the practice honestly rather than dismissing it",
+        "Present the actual argument for it: revenue funding anti-poaching and habitat protection at a larger scale than the hunt's individual cost",
+        "Weigh it against real objections (ethical unease, risk of poor enforcement, alternatives like ecotourism) and land on a reasoned, conditional stance"
+      ],
+      "modelAnswer": "Honestly my instinct is discomfort, the idea of killing an individual animal for sport doesn't sit easily with me, so I try not to let that instinct alone decide the question. The actual argument is that well regulated hunting permits can generate large, direct revenue for habitat protection and anti-poaching enforcement in places where ecotourism alone doesn't reach, and in some documented cases that funding has genuinely correlated with stable or growing populations of the target species. My concern is less with the theory and more with the execution, when the money doesn't actually reach conservation or local communities and the regulation is weak, it just becomes killing without the offsetting benefit. So I don't think I can give a blanket yes or no, I'd want the answer to depend on transparent, verifiable outcomes in a specific case, rather than treating it as settled either way on principle alone."
+    },
+    "commonMistakes": [
+      "A purely emotional rejection with no engagement with the funding argument",
+      "Uncritical endorsement with no acknowledgment of enforcement failure risk",
+      "Refusing to take any position at all when pressed"
+    ],
+    "followUps": ["What would you want to see as evidence before trusting that a specific program's funding claim is real?"]
+  },
+  {
+    "id": "prog-zoology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "De-extinction technology",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "genetics", "biotechnology"],
+    "question": "Companies are now claiming to have 'de-extincted' animals like the dire wolf using gene editing. What's your take on how meaningful that claim actually is?",
+    "lookingFor": "Awareness of the current de-extinction debate along with a critical, scientifically grounded assessment rather than uncritical excitement.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the actual science: editing a living relative's genome to express select ancestral traits, not resurrecting the original genome",
+        "Distinguish that from literal resurrection of the extinct species",
+        "Weigh the conservation value against the concern it distracts from protecting currently endangered species"
+      ],
+      "modelAnswer": "What's actually been done is editing a handful of genes in a living relative, like a grey wolf, to express certain traits associated with the extinct dire wolf, which is genuinely impressive genetic engineering, but it isn't resurrecting the original dire wolf genome or its full biology, it's closer to a modified version of an existing species. I think the science is worth taking seriously and it will probably have real conservation applications, like boosting genetic diversity in endangered species through similar editing techniques. But I'm cautious about the framing, calling it de-extinction risks giving the public the impression that extinction is now reversible, which could quietly undercut the urgency of protecting species that are still alive but declining right now. I'd rather see that funding and attention weighted toward preventing extinctions we can still stop, even while I find the underlying technology fascinating."
+    },
+    "commonMistakes": [
+      "Treating the claim at face value as literal resurrection of the extinct species",
+      "No critical engagement with the \"distraction from current conservation\" concern",
+      "Dismissing the technology entirely without acknowledging genuine scientific value"
+    ],
+    "followUps": ["Could this same gene-editing approach be more useful applied to a currently endangered species instead?"]
+  },
+  {
+    "id": "prog-zoology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene drives for invasive species and disease control",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "genetics", "ecology"],
+    "question": "Gene drive technology could wipe out an entire invasive species or disease-carrying mosquito population by spreading a trait through the whole gene pool. Should we actually deploy it?",
+    "lookingFor": "Awareness of gene drive technology and its ecological risks, weighed against real public health or conservation benefits.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of what a gene drive does: forces a trait to spread through a population faster than normal inheritance, potentially to extinction",
+        "Weigh the benefit, such as reducing malaria transmission or removing invasive predators from island ecosystems",
+        "Raise the genuine risk: irreversibility, unintended ecological consequences, and difficulty containing it to the target population"
+      ],
+      "modelAnswer": "A gene drive skews inheritance so a trait spreads through almost an entire population within a few generations rather than at the normal fifty percent rate, which means you could genuinely drive a target population, like malaria-carrying mosquitoes or invasive rats on an island, toward local extinction. The appeal is real, malaria still kills hundreds of thousands of people a year, and invasive predators have wiped out countless island bird species, so the potential benefit is enormous. My hesitation is that this is one of the few technologies that's genuinely hard to reverse once released, if it spreads further than intended or an unforeseen ecological role of that species turns out to matter, you can't easily call it back. I think it should be pursued, but only with the most contained, well-modelled trials first, an isolated island case for invasive species control feels like a far more responsible starting point than a mainland rollout against a disease vector."
+    },
+    "commonMistakes": [
+      "Not distinguishing gene drives from ordinary genetic modification",
+      "Ignoring the irreversibility risk entirely",
+      "A flat yes or no with no conditions on deployment"
+    ],
+    "followUps": ["How would you design a trial to test containment before wider release?"]
+  },
+  {
+    "id": "prog-zoology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Rewilding and predator reintroduction debate",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "conservation", "rewilding"],
+    "question": "There's an active push to reintroduce apex predators like lynx or wolves to parts of Europe and the UK. What's the strongest argument against doing this, in your view?",
+    "lookingFor": "Balanced awareness of the rewilding debate, able to steelman the opposing side rather than only advocating for reintroduction.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the current rewilding movement and its ecological rationale",
+        "Present a genuine, well-reasoned argument against, such as conflict with livestock farming and rural livelihoods",
+        "Show ability to weigh both sides rather than dismissing the opposition"
+      ],
+      "modelAnswer": "The strongest argument against isn't really an ecological one, it's about the people who actually live and farm on that land, apex predator reintroduction has a real, documented cost in livestock predation, and for a small farmer that's not an abstract inconvenience, it can be a genuine threat to their livelihood. Compensation schemes exist in places that have tried this, but they're often underfunded or slow, and trust between conservationists and rural communities can break down fast if people feel a decision was made for them rather than with them. I still think reintroduction can be ecologically the right call in a lot of cases, the ecosystem benefits from apex predators are well evidenced, but I don't think the ecological argument alone settles it, the social and economic side has to be genuinely built into the plan, not treated as a side issue to manage after the fact."
+    },
+    "commonMistakes": [
+      "Only presenting the ecological upside with no engagement with the opposing view",
+      "Dismissing farmer or rural concerns as simply uninformed",
+      "Vague answer with no specific, well-reasoned counterargument"
+    ],
+    "followUps": ["How would you design a reintroduction program that actually addresses that concern?"]
+  },
+  {
+    "id": "prog-zoology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Zoonotic spillover risk",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "disease-ecology", "public-health"],
+    "question": "Highly pathogenic avian influenza has recently been detected spreading in dairy cattle in the US, which surprised a lot of people. Why does that jump between species matter to a zoologist?",
+    "lookingFor": "Awareness of a current zoonotic disease event and understanding of the ecological factors behind cross-species spillover.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the specific recent event (H5N1 detected in dairy cattle, a mammal not previously a typical host)",
+        "Explain why a spillover into a new host species is significant: it can indicate viral adaptation and creates new opportunities for further mutation or spread toward humans",
+        "Connect it to the broader zoologist's role in disease surveillance and understanding host-pathogen ecology"
+      ],
+      "modelAnswer": "H5N1 avian influenza turning up in dairy cattle was a genuine surprise because cattle weren't considered a likely host, and a virus successfully jumping into a new mammalian species matters a lot, because every new host is a new opportunity for the virus to accumulate mutations that could make it better adapted to mammals generally, including us. It's exactly the kind of event zoologists and disease ecologists watch closely, because understanding which species can act as a bridge host, and why, is central to predicting where the next real outbreak risk might come from. I think it's a good example of why zoology isn't purely about individual species biology, understanding host-pathogen dynamics across an ecosystem is genuinely a public health tool, not just an academic interest. It's also made me want to read more about how much routine surveillance actually exists in livestock populations, because this case seemed to catch people off guard."
+    },
+    "commonMistakes": [
+      "No awareness of the actual current event, only a generic answer about zoonotic disease in general",
+      "Failing to explain why cross-species jumps specifically matter",
+      "Treating this as purely a public health issue disconnected from zoology"
+    ],
+    "followUps": ["What kind of surveillance system would you design to catch a spillover like this earlier?"]
+  },
+  {
+    "id": "prog-zoology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Evolutionary hypothetical - island isolation",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "evolution", "island-biogeography"],
+    "question": "Imagine a small population of mainland lizards gets stranded on a remote island with no predators and limited food. What changes would you predict over many generations, and why?",
+    "lookingFor": "Ability to apply evolutionary and ecological principles to a novel scenario with sound reasoning, referencing real island biogeography patterns.",
+    "idealAnswer": {
+      "bullets": [
+        "Predict reduced investment in predator-avoidance traits given the absence of predators",
+        "Predict possible size change referencing island dwarfism or gigantism patterns depending on resource constraints",
+        "Ground the prediction in a mechanism (relaxed selection, resource limitation) rather than just asserting the outcome"
+      ],
+      "modelAnswer": "With predators absent, I'd expect selection on anti-predator traits like fast escape response or vigilance behaviour to relax, since maintaining those costs energy that's no longer buying much survival benefit, so over generations I'd predict the lizards becoming noticeably bolder and less flighty, similar to what's been observed in other predator-free island populations. On body size, with limited food I'd lean toward predicting a decrease in body size over time, following the island dwarfism pattern seen in things like dwarf elephants on Mediterranean islands, because a smaller body needs less absolute food to maintain, which is a real advantage when resources are constrained. I'd want to be careful not to assume this happens automatically though, the actual direction depends on the specific resource landscape, if there's some new abundant food source instead, gigantism is just as plausible, so I'd want to know more about the island's ecology before committing fully to one prediction."
+    },
+    "commonMistakes": [
+      "Predicting change with no underlying mechanism given",
+      "Assuming a fixed universal answer (always gigantism, or always dwarfism) rather than it depending on resource context",
+      "Ignoring behavioural change and only discussing morphology"
+    ],
+    "followUps": ["How long would you expect these changes to take to become measurable?"]
+  },
+  {
+    "id": "prog-zoology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Invasive species hypothetical",
+    "program": "Zoology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "invasive-species", "ecology"],
+    "question": "Suppose a non-native predator, say a snake with no natural enemies, is accidentally introduced to a small island with ground-nesting birds that evolved without ground predators. Walk me through what you'd expect to happen.",
+    "lookingFor": "Ability to reason through a cascading ecological scenario, referencing naivety of island prey and real-world analogues.",
+    "idealAnswer": {
+      "bullets": [
+        "Predict the ground-nesting birds will be highly vulnerable due to lack of evolved anti-predator behaviour (prey naivety)",
+        "Predict a potential population collapse or extinction of vulnerable species and downstream ecosystem effects",
+        "Reference a real analogous case, such as the brown tree snake's effect on Guam's bird populations"
+      ],
+      "modelAnswer": "The ground-nesting birds would likely be extremely vulnerable, because they never evolved defences against a ground predator in the first place, so I'd expect what's called prey naivety, the birds simply won't recognise the snake as a threat the way they would an aerial predator they've coevolved with. Given no natural enemies of its own and abundant, undefended prey, I'd predict the snake population would grow quickly, and the bird populations could crash hard, potentially to local extinction for the most vulnerable species, which then has knock-on effects on anything that depended on those birds, like whatever they pollinated, dispersed seeds for, or were preyed on by native predators. This isn't hypothetical in the abstract, it's essentially what happened with the brown tree snake on Guam, which wiped out most of the island's native forest bird species within a few decades of its accidental introduction. I think that real case is exactly why biosecurity at ports and airports gets taken so seriously, a single accidental introduction can restructure an entire ecosystem."
+    },
+    "commonMistakes": [
+      "Missing the concept of prey naivety as the key mechanism",
+      "No mention of a real-world analogous case",
+      "Stopping at the direct predator-prey effect without considering downstream ecosystem consequences"
+    ],
+    "followUps": ["What intervention, if any, would you attempt once the snake was already established?"]
+  },
+  {
+    "id": "prog-zoology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a field study",
+    "program": "Zoology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "research-design", "conservation"],
+    "question": "You notice the local population of a common frog species near your home has visibly declined over the past few years. How would you go about investigating why?",
+    "lookingFor": "Structured scientific reasoning about hypothesis generation, study design, and ruling out confounding variables, applied to a real discipline-relevant scenario.",
+    "idealAnswer": {
+      "bullets": [
+        "Generate a range of plausible hypotheses (habitat loss, disease like chytrid fungus, pollution, climate shifts, predator changes) rather than assuming one cause",
+        "Describe a systematic approach: baseline surveys, comparison with historical data or unaffected nearby populations, testing specific hypotheses",
+        "Show awareness that multiple factors could interact rather than expecting one single clean cause"
+      ],
+      "modelAnswer": "I wouldn't jump to one explanation first, I'd start by listing the plausible causes, habitat loss or degradation of the breeding ponds, disease, chytrid fungus has devastated amphibian populations globally, pollution or pesticide runoff, or even a shift in local predator numbers, and try to figure out which are actually testable in this specific location. I'd want a proper baseline first, comparing current population counts against historical records if they exist, and ideally against a similar nearby population that hasn't declined, because that comparison alone can rule out some broad regional causes like climate. Then I'd design targeted tests for the most likely hypotheses, water quality testing for pollution, sampling a subset of frogs for chytrid infection, and habitat assessment of the breeding sites, rather than assuming it has to be a single cause, because in my reading a lot of amphibian declines actually turn out to be several stressors compounding each other rather than one clean culprit. I think that's the part I'd want to resist the pressure on, journalists and even scientists sometimes want a single tidy explanation, but the real answer is often messier than that."
+    },
+    "commonMistakes": [
+      "Jumping straight to one assumed cause, usually climate change, without considering alternatives",
+      "No mention of needing baseline or comparison data",
+      "Proposing a study with no way to actually distinguish between competing hypotheses"
+    ],
+    "followUps": ["If your data pointed to multiple contributing factors rather than one clear cause, how would you prioritise which to address first?"]
+  }
+]

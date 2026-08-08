@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-nuclear-engineering-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for nuclear engineering",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "energy"],
+    "question": "What first got you interested in nuclear engineering?",
+    "lookingFor": "A specific, personal spark for the field rather than a generic love of science or a vague climate statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment, project, or piece of reading that triggered the interest",
+        "Show you understand what nuclear engineering actually involves, not just 'nuclear power'",
+        "Connect the spark to why you want to study it formally now"
+      ],
+      "modelAnswer": "I got hooked in year twelve physics when we covered binding energy curves and I couldn't stop thinking about how much energy is locked in a nucleus compared to any chemical reaction. That led me down a rabbit hole reading about how reactors actually control that energy release safely, which felt like a completely different kind of engineering problem to anything else I'd studied. I ended up doing my extended project on reactor moderator choices, and that's when I knew I wanted to study this properly rather than just read about it."
+    },
+    "commonMistakes": [
+      "Saying only 'I want to fight climate change' with nothing nuclear-specific",
+      "Confusing nuclear engineering with nuclear physics research",
+      "Giving an answer with no personal anecdote behind it"
+    ],
+    "followUps": ["What part of that project did you find hardest to understand?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why nuclear over other engineering",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why nuclear engineering rather than mechanical, electrical, or chemical engineering?",
+    "lookingFor": "A clear sense of what is distinct about nuclear engineering and why that distinction matters to the applicant.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the overlap with other engineering disciplines honestly",
+        "Identify what is genuinely unique to nuclear (radiation, criticality safety, fuel cycle, regulation)",
+        "Tie it to a personal reason for wanting that specific mix"
+      ],
+      "modelAnswer": "Nuclear engineering pulls in thermodynamics and mechanical design just like mechanical engineering does, but it adds a layer none of the others have, which is that the core physics itself, the neutron behaviour, is something you have to actively manage and never take for granted. I like that the safety case is built into the discipline from day one rather than bolted on afterwards. I considered chemical engineering too, since fuel cycle chemistry overlaps, but it's the reactor physics and the criticality problem specifically that I want to spend years getting good at."
+    },
+    "commonMistakes": [
+      "Claiming nuclear is just mechanical engineering with a different name",
+      "Dismissing other disciplines to make nuclear sound better",
+      "Not naming anything actually distinctive about nuclear"
+    ],
+    "followUps": ["Which adjacent discipline do you think nuclear engineers work most closely with, and why?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Public perception and safety concerns",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["safety", "public-perception", "communication"],
+    "question": "Nuclear power has a poor public image in many countries. How would you respond to someone who tells you nuclear is simply too dangerous?",
+    "lookingFor": "Balanced, evidence-aware reasoning that respects the concern rather than dismissing it, showing awareness of real risk data.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the concern is rooted in real, high-profile events, not pure irrationality",
+        "Bring in comparative safety data or context (deaths per unit energy, containment design evolution)",
+        "Avoid being dismissive; show respect for the person's worry while still making a reasoned case"
+      ],
+      "modelAnswer": "I wouldn't tell them they're wrong to worry, because Chernobyl and Fukushima were real disasters with real consequences, and dismissing that would be dishonest. What I'd point out is that when you look at deaths per unit of energy produced across the whole history of the industry, nuclear compares well against fossil fuels and even some renewables, largely because modern reactor designs have layers of passive safety built in specifically because of those earlier failures. I think the honest answer is that nuclear isn't zero risk, nothing is, but the industry has genuinely learned from its worst days, and that's part of what I want to keep pushing forward."
+    },
+    "commonMistakes": [
+      "Being dismissive or condescending about the person's fear",
+      "Citing no evidence at all, just personal opinion",
+      "Ignoring Chernobyl and Fukushima instead of addressing them directly"
+    ],
+    "followUps": ["What specific design changes came out of the Fukushima accident?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear fission basics",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["fission", "fundamentals"],
+    "question": "In simple terms, can you explain what happens during nuclear fission?",
+    "lookingFor": "A clear, accurate explanation of the physical process with correct terminology, pitched at a level that shows real understanding.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a heavy nucleus like uranium-235 absorbing a neutron and becoming unstable",
+        "Explain that it splits into two lighter nuclei plus additional neutrons and energy",
+        "Mention that the released neutrons can go on to trigger further fissions, enabling a chain reaction"
+      ],
+      "modelAnswer": "Fission starts when a heavy nucleus, usually uranium-235, absorbs a free neutron and becomes too unstable to hold together. It splits into two smaller nuclei, releases two or three more neutrons, and gives off a large amount of energy, mostly as kinetic energy of the fragments that ends up as heat. Those released neutrons can then be absorbed by other uranium nuclei, which is what makes a self-sustaining chain reaction possible if you have enough fissile material arranged the right way."
+    },
+    "commonMistakes": [
+      "Confusing fission with fusion",
+      "Leaving out the role of the released neutrons in sustaining the reaction",
+      "Describing it purely qualitatively with no mention of energy release"
+    ],
+    "followUps": ["What stops that chain reaction from running away uncontrolled in a reactor?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Fission versus fusion",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["fusion", "fission", "fundamentals"],
+    "question": "What's the fundamental difference between fission and fusion, and why is fusion so much harder to harness commercially?",
+    "lookingFor": "Correct physical distinction plus an informed sense of the practical engineering barriers to fusion power.",
+    "idealAnswer": {
+      "bullets": [
+        "State that fission splits heavy nuclei apart while fusion joins light nuclei together, both releasing energy",
+        "Note fusion needs extreme temperature and pressure to overcome the Coulomb repulsion between nuclei",
+        "Mention the engineering challenge of confinement (magnetic or inertial) and net energy gain"
+      ],
+      "modelAnswer": "Fission releases energy by splitting a heavy nucleus apart, while fusion releases energy by forcing two light nuclei, usually isotopes of hydrogen, to join together. Fusion is harder because you have to overcome the electrostatic repulsion between two positively charged nuclei, which means heating fuel to tens of millions of degrees so it becomes a plasma, and then actually containing that plasma without it touching and melting the walls of the vessel. Getting more energy out than you put into confinement and heating, what people call net energy gain, is the part that's taken decades longer than anyone originally hoped."
+    },
+    "commonMistakes": [
+      "Saying fusion splits atoms too",
+      "Not mentioning the confinement problem at all",
+      "Overstating how close commercial fusion is without qualification"
+    ],
+    "followUps": ["What are the two main approaches to fusion confinement, and can you name a project using each?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Chain reactions and criticality",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["criticality", "reactor-physics"],
+    "question": "What does it mean for a reactor to be 'critical', and how is that different from a runaway reaction?",
+    "lookingFor": "Correct use of criticality terminology and understanding that a controlled reactor is designed to sit at steady criticality, not maximum reactivity.",
+    "idealAnswer": {
+      "bullets": [
+        "Define critical as exactly one neutron from each fission going on to cause another fission, on average",
+        "Contrast subcritical (reaction dies out) and supercritical (reaction grows) states",
+        "Explain that a working reactor is held at a steady critical state through control rods, not left to run away"
+      ],
+      "modelAnswer": "Critical means the reaction is exactly self-sustaining, so on average each fission event produces one more fission, and the neutron population, and therefore the power output, stays steady over time. If the reactor is subcritical, the reaction dies down because you're losing more neutrons than you're producing. If it's supercritical, the population grows and power rises, which is fine briefly when you're starting up or changing power level, but it's not where you want to sit indefinitely. Control rods absorb neutrons to hold the reactor right at critical for steady operation, and pulling them out or pushing them in nudges it supercritical or subcritical on purpose for short periods."
+    },
+    "commonMistakes": [
+      "Treating 'critical' as a synonym for 'dangerous' or 'meltdown'",
+      "Confusing supercritical with an uncontrolled explosion",
+      "Failing to mention the role of control rods"
+    ],
+    "followUps": ["Why do reactors rely partly on delayed neutrons to make this control possible at all?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Role of the moderator",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["reactor-design", "fundamentals"],
+    "question": "What is a moderator in a nuclear reactor, and why do most reactors need one?",
+    "lookingFor": "Understanding that moderators slow fast neutrons to thermal speeds because slow neutrons are far more likely to cause fission in common fuels.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that fission produces fast neutrons, which are inefficient at causing further fission in U-235",
+        "State that the moderator slows neutrons down to thermal energies through collisions",
+        "Name common moderators such as light water, heavy water, or graphite"
+      ],
+      "modelAnswer": "A moderator is a material that slows down the fast neutrons produced by fission so they become far more likely to cause another fission event, because U-235 absorbs slow, thermal neutrons much more readily than fast ones. It works by letting neutrons collide with light nuclei, ideally close to their own mass like hydrogen, so they lose energy efficiently without just being absorbed. Ordinary water is the most common choice because it's cheap and effective, though some designs use heavy water or graphite instead, partly because that lets them use natural uranium rather than enriched fuel."
+    },
+    "commonMistakes": [
+      "Confusing the moderator with the coolant, even though water can do both jobs",
+      "Not explaining why slow neutrons are more effective at causing fission",
+      "Naming no actual moderator materials"
+    ],
+    "followUps": ["Why does heavy water allow a reactor to run on natural, unenriched uranium?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Role of the coolant",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["reactor-design", "thermal-hydraulics"],
+    "question": "What is the coolant's job in a reactor, and what happens if it's lost?",
+    "lookingFor": "Clear understanding of heat removal as the coolant's primary role and awareness of loss-of-coolant accident risk.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the coolant carries heat away from the fuel to generate steam or drive a turbine",
+        "Explain that fuel keeps generating decay heat even after shutdown, so cooling must continue",
+        "Describe why loss of coolant risks fuel overheating and, in the worst case, core damage"
+      ],
+      "modelAnswer": "The coolant's main job is to carry the heat produced by fission away from the fuel rods, usually to make steam that spins a turbine and generates electricity. What people sometimes miss is that even after you shut a reactor down, the fuel keeps producing decay heat from the radioactive fission products, so cooling has to continue for a long time afterward. If coolant flow is lost and that decay heat can't escape, fuel temperatures can climb high enough to damage the fuel cladding, which is basically the scenario behind accidents like Fukushima, where the tsunami knocked out the backup cooling systems."
+    },
+    "commonMistakes": [
+      "Assuming the reactor is safe the instant it's shut down",
+      "Not distinguishing coolant from moderator when the same substance does both",
+      "Vague answer with no mention of decay heat"
+    ],
+    "followUps": ["What backup systems exist to keep cooling fuel if the main coolant pumps fail?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "PWR versus BWR",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["reactor-design", "pwr", "bwr"],
+    "question": "Can you explain the basic difference between a pressurised water reactor and a boiling water reactor?",
+    "lookingFor": "Correct distinction in loop design and a sense of the practical trade-off it creates.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain PWR keeps primary water under high pressure so it doesn't boil, using a separate secondary loop to make steam",
+        "Explain BWR lets water boil directly in the core, with that steam going straight to the turbine",
+        "Note a trade-off, such as BWR simplicity versus PWR keeping radioactive water away from the turbine"
+      ],
+      "modelAnswer": "In a PWR, the water flowing through the core is kept under high pressure so it stays liquid even at high temperature, and it transfers its heat through a steam generator to a completely separate secondary loop that actually drives the turbine. In a BWR, there's no separate loop, the water is allowed to boil right there in the core and that steam goes directly to the turbine. The trade-off is that a BWR is simpler and slightly more efficient because it skips a heat exchanger, but it means mildly radioactive steam is now flowing through the turbine hall, which a PWR avoids by keeping the primary loop fully separate."
+    },
+    "commonMistakes": [
+      "Saying BWRs don't use pressure at all",
+      "Not mentioning the two-loop versus one-loop distinction",
+      "No trade-off given, just a definition"
+    ],
+    "followUps": ["Which of the two designs is more common worldwide, and do you know why?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear waste management",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["waste", "policy"],
+    "question": "What happens to spent nuclear fuel, and what makes long-term waste storage such a hard problem?",
+    "lookingFor": "Awareness of the fuel cycle back end and the technical and social difficulties around long-term storage, not just a one-line dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe cooling in spent fuel pools followed by dry cask storage as an interim step",
+        "Mention that some countries reprocess fuel while others plan geological disposal",
+        "Note the difficulty is partly technical (very long half-lives) and partly social (siting, public trust, timescales beyond generations)"
+      ],
+      "modelAnswer": "Spent fuel first goes into cooling pools at the reactor site for years because it's still generating significant heat and radiation, and after that it's often moved into dry casks for longer interim storage. Some countries like France reprocess spent fuel to recover usable material, while others, including most of the current plan in the US, are aiming for deep geological repositories instead. What makes it genuinely hard isn't just the engineering of a container that lasts thousands of years, it's that you're asking a society to trust a decision that outlives every institution involved in making it, which is as much a governance problem as an engineering one."
+    },
+    "commonMistakes": [
+      "Claiming nuclear waste is a solved, trivial problem",
+      "Ignoring the social and political dimension entirely",
+      "Confusing spent fuel with low-level operational waste"
+    ],
+    "followUps": ["What do you think of Finland's Onkalo deep geological repository as an approach?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Lessons from major accidents",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["safety", "chernobyl", "fukushima"],
+    "question": "What do you think were the key engineering or organisational lessons from either Chernobyl or Fukushima?",
+    "lookingFor": "Accurate technical understanding of at least one accident's root cause plus reflection on how the industry responded, not just a dramatic retelling.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly identify a core cause specific to the chosen accident, not a vague 'human error'",
+        "Distinguish design failure from operational or organisational failure where relevant",
+        "Connect it to a concrete change in practice or regulation that followed"
+      ],
+      "modelAnswer": "I find Fukushima the more instructive one, because the reactors themselves survived the earthquake fine, it was the tsunami taking out the backup diesel generators that removed the ability to cool the core afterward. That's not really a reactor physics failure, it's a systems and siting failure, the generators were in a location vulnerable to flooding that should have been assessed better given Japan's tsunami history. What changed afterward was a much stronger push toward passive safety systems that don't depend on powered pumps at all, and a lot more seriousness about combining low-probability, high-consequence external hazards in the design basis rather than treating them separately."
+    },
+    "commonMistakes": [
+      "Reducing either accident to 'human error' with no specifics",
+      "Getting the basic sequence of events factually wrong",
+      "Treating the accident purely as a horror story with no engineering takeaway"
+    ],
+    "followUps": ["How does 'defence in depth' as a design philosophy relate to what went wrong there?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Half-life",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["radioactive-decay", "fundamentals"],
+    "question": "What does 'half-life' mean, and why does it matter for how we handle radioactive material?",
+    "lookingFor": "Correct definition of half-life as a statistical, exponential decay concept and its practical relevance to storage and safety timescales.",
+    "idealAnswer": {
+      "bullets": [
+        "Define half-life as the time for half of a sample's radioactive atoms to decay, on average",
+        "Note decay is exponential and probabilistic, not linear",
+        "Connect it to practical decisions like storage duration or medical isotope choice"
+      ],
+      "modelAnswer": "Half-life is the average time it takes for half of the radioactive atoms in a sample to decay, and because it's a statistical process, the decay follows an exponential curve rather than counting down linearly to zero. It matters hugely in practice because it tells you how long something stays dangerous, an isotope with a half-life of seconds might be gone before you've left the room, while one with a half-life of thousands of years is why deep geological storage timescales are so long. In medicine it's the opposite concern, you want an isotope with a short enough half-life that it does its diagnostic job and then clears the patient's body quickly."
+    },
+    "commonMistakes": [
+      "Describing decay as linear rather than exponential",
+      "Saying material is 'safe' after exactly one half-life with no further nuance",
+      "Giving no real-world application of the concept"
+    ],
+    "followUps": ["If a sample has a half-life of ten years, roughly what fraction remains after thirty years?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Types of radiation and shielding",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["radiation", "shielding", "fundamentals"],
+    "question": "What's the difference between alpha, beta, and gamma radiation, and how does shielding differ for each?",
+    "lookingFor": "Correct characterisation of the three radiation types by penetrating power and the corresponding shielding materials.",
+    "idealAnswer": {
+      "bullets": [
+        "Alpha: heavy, short-range, stopped by paper or skin but dangerous if ingested or inhaled",
+        "Beta: lighter, more penetrating, stopped by materials like plastic or a few millimetres of aluminium",
+        "Gamma: highly penetrating electromagnetic radiation, needs dense shielding like lead or thick concrete"
+      ],
+      "modelAnswer": "Alpha particles are basically helium nuclei, they're heavy and don't travel far, a sheet of paper or even the outer layer of your skin stops them, but if you inhale or swallow an alpha emitter it's dangerous because it's depositing energy right inside living tissue. Beta particles are much lighter, essentially electrons, so they penetrate further and need something like a few millimetres of aluminium or thick plastic to stop them. Gamma rays are electromagnetic radiation with no mass at all, so they're the most penetrating of the three and you need dense material like lead or thick concrete to attenuate them meaningfully, which is why shielding design in a reactor is really about managing gamma and neutron radiation more than alpha or beta."
+    },
+    "commonMistakes": [
+      "Getting the penetrating power order backwards",
+      "Treating alpha as harmless because it's easily shielded externally",
+      "Confusing gamma rays with neutron radiation"
+    ],
+    "followUps": ["Why is neutron shielding a different design problem from gamma shielding?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear versus renewables in the energy mix",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["energy-policy", "renewables"],
+    "question": "Some argue we should just build more solar and wind instead of nuclear. How would you respond?",
+    "lookingFor": "A nuanced view of nuclear as complementary to renewables rather than a rival, with awareness of grid reliability issues.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid framing it as nuclear versus renewables; both are needed for decarbonisation at scale",
+        "Explain nuclear's advantage in providing steady baseload power independent of weather",
+        "Acknowledge real trade-offs of nuclear such as build cost and construction timelines"
+      ],
+      "modelAnswer": "I don't think it has to be either-or, and honestly treating it that way slows down decarbonisation more than it helps. Solar and wind are brilliant and getting cheaper fast, but they're intermittent, so you need something that can provide steady baseload power or you end up leaning on gas to fill the gaps, which defeats the purpose. Nuclear can provide that reliable, low-carbon baseload almost regardless of weather, and I'd be honest that its real weaknesses are the huge upfront capital cost and how long projects take to build, which is exactly the kind of problem I want to help solve, whether that's through better project management or newer designs like small modular reactors."
+    },
+    "commonMistakes": [
+      "Being dismissive of renewables to defend nuclear",
+      "Ignoring nuclear's genuine cost and timeline problems",
+      "Framing energy policy as a simple binary choice"
+    ],
+    "followUps": ["What role do you think battery storage should play alongside this mix?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear applications beyond power generation",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["applications", "medicine"],
+    "question": "Nuclear engineering isn't just about power plants. Can you name another application of nuclear technology you find interesting?",
+    "lookingFor": "Awareness that the field spans medicine, space, industry, and research, showing genuine breadth of interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific non-power application (medical isotopes, radiotherapy, space propulsion, food sterilisation, industrial imaging)",
+        "Explain briefly how the nuclear principle is being used there",
+        "Show why that application specifically interests the applicant"
+      ],
+      "modelAnswer": "I've been reading about radioisotope thermoelectric generators, the power sources NASA uses on missions like Voyager and the Mars rovers, where they use the heat from the decay of plutonium-238 to generate electricity for decades without needing sunlight or moving parts. It fascinates me because it's such a different design problem to a power reactor, you're not trying to sustain a chain reaction at all, you're just harnessing steady decay heat somewhere sunlight can't reach. It's a good reminder that nuclear engineering shows up anywhere you need reliable energy in a hostile environment, not just in a power station."
+    },
+    "commonMistakes": [
+      "Only being able to talk about power generation",
+      "Naming an application but not being able to explain how it works",
+      "Confusing nuclear medicine imaging with radiotherapy"
+    ],
+    "followUps": ["How does that application's engineering challenge differ from designing a power reactor?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Defence in depth and containment",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["safety", "containment", "reactor-design"],
+    "question": "What do you understand by the principle of 'defence in depth' in reactor safety?",
+    "lookingFor": "Understanding of layered, redundant safety barriers rather than reliance on a single safety measure.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe it as multiple independent, redundant layers of protection rather than one perfect safeguard",
+        "Give concrete examples of barriers, such as fuel cladding, the reactor vessel, and the containment building",
+        "Note it also includes procedural and organisational layers, not just physical ones"
+      ],
+      "modelAnswer": "Defence in depth means you never rely on a single safety measure working perfectly, you stack multiple independent barriers so that if one fails, the next one still holds. In a reactor that starts with the fuel cladding itself containing fission products, then the reactor pressure vessel, then the containment building around all of that, so even if the fuel is damaged the radioactive material is still meant to stay physically contained. It's not only physical barriers either, it includes things like independent shutdown systems and trained operator procedures, the idea being that an accident has to defeat several unrelated safeguards at once, not just one, before it becomes a real release."
+    },
+    "commonMistakes": [
+      "Describing it as just a thicker containment wall",
+      "Only naming one layer instead of the layered concept",
+      "Leaving out the organisational and procedural side of it"
+    ],
+    "followUps": ["Which of those barriers do you think failed first at Chernobyl?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-017",
+    "category": "Ethics & Situational",
+    "subtopic": "Dual-use nature of nuclear technology",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["proliferation", "ethics"],
+    "question": "Nuclear technology can be used for both energy and weapons. Does that dual-use nature concern you as someone entering the field?",
+    "lookingFor": "Mature ethical reasoning that takes the concern seriously and shows awareness of real non-proliferation safeguards, rather than brushing it off.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the concern honestly rather than dismissing it as unrelated to civilian engineering",
+        "Show awareness of real mechanisms, such as IAEA safeguards and enrichment monitoring, that manage the risk",
+        "Reflect on personal responsibility as a future engineer working within that system"
+      ],
+      "modelAnswer": "It does concern me, and I think it should, because pretending the overlap doesn't exist would be naive. What reassures me somewhat is that the civilian industry operates under a fairly serious international safeguards regime, the IAEA inspects enrichment and reprocessing facilities specifically to catch diversion toward weapons use, and reactor-grade fuel is deliberately kept far below weapons-grade enrichment. I see part of my responsibility as a future engineer as understanding those safeguards properly rather than treating them as someone else's job, because the credibility of civilian nuclear power depends on that separation actually holding."
+    },
+    "commonMistakes": [
+      "Claiming the weapons and energy sides are completely unrelated",
+      "Refusing to engage with the ethical weight of the question at all",
+      "No mention of any real safeguard mechanism like IAEA inspections"
+    ],
+    "followUps": ["What do you know about the Non-Proliferation Treaty's role in this?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant hands-on experience",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["experience", "extracurricular"],
+    "question": "Have you had any hands-on experience relevant to nuclear engineering, whether a project, competition, work placement, or club?",
+    "lookingFor": "A genuine, specific example of applied initiative, with reflection on what was actually learned from it.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe one specific, real activity rather than a vague list",
+        "Explain what technical or practical skill it actually developed",
+        "Reflect honestly on a difficulty or limitation, not just success"
+      ],
+      "modelAnswer": "I spent a week shadowing at a research reactor facility connected to my school's outreach programme, where I got to see the control room and sit in on a briefing about their fuel handling procedures. What struck me most was how much of the actual daily work is procedural rigour and documentation rather than the dramatic image people have of the job, checking and double-checking rather than dramatic decision-making. It was a bit humbling honestly, because I realised how much regulatory and administrative knowledge sits underneath the physics I'd been reading about, and it made me want to understand that side properly rather than just the reactor theory."
+    },
+    "commonMistakes": [
+      "Listing activities with no specific detail or reflection",
+      "Claiming experience that sounds exaggerated or implausible for their age",
+      "Only describing what happened with no personal learning"
+    ],
+    "followUps": ["What surprised you most about how that facility actually operated day to day?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading on nuclear topics",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "independent-study"],
+    "question": "What's a book, article, or documentary about nuclear science or engineering that shaped your thinking, and what did you take from it?",
+    "lookingFor": "Evidence of genuine independent engagement with the subject beyond the school curriculum, with a real opinion formed from it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, credible source rather than something vague or purely sensational",
+        "Summarise the actual content accurately in their own words",
+        "State a specific view or question it left them with, not just praise"
+      ],
+      "modelAnswer": "I read Serhii Plokhy's book on Chernobyl, and what stuck with me wasn't the disaster scenes themselves but how much the accident was tied up with Soviet institutional secrecy, the operators weren't even told the full details of a known design flaw in the RBMK reactor's control rods that had caused a similar issue years earlier at another plant. It left me thinking about how safety culture and information flow can matter as much as the physics itself, which is part of why I care about the organisational side of engineering now, not just the technical design."
+    },
+    "commonMistakes": [
+      "Naming a source but being unable to say anything specific about its content",
+      "Choosing something purely sensational with no real technical substance",
+      "Stopping at 'it was interesting' with no actual takeaway"
+    ],
+    "followUps": ["Did anything in that source change your mind about something you'd previously believed?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Small modular reactors",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["smr", "innovation"],
+    "question": "What are small modular reactors, and why is there so much interest in them at the moment?",
+    "lookingFor": "Accurate grasp of what SMRs are and the practical reasons they're being pursued, with some balance about their unproven aspects.",
+    "idealAnswer": {
+      "bullets": [
+        "Define SMRs as smaller, factory-built reactors, typically under around 300 megawatts, often designed to be modular and mass-produced",
+        "Give a reason for the current interest, such as lower upfront capital cost, faster build, or siting flexibility",
+        "Note a genuine open question or limitation, such as economies of scale or lack of large-scale deployment history"
+      ],
+      "modelAnswer": "Small modular reactors are reactors designed to be much smaller than a traditional gigawatt-scale plant, often in the range of tens to a few hundred megawatts, and built largely in a factory rather than constructed entirely on site, which is meant to bring costs and construction time down through repeatable manufacturing rather than one-off mega-projects. The interest right now is largely about the finance problem traditional nuclear has, huge upfront capital and long construction timelines scare off investors, so a smaller, modular unit with a shorter build time looks more manageable. I'd be honest that it's still mostly unproven at scale, the economics only really work if you actually get the promised manufacturing efficiencies from building many units, and that hasn't been demonstrated broadly yet."
+    },
+    "commonMistakes": [
+      "Describing SMRs as if they're already widely deployed and proven",
+      "Giving no reason for the current wave of interest",
+      "Confusing SMRs with microreactors or fusion devices"
+    ],
+    "followUps": ["What do you see as the biggest risk to SMRs actually delivering on their cost promise?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "State of fusion research",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["fusion", "research"],
+    "question": "How close do you think we actually are to commercial fusion power, and what's your source for that view?",
+    "lookingFor": "A realistic, evidence-based view that avoids both hype and cynicism, referencing an actual project or milestone.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a real project or milestone, such as ITER, NIF's ignition result, or a private venture",
+        "Distinguish scientific breakeven from a genuinely commercial, grid-connected power plant",
+        "Give a grounded, non-hyped personal estimate or view rather than an overconfident date"
+      ],
+      "modelAnswer": "I follow this partly through ITER's progress and the NIF ignition announcement in the US a couple of years ago, where they got more energy out of the fusion reaction than the laser energy delivered to the fuel, which was a genuine scientific milestone. But I think it's important to separate that from a commercial power plant, because that experiment didn't account for the huge amount of energy used to power the lasers themselves, and turning any of these approaches into something that reliably generates net electricity to a grid, cheaply, and repeatedly, is still a different and much harder engineering problem. My honest guess is we're likely decades rather than years away from commercial fusion, and I try to stay sceptical of any headline that says otherwise without qualifying what kind of 'breakeven' they mean."
+    },
+    "commonMistakes": [
+      "Claiming commercial fusion is imminent within a few years",
+      "Confusing laser-energy breakeven with true wall-plug net energy gain",
+      "Having no named project or source behind the claim"
+    ],
+    "followUps": ["What's the difference between magnetic confinement and inertial confinement fusion?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-022",
+    "category": "Ethics & Situational",
+    "subtopic": "Intergenerational responsibility for waste",
+    "program": "Nuclear Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "waste", "policy"],
+    "question": "Is it ethical to generate waste that will remain hazardous for far longer than any human institution has ever lasted?",
+    "lookingFor": "Genuine ethical wrestling with the intergenerational trade-off, not a one-line dismissal in either direction.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the ethical weight of the question seriously rather than deflecting to 'renewables have waste too'",
+        "Weigh it against the harms of the alternative, such as continued fossil fuel emissions",
+        "Land on a reasoned position, acknowledging genuine uncertainty rather than false certainty"
+      ],
+      "modelAnswer": "I think it's a real ethical cost, not something to wave away, and I'd be uncomfortable with anyone in this field who didn't feel some weight from it. But I weigh it against the alternative we're actually choosing between right now, which for a lot of grid capacity is continued fossil fuel use, and the harm from that is arguably even more diffuse and intergenerational, through climate change, just less visible because it isn't stored in a single labelled container. My honest position is that geological disposal, done properly and transparently, is a defensible way to manage a genuine long-term burden, but I don't think it's something the industry should ever get to treat as fully solved or beyond scrutiny."
+    },
+    "commonMistakes": [
+      "Dismissing the ethical concern as overblown with no real engagement",
+      "Refusing to take any position at all",
+      "Ignoring the comparison to the realistic energy alternatives"
+    ],
+    "followUps": ["Do you think future generations should have a say in decisions made about waste sites now?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-023",
+    "category": "Motivation & Fit",
+    "subtopic": "Why this university's program",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation"],
+    "question": "Why do you want to study nuclear engineering at this university specifically?",
+    "lookingFor": "Specific, researched reasons tied to this program's features rather than generic praise that could apply anywhere.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific lab, reactor facility, research group, or module unique to this program",
+        "Connect that feature to a concrete personal interest or project",
+        "Show understanding of what distinguishes this course from other nuclear programs"
+      ],
+      "modelAnswer": "You have one of the few undergraduate programs with direct access to a research reactor for hands-on operations training, and that's a genuinely rare thing to get before postgraduate level. I read about the thermal-hydraulics research group's work on advanced coolant systems, and that lines up closely with the moderator and coolant comparison project I did in school, so I can see a real path from where I am now into that kind of research. It's the combination of that facility access and the specific research strengths that made this course stand out over other programs I looked at, rather than just its general reputation."
+    },
+    "commonMistakes": [
+      "Praise that could apply to any nuclear engineering program",
+      "Citing only rankings or reputation with no specifics",
+      "Naming a facility or professor incorrectly, suggesting shallow research"
+    ],
+    "followUps": ["What would you want to get out of that reactor access in your first year?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Maths and physics preparation",
+    "program": "Nuclear Engineering",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "preparation"],
+    "question": "Nuclear engineering leans heavily on maths and physics. Which parts of your current studies do you think will carry over most directly?",
+    "lookingFor": "Honest, specific self-assessment of relevant preparation, showing awareness of what the degree will actually demand.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific topics with real relevance, such as calculus, differential equations, thermodynamics, or atomic physics",
+        "Explain concretely how that topic connects to a nuclear engineering concept, not just a vague link",
+        "Show honest awareness of where they'll need to grow, not just where they're already strong"
+      ],
+      "modelAnswer": "Differential equations feel like the most directly useful thing I've studied, since I understand that reactor kinetics, how neutron population changes over time, is modelled with a set of coupled differential equations, and that's exactly the kind of maths I enjoyed most in my further maths module. Thermodynamics from physics carries over obviously too, since the whole point of the reactor is converting heat into usable energy efficiently. Where I know I'll need to grow is quantum mechanics, I've only touched the basics of atomic structure so far, and I understand that a much deeper treatment of nuclear structure and cross-sections is coming, which is honestly part of what I'm looking forward to."
+    },
+    "commonMistakes": [
+      "Only naming subjects with no connection to what they're actually used for",
+      "Overclaiming mastery of maths or physics they haven't really studied",
+      "Giving no honest acknowledgement of a gap to work on"
+    ],
+    "followUps": ["Which maths topic do you currently find hardest, and how are you working on it?"]
+  },
+  {
+    "id": "prog-nuclear-engineering-a-025",
+    "category": "Curveball/Personality",
+    "subtopic": "Simplifying a complex nuclear idea",
+    "program": "Nuclear Engineering",
+    "difficulty": "medium",
+    "tags": ["communication", "public-understanding"],
+    "question": "How would you explain to a worried neighbour, in plain language, why a reactor near their town won't 'explode like a bomb'?",
+    "lookingFor": "Ability to translate technical understanding into plain, respectful language, a genuinely important skill in this field.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid jargon; use an accessible analogy or comparison",
+        "Explain the actual reason clearly, such as low enrichment level versus weapons-grade material",
+        "Keep the tone respectful of the neighbour's concern rather than talking down to them"
+      ],
+      "modelAnswer": "I'd start by saying their worry makes sense given what they've probably seen in films, but a bomb and a reactor need completely different starting material to work at all. Weapons need uranium enriched to somewhere around ninety percent, while the fuel in a power reactor is enriched to maybe four or five percent, which just isn't concentrated enough to sustain the kind of instant, explosive chain reaction a weapon needs, it can overheat and damage itself in an accident, but it physically can't detonate like that. I'd try to say it without sounding like I'm lecturing them, because honestly the confusion is really common and reasonable given how the two things get lumped together in the news."
+    },
+    "commonMistakes": [
+      "Using technical jargon that doesn't actually reassure a non-expert",
+      "Being condescending about the neighbour's misunderstanding",
+      "Getting the actual enrichment comparison wrong or overstating it"
+    ],
+    "followUps": ["What real risk would you be honest with them about instead?"]
+  }
+]

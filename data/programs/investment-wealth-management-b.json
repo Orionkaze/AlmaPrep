@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-investment-wealth-management-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Risk-return tradeoff",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["risk", "return", "fundamentals"],
+    "question": "Why can't an investor just pick the fund with the highest historical return and ignore the risk?",
+    "lookingFor": "Understanding that return figures are meaningless without the volatility and drawdown context behind them.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that higher past returns often reflect higher risk taken, not skill",
+        "Bring in volatility, drawdown, or sequencing risk as the hidden cost",
+        "Note that past return says little about whether the strategy is repeatable"
+      ],
+      "modelAnswer": "A high historical return can just be a sign that the fund took on more risk, and that risk shows up eventually even if it hasn't yet in the data you're looking at. I read about a fund that had brilliant three-year numbers built almost entirely on one concentrated bet that later fell forty percent, and investors who chased the return alone got hit hard. What I'd actually want to see is the return next to its volatility and its worst drawdown, because that tells me whether I could have stomached holding it the whole way through."
+    },
+    "commonMistakes": [
+      "Treating past return as a reliable predictor of future performance",
+      "Never mentioning volatility, drawdown, or standard deviation",
+      "Assuming risk only matters to cautious investors"
+    ],
+    "followUps": ["How would you measure risk-adjusted return in practice?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Diversification logic",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["diversification", "portfolio-theory", "fundamentals"],
+    "question": "A friend tells you they only invest in the one company they work for because they understand it best. What would you say to them?",
+    "lookingFor": "Ability to explain concentration risk and correlated exposure without being preachy or dismissive.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the appeal of familiarity before challenging it",
+        "Explain that their salary and investments are now correlated to the same risk",
+        "Suggest diversification as risk management, not a judgment on the company"
+      ],
+      "modelAnswer": "I'd tell them I get the instinct, knowing a company well feels like an edge, but I'd point out that their paycheck already depends on that company, so if it struggles they could lose their job and their savings at the same time. That's not really about whether the company is good or bad, it's about not stacking two big bets on the same outcome. I'd suggest they keep some shares if they believe in it, but build the rest of their portfolio in things that move independently of their employer."
+    },
+    "commonMistakes": [
+      "Simply saying 'diversify' without explaining the correlated risk",
+      "Dismissing their employer stock as a bad investment outright",
+      "Ignoring the emotional or loyalty angle entirely"
+    ],
+    "followUps": ["What's a reasonable cap you'd suggest for a single employer stock position?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Efficient market hypothesis",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["efficient-markets", "theory", "debate"],
+    "question": "Do you think markets are efficient? What would change your mind either way?",
+    "lookingFor": "A reasoned, non-dogmatic position that engages with evidence on both sides rather than reciting a textbook definition.",
+    "idealAnswer": {
+      "bullets": [
+        "State a working definition of market efficiency before taking a position",
+        "Bring in evidence on both sides, such as index fund performance versus documented anomalies or bubbles",
+        "Land on a nuanced view, for instance 'mostly efficient but not perfectly'"
+      ],
+      "modelAnswer": "I'd say markets are largely efficient most of the time, which is why the majority of active managers fail to beat their benchmark after fees over long periods, and that's hard evidence for the theory. But I don't think they're perfectly efficient, because things like the dot-com bubble or meme stock spikes are hard to explain if prices always reflect rational expectations. What would move me further toward strict efficiency is seeing skilled managers consistently beat the market net of costs, and what would move me away is more evidence that behavioral biases create persistent, exploitable patterns rather than just occasional noise."
+    },
+    "commonMistakes": [
+      "Reciting the EMH definition with no personal position",
+      "Taking an absolute stance with no acknowledgment of counter-evidence",
+      "Confusing market efficiency with markets never crashing"
+    ],
+    "followUps": ["If markets are that efficient, why do active managers still exist?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Active versus passive management",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["active-management", "passive-investing", "current-debate"],
+    "question": "Index funds keep taking market share from active managers. Is there still a case for active management?",
+    "lookingFor": "Awareness of the passive investing shift and a balanced, evidence-aware view of where active management still has a role.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the scale of the shift toward passive funds",
+        "Identify specific niches where active management can still add value, such as illiquid or less-covered markets",
+        "Weigh fees honestly against the odds of outperformance"
+      ],
+      "modelAnswer": "I think the shift toward passive is rational for most investors in large, well-covered markets like US large-cap equities, because the evidence is pretty consistent that few active funds beat the index after fees over long horizons. But I'd still make a case for active management in less efficient corners, like small-cap or emerging market debt, where information is thinner and skilled research can genuinely find mispricing. I'd also say active management still matters for things indexing doesn't do well, like managing concentrated risk or tax-loss harvesting for a specific client's situation."
+    },
+    "commonMistakes": [
+      "Declaring active management dead with no nuance",
+      "Ignoring fees when comparing the two approaches",
+      "Not distinguishing between asset classes where the case differs"
+    ],
+    "followUps": ["In which asset class do you think active management has the strongest case, and why?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Fiduciary duty under pressure",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "fiduciary-duty", "dilemma"],
+    "question": "A client insists on putting most of their retirement savings into a single speculative stock they're excited about. As their advisor, what do you do?",
+    "lookingFor": "Structured ethical reasoning that balances client autonomy against a duty to protect their financial wellbeing.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between respecting client autonomy and acting in their best interest",
+        "Describe concrete steps: explain the risk clearly, document the conversation, propose a compromise",
+        "Land on a position rather than avoiding the decision"
+      ],
+      "modelAnswer": "I wouldn't just refuse or just go along with it, I'd first make sure they genuinely understand the risk, not just the upside they're excited about, including what happens to their retirement if that stock drops eighty percent. I'd document that conversation clearly and propose a middle path, maybe letting them put a smaller, defined slice of the portfolio into it while keeping the core retirement savings diversified. If they still insisted on the full amount after understanding the risk, it's ultimately their money and their choice, but I'd want it very clear on record that I advised against it and why."
+    },
+    "commonMistakes": [
+      "Simply refusing the client with no attempt to educate or compromise",
+      "Going along with it without pushing back at all",
+      "Failing to mention documentation or informed consent"
+    ],
+    "followUps": ["Does your answer change if the client is close to retirement versus decades away?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "ESG investing tradeoffs",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["esg", "sustainable-investing", "current-debate"],
+    "question": "Some critics say ESG investing is more marketing than substance, while others say it's essential to modern portfolio management. Where do you stand?",
+    "lookingFor": "Awareness of the ESG debate including greenwashing concerns, with a reasoned personal position rather than a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine criticisms, such as inconsistent ratings or greenwashing",
+        "Acknowledge genuine value, such as material risk factors like climate exposure or governance quality",
+        "Land on a nuanced position rather than a blanket endorsement or dismissal"
+      ],
+      "modelAnswer": "I think both sides have a point, honestly. The criticism is fair in that different ESG rating agencies can score the same company very differently, which suggests a lot of it isn't as rigorous as it claims to be, and some funds do seem to slap the label on for marketing. But I don't think that means the underlying idea is worthless, because things like a company's exposure to carbon regulation or the quality of its board oversight are genuinely material financial risks, not just values statements. My view is ESG data is useful as one more input into risk analysis, but it shouldn't be treated as a guaranteed source of outperformance or a substitute for real due diligence."
+    },
+    "commonMistakes": [
+      "Treating ESG as purely a marketing gimmick with no financial substance",
+      "Treating ESG investing as automatically superior with no acknowledgment of its flaws",
+      "Not mentioning the ratings inconsistency problem"
+    ],
+    "followUps": ["How would you personally judge whether an ESG fund is credible?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Behavioral finance concept",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["behavioral-finance", "loss-aversion", "concept"],
+    "question": "Can you explain loss aversion and give an example of how it might hurt an investor?",
+    "lookingFor": "Clear grasp of the behavioral finance concept with a concrete, realistic example of its consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Define loss aversion accurately, that losses feel roughly twice as painful as equivalent gains feel good",
+        "Give a concrete investing example of the behavior it causes",
+        "Note a practical consequence, such as holding losers too long or selling winners too early"
+      ],
+      "modelAnswer": "Loss aversion is the finding that people feel the pain of losing money more sharply than the pleasure of gaining the same amount, roughly by a factor of two. In investing it shows up as the disposition effect, where people hold onto losing stocks far too long hoping to get back to even, while selling winning stocks too early to lock in the good feeling. I think it's one of the most damaging biases because it's the opposite of what a rational strategy would do, which is cut losses and let winners run, so a good advisor almost has to build rules in advance to override that instinct."
+    },
+    "commonMistakes": [
+      "Confusing loss aversion with simple risk aversion",
+      "Giving a definition with no real-world investing example",
+      "Not mentioning the disposition effect or an equivalent consequence"
+    ],
+    "followUps": ["How would you design a rule to help a client avoid this trap?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Interest rates and bond prices",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["interest-rates", "fixed-income", "reasoning"],
+    "question": "If a central bank raises interest rates sharply, what happens to existing bond prices, and why should a wealth manager care?",
+    "lookingFor": "Correct mechanical understanding of the inverse rate-price relationship plus its practical portfolio implications.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the inverse relationship: existing bonds fall in price because their fixed coupon becomes less attractive",
+        "Mention duration as the sensitivity measure, longer maturity means bigger price swings",
+        "Connect it to a client implication, like reassessing bond allocation or duration risk before a rate move"
+      ],
+      "modelAnswer": "When rates rise, existing bonds paying the old, lower coupon become less attractive next to newly issued bonds paying more, so their price has to fall until their yield matches the new market rate. How much they fall depends on duration, so a thirty-year bond will drop far more than a two-year bond for the same rate move. As a wealth manager I'd care because a client who thinks bonds are the 'safe' part of their portfolio can still take a real hit if rates rise sharply, so I'd want to manage duration deliberately rather than assume all fixed income behaves the same way."
+    },
+    "commonMistakes": [
+      "Getting the direction of the price move backwards",
+      "Not mentioning duration or maturity sensitivity at all",
+      "Treating all bonds as equally 'safe' regardless of rate exposure"
+    ],
+    "followUps": ["How would you position a bond portfolio if you expected rates to rise further?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Robo-advisors and AI",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["robo-advisors", "technology", "current-development"],
+    "question": "Robo-advisors and AI-driven tools are taking on more of what human advisors used to do. Will human wealth managers still matter in ten years?",
+    "lookingFor": "Awareness of the automation trend in the industry with a grounded view of what remains distinctly human.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge what automation genuinely does well, like low-cost portfolio construction and rebalancing",
+        "Identify what's harder to automate, such as behavioral coaching during a crisis or complex life planning",
+        "Give a grounded prediction rather than a purely optimistic or purely dismissive one"
+      ],
+      "modelAnswer": "I think robo-advisors have genuinely won the argument on basic portfolio construction and rebalancing, they do it cheaper and more consistently than most humans do. But I don't think they replace the human role entirely, because a lot of what a good advisor actually does is talk someone off the ledge during a market crash or help them think through a messy life decision like a divorce or an inheritance, and that needs judgment and trust an algorithm doesn't have yet. My guess is the profession shifts toward advisors who use the automated tools for the mechanical work and spend their time on the behavioral and planning side instead."
+    },
+    "commonMistakes": [
+      "Claiming robo-advisors will fully replace human advisors with no caveats",
+      "Dismissing robo-advisors as a fad with no acknowledgment of their real strengths",
+      "Giving a vague answer with no specific example of what changes"
+    ],
+    "followUps": ["What's one task you don't think AI will be able to do well in wealth management?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Cryptocurrency in portfolios",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["cryptocurrency", "alternative-assets", "current-debate"],
+    "question": "Should a wealth manager recommend cryptocurrency as part of a client's portfolio?",
+    "lookingFor": "Balanced awareness of crypto's volatility, regulatory uncertainty, and potential diversification argument, without hype or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the argument for it, such as low historical correlation to traditional assets",
+        "Acknowledge the risks: extreme volatility, regulatory uncertainty, valuation difficulty",
+        "Give a practical, client-dependent recommendation rather than a blanket yes or no"
+      ],
+      "modelAnswer": "I don't think the answer is a flat yes or no, it really depends on the client. There's a genuine diversification argument since crypto has at times moved differently from stocks and bonds, but the volatility is extreme and it's hard to value fundamentally the way you can value a company's cash flows, plus the regulatory picture is still shifting. For a client with a long horizon and high risk tolerance, I'd consider a small, clearly bounded allocation, maybe a few percent, but I wouldn't recommend it at all for someone close to retirement or someone who can't emotionally handle watching that slice swing forty percent in a month."
+    },
+    "commonMistakes": [
+      "Treating crypto as either a guaranteed opportunity or something to always avoid",
+      "Ignoring the client's risk tolerance and time horizon entirely",
+      "Not mentioning volatility or regulatory uncertainty at all"
+    ],
+    "followUps": ["How would you size that allocation for a moderate-risk client?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Modern Portfolio Theory critique",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["portfolio-theory", "critique", "reasoning"],
+    "question": "Modern Portfolio Theory assumes investors are rational and that returns follow a predictable distribution. What happens to the theory when those assumptions break down?",
+    "lookingFor": "Ability to critique a foundational theory intelligently, showing understanding of both its structure and its real-world limits.",
+    "idealAnswer": {
+      "bullets": [
+        "State the core assumptions being challenged, rational behavior and normally distributed returns",
+        "Explain a concrete failure mode, such as fat tails or correlations spiking during a crisis",
+        "Mention a practical adjustment or alternative approach used in response"
+      ],
+      "modelAnswer": "MPT assumes returns are roughly normally distributed and that correlations between assets stay stable, which is what makes diversification mathematically reduce risk. But in real crises, like 2008, correlations across supposedly diversified assets spike toward one because everyone sells everything at once, and extreme moves happen far more often than a normal distribution would predict, what people call fat tails. That's part of why in practice managers now stress-test portfolios against historical crisis scenarios rather than relying purely on the theoretical covariance matrix, because the model quietly breaks down exactly when you need it most."
+    },
+    "commonMistakes": [
+      "Describing MPT with no mention of its assumptions or limitations",
+      "Vague criticism with no specific failure mode named",
+      "Not offering any practical response to the limitation"
+    ],
+    "followUps": ["What's an alternative or supplementary framework you'd use alongside MPT?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Value versus growth investing",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["value-investing", "growth-investing", "debate"],
+    "question": "Value investing underperformed growth investing for much of the last decade. Does that mean value investing is broken?",
+    "lookingFor": "Understanding of cyclicality in investing styles rather than treating one prolonged period as proof of a permanent shift.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what drove the recent growth outperformance, such as low interest rates favoring long-duration growth cash flows",
+        "Note that style leadership has historically rotated over long cycles",
+        "Give a reasoned view on whether this time is structurally different or simply a long cycle"
+      ],
+      "modelAnswer": "I don't think one long stretch is enough to say value is broken. A lot of growth's outperformance over the last decade was tied to very low interest rates, which makes far-off future cash flows worth more today, and that's a macro condition, not proof that buying cheap, cash-generative companies stopped working. Historically, style leadership has rotated over long cycles rather than staying fixed forever, so I'd want to see how value performs as rates normalize before concluding anything permanent has changed, though I'd admit the rise of a few dominant tech companies does make this cycle look a bit different from past ones."
+    },
+    "commonMistakes": [
+      "Declaring one investing style permanently dead based on a single cycle",
+      "Not connecting the performance gap to any underlying macro driver",
+      "Showing no awareness that styles have rotated historically"
+    ],
+    "followUps": ["What would make you believe this time really is structurally different?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Suitability versus fiduciary standard",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["regulation", "fiduciary-standard", "current-debate"],
+    "question": "There's an ongoing debate about whether all financial advisors should be held to a fiduciary standard rather than a lower suitability standard. Why does this distinction matter?",
+    "lookingFor": "Awareness of a real regulatory debate in the industry with a clear explanation of why the standard affects client outcomes.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the difference: fiduciary means acting in the client's best interest, suitability just means the product must be appropriate",
+        "Give a concrete example of how the gap can hurt a client, such as a higher-fee product being 'suitable' but not optimal",
+        "Take a position on why the distinction matters for the profession"
+      ],
+      "modelAnswer": "A fiduciary standard means the advisor legally has to act in the client's best interest, while a suitability standard just means the product has to be reasonably appropriate for the client, which is a much lower bar. In practice that gap matters because an advisor under suitability could sell a client a fund with a higher commission when a cheaper, equally suitable option exists, and technically not break any rule. I think the direction the industry should go is toward a universal fiduciary standard, because clients generally assume their advisor is already required to put them first, and it's a real problem that in some parts of the industry that isn't actually true."
+    },
+    "commonMistakes": [
+      "Being unable to explain the practical difference between the two standards",
+      "Assuming all advisors are already fiduciaries",
+      "Giving no concrete example of how the gap plays out for a real client"
+    ],
+    "followUps": ["Why do you think the industry hasn't already moved fully to a fiduciary standard?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Impact investing tradeoffs",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["impact-investing", "sustainable-investing", "tradeoffs"],
+    "question": "If an impact investment is likely to earn a lower financial return than a conventional alternative, should a wealth manager still recommend it to a client who cares about impact?",
+    "lookingFor": "Ability to reason through the tension between fiduciary duty and client values without dodging the tradeoff.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tradeoff rather than pretending impact investing always matches market returns",
+        "Emphasize full, honest disclosure of the expected return gap before any decision",
+        "Center the client's own stated priorities and consent as the deciding factor"
+      ],
+      "modelAnswer": "I wouldn't pretend there's never a tradeoff, because some concessionary impact investments genuinely do accept lower expected returns in exchange for measurable social outcomes, and an advisor who hides that isn't being honest. What I'd do is lay out the numbers clearly, show what the return gap might cost them over time in concrete terms, and then let the client decide with full information, since it is genuinely their money and their values. If the client, after understanding the tradeoff, still wants to prioritize impact, I think respecting that is part of the job, as long as it isn't jeopardizing money they actually need for essential goals like retirement."
+    },
+    "commonMistakes": [
+      "Claiming impact investing always matches market returns to avoid the hard conversation",
+      "Refusing to recommend any impact investment regardless of client wishes",
+      "Not distinguishing between money the client needs and money they can afford to allocate to values"
+    ],
+    "followUps": ["How would you handle it if the client's retirement security depended on maximizing returns?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Conflict of interest",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "conflict-of-interest", "dilemma"],
+    "question": "You discover that a product your firm pushes advisors to sell pays a much higher commission than an equally suitable alternative. What would you do?",
+    "lookingFor": "Structured ethical reasoning about disclosure and client interest under organizational pressure, not a naive or evasive answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the pressure the firm's incentives create realistically",
+        "Prioritize disclosure to the client and recommending the option that's actually best for them",
+        "Consider escalating internally or raising it with compliance if the practice is systemic"
+      ],
+      "modelAnswer": "I'd feel the pull of the incentive honestly, firms do put pressure on advisors in ways that aren't always obvious, but I don't think that changes what I owe the client. I'd disclose the commission difference to the client directly and recommend the option that actually serves their goals best, even if it earns the firm and me less. If it seemed like a systemic pattern rather than a one-off, I'd also want to raise it with compliance or a manager, because a firm-wide incentive that quietly steers people away from client interest is a bigger problem than any single sale."
+    },
+    "commonMistakes": [
+      "Denying that commission incentives would ever affect judgment",
+      "Simply following firm pressure without pushing back",
+      "Not mentioning disclosure to the client at all"
+    ],
+    "followUps": ["What would you do if raising it internally got you nowhere?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Access and inequality in wealth management",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["access", "inequality", "ethics"],
+    "question": "Wealth management has traditionally served wealthy clients while ordinary savers get little personalized advice. Is that a problem the industry should try to fix?",
+    "lookingFor": "Genuine reflection on access and fairness in the profession, connecting it to real trends rather than a generic statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge why the traditional model exists, minimum balances make personalized service economically viable",
+        "Recognize the real cost of the gap, such as lower-income savers missing out on compounding advice early",
+        "Point to a concrete development narrowing the gap, like robo-advisors or lower account minimums"
+      ],
+      "modelAnswer": "I do think it's a real problem, because the advice that would help someone build wealth matters most early on, and that's exactly when most people don't have enough assets to meet a traditional advisor's minimum. The economics made sense historically, personalized service is expensive to deliver at small account sizes, but I think that's changing, since robo-advisors and lower-minimum platforms are starting to bring reasonable, low-cost guidance to people who were shut out before. I'd like to see the industry keep pushing that access downward rather than treating serving smaller savers as an afterthought."
+    },
+    "commonMistakes": [
+      "Dismissing the question as not the industry's responsibility with no reasoning",
+      "Not acknowledging why the traditional model exists economically",
+      "Giving no concrete example of how access is or isn't improving"
+    ],
+    "followUps": ["What would you personally want to do about this gap in your own career?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Client panic during a downturn",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "behavioral-coaching", "market-crash"],
+    "question": "Markets have dropped thirty percent in two weeks and a long-term client calls, panicking, wanting to sell everything. What do you actually say to them?",
+    "lookingFor": "Practical behavioral coaching skill: empathy first, then evidence-based reasoning, without dismissing the client's fear.",
+    "idealAnswer": {
+      "bullets": [
+        "Validate the client's fear before presenting any data or argument",
+        "Bring the conversation back to their original plan, time horizon, and why it was built that way",
+        "Offer a concrete, calmer alternative to a full panic sell, not just 'don't worry'"
+      ],
+      "modelAnswer": "I'd start by actually listening, not jumping straight to reassurance, because a thirty percent drop is genuinely scary and dismissing that would just make them feel unheard. Then I'd walk back through why their plan was built the way it was, reminding them their money in stocks was earmarked for goals ten or twenty years out, not next year, and that selling now locks in the loss instead of just experiencing it on paper. If they still wanted to reduce risk, I'd suggest a smaller, deliberate adjustment rather than selling everything, since a full panic sell tends to be the decision people regret most once markets recover."
+    },
+    "commonMistakes": [
+      "Leading with statistics and dismissing the emotional reaction",
+      "Simply telling the client to do whatever they want with no guidance",
+      "Not connecting the advice back to their original financial plan or time horizon"
+    ],
+    "followUps": ["How would this conversation differ if the client were five years from retirement instead of thirty?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Currency and international diversification",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["international-investing", "currency-risk", "reasoning"],
+    "question": "If a client's portfolio is entirely in domestic assets, what argument would you make for adding international exposure, and what risk does that introduce?",
+    "lookingFor": "Understanding of geographic diversification benefits alongside a clear grasp of the currency risk it introduces.",
+    "idealAnswer": {
+      "bullets": [
+        "Give the diversification argument, exposure to different economic cycles and growth drivers",
+        "Explain the currency risk introduced, returns can be affected by exchange rate moves independent of the underlying asset",
+        "Mention a practical mitigation, such as partial currency hedging"
+      ],
+      "modelAnswer": "I'd argue that being fully domestic ties a client's wealth to one economy's cycle, one set of interest rate decisions, and one currency, so adding international exposure spreads that out and captures growth happening elsewhere that might not be correlated with home markets. The tradeoff is currency risk, because even if the foreign stock itself does well, a weakening foreign currency against the client's home currency can eat into or even erase that gain when it's converted back. Depending on the client's goals, I'd consider partially hedging that currency exposure, especially for the fixed income portion where currency swings can dominate the actual return."
+    },
+    "commonMistakes": [
+      "Recommending international exposure with no mention of currency risk",
+      "Treating currency risk as a reason to avoid international investing entirely",
+      "Not offering any practical way to manage the currency exposure"
+    ],
+    "followUps": ["Would you hedge currency risk the same way for equities as for bonds? Why or why not?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Insider information dilemma",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "insider-trading", "dilemma"],
+    "question": "A close friend who works at a company casually mentions an unannounced piece of major news that would clearly move the stock price. What do you do?",
+    "lookingFor": "Clear, unambiguous ethical and legal reasoning about material non-public information, without minimizing the seriousness.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize this as material non-public information and name the legal seriousness clearly",
+        "State plainly that you would not trade on it or pass it on",
+        "Address the social dimension, how to handle the friendship without enabling further disclosure"
+      ],
+      "modelAnswer": "I'd recognize immediately that what they told me is material non-public information, and trading on it, or even telling someone else to trade on it, is insider trading, which is both illegal and something I wouldn't want to do even if I thought I could get away with it. So I simply wouldn't act on it in any way, and I'd probably tell my friend gently that they shouldn't be sharing things like that, both to protect them and because I don't want to be put in that position again. It's an uncomfortable thing to say to a friend, but the alternative is a decision that could end a career and potentially lead to real legal consequences."
+    },
+    "commonMistakes": [
+      "Suggesting a small trade would be low-risk enough to be fine",
+      "Not recognizing the legal seriousness of insider trading",
+      "Failing to address the friendship dimension of the dilemma at all"
+    ],
+    "followUps": ["Would your answer change if you were certain no one would ever find out?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Democratization of alternative investments",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["alternative-investments", "private-equity", "current-development"],
+    "question": "Private equity and hedge funds are increasingly being packaged into products available to everyday investors, not just institutions. Is that a good development?",
+    "lookingFor": "Awareness of a current industry trend with balanced reasoning about its benefits and genuine risks for retail investors.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the potential upside, access to return streams and diversification previously reserved for institutions",
+        "Flag the real risks, illiquidity, higher fees, and less transparency than public markets",
+        "Give a considered view on whether the tradeoff is worth it for typical retail investors"
+      ],
+      "modelAnswer": "There's a real upside in principle, since private equity and hedge strategies have historically offered return streams and diversification that most retail investors simply couldn't access, so opening that up isn't inherently bad. But I'm cautious about it in practice, because these products often come with much higher fees, long lock-up periods, and far less pricing transparency than a public index fund, and retail investors may not fully appreciate the illiquidity until they actually need the money and can't get it out. I think it can be a good development if it's done with real education and appropriate limits on how much of a portfolio goes into it, but I'd worry about it being oversold as simply 'access' without the risks being made equally clear."
+    },
+    "commonMistakes": [
+      "Treating the trend as purely positive with no mention of liquidity risk or fees",
+      "Dismissing it entirely without acknowledging the genuine diversification argument",
+      "Showing no awareness that this is an actual current trend in the industry"
+    ],
+    "followUps": ["What safeguard would you want in place before recommending this to a retail client?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Sequence of returns risk hypothetical",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["retirement-planning", "hypothetical", "sequence-of-returns"],
+    "question": "Two clients retire with identical portfolios and identical average returns over the next twenty years, but one runs out of money and the other doesn't. How is that possible?",
+    "lookingFor": "Understanding of sequence of returns risk, a genuinely subtle and important retirement planning concept.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that the order of returns, not just the average, matters once withdrawals begin",
+        "Explain the mechanism: early losses combined with fixed withdrawals shrink the base that has to recover",
+        "Mention a practical mitigation, such as a cash buffer or flexible withdrawal rate"
+      ],
+      "modelAnswer": "This is sequence of returns risk, where the order the returns happen in matters just as much as the average once someone is withdrawing money rather than adding to it. If the client who ran out of money happened to hit a couple of bad years right at the start of retirement, they were pulling a fixed withdrawal out of a shrinking pot, so a much larger percentage of their remaining assets had to recover just to get back to even, and it never fully caught up even though later years were strong. That's why I'd want a retiring client to have something like a cash or short-bond buffer for the first few years of withdrawals, or a flexible spending rule, so a bad early sequence doesn't force them to sell depressed assets."
+    },
+    "commonMistakes": [
+      "Assuming average return alone determines whether the money lasts",
+      "Not explaining the mechanism of withdrawing from a shrinking base",
+      "Offering no practical way to manage this risk for a client nearing retirement"
+    ],
+    "followUps": ["How would you explain this risk to a client in plain terms, without the jargon?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Elderly client and cognitive decline",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "elder-financial-abuse", "dilemma"],
+    "question": "A longtime client in their eighties starts making investment requests that seem confused and inconsistent with past conversations, and you suspect cognitive decline. What do you do?",
+    "lookingFor": "Careful, compassionate ethical reasoning that protects the client without being presumptuous or disrespecting their autonomy.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid making a unilateral decision based on suspicion alone; act carefully and document observations",
+        "Consider involving a trusted contact, family member, or firm compliance process where one exists",
+        "Balance protecting the client from harm against respecting their dignity and autonomy"
+      ],
+      "modelAnswer": "I wouldn't just quietly override their instructions, because that disrespects their autonomy and I could be wrong about what's actually going on. I'd document what I'm noticing carefully and, depending on the firm's process, raise it with a trusted contact the client had previously authorized, or with compliance, since firms increasingly have procedures exactly for this kind of situation. I'd also try to slow things down gently in the meantime, maybe suggesting we revisit a big decision in a follow-up call, rather than either blocking the request outright or processing something that could genuinely harm them."
+    },
+    "commonMistakes": [
+      "Unilaterally overriding the client's wishes without any process or documentation",
+      "Ignoring the warning signs and processing the request as normal",
+      "Not mentioning any formal mechanism like a trusted contact or compliance escalation"
+    ],
+    "followUps": ["What would you do if the client had no trusted contact on file at all?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Inflation reasoning",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["inflation", "asset-allocation", "reasoning"],
+    "question": "How would you explain to a client why holding a large cash position can actually be risky, even though cash feels 'safe'?",
+    "lookingFor": "Clear understanding that inflation erodes purchasing power, reframing cash as a form of risk rather than the absence of risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish nominal safety from real, inflation-adjusted safety",
+        "Give a concrete example of purchasing power erosion over time",
+        "Suggest a practical framing for how much cash is appropriate versus excessive"
+      ],
+      "modelAnswer": "I'd explain that cash feels safe because the number in the account doesn't go down, but what actually matters is what that money can buy, and inflation quietly erodes that every year even while the balance looks stable. If inflation runs around three percent a year, a large cash position sitting there for a decade loses roughly a quarter of its real purchasing power, which is a genuine risk, it's just a slower and less visible one than a stock market drop. I'd tell them cash absolutely has a role for near-term needs and emergencies, but treating it as the default 'safe' place for long-term money is its own kind of risk, just one that doesn't show up on the statement."
+    },
+    "commonMistakes": [
+      "Treating cash as risk-free with no mention of inflation",
+      "Being unable to quantify or illustrate the purchasing power loss concretely",
+      "Suggesting cash should be avoided entirely with no acknowledgment of its legitimate uses"
+    ],
+    "followUps": ["How much cash would you consider reasonable for a client's emergency fund, and why?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Generational wealth transfer",
+    "program": "Investment & Wealth Management",
+    "difficulty": "medium",
+    "tags": ["wealth-transfer", "current-development", "industry-trend"],
+    "question": "There's a lot of discussion about the largest generational wealth transfer in history happening over the next couple of decades. Why does that matter for the wealth management industry?",
+    "lookingFor": "Awareness of a genuine current industry theme, connected to concrete implications rather than a vague acknowledgment.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the scale and driver of the trend, aging wealth holders passing assets to younger generations",
+        "Identify a concrete implication, such as heirs often leaving their parents' advisor",
+        "Connect it to what the industry needs to change to retain that wealth"
+      ],
+      "modelAnswer": "As a large generation of wealth holders ages, trillions of dollars are expected to pass down to their children and grandchildren over the coming years, and what I find interesting is that studies suggest a large share of heirs actually leave their parents' advisor within a few years of inheriting. That matters because it means firms that only build a relationship with the older generation risk losing that wealth entirely once it transfers, so there's a real push now toward involving the next generation earlier, through things like family meetings or age-appropriate financial education. I think advisors who treat wealth transfer as a relationship problem rather than just a legal or tax event will be the ones who actually retain those assets."
+    },
+    "commonMistakes": [
+      "Vaguely acknowledging the trend without any specific implication for the industry",
+      "Treating it as purely a tax or estate planning issue with no relationship angle",
+      "Showing no awareness that heirs commonly switch advisors"
+    ],
+    "followUps": ["What would you personally do to build a relationship with the next generation of a client's family?"]
+  },
+  {
+    "id": "prog-investment-wealth-management-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Concentrated windfall hypothetical",
+    "program": "Investment & Wealth Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "concentration-risk", "tax-planning"],
+    "question": "A client inherits a large block of stock in one company that has grown enormously and now makes up ninety percent of their wealth. They're emotionally attached to it because it belonged to their late parent. How would you approach advising them?",
+    "lookingFor": "Ability to weave together technical reasoning about concentration risk with sensitivity to the emotional and tax complexity of the situation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the emotional weight of the holding before jumping to a technical fix",
+        "Explain the concentration risk clearly in terms the client can feel, not just abstract percentages",
+        "Propose a gradual, tax-aware plan rather than an abrupt full liquidation"
+      ],
+      "modelAnswer": "I'd start by acknowledging that this isn't just a financial decision for them, it's connected to their parent, and moving too fast on the numbers without recognizing that would feel cold and would probably make them resistant anyway. Once we'd talked that through, I'd explain the risk plainly, that having ninety percent of their wealth in one company means their entire financial future depends on that one company's fortunes, which is a very different situation from investing in it as one holding among many. I'd suggest a gradual diversification plan, maybe selling a defined percentage each year to manage the tax impact and ease them into it emotionally, and possibly keeping a smaller symbolic position permanently if that matters to them, rather than pushing for an immediate full sale."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'sell it all' with no acknowledgment of the emotional context",
+      "Ignoring the tax consequences of a large, sudden sale",
+      "Failing to explain the concentration risk in terms the client would actually feel"
+    ],
+    "followUps": ["How would you handle it if the client refused to sell any of it at all?"]
+  }
+]

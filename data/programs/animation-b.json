@@ -1,0 +1,758 @@
+[
+  {
+    "id": "prog-animation-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Follow-through and overlapping action",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "principles",
+      "follow-through",
+      "timing"
+    ],
+    "question": "Can you explain follow-through and overlapping action, and why animating everything to stop at the exact same frame looks wrong?",
+    "lookingFor": "Understanding that different parts of a body or costume have different mass and therefore settle at different times.",
+    "idealAnswer": {
+      "bullets": [
+        "Define follow-through: parts of a character keep moving after the main mass stops",
+        "Define overlapping action: different body parts or attached objects move at slightly different rates",
+        "Explain why simultaneous stopping reads as robotic or lifeless"
+      ],
+      "modelAnswer": "Follow-through is what happens after the main action stops, like hair or a coat still swinging forward for a beat after a character comes to a halt, because loose material has its own momentum that does not stop the instant the body does. Overlapping action is related but slightly different, it is the idea that different parts of a figure do not all move in unison, an arm might lag slightly behind the shoulder that is driving it, so the motion ripples through the body rather than arriving everywhere at once. If you animate every part of a character to stop dead on the exact same frame, it reads as stiff and mechanical, almost like a puppet on a single rigid rod, because nothing in the real world actually has that kind of uniform mass. I try to think of a character less as one shape and more as a loose collection of parts connected by joints and momentum."
+    },
+    "commonMistakes": [
+      "Treating follow-through and overlapping action as the same single concept with no distinction",
+      "Snapping every part of a rig to stop on the same frame",
+      "Overdoing the effect until secondary motion becomes distracting from the main action"
+    ],
+    "followUps": [
+      "Can you give an example of an object attached to a character where this principle matters, like a cape or a ponytail?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Hardest principle to master",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "principles",
+      "self-reflection",
+      "craft"
+    ],
+    "question": "Of the twelve principles of animation, which one do you find hardest to actually execute well, and why?",
+    "lookingFor": "Genuine hands-on familiarity with the principles beyond reciting the list, plus honest self-assessment.",
+    "idealAnswer": {
+      "bullets": [
+        "Name one principle specifically, not a vague answer covering all of them",
+        "Explain concretely why it is hard, ideally from practice",
+        "Show what they are doing to get better at it"
+      ],
+      "modelAnswer": "I would say timing, because it looks invisible when it is done right and glaringly wrong when it is not, and there is no formula that tells you exactly how many frames a look or a reaction should hold. I struggled with it in a walk cycle assignment where my character technically hit all the right poses but still felt stiff, and my teacher pointed out I was spacing every frame evenly instead of varying it to match the action. Since then I have been studying live reference footage frame by frame to get a feel for how real timing is never mechanical. It is the principle that separates competent animation from animation that actually feels alive."
+    },
+    "commonMistakes": [
+      "Claiming none of the principles are difficult, which reads as inexperience",
+      "Naming a principle without explaining what makes it hard",
+      "Describing struggles with software rather than with the animation principle itself"
+    ],
+    "followUps": [
+      "What have you specifically done to try to improve at it?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "The 180-degree rule in staging",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "staging",
+      "continuity",
+      "cinematography"
+    ],
+    "question": "What is the 180-degree rule, and why does breaking it accidentally confuse an audience even in animation, where the camera is not real?",
+    "lookingFor": "Grasp of a core cinematography principle and why it applies to animation even though every frame is fabricated.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the rule: keep the camera on one side of an imaginary line between subjects to preserve screen direction",
+        "Explain the consequence of breaking it: characters appear to flip position, disorienting the audience",
+        "Note animation is not exempt just because there is no physical camera, screen direction still governs comprehension"
+      ],
+      "modelAnswer": "The 180-degree rule says you pick an imaginary line running through the scene, usually between two characters talking, and you keep the camera on one side of that line for the whole sequence, so screen direction stays consistent, if a character is facing screen right in one shot they should keep facing screen right in the next. If you cross that line without meaning to, the character suddenly seems to flip and face the opposite way, and the audience's brain reads it as a mistake even if they cannot articulate why the cut feels wrong. I used to think this only mattered for live-action camera crews, but it applies just as much in animation, because the virtual camera is still creating the same spatial logic for the viewer, breaking it in an animatic once made a simple conversation scene I boarded genuinely confusing to watch. Now I actually sketch the line on my thumbnails before laying out a dialogue scene."
+    },
+    "commonMistakes": [
+      "Assuming the rule only applies to live-action because there is a physical camera",
+      "Not being able to explain what actually goes wrong visually when it is broken",
+      "Confusing the 180-degree rule with the 30-degree rule, which is a related but separate guideline"
+    ],
+    "followUps": [
+      "Is there ever a good creative reason to deliberately break the 180-degree rule?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Anticipation missing from a shot",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "principles",
+      "anticipation",
+      "timing"
+    ],
+    "question": "Can you explain the principle of anticipation, and give an example of where it goes wrong if it is missing?",
+    "lookingFor": "Understanding anticipation as a readability tool, with a concrete example of failure without it.",
+    "idealAnswer": {
+      "bullets": [
+        "Define anticipation as the wind-up before the main action",
+        "Explain it prepares the audience's eye and sells weight or effort",
+        "Give an example of a shot that reads badly without it"
+      ],
+      "modelAnswer": "Anticipation is the small counter-movement before the main action, like crouching down before you jump, and its whole job is to prepare the audience's eye so the actual action reads clearly instead of surprising them into missing it. If you cut anticipation out of a punch, the arm just snaps forward with no warning and the hit looks weightless and cheap, because the audience never got the visual cue that force was building. I noticed this practicing a jump cycle where my character just left the ground with no crouch first, and it looked like they were being pulled up by a string rather than jumping under their own power. Once I added even a few frames of anticipation the whole thing suddenly had weight."
+    },
+    "commonMistakes": [
+      "Confusing anticipation with follow-through, which happens after the action",
+      "Overdoing anticipation until it looks hesitant rather than purposeful",
+      "Only associating it with big cartoony actions and missing subtler uses"
+    ],
+    "followUps": [
+      "Does anticipation need to be exaggerated to work in a more realistic animation style?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "The 2D animation resurgence",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "current-development",
+      "2d",
+      "industry-trends"
+    ],
+    "question": "After years of 3D dominating major studio output, there has been a recent resurgence of interest in 2D and hybrid hand-drawn styles. What do you think is driving that, and do you think it will last?",
+    "lookingFor": "Current awareness of a real industry shift, with specific examples and a considered opinion on its durability.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific evidence of the trend, such as hybrid 2D and 3D films or streaming greenlighting 2D projects",
+        "Offer a plausible driver, such as audience fatigue with a certain photoreal look",
+        "Give a genuine opinion on whether it is a lasting shift or a temporary novelty"
+      ],
+      "modelAnswer": "You can see it in films that blend flat, painterly 2D character work into a 3D world, and it clearly struck a chord, it did not just look different for its own sake, it used the stylization to say something about how the character saw the world. I think part of what is driving it is that a certain very smooth, safe style of 3D had started to feel visually interchangeable across studios, and audiences responded strongly the moment something broke that pattern, so other studios and streamers took notice and started greenlighting more visually distinct 2D and hybrid projects. Whether it lasts, I am cautiously optimistic, because the underlying reason for it is not really nostalgia, it is that stylization is genuinely powerful storytelling, but I do think there is a risk the industry treats it as a passing trend to copy rather than understanding what actually made those specific films work. I would rather see studios ask why a style serves a particular story than just chase whatever look is currently popular."
+    },
+    "commonMistakes": [
+      "Being unable to name any specific recent film or project as evidence",
+      "Treating the trend as simple nostalgia rather than identifying the actual creative or commercial driver",
+      "Giving no real opinion on whether the trend will continue"
+    ],
+    "followUps": [
+      "Do you think this shift changes what skills an animation student should prioritize learning right now?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Stop-motion's tactile appeal versus digital fakery",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "stop-motion",
+      "craft",
+      "technique"
+    ],
+    "question": "Digital animation can now fake almost any look, including stop-motion. Why do studios still shoot actual stop-motion?",
+    "lookingFor": "Understanding of the tactile, physical qualities of stop-motion and why imperfection is part of its appeal.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the physical imperfections, like slight jitter and real light, that read as texture",
+        "Mention the constraint-driven creativity of working with physical puppets",
+        "Recognise that digital fakery can approximate but not fully replace the tactile feel"
+      ],
+      "modelAnswer": "Stop-motion has this slight unevenness, a barely visible wobble frame to frame, real light bouncing off real materials, that is very hard to fake convincingly and gives it a tactile warmth CGI often lacks. Studios like Laika will even leave in tiny fingerprint marks on purpose because audiences respond to knowing something physical actually existed on a set. There is also a craft argument, working within the real constraints of a puppet and an armature forces creative problem solving that can push a design in directions a purely digital process might not. I think as digital tools get better at faking it, the audience's appetite for the real texture might actually grow rather than shrink."
+    },
+    "commonMistakes": [
+      "Assuming stop-motion is simply an outdated technique being replaced",
+      "Not being able to name a specific visual quality that makes it distinct",
+      "Confusing stop-motion with claymation as if they are always the same thing"
+    ],
+    "followUps": [
+      "Can you name a stop-motion studio or film whose visual texture stood out to you?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Staging and a shot that still fails",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "staging",
+      "composition",
+      "principles"
+    ],
+    "question": "What does staging mean in animation, and why does a shot fail without it even if every individual drawing is good?",
+    "lookingFor": "Understanding of staging as clarity of idea, not just composition being pretty.",
+    "idealAnswer": {
+      "bullets": [
+        "Define staging as presenting an idea so it is unmistakably clear",
+        "Explain that clutter or competing focal points defeat even well-drawn poses",
+        "Give an example of staging failure, such as an unclear silhouette"
+      ],
+      "modelAnswer": "Staging is about making sure the audience's eye goes exactly where you want it to go and understands the idea of the shot in an instant, without having to hunt for it. You can animate every single drawing beautifully and still have a scene fail if the important action is buried behind a busy background or if two things are competing for attention at the same time. A simple test I use is checking the silhouette, because if you cannot tell what is happening from a black silhouette alone, the staging probably needs work. It is really a directing skill as much as a drawing skill."
+    },
+    "commonMistakes": [
+      "Confusing staging purely with camera composition rather than clarity of storytelling",
+      "Overloading a shot with detail because it looks impressive in isolation",
+      "Not testing readability through methods like the silhouette check"
+    ],
+    "followUps": [
+      "How would you check whether a pose is staged clearly before animating the whole shot?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "From storyboard to animatic",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "pre-production",
+      "animatic",
+      "pipeline"
+    ],
+    "question": "What does the animatic reveal about a sequence that the storyboard drawings alone cannot?",
+    "lookingFor": "Clear grasp of the pre-production pipeline and what timing testing actually reveals.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a storyboard as static key drawings and an animatic as those boards cut together with timing",
+        "Explain what the animatic reveals, such as pacing and whether a beat actually lands",
+        "Note the animatic usually carries scratch dialogue or sound as well as timed picture"
+      ],
+      "modelAnswer": "A storyboard is a sequence of static drawings that lay out the shots and staging, like a comic book version of the film, while an animatic takes those same boards and cuts them together in an editing program with rough timing and usually a scratch dialogue or sound track. What the animatic tells you that boards alone cannot is pacing, you might have a beautifully drawn board that just sits on screen two seconds too long once you actually time it out, and you would never catch that from looking at the drawings in isolation. I worked on a student short where a joke that read perfectly funny on the board turned out to have terrible timing once we cut the animatic, and we had to restructure two whole shots. It is really the first moment you experience the film as a film rather than as a set of drawings."
+    },
+    "commonMistakes": [
+      "Treating storyboards and animatics as interchangeable terms",
+      "Not understanding that timing problems are often invisible until the animatic stage",
+      "Forgetting the animatic usually includes scratch sound, not just picture"
+    ],
+    "followUps": [
+      "Have you ever cut your own animatic for a project? What did you catch that you had not expected?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Ink and paint department history",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "history",
+      "color",
+      "pipeline"
+    ],
+    "question": "What did the 'ink and paint' department do in traditional cel animation, and how has digital coloring changed that role?",
+    "lookingFor": "Historical understanding of the traditional production pipeline and how digital tools reshaped a whole department's function.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain ink and paint's traditional role: tracing drawings onto cels in ink and hand-painting color on the back",
+        "Note this was a huge, labor-intensive department, historically employing many women",
+        "Explain how digital coloring software largely automated and absorbed this role"
+      ],
+      "modelAnswer": "In traditional cel animation, ink and paint was the department that took an animator's pencil drawings and physically transferred them onto clear celluloid sheets, inking the outlines by hand and then painting flat color onto the back side of the cel so it would not smudge the line work, before the cels were photographed over a painted background. It was enormous, labor-intensive work, entire studios employed huge ink and paint departments, historically staffed largely by women, and it is honestly a part of animation history that does not get talked about nearly as much as the directing or key animation side. Digital coloring software changed that role fundamentally, what used to take a whole department tracing and physically painting cels by hand can now largely be done by software that fills line art automatically and lets colors be adjusted globally in seconds. I think it is worth remembering that department existed, because a lot of what made classic animation actually look finished depended on skilled labor that mostly went uncredited."
+    },
+    "commonMistakes": [
+      "Not knowing what ink and paint refers to at all",
+      "Assuming digital coloring simply replaced the department with no acknowledgment of the labor history",
+      "Confusing ink and paint with the animator's own drawing process"
+    ],
+    "followUps": [
+      "Do you think anything was lost creatively when this process became digital?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Rotoscoping trade-offs",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "rotoscoping",
+      "history",
+      "technique"
+    ],
+    "question": "What is rotoscoping, and what are the trade-offs of using it to animate a human character?",
+    "lookingFor": "Historical and practical understanding of rotoscoping's benefits and its known pitfalls.",
+    "idealAnswer": {
+      "bullets": [
+        "Define rotoscoping as tracing over live-action footage frame by frame",
+        "Note the benefit: naturalistic, accurate human motion",
+        "Note the downside: can look stiff or floaty if traced too literally, losing exaggeration"
+      ],
+      "modelAnswer": "Rotoscoping is tracing animation directly over filmed live-action footage, frame by frame, and it has been used since Max Fleischer's original rotoscope invention all the way through to films like A Scanner Darkly and even reference work in modern productions. The upside is you get incredibly convincing, naturalistic human motion that is hard to fake by hand. But the well-known trap is that if you trace too literally, the animation can end up looking stiff or floaty, because real human motion does not have the exaggeration and timing choices that make animation feel alive, camera footage actually has a lot of subtle imperfection animators normally remove or push further. I think the best use of it is as reference to study off of rather than something to trace slavishly, which is closer to how a lot of studios actually use motion capture today too."
+    },
+    "commonMistakes": [
+      "Thinking rotoscoping automatically produces good animation with no further skill needed",
+      "Not knowing any historical or contemporary examples",
+      "Confusing rotoscoping with motion capture, which are related but distinct techniques"
+    ],
+    "followUps": [
+      "How is rotoscoping similar to or different from motion capture?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Keyframe versus procedural animation",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "technical",
+      "3d",
+      "procedural",
+      "keyframe"
+    ],
+    "question": "What is the difference between keyframe animation and procedural animation, and when would a studio reach for procedural techniques instead of hand-animating everything?",
+    "lookingFor": "Technical sophistication about how large productions actually mix authored and simulated motion.",
+    "idealAnswer": {
+      "bullets": [
+        "Define keyframe animation as manually posed and timed by an animator",
+        "Define procedural animation as motion generated algorithmically or through simulation",
+        "Give examples of when procedural makes sense, such as crowds, cloth, hair or physics-heavy effects"
+      ],
+      "modelAnswer": "Keyframe animation is when an animator hand-poses a character at key points in time and the software fills in the motion between them, so every beat is a deliberate creative choice. Procedural animation instead generates motion through rules or simulation, like cloth physics, hair dynamics, or a crowd system that scatters and moves hundreds of background characters using algorithms rather than someone posing each one by hand. Studios reach for procedural tools when hand animating something would be either impossibly time-consuming, like a battle scene with a thousand soldiers, or when physical realism matters more than expressive timing, like a flag rippling in wind. The interesting tension is that even procedural systems usually need an animator's eye to art-direct them, because raw simulation often looks technically correct but emotionally flat."
+    },
+    "commonMistakes": [
+      "Assuming procedural animation removes the need for any artistic input",
+      "Being unable to name a real production use case for procedural techniques",
+      "Confusing procedural animation with motion capture"
+    ],
+    "followUps": [
+      "Can you think of a moment in a film where procedural simulation was used but still needed an animator's touch?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "The walk cycle as a technical benchmark",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "walk-cycle",
+      "technique",
+      "fundamentals"
+    ],
+    "question": "Why is a walk cycle so often used as a kind of audition piece for animators, given how ordinary walking seems?",
+    "lookingFor": "Understanding of why a seemingly simple, everyday action is actually a dense test of an animator's grasp of weight, timing and personality.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the technical density: a walk cycle requires solving weight shift, balance, contact and a seamless loop all at once",
+        "Note that everyone has an intuitive, lifelong sense of what walking looks like, so errors are instantly obvious",
+        "Explain that beyond mechanics, a walk cycle can convey personality, which separates a competent one from a great one"
+      ],
+      "modelAnswer": "A walk cycle looks simple because we have all watched people walk our entire lives, but that is exactly what makes it such a hard test, everyone's eye is unconsciously calibrated to notice when it is wrong, even if they could not explain why. Technically it is dense too, you have to solve weight transfer between the legs, balance through the whole body, contact and passing positions, and make it loop seamlessly with no visible seam, all while keeping the character from looking like it is sliding or floating. What actually separates a good walk cycle from a great one, though, is personality, the same mechanical walk can look confident, exhausted, sneaky or nervous just by adjusting timing and posture, and that is the part that shows whether an animator understands acting, not just mechanics. That is probably why studios use it as an audition piece, it is a small enough exercise to complete quickly but it reveals almost everything about how well someone understands weight, timing and character in one shot."
+    },
+    "commonMistakes": [
+      "Treating the walk cycle purely as a mechanical exercise with no personality",
+      "Not knowing what makes a loop seamless, resulting in a visible pop at the cycle point",
+      "Underestimating how much viewers instinctively notice when a walk looks wrong"
+    ],
+    "followUps": [
+      "How would you change a basic walk cycle to show a character who is trying not to be noticed?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Color signaling a mood shift",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "color-theory",
+      "mood",
+      "visual-storytelling"
+    ],
+    "question": "How would you use color to signal a shift in mood within a single animated scene, without changing the dialogue?",
+    "lookingFor": "Concrete application of color theory to storytelling rather than abstract textbook definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference specific color choices, such as warm to cool shifts or changing saturation",
+        "Tie the choice to a concrete emotional effect",
+        "Show awareness this is a directing tool used deliberately alongside lighting"
+      ],
+      "modelAnswer": "If a scene starts warm and safe and needs to turn tense, I would desaturate the palette and push it cooler, maybe shifting warm oranges toward a sickly green or blue as the scene progresses, because audiences read cooler and less saturated colors as unease almost instinctively. Inside Out actually does this well, each character has an established color, but scenes get muddier and more desaturated as things get emotionally complicated. I would also think about contrast, a single warm light source in an otherwise cold room can carry a lot of emotional weight without a single line of dialogue. Color is one of those tools that works on the audience almost subliminally, so I would want to use it deliberately rather than just picking whatever looks nice."
+    },
+    "commonMistakes": [
+      "Only naming generic associations like red meaning anger with no scene-specific application",
+      "Treating color choices as decorative rather than a storytelling tool",
+      "Not connecting the answer to a real film example"
+    ],
+    "followUps": [
+      "Can you name a film or show that used color shifts particularly well?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Sound design shaping timing",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "sound-design",
+      "timing",
+      "storytelling"
+    ],
+    "question": "How does sound design shape how animation timing is created, not just how it is experienced afterward?",
+    "lookingFor": "Understanding that sound and picture are co-designed, not sound simply added after animation is locked.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that timing is often built to hit specific sound beats, such as dialogue, music or foley",
+        "Note the practice of using scratch or temp audio during boarding and animating",
+        "Give an example of comic timing built around a sound cue"
+      ],
+      "modelAnswer": "Sound is not just layered on top of finished animation, a lot of timing is actually built around it from the start, animators will often work with a scratch dialogue track or a temp score playing while they block out a scene, so a punch or a footstep lands exactly on a sound beat rather than close to it. Comic timing especially depends on this, a perfectly timed take might be completely dependent on hitting a specific beat in the music or landing right before a line of dialogue, and if you shift it even a couple frames the joke stops working. I think that is part of why animators talk about hitting the beat, it is a genuinely collaborative relationship between picture and sound rather than sound being an afterthought. It changed how I think about timing exercises, I started animating with music playing rather than in silence."
+    },
+    "commonMistakes": [
+      "Assuming sound is always added after animation is fully finished",
+      "Only discussing music and ignoring dialogue and foley",
+      "Describing sound as decorative rather than structurally tied to timing"
+    ],
+    "followUps": [
+      "Have you ever animated to a piece of existing music or audio? What did you learn from it?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Adapting a story from a culture that is not your own",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "cultural-sensitivity",
+      "adaptation"
+    ],
+    "question": "You are asked to help design characters for an animated adaptation of a folk tale from a culture that is not your own. How would you approach that responsibly?",
+    "lookingFor": "Thoughtful process for approaching cross-cultural adaptation with humility and genuine research, not just good intentions.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the responsibility involved rather than assuming good intentions are enough",
+        "Describe a concrete process, such as researching primary sources and involving consultants from that culture",
+        "Show willingness to change a design based on feedback rather than treating the work as finished once drawn"
+      ],
+      "modelAnswer": "I would start by being honest with myself that being enthusiastic about a culture's folklore does not automatically qualify me to represent it well, so my first step would be genuine research, going to primary sources and, if possible, people from that culture, rather than other animated adaptations or a quick image search, which tend to just recycle the same secondhand shorthand. I would want to actually involve a cultural consultant or collaborator in the design process, not just as a final check at the end, but early enough that their feedback can actually shape the designs rather than just approve or reject something already finished. I would also try to stay open to being told a choice I liked visually was actually a misreading of the source material, which is uncomfortable but necessary, because my attachment to a design is not a good enough reason to keep something that gets it wrong. I think the goal is respect and accuracy, not decoration, the folklore deserves to be understood, not just borrowed for its visual appeal."
+    },
+    "commonMistakes": [
+      "Assuming personal enthusiasm or admiration for the culture is sufficient preparation",
+      "Treating a cultural consultant as a final rubber stamp rather than an early collaborator",
+      "Becoming defensive rather than responsive when a design choice is challenged"
+    ],
+    "followUps": [
+      "What would you do if a cultural consultant and the director disagreed about a design choice?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-assisted in-betweening and uncredited training data",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "ai",
+      "ethics",
+      "industry",
+      "current-debate"
+    ],
+    "question": "Some studios are experimenting with AI tools that generate in-between frames, sometimes trained on animators' past work without explicit credit or consent. What is your view on using tools like this?",
+    "lookingFor": "Nuanced position on AI in animation that distinguishes the tool from the sourcing and labor question, showing awareness of a live industry debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Separate two issues: AI as a tool versus how the training data was sourced and consented to",
+        "Show awareness this is an active, contested debate in the industry, including guild concerns",
+        "Land on a position, ideally conditional rather than absolutist"
+      ],
+      "modelAnswer": "I think there are actually two separate questions people often blur together, whether AI-assisted in-betweening as a technique is useful, and whether the specific way a tool was trained, often scraping animators' work without credit or payment, is fair. I am genuinely open to AI handling some of the more mechanical, repetitive parts of the process, in-betweening has always been somewhat mechanical even done by hand, but I think it matters enormously whether the artists whose work trained the model consented and were compensated. The animation guild disputes and the AI clauses that have come out of recent industry negotiations tell me this is not hypothetical, it is actively being fought over right now, and I do not think I get to avoid having a position on it just because I am still a student. My honest answer is I would use AI tools that were trained ethically and I would push back on ones that were not, even though I know that is a harder line to hold in practice than to say in an interview."
+    },
+    "commonMistakes": [
+      "Giving a purely technophobic or purely techno-optimist answer with no nuance",
+      "Not being aware this is a live, contested issue in the animation industry right now",
+      "Conflating all AI tools as one monolithic thing rather than distinguishing sourcing and use"
+    ],
+    "followUps": [
+      "If a studio you wanted to work for used an AI in-betweening tool with unclear training data provenance, would that affect your decision to take the job?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI as threat or tool",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "ai",
+      "current-debate",
+      "industry",
+      "craft"
+    ],
+    "question": "There is an ongoing debate about whether generative AI text-to-video tools are a threat to animators or just a new tool. Where do you land, and why?",
+    "lookingFor": "Informed, balanced take on a genuinely live industry debate rather than a rehearsed pro or anti-AI script.",
+    "idealAnswer": {
+      "bullets": [
+        "Show specific awareness of what current generative video tools can and cannot do well",
+        "Distinguish between a craft-level threat, such as skill devaluation, and a labor-level threat, such as fewer jobs",
+        "Give a considered, non-absolutist position"
+      ],
+      "modelAnswer": "Right now generative video tools are good at producing short, visually impressive clips but they are inconsistent frame to frame, they struggle with character consistency across a shot, and they have no actual intention behind a pose, which is the thing that makes animation expressive in the first place. So I do not think they replace animators' craft yet, but I do think they threaten certain jobs, especially early-career, high-volume work like some in-betweening or background animation, which is exactly the kind of entry-level work a lot of animators use to break into the industry, so the risk is not abstract to someone in my position. I try to hold both things at once, that it is a genuinely useful tool for things like rapid previs or mood boards, and that the labor question around it is real and deserves more protection than it currently has. I would rather go in clear-eyed about that tension than pretend it does not exist."
+    },
+    "commonMistakes": [
+      "Dismissing AI tools entirely as irrelevant, showing lack of current awareness",
+      "Uncritically celebrating AI with no acknowledgment of labor concerns",
+      "Being unable to name any specific capability or limitation of current tools"
+    ],
+    "followUps": [
+      "How do you think this affects your own plan for breaking into the industry as an entry-level animator?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Outsourcing and runaway production",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "industry",
+      "labor",
+      "ethics",
+      "current-debate"
+    ],
+    "question": "A lot of animated productions now outsource significant portions of the work to overseas studios with lower labor protections, to cut costs. What is your take on this practice?",
+    "lookingFor": "Awareness of a real structural issue in the industry with a thoughtful, non-simplistic response.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness the practice exists and is widespread, not a fringe issue",
+        "Acknowledge complexity, weighing cost pressures and global opportunity against labor protection concerns",
+        "Avoid a simplistic outsourcing is bad take with no nuance"
+      ],
+      "modelAnswer": "It is a genuinely complicated issue for me, because on one hand outsourcing has created real jobs and skill development in studios outside the traditional Western hubs, and plenty of talented animators around the world have built careers because of it. On the other hand, when it is driven mainly by chasing the lowest labor cost rather than genuine collaboration, it can mean artists doing skilled work under worse pay and conditions than their counterparts elsewhere, which is a real ethical problem, not just a business decision. I do not think the answer is never outsource, global collaboration can produce great work, but I do think the industry needs to be honest about when it is creative partnership versus when it is avoiding paying a fair wage. As someone entering the field, I would want to at least understand where a studio's pipeline work actually happens and under what conditions before I decided I wanted to build a career there."
+    },
+    "commonMistakes": [
+      "Treating outsourcing as either entirely good or entirely bad with no nuance",
+      "Showing no awareness that this is an actual industry practice with real examples",
+      "Making it purely about job loss in one country without addressing conditions elsewhere"
+    ],
+    "followUps": [
+      "Would this consideration actually change which studios you would want to work for?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Anime-influenced global hybridization",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "industry-trends",
+      "style",
+      "anime",
+      "global-animation"
+    ],
+    "question": "Anime-influenced visual styles have become much more common in Western animation over the last decade. What do you think that trend says about where the medium is heading?",
+    "lookingFor": "Awareness of a real, observable stylistic trend, with a thoughtful read on what is driving it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific examples of the hybridization trend",
+        "Offer a reason for the trend, such as streaming's global reach or creators raised on anime",
+        "Give a personal, considered opinion on the trend rather than just describing it"
+      ],
+      "modelAnswer": "You can see it clearly in shows that blend heavy anime-influenced line work and framing with a more Western sense of comedic timing, and I think a big driver is that the creators making decisions now grew up watching anime on streaming platforms rather than discovering it as an adult niche interest, so it is just naturally part of their visual vocabulary rather than a deliberate homage. Streaming has also flattened access globally, audiences are not limited to whatever their local broadcaster licenses, so styles cross-pollinate much faster than they used to. I think it is mostly a healthy sign, animation styles borrowing and mutating across cultures usually produces more interesting work than staying in a single lane, though I do think there is a real difference between genuine influence and just copying a surface look without understanding why anime uses those techniques in the first place."
+    },
+    "commonMistakes": [
+      "Only naming the trend without offering any explanation for why it is happening",
+      "Treating any anime influence as automatically shallow imitation",
+      "Giving no specific examples to back up the observation"
+    ],
+    "followUps": [
+      "Can you name a specific show or film you think handles this blending well?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Ten seconds, no dialogue, showing grief",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "storytelling",
+      "emotion"
+    ],
+    "question": "You have ten seconds of screen time and no dialogue to establish that a character has just lost someone close to them. How would you approach animating that?",
+    "lookingFor": "Ability to think in purely visual, physical storytelling terms under a real constraint.",
+    "idealAnswer": {
+      "bullets": [
+        "Focus on physical behavior and body language rather than facial acting alone",
+        "Consider pacing, including what to hold on and what to cut away from",
+        "Show restraint, resisting the urge to over-animate or over-explain the emotion"
+      ],
+      "modelAnswer": "I would probably resist the urge to put the emotion on the face at all and instead show it through something the character does with their hands, maybe they are holding an object that belonged to the person, and the animation is really just in how long they hesitate before they can put it down. Ten seconds is tight, so I would spend most of it on stillness rather than motion, a genuine held pose reads as far more devastating than a lot of busy acting, and I would probably let the shot breathe a beat longer than feels comfortable before cutting away. I would also think hard about what not to show, grief is often more affecting when it is slightly withheld rather than fully performed, so I might frame it so we only see part of the reaction. The constraint of ten seconds actually forces better choices, because you cannot rely on volume of acting, you have to rely on precision."
+    },
+    "commonMistakes": [
+      "Over-relying on exaggerated facial expressions to carry the whole emotional beat",
+      "Trying to cram too much action into the limited time instead of trusting stillness",
+      "Describing the emotion in the abstract without proposing an actual concrete visual choice"
+    ],
+    "followUps": [
+      "What would change about your approach if you had thirty seconds instead of ten?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Translating internal prose into a storyboard",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "storyboarding",
+      "adaptation"
+    ],
+    "question": "Imagine you are asked to storyboard a scene from a novel that is written in very abstract, internal prose, mostly a character's thoughts, with almost no physical action described. How would you approach translating that to a visual sequence?",
+    "lookingFor": "Understanding that adaptation requires inventing external, visual action to represent internal states, not literal transcription.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the core challenge, that internal thought has no inherent visual form",
+        "Propose a method, such as finding or inventing physical action or environment that embodies the internal state",
+        "Show awareness this requires genuine creative interpretation, not literal translation"
+      ],
+      "modelAnswer": "The first thing I would accept is that I cannot literally draw a thought, so my job is to find or invent a physical equivalent for whatever the character is feeling internally, maybe that is through environment, a room that gets visually more cluttered as their anxiety builds, or through a repeated small physical action, like fidgeting with the same object every time their mind returns to the same worry. I would go back through the prose and pull out any concrete sensory details the author does include, even small ones, because those usually hint at what the author was already visualizing even if they never fully describe it. I would also think about pacing differently than in the prose, internal monologue can dwell on something for pages, but visually you often need to compress that into a much shorter, more concentrated sequence of images or it drags. It is genuinely one of the harder adaptation problems, because you are not translating, you are inventing a new visual language for something the original text never had to solve."
+    },
+    "commonMistakes": [
+      "Assuming internal narration can just be delivered as voiceover with generic visuals underneath",
+      "Trying to be too literal and ending up with a static, illustrative sequence",
+      "Ignoring pacing differences between prose and visual storytelling"
+    ],
+    "followUps": [
+      "Can you think of a film adaptation that handled internal narration particularly well or badly?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Network wants to cut a grief scene from a children's show",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "children-media",
+      "situational"
+    ],
+    "question": "You are animating a children's show and the network asks you to cut a scene showing a character grieving, because they think it is too sad for the age group. Do you push back?",
+    "lookingFor": "Willingness to reason through a real creative-versus-commercial tension with respect for the network's legitimate concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the network's concern is not automatically wrong, since age-appropriateness is a real consideration",
+        "Make the case for why depicting grief carefully can be valuable for children",
+        "Land on a constructive path, proposing adjustments rather than an all-or-nothing standoff"
+      ],
+      "modelAnswer": "I would not dismiss the network's concern outright, age-appropriateness is a real and legitimate thing to think about, kids do process sad content differently at different ages, so I would want to understand specifically what worried them, was it the subject matter itself or the intensity of how it was animated. That said, I think some of the most beloved children's media handles loss really thoughtfully, and kids are often more capable of sitting with a sad moment than adults give them credit for, as long as it is handled with care and is not gratuitous. So I would probably propose a middle path, keep the moment but adjust how it is animated, maybe pull back on how long we hold on the most intense beat, or make sure there is a clear note of comfort or resolution afterward, rather than cutting the grief entirely. I think the goal is protecting the emotional honesty of the story while genuinely listening to a legitimate concern, not just fighting to keep every choice exactly as originally boarded."
+    },
+    "commonMistakes": [
+      "Treating the network's concern as automatically wrong or purely commercial cynicism",
+      "Capitulating completely with no attempt to preserve the emotional intent",
+      "Offering no concrete compromise, just abstract disagreement"
+    ],
+    "followUps": [
+      "Can you name a children's show or film you think handled a difficult emotional topic particularly well?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Appeal as a principle, even for villains",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "principles",
+      "appeal",
+      "character-design"
+    ],
+    "question": "The principle of 'appeal' is often misunderstood as meaning a character has to be likeable. What does it actually mean, and why does even a villain need it?",
+    "lookingFor": "Correct, nuanced understanding of appeal as charisma and clarity of design, not niceness.",
+    "idealAnswer": {
+      "bullets": [
+        "Clarify appeal means the design is clear and charismatic, not that the character is nice",
+        "Explain a villain still needs appeal to be compelling and readable on screen",
+        "Give a concrete design example, such as a strong silhouette or a clear personality read"
+      ],
+      "modelAnswer": "Appeal does not mean likeable, it means the design has charisma and clarity, something about the character makes you want to keep watching them even if you do not want to be their friend. A villain with weak appeal just reads as forgettable or muddled, whereas a well-designed villain has a strong silhouette, a clear point of view, and often a kind of magnetic confidence that makes them fun to watch even while you are rooting against them. I think of it a bit like a strong actor playing a bad guy, you do not need to like the character to be riveted by the performance, and the same is true of the design itself. If a character, hero or villain, disappears into the background or reads as generic, that is an appeal problem regardless of how technically well the drawing is executed."
+    },
+    "commonMistakes": [
+      "Equating appeal with the character being nice or morally good",
+      "Only being able to give examples of appealing heroes, not villains",
+      "Describing appeal vaguely as good design with no specific visual quality named"
+    ],
+    "followUps": [
+      "Can you name a villain design you think has particularly strong appeal, and what makes it work?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Animating for games versus film",
+    "program": "Animation",
+    "difficulty": "hard",
+    "tags": [
+      "technical",
+      "real-time",
+      "games",
+      "film"
+    ],
+    "question": "How does animating for a video game differ from animating for a film, given that games have to respond to player input in real time?",
+    "lookingFor": "Technical understanding of the constraint that game animation must be modular and blendable, unlike fixed, linear film animation.",
+    "idealAnswer": {
+      "bullets": [
+        "Note film animation is fixed and linear, with every frame authored and locked",
+        "Note game animation must be modular, with separate clips blended based on unpredictable player input",
+        "Explain the resulting craft challenge, that transitions must look seamless despite being assembled dynamically"
+      ],
+      "modelAnswer": "Film animation is completely fixed, every single frame is authored exactly once and locked forever, so an animator can control every beat of timing down to the frame. Game animation cannot work that way because the player controls what happens next, so animators instead build separate clips, a walk cycle, an idle, a jump start, a landing, and a system in the engine blends between them in real time based on what the player actually does, which the animator cannot fully predict in advance. That creates a completely different craft problem, you are not just making one clip look good in isolation, you are making sure it transitions smoothly into dozens of other clips it might get interrupted by at any frame, which is why game animators spend so much time on blend curves and root motion rather than just posing. I find that constraint really interesting actually, it is less like directing a scene and more like designing a system that has to look good under conditions you do not fully control."
+    },
+    "commonMistakes": [
+      "Assuming game animation is technically simpler than film animation",
+      "Not understanding the concept of blending or modular clips at all",
+      "Treating cutscenes, which are often closer to film animation, as representative of all game animation"
+    ],
+    "followUps": [
+      "Have you had any hands-on experience animating for a game engine, even a simple one?"
+    ]
+  },
+  {
+    "id": "prog-animation-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "The multiplane camera and the problem of depth",
+    "program": "Animation",
+    "difficulty": "medium",
+    "tags": [
+      "history",
+      "technique",
+      "depth"
+    ],
+    "question": "Can you explain what the multiplane camera did for animation, and why creating a sense of depth was such a big technical problem in the first place?",
+    "lookingFor": "Historical and technical grounding, showing genuine interest in the craft's evolution, not just contemporary tools.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the problem, that flat, layered cel animation had no real sense of depth or parallax",
+        "Explain the solution, multiple glass planes at different distances moved at different speeds to create parallax",
+        "Note its significance, an early example of technical innovation directly serving an emotional and visual goal"
+      ],
+      "modelAnswer": "Before the multiplane camera, animation was basically flat layers of cels stacked directly on top of each other and shot straight down, so even though a scene might have a foreground, a character and a background, there was no actual sense of depth, everything moved together at the same rate if the camera panned. Disney's multiplane camera solved this by physically separating the artwork onto multiple glass planes at different distances below the camera, so when the camera moved, the closer planes shifted faster than the distant ones, which mimics how real parallax works when you move through a space. It is a good reminder that a lot of what makes animation feel real is not about drawing skill alone, it is about solving a genuinely technical problem in service of an emotional or perceptual goal, the depth was not decorative, it made scenes feel like real, inhabitable spaces. I think about that a lot when I look at how modern virtual cameras in 3D solve the exact same parallax problem, just digitally instead of with physical glass."
+    },
+    "commonMistakes": [
+      "Not knowing what the multiplane camera physically was or how it worked",
+      "Describing it as purely a historical curiosity with no connection to modern technique",
+      "Confusing depth and parallax with simple background detail or scale"
+    ],
+    "followUps": [
+      "Can you think of a modern digital technique that solves a similar depth problem?"
+    ]
+  }
+]

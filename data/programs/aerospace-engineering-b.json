@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-aerospace-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Lift generation misconception",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["aerodynamics", "lift", "misconception"],
+    "question": "A lot of people learn that a wing generates lift because air has to travel the same distance over the top and bottom of the wing at the same time. Is that actually true, and how would you explain lift properly?",
+    "lookingFor": "Correctly identifies the equal-transit-time explanation as a myth and reaches for the real mechanism, pressure difference plus downwash, while being honest about the complexity.",
+    "idealAnswer": {
+      "bullets": [
+        "Debunk the equal transit time myth, the air over the top does not need to meet the air underneath at the trailing edge",
+        "Explain lift as unequal pressure distribution over the wing combined with the wing deflecting air downward, which by Newton's third law pushes the wing up",
+        "Acknowledge that a fully rigorous explanation involves circulation and is more subtle than either Bernoulli or Newton alone"
+      ],
+      "modelAnswer": "The equal transit time explanation is actually a popular myth, the air going over the top of a cambered wing reaches the trailing edge well before the air underneath, you can see that in smoke tunnel footage. What's really happening is the wing shape and angle of attack force the air to curve, which lowers pressure above the wing and pushes air downward behind it, and by Newton's third law that downward push on the air means an upward push on the wing. I read some of Doug McLean's writing on this and it made me realise how many textbook explanations oversimplify something that's genuinely subtle fluid dynamics."
+    },
+    "commonMistakes": [
+      "Reciting equal transit time as fact",
+      "Giving only Bernoulli with no Newton framing, so pressure sounds like it appears from nowhere",
+      "Refusing to engage and just saying wings are shaped to fly"
+    ],
+    "followUps": ["Why does angle of attack matter if the wing shape alone were enough to generate lift?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Transonic drag rise",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["aerodynamics", "transonic", "drag"],
+    "question": "Why do aircraft face a dramatic increase in drag as they approach the speed of sound, and how do engineers design around it?",
+    "lookingFor": "Understands that local airflow can go supersonic before the aircraft does, causing shock-induced wave drag, and names real design responses.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that air accelerating over the curved wing can go locally supersonic before the freestream reaches Mach 1, creating a shock wave",
+        "Identify the resulting spike in drag as wave drag, the real basis of the so-called sound barrier",
+        "Name concrete design responses such as wing sweep, thin airfoils, and the area rule"
+      ],
+      "modelAnswer": "Even before the aircraft itself hits Mach 1, air accelerating over the curved top of the wing can locally go supersonic, and when it slows back down it does so through a shock wave, which creates a big spike in drag called wave drag. That's the real sound barrier, it's not a hard physical wall but a real aerodynamic penalty that early jet designers had to fight. Engineers design around it with swept wings, which effectively see a lower velocity component perpendicular to the leading edge, and with the area rule, shaping the fuselage so the cross sectional area changes smoothly along the aircraft's length. I found it fascinating that the Convair area rule discovery in the 1950s was basically found by accident and then explained drag problems everyone was already seeing."
+    },
+    "commonMistakes": [
+      "Thinking the sound barrier is literally impassable",
+      "Confusing wave drag with ordinary friction drag",
+      "Naming swept wings without explaining why they actually help"
+    ],
+    "followUps": ["Why does a swept wing help specifically?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Center of gravity and stability",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["stability", "structures", "aerodynamics"],
+    "question": "Why is an aircraft's center of gravity range so tightly controlled, and what happens if it's loaded outside those limits?",
+    "lookingFor": "Connects center of gravity to static stability via the neutral point, not just to balance, and understands both forward and aft failure modes.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the center of gravity must stay ahead of the neutral point for static stability",
+        "Describe the forward CG trade-off, more stable but harder to trim and less efficient",
+        "Describe the aft CG risk, better efficiency but reduced stability margin, potentially uncontrollable"
+      ],
+      "modelAnswer": "The center of gravity has to stay ahead of what's called the neutral point for the aircraft to be statically stable, so if it drifts too far aft the plane can actually diverge from level flight instead of naturally returning to it, which is dangerous. Too far forward and the aircraft becomes very stable but the tailplane has to work harder to keep the nose up, which costs fuel and can even make it hard to rotate on takeoff if it's extreme. That's why cargo and passenger loading is so carefully calculated, and I read about a cargo aircraft that crashed on takeoff because unsecured cargo shifted the CG aft past the safe limit during rotation."
+    },
+    "commonMistakes": [
+      "Describing CG only in terms of balance without connecting to stability",
+      "Not distinguishing how aft and forward CG failures differ",
+      "Giving a vague answer with no real consequence or example"
+    ],
+    "followUps": ["Why does an aft CG improve fuel efficiency specifically?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Bypass ratio trade-off",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["propulsion", "trade-off"],
+    "question": "Modern airliners use high-bypass turbofan engines instead of the turbojets of the 1960s. What's the trade-off being made there?",
+    "lookingFor": "Explains propulsive efficiency correctly, moving more air a little rather than less air a lot, and names the physical cost of that choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Define bypass ratio, the fraction of air moved around the core rather than through it",
+        "Explain why higher bypass improves propulsive efficiency at subsonic cruise speeds",
+        "Identify the trade-off, a bigger heavier nacelle with more drag, unsuited to supersonic flight"
+      ],
+      "modelAnswer": "A high-bypass turbofan pushes most of its air around the core rather than through it, and that matters because propulsive efficiency is about accelerating a large mass of air a little rather than a small mass a lot, so you waste less energy as exhaust kinetic energy. The trade-off is the engine gets physically much bigger and heavier because of that huge fan, which adds drag and weight, and it's part of why high-bypass engines aren't used on supersonic aircraft, the fan is just too big and inefficient at those speeds. I like that it's a genuinely quantifiable trade-off, not just an aesthetic design choice, you can see it directly in specific fuel consumption numbers between generations of engines."
+    },
+    "commonMistakes": [
+      "Saying high bypass is simply more efficient with no mechanism",
+      "Ignoring the physical size and drag penalty",
+      "Conflating bypass ratio with total thrust"
+    ],
+    "followUps": ["Why wouldn't a supersonic aircraft want a high-bypass engine?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Composites vs aluminum",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["materials", "structures"],
+    "question": "The Boeing 787 and Airbus A350 use far more composite material than earlier airliners. What are the real trade-offs of that choice?",
+    "lookingFor": "Weighs genuine benefits against genuine costs rather than treating composites as strictly superior.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the benefits, weight, fatigue and corrosion resistance, enabling higher cabin pressure and humidity",
+        "Name the costs, higher manufacturing expense and harder damage detection since impact damage can be invisible",
+        "Show this is a genuine trade-off, not a strictly better material"
+      ],
+      "modelAnswer": "Composites give a real weight saving and they don't fatigue or corrode the way aluminum does, which is part of why the 787 can run a higher cabin pressure and humidity that's more comfortable for passengers on long flights. But the trade-off is real, composite damage from something like a stray tool drop can be invisible on the surface while doing real structural damage underneath, so inspection needs technology like ultrasonic scanning instead of just an eyeball check. Manufacturing is also more expensive and less forgiving of errors than machining aluminum, so it's not a strictly better material, it's a different set of trade-offs that only make sense for certain aircraft."
+    },
+    "commonMistakes": [
+      "Saying composites are just better with no downside",
+      "Ignoring inspection and damage tolerance issues",
+      "No mention of manufacturing cost at all"
+    ],
+    "followUps": ["Why does higher cabin pressure and humidity matter to passengers?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Staging and the rocket equation",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["rockets", "propulsion", "staging"],
+    "question": "Why do rockets launch in stages instead of using one big fuel tank and one engine?",
+    "lookingFor": "Connects staging to the rocket equation and mass ratio, not just a vague sense of using up fuel, and weighs the reliability cost.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the rocket equation, velocity depends on the log of the mass ratio, so empty tank structure is dead weight",
+        "Explain that jettisoning empty stages improves the mass ratio for the remaining stages",
+        "Acknowledge the trade-off, added separation events and engines are a real reliability cost"
+      ],
+      "modelAnswer": "It comes down to the rocket equation, your final velocity depends on the logarithm of your starting mass over your ending mass, so an empty fuel tank you're dragging along is dead weight that costs you propellant to accelerate for no benefit once it's empty. Staging lets you drop that empty structure as soon as it's used up, so the next stage only has to push the payload and its own smaller tank, which makes the mass ratio, and therefore the achievable velocity, dramatically better. The trade-off is you're adding separation events and extra engines, which is exactly where a lot of launch failures have historically happened, so it's efficiency bought at the cost of added complexity and points of failure."
+    },
+    "commonMistakes": [
+      "Not connecting the answer to the rocket equation or mass ratio at all",
+      "Treating staging as purely about using up fuel in order",
+      "No mention of the reliability trade-off staging introduces"
+    ],
+    "followUps": ["What would happen to a rocket's achievable delta-v if it had to carry all its stages to orbit as one piece?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Delta-v budgets",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["orbital-mechanics", "spacecraft"],
+    "question": "Why can't we just say a spacecraft going to Mars needs to go faster than one going to the Moon? How do engineers actually think about the fuel required for a mission?",
+    "lookingFor": "Understands delta-v as the real currency of orbital mechanics, made up of discrete maneuvers, not top speed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain missions are budgeted in delta-v, the sum of velocity changes across every maneuver",
+        "Describe transfer orbits as discrete burns at specific points, not continuous acceleration",
+        "Mention gravity assists as a way to gain delta-v without spending propellant"
+      ],
+      "modelAnswer": "What actually matters isn't top speed, it's delta-v, the total velocity change you need to sum across every maneuver in the mission, because in orbit you're not driving in a straight line, you're changing from one orbit to another at very specific points. A Mars mission needs a burn to leave Earth orbit onto a transfer trajectory, then another to get captured into Mars orbit, and each of those has its own delta-v cost that gets added into the budget regardless of how fast the spacecraft is at any moment. That's also why gravity assists are so valuable, swinging past a planet can change your velocity relative to the sun for free, which is effectively free delta-v that doesn't cost any propellant."
+    },
+    "commonMistakes": [
+      "Talking about going faster as if that's the whole picture",
+      "Not mentioning discrete burns or transfer orbits",
+      "No real grasp of gravity assists as delta-v savings"
+    ],
+    "followUps": ["Why is a Hohmann transfer usually the most fuel-efficient way to get between two orbits, even though it's not the fastest?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Reentry heating and blunt bodies",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["reentry", "spacecraft", "aerodynamics"],
+    "question": "Why are reentry capsules like Apollo or Dragon blunt and rounded rather than sharp and pointed, when a pointed shape seems more aerodynamic?",
+    "lookingFor": "Explains blunt body theory, the detached shock keeping heat away from the vehicle, and understands that high drag is a goal on reentry.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a blunt shape creates a detached bow shock that carries most of the heat away from the surface",
+        "Contrast with a sharp nose, where the shock sits at the surface and concentrates heat there",
+        "Note that high drag is actually desirable on reentry, since it dissipates orbital kinetic energy"
+      ],
+      "modelAnswer": "It seems backwards, but a blunt shape is actually the safer choice because it pushes the shock wave away from the vehicle's surface, and most of the heat generated by compressing the air at those speeds stays in that detached shock layer instead of being conducted into the capsule. A sharp, pointed nose would have the shock sitting right against the surface, which concentrates that intense heat exactly where the structure is, the opposite of what you want. High drag is also actually the goal on reentry, not something to minimise, because that's what dissipates the enormous kinetic energy of orbital speed before the vehicle reaches the ground, so the blunt shape does double duty."
+    },
+    "commonMistakes": [
+      "Assuming lower drag is always better, even on reentry",
+      "No mention of shock standoff distance",
+      "Describing heat shield materials without explaining the underlying shape physics"
+    ],
+    "followUps": ["Why does the vehicle want high drag specifically during reentry?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Boundary layer separation and stall",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["aerodynamics", "stall", "misconception"],
+    "question": "What actually happens, physically, when a wing stalls?",
+    "lookingFor": "Corrects the engine-failure misconception and explains the boundary layer separation mechanism at high angle of attack.",
+    "idealAnswer": {
+      "bullets": [
+        "Correct the common misconception that stall means engine failure",
+        "Explain that past the critical angle of attack the boundary layer separates from the upper surface",
+        "Note that lift collapses and drag rises once flow separates, and recovery is about angle of attack, not power"
+      ],
+      "modelAnswer": "A stall has nothing to do with the engine, it's a purely aerodynamic event where the wing exceeds its critical angle of attack. Past that angle the airflow over the top surface can no longer follow the wing's curve against the increasing pressure it meets, so the boundary layer separates and turbulent, detached flow replaces the smooth flow the wing depends on for lift. Once that happens the pressure difference between the top and bottom of the wing collapses, so lift drops sharply and drag increases at the same time, which is why recovery is about reducing angle of attack, not adding power, even though pilots often instinctively reach for the throttle."
+    },
+    "commonMistakes": [
+      "Confusing stall with engine failure",
+      "Describing it only as too slow without the angle of attack mechanism",
+      "Missing that recovery is about angle of attack, not speed alone"
+    ],
+    "followUps": ["Why can an aircraft stall at high speed, not just low speed?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Metal fatigue and the Comet",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["structures", "fatigue", "history"],
+    "question": "The de Havilland Comet, the world's first commercial jetliner, suffered a string of catastrophic crashes in the 1950s. What went wrong, and what did it change about how aircraft are designed?",
+    "lookingFor": "Identifies metal fatigue from repeated pressurization cycles at a stress riser, and connects it to lasting design and testing changes.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify metal fatigue cracks forming at the corners of squarish windows and cutouts, where stress concentrated",
+        "Explain that repeated pressurization cycles, not a single static load, caused the failure",
+        "Name lasting design changes, rounded windows and fatigue testing through many simulated cycles"
+      ],
+      "modelAnswer": "The Comet crashes came down to metal fatigue, every pressurization cycle put stress on the fuselage, and that stress concentrated at the sharp corners of the windows and roof cutouts, where cracks slowly formed and eventually propagated catastrophically at altitude. It's a chilling example because the aircraft had passed static testing, it was the repeated cyclic loading over many flights that revealed the flaw, which static tests alone don't catch. It fundamentally changed aircraft design, windows on every jet since have rounded corners specifically because of this, and it's also why fatigue testing an airframe through tens of thousands of simulated pressurization cycles became standard practice, along with the idea of designing structures to be damage tolerant rather than assuming they'll never crack."
+    },
+    "commonMistakes": [
+      "Not knowing or guessing at the fatigue cause and just saying the plane broke",
+      "Missing the connection to design changes still visible today",
+      "Treating it as a one-off historical curiosity rather than tying it to safety philosophy"
+    ],
+    "followUps": ["Why doesn't a single static load test catch a fatigue problem like this?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Redundancy and fail-safe design",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["systems-engineering", "safety", "redundancy"],
+    "question": "Aircraft systems are usually designed with triple or even quadruple redundancy. Why not just build one very reliable system instead of paying the weight penalty for three?",
+    "lookingFor": "Reasons about single points of failure and independent probability, and knows redundancy alone is not enough without diversity.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a single system, however reliable, remains a single point of failure",
+        "Show that independent redundant systems multiply small failure probabilities into a vanishingly small one",
+        "Note that redundancy needs diversity too, identical systems can share a common design flaw"
+      ],
+      "modelAnswer": "Even an extremely well-built system has some nonzero failure probability, and if that one system is the only thing standing between the aircraft and a control failure, that's a single point of failure that no amount of individual reliability fully removes. With three independent systems, the aircraft only fails if all three fail at once, and if the failures are truly independent you're multiplying small probabilities together to get something vanishingly unlikely. What I find interesting is that redundancy alone isn't enough, you also need diversity, because three identical systems can still share the same design flaw or get taken out by the same event, which is part of why some fly-by-wire systems deliberately use different hardware or software written by separate teams for each channel."
+    },
+    "commonMistakes": [
+      "Only saying more is safer without probability reasoning",
+      "Missing the common-cause failure and diversity issue",
+      "Not weighing the weight and cost penalty being paid for"
+    ],
+    "followUps": ["What's a real example of a common-cause failure that redundancy alone wouldn't have prevented?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Whistleblowing on safety",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety", "judgement"],
+    "question": "Say you're a junior engineer on a commercial aircraft program and you discover a test result was quietly reclassified so the aircraft could meet a certification deadline. Your manager tells you it's a minor technicality and to let it go. What do you do?",
+    "lookingFor": "Structured ethical reasoning that takes the stakes seriously, escalates internally first, and does not simply comply or freeze.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the seriousness given aviation is safety-critical and certification exists to prevent exactly this shortcut",
+        "Escalate through internal channels, documentation and engineering quality, before going external",
+        "Be honest that this is genuinely hard professionally, not a clean or comfortable decision"
+      ],
+      "modelAnswer": "I'd start by making sure I actually understood the situation properly, writing down exactly what I'd seen and why I thought the reclassification mattered, because I'd want to be certain before raising something this serious. Then I wouldn't just accept my manager's answer, I'd go to whoever's responsible for engineering quality or safety within the company, because certification requirements exist precisely so shortcuts like this don't happen, and minor technicality isn't my call to make alone. If that internal route genuinely went nowhere and I still believed there was a real safety risk, I think I'd have to be prepared to go to the aviation regulator, even knowing that would likely cost me my job and be an incredibly hard thing to do, because in aerospace the alternative is people getting hurt."
+    },
+    "commonMistakes": [
+      "Immediately jumping to the press or regulator without trying internal channels first",
+      "Simply complying with the manager because they're senior",
+      "Refusing to give a real position and staying vague"
+    ],
+    "followUps": ["Does your answer change if you're not certain the reclassification actually affects safety?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use technology",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["ethics", "dual-use", "judgement"],
+    "question": "A lot of aerospace engineering, from jet engines to guidance systems, has both civilian and military applications. How do you think about working on technology that could end up being used to cause harm?",
+    "lookingFor": "Acknowledges dual-use is essentially unavoidable in the field and articulates a genuine personal framework, avoiding both naive refusal and blind acceptance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge dual-use is common across most of aerospace, not a niche edge case",
+        "Offer a personal framework, such as end user and oversight, for thinking about where the line sits",
+        "Avoid both extremes, ignoring the tension entirely and refusing to ever engage with any related work"
+      ],
+      "modelAnswer": "I don't think there's a clean way to avoid this in aerospace, the same navigation and control systems that guide an airliner safely are the same underlying technology used in military applications, so pretending you can pick a purely civilian lane forever isn't realistic. My honest answer is that I'd want to know who I was actually building for and under what oversight, I'd feel very differently about designing satellite navigation for commercial airliners than about a targeting system, even if some of the underlying mathematics overlaps. I don't think I have a perfect rule for where exactly the line is yet, but I know I want to actually think about it deliberately rather than just taking whatever job comes along and not asking the question."
+    },
+    "commonMistakes": [
+      "Claiming the issue doesn't apply to them or won't come up",
+      "Refusing to take any position at all",
+      "Treating all military-adjacent work as equally acceptable or equally unacceptable without reasoning"
+    ],
+    "followUps": ["Would your answer change if the technology were defensive, like missile interception, rather than offensive?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Supplier quality shortcuts",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "quality", "judgement"],
+    "question": "You're doing a placement at a components supplier and you notice a batch of fasteners failed a strength test, but a senior colleague signs off on shipping them anyway, saying the margins are conservative enough that it doesn't matter. What's going through your head?",
+    "lookingFor": "Recognises that safety margins exist to remove individual discretion, weighs the real power imbalance of being a placement student, and still commits to a position.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this is exactly the kind of judgement call safety margins and certification are designed to remove from one person",
+        "Acknowledge the genuine difficulty of being a junior student pushing back on someone senior, without using it as an excuse to stay silent",
+        "Land on raising it through a real channel like quality assurance rather than confronting alone or ignoring it"
+      ],
+      "modelAnswer": "My first thought would be that the margins are conservative enough isn't actually his decision to make alone, that's exactly why there's a specified test and pass criteria in the first place, so one person's judgement on the day doesn't override it. As a placement student I'd feel genuinely intimidated pushing back on someone senior, but I don't think that discomfort is a good enough reason to say nothing, especially with fasteners that could end up on an aircraft. I think I'd document what I saw and raise it with the quality assurance team rather than the colleague directly, because that's the process that exists for exactly this situation, and it takes the decision out of being a personal confrontation."
+    },
+    "commonMistakes": [
+      "Deciding to stay silent because they're just a student",
+      "Confronting the colleague directly and personally rather than using proper channels",
+      "Agreeing the margins are probably fine without engaging with the actual issue"
+    ],
+    "followUps": ["What if you later learned this was a decision this colleague had made several times before?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Reusable rockets",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["current-events", "rockets", "propulsion"],
+    "question": "SpaceX has made reusable rockets routine, with boosters landing and flying again. Why did the industry take so long to get there, and what do you think it's actually changed?",
+    "lookingFor": "Gives a real technical reason reuse was hard and connects lower launch cost to a genuine downstream consequence, not just enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the technical difficulty, engines that survive reentry heating and restart, plus precision guided landing",
+        "Connect falling cost per kilogram to which missions became financially viable, not just cheaper versions of the same ones",
+        "Offer a considered opinion, including a downstream consequence, rather than pure hype"
+      ],
+      "modelAnswer": "Part of why it took so long is that landing a booster back down needs a deeply throttleable engine and guidance precise enough to hit a barge in the ocean, which is a genuinely different engineering problem than just getting a rocket up and away, and for decades the economics didn't obviously justify solving it. What I think has actually changed isn't just that launches are cheaper, it's that the falling cost per kilogram has made whole categories of missions financially viable that weren't before, like mega-constellations, which is its own new set of problems around orbital congestion. I'm genuinely impressed by the engineering, but I try not to just be a fan of it, I think it's worth asking what reusability has enabled that maybe shouldn't have been enabled quite so easily, like the sheer number of satellites now going up."
+    },
+    "commonMistakes": [
+      "Pure enthusiasm with no technical substance",
+      "Not connecting reuse to any downstream consequence",
+      "Treating it as purely good with no critical perspective"
+    ],
+    "followUps": ["What downstream problem has cheaper launch access actually caused?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Urban air mobility",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["current-events", "evtol"],
+    "question": "Several companies are developing electric vertical takeoff aircraft for short urban flights, so called air taxis. Do you think this is realistic, and what's the biggest engineering obstacle?",
+    "lookingFor": "Identifies battery energy density as the core physical constraint and gives a grounded opinion rather than pure hype or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify battery energy density as the fundamental limiter compared to jet fuel",
+        "Mention that certification for a genuinely new aircraft category is a real, slow, appropriately cautious process",
+        "Give a grounded personal opinion on realistic near-term use cases"
+      ],
+      "modelAnswer": "I think the core problem is still batteries, energy density for even the best lithium batteries is a fraction of jet fuel's, so these aircraft are working with a much tighter range and payload budget than anything comparable with a combustion engine, and that's a materials and chemistry problem, not something you can design your way around entirely. I also think people underestimate how long certification takes for a genuinely new category of aircraft, regulators like the FAA and EASA are being appropriately cautious given this involves flying over dense cities. My honest guess is we'll see it working in narrow use cases, like short scheduled routes between fixed points, well before we see the on-demand flying taxi picture most of the marketing shows."
+    },
+    "commonMistakes": [
+      "Pure hype with no engineering constraint named",
+      "Dismissing the whole idea without reasoning",
+      "Ignoring certification and infrastructure and only talking about the vehicle"
+    ],
+    "followUps": ["How would eVTOL noise and infrastructure needs differ from a helicopter's?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Sustainable aviation fuel vs electric flight",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["current-events", "sustainability", "propulsion"],
+    "question": "Aviation is under real pressure to decarbonize. Do you think the near-term answer is sustainable aviation fuel, electric or hydrogen propulsion, or something else, and why?",
+    "lookingFor": "Reasons about energy density constraints for different flight lengths rather than picking one silver-bullet solution.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why battery and hydrogen energy density make full electrification unrealistic for long-haul flight soon",
+        "Position sustainable aviation fuel as a near-term drop-in solution for long-haul routes",
+        "Distinguish short-haul as more plausible for battery-electric aircraft, showing this isn't a single answer"
+      ],
+      "modelAnswer": "I don't think there's one answer, and I think that's actually the honest position. For long-haul flights the energy density problem is brutal, batteries are nowhere close to jet fuel and even hydrogen needs huge cryogenic tanks that eat into payload, so sustainable aviation fuel looks like the realistic near-term path there because it's a drop-in replacement that doesn't need a new aircraft or new airport infrastructure. For short regional hops the energy and range demands are much lower, so I think that's genuinely where battery-electric aircraft could show up first commercially. What I find interesting is that the industry is essentially pursuing several different solutions in parallel because the problem isn't the same problem at every flight length."
+    },
+    "commonMistakes": [
+      "Picking one silver-bullet solution for all of aviation",
+      "Not mentioning energy density as the core constraint",
+      "No distinction between flight length categories"
+    ],
+    "followUps": ["Why is SAF called a drop-in fuel, and why does that matter for adoption speed?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Space debris and Kessler syndrome",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["current-events", "space-debris", "spacecraft"],
+    "question": "With thousands of satellites now in orbit and more being launched every month, how worried are you about space debris, and what's actually being done about it?",
+    "lookingFor": "Explains Kessler syndrome correctly, names real current mitigation efforts, and forms a genuine reasoned opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain Kessler syndrome, a runaway cascade where collisions generate debris that causes more collisions",
+        "Name real mitigation, tracking networks, end-of-life deorbit rules, early active debris removal missions",
+        "Give a reasoned personal opinion on how seriously it should be taken rather than dismissing or catastrophizing"
+      ],
+      "modelAnswer": "I think it's a real concern, not a distant sci-fi one, the worry is what's called Kessler syndrome, where enough debris in a busy orbit means collisions start generating more debris faster than it can be tracked or avoided, and past a certain density that becomes a runaway problem that could make parts of low Earth orbit genuinely unusable. What's being done is mostly tracking and rules so far, agencies now generally require satellites to deorbit within a set number of years after their mission ends, and there are early active debris removal missions being tested to actually go grab dead satellites. I don't think it's being ignored, but I do think the sheer scale of new mega-constellations is growing faster than the regulation and cleanup technology, so I'd want to work somewhere that's actually taking the mitigation side seriously, not just the launch side."
+    },
+    "commonMistakes": [
+      "Not knowing or misexplaining Kessler syndrome",
+      "Treating it as a solved or nonexistent problem",
+      "Only naming the problem with no awareness of current mitigation efforts"
+    ],
+    "followUps": ["Whose responsibility do you think it should be to clean up debris that's already up there?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Conflicting data before a decision",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "testing", "judgement"],
+    "question": "Imagine you're on a student rocketry or drone team and your simulation predicts the design is safe, but a wind tunnel or ground test gives you a result that doesn't quite match. Launch is tomorrow. What do you do?",
+    "lookingFor": "Prioritizes physical test data over simulation when they conflict, resists schedule pressure, and tries to root-cause the discrepancy.",
+    "idealAnswer": {
+      "bullets": [
+        "State that physical test data should generally be trusted over simulation when they conflict",
+        "Resist picking whichever result is more convenient for the deadline",
+        "Describe actually trying to understand the discrepancy rather than blindly launching or blindly scrubbing"
+      ],
+      "modelAnswer": "If the physical test and the simulation disagree, my instinct is to trust the physical result more, because a simulation is only as good as the assumptions built into it, and reality doesn't care what we assumed. I wouldn't just launch anyway because the schedule says tomorrow, but I also wouldn't want to scrub without at least trying to understand why the numbers didn't match, so I'd want the team to spend a couple of hours figuring out if it's a measurement issue, a simulation assumption that doesn't hold, or an actual design problem. If we genuinely couldn't resolve it in time, I think the honest answer is you delay, because launching on a mismatch you don't understand is exactly how avoidable failures happen."
+    },
+    "commonMistakes": [
+      "Trusting simulation over real test data because it's more convenient",
+      "Caving to schedule pressure without investigating",
+      "Refusing to make a decision either way"
+    ],
+    "followUps": ["What if the discrepancy were small and well within your typical margin of error, would that change your answer?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Weight budget trade-off",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "systems-engineering", "trade-off"],
+    "question": "You're designing a small satellite and the launch provider tells you your mass budget has just been cut by twenty percent. What do you actually cut, and how do you decide?",
+    "lookingFor": "Structured trade-off reasoning anchored in mission priorities, not arbitrary or equal cuts across subsystems.",
+    "idealAnswer": {
+      "bullets": [
+        "Start from what the mission actually needs to succeed before deciding what's negotiable",
+        "Consider trimming structural margins carefully rather than payload capability, since some margins are more conservative than others",
+        "Recognise this as a systems-wide trade study, not one subsystem's decision alone"
+      ],
+      "modelAnswer": "I wouldn't start by cutting evenly across every subsystem, I'd start by asking what the mission actually needs to succeed and protect that first, because a satellite that launches lighter but can't do its job isn't a win. I'd look hardest at structural margins, since those are often deliberately conservative and there might be room to trim them with better analysis rather than cutting capability, and I'd also look at redundancy, asking whether every backup system is equally necessary or whether some are protecting against a very unlikely failure mode. It's really a trade study across the whole spacecraft, not a decision any one subsystem owner should make alone, because cutting in one place can quietly increase risk somewhere else."
+    },
+    "commonMistakes": [
+      "Cutting arbitrarily or equally without reasoning about mission priorities",
+      "Treating it as one subsystem's problem in isolation",
+      "Ignoring that structural margins exist for genuine safety reasons and not questioning any of them"
+    ],
+    "followUps": ["What's the risk of trimming structural margins too aggressively to save weight?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Mars mission trade-off",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "spacecraft", "trade-off"],
+    "question": "You're on the design team for a Mars mission and you have to choose between adding more scientific instruments or adding more safety margin for an uncertain landing environment. How do you think about that trade-off?",
+    "lookingFor": "Reasons that landing margin protects the whole mission's expected value, ideally grounded in a real example, rather than treating it as simple more-is-better.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that a failed landing returns zero science, so margin protecting mission success is not casually negotiable",
+        "Reason in terms of expected scientific return, not just instrument count",
+        "Ground the answer in a real example if possible, such as Mars Polar Lander"
+      ],
+      "modelAnswer": "My instinct is that you protect the landing margin first, because the failure mode of skimping on that isn't reduced science, it's zero science, the whole mission dies on the surface. I'd think about it in terms of expected value, extra instruments only add value if the mission actually survives to use them, so pushing margin down to squeeze in one more instrument can make the expected scientific return worse, not better, if it meaningfully raises the failure probability. I remember reading about Mars Polar Lander, where a software issue tied to the landing sequence is thought to have caused total loss, and that's exactly the kind of failure mode I'd want to be paranoid about protecting against before I started adding extras."
+    },
+    "commonMistakes": [
+      "Treating it as a simple more-instruments-is-better decision",
+      "Not connecting margin to overall mission success probability",
+      "No grounding in a real example, just asserting an opinion"
+    ],
+    "followUps": ["Is there a point where you think a mission is being too conservative, at the cost of scientific ambition?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Balancing regulation and innovation",
+    "program": "Aerospace Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "regulation"],
+    "question": "If you were advising a regulator on certifying a genuinely new kind of aircraft, like an electric air taxi, how would you balance moving fast enough to let the industry develop against being careful enough to keep people safe?",
+    "lookingFor": "Engages with the real tension instead of a safety-first platitude, and proposes something concrete like staged certification.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension rather than giving an easy safety-first non-answer",
+        "Propose something concrete, such as staged certification with a restricted early operating envelope",
+        "Recognise the real cost of moving too slowly, not just the abstract cost of moving too fast"
+      ],
+      "modelAnswer": "I don't think safety first, full stop is actually a useful answer, because it dodges the real tension, moving too slowly can genuinely kill an industry before it gets the chance to prove itself, and that has its own cost. What I'd want is something staged, letting a new aircraft type operate in a narrow, lower-risk way first, maybe over water or sparsely populated routes with a lot of monitoring, and then expanding the operating envelope as real evidence accumulates instead of trying to certify the full ambitious vision on day one. That's roughly how early commercial aviation and early drone regulation actually happened, restricting first and expanding based on data, and I think that's a more honest way to balance the two goals than pretending you can maximise both at once."
+    },
+    "commonMistakes": [
+      "Giving a platitude like safety always comes first with no actual mechanism",
+      "Ignoring that overly slow regulation has real costs too",
+      "No concrete proposal, just naming the tension and stopping there"
+    ],
+    "followUps": ["What data would actually convince you it's safe to expand the operating envelope?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Autonomous flight trust",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "autonomy", "judgement"],
+    "question": "Increasing levels of autonomy are being built into aircraft, from autoland to fully uncrewed cargo aircraft being tested. Would you get on a fully autonomous passenger flight with no pilot at all, and why or why not?",
+    "lookingFor": "A nuanced personal position that distinguishes normal operation from rare edge cases, with a clear statement of what evidence would change their mind.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a genuine, reasoned position rather than a purely emotional yes or no",
+        "Distinguish technology being capable in normal conditions from handling rare, novel edge cases",
+        "Name what evidence or track record would actually shift their confidence"
+      ],
+      "modelAnswer": "Honestly, not yet, and it's not really about trusting the technology to fly the plane in normal conditions, autopilot already handles most of a flight extremely well. What worries me is the rare edge case, the bird strike, the sudden depressurisation, the situation nobody explicitly programmed for, where a human crew's judgement and improvisation has saved flights before, and I'm not convinced current autonomous systems handle genuinely novel situations as well as an experienced pilot does. I think my answer would change with a real track record, if uncrewed cargo aircraft accumulate years of operation including handling unexpected failures safely, that evidence would genuinely shift my confidence, I just don't think we're there yet for passengers."
+    },
+    "commonMistakes": [
+      "A flat yes or no with no reasoning",
+      "Conflating autopilot working fine normally with fully autonomous handling everything",
+      "Refusing to commit to any real position"
+    ],
+    "followUps": ["What kind of evidence would actually convince you it's safe?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Contrails and climate impact",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["current-events", "climate", "sustainability"],
+    "question": "Research has suggested that aircraft contrails might contribute as much to aviation's warming effect as its CO2 emissions. Had you come across this, and what do you think airlines should do about it?",
+    "lookingFor": "Shows awareness of contrail cirrus warming, names the rerouting mitigation approach, and weighs the fuel-burn trade-off honestly.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain contrail cirrus, persistent ice clouds that trap outgoing heat, forming in humid high-altitude air",
+        "Name the proposed mitigation, small altitude changes to avoid ice-supersaturated air",
+        "Weigh the honest trade-off, avoiding those layers can cost some fuel efficiency"
+      ],
+      "modelAnswer": "I had come across this, it surprised me too, contrails form persistent ice clouds in certain humid layers of the atmosphere and they trap outgoing heat in a way that some studies suggest is comparable to aviation's direct CO2 warming, even though contrails only last hours compared to CO2's decades. What's interesting is the fix being trialled isn't dramatically expensive, it's often just a small altitude change to avoid the specific humid air where persistent contrails form, and early trials with a small number of flights have shown that's genuinely effective. The honest trade-off is that avoiding those layers sometimes means flying a slightly less fuel-efficient altitude, so airlines are essentially trading a bit of extra CO2 for a bigger cut in contrail warming, and I think that trade is worth taking seriously rather than dismissing because it's unfamiliar."
+    },
+    "commonMistakes": [
+      "No awareness of contrail warming as a real research area, or dismissing it as negligible",
+      "Not mentioning the rerouting mitigation approach",
+      "Ignoring the fuel-burn trade-off entirely"
+    ],
+    "followUps": ["Why might it be hard to predict which flights will actually form warming contrails in advance?"]
+  },
+  {
+    "id": "prog-aerospace-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Boeing 737 MAX and certification trust",
+    "program": "Aerospace Engineering",
+    "difficulty": "hard",
+    "tags": ["current-events", "certification", "ethics"],
+    "question": "The 737 MAX groundings and the more recent door plug incident have raised serious questions about Boeing's engineering culture and the FAA's certification process. What do you think went wrong, and should manufacturers be allowed to self-certify parts of their own aircraft at all?",
+    "lookingFor": "Shows real awareness of the underlying causes and reasons through the self-certification trade-off rather than giving an absolutist answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe MCAS relying on a single sensor with insufficient disclosure to pilots and regulators as the MAX's core issue",
+        "Distinguish the door plug incident as a manufacturing and quality control failure rather than a design flaw",
+        "Engage with the delegated certification trade-off and land on a reasoned middle position like more independent audit"
+      ],
+      "modelAnswer": "As I understand it, the MAX problem was that a new flight control system called MCAS relied on a single angle of attack sensor and could push the nose down repeatedly, and pilots weren't properly told how it worked, so when that one sensor failed they were fighting a system they didn't know existed. The door plug incident later seemed to be a different problem, more about manufacturing quality control, bolts that weren't properly reinstalled getting missed, which points to a culture issue as much as an engineering one. On self-certification, I don't think banning it entirely is realistic, the FAA genuinely can't have engineers on every production line, but I do think the incidents show that delegating certification to the same company that profits from a fast approval creates a real conflict of interest, so I'd want to see more independent audit and spot-checking layered on top of that delegation, not removing it altogether."
+    },
+    "commonMistakes": [
+      "Not knowing the actual technical cause and speaking in vague generalities",
+      "Only blaming Boeing without engaging with the systemic self-certification question",
+      "Taking an absolutist position, either ban all self-certification or trust companies fully, with no nuance"
+    ],
+    "followUps": ["Why do you think the FAA delegates certification authority to manufacturers in the first place?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-electrical-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Thevenin equivalent circuits",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["circuits", "analysis", "theorem"],
+    "question": "Can you explain Thevenin's theorem and why it's useful when you want to analyse how a circuit behaves with different loads?",
+    "lookingFor": "Correct statement of Thevenin equivalence plus genuine insight into why reducing a network to a simple voltage source and resistance saves analysis effort.",
+    "idealAnswer": {
+      "bullets": [
+        "State that any linear two terminal network can be replaced by a single voltage source in series with a resistance",
+        "Explain how to find the Thevenin voltage and resistance conceptually",
+        "Give the practical benefit: you can swap loads without recalculating the whole network each time"
+      ],
+      "modelAnswer": "Thevenin's theorem says any linear circuit, viewed from two terminals, can be replaced by a single voltage source in series with a single resistance, no matter how complicated the original network is. You find the Thevenin voltage by working out the open circuit voltage at those terminals, and the Thevenin resistance by deactivating the independent sources and looking at the resistance seen from the terminals. What I like about it is the practical shortcut it gives you, if you're testing how a circuit responds to five different loads, you only have to do the reduction once and then just swap the load resistor into a two component circuit instead of resolving the whole network five times."
+    },
+    "commonMistakes": [
+      "Forgetting to deactivate independent sources when calculating Thevenin resistance",
+      "Confusing Thevenin resistance with just any resistor value in the circuit",
+      "Not being able to explain why the simplification is actually useful in practice"
+    ],
+    "followUps": ["How would you find the Thevenin resistance if the circuit contains a dependent source?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Superposition in linear circuits",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["circuits", "analysis", "linearity"],
+    "question": "What does the superposition theorem let you do in a circuit with multiple sources, and what condition does it require?",
+    "lookingFor": "Correct grasp that superposition only applies to linear circuits and requires analysing one source at a time with others deactivated.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the response due to each independent source can be found separately and then summed",
+        "Explain that deactivating a source means shorting a voltage source and opening a current source",
+        "Note the requirement that the circuit be linear for superposition to hold"
+      ],
+      "modelAnswer": "Superposition lets you analyse a circuit with several independent sources by considering one source at a time, turning off all the others, and adding up the individual contributions to get the total current or voltage at a point. Turning off a voltage source means replacing it with a short circuit, and turning off a current source means replacing it with an open circuit. It only works because the circuit is linear, so if there were a diode or anything nonlinear in the network I couldn't just add the separate responses together and expect a correct answer."
+    },
+    "commonMistakes": [
+      "Mixing up how to deactivate voltage sources versus current sources",
+      "Applying superposition to a circuit containing nonlinear components",
+      "Forgetting to add the individual contributions back together at the end"
+    ],
+    "followUps": ["Why does superposition fail if the circuit contains a diode?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Maximum power transfer theorem",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["circuits", "power", "theorem"],
+    "question": "What does the maximum power transfer theorem say, and why might you not actually want to design a system to satisfy it?",
+    "lookingFor": "Correct statement of the matched load condition plus mature reasoning about why efficiency, not power transfer, usually matters more in real power systems.",
+    "idealAnswer": {
+      "bullets": [
+        "State that maximum power is delivered to a load when its resistance equals the source's internal resistance",
+        "Note that at that matched condition only half the power reaches the load, the rest is dissipated in the source",
+        "Explain why real power systems usually prioritise efficiency over maximum transfer, favouring a much higher load resistance"
+      ],
+      "modelAnswer": "The theorem says a load receives maximum power from a source when the load resistance equals the source's internal or Thevenin resistance. The catch is that at that matched point you're only fifty percent efficient, half the power is being wasted as heat inside the source itself, which is fine for something like an antenna or a small signal circuit where you care about power transfer, not efficiency. But for something like the electricity grid you'd never design toward that condition, you want the load resistance much higher than the source resistance so you actually deliver nearly all the power usefully instead of burning half of it away."
+    },
+    "commonMistakes": [
+      "Stating the matching condition without mentioning the fifty percent efficiency trade-off",
+      "Assuming the theorem always describes good design practice",
+      "Confusing maximum power transfer with maximum efficiency"
+    ],
+    "followUps": ["Where in real electronics would you actually want impedance matched for maximum power transfer?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Why power systems use three phases",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["power", "ac-circuits", "fundamentals"],
+    "question": "Why do power grids use three-phase AC rather than single-phase, and what would go wrong with a single-phase equivalent?",
+    "lookingFor": "Understanding of constant instantaneous power delivery and material efficiency, not just a memorised fact that three-phase is standard.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that single-phase power delivery pulsates, dropping to zero twice a cycle",
+        "Note that three-phase power sums to a constant instantaneous total, giving smoother motor and generator operation",
+        "Mention the material efficiency of three-phase transmission compared to running three separate single-phase circuits"
+      ],
+      "modelAnswer": "With single-phase AC the instantaneous power actually pulsates and touches zero twice every cycle, because power is proportional to voltage times current and both are sinusoidal, so anything driven by it, like a motor, gets an uneven torque. Three-phase power staggers three sinusoids 120 degrees apart, and when you add them up the total instantaneous power comes out constant, which is why three-phase motors run so much more smoothly. It's also more efficient to transmit, because you can deliver three times the power using only three wires plus a shared neutral rather than needing six separate conductors for three independent single-phase circuits."
+    },
+    "commonMistakes": [
+      "Saying three-phase is used just because it's the standard, with no underlying reason",
+      "Not connecting the phase offset to constant instantaneous power",
+      "Overlooking the conductor material savings compared to multiple single-phase circuits"
+    ],
+    "followUps": ["What would happen to a three-phase motor if one phase were lost while running?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Skin effect at high frequency",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["ac-circuits", "electromagnetism", "conductors"],
+    "question": "What is the skin effect, and why does it matter for how you'd design a conductor carrying high-frequency current?",
+    "lookingFor": "Correct physical explanation of current crowding at the conductor surface at high frequency, with a real design consequence.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that alternating current tends to concentrate near the surface of a conductor as frequency increases",
+        "Connect this to induced eddy currents opposing current flow in the conductor's core",
+        "Give a practical design consequence, such as stranded litz wire or hollow conductors for high-frequency applications"
+      ],
+      "modelAnswer": "The skin effect is the tendency for alternating current to crowd toward the outer surface of a conductor rather than spreading evenly through the cross section, and it gets more pronounced as frequency increases. It happens because the changing current induces eddy currents inside the conductor that oppose the current flow in the centre more than at the surface, effectively increasing the resistance the current experiences at high frequency. It matters practically because a solid thick conductor stops being efficient at radio frequencies, since most of its cross section is barely carrying current, which is why designers switch to litz wire, many thin insulated strands woven together, or hollow tubing, to get more effective surface area for the same amount of material."
+    },
+    "commonMistakes": [
+      "Describing the effect without explaining the underlying eddy current cause",
+      "Assuming skin effect matters at ordinary fifty or sixty hertz mains frequency as much as at radio frequency",
+      "Not naming a real design response, like litz wire"
+    ],
+    "followUps": ["Why doesn't skin effect matter much for a standard household mains cable?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Real op-amp limitations",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["electronics", "op-amps", "non-idealities"],
+    "question": "An ideal op-amp has infinite bandwidth and instant response. What actually limits a real op-amp, and how does that show up in a circuit?",
+    "lookingFor": "Awareness that real op-amps have finite gain-bandwidth product and slew rate, with understanding of how those limits distort real signals.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the gain-bandwidth product limiting usable gain at higher frequencies",
+        "Explain slew rate as the maximum rate the output can change, distorting large fast signals",
+        "Connect these limits to a real symptom, like a sine wave turning into a triangle wave, or gain dropping off at high frequency"
+      ],
+      "modelAnswer": "Real op-amps have a finite gain-bandwidth product, so the open loop gain actually falls off with frequency, and if you set up a circuit for high gain you end up trading away bandwidth, you can't have both at once. They're also limited by slew rate, the maximum speed the output voltage can actually change, which matters for large fast signals rather than small ones. If I tried to output a large amplitude high frequency sine wave beyond the slew rate limit, the output would visibly distort into something closer to a triangle wave because the op-amp physically can't keep up with how fast the ideal waveform wants to change."
+    },
+    "commonMistakes": [
+      "Only naming bandwidth limits and forgetting slew rate, or vice versa",
+      "Confusing slew rate limiting with simple frequency response roll-off",
+      "Giving no observable symptom a real circuit would show"
+    ],
+    "followUps": ["How would you choose an op-amp if your design needed to output a large fast-changing signal?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Resonance and Q factor in RLC circuits",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["ac-circuits", "resonance", "filters"],
+    "question": "What happens at resonance in an RLC circuit, and what does the Q factor tell you about it?",
+    "lookingFor": "Correct grasp of impedance minimisation or maximisation at resonance and Q as a measure of selectivity or energy storage relative to loss.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that at resonance the inductive and capacitive reactances cancel",
+        "State that Q factor describes how sharp or selective the resonance is",
+        "Connect a higher Q to lower losses and a narrower bandwidth"
+      ],
+      "modelAnswer": "At resonance the inductive reactance and capacitive reactance are equal in magnitude and cancel each other out, so in a series RLC circuit the impedance drops to just the resistance, which lets current peak sharply at that one frequency. The Q factor tells you how sharp or narrow that peak actually is, essentially comparing the energy stored in the reactive components each cycle to the energy dissipated by resistance. A high Q circuit, like one with very low resistance, gives you a narrow, sharply tuned response, which is exactly what you want in a radio tuning circuit that needs to pick out one station and reject everything nearby."
+    },
+    "commonMistakes": [
+      "Saying impedance is zero at resonance rather than just resistive",
+      "Describing Q factor with no connection to bandwidth or selectivity",
+      "Confusing series and parallel resonance behaviour"
+    ],
+    "followUps": ["How does Q factor differ between a series and a parallel resonant circuit?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Sampling theorem and aliasing",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["signals", "sampling", "digital"],
+    "question": "What does the Nyquist sampling theorem tell you, and what actually goes wrong if you sample a signal too slowly?",
+    "lookingFor": "Correct statement of the sampling rate requirement plus a concrete, correct description of aliasing rather than just 'you lose data'.",
+    "idealAnswer": {
+      "bullets": [
+        "State that you must sample at more than twice the highest frequency present in the signal",
+        "Explain aliasing as higher frequencies folding back and appearing as false lower frequencies in the sampled data",
+        "Mention a practical fix, such as an anti-aliasing filter before sampling"
+      ],
+      "modelAnswer": "The Nyquist theorem says you have to sample a signal at a rate more than twice its highest frequency component to be able to reconstruct it accurately afterward. If you sample too slowly, you don't just lose detail, you actually get aliasing, where a frequency above half the sampling rate gets misread and reconstructed as a false lower frequency that wasn't really there, which is why a spinning wheel can look like it's turning backward on video if the frame rate is too low relative to its rotation speed. That's why real systems put an anti-aliasing filter before the analog to digital converter, to remove any frequency content above half the sampling rate before it gets a chance to fold back and corrupt the data."
+    },
+    "commonMistakes": [
+      "Vaguely saying you 'lose resolution' without describing aliasing specifically",
+      "Getting the factor wrong, thinking you need to sample at exactly the signal frequency",
+      "Not mentioning any practical countermeasure like an anti-aliasing filter"
+    ],
+    "followUps": ["Why is the wagon-wheel effect in old films a good everyday example of aliasing?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Reasoning through a PID controller",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["control-systems", "feedback", "design"],
+    "question": "If you were tuning a PID controller and the system kept overshooting the target before settling, which term would you look at first, and why?",
+    "lookingFor": "Working understanding of what each PID term actually does, applied to diagnose a specific symptom rather than reciting definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Briefly explain what proportional, integral, and derivative terms each contribute",
+        "Reason that overshoot is often linked to proportional gain being too high or the integral term winding up",
+        "Explain how increasing derivative action or reducing proportional gain could help damp the overshoot"
+      ],
+      "modelAnswer": "The proportional term reacts to the current error, the integral term builds up based on accumulated past error to remove steady state offset, and the derivative term reacts to how fast the error is changing, which acts like a brake on fast movement toward the target. If the system keeps overshooting before it settles, my first suspicion would be that the proportional gain is too aggressive, pushing the output hard even as it approaches the target, or that the integral term has wound up too much error during the approach. I'd try reducing the proportional gain a little and adding or increasing derivative action, since the derivative term specifically resists rapid change and should help slow the approach down before it flies past the setpoint."
+    },
+    "commonMistakes": [
+      "Reciting the PID acronym without connecting terms to the actual overshoot symptom",
+      "Jumping straight to derivative without considering the proportional gain first",
+      "Not mentioning integral windup as a possible contributor"
+    ],
+    "followUps": ["What is integral windup, and how would you prevent it?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Short-circuit fault current and breaker coordination",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["power", "protection", "safety"],
+    "question": "Why does a circuit breaker need to be rated for a fault current far higher than the circuit's normal operating current?",
+    "lookingFor": "Understanding of how impedance drops dramatically during a short circuit, and why protection devices must safely interrupt that surge without failing themselves.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a short circuit removes most of the load impedance, letting current rise dramatically limited mainly by source and cable impedance",
+        "Note that the breaker has to be rated to safely interrupt that much larger fault current without welding its contacts shut or exploding",
+        "Mention that coordination between breakers ensures only the nearest one trips, not the whole upstream system"
+      ],
+      "modelAnswer": "Under normal operation the load impedance limits how much current flows, but a short circuit essentially removes that limiting resistance, so the current that flows is set almost entirely by the source and cable impedance, which is usually very low, meaning the fault current can be many times the normal rated current. A breaker has to be able to physically interrupt that much larger current safely, without its contacts welding together or arcing so badly it can't actually clear the fault, which is why breakers have a separate interrupting rating alongside their normal current rating. Good protection design also relies on coordination, making sure the breaker closest to the fault trips first, so a fault on one branch circuit doesn't unnecessarily take down the whole building's supply."
+    },
+    "commonMistakes": [
+      "Confusing a breaker's normal current rating with its fault interrupting rating",
+      "Not explaining why fault current is so much larger than normal operating current",
+      "Missing the coordination concept entirely"
+    ],
+    "followUps": ["What could go wrong if two breakers in series aren't properly coordinated?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Grounding and earthing for safety",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["safety", "power", "fundamentals"],
+    "question": "What's the actual safety purpose of grounding the metal casing of an electrical appliance?",
+    "lookingFor": "Correct reasoning about fault current paths and why a low-resistance ground path protects a person from becoming that path.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that grounding gives fault current a deliberate low-resistance path back to source if a live wire touches the casing",
+        "Note that this large fault current should trip the circuit breaker or fuse quickly",
+        "Contrast this with an ungrounded casing, where a person touching it could become the path to ground instead"
+      ],
+      "modelAnswer": "If a live wire inside an appliance accidentally touches the metal casing, grounding the casing gives that fault current a deliberate, very low resistance path straight back to the supply, rather than the casing just sitting there charged at a dangerous voltage. That large fault current should be enough to trip the breaker or blow the fuse almost instantly, cutting power before anyone gets hurt. Without a ground connection, the casing could stay live at a dangerous voltage, and if someone touched it while also being in contact with the ground through the floor, their body would become the path for that current instead, which is exactly the situation grounding is designed to prevent."
+    },
+    "commonMistakes": [
+      "Vaguely saying grounding 'stops electric shock' without explaining the actual current path mechanism",
+      "Confusing the ground wire's role with that of a neutral wire",
+      "Not mentioning that the fault current is meant to trip the protective device quickly"
+    ],
+    "followUps": ["Why isn't a neutral wire connection to the casing a safe substitute for a proper ground?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Electromagnetic interference and shielding",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["emi", "design", "signals"],
+    "question": "What is electromagnetic interference, and what design choices help reduce it in a circuit?",
+    "lookingFor": "Understanding of both radiated and conducted interference with at least one concrete mitigation technique.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that switching currents and fast edges can radiate or couple noise into nearby circuits",
+        "Distinguish radiated interference through the air from conducted interference along shared wiring",
+        "Give a concrete mitigation, such as shielding, twisted pair wiring, or careful grounding and layout"
+      ],
+      "modelAnswer": "Electromagnetic interference happens when unwanted electrical noise, often from fast switching currents or high frequency signals, couples into another circuit and disrupts its normal operation. It can travel two main ways, radiated, where it's essentially broadcast through the air like a small antenna, or conducted, where it travels along shared power or signal wiring. In practice you reduce it with things like shielding sensitive cables, using twisted pair wiring so that induced noise cancels between the two conductors, and being careful with how you route high current switching traces away from sensitive analog signal paths on a circuit board."
+    },
+    "commonMistakes": [
+      "Only describing one interference path, radiated or conducted, and missing the other",
+      "Naming shielding with no explanation of how or why it works",
+      "Treating EMI as purely a software or 'noise filtering' problem rather than a physical one"
+    ],
+    "followUps": ["Why might a switching power supply be a worse source of EMI than a linear one?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Why semiconductor conductivity behaves differently to metal",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["semiconductors", "materials", "concept"],
+    "question": "Why does a semiconductor's conductivity increase with temperature, while a metal's conductivity decreases?",
+    "lookingFor": "Correct grasp of carrier generation across the bandgap versus increased lattice scattering, showing real physical understanding rather than a memorised fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that in a semiconductor, rising temperature gives more electrons enough energy to jump the bandgap and become free carriers",
+        "Explain that in a metal, carriers are already abundant, and rising temperature instead increases lattice vibrations that scatter electrons more",
+        "Contrast the net effect: more carriers dominates in a semiconductor, more scattering dominates in a metal"
+      ],
+      "modelAnswer": "In a semiconductor there aren't many free charge carriers at room temperature, because electrons need enough thermal energy to jump across the bandgap from the valence band into the conduction band, so as temperature rises, more electrons make that jump and conductivity actually goes up. A metal already has a huge number of free electrons available regardless of temperature, since there's no bandgap to cross, so raising the temperature doesn't create more carriers, it just makes the atomic lattice vibrate more, which scatters the existing electrons more often and increases resistance instead. It's really a competition between two effects, carrier generation versus scattering, and which one dominates depends on whether you started with a full sea of free carriers or a scarce one."
+    },
+    "commonMistakes": [
+      "Saying both materials 'just behave differently' with no physical mechanism",
+      "Forgetting that metals have no significant bandgap to begin with",
+      "Confusing carrier generation with carrier mobility"
+    ],
+    "followUps": ["How does doping a semiconductor change this temperature dependence?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "MOSFET versus BJT design trade-offs",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["semiconductors", "electronics", "design"],
+    "question": "If you were choosing between a MOSFET and a BJT for a switching application, what trade-offs would you actually weigh?",
+    "lookingFor": "Practical comparison covering drive requirements, switching speed, and power handling, not just naming which one is 'better'.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast voltage-controlled gate drive of a MOSFET with the current-controlled base drive of a BJT",
+        "Note MOSFETs generally switch faster with lower drive power at moderate voltages",
+        "Mention that BJTs can still have advantages in specific cases, like certain high voltage or linear applications"
+      ],
+      "modelAnswer": "A MOSFET is voltage controlled through its gate, and because the gate is essentially capacitive, it draws almost no steady state current to hold it on, whereas a BJT needs a continuous base current proportional to the collector current you want, which wastes more drive power. For fast switching applications I'd usually lean toward a MOSFET because it can switch faster and the gate drive circuitry is often simpler, especially at the moderate voltages common in things like motor drivers or power supplies. That said, I wouldn't dismiss BJTs outright, they can still have better performance in certain high voltage or specific linear amplification contexts, so the actual choice depends on the voltage, current, and switching frequency the application demands, not just a blanket preference."
+    },
+    "commonMistakes": [
+      "Declaring one component simply 'better' with no context-dependent reasoning",
+      "Confusing gate drive with base drive requirements",
+      "Ignoring switching speed as a factor entirely"
+    ],
+    "followUps": ["What extra care does a MOSFET's gate capacitance require in a high-frequency switching design?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Battery thermal runaway and BMS design",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["power", "batteries", "safety"],
+    "question": "What causes thermal runaway in a lithium-ion battery, and what is a battery management system actually trying to prevent?",
+    "lookingFor": "Correct grasp of the self-reinforcing heat generation mechanism and the protective role of monitoring voltage, current, and temperature per cell.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that thermal runaway is a self-reinforcing cycle where heat triggers exothermic reactions that generate more heat",
+        "Note common triggers like overcharging, physical damage, or manufacturing defects causing internal short circuits",
+        "Explain that a battery management system monitors individual cell voltage, current, and temperature to prevent conditions that could trigger it"
+      ],
+      "modelAnswer": "Thermal runaway happens when a battery cell starts generating heat faster than it can dissipate it, which can trigger exothermic chemical reactions inside the cell that generate even more heat, and the cycle feeds on itself until the cell vents, catches fire, or worse. It's usually triggered by something like overcharging a cell beyond its safe voltage, physical damage that causes an internal short, or a manufacturing defect, and once it starts in one cell it can cascade to neighbouring cells in a pack. A battery management system exists specifically to prevent those triggering conditions, it constantly monitors individual cell voltage, current, and temperature, and it will cut off charging or discharging, or balance cells, the moment any of those readings drift outside a safe range, which is why a pack without a properly functioning BMS is genuinely dangerous."
+    },
+    "commonMistakes": [
+      "Describing thermal runaway as simply 'the battery overheating' with no mention of the self-reinforcing chemistry",
+      "Not explaining what a BMS actually monitors or does",
+      "Treating it as purely a chemistry problem with no electrical engineering role"
+    ],
+    "followUps": ["Why is monitoring individual cells rather than the whole pack important in a BMS?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Wireless power transfer physics and limits",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["electromagnetism", "power", "emerging-tech"],
+    "question": "How does inductive wireless power transfer actually work, and why is its efficiency so sensitive to the distance and alignment between coils?",
+    "lookingFor": "Correct explanation grounded in mutual inductance and flux coupling, with a physical reason efficiency drops off with distance or misalignment.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a transmitting coil creates a changing magnetic field that induces current in a nearby receiving coil, essentially a loosely coupled transformer",
+        "Connect efficiency to how much of the transmitted flux actually links the receiving coil, the coupling coefficient",
+        "Explain why distance and misalignment reduce the coupling and therefore the efficiency"
+      ],
+      "modelAnswer": "Inductive wireless power transfer works essentially like a transformer where the two coils aren't tightly wound around a shared core, an alternating current in the transmitting coil creates a changing magnetic field, and any of that field that reaches and links the receiving coil induces a current in it. The efficiency comes down to the coupling coefficient, basically what fraction of the magnetic flux produced by the transmitter actually passes through the receiver coil rather than spreading out and missing it entirely. As you increase the distance between the coils, or let them drift out of alignment, far less of that flux actually links the receiver, so coupling drops sharply, which is why wireless chargers are so fussy about exact placement compared to a wired connection that doesn't care about geometry at all."
+    },
+    "commonMistakes": [
+      "Describing it as if it works through direct electrical contact rather than magnetic coupling",
+      "Not connecting distance and alignment to the coupling coefficient specifically",
+      "Confusing wireless power transfer with radio wave transmission"
+    ],
+    "followUps": ["How does resonant coupling improve on simple inductive coupling for wireless charging?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Overcorrected leading power factor",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["power", "ac-circuits", "reasoning"],
+    "question": "A factory installs power factor correction capacitors to fix a lagging power factor from its motors, but overshoots and ends up with a leading power factor instead. Why is that also a problem?",
+    "lookingFor": "Reasoning beyond the textbook fix, understanding that overcorrection introduces its own reactive current and voltage regulation issues rather than being harmless.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that lagging power factor from inductive motor loads is normally corrected by adding capacitance",
+        "Recognise that too much capacitance overcorrects into a leading power factor, still meaning wasted reactive current, just in the other direction",
+        "Mention practical consequences like voltage rise on the network or unnecessary reactive current flow"
+      ],
+      "modelAnswer": "Motors are inductive loads, so they naturally pull a lagging power factor, current lagging behind voltage, and adding capacitors supplies reactive power locally to cancel that lag, which is the standard fix. But if you add too much capacitance, you don't get to zero and stop, you swing past it into a leading power factor, where now the capacitors are supplying more reactive power than the motors are consuming, and you're back to unnecessary reactive current flowing through the system, just with the phase relationship flipped. That overcorrection can actually cause voltage rise on the network, since capacitive current interacts differently with the source impedance than inductive current does, so the goal in real power factor correction design is to size the capacitor bank to land close to unity, not just add as much capacitance as possible."
+    },
+    "commonMistakes": [
+      "Assuming more capacitance is always better once you know it fixes lagging power factor",
+      "Not recognising that leading power factor still represents wasted reactive current",
+      "Missing the practical consequence of voltage rise from overcorrection"
+    ],
+    "followUps": ["How would you decide the right size of capacitor bank to avoid overcorrecting?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Impedance matching and transmission line reflections",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["signals", "transmission-lines", "high-frequency"],
+    "question": "Why do high-speed signal traces or transmission lines need impedance matching, and what actually happens if you get it wrong?",
+    "lookingFor": "Correct understanding of wave reflection at an impedance discontinuity and its practical effect on signal integrity.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that at high frequency a trace behaves like a transmission line, not just a wire, once its length is comparable to the signal's wavelength",
+        "Explain that an impedance mismatch at the load causes part of the signal to reflect back toward the source",
+        "Connect that reflection to real symptoms, like ringing, overshoot, or data errors in a digital signal"
+      ],
+      "modelAnswer": "Once a signal's rise time gets fast enough, or the trace gets long enough relative to the signal's wavelength, you can't treat the trace as a simple wire anymore, it behaves like a transmission line with its own characteristic impedance, and the signal actually propagates along it as a wave. If the load impedance at the end doesn't match that characteristic impedance, part of the wave reflects back toward the source instead of being fully absorbed, similar to an echo. In a real digital circuit that shows up as ringing or overshoot on the signal edges, and if it's bad enough it can actually flip a bit and cause data errors, which is exactly why high-speed digital designs are so careful about trace geometry and termination resistors to keep the impedance matched end to end."
+    },
+    "commonMistakes": [
+      "Treating all wires and traces as ideal, ignoring transmission line behaviour entirely",
+      "Describing mismatch effects vaguely as 'noise' without mentioning reflection",
+      "Not connecting the concept to a real high-speed digital design consequence"
+    ],
+    "followUps": ["What's a termination resistor doing when it's placed at the end of a high-speed trace?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Grid inertia and inverter-based renewables",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["power", "renewables", "current-debate"],
+    "question": "There's an ongoing debate about grid inertia as more of the generation mix shifts to solar and wind connected through inverters. What's the actual engineering concern, and what's being proposed to address it?",
+    "lookingFor": "Deep, current understanding of inertia's role in frequency stability and awareness of grid-forming inverters or synthetic inertia as a real proposed solution, beyond a general renewables comment.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that traditional spinning generators provide natural inertia that resists sudden frequency changes",
+        "Note that inverter-based renewable generation has no rotating mass and provides no inertia by default",
+        "Reference a real proposed solution, such as grid-forming inverters or synthetic inertia, and its trade-offs"
+      ],
+      "modelAnswer": "Traditional generators, like large spinning turbines in gas or coal plants, physically resist sudden changes in grid frequency because of the rotational inertia in their spinning mass, if demand suddenly jumps, that stored kinetic energy naturally slows the frequency drop and buys the rest of the grid time to respond. Solar panels and most wind turbines connect through power electronic inverters with no equivalent rotating mass, so as they displace traditional generation, the grid genuinely loses that natural stabilising buffer, and frequency can swing much faster after a disturbance. What's being explored now is grid-forming inverter control, where the inverter is programmed to actively mimic the stabilising behaviour of a spinning generator rather than just passively following the grid's frequency, and while it's promising, it's still a real open engineering challenge to deploy it reliably at scale alongside the older grid-following inverter designs that dominate today."
+    },
+    "commonMistakes": [
+      "Treating the concern as purely about intermittency rather than inertia specifically",
+      "Not knowing what grid-forming inverters or synthetic inertia actually refers to",
+      "Giving a vague sustainability opinion instead of an engineering explanation"
+    ],
+    "followUps": ["What's the practical difference between a grid-following and a grid-forming inverter?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Data centre electricity demand straining the grid",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["power", "current-events", "infrastructure"],
+    "question": "Rapid growth in AI data centres is putting new strain on electricity grids in several countries. From an electrical engineering standpoint, what's actually driving that strain?",
+    "lookingFor": "A grounded, technical view of the load growth and infrastructure bottleneck, not just an awareness that AI 'uses a lot of power'.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that dense compute clusters draw enormous, concentrated, and fairly constant load compared to typical demand growth",
+        "Note the infrastructure bottleneck, such as substation and transmission capacity taking years to build compared to how fast data centres can be built",
+        "Show awareness of at least one response being explored, like on-site generation, demand flexibility, or grid upgrades"
+      ],
+      "modelAnswer": "What strikes me about data centre load isn't just the total energy, it's how concentrated and constant it is, a single large facility can draw as much power as a small town, and it wants that power reliably around the clock, which is a very different demand profile from typical residential or commercial growth. The real bottleneck is that transmission lines and substations take years, sometimes over a decade, to plan and build, while a data centre can be constructed in a fraction of that time, so grid capacity is genuinely struggling to keep pace with how fast the demand is showing up in some regions. I've read about utilities exploring things like co-locating generation on-site, or asking data centres to accept flexible, curtailable power agreements in exchange for faster grid connection, which is the kind of trade-off between speed and reliability I find genuinely interesting to think through."
+    },
+    "commonMistakes": [
+      "Staying at the level of 'AI uses a lot of electricity' with no infrastructure reasoning",
+      "Not recognising the mismatch in build timelines between generation, transmission, and data centres",
+      "Naming no real mitigation approach at all"
+    ],
+    "followUps": ["Would you support data centres getting priority grid connections ahead of other new demand, and why or why not?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Adoption barriers for wide-bandgap semiconductors",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["semiconductors", "current-events", "power-electronics"],
+    "question": "Wide-bandgap materials like silicon carbide and gallium nitride keep getting praised for power electronics, so why hasn't silicon been fully replaced yet?",
+    "lookingFor": "A balanced, technically grounded view of real adoption barriers, not just enthusiasm for the technology's advantages.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine performance advantages, such as faster switching and lower losses",
+        "Identify real barriers, such as higher material and manufacturing cost, and less mature supply chains",
+        "Show understanding that silicon remains adequate and cheaper for many lower-performance applications"
+      ],
+      "modelAnswer": "Silicon carbide and gallium nitride genuinely do switch faster and lose less energy as heat than silicon, especially at higher voltages, which is why they're taking over in things like EV inverters and fast chargers. But they're still notably more expensive to manufacture, the crystal growth processes are harder to scale, and the supply chain and design ecosystem around them is far less mature than decades of accumulated silicon expertise and tooling. For a lot of applications, like a basic phone charger or a low voltage power supply where switching losses aren't the dominant cost, silicon is still perfectly adequate and much cheaper, so the shift is happening fastest where the performance gain actually justifies the price premium, not everywhere at once."
+    },
+    "commonMistakes": [
+      "Treating the newer material as strictly superior with no downside",
+      "Not mentioning cost or manufacturing maturity as real barriers",
+      "Assuming the shift is already complete rather than still ongoing and selective"
+    ],
+    "followUps": ["Which application would you expect to be the last to switch away from silicon, and why?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use technology and ethical responsibility",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "dual-use", "judgement"],
+    "question": "Suppose you're offered an exciting internship designing power electronics for drones, and you later learn the same drone platform is also sold for military surveillance use. How would you think through whether to take it?",
+    "lookingFor": "Structured ethical reasoning that takes dual-use technology seriously without either refusing all engagement with the field or dismissing the concern entirely.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that most electrical engineering technology is genuinely dual-use and rarely has a clean separation between civilian and military application",
+        "Reason through relevant factors, such as who the end customers are, what oversight exists, and their own comfort with the specific application",
+        "Avoid both extremes, blanket refusal to work in any dual-use field, and total indifference to how the technology gets used"
+      ],
+      "modelAnswer": "I'd start by recognising that dual-use is closer to the norm than the exception in electrical engineering, the same power electronics that fly a delivery drone can fly a surveillance one, so refusing to touch anything dual-use would rule out an enormous amount of legitimate, useful work. What I'd actually want to know is more specific, who are the platform's real customers, is there any oversight or export control governing where it ends up, and is the surveillance use something like search and rescue or something I'd be genuinely uncomfortable enabling. I don't think there's a single rule that resolves it cleanly, but I'd rather ask those specific questions honestly and make a judgement based on the actual answers than either refuse reflexively or not think about it at all."
+    },
+    "commonMistakes": [
+      "Refusing all dual-use work as a blanket policy with no nuance",
+      "Dismissing the concern entirely because 'someone else would do it anyway'",
+      "Giving no concrete factors they'd actually want to investigate"
+    ],
+    "followUps": ["Would your answer change if you found out the surveillance use was specifically for a country with a poor human rights record?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing electrical power for a Mars habitat",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "power", "design-thinking"],
+    "question": "Imagine you're designing the electrical power system for a small Mars habitat from scratch. What would you prioritise, and what makes it different from designing for Earth?",
+    "lookingFor": "Genuine engineering reasoning under unfamiliar constraints, showing they can transfer fundamentals to a novel problem rather than reciting textbook answers.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a key environmental difference, such as reduced and dust-affected solar input, extreme temperature swings, or no grid to fall back on",
+        "Prioritise reliability and redundancy given the impossibility of quick repair or replacement parts",
+        "Reason about energy storage given the lack of a large grid to smooth supply and demand"
+      ],
+      "modelAnswer": "The first thing that changes is you have no grid to lean on and no quick way to get a replacement part, so I'd prioritise redundancy far more heavily than I would on Earth, probably multiple independent power sources and storage paths so a single failure doesn't threaten life support. Solar power on Mars gets roughly half the intensity it does on Earth and dust storms can block it for extended periods, so I'd want either a much larger array with margin built in, or a non-solar backup like a radioisotope generator for critical loads that absolutely cannot go without power. And because there's no larger grid to absorb mismatches between generation and demand, I'd need a robust local energy storage system sized generously enough to ride out the worst realistic dust storm, not just an average day, which changes the whole sizing philosophy compared to a terrestrial system that can lean on the grid when it falls short."
+    },
+    "commonMistakes": [
+      "Simply describing a normal Earth solar system with no adaptation to the environment",
+      "Ignoring the impossibility of quick repairs and the resulting need for redundancy",
+      "Not addressing energy storage sizing given the absence of a backup grid"
+    ],
+    "followUps": ["How would your design change for a much larger, permanent settlement instead of a small habitat?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Choosing AC or DC distribution for a new city district",
+    "program": "Electrical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "power", "design-thinking"],
+    "question": "If you were asked to design the electrical distribution for a brand new, fully electric city district built from scratch today, would you choose AC or DC distribution, and why?",
+    "lookingFor": "Balanced reasoning weighing modern DC-native loads and generation against AC's mature infrastructure and standards, rather than a reflexive answer either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that many modern loads and sources, like solar panels, batteries, EVs, and electronics, are natively DC",
+        "Weigh that against AC's mature infrastructure, existing standards, equipment availability, and easy voltage transformation",
+        "Land on a reasoned position, potentially a hybrid, rather than an absolute stance"
+      ],
+      "modelAnswer": "It's a genuinely closer call than it used to be, because a huge share of what a modern district actually needs, solar generation, battery storage, EV charging, and most electronics, is natively DC, and every one of those currently pays a conversion penalty going through inverters and rectifiers to interface with an AC grid. That said, I'd still lean toward AC as the backbone today, mainly because the surrounding infrastructure, protection equipment, safety standards, and installer expertise are all built around AC, and DC protection, especially interrupting DC fault current, is still a less mature and more expensive technology at scale. If I had real freedom to design from scratch, I'd probably push for a hybrid, DC microgrids at the building or block level for the solar, storage, and EV loads, converting once to interface with a wider AC backbone, rather than betting the whole district on a technology where the supporting ecosystem isn't fully there yet."
+    },
+    "commonMistakes": [
+      "Picking a side with no acknowledgement of the trade-offs on the other side",
+      "Not recognising that many modern loads and sources are natively DC",
+      "Ignoring the practical maturity gap in DC protection equipment"
+    ],
+    "followUps": ["What's specifically harder about interrupting a DC fault compared to an AC one?"]
+  },
+  {
+    "id": "prog-electrical-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Interpreting a discrepancy between theory and measurement",
+    "program": "Electrical Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "measurement", "reasoning"],
+    "question": "Say you build a circuit, and your multimeter measurement doesn't match what you calculated on paper. Walk me through how you'd figure out what's actually wrong.",
+    "lookingFor": "A methodical debugging mindset, checking measurement validity and assumptions before assuming either the theory or the build is simply wrong.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by questioning the measurement itself, such as meter loading effects or a miswired probe, before assuming the theory is wrong",
+        "Recheck the assumptions built into the calculation, like component tolerances or an idealised model that ignores real-world non-idealities",
+        "Describe a systematic approach, like checking one stage or node at a time rather than guessing"
+      ],
+      "modelAnswer": "I'd resist the urge to immediately assume either my maths or my build is wrong, and start by questioning the measurement itself, a multimeter set to measure voltage has a finite input impedance that can actually load down a high impedance circuit and pull the reading off from what the ideal calculation assumed. If the meter checks out, I'd go back to my calculation's assumptions, real resistors have tolerance, often five or ten percent, and I might have used an idealised model that ignored something like a component's internal resistance or a diode's forward voltage drop that actually matters in this specific circuit. From there I'd work through the circuit systematically, checking the voltage or current at each node one step at a time rather than guessing, which usually narrows down exactly where the real circuit starts departing from what I expected."
+    },
+    "commonMistakes": [
+      "Assuming the calculation must be correct and the circuit is simply broken, or the reverse",
+      "Not considering that the measuring instrument itself can affect the circuit",
+      "Guessing at random fixes instead of working through the circuit systematically"
+    ],
+    "followUps": ["How could a multimeter's own input impedance actually change the voltage you're trying to measure?"]
+  }
+]

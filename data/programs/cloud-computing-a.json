@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-cloud-computing-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for the field",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["motivation", "cloud-computing"],
+    "question": "What made you want to study cloud computing specifically, rather than a general computer science degree?",
+    "lookingFor": "A specific, genuine reason for choosing cloud over a broader CS path, backed by some real exposure.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment or experience that pulled you toward cloud specifically",
+        "Show you understand how cloud differs from general software development",
+        "Avoid vague claims like 'the future is cloud' with nothing behind them"
+      ],
+      "modelAnswer": "I got interested after we hosted a school project on a free-tier AWS server and I watched it survive a sudden spike in visitors when our local news site linked to it. That moment made me want to understand how a handful of servers somewhere could scale to handle that without anyone touching a switch. General computer science felt too broad for what actually excited me, which was the infrastructure and systems side rather than just writing application code. Cloud computing lets me go deep on distributed systems, networking and scale, which is the part of computing I keep coming back to."
+    },
+    "commonMistakes": [
+      "Saying cloud computing is 'the future' with no personal reasoning",
+      "Describing interest in coding generally rather than infrastructure specifically",
+      "Confusing cloud computing with just using apps like Google Drive"
+    ],
+    "followUps": ["What's the difference between building an app and building the infrastructure it runs on?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this course",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation"],
+    "question": "Why do you want to study cloud computing at this university rather than elsewhere?",
+    "lookingFor": "Specific knowledge of the course structure, modules, or facilities that shows real research beyond a prospectus skim.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific module, lab, industry partnership, or certification pathway",
+        "Connect it to a concrete personal goal or gap in your current knowledge",
+        "Show this is different from a generic 'good reputation' answer"
+      ],
+      "modelAnswer": "I looked at your second-year module on distributed systems and container orchestration, and it's one of the few courses I found that actually gets students deploying a multi-node Kubernetes cluster rather than just reading about it. I've done some self-taught work with Docker on a Raspberry Pi cluster at home, but I've hit the limit of what I can learn alone without proper networking theory underneath it. Your course also runs a partnership placement with a managed hosting provider, which is exactly the kind of production exposure I can't get from tutorials. That combination of hands-on infrastructure work and real placement experience is why this course specifically, not just cloud computing in general."
+    },
+    "commonMistakes": [
+      "Praise that would apply to any university's course",
+      "Citing rankings or campus facilities instead of course content",
+      "Not knowing any specific module or feature of the actual programme"
+    ],
+    "followUps": ["What do you hope to get from the industry placement that self-study can't give you?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "First spark of interest",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["motivation", "personal-story"],
+    "question": "Tell us about the moment you realised cloud computing was what you wanted to pursue.",
+    "lookingFor": "An authentic, specific story rather than a rehearsed line, showing curiosity that predates the application.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific, believable moment rather than a generic claim",
+        "Explain what question it made you want to answer",
+        "Show it led to some action, not just a feeling"
+      ],
+      "modelAnswer": "During lockdown our school moved everything onto a video platform overnight and it just worked, even with every student in the country logging on at once, and that seemed almost impossible to me at the time. I started asking how a service could suddenly serve millions of extra users without buying a warehouse of new computers that week. That question sent me down a rabbit hole of YouTube videos on data centres and auto-scaling, and eventually I signed up for a free cloud account just to poke around myself. I've been building small projects on it ever since, and every one teaches me something I didn't know I didn't know."
+    },
+    "commonMistakes": [
+      "A vague answer with no specific trigger event",
+      "Claiming interest without any follow-up action to show for it",
+      "Overstating technical depth for the stage they're at"
+    ],
+    "followUps": ["What was the first thing you tried to build once you had that free account?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant hands-on experience",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["experience", "project"],
+    "question": "Have you built or deployed anything on a cloud platform yourself? Walk us through it.",
+    "lookingFor": "Evidence of genuine hands-on curiosity, even at a small scale, described with enough detail to prove it's real.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific project with enough technical detail to sound genuine",
+        "Mention what went wrong and what you learned from fixing it",
+        "Keep the scale honest rather than exaggerating a small project"
+      ],
+      "modelAnswer": "I built a small website tracking local bus arrival times and hosted it on a free-tier virtual machine, using a scheduled job to pull data from the transit API every few minutes. It fell over the first week because I hadn't set up any monitoring, so I had no idea it had crashed until a friend told me the site was down. That pushed me to learn about basic logging and uptime alerts, which felt like a small thing but taught me that deploying something is only half the job. It's not a big project, but it's mine end to end, and it's what convinced me infrastructure work suits how I like to solve problems."
+    },
+    "commonMistakes": [
+      "Vaguely claiming cloud experience with no specifics when pressed",
+      "Only describing following a tutorial with no independent troubleshooting",
+      "Exaggerating the scale or importance of a small personal project"
+    ],
+    "followUps": ["What would you do differently if you rebuilt it today?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and current developments",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "current-events"],
+    "question": "What's a recent development in cloud computing that you've read about and found genuinely interesting?",
+    "lookingFor": "Evidence of following the field beyond the syllabus, with an opinion, not just a headline recited back.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific and reasonably current, not outdated or generic",
+        "Explain why it matters, not just what it is",
+        "Offer a personal view or question it raised, showing genuine engagement"
+      ],
+      "modelAnswer": "I've been following the shift toward smaller, specialised AI chips being deployed directly in cloud data centres rather than relying purely on general-purpose GPUs. What struck me is the trade-off involved, because it makes certain workloads far cheaper and faster but locks a provider's customers into hardware that only works well for specific tasks. It made me start thinking about vendor lock-in in a way I hadn't before, not just at the software level but right down at the hardware layer. I'd like to understand that trade-off properly during the degree rather than just from surface-level articles."
+    },
+    "commonMistakes": [
+      "Naming something outdated or already common knowledge as if it's cutting edge",
+      "Reciting a headline with no understanding of why it matters",
+      "Picking a topic with no genuine opinion or follow-up thought"
+    ],
+    "followUps": ["Do you think that trend is good or bad for smaller businesses using the cloud?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Defining cloud computing",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "concept"],
+    "question": "In your own words, what actually is cloud computing?",
+    "lookingFor": "A clear, jargon-light explanation that shows real understanding rather than a memorised textbook definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain it as renting computing resources over the internet rather than owning hardware",
+        "Mention on-demand access and paying only for what you use",
+        "Give a concrete example to ground the definition"
+      ],
+      "modelAnswer": "Cloud computing is essentially renting computing power, storage and other resources over the internet instead of buying and maintaining your own physical servers. You can spin up exactly the amount of processing or storage you need and pay only for what you actually use, then scale it up or down as demand changes. A good example is a streaming service, where the provider doesn't own enough servers for every possible peak, they rent capacity from a cloud provider and adjust it in real time. What I find interesting is that it turns a huge upfront cost into a flexible ongoing one, which changes how companies can afford to experiment."
+    },
+    "commonMistakes": [
+      "Saying 'it's the internet' with no mention of the underlying resources",
+      "Reciting a dictionary definition with no example",
+      "Confusing cloud computing with cloud storage specifically"
+    ],
+    "followUps": ["What's the difference between cloud storage and cloud computing more broadly?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Service models",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "service-models"],
+    "question": "Can you explain the difference between IaaS, PaaS and SaaS, ideally with an example of each?",
+    "lookingFor": "A correct, ordered explanation of the three service models with a real-world example for each.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the models differ in how much of the stack the provider manages for you",
+        "Order them correctly: IaaS gives raw infrastructure, PaaS a platform to build on, SaaS a finished application",
+        "Give one credible example for each model"
+      ],
+      "modelAnswer": "The three models sit on a spectrum of how much the provider manages for you. With IaaS, like Amazon EC2, you get raw virtual machines and networking, and you install and manage the operating system and everything above it yourself. With PaaS, like Google App Engine, the provider also handles the operating system and runtime, so you just deploy your code and they manage scaling and patching underneath it. With SaaS, like Gmail or Dropbox, you're using a finished application over the internet and you don't manage any infrastructure at all. I think of it as a ladder of how much control you trade for how much convenience you get."
+    },
+    "commonMistakes": [
+      "Mixing up which model gives more control versus more convenience",
+      "Giving no concrete examples, only the acronyms",
+      "Confusing SaaS with PaaS by calling a finished app a 'platform'"
+    ],
+    "followUps": ["Which model would you choose for a small startup with no dedicated ops team, and why?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Deployment models",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "deployment-models"],
+    "question": "What's the difference between a public, private, and hybrid cloud, and why might a company choose one over another?",
+    "lookingFor": "Correct definitions plus a sensible reason a real organisation might pick each, showing practical thinking.",
+    "idealAnswer": {
+      "bullets": [
+        "Define public cloud as shared infrastructure run by a provider, private as dedicated infrastructure for one organisation",
+        "Define hybrid as a mix, often for sensitive data kept in-house with overflow to public cloud",
+        "Give a realistic business reason for choosing each"
+      ],
+      "modelAnswer": "Public cloud is infrastructure owned and shared by a provider like AWS or Azure across many customers, and it's cheap and quick to scale because you're sharing the cost of that infrastructure. Private cloud is dedicated entirely to one organisation, either hosted on their own premises or by a provider just for them, which costs more but gives full control, which matters for something like a bank handling regulated data. Hybrid cloud mixes the two, so a hospital might keep patient records on a private cloud for compliance reasons but run its public website and less sensitive workloads on public cloud to save cost. I think the choice usually comes down to a trade-off between cost and control rather than one being simply better."
+    },
+    "commonMistakes": [
+      "Saying private cloud is always more secure with no explanation of why",
+      "Describing hybrid cloud as just 'using two providers'",
+      "No real business reasoning behind the choice"
+    ],
+    "followUps": ["What kind of data would you never put on a purely public cloud, and why?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Virtualization vs containers",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["virtualization", "containers"],
+    "question": "What's the difference between a virtual machine and a container?",
+    "lookingFor": "Understanding that containers share the host OS kernel while VMs virtualise full hardware, with a sense of the trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a VM virtualises hardware and runs a full separate operating system",
+        "Explain that a container shares the host's kernel and only packages the application and its dependencies",
+        "Note the practical trade-off: containers are lighter and start faster, VMs offer stronger isolation"
+      ],
+      "modelAnswer": "A virtual machine emulates an entire computer, including its own full operating system, sitting on top of a hypervisor that shares out the physical hardware. A container is much lighter because it shares the host machine's operating system kernel and only bundles the application code and its dependencies, which is why it starts in seconds rather than minutes. The trade-off is that VMs give you stronger isolation because each one is genuinely separate, while containers are faster and cheaper to run at scale but share more of the underlying system. I think that's why you often see containers used for quickly scaling many small services, while VMs are still used where isolation really matters."
+    },
+    "commonMistakes": [
+      "Saying containers and VMs are basically the same thing",
+      "Not mentioning the shared kernel as the key distinction",
+      "Missing the isolation versus speed trade-off entirely"
+    ],
+    "followUps": ["Why might Docker containers be considered less secure in isolation than virtual machines?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Scalability and elasticity",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["scalability", "fundamentals"],
+    "question": "What do we mean by scalability and elasticity in cloud computing, and are they the same thing?",
+    "lookingFor": "Distinguishes the general capacity to scale from the automatic, on-demand adjustment that defines elasticity.",
+    "idealAnswer": {
+      "bullets": [
+        "Define scalability as the general ability of a system to handle growing load",
+        "Define elasticity as the automatic, on-demand scaling up and down with actual usage",
+        "Explain that elasticity specifically implies scaling back down too, not just up"
+      ],
+      "modelAnswer": "Scalability is the general property of a system being able to handle more load, whether that means adding more servers or upgrading to bigger ones. Elasticity is a more specific idea within that, meaning the system automatically adjusts its resources up or down in real time to match actual demand, without a human manually provisioning new servers. An online ticket site is a good example, because it might run on modest capacity most of the year but automatically scale up sharply the moment a popular event goes on sale, then scale back down afterwards to avoid paying for unused capacity. I think the scaling back down part is the piece people forget, since it's really what saves cloud customers money compared to just over-provisioning permanently."
+    },
+    "commonMistakes": [
+      "Treating scalability and elasticity as interchangeable with no distinction",
+      "Only describing scaling up and forgetting scaling back down",
+      "Giving no concrete example of demand actually changing"
+    ],
+    "followUps": ["What could go wrong if a system scales up automatically but has no limit set?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Serverless computing",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["serverless", "concept"],
+    "question": "What is serverless computing, and does it actually mean there are no servers?",
+    "lookingFor": "Correctly explains that servers still exist but are abstracted away from the developer, with a sense of when it's useful.",
+    "idealAnswer": {
+      "bullets": [
+        "Clarify that servers still exist, they're just fully managed and hidden from the developer",
+        "Explain the developer only writes functions that run in response to events, without managing infrastructure",
+        "Give a practical use case, like handling occasional or unpredictable workloads"
+      ],
+      "modelAnswer": "Serverless doesn't mean there are no servers, it just means the provider manages all of them completely, so as a developer you never provision, patch or scale a machine yourself. Instead you write small functions that run automatically in response to an event, like a file being uploaded, and you're billed only for the exact time that function runs rather than for a server sitting idle. It's particularly good for workloads that are unpredictable or infrequent, like processing an image whenever someone uploads one, because you're not paying for a server waiting around most of the day doing nothing. I think the name is a bit misleading, since the servers absolutely still exist, they're just somebody else's problem entirely."
+    },
+    "commonMistakes": [
+      "Taking the name literally and claiming no physical servers are involved",
+      "Not mentioning that billing is based on actual execution time",
+      "Failing to give any concrete use case for when it's useful"
+    ],
+    "followUps": ["What kind of application would serverless be a poor fit for?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Distributed systems trade-offs",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["distributed-systems", "cap-theorem"],
+    "question": "Have you come across the CAP theorem? Can you explain what it says and why it matters for cloud systems?",
+    "lookingFor": "An honest, roughly correct explanation of the consistency, availability, partition tolerance trade-off, with awareness this is advanced material to be exploring pre-degree.",
+    "idealAnswer": {
+      "bullets": [
+        "State that a distributed system can't fully guarantee consistency, availability and partition tolerance all at once",
+        "Explain that network partitions are unavoidable in real systems, so the real choice is usually between consistency and availability",
+        "Show honest self-awareness about the depth of understanding at this stage"
+      ],
+      "modelAnswer": "From what I've read, the CAP theorem says a distributed system can only fully guarantee two out of three properties at once: consistency, meaning every node sees the same data at the same time, availability, meaning every request gets a response, and partition tolerance, meaning the system keeps working even if nodes can't talk to each other. Since network partitions are basically unavoidable in a real distributed system, the practical choice usually ends up being between consistency and availability when a partition happens. I came across it reading about why some databases like Cassandra favour availability while others like traditional relational databases favour consistency, and it made me realise there's no single 'correct' database, just different trade-offs for different problems. I'll say honestly I've only read around this rather than implemented it, but it's exactly the kind of trade-off I'm looking forward to understanding properly on this course."
+    },
+    "commonMistakes": [
+      "Claiming a system can have all three properties simultaneously",
+      "Reciting the acronym with no understanding of the actual trade-off",
+      "Bluffing confidence on a topic clearly beyond current knowledge rather than being honest about the reading level"
+    ],
+    "followUps": ["Can you think of a real application where availability matters more than consistency?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Content delivery networks",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["cdn", "networking", "latency"],
+    "question": "How does a content delivery network reduce latency for users around the world?",
+    "lookingFor": "Understanding that a CDN caches content on servers geographically closer to users, reducing the physical distance data must travel.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a CDN stores copies of content on servers spread across many locations",
+        "Connect physical distance to latency, since data still travels at a bounded speed",
+        "Mention that a user is routed to the nearest available copy rather than the original server"
+      ],
+      "modelAnswer": "A CDN works by caching copies of content, like images or video, on servers spread out in many different locations around the world rather than only on one original server. When a user requests that content, they're routed to whichever cached copy is physically closest to them, which cuts down the distance the data has to travel. Since data can only move so fast even over fibre, cutting that physical distance directly cuts the delay a user experiences loading a page. I find it a nice example of a problem in cloud computing that isn't really about processing power at all, it's about geography and the physical limits of how fast information can travel."
+    },
+    "commonMistakes": [
+      "Saying a CDN just makes servers 'faster' with no explanation of why",
+      "Not connecting the concept to physical distance and the speed of data transmission",
+      "Confusing a CDN with a load balancer"
+    ],
+    "followUps": ["What kind of content would be a poor fit for CDN caching?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Load balancing",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["load-balancing", "fundamentals"],
+    "question": "What is a load balancer, and why do cloud systems need one?",
+    "lookingFor": "A clear explanation of distributing traffic across multiple servers to avoid overload and improve reliability.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a load balancer spreads incoming requests across multiple servers",
+        "Connect it to preventing any one server being overwhelmed",
+        "Mention the reliability benefit if one server fails"
+      ],
+      "modelAnswer": "A load balancer sits in front of a group of servers and spreads incoming requests across them, rather than letting every request hit the same single machine. That matters because if all traffic went to one server, it could get overwhelmed the moment demand rose even slightly, causing slowdowns or crashes. It also helps with reliability, because if one server goes down, the load balancer can just stop sending it traffic and route everything to the healthy servers instead, and most users would never notice. I think of it as the traffic controller that makes the whole idea of having multiple servers actually useful."
+    },
+    "commonMistakes": [
+      "Describing it only as making things 'faster' with no mechanism explained",
+      "Not mentioning reliability or failover as a benefit",
+      "Confusing load balancing with caching"
+    ],
+    "followUps": ["What might happen if the load balancer itself fails?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "SQL vs NoSQL databases",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["databases", "concept"],
+    "question": "In a cloud environment, when might you choose a NoSQL database over a traditional SQL one?",
+    "lookingFor": "Understanding of structured vs flexible schemas and how each fits different cloud scaling needs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that SQL databases use a fixed, structured schema and strong consistency guarantees",
+        "Explain that NoSQL databases offer flexible schemas and often scale more easily across many servers",
+        "Give a realistic scenario suited to each"
+      ],
+      "modelAnswer": "SQL databases use a fixed, structured schema with tables and strict relationships, and they're strong when your data is well defined and you need reliable consistency, like a banking system tracking account balances. NoSQL databases are more flexible, often storing data as documents or key-value pairs without a rigid schema, and they tend to scale more easily across many servers, which suits situations where the data shape varies or the volume is huge, like storing user activity logs on a social media app. I'd choose NoSQL for something like a product catalogue where every item might have different attributes, and SQL for something like an order system where the relationships between customers, orders and payments really matter. I think the honest answer is it depends on the shape of your data and how important strict consistency is to the problem, not that one is simply better."
+    },
+    "commonMistakes": [
+      "Claiming NoSQL is always faster or simply better than SQL",
+      "Not mentioning schema flexibility as the core distinction",
+      "Giving no realistic scenario for either choice"
+    ],
+    "followUps": ["What might you lose by choosing a flexible schema over a strict one?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud security and shared responsibility",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["security", "shared-responsibility"],
+    "question": "If a company's data gets breached while it's hosted on a public cloud provider, whose fault is it, the company's or the provider's?",
+    "lookingFor": "Awareness of the shared responsibility model, where the provider secures the infrastructure and the customer secures what they put on it.",
+    "idealAnswer": {
+      "bullets": [
+        "Introduce the idea of a shared responsibility model rather than a single party being at fault",
+        "Explain the provider typically secures the underlying infrastructure",
+        "Explain the customer is responsible for configuring access, data and applications correctly"
+      ],
+      "modelAnswer": "It genuinely depends, which is why cloud providers talk about a shared responsibility model rather than one party owning security entirely. The provider is generally responsible for securing the underlying infrastructure, like the physical data centres, the network and the virtualisation layer. The customer is responsible for what they build on top of that, things like configuring access permissions correctly, encrypting sensitive data and keeping their own application code secure. A lot of the big breaches you read about actually come from misconfigured customer settings, like a storage bucket left open to the public by mistake, rather than the provider's infrastructure being compromised, which is what got me interested in how much security in the cloud is really about configuration discipline rather than just clever attacks."
+    },
+    "commonMistakes": [
+      "Assuming the cloud provider is entirely responsible for all security",
+      "Not knowing the term 'shared responsibility model' or an equivalent concept",
+      "Treating all breaches as sophisticated hacks rather than misconfiguration"
+    ],
+    "followUps": ["Can you think of a real-world example of a cloud misconfiguration causing a breach?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Vendor lock-in",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["vendor-lock-in", "strategy"],
+    "question": "What is vendor lock-in, and why might a company worry about it when choosing a cloud provider?",
+    "lookingFor": "Understanding of dependency risk when adopting provider-specific services, and awareness of mitigation strategies.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain vendor lock-in as becoming so dependent on one provider's specific tools that switching becomes costly or impractical",
+        "Give a reason it matters, like pricing power or service reliability concerns",
+        "Mention a mitigation, like using open standards or a multi-cloud approach"
+      ],
+      "modelAnswer": "Vendor lock-in happens when a company builds so much of its system around one provider's specific tools and proprietary services that switching to a different provider later becomes extremely costly or technically painful. It matters because it weakens a company's negotiating position, since the provider knows switching is expensive, and it also creates risk if that provider raises prices or has a major outage, since there's no easy fallback. Some companies try to reduce that risk by favouring open standards over proprietary services, or by deliberately spreading workloads across more than one provider, though that comes with its own added complexity. I think it's a good example of how a cloud decision isn't just a technical one, it's also a business risk decision."
+    },
+    "commonMistakes": [
+      "Describing it only as a technical inconvenience with no business consequence",
+      "Not offering any mitigation or strategy to reduce the risk",
+      "Confusing vendor lock-in with a security concern"
+    ],
+    "followUps": ["Is avoiding lock-in always worth the extra complexity of a multi-cloud strategy?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Microservices vs monolithic architecture",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["microservices", "architecture"],
+    "question": "What's the difference between a monolithic application and a microservices architecture, and what does that have to do with the cloud?",
+    "lookingFor": "Understands the architectural split and why cloud elasticity makes microservices particularly attractive.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a monolith as one large application deployed and scaled as a single unit",
+        "Explain microservices as breaking the application into smaller, independently deployable services",
+        "Connect it to the cloud by noting each microservice can be scaled independently based on its own demand"
+      ],
+      "modelAnswer": "A monolithic application is built and deployed as one large single unit, so even a small change means redeploying the whole thing, and scaling means scaling the entire application even if only one part of it is under heavy load. Microservices break the application into smaller, independent services that each handle one specific job and communicate over the network, so they can be developed, deployed and scaled separately. That connects directly to cloud computing because elasticity works far better at that finer-grained level, so if only the payment service is under heavy load during a sale, you can scale just that service up rather than the entire application. The trade-off is that microservices add real complexity in coordinating all those separate moving parts, which is part of why tools like container orchestration exist in the first place."
+    },
+    "commonMistakes": [
+      "Describing microservices as simply 'smaller code' with no mention of independent deployment or scaling",
+      "Not connecting the architecture choice to cloud elasticity at all",
+      "Presenting microservices as strictly better with no downside mentioned"
+    ],
+    "followUps": ["What kind of problems can arise when many microservices need to communicate with each other?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "DevOps and CI/CD",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["devops", "ci-cd"],
+    "question": "What do the terms continuous integration and continuous deployment mean, and why do they matter for cloud-based systems?",
+    "lookingFor": "Basic understanding of automated build, test and release pipelines, and how they support frequent, safer cloud releases.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain continuous integration as regularly merging and automatically testing code changes",
+        "Explain continuous deployment as automatically releasing changes that pass those tests",
+        "Connect it to the cloud by noting how it enables frequent, low-risk releases at scale"
+      ],
+      "modelAnswer": "Continuous integration means developers merge their code changes back into a shared codebase frequently, with automated tests running each time to catch problems early rather than letting them pile up. Continuous deployment takes that a step further by automatically releasing changes that pass those tests straight into production, without someone manually pushing a release each time. I think this matters especially in cloud systems because cloud infrastructure makes it easy to spin up test environments and roll changes out gradually across many servers, so a company can ship small, safer updates constantly rather than one huge risky release every few months. It's the kind of practice that turns 'deploying software' from a stressful once-a-quarter event into something almost routine."
+    },
+    "commonMistakes": [
+      "Confusing continuous integration with continuous deployment as the same step",
+      "Not mentioning automated testing as the key mechanism",
+      "Describing it with no connection to why cloud infrastructure specifically enables it"
+    ],
+    "followUps": ["What could go wrong if a company deploys automatically with no manual checks at all?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Redundancy and disaster recovery",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["redundancy", "reliability"],
+    "question": "Why do cloud providers build data centres in multiple, separate geographic regions?",
+    "lookingFor": "Understands redundancy against regional failure, plus a secondary benefit like reduced latency for global users.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that spreading data centres protects against a single location failing, like a power outage or natural disaster",
+        "Mention that data or services can be duplicated across regions for redundancy",
+        "Optionally note the secondary benefit of serving users closer to their location"
+      ],
+      "modelAnswer": "Cloud providers spread their data centres across multiple geographic regions mainly for redundancy, so that if one region suffers a problem like a power outage, a fire or even a natural disaster, services can keep running from another region rather than going down entirely. Companies can replicate their data and applications across regions so there's always a working backup somewhere else in the world, which matters enormously for something like a hospital system or a bank that genuinely cannot afford extended downtime. There's also a secondary benefit of having data centres closer to users in different parts of the world, which reduces the distance data has to travel and improves speed for them. I think it's a good example of how physical geography still matters enormously even in something as seemingly abstract as 'the cloud'."
+    },
+    "commonMistakes": [
+      "Only mentioning speed for users and missing the redundancy reason entirely",
+      "Assuming a single data centre is inherently reliable enough on its own",
+      "Vague answer with no mention of a real failure scenario"
+    ],
+    "followUps": ["What's the trade-off a company faces when deciding how many regions to replicate its data across?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Environmental impact of data centres",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["sustainability", "ethics"],
+    "question": "Cloud computing is sometimes criticised for its environmental footprint. What do you make of that concern?",
+    "lookingFor": "Balanced awareness of energy and cooling demands of data centres, plus some sense of what's being done about it.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real energy and cooling demands of large-scale data centres",
+        "Show awareness of efforts to mitigate it, like renewable-powered data centres or efficiency improvements",
+        "Offer a genuine, balanced view rather than dismissing or overstating the concern"
+      ],
+      "modelAnswer": "I think it's a fair concern, because data centres use enormous amounts of electricity, both for the computing itself and for cooling all that hardware, and that demand has only grown as more workloads, including a lot of AI, move to the cloud. At the same time, I've read that some large providers have made real commitments to running data centres on renewable energy and have found genuinely clever efficiency improvements, like using outside air or seawater for cooling instead of energy-hungry air conditioning. I don't think that fully cancels out the concern, because the sheer scale of demand keeps growing even as efficiency improves, so it feels more like an ongoing trade-off than a solved problem. It's actually one of the reasons I want to study this properly, because I'd like to understand the engineering behind making that trade-off better rather than just reading opinions about it."
+    },
+    "commonMistakes": [
+      "Dismissing the concern entirely as exaggerated with no evidence",
+      "Overstating the problem with no awareness of mitigation efforts",
+      "Giving a purely emotional answer with no technical grounding"
+    ],
+    "followUps": ["Do you think efficiency gains can keep pace with growing demand, or is that a losing race?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Edge computing",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["edge-computing", "concept"],
+    "question": "What's the difference between edge computing and cloud computing, and when might edge computing be preferable?",
+    "lookingFor": "Understands edge computing as processing data close to its source to reduce latency, contrasted with centralised cloud processing.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that cloud computing typically processes data in centralised, distant data centres",
+        "Explain edge computing processes data closer to where it's generated, reducing latency",
+        "Give a realistic scenario where that low latency genuinely matters"
+      ],
+      "modelAnswer": "Cloud computing generally means sending data to a centralised data centre, possibly far away, to be processed and then sending a response back. Edge computing instead processes data much closer to where it's actually generated, often on or near the device itself, which cuts out a lot of that round-trip time. That matters for something like a self-driving car reacting to an obstacle, where waiting even a fraction of a second for a distant server's response could be dangerous, so the immediate processing needs to happen locally at the edge. I think of edge and cloud as complementary rather than competing, since the edge handles the split-second decisions while the cloud is still useful for the heavier processing and long-term storage that isn't as time sensitive."
+    },
+    "commonMistakes": [
+      "Treating edge computing as a total replacement for the cloud rather than complementary",
+      "Not mentioning latency as the core motivation",
+      "Giving no concrete scenario where low latency is actually critical"
+    ],
+    "followUps": ["What kind of data might still be better sent back to the cloud even from an edge device?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Comparing cloud providers",
+    "program": "Cloud Computing",
+    "difficulty": "easy",
+    "tags": ["providers", "industry-awareness"],
+    "question": "Which cloud providers are you familiar with, and do you know of any meaningful differences between them?",
+    "lookingFor": "Basic industry awareness of major providers and at least one genuine point of comparison, not just brand names.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least two or three major providers accurately",
+        "Offer at least one genuine distinguishing detail rather than just listing names",
+        "Show honest awareness of the limits of your own knowledge here"
+      ],
+      "modelAnswer": "I'm most familiar with AWS, Microsoft Azure and Google Cloud, since those are the three that come up constantly in anything I've read or watched about the industry. From what I understand, AWS has the largest range of services and the biggest market share, Azure tends to be popular with companies already heavily invested in Microsoft's other enterprise tools, and Google Cloud is often talked about for its strength in data analytics and machine learning services. I'll admit my knowledge here is mostly from reading rather than hands-on comparison across all three, since I've only really built things on one platform myself. I'm looking forward to actually working across more than one during the course so I can form my own opinion rather than repeating what I've read."
+    },
+    "commonMistakes": [
+      "Naming only one provider with no wider industry awareness",
+      "Listing names with no distinguishing detail between them",
+      "Overclaiming deep hands-on experience across providers they haven't actually used"
+    ],
+    "followUps": ["Why do you think a company might deliberately use more than one provider at once?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud and AI intersection",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["ai", "future-trends"],
+    "question": "How do you think the growth of AI is changing what's expected of cloud infrastructure?",
+    "lookingFor": "A thoughtful view connecting AI's computational demands to cloud infrastructure design, not just a surface-level buzzword answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that training and running large AI models requires huge, specialised computing resources most companies can't own outright",
+        "Explain how this drives demand for specialised hardware like GPUs available on-demand from cloud providers",
+        "Offer a genuine view or question this raises, not just a statement of fact"
+      ],
+      "modelAnswer": "Training and running large AI models needs a huge amount of specialised computing power, usually GPUs, which is far more than most companies could ever justify buying and maintaining themselves. That's pushed cloud providers to build out massive fleets of specialised hardware that customers can rent by the hour, which is really the same pay-for-what-you-use idea that's always been core to cloud computing, just applied to a much more demanding kind of workload. It's also pushing providers to think harder about efficiency and cooling at a scale I don't think anyone quite anticipated a few years ago. What I find genuinely interesting is that AI has become almost the main driver of cloud infrastructure investment now, which feels like a shift from cloud being mostly about web applications to being about compute-heavy workloads generally."
+    },
+    "commonMistakes": [
+      "Using 'AI' and 'cloud' together as buzzwords with no real connection explained",
+      "Not mentioning the specific hardware demands driving the change",
+      "Giving no personal view or question, just a flat statement"
+    ],
+    "followUps": ["Do you think smaller companies are being priced out of building serious AI products because of this?"]
+  },
+  {
+    "id": "prog-cloud-computing-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Reflecting on the learning journey",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["self-reflection", "learning"],
+    "question": "What's the hardest thing you've found trying to learn about cloud computing on your own so far?",
+    "lookingFor": "Honest self-reflection about a genuine difficulty, showing persistence and awareness of what formal study will add.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine, specific difficulty rather than a vague or humble-brag answer",
+        "Explain why it was hard, showing you actually grappled with it",
+        "Connect it to why formal study will help close that gap"
+      ],
+      "modelAnswer": "Networking fundamentals were genuinely difficult for me, because most tutorials assume you already understand things like subnets and routing before they explain how a cloud network actually connects everything together. I found myself able to follow step-by-step guides to set things up without truly understanding why each step worked, which felt hollow once something broke and I had no way to diagnose it. I ended up working through an old networking textbook chapter by chapter just to get the basics solid enough to actually understand what I was configuring. That experience is a big part of why I want proper structured teaching rather than continuing to patch gaps myself, because I know there's a lot of foundational theory I'm still missing underneath the parts I've taught myself."
+    },
+    "commonMistakes": [
+      "Naming a 'weakness' that's actually a disguised strength",
+      "Being too vague to sound genuine",
+      "Not connecting the difficulty to why the course would actually help"
+    ],
+    "followUps": ["What resource or method finally helped that concept click for you?"]
+  }
+]

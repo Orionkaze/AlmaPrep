@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-biology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Natural selection vs genetic drift",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["evolution", "genetics", "mechanism"],
+    "question": "What's the difference between natural selection and genetic drift as mechanisms of evolution, and when does drift matter more?",
+    "lookingFor": "Clear grasp that selection is non-random and fitness-driven while drift is random chance, plus awareness that drift dominates in small populations.",
+    "idealAnswer": {
+      "bullets": [
+        "Selection changes allele frequencies because certain traits improve survival or reproduction",
+        "Drift changes allele frequencies through random sampling, with no relation to fitness",
+        "Drift has a much bigger relative effect in small populations, like after a bottleneck"
+      ],
+      "modelAnswer": "Natural selection changes how common a gene variant is because it actually affects survival or reproduction, so the change has a direction. Genetic drift is just random luck in which individuals happen to reproduce, so it can push a population any direction regardless of whether the allele helps or hurts. The key thing I find interesting is that drift matters far more in small populations, like an island population after a founder event, because random sampling has a much bigger relative effect when there are fewer individuals to average out. That's actually why conservation biologists worry about genetic diversity in small endangered populations even when selection pressure hasn't changed."
+    },
+    "commonMistakes": [
+      "Saying drift only happens in bacteria or 'simple' organisms",
+      "Describing drift as a weaker version of selection rather than a distinct mechanism",
+      "Failing to mention population size as the key variable"
+    ],
+    "followUps": ["Can you give an example of a population where drift would dominate?"]
+  },
+  {
+    "id": "prog-biology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Exceptions to the central dogma",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["molecular-biology", "genetics", "central-dogma"],
+    "question": "The central dogma says DNA makes RNA makes protein. What are some real biological exceptions to that flow?",
+    "lookingFor": "Knowledge that reverse transcription and prions break the simple one-way flow, with understanding of why these matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Reverse transcriptase lets RNA viruses like retroviruses write RNA back into DNA",
+        "Prions are proteins that template misfolding in other proteins without any nucleic acid step at all",
+        "RNA can also directly regulate other RNA or genes, not just get translated into protein"
+      ],
+      "modelAnswer": "Retroviruses like HIV break the simple direction of the dogma because they carry reverse transcriptase, which copies their RNA genome back into DNA that then integrates into the host genome. Prions are an even stranger case, because a misfolded protein can convert normal proteins into the same misfolded shape with no DNA or RNA step involved at all, which is why diseases like Creutzfeldt-Jakob don't behave like a normal infection. I also think about regulatory RNAs like microRNAs, which never get translated into protein but still control gene expression directly. It's a good reminder that the central dogma is a simplification that was useful for teaching the general flow, not an absolute law."
+    },
+    "commonMistakes": [
+      "Only naming reverse transcription and missing prions",
+      "Confusing prions with viruses",
+      "Treating the central dogma as a strict law with no acknowledgment it's a simplification"
+    ],
+    "followUps": ["Why did Crick's original central dogma still hold up reasonably well despite these exceptions?"]
+  },
+  {
+    "id": "prog-biology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme inhibition types",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["biochemistry", "enzymes", "mechanism"],
+    "question": "Explain the difference between competitive and non-competitive enzyme inhibition, and how you'd tell them apart experimentally.",
+    "lookingFor": "Understanding of binding site differences and how each affects Km and Vmax, with a sense of how kinetics data reveals the mechanism.",
+    "idealAnswer": {
+      "bullets": [
+        "Competitive inhibitors bind the active site and compete with substrate, so raising substrate concentration can outcompete them",
+        "Non-competitive inhibitors bind elsewhere and change the enzyme's shape, so more substrate can't rescue activity",
+        "On a kinetics plot, competitive inhibition raises apparent Km but leaves Vmax unchanged, while non-competitive inhibition lowers Vmax but leaves Km unchanged"
+      ],
+      "modelAnswer": "A competitive inhibitor looks enough like the substrate that it fits into the active site, so it's genuinely competing for the same spot, which means if you flood the reaction with enough real substrate you can still reach the same maximum rate, just at a higher effective Km. A non-competitive inhibitor binds somewhere else on the enzyme entirely and distorts its shape, so it doesn't matter how much substrate you add, the enzyme just can't work at full efficiency anymore, which shows up as a lower Vmax with Km unchanged. I always found it satisfying that you can actually diagnose which type you're dealing with just by running a Lineweaver-Burk plot and seeing whether the lines share an intercept on the Km axis or the Vmax axis."
+    },
+    "commonMistakes": [
+      "Mixing up which parameter (Km or Vmax) each type of inhibition changes",
+      "Assuming all inhibitors bind the active site",
+      "Not mentioning that substrate concentration can overcome competitive inhibition"
+    ],
+    "followUps": ["What would allosteric inhibition look like on the same kind of plot?"]
+  },
+  {
+    "id": "prog-biology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "CRISPR-Cas9 mechanism",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["genetics", "biotechnology", "crispr"],
+    "question": "Can you explain how CRISPR-Cas9 actually edits DNA, and what off-target effects are?",
+    "lookingFor": "A working technical understanding of guide RNA, the Cas9 cut, and repair pathways, plus awareness of the accuracy limitations that matter clinically.",
+    "idealAnswer": {
+      "bullets": [
+        "A guide RNA directs Cas9 to a matching DNA sequence next to a PAM site, where it makes a double-strand cut",
+        "The cell's own repair machinery, either error-prone NHEJ or precise homology-directed repair, then fixes the cut and that's where the edit happens",
+        "Off-target effects happen when the guide RNA tolerates near-matches elsewhere in the genome and Cas9 cuts unintended sites"
+      ],
+      "modelAnswer": "CRISPR-Cas9 works by using a short guide RNA that's complementary to the DNA sequence you want to edit, which leads the Cas9 protein to that spot, where it recognizes a short PAM sequence and makes a double-strand break right there. The cell then has to repair that break, and you can either let it patch itself up roughly through non-homologous end joining, which usually disrupts the gene, or supply a DNA template so it repairs itself precisely through homology-directed repair, which is how you insert a specific new sequence. The catch is that guide RNAs aren't perfectly specific, so Cas9 can sometimes cut similar-looking sequences elsewhere in the genome, and those off-target cuts are exactly why clinical use of CRISPR has to be so rigorously screened before it's considered safe in humans."
+    },
+    "commonMistakes": [
+      "Describing CRISPR vaguely as 'gene editing scissors' with no mechanism",
+      "Confusing NHEJ and homology-directed repair",
+      "Not connecting off-target effects to why clinical trials move cautiously"
+    ],
+    "followUps": ["Why is HDR generally less efficient than NHEJ in most cell types?"]
+  },
+  {
+    "id": "prog-biology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Osmoregulation under stress",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["physiology", "homeostasis", "osmosis"],
+    "question": "If a freshwater fish were suddenly placed in seawater, what would happen to it physiologically and why?",
+    "lookingFor": "Application of osmosis and homeostasis principles to a concrete scenario, not just definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the osmotic gradient direction change from freshwater to saltwater",
+        "Describe water loss from cells and the physiological stress that causes",
+        "Note that freshwater fish are adapted to actively take in salts, not excrete them, so the mismatch is dangerous"
+      ],
+      "modelAnswer": "A freshwater fish is adapted to a world where the water around it is less salty than its own body, so its gills are constantly working to actively pull salt in and its kidneys produce lots of dilute urine to get rid of the water that keeps flowing into it by osmosis. Drop it into seawater and that gradient reverses completely, so now water is being pulled out of its cells and across its gills into the surrounding saltier water, essentially dehydrating it from the inside. Because its whole physiology, its gill ion pumps and its kidney function, are built for the opposite problem, it can't quickly switch to excreting excess salt the way a marine fish does, and it would rapidly become dangerously dehydrated. It's a nice illustration of how adaptation is directional and not automatically reversible."
+    },
+    "commonMistakes": [
+      "Getting the direction of water movement backwards",
+      "Ignoring the fish's existing adaptations and treating it like a blank slate",
+      "Vague answer that doesn't mention gills or kidney function specifically"
+    ],
+    "followUps": ["How do marine fish solve the opposite problem?"]
+  },
+  {
+    "id": "prog-biology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Antibiotic resistance evolution",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["microbiology", "evolution", "public-health"],
+    "question": "Walk me through how bacterial populations evolve antibiotic resistance, and why finishing a full course of antibiotics matters.",
+    "lookingFor": "Correct evolutionary reasoning (selection on standing variation, not antibiotics causing mutations) plus a public-health implication.",
+    "idealAnswer": {
+      "bullets": [
+        "Resistance mutations already exist at low frequency before exposure, the antibiotic doesn't cause them",
+        "Antibiotic exposure selects for the resistant minority by killing susceptible bacteria, so resistant strains become dominant",
+        "Stopping treatment early leaves partially-suppressed, more-resistant survivors to rebound and spread"
+      ],
+      "modelAnswer": "The important thing to get right is that antibiotics don't create resistance mutations, they select for ones that already exist by chance in a small fraction of the bacterial population. When you take an antibiotic, it kills off the susceptible majority, and that removes the competition for the resistant minority, letting them multiply into a much larger share of the population than before. If you stop the course early, you tend to have killed the most vulnerable bacteria but left behind the ones with partial resistance, which is exactly the population you don't want to give room to rebound and spread, including to other people. It's really just natural selection happening on a timescale of days inside a human body, which is what makes it such a clean example to think about."
+    },
+    "commonMistakes": [
+      "Saying the antibiotic 'causes' or 'creates' the resistance mutation directly",
+      "Not connecting the full-course advice to selection pressure",
+      "Confusing resistance in the bacteria with immunity in the human host"
+    ],
+    "followUps": ["What role does horizontal gene transfer play in spreading resistance between species?"]
+  },
+  {
+    "id": "prog-biology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Meiosis and genetic diversity",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["genetics", "cell-biology", "meiosis"],
+    "question": "Why does meiosis, rather than mitosis, generate genetic diversity, and why does that diversity matter evolutionarily?",
+    "lookingFor": "Correct mechanistic detail (crossing over, independent assortment) linked to the evolutionary payoff of variation.",
+    "idealAnswer": {
+      "bullets": [
+        "Crossing over during prophase I shuffles alleles between homologous chromosomes",
+        "Independent assortment randomizes which maternal or paternal chromosome ends up in each gamete",
+        "This variation is the raw material natural selection acts on, so it matters for populations adapting to change"
+      ],
+      "modelAnswer": "Mitosis is built to produce exact copies for growth and repair, but meiosis is doing something different, it's building gametes with new combinations. During prophase I, homologous chromosomes physically swap segments through crossing over, so a chromosome you pass on isn't purely your mother's or your father's anymore, it's a new mosaic. Then independent assortment randomizes which chromosome from each pair ends up in a given gamete, so the number of possible combinations explodes even before you consider crossing over. That variation matters because a population with no genetic diversity has nothing for natural selection to act on if the environment changes, so meiosis is really what keeps evolution's toolbox stocked."
+    },
+    "commonMistakes": [
+      "Only mentioning one mechanism (crossing over or assortment) and missing the other",
+      "Describing mitosis as also producing diversity",
+      "Not linking the mechanism back to why diversity matters evolutionarily"
+    ],
+    "followUps": ["What happens if crossing over goes wrong?"]
+  },
+  {
+    "id": "prog-biology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Innate vs adaptive immunity",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["immunology", "physiology", "disease"],
+    "question": "What's the difference between innate and adaptive immunity, and how does a cytokine storm relate to that system going wrong?",
+    "lookingFor": "Clear distinction between the two arms of immunity, plus applied understanding of an immune response becoming harmful.",
+    "idealAnswer": {
+      "bullets": [
+        "Innate immunity is fast, non-specific, and doesn't improve with repeated exposure",
+        "Adaptive immunity is slower to activate but specific and creates immunological memory",
+        "A cytokine storm is an overactive, poorly regulated innate response where signaling molecules amplify each other and damage the body's own tissue"
+      ],
+      "modelAnswer": "Innate immunity is the body's first responder, things like macrophages and inflammation, and it reacts fast but the same way every time regardless of what pathogen it's facing. Adaptive immunity is slower to get going because it has to select and expand specific T cells and B cells that recognize the particular pathogen, but it's precise and it leaves behind memory cells so the next exposure is much faster. A cytokine storm happens when the innate immune response spirals, immune cells release signaling molecules called cytokines that recruit more immune cells, which release more cytokines, and that feedback loop can end up damaging healthy tissue and organs faster than the actual pathogen would. It's a good example of how the immune system's strength, rapid amplification, is also exactly what makes it dangerous when the brakes fail."
+    },
+    "commonMistakes": [
+      "Saying innate immunity has memory",
+      "Describing a cytokine storm as simply 'too much immune response' without explaining the feedback loop",
+      "Confusing cytokines with antibodies"
+    ],
+    "followUps": ["Why might a young, healthy immune system sometimes cause worse outcomes in a severe infection than an older one?"]
+  },
+  {
+    "id": "prog-biology-b-009",
+    "category": "Ethics & Situational",
+    "subtopic": "Human germline gene editing",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["ethics", "genetics", "crispr"],
+    "question": "In 2018 a scientist edited the genomes of twin embryos to try to make them HIV-resistant, and they were born. Was that ethically justified, and how should we think about germline editing generally?",
+    "lookingFor": "Structured ethical reasoning weighing potential benefit against unconsented risk to future generations, not a snap verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the case involved real risks, unproven safety, unclear consent from future generations, and a low-risk alternative already existed",
+        "Distinguish germline editing, which is heritable, from somatic editing, which affects only one patient",
+        "Reach a reasoned position while noting germline editing isn't inherently wrong forever, the concern is about safety and governance right now"
+      ],
+      "modelAnswer": "I think that specific case was hard to justify, because the risk of HIV transmission from father to child could already be managed safely with existing methods like sperm washing, so the embryos were exposed to the real risks of an unproven, permanent genetic change for a benefit that could have been achieved more safely another way. What makes germline editing different from editing an adult patient's cells is that the changes get passed down to every future generation without their consent, and we genuinely don't yet understand the long-term or off-target effects well enough to make that call responsibly. I don't think germline editing is wrong in principle forever, if it were proven safe and used for a serious disease with no alternative, the calculus might be different, but right now the technology and the oversight aren't mature enough for that decision to be made unilaterally by one scientist."
+    },
+    "commonMistakes": [
+      "Giving a snap yes/no with no reasoning about risk versus alternative options",
+      "Not distinguishing germline from somatic editing",
+      "Treating all future germline editing as permanently unethical rather than a question of current safety and governance"
+    ],
+    "followUps": ["Would your answer change if it were editing for a fatal disease with no existing treatment?"]
+  },
+  {
+    "id": "prog-biology-b-010",
+    "category": "Ethics & Situational",
+    "subtopic": "Animal testing trade-offs",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["ethics", "research", "animal-testing"],
+    "question": "Do you think animal testing in biomedical research is ethically justified? How would you think about where to draw the line?",
+    "lookingFor": "Genuine engagement with the tension between animal welfare and human medical benefit, not a one-sided dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the real medical benefit animal testing has produced historically",
+        "Take animal suffering seriously rather than dismissing it",
+        "Propose a reasoned line, such as necessity, minimizing harm, and pursuing alternatives like organoids where possible"
+      ],
+      "modelAnswer": "I think it's hard to deny that animal testing has been genuinely necessary for a huge amount of medical progress, things like insulin and most vaccines went through animal trials before they could safely reach humans. But I don't think that means it's a blank check, I think the ethical line should be about necessity and proportionality, using the minimum number of animals, choosing less sentient organisms where the science allows it, and applying real welfare standards rather than treating suffering as irrelevant just because the goal is important. What I find genuinely exciting is that alternatives like organ-on-a-chip systems and computational models are getting good enough to replace some animal testing entirely, and I think the ethical goal should be shrinking that necessity over time rather than just debating where the current line sits."
+    },
+    "commonMistakes": [
+      "Giving a purely utilitarian answer with no acknowledgment of animal welfare",
+      "Rejecting animal testing outright with no engagement with the medical trade-off",
+      "Not mentioning any concrete alternative or safeguard"
+    ],
+    "followUps": ["What would change your mind about a specific type of animal experiment?"]
+  },
+  {
+    "id": "prog-biology-b-011",
+    "category": "Ethics & Situational",
+    "subtopic": "De-extinction",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["ethics", "conservation", "genetics"],
+    "question": "A company is working on using gene editing to bring back a version of the woolly mammoth. Is that a good use of biotechnology?",
+    "lookingFor": "Balanced reasoning about ecological, ethical, and resource-allocation concerns, not just enthusiasm or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that it wouldn't be a true mammoth but an elephant modified with mammoth genes, and question what problem it actually solves",
+        "Raise the ecological risk of reintroducing an engineered organism into a changed environment",
+        "Weigh the opportunity cost against using the same resources and technology on current endangered species"
+      ],
+      "modelAnswer": "My honest first reaction is that what would actually be created is a cold-adapted elephant with some mammoth genes spliced in, not a real resurrected mammoth, so I'd want to be clear-eyed about what's actually being claimed. Ecologically I'd worry that we don't fully understand what role a mammoth-like animal would play in a tundra ecosystem that's had ten thousand years to change without it, so reintroducing something like that isn't risk-free even if the science works. What I keep coming back to is opportunity cost, the same gene-editing expertise and funding could go toward increasing genetic diversity in small populations of species that are endangered right now, which feels like a more defensible use of the technology even if it's less headline-grabbing."
+    },
+    "commonMistakes": [
+      "Treating it as a purely technical achievement with no ecological or ethical dimension",
+      "Assuming the result would be an exact mammoth rather than a hybrid",
+      "Not considering opportunity cost against current conservation needs"
+    ],
+    "followUps": ["Would your view change if the goal were restoring a lost ecosystem function, like grazing patterns?"]
+  },
+  {
+    "id": "prog-biology-b-012",
+    "category": "Ethics & Situational",
+    "subtopic": "Allocating scarce organs",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["ethics", "physiology", "situational"],
+    "question": "There's one donor liver available and two patients who need it, one is a 19-year-old with no other health issues, the other is a 55-year-old with a family. How should that decision be made, and what does it tell you about how medicine handles scarcity?",
+    "lookingFor": "Structured reasoning about allocation criteria (medical urgency, likely benefit, fairness) rather than a purely emotional pick, and awareness that real systems try to remove individual bias.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge this is emotionally difficult and resist picking based on gut feeling alone",
+        "Reference real allocation principles like medical urgency and expected years of benefit rather than social worth",
+        "Recognize why real transplant systems use standardized scoring rather than leaving it to an individual clinician's judgment"
+      ],
+      "modelAnswer": "My instinct is that this shouldn't come down to who seems more sympathetic, because as soon as you start weighing whose life matters more based on family situation or age alone, you're making a judgment about social worth that medicine shouldn't be in the business of making. In practice these decisions use structured criteria like how urgently each patient needs the transplant, how well matched the organ is, and how many additional years of healthy life the transplant is likely to provide, which is why real systems use scoring models like MELD rather than one doctor deciding on the spot. I think that's actually the right instinct, taking an impossibly hard call and making it as consistent and defensible as possible rather than leaving it to whoever happens to be in the room that day."
+    },
+    "commonMistakes": [
+      "Picking based on 'who deserves it more' using social judgments",
+      "Giving no criteria at all, just an emotional gut call",
+      "Not knowing that real systems use standardized scoring rather than case-by-case doctor discretion"
+    ],
+    "followUps": ["Should age ever be a factor in that scoring, and if so, why?"]
+  },
+  {
+    "id": "prog-biology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "mRNA vaccine technology",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["current-development", "immunology", "biotechnology"],
+    "question": "How do mRNA vaccines actually work, and why were they developed so much faster than traditional vaccines?",
+    "lookingFor": "Correct mechanistic understanding plus an accurate account of why the platform enabled speed, not just 'science moved fast'.",
+    "idealAnswer": {
+      "bullets": [
+        "mRNA carries instructions for host cells to briefly produce a viral protein, which the immune system then learns to recognize",
+        "There's no live or inactivated virus involved, which removes several traditional manufacturing and safety steps",
+        "The platform itself was in development for years before COVID, and swapping in a new sequence is much faster than growing virus in eggs or cell culture"
+      ],
+      "modelAnswer": "An mRNA vaccine delivers a set of instructions, wrapped in a lipid nanoparticle so it can get into cells, that tells the cell's own ribosomes to briefly manufacture a harmless piece of the virus, usually the spike protein for coronaviruses. The immune system encounters that protein, mounts a response, and builds memory cells, so if the real virus ever shows up the body already recognizes the target, all without ever containing actual virus. The speed advantage is mostly that the platform, the lipid delivery system and manufacturing process, had already been worked on for years for other diseases, so once the genetic sequence of the new virus was published, researchers essentially had to swap in a new sequence rather than build an entirely new production process from scratch, which is very different from growing virus in chicken eggs the traditional way."
+    },
+    "commonMistakes": [
+      "Claiming mRNA vaccines alter a person's DNA",
+      "Saying the vaccine contains a weakened or dead virus",
+      "Attributing the speed purely to 'skipping safety testing' rather than platform readiness"
+    ],
+    "followUps": ["Why can't mRNA from the vaccine integrate into a person's genome?"]
+  },
+  {
+    "id": "prog-biology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "AlphaFold and protein structure prediction",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["current-development", "biochemistry", "computational-biology"],
+    "question": "AlphaFold can now predict most protein structures from their amino acid sequence alone. Why was that considered such a major breakthrough, and what does it not solve?",
+    "lookingFor": "Understanding of the protein folding problem's difficulty and importance, plus honest awareness of the tool's limits.",
+    "idealAnswer": {
+      "bullets": [
+        "The protein folding problem, predicting 3D structure from sequence, was a decades-old unsolved challenge because the number of possible foldings is astronomically large",
+        "Structure determines function, so knowing structure accelerates drug design and understanding of disease mechanisms",
+        "It predicts a static best-guess structure, but doesn't fully capture protein dynamics, interactions, or how mutations behave in a living cellular context"
+      ],
+      "modelAnswer": "Before AlphaFold, figuring out a protein's 3D shape usually meant slow, expensive lab techniques like X-ray crystallography, and predicting it computationally from sequence alone had been an open problem for decades because a protein chain has an almost incomprehensible number of ways it could theoretically fold. What made it such a big deal is that structure is so tightly linked to function, if you know the shape you can start reasoning about how a drug molecule might bind to it or why a mutation causes disease, so AlphaFold effectively removed a huge bottleneck for structural biology overnight. What it doesn't fully solve is that it predicts a single best static structure, whereas real proteins are dynamic, they flex, they interact with other molecules, and their behavior can depend on the cellular environment in ways a static prediction doesn't capture, so it's an incredible starting point rather than a complete replacement for experimental biology."
+    },
+    "commonMistakes": [
+      "Treating AlphaFold as if it has eliminated the need for wet-lab structural biology",
+      "Not explaining why structure prediction was hard in the first place",
+      "Vague enthusiasm without specifying what problem it actually solves"
+    ],
+    "followUps": ["Why might AlphaFold still struggle with intrinsically disordered proteins?"]
+  },
+  {
+    "id": "prog-biology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene drives and mosquito control",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["current-development", "genetics", "ecology"],
+    "question": "Scientists have proposed using CRISPR-based gene drives to wipe out malaria-carrying mosquito populations. How does a gene drive work, and what's the biggest risk with releasing one?",
+    "lookingFor": "Correct mechanism of super-Mendelian inheritance plus genuine ecological reasoning about irreversibility and off-target ecosystem effects.",
+    "idealAnswer": {
+      "bullets": [
+        "A gene drive uses CRISPR to copy itself onto the paired chromosome, so it's inherited by nearly all offspring instead of the normal fifty percent",
+        "That lets an engineered trait, like infertility, spread through a whole population far faster than normal inheritance would allow",
+        "The core risk is that a gene drive released into the wild is very hard to reverse or contain, and it could spread beyond its intended range or trigger unforeseen ecological effects"
+      ],
+      "modelAnswer": "A gene drive gets around normal Mendelian inheritance by using CRISPR machinery to copy itself into the other chromosome in every generation, so instead of a trait being passed to about half of offspring it gets passed to nearly all of them, which lets it spread through a wild population extremely fast even if it doesn't help the individual survive. For mosquitoes the idea is usually to spread a fertility-reducing gene to crash the population of the species that carries malaria, which sounds appealing given how many lives malaria takes every year. What worries me is that once you release something like that into the wild, you can't really call it back, it can spread across borders regardless of who authorized the release, and we don't have great certainty about the knock-on effects of removing a species from an ecosystem, since mosquitoes are food for other species too. It's the kind of technology where the potential benefit is huge but so is the need for international governance before anyone releases one."
+    },
+    "commonMistakes": [
+      "Describing gene drives as simply 'genetically modified mosquitoes' without explaining the inheritance mechanism",
+      "Ignoring the irreversibility and cross-border spread risk",
+      "Assuming removing mosquitoes has no ecological consequence"
+    ],
+    "followUps": ["How might researchers build in a way to reverse or limit a gene drive's spread?"]
+  },
+  {
+    "id": "prog-biology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Cultivated meat",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["current-development", "biotechnology", "sustainability"],
+    "question": "Lab-grown or cultivated meat is now being sold commercially in a few countries. What's the biology behind how it's made, and what's the biggest barrier to it scaling up?",
+    "lookingFor": "Understanding of cell culture and tissue growth basics, plus a realistic view of the practical scaling challenge rather than pure hype.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that muscle stem cells are taken from an animal and grown in a nutrient-rich bioreactor to multiply and differentiate into muscle tissue",
+        "Mention scaffolding or structure needed to get texture beyond ground-meat consistency",
+        "Identify cost and bioreactor scale as the real bottleneck, particularly the growth media"
+      ],
+      "modelAnswer": "The basic idea is you take a small sample of muscle stem cells from an animal, usually through a biopsy that doesn't need to kill the animal, and grow them in a bioreactor with a nutrient broth that supplies the amino acids, sugars, and growth factors the cells need to divide and eventually differentiate into muscle and fat cells. Getting something that's just cell mass is one thing, but getting it to actually have the texture of a steak rather than something closer to ground meat requires a scaffold structure for the cells to grow onto in three dimensions, which is still a harder engineering problem. The biggest barrier right now is genuinely cost, the growth media, especially the growth factors, are expensive to produce at scale, and getting bioreactors big enough to produce meat at a price competitive with traditional farming is still an unsolved manufacturing challenge, not just a biology one."
+    },
+    "commonMistakes": [
+      "Describing it as 'fake meat' without understanding it's real animal cells grown outside the body",
+      "Not mentioning the scaffold/texture challenge",
+      "Assuming the barrier is regulatory approval rather than cost and scale"
+    ],
+    "followUps": ["Why might the growth media itself be the most expensive part of the process?"]
+  },
+  {
+    "id": "prog-biology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Xenotransplantation",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["current-development", "immunology", "genetics"],
+    "question": "Surgeons have recently transplanted gene-edited pig organs into human patients. Why does the pig need to be genetically modified at all, and what's the main biological obstacle?",
+    "lookingFor": "Understanding of immune rejection mechanisms and the specific genetic edits used to reduce them, not just 'because organs don't match'.",
+    "idealAnswer": {
+      "bullets": [
+        "Pig organs carry sugar molecules and viral sequences the human immune system recognizes as foreign, triggering rapid rejection",
+        "Gene editing removes or alters genes like the one producing alpha-gal sugar, and can inactivate endogenous retroviruses",
+        "Even with editing, long-term immune rejection and unknown cross-species risks remain the core obstacle"
+      ],
+      "modelAnswer": "The core problem is that pig cells display a sugar molecule on their surface, called alpha-gal, that humans don't have and that the human immune system reacts to almost immediately, which used to cause hyperacute rejection within minutes of a transplant. The gene editing knocks out the gene responsible for that sugar and adds in some human genes to make the organ look more immunologically 'human', and in some versions also inactivates viral sequences baked into the pig genome that could theoretically pose an infection risk. Even with all of that editing, the organs still face longer-term immune rejection because there are more differences than just that one sugar, so the current obstacle isn't really a single fix, it's that human and pig biology diverge in enough small ways that the immune system usually eventually notices, which is why current trials are still measuring survival in weeks to months rather than years."
+    },
+    "commonMistakes": [
+      "Saying pig organs are simply 'too different in size' rather than addressing immune rejection",
+      "Not knowing what specific gene or molecule is targeted",
+      "Overstating current success as a solved, long-term problem"
+    ],
+    "followUps": ["What role do endogenous retroviruses play in the safety concerns here?"]
+  },
+  {
+    "id": "prog-biology-b-018",
+    "category": "Hypothetical / Applied",
+    "subtopic": "Designing a controlled experiment",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["experimental-design", "scientific-method", "hypothetical"],
+    "question": "A farmer claims a new fertilizer doubles crop yield. How would you design an experiment to actually test that claim?",
+    "lookingFor": "Sound experimental design thinking: controls, replication, randomization, and a clear measurable outcome, applied to a real scenario.",
+    "idealAnswer": {
+      "bullets": [
+        "Set up a control group with no fertilizer or the standard fertilizer, alongside the test group, keeping everything else constant",
+        "Use enough replicate plots and randomize their placement to account for variation in soil, light, and water",
+        "Define yield as a clear measurable outcome and consider running the trial across more than one season"
+      ],
+      "modelAnswer": "I'd start by making sure I have a proper control, plots grown under the current standard practice, right alongside plots getting the new fertilizer, with everything else, watering, sunlight, soil type, kept as identical as I can manage. I'd want enough replicate plots of each, not just one of each, because a single plot could just happen to have better soil, and I'd randomize which plots get which treatment so any hidden variation in the field doesn't systematically favor one group. Then I'd define yield precisely, probably total harvested mass per plot, and ideally run the trial across more than one growing season, because a single season could just have had unusually good or bad weather that has nothing to do with the fertilizer. Only then would I feel confident saying whether the claim actually holds up statistically rather than just looking like it worked in one lucky field."
+    },
+    "commonMistakes": [
+      "Testing on a single plot with no replication or control",
+      "Not addressing confounding variables like soil quality or watering",
+      "Accepting a one-season result as conclusive"
+    ],
+    "followUps": ["How would you determine if the yield difference you found is statistically significant rather than random chance?"]
+  },
+  {
+    "id": "prog-biology-b-019",
+    "category": "Hypothetical / Applied",
+    "subtopic": "Novel pathogen response",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "microbiology", "public-health"],
+    "question": "Imagine a new respiratory virus emerges with a two week incubation period and no symptoms during that time. As a biologist advising public health officials, what would worry you most, and what would you want to know first?",
+    "lookingFor": "Applied epidemiological reasoning about asymptomatic spread, and a prioritized list of what data actually matters early in an outbreak.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that a long asymptomatic incubation period makes contact tracing and containment much harder because carriers don't know to isolate",
+        "Prioritize finding the R0 or transmission rate and whether people are infectious before symptoms appear, not just after",
+        "Mention the need for a reliable diagnostic test that can detect infection before symptoms, since symptom-based screening would fail"
+      ],
+      "modelAnswer": "What would worry me most is that a long, silent incubation period means people can be spreading the virus for two weeks without any signal to isolate, which makes symptom-based screening at borders or workplaces basically useless and makes contact tracing a nightmare because so many contacts happen before anyone knows they're infected. The first thing I'd want to know is whether people are actually infectious during that asymptomatic window or only once symptoms start, because those are very different outbreak dynamics, and I'd want an estimate of the basic reproduction number to understand how fast this could spread. After that, I'd push hard for a fast, reliable diagnostic test that doesn't depend on symptoms, because if testing is the only way to catch it early, testing capacity becomes the actual bottleneck for containment, not clinical judgment."
+    },
+    "commonMistakes": [
+      "Jumping straight to vaccine development without addressing early containment questions",
+      "Not distinguishing incubation period from infectiousness window",
+      "Giving a vague 'we need more research' answer with no specific priorities"
+    ],
+    "followUps": ["How would your priorities change if you learned the virus was also infectious through surfaces?"]
+  },
+  {
+    "id": "prog-biology-b-020",
+    "category": "Hypothetical / Applied",
+    "subtopic": "Invasive species scenario",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "ecology", "conservation"],
+    "question": "A non-native fish species has just been discovered in a lake with no natural predators there. Walk me through how you'd think about whether and how to intervene.",
+    "lookingFor": "Structured ecological reasoning about invasive species risk assessment, not a snap 'remove it immediately' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Assess how the species reproduces, what it eats, and how fast its population could grow before deciding urgency",
+        "Weigh intervention options, physical removal, targeted fishing, or in extreme cases biocides, against their own ecological side effects",
+        "Recognize that early detection while numbers are small gives the best chance of full eradication versus long-term management"
+      ],
+      "modelAnswer": "Before deciding what to do, I'd want to understand the biology of the species itself, how quickly it reproduces, what it eats, and whether it directly competes with or preys on native species, because an omnivorous fast breeder with no natural check is a very different risk than a slow-reproducing species that might stay in low numbers. If it's caught early while the population is still small, that's actually the best moment to intervene, because eradication becomes far harder and far more expensive once a species is established, so I'd lean toward acting quickly with something targeted like netting or electrofishing rather than waiting to see if it becomes a problem. I'd also want to be honest that any intervention has its own ecological cost, so it shouldn't be automatic, if the species turns out to have limited impact on the native ecosystem, the disruption of an aggressive removal effort might not be worth it either."
+    },
+    "commonMistakes": [
+      "Recommending immediate chemical eradication without weighing ecological side effects",
+      "Assuming all non-native species are automatically catastrophic",
+      "Not mentioning the importance of early detection and population size at time of discovery"
+    ],
+    "followUps": ["What data would tell you it's already too late for full eradication?"]
+  },
+  {
+    "id": "prog-biology-b-021",
+    "category": "Hypothetical / Applied",
+    "subtopic": "Choosing one gene to edit",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "genetics", "ethics"],
+    "question": "If you could safely edit one human gene at the population level to eliminate a disease, which would you choose and why, and what would give you pause?",
+    "lookingFor": "Genuine reasoning about disease burden, unintended pleiotropic effects, and epistemic humility, not just naming a disease.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a specific, well-understood single-gene condition and justify it by disease burden or severity",
+        "Show awareness that genes are often pleiotropic, meaning editing one trait can have unintended effects on others",
+        "Express genuine caution about population-level, irreversible intervention even for a good cause"
+      ],
+      "modelAnswer": "I'd think hard about something like the CFTR mutation behind cystic fibrosis, because it's a single well-characterized gene, the disease burden is severe and lifelong, and unlike more genetically complex conditions the causal link is about as clean as it gets in human genetics. What gives me pause is that even single genes are rarely doing just one job, the sickle cell mutation is the classic example, because carrying one copy actually protects against malaria, so 'eliminating' a mutation population-wide could remove a benefit nobody intended to touch. That's really the caution I'd carry into any answer here, it's not really a technical question of whether we could edit it safely, it's whether we understand every downstream effect of a gene well enough to be confident there isn't a hidden trade-off we'd only discover after it was irreversible at a population scale."
+    },
+    "commonMistakes": [
+      "Naming a complex, multi-gene disease like most cancers as if it had one editable cause",
+      "Showing no awareness of pleiotropy or unintended trade-offs",
+      "Treating population-level intervention as obviously good with no expressed caution"
+    ],
+    "followUps": ["How is that different from choosing to treat the disease in individual patients rather than editing at a population level?"]
+  },
+  {
+    "id": "prog-biology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Co-evolution arms race",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["evolution", "ecology", "concept"],
+    "question": "Can you explain what's meant by an evolutionary arms race, with a real example, and why it doesn't just end with one side winning?",
+    "lookingFor": "Correct concept of reciprocal selective pressure with a real biological example and reasoning for why equilibrium, not victory, is the usual outcome.",
+    "idealAnswer": {
+      "bullets": [
+        "Define co-evolution as reciprocal selection pressure between two interacting species, like predator and prey or host and parasite",
+        "Give a concrete example such as newts producing tetrodotoxin and garter snakes evolving resistance to it",
+        "Explain that it doesn't end in outright victory because any advantage in one species creates renewed selection pressure on the other, so it's an ongoing dynamic"
+      ],
+      "modelAnswer": "An evolutionary arms race is what happens when two species exert reciprocal selection pressure on each other, so as one evolves an advantage the other evolves a countermeasure, and that keeps cycling. The example I like is rough-skinned newts and garter snakes on the American west coast, the newts produce tetrodotoxin, a potent nerve toxin, and in the regions where the toxin is strongest the local garter snakes have evolved genetic resistance to it, and in places where the snakes are more resistant the newts tend to produce even more toxin. It doesn't just end with one side winning because any genetic advantage that lets the newt survive better also becomes the new baseline pressure the snake has to adapt against, so instead of a final winner you get an ongoing escalation, sometimes called a Red Queen dynamic, where both sides have to keep evolving just to maintain their current relative position."
+    },
+    "commonMistakes": [
+      "Giving a vague answer with no concrete species example",
+      "Describing it as one species eventually 'winning' permanently",
+      "Confusing co-evolution with simple predation with no reciprocal adaptation"
+    ],
+    "followUps": ["Why might this dynamic ever stabilize rather than escalate indefinitely?"]
+  },
+  {
+    "id": "prog-biology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Herd immunity thresholds",
+    "program": "Biology",
+    "difficulty": "medium",
+    "tags": ["immunology", "epidemiology", "public-health"],
+    "question": "Why does the vaccination coverage needed for herd immunity differ between diseases like measles and influenza?",
+    "lookingFor": "Understanding that the herd immunity threshold depends on the pathogen's transmissibility, expressed through R0, not a fixed universal percentage.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the herd immunity threshold is a function of R0, the average number of people one infected person infects in a fully susceptible population",
+        "Note measles has a very high R0, so it needs a much higher vaccination coverage to stop chains of transmission",
+        "Mention that vaccine effectiveness also factors into the real-world threshold, not just R0 alone"
+      ],
+      "modelAnswer": "The threshold isn't some fixed universal number, it's mathematically tied to how contagious the disease is in the first place, usually measured as R0, the average number of new infections one case causes in a population with no immunity. Measles is exceptionally contagious, with an R0 that can be somewhere around twelve to eighteen, so you need something like ninety-five percent of the population immune before transmission chains reliably fizzle out, whereas a less transmissible disease like seasonal flu, with a much lower R0, needs a noticeably lower coverage to reach that same protective effect. It's also worth remembering that the real threshold accounts for how effective the vaccine actually is, not just how many people got it, so a disease needing high coverage with an imperfect vaccine can end up needing an even higher vaccination rate in practice than the raw R0 math alone would suggest."
+    },
+    "commonMistakes": [
+      "Assuming herd immunity always requires the same fixed percentage like 70 percent",
+      "Not connecting the threshold to R0 or transmissibility",
+      "Ignoring vaccine effectiveness as a factor in the real-world threshold"
+    ],
+    "followUps": ["How would a vaccine that only reduces symptoms but not transmission affect this calculation?"]
+  },
+  {
+    "id": "prog-biology-b-024",
+    "category": "Ethics & Situational",
+    "subtopic": "Data sharing during a pandemic",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["ethics", "public-health", "situational"],
+    "question": "During an outbreak, a lab discovers the genetic sequence of a dangerous new pathogen. Should that sequence be published openly and immediately, or should access be restricted?",
+    "lookingFor": "Weighing the benefit of open science for rapid diagnostics and vaccine development against the dual-use risk of the same data being misused.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the strong case for open publication: faster diagnostics, vaccine research, and global coordination",
+        "Acknowledge the genuine dual-use risk that sequence data could theoretically inform harmful applications",
+        "Propose a reasoned middle position, such as rapid sharing with public health bodies alongside safeguards on the most sensitive functional details"
+      ],
+      "modelAnswer": "My starting instinct is strongly toward open and fast publication, because during an active outbreak, delays in sharing the sequence directly cost time on diagnostics, vaccine candidates, and coordinated public health response, and history, including COVID, showed how much faster things moved once labs worldwide could build on the same data. That said, I don't think the dual-use risk is imaginary, sequence data for a genuinely dangerous pathogen could in theory inform someone trying to cause harm, so I don't think 'always publish everything instantly with zero review' is quite right either. I'd lean toward rapid sharing through recognized public health channels like WHO or GISAID as the default, with a much higher bar of scrutiny reserved specifically for research that goes further, like functional studies that make a pathogen more transmissible or virulent, because that's where the actual risk concentrates, not in the base sequence itself."
+    },
+    "commonMistakes": [
+      "Arguing for full restriction with no acknowledgment of the public health cost of delay",
+      "Arguing for total unrestricted openness with no acknowledgment of dual-use risk",
+      "Not distinguishing sequence data from higher-risk gain-of-function research"
+    ],
+    "followUps": ["How should that calculus change if the pathogen were engineered rather than naturally occurring?"]
+  },
+  {
+    "id": "prog-biology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Biodiversity loss and ecosystem function",
+    "program": "Biology",
+    "difficulty": "hard",
+    "tags": ["current-development", "ecology", "conservation"],
+    "question": "Scientists often say we're in the middle of a sixth mass extinction. What's the biological evidence for that claim, and why does losing biodiversity matter beyond just losing individual species?",
+    "lookingFor": "Awareness of extinction rate evidence and a real understanding of ecosystem function and resilience, not just an emotional appeal to save animals.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite that current extinction rates are estimated to be far above the natural background rate seen in the fossil record",
+        "Explain that biodiversity underpins ecosystem services like pollination, water filtration, and soil fertility, not just aesthetic or emotional value",
+        "Connect reduced biodiversity to reduced ecosystem resilience against shocks like disease or climate extremes"
+      ],
+      "modelAnswer": "The evidence usually cited is that current extinction rates, estimated from population declines and documented species loss, are running somewhere around a hundred to a thousand times higher than the background rate we can measure from the fossil record, which is the same order of magnitude associated with past mass extinction events, just driven by human activity like habitat loss and climate change instead of an asteroid. What I think gets underappreciated is that biodiversity loss isn't just about losing individual species we find charismatic, ecosystems rely on a web of interacting species for things like pollination, water filtration by wetlands, and soil fertility from decomposers, and those are services humans depend on economically, not just aesthetically. There's also a resilience argument that matters to me, a more diverse ecosystem tends to have more redundancy, so if one species is hit by disease or a heatwave, others can partially fill that ecological role, whereas a simplified ecosystem with fewer species has far less buffer against exactly the kind of shocks that climate change is going to bring more of."
+    },
+    "commonMistakes": [
+      "Making a purely emotional appeal with no data on extinction rates",
+      "Treating biodiversity loss as only an aesthetic or moral issue with no functional argument",
+      "Not mentioning ecosystem services or resilience as the mechanism that connects biodiversity to human wellbeing"
+    ],
+    "followUps": ["What's the strongest counterargument to the sixth mass extinction framing, and how would you respond to it?"]
+  }
+]

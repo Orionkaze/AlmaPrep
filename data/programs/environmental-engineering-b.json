@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-environmental-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Mass balance in reactor design",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["reactor-design", "mass-balance", "fundamentals"],
+    "question": "Suppose you're designing a completely mixed reactor for treating an industrial effluent. Walk me through how you'd set up a mass balance to find the effluent concentration at steady state.",
+    "lookingFor": "Ability to set up a conceptual mass balance and reason about steady state, not just recite a formula.",
+    "idealAnswer": {
+      "bullets": [
+        "State the general mass balance framework: accumulation equals inflow minus outflow plus generation minus decay",
+        "Set accumulation to zero for steady state and solve for the effluent concentration",
+        "Note the role of hydraulic retention time and the reaction rate constant"
+      ],
+      "modelAnswer": "I'd start with the general mass balance, accumulation equals inflow minus outflow plus generation minus decay, and since a CSTR is completely mixed, the concentration inside the reactor equals the concentration leaving it. At steady state accumulation is zero, so I can set up an equation with the flow rate, volume, and a first order decay term and solve directly for the effluent concentration. The hydraulic retention time, volume over flow rate, ends up being the key lever, because a longer retention time gives the reaction more time to happen before the water leaves."
+    },
+    "commonMistakes": [
+      "Forgetting that in a CSTR the reactor concentration equals the effluent concentration",
+      "Not distinguishing steady state from a batch reactor's time-dependent solution",
+      "Omitting the reaction or decay term entirely and treating it as pure dilution"
+    ],
+    "followUps": ["How would your equation change if you used a plug flow reactor instead?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "BOD versus COD",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["water-quality", "wastewater", "fundamentals"],
+    "question": "What's the difference between BOD and COD, and why would an engineer care which one they measure?",
+    "lookingFor": "A clear distinction between biological and chemical oxygen demand, plus practical reasoning on when each matters.",
+    "idealAnswer": {
+      "bullets": [
+        "BOD measures oxygen consumed by microorganisms breaking down biodegradable matter, typically over a 5-day test",
+        "COD measures the oxygen equivalent of everything chemically oxidizable, including non-biodegradable matter, in a few hours",
+        "The BOD to COD ratio hints at biodegradability and treatability"
+      ],
+      "modelAnswer": "BOD measures how much oxygen bacteria actually use to break down organic matter over five days, so it reflects what a biological treatment plant would experience. COD measures the total oxygen needed to chemically oxidize everything in the sample, including things bacteria can't touch, and it only takes a few hours to run. I'd care about the difference because a low BOD to COD ratio is a warning sign, it tells you the effluent has a lot of non-biodegradable or even toxic material that a conventional biological treatment plant won't remove well."
+    },
+    "commonMistakes": [
+      "Saying they measure the same thing in different units",
+      "Not knowing the COD test is much faster than the 5-day BOD test",
+      "Missing that the BOD to COD ratio indicates biodegradability"
+    ],
+    "followUps": ["If an industrial effluent had a very low BOD to COD ratio, what would that suggest about how to treat it?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Eutrophication and oxygen depletion",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["eutrophication", "water-quality", "ecology"],
+    "question": "Explain what causes a lake to become eutrophic, and why a fish kill often follows an algal bloom rather than happening at the same time.",
+    "lookingFor": "Causal chain reasoning from nutrient loading through bloom, die-off, decomposition, and oxygen depletion.",
+    "idealAnswer": {
+      "bullets": [
+        "Excess nitrogen and phosphorus, from fertilizer runoff or sewage, drive explosive algae growth",
+        "Algae eventually die off and are decomposed by bacteria, which consume dissolved oxygen",
+        "The lag between the bloom and the oxygen crash explains why the fish kill trails the bloom"
+      ],
+      "modelAnswer": "Eutrophication starts when excess nitrogen and phosphorus, usually from fertilizer runoff or poorly treated sewage, flood into a lake and let algae grow far faster than the ecosystem normally supports. The bloom itself doesn't kill the fish, it's what happens after, when the algae die and sink, and bacteria decomposing all that organic matter consume huge amounts of dissolved oxygen. That's why the fish kill usually shows up days after the bloom peaks rather than during it, the system is running an oxygen deficit created by decomposition, not by algae directly competing for oxygen while alive."
+    },
+    "commonMistakes": [
+      "Thinking algae directly suffocate fish while blooming",
+      "Not naming both nitrogen and phosphorus as drivers",
+      "Missing the decomposition and bacterial oxygen demand step entirely"
+    ],
+    "followUps": ["What engineering interventions could reduce nutrient loading before it reaches the lake?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Centralized versus decentralized wastewater treatment",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["wastewater", "infrastructure", "trade-offs"],
+    "question": "Would you recommend a single large centralized wastewater treatment plant or a network of smaller decentralized systems for a fast-growing peri-urban area? Argue it out.",
+    "lookingFor": "Weighing economies of scale, cost, resilience, and land use rather than giving a one-line answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the trade-off between economies of scale and flexibility or resilience",
+        "Consider growth uncertainty, land availability, and pipe infrastructure cost in a peri-urban context",
+        "Land a reasoned recommendation rather than sitting on the fence"
+      ],
+      "modelAnswer": "Centralized plants benefit from economies of scale and easier regulatory oversight, but they need a huge upfront investment in trunk sewers, and if growth doesn't happen where planners expected, you've built pipe to nowhere. In a fast-growing peri-urban area where the development pattern is still uncertain, I'd lean toward a decentralized or cluster-based approach, because you can add capacity incrementally as neighborhoods actually get built rather than guessing the final footprint years in advance. The trade-off is that decentralized systems need more distributed operational oversight, so I'd only recommend it if there's a credible plan for maintaining dozens of smaller plants instead of one."
+    },
+    "commonMistakes": [
+      "Giving a one-word answer with no trade-off reasoning",
+      "Ignoring the operational maintenance burden of decentralized systems",
+      "Not connecting the answer to the specific context of fast, uncertain growth"
+    ],
+    "followUps": ["How would your answer change for a dense, already-built city center?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Mitigation versus adaptation trade-off",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["climate-change", "policy", "trade-offs"],
+    "question": "Some argue money spent on climate change adaptation, like sea walls, is money not spent on mitigation, like cutting emissions. How would you think about that trade-off as an engineer advising a coastal city?",
+    "lookingFor": "Nuanced reasoning that both are necessary at different timescales, not a false dichotomy.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize mitigation and adaptation operate on different timescales and address different risks",
+        "Argue a coastal city facing near-term flood risk cannot wait for global mitigation to work",
+        "Show awareness that local adaptation spending shouldn't excuse inaction on emissions"
+      ],
+      "modelAnswer": "I don't think it's really an either-or choice, mitigation reduces the long-term severity of the problem globally, but a coastal city with rising water at its doorstep today can't wait decades for global emissions to fall before protecting people who live there now. I'd advise investing in adaptation for the risk that's already locked in, since sea level rise from emissions already released doesn't reverse quickly, while still pushing the city to cut its own emissions so it isn't quietly making the problem worse. The danger is if a sea wall becomes an excuse to stop worrying about emissions altogether, so I'd want any adaptation plan paired with a visible mitigation commitment."
+    },
+    "commonMistakes": [
+      "Framing it as purely either-or",
+      "Ignoring the different timescales each approach addresses",
+      "Not acknowledging that some warming is already locked in regardless of future mitigation"
+    ],
+    "followUps": ["Who should pay for adaptation in a city that contributed very little to the emissions causing the problem?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Carbon capture and storage debate",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["ccs", "climate-change", "current-debate"],
+    "question": "There's an ongoing debate about whether carbon capture and storage is a genuine climate solution or a way for polluting industries to delay change. Where do you stand?",
+    "lookingFor": "An informed, balanced position aware of both the technical potential and the critique.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic understanding of what CCS actually does, capturing CO2 at a point source or from the air and storing it underground",
+        "Acknowledge the critique: cost, energy penalty, and the risk of prolonging fossil fuel use",
+        "Land on a conditional, reasoned position rather than pure cheerleading or pure dismissal"
+      ],
+      "modelAnswer": "CCS captures carbon dioxide from a power plant or industrial process, or directly from the air, and stores it underground, and for a few hard-to-decarbonize sectors like cement production I think it's genuinely necessary, there isn't yet a clean alternative to making clinker. But I'm also sympathetic to the critique that it's expensive, energy-intensive, and can become a convenient excuse for a fossil fuel plant to keep operating instead of transitioning. My view is it should be a targeted tool for the sectors with no better option, not a blanket license for business as usual across the whole energy system."
+    },
+    "commonMistakes": [
+      "Not knowing what CCS technically does",
+      "Taking an uncritical pro-industry stance",
+      "Dismissing it entirely without acknowledging hard-to-abate sectors"
+    ],
+    "followUps": ["Which industries do you think genuinely need CCS versus ones using it as a delay tactic?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "PFAS forever chemicals",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["pfas", "emerging-contaminants", "current-development"],
+    "question": "What do you know about PFAS, and why have they become such a difficult problem for water treatment engineers?",
+    "lookingFor": "Awareness of what PFAS is, why it's persistent, and why it poses a treatment challenge.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify PFAS as a class of synthetic per- and polyfluoroalkyl substances used for water and grease resistance",
+        "Explain the carbon-fluorine bond makes them extremely persistent, hence forever chemicals",
+        "Note conventional treatment struggles to remove them, requiring methods like activated carbon or ion exchange"
+      ],
+      "modelAnswer": "PFAS are a large family of manmade chemicals used for decades in things like non-stick coatings and firefighting foam, valued because they resist water, oil, and heat. That same property comes from an extremely strong carbon-fluorine bond, which barely breaks down in the environment or the human body, which is why they're called forever chemicals. For treatment engineers that's the real headache, conventional plants aren't designed to remove them, so utilities are having to retrofit with activated carbon or ion exchange, and disposal of the captured PFAS is its own unsolved problem."
+    },
+    "commonMistakes": [
+      "Confusing PFAS with a single chemical rather than a class",
+      "Not explaining why they're persistent",
+      "Assuming standard treatment plants already handle them effectively"
+    ],
+    "followUps": ["If you were advising a small municipal utility with a tight budget, how would you prioritize PFAS treatment?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-008",
+    "category": "Ethics & Situational",
+    "subtopic": "Siting a facility near an overburdened community",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["environmental-justice", "ethics", "siting"],
+    "question": "You're on a team choosing a site for a new waste incinerator, and the cheapest, most technically efficient option is a plot next to a low-income neighborhood that already hosts two other polluting facilities. What do you do?",
+    "lookingFor": "Recognition of environmental justice and cumulative burden, weighed honestly against technical merit, without dodging the tension.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the environmental justice concern explicitly, cumulative burden on a community already overexposed",
+        "Weigh technical and cost merit honestly against equity rather than pretending there's no trade-off",
+        "Propose a concrete path forward, engaging the community and considering alternatives or added mitigation"
+      ],
+      "modelAnswer": "My first reaction is that cheapest and most efficient on paper doesn't mean it's the right choice, because that neighborhood is already carrying a disproportionate share of pollution, and adding a third facility deepens an unfairness that a purely technical analysis won't show up on. I'd want to bring the community into the decision early rather than presenting a done deal, and push the team to seriously cost out at least one alternative site even if it's more expensive. If the incinerator does end up there because there's genuinely no better option, I'd argue we owe that community real mitigation, stricter emissions limits, monitoring they can see, and some form of direct benefit, not just a facility."
+    },
+    "commonMistakes": [
+      "Treating it as a purely technical or cost decision with no equity dimension",
+      "Refusing to engage with the trade-off and giving a vague non-answer",
+      "Assuming community objection alone should automatically veto any technically sound site"
+    ],
+    "followUps": ["What would you do if company leadership overruled you and picked the site anyway?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Life cycle assessment",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["lca", "sustainability", "concept"],
+    "question": "Explain what a life cycle assessment is and give an example of a product where the greener choice isn't obvious once you look at the full life cycle.",
+    "lookingFor": "Understanding of cradle-to-grave analysis and the ability to reason through a counterintuitive result.",
+    "idealAnswer": {
+      "bullets": [
+        "Define LCA as evaluating environmental impact across extraction, manufacturing, use, and disposal",
+        "Give a genuine counterintuitive example, such as reusable versus single-use bags",
+        "Show that the intuitive greener option can lose once full life cycle and usage patterns are counted"
+      ],
+      "modelAnswer": "A life cycle assessment tracks a product's environmental impact from raw material extraction through manufacturing, use, and disposal, rather than judging it at just one stage. Cotton tote bags are a good example, they feel obviously greener than plastic bags, but growing cotton is water and land intensive, so a study I read suggested you'd need to reuse a cotton bag well over a hundred times before it beats a single-use plastic bag on total environmental impact. It changed how I think about sustainability claims, the intuitive answer at the point of purchase isn't always what the full life cycle shows."
+    },
+    "commonMistakes": [
+      "Defining LCA vaguely as just environmental impact without the stages",
+      "Picking an example without explaining why it's counterintuitive",
+      "Ignoring the use phase in the reasoning"
+    ],
+    "followUps": ["What data would you need to actually run an LCA yourself on a simple product?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Circular economy versus recycling",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["circular-economy", "recycling", "current-debate"],
+    "question": "Critics say recycling has become a distraction from the harder work of reducing consumption in the first place. Do you agree?",
+    "lookingFor": "Critical thinking beyond recycling-is-good, with awareness of the waste hierarchy.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the waste hierarchy and note recycling sits below reduction and reuse",
+        "Acknowledge the critique that recycling can create a false sense of absolution, and much recyclable material isn't actually recycled",
+        "Give a balanced view where recycling still matters but shouldn't be the headline solution"
+      ],
+      "modelAnswer": "I think there's real truth to that critique. Recycling sits at the bottom of the waste hierarchy for a reason, reduce and reuse are supposed to come first, and a lot of what gets put in the recycling bin, especially certain plastics, never actually gets recycled economically, it gets landfilled or shipped elsewhere. That said, I wouldn't throw recycling out either, for materials like aluminum and glass it genuinely works well and saves a lot of energy versus virgin production. My view is recycling should be treated as one tool among several, not the flagship solution that lets people feel like consumption itself isn't the problem."
+    },
+    "commonMistakes": [
+      "Defending recycling uncritically as an unambiguous good",
+      "Dismissing recycling entirely as useless",
+      "Not referencing the waste hierarchy or reduction and reuse as the actual priority"
+    ],
+    "followUps": ["What would a genuine reduction-first policy look like for a city government?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "PM2.5 and air quality regulation",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["air-quality", "public-health", "pollution"],
+    "question": "Why is PM2.5 considered more dangerous to health than larger particulate matter, and what does that mean for how we should design air quality regulations?",
+    "lookingFor": "Understanding of particle size and lung penetration, translated into a regulatory implication.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain PM2.5 is small enough to penetrate deep into the lungs and even enter the bloodstream, unlike coarser particles",
+        "Link this to specific health effects like cardiovascular and respiratory disease",
+        "Draw the regulatory implication that standards need to specifically target fine particles, not just total mass"
+      ],
+      "modelAnswer": "PM2.5 particles are small enough, under 2.5 micrometers, that they bypass the body's natural filtering in the nose and upper airways and get deep into the lungs, and some of the smallest ones can even cross into the bloodstream. That's why they're linked so strongly to cardiovascular disease and not just asthma or coughing, the harm isn't confined to the lungs. For regulation, it means you can't just cap total particulate matter, you need a separate, tighter standard specifically for the fine fraction, because a source that emits mostly coarse dust is a very different health risk than one emitting fine combustion particles even at the same total mass."
+    },
+    "commonMistakes": [
+      "Not knowing the size threshold or why smaller particles are more dangerous",
+      "Conflating PM2.5 with all air pollution generally",
+      "Missing the regulatory implication and just describing the health effect"
+    ],
+    "followUps": ["What sources in a typical city are the biggest contributors to PM2.5?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-012",
+    "category": "Ethics & Situational",
+    "subtopic": "Pressure to weaken an environmental impact assessment",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "eia", "professional-integrity"],
+    "question": "You're the junior engineer running the environmental impact assessment for a new industrial project, and your manager hints that a less thorough report would help the project get approved faster and keep the client happy. What do you do?",
+    "lookingFor": "Firm professional integrity, understanding of what an EIA is for, and a realistic path to raise the concern.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the core tension between professional and public duty and commercial pressure",
+        "Refuse to compromise the technical integrity of the assessment",
+        "Describe a realistic path, documenting concerns and escalating through proper channels"
+      ],
+      "modelAnswer": "I'd push back, respectfully but clearly, because the whole point of an EIA is that it's independent and thorough, if I water it down to please a client I'm not actually doing the job, I'm just producing a document that looks like due diligence. I'd explain to my manager that a weak assessment isn't actually in the client's interest either, if a real impact surfaces later and it turns out the report missed it, the liability and reputational damage would be much worse than a short delay now. If the pressure continued, I'd document my concerns in writing and use whatever formal channel exists at the firm, because this isn't really a judgment call, it's about not signing off on something I don't believe is accurate."
+    },
+    "commonMistakes": [
+      "Agreeing to cut corners because the manager asked",
+      "Overdramatizing into an immediate resignation without trying to raise it internally first",
+      "Being vague about what they'd actually do instead of taking a clear position"
+    ],
+    "followUps": ["What if the manager was your direct supervisor and pushing back risked your job?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Offshore wind versus migratory bird route",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["renewable-energy", "biodiversity", "hypothetical"],
+    "question": "A proposed offshore wind farm would cut significant carbon emissions but sits on a major migratory bird route. As the engineer advising the planning board, how do you weigh that?",
+    "lookingFor": "Structured trade-off reasoning that doesn't dismiss either the climate benefit or the ecological harm.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid treating it as a binary, and look for mitigation options like siting adjustments or seasonal curtailment",
+        "Weigh the scale and reversibility of harm against the scale and urgency of the climate benefit",
+        "Land on a reasoned recommendation, including what evidence would change the decision"
+      ],
+      "modelAnswer": "I wouldn't want to just pick one value and ignore the other, so I'd first ask whether the harm is actually avoidable, can turbine placement be shifted a few kilometers off the main flight corridor, or can the farm curtail operation during peak migration weeks, because those kinds of adjustments often solve most of the problem for a small loss in output. If the ecological impact genuinely can't be reduced to an acceptable level, I'd weigh the scale of harm, is this a rare or already vulnerable species, against the scale of the climate benefit, and be honest that unmitigated climate change is also a massive threat to bird populations globally. I'd want the recommendation to rest on actual monitoring data and expert ecological input, not just my own judgment call from a desk."
+    },
+    "commonMistakes": [
+      "Picking climate benefit as automatically overriding without considering mitigation",
+      "Picking wildlife protection as automatically overriding without weighing climate urgency",
+      "Giving no concrete mitigation options, just abstract balance"
+    ],
+    "followUps": ["What monitoring would you want in place after construction to check your assumptions?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Microplastics in wastewater",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["microplastics", "wastewater", "pollution"],
+    "question": "What are microplastics, where do they mainly come from, and why is removing them from wastewater so difficult?",
+    "lookingFor": "Correct definition, awareness of sourcing, and technical reasoning on why removal is hard.",
+    "idealAnswer": {
+      "bullets": [
+        "Define microplastics as fragments under 5mm, distinguishing primary sources from secondary breakdown of larger plastics",
+        "Identify major sources like synthetic textile washing, tire wear, and cosmetic products",
+        "Explain removal difficulty, small size and density variation make full capture hard even with advanced filtration"
+      ],
+      "modelAnswer": "Microplastics are plastic particles smaller than five millimeters, and they come from two main routes, primary microplastics like the microbeads that used to be in cosmetics, and secondary ones, which are just larger plastic items like tires and clothing shedding tiny fragments over time, washing machine fibers from synthetic clothing turn out to be a huge source. They're hard to remove from wastewater because conventional treatment was never designed for particles that small, and because plastics vary so much in density and shape, some float, some settle, some stay suspended, that a single filtration stage can't catch them all. Most plants end up needing an added tertiary step, like fine membrane filtration, and even then some fraction gets through into the receiving water."
+    },
+    "commonMistakes": [
+      "Only mentioning cosmetic microbeads and missing textile fibers or tire wear",
+      "Not distinguishing primary from secondary microplastics",
+      "Assuming standard treatment already removes them effectively"
+    ],
+    "followUps": ["Should the burden of solving this fall on wastewater plants, or on the products that shed them?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Desalination trade-offs",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["desalination", "water-scarcity", "trade-offs"],
+    "question": "Desalination is often presented as a solution to water scarcity. What are the environmental trade-offs an engineer needs to weigh before recommending it?",
+    "lookingFor": "Awareness of energy intensity, brine discharge impact, and situational judgment about when it's appropriate.",
+    "idealAnswer": {
+      "bullets": [
+        "Note desalination, especially reverse osmosis, is very energy intensive, raising cost and carbon footprint concerns",
+        "Identify brine discharge as a major ecological concern for marine ecosystems near the outfall",
+        "Show judgment about when it's appropriate versus when cheaper alternatives exist"
+      ],
+      "modelAnswer": "Desalination solves the scarcity problem directly, but it isn't free environmentally, reverse osmosis in particular is energy intensive, so unless that energy comes from renewables you're often trading a water problem for a bigger carbon footprint. The other issue I don't think gets enough attention is the brine, the concentrated salty leftover has to go somewhere, and dumped back into the sea near the outfall it can seriously damage local marine ecosystems if it isn't diluted or managed properly. I'd only recommend it where the scarcity is genuine and other options like demand reduction, leak repair, or wastewater reuse have already been pushed hard, because desalination should be closer to a last resort than a first instinct."
+    },
+    "commonMistakes": [
+      "Treating desalination as a purely positive, low-downside solution",
+      "Not mentioning brine discharge at all",
+      "Failing to mention cheaper demand-side alternatives that should come first"
+    ],
+    "followUps": ["How would your recommendation change for a coastal city with abundant renewable energy?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Green building certification critique",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["green-building", "certification", "current-debate"],
+    "question": "Green building certifications like LEED are sometimes criticized for rewarding checklist compliance over actual measured performance. What do you make of that criticism?",
+    "lookingFor": "A critical, informed view of certification systems rather than blind endorsement.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding that certifications often award points for design intent, not verified operational performance",
+        "Acknowledge the performance gap where certified buildings sometimes underperform predictions",
+        "Suggest what would fix it, such as post-occupancy measurement or performance-based credits"
+      ],
+      "modelAnswer": "I think the criticism has real merit. A lot of the points in systems like LEED get awarded for design choices, installing efficient fixtures, using certain materials, rather than for how the building actually performs once people are living and working in it, and there's a well documented performance gap where certified buildings use more energy in practice than the design predicted. That doesn't mean certification is worthless, it does push the industry toward better baseline choices, but I'd want to see more weight given to post-occupancy measured performance rather than just design intent, so a building has to keep proving it works, not just prove it was designed to."
+    },
+    "commonMistakes": [
+      "Defending certification systems as flawless",
+      "Dismissing green certifications as entirely meaningless",
+      "Not distinguishing design-intent credits from measured performance credits"
+    ],
+    "followUps": ["How would you design a certification system that avoided this problem?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-017",
+    "category": "Ethics & Situational",
+    "subtopic": "Discovering an illegal night discharge",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "whistleblowing", "compliance"],
+    "question": "While doing fieldwork for your internship, you notice a factory quietly discharging effluent above legal limits into a stream at night. Your supervisor says it's not your problem to report. What would you actually do?",
+    "lookingFor": "Willingness to act on genuine environmental harm despite pressure, through a sensible, proportionate process.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the observation seriously rather than deferring entirely to a supervisor's dismissal",
+        "Document what was seen and raise it through proper internal channels before escalating externally",
+        "Show awareness of personal risk while still landing on acting rather than staying silent"
+      ],
+      "modelAnswer": "I wouldn't just let it go because a supervisor told me to. My first step would be to make sure I actually had the facts right, dates, what I observed, maybe photos if that's safe and appropriate, and then raise it formally within the organization, in writing, rather than just verbally, so there's a record that I flagged it. If nothing happened and the discharge kept going, I think I'd have an obligation to report it to the environmental regulator, because an illegal discharge at night isn't a gray area, it's actively harming a stream and the people downstream who rely on it. I know that's uncomfortable as an intern with limited power, but staying silent because I was told to would make me complicit."
+    },
+    "commonMistakes": [
+      "Deferring entirely to the supervisor and dropping the concern",
+      "Jumping immediately to a dramatic external report without documenting or raising it internally first",
+      "Treating it as ambiguous when the scenario is a clear violation"
+    ],
+    "followUps": ["What if reporting it meant losing the internship, would that change your answer?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Carbon tax versus cap-and-trade",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["carbon-pricing", "policy", "current-debate"],
+    "question": "Carbon tax or cap-and-trade, which do you think is the better policy tool for cutting emissions, and why?",
+    "lookingFor": "Understanding of the mechanism differences between price certainty and quantity certainty, plus a defensible position.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a carbon tax fixes price and lets emissions float, while cap-and-trade fixes emissions and lets price float",
+        "Note practical trade-offs like predictability versus guaranteed emissions ceiling",
+        "Take an actual position with reasoning, acknowledging it's context-dependent"
+      ],
+      "modelAnswer": "The core difference is what you're actually certain about, a carbon tax fixes the price per ton and lets total emissions be whatever they turn out to be, while cap-and-trade fixes the total emissions allowed and lets the price float based on demand for permits. I lean slightly toward a carbon tax for simplicity, businesses can plan around a known, predictable price, whereas cap-and-trade markets have historically had volatility and loophole problems, like over-allocated permits in early phases of the EU system. That said, if the absolute priority is guaranteeing a specific emissions ceiling by a specific date, cap-and-trade gives you that certainty directly, which a tax doesn't, so I think the right tool really depends on whether price predictability or emissions certainty matters more."
+    },
+    "commonMistakes": [
+      "Confusing which mechanism fixes price versus quantity",
+      "Picking a side with no reasoning, just a preference",
+      "Not acknowledging any real-world implementation problems"
+    ],
+    "followUps": ["Can you name a real example where one of these has been implemented, and how it went?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Contaminated site remediation for park redevelopment",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["remediation", "contamination", "hypothetical"],
+    "question": "You're handed a site where soil testing shows heavy metal contamination from a former industrial use, and the city wants to redevelop it into a public park. How would you approach deciding whether and how to remediate it?",
+    "lookingFor": "Structured, risk-based thinking rather than jumping straight to one remediation technique.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with characterizing the contamination, extent, depth, specific metals, and exposure pathways",
+        "Recognize that a public park raises the exposure bar compared to the site's prior industrial use",
+        "Weigh remediation options like excavation versus capping against cost, timeline, and residual risk"
+      ],
+      "modelAnswer": "The first thing I'd want is a proper site characterization, which metals, how deep, and how they're distributed, because you can't choose a remediation method without knowing what you're actually dealing with. The intended use matters a lot here, a park means kids potentially playing directly in the soil, so the acceptable exposure level is much stricter than it would be for, say, a parking lot, and that shapes how aggressive the cleanup needs to be. Depending on the contamination depth and extent I'd weigh excavation and offsite disposal against capping with clean soil and a barrier layer, capping is cheaper and faster but leaves contamination in place long term, so I'd want to be honest with the city about that trade-off rather than just picking the cheapest option and calling it solved."
+    },
+    "commonMistakes": [
+      "Jumping straight to one remediation technique without characterizing the site first",
+      "Not adjusting the required cleanup standard based on the future land use",
+      "Presenting capping as a permanent fix rather than acknowledging it leaves contamination in place"
+    ],
+    "followUps": ["Who do you think should bear the cost of remediation if the original polluter no longer exists as a company?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Nuclear power in the climate fight",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["nuclear-energy", "climate-change", "current-debate"],
+    "question": "Some environmentalists have shifted to supporting nuclear power as essential for fighting climate change, while others still strongly oppose it. Where do you land?",
+    "lookingFor": "Informed, balanced reasoning weighing carbon-free baseload power against waste, safety, and cost concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge nuclear's case as reliable, low-carbon baseload power independent of weather",
+        "Acknowledge real concerns like waste storage, high upfront cost, and long build times",
+        "Take a reasoned position rather than a purely ideological one"
+      ],
+      "modelAnswer": "I've come around to thinking nuclear has to be part of the mix, it's one of the few genuinely low-carbon sources that can provide steady baseload power regardless of whether the wind is blowing or the sun is out, and that reliability matters as we retire fossil baseload plants. I don't think the concerns are unreasonable though, waste storage is a real unsolved long-term problem, and the cost and construction timelines for new plants have historically blown out badly, which matters when we need emissions cuts this decade, not in twenty years. My honest position is that existing nuclear plants should absolutely be kept running rather than closed early, while new nuclear should be pursued alongside renewables rather than treated as a silver bullet."
+    },
+    "commonMistakes": [
+      "Taking a purely ideological stance without engaging the actual trade-offs",
+      "Ignoring cost and construction timeline concerns entirely",
+      "Not distinguishing keeping existing plants open versus building new ones"
+    ],
+    "followUps": ["How would you address the waste storage problem specifically?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Environmental permitting rollback debate",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["policy", "regulation", "current-debate"],
+    "question": "There's been recent debate in several countries about rolling back environmental permitting requirements to speed up infrastructure and housing construction. What's your view on that trade-off?",
+    "lookingFor": "Balanced reasoning about legitimate permitting delays versus the risk of gutting environmental protection.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge permitting processes can genuinely be slow and duplicative, delaying beneficial projects",
+        "Distinguish streamlining process from weakening substantive protections",
+        "Land on a position, such as supporting procedural efficiency while opposing cuts to substantive review"
+      ],
+      "modelAnswer": "I think there's a real, legitimate problem being pointed at, permitting processes in a lot of places really have become slow and duplicative, and that delay has genuine costs, like housing that doesn't get built and public transit projects that take a decade longer than they should. But I'd draw a sharp line between speeding up the process and weakening what the process actually protects, you can streamline timelines, set clearer deadlines for agency review, reduce duplicate studies, without lowering the substantive bar for what counts as an acceptable environmental impact. My worry with a lot of the current rollback proposals is they blur that line, using the real complaint about slowness to justify cutting protections that have nothing to do with speed."
+    },
+    "commonMistakes": [
+      "Dismissing permitting delays as never a real problem",
+      "Supporting rollbacks wholesale without distinguishing process reform from substantive weakening",
+      "Giving a vague answer with no actual position"
+    ],
+    "followUps": ["Can you think of a specific procedural reform that would speed things up without weakening protection?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Urban flooding after rapid development",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["stormwater", "urban-planning", "hypothetical"],
+    "question": "A rapidly urbanizing district keeps flooding after storms that didn't used to cause problems ten years ago. As the engineer brought in to fix it, what would you actually investigate and propose?",
+    "lookingFor": "Systems reasoning connecting land-use change to hydrology, and a sensible mix of gray and green solutions.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify increased impervious surface from urbanization as the likely root cause of higher, faster runoff",
+        "Propose checking current drainage capacity against the new runoff reality rather than assuming",
+        "Recommend a mix of gray infrastructure upgrades and green infrastructure like bioswales or retention basins"
+      ],
+      "modelAnswer": "My first hypothesis would be that the storms probably haven't changed as much as the ground has, ten years of urbanization means a lot more roofs, roads, and parking lots, and impervious surface stops water from soaking in, so the same rainfall now generates far more runoff, faster, than the drainage system was ever designed for. I'd want actual data, current impervious surface coverage compared to ten years ago, and the design capacity of the existing storm drains, before proposing anything. Then I'd push for a mix of solutions rather than just bigger pipes, adding green infrastructure like bioswales, permeable pavement, and retention basins upstream to slow water down and let some of it infiltrate, alongside targeted upgrades to the pipe network where the numbers show it's genuinely undersized."
+    },
+    "commonMistakes": [
+      "Jumping to climate change as the cause without checking land-use change first",
+      "Proposing only bigger pipes with no green infrastructure",
+      "Not calling for actual data or capacity analysis before proposing a fix"
+    ],
+    "followUps": ["How would you convince a budget-constrained city council to invest in green infrastructure over just bigger pipes?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Cutting landfill waste by 30 percent",
+    "program": "Environmental Engineering",
+    "difficulty": "medium",
+    "tags": ["waste-management", "hypothetical", "planning"],
+    "question": "A mid-sized city asks you to cut what goes to landfill by 30 percent within three years. Where would you actually start?",
+    "lookingFor": "A structured, data-driven approach rather than jumping straight to a single favorite intervention.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with a waste characterization study before designing any intervention",
+        "Target the largest, most tractable fractions first, such as organics or recyclables",
+        "Propose a combination of interventions with monitoring checkpoints to track progress"
+      ],
+      "modelAnswer": "Before proposing anything I'd want a waste characterization study, actually sorting a representative sample of what's going to landfill, because you can't hit thirty percent without knowing where the bulk of it is coming from, and in most cities organics and food waste turn out to be a much bigger share than people assume. If that holds true here, I'd prioritize a composting or organics diversion program first since it tends to be the single biggest lever, alongside tightening up recycling collection and contamination rates, which are usually underperforming their potential. I'd also want a policy lever in the mix, something like pay-as-you-throw pricing that gives households an actual incentive, and I'd build in measurement checkpoints along the way so we know by year one whether we're on track rather than finding out at year three."
+    },
+    "commonMistakes": [
+      "Proposing a single intervention, usually more recycling bins, without data on actual waste composition",
+      "No mention of organics or food waste, typically a large fraction in real waste streams",
+      "No plan for measuring progress against the target"
+    ],
+    "followUps": ["What would you do if the organics program had low resident participation after year one?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-024",
+    "category": "Ethics & Situational",
+    "subtopic": "Cheaper materials versus long-term contamination risk",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "materials", "professional-judgment"],
+    "question": "Your firm is choosing between a cheaper pipe material that meets minimum legal standards and a more expensive one with a much lower risk of leaching contaminants over its lifetime. The client wants the cheaper option and it's technically legal. What's your position?",
+    "lookingFor": "Distinguishing legal minimum from professionally responsible, with willingness to advocate even if overruled.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that meeting the legal minimum isn't the same as meeting a strong professional standard",
+        "Commit to clearly communicating the long-term risk and cost trade-off to the client in writing",
+        "Acknowledge the client ultimately decides, but the engineer's obligation is to make the risk clear and documented"
+      ],
+      "modelAnswer": "Legal is the floor, not the standard I'd want to design to, so I wouldn't just go along with the cheaper pipe quietly, even if it technically passes. I'd put together a clear comparison for the client showing the long-term leaching risk and what it could actually cost them down the line, in replacement, liability, or health impact if it goes wrong, because I don't think they're making a fully informed choice if they're just looking at the sticker price. If they still choose the cheaper option after seeing that, it is ultimately their decision to make, but I'd want my recommendation and their choice documented clearly, because as the engineer I have a professional obligation to have actually said something rather than staying quiet and hoping it works out."
+    },
+    "commonMistakes": [
+      "Treating it's legal as fully resolving the ethical question",
+      "Refusing to accept that the client ultimately has decision authority once properly informed",
+      "Not proposing to document the recommendation and decision"
+    ],
+    "followUps": ["Would your answer change if the contaminant risk, though low probability, involved a known carcinogen?"]
+  },
+  {
+    "id": "prog-environmental-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate litigation and engineering risk",
+    "program": "Environmental Engineering",
+    "difficulty": "hard",
+    "tags": ["climate-litigation", "policy", "current-development"],
+    "question": "There's been a wave of lawsuits recently holding governments and fossil fuel companies legally accountable for climate damages. What's your take on using the courts this way, and what does it mean for how engineering projects get evaluated?",
+    "lookingFor": "Awareness of the trend plus a practical implication for how engineers assess risk in projects.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of climate liability suits against governments or companies for inadequate action or damages",
+        "Offer a reasoned view on courts versus legislative or regulatory action as the right venue",
+        "Connect it to a practical implication, growing importance of climate risk disclosure in project planning"
+      ],
+      "modelAnswer": "I've been following a few of these cases, where courts have started holding governments or companies more directly accountable, either for inadequate climate policy or for damages tied to emissions decades ago, and I think it reflects real frustration that legislative action has been too slow. I'm a little cautious about leaning entirely on courts for this though, judges are working within existing legal frameworks that weren't built for a problem like climate change, so rulings can end up inconsistent or hard to enforce compared to a clear legislative policy. For engineering practice, I think the practical effect is already visible, it's pushing climate risk assessment and disclosure into project planning much earlier, because if a project's long-term climate exposure or contribution can now become a legal liability, that has to be part of the engineering risk analysis, not just an afterthought."
+    },
+    "commonMistakes": [
+      "No actual awareness of the trend, treating the question as purely hypothetical",
+      "Taking a purely legal opinion with no connection back to engineering practice",
+      "Overstating certainty about how these cases will play out"
+    ],
+    "followUps": ["Can you name a specific case or example you're aware of?"]
+  }
+]

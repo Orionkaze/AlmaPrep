@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-meteorology-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for meteorology",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["motivation", "meteorology", "personal"],
+    "question": "What made you want to study meteorology?",
+    "lookingFor": "Genuine personal motivation tied to a real interest in atmospheric science, not just liking weather.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific moment or experience that sparked the interest",
+        "Connect it to what you actually enjoy about the science, not just watching weather",
+        "Show it's grown into something sustained, not a passing curiosity"
+      ],
+      "modelAnswer": "I grew up in a part of the country that gets serious thunderstorms every summer, and I used to sit on the porch timing the gap between lightning and thunder just to guess how close the storm was. That childhood habit turned into genuine curiosity about why storms form where they do, and by the time I was doing my A-levels I was reading synoptic charts for fun before checking if school was cancelled. What keeps me hooked now is the physics underneath it all, how a few basic laws of fluid motion and thermodynamics can produce something as violent and beautiful as a supercell."
+    },
+    "commonMistakes": [
+      "Saying I've always loved weather with nothing concrete behind it",
+      "Describing enthusiasm for extreme weather without any interest in the underlying science",
+      "Making it sound like a hobby rather than an academic pursuit"
+    ],
+    "followUps": ["What part of the science behind that interests you most?"]
+  },
+  {
+    "id": "prog-meteorology-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's program",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation", "research"],
+    "question": "Why do you want to study meteorology here specifically, rather than at another university?",
+    "lookingFor": "Specific, researched reasons tied to this course's structure, staff, or facilities, not generic praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific module, forecasting lab, or research group",
+        "Explain why that specific feature matters to your goals",
+        "Show you compared it against alternatives, not just applied broadly"
+      ],
+      "modelAnswer": "I looked closely at a few programs and yours stood out because the second year includes a dedicated synoptic forecasting practical where you issue real forecasts and get scored against verification data, which most courses only offer as an optional add-on later. I also read some of Dr. Ahmed's work on convective storm initiation, and that's the exact area I got interested in after a school project on flash flooding. Compared to other courses I looked at, this one gets you hands-on with real data earlier, and that matches how I learn best."
+    },
+    "commonMistakes": [
+      "Praising the university's reputation without mentioning the course content",
+      "Giving an answer that would apply equally to any meteorology program",
+      "Naming a professor or module without explaining why it matters to you"
+    ],
+    "followUps": ["What would you want to get out of that practical specifically?"]
+  },
+  {
+    "id": "prog-meteorology-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Earliest memory of weather fascination",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["motivation", "personal", "origin-story"],
+    "question": "Do you remember the first time you found weather genuinely fascinating?",
+    "lookingFor": "A concrete, personal anecdote that shows authentic long-standing curiosity.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific, real memory rather than a generic one",
+        "Explain what specifically struck you about it",
+        "Link it briefly to how your interest has developed since"
+      ],
+      "modelAnswer": "I was about nine when a hailstorm hit in the middle of a heatwave and completely confused me, because I couldn't understand how ice could fall from a sky that hot. I asked my dad and he didn't know either, so I looked it up myself and found out about updrafts carrying hailstones up and down inside a storm cloud until they got too heavy to stay aloft. That was the first time I remember thinking science could explain something that felt almost magical, and I've been chasing that feeling ever since."
+    },
+    "commonMistakes": [
+      "Inventing a story that sounds rehearsed rather than genuine",
+      "Describing the memory without explaining why it mattered",
+      "Skipping straight to present-day interests with no origin story at all"
+    ],
+    "followUps": ["How has your understanding of that event changed since then?"]
+  },
+  {
+    "id": "prog-meteorology-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and engagement",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "motivation", "self-study"],
+    "question": "Have you read or followed anything outside the school curriculum that deepened your interest in meteorology?",
+    "lookingFor": "Evidence of genuine self-directed engagement with the subject beyond what's required.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific: a book, forecasting model output, blog, or podcast",
+        "Explain a specific idea from it that stuck with you",
+        "Show it changed how you think about the subject, not just that you consumed it"
+      ],
+      "modelAnswer": "I've been following the ECMWF's ensemble forecast charts for the past year, mostly because a physics teacher showed us how spread between ensemble members tells you how confident a forecast actually is, and I found that idea of quantifying uncertainty fascinating. I also read Andrew Blum's book on the hidden infrastructure behind weather forecasting, which made me realise how much of meteorology is really about data collection and computing, not just watching clouds. It's shifted my interest from just wanting to know what the weather will be to wanting to understand how we know."
+    },
+    "commonMistakes": [
+      "Naming a source vaguely without any specific detail from it",
+      "Listing several sources with no depth on any of them",
+      "Confusing weather apps with genuine wider reading"
+    ],
+    "followUps": ["What's one thing from that reading you'd want to learn more about here?"]
+  },
+  {
+    "id": "prog-meteorology-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Hands-on experience",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["experience", "hands-on", "project"],
+    "question": "Have you done any hands-on work related to meteorology, like building a weather station, coding, or a school project?",
+    "lookingFor": "Real, described experience that demonstrates initiative and technical engagement with the subject.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe what you actually built, measured, or analysed",
+        "Mention a specific technical challenge you had to solve",
+        "Explain what you learned that you couldn't have got from a textbook"
+      ],
+      "modelAnswer": "For my extended project I built a small weather station with a Raspberry Pi and some cheap sensors, and logged temperature, humidity, and pressure for about four months. The hardest part was actually the pressure sensor drifting over time, so I had to calibrate it against the nearest official station's readings, which taught me a lot about why real observation networks care so much about instrument standards. Comparing my little dataset to the forecast each day also made me appreciate how much local microclimate effects can throw off even a good regional forecast."
+    },
+    "commonMistakes": [
+      "Describing a project vaguely with no technical specifics",
+      "Overstating the scale or sophistication of what was actually done",
+      "Not being able to explain what went wrong or what was learned"
+    ],
+    "followUps": ["What would you do differently if you built it again?"]
+  },
+  {
+    "id": "prog-meteorology-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Awareness of maths and physics demands",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["rigor", "maths", "physics"],
+    "question": "Meteorology is a maths and physics heavy degree. How prepared do you feel for that, and why do you want to take it on?",
+    "lookingFor": "Realistic self-assessment of the quantitative demands, backed by genuine willingness and some evidence of aptitude.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge honestly what the degree actually demands mathematically",
+        "Point to specific coursework or experience that shows you can handle it",
+        "Explain why you want that rigor rather than a softer alternative"
+      ],
+      "modelAnswer": "I know the degree leans heavily on calculus, differential equations, and fluid dynamics, and honestly that's part of why I want to do it rather than a more general earth science course. I've taken further maths alongside physics and found the mechanics modules the ones I enjoyed most, particularly anything involving rates of change. I'd rather struggle through the maths that actually explains atmospheric behaviour than study weather in a way that stays qualitative, because I want to understand the mechanism, not just describe it."
+    },
+    "commonMistakes": [
+      "Downplaying or being unaware of how quantitative the degree is",
+      "Claiming confidence with no evidence from actual coursework",
+      "Suggesting you'd prefer to avoid the maths if possible"
+    ],
+    "followUps": ["Which area of maths do you find hardest, and how do you work at it?"]
+  },
+  {
+    "id": "prog-meteorology-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Following a recent weather event",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["current-events", "motivation", "awareness"],
+    "question": "Is there a recent weather event you followed closely? Talk us through it.",
+    "lookingFor": "Current awareness of meteorology in the news, with some understanding of the science behind the event, not just headlines.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, real event with rough timing or location",
+        "Explain what was meteorologically interesting about it, not just its impact",
+        "Show some understanding of why it happened or was forecast the way it was"
+      ],
+      "modelAnswer": "I followed the flooding in parts of the UK last autumn quite closely, partly because it happened near family. What struck me was how the forecasters had flagged the risk of a slow moving low pressure system days in advance, but the actual rainfall totals still surprised people because the system stalled for longer than the models expected. It made me appreciate the gap between knowing roughly what's coming and knowing exactly how bad it will be, which seems to be one of the harder problems in operational forecasting."
+    },
+    "commonMistakes": [
+      "Only describing the human impact with no meteorological detail",
+      "Picking an event you clearly don't know much about",
+      "Getting basic facts about the event wrong"
+    ],
+    "followUps": ["What do you think made that event particularly hard to forecast?"]
+  },
+  {
+    "id": "prog-meteorology-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Weather versus climate",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "weather", "climate"],
+    "question": "How would you explain the difference between weather and climate to someone with no science background?",
+    "lookingFor": "A clear, correct distinction stated simply, showing genuine conceptual understanding rather than a memorised line.",
+    "idealAnswer": {
+      "bullets": [
+        "State that weather is short-term atmospheric conditions and climate is the long-term average pattern",
+        "Use a simple, correct analogy or example",
+        "Avoid conflating a single event with a climate trend"
+      ],
+      "modelAnswer": "Weather is what's happening in the atmosphere right now or over the next few days, like whether it's raining today or how windy it'll be this weekend. Climate is the average pattern of that weather over a much longer period, usually decades, so it's more like the typical range you'd expect for a place in a given month. I like the analogy that weather is your mood on a given day, while climate is more like your personality over years, one cold day doesn't say anything about climate any more than one grumpy morning says something about someone's character."
+    },
+    "commonMistakes": [
+      "Using the terms interchangeably by accident during the answer",
+      "Claiming a single extreme event proves or disproves a climate trend",
+      "Giving a definition with no example to make it concrete"
+    ],
+    "followUps": ["Why do people sometimes confuse the two?"]
+  },
+  {
+    "id": "prog-meteorology-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Career direction within meteorology",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["career", "goals", "motivation"],
+    "question": "Meteorology leads to quite different careers, forecasting, research, aviation, broadcasting. Do you have a direction in mind?",
+    "lookingFor": "A genuine, informed sense of direction that's specific enough to be credible but open to change.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific area and explain what draws you to it",
+        "Show you understand roughly what that career actually involves",
+        "Stay open to the course changing your mind rather than sounding fixed"
+      ],
+      "modelAnswer": "Right now I'm most drawn to operational forecasting, ideally somewhere like aviation meteorology, because I like the idea of decisions actually depending on my forecast within hours rather than years. I spent a day shadowing at a regional airport and saw how much pressure there is to get low visibility calls right, which was intense but exactly the kind of applied, high stakes work I want. That said, I know a lot of people go in with one idea and come out interested in research instead, so I'm keeping an open mind once I actually get into the atmospheric dynamics modules."
+    },
+    "commonMistakes": [
+      "Having no direction at all and seeming disengaged from the field's actual career paths",
+      "Naming a career with no understanding of what it involves day to day",
+      "Sounding so fixed on one path that you seem inflexible"
+    ],
+    "followUps": ["What's drawn you to that path specifically, rather than the alternatives?"]
+  },
+  {
+    "id": "prog-meteorology-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Misconceptions about the job",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["awareness", "career", "realism"],
+    "question": "What do you think a professional meteorologist actually does day to day, beyond presenting the forecast on TV?",
+    "lookingFor": "Realistic understanding that most meteorology work is technical and behind the scenes, not on-camera.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that broadcasting is a small fraction of the field",
+        "Describe realistic day to day tasks like model interpretation, data quality checks, or writing forecasts",
+        "Demonstrate you're drawn to the actual work, not the public-facing image"
+      ],
+      "modelAnswer": "Most meteorologists never appear on camera at all. A lot of the job is interpreting output from several different numerical models that often disagree with each other, deciding which one is likely closer to right given the current situation, and then writing that judgement up as a forecast for a specific audience, whether that's the public, an airline, or a shipping company. There's also a lot of unglamorous work checking observation data for errors before it even goes into a model. That's actually the part that appeals to me, the judgement call in the middle of conflicting information."
+    },
+    "commonMistakes": [
+      "Assuming the job is mostly presenting on television",
+      "Describing the job in vague terms without any real day to day detail",
+      "Showing no awareness that forecasting involves interpreting model disagreement"
+    ],
+    "followUps": ["Why does that appeal to you more than the broadcasting side?"]
+  },
+  {
+    "id": "prog-meteorology-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "What causes wind",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "wind", "pressure"],
+    "question": "In simple terms, what actually causes wind?",
+    "lookingFor": "Correct core physics, pressure gradient force driving air from high to low pressure, stated clearly.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the pressure gradient force as the fundamental driver",
+        "Explain that air moves from high pressure toward low pressure",
+        "Mention that other factors like the Coriolis effect and friction then shape the direction and speed"
+      ],
+      "modelAnswer": "Wind happens because air moves from areas of higher pressure toward areas of lower pressure, trying to even things out, and the bigger that pressure difference is over a given distance, the stronger the wind. That basic push is called the pressure gradient force. It doesn't just blow in a straight line from high to low though, because the Earth's rotation bends the path through the Coriolis effect, and friction near the ground slows it down and changes the angle further."
+    },
+    "commonMistakes": [
+      "Saying wind is just caused by temperature without connecting it to pressure differences",
+      "Leaving out the pressure gradient force entirely",
+      "Describing the Coriolis effect as the primary cause of wind rather than something that deflects it"
+    ],
+    "followUps": ["Why does wind near the surface not blow directly from high to low pressure?"]
+  },
+  {
+    "id": "prog-meteorology-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Why air rises and cools",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "adiabatic", "fundamentals"],
+    "question": "Why does rising air cool, even if it doesn't lose heat to its surroundings?",
+    "lookingFor": "Understanding of adiabatic cooling, the link between pressure, volume, and temperature as a parcel rises.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that pressure decreases with altitude",
+        "Connect that to the parcel expanding as it rises",
+        "Explain that expansion does work on the surroundings, which uses up internal energy and cools the parcel"
+      ],
+      "modelAnswer": "As a parcel of air rises, it moves into an environment of lower pressure, so it expands. That expansion means the parcel is doing work pushing against the surrounding air, and since no heat is being added or removed, that energy has to come from somewhere, which is the parcel's own internal energy. As the internal energy drops, so does the temperature, which is why we call it adiabatic cooling, it's not about losing heat to the surroundings, it's about the parcel expending its own energy to expand."
+    },
+    "commonMistakes": [
+      "Explaining it as simply it's colder higher up without the mechanism",
+      "Confusing adiabatic cooling with the parcel losing heat to the air around it",
+      "Not connecting pressure decrease with altitude to the expansion"
+    ],
+    "followUps": ["What happens to the cooling rate once condensation starts?"]
+  },
+  {
+    "id": "prog-meteorology-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "How clouds form",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["clouds", "condensation", "fundamentals"],
+    "question": "Can you explain, in basic terms, how a cloud forms?",
+    "lookingFor": "Correct sequence involving air rising, cooling, reaching saturation, and condensing onto nuclei.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that air needs to rise and cool to reach its dew point",
+        "Mention condensation nuclei as necessary for water vapour to condense onto",
+        "Describe the result as tiny water droplets or ice crystals suspended in the air"
+      ],
+      "modelAnswer": "A cloud forms when air rises, expands, and cools until it reaches its dew point, the temperature at which it's holding as much water vapour as it can. Beyond that point the water vapour starts condensing, but it needs something to condense onto, tiny particles like dust, pollen, or sea salt called condensation nuclei. Once that happens you get billions of tiny water droplets or, if it's cold enough, ice crystals, all suspended together, and that's what we see as a cloud."
+    },
+    "commonMistakes": [
+      "Skipping the role of condensation nuclei entirely",
+      "Confusing dew point with a fixed temperature rather than something dependent on humidity",
+      "Describing clouds as made of water vapour rather than condensed liquid or ice"
+    ],
+    "followUps": ["Why do clouds have flat bases?"]
+  },
+  {
+    "id": "prog-meteorology-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Coriolis effect",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["coriolis", "rotation", "wind-patterns"],
+    "question": "What is the Coriolis effect, and how does it influence weather systems?",
+    "lookingFor": "Understanding that it's an apparent deflection caused by Earth's rotation, and its practical effect on wind direction in different hemispheres.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain it as an apparent deflection caused by the Earth rotating beneath moving air",
+        "State the direction of deflection differs by hemisphere, right in the Northern, left in the Southern",
+        "Connect it to why large scale wind systems curve rather than flowing straight from high to low pressure"
+      ],
+      "modelAnswer": "The Coriolis effect is an apparent deflection of moving air caused by the fact that the Earth is rotating underneath it, so from our point of view on the surface, the air seems to curve even though it's really travelling in a straight line relative to space. In the Northern Hemisphere that deflection is to the right of the direction of motion, and in the Southern Hemisphere it's to the left. It's why large scale systems like cyclones spin counterclockwise in the Northern Hemisphere and clockwise in the Southern, and why wind around a low pressure system curves inward rather than blowing straight into the centre."
+    },
+    "commonMistakes": [
+      "Claiming the Coriolis effect is what makes water spin down a drain a particular way, a common myth at that small scale",
+      "Getting the hemisphere directions backwards",
+      "Describing it as a real force rather than an apparent effect of the rotating reference frame"
+    ],
+    "followUps": ["Why is the Coriolis effect negligible for something small like a draining sink?"]
+  },
+  {
+    "id": "prog-meteorology-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Warm and cold fronts",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["fronts", "synoptic", "fundamentals"],
+    "question": "What's the difference between a warm front and a cold front?",
+    "lookingFor": "Correct basic distinction in structure, slope, and typical weather associated with each.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a front as the boundary between two air masses of different temperature",
+        "Explain that cold fronts are steeper and move faster, often bringing sharper, shorter bursts of weather",
+        "Explain that warm fronts are shallower and slower, bringing more prolonged, gradual weather ahead of them"
+      ],
+      "modelAnswer": "Both are boundaries between a warmer and a colder air mass, but they behave differently depending on which one is advancing. A cold front is where cold air is pushing under warm air, and because cold air is denser it wedges in quite steeply, which is why cold fronts tend to move fast and bring short, intense bursts of rain or thunderstorms as they pass. A warm front is where warm air is advancing over cold air, and it slides up over it on a much shallower slope, so you tend to get a longer period of gradually thickening cloud and steadier rain well ahead of the front itself."
+    },
+    "commonMistakes": [
+      "Mixing up which front is associated with the steeper slope",
+      "Describing fronts without mentioning the air masses on either side",
+      "Assuming both fronts bring the same type of weather"
+    ],
+    "followUps": ["What would you expect to see on a barometer as a cold front passes?"]
+  },
+  {
+    "id": "prog-meteorology-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "What causes the seasons",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["seasons", "fundamentals", "earth-orbit"],
+    "question": "What actually causes the seasons? A lot of people get this wrong, what's the real explanation?",
+    "lookingFor": "Correct explanation based on axial tilt, not distance from the sun.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly identify the Earth's axial tilt, not orbital distance, as the cause",
+        "Explain how tilt changes the angle and duration of sunlight received through the year",
+        "Note that hemispheres experience opposite seasons at the same time as a result"
+      ],
+      "modelAnswer": "It's not actually about how close the Earth is to the sun, a common misconception, it's about the Earth's axial tilt of about twenty three and a half degrees. As the Earth orbits, that tilt means different hemispheres are angled more directly toward the sun at different times of year, so they get more direct, concentrated sunlight and longer days, which is summer, while the other hemisphere gets more oblique, spread out sunlight and shorter days, which is winter. That's also why the two hemispheres are always in opposite seasons at the same time."
+    },
+    "commonMistakes": [
+      "Attributing seasons to the Earth being physically closer to the sun in summer",
+      "Failing to mention axial tilt at all",
+      "Not connecting the explanation to why hemispheres have opposite seasons"
+    ],
+    "followUps": ["Why is Earth actually closest to the sun in early January, and why doesn't that make the Northern Hemisphere hottest then?"]
+  },
+  {
+    "id": "prog-meteorology-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Greenhouse effect",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["greenhouse-effect", "radiation", "climate"],
+    "question": "Can you explain how the greenhouse effect works?",
+    "lookingFor": "Correct mechanism involving incoming shortwave and outgoing longwave radiation, and the role of greenhouse gases.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the sun's energy arrives mostly as shortwave radiation that passes through the atmosphere and warms the surface",
+        "Explain that the surface re-emits energy as longwave infrared radiation",
+        "Explain that greenhouse gases absorb and re-emit some of that longwave radiation, trapping heat rather than letting it all escape to space"
+      ],
+      "modelAnswer": "Sunlight arrives as shortwave radiation, and most of it passes through the atmosphere fairly easily and warms the Earth's surface. The surface then re-radiates that energy back out, but as longwave infrared radiation because it's much cooler than the sun. Greenhouse gases like carbon dioxide and water vapour are good at absorbing that longwave radiation, and they re-emit it in all directions, including back down toward the surface, which keeps some of that heat from escaping straight to space. Without any greenhouse effect at all the planet would actually be far too cold to support life as we know it, so the natural effect itself isn't the problem, it's the amount we've added to it."
+    },
+    "commonMistakes": [
+      "Describing the atmosphere as a physical barrier or blanket without mentioning radiation wavelengths",
+      "Implying the greenhouse effect is entirely artificial or bad, missing that a natural version keeps Earth habitable",
+      "Confusing shortwave and longwave radiation"
+    ],
+    "followUps": ["Why is water vapour actually the most abundant greenhouse gas, and why don't we talk about controlling it directly?"]
+  },
+  {
+    "id": "prog-meteorology-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "The water cycle and precipitation",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["water-cycle", "precipitation", "fundamentals"],
+    "question": "Walk me through what has to happen for a raindrop to actually form and fall.",
+    "lookingFor": "Correct sequence from evaporation through condensation to droplet growth and precipitation.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with evaporation putting water vapour into the air",
+        "Describe condensation around nuclei forming tiny cloud droplets",
+        "Explain droplets need to grow large and heavy enough, through collision and coalescence or ice processes, to overcome updrafts and fall"
+      ],
+      "modelAnswer": "It starts with evaporation, usually from the ocean, putting water vapour into the air. That moist air eventually rises, cools, and condenses into tiny cloud droplets around condensation nuclei, but those droplets on their own are far too small and light to fall, they'd just float. For rain to actually happen, those droplets need to collide and merge with each other, a process called collision and coalescence, or in colder clouds ice crystals grow by picking up water vapour more efficiently than the surrounding droplets. Either way, the droplets or crystals need to get heavy enough that gravity beats the updraft holding them up, and then they fall as precipitation."
+    },
+    "commonMistakes": [
+      "Stopping at cloud formation without explaining how droplets grow large enough to fall",
+      "Assuming all clouds automatically produce rain",
+      "Leaving out the role of updrafts in keeping small droplets suspended"
+    ],
+    "followUps": ["Why do some clouds never produce rain?"]
+  },
+  {
+    "id": "prog-meteorology-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Forecasting tools and instruments",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["instruments", "observation", "forecasting-tools"],
+    "question": "What tools or instruments do meteorologists actually use to observe the atmosphere?",
+    "lookingFor": "Awareness of the range of observation systems beyond a simple thermometer, and roughly what each measures.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least two or three distinct tools, such as radar, satellites, and radiosondes",
+        "Briefly describe what each one actually measures or detects",
+        "Show awareness that forecasting relies on combining many observation types, not just one"
+      ],
+      "modelAnswer": "Weather radar sends out pulses and measures what bounces back off precipitation, which is how we see the shape and intensity of storms in something close to real time. Satellites give us the bigger picture from above, tracking cloud cover, storm systems, and even sea surface temperatures over huge areas. Then there are radiosondes, weather balloons carrying sensors that measure temperature, humidity, and pressure as they rise through the atmosphere, which is really important because it gives us a vertical profile, not just a surface reading. Forecasters combine all of that with surface stations and ocean buoys to build a full picture before it even gets near a model."
+    },
+    "commonMistakes": [
+      "Naming only a thermometer or barometer with no awareness of radar or satellites",
+      "Confusing what radar and satellites each actually detect",
+      "Not mentioning that observations feed into forecast models"
+    ],
+    "followUps": ["Why is a vertical profile of the atmosphere important, not just surface readings?"]
+  },
+  {
+    "id": "prog-meteorology-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of forecast accuracy",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["chaos-theory", "forecast-uncertainty", "predictability"],
+    "question": "Why do weather forecasts get less reliable the further ahead they try to predict, even with powerful computers?",
+    "lookingFor": "Understanding of chaos theory and sensitivity to initial conditions, not just computers aren't good enough yet.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the atmosphere is a chaotic system sensitive to tiny errors in initial conditions",
+        "Note that observation data always has some small uncertainty or gaps, which grows over time in the model",
+        "Mention ensemble forecasting as the practical response to this uncertainty"
+      ],
+      "modelAnswer": "It's not really a computing power problem, it's more fundamental than that. The atmosphere is a chaotic system, which means tiny differences in the starting conditions, differences too small for us to even measure precisely, can lead to completely different outcomes a week or two later, an idea sometimes called the butterfly effect. Since our observation network can never capture the atmosphere's exact state everywhere at once, every forecast starts with some small uncertainty, and that uncertainty compounds the further out you run the model. That's why forecasters now run ensembles, dozens of slightly varied simulations, so they can show a range of possible outcomes and how confident they actually are, rather than pretending a single run is exact."
+    },
+    "commonMistakes": [
+      "Blaming the limitation purely on insufficient computing power or bad models",
+      "Not mentioning sensitivity to initial conditions or chaos theory at all",
+      "Suggesting forecasts could become perfectly accurate indefinitely into the future with enough improvement"
+    ],
+    "followUps": ["What does an ensemble forecast actually tell you that a single deterministic run doesn't?"]
+  },
+  {
+    "id": "prog-meteorology-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "El Nino and ENSO",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["enso", "el-nino", "ocean-atmosphere"],
+    "question": "What is El Nino, and why does it matter to weather patterns far from the Pacific?",
+    "lookingFor": "Basic understanding of ENSO as an ocean-atmosphere coupling with far reaching effects, teleconnections.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe El Nino as a periodic warming of sea surface temperatures in the central and eastern tropical Pacific",
+        "Explain that it's tied to changes in trade winds and ocean circulation, not an isolated ocean event",
+        "Mention teleconnections, how it shifts weather patterns in distant regions like altering jet stream position"
+      ],
+      "modelAnswer": "El Nino is a periodic warming of sea surface temperatures in the central and eastern tropical Pacific, and it happens alongside a weakening of the usual trade winds that push warm water westward. Because the ocean and atmosphere are so tightly linked in that region, that shift in ocean temperature changes where thunderstorm activity and rising air are concentrated, which then reshapes atmospheric circulation patterns like the jet stream on a much larger scale. That's why El Nino can influence rainfall and temperature patterns as far away as North America or even parts of Africa, through what are called teleconnections, even though the actual warming is happening thousands of miles away in the Pacific."
+    },
+    "commonMistakes": [
+      "Describing El Nino as purely an ocean phenomenon with no atmospheric component",
+      "Not being able to explain why it affects weather in distant regions",
+      "Confusing El Nino with a single storm or short term event rather than a multi-month to multi-year pattern"
+    ],
+    "followUps": ["What's La Nina, and how does it differ?"]
+  },
+  {
+    "id": "prog-meteorology-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "The jet stream",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["jet-stream", "upper-atmosphere", "circulation"],
+    "question": "What is the jet stream, and why do meteorologists care about it so much?",
+    "lookingFor": "Correct description of the jet stream and its role in steering weather systems.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe it as a narrow band of strong winds high in the atmosphere, formed by temperature contrasts between air masses",
+        "Explain that it roughly separates cold polar air from warmer air toward the equator",
+        "Explain its importance in steering surface weather systems and influencing how fast or slow they move"
+      ],
+      "modelAnswer": "The jet stream is a narrow band of very fast moving winds several miles up in the atmosphere, usually near where the tropopause sits, and it forms because of the sharp temperature contrast between cold polar air and warmer air further toward the equator. It tends to mark the rough boundary between those two air masses, and its position shifts throughout the year as that temperature contrast changes with the seasons. Meteorologists care about it so much because it effectively steers surface weather systems, a dip or ridge in the jet stream can pull a storm further south or hold it in place for days, which is often the difference between a quick passing system and a prolonged spell of extreme weather."
+    },
+    "commonMistakes": [
+      "Confusing the jet stream with surface level wind",
+      "Not connecting it to temperature contrasts between air masses",
+      "Missing its role in steering and influencing the speed of surface weather systems"
+    ],
+    "followUps": ["What happens to surface weather when the jet stream becomes unusually wavy or blocked?"]
+  },
+  {
+    "id": "prog-meteorology-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hurricane formation conditions",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["tropical-cyclones", "hurricanes", "formation"],
+    "question": "What conditions does a tropical cyclone need in order to form and strengthen?",
+    "lookingFor": "Knowledge of the key ingredients, warm ocean water, moisture, low wind shear, and background rotation.",
+    "idealAnswer": {
+      "bullets": [
+        "Warm ocean water to a sufficient depth, generally cited around 26 to 27 degrees Celsius, to fuel the storm with heat and moisture",
+        "Low vertical wind shear, so the storm's structure isn't torn apart as it develops",
+        "Enough distance from the equator for the Coriolis effect to provide the initial spin, plus some pre-existing disturbance to organise around"
+      ],
+      "modelAnswer": "A tropical cyclone needs warm ocean water, usually at least around twenty six or twenty seven degrees Celsius down to a reasonable depth, because that heat and moisture is essentially the storm's fuel supply, evaporating and condensing to release latent heat that drives the whole system. It also needs low vertical wind shear, meaning wind speed and direction don't change too much with height, because strong shear tears the developing storm's structure apart before it can organise. And it needs enough distance from the equator for the Coriolis effect to actually give the system spin, which is why you almost never see tropical cyclones form right on the equator itself, plus usually some existing disturbance like a tropical wave to act as a seed for the circulation to build around."
+    },
+    "commonMistakes": [
+      "Only mentioning warm water and ignoring wind shear or the Coriolis requirement",
+      "Claiming hurricanes can form directly on the equator",
+      "Describing the storm's energy source vaguely without mentioning latent heat release"
+    ],
+    "followUps": ["Why do hurricanes weaken quickly once they move over land or cooler water?"]
+  },
+  {
+    "id": "prog-meteorology-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Atmospheric pressure and measurement",
+    "program": "Meteorology",
+    "difficulty": "easy",
+    "tags": ["pressure", "instruments", "fundamentals"],
+    "question": "What is atmospheric pressure, and how do we actually measure it?",
+    "lookingFor": "Correct definition tied to the weight of air above a point, and a basic grasp of how it's measured and why it changes with altitude.",
+    "idealAnswer": {
+      "bullets": [
+        "Define atmospheric pressure as the weight of the column of air above a given point",
+        "Mention a barometer as the instrument used to measure it",
+        "Explain that pressure decreases with altitude because there's less air above you higher up"
+      ],
+      "modelAnswer": "Atmospheric pressure is essentially the weight of all the air sitting above a given point, pressing down on everything below it. We measure it with a barometer, and the units you'll usually see on a weather chart are hectopascals or millibars, they're the same thing under different names. Pressure decreases as you go up in altitude, because the higher you are, the less air is left above you to weigh down on that point, which is also part of why it gets harder to breathe at high altitude, there's simply less air, and less oxygen, pressing in around you."
+    },
+    "commonMistakes": [
+      "Defining pressure vaguely as just how heavy the air is without the column concept",
+      "Not knowing the instrument used to measure it",
+      "Getting the direction of change with altitude backwards"
+    ],
+    "followUps": ["Why do meteorologists often adjust pressure readings to sea level before comparing stations at different altitudes?"]
+  },
+  {
+    "id": "prog-meteorology-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Numerical weather prediction basics",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["nwp", "modeling", "forecasting"],
+    "question": "In broad terms, how does a computer actually go about predicting the weather?",
+    "lookingFor": "Basic conceptual grasp of numerical weather prediction, initial conditions plus physical equations solved forward in time.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that models start from a snapshot of current observed conditions across a grid covering the atmosphere",
+        "Explain that the model applies the physical equations governing fluid motion and thermodynamics to step that state forward in time",
+        "Note the trade-off between grid resolution, computing power, and how far ahead or how detailed the forecast can be"
+      ],
+      "modelAnswer": "A numerical weather model starts by taking a snapshot of the current state of the atmosphere, temperature, pressure, humidity, wind, gathered from observations and spread across a three dimensional grid covering the region or the whole globe. From there it applies the physical equations that govern how fluids and heat behave, things like the equations of motion and thermodynamics, and solves them step by step forward in time, essentially calculating what the atmosphere at each grid point should look like a few minutes later, then using that as the new starting point for the next step. The catch is that finer grid spacing gives a more detailed and often more accurate forecast, but it costs enormously more computing power, which is why global models tend to use coarser grids than the small regional models used for things like severe storm forecasting."
+    },
+    "commonMistakes": [
+      "Describing forecasting as pattern matching against historical weather rather than solving physical equations",
+      "Not mentioning that the model needs an accurate starting snapshot of current conditions",
+      "Missing the trade-off between resolution and computational cost"
+    ],
+    "followUps": ["Why might a coarser global model miss a severe thunderstorm that a finer regional model catches?"]
+  }
+]

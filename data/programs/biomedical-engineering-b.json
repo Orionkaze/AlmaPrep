@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-biomedical-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Biocompatibility vs bioactivity",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["biomaterials", "fundamentals"],
+    "question": "What is the difference between a material being biocompatible and a material being bioactive?",
+    "lookingFor": "Precise use of core biomaterials vocabulary rather than treating the two terms as synonyms.",
+    "idealAnswer": {
+      "bullets": [
+        "Biocompatible means the body tolerates the material without a harmful immune or toxic response",
+        "Bioactive means the material actively encourages a biological response, like bone bonding to hydroxyapatite",
+        "A material can be biocompatible without being bioactive, and give an example of each"
+      ],
+      "modelAnswer": "Biocompatible just means the body won't reject or react badly to the material, so something like medical grade titanium is biocompatible because it sits there inertly without triggering inflammation. Bioactive goes a step further and means the material actually provokes a positive biological response, like hydroxyapatite coatings that encourage bone cells to grow directly onto an implant surface. So every bioactive material needs to be biocompatible first, but plenty of biocompatible materials, like a silicone catheter, are deliberately inert rather than bioactive because you don't want tissue growing into them."
+    },
+    "commonMistakes": [
+      "Using the two words interchangeably",
+      "Giving no concrete material example",
+      "Assuming inert is always the desirable property"
+    ],
+    "followUps": ["Can you think of a case where you'd deliberately want an inert, non-bioactive material?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Stress shielding in implants",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["biomechanics", "implants", "materials"],
+    "question": "Why can an orthopaedic implant that is too strong actually be a bad thing for the patient's bone?",
+    "lookingFor": "Understanding of stress shielding, the mechanism behind it, and its long-term clinical consequence.",
+    "idealAnswer": {
+      "bullets": [
+        "Bone is a living tissue that remodels according to Wolff's law, so it needs mechanical loading to stay dense",
+        "If an implant is much stiffer than bone, it carries most of the load and shields the surrounding bone from stress",
+        "Unloaded bone resorbs over time, which can loosen the implant or cause fracture around it, so stiffness should be matched, not maximised"
+      ],
+      "modelAnswer": "It sounds counterintuitive, but bone is living tissue that responds to the load it carries, so if you put in a hip stem that's far stiffer than the surrounding bone, most of the mechanical load gets diverted through the metal instead of the bone itself. Over months that under-loaded bone starts to resorb, following the same remodelling logic as Wolff's law, and thinner bone around the implant means a higher risk of loosening or fracture later on. That's actually one of the arguments for materials like titanium alloys or even porous structures over solid stainless steel, because you want stiffness close to bone rather than as high as possible. It taught me that a good implant material isn't just about strength, it's about matching mechanical behaviour to the tissue it's replacing."
+    },
+    "commonMistakes": [
+      "Assuming stronger and stiffer are always better for an implant",
+      "Not connecting the mechanism to bone remodelling",
+      "Vague answer with no reference to how it actually fails clinically"
+    ],
+    "followUps": ["How might you redesign an implant's geometry, not just its material, to reduce stress shielding?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Sampling rate for biosignals",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["signal-processing", "instrumentation"],
+    "question": "You're designing a portable ECG monitor. How would you decide what sampling rate to digitise the signal at, and what goes wrong if you get it too low?",
+    "lookingFor": "Applied understanding of the Nyquist criterion in a real biomedical instrumentation context, not just the textbook rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Sampling rate must be at least twice the highest frequency component of interest, per the Nyquist theorem",
+        "ECG signals of clinical interest go up to roughly 100 to 150 Hz including the QRS complex detail, so you'd sample comfortably above that, often 250 to 500 Hz in practice",
+        "Undersampling causes aliasing, where high frequency content folds back and distorts the waveform, which is dangerous when you're trying to detect subtle arrhythmias"
+      ],
+      "modelAnswer": "I'd start from the Nyquist theorem, which says you need to sample at least twice the highest frequency component you care about, but for ECG I'd want real margin above that because the fine detail in the QRS complex carries clinically important information up around 100 to 150 Hz. In practice most clinical ECG systems sample somewhere between 250 and 500 Hz for exactly that reason. If you sampled too low, you wouldn't just lose resolution, you'd get aliasing, where higher frequency content folds back and shows up as false low frequency noise in the recorded signal, which could genuinely be mistaken for an arrhythmia. Given that this is a diagnostic tool, I'd rather over-sample and filter than risk that kind of distortion."
+    },
+    "commonMistakes": [
+      "Stating Nyquist's theorem with no applied number for ECG",
+      "Not mentioning aliasing as the specific failure mode",
+      "Ignoring the clinical stakes of getting it wrong"
+    ],
+    "followUps": ["What would an anti-aliasing filter need to do before the signal even reaches your ADC?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Imaging modality trade-offs",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["medical-imaging", "trade-offs"],
+    "question": "A patient could be imaged with either MRI or CT. What trade-offs would a clinical engineer weigh in choosing between them?",
+    "lookingFor": "Genuine grasp of physical trade-offs, not just 'MRI has no radiation' as a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "CT uses ionising radiation and is fast, good for bone and acute trauma, cheaper and more available",
+        "MRI uses magnetic fields and radiofrequency pulses, gives superior soft tissue contrast, no ionising radiation, but is slower and more expensive",
+        "Weigh the clinical question, urgency, patient factors like implants or claustrophobia, and cost against each other"
+      ],
+      "modelAnswer": "CT is fast and excellent at showing bone and acute bleeding, which is why it's the default in an emergency trauma setting, but it uses ionising radiation so you wouldn't want to overuse it, especially in children. MRI uses magnetic fields and radio pulses rather than radiation, and it's much better at distinguishing soft tissues like different types of brain matter or ligaments, but a scan can take thirty minutes to an hour, it's more expensive, and it's unsafe for patients with certain metal implants or pacemakers. So the choice really comes down to what question you're asking, how urgent it is, and what's safe for that specific patient, not which machine is generally 'better'."
+    },
+    "commonMistakes": [
+      "Treating MRI as strictly superior with no downside",
+      "Not mentioning speed, cost, or implant safety as factors",
+      "Confusing CT with plain X-ray"
+    ],
+    "followUps": ["When would you choose ultrasound over both of these?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Pacemaker sensing circuit",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["instrumentation", "cardiac-devices"],
+    "question": "A pacemaker has to sense the heart's own electrical activity and only pace when needed. What could go wrong with that sensing, and how might a design guard against it?",
+    "lookingFor": "Reasoning about signal detection, noise rejection, and the clinical risk of both over-sensing and under-sensing.",
+    "idealAnswer": {
+      "bullets": [
+        "Under-sensing misses a genuine heartbeat and paces unnecessarily, which can be dangerous if it lands on a vulnerable part of the cycle",
+        "Over-sensing picks up noise, like muscle activity or electromagnetic interference, and wrongly withholds a needed pace",
+        "Designs use filtering, refractory periods, and amplitude thresholds tuned to the patient's own signal to balance the two"
+      ],
+      "modelAnswer": "The device has to tell the difference between the heart's genuine electrical activity and noise, and getting that wrong in either direction is risky. If it under-senses and misses a real heartbeat, it might fire a pacing pulse that lands during the heart's vulnerable repolarisation window, which can actually trigger a dangerous arrhythmia. If it over-senses, picking up muscle tremor or outside electromagnetic interference as if it were a heartbeat, it wrongly assumes the heart is beating on its own and withholds a pace the patient actually needed. So the sensing circuit uses bandpass filtering tuned to the frequency range of cardiac signals, an amplitude threshold set relative to that patient's own signal strength, and a refractory period after each detected beat so it doesn't immediately re-trigger on the tail of the same event. It's a nice example of how a device has to be tuned to the individual, not just built to a fixed spec."
+    },
+    "commonMistakes": [
+      "Only discussing one failure mode, not both under-sensing and over-sensing",
+      "Not explaining why a mistimed pace is dangerous",
+      "No mention of how filtering or refractory periods actually help"
+    ],
+    "followUps": ["Why might the threshold need to be adjustable per patient rather than fixed at the factory?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Vascularisation limit in tissue engineering",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["tissue-engineering", "diffusion"],
+    "question": "Why can't engineers simply grow a thick lab-made tissue and implant it as a whole organ today?",
+    "lookingFor": "Understanding of the diffusion limit on nutrient and oxygen transport and why vascularisation is the real bottleneck in tissue engineering.",
+    "idealAnswer": {
+      "bullets": [
+        "Cells rely on diffusion of oxygen and nutrients from surrounding fluid, which only works effectively over roughly 100 to 200 micrometres",
+        "Beyond that distance cells in the core of a thick construct die from hypoxia and lack of nutrient exchange",
+        "Real organs solve this with a dense capillary network, which lab-grown tissue struggles to replicate before implantation"
+      ],
+      "modelAnswer": "In the body, no living cell is ever more than about 100 to 200 micrometres from a capillary, because that's roughly the limit of how far oxygen and nutrients can effectively diffuse through tissue. If you grow a construct much thicker than that in a lab dish without its own blood supply, the cells at the centre simply starve and die before they'd ever be functional. Real organs get around this with an incredibly dense, branching capillary network built up over development, and replicating that network artificially, so that it's ready to connect to the patient's own blood supply on implantation, is still one of the hardest unsolved problems in the field. That's why most current tissue-engineered products are thin, like skin grafts or cartilage, rather than thick solid organs."
+    },
+    "commonMistakes": [
+      "Vaguely saying 'it's too complicated' without the diffusion mechanism",
+      "Not naming vascularisation as the specific bottleneck",
+      "Confusing this with an immune rejection problem instead"
+    ],
+    "followUps": ["What approaches have you read about that try to solve the vascularisation problem?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "EEG signal-to-noise challenge",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["signal-processing", "instrumentation"],
+    "question": "EEG signals measured at the scalp are famously noisy and weak. What makes them so hard to record cleanly?",
+    "lookingFor": "Awareness of the physical scale of the signal and the specific sources of noise that compete with it.",
+    "idealAnswer": {
+      "bullets": [
+        "The signal itself is tiny, on the order of microvolts, because it has to pass through skull and scalp before reaching the electrode",
+        "Muscle activity, eye movement, and even electrical mains interference can be far larger in amplitude than the brain signal",
+        "This is why amplification, filtering, and careful electrode placement or grounding are essential parts of the design, not afterthoughts"
+      ],
+      "modelAnswer": "The brain's electrical activity has to travel through cerebrospinal fluid, skull, and scalp before it reaches a surface electrode, so by the time it's picked up it's down to just a few microvolts, which is tiny. Things like a jaw clench, an eye blink, or even the mains hum from nearby electrical wiring can produce signals that are much larger than that, so they can completely swamp the actual brain activity you're trying to measure. That's why EEG systems need high gain, low-noise amplifiers right at the electrode, careful notch filtering for mains frequency, and often instructions to the patient to stay still, because the electronics alone can't fix a signal that's contaminated at the source."
+    },
+    "commonMistakes": [
+      "Not giving any sense of the actual signal amplitude",
+      "Naming only one noise source instead of several",
+      "Treating this as purely a software filtering problem"
+    ],
+    "followUps": ["How would a differential amplifier help with some of this interference?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Choice of titanium for implants",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["biomaterials", "implants"],
+    "question": "Titanium alloys are everywhere in implants. What specifically makes them a good choice, and what are their limits?",
+    "lookingFor": "A material-property based answer, not just 'it's strong and doesn't rust'.",
+    "idealAnswer": {
+      "bullets": [
+        "Titanium forms a stable, self-healing oxide layer that makes it highly corrosion resistant and biocompatible",
+        "Good strength to weight ratio and a modulus closer to bone than stainless steel, though still stiffer than bone",
+        "Limits include cost, difficulty machining, and it's still not a perfect stiffness match, so stress shielding can still occur"
+      ],
+      "modelAnswer": "Titanium's real advantage is that it spontaneously forms a thin, extremely stable oxide layer on its surface, which is what makes it so corrosion resistant and lets bone cells bond directly to it in a process called osseointegration. It also has a good strength to weight ratio and, compared to something like stainless steel, its elastic modulus is somewhat closer to that of bone, which helps reduce stress shielding, though it's still several times stiffer than bone. The trade-offs are that it's expensive and hard to machine compared to steel, and because it's still stiffer than bone, long-term stress shielding hasn't been fully solved just by switching materials. That's part of why researchers are also exploring porous titanium structures to bring the effective stiffness down further."
+    },
+    "commonMistakes": [
+      "Only citing 'strong and doesn't corrode' with no mechanism",
+      "Claiming titanium perfectly matches bone stiffness",
+      "Not mentioning cost or machinability as real constraints"
+    ],
+    "followUps": ["How might a porous or lattice titanium structure change its effective mechanical properties?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Closed-loop insulin delivery",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["control-systems", "medical-devices"],
+    "question": "What's the difference between an open-loop and a closed-loop insulin pump, and why is the closed-loop version so much harder to build safely?",
+    "lookingFor": "Understanding of feedback control applied to a device where an error can be life-threatening.",
+    "idealAnswer": {
+      "bullets": [
+        "Open-loop delivers insulin on a pre-set schedule or manual bolus with no automatic feedback from glucose levels",
+        "Closed-loop, an artificial pancreas, uses a continuous glucose sensor to automatically adjust insulin dosing in real time",
+        "The difficulty is the safety-critical feedback loop: sensor lag, delivery lag, and the asymmetric risk of overdosing insulin causing dangerous hypoglycemia"
+      ],
+      "modelAnswer": "An open-loop pump just delivers insulin according to a schedule the patient or doctor sets, with no automatic sensing of how the body is actually responding, so the patient still has to check their glucose and adjust manually. A closed-loop or artificial pancreas system uses a continuous glucose monitor to feed real-time readings into a control algorithm that adjusts the insulin dose automatically, which is much more responsive. The hard part is that the control loop has real lag built in on both sides, the glucose sensor reads interstitial fluid rather than blood directly so there's a delay, and injected insulin takes time to act, so the algorithm is always working with slightly stale information. And because too much insulin causes hypoglycemia, which can be far more immediately dangerous than a temporary high reading, the algorithm has to be conservative in a way that a simple proportional controller wouldn't naturally be."
+    },
+    "commonMistakes": [
+      "Describing closed-loop as simply 'more automatic' with no mention of the feedback risk",
+      "Not naming the asymmetric danger between hyper- and hypoglycemia",
+      "Ignoring sensor and actuation lag as a control problem"
+    ],
+    "followUps": ["What kind of safety margin or fail-safe would you build into the control algorithm?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Hemolysis in blood-contacting devices",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["fluid-mechanics", "medical-devices"],
+    "question": "Why does something like a mechanical heart valve or a blood pump have to be designed with fluid flow patterns in mind, not just mechanical strength?",
+    "lookingFor": "Awareness that shear stress and flow disruption in blood-contacting devices cause hemolysis and clotting, and that flow design is a safety issue.",
+    "idealAnswer": {
+      "bullets": [
+        "Red blood cells are damaged by high shear stress, which can rupture them and cause hemolysis",
+        "Turbulent or stagnant flow regions promote clot formation, which risks stroke or device failure",
+        "Devices are shaped to keep flow as smooth and laminar as possible, avoiding sharp edges, sudden constrictions, or recirculation zones"
+      ],
+      "modelAnswer": "Blood isn't just a fluid, it's carrying living cells, and red blood cells in particular can rupture if they're exposed to high enough shear stress, which is a mechanical damage process called hemolysis. Beyond that, if the flow path has sharp edges, sudden constrictions, or dead zones where blood pools and slows down, that turbulence and stagnation encourages platelets to activate and clot, which in a heart valve or pump could throw a clot downstream and cause a stroke. So the geometry has to be designed almost like an aerodynamics problem, keeping the flow smooth and laminar, avoiding recirculation, so the device is protecting the blood itself, not just moving it. It's a good example of how in biomedical devices the material touching the body is only half the design problem, the fluid dynamics around it matters just as much."
+    },
+    "commonMistakes": [
+      "Focusing only on mechanical durability of the valve material",
+      "Not naming hemolysis or clot formation specifically",
+      "Treating blood as an ordinary fluid with no biological consequence to turbulence"
+    ],
+    "followUps": ["How would you go about testing a new valve design for hemolysis before it reaches a patient?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "FDA device classification",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["regulatory", "medical-devices"],
+    "question": "Why does it matter, from a design perspective, whether a device you're building falls into Class I, II, or III?",
+    "lookingFor": "Understanding that regulatory risk class shapes engineering decisions from day one, not something bolted on at the end.",
+    "idealAnswer": {
+      "bullets": [
+        "Classification is based on risk to the patient, from low-risk Class I like a bandage to high-risk Class III like a pacemaker",
+        "Higher classes require far more rigorous testing, clinical trials, and documentation before approval",
+        "Knowing the likely class early shapes design choices, timeline, and cost, so it can't be an afterthought"
+      ],
+      "modelAnswer": "The classification is basically a measure of how much harm the device could do if it failed, so something like a tongue depressor is Class I with minimal oversight, while a pacemaker is Class III and needs full clinical trials and a much more rigorous approval pathway before it can reach a patient. What I find interesting is that this isn't just paperwork that happens after the engineering is done, it actually shapes the engineering itself, because a Class III device needs a design process with much heavier documentation, risk analysis, and traceability built in from the very first prototype. If I were designing a device, I'd want to know early which class it's likely to fall into, because that changes the timeline, the budget, and honestly the whole way you approach testing."
+    },
+    "commonMistakes": [
+      "Treating regulation as separate from the engineering process",
+      "Not giving a concrete example for each class",
+      "Assuming higher class just means 'more paperwork' rather than more testing rigor"
+    ],
+    "followUps": ["If you were designing a new wearable heart rate monitor, which class do you think it would fall into, and why?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Biosensor transduction",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["biosensors", "fundamentals"],
+    "question": "How does a biosensor, like a glucose sensor, actually turn a biological event into a signal you can read on a screen?",
+    "lookingFor": "Grasp of the recognition and transduction stages that any biosensor needs, with a concrete example.",
+    "idealAnswer": {
+      "bullets": [
+        "A recognition element, like an enzyme, binds or reacts specifically with the target molecule",
+        "A transducer converts that biological or chemical event into a measurable signal, often electrical or optical",
+        "Signal processing amplifies and calibrates that raw signal into a readable, quantified output"
+      ],
+      "modelAnswer": "There are really two stages happening. First there's a recognition element, in a glucose sensor that's usually the enzyme glucose oxidase, which reacts specifically with glucose and produces a byproduct like hydrogen peroxide. Then there's a transducer, which in this case is an electrode that converts that chemical reaction into a tiny electrical current proportional to how much glucose reacted. From there the electronics amplify that current and the software converts it into the number you actually see on the display, after being calibrated against known concentrations. I think what's elegant about it is that the biology does the hard work of being specific to glucose, and the engineering's job is just to faithfully translate that into a number."
+    },
+    "commonMistakes": [
+      "Skipping the recognition element and jumping straight to 'it measures electricity'",
+      "No concrete example like glucose oxidase",
+      "Not distinguishing the biological step from the electronic step"
+    ],
+    "followUps": ["What would make a biosensor's recognition element lose specificity over time?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Spatial vs temporal resolution",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["medical-imaging", "trade-offs"],
+    "question": "Why can't a single imaging technology give you both the best spatial resolution and the best temporal resolution at once?",
+    "lookingFor": "Understanding of the physical trade-off between image detail and acquisition speed across imaging modalities.",
+    "idealAnswer": {
+      "bullets": [
+        "Higher spatial resolution generally requires more data acquisition, whether more slices, more k-space lines, or more detector readings, which takes time",
+        "Fast temporal imaging, like watching a beating heart, has to sacrifice some spatial detail or coverage to keep frame rate high",
+        "Different modalities sit at different points on this trade-off, functional MRI vs structural MRI, echocardiography vs cardiac CT, and the choice depends on the clinical question"
+      ],
+      "modelAnswer": "It comes down to the fact that resolution, whether spatial or temporal, both cost you data, and there's a limited time budget for any scan, especially with a moving organ like the heart. If you want extremely fine spatial detail, in MRI that means acquiring more lines of k-space or thinner slices, which simply takes longer to collect. But if you're trying to capture something moving fast, like cardiac wall motion, you need a high frame rate, so you have to accept coarser spatial detail or a smaller field of view to get the scan done fast enough. That's why you see specialised trade-offs across modalities, structural MRI takes its time to get beautiful detail on a static brain, while echocardiography sacrifices resolution to capture the heart valves in real time. As an engineer you're really choosing which axis of information matters more for the specific clinical question being asked."
+    },
+    "commonMistakes": [
+      "Assuming a single 'best' imaging technology exists for all situations",
+      "Not linking the trade-off to actual data acquisition time",
+      "No example of the trade-off playing out clinically"
+    ],
+    "followUps": ["How does parallel imaging or compressed sensing try to get around this trade-off in MRI?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Scaffold degradation rate",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["tissue-engineering", "biomaterials"],
+    "question": "For a biodegradable scaffold used in tissue engineering, why does the degradation rate matter so much, and what happens if you get it wrong in either direction?",
+    "lookingFor": "Ability to reason about matching scaffold degradation to tissue regeneration timelines as a core design parameter.",
+    "idealAnswer": {
+      "bullets": [
+        "The scaffold needs to provide mechanical support only until the patient's own tissue has grown enough to take over that role",
+        "Degrading too fast leaves a mechanical gap before new tissue is strong enough, risking structural failure",
+        "Degrading too slowly can block further tissue ingrowth, trigger a foreign body response, or leave persistent debris"
+      ],
+      "modelAnswer": "The scaffold is really only meant to be a temporary structure, so its whole purpose is to hold the shape and bear load just long enough for the patient's own cells to grow in and take over that job. If it degrades too quickly, you can end up with a mechanical gap where the new tissue isn't strong enough yet to support itself, and the whole structure can collapse or fail. If it degrades too slowly, it can physically block further cell infiltration, act as a long-term irritant that provokes a chronic inflammatory or foreign body response, and just generally get in the way of the tissue it was meant to help regenerate. So matching the degradation timeline to that specific tissue's natural healing rate, cartilage heals far slower than skin for instance, is one of the central design parameters, not a side detail."
+    },
+    "commonMistakes": [
+      "Treating faster degradation as automatically better, or automatically worse",
+      "Not mentioning the mechanical support gap risk",
+      "Ignoring tissue-specific healing timelines as the reference point"
+    ],
+    "followUps": ["How would you go about experimentally tuning a polymer's degradation rate?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias in AI diagnostic tools",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "ai-in-medicine"],
+    "question": "Suppose you helped build an AI tool for detecting skin cancer from photos, and it later turns out to be noticeably less accurate on darker skin tones because the training data was mostly lighter skin. What would you do?",
+    "lookingFor": "Structured ethical reasoning about deployment responsibility, not just a promise to 'fix the data'.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the immediate harm of deploying or continuing to use a tool with known unequal accuracy",
+        "Weigh whether to pause, flag, or restrict use of the tool while the underlying dataset problem is fixed",
+        "Take responsibility for disclosure rather than quietly patching it, since clinicians and patients are relying on its accuracy"
+      ],
+      "modelAnswer": "My first instinct would be that once you know a tool performs unevenly across skin tones, it's not neutral to just keep it running the way it is, because that's actively worse for a group of patients who deserve the same standard of care. I think the right move is to flag it immediately to whoever oversees the tool's deployment, push for it to be restricted or clearly caveated for lower-confidence groups until the training data is fixed, and be honest about the limitation rather than letting clinicians assume uniform accuracy. It would be tempting to just quietly patch it in the next release, but I don't think that's fair to patients who are being scanned right now, so I'd rather take the short-term reputational hit of disclosing the flaw than let it keep causing unequal harm. It's a good reminder that a biased dataset isn't just a technical bug, it's a patient safety issue."
+    },
+    "commonMistakes": [
+      "Only discussing a technical fix with no mention of disclosure or immediate patient impact",
+      "Dismissing the issue as an unavoidable limitation of AI",
+      "No plan for what happens to the tool while the fix is being made"
+    ],
+    "followUps": ["Who do you think should bear responsibility here, the engineers, the company, or the hospital deploying it?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Allocation of scarce medical devices",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "resource-allocation"],
+    "question": "A hospital has ten ventricular assist devices but forty patients who could medically benefit from one. As someone who understands how these devices work, how do you think that allocation decision should be made?",
+    "lookingFor": "Awareness that this isn't an engineering problem but does require the applicant to reason clearly about fairness criteria.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge this is fundamentally a clinical and ethical decision, not one an engineer makes alone",
+        "Discuss possible fair criteria, like medical urgency, likelihood of benefit, or a transparent scoring system, rather than first-come-first-served alone",
+        "Recognise the tension between fairness principles and be honest that there's no fully satisfying answer"
+      ],
+      "modelAnswer": "I want to be honest that this isn't really an engineering decision, it's a clinical and ethical one that should sit with a multidisciplinary committee, not with whoever designed the device. But if I had to think through the fairness of it, I don't think pure first-come-first-served is right, because it ignores medical need, so I'd lean toward criteria like urgency and likelihood of meaningful benefit from the device, assessed by a transparent, documented process rather than any one person's judgment call. What I find hard is that any system you pick, whether it weighs age, or prognosis, or waiting time, ends up disadvantaging someone, and I don't think there's a version of this that isn't genuinely painful. I think the best you can do is make the criteria explicit and consistent, so at least the process itself is fair even when the outcome is hard."
+    },
+    "commonMistakes": [
+      "Claiming engineers should make this decision alone based on technical merit",
+      "Picking one criterion with no acknowledgment of its downsides",
+      "Refusing to engage with the dilemma at all"
+    ],
+    "followUps": ["Should cost to the hospital ever factor into that decision? Why or why not?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Reporting a flaw near launch",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "product-safety"],
+    "question": "Imagine you're on a small team finishing a new infusion pump, and two weeks before launch you find a rare software condition that could cause it to over-deliver a dose. Fixing it properly would delay launch by three months. What do you do?",
+    "lookingFor": "Willingness to prioritise patient safety over schedule and business pressure, reasoned rather than reflexive.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that a dosing error, however rare, is a patient safety issue that overrides schedule pressure",
+        "Escalate the finding formally rather than deciding alone or staying silent",
+        "Consider whether a temporary mitigation exists, but not ship with a known unresolved safety defect"
+      ],
+      "modelAnswer": "Even if it's rare, an over-delivery of medication is a genuine patient safety risk, and I don't think a launch deadline is a good enough reason to knowingly ship it uncorrected. My first step would be to document exactly what I found and escalate it clearly to whoever owns product safety, rather than quietly deciding on my own to either delay or ignore it, because a decision this consequential shouldn't rest on one engineer's judgment. If there was some interim mitigation, like a software lockout on that specific rare condition, that bought safety without the full three-month delay, I'd push hard for that as a compromise. But if there wasn't, I'd want the team to accept the delay, because a rare failure that happens to one real patient isn't rare to them, and I think that has to outweigh the cost of missing a launch window."
+    },
+    "commonMistakes": [
+      "Deciding unilaterally to fix it quietly without escalating",
+      "Treating schedule pressure as a valid reason to accept the risk",
+      "Vague answer that avoids actually committing to delaying launch"
+    ],
+    "followUps": ["What would you do if your manager told you to ship anyway?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Informed consent for novel implants",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["ethics", "informed-consent"],
+    "question": "How much should a patient need to understand about a new implantable device's long-term unknowns before they can truly give informed consent?",
+    "lookingFor": "Nuanced thinking about the limits of informed consent when long-term data genuinely doesn't exist yet.",
+    "idealAnswer": {
+      "bullets": [
+        "Consent should clearly communicate what is known, what is uncertain, and the difference between the two",
+        "Avoid both overwhelming jargon and false reassurance about long-term safety that hasn't been proven yet",
+        "Recognise the tension between enabling innovation and not letting patients bear risk they didn't truly understand"
+      ],
+      "modelAnswer": "I think real informed consent means the patient understands not just what the device does, but honestly where the evidence stops, so if there's only two years of follow-up data, that should be stated plainly rather than implied to be settled long-term safety. It's a genuine balancing act, because burying patients in technical uncertainty isn't helpful either, so the goal should be plain language that draws a clear line between what's proven and what's still being studied. I do think there's a real tension here, because if consent standards get so cautious that no one agrees to try a genuinely promising new device, that also slows down the innovation that could help future patients, so it's not a problem with an easy fix. But I'd rather err on the side of a patient knowing exactly what's uncertain than on reassuring language that quietly overstates how much we know."
+    },
+    "commonMistakes": [
+      "Assuming informed consent is a simple box to tick with no real content",
+      "Ignoring the tension between honesty and enabling useful innovation",
+      "No acknowledgment that this is genuinely difficult to get right"
+    ],
+    "followUps": ["Should regulators require a minimum follow-up period before a device can be marketed at all?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "State of bioprinted organs",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["current-developments", "tissue-engineering"],
+    "question": "You've probably seen headlines about 3D-printed organs. What's your honest read on how close that technology actually is to replacing donor organ transplants?",
+    "lookingFor": "Realistic, evidence-aware view that separates genuine progress from media hype, showing the applicant reads beyond headlines.",
+    "idealAnswer": {
+      "bullets": [
+        "Note real progress on simpler structures, like cartilage, skin, and small vascular grafts",
+        "Acknowledge the vascularisation and scale-up problem still blocks full solid organs like kidneys or hearts",
+        "Give a grounded, non-hyped timeframe view rather than either dismissing the field or overselling it"
+      ],
+      "modelAnswer": "I think the headlines often get ahead of the actual science. There's genuinely exciting progress on simpler, thinner structures, things like printed cartilage, skin grafts, and small vascular grafts, because those don't hit the diffusion and blood supply limit as hard. But a full solid organ like a kidney or a heart needs a dense, functional capillary network built in from the start, and that vascularisation problem is still largely unsolved at the scale a transplant would need, so I don't think we're close to printing a heart for a waiting list patient any time soon. I find the space genuinely exciting, but I try to separate the real near-term wins, like printed tissue patches or drug testing models, from the longer-term dream of full organ replacement, because conflating the two does a disservice to how hard the remaining problem actually is."
+    },
+    "commonMistakes": [
+      "Overselling the technology as imminent because of media coverage",
+      "Dismissing bioprinting entirely with no acknowledgment of real progress",
+      "Not distinguishing simple tissue from full solid organs"
+    ],
+    "followUps": ["What do you think would be the first full organ realistically bioprinted, and why?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in radiology debate",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["current-developments", "ai-in-medicine"],
+    "question": "There's an ongoing debate about whether AI will replace radiologists. What's your view on where AI actually fits into diagnostic imaging right now?",
+    "lookingFor": "Balanced, current awareness of AI's real role as an augmentation tool rather than a replacement narrative either way.",
+    "idealAnswer": {
+      "bullets": [
+        "AI models perform well at narrow, well-defined pattern recognition tasks, like flagging likely nodules on a scan",
+        "They still struggle with context, rare presentations, and integrating a scan with the patient's broader clinical picture",
+        "Current consensus leans toward AI as an assistive second reader, not a replacement, though the debate is genuinely live"
+      ],
+      "modelAnswer": "From what I've read, AI models are already very good at narrow tasks, like flagging a suspicious lung nodule on a CT scan or catching a diabetic retinopathy sign in a retinal photo, sometimes matching or beating human accuracy on that specific task. But radiology isn't just pattern matching on an image, it's integrating that finding with the patient's history, other results, and clinical context, and that's where current models are still much weaker, plus they can struggle with rare presentations they weren't well trained on. My honest view is that the near-term role is as an assistive second reader that flags things for a radiologist to double-check, catching fatigue-related misses, rather than a wholesale replacement, though I know that's genuinely a live debate and not everyone agrees on how long that division of labour will last."
+    },
+    "commonMistakes": [
+      "Taking an extreme position, either 'AI will replace radiologists soon' or 'AI can never help'",
+      "No mention of a specific real use case, like nodule detection",
+      "Ignoring the current clinical role as an assistive tool"
+    ],
+    "followUps": ["What would need to be true of an AI system before you'd trust it to work with less human oversight?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Brain-computer interface debate",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["current-developments", "neurotechnology", "ethics"],
+    "question": "Companies working on brain-computer interfaces get a lot of attention. What do you think is genuinely exciting about that field, and what concerns you about it?",
+    "lookingFor": "Awareness of both the real clinical promise and the serious open questions, without either dismissing or hyping the field.",
+    "idealAnswer": {
+      "bullets": [
+        "Genuine promise for restoring communication or movement in patients with paralysis or severe motor conditions",
+        "Real technical hurdles remain, like electrode longevity, signal drift, and invasive surgery risk",
+        "Concerns include data privacy of neural signals, long-term consequences of implantation, and how consent works for a technology this novel"
+      ],
+      "modelAnswer": "What genuinely excites me is the clinical case, restoring some form of communication or control to someone with severe paralysis or ALS is a real, meaningful improvement to their life, and there's already promising early results letting patients control a cursor or a robotic arm with thought alone. What concerns me more is how far the current hype outpaces the actual hard problems, electrodes that degrade or get walled off by scar tissue over time, signal drift that means the device needs constant recalibration, and the fact that implanting anything in the brain carries real surgical risk that shouldn't be minimised. Beyond the pure engineering, I think about how sensitive neural data is, in a way that's different from other health data, because it's recording something close to intention itself, and I don't think we have great answers yet on privacy, ownership of that data, or what happens years down the line as the technology or company changes. I try to hold both of those at once, the genuine promise for patients and the fact that we're still early and should move carefully."
+    },
+    "commonMistakes": [
+      "Treating the field as either pure science fiction hype or entirely solved",
+      "No mention of a specific technical hurdle, like electrode longevity or signal drift",
+      "Ignoring the data privacy or consent dimension entirely"
+    ],
+    "followUps": ["Who do you think should own the data generated by a neural implant, the patient, the hospital, or the company?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Wearable health data privacy",
+    "program": "Biomedical Engineering",
+    "difficulty": "medium",
+    "tags": ["current-developments", "data-privacy"],
+    "question": "Continuous glucose monitors and other health wearables generate huge amounts of personal data. What's your take on the debate around who should have access to it?",
+    "lookingFor": "Understanding that wearable data raises real privacy and incentive questions beyond the device's clinical function.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the value of continuous data for patients and clinicians, catching trends a single reading would miss",
+        "Note the risk of that data being used commercially, like by insurers, in ways the patient didn't intend",
+        "Land on a view involving patient ownership or control, and transparent, opt-in sharing rather than default data harvesting"
+      ],
+      "modelAnswer": "The clinical upside is real, continuous data catches patterns a single clinic visit never would, like a glucose spike at 2am that a patient wouldn't even know to mention. But the same data that's medically useful is also commercially valuable, and I do worry about scenarios where an insurer or employer could end up using that data in ways that weren't the patient's intent when they first put the device on, even if it's buried somewhere in a terms of service they clicked through. My honest view is that the patient should own their data by default, with any secondary use, whether research or commercial, requiring clear and specific opt-in rather than a blanket agreement, because the whole point of these devices is to help the patient, and their trust in wearing one long-term depends on that data not quietly being used against their interests."
+    },
+    "commonMistakes": [
+      "Only discussing the clinical benefit with no mention of the privacy risk",
+      "Vague reference to 'data privacy is important' with no specific concern named",
+      "Assuming current practice already handles this well"
+    ],
+    "followUps": ["Should a health insurer ever legally be allowed to use wearable data to set premiums?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Low-resource medical device design",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "design-constraints"],
+    "question": "You're asked to design a pulse oximeter for a rural clinic that has unreliable electricity and no dedicated biomedical technician on site. What would you prioritise differently compared to designing one for a well-resourced city hospital?",
+    "lookingFor": "Ability to reason about design constraints shifting with context, not just producing a generic device spec.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise low power consumption and battery or solar operation over cutting-edge features",
+        "Design for ruggedness and simplicity of use and maintenance, since no specialist will be there to service it",
+        "Consider calibration stability over time and clear, unambiguous output so untrained staff can act on it correctly"
+      ],
+      "modelAnswer": "In a well-resourced hospital I might optimise for extra features or integration with a hospital's existing monitoring network, but here I'd strip that away and focus on the device actually working reliably in that specific environment. Given unreliable power, I'd want it running on a long-life battery with maybe a solar charging option, rather than assuming constant mains power. With no technician on site, the design has to be rugged and essentially maintenance-free, simple enough that a nurse with minimal training can use it correctly and trust the reading, with a clear display, maybe just a colour-coded alert rather than a number that needs interpretation. I'd also worry about calibration drift over the device's life, since there's no one there to recalibrate it, so I'd lean toward a simpler, more robust sensor design over one that's more accurate on paper but needs regular servicing to stay that way. The honest lesson is that the 'best' design isn't the most advanced one, it's the one that keeps working in the actual conditions it'll be used in."
+    },
+    "commonMistakes": [
+      "Designing the same device regardless of context and just calling it 'low-cost'",
+      "Ignoring power availability as a real constraint",
+      "Not considering that the end user may have minimal technical training"
+    ],
+    "followUps": ["How would you test that this device actually holds up to those field conditions before deployment?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Debugging intermittent sensor drift",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "troubleshooting"],
+    "question": "A wearable heart rate sensor you helped design works fine in the lab, but field reports show it occasionally drifts and gives inaccurate readings on some users. How would you approach figuring out why?",
+    "lookingFor": "Structured, hypothesis-driven troubleshooting rather than jumping straight to a guessed fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Gather data on which conditions correlate with the drift, like skin tone, motion, sweat, or device fit, rather than guessing",
+        "Form and test specific hypotheses one at a time, such as optical interference from motion artefact or poor skin contact",
+        "Distinguish a hardware sensing issue from a software or algorithmic misinterpretation of the raw signal"
+      ],
+      "modelAnswer": "I'd resist jumping to a fix before I actually understood the pattern, so first I'd want to pull together the field reports and look for what the affected cases have in common, is it certain skin tones, certain activities like running versus sitting, sweat, or a looser fit on certain wrist sizes. Once I had a few candidate patterns, I'd try to reproduce the issue under controlled lab conditions that match those specific factors, rather than the general lab conditions where it worked fine, because that's the gap between the two environments that's actually causing the problem. I'd also want to separate whether this is a raw sensing issue, like motion artefact or poor optical contact with the skin, from a software issue, where the raw signal is fine but the algorithm is misinterpreting it, because those need completely different fixes. Only once I had a reproducible cause would I trust myself to actually change the design rather than patching a symptom I hadn't really understood."
+    },
+    "commonMistakes": [
+      "Proposing a fix before identifying the actual cause",
+      "Not distinguishing lab conditions from real field conditions as the likely source of the gap",
+      "Treating this as purely a hardware or purely a software problem without checking"
+    ],
+    "followUps": ["If it turned out to be worse on darker skin tones specifically, what would that tell you about the sensor's design?"]
+  },
+  {
+    "id": "prog-biomedical-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Allocating hospital investment",
+    "program": "Biomedical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "resource-allocation"],
+    "question": "A hospital has one large budget to spend and is deciding between funding a fleet of preventive wearable monitors for at-risk patients or buying one advanced surgical robot. If they asked a biomedical engineer's opinion, how would you think it through?",
+    "lookingFor": "Structured reasoning that weighs prevention against acute intervention using engineering and population-level thinking, not a snap preference.",
+    "idealAnswer": {
+      "bullets": [
+        "Consider scale of impact, wearables might help many patients modestly, the robot helps fewer patients more dramatically per case",
+        "Factor in the hospital's actual patient population and existing gaps, not a generic answer",
+        "Acknowledge this is ultimately a clinical and financial decision beyond pure engineering, but reason through the trade-off honestly"
+      ],
+      "modelAnswer": "I'd want to actually know something about this specific hospital before answering in the abstract, because the right call depends heavily on their patient population, if they see a lot of chronic at-risk patients, prevention might catch problems before they become expensive emergencies, but if they're already stretched thin on acute surgical capacity, the robot might address a more urgent bottleneck. From an engineering standpoint I'd think about reach versus depth, wearables potentially help a much larger number of patients with earlier, smaller interventions, while the robot delivers a more dramatic benefit but to a narrower set of surgical cases. I'd also want real data, like readmission rates tied to conditions the wearables could actually catch early, versus surgical wait times the robot would shorten, rather than deciding on gut feeling. Honestly, I think this is ultimately a decision for hospital leadership working with clinical data, but I'd want my engineering input to be about what each investment could realistically deliver, not just which technology sounds more advanced."
+    },
+    "commonMistakes": [
+      "Picking a side purely because it sounds more innovative or exciting",
+      "Giving a generic answer with no reference to the hospital's actual context",
+      "Not acknowledging the limits of what an engineer alone should decide"
+    ],
+    "followUps": ["What data would you actually want to see before recommending one over the other?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-archaeology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Why context matters",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["stratigraphy", "method", "context"],
+    "question": "Why do archaeologists say a beautiful artifact found with no recorded context is almost worthless for research, even if it's museum quality?",
+    "lookingFor": "Understanding that provenience and context, not the object alone, are what turn a find into usable evidence.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that context (where, how deep, what it's near) tells you date, function and relationships",
+        "Note that removing an object from context destroys information that can never be recovered",
+        "Contrast an object's aesthetic or monetary value with its evidential value"
+      ],
+      "modelAnswer": "An artifact on its own can tell you what it's made of and maybe roughly when it was made, but it can't tell you how people actually used it or what it meant to them. That comes from context: which layer it was in, what else was buried with it, whether it was deliberately placed or just discarded. Once you lift something out without recording all of that, you've destroyed the only evidence that could answer those questions, and no amount of later analysis can put it back. That's why looted objects, even genuine ones, are so frustrating for researchers; you're left with a pretty object and almost no science."
+    },
+    "commonMistakes": [
+      "Treating context as a nice-to-have rather than the actual data",
+      "Confusing an object's market value with its research value",
+      "Not mentioning that context loss is irreversible"
+    ],
+    "followUps": ["How would you record context on an actual dig?"]
+  },
+  {
+    "id": "prog-archaeology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Radiocarbon dating limits",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["dating", "science", "method"],
+    "question": "Radiocarbon dating gives a date range, not a single year, and needs calibration. Why, and what could go wrong if a student misunderstands this?",
+    "lookingFor": "Grasp of why calibration is necessary and awareness that mistaking a range for a precise date leads to flawed conclusions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that atmospheric carbon-14 levels have varied over time so raw dates must be calibrated against a curve",
+        "Mention statistical uncertainty and confidence intervals rather than a single year",
+        "Give an example of a mistake, like treating the midpoint as certain or ignoring reservoir effects"
+      ],
+      "modelAnswer": "Radiocarbon dating measures how much carbon-14 has decayed in an organic sample, but the amount of carbon-14 in the atmosphere hasn't been constant, so a raw measurement has to be calibrated against tree-ring and other records to become a real calendar date. Even after calibration you get a range with a confidence interval, not a single year, because the measurement itself has statistical uncertainty. If a student quotes '3400 BC' as a fact instead of '3520 to 3350 BC at 95 percent confidence,' they can end up arguing two sites were sequential when the ranges actually overlap. I think that precision versus accuracy distinction is one of the most important habits to build early."
+    },
+    "commonMistakes": [
+      "Saying radiocarbon dating gives an exact year",
+      "Not knowing why calibration is needed",
+      "Ignoring the confidence interval when comparing sites"
+    ],
+    "followUps": ["What other dating methods might you cross-check it against?"]
+  },
+  {
+    "id": "prog-archaeology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Repatriation of human remains",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["ethics", "repatriation", "human-remains"],
+    "question": "A museum holds indigenous human remains collected a century ago for study. Descendant communities want them returned for burial; some researchers argue future scientific techniques could still learn from them. How do you weigh this?",
+    "lookingFor": "Structured ethical reasoning that balances a living community's dignity and rights against speculative future research value.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the remains were often taken without consent, which weighs heavily",
+        "Weigh ongoing research value against the harm of continued storage against community wishes",
+        "Land on a position, likely favouring repatriation, while acknowledging documentation before return as a middle path"
+      ],
+      "modelAnswer": "I'd start from the fact that most of these remains were taken without any consent, often under colonial power imbalances, and that history has to count for a lot. Future research value is real, but it's speculative, whereas the harm of keeping someone's ancestor in a drawer against their community's wishes is present and ongoing. I'd lean toward repatriation, ideally negotiated with the community about whether some non-destructive study or documentation can happen first, so it isn't framed as science versus people but as finding a respectful way to do both. What I wouldn't accept is treating 'we might learn something someday' as a reason to override consent indefinitely."
+    },
+    "commonMistakes": [
+      "Treating this as purely a scientific question with no ethical weight",
+      "Giving an absolute answer with no attempt at a middle path",
+      "Ignoring the colonial history of how the remains were acquired"
+    ],
+    "followUps": ["Does your answer change if the remains are thousands of years old with no living descendant group?"]
+  },
+  {
+    "id": "prog-archaeology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Antiquities market dilemma",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["ethics", "looting", "antiquities-trade"],
+    "question": "You're offered access to a private collector's unprovenanced artifacts, probably looted, that would fill a real gap in your research. Do you study them?",
+    "lookingFor": "Awareness that studying looted material, even innocently, can legitimise the trade, and the ability to reason through that trade-off.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that publishing on unprovenanced material can raise its market value and fund more looting",
+        "Weigh the genuine research loss against that wider harm",
+        "Suggest alternatives, such as reporting to authorities or refusing publication"
+      ],
+      "modelAnswer": "It's tempting because the research gap is real, but if I study and publish on looted material I'm effectively adding academic legitimacy to objects that funded someone digging up a site without any record of context, which might have destroyed exactly the information I'd want. Most journals and professional bodies now have policies against publishing unprovenanced finds for that reason, and I think that's right even when it costs me a good dataset. I'd decline to study the collection formally, though I might flag it to the relevant heritage authority if I suspected it came from a known looted site. The gap in my research isn't worth incentivising more looting."
+    },
+    "commonMistakes": [
+      "Focusing only on personal research benefit and ignoring wider harm",
+      "Not knowing that publication can increase the market value of looted items",
+      "Giving a vague 'it depends' with no actual position"
+    ],
+    "followUps": ["What would you do if you suspected the objects came from an active conflict zone?"]
+  },
+  {
+    "id": "prog-archaeology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Museum repatriation debate",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["current-debate", "museums", "repatriation"],
+    "question": "What's your view on the ongoing debate over objects like the Parthenon Marbles or the Benin Bronzes staying in Western museums versus being returned to their countries of origin?",
+    "lookingFor": "Awareness of a live, real debate, with a fair presentation of both sides and a considered personal view.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of specific real cases and arguments on each side",
+        "Avoid a flippant one-line verdict; show the complexity",
+        "Offer a reasoned personal position"
+      ],
+      "modelAnswer": "I follow this one closely because it comes up constantly in the archaeology press. The case for keeping objects in places like the British Museum is usually about universal access and conservation, but a lot of that material left its country of origin through colonial-era coercion rather than fair exchange, which undermines the moral claim to ownership. I lean toward return being the right default, especially where the requesting country now has the capacity to conserve and display the objects well, as Greece clearly does for the Marbles. I do think there's a genuine case-by-case element though; not every situation has the same history or the same practical answer."
+    },
+    "commonMistakes": [
+      "Not knowing any specific real examples",
+      "Presenting only one side of the debate",
+      "Refusing to give a personal opinion when asked directly"
+    ],
+    "followUps": ["What role should the museum itself play in that decision versus governments?"]
+  },
+  {
+    "id": "prog-archaeology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Ancient DNA and consent",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["current-debate", "genetics", "ethics"],
+    "question": "Ancient DNA research has transformed archaeology in the last decade, but it's also drawn criticism for how samples from indigenous remains are used. What's the concern, and do you think the criticism is fair?",
+    "lookingFor": "Awareness of a genuinely current methodological controversy and reasoned engagement with consent and ownership questions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what ancient DNA has enabled, such as migration and kinship history",
+        "Identify the concern: remains sampled without descendant community consultation, sometimes used to contest indigenous claims",
+        "Give a considered view rather than dismissing either the science or the criticism"
+      ],
+      "modelAnswer": "Ancient DNA has genuinely rewritten a lot of migration history that used to be guesswork, which is exciting, but the criticism is that samples have often been taken and published without meaningfully consulting the descendant communities involved, and sometimes the findings have been used politically to contest indigenous land or origin claims. I think the criticism is fair; consent shouldn't stop just because the person died a thousand years ago if there's a living community that considers them an ancestor. I'd want to see genetics labs building consultation into the process from the start rather than treating it as an afterthought once the paper is written. The science doesn't have to slow down much if that consultation happens early."
+    },
+    "commonMistakes": [
+      "Not being aware ancient DNA is a live controversy",
+      "Dismissing the science entirely instead of engaging with the trade-off",
+      "Dismissing the ethical concern as unimportant compared to scientific progress"
+    ],
+    "followUps": ["Who should get to decide what counts as meaningful consultation?"]
+  },
+  {
+    "id": "prog-archaeology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Rescue excavation under deadline",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "fieldwork", "decision-making"],
+    "question": "You're leading a small team on a rescue dig ahead of a road being built. You've found what looks like the edge of a much larger settlement, but the developer's deadline gives you two more weeks. How do you decide what to prioritise?",
+    "lookingFor": "Realistic understanding of rescue archaeology constraints and the ability to make defensible triage decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real-world tension between preservation ideals and legal or financial deadlines",
+        "Describe a triage approach: prioritise areas most at risk and most likely to answer key research questions",
+        "Mention thorough recording as a way to preserve information even without full excavation"
+      ],
+      "modelAnswer": "I'd accept straight away that I can't excavate the whole site in two weeks, so the question becomes what to prioritise rather than whether to. I'd focus the team on the areas that will actually be destroyed by construction, since anything outside the road corridor can potentially be revisited later, and within that, target the features most likely to answer our biggest open questions, like a possible boundary ditch that could date the whole settlement. Where I can't fully excavate, I'd make sure we record thoroughly, geophysical survey, photography, sampling, so the information isn't lost even if the physical remains are. It's not the ideal way to do archaeology, but rescue work is real and I'd rather get imperfect data than none."
+    },
+    "commonMistakes": [
+      "Insisting on more time with no plan B if refused",
+      "Not distinguishing between areas that will be destroyed and areas that won't",
+      "Ignoring the value of non-destructive recording as a fallback"
+    ],
+    "followUps": ["What would you tell the developer if they pushed to cut the time further?"]
+  },
+  {
+    "id": "prog-archaeology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Chance find on private land",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "legal-framework", "fieldwork"],
+    "question": "A farmer digging a drainage ditch on their own land uncovers what looks like Roman coins and calls you, a student on placement, before anyone official. What do you do in the first hour?",
+    "lookingFor": "Practical knowledge of reporting obligations and calm, correct field judgement under pressure.",
+    "idealAnswer": {
+      "bullets": [
+        "Stop any further digging and secure the find spot without further disturbance",
+        "Record location and context as found without removing anything yourself",
+        "Know to report it through the correct legal or professional channel promptly"
+      ],
+      "modelAnswer": "First I'd ask the farmer to stop digging and not touch or move anything further, since more disturbance means more lost context. I'd photograph everything in place and note the exact location, but I wouldn't lift the coins myself as a student on placement, that's a job for a qualified finds officer. Then I'd contact my supervisor and the relevant reporting body straight away, because in most places finds like this have legal reporting requirements and there's a proper process for assessing and potentially excavating the site. It's exciting, but the right response is to slow everything down, not speed it up."
+    },
+    "commonMistakes": [
+      "Digging further to see more without authorisation",
+      "Not knowing that legal reporting obligations exist for such finds",
+      "Removing the coins before proper recording"
+    ],
+    "followUps": ["What would change if the farmer wanted to keep the coins quietly?"]
+  },
+  {
+    "id": "prog-archaeology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Inferring function without records",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["method", "interpretation", "material-culture"],
+    "question": "How can archaeologists claim to know what a prehistoric object was used for when there's no written record to tell them?",
+    "lookingFor": "Understanding of inferential methods and appropriate humility about the certainty of those conclusions.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention specific methods: use-wear or residue analysis, spatial context, experimental archaeology",
+        "Acknowledge these give probable, not certain, interpretations",
+        "Show awareness that competing interpretations are normal in the field"
+      ],
+      "modelAnswer": "You build the case from several angles rather than one. Use-wear analysis looks at microscopic scratches or residues on a tool's edge to see how it was actually handled, experimental archaeology tests whether a proposed use is even physically plausible by trying to replicate it, and where the object was found, next to a hearth versus in a grave, tells you a lot about its role. Ethnographic comparisons can help generate hypotheses but I'd be careful using them as proof, since a similar-looking object doesn't guarantee a similar use across cultures and time. Honestly, a lot of interpretations stay probable rather than certain, and I think being upfront about that uncertainty is part of doing the science properly."
+    },
+    "commonMistakes": [
+      "Claiming certainty that the evidence doesn't support",
+      "Relying only on visual similarity to modern objects",
+      "Not naming any actual method such as use-wear or residue analysis"
+    ],
+    "followUps": ["Can you think of a famous case where an artifact's assumed use turned out to be wrong?"]
+  },
+  {
+    "id": "prog-archaeology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias in interpretation",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["interpretation", "bias", "historiography"],
+    "question": "Archaeology has been criticised for reading modern assumptions, like rigid gender roles, into past societies with little direct evidence. Can you give an example of this and how you'd guard against it?",
+    "lookingFor": "Critical awareness of interpretive bias in the discipline's history and a genuine strategy for self-checking assumptions.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a real or plausible example of projecting modern norms onto ambiguous evidence",
+        "Explain why the bias happens when direct evidence is silent",
+        "Offer a concrete safeguard such as testing alternative hypotheses or using independent evidence"
+      ],
+      "modelAnswer": "A classic example is how early archaeologists often assumed a skeleton buried with weapons must be male and one buried with jewellery must be female, when later osteological sexing showed plenty of exceptions, which quietly challenged assumptions about who hunted or fought in some societies. It happens because when the direct evidence is ambiguous, people fill the gap with whatever feels normal to them, and that's rarely neutral. To guard against it I'd want to actively look for the interpretation I'm least comfortable with and ask what evidence would support it, and lean on independent evidence like bone chemistry or wear patterns rather than assumption-based categories. I think it's a discipline-wide habit worth building, not just a one-off correction."
+    },
+    "commonMistakes": [
+      "Denying that interpretive bias is a real problem in the field",
+      "Giving a vague answer with no concrete example",
+      "Proposing no actual method for checking one's own bias"
+    ],
+    "followUps": ["How do you tell the difference between a genuinely evidence-based interpretation and a comfortable assumption?"]
+  },
+  {
+    "id": "prog-archaeology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Archaeology vs history",
+    "program": "Archaeology",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "disciplinary-boundaries"],
+    "question": "How would you explain the difference between archaeology and history to someone who thinks they're the same thing?",
+    "lookingFor": "Clear grasp of the disciplinary distinction between material and textual evidence, and where the two overlap.",
+    "idealAnswer": {
+      "bullets": [
+        "State that history primarily works from written records, archaeology from material remains",
+        "Note archaeology can reach into prehistory where no written records exist at all",
+        "Mention the two often work together for historical periods"
+      ],
+      "modelAnswer": "History mostly works from what people wrote down, letters, official records, chronicles, so it's shaped by whoever had the literacy and reason to write things down. Archaeology works from what people left behind physically, tools, buildings, rubbish, bones, which means it can reach much further back, into prehistory, where there's no writing at all to draw on. For periods where both exist, like Roman Britain, they actually complement each other really well; the texts tell you what the elite wanted recorded, and the material evidence often tells you what ordinary people actually did. I find that gap between the two the most interesting part."
+    },
+    "commonMistakes": [
+      "Saying they're basically the same thing",
+      "Forgetting that archaeology covers prehistoric periods with no writing",
+      "Not mentioning how the two fields complement each other"
+    ],
+    "followUps": ["Can you think of a case where archaeology contradicted the written record?"]
+  },
+  {
+    "id": "prog-archaeology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Public and community engagement",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["public-archaeology", "community", "ethics"],
+    "question": "Should local communities have a say in how a site near them is excavated and interpreted, even if they're not trained archaeologists?",
+    "lookingFor": "Understanding of community archaeology as legitimate practice, balancing technical expertise with local stakeholder voice.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise local communities often have a real stake in a nearby site",
+        "Distinguish technical excavation decisions from interpretation and narrative decisions",
+        "Give a practical example of how collaboration could work"
+      ],
+      "modelAnswer": "I think they should, though not in the sense of directing the technical excavation methods, that's genuinely a matter of training and experience. Where community input matters most is in interpretation and narrative, since a site doesn't just belong to the archaeologists who dig it, it often carries meaning for the people who live around it or descend from those who made it. Projects that do this well set up regular open days, involve local volunteers in survey work, and actually ask the community what questions they want answered, not just present a finished story afterward. I'd rather work that way than treat the community as an audience for my conclusions."
+    },
+    "commonMistakes": [
+      "Treating community involvement as purely a PR exercise",
+      "Ignoring where technical expertise genuinely should lead",
+      "Assuming local interest is automatically opposition to the dig"
+    ],
+    "followUps": ["What would you do if the community's preferred interpretation conflicted with the evidence?"]
+  },
+  {
+    "id": "prog-archaeology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Excavation as destruction",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["method", "preservation", "fieldwork"],
+    "question": "There's a saying that excavation is destruction. What does that mean, and how does it change the way archaeologists should approach a dig?",
+    "lookingFor": "Deep understanding that excavation is irreversible and non-repeatable, driving the discipline's emphasis on recording and restraint.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that removing soil layers destroys the context that makes finds meaningful, and it can't be redone",
+        "Connect this to the emphasis on meticulous recording as the only way to preserve that information",
+        "Mention the preference to leave parts of sites unexcavated for future techniques"
+      ],
+      "modelAnswer": "Once you dig through a layer to reach what's beneath it, that layer is gone; you can't put the site back the way it was and re-excavate it differently if you change your mind later. That's why the recording during excavation matters as much as the finds themselves, every layer, every relationship between objects has to be drawn, photographed and described in enough detail that someone reading it in fifty years can reconstruct what you saw, because the physical evidence itself won't exist anymore. It also means archaeologists often deliberately leave parts of a site unexcavated, on the assumption that future techniques will be able to extract more information than we currently can. I find that quite humbling actually, that good practice sometimes means restraint rather than digging everything up."
+    },
+    "commonMistakes": [
+      "Treating excavation as a neutral, repeatable process",
+      "Not connecting the idea to the importance of recording",
+      "Missing the point about deliberately preserving parts of sites for the future"
+    ],
+    "followUps": ["Does that change how you'd feel about excavating a site under threat versus one that's safe?"]
+  },
+  {
+    "id": "prog-archaeology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Colonial legacy of the discipline",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["colonialism", "historiography", "ethics"],
+    "question": "Archaeology as a discipline grew up alongside European colonialism. How do you think that history still shapes the field today?",
+    "lookingFor": "Honest, informed reflection on the discipline's origins and its ongoing effects, without denial or performative guilt.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge specific ways colonialism shaped the field, such as artifact removal and Western-authored narratives",
+        "Identify present-day consequences in museum holdings, funding, and research leadership",
+        "Show a constructive attitude toward addressing it rather than just critique"
+      ],
+      "modelAnswer": "A lot of the great museum collections were built during colonial expansion, when objects and often human remains were taken from places without the kind of consent we'd expect now, and for a long time the interpretation of non-Western pasts was written almost entirely by Western academics rather than by descendant communities. You can still see the legacy in where the major collections physically sit, in funding structures that make it easier for foreign teams to lead excavations abroad than for local archaeologists to lead their own, and in whose names end up on the publications. I think the encouraging part is that the field is actively reckoning with this now, through repatriation, capacity-building partnerships, and co-authorship with local researchers, and I'd want to be part of doing archaeology that way rather than the old model."
+    },
+    "commonMistakes": [
+      "Denying the discipline has a colonial history at all",
+      "Treating it purely as a historical issue with no present-day consequence",
+      "Offering only critique with no sense of how the field is changing"
+    ],
+    "followUps": ["Can you name a specific reform or initiative addressing this that you're aware of?"]
+  },
+  {
+    "id": "prog-archaeology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate change and site loss",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["current-debate", "climate-change", "preservation"],
+    "question": "Coastal erosion and rising sea levels are destroying archaeological sites faster than they can be studied. How should the field respond to that?",
+    "lookingFor": "Awareness of a genuinely current pressure on the discipline and the ability to reason about triage under resource constraints.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that climate change is an active, accelerating threat to sites worldwide",
+        "Discuss the need for risk-based prioritisation of which sites to study first",
+        "Mention practical responses such as rapid digital recording and funding reallocation"
+      ],
+      "modelAnswer": "This is one of the things that worries me most about entering the field right now; sites that survived thousands of years are being lost within a single generation to erosion and storms. I think the honest response is that we can't save everything, so there needs to be systematic risk assessment, ranking sites by how quickly they're eroding and how much they'd add to what we already know, so effort goes where it matters most. Where full excavation isn't possible in time, rapid digital recording, drone survey, laser scanning, at least preserves a record even if the physical site is lost. I'd also like to see more funding bodies treating this as an emergency rather than routine research, because right now the funding cycle often moves slower than the coastline."
+    },
+    "commonMistakes": [
+      "Not being aware this is an active, urgent issue",
+      "Suggesting every threatened site can realistically be saved",
+      "Offering no concrete practical response, only concern"
+    ],
+    "followUps": ["How would you decide which threatened sites get priority?"]
+  },
+  {
+    "id": "prog-archaeology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Remote sensing and LiDAR",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["current-development", "technology", "survey"],
+    "question": "LiDAR surveys have recently revealed huge hidden settlements under forest canopy, like in the Maya lowlands. What's exciting about this, and what are its limits?",
+    "lookingFor": "Awareness of a real, recent methodological breakthrough and balanced understanding that it complements rather than replaces excavation.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe what LiDAR does and give the real example",
+        "Explain why it's transformative, revealing scale invisible from the ground",
+        "Note its limits: it shows shape, not date or function, so excavation is still needed"
+      ],
+      "modelAnswer": "LiDAR fires laser pulses down through forest canopy and measures what bounces back off the actual ground surface, which lets researchers strip away the vegetation digitally and see earthworks and building platforms that are invisible from the ground or even from normal aerial photos. The Maya lowlands surveys were remarkable because they revealed cities and causeway networks far denser and more interconnected than anyone had mapped from foot survey alone, which changed estimates of how many people actually lived there. But it only shows you shapes on the surface, it can't tell you when a mound was built or what happened inside it, so you still need excavation and ground-truthing to actually interpret what you're seeing. I think of it as an incredible way to know where to dig, not a replacement for digging."
+    },
+    "commonMistakes": [
+      "Not knowing any specific recent LiDAR discovery",
+      "Treating LiDAR as a replacement for excavation",
+      "Not explaining how the technology actually works"
+    ],
+    "followUps": ["What ethical questions might come up if LiDAR reveals sites on land communities didn't know were archaeologically significant?"]
+  },
+  {
+    "id": "prog-archaeology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Reburial versus museum display",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["ethics", "display", "reburial"],
+    "question": "A well-preserved ancient burial is a major draw for museum visitors and funds a lot of public education, but a descendant community wants it reburied. How do you think about that trade-off?",
+    "lookingFor": "Ability to weigh genuine educational value against a living community's wishes, without treating human remains as an ordinary object.",
+    "idealAnswer": {
+      "bullets": [
+        "Take seriously that human remains are not equivalent to other artifacts",
+        "Acknowledge the genuine educational value without letting it automatically override community wishes",
+        "Suggest a resolution path such as replicas or digital display alongside reburial"
+      ],
+      "modelAnswer": "Public education is a real value, and I don't want to dismiss how much a well-presented burial can teach people, but human remains aren't the same category of object as a pot or a tool, and I don't think the educational benefit to strangers should outweigh what the person's own descendant community wants for them. If the community asks for reburial, I'd support that as the primary outcome, and look for ways to keep the educational value alive without the remains themselves, high-quality replicas, digital scans, or exhibits built around what was learned rather than the body on display. It's not a perfect substitute, but I think it respects the actual hierarchy of whose interests should come first here."
+    },
+    "commonMistakes": [
+      "Treating human remains as equivalent to any other display object",
+      "Dismissing the educational value entirely with no attempt at compromise",
+      "Assuming museums always have the final say over descendant communities"
+    ],
+    "followUps": ["What if there's no identifiable living descendant community at all?"]
+  },
+  {
+    "id": "prog-archaeology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Conflict-zone looting and heritage destruction",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["current-event", "conflict", "heritage-destruction"],
+    "question": "Sites like Palmyra were deliberately damaged during recent conflicts, and looting has funded armed groups in the region. What does this tell you about the relationship between archaeology and geopolitics?",
+    "lookingFor": "Awareness of real recent events and understanding of how ideological destruction and looting for funding are distinct mechanisms.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the real example accurately, distinguishing deliberate destruction from looting for funding",
+        "Explain the two distinct mechanisms clearly",
+        "Reflect on what this means for the discipline, including demand-side responsibility"
+      ],
+      "modelAnswer": "What struck me about Palmyra was that some of the destruction wasn't incidental to the fighting, it was deliberate, aimed at erasing a symbol, which is a very different problem from looting, where objects are dug up and sold specifically to fund weapons and fighters. It made me realise heritage isn't just a cultural side-issue in conflict, it's sometimes a direct target and sometimes a funding stream, which means protecting it is partly a security and economic question, not only an academic one. It also puts responsibility on buyers in wealthy countries, since demand for unprovenanced antiquities is what makes looting profitable in the first place. I think it's a reminder that archaeology can't pretend to sit outside politics."
+    },
+    "commonMistakes": [
+      "Not knowing any specific real example of conflict-driven heritage destruction",
+      "Conflating deliberate ideological destruction with looting for profit",
+      "Treating this as purely a regional problem with no connection to global demand"
+    ],
+    "followUps": ["What responsibility, if any, do museums and collectors in other countries bear for this?"]
+  },
+  {
+    "id": "prog-archaeology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Value of experimental archaeology",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["method", "experimental-archaeology"],
+    "question": "What can building a replica Bronze Age house or knapping flint tools actually tell an archaeologist that studying the object alone can't?",
+    "lookingFor": "Understanding of experimental archaeology as a method for testing feasibility and generating comparative data, not just demonstration.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that experimental archaeology tests whether a technique or design is physically possible",
+        "Note it generates comparative wear or breakage data to compare against archaeological finds",
+        "Distinguish it from mere reenactment or demonstration"
+      ],
+      "modelAnswer": "Looking at a stone tool tells you its final shape, but it doesn't tell you how it was actually made or how long that took, and that's where experimental archaeology earns its place. If you try knapping the same kind of flint with the same kind of hammerstone, you find out things you couldn't guess from the finished object alone, like how many attempts typically fail, or what the discarded flakes look like, which you can then compare to flakes found on an actual site to reconstruct the process that happened there. It's not just about proving something is possible, it's about generating comparative data, wear patterns, breakage rates, time estimates, that turn the object into a much richer source of information. I think it's one of the most genuinely hands-on parts of the discipline."
+    },
+    "commonMistakes": [
+      "Treating experimental archaeology as just a demonstration or reenactment",
+      "Not mentioning comparative data as the actual output",
+      "Suggesting it proves how something was definitely made rather than how it could have been"
+    ],
+    "followUps": ["What are the limits of what experimental archaeology can actually prove?"]
+  },
+  {
+    "id": "prog-archaeology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Typology and seriation",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "method", "typology"],
+    "question": "Can you explain what archaeologists mean by typology and seriation, and why they're still useful even with modern dating techniques available?",
+    "lookingFor": "Solid grasp of a core methodological concept and why relative dating methods remain relevant alongside absolute dating.",
+    "idealAnswer": {
+      "bullets": [
+        "Define typology and seriation and how they relate",
+        "Explain the underlying logic that styles change gradually enough to build a relative sequence",
+        "Give a reason it's still useful, such as being cheap, fast, and working on materials with no organic component"
+      ],
+      "modelAnswer": "Typology is grouping artifacts, say pottery, by shared features like shape or decoration, and seriation is arranging those types in a sequence based on how gradually those features change, on the assumption that styles evolve step by step rather than jumping randomly. It works because most craft traditions really do drift gradually, so if you plot how common each type is across many sites you often get a clear rise-and-fall pattern that lets you order sites relative to each other, even without a single absolute date. It's still useful today because it's fast and cheap compared to radiocarbon dating, and it works on material like pottery that has no organic component to date at all. I like that it's essentially pattern recognition applied at scale, using thousands of small comparisons to build one big timeline."
+    },
+    "commonMistakes": [
+      "Confusing typology with simple classification and missing the sequencing element",
+      "Not explaining why gradual style change makes seriation work",
+      "Assuming absolute dating has made relative dating obsolete"
+    ],
+    "followUps": ["What could make a seriation sequence misleading?"]
+  },
+  {
+    "id": "prog-archaeology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Absence of evidence",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["reasoning", "interpretation", "method"],
+    "question": "If archaeologists find no evidence of something, say, no trace of a temple where one was expected, does that prove it didn't exist? How should they treat that kind of gap?",
+    "lookingFor": "Sound reasoning about the limits of negative evidence and awareness of preservation bias.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that absence of evidence is not automatically evidence of absence",
+        "Discuss factors that could explain a gap, such as poor preservation or incomplete survey",
+        "Show how to treat the gap responsibly rather than asserting a negative"
+      ],
+      "modelAnswer": "Not finding something doesn't automatically mean it never existed, because there are so many reasons evidence could be missing that have nothing to do with the past reality, poor preservation conditions, a site that's only been partially excavated, or a building that happened to be made of wood which just doesn't survive the way stone does. I'd treat a gap like that as inconclusive rather than as proof either way, and try to work out which explanation is more likely given what we do know about preservation conditions at that site. Where possible I'd look for indirect evidence, like postholes where a wooden structure once stood, before drawing any conclusion. I think being comfortable saying 'we don't know yet' is actually a sign of good practice, not a weakness."
+    },
+    "commonMistakes": [
+      "Treating absence of evidence as proof of absence",
+      "Not considering preservation bias or incomplete survey as explanations",
+      "Refusing to reason about which explanation is more plausible"
+    ],
+    "followUps": ["Can you think of a case where something assumed absent was later found?"]
+  },
+  {
+    "id": "prog-archaeology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Underwater archaeology challenges",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["underwater-archaeology", "method", "fieldwork"],
+    "question": "What makes underwater archaeology, say excavating a shipwreck, fundamentally harder than a land excavation, beyond the obvious fact that it's wet?",
+    "lookingFor": "Genuine understanding of the practical and methodological challenges specific to underwater work.",
+    "idealAnswer": {
+      "bullets": [
+        "Discuss physical constraints such as limited dive time, visibility and cost",
+        "Mention that preservation conditions differ, sometimes favouring organic material underwater",
+        "Note that recording stratigraphy precisely is harder underwater"
+      ],
+      "modelAnswer": "The obvious problem is that you can only work in short dive windows with limited visibility, so a task that would take an hour on land might take days underwater, and every measurement or photograph is harder to do precisely while managing buoyancy and equipment. What's less obvious is that preservation actually flips in some ways; a low-oxygen, silty seabed can preserve wood and organic materials, like an entire ship's hull, far better than most land sites would, but metal can corrode badly and delicate objects can be damaged by currents or marine organisms. Recording stratigraphy is also trickier because sediment layers can shift and mix in ways that don't happen on land. I find it fascinating that the challenges aren't just the same job but wet, they actually change what kind of evidence survives at all."
+    },
+    "commonMistakes": [
+      "Only mentioning the obvious wetness or equipment issue with no depth",
+      "Not knowing that underwater preservation conditions differ from land",
+      "Ignoring the practical time and cost constraints of diving"
+    ],
+    "followUps": ["What kind of site would you expect to preserve especially well underwater, and why?"]
+  },
+  {
+    "id": "prog-archaeology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Competing interpretations of the same evidence",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "reasoning", "interpretation"],
+    "question": "Two researchers looking at the same set of burial evidence reach opposite conclusions, one says it shows evidence of violent conflict, the other says it shows a ritual practice. As a student asked to assess both, how would you approach it?",
+    "lookingFor": "Rigorous, even-handed reasoning about competing hypotheses rather than picking a side by instinct.",
+    "idealAnswer": {
+      "bullets": [
+        "Lay out what specific evidence each interpretation is drawing on",
+        "Look for what evidence would actually distinguish between the two hypotheses",
+        "Be willing to say the evidence is genuinely ambiguous if that's the honest conclusion"
+      ],
+      "modelAnswer": "I'd start by separating the evidence from the interpretation for each researcher, so I know exactly what observation is doing the work, is it the type of trauma on the bones, the way the bodies were positioned, the objects buried with them. Then I'd ask what evidence would actually distinguish the two hypotheses; for example, careful, ordered burial with grave goods points more toward ritual even if there's trauma present, since victims of violence are less often buried with such care, whereas a mass grave with defensive wounds and no grave goods points more toward conflict. If the evidence genuinely supports both readings equally, I think the honest answer is to say it's ambiguous rather than pick whichever explanation sounds more dramatic. I'd rather present the uncertainty clearly than force a conclusion the evidence doesn't fully support."
+    },
+    "commonMistakes": [
+      "Picking a side based on which sounds more interesting rather than the evidence",
+      "Not identifying what evidence would actually distinguish the two hypotheses",
+      "Refusing to engage critically with either interpretation"
+    ],
+    "followUps": ["What additional evidence would you want to gather to settle the question?"]
+  },
+  {
+    "id": "prog-archaeology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Excavating a site sacred to a living community",
+    "program": "Archaeology",
+    "difficulty": "hard",
+    "tags": ["ethics", "hypothetical", "sacred-sites"],
+    "question": "You've identified a site that's academically significant but is considered sacred by a living community who ask you not to excavate it. How do you respond?",
+    "lookingFor": "Prioritising community consent and dignity over pure research interest, while showing genuine respect for the loss to scholarship.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that community consent should generally take priority over academic curiosity",
+        "Acknowledge the genuine loss to research honestly rather than pretending it doesn't matter",
+        "Suggest alternatives such as non-invasive survey with permission, or simply respecting a refusal"
+      ],
+      "modelAnswer": "My first instinct would be disappointment, because a genuinely significant site is hard to walk away from, but I think if a living community with a real connection to the site says no, that has to be the answer, not a starting point for negotiation. I'd be honest with myself and my supervisors that this is a real loss to what we could learn, rather than pretending it doesn't matter. Where possible I'd ask whether any non-invasive options, like surface survey or remote sensing with their permission, would be acceptable to them, but I wouldn't push if they weren't interested in that either. Ultimately I think the discipline has to accept that not every question gets answered, and that's the cost of doing this respectfully."
+    },
+    "commonMistakes": [
+      "Assuming academic significance automatically overrides community wishes",
+      "Pretending the loss to research doesn't matter at all",
+      "Proposing to go around the community's refusal via a technicality"
+    ],
+    "followUps": ["What would you do if a colleague disagreed and wanted to push forward anyway?"]
+  },
+  {
+    "id": "prog-archaeology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Legal frameworks like NAGPRA",
+    "program": "Archaeology",
+    "difficulty": "medium",
+    "tags": ["current-debate", "legal-framework", "repatriation"],
+    "question": "Laws like NAGPRA in the US require museums to return certain remains and objects to Native American tribes. Do you think laws like this strike the right balance, and should other countries adopt similar frameworks?",
+    "lookingFor": "Awareness of a specific real legal framework, its limitations, and a reasoned view on wider adoption.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness of what NAGPRA actually does",
+        "Discuss a genuine limitation, such as difficulty establishing cultural affiliation or slow implementation",
+        "Give a considered view on whether similar frameworks should exist elsewhere"
+      ],
+      "modelAnswer": "NAGPRA requires museums and federal agencies in the US to inventory Native American human remains and cultural items and work with tribes to repatriate them where cultural affiliation can be established, which shifted a lot of power back to tribes who'd had no say for decades. It's not perfect; establishing affiliation can be genuinely difficult for very old remains, and implementation has been slow and underfunded at a lot of institutions, so plenty of collections are still waiting to be processed. I do think the underlying principle, a legal requirement to consult and return rather than leaving it to individual museums' goodwill, is the right model, and I'd like to see more countries adopt something similar, adapted to their own history and communities rather than a direct copy. Having an enforceable process matters more than relying on institutions to do the right thing voluntarily."
+    },
+    "commonMistakes": [
+      "Not knowing what NAGPRA actually requires",
+      "Treating the law as either flawless or worthless with no nuance",
+      "Giving no view on whether the model should be adopted elsewhere"
+    ],
+    "followUps": ["What might make cultural affiliation hard to establish for very old remains?"]
+  }
+]
