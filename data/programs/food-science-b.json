@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-food-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Maillard reaction mechanism",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["chemistry", "flavor", "processing"],
+    "question": "Can you explain what's actually happening chemically when bread crust browns, and why that's different from caramelization?",
+    "lookingFor": "Accurate distinction between the Maillard reaction and caramelization, with awareness of what drives each.",
+    "idealAnswer": {
+      "bullets": [
+        "Maillard reaction is a reaction between reducing sugars and amino acids/proteins, needs heat but not necessarily high heat",
+        "Caramelization is the pyrolysis of sugars alone, at higher temperatures, no protein involved",
+        "Both produce hundreds of new flavor and aroma compounds but through different pathways and precursors"
+      ],
+      "modelAnswer": "Bread crust browning is mostly the Maillard reaction, where reducing sugars like glucose react with amino acids from the proteins in the dough once the surface gets hot and dry enough, usually above about 140 to 150 degrees Celsius. That cascade of reactions produces melanoidins, which give the brown color, plus a huge range of aroma compounds, which is why crust smells so different from the crumb. Caramelization is different because it only needs sugar, no protein, and it happens through the sugar breaking down under heat on its own, which is why plain sugar melting in a pan browns without any amino acids present. I find it interesting that both reactions are chasing similar sensory outcomes, rich brown color and complex aroma, but through completely different chemistry."
+    },
+    "commonMistakes": [
+      "Calling all browning caramelization",
+      "Not mentioning amino acids or proteins as the key Maillard ingredient",
+      "Giving no sense of the temperature or conditions involved"
+    ],
+    "followUps": ["Why might a food scientist want to slow down or prevent Maillard browning in some products?"]
+  },
+  {
+    "id": "prog-food-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Water activity vs moisture content",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["microbiology", "shelf-life", "preservation"],
+    "question": "Two products can have the exact same moisture content but very different shelf lives. How is that possible?",
+    "lookingFor": "Understanding of water activity as distinct from total moisture, and its link to microbial growth and spoilage.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish total moisture content from water activity, the amount of unbound, usable water",
+        "Explain that microorganisms need free water, not just any water, to grow",
+        "Give an example, like jam versus fresh fruit, where sugar or salt binds water"
+      ],
+      "modelAnswer": "Moisture content just tells you how much water is in a product by weight, but it doesn't tell you how available that water is to microorganisms. Water activity measures the free, unbound water that bacteria, yeast, and mould can actually use, and ingredients like sugar or salt bind water molecules so tightly that even though the water is still there, it's not accessible. That's why jam can have plenty of moisture but a low water activity and a long shelf life, while fresh fruit with similar moisture spoils fast, because almost all its water is free. It's one of the first things that made me realise food science isn't just chemistry, it's really about what's biologically available, not just what's present."
+    },
+    "commonMistakes": [
+      "Treating moisture content and water activity as the same thing",
+      "Forgetting that solutes like sugar and salt are the mechanism that lowers water activity",
+      "No concrete example to demonstrate the concept"
+    ],
+    "followUps": ["What other methods lower water activity besides adding sugar or salt?"]
+  },
+  {
+    "id": "prog-food-science-b-003",
+    "category": "Ethics & Situational",
+    "subtopic": "Reporting a contamination risk",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "food-safety", "judgement"],
+    "question": "Imagine you're doing a placement at a food company and you discover a minor, likely-harmless labelling error on thousands of units already on shelves. Recalling them would cost the company heavily and your supervisor tells you to let it go this once. What do you do?",
+    "lookingFor": "Structured ethical reasoning that takes food safety and consumer trust seriously without being naively absolutist about a workplace hierarchy.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh consumer safety and right to accurate information against company cost and workplace pressure",
+        "Distinguish between a genuinely harmless error and one that could matter to specific people, like allergens",
+        "Propose an escalation path rather than either silent compliance or going straight to a regulator"
+      ],
+      "modelAnswer": "My first question would be what the error actually is, because a wrong batch code is different from an omitted allergen, and I'd want to check that carefully before deciding anything. If there's any chance it could matter to someone's health, I don't think I could just let it go because of cost, since consumer safety has to outweigh commercial convenience. I'd go back to my supervisor with the specific reasoning, and if I still felt uneasy I'd want to know the proper internal channel, like a quality assurance lead, rather than either staying silent or escalating externally straight away. I think the discomfort of raising it is a much smaller cost than being someone who quietly let a safety issue slide because it was awkward."
+    },
+    "commonMistakes": [
+      "Assuming all labelling errors are equally serious without checking",
+      "Blind deference to a supervisor's instruction",
+      "Jumping straight to an external regulator without trying internal escalation first"
+    ],
+    "followUps": ["Does your answer change if the error involves an undeclared allergen rather than a batch code?"]
+  },
+  {
+    "id": "prog-food-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: ultra-processed foods",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "nutrition", "policy"],
+    "question": "There's a lot of debate right now about classifying foods by how 'ultra-processed' they are, using systems like NOVA. What's your view on whether that's a scientifically useful way to think about food?",
+    "lookingFor": "Awareness of the ultra-processed food debate and ability to reason about its strengths and limitations, not just repeat headlines.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the NOVA classification and why it gained attention, including recent studies linking UPF intake to health outcomes",
+        "Note a genuine criticism, such as that 'processing' alone doesn't capture nutrient content or mechanism",
+        "Land on a reasoned, not purely for-or-against, position"
+      ],
+      "modelAnswer": "I've followed some of the NOVA classification debate, and I think it's done something useful by getting people to notice that how a food is made can matter beyond just its nutrient label, since the cohort studies linking high ultra-processed intake to worse health outcomes are hard to dismiss. But I'm also persuaded by the criticism that the category is quite broad, it groups together things like sugary drinks and industrially made wholegrain bread, which are nutritionally very different, so it can obscure mechanism rather than explain it. My honest view is that it's a useful starting flag for public health messaging, but food scientists still need to dig into the actual formulation, additives, and matrix effects rather than treating 'processed' as a single villain. I find that tension between a useful blunt public signal and an imprecise scientific tool genuinely interesting."
+    },
+    "commonMistakes": [
+      "Treating all processing as automatically bad with no nuance",
+      "Not being aware the debate exists at all",
+      "Giving an opinion with no grounding in what the classification actually measures"
+    ],
+    "followUps": ["Can you think of a processed food that's nutritionally beneficial, which a simple processing-based rule might penalise?"]
+  },
+  {
+    "id": "prog-food-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: reformulating a product",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "formulation", "problem-solving"],
+    "question": "Suppose you're asked to cut the sugar in a popular yoghurt by 30 percent without customers noticing a difference in taste or texture. Walk me through how you'd approach that problem.",
+    "lookingFor": "Structured problem-solving that shows awareness sugar plays multiple roles beyond sweetness, not just 'use a sweetener'.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise sugar's multiple functions beyond sweetness, like texture, mouthfeel, and preservation",
+        "Propose a staged approach, testing substitutes or blends and doing sensory panels rather than one big change",
+        "Acknowledge trade-offs, such as cost, labelling implications, or consumer perception of sweeteners"
+      ],
+      "modelAnswer": "The first thing I'd remind myself is that sugar isn't just there for sweetness, it also affects viscosity and mouthfeel in yoghurt, so simply removing it would change more than taste. I'd look at partial substitution, maybe blending a bulking agent that mimics texture with a high-intensity sweetener to close the sweetness gap, and I'd want to test a few ratios rather than guess the final number straight away. I'd run this through a proper sensory panel, ideally blind, before and after, and probably do it gradually, dropping sugar in smaller steps over multiple product cycles so consumers adapt rather than noticing a sudden change. I'd also flag that whatever we choose has knock-on effects for the label and how customers perceive terms like 'no added sugar', which isn't purely a formulation question anymore."
+    },
+    "commonMistakes": [
+      "Assuming sugar only affects sweetness and ignoring texture or preservation roles",
+      "Proposing one big change with no testing or staged rollout",
+      "Ignoring consumer perception or labelling consequences of the substitute chosen"
+    ],
+    "followUps": ["What would you do if your sensory panel and your lab data disagreed?"]
+  },
+  {
+    "id": "prog-food-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzymatic browning",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["chemistry", "quality", "fruit"],
+    "question": "Why does a cut apple turn brown, and what are two genuinely different ways to stop it that don't rely on the same mechanism?",
+    "lookingFor": "Correct explanation of enzymatic browning and the ability to name mechanistically distinct prevention strategies, not just synonyms.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that polyphenol oxidase reacts with phenolic compounds in the presence of oxygen to form brown pigments",
+        "Give one method that removes oxygen or the enzyme's access to it",
+        "Give a mechanistically different method, like lowering pH or using an antioxidant, rather than two variations of the same idea"
+      ],
+      "modelAnswer": "The browning happens because cutting the apple breaks cells open and exposes an enzyme called polyphenol oxidase to both oxygen and phenolic compounds it normally wouldn't touch, and the reaction between them forms melanin-like brown pigments. One way to stop it is to limit oxygen exposure, for example submerging the slices in water or vacuum packing, which starves the reaction of one of its ingredients. A genuinely different approach is adding something like lemon juice, which lowers the pH enough to slow the enzyme's activity and also supplies vitamin C as an antioxidant that competes for the oxidation. I like that example because it shows you can attack the same reaction from completely different angles, blocking the substrate access versus disabling the enzyme itself."
+    },
+    "commonMistakes": [
+      "Saying it's 'oxidation' with no mention of the enzyme involved",
+      "Giving two methods that are really the same mechanism in different words",
+      "Confusing enzymatic browning with Maillard browning"
+    ],
+    "followUps": ["Why doesn't refrigeration alone reliably stop this browning?"]
+  },
+  {
+    "id": "prog-food-science-b-007",
+    "category": "Ethics & Situational",
+    "subtopic": "Marketing claims and evidence",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "marketing", "evidence"],
+    "question": "A company wants to market a snack as 'immune boosting' based on one small internal study. As the food scientist reviewing the claim, what's your responsibility here?",
+    "lookingFor": "Recognition of the tension between commercial pressure and scientific rigor, with a clear stance on what evidence standard matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Question whether one small internal study meets a reasonable evidentiary bar, considering sample size, controls, and independence",
+        "Recognise the professional and consumer trust responsibility of a food scientist, not just legal compliance",
+        "Suggest a constructive path, like more rigorous testing or more modest, defensible wording, rather than blanket refusal with no alternative"
+      ],
+      "modelAnswer": "My instinct would be to ask hard questions about that one study first, how large it was, whether it was peer reviewed or independently verified, and whether the effect size was actually meaningful, because a single internal study is a weak basis for a health claim that consumers will take seriously. I think my responsibility goes beyond just checking if it's technically legal to make the claim, since people genuinely change what they buy based on wording like 'immune boosting'. I wouldn't just refuse and walk away though, I'd want to propose either a more rigorous study before making that specific claim, or softer, defensible language about ingredients with known properties instead of an outcome claim we can't fully back. I think that's the difference between being obstructive and actually doing the job well."
+    },
+    "commonMistakes": [
+      "Treating legal compliance as the same thing as scientific or ethical justification",
+      "Refusing outright with no constructive alternative offered",
+      "Not questioning the quality of the single study at all"
+    ],
+    "followUps": ["What would change your view if the study had been much larger and peer reviewed?"]
+  },
+  {
+    "id": "prog-food-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Food fermentation microbiology",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["microbiology", "fermentation", "safety"],
+    "question": "Why is it that fermentation can both preserve food and, if done wrong, make people seriously ill? What decides which outcome you get?",
+    "lookingFor": "Understanding that fermentation relies on controlling which microorganisms dominate, and that the same basic process can go two very different ways.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain fermentation works by encouraging desirable microbes, like lactic acid bacteria, to outcompete spoilage or pathogenic organisms",
+        "Note the conditions that determine the outcome: salt concentration, temperature, oxygen, starter cultures",
+        "Give an example of what happens when those controls fail"
+      ],
+      "modelAnswer": "Fermentation is really about controlling a competition between microorganisms, where you want lactic acid bacteria or yeast to dominate quickly and produce acid or alcohol that makes the environment hostile to spoilage organisms and pathogens. What decides the outcome is things like salt concentration, temperature, how much oxygen is present, and whether you're using a reliable starter culture rather than leaving it to whatever's naturally present. If those conditions aren't controlled tightly enough, something like Clostridium botulinum can get a foothold instead, particularly in low-oxygen, low-salt conditions, which is exactly the nightmare scenario in improperly fermented or canned foods. It's one of the things that makes fermentation such a good case study for me, it's the same basic biology producing either a prized product or a serious hazard depending entirely on how carefully you control it."
+    },
+    "commonMistakes": [
+      "Describing fermentation vaguely as 'good bacteria' with no mechanism",
+      "Not mentioning what happens when conditions go wrong",
+      "Confusing fermentation spoilage risks with unrelated food safety issues like heavy metal contamination"
+    ],
+    "followUps": ["Why is botulism specifically associated with low-oxygen environments?"]
+  },
+  {
+    "id": "prog-food-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: lab-grown meat",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "innovation", "sustainability"],
+    "question": "Cultivated meat has had regulatory approvals in a few countries recently but is still not widely available. What do you think is the actual bottleneck, science, cost, or something else?",
+    "lookingFor": "Awareness of the current state of cultivated meat and the ability to reason about which barrier is genuinely limiting, not just enthusiasm or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that the core cell-culturing science largely works but scaling it affordably is the harder problem",
+        "Identify cost drivers specifically, like growth media and bioreactor scale-up, rather than a vague 'it's expensive'",
+        "Acknowledge non-technical barriers too, like consumer acceptance and regulatory pace across different countries"
+      ],
+      "modelAnswer": "From what I've read, the basic science of growing muscle and fat cells in culture does work, so I don't think the bottleneck is really 'can we do this' anymore, it's 'can we do this at a price and scale that makes sense'. The growth media, especially replacing expensive components like fetal bovine serum, and building bioreactors that can operate at food-production scale rather than lab scale, seem to be the real cost drivers holding things back. But I don't think it's purely technical either, because even where it's approved, like in Singapore or the US, consumer acceptance and labelling debates are still shaping how fast it actually reaches shelves. I find that combination interesting, it's a case where the biology moved faster than the economics and the social side, which isn't how these stories usually go."
+    },
+    "commonMistakes": [
+      "Assuming the science itself is still the main unsolved problem",
+      "No awareness of specific cost drivers like growth media or bioreactor scale-up",
+      "Ignoring the regulatory and consumer acceptance dimension entirely"
+    ],
+    "followUps": ["Do you think labelling it 'meat' at all is scientifically or ethically justified?"]
+  },
+  {
+    "id": "prog-food-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: allergen cross-contact",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "food-safety", "allergens"],
+    "question": "You're designing the production line for a peanut-free cookie in a factory that also makes peanut products on shared equipment. Talk me through how you'd approach the risk.",
+    "lookingFor": "Systematic risk-based thinking about allergen cross-contact, not a single fix, and honesty about the limits of what can be guaranteed.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the real risk points, shared equipment, shared air or dust, shared storage, not just the final mixing step",
+        "Propose layered controls, like scheduling, dedicated equipment or thorough validated cleaning, and allergen testing",
+        "Be honest about residual risk and correct precautionary labelling rather than overpromising zero risk"
+      ],
+      "modelAnswer": "I'd start by mapping every point peanut could actually cross over, not just the mixer, but shared conveyor belts, airborne dust in the same room, and even shared storage bins, because cross-contact often happens in places people don't think to check first. Then I'd look at layered controls, ideally running the peanut-free product first in a shift before any peanut product touches the line, with a validated cleaning and swab-testing protocol in between if the line has to be shared at all. I'd also push for actual allergen testing on finished batches rather than just trusting the process, because that's the only way to catch a failure in the plan itself. Even with all that, I don't think I could honestly promise zero risk on shared equipment, so I'd want the labelling to say 'may contain peanut traces' rather than a flat 'peanut-free' claim, because overpromising there could genuinely hurt someone."
+    },
+    "commonMistakes": [
+      "Only addressing the final mixing step and ignoring shared storage or airborne contamination",
+      "Proposing a plan with no validation or testing step to confirm it actually works",
+      "Claiming zero risk is achievable on genuinely shared equipment"
+    ],
+    "followUps": ["How would you decide whether the risk is low enough to skip a 'may contain' label at all?"]
+  },
+  {
+    "id": "prog-food-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Protein denaturation",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["chemistry", "cooking", "proteins"],
+    "question": "When you cook an egg white, it goes from clear and runny to white and firm. What's actually happening to the proteins?",
+    "lookingFor": "Correct explanation of denaturation and coagulation, and awareness this is not the same as breaking chemical bonds within amino acids.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that heat disrupts the protein's folded three-dimensional structure, denaturation, without breaking the amino acid chain itself",
+        "Describe how unfolded proteins then expose hydrophobic regions and bond with neighbouring proteins, coagulation",
+        "Note this is why the change is irreversible, unlike simple physical mixing"
+      ],
+      "modelAnswer": "Egg white is mostly water and proteins like ovalbumin, which start off folded into specific compact shapes that let light pass through, so it looks clear. Heat gives the molecules enough energy to break the weaker bonds holding that folded shape together, so the protein unfolds, that's denaturation, and it doesn't touch the actual amino acid sequence, just the three-dimensional structure. Once unfolded, the proteins expose parts that were previously tucked inside, and those parts start bonding with neighbouring unfolded proteins, forming a network that traps water and turns opaque and firm, which is coagulation. What I find satisfying about that explanation is that it's why you can't uncook an egg, once that network forms, cooling it back down doesn't refold the proteins the way melting and refreezing water would."
+    },
+    "commonMistakes": [
+      "Saying the protein is 'destroyed' or the chemical bonds within amino acids are broken",
+      "Not distinguishing denaturation from coagulation as two separate steps",
+      "No explanation for why the process is irreversible"
+    ],
+    "followUps": ["Why does adding acid, like lemon juice, also denature proteins without any heat at all?"]
+  },
+  {
+    "id": "prog-food-science-b-012",
+    "category": "Ethics & Situational",
+    "subtopic": "Food waste vs food safety",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "sustainability", "food-waste"],
+    "question": "There's growing pressure to extend use-by dates to cut food waste, but doing so always carries some added safety risk. How would you think about where to draw that line?",
+    "lookingFor": "Balanced reasoning that treats both food waste and safety as real costs, using evidence rather than picking a side by default.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge food waste is a genuine environmental and economic problem, not just a nice-to-have consideration",
+        "Insist that any date extension has to be backed by actual shelf-life and microbial challenge testing, not just optimism",
+        "Distinguish between 'best before' dates, where some flexibility is reasonable, and 'use by' dates tied to safety, where the bar should be much higher"
+      ],
+      "modelAnswer": "I don't think this is a case where safety should just automatically win by default, because food waste has real environmental and economic costs too, so I'd want to actually weigh the evidence rather than default to the most cautious date out of habit. But I would insist any extension is backed by real shelf-life studies and microbial challenge testing on the specific product, not just a general assumption that products are usually fine a bit past the label. I'd also treat 'best before' and 'use by' quite differently, since best before is about quality and there's more room to trust consumers to judge for themselves, but use by is tied to genuine safety risk like listeria in ready-to-eat foods, where I'd want the evidence bar much higher before extending anything. I think that distinction is where the actual line should be drawn, not in a blanket policy either way."
+    },
+    "commonMistakes": [
+      "Treating safety as an automatic trump card with no cost-benefit reasoning",
+      "Treating food waste reduction as costless and ignoring safety risk entirely",
+      "Not distinguishing 'best before' from 'use by' dates"
+    ],
+    "followUps": ["Who do you think should bear responsibility if a date extension later turns out to have been wrong, the manufacturer, the regulator, or the retailer?"]
+  },
+  {
+    "id": "prog-food-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Emulsions",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["chemistry", "texture", "formulation"],
+    "question": "Mayonnaise is mostly oil and water, which don't normally mix. How does it actually stay stable, and what happens when it 'breaks'?",
+    "lookingFor": "Correct understanding of emulsifiers and emulsion stability, and what physically happens during separation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the role of an emulsifier, like lecithin in egg yolk, with hydrophilic and hydrophobic ends",
+        "Describe the emulsion as tiny oil droplets dispersed through water, stabilised by the emulsifier coating each droplet",
+        "Explain breaking as droplets coalescing back into separate oil and water phases, often from too much heat, agitation, or an imbalance in ratio"
+      ],
+      "modelAnswer": "Oil and water don't mix on their own because water molecules are polar and oil is nonpolar, so mayonnaise relies on an emulsifier, mainly lecithin from the egg yolk, which has one end that's attracted to water and one end attracted to oil. That lets it sit right at the boundary of tiny oil droplets and coat them, keeping them suspended and separated within the water phase instead of merging back together, which is what actually gives mayonnaise its stable, creamy texture. When it 'breaks', usually from adding oil too fast, too much heat, or too much agitation, the emulsifier can't keep up with coating all the droplets, so they start colliding and merging into bigger and bigger droplets until the oil and water visibly separate again. I like that mayonnaise is such an accessible way to see an emulsion fail in real time, because you can watch the texture change the moment it tips past that stability point."
+    },
+    "commonMistakes": [
+      "Not mentioning an emulsifier or its dual-affinity structure at all",
+      "Describing the emulsion as oil and water 'mixing' rather than one dispersed as droplets in the other",
+      "Vague explanation of breaking with no mechanism, like droplet coalescence"
+    ],
+    "followUps": ["Why does adding oil too quickly cause the emulsion to break?"]
+  },
+  {
+    "id": "prog-food-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: sensory panel disagreement",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "sensory-science", "data"],
+    "question": "Your trained sensory panel says a reformulated product tastes identical to the original, but early consumer feedback from a small pilot suggests people can tell the difference. How do you reconcile that?",
+    "lookingFor": "Understanding that trained panels and untrained consumers measure different things, and structured thinking about how to investigate a conflict rather than dismissing one dataset.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise trained panels are calibrated to detect specific attributes analytically, while consumers respond holistically and are influenced by context, expectation, and non-taste factors",
+        "Check the actual test design, sample size, blinding, and whether the consumer pilot was even statistically powered to draw a conclusion",
+        "Propose a next step, like a larger blinded consumer test, rather than simply trusting whichever result is more convenient"
+      ],
+      "modelAnswer": "My first instinct wouldn't be to assume one group is simply wrong, because a trained panel and everyday consumers are actually measuring different things, the panel is calibrated to detect specific analytical attributes like sweetness intensity, while consumers respond to the whole experience, sometimes influenced by packaging or expectation as much as taste. Before drawing any conclusion I'd want to check the pilot's actual design, how many people, whether it was blinded, because a small pilot could easily be picking up noise rather than a real signal. If the design looks sound, I'd want to run a larger, properly blinded consumer test specifically targeting the attribute they flagged, rather than just trusting the trained panel because it's the more 'scientific' looking dataset. I think the honest answer is that both results can be true at once, a product can be analytically similar and still land differently with real consumers, and that gap itself is useful information."
+    },
+    "commonMistakes": [
+      "Assuming the trained panel is automatically more authoritative with no further investigation",
+      "Not questioning the consumer pilot's sample size or design at all",
+      "Treating the two results as a contradiction that must mean one dataset is simply wrong"
+    ],
+    "followUps": ["What would you do differently in the reformulation process next time to avoid this kind of late surprise?"]
+  },
+  {
+    "id": "prog-food-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Food packaging and shelf life",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["packaging", "preservation", "engineering"],
+    "question": "Why is modified atmosphere packaging used for things like bagged salad, and what's the trade-off in choosing the gas mix?",
+    "lookingFor": "Understanding of how altering oxygen and CO2 levels slows spoilage, and awareness that the gas mix must be tuned to the specific product's respiration.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that lowering oxygen and raising carbon dioxide slows both microbial growth and the product's own respiration rate",
+        "Note that fresh produce is still alive and respiring after packaging, so the mix has to account for ongoing gas exchange, not just a static fill",
+        "Identify the trade-off: too little oxygen can trigger anaerobic spoilage or off-flavours, so the mix is a balance, not simply 'less oxygen is always better'"
+      ],
+      "modelAnswer": "Modified atmosphere packaging works by replacing the air inside the bag with a mix that's lower in oxygen and higher in carbon dioxide, which slows down both the growth of aerobic spoilage microbes and the salad leaves' own respiration, since produce is technically still alive and using up oxygen even after it's packed. The tricky part is that the leaves keep respiring inside the sealed bag, so the packaging has to be permeable enough to let some gas exchange happen, otherwise oxygen could drop so low that the leaves switch to anaerobic respiration, which causes off-flavours and actually accelerates spoilage rather than preventing it. So the trade-off isn't simply less oxygen equals longer shelf life, it's finding the specific balance for that product's respiration rate, which is why different produce uses different film permeabilities and gas ratios. I think that's a nice example of how food packaging isn't just a passive barrier, it's actively managing a biological process happening inside the bag."
+    },
+    "commonMistakes": [
+      "Assuming produce stops respiring once it's cut and packaged",
+      "Saying less oxygen is always better with no mention of the anaerobic spoilage risk",
+      "Treating the gas mix as universal rather than product-specific"
+    ],
+    "followUps": ["Why might a food scientist choose a different gas mix for a raw meat product compared to bagged salad?"]
+  },
+  {
+    "id": "prog-food-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: front-of-pack nutrition labelling",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "policy", "nutrition"],
+    "question": "Different countries use very different front-of-pack labelling systems, traffic lights, Nutri-Score, warning labels. Do you think one approach is genuinely better, or does it depend on context?",
+    "lookingFor": "Awareness that multiple real systems exist and reasoned comparison rather than assuming there's one obviously correct answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of at least two real systems and roughly how they differ, for example traffic lights giving per-nutrient detail versus a single algorithmic score",
+        "Consider evidence on consumer comprehension and behaviour change, not just design aesthetics",
+        "Acknowledge cultural and regulatory context matters, so 'better' may not be universal"
+      ],
+      "modelAnswer": "I think it genuinely depends on what you're optimising for. Traffic light labelling, used in the UK, gives per-nutrient detail, so it respects that people care about different things, some want to watch salt, others sugar, but it asks more of the shopper to interpret several colours at once. Nutri-Score compresses that into a single letter grade, which is easier to act on quickly but hides the underlying trade-offs, so two very different products can end up with the same letter for different reasons. Warning label systems, like Chile's black stop-sign labels, seem to have the strongest evidence for actually shifting purchasing behaviour, probably because they're blunt rather than nuanced. My honest view is there's a real trade-off between how much nuance a system preserves and how quickly people can actually use it at the shelf, so what counts as 'better' depends on whether the goal is informed choice or fast behaviour change."
+    },
+    "commonMistakes": [
+      "Naming only one system with no real comparison",
+      "Assuming the answer is simply 'more information is always better'",
+      "No mention of actual behavioural evidence, just aesthetic or intuitive preference"
+    ],
+    "followUps": ["Which system do you think would work best in this country, and why?"]
+  },
+  {
+    "id": "prog-food-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: scaling a recipe to production",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "process-engineering", "scale-up"],
+    "question": "A home baker's chocolate chip cookie recipe tastes amazing in small batches but you need to scale it to produce ten thousand units a day. What actually changes, beyond just multiplying the ingredients?",
+    "lookingFor": "Awareness that scale-up involves heat transfer, mixing dynamics, and process consistency, not simple proportional scaling.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that heat transfer and mixing behave differently at scale, not linearly, so oven time, mixing time, and ingredient order may all need re-testing",
+        "Note that ingredient consistency and sourcing become critical, since small batch home ingredients vary less than industrial supply",
+        "Mention process control needs, like standardising dough temperature, portion size, and bake profile for consistent output across every unit"
+      ],
+      "modelAnswer": "The first thing I'd flag is that you can't just multiply every ingredient by a thousand and expect the same result, because heat transfer and mixing don't scale linearly, a domestic oven heats a dozen cookies fairly evenly but an industrial oven has to manage heat distribution across a much larger tray or conveyor, so bake time and temperature profile would need to be re-tested from scratch rather than assumed. Mixing is similar, an industrial mixer develops gluten and distributes fat differently than hand mixing a small batch, which changes texture even if the ratios are identical. I'd also expect ingredient variability to become a bigger issue, since industrial-scale butter or flour batches can vary slightly between suppliers in ways a home baker would never notice but that could shift texture across a whole day's production run. Beyond the recipe itself, I'd want tight process controls, standardised dough temperature before baking, consistent portion weight per cookie, and a validated bake profile, so that cookie number one and cookie number ten thousand actually taste the same, which is really the core challenge of scale-up."
+    },
+    "commonMistakes": [
+      "Assuming scale-up is just proportional multiplication of ingredients",
+      "No mention of heat transfer or mixing differences at industrial scale",
+      "Ignoring the need for process consistency across a full production run"
+    ],
+    "followUps": ["How would you go about testing whether your scaled-up version actually still tastes the same?"]
+  },
+  {
+    "id": "prog-food-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Lipid oxidation and rancidity",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["chemistry", "shelf-life", "packaging"],
+    "question": "Why do fatty foods eventually go rancid even when they're sealed and kept away from microbes, and what actually slows that process down?",
+    "lookingFor": "Understanding that rancidity is largely a chemical, not microbial, process driven by oxidation, and awareness of practical mitigation strategies.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain rancidity is mainly lipid oxidation, a chemical reaction between unsaturated fats and oxygen, not spoilage by microorganisms",
+        "Note that light, heat, and trace metals can catalyse or accelerate the reaction, so sealing alone doesn't stop it if oxygen is still present inside",
+        "Give practical mitigation methods, like antioxidants, opaque or oxygen-barrier packaging, or nitrogen flushing"
+      ],
+      "modelAnswer": "Rancidity is mostly a chemical process, not a microbial one, so a food can be perfectly sterile and still go rancid because unsaturated fats react with oxygen over time, breaking down into shorter chain compounds that smell and taste off, things like aldehydes and ketones. Sealing alone doesn't fully stop it if there's still oxygen trapped inside the package, and the reaction actually speeds up with light exposure, heat, and even trace metal ions acting as catalysts, which is part of why oils are often sold in dark bottles rather than clear ones. To actually slow it down, manufacturers use things like natural or synthetic antioxidants that interrupt the oxidation chain reaction, oxygen-barrier packaging to minimise how much oxygen gets in during storage, and sometimes nitrogen flushing to displace oxygen from the headspace entirely before sealing. I think it's a nice example of how 'spoilage' isn't always about microorganisms, sometimes the food is fighting a purely chemical battle against oxygen the whole time it sits on a shelf."
+    },
+    "commonMistakes": [
+      "Assuming rancidity is caused by bacteria or mould",
+      "Not mentioning that light, heat, or metal ions catalyse the reaction",
+      "Naming only one mitigation strategy instead of showing a range of options"
+    ],
+    "followUps": ["Why would a manufacturer choose nitrogen flushing over just adding more antioxidant?"]
+  },
+  {
+    "id": "prog-food-science-b-019",
+    "category": "Ethics & Situational",
+    "subtopic": "Cultural food practices vs scientific recommendation",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "culture", "nutrition"],
+    "question": "Suppose your nutritional research suggests a traditional, culturally significant preparation method increases a health risk. How would you go about communicating that without being dismissive of the culture it comes from?",
+    "lookingFor": "Awareness that food science recommendations don't exist in a cultural vacuum, and ability to balance scientific honesty with respect and practical realism.",
+    "idealAnswer": {
+      "bullets": [
+        "Affirm the science should still be communicated honestly, not softened into inaccuracy out of politeness",
+        "Recognise that dismissing a practice wholesale, rather than proposing an adapted version, is likely to be rejected and also disrespectful",
+        "Suggest engaging the community or culture bearers themselves in finding a practical modification, rather than issuing a top-down verdict"
+      ],
+      "modelAnswer": "I wouldn't want to soften the actual finding, because burying or vaguing up a real health risk out of politeness doesn't help anyone and isn't honest science. But I also don't think the right response is a blunt 'stop doing this', because that ignores why the practice exists and how central it might be, and it's also just unlikely to actually change behaviour if it feels like an outside dismissal of something meaningful. I'd want to present the specific mechanism clearly, whatever step in the preparation is actually driving the risk, and then work with people who know the tradition well to see if there's a way to adapt just that step while keeping everything else intact. I think good food science communication here means being precise about the risk without being arrogant about the culture, those aren't actually in tension if you do it carefully."
+    },
+    "commonMistakes": [
+      "Softening or hedging the scientific finding to avoid discomfort",
+      "Recommending the practice simply be abandoned with no attempt at adaptation",
+      "Treating the cultural context as irrelevant to how the finding should be communicated"
+    ],
+    "followUps": ["What would you do if the community pushed back and rejected your recommendation entirely?"]
+  },
+  {
+    "id": "prog-food-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Food microbiology risk reasoning",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["microbiology", "risk-assessment", "hazard-analysis"],
+    "question": "In HACCP thinking, why is identifying a hazard not enough, you also have to determine whether it's a 'critical control point'. What's the actual difference, and can you give an example?",
+    "lookingFor": "Understanding of the HACCP logic that not every hazard needs a dedicated control point, only ones where control is essential and achievable at that specific step.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish a hazard, any biological, chemical, or physical risk, from a critical control point, a step where control is both necessary and actually effective",
+        "Explain that some hazards are better addressed by good manufacturing practice generally rather than a dedicated CCP at one step",
+        "Give a concrete example, like cooking temperature for poultry as a genuine CCP versus a hazard controlled elsewhere in the process"
+      ],
+      "modelAnswer": "A hazard is just something that could cause harm, like salmonella potentially being present in raw chicken, but that alone doesn't tell you where in the process to focus your control effort. A critical control point is specifically a step where you can apply a control that's actually necessary to prevent or reduce that hazard to an acceptable level, and crucially, where losing control at that step means the hazard isn't caught anywhere downstream. So for raw chicken, the cooking step is a genuine CCP because reaching a specific internal temperature is the point that actually destroys the salmonella, and if that step fails there's no later step that fixes it. But something like minor surface dust contamination during storage might be a real hazard in a general sense, yet it's usually addressed through good hygiene practice across the whole facility rather than one specific measurable control point, because there's no single step where you can definitively verify it's been eliminated. I think that distinction is what keeps a HACCP plan focused on the steps that actually matter instead of becoming an unmanageable list of every conceivable risk."
+    },
+    "commonMistakes": [
+      "Treating every identified hazard as automatically a critical control point",
+      "No concrete example given to illustrate the distinction",
+      "Confusing HACCP with general food hygiene practice with no explanation of what makes a step 'critical'"
+    ],
+    "followUps": ["What would make you decide a hazard is better handled by a prerequisite programme rather than a CCP?"]
+  },
+  {
+    "id": "prog-food-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: gene-edited crops in food supply",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "biotechnology", "regulation"],
+    "question": "Some regulators now treat gene-edited crops, like those made with CRISPR, differently from older-style GMOs. Do you think that regulatory distinction makes scientific sense?",
+    "lookingFor": "Awareness of the regulatory divergence between gene editing and transgenic GMOs, and the ability to reason about whether the distinction is scientifically or just legally motivated.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that some jurisdictions regulate gene-edited crops with no foreign DNA more leniently than transgenic GMOs, while others, like the EU historically, have treated them the same",
+        "Explain the scientific argument for the distinction, that some gene edits are indistinguishable from what could occur through conventional breeding or natural mutation",
+        "Offer a genuine counterpoint, such as that the process argument doesn't fully address off-target effects or public trust concerns"
+      ],
+      "modelAnswer": "I think there's a real scientific argument behind the distinction, because some gene editing techniques just make a small, targeted change, like a single base pair edit, that's genuinely indistinguishable from what could arise through natural mutation or years of conventional breeding, whereas transgenic GMOs are inserting DNA from an entirely different species, which is a categorically different kind of change. That's part of why some regulators, the US among them, have moved toward regulating gene-edited crops more like conventionally bred varieties rather than automatically as GMOs, while the EU has historically applied the same stringent framework to both. My hesitation with fully accepting the distinction is that it's based on the intended edit, but it doesn't fully address the possibility of off-target effects elsewhere in the genome, and public trust concerns aren't purely about the mechanism anyway, they're often about who controls the technology and the seed supply. So I'd say the distinction is scientifically defensible for the core mutation argument, but it doesn't resolve every legitimate concern people have."
+    },
+    "commonMistakes": [
+      "Treating gene editing and older-style transgenic GMOs as scientifically identical with no distinction",
+      "No awareness that regulatory approaches actually differ between jurisdictions",
+      "Accepting the distinction uncritically with no counterpoint about off-target effects or trust"
+    ],
+    "followUps": ["What would you want to see tested before you'd be comfortable calling a gene-edited crop 'safe'?"]
+  },
+  {
+    "id": "prog-food-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: contradictory quality control data",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "quality-control", "data-interpretation"],
+    "question": "Your quality control lab reports a batch of product is within spec, but three separate customer complaints describe an off flavour. What would you actually do next?",
+    "lookingFor": "Systematic troubleshooting instinct rather than dismissing either the lab data or the complaints outright.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid assuming either the lab data or the complaints are automatically correct, treat it as a genuine discrepancy worth investigating",
+        "Consider what the QC test actually measures versus what a human taster would notice, since specs may not capture every sensory dimension",
+        "Propose a concrete next step, like retained sample testing, checking storage or distribution conditions, or a fresh sensory panel on the specific batch"
+      ],
+      "modelAnswer": "I wouldn't just trust the QC pass and write off the complaints, because a batch passing spec only tells you it met the specific parameters that were tested, not that nothing at all is wrong, so there could be a real gap between what the test measures and what a person actually tastes. My first step would be to check if we still have a retained sample from that exact batch and run both a fresh chemical analysis and a sensory panel specifically targeting off flavours, rather than the standard release tests. I'd also want to look outside the factory itself, at storage temperature and time in distribution, since an off flavour could develop after the batch left QC's hands rather than being present at release. If the retained sample panel confirms something is off that the spec didn't catch, that tells me the spec itself might need updating, not just this one batch investigated."
+    },
+    "commonMistakes": [
+      "Assuming the QC pass settles the matter and dismissing the complaints",
+      "Assuming the complaints must be right and the QC process is simply broken, with no investigation",
+      "No concrete next step proposed, just a vague 'investigate further'"
+    ],
+    "followUps": ["What would you do if the retained sample also passes but complaints keep coming in?"]
+  },
+  {
+    "id": "prog-food-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Starch gelatinization",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["chemistry", "texture", "cooking"],
+    "question": "Why does adding water and heat to flour or cornstarch thicken a sauce, and why does it not thicken if you just add the starch to cold liquid?",
+    "lookingFor": "Understanding of starch gelatinization as a temperature-dependent structural change, not simple dissolving.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain starch granules are largely insoluble in cold water and just remain suspended rather than dissolving",
+        "Describe gelatinization: heat causes granules to absorb water, swell, and eventually rupture, releasing amylose which forms the thickened network",
+        "Note that this is why a specific temperature threshold matters, not just mixing time or agitation"
+      ],
+      "modelAnswer": "Raw starch granules are mostly insoluble in cold water, they just sit suspended in the liquid, which is why stirring cornstarch into cold water doesn't thicken anything, it just makes a cloudy suspension that settles back out if you stop stirring. What actually creates thickening is gelatinization, where heat gives the water molecules enough energy to penetrate into the starch granule, causing it to absorb water and swell dramatically, and past a certain temperature threshold the granule ruptures and releases amylose into the surrounding liquid. That released amylose is what forms the network trapping water and giving the sauce its actual thickened, viscous texture, so it's not about dissolving the starch, it's about this structural transformation happening at a specific temperature. That's also why recipes tell you to bring a sauce to a simmer after adding a slurry, below that gelatinization temperature nothing structural has actually happened yet, no matter how long you stir."
+    },
+    "commonMistakes": [
+      "Describing the process as the starch simply 'dissolving' in the liquid",
+      "Not mentioning the temperature threshold, implying stirring alone is sufficient",
+      "No mention of amylose or the granule swelling and rupturing"
+    ],
+    "followUps": ["Why does a sauce thickened this way sometimes thin back out if you freeze and thaw it?"]
+  },
+  {
+    "id": "prog-food-science-b-024",
+    "category": "Ethics & Situational",
+    "subtopic": "Animal-derived vs alternative ingredients",
+    "program": "Food Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "sustainability", "formulation"],
+    "question": "If you were formulating a new product and had to choose between a cheaper animal-derived ingredient and a more expensive, more sustainable plant-based alternative that performs slightly worse functionally, how would you make that call?",
+    "lookingFor": "Ability to reason through a genuine multi-factor trade-off, weighing cost, sustainability, and functional performance rather than picking a side reflexively.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge this is a genuine trade-off with no automatically correct answer, not a simple ethics-wins-every-time case",
+        "Consider how much the functional gap actually matters to the final product and consumer experience",
+        "Bring in context, like company positioning, target consumer values, and whether the cost difference is sustainable long-term, rather than deciding on ingredients alone"
+      ],
+      "modelAnswer": "I don't think there's a formula that spits out the right answer here, it genuinely depends on how much that functional gap matters in the finished product, if it's a small textural difference most consumers won't notice, that changes the calculation compared to if it meaningfully affects shelf life or safety. I'd want to actually quantify the performance gap through testing rather than treating 'slightly worse' as settled, because sometimes a small reformulation elsewhere in the recipe can close most of that gap. Beyond the ingredient itself, I'd think about the company's positioning and who the target consumer actually is, since a brand built around sustainability credentials might reasonably accept both the cost and the functional trade-off as core to what they're selling, while a budget-focused brand might not be able to sustain that cost long-term. I think the honest answer is that food scientists don't just pick ingredients in a vacuum, they're balancing technical performance against values and business reality at the same time, and that's uncomfortable but real."
+    },
+    "commonMistakes": [
+      "Treating sustainability as an automatic trump card with no cost-benefit reasoning",
+      "Treating cost as the only relevant factor and ignoring sustainability or brand fit",
+      "Giving a decision with no attempt to quantify or test the actual functional gap"
+    ],
+    "followUps": ["How would you communicate that trade-off honestly to consumers if you went with the cheaper option?"]
+  },
+  {
+    "id": "prog-food-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: designing a shelf-stable product for a new market",
+    "program": "Food Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "product-development", "supply-chain"],
+    "question": "You're asked to adapt an existing refrigerated product into a shelf-stable version for a region with unreliable cold chain infrastructure. What are the main technical challenges you'd expect to run into?",
+    "lookingFor": "Broad awareness of preservation methods and their trade-offs, plus recognition that this is a systems problem, not a single fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify plausible preservation routes, thermal processing, reducing water activity, acidification, or a combination, and note each changes texture or flavor differently",
+        "Recognise that reformulation to achieve shelf stability often means the sensory profile will differ from the original, requiring new consumer testing, not just a straight swap",
+        "Consider packaging and local supply chain realities, like heat exposure during transport or distribution, that affect which method is actually practical"
+      ],
+      "modelAnswer": "The first thing I'd map out is which preservation route actually gets us to shelf stability, whether that's thermal processing like retorting, lowering water activity, adjusting pH, or some combination, because each of those changes the product's texture and flavor in a different way, so it's not simply a packaging change. I'd expect the reformulated version to taste and feel noticeably different from the refrigerated original, since something like retorting for full shelf stability tends to soften texture more than pasteurization does, which means we'd need fresh consumer testing rather than assuming the original recipe just transfers over. I'd also want to think hard about the actual conditions the product will face in that region, if distribution involves long periods in high heat without climate control, that affects which preservation method and packaging material will actually hold up, not just what works in a lab trial. I think the real challenge is that shelf stability, sensory quality, and practical supply chain realities all pull in different directions, and the job is finding where they can coexist well enough."
+    },
+    "commonMistakes": [
+      "Assuming shelf stability is just about switching packaging with no reformulation needed",
+      "Not acknowledging the sensory profile will likely change and need re-testing",
+      "Ignoring real-world distribution conditions in the target region"
+    ],
+    "followUps": ["Which preservation method would you try first, and why?"]
+  }
+]

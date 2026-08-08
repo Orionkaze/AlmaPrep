@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-entrepreneurship-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Equity dilution across funding rounds",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["equity", "funding", "cap-table"],
+    "question": "If you raise a seed round and give away 20 percent equity, then a Series A at another 20 percent, roughly what happens to your ownership stake, and why might a founder still want that?",
+    "lookingFor": "Understands dilution mechanics and can articulate why founders trade equity for growth capital.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain dilution compounds across rounds rather than simply subtracting",
+        "Recognize a smaller slice of a much bigger pie can be worth more",
+        "Show awareness of what the capital actually buys, not just the percentage lost"
+      ],
+      "modelAnswer": "If I start at 100 percent and give up 20 percent in the seed round, I'm down to 80 percent, and then a 20 percent Series A takes another slice off that remaining 80, so I end up around 64 percent rather than 60. It feels like I'm losing control every round, but I'd rather own 64 percent of a company that raised enough to actually grow than 100 percent of one that stayed too small to survive. The real questions I'd want to understand are how much runway each round buys and whether the investors bring more than money, because equity is the most expensive capital I can raise."
+    },
+    "commonMistakes": [
+      "Doing simple subtraction (100-20-20=60) instead of compounding correctly",
+      "Treating all dilution as automatically bad",
+      "Not connecting equity given up to what it actually buys"
+    ],
+    "followUps": ["What would make you say no to a round even if the capital was offered?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Cofounder equity vesting",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["equity", "cofounders", "governance"],
+    "question": "Why do most advisors recommend founders put their own equity on a vesting schedule with a one-year cliff, even though it's their own company?",
+    "lookingFor": "Understands vesting as protection against a cofounder leaving early with a large unearned equity stake.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the problem vesting solves when a cofounder leaves early but keeps a large stake",
+        "Describe cliff and vesting mechanics at a basic level",
+        "Frame it as fairness to whoever keeps building, not distrust"
+      ],
+      "modelAnswer": "Without vesting, if one of my three cofounders left after two months, they would still legally own their full quarter of the company forever, even though the rest of us did years of work to actually build it. A cliff means nobody gets any equity until they've stuck around for at least a year, and then it vests gradually after that, so ownership tracks contribution. I'd want this in my own company on day one, not because I distrust my cofounders, but because it protects everyone equally if circumstances change."
+    },
+    "commonMistakes": [
+      "Framing vesting as only protecting against a bad cofounder",
+      "Not knowing what a cliff actually means",
+      "Assuming vesting only applies to investors or employees, not founders"
+    ],
+    "followUps": ["What would you do if a cofounder wanted to skip vesting?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Liquidation preferences",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["funding", "term-sheet", "investor-terms"],
+    "question": "An investor offers you a term sheet with a 2x liquidation preference. What does that actually mean for you if the company is later sold for a modest amount, and why might you push back on it?",
+    "lookingFor": "Grasps that liquidation preference determines payout order and multiple before common shareholders, and can reason about founder downside.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the investor gets 2x their investment back before common shareholders see anything",
+        "Recognize this matters most in a modest exit, not a huge one",
+        "Show willingness to negotiate rather than just accepting the terms"
+      ],
+      "modelAnswer": "A 2x liquidation preference means if I sell the company, that investor gets two times whatever they put in back before I or any other common shareholder sees a cent, so if I raised two million dollars and later sell for six million, four million goes to them off the top. That's fine in a huge outcome, but in a modest sale it can wipe out the founders' payout almost entirely even though we built the thing. I'd push for a standard 1x non-participating preference instead, because I want the investor's incentives and mine to point the same direction, which is toward a genuinely big outcome rather than just protecting their downside."
+    },
+    "commonMistakes": [
+      "Confusing liquidation preference with simple ownership percentage",
+      "Not realizing it matters most in mediocre, not great, outcomes",
+      "Accepting term sheet language without understanding the downside math"
+    ],
+    "followUps": ["Would you ever accept a 2x preference? Under what conditions?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Customer acquisition cost versus lifetime value",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["unit-economics", "metrics", "reasoning"],
+    "question": "You're spending 50 dollars to acquire a customer who generates 40 dollars of profit over their lifetime. Is that a viable business, and what would you actually check before deciding?",
+    "lookingFor": "Recognizes the LTV:CAC ratio is unhealthy and reasons about what data would confirm or change the picture.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that LTV below CAC is a red flag, not automatically fatal",
+        "Ask about payback period, retention curve, and whether CAC or LTV can improve",
+        "Distinguish early-stage learning economics from a business meant to stay this way"
+      ],
+      "modelAnswer": "On the surface that's a business losing 10 dollars per customer, which isn't sustainable if it stays that way at scale. But before I'd call it dead, I'd want to know how long it takes to earn that 40 dollars back, whether retention is improving as the product matures, and whether CAC is inflated because we're still learning which channels work. Plenty of good companies look like this early on and fix it by improving retention or finding cheaper channels, so the real question is whether there's a believable path to LTV clearing CAC by a healthy multiple, not just whether today's snapshot looks bad."
+    },
+    "commonMistakes": [
+      "Declaring the business simply good or bad without asking for more data",
+      "Not knowing that a 3:1 LTV:CAC ratio is a common rule of thumb",
+      "Ignoring payback period and treating LTV as if it arrives instantly"
+    ],
+    "followUps": ["What would you do in month one to try to fix this ratio?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Burn rate and runway",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["finance", "runway", "reasoning"],
+    "question": "You have 120,000 dollars in the bank and you're spending 15,000 dollars more than you earn each month. How long do you have, and what would you do with that number?",
+    "lookingFor": "Can do the basic runway math and connects it to real decision-making, not just arithmetic.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly compute roughly 8 months of runway",
+        "Explain runway is a planning tool, not just a countdown",
+        "Show they'd start fundraising or cutting costs well before the number hits zero"
+      ],
+      "modelAnswer": "120,000 divided by 15,000 gives me about eight months of runway. I wouldn't wait until month seven to start raising money, because fundraising itself can take three or four months and investors get nervous the closer you get to zero, so I'd want to start conversations around month four or five while I still had leverage. That number would also push me to look hard at spending now, because cutting burn to 10,000 a month buys real extra time to hit milestones that make the next raise easier."
+    },
+    "commonMistakes": [
+      "Getting the arithmetic wrong under pressure",
+      "Treating runway as fixed rather than something they can extend by cutting costs",
+      "Planning to raise money only once the runway is nearly gone"
+    ],
+    "followUps": ["What's the first expense you'd cut if you needed to extend runway fast?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Network effects and winner-take-all markets",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["strategy", "network-effects", "concept"],
+    "question": "Some markets end up with one dominant winner, like a social network, while others support many competitors side by side, like coffee shops. What causes that difference, and why does it matter for how you'd build a startup?",
+    "lookingFor": "Understands network effects as a structural driver of market concentration and applies it to strategy.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain network effects as the key driver of concentration",
+        "Contrast with markets where value doesn't compound with user count",
+        "Connect this to strategic choices like prioritizing growth over profit early"
+      ],
+      "modelAnswer": "A social network gets more useful to me the more of my friends are already on it, so early growth compounds and the winner tends to pull away and stay ahead, which is a network effect. A coffee shop doesn't work that way, my coffee doesn't get better because more people buy from the shop down the street, so there's room for many businesses to coexist based on location and taste. If I were building something with real network effects, I'd think hard about prioritizing growth and user acquisition early even at a loss, because being first and biggest can become self-reinforcing in a way it never would for a coffee shop."
+    },
+    "commonMistakes": [
+      "Not naming network effects specifically as the mechanism",
+      "Assuming every startup should chase growth at all costs regardless of market structure",
+      "Confusing network effects with simple brand loyalty or economies of scale"
+    ],
+    "followUps": ["Can you think of a market where network effects used to matter but have weakened?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Franchise model versus startup model",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["business-models", "franchise", "concept"],
+    "question": "How is buying into a franchise fundamentally different from founding a startup, even though both involve running your own business?",
+    "lookingFor": "Understands the risk, innovation, and control trade-off between a proven repeatable model and building something new.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a franchise buys a tested playbook with lower risk but less upside and freedom",
+        "Explain a startup requires inventing the model, with higher risk and higher potential reward",
+        "Show they understand entrepreneurship programs usually mean the startup path"
+      ],
+      "modelAnswer": "A franchise means I'm paying for a playbook that's already been proven to work, with training, brand recognition, and support, in exchange for fees and much less freedom to change how things run. A startup means I'm the one figuring out whether the idea even works in the first place, which is far riskier but means I keep the full upside and control if it succeeds. I'm drawn to the startup path specifically because I want to solve a problem nobody has solved yet, not operate someone else's already-solved one, even though I respect how much discipline franchising actually takes."
+    },
+    "commonMistakes": [
+      "Dismissing franchising as not real entrepreneurship rather than explaining the trade-off",
+      "Confusing franchise fees with venture capital funding",
+      "Failing to mention the risk and control dimensions"
+    ],
+    "followUps": ["Is a franchisee an entrepreneur in your view? Why or why not?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Market sizing and TAM inflation",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["market-sizing", "analysis", "reasoning"],
+    "question": "A founder claims their app targets a 500 billion dollar global market. What's wrong with stopping the analysis there, and how would you size a market more honestly?",
+    "lookingFor": "Can critique top-down market sizing and reason toward a bottom-up, realistic estimate.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that citing a huge total market says nothing about what's reachable",
+        "Explain the TAM, SAM, SOM narrowing from total to serviceable to obtainable",
+        "Prefer bottom-up reasoning over top-down citation"
+      ],
+      "modelAnswer": "Quoting a 500 billion dollar market usually just means someone found the biggest possible category and stopped there, it doesn't tell me anything about how much of that this specific product can realistically capture. I'd want to narrow it down, first to the slice of that market the product can actually serve given its features and geography, and then to what's realistically obtainable in the first few years given competition and go-to-market capacity. I'd rather build the number up from something concrete, like a realistic price point times a realistic number of customers I can actually reach, than borrow a huge headline figure that isn't really about my business."
+    },
+    "commonMistakes": [
+      "Accepting huge TAM figures as if they're evidence of a good opportunity",
+      "Not knowing the TAM, SAM, SOM breakdown",
+      "Building estimates top-down only, with no bottom-up sanity check"
+    ],
+    "followUps": ["How would you estimate SOM for a new product with no sales history yet?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "First-mover versus fast-follower strategy",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["strategy", "competition", "reasoning"],
+    "question": "Is it usually better to be first into a market or to watch a pioneer struggle and enter second with a better version? Argue both sides.",
+    "lookingFor": "Balanced strategic reasoning rather than a reflexive answer, with real logic on both sides.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a genuine case for first-mover advantage",
+        "Give a genuine case for fast-follower advantage",
+        "Land on a reasoned view rather than pure fence-sitting"
+      ],
+      "modelAnswer": "Being first can matter a lot in markets with network effects or high switching costs, because you can lock in users and data before anyone else arrives. But being first also means paying the expensive cost of educating the market and making mistakes nobody warned you about, and a fast follower gets to watch that, skip the same mistakes, and often out-execute with a more polished product once demand is proven. My honest view is that it depends more on whether the market has strong lock-in effects than on timing itself, so I'd rather ask that question first than assume speed alone wins."
+    },
+    "commonMistakes": [
+      "Giving only one side without genuinely engaging the other",
+      "Assuming first-mover advantage is always real",
+      "No concrete reasoning, just repeating the terms"
+    ],
+    "followUps": ["Give an example where the fast follower won."]
+  },
+  {
+    "id": "prog-entrepreneurship-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Bootstrapping versus venture capital trade-offs",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["funding", "bootstrapping", "strategy"],
+    "question": "What kind of business should stay bootstrapped, and what kind almost has to raise venture capital to survive?",
+    "lookingFor": "Understands that funding strategy should follow the shape of the business, not personal preference alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize venture capital suits businesses needing to grow fast to win a land-grab market",
+        "Recognize bootstrapping suits businesses that can reach profitability with modest growth",
+        "Show awareness that VC comes with an expectation of hypergrowth and an eventual exit"
+      ],
+      "modelAnswer": "If the market has a real land-grab dynamic, where being biggest fastest actually matters because of network effects or heavy upfront costs like building hardware, then bootstrapping alone probably can't move fast enough and venture capital becomes almost necessary. But a lot of solid businesses, like a subscription tool solving a clear problem for a niche audience, can grow steadily off their own revenue and don't need to hand over equity or commit to the hypergrowth timeline that venture investors expect. I think the honest question isn't which funding path sounds more impressive, it's whether my business actually needs to grow explosively to survive, or whether patient, profitable growth is actually the better fit."
+    },
+    "commonMistakes": [
+      "Assuming venture capital is simply the more serious or default path",
+      "Not connecting funding choice to market dynamics",
+      "Ignoring that VC funding comes with an implicit expectation of a large exit"
+    ],
+    "followUps": ["Which path would you choose for your own idea, and why?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Using an idea encountered through a mentor or employer",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["ethics", "intellectual-property", "judgement"],
+    "question": "You had a part-time job or internship where you noticed a real gap the company wasn't addressing. You think it could be a great startup. Is it okay to build it yourself after you leave?",
+    "lookingFor": "Structured ethical reasoning about IP ownership, confidentiality, and the difference between an observed gap and proprietary work.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish a general market insight from specific confidential information",
+        "Mention checking any employment or NDA agreement before building",
+        "Show they'd rather clarify than assume it's fine"
+      ],
+      "modelAnswer": "I'd first ask myself whether the gap I noticed is a general insight about the market that anyone paying attention could have spotted, or whether it depends on specific confidential information, data, or code that belongs to the company. If it's the former, I think it's fair to build on it after I've left, that's just how ideas spread. But if it leans on anything proprietary, I'd want to actually read whatever agreement I signed and probably talk to the company directly, because building a competitor off information they trusted me with isn't a gray area to me, it's a clear line I don't want to cross even if the idea is good."
+    },
+    "commonMistakes": [
+      "Assuming any idea noticed during employment is automatically fair game",
+      "Not mentioning checking the actual employment agreement or NDA",
+      "Treating this as purely a legal question with no ethical dimension"
+    ],
+    "followUps": ["What would you do if your former employer accused you of stealing the idea, even though you believe you didn't?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Layoffs when runway is short",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["ethics", "people", "judgement"],
+    "question": "Your startup has four months of runway left. Cutting half the team would stretch that to a year and give you a real shot at hitting the milestone investors want. Keeping everyone means you likely run out of cash in four months with nothing to show. What do you do?",
+    "lookingFor": "Willingness to make a hard people decision with clear reasoning, transparency, and humanity, not avoidance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge this is genuinely painful, not a purely financial calculation",
+        "Reason toward the harder decision because keeping everyone risks the whole company anyway",
+        "Emphasize doing it transparently, fairly, and with real support for those let go"
+      ],
+      "modelAnswer": "This is one of the hardest calls a founder can face, and I don't think there's a version of it that doesn't hurt people I care about. But if keeping everyone means the company almost certainly runs out of money in four months and every single person loses their job anyway, then avoiding the cut isn't actually the kind choice, it just delays and worsens the outcome for everyone. I'd rather make the harder decision early, be completely honest with the whole team about why, give as much notice and severance as I possibly can, and protect the company's shot at surviving so the people who remain have a real job to come to."
+    },
+    "commonMistakes": [
+      "Avoiding a clear decision or trying to have it both ways",
+      "Treating it as a purely spreadsheet decision with no acknowledgment of human cost",
+      "Not mentioning transparency, severance, or how the decision is communicated"
+    ],
+    "followUps": ["How would you decide who to let go?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Growth tactics that cross an ethical line",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["ethics", "growth", "judgement"],
+    "question": "An advisor suggests a growth tactic that would boost your signup numbers, like making it deliberately hard to find the unsubscribe button or auto-adding contacts without clear consent. It's legal in a gray-zone way. Would you do it?",
+    "lookingFor": "Draws a principled line between aggressive-but-honest growth tactics and manipulative dark patterns, even at a real short-term cost.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish clever growth tactics from tactics that rely on deceiving users",
+        "Weigh short-term metrics against long-term trust and reputation",
+        "Land on a clear no for genuinely manipulative tactics, not just it depends"
+      ],
+      "modelAnswer": "I'd say no to that specific one, because the line for me isn't whether something is technically legal, it's whether it depends on the user not understanding what's happening to them. Hiding an unsubscribe button or auto-adding contacts without real consent only works because it tricks people, and metrics built on tricking users tend to come back to bite you through churn, bad reviews, or regulatory trouble once people notice. I'd rather grow slower with tactics I'd be comfortable explaining publicly than hit a number this quarter by quietly working against the people I'm supposed to be serving."
+    },
+    "commonMistakes": [
+      "Justifying the tactic purely because it's technically legal",
+      "Not distinguishing this from legitimately aggressive but honest growth tactics",
+      "Giving a wishy-washy answer that doesn't actually commit to a position"
+    ],
+    "followUps": ["Where exactly do you draw the line between aggressive growth and manipulation?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Cofounder equity dispute after uneven contribution",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["ethics", "cofounders", "judgement"],
+    "question": "You and a cofounder started with equal equity. Two years in, you've been working full-time while they've been doing it part-time alongside another job. They now want to keep their full half. How do you handle it?",
+    "lookingFor": "Direct, fair-minded conflict handling that separates the relationship from the business decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Favor a direct, honest conversation over resentment or avoidance",
+        "Reference vesting or a fair renegotiation based on actual contribution",
+        "Show willingness to accept a difficult outcome if the conversation doesn't resolve it"
+      ],
+      "modelAnswer": "I'd want to have a direct conversation as early as possible rather than let resentment build quietly, because an unequal split that nobody's addressed openly usually gets worse, not better, over time. I'd point to what we actually agreed to if there was a vesting schedule, and if there wasn't, I'd make the case that equity should reflect ongoing contribution, not just who was there on day one, and propose a fair renegotiation based on time and impact going forward. If they wouldn't agree to any adjustment, I'd have to seriously consider whether the partnership still works, because staying quiet about something this unfair would damage the company and our relationship more than having the hard conversation would."
+    },
+    "commonMistakes": [
+      "Avoiding the conversation to preserve the friendship short-term",
+      "Assuming the original equal split must always be honored regardless of changed reality",
+      "Not mentioning vesting as the structural tool that would have prevented this"
+    ],
+    "followUps": ["Would you have set up vesting from day one to avoid this? How?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Misrepresenting traction to investors",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["ethics", "fundraising", "judgement"],
+    "question": "You're raising a round and your numbers are decent but not exciting. A friend suggests you round up your user count and quietly exclude churned users from your growth chart, technically nothing on the slide would be false. Would you do it?",
+    "lookingFor": "Recognizes that selective framing designed to mislead is a form of dishonesty even without an outright lie, and rejects it.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that technically true is not the same as honest when intent is to mislead",
+        "Explain the real cost to investor trust and the risk diligence catches it anyway",
+        "Commit to presenting numbers honestly even if less flattering"
+      ],
+      "modelAnswer": "Even if every individual number on that slide were technically accurate, deliberately excluding churn to make the growth line look steeper is designed to create a false impression, and that's dishonest in every way that matters. Investors do diligence, and if they find the gap between what I presented and reality, I lose the relationship and my credibility with everyone they talk to, which is far worse than raising slightly less money on honest numbers now. I'd rather show the real chart, churn included, and spend my pitch time explaining what I'm doing about it, because an investor who backs me knowing the real picture is the one I actually want as a partner."
+    },
+    "commonMistakes": [
+      "Rationalizing selective omission because nothing stated is technically false",
+      "Underestimating how quickly diligence uncovers this",
+      "Not proposing what they'd actually say instead"
+    ],
+    "followUps": ["How would you present a weak metric honestly without undermining your whole pitch?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and the erosion of startup defensibility",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["ai", "strategy", "current-debate"],
+    "question": "There's an ongoing debate that AI tools have made it so easy to build software that a working product is no longer much of a moat. Do you agree, and what do you think actually protects a startup now?",
+    "lookingFor": "Awareness of the AI-driven shift in defensibility debates, with a reasoned view on what moats remain relevant.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge AI has genuinely lowered the cost and time to build a competent MVP",
+        "Identify what still isn't easy to copy, like distribution, data, or trust",
+        "Show a considered opinion, not just repeating a headline"
+      ],
+      "modelAnswer": "I think that debate is largely right, building a decent version of most software products is faster and cheaper now than it's ever been, so a working app by itself isn't much of a moat anymore. What I think still matters is distribution, meaning who can actually reach and convert customers, and things that are hard to copy with a tool, like proprietary data you've accumulated, trust built with a specific customer base, or genuinely deep understanding of a niche problem. So my own instinct, if I were starting something now, would be to worry less about being first to build the feature and more about owning the relationship and the go-to-market advantage that AI can't just hand a competitor overnight."
+    },
+    "commonMistakes": [
+      "Dismissing the debate without engaging with it",
+      "Overstating that AI has made moats irrelevant entirely",
+      "Not offering a concrete alternative source of defensibility"
+    ],
+    "followUps": ["Name a specific type of moat you think AI can't easily erode."]
+  },
+  {
+    "id": "prog-entrepreneurship-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Current funding environment and down rounds",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["funding", "current-debate", "market-conditions"],
+    "question": "Startup valuations rose sharply for years and then corrected hard, leading to a wave of down rounds where companies raised at a lower valuation than before. Why does that happen, and why is it more damaging than it sounds?",
+    "lookingFor": "Understands macro funding cycles and the concrete harm a down round causes beyond just a lower number.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain valuations were set on growth expectations that didn't hold once capital got costlier",
+        "Identify concrete damage like dilution, anti-dilution triggers, and harder future raises",
+        "Show awareness this is a real current dynamic, not abstract theory"
+      ],
+      "modelAnswer": "A lot of valuations during the boom years were set on the assumption that growth would keep compounding and money would stay cheap, and when interest rates rose and growth slowed, investors reset their expectations, which meant new rounds priced lower than the last one. A down round isn't just an ego hit, it usually triggers heavy dilution for founders and early employees, it can trigger anti-dilution protections that hurt common shareholders specifically, and it signals to the market that the company is struggling, which makes the next round even harder to raise. I think it's a useful reminder that a high valuation on paper is only ever an opinion until there's an actual exit, so I'd rather build toward real fundamentals than chase headline numbers."
+    },
+    "commonMistakes": [
+      "Treating a down round as simply bad luck with no structural explanation",
+      "Not knowing what anti-dilution protection is or how it worsens the founder's position",
+      "Discussing this in purely abstract terms with no sense of current relevance"
+    ],
+    "followUps": ["How would you structure a company to survive a funding downturn?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Gig worker classification debate",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["gig-economy", "regulation", "current-debate"],
+    "question": "Several countries and states have pushed to reclassify gig platform workers as employees rather than independent contractors. If you were building a platform business today, how would that debate shape your model?",
+    "lookingFor": "Awareness of the ongoing regulatory tension in gig-economy business models and its effect on unit economics and design.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core tension between contractor flexibility and worker protections",
+        "Show awareness this is an active, jurisdiction-by-jurisdiction legal fight",
+        "Reason about how it would shape their own model"
+      ],
+      "modelAnswer": "The core tension is that treating workers as independent contractors keeps a platform's costs down and gives workers flexibility, but it also means they don't get benefits, minimum wage protections, or job security, and regulators in a growing number of places have decided that's not an acceptable trade. If I were building a platform business now, I wouldn't assume the contractor model is safe long-term in any single jurisdiction, because the rules are shifting and getting reclassified after the fact can be financially devastating. I'd rather design the economics from the start assuming I might need to offer some baseline benefits, and treat worker classification as a real strategic risk to plan for, not just a cost to minimize."
+    },
+    "commonMistakes": [
+      "Discussing this as if it's settled law rather than an active, evolving fight",
+      "Only seeing it from the platform's cost perspective, ignoring the worker side",
+      "Not connecting the debate to concrete business model choices"
+    ],
+    "followUps": ["Can you think of a platform that has changed its model in response to this pressure?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-class shares and founder control",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["governance", "current-debate", "control"],
+    "question": "Some founders push for dual-class share structures that let them keep outsized voting control even after taking outside investment or going public. What's the argument for that, and what's the risk?",
+    "lookingFor": "Balanced understanding of founder-control governance debates, weighing vision-protection against accountability.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the case for protecting long-term vision from short-term pressure",
+        "Explain the risk of reduced accountability when judgment goes unchecked",
+        "Show awareness of both outcomes without needing to name specific companies"
+      ],
+      "modelAnswer": "The argument for dual-class structures is that founders often see further than the market does in the short term, and giving up control to investors focused on the next quarter can force decisions that damage the long-term business. The risk is exactly the flip side, if a founder's judgment goes bad and nobody can meaningfully check it, a board with real power might have caught problems, whether that's poor spending discipline or plain overconfidence, much earlier. My honest view is that founder control is worth protecting for genuinely long-horizon bets, but it has to come with some real accountability mechanism, because unchecked control has burned investors and employees badly enough times that boards are right to be cautious about it now."
+    },
+    "commonMistakes": [
+      "Only arguing one side, either purely good or purely bad",
+      "Not connecting it to real governance failure patterns",
+      "Confusing dual-class shares with simple majority ownership"
+    ],
+    "followUps": ["Would you want dual-class control over your own company? Why or why not?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Access to capital and diversity in venture funding",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["funding", "diversity", "current-debate"],
+    "question": "Venture capital funding has historically gone disproportionately to founders from certain networks and backgrounds. Why does that pattern persist, and does it matter for how startups actually get built?",
+    "lookingFor": "Awareness of structural funding-access issues and a reasoned view of the practical consequences, not just a moral statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify mechanisms like warm-intro deal flow and pattern matching by investors",
+        "Explain the practical consequence that good ideas outside those networks go unfunded",
+        "Offer a view on what actually changes it"
+      ],
+      "modelAnswer": "A lot of it comes down to how venture deal flow actually works, most investors see the founders in their own network first, and if that network was built out of a small set of schools and cities, the founders who get funded keep looking similar to the ones before them, almost independent of anyone's intent. I think it genuinely matters beyond fairness, because it means good ideas from outside those networks are being systematically missed, which is really a market inefficiency, not just an equity issue. What I've seen actually shift it are things like founder-focused accelerators outside the usual hubs and funds that specifically go looking for founders outside the typical network, and if I ever end up on the funding side myself, I'd want to build my own deal flow that way rather than just taking whatever comes through warm intros."
+    },
+    "commonMistakes": [
+      "Treating it as purely a fairness talking point with no structural explanation",
+      "Not connecting it to concrete mechanisms like warm intros and pattern matching",
+      "Offering no view on what actually changes the pattern"
+    ],
+    "followUps": ["What could a founder outside the typical network do differently to get funded?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Deciding whether to pivot",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "strategy", "judgement"],
+    "question": "You've spent 18 months building a product. Growth has stalled at a low plateau, customers who use it love it, but almost nobody new signs up. Do you push harder on the same idea or pivot?",
+    "lookingFor": "Structured reasoning distinguishing a distribution problem from a product-market fit problem, not a coin-flip answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Diagnose whether this is a distribution problem or a demand problem before deciding",
+        "Treat existing users loving it as meaningful data, not something to ignore",
+        "Commit to a reasoned course of action with a way to test it first"
+      ],
+      "modelAnswer": "Before I decided anything, I'd want to figure out whether this is actually a distribution problem or a demand problem, because those call for completely different responses. The fact that the people who do use it genuinely love it is a strong signal that the core product might be right and the failure is in how I'm reaching people, so I'd test that first, try a different channel or a sharper pitch to a narrower audience, before I concluded the idea itself was wrong. If I ran real experiments on acquisition for a defined period, say two or three months, and still couldn't move the needle even with people who match my happiest existing users, that's when I'd take the plateau seriously as evidence the market is smaller than I thought, and start looking hard at a pivot instead of quietly hoping it turns around."
+    },
+    "commonMistakes": [
+      "Deciding immediately without diagnosing the actual cause of the plateau",
+      "Ignoring the signal that current users love the product",
+      "Vague commitment to give it more time with no concrete test or timeline"
+    ],
+    "followUps": ["How would you know the difference between a distribution problem and a product problem?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Exclusivity demand from a major customer",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "negotiation", "strategy"],
+    "question": "A large customer offers you a deal that would fund your company for a year, but they want exclusivity, meaning you can't sell to their competitors. Do you take it?",
+    "lookingFor": "Weighs short-term survival against long-term strategic lock-in, and asks the right clarifying questions before deciding.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the trade-off between guaranteed runway and capped market plus dependency",
+        "Ask for specifics like exclusivity duration and the size of the excluded market",
+        "Land on a reasoned position rather than an automatic yes or no"
+      ],
+      "modelAnswer": "My instinct is caution, because becoming dependent on one customer for most of my revenue, especially with a legal restriction on who else I can sell to, puts my company's fate almost entirely in their hands, and if that relationship sours I've cut off my own escape routes. But I wouldn't reject it outright either, I'd want to know how long the exclusivity lasts and how big the market I'm giving up actually is, because a short exclusivity window in a market where their competitors are small is a very different deal than a five-year lock-in against the whole industry. If the terms were reasonable, I might take it as a way to survive and prove the product, but I'd negotiate hard on duration and try to get a broader non-exclusive deal in the next round rather than treating this as permanent."
+    },
+    "commonMistakes": [
+      "Taking the deal purely for the guaranteed cash without weighing the lock-in cost",
+      "Rejecting it outright without asking for the actual terms",
+      "Not proposing a negotiation instead of a binary accept or reject"
+    ],
+    "followUps": ["What terms would make this deal a clear yes for you?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Running out of cash, bridge financing versus shutting down",
+    "program": "Entrepreneurship",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "finance", "judgement"],
+    "question": "You have six weeks of cash left, no term sheet in hand, and a friend offers a personal loan to keep you afloat while you keep trying to raise. Do you take it?",
+    "lookingFor": "Sober, realistic decision-making under pressure rather than blind optimism or premature surrender.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh whether the extra weeks actually change the odds of closing a round",
+        "Recognize the personal and relational risk of taking a friend's money specifically",
+        "Show willingness to make a clear-eyed call rather than defaulting to never give up"
+      ],
+      "modelAnswer": "Before I said yes, I'd force myself to be honest about whether six extra weeks actually changes my odds of closing a round, or whether I'm just delaying the same outcome and risking my friend's money on the way there. If there were real signals, an investor who'd said they were close, or a specific milestone I could hit that would meaningfully change the pitch, I'd consider it, but I'd want to treat it as a real loan with real terms, not an informal favor, precisely because it's a friend and I don't want to damage that relationship if it doesn't work out. If I couldn't point to a concrete reason six weeks would change the outcome, I think the more honest and even the kinder thing would be to decline, wind things down properly, and not put someone I care about at financial risk chasing a probability I can't really defend."
+    },
+    "commonMistakes": [
+      "Automatically saying yes out of pure founder optimism with no real analysis",
+      "Not considering the relationship risk of borrowing from a friend specifically",
+      "Failing to define what would actually change in six weeks"
+    ],
+    "followUps": ["How would you tell your friend no, if that was your decision?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "A well-funded competitor copies your product",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "competition", "strategy"],
+    "question": "A much larger, better-funded company launches a near-identical copy of your product a year into your startup. What do you actually do?",
+    "lookingFor": "Composed, strategic response focused on real differentiators rather than panic or wishful thinking.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid panic or assuming the company is automatically dead",
+        "Focus on what a big company can't easily replicate, like speed and closeness to customers",
+        "Show a concrete next step, not just vague resolve to out-compete them"
+      ],
+      "modelAnswer": "My first move wouldn't be panic, it would be to get specific about what they actually copied and what they genuinely can't, because a big company can copy a feature list far faster than it can copy the closeness to customers or the speed of decision-making a small team has. I'd double down on the parts of the product and the customer relationships that come from actually caring about a narrower group of users than a big company can afford to focus on, and I'd move faster on the next problem those customers have instead of getting stuck defending the first feature. I've seen enough cases of large companies losing focus or deprioritizing a copycat product after the initial launch that I wouldn't assume this is fatal, but it would absolutely force me to get sharper about why customers should stay with us specifically."
+    },
+    "commonMistakes": [
+      "Treating this as automatically company-ending",
+      "Only planning to work harder with no specific strategic response",
+      "Ignoring what advantages a small, focused team actually has over a large competitor"
+    ],
+    "followUps": ["What's a specific advantage a small team has over a large incumbent in this situation?"]
+  },
+  {
+    "id": "prog-entrepreneurship-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Sudden regulatory change threatening the business model",
+    "program": "Entrepreneurship",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "regulation", "risk"],
+    "question": "A new regulation is announced that will make a core part of your business model illegal in six months. What do you do?",
+    "lookingFor": "Calm, structured crisis response that separates what can be salvaged from what must change.",
+    "idealAnswer": {
+      "bullets": [
+        "Get precise about exactly what the regulation restricts versus what remains legal",
+        "Identify which parts of the business survive and can be built on",
+        "Move quickly on compliance and honest communication with stakeholders"
+      ],
+      "modelAnswer": "The first thing I'd do is get very precise about what the regulation actually restricts, because these announcements are often broader in headline than in the fine print, and I'd want a lawyer's read on exactly what's still allowed before I assumed the whole business was dead. Then I'd figure out which part of what we do generates most of our value and whether that core can survive within the new rules, even if the specific mechanism we used has to change, because six months is real time to adapt a business model if the underlying problem we solve is still valid. I'd also be upfront with my team, customers, and investors early rather than waiting until the deadline was close, because a startup that adapts openly and quickly tends to keep more trust than one that goes quiet and hopes the problem disappears."
+    },
+    "commonMistakes": [
+      "Assuming the entire business is finished without checking the exact scope of the regulation",
+      "Waiting too long to communicate with stakeholders",
+      "No concrete plan, just generic resolve to figure it out"
+    ],
+    "followUps": ["Can you think of a real company that had to adapt to a regulatory shift like this?"]
+  }
+]

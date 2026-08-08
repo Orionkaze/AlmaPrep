@@ -1,0 +1,764 @@
+[
+  {
+    "id": "prog-civil-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Statically indeterminate structures",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "structures",
+      "analysis",
+      "statics"
+    ],
+    "question": "What does it mean for a structure to be statically indeterminate, and why would an engineer ever choose to design one that way instead of a simpler determinate structure?",
+    "lookingFor": "Understanding that indeterminacy trades harder analysis for redundancy and better load redistribution, not just textbook recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Define indeterminacy as more unknown reactions or forces than equilibrium equations can solve, needing compatibility equations too",
+        "Explain the payoff: extra redundancy means the structure can redistribute load if one part is damaged or overstressed",
+        "Note the cost: harder to analyse by hand, more sensitive to support settlement, usually needs computer analysis"
+      ],
+      "modelAnswer": "A statically indeterminate structure has more supports or members than the basic equilibrium equations can solve on their own, so you need compatibility equations about how the structure deforms as well. Engineers often choose that on purpose because the extra redundancy means if one connection or member is damaged, the load has other paths to travel through rather than the whole thing failing at once. The trade off is that it's much harder to analyse by hand and it's more sensitive to things like support settlement, which is why most real buildings are now checked with software rather than pure hand calculation. I find that trade off interesting because it's really a judgement call between simplicity and resilience."
+    },
+    "commonMistakes": [
+      "Reciting the formula for degree of indeterminacy without explaining what it means physically",
+      "Not mentioning the redundancy or safety benefit at all",
+      "Assuming indeterminate structures are simply more advanced rather than a deliberate trade-off"
+    ],
+    "followUps": [
+      "Can you think of a real structure type that's typically built indeterminate for exactly this reason?",
+      "What would you check first if you suspected a support had settled unevenly?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Reading shear force and bending moment diagrams",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "structures",
+      "beams",
+      "statics"
+    ],
+    "question": "If I gave you the shear force diagram for a simply supported beam, how would you sketch the bending moment diagram without redoing the whole calculation from scratch?",
+    "lookingFor": "Grasp of the calculus relationship between load, shear and moment, used as a working tool rather than memorised trivia.",
+    "idealAnswer": {
+      "bullets": [
+        "State that bending moment is the integral of shear force along the beam, the running area under the shear diagram",
+        "Note that the moment is maximum where shear crosses zero",
+        "Show they can reason about the shape, straight, sloped, or curved, from the shear diagram's shape"
+      ],
+      "modelAnswer": "The bending moment at any point is just the running area under the shear force diagram up to that point, so I'd essentially be integrating the shear diagram as I move along the beam. Wherever the shear force crosses zero, that's where the moment is at a maximum or minimum, because the slope of the moment diagram equals the shear value at that point. So if the shear diagram is a horizontal line, I know the moment diagram will be a straight sloped line there, and if the shear varies linearly, the moment curve will be a parabola. It's a nice shortcut because it means you can sketch a sensible moment diagram just by looking at the shear diagram, without recalculating reactions from scratch."
+    },
+    "commonMistakes": [
+      "Treating shear and moment diagrams as two unrelated calculations",
+      "Forgetting that maximum moment occurs where shear is zero, not at the supports",
+      "Getting the sign convention muddled and drawing the moment diagram upside down"
+    ],
+    "followUps": [
+      "Where would you expect the maximum moment on a simply supported beam with a single point load in the middle?",
+      "How would a cantilever beam's diagrams differ from a simply supported one?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Buckling in slender columns",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "structures",
+      "stability",
+      "columns"
+    ],
+    "question": "Why can a long, slender column fail well before the material itself reaches its crushing strength?",
+    "lookingFor": "Conceptual grasp of buckling as a stability failure distinct from material crushing failure.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish buckling, a stability or geometric failure, from crushing, a material strength failure",
+        "Mention slenderness ratio as the key factor: long, thin columns buckle before they crush",
+        "Connect to design implications: bracing, cross-section shape, and why short stocky columns behave differently"
+      ],
+      "modelAnswer": "A slender column can fail through buckling, which is a sudden sideways deflection under load, and that's a completely different failure mode from the material simply crushing under compressive stress. It happens because the column's stiffness against bending is low relative to its length, so once it's disturbed even slightly it can't resist the tendency to bow outward, and that lateral deflection then creates a bending moment that makes the problem worse. That's why the slenderness ratio, essentially length divided by a measure of the cross section's stiffness, matters so much, and why engineers either use stockier sections or add bracing to shorten the effective buckling length rather than just relying on a stronger material. It's one of the reasons a scaffold pole or a tall thin column needs bracing even though the steel itself could easily take the load in pure compression."
+    },
+    "commonMistakes": [
+      "Assuming a stronger material automatically prevents buckling",
+      "Confusing buckling with simple compressive crushing",
+      "Not mentioning slenderness or effective length at all"
+    ],
+    "followUps": [
+      "How does bracing change a column's effective length?",
+      "Would a hollow tube or a solid rod of the same weight resist buckling better, and why?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Why concrete needs steel reinforcement",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "materials",
+      "concrete",
+      "reinforced-concrete"
+    ],
+    "question": "Plain concrete is strong in compression but weak in tension. Talk me through what actually happens inside a reinforced concrete beam under load, and why the steel goes where it does.",
+    "lookingFor": "Real understanding of tension and compression roles in reinforced concrete beams, not just the memorised fact that steel adds strength.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that under bending, one face of the beam is in compression and the opposite face is in tension",
+        "State that concrete handles the compression side well but would crack on the tension side without help",
+        "Explain reinforcement is placed on the tension side, and why bar placement and cover matter"
+      ],
+      "modelAnswer": "When a beam bends under load, one side of it goes into compression and the other side goes into tension, and concrete is genuinely good at resisting compression but very poor at resisting tension, it cracks almost immediately. So the steel reinforcement is placed near the tension face, where it picks up the tensile forces that the concrete can't handle, while the concrete on the compression side keeps doing what it's naturally good at. That's also why the position and cover of the bars matters so much on site, if the steel ends up too close to the compression face or in the wrong layer, the beam simply won't behave the way the design calculations assumed. It's a nice example of a composite material where each component is doing the job it's actually good at rather than everything being expected to do everything."
+    },
+    "commonMistakes": [
+      "Saying steel makes concrete stronger without explaining tension versus compression",
+      "Placing reinforcement in the wrong location in their explanation, near the compression face instead of the tension face",
+      "Ignoring the role of bond between steel and concrete"
+    ],
+    "followUps": [
+      "What would happen if the reinforcement was accidentally placed near the compression face instead?",
+      "Why do you think shear, or stirrup, reinforcement is also needed near the supports?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Prestressed concrete concept",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "materials",
+      "concrete",
+      "design"
+    ],
+    "question": "What is prestressed concrete, and what problem is it actually solving that ordinary reinforced concrete doesn't?",
+    "lookingFor": "Understanding that prestressing counters cracking and deflection proactively, enabling longer spans and thinner sections.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic idea: tensioning steel tendons to put the concrete into compression before service loads are applied",
+        "Explain the benefit: it counteracts tensile stresses and cracking under load, allowing longer spans or thinner sections",
+        "Mention pre-tensioning versus post-tensioning as a distinction if they know it"
+      ],
+      "modelAnswer": "In ordinary reinforced concrete you accept that the tension zone will crack a little and rely on steel bars to carry that tension after cracking. Prestressed concrete tries to get ahead of that problem by tensioning steel tendons and using them to squeeze the concrete into compression before any service load is even applied, so when the beam is loaded and tension starts to develop, it's first cancelling out that built in compression rather than immediately cracking the concrete. That means you can build longer spans or thinner, lighter sections than you could with ordinary reinforced concrete for the same load, which is why it's so common in bridge beams and floor slabs. I understand it's done either by tensioning the tendons before the concrete is cast, called pre-tensioning, or by tensioning them afterwards through ducts, called post-tensioning, depending on whether the element is precast or cast in place."
+    },
+    "commonMistakes": [
+      "Confusing prestressing with simply using more reinforcement",
+      "Not explaining why avoiding cracking matters, for durability, stiffness, and span capacity",
+      "Giving a vague answer with no mention of tensioning tendons at all"
+    ],
+    "followUps": [
+      "Why might avoiding cracking matter for durability, not just strength?",
+      "Can you think of a structure type where prestressed concrete is almost always used?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Differential settlement of foundations",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "geotechnical",
+      "foundations",
+      "soil"
+    ],
+    "question": "What is differential settlement, and why is it usually more of a problem for a structure than uniform settlement of the same magnitude?",
+    "lookingFor": "Clear distinction between uniform and differential settlement and why unevenness, not magnitude alone, drives structural damage.",
+    "idealAnswer": {
+      "bullets": [
+        "Define differential settlement as uneven settling across different parts of a structure's foundation",
+        "Contrast with uniform settlement, which the whole building can often tolerate without damage",
+        "Explain that differential settlement induces additional stresses and cracking because the structure is forced to distort"
+      ],
+      "modelAnswer": "Differential settlement is when different parts of a building's foundation sink by different amounts, rather than the whole structure moving down together. Uniform settlement, where everything drops evenly, is usually fine structurally because nothing in the building is being forced to bend or twist, it's just sitting a bit lower. Differential settlement is more dangerous because it forces the structure to distort to follow the ground, which introduces stresses the building was never designed for, cracked walls, jammed doors, and in serious cases structural damage. It's often caused by variable soil conditions across a site or uneven loading, which is why geotechnical investigation across the whole footprint matters so much before you even start designing foundations."
+    },
+    "commonMistakes": [
+      "Treating settlement as automatically bad regardless of whether it's uniform or differential",
+      "Not explaining the mechanism of forced distortion causing extra stress",
+      "Confusing settlement with subsidence from something like mining or shrink-swell clay without distinguishing the terms"
+    ],
+    "followUps": [
+      "What site conditions might cause differential settlement across a single building footprint?",
+      "How might a foundation be designed to reduce the risk of differential settlement?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Soil liquefaction in earthquakes",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "geotechnical",
+      "seismic",
+      "soil"
+    ],
+    "question": "During an earthquake, saturated loose sandy soil can suddenly behave almost like a liquid, a process called liquefaction. What's actually happening in the soil, and why does it matter for foundation design?",
+    "lookingFor": "Grasp of the mechanism, pore pressure build-up reducing effective stress, and its practical design implications.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that cyclic shaking increases pore water pressure between soil grains",
+        "Connect that to loss of effective stress and friction between grains, so the soil temporarily loses strength",
+        "Discuss design implications: site investigation, deep foundations, ground improvement in liquefaction-prone areas"
+      ],
+      "modelAnswer": "Liquefaction happens when an earthquake's shaking is rapid enough that water trapped between loose, saturated sand grains doesn't have time to drain away, so the pore water pressure builds up. That rising pressure pushes the grains apart and reduces the friction between them, essentially cancelling out the effective stress that normally gives the soil its strength, so for a short time it behaves almost like a liquid and loses its bearing capacity. For foundation design that matters hugely because a building that's perfectly fine on that soil normally can suddenly sink, tilt, or float upward if it's buried like a tank, which is why site investigations in earthquake prone regions specifically test for liquefaction potential and why engineers might use deep piles down to firmer strata or ground improvement techniques like compaction to reduce the risk."
+    },
+    "commonMistakes": [
+      "Saying the soil just turns to liquid without explaining the pore pressure mechanism",
+      "Not connecting it to a real design response, like piles or ground improvement",
+      "Confusing liquefaction with simple soil erosion or washout"
+    ],
+    "followUps": [
+      "What kind of soil is most at risk of liquefaction, and why?",
+      "Have you read about a real earthquake where liquefaction caused notable damage?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Lateral earth pressure on retaining walls",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "geotechnical",
+      "retaining-structures",
+      "design"
+    ],
+    "question": "What forces is a retaining wall actually holding back, and why does the pressure from the soil increase with depth rather than being constant?",
+    "lookingFor": "Understanding that lateral earth pressure grows with depth, like a fluid pressure analogy, and awareness of factors that increase it further.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain lateral earth pressure increases roughly linearly with depth, similar to hydrostatic pressure",
+        "Mention factors that increase pressure further: water buildup behind the wall, surcharge loads, soil type",
+        "Note the wall must resist overturning and sliding, not just crushing"
+      ],
+      "modelAnswer": "A retaining wall is resisting the lateral push of the soil behind it, which increases with depth because there's simply more soil weight pressing sideways the deeper you go, in a way that's actually quite similar to how water pressure increases with depth. That's why the pressure diagram on a retaining wall is usually drawn as a triangle, zero at the top and highest at the base. What makes it worse in practice is if water builds up behind the wall without proper drainage, because water pressure adds on top of the soil pressure and can dramatically increase the load, which is why weep holes or drainage layers are so important in the design. And the wall isn't just resisting being crushed, it also has to resist overturning and sliding as a whole, so the design has to check the whole system, the wall, its footing, and often the soil it's founded on."
+    },
+    "commonMistakes": [
+      "Assuming earth pressure is constant with depth like a simple point load",
+      "Forgetting the role of water or drainage in increasing pressure",
+      "Only considering wall strength and ignoring overturning or sliding stability"
+    ],
+    "followUps": [
+      "Why do retaining walls usually include weep holes or a drainage layer?",
+      "How would a surcharge load on top of the retained soil, like a parked truck, change the design?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Redundancy and progressive collapse",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "structures",
+      "safety",
+      "design-philosophy"
+    ],
+    "question": "What do engineers mean by progressive collapse, and how does a building's design try to prevent a small local failure from bringing down the whole structure?",
+    "lookingFor": "Awareness of disproportionate or progressive collapse as a design consideration, with at least one design strategy.",
+    "idealAnswer": {
+      "bullets": [
+        "Define progressive collapse: a local failure triggering a chain reaction of failures disproportionate to the initial cause",
+        "Mention at least one design strategy: redundancy or alternate load paths, tying structural elements together, key element design",
+        "Show awareness this is a deliberate design philosophy, not just an accident"
+      ],
+      "modelAnswer": "Progressive collapse is when a relatively small, localised failure, like the loss of a single column, sets off a chain reaction where the load that column was carrying overloads its neighbours, and the failure spreads well beyond what the original cause would suggest, sometimes taking down a large part of the building. Designers try to prevent that in a few ways, one is by building in redundancy so there are alternative load paths if one element is lost, and another is by tying structural elements together strongly enough that the rest of the structure can bridge over a gap rather than simply falling through it. There's also a category called key elements, critical members that are deliberately designed with extra strength because their loss would be catastrophic and there's no realistic alternate load path around them. I find it interesting that this isn't really about making buildings stronger everywhere, it's about deciding where redundancy is worth the cost."
+    },
+    "commonMistakes": [
+      "Describing progressive collapse vaguely as the building falling down, without the chain reaction idea",
+      "Not offering any concrete design strategy",
+      "Confusing it with simple overloading of the whole structure rather than a localised trigger"
+    ],
+    "followUps": [
+      "Can you think of a real building failure where lack of redundancy was a factor?",
+      "Why might designing every single element as a key element not be a realistic solution?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Fatigue failure under repeated loading",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "materials",
+      "structures",
+      "failure-modes"
+    ],
+    "question": "A bridge can fail from fatigue even if every individual load it experiences is well within the material's strength. How is that possible?",
+    "lookingFor": "Understanding fatigue as cumulative micro-crack growth under repeated or cyclic loading, distinct from single-overload failure.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain fatigue as damage accumulating from repeated cyclic loading, not a single overload event",
+        "Mention micro-cracks initiating, often at stress concentrations, and growing with each cycle until sudden fracture",
+        "Connect to why bridges, which see constant traffic cycling, are particularly susceptible"
+      ],
+      "modelAnswer": "Fatigue failure isn't about any single load being too big, it's about damage building up gradually from loads being applied and removed over and over again, which is exactly what happens every time traffic crosses a bridge. Tiny microscopic cracks tend to start at points of stress concentration, like a weld, a bolt hole, or a sudden change in section, and each additional load cycle makes those cracks grow a little further, even though the peak stress in any single cycle is well below the material's normal strength. Eventually the crack gets large enough that the remaining material simply can't carry the load and it fractures quite suddenly, which is what makes fatigue dangerous, there's often little visible warning before the final failure. That's why bridges get inspected specifically for fatigue-prone details and why some older steel bridges have needed retrofitting decades after they were built, well within what looked like a safe working life."
+    },
+    "commonMistakes": [
+      "Confusing fatigue with simple overloading or material weakening from age alone",
+      "Not mentioning that cracks initiate at stress concentrations",
+      "Assuming fatigue only matters for very old structures rather than an ongoing design consideration"
+    ],
+    "followUps": [
+      "Where on a structure would you expect fatigue cracks to start first, and why?",
+      "How might inspection or maintenance schedules be designed around fatigue risk?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Serviceability versus strength limit states",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "structures",
+      "design",
+      "codes"
+    ],
+    "question": "A beam can satisfy strength requirements comfortably and still fail a design check because it deflects too much. Why does that matter if it's not actually going to break?",
+    "lookingFor": "Understanding serviceability limit states as distinct from ultimate or strength limit states, and why both matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish ultimate limit state, won't break or collapse, from serviceability limit state, usable, comfortable, undamaged finishes",
+        "Give a concrete consequence of excessive deflection: cracked finishes, doors that jam, floors that feel bouncy, ponding on flat roofs",
+        "Show understanding that codes check both, because a structure that's safe but unusable has still failed its purpose"
+      ],
+      "modelAnswer": "Strength design, or the ultimate limit state, is about making sure the beam won't break or collapse under load, but there's a separate check, the serviceability limit state, about whether the structure actually works well for the people using it day to day. Excessive deflection might not snap the beam, but it can crack plaster finishes, jam doors and windows, make a floor feel unpleasantly bouncy when you walk on it, or on a flat roof even let water pond in the sag, which over time can cause its own problems. So a beam that's technically safe from collapse can still fail its design check if it deflects too much, because a structure that people can't comfortably use hasn't really done its job either. I think it's a good reminder that engineering isn't only about preventing catastrophic failure, it's also about the everyday experience of the people using the building."
+    },
+    "commonMistakes": [
+      "Treating deflection limits as an arbitrary extra rule rather than connecting it to real consequences",
+      "Confusing serviceability limit states with strength or ultimate limit states",
+      "Assuming if a structure won't collapse, it has fully passed design"
+    ],
+    "followUps": [
+      "Can you think of another serviceability issue besides deflection that a structure might need to be checked for?",
+      "Why might deflection limits be stricter for a hospital operating theatre floor than for a warehouse?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Torsion and the concept of load path",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "structures",
+      "load-path",
+      "design"
+    ],
+    "question": "When you look at a structure, what do engineers mean by tracing its load path, and why is an eccentric or twisting load harder to deal with than a simple straight-down load?",
+    "lookingFor": "Understanding load path as tracing how forces travel from application point to foundation, and torsion as a more complex demand on members not primarily designed for it.",
+    "idealAnswer": {
+      "bullets": [
+        "Define load path as the route a force takes from where it's applied, through members and connections, down to the foundation",
+        "Explain that torsion, twisting, puts additional stresses on members that are usually optimised mainly for bending or axial force",
+        "Give a practical example: an eccentrically loaded beam or an asymmetric floor plan inducing torsion"
+      ],
+      "modelAnswer": "The load path is essentially the route that a force takes through a structure, starting from wherever it's applied, like someone standing on a floor, travelling through the floor slab into beams, then into columns, and finally down into the foundations and the ground. Most members are primarily designed to resist bending or straightforward axial compression or tension along that path, so when a load is applied off centre or a structure's shape is asymmetric, it can also induce torsion, a twisting effect, and members generally aren't as efficient at resisting twist as they are at resisting straightforward bending. A classic example is an edge beam supporting a slab on only one side, the load isn't symmetric, so the beam has to resist twisting as well as bending, which usually needs extra reinforcement or a stiffer section. It's part of why engineers try to keep load paths as direct and symmetric as possible where they can, because every eccentricity or twist adds complexity and cost."
+    },
+    "commonMistakes": [
+      "Describing load path vaguely as how the building holds itself up, without tracing an actual route",
+      "Not distinguishing torsion from ordinary bending",
+      "Assuming irregular or asymmetric structures have no real structural cost, just an architectural choice"
+    ],
+    "followUps": [
+      "Can you think of a building shape that would be particularly prone to torsional effects, like under wind or earthquake loading?",
+      "Why might architects and engineers sometimes disagree over an asymmetric design for this reason?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering a defect after handover",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "professional-responsibility",
+      "dilemma"
+    ],
+    "question": "Imagine you're a junior engineer and, months after a building has opened, you spot a calculation error in your own past work that suggests part of the structure has a smaller safety margin than intended, though nothing looks visibly wrong. What would you do?",
+    "lookingFor": "Willingness to escalate immediately and prioritise safety and honesty over personal or professional embarrassment.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the duty to report immediately rather than waiting to see if a problem develops",
+        "Show they'd escalate to a senior engineer or professional body rather than trying to quietly fix it themselves",
+        "Acknowledge the personal discomfort of fear of blame without letting it change the decision"
+      ],
+      "modelAnswer": "My first reaction would honestly be dread, because admitting my own mistake feels awful, but I know that hoping nothing happens isn't a real option when it's about people's safety. I'd go straight to a senior engineer or my line manager with exactly what I found, the calculation, what I think it means, and I'd rather over-report a possible problem than sit on something that might not be one. Professional codes of conduct in engineering exist precisely for this situation, engineers have a duty to report safety concerns even about their own work, so trying to quietly patch it later without telling anyone would be a far bigger breach of trust than the original error. I'd rather be the person who caught and flagged the mistake than the one who let it slide."
+    },
+    "commonMistakes": [
+      "Saying they'd quietly monitor it rather than reporting immediately",
+      "Focusing only on personal consequences, like getting fired or embarrassment, rather than public safety",
+      "Refusing to accept ownership of a mistake, deflecting blame elsewhere"
+    ],
+    "followUps": [
+      "What would you do if your manager told you not to worry about it and to keep it quiet?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Pressure to sign off inspection under deadline",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "professional-responsibility",
+      "pressure"
+    ],
+    "question": "A client is under huge pressure to open a new building on schedule and asks you to sign off the final inspection even though you've found a minor code non-compliance that would normally need fixing first. How do you handle it?",
+    "lookingFor": "Firmness on not compromising sign-off integrity, paired with a constructive attempt to solve the underlying schedule problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Refuse to sign off something that doesn't actually comply, regardless of commercial pressure",
+        "Try to find a constructive path forward: clarify severity, propose a fast interim fix, or discuss a phased opening if genuinely safe",
+        "Recognise that a professional's sign-off is a personal and legal responsibility, not just a formality"
+      ],
+      "modelAnswer": "I'd be honest with the client that I understand the pressure they're under, but my sign-off means something specific, that the building actually complies, and I can't put my name to that if it doesn't. Before just saying no and walking away though, I'd try to be useful, I'd ask exactly how minor the issue is and whether there's a genuinely safe interim fix that could be done quickly, or whether part of the building could open while that area is completed separately. What I wouldn't do is quietly sign off and hope to fix it later, because at that point I'm not just risking the building, I'm risking my own professional integrity and the trust that inspection sign-offs are supposed to protect. It's the client's schedule problem, but it can't become my compliance problem."
+    },
+    "commonMistakes": [
+      "Agreeing to sign off just this once to keep the client happy",
+      "Refusing outright with no attempt to find a constructive solution",
+      "Treating the sign-off as a mere formality rather than a professional or legal commitment"
+    ],
+    "followUps": [
+      "Would your answer change if the non-compliance was extremely minor, like a signage detail, versus something structural?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Infrastructure projects and community displacement",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "equity",
+      "infrastructure"
+    ],
+    "question": "A new highway or rail line you're working on would cut through a low-income neighbourhood, displacing several families, while a longer, more expensive route would avoid it entirely. Where do you think the engineer's responsibility sits in a decision like that?",
+    "lookingFor": "Recognition that engineers aren't just technical executors, they have a voice in flagging equity and human impact even when the final decision sits elsewhere.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension honestly: cost and technical efficiency versus real human and social cost",
+        "Recognise the engineer's role includes surfacing that trade-off clearly to decision-makers, not staying silent because it's not their call",
+        "Avoid a glib one-line answer; show they understand this is genuinely difficult and value-laden"
+      ],
+      "modelAnswer": "I don't think an engineer's job is only to find the cheapest technically sound route and leave the human impact to someone else, because the numbers we produce, cost, journey time saved, often end up driving the decision even when they don't capture the real cost to the families being displaced. I'd want to make sure that impact was presented just as clearly as the cost comparison, not buried in an appendix, so whoever makes the final call is actually weighing it properly rather than defaulting to the cheaper option. I know the final decision on something like route selection usually sits with planners and elected officials rather than the engineer alone, but I think we have a responsibility to make sure the full picture, including who bears the cost, is visible before that decision gets made. It's uncomfortable, but I'd rather be the person who insists on that visibility than one who treats it as purely a cost optimisation problem."
+    },
+    "commonMistakes": [
+      "Giving a purely technical answer about routing and ignoring the human dimension entirely",
+      "Claiming it's not the engineer's problem and fully deflecting to planners or politicians",
+      "Offering a glib, overly confident answer that doesn't acknowledge real difficulty"
+    ],
+    "followUps": [
+      "Do you think cost-benefit analysis is the right tool for weighing this kind of decision? Why or why not?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Substandard material substitution under cost pressure",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "whistleblowing",
+      "materials"
+    ],
+    "question": "You notice that your firm has been quietly substituting a cheaper, lower-grade material than what the design specified, and a colleague tells you it's fine, everyone does it, don't make a fuss. What's going through your head?",
+    "lookingFor": "Clear-eyed rejection of normalised corner-cutting, with a sense of proportionate, professional escalation rather than passive acceptance.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject everyone does it as a justification, and reason about it from first principles, does the substitution actually meet the design intent and safety margin",
+        "Describe a sensible escalation path: raise it internally first, with evidence, before considering anything more drastic",
+        "Show awareness that going along with it quietly makes them complicit, not neutral"
+      ],
+      "modelAnswer": "Everyone does it is exactly the kind of thing that makes me want to check more carefully rather than less, because normalised doesn't mean safe or acceptable, it just means nobody's stopped it yet. I'd want to understand the substitution properly first, was it actually assessed and approved by whoever's responsible for the design, or was it just done quietly to save money, because those are very different situations. If it turns out no one with the authority to approve it actually signed off on the change, I'd raise it with a senior engineer or my line manager directly, with the specifics, rather than just going along with my colleague's advice to not make a fuss. Staying quiet doesn't feel neutral to me, if I know about it and say nothing, I'm effectively agreeing to it."
+    },
+    "commonMistakes": [
+      "Accepting everyone does it as sufficient justification",
+      "Jumping straight to external whistleblowing without first raising it internally",
+      "Treating staying silent as a neutral, low-risk option"
+    ],
+    "followUps": [
+      "What would you do if you raised it internally and nothing changed?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "3D-printed and modular construction",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "construction-methods",
+      "housing"
+    ],
+    "question": "3D-printed housing and offsite modular construction are both being pitched as answers to housing shortages. What do you make of that, and where do you think the real barriers are?",
+    "lookingFor": "Genuine awareness of current construction-method debates, with a balanced view rather than pure hype or pure scepticism.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what these methods actually offer: speed, potentially lower labour cost, consistency of quality",
+        "Identify realistic barriers: regulatory approval and building codes, finance or mortgage lending on non-traditional builds, planning permission, workforce transition",
+        "Avoid pure hype or pure dismissal; show a considered, balanced view"
+      ],
+      "modelAnswer": "I think both approaches genuinely can speed up construction and reduce some of the quality inconsistency you get with a lot of on-site trades, which matters a lot when housing supply is the bottleneck. But I don't think the technology is really the main barrier at this point, it's things like getting building codes and mortgage lenders comfortable with non-traditional construction methods, and sorting out planning approval processes that were built around conventional building. There's also a workforce question, a lot of the skilled trades the industry relies on would need to transition toward factory-based or robotics-adjacent skills, and that doesn't happen overnight. I find it a genuinely interesting area, but I'd want anyone pitching it as a quick fix for the housing crisis to be honest about how much of the delay is regulatory and financial rather than technical."
+    },
+    "commonMistakes": [
+      "Treating it as a purely technical breakthrough with no mention of regulatory or financial barriers",
+      "Dismissing it as a gimmick without engaging with its real advantages",
+      "Vague answer with no specific example or mechanism"
+    ],
+    "followUps": [
+      "Have you read about a specific modular or 3D-printed housing project, here or abroad?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and generative design tools in structural engineering",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "technology",
+      "design-process"
+    ],
+    "question": "AI-assisted generative design tools can now propose structural layouts automatically. What do you think that changes about what an engineer actually does day to day?",
+    "lookingFor": "Thoughtful view on how the engineer's role shifts toward judgement, verification and responsibility, rather than either uncritical enthusiasm or reflexive dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tool's strength: rapidly generating and comparing many design options against constraints",
+        "Recognise the limitation: the tool doesn't understand context, code intent, or carry professional responsibility for the output",
+        "Reflect on how the engineer's role shifts toward judgement, verification, and framing the problem well rather than pure calculation"
+      ],
+      "modelAnswer": "I think tools like that are genuinely useful for exploring a much wider range of design options quickly than a person could generate by hand, which could lead to more efficient or lower carbon designs simply because more options got compared. But I don't think it changes who's actually accountable, the tool can propose a layout, but it doesn't understand the messy context of a real site, or carry the professional responsibility that a signed off design implies, that stays with the engineer. So I'd guess the day to day job shifts a bit, less time on repetitive calculation, more time on framing the problem well for the tool, checking its outputs against engineering judgement and code intent, and being able to explain why a design is right, not just that software produced it. It's a similar shift to what happened when structural analysis software first became common, the tool changed, but understanding what the output actually means didn't stop mattering."
+    },
+    "commonMistakes": [
+      "Assuming AI tools remove the need for engineering judgement entirely",
+      "Dismissing the technology without engaging with its genuine usefulness",
+      "Not mentioning accountability or responsibility for the final design at all"
+    ],
+    "followUps": [
+      "Do you think a graduate engineer should still learn to do hand calculations if software can do it faster?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Ageing infrastructure: repair or replace",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "infrastructure",
+      "maintenance"
+    ],
+    "question": "A lot of bridges and much of the infrastructure many countries rely on were built decades ago and are now approaching or past their originally intended design life. When you read stories about bridge closures or collapses linked to ageing infrastructure, what do you think that tells us about how we should be managing existing infrastructure, not just building new?",
+    "lookingFor": "Awareness that ageing-infrastructure risk is a live, current issue, plus reasoning about inspection, maintenance funding and prioritisation, not just build more.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that a lot of existing infrastructure is ageing and that maintenance or inspection funding often loses out to new-build projects",
+        "Discuss the role of regular inspection and condition monitoring in catching problems, like fatigue or corrosion, before failure",
+        "Reflect on the difficult prioritisation question: limited budgets against a huge existing asset base"
+      ],
+      "modelAnswer": "I think it says that infrastructure maintenance doesn't get anywhere near the attention or funding that building new, visible projects does, because a repaired bridge doesn't get a ribbon cutting ceremony the way a new one does, even though keeping the existing network safe matters just as much. A lot of the stories about failures point back to things like fatigue cracking or corrosion that had been developing for years, which suggests the real gap is often in inspection frequency and condition monitoring catching problems early enough to act, rather than a sudden unexpected event. It's a genuinely hard prioritisation problem too, there's a huge stock of ageing infrastructure and limited budgets, so decisions about what gets inspected more often or repaired first have to be made on some kind of risk basis rather than just age. I think it's an area civil engineering doesn't get enough credit for, because keeping something safely running is less visible than building something new, but it's arguably just as important."
+    },
+    "commonMistakes": [
+      "Only discussing new infrastructure projects and ignoring maintenance of existing assets",
+      "Vague concern with no mention of inspection, monitoring, or funding prioritisation",
+      "Assuming ageing automatically means unsafe, without acknowledging condition-based assessment"
+    ],
+    "followUps": [
+      "Have you come across a specific example of an infrastructure failure or near-miss linked to ageing, and what do you know about what caused it?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Low-carbon cement and concrete alternatives",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "sustainability",
+      "materials"
+    ],
+    "question": "Concrete production is a major source of global CO2 emissions, and there's a lot of research into lower-carbon alternatives like geopolymer concrete. Why do you think adoption of these alternatives has been slower than the research would suggest it should be?",
+    "lookingFor": "Awareness of the sustainability debate around concrete plus realistic understanding of adoption barriers, not just enthusiasm for the technology.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that cement production is a significant CO2 source and that alternatives exist, like geopolymer concrete or supplementary cementitious materials",
+        "Identify real barriers to adoption: building codes written around conventional concrete, lack of long-term performance data, supply chain and cost, industry inertia",
+        "Avoid treating it as a simple why hasn't everyone switched yet framing"
+      ],
+      "modelAnswer": "I think the gap is less about the chemistry working and more about how conservative construction has to be, building codes and design standards were written around decades of performance data on ordinary Portland cement concrete, and there simply isn't the same length of track record yet for a lot of these alternatives, especially for anything structural where a failure isn't an acceptable way to learn that a material behaves differently to expected. There's also a practical supply chain and cost issue, ordinary cement production is a mature, efficient global industry, and a lot of low carbon alternatives depend on by-products or regional materials that aren't available everywhere at the same reliability or price. I don't think that's an excuse to move slowly forever, but it does explain why adoption looks more like a gradual, code-by-code, project-by-project process rather than a sudden switch, and I think that's actually a reasonable thing for a safety-critical industry to be cautious about."
+    },
+    "commonMistakes": [
+      "Assuming adoption is only slow because the industry is resistant to change with no deeper reasoning",
+      "Not mentioning codes, standards, or long-term performance data as a barrier",
+      "Overstating how mainstream these alternatives currently are"
+    ],
+    "followUps": [
+      "Do you think there's a role for building codes to actively push adoption faster, and if so, how?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing infrastructure for a changing climate",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "climate",
+      "resilience"
+    ],
+    "question": "Design codes and rainfall data used for infrastructure are largely based on historical records, but extreme weather events are becoming more frequent and severe. How should civil engineers respond to designing for a future that historical data doesn't fully capture?",
+    "lookingFor": "Awareness of the tension between code-based design that looks backward and a changing climate that requires forward-looking risk, with a sensible view on how to bridge that.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the core problem: standards and historical data assume a relatively stable climate, which may no longer hold",
+        "Discuss approaches: designing in safety margins or resilience, using updated climate projections rather than pure historical data, adaptable or retrofittable design",
+        "Show balanced judgement: not designing for worst-case-everywhere at unaffordable cost, but not ignoring the trend either"
+      ],
+      "modelAnswer": "The core problem is that a lot of design standards, like rainfall intensity for drainage design, are built on historical statistics, and if the climate is genuinely shifting, using purely historical data means we're designing for a world that no longer quite exists. I think the sensible response is using updated climate projections alongside historical data where they're available, and building in a bit more resilience or a safety margin for extreme events, rather than assuming the past record is a safe ceiling. At the same time, I don't think the answer is to design every piece of infrastructure for the worst imaginable case, because that would be prohibitively expensive, so there's a real judgement question about which structures need to be resilient to extremes, like critical infrastructure or flood defences, versus where a more incremental, retrofittable approach to future adaptation makes more sense. I think that's one of the more interesting and genuinely unresolved questions in the profession right now."
+    },
+    "commonMistakes": [
+      "Treating this as purely a policy question with no engineering design response",
+      "Suggesting infrastructure should simply be over-designed everywhere without acknowledging cost trade-offs",
+      "Not identifying the underlying issue of historical data underestimating future risk"
+    ],
+    "followUps": [
+      "Can you think of a type of infrastructure where under-designing for climate change would be especially dangerous?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Design trade-offs under a tight budget",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "design-judgement",
+      "cost"
+    ],
+    "question": "You're designing a small pedestrian footbridge and, partway through, the client cuts the budget significantly. What would you be willing to compromise on to bring the cost down, and what would you absolutely not touch?",
+    "lookingFor": "Sound judgement distinguishing safety-critical elements from areas where genuine value engineering is acceptable.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify safe areas to reduce cost: aesthetic finishes, non-structural material choices, construction sequencing or method",
+        "Identify what must not be compromised: structural safety margins, code-required load capacity, accessibility requirements",
+        "Show they'd communicate trade-offs transparently to the client rather than silently cutting corners"
+      ],
+      "modelAnswer": "I'd look first at things that affect cost without affecting safety, like the finish on the railings, the type of decking material, or whether we need a more elaborate architectural form versus a simpler efficient one, because a lot of a bridge's cost can be in aesthetic choices rather than the structure itself. What I wouldn't touch is anything related to the structural safety margin or code required capacity, like reducing the load the bridge is designed for, or accessibility features like ramp gradients, because those aren't really negotiable just because the budget is tighter. I'd want to lay all of that out clearly for the client, here's what we can simplify and what it saves, and here's what stays fixed and why, so it's an informed decision on their part rather than me quietly making calls that affect safety without them realising it."
+    },
+    "commonMistakes": [
+      "Suggesting a reduction in structural safety margin as a way to save cost",
+      "Giving a vague answer with no concrete example of what could or couldn't be cut",
+      "Not mentioning transparent communication with the client about trade-offs"
+    ],
+    "followUps": [
+      "What would you do if the client pushed back and specifically asked you to reduce the safety margin to save money?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering a crack during final inspection",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "site-judgement",
+      "safety"
+    ],
+    "question": "You're doing a final site inspection days before a building is due to open, and you spot a hairline crack in a load-bearing column that wasn't there at the last visit. Walk me through what you'd actually do, step by step.",
+    "lookingFor": "A calm, methodical response prioritising investigation and safety over schedule pressure, with realistic escalation steps.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with immediate, practical steps: document it with photos and measurements, assess whether it's a safety concern requiring the area to be restricted",
+        "Escalate appropriately: bring in a senior structural engineer, don't try to make a lone judgement call under pressure",
+        "Balance urgency correctly: investigate before dismissing it as cosmetic, or before panicking and assuming the worst"
+      ],
+      "modelAnswer": "First I'd document it properly, photos, exact location, width and length of the crack, so there's a clear record and something to compare against if I need to check whether it's changing. I wouldn't try to make a snap judgement about whether it's serious on my own, especially under time pressure, so I'd flag it immediately to a senior structural engineer and, if there was any doubt at all about it being purely cosmetic, I'd want that area restricted from use until it's checked properly rather than assuming it's fine just because opening day is close. I know that hairline cracks can be genuinely minor, like shrinkage cracking, or they can be a sign of something more serious like overload or a foundation issue, and the only responsible thing is to actually investigate rather than guess in either direction. However inconvenient the timing is, I don't think schedule pressure is a good enough reason to skip that step."
+    },
+    "commonMistakes": [
+      "Assuming it's automatically fine because it's small, without documenting or escalating",
+      "Panicking and assuming worst case without proper investigation",
+      "Trying to resolve it alone rather than involving a senior engineer or the original designer"
+    ],
+    "followUps": [
+      "What might make you more or less worried about a crack like this, structurally speaking?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing for a genuinely difficult site",
+    "program": "Civil Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "site-conditions",
+      "design-judgement"
+    ],
+    "question": "Say you're asked to design a small building on a site that floods occasionally and sits on expansive clay that swells and shrinks with moisture. How would you even start approaching a site with two awkward problems working against each other?",
+    "lookingFor": "Structured, investigation-first thinking, understanding that ground conditions and site risk should drive the design approach, not be an afterthought.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with investigation: get proper geotechnical data on the clay's behaviour and flood risk data before designing anything",
+        "Show understanding that the two issues can interact, for example foundation choice is affected by both flood risk and shrink-swell, and need a combined strategy",
+        "Mention realistic design responses: raised foundations or floor levels for flood risk, deep or stiffened foundations to ride out the clay's movement"
+      ],
+      "modelAnswer": "I'd want proper data before designing anything, a geotechnical investigation on how much the clay actually swells and shrinks through the seasons, and flood risk data on how often and how high the site actually floods, because guessing at either would be dangerous. The two problems do interact a bit, if I'm raising the building on stilts or a raised floor level to deal with flooding, that also changes how I'd found it against the clay movement underneath, so I'd be thinking about the foundation as a combined solution rather than solving each problem separately and hoping they don't conflict. Practically, I'd probably be looking at either piled foundations that go deep enough to found in more stable ground below the active clay zone, combined with a raised floor level and flood resistant materials at ground level, so the building is lifted clear of the water and less affected by the swelling and shrinking near the surface. It's the kind of site where cutting corners on investigation would be the real risk, not the design itself."
+    },
+    "commonMistakes": [
+      "Jumping straight to a design solution without mentioning site investigation first",
+      "Treating the flood risk and the clay problem as two completely separate issues with no interaction",
+      "Vague answer with no concrete foundation or floor level strategy"
+    ],
+    "followUps": [
+      "Why might building regulations require a minimum floor level above a certain flood level, rather than just waterproofing the ground floor?"
+    ]
+  },
+  {
+    "id": "prog-civil-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Retrofitting a historic building for modern seismic standards",
+    "program": "Civil Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "retrofit",
+      "heritage"
+    ],
+    "question": "You're asked to bring a century-old masonry building up to modern seismic safety standards, but the client insists the historic facade can't be altered. How would you think through that constraint?",
+    "lookingFor": "Creative, realistic problem framing that respects the constraint rather than treating it as impossible, showing awareness of real retrofit techniques.",
+    "idealAnswer": {
+      "bullets": [
+        "Reframe the constraint honestly: unreinforced masonry is genuinely weak in earthquakes, so this is a real engineering challenge, not just a preference to accommodate",
+        "Show awareness of realistic techniques: base isolation, internal strengthening with a steel frame or ties, reinforcing from the interior or behind the facade",
+        "Acknowledge trade-offs: cost, and that some risk reduction rather than full elimination may be the realistic outcome"
+      ],
+      "modelAnswer": "I'd start by being honest with myself that unreinforced masonry is genuinely one of the more vulnerable building types in an earthquake, so keeping the facade untouched is a real constraint, not just an aesthetic preference to work around. The good news is that a lot of retrofit techniques work from behind or below the facade rather than changing its appearance, things like tying the facade back to a new internal steel or concrete frame so it can't peel away from the rest of the building, or in some cases isolating the whole building on base isolators so the ground shaking is absorbed before it reaches the structure at all. I'd want to be upfront with the client that this kind of retrofit is usually significantly more expensive than a straightforward strengthening job precisely because of the facade constraint, and that depending on budget, we might be talking about substantially reducing risk rather than achieving the same seismic performance as a brand new building. I think that's a fair trade to explain clearly rather than overpromising what preserving the facade allows."
+    },
+    "commonMistakes": [
+      "Suggesting the facade constraint simply can't be worked with, giving up on the problem",
+      "Not mentioning any specific retrofit technique, like base isolation or an internal frame",
+      "Overpromising that heritage constraints have no real trade-off in cost or performance"
+    ],
+    "followUps": [
+      "Why might tying the facade back to a new internal structure specifically address the main earthquake risk for unreinforced masonry?"
+    ]
+  }
+]

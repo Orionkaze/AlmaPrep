@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-telecommunications-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Channel capacity and Shannon's limit",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["information-theory", "capacity", "bandwidth"],
+    "question": "Shannon's theorem says a channel has a maximum data rate for a given bandwidth and noise level. Why can't we just keep increasing that rate by cranking up transmit power?",
+    "lookingFor": "Understanding that capacity grows only logarithmically with signal power, so power is a poor lever compared to bandwidth or coding.",
+    "idealAnswer": {
+      "bullets": [
+        "State the Shannon-Hartley relationship: capacity equals bandwidth times log base 2 of one plus SNR",
+        "Explain the log relationship means large power increases yield small capacity gains",
+        "Note practical limits: interference to others, amplifier nonlinearity, regulatory power caps, cost"
+      ],
+      "modelAnswer": "Shannon's formula shows capacity is bandwidth times log base 2 of one plus SNR, so power sits inside a logarithm while bandwidth sits outside it as a straight multiplier. That means doubling my transmit power only adds a fixed number of bits per second, not a doubling, so past a point I'm burning a lot of energy for a small gain. On top of that a stronger signal from me becomes stronger interference for my neighbours, and I'm bound by spectrum regulations that cap transmit power anyway. That's actually why engineers spend more effort getting more bandwidth or better coding than on brute-forcing power."
+    },
+    "commonMistakes": [
+      "Thinking capacity scales linearly with power",
+      "Ignoring the logarithmic relationship entirely and giving a vague answer",
+      "Forgetting that bandwidth is usually the more practical way to raise capacity"
+    ],
+    "followUps": ["So if power gives diminishing returns, what's usually the better lever to increase capacity?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Link budget reasoning",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["path-loss", "link-budget", "coverage"],
+    "question": "If I halve the distance between a transmitter and receiver in free space, how does the received signal strength change, and why does that matter for network design?",
+    "lookingFor": "Grasp of the inverse-square path loss relationship and its practical implications for tower placement.",
+    "idealAnswer": {
+      "bullets": [
+        "State that free space path loss scales with the square of distance, so halving distance roughly quadruples received power",
+        "Connect this to why cell towers sit closer together in cities than along rural roads",
+        "Mention that real environments with buildings and terrain lose more signal than the free-space model predicts"
+      ],
+      "modelAnswer": "In free space the received power falls off with the square of distance, so if I halve the distance the signal I receive goes up by about four times, not two. That's why operators pack cell towers much closer together in dense cities, where buildings add extra loss, but can space them far apart along a rural highway. It also means small improvements in where you place a tower or handset can matter more than people expect, because the relationship isn't linear."
+    },
+    "commonMistakes": [
+      "Assuming a linear relationship between distance and signal strength",
+      "Confusing power in decibels with power in watts when comparing the halving",
+      "Ignoring real-world obstructions and treating every environment as free space"
+    ],
+    "followUps": ["How would that change in an urban environment with lots of buildings?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "OFDM and multipath resilience",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["ofdm", "multipath", "modulation"],
+    "question": "Why do modern standards like 4G, 5G and Wi-Fi use OFDM instead of sending one fast stream of bits down a single carrier?",
+    "lookingFor": "Understanding that OFDM splits bandwidth into narrowband subcarriers to make multipath delay manageable, not just that it's 'faster'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain multipath causes delayed copies of a fast single-carrier signal to overlap, causing inter-symbol interference",
+        "Describe how splitting into many slower subcarriers makes each symbol long enough that multipath delay is a small fraction of it",
+        "Mention the added benefit of flexible, efficient spectrum allocation across multiple users"
+      ],
+      "modelAnswer": "A single very fast stream sends really short symbols, and in a real environment the signal bounces off buildings and arrives as several delayed copies, so those short symbols start overlapping into each other, which is inter-symbol interference. OFDM splits the same bandwidth into many narrower subcarriers, each carrying a slower stream with a much longer symbol, so the multipath delay becomes tiny compared to the symbol length and is far easier to manage with something like a guard interval. It also lets a base station hand out different subcarriers to different users at once, which is why it's so useful for spectrum efficiency, not just for fighting multipath."
+    },
+    "commonMistakes": [
+      "Saying OFDM is simply 'faster' without explaining the multipath mechanism",
+      "Confusing OFDM with plain frequency division multiplexing and not mentioning orthogonality",
+      "Not connecting symbol duration to multipath delay spread"
+    ],
+    "followUps": ["What is the cyclic prefix and what problem does it solve?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "MIMO and spatial multiplexing",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["mimo", "antennas", "spatial-multiplexing"],
+    "question": "Phones now advertise multiple antennas for MIMO. How can adding more antennas increase data rate without using any extra spectrum?",
+    "lookingFor": "Grasp that MIMO exploits multipath diversity to send parallel streams over the same frequency, not that it simply boosts signal.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain MIMO uses multiple antennas at both ends to send independent data streams on the same frequency and time slot",
+        "Note it relies on a rich multipath environment so the streams arrive as distinguishable spatial signatures",
+        "Mention the tradeoff between spatial multiplexing for throughput and diversity for reliability"
+      ],
+      "modelAnswer": "MIMO puts multiple antennas on the transmitter and receiver and sends separate streams of data over the exact same frequency and time slot, relying on the fact that each stream takes a slightly different path and arrives with a different spatial signature the receiver can mathematically separate. What's counterintuitive is that it actually needs a rich multipath environment to work well, because without different paths the streams look too similar to tell apart. There's also a design choice between using those extra antennas to send more independent streams for higher throughput, or to send the same data redundantly for better reliability in a weak signal area."
+    },
+    "commonMistakes": [
+      "Thinking more antennas simply 'boosts signal' like a bigger single antenna",
+      "Missing that MIMO needs multipath diversity to work, not a clean line-of-sight channel",
+      "Not distinguishing spatial multiplexing from diversity or beamforming"
+    ],
+    "followUps": ["Why might MIMO actually perform worse in a very open, line-of-sight environment?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Multiple access schemes",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["tdma", "cdma", "multiple-access"],
+    "question": "GSM used TDMA, older CDMA networks used code division, and Wi-Fi mostly avoids both. What's actually the difference between sharing a channel by time, by frequency and by code?",
+    "lookingFor": "A clear conceptual separation of TDMA, FDMA and CDMA rather than a fuzzy blend of the three.",
+    "idealAnswer": {
+      "bullets": [
+        "TDMA: same frequency, users take turns in time slots",
+        "FDMA: each user gets a permanently assigned sub-band of frequency",
+        "CDMA: everyone transmits at the same time and frequency but with unique codes the receiver uses to separate them"
+      ],
+      "modelAnswer": "TDMA gives everyone the same frequency but a different time slot, so a GSM phone only actually transmits for a fraction of each frame even though it feels continuous to the user. FDMA instead slices up the frequency band itself and gives each user their own narrow strip permanently. CDMA is the strangest of the three because everyone transmits at the same time on the same frequency, and it's a unique spreading code assigned to each user that lets the receiver pull their signal back out of what looks like noise to anyone else. Each approach is really just a different resource, time, frequency or code, being divided up to avoid collisions."
+    },
+    "commonMistakes": [
+      "Explaining only one scheme in detail and hand-waving the other two",
+      "Confusing CDMA's code separation with simple frequency separation",
+      "Not being able to say why CDMA needs precise power control to work well"
+    ],
+    "followUps": ["Why does CDMA require tight power control among users, more than TDMA or FDMA does?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Forward error correction tradeoffs",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["error-correction", "coding-theory", "tradeoffs"],
+    "question": "Adding more error correction bits to a message improves reliability, but it isn't free. What are you actually trading away?",
+    "lookingFor": "Understanding of the coding rate versus throughput and latency tradeoff, not just 'redundancy is good'.",
+    "idealAnswer": {
+      "bullets": [
+        "More parity or redundant bits mean fewer bits of actual data per transmission, lowering effective data rate",
+        "Stronger codes often need more processing and can add latency, which matters for real-time uses",
+        "Recognize the right amount of redundancy is matched to the channel and application, not universally 'more is better'"
+      ],
+      "modelAnswer": "Every extra bit you spend on error correction is a bit you're not spending on the actual message, so for a fixed channel capacity, stronger coding directly lowers your useful data rate, that's the coding rate tradeoff. Heavier codes like turbo or LDPC codes also take more computation to decode, which adds latency, and that's a real problem for something like a voice call or a self-driving car link where delay matters as much as accuracy. So the right amount of redundancy really depends on how noisy the channel is and how much the application can tolerate either errors or delay, it's never just 'add more and it gets better'."
+    },
+    "commonMistakes": [
+      "Treating error correction as a free reliability upgrade",
+      "Not connecting redundancy to a drop in effective throughput",
+      "Ignoring decoding latency as a cost, especially for real-time applications"
+    ],
+    "followUps": ["Would you rather over-provision error correction for a satellite link or a live video call, and why might the answer differ?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Duplexing choices",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["tdd", "fdd", "5g"],
+    "question": "5G networks often use TDD rather than the FDD scheme older networks favoured. What's the difference, and why would an operator choose one over the other?",
+    "lookingFor": "Correct definitions of TDD and FDD plus reasoning about spectrum flexibility and use-case fit.",
+    "idealAnswer": {
+      "bullets": [
+        "FDD uses two separate frequency bands, one for uplink and one for downlink, running simultaneously",
+        "TDD uses a single frequency band and switches between uplink and downlink in time",
+        "TDD gives flexibility to favour downlink-heavy traffic but needs tight synchronization between base stations"
+      ],
+      "modelAnswer": "FDD hands you two separate chunks of spectrum, one purely for uplink and one purely for downlink, so both directions can run at the same time without interfering. TDD instead uses one shared band and just switches rapidly between sending and receiving, which sounds less efficient but actually gives the operator flexibility to give more time to downlink when most users are streaming video rather than uploading. The catch is that TDD networks need very tight timing synchronization between base stations so that everyone switches direction together, otherwise one station's uplink slot collides with a neighbour's downlink slot."
+    },
+    "commonMistakes": [
+      "Getting uplink and downlink reversed",
+      "Not mentioning the flexible asymmetric allocation TDD allows",
+      "Missing synchronization as TDD's main practical challenge"
+    ],
+    "followUps": ["What happens if two nearby TDD base stations aren't synchronized?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Fading and mobile reception",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["fading", "multipath", "mobile"],
+    "question": "You're on a call while driving and the audio briefly cuts out even though you're nowhere near a dead zone. What's most likely happening at the radio level?",
+    "lookingFor": "Understanding of fast fading and multipath cancellation as distinct from simple weak-signal dropout.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain reflected copies of the signal can arrive out of phase and momentarily cancel each other, causing fast fading",
+        "Distinguish this from large-scale path loss or a genuine coverage hole",
+        "Note why it's usually brief for a moving user, unlike a real coverage gap"
+      ],
+      "modelAnswer": "It's probably not that I've left coverage, it's more likely fast fading, where the signal is bouncing off nearby buildings or vehicles and several delayed copies arrive at my phone slightly out of phase. For an instant those copies can partially cancel each other out even though the average signal strength in that area is fine, and because I'm moving, that dead spot in the interference pattern passes in a fraction of a second. It's different from a genuine coverage hole, which would last as long as I stayed in that location rather than clearing up almost immediately."
+    },
+    "commonMistakes": [
+      "Attributing every dropout to weak average signal strength",
+      "Not distinguishing fast fading from large-scale path loss",
+      "Assuming multipath is always bad rather than something MIMO can exploit"
+    ],
+    "followUps": ["Why would this kind of dropout be less likely for a stationary phone in the same spot?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Software-defined networking",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["sdn", "nfv", "current-development"],
+    "question": "Telecom operators talk a lot about moving from dedicated hardware boxes to software-defined networks. What's actually changing, and what's the appeal?",
+    "lookingFor": "Understanding of decoupling control plane from data plane and virtualizing network functions, plus why operators want it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain traditional networks bundle routing decisions and packet forwarding into the same proprietary hardware box",
+        "SDN separates control logic into software on general servers that can centrally programme many devices",
+        "NFV lets functions like firewalls run as software on standard servers instead of dedicated appliances, cutting cost and adding agility"
+      ],
+      "modelAnswer": "Traditionally a router is one box where the decision logic about where packets should go and the actual forwarding of packets both happen inside proprietary hardware, so changing behaviour meant touching physical equipment. Software-defined networking pulls the decision-making part out into a central software controller that can programme many devices at once, and network functions virtualization takes things that used to be dedicated boxes, like firewalls, and runs them as software on ordinary servers instead. The appeal for an operator is agility and cost, they can spin up or reconfigure services in software rather than shipping and installing new hardware every time, which matters a lot for something like quickly standing up a 5G network slice."
+    },
+    "commonMistakes": [
+      "Confusing SDN and NFV as the same thing rather than related but distinct ideas",
+      "Describing it as just 'the cloud' without explaining the control and data plane split",
+      "Missing why this matters practically, speed, cost and flexibility, for an operator"
+    ],
+    "followUps": ["Where might there still be a case for dedicated hardware instead of a fully virtualized network?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "5G network slicing",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["network-slicing", "5g", "current-development"],
+    "question": "5G is often described as being able to run several 'virtual networks' on the same physical infrastructure, for example one slice for emergency services and another for streaming video. How is that actually possible, and what could go wrong with it?",
+    "lookingFor": "Understanding of network slicing and resource isolation, plus honest awareness of isolation and security risks.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain slicing uses software-defined and virtualized infrastructure to partition compute, bandwidth and priority per logical network",
+        "Note each slice can be tuned for its use case, low latency for emergency services versus high throughput for video",
+        "Identify risks: imperfect isolation letting one slice's load affect another, and slicing adding a new attack surface between tenants"
+      ],
+      "modelAnswer": "Because 5G's network functions run as software rather than dedicated hardware, an operator can carve up the same physical towers and core network into logically separate slices, each with its own guaranteed share of bandwidth, latency and priority, tuned to what that slice needs, ultra-reliable low latency for an emergency services slice versus high throughput for a video streaming slice. The risk is that the isolation between slices is a software promise, not a physical wall, so a bug or a traffic spike in one slice could in principle bleed into another if the isolation isn't enforced properly, and having multiple tenants sharing infrastructure also creates a new kind of attack surface between slices that didn't exist with entirely separate physical networks."
+    },
+    "commonMistakes": [
+      "Describing slicing vaguely as 'faster internet' without the resource-partitioning mechanism",
+      "Assuming isolation between slices is absolute and cannot fail",
+      "Not connecting slicing to SDN and NFV as the underlying enabling technology"
+    ],
+    "followUps": ["If you were designing the emergency services slice, what guarantee would you want that no amount of traffic on other slices could break?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Low-power wide-area networks",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["iot", "lpwan", "power"],
+    "question": "A smart water meter needs to send a tiny amount of data once a day and run on a battery for ten years. Why would that use something like NB-IoT or LoRa rather than the same 4G connection your phone uses?",
+    "lookingFor": "Understanding of the LPWAN tradeoff, giving up data rate and latency for very low power and long range, matched to the application.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain LPWAN technologies trade data rate and latency for extremely low power consumption and long range",
+        "Contrast with standard cellular, optimized for higher throughput at the cost of higher power",
+        "Connect the tradeoff to the application: a meter needs occasional tiny messages, not video-call bandwidth"
+      ],
+      "modelAnswer": "A phone's cellular radio is built to move a lot of data quickly, which costs power, but a water meter only needs to send a handful of bytes once a day, so all that extra throughput would just be wasted battery. LPWAN technologies like NB-IoT or LoRa deliberately trade away data rate and low latency for very deep power savings and much longer range from a single base station, the radio can basically sleep almost all the time and wake briefly to send its tiny payload. That match between what the application actually needs and what the radio technology is optimized for is really the whole reason LPWAN exists alongside standard cellular rather than replacing it."
+    },
+    "commonMistakes": [
+      "Assuming LPWAN is just weaker 4G rather than a deliberately different optimization point",
+      "Not mentioning battery life or duty cycle as the central design driver",
+      "Missing that these networks are a poor fit for anything needing real-time or high throughput"
+    ],
+    "followUps": ["What kind of telecom application would LPWAN be a bad fit for, and why?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantum computing threat to telecom security",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["quantum", "cryptography", "current-development"],
+    "question": "There's growing talk that quantum computers could eventually break the encryption that protects telecom networks and internet traffic today. Why is that a threat, and what's being done about it?",
+    "lookingFor": "Awareness of the threat quantum computing poses to current encryption and the two main lines of response being developed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain today's encryption relies on problems like factoring large numbers, hard for classical computers but fast for a capable quantum computer",
+        "Distinguish post-quantum cryptography, new classical algorithms resistant to quantum attack, from quantum key distribution, using quantum physics to detect eavesdropping",
+        "Note the 'harvest now, decrypt later' concern that makes this urgent before large quantum computers even exist"
+      ],
+      "modelAnswer": "A lot of the encryption protecting telecom traffic today, things like RSA, relies on problems such as factoring huge numbers that are practically impossible for a classical computer but that Shor's algorithm shows a sufficiently large quantum computer could solve efficiently. That's driving two separate lines of response, post-quantum cryptography, which designs new classical algorithms based on different hard problems that quantum computers aren't known to speed up, and quantum key distribution, which uses the physics of quantum states so that any eavesdropping attempt on the key exchange is detectable. What makes it urgent right now rather than a future problem is the harvest now, decrypt later risk, someone could be recording encrypted traffic today with the plan of decrypting it once a capable quantum computer exists."
+    },
+    "commonMistakes": [
+      "Confusing quantum key distribution with post-quantum cryptography as if they're the same solution",
+      "Overstating that quantum computers can already break encryption today",
+      "Missing the harvest-now-decrypt-later reason this matters before quantum computers are practical"
+    ],
+    "followUps": ["Which of the two approaches would you expect telecom operators to roll out first, and why?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Net neutrality debate",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["net-neutrality", "policy", "ethics"],
+    "question": "Should an internet provider be allowed to make a partner streaming service load faster than a rival's, if customers technically still have access to both?",
+    "lookingFor": "Ability to reason through both sides of the net neutrality debate rather than just asserting a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the core tension: providers argue prioritization can fund infrastructure and enable services like emergency traffic, critics argue it entrenches incumbents",
+        "Distinguish technical access to a service from a genuinely equal opportunity to compete for users",
+        "Reach a reasoned position rather than a flat yes or no"
+      ],
+      "modelAnswer": "My instinct is that this shouldn't be allowed, because access on paper isn't the same as a fair chance to compete, if a startup's video app is consistently slower through no fault of its own engineering, most users will just drift to the faster option regardless of which is actually better. That said I can see the provider's argument that differentiated service tiers fund network investment, and that some prioritization, like keeping emergency or medical traffic responsive during congestion, is genuinely reasonable. I'd draw the line at prioritization tied to commercial partnerships specifically, versus prioritization based on the technical nature of the traffic itself, because one is about competition and the other is about network management."
+    },
+    "commonMistakes": [
+      "Giving only a slogan answer, net neutrality good or free market good, with no reasoning",
+      "Not distinguishing legitimate traffic management from anti-competitive partnership deals",
+      "Ignoring the infrastructure investment argument entirely"
+    ],
+    "followUps": ["Would your answer change if the prioritized traffic was emergency services rather than a commercial streaming partner?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Encryption backdoors dilemma",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "encryption", "privacy"],
+    "question": "A government asks a telecom operator to build a backdoor into its encrypted messaging service so law enforcement can access messages during criminal investigations. As an engineer on that team, how would you think this through?",
+    "lookingFor": "Structured ethical reasoning that treats the request seriously while explaining why a systemic backdoor is a shared vulnerability, not a targeted tool.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the legitimate goal of preventing serious crime rather than dismissing the request outright",
+        "Explain the technical problem: a backdoor is a vulnerability anyone who finds it can use, not access limited to the 'good guys'",
+        "Reach a reasoned position, likely favouring lawful, targeted, court-authorized access over a built-in systemic weakness"
+      ],
+      "modelAnswer": "I wouldn't dismiss the request as simply wrong, preventing serious crime is a real and legitimate goal, so I'd want to engage with it seriously rather than just refuse on principle. But technically, a backdoor isn't a key that only law enforcement can use, it's a weakness in the system that anyone who discovers it, whether that's a criminal, a foreign intelligence service, or just a bug, can exploit against every single user of that service, not just the target of the investigation. I'd push for alternatives like targeted, court-authorized access to a specific suspect's device rather than a systemic weakness built into the whole platform, because the second one protects nobody, it just moves the risk from the criminal we're investigating onto everyone else."
+    },
+    "commonMistakes": [
+      "Treating this as a simple loyalty test, just comply or just refuse, with no reasoning",
+      "Not understanding that a backdoor is a vulnerability for everyone, not an access point only for authorities",
+      "Ignoring that the underlying law enforcement goal is legitimate, and reasoning only from a privacy-absolutist stance"
+    ],
+    "followUps": ["Is there a version of law enforcement access to encrypted data that you would consider acceptable?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Bandwidth prioritization during a disaster",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "triage", "emergency-networks"],
+    "question": "During a natural disaster, your network is overloaded. You can throttle everyone equally, or prioritize emergency alerts and calls to responders over everything else, including people trying to reach loved ones on ordinary calls. What would you choose, and how would you justify deprioritizing someone trying to check on their family?",
+    "lookingFor": "Ability to reason about triage under real scarcity, propose a defensible prioritization principle, and honestly acknowledge the cost to those deprioritized.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize equal throttling isn't a neutral default, it's also a choice with real consequences under genuine scarcity",
+        "Propose a defensible prioritization principle, such as life-safety and coordinated response traffic first, rather than an arbitrary one",
+        "Acknowledge honestly the real harm to someone who can't reach family, rather than waving it away"
+      ],
+      "modelAnswer": "I'd prioritize emergency responder traffic and public alerts, but I wouldn't pretend that's a free choice, someone trying to reach a parent they're worried about is going to be genuinely hurt by that decision, and I think it's important to actually sit with that rather than just calling it obviously correct. The justification I'd lean on is that responder coordination has effects that ripple outward, a blocked ambulance dispatch or a missed evacuation order can cost more lives than the delay in a personal call, so under real scarcity that's the traffic that has to move first. I'd also want the deprioritization to be as short and as narrowly targeted as possible, and to restore normal service the moment the acute phase of the emergency passes, because treating this as a permanent policy rather than an emergency measure would be a very different decision."
+    },
+    "commonMistakes": [
+      "Treating 'throttle everyone equally' as an obviously neutral, harm-free default",
+      "Picking a prioritization scheme without articulating a principle behind it",
+      "Dismissing the cost to deprioritized users instead of acknowledging it honestly"
+    ],
+    "followUps": ["How would you decide when the emergency prioritization should end?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Satellite mega-constellations",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["satellite", "current-debate", "space"],
+    "question": "Companies are launching thousands of satellites to provide broadband from low earth orbit. What's the appeal, and what's the legitimate concern astronomers and space agencies raise about it?",
+    "lookingFor": "Balanced awareness of the connectivity benefits of LEO broadband and the astronomical interference and debris risks it raises.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain LEO constellations bring internet to remote areas and offer much lower latency than traditional geostationary satellites",
+        "Note the legitimate concerns: bright satellite trails interfering with ground-based astronomy",
+        "Note the growing collision and space debris risk as constellations scale into the thousands"
+      ],
+      "modelAnswer": "The appeal is real, low earth orbit constellations can bring genuine broadband to places that will probably never get fiber or even a cell tower, and because they orbit much closer to Earth than traditional geostationary satellites, the latency is low enough to support things like video calls, which older satellite internet really struggled with. But astronomers have a legitimate complaint that these satellites are bright enough to streak across long-exposure images and interfere with research, and space agencies are increasingly worried about collision risk and debris as the number of satellites climbs into the thousands, because a cascade of collisions in a heavily used orbit could make parts of it unusable for a long time. I don't think either side is wrong, it's a genuine tradeoff between expanding access and protecting a shared resource, orbital space, that everyone depends on."
+    },
+    "commonMistakes": [
+      "Only presenting the connectivity benefit without engaging with the debris or astronomy concerns",
+      "Dismissing the astronomy concern as trivial compared to connectivity access",
+      "Not mentioning the latency advantage of LEO over traditional satellite internet"
+    ],
+    "followUps": ["Who do you think should be responsible for regulating how many satellites can be launched into a shared orbit?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Submarine cable infrastructure risk",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["infrastructure", "geopolitics", "current-awareness"],
+    "question": "Most international internet traffic travels through undersea fiber cables, and there have been recent incidents of cables being damaged or suspected of deliberate sabotage. Why does that matter more than people might assume?",
+    "lookingFor": "Awareness that satellite or wireless links are not a substitute for submarine cable capacity, and the geopolitical stakes involved.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the vast majority of intercontinental internet and financial data still travels via a relatively small number of undersea cables",
+        "Note satellites currently carry a tiny fraction of that capacity and can't substitute at scale if cables are cut",
+        "Connect this to why several countries treat undersea cables as critical national infrastructure with a geopolitical dimension"
+      ],
+      "modelAnswer": "It's easy to assume satellites or wireless links carry most international traffic now, but the overwhelming majority of intercontinental internet and even financial transactions still travels through a surprisingly small number of undersea fiber cables, satellites carry only a tiny fraction of that capacity by comparison. That means damage to even a handful of cables in the right location, whether from an anchor drag or something deliberate, can meaningfully degrade connectivity or route traffic through much more congested and less secure paths. It's why several countries now treat their undersea cable infrastructure as critical national infrastructure with naval patrols involved, this isn't just an engineering maintenance problem, it has real geopolitical weight attached to it."
+    },
+    "commonMistakes": [
+      "Assuming satellites already carry most global internet traffic",
+      "Treating cable damage as purely a technical maintenance issue with no geopolitical dimension",
+      "Not knowing that a small number of cables carry a disproportionate share of global traffic"
+    ],
+    "followUps": ["What would you do as an engineer to make a network more resilient to this kind of single point of failure?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Spectrum scarcity and the race to 6G",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["spectrum", "6g", "current-development"],
+    "question": "Countries are already researching 6G while most of the world is still rolling out 5G. Spectrum is a limited public resource, so how should it be allocated between operators, and why does that decision matter so much?",
+    "lookingFor": "Understanding spectrum as a scarce shared resource, awareness of auction mechanisms and their tradeoffs, and forward awareness of why 6G research targets new frequency bands.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain radio spectrum is physically finite and must be divided among competing uses without interference",
+        "Describe how governments typically allocate via auctions, efficient but tending to favour large incumbents and raise consumer costs",
+        "Show awareness that 6G research targets higher frequency bands partly because lower, more favourable spectrum is increasingly crowded"
+      ],
+      "modelAnswer": "Spectrum is physically limited, two networks can't use the exact same frequency in the same place without interfering, so it has to be divided up carefully between cellular operators, broadcasters, satellite services, the military, and so on. Most countries allocate it through auctions, which is efficient in the sense that whoever values the spectrum most economically wins it, but that also tends to favour large incumbents with deep pockets and those costs usually get passed down to consumers eventually. Part of why there's already research into 6G, even while 5G rollout is still ongoing, is that the more useful lower and mid frequency bands are getting crowded, so 6G is looking at much higher frequency ranges that carry more data but travel shorter distances and need many more, smaller cells to cover the same area."
+    },
+    "commonMistakes": [
+      "Treating spectrum as if it were an unlimited resource",
+      "Only describing the auction mechanism without mentioning its downsides",
+      "Not connecting spectrum scarcity to why 6G research is pushing into new frequency ranges"
+    ],
+    "followUps": ["What are the practical downsides of using much higher frequency bands like those being explored for 6G?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Open RAN",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["open-ran", "current-debate", "infrastructure"],
+    "question": "There's a push toward 'Open RAN,' where the radio access network is built from interoperable components from different vendors instead of one company's proprietary end-to-end system. Why is this controversial as well as promising?",
+    "lookingFor": "Understanding of the vendor lock-in problem Open RAN solves, and legitimate performance and security concerns it raises.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain traditional RAN is proprietary end-to-end from one vendor, creating vendor lock-in and reducing competition",
+        "Describe Open RAN's promise: standardized interfaces let operators mix hardware and software from different vendors",
+        "Note legitimate concerns that multi-vendor integration is harder to optimize and secure than a single tested proprietary stack"
+      ],
+      "modelAnswer": "Traditionally a mobile operator buys their entire radio access network, the antennas, the baseband processing, the software, from one vendor end to end, which works well technically but locks the operator into that vendor and limits competition and pricing leverage. Open RAN standardizes the interfaces between those pieces so an operator can in principle mix a radio from one vendor with baseband software from another, which is attractive both for cost and for reducing dependence on a small handful of global suppliers, which has become a real geopolitical concern too. The controversy is that integrating components from multiple vendors is harder to optimize and secure than a single company's tightly tested stack, and some operators worry that in practice it still isn't matching the performance and reliability of the proprietary systems it's meant to replace, at least not yet across every deployment."
+    },
+    "commonMistakes": [
+      "Not explaining what vendor lock-in actually costs an operator",
+      "Presenting Open RAN as an unambiguous improvement with no real tradeoffs",
+      "Missing the geopolitical and supply-chain diversification motivation behind the push"
+    ],
+    "followUps": ["Why might a government have a security interest in encouraging Open RAN adoption?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Tower siting near a school",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["ethics", "public-trust", "siting"],
+    "question": "A telecom company wants to build a new cell tower right next to a primary school to fix a coverage gap, and some parents are protesting over health concerns, even though the radiation levels are within regulatory limits. How would you think through this as an engineer involved in the project?",
+    "lookingFor": "Ability to hold scientific evidence and public trust as separate but both real issues, without dismissing concerned parents.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the scientific consensus on regulated exposure levels while not dismissing the parents' concern as irrational",
+        "Distinguish the technical safety question from the separate, legitimate question of public trust and transparency",
+        "Consider practical steps: community engagement, and evaluating alternate sites if trust cannot be rebuilt"
+      ],
+      "modelAnswer": "I'd start from the fact that the scientific evidence at regulated exposure levels doesn't support the specific harms being feared, but I wouldn't treat being within the legal limit as the end of the conversation, because compliance and trust are two different things, and dismissing worried parents as simply uninformed usually makes things worse, not better. I think the right move is real engagement, explaining clearly what the tower does and doesn't emit, being transparent about the data, and actually listening to what's underneath the concern, which is often less about the specific physics and more about not having been consulted on something built next to their kids. If after a genuine effort at that the community still can't be brought along, I'd rather look seriously at an alternate site that still closes the coverage gap than force through a location that leaves lasting distrust in the technology."
+    },
+    "commonMistakes": [
+      "Dismissing the parents' concerns outright as unscientific with no engagement",
+      "Treating regulatory compliance as automatically resolving the public trust question",
+      "Offering no concrete path forward, just describing the tension without resolving it"
+    ],
+    "followUps": ["Is there ever a point where public opposition should override a scientifically sound, compliant engineering decision?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Emergency connectivity design",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "disaster-recovery", "planning"],
+    "question": "An earthquake has taken down the cell towers in a region. You have 48 hours and a limited budget to restore basic communication for rescue teams. What would you prioritize, and what would you deliberately not attempt yet?",
+    "lookingFor": "Pragmatic, prioritized engineering thinking under real constraints rather than an idealized full rebuild.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize fast-to-deploy options for the highest-value users, like portable cell-on-wheels units or satellite terminals for rescue coordination",
+        "Recognize the tradeoff between speed and completeness given a 48-hour window",
+        "Explicitly deprioritize things that aren't achievable or highest-value in that window, like full public service or permanent tower repair"
+      ],
+      "modelAnswer": "In 48 hours I'm not rebuilding permanent infrastructure, so I'd focus everything on getting rescue coordination up first, satellite phones or portable cell-on-wheels units positioned at the main command point and key rescue zones, because that's the traffic that directly saves lives in the short term. I'd deliberately not try to restore full public cellular service across the region in that window, that's a much bigger job and, hard as it is to say, isn't the highest-value use of the first 48 hours compared to getting responders talking to each other. I'd also set up something simple and low-tech as a backup, even a basic messaging relay point, because in a crisis I'd rather have something reliable that works than something sophisticated that might fail."
+    },
+    "commonMistakes": [
+      "Trying to describe restoring full public service immediately, ignoring the time and budget constraint",
+      "Not distinguishing rescue-team priority traffic from general public traffic",
+      "Overengineering the plan with solutions that aren't deployable that quickly"
+    ],
+    "followUps": ["How would your plan change if you only had 6 hours instead of 48?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Interference troubleshooting",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "troubleshooting", "wifi"],
+    "question": "A university library's Wi-Fi gets noticeably worse every day between noon and two, even though the number of connected devices barely changes. How would you go about figuring out why?",
+    "lookingFor": "Structured troubleshooting instinct that distinguishes capacity or congestion causes from interference causes.",
+    "idealAnswer": {
+      "bullets": [
+        "Note stable device count rules out simple overcrowding, pointing toward something else changing at that time",
+        "Suggest checking interference sources tied to the time window, like microwaves in a nearby cafeteria or overlapping-channel networks",
+        "Describe a systematic approach: monitor spectrum and channel usage during the window rather than guessing"
+      ],
+      "modelAnswer": "The fact that the number of connected devices doesn't change but performance drops tells me it's probably not simple overcrowding, so I'd want to know what else regularly happens on campus between noon and two, that's my first real clue. My first practical step would be to actually monitor the spectrum and channel usage during that exact window rather than guessing, if it's on the 2.4GHz band I'd suspect something like microwaves in a nearby cafeteria running lunch service, since those can seriously interfere on that band. I'd also check whether it correlates with a nearby access point or building's peak usage, since interference from a neighbouring network on an overlapping channel is a very common and often overlooked cause that looks like congestion but isn't."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'just add more access points' without diagnosing the actual cause",
+      "Ignoring the clue that device count is stable and still assuming simple overcrowding",
+      "Not proposing any way to actually gather data, just speculating"
+    ],
+    "followUps": ["If it turned out to be interference from microwave ovens, what would you actually do to fix it?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Rural connectivity technology choice",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "rural-connectivity", "planning"],
+    "question": "A remote village of 500 people currently has no broadband. You have to recommend fiber, a cell tower with 4G or 5G backhaul, or satellite internet. What would you actually need to know before you could make that call?",
+    "lookingFor": "Recognizes the decision depends on distance, terrain and future demand rather than picking a 'best' technology in the abstract.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify distance from existing fiber or network infrastructure as the key variable that changes fiber's cost-effectiveness",
+        "Consider terrain and line-of-sight for wireless backhaul options",
+        "Weigh long-term factors like expected demand growth and maintenance capacity, not just upfront cost"
+      ],
+      "modelAnswer": "I wouldn't pick a technology without first knowing how far this village is from the nearest existing fiber backbone, because if there's a fiber line passing within a few kilometers, running a spur out to the village might actually be the cheapest long-term option even though it sounds like the most expensive one upfront. If it's genuinely remote and the terrain has line of sight to an existing tower, a wireless backhaul to a new local cell site could be a faster, cheaper way to get reasonable speeds without trenching cable. Satellite would be my answer only if the village is too remote or the terrain too difficult for either of those, because it's usually the most expensive per user and the most limited on latency and bandwidth, so I'd treat it as the fallback rather than the first choice, and I'd also want to know how much the village's demand is expected to grow, because that determines whether it's worth investing in something with more room to scale."
+    },
+    "commonMistakes": [
+      "Picking one technology as universally best without asking about distance, terrain or budget",
+      "Not mentioning that proximity to existing fiber infrastructure is often the deciding factor",
+      "Treating satellite as either always the answer for remote areas or never a reasonable option, without weighing tradeoffs"
+    ],
+    "followUps": ["What would change your recommendation if the village's population was expected to triple in the next decade?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Caller ID authentication and legitimate anonymity",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "caller-id", "current-development"],
+    "question": "New caller ID verification standards are being rolled out to fight robocalls and scam spoofing, but they also make it harder for legitimate callers, like a domestic violence shelter or a whistleblower hotline, to stay anonymous. How would you balance those two goals in the system you're designing?",
+    "lookingFor": "Recognizes the tension between fraud prevention and legitimate need for anonymity, and proposes a nuanced rather than binary solution.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge caller verification is a real and valuable fix for a genuine, harmful problem",
+        "Recognize that always verifying true identity has a real cost for legitimate anonymous callers with safety needs",
+        "Propose a nuanced middle path, such as verified-but-not-disclosed identity or a trusted-anonymous exemption, rather than an all-or-nothing system"
+      ],
+      "modelAnswer": "Caller verification is solving a real problem, spoofed numbers cause genuine harm through scams, so I wouldn't want to weaken it just because it creates friction elsewhere. But I don't think the answer has to be an all-or-nothing system where verified means fully identified to the recipient, the network can verify that a call is legitimately originating where it claims to without necessarily exposing the caller's identity to the person receiving it. I'd want to design something closer to that, where a call can be marked as authenticated and trustworthy without collapsing the caller's actual identity down to something visible, and have a separate, audited path for organisations like shelters or hotlines that genuinely need to operate anonymously but still be verifiable as legitimate to the network."
+    },
+    "commonMistakes": [
+      "Treating this as a simple security versus privacy tradeoff with no attempt at a middle path",
+      "Not acknowledging that spoofing is a real, serious problem worth solving",
+      "Ignoring specific vulnerable use cases like shelters or whistleblower lines"
+    ],
+    "followUps": ["Who should be trusted to decide which organisations get an anonymous-but-verified exemption?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in network management",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["ai", "automation", "current-development"],
+    "question": "Operators are increasingly using AI to automatically manage network traffic and even self-heal faults without a human in the loop. What's the appeal, and where would you personally want a human to stay in control?",
+    "lookingFor": "A balanced view of automation's benefits at scale and where human judgment should remain involved.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the scale and speed argument, networks generate more signals than humans can react to in real time",
+        "Recognize genuine benefits: faster fault recovery, more efficient resource use, fewer human-delay outages",
+        "Identify where human judgment should stay involved, like decisions with major impact or ambiguous causes"
+      ],
+      "modelAnswer": "The honest appeal is scale, a modern network throws off far more telemetry than any team of engineers could watch and react to in real time, so having a system that can detect a fault and reroute traffic in milliseconds genuinely prevents outages that a human response time just can't match. I'd be comfortable with AI handling routine optimization and fast, low-stakes fault recovery on its own. But I'd still want a human in the loop for decisions with real ambiguity or major consequences, like whether to take a whole region's infrastructure offline for a suspected security issue, or how to reprioritize traffic during an actual emergency, because those are judgment calls with values attached to them, not just an optimization problem, and I don't think we should be comfortable fully automating away the accountability for those."
+    },
+    "commonMistakes": [
+      "Being uncritically enthusiastic about full automation with no limiting principle",
+      "Being reflexively against AI involvement without acknowledging genuine, measurable benefits",
+      "Not giving a concrete example of where human oversight should remain"
+    ],
+    "followUps": ["Who should be accountable if a fully automated system makes a bad call during an outage?"]
+  }
+]

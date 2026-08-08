@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-information-systems-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Why Information Systems",
+    "program": "Information Systems",
+    "difficulty": "easy",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why do you want to study Information Systems specifically?",
+    "lookingFor": "A genuine motivation that shows the applicant understands IS as the bridge between technology and business, not just 'I like computers'.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish IS from pure computer science or pure business",
+        "Give a concrete moment or project that sparked the interest",
+        "Show awareness that IS sits at the intersection of people, process and technology"
+      ],
+      "modelAnswer": "I got interested when I helped my dad's small shop move from a paper ledger to a basic inventory system, and I realised the hard part wasn't the software, it was figuring out how the staff actually worked and building something that fit that. That's when I understood Information Systems isn't just coding, it's about designing how technology serves a business and the people in it. I want a course that treats both sides seriously rather than picking one."
+    },
+    "commonMistakes": [
+      "Saying it's basically the same as computer science",
+      "Only mentioning liking computers with no business angle",
+      "Giving an answer that could apply to any tech degree"
+    ],
+    "followUps": ["How would you explain the difference between IS and computer science to a friend?"]
+  },
+  {
+    "id": "prog-information-systems-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "IS versus Computer Science",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["is-vs-cs", "fundamentals"],
+    "question": "What do you think is the difference between Information Systems and Computer Science?",
+    "lookingFor": "A clear, accurate distinction showing the applicant researched the field rather than guessing.",
+    "idealAnswer": {
+      "bullets": [
+        "Computer science focuses more on algorithms, theory and building software",
+        "Information Systems focuses on how technology solves organisational and business problems",
+        "Note the overlap without collapsing the two into the same thing"
+      ],
+      "modelAnswer": "Computer science tends to dig deep into how software and algorithms work under the hood, while Information Systems is more about how you use that technology to solve a business problem, whether that's a hospital's patient records or a retailer's supply chain. There's real overlap, both need some programming and some systems thinking, but IS puts more weight on people, process and decision-making around the technology. That balance is what drew me to it over a pure CS course."
+    },
+    "commonMistakes": [
+      "Claiming they are identical",
+      "Dismissing IS as 'CS but easier'",
+      "Giving a definition with no example"
+    ],
+    "followUps": ["Which part appeals to you more, the technical side or the business side, and why?"]
+  },
+  {
+    "id": "prog-information-systems-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's program",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["program-fit", "research"],
+    "question": "Why do you want to study Information Systems at our university rather than elsewhere?",
+    "lookingFor": "Specific knowledge of the program's structure, modules, or placements rather than generic praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific module, capstone project, or industry placement scheme",
+        "Connect it to a personal goal or prior experience",
+        "Show it was a deliberate choice, not a fallback"
+      ],
+      "modelAnswer": "I noticed your course has a year-long industry placement built into the third year, and that structure matters to me because I want to see how systems thinking plays out in a real organisation before I graduate, not just in a classroom project. I also read about the business analytics module that pairs database work with real case studies, which is exactly the mix I'm after. A friend who did work experience at a logistics firm told me how much a placement year changed her understanding of the field, and I want that same grounding."
+    },
+    "commonMistakes": [
+      "Vague praise like 'great reputation' with no detail",
+      "Confusing the course with a different department's offering",
+      "Focusing only on the city or campus rather than the course"
+    ],
+    "followUps": ["What would you want to get out of a placement year if you had one?"]
+  },
+  {
+    "id": "prog-information-systems-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant project experience",
+    "program": "Information Systems",
+    "difficulty": "easy",
+    "tags": ["experience", "project"],
+    "question": "Tell us about a project or piece of work where you used technology to solve a problem.",
+    "lookingFor": "A concrete example showing initiative and some understanding of how technology maps onto a real need.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the actual problem before jumping to the tool",
+        "Explain the choices made and why, not just the outcome",
+        "Reflect on what it taught them about systems or process"
+      ],
+      "modelAnswer": "For a school fundraiser I noticed we were tracking donations in three different spreadsheets that never matched up, so I built a single shared form that fed into one sheet with basic validation to stop duplicate entries. It wasn't complicated technically, but figuring out what fields the volunteers actually needed, and getting them to trust a new system over their old habits, was the real challenge. It taught me that the technology is often the easy part compared to getting people to actually use it properly."
+    },
+    "commonMistakes": [
+      "Describing only the tool with no problem context",
+      "Overstating technical complexity that doesn't hold up under questioning",
+      "No reflection on what was learned"
+    ],
+    "followUps": ["What would you do differently if you built it again?"]
+  },
+  {
+    "id": "prog-information-systems-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Data versus information",
+    "program": "Information Systems",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "data", "concept"],
+    "question": "Can you explain the difference between data and information?",
+    "lookingFor": "A clear conceptual grasp of a foundational IS distinction, ideally with an example.",
+    "idealAnswer": {
+      "bullets": [
+        "Data is raw, unprocessed facts or figures",
+        "Information is data that has been organised or processed to be meaningful",
+        "Give a concrete example showing the transformation"
+      ],
+      "modelAnswer": "Data is just raw facts on their own, like a list of numbers such as 42, 15, 90 with no context. Information is what you get once that data is organised so it means something, for example if those numbers are labelled as daily sales for three stores, suddenly you can compare performance and make a decision. I think that gap between raw data and useful information is basically what Information Systems as a field is built to close."
+    },
+    "commonMistakes": [
+      "Using the two terms interchangeably",
+      "Giving a textbook definition with no example",
+      "Confusing information with knowledge or wisdom without noticing the difference"
+    ],
+    "followUps": ["Where does 'knowledge' fit in relation to those two?"]
+  },
+  {
+    "id": "prog-information-systems-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Database basics",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["databases", "fundamentals"],
+    "question": "What is a database, and why might a business use one instead of spreadsheets?",
+    "lookingFor": "Basic understanding of databases and a practical sense of their advantages over spreadsheets at scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a database as an organised, structured store of related data",
+        "Mention advantages like reducing duplication, supporting multiple simultaneous users, and enforcing consistency",
+        "Give a realistic scenario where spreadsheets break down"
+      ],
+      "modelAnswer": "A database is a structured way of storing related data so it can be searched, updated and linked together reliably, usually organised into tables with defined relationships between them. Spreadsheets work fine for small, single-user tasks, but once you have multiple people updating stock levels at the same time, or you need to make sure a customer's address only exists in one place instead of copied across ten sheets, a database keeps things consistent in a way spreadsheets really struggle with. I saw this firsthand when a club I was in kept losing track of members because everyone had their own version of the membership sheet."
+    },
+    "commonMistakes": [
+      "Saying a database is 'just a bigger spreadsheet'",
+      "No mention of multi-user access or data consistency",
+      "Overly technical jargon with no plain explanation"
+    ],
+    "followUps": ["Have you heard of the term 'normalisation'? What do you think it means?"]
+  },
+  {
+    "id": "prog-information-systems-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "current-affairs"],
+    "question": "Have you read anything recently about technology in business that made you think differently?",
+    "lookingFor": "Evidence of genuine curiosity and reading beyond the syllabus, with the ability to discuss it, not just name-drop.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific article, book, or case rather than a vague topic",
+        "Summarise the core idea accurately",
+        "Explain what it changed in the applicant's own thinking"
+      ],
+      "modelAnswer": "I read a case study on how a UK supermarket chain used its loyalty card data to completely restructure its supply chain and pricing, and what struck me was that the real advantage wasn't the technology itself but how they organised the business around insights from it. It made me realise that Information Systems isn't just about installing software, it's about redesigning decisions and processes around what the data tells you. It's part of why I want to study how organisations actually use information rather than just building systems in isolation."
+    },
+    "commonMistakes": [
+      "Naming a topic with no actual detail",
+      "Picking something purely technical with no business angle",
+      "Being unable to answer a simple follow-up about the source"
+    ],
+    "followUps": ["What would you have done differently in that situation?"]
+  },
+  {
+    "id": "prog-information-systems-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Systems thinking",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["systems-thinking", "concept"],
+    "question": "What do you understand by the term 'a system' in an organisational context?",
+    "lookingFor": "Understanding that a system is more than software, it includes people, processes, and data working toward a goal.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a system as interacting components working toward a shared purpose",
+        "Include people and processes, not just hardware and software",
+        "Give an example of a real organisational system"
+      ],
+      "modelAnswer": "I'd say a system is a set of components, which can be people, processes, data and technology, that work together toward a common goal. In a hospital, for example, the patient records system isn't just the software, it's also the receptionists entering data, the doctors relying on it, and the rules about who can access what. If you only fix the software and ignore how the staff actually use it, the system as a whole still fails, which is why I think Information Systems has to look at the whole picture rather than just the technical piece."
+    },
+    "commonMistakes": [
+      "Defining a system as just the software or hardware",
+      "Ignoring the human and process components entirely",
+      "Answer too abstract with no grounding example"
+    ],
+    "followUps": ["Can you think of a system you interact with daily that could be improved?"]
+  },
+  {
+    "id": "prog-information-systems-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Choosing IS over a pure business degree",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why choose Information Systems rather than a straightforward business or management degree?",
+    "lookingFor": "Clarity on why the technical grounding matters to the applicant, not just an interest in business generally.",
+    "idealAnswer": {
+      "bullets": [
+        "Show specific interest in how technology shapes business decisions",
+        "Explain why a purely non-technical business degree would fall short of their goals",
+        "Connect it to a concrete example or ambition"
+      ],
+      "modelAnswer": "I did consider a general business degree, but when I worked on a school project analysing customer feedback data, I realised I wanted to actually understand how the systems behind that data worked, not just interpret the output someone else prepared. A pure business degree would give me strategy and management skills, but I'd be missing the technical fluency to properly evaluate or help design the systems those strategies depend on. Information Systems gives me both halves, and I think that combination will matter more, not less, as more decisions get driven by data."
+    },
+    "commonMistakes": [
+      "Dismissing business degrees as less rigorous",
+      "Not being able to articulate what the technical side actually adds",
+      "Sounding undecided between the two fields rather than committed"
+    ],
+    "followUps": ["Which technical skill are you most looking forward to developing?"]
+  },
+  {
+    "id": "prog-information-systems-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Networks basics",
+    "program": "Information Systems",
+    "difficulty": "easy",
+    "tags": ["networks", "fundamentals"],
+    "question": "In simple terms, what happens when you type a web address into a browser and press enter?",
+    "lookingFor": "A rough but accurate grasp of how a request travels and gets a response, showing basic technical curiosity.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention the browser needing to find the address of the server (DNS lookup, even if not named precisely)",
+        "Mention the request being sent to a server and a response coming back",
+        "Show the applicant has thought about it rather than reciting a memorised script"
+      ],
+      "modelAnswer": "As far as I understand it, the browser first has to work out which server actually holds that website, a bit like looking up a phone number for a name, and that's done through something called DNS. Once it has the right address, it sends a request to that server asking for the page, and the server sends back the data, which the browser then puts together into what we see on screen. I don't know all the technical detail yet, but I find it interesting how much has to happen invisibly in a second or two."
+    },
+    "commonMistakes": [
+      "No mention of any lookup or addressing step",
+      "Overclaiming detailed technical knowledge they can't back up",
+      "Confusing this with how a file downloads rather than a page loading"
+    ],
+    "followUps": ["Why do you think that process needs to be fast and reliable for a business website?"]
+  },
+  {
+    "id": "prog-information-systems-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Cybersecurity awareness",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["security", "current-affairs"],
+    "question": "Why do you think information security matters so much to organisations today?",
+    "lookingFor": "Awareness that security is a business risk issue as well as a technical one, ideally with a real example.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention consequences beyond just 'hacking is bad' - financial, legal, reputational",
+        "Reference a real or plausible example of a breach and its impact",
+        "Show understanding that security involves people and processes, not just firewalls"
+      ],
+      "modelAnswer": "I read about a retailer that had customer card details stolen through a third-party supplier's system, and what struck me was how much damage it did beyond the immediate cost, including regulatory fines and customers simply losing trust and shopping elsewhere. It made me realise that security isn't just a technical add-on, it has to be built into how a system is designed and how staff are trained, because most breaches I've read about started with something like a phishing email rather than someone breaking through a firewall. That's part of why I think Information Systems, which looks at both the technology and the people using it, matters so much for this."
+    },
+    "commonMistakes": [
+      "Treating security as purely a technical, IT-department problem",
+      "No real example or evidence of reading about it",
+      "Vague statement that 'hacking is bad' with no depth"
+    ],
+    "followUps": ["What's one simple thing an organisation can do to reduce that kind of risk?"]
+  },
+  {
+    "id": "prog-information-systems-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Why now, personal spark",
+    "program": "Information Systems",
+    "difficulty": "easy",
+    "tags": ["motivation", "personal-story"],
+    "question": "When did you first become interested in how technology and businesses work together?",
+    "lookingFor": "A genuine, specific origin story rather than a vague or invented interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a real, specific moment or experience",
+        "Explain what exactly caught their attention about it",
+        "Connect it to how their interest developed since then"
+      ],
+      "modelAnswer": "It started when I did work experience at a small accounting firm and watched them switch from an old desktop system to a cloud-based one halfway through my week there. I was surprised by how much the change affected not just the software but how the staff worked together, since suddenly people could access client files from home and collaborate in real time. That got me reading more about how organisations choose and roll out systems, and I've been following that interest ever since, including doing a short online course on databases last year."
+    },
+    "commonMistakes": [
+      "A generic answer like 'I've always liked computers'",
+      "No specific moment or evidence to point to",
+      "Story with no follow-through into further interest or action"
+    ],
+    "followUps": ["What did you do to explore that interest further after that experience?"]
+  },
+  {
+    "id": "prog-information-systems-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Business process improvement",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["business-process", "problem-solving"],
+    "question": "Think of a process you've encountered, at school, work, or elsewhere, that you thought was inefficient. How would you improve it with better use of information?",
+    "lookingFor": "The ability to spot inefficiency and propose a sensible, information-driven improvement, not just 'add an app'.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the inefficient process clearly and concretely",
+        "Identify the actual root cause, not just the symptom",
+        "Propose a realistic improvement grounded in better information flow, not a magic fix"
+      ],
+      "modelAnswer": "At my part-time job, shift scheduling was done by texting a group chat and hoping people replied in time, which meant shifts often went unfilled until the last minute. The real problem wasn't a lack of willing staff, it was that nobody had visibility into who was already available that week. I'd replace it with a simple shared system where staff mark their availability in advance and managers can see gaps immediately, which turns a chaotic guessing game into something based on actual information rather than who happened to check their phone first."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'build an app' with no diagnosis of the real problem",
+      "Picking an example too trivial to say anything interesting about",
+      "Ignoring how the people involved would actually use the new process"
+    ],
+    "followUps": ["What might go wrong when you try to introduce that change?"]
+  },
+  {
+    "id": "prog-information-systems-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "ERP and integrated systems",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["erp", "integration", "advanced"],
+    "question": "Have you come across the term ERP, enterprise resource planning? What problem is it trying to solve?",
+    "lookingFor": "Some awareness of integrated business systems and why fragmented departmental systems cause problems, even if the applicant's knowledge is introductory.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that ERP integrates functions like finance, HR, and inventory into one system",
+        "Identify the problem of disconnected, siloed departmental systems",
+        "Acknowledge it's a big, complex undertaking for organisations even if they haven't studied it formally"
+      ],
+      "modelAnswer": "From what I've read, ERP systems try to bring functions like finance, inventory, HR and sales into a single connected system instead of each department running its own separate software that doesn't talk to the others. The problem it solves is that when systems are siloed, you get things like the warehouse thinking there's stock available that sales already promised to a different customer, because nobody's numbers match up. I understand implementing one is actually really difficult in practice, since it means getting an entire organisation to agree on shared processes, which is part of what makes this area of Information Systems so interesting to me."
+    },
+    "commonMistakes": [
+      "No attempt to answer, assuming it's too advanced",
+      "Describing it as just 'accounting software'",
+      "Ignoring the organisational difficulty of implementing one"
+    ],
+    "followUps": ["Why do you think ERP implementations so often go over budget or fail?"]
+  },
+  {
+    "id": "prog-information-systems-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Career direction within IS",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["career", "goals"],
+    "question": "Information Systems can lead to quite different paths, such as business analysis, systems design, or data roles. Do you have a direction in mind?",
+    "lookingFor": "A grounded, flexible sense of direction connected to real reasoning, not a rigid job title memorised for the interview.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a plausible direction with reasoning behind it",
+        "Show awareness of what that path actually involves day to day",
+        "Stay open to the course shaping or changing that direction"
+      ],
+      "modelAnswer": "Right now I'm leaning toward business analysis, because I like the part of a project where you sit between what the users actually need and what the technical team can build, translating one into the other. I got a taste of that doing a small volunteer project mapping out requirements for a charity's new volunteer sign-up process. That said, I know I haven't been exposed to systems design or data-focused roles in any real depth yet, and I'm genuinely looking forward to the course helping me figure out where I fit best."
+    },
+    "commonMistakes": [
+      "A rigid answer with no reasoning behind the choice",
+      "Claiming total certainty despite no real exposure to the field",
+      "No awareness of what the different paths actually involve"
+    ],
+    "followUps": ["What's drawing you away from the other paths you mentioned?"]
+  },
+  {
+    "id": "prog-information-systems-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud computing basics",
+    "program": "Information Systems",
+    "difficulty": "easy",
+    "tags": ["cloud", "fundamentals"],
+    "question": "In your own words, what is cloud computing, and why do businesses use it?",
+    "lookingFor": "A plain-language, reasonably accurate explanation with a sense of the practical business benefit.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that cloud computing means using computing resources hosted elsewhere over the internet rather than on local machines",
+        "Mention a practical benefit such as flexibility, cost, or not managing your own hardware",
+        "Give a real or plausible example"
+      ],
+      "modelAnswer": "Cloud computing basically means using storage or computing power that lives on someone else's servers, accessed over the internet, instead of running everything on your own machines on-site. For a business, that means they don't have to buy and maintain their own expensive hardware, and they can scale up or down depending on demand, which is especially useful for something like an online shop during a big sale period. I've used cloud storage myself for group projects, and even at that small scale I noticed how much easier it made working from different devices."
+    },
+    "commonMistakes": [
+      "Saying it just means 'the internet' with no real explanation",
+      "No mention of any practical business benefit",
+      "Overcomplicating the answer with jargon that isn't actually explained"
+    ],
+    "followUps": ["Can you think of a downside or risk of relying on cloud services?"]
+  },
+  {
+    "id": "prog-information-systems-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics and data privacy",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["ethics", "privacy", "situational"],
+    "question": "A company you work for could increase profits by using customer data in ways customers haven't clearly agreed to. As someone designing their information systems, how would you think about that?",
+    "lookingFor": "Structured ethical reasoning weighing business interest against user rights and trust, not a snap yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension between commercial pressure and ethical obligation",
+        "Reason through the risks, including legal exposure and loss of trust, not just morality in the abstract",
+        "Land on a practical position, such as favouring transparency and clear consent"
+      ],
+      "modelAnswer": "I'd want to push back on that even before it becomes a legal question, because using data in ways customers haven't agreed to isn't just risky under regulations like GDPR, it also erodes the trust that the whole relationship with customers depends on. I'd raise it with whoever's responsible for the decision and suggest we find a way to get clear, genuine consent, or a different way to use the data that customers would actually be comfortable with if they knew about it. If I were ignored and asked to build it anyway, I think I'd have to be honest that I'm not comfortable designing something the customers themselves haven't agreed to."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'it's illegal, don't do it' with no deeper reasoning",
+      "Focusing purely on profit with no acknowledgement of the ethical issue",
+      "Refusing to take any clear position at all"
+    ],
+    "followUps": ["Does your answer change if the data use is legal but customers just wouldn't like it?"]
+  },
+  {
+    "id": "prog-information-systems-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "User experience and adoption",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["ux", "adoption", "people"],
+    "question": "Why do you think some technically excellent systems still fail once they're rolled out in an organisation?",
+    "lookingFor": "Understanding that technical quality alone doesn't guarantee success, and that user adoption and change management matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that resistance to change or poor training often undermines even good systems",
+        "Mention usability or fit with existing workflows as a factor",
+        "Show understanding that people, not just code, determine success"
+      ],
+      "modelAnswer": "I think a system can be technically brilliant and still fail if the people who have to use it every day weren't properly involved in designing it or trained on it, so they either avoid it or use workarounds that undo its whole purpose. I read about a hospital that rolled out a new records system that was more efficient on paper, but nurses found it slower for the tasks they did most often, so they kept using the old paper backups anyway. It taught me that Information Systems has to treat adoption and usability as seriously as the technical build, otherwise you've solved the wrong problem."
+    },
+    "commonMistakes": [
+      "Blaming failure entirely on bad code or bad technology",
+      "Ignoring the human and organisational side of adoption",
+      "No concrete example to ground the answer"
+    ],
+    "followUps": ["What would you do differently at the design stage to avoid that outcome?"]
+  },
+  {
+    "id": "prog-information-systems-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Group project experience",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["teamwork", "project", "behavioral"],
+    "question": "This course involves a lot of group project work, often simulating real client requirements. How do you feel about that, and what experience do you have working in teams on a technical or business task?",
+    "lookingFor": "Realistic self-assessment plus a genuine example of teamwork with some friction and resolution, showing readiness for collaborative work.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific example of team-based project work, ideally with a technical or business element",
+        "Be honest about what was hard, not just a success story",
+        "Show what they learned about working with others toward a shared deliverable"
+      ],
+      "modelAnswer": "I worked in a team of four on a school enterprise challenge where we had to design a small booking system idea for a local gym, and coordinating who did what was harder than the actual idea itself, since two of us wanted to focus on the design and nobody wanted to write the report. We ended up splitting roles clearly and having a short check-in every few days, which sounds simple but genuinely fixed most of our early confusion. I actually enjoy that kind of collaborative pressure, and I'm looking forward to the more realistic client-style projects this course involves."
+    },
+    "commonMistakes": [
+      "Claiming they prefer working entirely alone with no real reflection",
+      "A story with no real conflict or challenge, sounding rehearsed",
+      "No specific example, just a general statement about liking teamwork"
+    ],
+    "followUps": ["What role do you naturally tend to take on in a group project?"]
+  },
+  {
+    "id": "prog-information-systems-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Programming exposure",
+    "program": "Information Systems",
+    "difficulty": "easy",
+    "tags": ["programming", "experience"],
+    "question": "Do you have any experience with programming or coding, and how do you feel about the technical side of this degree?",
+    "lookingFor": "Honest self-assessment of technical background and a realistic, positive attitude toward learning more, without overstating skill.",
+    "idealAnswer": {
+      "bullets": [
+        "Give an honest account of actual experience, however small",
+        "Avoid overstating skill level that would collapse under a follow-up",
+        "Show a positive, realistic attitude toward the technical demands ahead"
+      ],
+      "modelAnswer": "I'm not coming in as an experienced programmer, but I did a short introductory course in Python where I built a simple script to sort and total a list of expenses, and I found the process of debugging surprisingly satisfying once something finally worked. I know Information Systems isn't purely a coding degree, but I'm genuinely looking forward to building on that basic foundation properly, rather than being intimidated by it. I'd rather be honest that I'm a beginner who's motivated than pretend to know more than I do."
+    },
+    "commonMistakes": [
+      "Overstating coding ability that won't survive a technical follow-up",
+      "Sounding fearful or resistant to the technical side of the course",
+      "Claiming no interest in the technical side at all, undermining program fit"
+    ],
+    "followUps": ["What was the hardest part of that experience, and how did you get through it?"]
+  },
+  {
+    "id": "prog-information-systems-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "SDLC awareness",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["sdlc", "advanced", "project-management"],
+    "question": "Have you heard of the systems development life cycle? Can you outline roughly what stages it might involve?",
+    "lookingFor": "Some structured, even if imprecise, understanding of how a system moves from idea to deployment, showing the applicant has looked beyond surface-level interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention roughly ordered stages such as identifying requirements, design, building, testing, and deployment",
+        "Acknowledge that requirements gathering and testing are often underestimated",
+        "Be honest about the limits of their knowledge rather than bluffing"
+      ],
+      "modelAnswer": "As I understand it, it roughly moves from working out what the users actually need, into designing how the system will meet that, then building it, testing it properly, and rolling it out, often followed by ongoing maintenance once it's live. From what I've read, the requirements stage is often the one that gets rushed, and that's usually where projects go wrong later, because you end up building the wrong thing very efficiently. I haven't studied this formally yet, so I'd expect the course to give me a much more precise version of this than what I've picked up on my own."
+    },
+    "commonMistakes": [
+      "Bluffing detailed knowledge that falls apart under a follow-up",
+      "Listing stages with no sense of why order or iteration matters",
+      "Refusing to attempt an answer at all"
+    ],
+    "followUps": ["Why do you think requirements gathering is so often underestimated?"]
+  },
+  {
+    "id": "prog-information-systems-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Handling a critical system failure",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["situational", "problem-solving", "judgement"],
+    "question": "Imagine you're managing a small organisation's system and it goes down during a busy period, with staff unable to access anything they need. How would you think about handling that?",
+    "lookingFor": "Calm, structured thinking under pressure, considering both immediate mitigation and longer-term prevention, not just a technical fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise immediate communication and a stopgap way for staff to keep working",
+        "Distinguish between fixing the immediate symptom and diagnosing the actual cause",
+        "Mention learning from the incident afterward to prevent repeats"
+      ],
+      "modelAnswer": "My first instinct would be to communicate clearly with staff about what's happening and give them some way to keep working in the meantime, even if it's a rough manual workaround, because uncertainty is often worse than the outage itself. At the same time I'd want whoever handles the technical side to focus on diagnosing the actual cause rather than just restarting things and hoping it doesn't happen again. Afterwards, I think the important part is doing a proper review of what went wrong and what should change, since an outage that isn't understood is just going to repeat itself."
+    },
+    "commonMistakes": [
+      "Jumping straight to a technical fix with no mention of communication",
+      "No consideration of a temporary workaround for staff during the outage",
+      "No mention of learning from the incident afterward"
+    ],
+    "followUps": ["How would you decide what to communicate to staff versus customers?"]
+  },
+  {
+    "id": "prog-information-systems-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Emerging technology and AI",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "ai", "trends"],
+    "question": "How do you think artificial intelligence is changing the way organisations design and use their information systems?",
+    "lookingFor": "A reasonably informed, balanced view showing awareness of both opportunity and risk, not hype or fear alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a concrete way AI is being used in information systems, such as automating routine decisions or analysis",
+        "Acknowledge a genuine limitation or risk, not just enthusiasm",
+        "Show this is something they've actually thought about, not a rehearsed buzzword answer"
+      ],
+      "modelAnswer": "I've read about companies using AI to automate things like fraud detection or customer service queries that used to need a person reviewing every case, which frees staff up for more judgement-heavy work. What interests me is that it also raises new questions for Information Systems, like how you design a system so people can actually trust and check an AI's decision rather than just accepting it blindly. I don't think it replaces the need for good systems design, if anything it makes decisions about data quality and oversight even more important, which is part of why I want to study this properly rather than just read about it casually."
+    },
+    "commonMistakes": [
+      "Pure hype with no mention of risk or limitation",
+      "Pure fear with no mention of genuine opportunity",
+      "A vague, buzzword-heavy answer with no specific example"
+    ],
+    "followUps": ["What's a risk of relying too heavily on an AI system to make decisions?"]
+  },
+  {
+    "id": "prog-information-systems-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Contribution to the course",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["program-fit", "self-awareness"],
+    "question": "What do you think you would bring to our Information Systems cohort that other applicants might not?",
+    "lookingFor": "Genuine, specific self-awareness connecting a real trait or experience to what the course actually needs, not generic self-praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific trait, skill, or background, not just 'hard work' or 'passion'",
+        "Connect it clearly to something the course or group work would actually value",
+        "Stay grounded and avoid overselling"
+      ],
+      "modelAnswer": "I spent two years running the tech side of my school's small student-run cafe, which meant I was constantly translating between what the non-technical students running it actually needed and what I could realistically set up with basic tools we had access to. I think that kind of practical, translate-between-two-groups experience is exactly what group projects on this course would need, since someone has to keep the technical ambition grounded in what's actually usable. I'm not claiming to be the strongest coder in the room, but I do think I'm good at making sure a project stays useful to the people it's actually for."
+    },
+    "commonMistakes": [
+      "Generic self-praise like 'I work hard and I'm a team player'",
+      "No real connection between the trait claimed and the course's actual demands",
+      "Overselling in a way that sounds rehearsed rather than genuine"
+    ],
+    "followUps": ["Can you give an example of when that trait actually made a difference to an outcome?"]
+  },
+  {
+    "id": "prog-information-systems-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Long-term goals in the field",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["goals", "future", "motivation"],
+    "question": "Looking further ahead, what kind of impact do you hope to have by working in this field?",
+    "lookingFor": "An ambitious yet grounded sense of purpose connected honestly to the course, not an over-rehearsed script.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a direction rather than an overly specific job title",
+        "Connect it honestly to a real motivation, not just an impressive-sounding goal",
+        "Show flexibility, acknowledging the path may change as they learn more"
+      ],
+      "modelAnswer": "I'd like to end up working somewhere that helps smaller organisations, like the local shops and charities I grew up around, actually benefit from the kind of systems that big companies take for granted, since I've seen firsthand how much a badly organised system can waste a small team's time and energy. I know that might look different in practice once I actually understand the field properly, whether that's consulting, in-house analysis, or something else entirely. What I'm sure of is that I want to be someone who makes systems genuinely usable for the people depending on them, not just technically impressive."
+    },
+    "commonMistakes": [
+      "An overly rehearsed, unrealistically specific ten-year plan",
+      "A goal disconnected from anything the course actually offers",
+      "Sounding uncommitted to the field beyond just getting a degree"
+    ],
+    "followUps": ["What's the first step you'd want to take toward that after graduating?"]
+  }
+]

@@ -1,0 +1,603 @@
+[
+  {
+    "id": "prog-automotive-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Engine thermodynamic cycles",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["engines", "thermodynamics", "efficiency"],
+    "question": "Why is a diesel engine typically more fuel-efficient than a petrol engine of similar size?",
+    "lookingFor": "Grasp of compression ratio and cycle differences, not just a memorized fact.",
+    "idealAnswer": {
+      "bullets": [
+        "Diesel engines run much higher compression ratios than petrol engines",
+        "Thermal efficiency rises with compression ratio, so diesel extracts more work from the same fuel energy",
+        "Diesel also runs lean and unthrottled at part load, cutting pumping losses petrol engines suffer"
+      ],
+      "modelAnswer": "It comes down to compression ratio. A diesel engine compresses air alone to around 18 to 22 to 1 before injecting fuel, versus roughly 10 to 1 in a petrol engine, and thermal efficiency in both the Otto and Diesel cycles improves as that ratio goes up. Diesel also doesn't need a throttle plate at part load the way petrol engines do, so it avoids the pumping losses that waste energy when you're cruising rather than flooring it. That's why a diesel can return noticeably better fuel economy even though it's often the heavier, lower-revving engine on paper."
+    },
+    "commonMistakes": [
+      "Saying diesel is just 'denser fuel' with no mention of compression ratio",
+      "Confusing the Otto and Diesel thermodynamic cycles",
+      "Ignoring the throttling losses that hurt petrol engines at part load"
+    ],
+    "followUps": ["Why has diesel's popularity dropped in passenger cars despite this efficiency advantage?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Well-to-wheel efficiency",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["ev", "hydrogen", "efficiency"],
+    "question": "How would you compare the well-to-wheel energy efficiency of a battery electric vehicle to a hydrogen fuel cell vehicle?",
+    "lookingFor": "Ability to trace an energy pathway through conversion losses rather than quoting a single efficiency number.",
+    "idealAnswer": {
+      "bullets": [
+        "Trace the full chain: generation, storage or conversion, and the vehicle's own losses",
+        "Battery EVs lose relatively little between grid and wheel, hydrogen loses a lot to electrolysis and fuel cell conversion",
+        "Acknowledge hydrogen's advantages elsewhere, like refuel time and energy density for heavy vehicles"
+      ],
+      "modelAnswer": "A battery EV takes grid electricity, stores it directly, and converts it to motion with maybe 15 to 20 percent total loss end to end. A hydrogen car has to make hydrogen by electrolysis, compress or liquefy it, transport it, and then convert it back to electricity in a fuel cell, and each of those steps loses energy, so you can end up needing two to three times as much primary electricity for the same distance travelled. That efficiency gap is why battery EVs have pulled ahead for passenger cars, but I don't think it settles the whole debate, because hydrogen's fast refuelling and better energy density per kilogram still make it attractive for trucks and buses where battery weight is a real problem."
+    },
+    "commonMistakes": [
+      "Treating both technologies as roughly equivalent without tracing the conversion steps",
+      "Ignoring where the hydrogen actually comes from",
+      "Dismissing hydrogen entirely instead of noting where it still makes sense"
+    ],
+    "followUps": ["Does your answer change for green hydrogen made from renewable electricity versus grey hydrogen from natural gas?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Battery thermal runaway",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["battery", "safety", "ev"],
+    "question": "What causes thermal runaway in lithium-ion batteries, and what design strategies help prevent it?",
+    "lookingFor": "Understanding of the failure mechanism plus practical engineering countermeasures, not just the word 'fire'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the chain reaction: internal short or overheating triggers exothermic reactions that self-accelerate",
+        "Mention a trigger such as a manufacturing defect, physical damage, or overcharging",
+        "Give real countermeasures: battery management systems, cell spacing, cooling, and separator materials"
+      ],
+      "modelAnswer": "Thermal runaway starts when something, often an internal short from a manufacturing defect or physical damage, pushes a cell's temperature past the point where its internal chemical reactions start generating heat faster than it can dissipate. That heat accelerates the reactions further, and the process can cascade to neighbouring cells and become self-sustaining, releasing flammable gas along the way. Engineers manage the risk with battery management systems that monitor individual cell voltage and temperature, physical spacing and thermal barriers between cells so one failure doesn't propagate, and cooling systems that keep the pack in a safe operating window. I find it a good example of how EV safety is really a systems problem, not just a chemistry problem."
+    },
+    "commonMistakes": [
+      "Describing it as simply 'the battery catches fire' with no mechanism",
+      "Naming only one countermeasure instead of a layered defense",
+      "Confusing thermal runaway with normal battery degradation over charge cycles"
+    ],
+    "followUps": ["Why is thermal runaway harder to manage in a large EV pack than in a single phone battery?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Understeer and oversteer",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["dynamics", "chassis", "handling"],
+    "question": "What's the difference between understeer and oversteer, and why does it matter for chassis design?",
+    "lookingFor": "Clear physical explanation of which axle loses grip first, and why manufacturers bias toward one.",
+    "idealAnswer": {
+      "bullets": [
+        "Understeer: front tyres lose grip first, car pushes wide of the intended line",
+        "Oversteer: rear tyres lose grip first, back of the car swings out",
+        "Most road cars are tuned to understeer slightly because it's more predictable and recoverable for an average driver"
+      ],
+      "modelAnswer": "Understeer is when you turn the wheel and the front tyres run out of grip first, so the car keeps travelling straighter than you intended and pushes wide of the corner. Oversteer is the opposite, the rear loses grip first and the back end starts to swing round, which can spin the car if you don't correct it. Most road cars are deliberately set up to understeer a little at the limit, because it's a gentler, more intuitive failure mode for an average driver to sense and correct, whereas oversteer needs quick countersteering that most people never practice. It's a good example of how a chassis engineer isn't just chasing grip, they're choosing what kind of mistake the car forgives."
+    },
+    "commonMistakes": [
+      "Mixing up which axle loses grip in each case",
+      "Describing the terms without explaining the design implication",
+      "Assuming oversteer is always worse or always undesirable"
+    ],
+    "followUps": ["Why might a performance car be deliberately tuned toward oversteer instead?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Aerodynamic drag trade-offs",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["aerodynamics", "design", "efficiency"],
+    "question": "Why do modern cars chase a lower drag coefficient so aggressively, and what are the trade-offs?",
+    "lookingFor": "Understanding of the efficiency payoff at speed alongside honest acknowledgment of the design costs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that aerodynamic drag rises with the square of speed, so it dominates energy use at highway speed",
+        "Connect it to real numbers: EV range and fuel economy both benefit disproportionately from small Cd gains",
+        "Name the trade-offs: styling constraints, interior space, cooling, and cost of active aero"
+      ],
+      "modelAnswer": "Drag force scales with the square of speed, so at motorway speeds it becomes the dominant force the powertrain has to fight, meaning even a small cut in drag coefficient meaningfully improves fuel economy or, for an EV, range. That's why manufacturers now obsess over details like smooth underbodies and active grille shutters that were never worth the cost when fuel was cheap. But it's not free, chasing a low Cd tends to push designers toward sloped rooflines and narrower cabins that fight against interior space and visibility, and it can also restrict how much cooling air reaches the brakes and radiator. I think that tension between slippery shape and usable, safe interior is one of the more interesting constraints in car design."
+    },
+    "commonMistakes": [
+      "Stating drag matters without explaining the speed-squared relationship",
+      "Treating a low drag coefficient as purely beneficial with no design cost",
+      "Confusing drag coefficient with frontal area, which is a separate factor"
+    ],
+    "followUps": ["Drag coefficient alone doesn't determine total drag. What else matters?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Real driving emissions testing",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["emissions", "regulation", "testing"],
+    "question": "What's the difference between lab-based emissions testing and Real Driving Emissions testing, and why did regulators introduce the latter?",
+    "lookingFor": "Awareness of why lab cycles proved insufficient and how the industry responded.",
+    "idealAnswer": {
+      "bullets": [
+        "Lab tests run a fixed, predictable cycle on a dynamometer under controlled conditions",
+        "RDE tests use portable equipment on real roads with varying speed, load, temperature, and altitude",
+        "Explain the motivation: lab cycles were being optimised for, or gamed, and didn't reflect real-world emissions"
+      ],
+      "modelAnswer": "Lab testing runs a car through a fixed, repeatable speed and load cycle on a dynamometer indoors, which is great for consistency but means engineers know exactly what conditions the car will be judged on. Real Driving Emissions testing instead straps a portable analyser to the car and measures what actually comes out of the tailpipe on real roads, with real acceleration, hills, and temperatures. Regulators brought RDE in after it became clear that some cars performed far worse on the road than in the lab, which the diesel emissions scandal made impossible to ignore. I think it's a good example of a test evolving because the thing it was measuring stopped being representative of reality."
+    },
+    "commonMistakes": [
+      "Describing RDE without explaining what made lab testing insufficient",
+      "Vague answer with no mention of specific driving conditions RDE captures",
+      "Confusing emissions testing with fuel economy testing cycles"
+    ],
+    "followUps": ["What are the engineering challenges of designing an engine to perform consistently across such varied real-world conditions?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Sensor fusion in autonomous vehicles",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["autonomous", "sensors", "safety"],
+    "question": "Why do most autonomous vehicle systems combine cameras, radar, and lidar rather than relying on just one?",
+    "lookingFor": "Understanding of each sensor's strengths and blind spots, and why redundancy matters for safety-critical decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Cameras give rich detail and colour but struggle in glare, darkness, or fog",
+        "Radar sees through weather and measures speed well but has coarse resolution",
+        "Lidar gives precise 3D shape and distance but is expensive and can be degraded by heavy rain or snow",
+        "Combining them gives redundancy so no single sensor's weakness becomes the system's weakness"
+      ],
+      "modelAnswer": "Each sensor sees the world differently and fails differently. Cameras are brilliant at reading lane markings, traffic lights, and signs, but they struggle in low light, glare, or heavy rain. Radar cuts straight through bad weather and is very good at measuring another vehicle's speed, but its spatial resolution is coarse, so it can't tell you the exact shape of an object. Lidar gives a precise 3D point cloud of everything around the car, which is fantastic for detecting an unexpected obstacle, but it's expensive and can be degraded by fog or heavy snow too. Fusing all three means the system isn't betting everything on one sensor's blind spot, which matters enormously when a wrong call has real safety consequences."
+    },
+    "commonMistakes": [
+      "Naming the sensors without explaining their individual limitations",
+      "Claiming one sensor type is simply 'better' and should replace the others",
+      "Not connecting sensor fusion back to the safety case for redundancy"
+    ],
+    "followUps": ["Tesla has argued cameras alone are sufficient and dropped radar and lidar from some models. What do you think of that bet?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Crumple zones and crash safety",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["safety", "structures", "crash"],
+    "question": "How does a crumple zone actually make a crash safer, given that it means the car deforms?",
+    "lookingFor": "Grasp of energy absorption and deceleration over distance, not just 'it's softer'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that crumpling absorbs kinetic energy by controlled plastic deformation of the structure",
+        "Connect it to physics: spreading the deceleration over a longer distance and time reduces peak force on occupants",
+        "Mention that the passenger cell is deliberately kept rigid while the zones around it are designed to fail"
+      ],
+      "modelAnswer": "The whole idea is that the car's kinetic energy has to go somewhere in a crash, and a crumple zone gives it somewhere controlled to go, into the plastic deformation of the metal, rather than into the occupants. By collapsing over a certain distance instead of stopping instantly, the deceleration is spread over more time, which lowers the peak force that hits the people inside, and that peak force is really what causes injury. Meanwhile the passenger cell itself is engineered to stay as rigid as possible, so the deformation happens around the occupants rather than into their space. It's a nice example of engineering something to fail on purpose, in a very specific and controlled way, to protect what matters most."
+    },
+    "commonMistakes": [
+      "Saying crumple zones just make the car 'softer' with no physics",
+      "Missing the distinction between the rigid safety cell and the sacrificial structure around it",
+      "Not connecting deformation distance to reduced peak force"
+    ],
+    "followUps": ["How does this design goal conflict with wanting a stiff, sporty-feeling chassis?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Lightweight materials trade-offs",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["materials", "lightweighting", "manufacturing"],
+    "question": "Automakers are increasingly using aluminum and carbon fiber instead of steel. What trade-offs come with that choice?",
+    "lookingFor": "Balanced view across weight, cost, manufacturability, and repairability, not just 'lighter is better'.",
+    "idealAnswer": {
+      "bullets": [
+        "Weight reduction improves efficiency, range, and handling",
+        "Aluminum and carbon fiber cost more and are harder to weld, form, or repair than steel",
+        "Consider manufacturing scale: carbon fiber especially struggles to reach mass-market production volumes cheaply"
+      ],
+      "modelAnswer": "Cutting weight pays off almost everywhere, better acceleration, better handling, better fuel economy or EV range, so the appeal is obvious. But aluminum can't just be welded and stamped the way steel is, it needs different joining techniques like rivets and adhesives, and it work-hardens in ways that make repair after a crash more specialised and expensive. Carbon fiber is even more extreme, it's incredibly strong for its weight but the layup process is slow and costly, which is why you mostly see it on low-volume performance or luxury cars rather than mainstream ones. I think the honest answer is that lightweighting is a real engineering win but it pushes cost and complexity somewhere else in the value chain, usually into manufacturing and after-crash repair."
+    },
+    "commonMistakes": [
+      "Treating lighter materials as an unambiguous upgrade with no downside",
+      "Ignoring repairability and insurance cost implications",
+      "Not distinguishing why carbon fiber remains rare in mass-market cars specifically"
+    ],
+    "followUps": ["How does material choice interact with crash safety design?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Hybrid powertrain architecture",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["hybrid", "powertrain", "architecture"],
+    "question": "What's the difference between a series hybrid and a parallel hybrid powertrain?",
+    "lookingFor": "Accurate mechanical distinction between the two layouts and a sense of when each makes sense.",
+    "idealAnswer": {
+      "bullets": [
+        "Series hybrid: engine only generates electricity, an electric motor always drives the wheels",
+        "Parallel hybrid: both engine and electric motor can mechanically drive the wheels, often together",
+        "Note the trade-off: series is simpler and lets the engine run at its efficient point, parallel avoids conversion losses"
+      ],
+      "modelAnswer": "In a series hybrid the combustion engine never actually turns the wheels, it just drives a generator to make electricity, and an electric motor does all the driving, which is closer in spirit to an EV with an onboard charger. In a parallel hybrid, both the engine and the electric motor are mechanically connected to the wheels and can power them either separately or together, which is the layout most conventional hybrids like a Prius-style system use. The series setup lets the engine always run at its most efficient rpm regardless of road speed, but it pays an energy penalty converting mechanical to electrical and back again, while the parallel setup avoids that conversion loss at the cost of a more complex transmission. I find it a nice illustration of how the same overall goal, blending two power sources, can be engineered in genuinely different ways depending on what you're willing to trade off."
+    },
+    "commonMistakes": [
+      "Describing hybrids generically without distinguishing series from parallel",
+      "Claiming the engine drives the wheels directly in a series hybrid",
+      "Missing the energy conversion penalty that series hybrids incur"
+    ],
+    "followUps": ["Where would a series hybrid architecture make the most sense, and where would parallel be preferred?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Autonomous vehicle crash-decision dilemma",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "autonomous", "safety"],
+    "question": "An autonomous vehicle you helped design faces an unavoidable collision and must choose between two harmful outcomes. How do you think about designing for that scenario?",
+    "lookingFor": "Structured ethical reasoning about a genuinely hard engineering problem, not a glib trolley-problem answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the scenario is rare but real, and that avoiding the decision entirely isn't possible once you're building the system",
+        "Reason about it as a systems and probability problem, minimizing expected harm, rather than picking a single moral rule",
+        "Bring in the practical side: transparency, regulation, and testing matter as much as the abstract ethical answer"
+      ],
+      "modelAnswer": "I'd resist pretending there's a clean rule that resolves every case, because in reality the car isn't choosing between two people with certainty, it's making a probabilistic judgement under uncertainty about outcomes it can't fully predict. What I think matters more in practice is designing the system to minimize expected harm across the range of situations it might face, tested exhaustively in simulation and closed environments before it ever reaches public roads, and being honest and transparent with regulators and the public about how those trade-offs are made rather than hiding them in code. I'd also want the priority to always be avoiding getting into that unavoidable situation in the first place, through better perception and earlier braking, because most of these dilemmas are really failures further upstream. It's uncomfortable, but I think engineers have a responsibility to reason about it explicitly rather than leaving it as an accident of whatever the code happens to do."
+    },
+    "commonMistakes": [
+      "Giving a snap moral verdict without acknowledging the complexity",
+      "Treating it as a pure philosophy question disconnected from engineering practice",
+      "Claiming the scenario 'would never happen' and dodging the question entirely"
+    ],
+    "followUps": ["Who do you think should be accountable if that decision leads to harm, the engineer, the company, or the regulator?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Engineering integrity under pressure",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "engineering-integrity", "emissions"],
+    "question": "The diesel emissions scandal showed engineers building software that cheated tests. If you were on a team under pressure to hit an emissions target you knew was borderline, what would you do?",
+    "lookingFor": "Genuine reflection on professional integrity under organizational pressure, with a concrete course of action.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the real pressure involved, not just condemn it from a distance",
+        "Commit to escalating honestly through proper channels rather than staying silent or improvising a workaround",
+        "Show understanding of why the deception was so damaging, both to trust and to real-world air quality"
+      ],
+      "modelAnswer": "I think it's easy to judge from the outside, but the pressure to hit a target on a deadline with your job on the line is genuinely hard, so I don't want to pretend the answer is simple. What I'd want to do is flag the gap clearly and in writing as soon as I saw it, to my manager and if needed further up, rather than quietly finding a workaround or staying silent and hoping someone else deals with it. If I was told to build something I believed was designed to deceive a regulator, I don't think I could do it, because it isn't just a rule being broken, it's real pollution being pumped into the air that real people breathe, dressed up as compliance. I'd rather be the person who raised the uncomfortable flag early than the one who has to explain later why I stayed quiet."
+    },
+    "commonMistakes": [
+      "Answering only in the abstract with no personal commitment to action",
+      "Underestimating how much pressure and ambiguity exists in real engineering teams",
+      "Focusing solely on legal risk rather than the real-world harm of the deception"
+    ],
+    "followUps": ["What would you do if your manager told you this was standard practice and everyone did it?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Solid-state battery development",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["battery", "innovation", "ev"],
+    "question": "What's the promise of solid-state batteries over today's lithium-ion cells, and why hasn't the industry switched yet?",
+    "lookingFor": "Awareness of a genuinely current technology debate, with realistic understanding of why it's still not mainstream.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core change: a solid electrolyte instead of a liquid one",
+        "Name the promised benefits: higher energy density, faster charging, and reduced fire risk",
+        "Give honest reasons for the delay: manufacturing scale, cost, and interface degradation issues"
+      ],
+      "modelAnswer": "Solid-state batteries replace the liquid electrolyte in today's lithium-ion cells with a solid one, which in principle allows higher energy density, faster charging, and a much lower fire risk since there's no flammable liquid to leak or ignite. Several manufacturers, including Toyota, have said they're targeting solid-state cells for production EVs later this decade. The reason it hasn't happened yet is that manufacturing a solid electrolyte at automotive scale and cost is genuinely hard, and the interface between the solid electrolyte and the electrodes tends to degrade faster than engineers would like, which shortens the battery's usable life. I find it a good example of a technology that's proven in the lab but still has to survive the much less glamorous problem of being made reliably by the millions."
+    },
+    "commonMistakes": [
+      "Overstating solid-state batteries as already commercially available",
+      "Naming the benefits without any grasp of why adoption has been slow",
+      "Confusing solid-state batteries with a completely different battery chemistry"
+    ],
+    "followUps": ["If solid-state batteries do arrive at scale, what do you think it changes about EV design beyond just range?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "ICE phase-out policy debate",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["policy", "electrification", "debate"],
+    "question": "Several countries have set dates to phase out new petrol and diesel car sales. Do you think that's the right way to accelerate electrification, or are there better levers?",
+    "lookingFor": "An informed, opinionated position that weighs alternative policy levers, not just a for-or-against reaction.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the actual policy landscape, such as the EU's 2035 target and its recent softening",
+        "Weigh the ban approach against alternatives like carbon pricing, charging infrastructure investment, or purchase incentives",
+        "Land on a considered position while acknowledging the trade-offs of that position"
+      ],
+      "modelAnswer": "I know the EU set 2035 as the year new combustion car sales stop, and that's already been softened to allow some e-fuel exceptions after pushback from manufacturers and some member states, which tells me hard bans are politically fragile even when they're technically clear. I think a firm date is useful because it gives the whole supply chain, from battery makers to dealerships, a fixed point to plan around, but I don't think it works well on its own without matching investment in charging infrastructure and grid capacity, otherwise you're mandating a technology people can't actually use reliably. If I had to pick, I'd pair the date with strong infrastructure investment and a purchase incentive that fades over time, because the ban gives certainty but the incentives and infrastructure are what actually make the transition livable for ordinary buyers, not just aspirational."
+    },
+    "commonMistakes": [
+      "Taking a strong stance with no awareness of the actual policy details or recent developments",
+      "Ignoring infrastructure and grid capacity as a constraint",
+      "Giving a purely emotional answer with no policy reasoning"
+    ],
+    "followUps": ["What happens to the used car market and lower-income buyers under a hard ICE ban?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Software-defined vehicles and right to repair",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["software", "ota", "right-to-repair"],
+    "question": "Cars increasingly get over-the-air software updates, like phones. What new engineering and ethical questions does that raise for the industry?",
+    "lookingFor": "Awareness of a genuinely current shift in the industry, connecting engineering implications to broader ownership and repair questions.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the engineering shift: cars now need robust update infrastructure, cybersecurity, and rollback safety",
+        "Raise the ownership question: features gated behind subscriptions, or hardware disabled remotely",
+        "Connect it to right-to-repair debates around independent mechanics accessing diagnostic and update systems"
+      ],
+      "modelAnswer": "On the engineering side, OTA updates mean a car now needs the same kind of update infrastructure a phone has, with cybersecurity to stop malicious updates, and safe rollback if an update goes wrong, which is a much higher bar when the software controls braking or steering rather than just an app. On the ownership side, it raises real questions I find uncomfortable, like a manufacturer remotely disabling a feature you paid for, or locking heated seats behind a monthly subscription even though the hardware is already installed in the car you own. It also feeds into the right-to-repair debate, because if diagnostics and updates only flow through the manufacturer's own channel, independent mechanics can get locked out of fixing cars that used to be repairable by anyone with the right tools. I think the technology is genuinely useful, but it shifts a lot of control from the owner to the manufacturer in a way the industry hasn't fully reckoned with yet."
+    },
+    "commonMistakes": [
+      "Treating OTA updates as purely a convenience with no downside",
+      "Missing the cybersecurity implications of remotely updatable safety-critical systems",
+      "Not connecting the topic to the right-to-repair debate"
+    ],
+    "followUps": ["Should manufacturers be allowed to sell hardware features as software-gated subscriptions?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Adapting EV design for extreme climate",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "thermal-management", "ev"],
+    "question": "Suppose you're asked to adapt a popular EV design for a country with extreme desert heat. What would you need to reconsider?",
+    "lookingFor": "Applied thinking that connects battery thermal management, range, and comfort to a concrete constraint.",
+    "idealAnswer": {
+      "bullets": [
+        "Battery thermal management: cooling capacity has to handle sustained high ambient temperature, not just fast charging heat",
+        "Range impact: cabin air conditioning draws heavily on the battery, cutting real-world range",
+        "Materials and components: interior materials, seals, and electronics need higher heat tolerance ratings"
+      ],
+      "modelAnswer": "The first thing I'd look at is the battery's cooling system, because a pack designed for a temperate climate might be sized to handle heat from fast charging but not the sustained load of sitting in 45 degree heat all day, so I'd want a liquid cooling loop with more margin and probably better shading or reflective surface treatment on the battery enclosure itself. I'd also expect cabin air conditioning to eat a much bigger share of the battery's energy in that climate, so range figures would need to be re-tested and probably marketed differently for that market rather than just reusing the temperate-climate number. Beyond that I'd check that interior plastics, seals, and any exposed electronics are rated for the higher sustained temperatures, because components that are fine in a mild climate can degrade faster under constant desert heat. It's a good reminder that a spec sheet range number is really only true for the climate it was tested in."
+    },
+    "commonMistakes": [
+      "Only mentioning air conditioning without addressing battery thermal management",
+      "Treating range as a fixed number unaffected by climate",
+      "Ignoring material and component durability under sustained heat"
+    ],
+    "followUps": ["How would your answer differ if you were adapting the same car for extreme cold instead?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Braking system for a driverless shuttle",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "autonomous", "braking"],
+    "question": "You're designing the braking system for a driverless shuttle with no pedals or human override. What would you prioritize differently compared to a normal car?",
+    "lookingFor": "Ability to reason about redundancy and fail-safe design when there's no human backup available.",
+    "idealAnswer": {
+      "bullets": [
+        "Redundancy becomes non-negotiable, since there's no driver to compensate for a partial failure",
+        "The system must fail safe by default, defaulting to a controlled stop rather than any ambiguous state",
+        "Consider passenger comfort and predictability, since sudden braking without warning is more alarming with no driver visibly reacting"
+      ],
+      "modelAnswer": "With a human driver, a partial brake fault can often still be managed because the driver feels it and compensates, but with no pedals and no override, I'd treat full redundancy as mandatory rather than a nice-to-have, meaning independent braking circuits and probably a backup actuation path that doesn't share a single point of failure with the primary system. I'd also want the system to default to a safe, controlled stop the moment it detects any fault it can't fully diagnose, rather than trying to limp along in a degraded but ambiguous state, because there's no human judgement to fall back on. Finally I'd think hard about passenger experience, since sudden or jerky braking is far more unsettling when there's no visible driver reacting to explain what's happening, so I'd want smooth deceleration profiles and probably some kind of audible or visual cue so passengers understand the vehicle is responding to something, not malfunctioning."
+    },
+    "commonMistakes": [
+      "Treating it as the same braking problem as a normal car with no added redundancy",
+      "Ignoring the passenger experience and communication aspect entirely",
+      "Not addressing what 'fail safe' should actually mean when there's no driver to intervene"
+    ],
+    "followUps": ["How would you test that the fail-safe behavior actually works before putting passengers on board?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Torque versus power",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["engines", "fundamentals", "power"],
+    "question": "What's actually the difference between torque and power in a car engine, and why do we care about both?",
+    "lookingFor": "Clean conceptual distinction with a real-world driving implication, not just a formula recital.",
+    "idealAnswer": {
+      "bullets": [
+        "Torque is rotational force, power is the rate of doing work, and power equals torque multiplied by engine speed",
+        "Torque governs how strongly a car accelerates or pulls at a given moment, especially from low rpm",
+        "Power determines top speed and sustained performance, since it accounts for how fast that torque is being delivered"
+      ],
+      "modelAnswer": "Torque is the twisting force the engine produces, and power is how fast that force can do work, which is why power is literally torque multiplied by engine speed. In practice, torque is what you feel as a strong shove when you put your foot down, especially useful for towing or pulling away from a stop, while power is what determines things like how fast you can keep accelerating as rpm climbs and ultimately your top speed. That's part of why an electric motor with modest peak torque numbers can still feel so quick off the line, it delivers its full torque instantly at zero rpm, whereas a petrol engine has to build revs first to get there. I think it's one of those distinctions that sounds academic until you actually drive two cars with different torque and power characters back to back."
+    },
+    "commonMistakes": [
+      "Using the terms interchangeably as if they mean the same thing",
+      "Stating the formula without explaining what it means for driving feel",
+      "Missing why electric motors feel different from combustion engines despite similar peak numbers"
+    ],
+    "followUps": ["Why does an electric motor deliver peak torque at zero rpm while a petrol engine can't?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Tire grip and the friction circle",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["dynamics", "tires", "physics"],
+    "question": "What is the 'friction circle' concept in vehicle dynamics, and why does it explain why a car can't brake and corner at its maximum at the same time?",
+    "lookingFor": "Genuine grasp of a nontrivial dynamics concept, connecting the physics to observable driving behavior.",
+    "idealAnswer": {
+      "bullets": [
+        "A tyre has a finite total amount of grip, shared between longitudinal and lateral forces",
+        "Using grip for braking or accelerating leaves less available for cornering, and vice versa",
+        "This is why racing drivers brake in a straight line before turning in, to save grip for the corner"
+      ],
+      "modelAnswer": "The friction circle idea is that a tyre only has a limited total amount of grip available at any moment, and that grip has to be split between longitudinal force, which is braking or accelerating, and lateral force, which is cornering. If you picture it as a circle, the combined vector of braking and cornering force can't exceed the radius of that circle, so if you're already using most of the tyre's grip to brake hard, there's very little left over to also change direction, and pushing past that limit is what causes a slide or a spin. It's exactly why racing drivers brake in a straight line and try to be done braking before they turn in, they're deliberately sequencing the two demands rather than asking the tyre for both at once. I think it's a great example of how a simple diagram can explain something that otherwise just feels like 'the car lost grip' without any real reason why."
+    },
+    "commonMistakes": [
+      "Describing grip loss without mentioning that it's a shared, finite resource",
+      "Confusing the friction circle with simple understeer or oversteer",
+      "Giving no concrete driving example of the concept in action"
+    ],
+    "followUps": ["How does trail braking, easing off the brake gradually while turning in, relate to this concept?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Battery EV versus hydrogen fuel cell debate",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["hydrogen", "ev", "debate"],
+    "question": "Battery electric and hydrogen fuel cell vehicles both claim to be the zero-emission future. Which do you think will actually win out for passenger cars, and why?",
+    "lookingFor": "A confident, evidence-based opinion that engages with current market reality, not just textbook pros and cons.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite the current market reality: battery EVs have far outpaced fuel cell vehicles in passenger car adoption and infrastructure",
+        "Explain the underlying reasons: charging infrastructure is easier to scale than hydrogen refuelling, and battery efficiency is higher",
+        "Leave room for hydrogen's stronger case in other vehicle categories, showing nuance rather than a blanket verdict"
+      ],
+      "modelAnswer": "For passenger cars specifically, I think battery electric has essentially already won, and the market backs that up, EV sales have scaled into the millions while hydrogen passenger cars remain a tiny niche with only a handful of models and refuelling stations. Part of that is the efficiency gap I mentioned earlier, but a bigger part is probably infrastructure, home and workplace charging can piggyback on the existing electrical grid almost anywhere, while hydrogen refuelling needs entirely new, expensive infrastructure built essentially from scratch. Where I think hydrogen still has a real case is in heavier vehicles like long-haul trucks and buses, where battery weight and charging downtime are much bigger problems and hydrogen's quick refuelling and energy density matter more. So my honest answer is battery for cars, and hydrogen possibly for heavy transport, rather than one technology winning everywhere."
+    },
+    "commonMistakes": [
+      "Giving a purely theoretical answer with no reference to actual market adoption",
+      "Declaring one technology the universal winner across all vehicle types",
+      "Not distinguishing passenger cars from heavier vehicle segments"
+    ],
+    "followUps": ["What would have to change for hydrogen to become competitive for passenger cars after all?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Liability for autonomous vehicle crashes",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "liability", "autonomous"],
+    "question": "If a self-driving car causes a fatal crash due to a software decision, who do you think should bear responsibility, the manufacturer, the software engineer, or the owner?",
+    "lookingFor": "Structured reasoning about distributed responsibility, resisting the urge to pin blame on a single easy target.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the idea that responsibility sits with one party alone, since design, deployment, and use all contribute",
+        "Argue the manufacturer should bear the primary legal and moral responsibility, since they control the design and validation",
+        "Note the individual engineer's responsibility is more about raising concerns honestly than bearing personal liability for company decisions"
+      ],
+      "modelAnswer": "I don't think it's fair, or accurate, to land the responsibility entirely on one party, because a crash like that usually reflects a chain of decisions, from how the system was designed and tested to how it was marketed and deployed. That said, if I had to weigh it, I'd put the primary responsibility on the manufacturer, because they control the validation process, decide what the system is and isn't allowed to do, and make the commercial call to deploy it on public roads, so they're the ones best placed to prevent the failure and the ones who profit from the product. I don't think it's fair to put personal legal liability on an individual engineer who raised concerns and was overruled, though I do think engineers carry a professional responsibility to document and escalate those concerns honestly rather than staying quiet. The owner's responsibility should probably be limited to using the system within its stated operating conditions, not maintaining or improving it, since they have no real ability to change how it was engineered."
+    },
+    "commonMistakes": [
+      "Assigning blame to a single party without acknowledging the layered chain of decisions",
+      "Ignoring the manufacturer's role in favor of blaming 'the algorithm'",
+      "Treating the owner as equally responsible as the manufacturer"
+    ],
+    "followUps": ["Should there be a legal framework specific to autonomous vehicles, separate from existing product liability law?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Supply chain resilience after the chip shortage",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["supply-chain", "manufacturing", "current-events"],
+    "question": "The chip shortage a few years ago forced automakers to halt production lines. What does that episode reveal about how the industry should design its supply chains?",
+    "lookingFor": "Awareness of a real recent industry event and its lessons for supply chain and design decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what happened: just-in-time manufacturing left automakers exposed when semiconductor demand spiked elsewhere",
+        "Draw the lesson: single-source dependency and zero-inventory strategies trade resilience for efficiency",
+        "Connect it to engineering decisions, like reducing unnecessary chip variety across models to simplify supply"
+      ],
+      "modelAnswer": "The chip shortage happened because automakers run very lean, just-in-time supply chains with almost no buffer stock, and when they briefly cut chip orders early in the pandemic while consumer electronics demand for the same chips spiked, they lost their place in the queue and couldn't get back in fast enough. That exposed just how fragile a zero-inventory strategy is when it depends on a small number of suppliers with limited spare capacity. I think the lesson isn't that just-in-time manufacturing is wrong, it's genuinely efficient in normal times, but that automakers need to hold some strategic buffer for the most critical, hardest-to-source components, and diversify suppliers rather than relying on one or two. From a design side, some manufacturers responded by simplifying how many different chip variants they used across their model range, which is a more direct engineering lever to reduce that fragility going forward."
+    },
+    "commonMistakes": [
+      "Describing the chip shortage without explaining the underlying just-in-time exposure",
+      "Treating it as purely a pandemic anomaly with no lasting lesson",
+      "Giving no concrete design or sourcing response the industry could take"
+    ],
+    "followUps": ["Do you think holding more inventory as a buffer is worth the extra cost long term?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "NVH challenges in electric vehicles",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["nvh", "ev", "engineering"],
+    "question": "Electric vehicles are almost silent compared to combustion cars. What new noise, vibration, and harshness challenges does that create for engineers?",
+    "lookingFor": "Understanding that removing engine noise exposes other sources rather than simply making the car quieter overall.",
+    "idealAnswer": {
+      "bullets": [
+        "Without engine noise masking them, road, wind, and motor whine become far more noticeable",
+        "New noise sources appear, like high-frequency motor whine and gear noise from the reduction gearbox",
+        "Pedestrian safety adds a counterintuitive requirement: EVs must emit artificial sound at low speed"
+      ],
+      "modelAnswer": "It's counterintuitive, but taking the engine noise away doesn't just make the cabin quiet, it unmasks everything else that used to be hidden underneath it, so road noise from the tyres and wind noise around the mirrors and windscreen suddenly become much more noticeable to occupants. EVs also introduce their own new noises, like a high-pitched whine from the electric motor and gear noise from the single-speed reduction gearbox, which engineers now have to actively dampen because there's no engine rumble to cover it up anymore. There's also a safety twist to this, regulators require EVs to emit an artificial sound at low speed specifically because pedestrians can no longer hear them coming, so engineers end up adding deliberate, tuned sound back in for safety even while working hard to remove unwanted noise everywhere else. I find that contradiction, quieting the cabin while adding sound outside, a genuinely interesting NVH problem."
+    },
+    "commonMistakes": [
+      "Assuming EVs are simply 'quieter' with no new challenges introduced",
+      "Missing the pedestrian safety requirement for artificial exterior sound",
+      "Not naming a specific new noise source like motor whine or gear noise"
+    ],
+    "followUps": ["How would you go about identifying which noise source to tackle first in a new EV design?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "EV battery recycling at end of life",
+    "program": "Automotive Engineering",
+    "difficulty": "medium",
+    "tags": ["sustainability", "battery", "recycling"],
+    "question": "As EV adoption grows, so does the question of what happens to batteries at end of life. What do you see as the main engineering challenge in battery recycling?",
+    "lookingFor": "Realistic understanding that battery recycling is a genuinely unsolved engineering and economic problem, not a solved footnote.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that packs vary widely in chemistry and design, making automated disassembly and sorting difficult",
+        "Explain the economic challenge: recovering valuable materials like lithium, cobalt, and nickel has to be cheaper than mining them fresh",
+        "Mention second-life use, like stationary energy storage, as an intermediate step before full recycling"
+      ],
+      "modelAnswer": "The main challenge I see is that battery packs from different manufacturers use different chemistries, cell formats, and pack designs, which makes safe, automated disassembly genuinely hard, a lot of it is still done by hand today, which doesn't scale as the number of retired EV batteries grows into the millions. Beyond that there's an economic hurdle, the whole point of recycling is recovering materials like lithium, cobalt, and nickel, but that process has to be cheaper and cleaner than just mining them fresh or it won't happen at commercial scale without subsidy. A lot of packs get a second life first, in stationary energy storage for homes or the grid, where they don't need the same energy density as a car, which extends their useful life before full recycling becomes necessary. I think battery recycling is one of those problems where the chemistry is understood but the engineering, at the scale and cost the industry actually needs, is still catching up."
+    },
+    "commonMistakes": [
+      "Assuming battery recycling is already a fully solved, mature process",
+      "Ignoring the economic viability question entirely",
+      "Not mentioning second-life applications as an intermediate step"
+    ],
+    "followUps": ["Should manufacturers be required by regulation to take responsibility for their batteries at end of life?"]
+  },
+  {
+    "id": "prog-automotive-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Weight reduction without compromising safety",
+    "program": "Automotive Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "weight-reduction", "safety"],
+    "question": "If you were told to cut a car's weight by 10 percent without compromising crash safety, where would you look first?",
+    "lookingFor": "Structured, prioritized problem-solving that shows understanding of where weight actually sits in a car and what's safe to touch.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish structural weight, which is safety-critical, from non-structural weight in trim, seats, and convenience features",
+        "Target high-leverage, non-safety areas first: sound deadening, interior trim, seat structures, wiring harnesses",
+        "Only revisit structural material choices, like high-strength steel or targeted aluminum, with proper crash simulation to confirm safety is preserved"
+      ],
+      "modelAnswer": "I'd start by separating structural weight, which is directly protecting occupants in a crash, from non-structural weight, which is everything like sound deadening material, interior trim, seat frames, and wiring, that's there for comfort or convenience rather than safety. I'd go after that non-structural weight first, because it's the lowest-risk place to cut, things like optimizing seat structures or trimming excess wiring length can often save real kilograms without touching the safety cell at all. If that alone didn't get to 10 percent, I'd then look at the body structure itself, but I wouldn't just swap materials and hope for the best, I'd want to run crash simulations for any change, because something like replacing mild steel with a higher-strength grade in a specific panel can actually maintain or improve safety at a lower weight, but only if it's validated properly rather than assumed. The order matters to me, exhaust the safe wins before you touch anything that protects the people inside."
+    },
+    "commonMistakes": [
+      "Jumping straight to reducing structural or safety-critical material without considering non-structural weight first",
+      "Assuming any weight cut automatically compromises safety",
+      "Giving no prioritized order, just a list of ideas with no reasoning for sequence"
+    ],
+    "followUps": ["How would you validate that a structural change actually preserves crash performance before it reaches production?"]
+  }
+]

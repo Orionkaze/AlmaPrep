@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-bioinformatics-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for bioinformatics",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["motivation", "bioinformatics", "interdisciplinary"],
+    "question": "What draws you to bioinformatics specifically, rather than biology or computer science on their own?",
+    "lookingFor": "A genuine, specific reason for wanting the intersection of biology and computing, not a vague love of both subjects.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the specific moment or project that revealed the intersection",
+        "Explain what each parent discipline alone couldn't give you",
+        "Show you understand bioinformatics is its own discipline, not biology with a laptop bolted on"
+      ],
+      "modelAnswer": "I've always loved biology for the puzzle of how living systems work, but a school project analysing gene expression data in a spreadsheet showed me its limits fast. When a teacher showed me how a short script could sort through thousands of gene entries in seconds, I realised the coding wasn't separate from the biology, it was the only way to actually ask the bigger questions. That's what bioinformatics gives me that neither subject does alone, the tools to work at the scale biology actually operates at."
+    },
+    "commonMistakes": [
+      "Saying 'I like biology and I like computers' with no real connection between them",
+      "Treating bioinformatics as an easier route into either field",
+      "Not being able to describe what a bioinformatician actually does day to day"
+    ],
+    "followUps": ["Which pulls you more right now, the biology side or the computational side?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's course",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation", "research"],
+    "question": "Why do you want to study bioinformatics at our university specifically?",
+    "lookingFor": "Specific, researched motivation tied to this course's structure or people, not generic praise that could apply anywhere.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific module, lab, or feature of the course",
+        "Connect it to a concrete personal project or interest",
+        "Show you understand what makes this course different from a general biology or CS degree elsewhere"
+      ],
+      "modelAnswer": "Your course puts a genomics module alongside a proper software engineering module from first year, rather than treating coding as something you pick up later, and that structure matches exactly how I want to learn. I read about a research group in your department working on variant calling pipelines for rare disease diagnosis, which connects directly to a family history that got me into genetics in the first place. I want to build real pipelines, not just study the theory of them, and this course is set up to let me do that early."
+    },
+    "commonMistakes": [
+      "Generic praise about reputation that would fit any university",
+      "Confusing the course with a straight biology or straight computer science degree",
+      "Leaning on rankings instead of course content"
+    ],
+    "followUps": ["What would you want to work on if you got a chance to join a research project here?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Origin of interest",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story", "personal"],
+    "question": "Tell us about the moment or experience that first got you interested in bioinformatics.",
+    "lookingFor": "A specific, credible origin story that shows the interest predates the application, not something invented for the interview.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a concrete moment, not a general love of science",
+        "Explain what specifically clicked about combining data and biology",
+        "Show how that moment led to further action, not just curiosity"
+      ],
+      "modelAnswer": "In year twelve our biology teacher showed us a public genome browser during a lesson on cystic fibrosis, and I remember being struck that you could scroll along an actual chromosome and see the mutation on screen. I went home and spent the whole evening clicking through other genes just to see what else was in there. That curiosity turned into me learning basic Python over the summer so I could pull data out of similar databases myself instead of just looking at them."
+    },
+    "commonMistakes": [
+      "A vague answer like 'I've always loved science'",
+      "A story with no follow-through afterward",
+      "Sounding rehearsed rather than specific"
+    ],
+    "followUps": ["What did you do next to explore that interest further?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant project experience",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["experience", "coding", "project"],
+    "question": "Tell us about a coding or data project you've done that's relevant to bioinformatics.",
+    "lookingFor": "Evidence of hands-on experience with real data or code, described with enough technical detail to sound genuine.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the actual data and tools used, not just the topic",
+        "Explain a specific problem you had to solve, not just the end result",
+        "Reflect on what the project taught you about the field"
+      ],
+      "modelAnswer": "For my extended project I downloaded a public dataset of influenza strain sequences and wrote a Python script to compare mutation rates across seasons. The messy part was that a chunk of the entries had inconsistent date formats and missing metadata, so I ended up spending more time cleaning the data than analysing it, which I found oddly satisfying to solve. It taught me that most of real bioinformatics work is that unglamorous cleaning step before you ever get to the interesting biology."
+    },
+    "commonMistakes": [
+      "Describing the topic without any technical specifics",
+      "Claiming a polished result with no mention of problems encountered",
+      "Picking a project with no real data or code involved"
+    ],
+    "followUps": ["What would you do differently if you started that project again?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading in the field",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "engagement", "current-events"],
+    "question": "What have you read recently, a book, paper, or article, that shaped how you think about bioinformatics?",
+    "lookingFor": "Genuine engagement with the field beyond the syllabus, with the ability to explain the content, not just name-drop a title.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific rather than a vague genre of reading",
+        "Summarise the actual content or argument in your own words",
+        "Explain what it changed about your thinking or what question it left you with"
+      ],
+      "modelAnswer": "I read a news piece about the pangenome project, which builds a reference genome from many individuals instead of one standard person, because the original human reference was mostly built from a handful of donors and doesn't represent global genetic diversity well. It made me realise how much of bioinformatics depends on decisions made decades ago that quietly shape what counts as 'normal' in medicine today. It left me wanting to understand how those reference choices actually affect diagnostic accuracy for underrepresented populations."
+    },
+    "commonMistakes": [
+      "Naming a title with no ability to explain the content",
+      "Choosing something too basic to show real engagement",
+      "Reading choice unrelated to bioinformatics at all"
+    ],
+    "followUps": ["What question did that reading leave you with?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Central dogma of molecular biology",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["molecular-biology", "fundamentals"],
+    "question": "Can you explain the central dogma of molecular biology, and where bioinformatics fits into it?",
+    "lookingFor": "A correct, clear explanation of DNA to RNA to protein, with an understanding of where computational analysis enters each stage.",
+    "idealAnswer": {
+      "bullets": [
+        "State the flow correctly: DNA is transcribed to RNA, RNA is translated to protein",
+        "Mention that information generally flows one way, with exceptions like reverse transcription",
+        "Give an example of a bioinformatics tool or dataset tied to each stage"
+      ],
+      "modelAnswer": "The central dogma describes how genetic information flows, DNA gets transcribed into messenger RNA, and that RNA gets translated into protein, which does most of the actual work in a cell. There are exceptions, like retroviruses that reverse transcribe RNA back into DNA, which is actually where a lot of interesting bioinformatics comes in. At almost every stage there's a computational problem, aligning DNA reads, predicting RNA splicing, or modelling how a protein folds, which is really why bioinformatics exists as a field at all."
+    },
+    "commonMistakes": [
+      "Getting the direction of the flow backwards",
+      "Reciting it with no connection to bioinformatics",
+      "Forgetting that exceptions like reverse transcription exist"
+    ],
+    "followUps": ["Where specifically would a bioinformatician get involved in that process?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Genome, gene and chromosome",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["genetics", "fundamentals", "terminology"],
+    "question": "What's the difference between a genome, a gene, and a chromosome?",
+    "lookingFor": "Clear, correct use of basic genetics terminology without conflating the terms, a common early stumble.",
+    "idealAnswer": {
+      "bullets": [
+        "Define genome as the complete set of genetic material",
+        "Define chromosome as a packaged, organised structure of DNA",
+        "Define gene as a specific functional segment of DNA within that structure"
+      ],
+      "modelAnswer": "The genome is the whole set of genetic instructions an organism has, all of its DNA put together. That DNA is packaged into chromosomes, which are like organised bundles, humans have twenty-three pairs. A gene is a specific stretch of DNA within a chromosome that codes for something functional, usually a protein, so it's really a small working unit inside the much larger structure."
+    },
+    "commonMistakes": [
+      "Using the three terms interchangeably",
+      "Getting the scale relationship backwards",
+      "Forgetting that a gene is a functional subset, not a physical structure of its own"
+    ],
+    "followUps": ["Roughly how many genes does the human genome contain, and does that number surprise you?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "DNA sequencing technology",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["sequencing", "ngs", "genomics"],
+    "question": "What do you understand about how DNA sequencing has changed since the Human Genome Project, and why does that matter for bioinformatics?",
+    "lookingFor": "Awareness that sequencing has gone from slow and expensive to fast and cheap, and that this shift is what created the modern data problem bioinformatics solves.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast the older Sanger-style approach with modern high-throughput sequencing",
+        "Mention the dramatic drop in cost and time since the early 2000s",
+        "Explain why that shift turned sequencing into a computational bottleneck rather than a lab one"
+      ],
+      "modelAnswer": "The Human Genome Project used Sanger sequencing and took over a decade and billions of dollars to sequence one genome. Next generation sequencing changed that completely, a genome can now be sequenced in a day or two for a few hundred dollars, because instead of reading one long stretch of DNA you read millions of short fragments in parallel. The catch is that those short fragments then have to be pieced back together computationally, which is why the bottleneck moved from the lab bench to the algorithms that reassemble and interpret all that data."
+    },
+    "commonMistakes": [
+      "Not knowing roughly how sequencing cost and speed have changed",
+      "Describing sequencing without mentioning the reassembly problem it creates",
+      "Confusing sequencing with genotyping"
+    ],
+    "followUps": ["Why can't you just read a whole chromosome in one go?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Sequence alignment tools",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["algorithms", "alignment", "tools"],
+    "question": "What is BLAST, and why would a biologist use it?",
+    "lookingFor": "Understanding of BLAST as a tool for finding similar sequences quickly, with a sense of why speed and approximation matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that BLAST searches a database for sequences similar to a query",
+        "Mention it trades some accuracy for speed compared to exact alignment",
+        "Give a realistic use case, like identifying an unknown gene or checking for homologs"
+      ],
+      "modelAnswer": "BLAST lets you take a sequence you have, say from a gene you've just sequenced, and search it against a huge database to find similar sequences that have already been studied. It's not doing a perfect exhaustive comparison, it uses a heuristic to find likely matches fast, which matters because comparing against every entry in a database exactly would take far too long. A biologist might use it to work out what an unknown gene probably does, based on how closely it resembles a gene that's already been characterised in another organism."
+    },
+    "commonMistakes": [
+      "Describing BLAST as doing an exact, exhaustive comparison",
+      "Not being able to explain why a heuristic approach is necessary",
+      "Confusing BLAST with a database itself rather than a search tool"
+    ],
+    "followUps": ["What might a strong BLAST match not actually tell you?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Global vs local sequence alignment",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["algorithms", "alignment", "fundamentals"],
+    "question": "What's the difference between global and local sequence alignment, and when would you use each?",
+    "lookingFor": "Correct distinction between aligning whole sequences end to end versus finding the best matching subregion, with sensible use cases.",
+    "idealAnswer": {
+      "bullets": [
+        "Define global alignment as forcing an alignment across the entire length of both sequences",
+        "Define local alignment as finding the best matching subregion, ignoring the rest",
+        "Give a realistic scenario for each, such as comparing similar-length genes versus finding a shared domain in very different proteins"
+      ],
+      "modelAnswer": "Global alignment lines up two sequences end to end and tries to find the best overall match across their entire length, which makes sense when the sequences are similar in size and you expect them to be broadly related, like comparing the same gene between two closely related species. Local alignment instead looks for the best matching region anywhere within the sequences and ignores the rest, which is more useful when you're comparing very different sequences that might just share one functional domain in common. I think of global as asking 'how similar are these overall' and local as asking 'is there a piece of this hiding inside that'."
+    },
+    "commonMistakes": [
+      "Mixing up which method forces a full end to end comparison",
+      "Not being able to give a realistic scenario for either",
+      "Assuming one method is simply 'better' than the other"
+    ],
+    "followUps": ["Which underlying algorithm is typically used for each?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "File formats",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["data-formats", "fundamentals", "tools"],
+    "question": "What is a FASTA file, and why is a simple text format still the standard for storing sequence data?",
+    "lookingFor": "Basic familiarity with common bioinformatics file formats and an appreciation for why simplicity matters for interoperability.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the structure, a header line starting with a greater-than sign followed by the sequence",
+        "Explain that it stores nucleotide or protein sequences as plain text",
+        "Give a reason simplicity is valuable, such as being readable by almost any tool or language"
+      ],
+      "modelAnswer": "A FASTA file is about as simple as a data format gets, each entry starts with a line beginning with a greater-than sign that names the sequence, followed by the actual sequence of letters representing bases or amino acids. I think it's stuck around precisely because it's so plain, any programming language or tool can read and write it without needing a special library, which matters enormously when you're trying to move data between dozens of different pipelines and research groups. Sometimes the boring, low-tech solution wins because everyone can actually use it."
+    },
+    "commonMistakes": [
+      "Confusing FASTA with FASTQ, which also stores quality scores",
+      "Not knowing the basic structure of the header line",
+      "Assuming a more complex format would automatically be better"
+    ],
+    "followUps": ["How is a FASTQ file different from a FASTA file?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Programming experience",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["programming", "skills", "experience"],
+    "question": "What programming languages have you used, and which do you prefer for working with biological data?",
+    "lookingFor": "Honest, specific account of programming background with some understanding of why particular tools suit biological data work.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the languages you've actually used, not ones you've merely heard of",
+        "Give a concrete example of something you built or analysed",
+        "Show basic awareness of why certain languages fit biological data, such as Python's libraries or R's statistics"
+      ],
+      "modelAnswer": "I taught myself Python over the last two years, mostly using the pandas library to work through public gene expression datasets, and I've picked up a bit of R more recently because so many statistical genetics packages are built around it. I prefer Python for most things because I find its syntax more forgiving and it connects well to general purpose libraries, but I can see why R's statistical ecosystem makes it the default in a lot of genomics papers. I'm looking forward to getting properly comfortable with both rather than leaning on the one I already know."
+    },
+    "commonMistakes": [
+      "Overstating fluency in a language never actually used",
+      "No concrete example of applying the language to real data",
+      "Dismissing a language without understanding what it's suited for"
+    ],
+    "followUps": ["What was the hardest bug you ever had to fix?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Biological databases",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["databases", "tools", "fundamentals"],
+    "question": "Can you name a biological database you've used or read about, and explain what kind of data it holds?",
+    "lookingFor": "Concrete familiarity with at least one real public database, beyond just having heard the name in passing.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific real database, not a vague description",
+        "Explain what kind of data it stores and who maintains or uses it",
+        "Mention a reason you personally looked at it or a use case you understand"
+      ],
+      "modelAnswer": "I've used UniProt a few times, which is a database of protein sequences and functional information, so for any given protein you can look up its sequence, what it's known to do, and which organisms it appears in. I first went there while trying to understand a protein mentioned in a paper I was reading, and I was surprised how much annotation was attached to a single entry, not just the sequence but structural predictions and links to related research. It made me realise how much curated knowledge sits behind what looks like a simple search box."
+    },
+    "commonMistakes": [
+      "Naming a database with no idea what data it actually holds",
+      "Confusing a sequence database with a literature database",
+      "No personal context for why they encountered it"
+    ],
+    "followUps": ["Who do you think is responsible for keeping a database like that accurate and up to date?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Machine learning applications",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["machine-learning", "applications", "current-events"],
+    "question": "Where do you see machine learning being used in bioinformatics today?",
+    "lookingFor": "A realistic, specific sense of current applications rather than a vague claim that AI is used everywhere.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific application, such as protein structure prediction, variant classification, or image analysis in pathology",
+        "Explain briefly what problem machine learning solves better than earlier rule-based methods",
+        "Show awareness that it's a tool with limitations, not a magic solution"
+      ],
+      "modelAnswer": "The example I know best is protein structure prediction, where AlphaFold used deep learning to predict three-dimensional protein shapes from sequence data far more accurately than earlier physics-based modelling methods managed. I've also read about machine learning being used to classify whether a genetic variant is likely harmful or benign, which used to rely heavily on hand-built rules from known biology. What I find interesting is that these models are only as good as the labelled data they're trained on, so they still need a lot of careful biological validation rather than being trusted blindly."
+    },
+    "commonMistakes": [
+      "Vague claims that AI is used everywhere with no specific example",
+      "Treating machine learning as infallible or a replacement for biological validation",
+      "Confusing machine learning with general statistics or automation"
+    ],
+    "followUps": ["What's a risk of relying too heavily on a machine learning model in this context?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Protein structure prediction",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["protein-structure", "alphafold", "current-events"],
+    "question": "What do you know about how tools like AlphaFold predict protein structure, and why was this considered such a breakthrough?",
+    "lookingFor": "Basic understanding that AlphaFold predicts 3D structure from amino acid sequence using deep learning, and an appreciation of why this was previously so hard.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what problem is being solved, going from a linear sequence to a folded 3D shape",
+        "Mention that older methods relied on slow, expensive lab techniques like X-ray crystallography",
+        "Show why accurate computational prediction was considered a decades-long open problem"
+      ],
+      "modelAnswer": "AlphaFold takes a protein's amino acid sequence and predicts how it folds into a three-dimensional shape, which matters enormously because a protein's function is really determined by its shape, not just its sequence. Before this, working out a structure meant techniques like X-ray crystallography or cryo-electron microscopy, which can take months or years and don't always work for a given protein. What made it such a breakthrough is that the protein folding problem had been considered one of the great unsolved challenges in biology for decades, and AlphaFold got remarkably close to experimental accuracy using deep learning trained on known structures."
+    },
+    "commonMistakes": [
+      "Not distinguishing sequence from structure",
+      "Assuming structure prediction was always this easy",
+      "No mention of why the problem was historically difficult"
+    ],
+    "followUps": ["What do you think a tool like this still can't do well?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Scale of genomic data",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["big-data", "genomics", "computing"],
+    "question": "Why is 'big data' such a central challenge in modern genomics?",
+    "lookingFor": "Understanding of the scale problem in genomics, connecting cheap sequencing to storage, computation, and analysis bottlenecks.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention the volume produced by modern sequencing, both per genome and across large studies",
+        "Explain that storage and computation costs are now often larger barriers than generating the data itself",
+        "Give a sense of what this means practically, such as needing specialised infrastructure or cloud computing"
+      ],
+      "modelAnswer": "A single human genome, once fully sequenced, produces well over a hundred gigabytes of raw data, and large studies now sequence tens of thousands of people at once, so the total volume becomes enormous very quickly. What surprised me reading about this is that generating the data has actually become cheaper than storing and analysing it, which flips the old bottleneck, it used to be hard to get the data and now it's hard to do anything useful with all of it. That's part of why cloud computing and efficient algorithms have become such a core part of the field rather than a side concern."
+    },
+    "commonMistakes": [
+      "Vague statements about 'lots of data' with no sense of actual scale",
+      "Not distinguishing the cost of generating data from the cost of storing or analysing it",
+      "Ignoring the computational infrastructure side of the problem"
+    ],
+    "followUps": ["What trade-offs would you consider when deciding how much raw sequencing data to keep versus discard?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetic data privacy",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["ethics", "privacy", "genomics"],
+    "question": "A pharmaceutical company wants to use a public genomic database that includes data from people who never explicitly consented to commercial use. What are the ethical issues at play?",
+    "lookingFor": "Structured ethical reasoning weighing consent, public benefit, and the unique risks of genetic data, not a snap judgement.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between advancing research and honouring original consent terms",
+        "Note that genetic data is uniquely identifying and can implicate relatives who never consented at all",
+        "Reason toward a nuanced position, such as requiring re-consent, anonymisation limits, or independent oversight, rather than a flat yes or no"
+      ],
+      "modelAnswer": "The core tension is that the data could genuinely help develop treatments, but consent isn't just a formality, people agreed to specific terms, and using their genetic information commercially without that agreement breaks the trust the whole system depends on. What makes genetic data especially sensitive is that it isn't just about the individual, it can reveal information about their relatives who never consented to anything at all. My instinct is that the company shouldn't get a blanket yes, they'd need some form of renewed consent or independent ethical review, because the potential benefit doesn't automatically override the original terms people agreed to."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'the research benefit justifies it' with no nuance",
+      "Ignoring that genetic data implicates people beyond the original donor",
+      "Refusing to land on any actual position"
+    ],
+    "followUps": ["Does your answer change if the data had been fully anonymised?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "CRISPR and computational biology",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["crispr", "gene-editing", "current-events"],
+    "question": "What role does bioinformatics play in a technology like CRISPR gene editing?",
+    "lookingFor": "Understanding that CRISPR relies on computational tools for target design and off-target analysis, not just wet-lab technique.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that guide RNA design requires searching the genome for a precise target sequence",
+        "Mention off-target prediction as a major computational problem",
+        "Show awareness that CRISPR is often presented as a lab technique but depends heavily on prior computational work"
+      ],
+      "modelAnswer": "Before anyone can even use CRISPR in the lab, someone has to design the guide RNA that will direct the editing to the right spot in the genome, and that means computationally searching for a sequence that's specific enough to hit only the intended target. The harder problem is predicting off-target effects, where the tool might accidentally cut somewhere similar but unintended, and that prediction relies on comparing the guide sequence against the whole genome computationally before anything happens in a dish. I think people picture CRISPR as a purely wet-lab technique, but a huge amount of the actual precision comes from the bioinformatics done beforehand."
+    },
+    "commonMistakes": [
+      "Describing CRISPR purely as a lab technique with no computational component",
+      "Not knowing what a guide RNA is or does",
+      "Ignoring the off-target risk problem entirely"
+    ],
+    "followUps": ["Why might off-target prediction never be perfectly accurate?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Evolutionary trees",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["phylogenetics", "evolution", "algorithms"],
+    "question": "What is a phylogenetic tree, and how might a bioinformatician build one from sequence data?",
+    "lookingFor": "Understanding that a phylogenetic tree represents evolutionary relationships, built by comparing sequence similarity and differences across species or samples.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a phylogenetic tree as a diagram of evolutionary relationships based on shared ancestry",
+        "Explain that it's built by comparing how similar or different sequences are across the organisms being studied",
+        "Give a real use case, such as tracking how a virus has mutated and spread over time"
+      ],
+      "modelAnswer": "A phylogenetic tree is a branching diagram that shows how different organisms or sequences are related through shared ancestry, with the branch points representing where lineages diverged. To build one from sequence data, you'd align the sequences you're comparing and then use the pattern of differences between them, more differences generally meaning a more distant relationship, to work out the most likely branching structure. I've read about this being used to track how a virus like influenza mutates and spreads across a population over a season, which turns what sounds like abstract evolutionary theory into something with real public health use."
+    },
+    "commonMistakes": [
+      "Describing a tree with no mention of how it's actually built from data",
+      "Confusing a phylogenetic tree with a simple family pedigree",
+      "No real-world use case offered"
+    ],
+    "followUps": ["What might make two sequences look more similar than they really are evolutionarily?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistical rigor in genomics",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["statistics", "multiple-testing", "genomics"],
+    "question": "If you ran 20,000 statistical tests looking for genes associated with a disease, why can't you just use a p-value of 0.05 to decide which are significant?",
+    "lookingFor": "Understanding of the multiple testing problem, that running thousands of tests at a 0.05 threshold guarantees many false positives by chance alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a p-value of 0.05 means a 5% chance of a false positive on any single test",
+        "Show that across 20,000 tests, chance alone would produce roughly a thousand false positives",
+        "Mention a correction method, such as Bonferroni or false discovery rate control, as the fix"
+      ],
+      "modelAnswer": "A p-value of 0.05 means there's still roughly a five percent chance of seeing that result purely by chance even if there's no real effect, which is fine for one test but becomes a problem at scale. If you run 20,000 tests, chance alone would produce around a thousand results that look significant at that threshold even if none of the genes are actually related to the disease. That's why genomics studies use corrections like Bonferroni, which tightens the threshold based on how many tests you ran, or false discovery rate methods, which are less strict but still account for the fact that you're testing so many hypotheses at once."
+    },
+    "commonMistakes": [
+      "Not recognising this as the multiple testing problem at all",
+      "Being unable to explain roughly why the number of false positives scales with test count",
+      "Naming a correction method without understanding what problem it solves"
+    ],
+    "followUps": ["What's the difference between controlling for false positives strictly and using a false discovery rate approach?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Defining the field",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["definitions", "field-scope", "motivation"],
+    "question": "How would you distinguish bioinformatics from computational biology, or do you think the distinction matters?",
+    "lookingFor": "Thoughtful engagement with how the field is defined, showing you've thought about scope rather than treating the terms as interchangeable by default.",
+    "idealAnswer": {
+      "bullets": [
+        "Offer a reasonable working distinction, such as bioinformatics leaning toward tool and method development versus computational biology leaning toward modelling biological questions",
+        "Acknowledge that the boundary is genuinely blurry in practice",
+        "Explain why the distinction matters or doesn't matter for how you'd approach the course"
+      ],
+      "modelAnswer": "The way I've come to think about it, bioinformatics tends to focus more on building the tools and pipelines, sequence alignment, databases, software, while computational biology leans more toward using models and simulations to answer specific biological questions, like modelling how a population evolves. In practice I think the line is genuinely blurry, plenty of people doing computational biology write their own bioinformatics tools along the way. I don't think the label matters that much for me personally, what I care about is the work at that intersection, whichever name it goes by in a given department."
+    },
+    "commonMistakes": [
+      "Claiming there's no difference at all with no reasoning given",
+      "Overstating a rigid boundary that doesn't reflect how the field actually works",
+      "Not connecting the answer back to their own interest"
+    ],
+    "followUps": ["Which side of that blurry line do you find yourself more drawn to?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Long-term goals",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["goals", "motivation", "future"],
+    "question": "Where do you see bioinformatics taking you after this degree?",
+    "lookingFor": "A direction that's ambitious yet grounded, with a clear line from the course to that goal, and room to acknowledge uncertainty.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a direction rather than an over-precise job title",
+        "Connect it honestly to what the course specifically offers",
+        "Show flexibility, an understanding that the field and their interests may shift"
+      ],
+      "modelAnswer": "I'd like to end up working somewhere in clinical genomics, ideally helping build the pipelines that turn a patient's sequencing data into something a doctor can actually act on, which is the problem that first pulled me toward this field. I know the exact role will probably look different by the time I get there, the field moves fast enough that I'd be surprised if it didn't. What I'm confident about is that this course gives me both the programming grounding and the genetics depth that combination needs, and that's the foundation I want before I specialise further."
+    },
+    "commonMistakes": [
+      "An unrealistically precise, over-rehearsed career plan",
+      "A goal with no real connection to bioinformatics specifically",
+      "Sounding uncommitted to the field beyond graduation"
+    ],
+    "followUps": ["What's the first step you'd want to take after finishing the degree?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Human Genome Project",
+    "program": "Bioinformatics",
+    "difficulty": "easy",
+    "tags": ["history", "genomics", "hgp"],
+    "question": "Why is the Human Genome Project considered a landmark moment for bioinformatics as a field?",
+    "lookingFor": "Basic historical awareness that the project both produced a foundational reference and forced the creation of much of modern bioinformatics as a discipline.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention that it produced the first mostly complete reference sequence of the human genome",
+        "Explain that the scale of the data forced new computational methods and tools to be developed",
+        "Note the timeframe or effort involved to show a genuine sense of scale"
+      ],
+      "modelAnswer": "The Human Genome Project produced the first largely complete map of human DNA, which took about thirteen years and international collaboration to finish. What I find just as important as the map itself is that the sheer scale of data it produced is really what forced bioinformatics to become a proper discipline, existing biology methods simply weren't built to handle that much information. It set the reference point that a huge amount of later genomics, including the sequencing I read about being done in days now, is still built on top of."
+    },
+    "commonMistakes": [
+      "Not knowing roughly what the project actually produced",
+      "Treating it as purely a biology milestone with no computational significance",
+      "No sense of the scale or timeframe involved"
+    ],
+    "followUps": ["What do you think has changed the most about genomics since that project finished?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Handling noisy biological data",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["data-quality", "practical-skills", "noise"],
+    "question": "Biological data is often messy, incomplete, or noisy compared to a clean computer science dataset. How would you approach working with that?",
+    "lookingFor": "Realistic understanding that biological data requires careful cleaning and validation, plus humility about the limits of any single analysis.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the sources of noise, such as measurement error, missing samples, or natural biological variation",
+        "Describe a sensible approach, such as quality checks before analysis and being transparent about uncertainty",
+        "Show awareness that a clean-looking result can still be wrong if the underlying data quality wasn't checked"
+      ],
+      "modelAnswer": "I think the first step is accepting that the noise isn't just measurement error, some of it is genuine biological variation between individuals, and mistaking one for the other can wreck an analysis before it starts. Practically, I'd want to run quality checks early, looking at things like read depth or missing values, rather than assuming the data is clean and only discovering problems once a result looks strange. From the project I did with the influenza dataset, I learned that a tidy-looking result can still be built on shaky data, so I'd rather flag uncertainty honestly than present a clean answer that isn't actually justified by the underlying data."
+    },
+    "commonMistakes": [
+      "Assuming biological data can be treated exactly like a clean computer science dataset",
+      "No concrete method mentioned for checking or handling quality issues",
+      "Overconfidence in results without acknowledging uncertainty"
+    ],
+    "followUps": ["Can you think of a time noisy data led someone to a wrong conclusion?"]
+  },
+  {
+    "id": "prog-bioinformatics-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Current excitement in the field",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["current-events", "engagement", "curiosity"],
+    "question": "What's a recent development in bioinformatics or genomics that genuinely excites you, and why?",
+    "lookingFor": "Up-to-date engagement with the field expressed with real curiosity, not a rehearsed list of buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific and recent, not a vague trend",
+        "Explain the actual development in your own words",
+        "Show why it excites you personally, tied to your own interests"
+      ],
+      "modelAnswer": "I've been following the progress on single-cell sequencing, which lets researchers look at gene expression in individual cells rather than averaging across a whole tissue sample. What excites me about it is how much it's changed what questions are even askable, you can now see that a tumour isn't one uniform thing but a mix of different cell populations behaving differently, which completely changes how you'd think about treating it. It's the kind of development that makes me want to actually work on the computational side of handling that data, because the biology only becomes useful once someone builds the tools to make sense of it at that resolution."
+    },
+    "commonMistakes": [
+      "Naming a buzzword like 'AI' or 'CRISPR' with no specific recent detail",
+      "Describing the development inaccurately",
+      "No personal reason given for the excitement"
+    ],
+    "followUps": ["What do you think is the biggest open challenge that development still faces?"]
+  }
+]

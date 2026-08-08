@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-nutrition-dietetics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Protein quality and complete proteins",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["biochemistry", "protein", "macronutrients"],
+    "question": "How would you explain to a client why combining rice and beans gives a 'complete' protein, and is that concept still considered accurate by nutrition science?",
+    "lookingFor": "Understanding of amino acid complementation plus awareness that the 'complete protein' framing is outdated for whole diets.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain essential amino acids and the limiting amino acid concept",
+        "Show that rice is low in lysine, beans low in methionine, together they cover both",
+        "Note the modern consensus that complementation across a day's intake matters more than pairing in a single meal"
+      ],
+      "modelAnswer": "Proteins are made of amino acids, and nine of them are essential because our bodies can't make them, so we need food to supply all nine in reasonable amounts. Rice is low in lysine but has plenty of methionine, while beans are the opposite, so together they cover each other's gaps. What I'd actually tell a client, though, is that the old idea you need to eat them in the same meal is outdated, research now shows your body pools amino acids across the day, so eating a varied diet matters more than perfect pairing at every sitting."
+    },
+    "commonMistakes": [
+      "Treating rice and beans as nutritionally special rather than an example of a general principle",
+      "Insisting complementary proteins must be eaten in the same meal",
+      "Being unable to name which amino acid each food is limiting in"
+    ],
+    "followUps": ["Does this concept matter more for someone eating a fully plant-based diet?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Iron absorption inhibitors and enhancers",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["micronutrients", "iron", "bioavailability"],
+    "question": "A client with iron-deficiency anemia drinks tea with every meal. What would you tell them, and why?",
+    "lookingFor": "Knowledge of non-heme iron absorption mechanics and practical, evidence-based advice.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify tannins in tea as inhibitors of non-heme iron absorption",
+        "Suggest separating tea from iron-rich meals by an hour or two rather than eliminating it",
+        "Mention pairing iron-rich foods with vitamin C to boost absorption"
+      ],
+      "modelAnswer": "Tea contains tannins that bind non-heme iron in the gut and can meaningfully cut how much gets absorbed, so if someone's already anemic that timing matters. I wouldn't tell them to give up tea entirely, that's not realistic or necessary, I'd suggest shifting it to an hour or two away from meals instead. I'd also point them toward pairing iron-rich foods with vitamin C, like squeezing lemon over lentils, because that can partly offset the loss and is an easier change to sustain."
+    },
+    "commonMistakes": [
+      "Telling the client to stop drinking tea altogether",
+      "Not distinguishing heme from non-heme iron",
+      "Ignoring vitamin C's enhancing effect"
+    ],
+    "followUps": ["What other common foods or drinks inhibit iron absorption?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Metabolic adaptation and weight loss plateaus",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["metabolism", "weight-management", "energy-balance"],
+    "question": "Why does weight loss so often plateau even when someone keeps eating the same reduced-calorie diet?",
+    "lookingFor": "Grasp of adaptive thermogenesis and the limits of a static calorie model.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that resting energy expenditure drops as body mass and lean tissue fall",
+        "Note the body adapts hormonally, leptin, thyroid, sympathetic tone, beyond what weight loss alone predicts",
+        "Show awareness that 'calories in, calories out' is real but not static"
+      ],
+      "modelAnswer": "The simple calories-in-calories-out model treats energy expenditure as fixed, but it isn't, as someone loses weight their resting energy expenditure drops, partly because they have less mass to maintain and partly because the body genuinely adapts, leptin falls, thyroid output can dip slightly, and non-exercise activity often decreases without the person noticing. So the same 500-calorie deficit that worked at the start stops being a deficit once expenditure has fallen to match it. That's why plateaus are normal physiology, not a sign the person is cheating, and why plans usually need to be recalculated rather than the client blamed."
+    },
+    "commonMistakes": [
+      "Assuming a plateau always means the client is being dishonest about intake",
+      "Treating maintenance calories as a fixed number throughout a weight loss journey",
+      "Not mentioning adaptive thermogenesis or hormonal changes at all"
+    ],
+    "followUps": ["How would you adjust a plan once you identify a genuine plateau?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Glycemic index versus glycemic load",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["carbohydrates", "glycemic-index", "critical-thinking"],
+    "question": "What's the problem with recommending foods purely by their glycemic index?",
+    "lookingFor": "Ability to critique a popular but incomplete tool and reason toward a better alternative.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain GI measures response per fixed carbohydrate amount, not per realistic portion",
+        "Introduce glycemic load as accounting for both quality and quantity of carbs",
+        "Note GI values vary with ripeness, cooking, and food combinations, so they're unstable in real meals"
+      ],
+      "modelAnswer": "Glycemic index only tells you how fast a fixed 50 grams of carbohydrate from that food raises blood sugar, it says nothing about how much of that food someone actually eats, watermelon has a high GI but you'd need a huge portion to get 50 grams of carbs from it, so in practice it barely moves blood sugar. Glycemic load fixes that by factoring in the real portion size, which is why I think it's the more useful number for actual meal planning. On top of that, GI shifts with ripeness, cooking method and what else is on the plate, so I'd treat it as one input, not a strict rulebook."
+    },
+    "commonMistakes": [
+      "Recommending foods on GI alone without mentioning portion size",
+      "Confusing glycemic index with glycemic load",
+      "Assuming GI values are fixed and context-independent"
+    ],
+    "followUps": ["Can you give an example of a food where GI and glycemic load give very different pictures?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Evidence quality in nutrition epidemiology",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["research-methods", "epidemiology", "evidence"],
+    "question": "A news headline says 'eating red meat increases cancer risk by 20%.' As a future dietitian, how would you evaluate a claim like that?",
+    "lookingFor": "Critical appraisal skills, distinguishing relative from absolute risk, and observational from causal evidence.",
+    "idealAnswer": {
+      "bullets": [
+        "Ask whether the 20% is relative or absolute risk, and what the baseline risk was",
+        "Note that most red meat data comes from observational cohorts, so confounding is a real concern",
+        "Look for dose-response, consistency across studies, and biological plausibility before treating it as settled"
+      ],
+      "modelAnswer": "The first thing I'd want to know is whether that 20% is relative or absolute risk, because a 20% relative increase on a very small baseline risk is a very different story to the headline. Most of the red meat and cancer evidence comes from large observational cohorts, which are genuinely useful but can't fully rule out confounding, people who eat more red meat also tend to differ in other habits. I wouldn't dismiss the finding, there's a reasonably consistent dose-response signal across studies and a plausible mechanism with things like heme iron and nitrosamines, but I'd present it to a client as one part of a moderate, evidence-based picture rather than as an isolated scary number."
+    },
+    "commonMistakes": [
+      "Accepting a headline percentage without asking relative versus absolute",
+      "Treating a single observational study as proof of causation",
+      "Dismissing all epidemiological evidence as worthless because it isn't a randomized trial"
+    ],
+    "followUps": ["What would make you more confident a dietary association is actually causal?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "NOVA classification and ultra-processed foods",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["ultra-processed-food", "current-debate", "food-classification"],
+    "question": "Ultra-processed foods are getting a lot of attention right now. Do you think the NOVA classification system is a useful tool for dietetic practice?",
+    "lookingFor": "Awareness of a live nutrition debate plus balanced critical judgment, not just repeating headlines.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what NOVA groups by, degree and purpose of processing rather than nutrient content",
+        "Note real strengths, it flags additives and reformulation patterns nutrient panels miss",
+        "Raise fair criticisms, it's a blunt category that can lump very different foods together, like fortified plant milk with soda"
+      ],
+      "modelAnswer": "NOVA classifies foods by how and why they were processed rather than by nutrients alone, so it catches things a standard label misses, like emulsifiers or flavour systems designed to make food more moreish. I think that's genuinely useful, some of the emerging research linking ultra-processed intake to poorer health outcomes independent of nutrient content is hard to ignore. But I'd be cautious about applying it too bluntly, it lumps a mass-produced wholegrain bread in with a sugary soda just because both are industrially processed, and that's not a distinction a client trying to eat well actually needs. I'd use it as one lens alongside nutrient quality, not a replacement for it."
+    },
+    "commonMistakes": [
+      "Treating 'ultra-processed' and 'unhealthy' as automatically identical",
+      "Being unaware NOVA is nutrient-blind and classifies by processing purpose",
+      "Dismissing the whole framework as a fad without engaging with the evidence"
+    ],
+    "followUps": ["Can you think of an ultra-processed food that's still a reasonable dietary choice?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "GLP-1 medications and the dietitian's role",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["glp-1", "current-development", "clinical-practice"],
+    "question": "GLP-1 drugs like semaglutide are changing how a lot of people approach weight loss. What do you think this means for the role of a dietitian?",
+    "lookingFor": "Awareness of a major current development and a thoughtful view on how the profession adapts rather than becomes obsolete.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of what GLP-1 drugs do, appetite suppression and slowed gastric emptying, and their real limitations",
+        "Note the clinical need for dietitians to manage rapid weight loss safely, protein and micronutrient adequacy, muscle preservation",
+        "Reflect on the profession shifting from persuading people to eat less toward supporting a very different physiological experience of eating"
+      ],
+      "modelAnswer": "These drugs are genuinely reshaping the conversation because they solve the appetite side that diet alone often couldn't touch, but I don't think they make dietitians less necessary, if anything the opposite. Patients on them are eating very little, sometimes barely enough to meet protein needs, and rapid weight loss on a reduced intake carries real risk of muscle and micronutrient loss if nobody is guiding the food side. I see the dietitian's role shifting from persuading someone to eat less toward helping them eat well within a much smaller appetite, which is honestly a harder and more clinical problem than the old model assumed."
+    },
+    "commonMistakes": [
+      "Dismissing GLP-1 drugs as making dietetics obsolete",
+      "Showing no awareness of the medications or why they're significant right now",
+      "Ignoring the muscle-loss and micronutrient adequacy angle entirely"
+    ],
+    "followUps": ["What specific nutrition risks would you watch for in a patient on one of these medications?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Personalized nutrition and nutrigenomics hype",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["personalized-nutrition", "current-debate", "evidence"],
+    "question": "Companies now sell DNA-based diet plans claiming to tell you the 'optimal' diet for your genes. How much stock would you put in that?",
+    "lookingFor": "Skepticism grounded in evidence, distinguishing genuine nutrigenomic findings from commercial overreach.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge real, well-established gene-diet interactions, like lactase persistence or caffeine metabolism via CYP1A2",
+        "Point out most consumer tests extrapolate weak associations into confident personalized advice the evidence doesn't support",
+        "Land on a measured position, interesting emerging science, not yet ready to replace basic evidence-based dietary principles"
+      ],
+      "modelAnswer": "There are a handful of genuinely well-replicated gene-diet interactions, lactase persistence genes explaining who can digest dairy easily, or CYP1A2 variants affecting how fast someone metabolises caffeine, so the underlying science isn't nonsense. My concern is that most consumer DNA diet kits take much weaker, less replicated associations and package them as a confident personalized meal plan, which the evidence doesn't really support yet. I'd tell a client it's an interesting field to watch, but that the fundamentals, whole foods, adequate protein, fibre, portion awareness, still apply to almost everyone regardless of what a cheek swab says."
+    },
+    "commonMistakes": [
+      "Either fully endorsing commercial DNA diet tests or dismissing all nutrigenomics as fake",
+      "Being unable to name a single real gene-diet interaction",
+      "Confusing genetic risk with genetic determinism"
+    ],
+    "followUps": ["Should a dietitian ever recommend one of these tests to a client?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Intermittent fasting evidence critique",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["intermittent-fasting", "weight-management", "evidence"],
+    "question": "How would you respond to a client who says intermittent fasting is scientifically proven to be better than regular calorie counting?",
+    "lookingFor": "Ability to correct an overstated claim while staying respectful of the client's interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Note most trials show intermittent fasting produces similar weight loss to continuous restriction when total intake is matched",
+        "Explain its real advantage is usually adherence, not a metabolic superiority",
+        "Emphasize individualizing the approach to what the client can realistically sustain"
+      ],
+      "modelAnswer": "I'd gently push back on 'proven better,' most of the head-to-head trials show intermittent fasting produces roughly the same weight loss as continuous calorie restriction once you match total calories, it's not some metabolic shortcut. Where it does seem to help some people is adherence, having a clear eating window can be easier to follow than tracking every meal, so the benefit is more behavioural than biological. I'd tell the client that's a completely valid reason to choose it, and I'd rather build a plan around what they'll actually sustain than argue over which method is technically superior."
+    },
+    "commonMistakes": [
+      "Accepting the claim that fasting has a unique metabolic advantage over matched calorie restriction",
+      "Dismissing intermittent fasting entirely instead of engaging with its real behavioural benefit",
+      "Failing to mention adherence as the key variable"
+    ],
+    "followUps": ["Are there populations where you'd actively caution against intermittent fasting?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Protein timing myth in sports nutrition",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["sports-nutrition", "protein", "myth"],
+    "question": "Is the 'anabolic window,' the idea you must eat protein within 30 minutes of a workout, actually supported by evidence?",
+    "lookingFor": "Correct, current understanding of protein timing research versus older gym folklore.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that total daily protein intake matters far more than exact post-workout timing",
+        "Note the real window is more like several hours, not a strict 30-minute cutoff, especially if a meal was eaten beforehand",
+        "Show awareness this is a commonly repeated myth in popular fitness culture"
+      ],
+      "modelAnswer": "That 30-minute window is one of the more persistent myths in gym culture, but the newer research is fairly clear that total protein intake across the day matters far more than hitting some tiny post-workout deadline. If someone's eaten a normal meal within a couple of hours before training, their amino acids are still available well after the session ends, so the practical window is really several hours, not thirty minutes. I'd tell an athlete to focus on getting enough protein spread across the day rather than stressing over a shake the second they finish lifting."
+    },
+    "commonMistakes": [
+      "Reinforcing the strict 30-minute anabolic window as scientific fact",
+      "Ignoring total daily protein intake as the more important variable",
+      "Treating pre-workout meals as irrelevant to post-workout timing"
+    ],
+    "followUps": ["How much daily protein would you typically recommend for a strength-training client?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Refeeding syndrome in malnourished patients",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["clinical-nutrition", "refeeding-syndrome", "hospital"],
+    "question": "Why is reintroducing food to a severely malnourished patient actually dangerous if it's done too quickly?",
+    "lookingFor": "Understanding of refeeding syndrome's mechanism and the clinical caution it demands.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that starvation depletes intracellular phosphate, potassium, and magnesium even while blood levels look normal",
+        "Show that reintroducing carbohydrate triggers an insulin surge that drives those electrolytes rapidly into cells, crashing serum levels",
+        "Note the clinical response, start feeding at low calorie levels, monitor electrolytes closely, and increase gradually"
+      ],
+      "modelAnswer": "During prolonged starvation the body depletes phosphate, potassium and magnesium inside cells, but blood tests can still look deceptively normal because the body's been compensating. The danger comes when food, especially carbohydrate, is reintroduced, insulin surges, and that drives glucose and those depleted electrolytes rapidly back into cells, which can crash serum phosphate and potassium to levels that affect the heart. That's why clinical guidelines start severely malnourished patients on quite low calorie intakes and build up slowly while monitoring bloods daily, rather than feeding someone back to normal intake as fast as possible."
+    },
+    "commonMistakes": [
+      "Assuming faster refeeding is always better for a malnourished patient",
+      "Not connecting the danger to phosphate and electrolyte shifts specifically",
+      "Confusing refeeding syndrome with simple overeating"
+    ],
+    "followUps": ["What electrolyte would you be most worried about monitoring first?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Food insecurity and social determinants in practice",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["food-insecurity", "public-health", "access"],
+    "question": "How would your dietary advice change for a client who tells you they can't reliably afford fresh produce every week?",
+    "lookingFor": "Practical, non-judgmental adaptation of nutrition advice to real economic constraints.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that standard 'eat more fresh produce' advice can be unrealistic and alienating without acknowledging cost",
+        "Suggest frozen and tinned produce as nutritionally comparable, often cheaper, and longer-lasting alternatives",
+        "Show awareness that food insecurity affects meal timing and choices in ways plans need to accommodate, not judge"
+      ],
+      "modelAnswer": "I wouldn't just repeat the standard advice to eat more fresh fruit and vegetables, because if cost is the real barrier that advice is useless and can make someone feel judged rather than helped. I'd point out that frozen and tinned produce, ideally with no added salt or syrup, keep most of the nutrient value and are usually cheaper and don't spoil, so they can carry a lot of the nutritional weight fresh produce would. I'd also want to understand their actual week, when money's tightest, what they already cook well, and build the plan around that reality rather than an idealized grocery list."
+    },
+    "commonMistakes": [
+      "Repeating generic 'eat fresh' advice without acknowledging cost as a real constraint",
+      "Assuming frozen or tinned food is nutritionally inferior",
+      "Sounding judgmental about a client's financial situation"
+    ],
+    "followUps": ["What role do you think a dietitian should play in addressing food insecurity beyond individual advice?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Supplement industry regulation",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["supplements", "regulation", "critical-thinking"],
+    "question": "Dietary supplements aren't regulated the same way as medicines. What are the practical implications of that for how you'd advise a client?",
+    "lookingFor": "Awareness of regulatory gaps and a cautious, evidence-first approach to supplement recommendations.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that supplements generally don't require pre-market proof of efficacy the way drugs do",
+        "Flag real risks, contamination, undeclared ingredients, and interactions with medications",
+        "Show a sensible default, recommend food sources first, supplement only where there's clear, evidenced need"
+      ],
+      "modelAnswer": "Supplements don't have to prove efficacy before they're sold the way a medicine does, so a label claim doesn't mean there's strong evidence behind it, it just means it hasn't been proven false. That matters practically because there've been real cases of contamination or undeclared ingredients, and interactions with medications that a client might not think to mention. My default would be to meet nutrient needs through food where possible, and only recommend a specific supplement, like vitamin D in winter or B12 for someone plant-based, where there's clear evidence of a gap food alone won't close."
+    },
+    "commonMistakes": [
+      "Assuming supplements are held to the same evidence standard as pharmaceuticals",
+      "Recommending supplements broadly without asking about medication interactions",
+      "Being either uncritically pro-supplement or dismissive of all supplementation"
+    ],
+    "followUps": ["Can you name a supplement you would confidently recommend, and one you'd be skeptical of?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: client wants a restrictive diet against evidence",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["ethics", "autonomy", "dilemma"],
+    "question": "A client insists on following an extremely restrictive diet you believe isn't nutritionally adequate, and they're not open to changing their mind. What do you do?",
+    "lookingFor": "Ethical reasoning that balances respect for client autonomy against professional duty of care, without either capitulating or being paternalistic.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between respecting autonomy and the duty not to cause harm",
+        "Explain you'd probe their reasons first, since understanding why often opens room to adapt rather than abandon the diet",
+        "Land on a workable middle ground, not walking away, but not silently endorsing something unsafe, offering the safest achievable version"
+      ],
+      "modelAnswer": "I'd start by trying to understand why they're committed to it, is it cultural, a past experience, something they read, because that usually tells me whether there's room to adapt the plan rather than fight it head-on. I do think autonomy matters a lot, it's their body and their choice, but my professional responsibility means I can't just quietly go along with something I believe is unsafe either. So I'd be honest with them about my specific concerns, try to find the safest version of what they want to do, maybe adding a targeted supplement or a few flexible foods, and keep the door open rather than either refusing to work with them or pretending I have no concerns at all."
+    },
+    "commonMistakes": [
+      "Refusing to work with the client at all rather than trying to find safer middle ground",
+      "Simply going along with the plan to avoid conflict",
+      "Not exploring the client's underlying reasons before responding"
+    ],
+    "followUps": ["Would your approach change if the client were a minor rather than an adult?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: eating disorder client and calorie counting",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["ethics", "eating-disorders", "dilemma"],
+    "question": "A client with a history of an eating disorder asks you for a strict calorie-counted meal plan. How would you handle that request?",
+    "lookingFor": "Recognition of the clinical risk in giving a recovering eating-disorder client numeric restriction tools, and a therapeutic, non-judgmental redirection.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that rigid calorie counting can reinforce disordered thinking patterns and risk relapse, even if the request seems reasonable",
+        "Explain you'd decline the specific request kindly, while validating that their desire for structure and control is understandable",
+        "Describe an alternative, coordinate with the treatment team and use non-numeric structure like plate-based or hunger-cue approaches"
+      ],
+      "modelAnswer": "I wouldn't just hand over a strict calorie-counted plan, even though the request sounds reasonable, because for someone with an eating disorder history, numbers and rigid counting can easily feed back into the same obsessive patterns that caused harm before. I'd say that honestly but kindly, and validate that wanting structure and predictability is completely understandable, it's just that this particular tool carries real risk for them specifically. Instead I'd want to loop in their wider treatment team and lean on non-numeric structure, like a plate model or regular meal timing built around hunger and fullness cues, so they still get consistency without the relapse trigger."
+    },
+    "commonMistakes": [
+      "Providing the calorie-counted plan simply because the client requested it",
+      "Refusing to engage at all instead of offering an alternative form of structure",
+      "Not involving or mentioning the client's broader treatment team"
+    ],
+    "followUps": ["How would you explain your reasoning to the client without sounding like you're refusing to help them?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: meal plan for CKD and diabetes comorbidity",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "renal-nutrition", "comorbidity"],
+    "question": "Imagine you're planning meals for a patient who has both chronic kidney disease and type 2 diabetes. Their dietary needs seem to pull in different directions. How would you think through that?",
+    "lookingFor": "Ability to reason through a genuine clinical trade-off between competing dietary restrictions, showing structured problem-solving over memorized rules.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the tension, diabetes favors fiber-rich legumes, whole grains, and fruit, several of which CKD often requires limiting for potassium or phosphorus",
+        "Explain checking the patient's actual bloodwork and CKD stage rather than applying blanket restrictions",
+        "Prioritize by immediacy of risk, and hunt for foods that satisfy both goals reasonably well rather than treating it as a strict either-or"
+      ],
+      "modelAnswer": "The honest tension is that good diabetes advice pushes toward legumes, whole grains and fruit for fibre and glycemic control, but several of those are also higher in potassium or phosphorus, which is exactly what kidney disease often means limiting. I wouldn't apply blanket rules from either condition, I'd want to see the actual labs and CKD stage first, because how strict the potassium limit needs to be varies a lot patient to patient. From there I'd prioritise whichever risk is more immediate, a dangerous potassium level usually needs addressing faster than a slightly elevated blood sugar, but mostly I'd hunt for the overlap, foods like berries, cauliflower or apples that are reasonably low in potassium and still support glycemic goals, rather than treating it as an impossible trade-off."
+    },
+    "commonMistakes": [
+      "Applying rigid rules for each condition separately without reconciling the conflict",
+      "Not mentioning the need to check actual lab values and disease stage before deciding",
+      "Treating the two conditions as equally urgent regardless of the specific patient's presentation"
+    ],
+    "followUps": ["What lab values would you want to see before finalising the plan?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: vegan pregnant client micronutrient risk",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "vegan", "pregnancy"],
+    "question": "A pregnant client tells you she's fully vegan and doesn't want to change that. What would you focus on in your first consultation with her?",
+    "lookingFor": "Practical prioritization of the specific nutrients at real risk in vegan pregnancy, delivered respectfully of her choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify key nutrients of concern, B12, iron, iodine, choline, long-chain omega-3s, and vitamin D",
+        "Respect her choice as non-negotiable and frame the consultation around making it as safe as possible",
+        "Plan for supplementation and food sources together, with ongoing monitoring through pregnancy rather than a one-time fix"
+      ],
+      "modelAnswer": "I'd make clear upfront that I'm not there to talk her out of being vegan, my job is to make it as safe as possible for her and the baby. The nutrients I'd focus on are B12, since there's no reliable plant source, iron and iodine which are harder to hit at pregnancy's increased needs, choline, and algae-based DHA since plant omega-3s convert to it poorly. I'd build a plan that combines food sources with specific supplements for the gaps food genuinely can't close, and I'd want to check back in with bloodwork through the pregnancy rather than assuming one plan covers all three trimesters."
+    },
+    "commonMistakes": [
+      "Trying to persuade the client to add animal products rather than working within her choice",
+      "Naming only B12 and missing iodine, choline, or DHA",
+      "Treating the plan as a one-time fix rather than something to monitor across pregnancy"
+    ],
+    "followUps": ["Which of those nutrients would you consider non-negotiable to supplement, and why?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: sugar tax effectiveness",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["public-health-policy", "sugar-tax", "current-debate"],
+    "question": "Several countries have introduced taxes on sugary drinks. Do you think that's an effective public health strategy?",
+    "lookingFor": "Balanced awareness of the actual evidence on sugar taxes, not just an opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite real evidence, taxes in places like Mexico and the UK are associated with measurable drops in sugary drink purchases",
+        "Note the honest limitation, substitution effects exist and the biggest impact often comes from reformulation rather than pure behavior change",
+        "Recognize the equity debate, sugar taxes can be regressive, taking a larger share of income from lower-income households"
+      ],
+      "modelAnswer": "The evidence I've seen is actually reasonably encouraging, Mexico and the UK both saw measurable drops in sugary drink purchases after their taxes, and in the UK's case a lot of the effect came from manufacturers reformulating to dodge the tax band rather than consumers just cutting back, which is arguably an even better outcome. That said, I don't think it's a silver bullet, some people substitute toward other high-sugar products the tax doesn't cover, and there's a real equity concern since the tax takes up more of a lower-income household's budget proportionally. I'd call it a genuinely useful lever, but one that needs to sit alongside other public health measures, not replace them."
+    },
+    "commonMistakes": [
+      "Giving a purely ideological opinion with no reference to actual outcome data",
+      "Ignoring the regressive taxation and equity concern entirely",
+      "Assuming the tax works only by directly discouraging consumers rather than also driving reformulation"
+    ],
+    "followUps": ["Would you support extending a similar tax to other high-sugar foods?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: plant-based meat alternatives",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["plant-based", "current-debate", "food-processing"],
+    "question": "Plant-based meat alternatives are marketed as a healthier choice. Is that actually true from a nutrition standpoint?",
+    "lookingFor": "Nuanced comparison that goes beyond 'plant-based equals healthy,' engaging with sodium, processing, and context.",
+    "idealAnswer": {
+      "bullets": [
+        "Compare fairly, often lower in saturated fat and contain fibre real meat lacks, but many are also high in sodium and heavily processed",
+        "Note it depends heavily on the specific product and what it's being compared to",
+        "Land on 'it depends,' not a blanket health halo, and worth checking the label rather than assuming"
+      ],
+      "modelAnswer": "It really depends on the specific product, so I'd resist a blanket answer either way. A lot of these patties are lower in saturated fat than beef and have fibre real meat doesn't, which is genuinely a plus, but plenty of them are also quite high in sodium and are heavily engineered products with long ingredient lists, so 'plant-based' doesn't automatically mean healthier. I'd tell a client to actually read the label and compare it to what they're replacing, and honestly a simple bean or lentil-based burger they make themselves is often the more nutritionally solid choice than the ultra-processed version sold as a meat substitute."
+    },
+    "commonMistakes": [
+      "Assuming anything labeled plant-based is automatically the healthier option",
+      "Ignoring sodium content and degree of processing",
+      "Failing to distinguish whole-food plant proteins from engineered meat analogues"
+    ],
+    "followUps": ["How would you compare a plant-based burger to a whole-food option like a lentil patty?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Gut microbiome and probiotics hype",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["microbiome", "probiotics", "evidence"],
+    "question": "How would you separate genuine science from hype when a client asks about improving their gut microbiome?",
+    "lookingFor": "Critical engagement with an actively evolving field, distinguishing solid findings from marketing.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge what's reasonably well-supported, fibre diversity and fermented foods generally support a more diverse microbiome",
+        "Flag the hype, strain-specific claims on commercial probiotic labels often outpace the actual evidence for that exact strain and dose",
+        "Note the field is genuinely evolving, so a very confident, specific claim should raise flags"
+      ],
+      "modelAnswer": "There's solid evidence that eating a wide variety of fibre sources and some fermented foods supports a more diverse gut microbiome, and diversity does correlate with better metabolic and immune markers, so that part I'd back confidently. Where I get more cautious is with specific commercial probiotic products, a lot of the clinical trial evidence is for a particular strain at a particular dose, and that doesn't necessarily transfer to whatever's on a supermarket shelf making a similar-sounding claim. I'd tell a client the field is moving fast and genuinely exciting, but any claim that sounds very specific and very confident, like fixing mood or immunity outright, is usually ahead of what the research actually shows."
+    },
+    "commonMistakes": [
+      "Treating all probiotic supplements as equally evidence-backed",
+      "Dismissing the entire microbiome field as unproven hype",
+      "Not distinguishing general dietary fibre advice from specific strain claims"
+    ],
+    "followUps": ["What would you want to see in a study before recommending a specific probiotic product?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Cultural competence in dietary advice",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["cultural-competence", "practice", "communication"],
+    "question": "How would you adapt your dietary advice for a client whose cultural or religious food practices differ significantly from your own assumptions about a 'healthy diet'?",
+    "lookingFor": "Genuine cultural humility, working within a client's food framework rather than imposing an outside one.",
+    "idealAnswer": {
+      "bullets": [
+        "Start from curiosity, ask about typical meals and any religious or cultural food rules before suggesting changes",
+        "Recognize that unfamiliar cuisines often already contain great building blocks for the goal, and the job is adapting within them",
+        "Avoid assuming familiarity where none exists, and be willing to research or ask rather than guess"
+      ],
+      "modelAnswer": "I'd start by asking rather than assuming, what does a typical week of meals actually look like for them, and are there any religious or cultural rules I need to work within, like halal, kosher, or fasting periods. My job isn't to hand them a Western idea of healthy eating, it's to find the goals we're working toward, like more fibre or better blood sugar control, inside the food culture they already live in, most cuisines have great tools for that if I actually understand the ingredients and cooking methods involved. If I don't know enough about a specific cuisine, I'd rather say so and do the reading than guess and give advice that doesn't fit their real life."
+    },
+    "commonMistakes": [
+      "Defaulting to a Western template of 'healthy food' regardless of the client's background",
+      "Assuming religious or cultural practices are obstacles to work around rather than frameworks to work within",
+      "Guessing at unfamiliar food practices instead of asking or researching"
+    ],
+    "followUps": ["Can you think of an example where a traditional dish is actually well aligned with a health goal, once you understand it properly?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: redesigning a school lunch program on a tight budget",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "public-health", "school-nutrition"],
+    "question": "You're asked to redesign a school's lunch menu to be more nutritious, but the budget per meal can't increase. Where would you start?",
+    "lookingFor": "Practical, resourceful problem-solving that treats cost as a real constraint, not an excuse.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify where money is currently spent inefficiently, like pre-packaged or branded items that cost more per nutrient than bulk staples",
+        "Prioritize cheap, nutrient-dense swaps, legumes, seasonal vegetables, whole grains, that stretch the budget rather than shrink portions",
+        "Think about waste and plate acceptance, since a nutritious meal that gets thrown away achieves nothing"
+      ],
+      "modelAnswer": "I'd start by actually looking at where the current budget goes, school kitchens often spend more than they need to on pre-packaged branded items when a bulk-bought, scratch-cooked version of the same thing costs less and is more nutritious. From there I'd lean on cheap, nutrient-dense staples, beans, lentils, seasonal vegetables, whole grains, which stretch further than meat-heavy meals without cutting portions. But I'd also be realistic that a nutritious meal nobody eats has failed completely, so I'd want to test recipes with actual students and track plate waste, because acceptance is as much a part of the nutrition outcome as the recipe itself."
+    },
+    "commonMistakes": [
+      "Proposing changes that quietly require a bigger budget",
+      "Ignoring student acceptance and plate waste as part of the problem",
+      "Treating the redesign as a purely nutritional exercise rather than an operational and behavioural one"
+    ],
+    "followUps": ["How would you measure whether your redesigned menu actually improved student nutrition, not just theoretically but in practice?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Lactose intolerance mechanism",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "easy",
+    "tags": ["digestion", "enzymes", "lactose-intolerance"],
+    "question": "Can you explain what's actually happening in the body when someone is lactose intolerant?",
+    "lookingFor": "Clear grasp of the enzyme mechanism at an appropriate depth, showing genuine subject foundation.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify lactase as the enzyme that breaks lactose into glucose and galactose in the small intestine",
+        "Explain that when lactase is insufficient, undigested lactose reaches the colon, where bacteria ferment it, producing gas and drawing in water",
+        "Distinguish this from a milk allergy, which is an immune response, not a digestive enzyme issue"
+      ],
+      "modelAnswer": "Lactose is a sugar in milk, and it needs an enzyme called lactase, made in the small intestine, to be broken down into glucose and galactose so it can actually be absorbed. In people who are lactose intolerant, lactase levels drop, often naturally after childhood, so the undigested lactose travels down into the colon instead, where gut bacteria ferment it, producing gas and pulling in water, which is what causes the bloating and discomfort. It's worth distinguishing from a milk allergy, which is the immune system reacting to milk proteins, that's a completely different mechanism with potentially more serious consequences."
+    },
+    "commonMistakes": [
+      "Confusing lactose intolerance with a milk allergy",
+      "Not naming the enzyme lactase specifically",
+      "Vague answer with no mechanism, just 'some people can't digest milk'"
+    ],
+    "followUps": ["Why do lactase levels typically decline after childhood in much of the world's population?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: confidentiality with a minor's eating disorder",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "hard",
+    "tags": ["ethics", "confidentiality", "minors"],
+    "question": "You're counseling a sixteen-year-old who confides she's been skipping meals and making herself sick, but she begs you not to tell her parents. What do you do?",
+    "lookingFor": "Sound ethical reasoning balancing a minor's trust and autonomy against safeguarding responsibility, showing understanding this isn't a simple confidentiality case.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize this crosses from ordinary confidentiality into a safeguarding concern, given the health risk to a minor",
+        "Explain you'd be honest with her from the start about the limits of confidentiality rather than promising blanket secrecy then breaking it",
+        "Describe involving parents or a clinical team in a way that preserves as much of her trust and dignity as possible"
+      ],
+      "modelAnswer": "I don't think I could promise her total confidentiality here, what she's describing is a genuine safeguarding risk, not just a private preference, and pretending otherwise would be dishonest with her and dangerous for her. I'd actually be upfront about that limit early, rather than promising secrecy and then breaking it later, which would destroy trust completely. From there I'd try to involve her in how the disclosure happens, whether she wants to be there when I speak to her parents or a clinical lead, so it feels less like something being done to her and more like getting her the support she actually needs."
+    },
+    "commonMistakes": [
+      "Promising complete confidentiality to a minor in a genuine safety situation",
+      "Disclosing to parents with no warning or involvement of the minor at all",
+      "Treating this as a simple confidentiality question rather than a safeguarding one"
+    ],
+    "followUps": ["How would you explain the limits of confidentiality to her before she's even disclosed anything?"]
+  },
+  {
+    "id": "prog-nutrition-dietetics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Handling viral nutrition misinformation",
+    "program": "Nutrition & Dietetics",
+    "difficulty": "medium",
+    "tags": ["misinformation", "social-media", "current-debate"],
+    "question": "A client shows you a viral video claiming a specific juice cleanse can 'detox' the liver in three days. How would you respond, in the room, in that moment?",
+    "lookingFor": "Ability to correct misinformation without alienating the client, using it as a teachable moment.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid outright dismissiveness, ask what appealed to them about it first, since that reveals the underlying goal you can work with",
+        "Explain in plain terms why the claim is physiologically implausible, the liver and kidneys already detoxify continuously",
+        "Redirect toward the real, evidence-based version of what they're after, more energy, better digestion, or a sense of control"
+      ],
+      "modelAnswer": "I wouldn't just shut it down, I'd ask what drew them to it first, usually it's wanting to feel more energetic or like they're taking control after a period of eating poorly, and that's a completely legitimate goal even if the video's claim isn't real. Then I'd explain plainly that the liver and kidneys are already filtering and processing things around the clock, there's no scientific mechanism by which drinking juice for three days speeds that up, and cutting out real food that way can actually leave you low on protein and energy. I'd try to give them an alternative that meets the same underlying want, like a few days focused on vegetables, water and cutting back on alcohol or processed food, so they still get the reset feeling without the physiological nonsense."
+    },
+    "commonMistakes": [
+      "Mocking the client or the claim, which shuts down the conversation",
+      "Only saying 'that's not true' without explaining the actual physiology",
+      "Failing to offer a real alternative that addresses what the client actually wanted"
+    ],
+    "followUps": ["How would you handle it if the client pushed back and said their friend lost weight doing it?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-software-engineering-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Why software engineering",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["motivation", "software-engineering"],
+    "question": "Why do you want to study software engineering specifically, rather than computer science more broadly?",
+    "lookingFor": "A motivation that shows you understand software engineering as building reliable, maintainable systems for real users, not just writing code.",
+    "idealAnswer": {
+      "bullets": [
+        "Show you understand the emphasis on building working systems, not just theory",
+        "Point to a concrete experience that pulled you toward building over pure theory",
+        "Distinguish it honestly from computer science without dismissing either"
+      ],
+      "modelAnswer": "I like computer science fine, but what actually excites me is the process of turning a messy idea into something people can rely on and use every day. Building a small attendance app for my school club taught me that the hard part isn't writing a function that works once, it's making it work reliably when three people use it at the same time and one of them enters something weird. That's the part of the field I want to get good at, the engineering discipline around code rather than just the algorithm itself. Software engineering as a course seemed to take that seriously with modules on testing and system design, which is exactly the gap in my self-taught experience."
+    },
+    "commonMistakes": [
+      "Treating computer science and software engineering as interchangeable with no distinction",
+      "Answering with 'I like coding' and nothing more specific",
+      "Dismissing computer science as 'too theoretical' in a way that sounds uninformed"
+    ],
+    "followUps": ["What do you think is the actual difference between a programmer and a software engineer?"]
+  },
+  {
+    "id": "prog-software-engineering-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's program",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["program-fit", "motivation"],
+    "question": "What made you choose our software engineering course over similar ones elsewhere?",
+    "lookingFor": "Specific, researched reasons tied to this course's structure, not generic praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific feature of the course, such as an industry placement, capstone, or module",
+        "Tie it to a concrete personal need or gap in your current experience",
+        "Show you compared it against alternatives rather than applying blind"
+      ],
+      "modelAnswer": "Most courses I looked at front-load theory and leave the group software project until the final year, but yours has a team-based build module starting in year two, which matters to me because the one thing I have not had real practice with is working in a team on a shared codebase. I also looked at your placement partnerships, and a couple of them do exactly the kind of backend work I want to try. Compared to two other courses I shortlisted, this one felt like it would stretch the part of my skills that is currently weakest rather than just repeating what I already know from self-teaching."
+    },
+    "commonMistakes": [
+      "Citing rankings or reputation with no course-specific detail",
+      "Praise so generic it could apply to any university's program",
+      "Naming a feature the course does not actually have"
+    ],
+    "followUps": ["What would you want to get out of that placement or project specifically?"]
+  },
+  {
+    "id": "prog-software-engineering-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Origin story",
+    "program": "Software Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story"],
+    "question": "What first got you interested in building software?",
+    "lookingFor": "A genuine, specific moment or process, showing sustained interest rather than a recent or rehearsed hook.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific moment, tool, or problem that sparked it",
+        "Show the interest has continued and developed since then, not a one-off",
+        "Keep it personal and concrete rather than a generic 'I've always loved computers'"
+      ],
+      "modelAnswer": "My older cousin showed me how to make a website move when you clicked a button, and something about seeing my own instructions actually happen on screen hooked me immediately. I spent that whole summer breaking and rebuilding a simple to-do list site until it did what I wanted. Since then I have moved on to slightly bigger things, like a scoreboard app for my school's sports day, but that first feeling of controlling something through pure logic is still what pulls me back every time I get stuck on a bug."
+    },
+    "commonMistakes": [
+      "A vague 'I've always liked computers' with no specific moment",
+      "Describing interest that only started weeks before the application",
+      "No evidence the interest has grown or deepened since"
+    ],
+    "followUps": ["How has your interest changed since that first project?"]
+  },
+  {
+    "id": "prog-software-engineering-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Software engineering vs computer science",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "software-engineering"],
+    "question": "How would you explain the difference between software engineering and computer science to someone outside the field?",
+    "lookingFor": "A clear, non-textbook explanation showing genuine understanding of the discipline you are applying to.",
+    "idealAnswer": {
+      "bullets": [
+        "Frame computer science as the study of computation and algorithms",
+        "Frame software engineering as the discipline of building reliable systems within real constraints",
+        "Give a concrete example that shows the distinction in practice"
+      ],
+      "modelAnswer": "Computer science is closer to the science of what a computer can compute and how efficiently, things like algorithms and complexity theory. Software engineering takes that knowledge and asks how you actually build something that works reliably when it has deadlines, multiple people touching the code, and real users who will do unexpected things with it. A computer scientist might prove an algorithm is optimal, but a software engineer has to decide whether that algorithm is worth the added complexity given the team's timeline. I find that second question just as interesting as the first."
+    },
+    "commonMistakes": [
+      "Claiming the two fields are basically the same thing",
+      "Reciting a dictionary definition with no example",
+      "Suggesting one field is more valuable or difficult than the other"
+    ],
+    "followUps": ["Can you give an example of a project where that trade-off actually mattered?"]
+  },
+  {
+    "id": "prog-software-engineering-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Personal project walkthrough",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["experience", "projects"],
+    "question": "Tell us about a piece of software you have built. Walk us through how you approached it.",
+    "lookingFor": "Evidence of hands-on building experience and a sense of process, from problem to working result.",
+    "idealAnswer": {
+      "bullets": [
+        "State the problem the project solved and who it was for",
+        "Describe your actual approach, including a decision you had to make",
+        "Be honest about a limitation or something you would do differently"
+      ],
+      "modelAnswer": "I built a small budgeting app for myself after getting frustrated tracking spending in a spreadsheet. I started by sketching what a week of use would actually look like before writing any code, which saved me from over-building features I did not need. The trickiest decision was whether to store everything locally or add a login and a database, and I chose local storage first to get something working, then added a simple backend once I trusted the core logic. Looking back I would write tests earlier, because I broke the totals twice while adding features and only caught it by manually checking."
+    },
+    "commonMistakes": [
+      "Describing only the finished product with no sense of process",
+      "Overstating the scale or originality of a copied tutorial project",
+      "No honest reflection on limitations or what they would change"
+    ],
+    "followUps": ["What was the hardest bug you had to fix in that project?"]
+  },
+  {
+    "id": "prog-software-engineering-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Debugging a tricky bug",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["debugging", "problem-solving"],
+    "question": "Describe the most difficult bug you have ever had to track down. How did you find it?",
+    "lookingFor": "A methodical debugging process, not luck, and evidence of persistence.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the symptom and why it was confusing at first",
+        "Walk through the actual method used to narrow it down",
+        "Explain what you learned that changed how you code or debug now"
+      ],
+      "modelAnswer": "I had a game script that worked perfectly on my machine but crashed randomly for a friend testing it, and at first I assumed his computer was the problem. I started adding print statements at each stage instead of guessing, and eventually noticed it only crashed when a specific key was pressed twice quickly, which pointed to a timing issue in how I handled input. It turned out I was reading a variable before a previous update had finished writing to it. Since then I am much more careful about the order operations actually happen in, not just the order I wrote them in the code."
+    },
+    "commonMistakes": [
+      "Claiming they fixed it instantly with no real process described",
+      "Blaming the bug entirely on external factors",
+      "No lesson or change in behavior afterward"
+    ],
+    "followUps": ["How do you usually approach a bug when the error message doesn't tell you much?"]
+  },
+  {
+    "id": "prog-software-engineering-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Version control understanding",
+    "program": "Software Engineering",
+    "difficulty": "easy",
+    "tags": ["git", "fundamentals", "tools"],
+    "question": "What is version control, and why do software teams use it?",
+    "lookingFor": "A basic but correct understanding of what version control does and why it matters beyond a single developer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that it tracks changes to code over time",
+        "Mention it lets multiple people work on the same project without overwriting each other",
+        "Note it allows reverting to earlier working versions"
+      ],
+      "modelAnswer": "Version control keeps a history of every change made to a codebase, so you can see what changed, when, and by whom. The big reason teams use it is that several people can work on different parts of the same project at once without simply overwriting each other's work, and tools like Git can merge those changes together. It also means if something breaks, you can go back to the last version that worked instead of trying to manually undo your changes. I use Git for my own small projects mainly for that safety net, even working alone."
+    },
+    "commonMistakes": [
+      "Confusing version control with simple file backups",
+      "Only describing it as useful for teams, missing the personal safety-net use",
+      "Not knowing any specific tool name, such as Git"
+    ],
+    "followUps": ["Have you ever had a merge conflict, and how did you resolve it?"]
+  },
+  {
+    "id": "prog-software-engineering-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "OOP core concepts",
+    "program": "Software Engineering",
+    "difficulty": "easy",
+    "tags": ["oop", "fundamentals", "concept"],
+    "question": "Can you explain what object-oriented programming is, in your own words?",
+    "lookingFor": "A clear, non-memorized explanation of the core idea, ideally with a concrete example.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe grouping data and behavior together into objects",
+        "Mention at least one core idea such as classes, inheritance, or encapsulation",
+        "Give a simple real-world analogy or code example"
+      ],
+      "modelAnswer": "Object-oriented programming is about modeling your code around objects that bundle together data and the actions that work on that data, rather than keeping data and functions completely separate. For example, a Car class might hold data like speed and fuel level, along with methods like accelerate that change that data in controlled ways. What I find useful about it is inheritance, where a class like ElectricCar can reuse most of Car's behavior and only override what's different, like how it refuels. It makes code feel more organized once a project gets bigger than a few files."
+    },
+    "commonMistakes": [
+      "Reciting 'encapsulation, inheritance, polymorphism' with no explanation of what they mean",
+      "Confusing a class with an object",
+      "Giving no example at all"
+    ],
+    "followUps": ["What's a situation where object-oriented design might not be the best choice?"]
+  },
+  {
+    "id": "prog-software-engineering-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "SDLC and agile awareness",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["agile", "process", "sdlc"],
+    "question": "What do you understand about how professional software teams actually build and ship software?",
+    "lookingFor": "Basic awareness of a development process, ideally agile concepts, without needing job-level fluency.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention that software is built in stages, from requirements to design to testing to deployment",
+        "Show awareness that teams often work in short iterative cycles rather than one long build",
+        "Be honest about what you know from reading versus firsthand experience"
+      ],
+      "modelAnswer": "From what I have read, most teams do not build the whole product and then test it once at the end, they work in short cycles, often called sprints, where they build a small piece, test it, get feedback, and adjust. That agile approach seems to exist because requirements change and it is safer to catch a wrong assumption after two weeks than after six months. I have only really used a simplified version of this on my own projects, breaking work into weekly goals and reviewing what worked, but I would like to actually experience it properly on a team during the course."
+    },
+    "commonMistakes": [
+      "Describing only the waterfall model as if it's the only approach",
+      "Using buzzwords like 'agile' or 'scrum' with no actual understanding",
+      "Overclaiming firsthand professional experience they don't have"
+    ],
+    "followUps": ["Why might a team choose short iterations instead of planning everything upfront?"]
+  },
+  {
+    "id": "prog-software-engineering-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Testing importance",
+    "program": "Software Engineering",
+    "difficulty": "easy",
+    "tags": ["testing", "quality", "fundamentals"],
+    "question": "Why do you think testing is such a big part of software engineering?",
+    "lookingFor": "Understanding that testing catches problems early and protects against regressions, not just 'to check it works'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain testing catches bugs before users encounter them",
+        "Mention it protects existing functionality when new code is added",
+        "Show awareness that untested code becomes riskier to change over time"
+      ],
+      "modelAnswer": "Testing matters because it's much cheaper to catch a mistake while you're writing the code than after someone else is relying on it. What surprised me when I started writing my own tests is that they mostly saved me from breaking things that already worked, not from catching brand-new bugs. Once I added a feature to my budgeting app without tests and it silently changed how totals were calculated for an old feature, and I did not notice for a week. Now I try to write at least a basic test before I trust a function is done."
+    },
+    "commonMistakes": [
+      "Saying testing is just 'to make sure it works' with no deeper reasoning",
+      "Not distinguishing testing new code from protecting old code",
+      "No personal example or evidence of actually having tested anything"
+    ],
+    "followUps": ["What's the difference between testing a feature manually and writing an automated test for it?"]
+  },
+  {
+    "id": "prog-software-engineering-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Time complexity intuition",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["algorithms", "complexity", "fundamentals"],
+    "question": "Why does it matter whether an algorithm is fast, if a computer can already do millions of operations a second?",
+    "lookingFor": "Intuitive understanding of how complexity scales with input size, not memorized big-O notation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that speed differences only become visible at scale",
+        "Give a concrete contrast, such as checking every pair versus a smarter approach",
+        "Show understanding that this matters more as data grows, not for small inputs"
+      ],
+      "modelAnswer": "For small amounts of data it genuinely doesn't matter, a slow and a fast algorithm both finish instantly. The problem shows up when the input grows, because some algorithms slow down proportionally while others slow down much faster, like comparing every pair of items in a list. I saw this directly when a sorting approach I wrote worked fine on twenty items but took visibly longer on two thousand, which is what pushed me to actually learn why some algorithms scale so much worse than others. It made complexity feel less like a textbook topic and more like something that would actually bite me."
+    },
+    "commonMistakes": [
+      "Reciting big-O notation with no intuitive explanation behind it",
+      "Claiming speed always matters regardless of input size",
+      "No concrete example of scale actually mattering"
+    ],
+    "followUps": ["Can you think of an everyday example where checking every possible pair would get slow fast?"]
+  },
+  {
+    "id": "prog-software-engineering-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "SQL vs NoSQL databases",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["databases", "fundamentals"],
+    "question": "What do you understand about how a piece of software actually stores its data long-term?",
+    "lookingFor": "Basic awareness that databases exist for persistence, with some sense of structured versus flexible storage.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that applications need to persist data beyond a single run",
+        "Mention databases in general terms, ideally distinguishing structured tables from more flexible storage",
+        "Connect it to a project where you actually had to think about storing data"
+      ],
+      "modelAnswer": "Once a program closes, anything only kept in memory disappears, so software that needs to remember things has to store data somewhere more permanent, usually a database. From what I've used, there are databases like SQL ones that organize data into strict tables with relationships between them, which is good when the structure is predictable, and others that are more flexible about what shape the data takes. For my budgeting app I actually just used a simple local file at first, and only later moved to a proper database once I needed to query and filter transactions more easily, which is when I understood why databases exist in the first place."
+    },
+    "commonMistakes": [
+      "Confusing a database with a simple file or spreadsheet with no distinction made",
+      "No mention of why persistence matters at all",
+      "Overusing jargon like ACID or normalization with no actual understanding behind it"
+    ],
+    "followUps": ["Why might you choose a more flexible, less structured database over a traditional table-based one?"]
+  },
+  {
+    "id": "prog-software-engineering-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Favorite programming language",
+    "program": "Software Engineering",
+    "difficulty": "easy",
+    "tags": ["languages", "experience"],
+    "question": "What programming language do you enjoy working with most, and why?",
+    "lookingFor": "A genuine preference backed by a real reason and understanding of trade-offs, not just 'it's easy'.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific language you have real experience with",
+        "Give a substantive reason tied to what you have built with it",
+        "Show some awareness of its limitations compared to alternatives"
+      ],
+      "modelAnswer": "I enjoy Python most because the syntax gets out of my way when I'm trying to test an idea quickly, which matters a lot when I'm still figuring out whether an approach will even work. I used it for a small script that scraped and organized my school's timetable, and being able to iterate fast was genuinely useful there. I know it trades away some of the speed and stricter safety you get from a language like Java or C, and I've started learning a bit of the latter specifically to understand what that trade-off actually feels like."
+    },
+    "commonMistakes": [
+      "Naming a language with no real projects behind the claim",
+      "Only saying 'it's easy to learn' with no deeper reasoning",
+      "Dismissing other languages without understanding their strengths"
+    ],
+    "followUps": ["What's something you find frustrating about that language?"]
+  },
+  {
+    "id": "prog-software-engineering-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Team coding project experience",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["teamwork", "experience", "projects"],
+    "question": "Have you ever worked on code with other people? What was that experience like?",
+    "lookingFor": "Evidence of collaborative coding experience and honest reflection on what made it hard.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific shared project, even a small or informal one",
+        "Name a real difficulty of coding with others, such as merging work or agreeing on structure",
+        "Show what you learned about collaborating on shared code"
+      ],
+      "modelAnswer": "For a school hackathon three of us built a simple event check-in tool over two days, splitting the frontend, the backend, and the database between us. The hardest part wasn't actually the code, it was agreeing on how our pieces would talk to each other before we'd written anything, because we'd each assumed a different data format. Once we sat down and wrote out the exact structure we'd pass between components first, everything connected much more smoothly. It taught me that on a team, agreeing on interfaces early saves far more time than diving straight into writing code."
+    },
+    "commonMistakes": [
+      "Claiming extensive team experience with no specific project to describe",
+      "Only describing conflict with no resolution or lesson",
+      "Framing it as purely working alone in parallel with no real collaboration"
+    ],
+    "followUps": ["How did you handle it when someone's code broke something you'd built?"]
+  },
+  {
+    "id": "prog-software-engineering-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and industry awareness",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "industry-awareness"],
+    "question": "How do you keep up with what's happening in software development? What have you read or followed recently?",
+    "lookingFor": "Genuine, specific engagement with the field beyond the syllabus, not a vague claim of interest.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific source, article, talk, or podcast you actually engage with",
+        "Explain what you took from it, not just that you consumed it",
+        "Show it connects to your own thinking or projects"
+      ],
+      "modelAnswer": "I follow a few developer blogs and recently read a post about why a company moved parts of their system away from microservices back toward a simpler setup, because the added complexity wasn't paying off for their team size. It stuck with me because I'd assumed more advanced architecture was always better, and it made me realize a lot of engineering is about matching the solution to the actual scale of the problem, not just using the most sophisticated tool available. It changed how I think about my own small projects, where I now deliberately try to keep things simpler than I'm tempted to make them."
+    },
+    "commonMistakes": [
+      "Claiming to follow 'tech news' with no specific example",
+      "Naming a source but showing no actual understanding of its content",
+      "Reading list has no connection to their own thinking or work"
+    ],
+    "followUps": ["Did that change how you approach any of your own projects?"]
+  },
+  {
+    "id": "prog-software-engineering-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Software quality trade-offs",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["design-trade-offs", "architecture"],
+    "question": "If you were building an app for a small local business, would you design it to scale to millions of users? Why or why not?",
+    "lookingFor": "Understanding that engineering decisions are contextual trade-offs, not always about maximum sophistication.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that over-engineering for scale you don't need has real costs",
+        "Weigh simplicity and speed of delivery against future flexibility",
+        "Show the decision depends on context, such as the business's realistic growth"
+      ],
+      "modelAnswer": "I would not, at least not upfront. Designing for millions of users usually means more complexity, more infrastructure, and more time before anything actually ships, and a small local business needs something working soon, not something theoretically ready for a scale it may never reach. I would build it simply but in a way that isn't actively hostile to growth, so it could be rebuilt or extended later if the business genuinely took off. Optimizing for a future that might not happen, at the cost of the present that definitely will, feels like the wrong trade-off in that situation."
+    },
+    "commonMistakes": [
+      "Assuming more scalable or complex is always the better engineering choice",
+      "Giving no reasoning, just a flat yes or no",
+      "Not acknowledging any downside to keeping things simple"
+    ],
+    "followUps": ["What would make you change your mind and start designing for larger scale?"]
+  },
+  {
+    "id": "prog-software-engineering-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Requirements gathering",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["requirements", "communication", "situational"],
+    "question": "A client tells you they want an app that 'just works better' than what they have now. How would you turn that into something you could actually build?",
+    "lookingFor": "Structured thinking about eliciting real requirements from vague input, showing communication awareness alongside technical instinct.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the request is too vague to build from directly",
+        "Describe asking specific, concrete questions to uncover the real problem",
+        "Show awareness that the client's stated want may not be their actual need"
+      ],
+      "modelAnswer": "I would not start coding from that, because 'better' could mean faster, easier to use, more reliable, or something else entirely, and building the wrong one wastes everyone's time. I would ask them to walk me through a specific recent moment where the current system frustrated them, since concrete stories usually reveal the real problem better than abstract complaints do. It is also worth checking whether what they are asking for even solves what is actually costing them time or money, because sometimes the stated request isn't the real underlying need. Only once I had a specific, observable problem would I start thinking about what to build."
+    },
+    "commonMistakes": [
+      "Jumping straight to proposing features with no clarifying questions",
+      "Taking the vague statement completely at face value",
+      "No distinction between what the client says they want and what they actually need"
+    ],
+    "followUps": ["What would you do if the client couldn't give you a specific example?"]
+  },
+  {
+    "id": "prog-software-engineering-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics and algorithmic fairness",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "software-engineering", "situational"],
+    "question": "Software you build can end up treating some groups of people unfairly, even without anyone intending it. How does that happen, and what would you do about it?",
+    "lookingFor": "Awareness that bias can enter systems unintentionally through data or design choices, plus a sense of responsibility to check for it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a real mechanism, such as biased training data or unrepresentative testing",
+        "Show this isn't just a data science problem, ordinary software has it too",
+        "Describe a concrete practice to reduce the risk, such as testing across different user groups"
+      ],
+      "modelAnswer": "It usually is not a case of a developer deliberately writing unfair code, it is more that the data or assumptions baked into a system reflect only part of the population, and the system just faithfully repeats that pattern at scale. Even something as ordinary as a form that assumes everyone has a single first and last name, or a scheduling system that assumes standard working hours, can quietly exclude people it wasn't designed with in mind. What I would actually do is try to test with people who are not like me and not like whoever built the original spec, because the blind spots are usually invisible to the people who created them. It feels less like an occasional ethics problem and more like something worth checking at every stage."
+    },
+    "commonMistakes": [
+      "Treating bias as only relevant to AI or machine learning, not ordinary software",
+      "Assuming it can only happen through deliberate malicious intent",
+      "No concrete practice offered, just a vague acknowledgment it's important"
+    ],
+    "followUps": ["Can you think of an ordinary app or website where this kind of unintended exclusion might show up?"]
+  },
+  {
+    "id": "prog-software-engineering-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Failure in a coding project",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["resilience", "experience", "projects"],
+    "question": "Tell us about a coding project that didn't go the way you planned. What happened?",
+    "lookingFor": "Honest account of a real technical setback with genuine reflection, not a disguised success story.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a genuine failure or project that didn't work out as intended",
+        "Take ownership of what went wrong rather than blaming tools or circumstances",
+        "Explain what changed in how you approach projects since"
+      ],
+      "modelAnswer": "I tried to build a chatbot for a school project without properly planning the structure first, just adding features as I thought of them, and about two weeks in the code became so tangled that adding anything new broke something else. I ended up scrapping most of it and starting over with a much simpler design, which was frustrating given the time already spent. The mistake was entirely mine, I got excited and skipped planning because I wanted to see something working immediately. Since then I sketch out how the main pieces will fit together before writing serious code, even for small personal projects."
+    },
+    "commonMistakes": [
+      "Choosing a story that isn't a real failure, more a minor inconvenience",
+      "Blaming the tools, the assignment, or teammates instead of owning it",
+      "No real change in approach afterward"
+    ],
+    "followUps": ["What would you do differently if you started that same project again today?"]
+  },
+  {
+    "id": "prog-software-engineering-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Interest in emerging technology",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["ai", "emerging-tech", "curiosity"],
+    "question": "Is there a current trend in software development, like AI-assisted coding, that interests or worries you?",
+    "lookingFor": "A genuine, balanced view showing engagement with a real trend, not just enthusiasm or fear with no substance.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific trend you have actually engaged with or thought about",
+        "Give both something that interests you and something that gives you pause",
+        "Connect it to how it might change what you're learning or how you'll work"
+      ],
+      "modelAnswer": "I've been using AI coding assistants for small tasks like writing boilerplate, and what interests me is how much faster the tedious parts get done, which frees up time for the actual design decisions I find more engaging. What worries me a little is relying on it before I actually understand the underlying concept myself, since I've caught myself accepting a suggestion I couldn't fully explain. I've started making myself explain any generated code back in my own words before using it, partly because I think that's the skill interviewers and, eventually, teams will actually expect me to have. It feels like a tool that raises the floor but could lower the ceiling if you let it think for you."
+    },
+    "commonMistakes": [
+      "Pure enthusiasm with no acknowledgment of any downside",
+      "Pure dismissal or fear with no engagement with how it's actually used",
+      "No personal experience with the trend, just secondhand opinions"
+    ],
+    "followUps": ["How do you make sure you're still learning the fundamentals if a tool can write the code for you?"]
+  },
+  {
+    "id": "prog-software-engineering-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Open source or hackathon experience",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["experience", "community", "projects"],
+    "question": "Have you contributed to an open-source project or taken part in a hackathon? What was it like?",
+    "lookingFor": "Real engagement with the wider development community, or an honest account of not having done so yet with genuine curiosity.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific contribution or event, however small",
+        "Mention a real challenge, such as reading unfamiliar code or working under time pressure",
+        "If they haven't done this, be honest and show what they'd want to try"
+      ],
+      "modelAnswer": "I fixed a small documentation bug in an open-source library I used for a school project, which sounds minor, but just reading through someone else's much larger codebase to figure out where the fix belonged taught me more about real-world code structure than any of my own projects had. Everyone's naming conventions and file organization were different from what I was used to, which was disorienting at first. It made me want to attempt something bigger, maybe an actual feature contribution, once I'm more confident navigating codebases I didn't write myself."
+    },
+    "commonMistakes": [
+      "Exaggerating a trivial contribution into something it wasn't",
+      "Claiming extensive open-source experience with no specifics when pressed",
+      "If they have no experience, showing no curiosity about it at all"
+    ],
+    "followUps": ["What was the hardest part of understanding a codebase you didn't write?"]
+  },
+  {
+    "id": "prog-software-engineering-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Explain recursion",
+    "program": "Software Engineering",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "concept", "algorithms"],
+    "question": "Can you explain what recursion is, as if to someone who has never coded before?",
+    "lookingFor": "A clear, accessible explanation with a concrete example, showing the concept is genuinely understood, not memorized.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a function calling itself to solve a smaller version of the same problem",
+        "Mention the need for a stopping condition so it doesn't run forever",
+        "Use a simple, relatable analogy or example"
+      ],
+      "modelAnswer": "Recursion is when a function solves a problem by calling itself on a smaller version of that same problem, until it reaches a version so small it can just answer directly. A good everyday example is looking through a set of nested boxes for a key, you open a box, and if there's another box inside, you repeat the exact same search on that smaller box, until you find one with no more boxes inside. That last step, the box with no more boxes, is really important, because without a point where it stops calling itself, the function would just keep going forever. It's a slightly strange way of thinking at first, but it makes some problems, like navigating a folder structure, much cleaner to write than looping."
+    },
+    "commonMistakes": [
+      "Giving a definition with no accessible example",
+      "Forgetting to mention the base case or stopping condition",
+      "Confusing recursion with a simple loop with no distinction made"
+    ],
+    "followUps": ["Why might recursion sometimes cause a program to crash?"]
+  },
+  {
+    "id": "prog-software-engineering-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Good engineer versus good programmer",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["software-engineering", "reflection"],
+    "question": "What do you think separates someone who is just good at writing code from someone who is a good software engineer?",
+    "lookingFor": "A thoughtful view that goes beyond raw coding skill to communication, maintainability, and working within constraints.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish writing correct code from building something maintainable by others",
+        "Mention non-coding skills like communication or understanding user needs",
+        "Ground it in a personal observation rather than an abstract claim"
+      ],
+      "modelAnswer": "Someone can write code that works perfectly and still be difficult to build software with, if that code is unreadable to anyone else or solves the wrong problem entirely. What I think separates a good engineer is caring about the code after it's written, whether someone else can understand and safely change it, and caring about whether it actually solves what the user needed rather than what was technically asked for. I noticed this on my own smaller projects, where code I wrote quickly and never explained to anyone became genuinely hard for me to understand just a month later. That made me realize writing for a future reader, even if that reader is just future me, is its own separate skill from getting the logic right in the first place."
+    },
+    "commonMistakes": [
+      "Equating engineering skill purely with technical difficulty of code written",
+      "No mention of communication, maintainability, or user needs at all",
+      "An answer with no personal grounding, purely abstract"
+    ],
+    "followUps": ["How do you try to write code that your future self, or someone else, could understand easily?"]
+  },
+  {
+    "id": "prog-software-engineering-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Future goals in the field",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["goals", "motivation", "future"],
+    "question": "What kind of software engineering work do you imagine yourself doing after you graduate?",
+    "lookingFor": "A grounded, believable direction connected to real interests, with openness to change.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific direction or area of software, not a vague 'work in tech'",
+        "Tie it to something concrete you have already done or learned about",
+        "Show flexibility, acknowledging the direction might shift"
+      ],
+      "modelAnswer": "Right now I'm drawn toward backend and systems work, the kind of engineering that most users never directly see but that everything else depends on, partly because I enjoyed the plumbing side of my own small projects more than the visual design side. I got a taste of that building the data layer for my budgeting app and found the problem of keeping things consistent and fast more satisfying than styling buttons. I know that could easily change once I'm exposed to areas I haven't tried yet, like security or embedded systems, and I'm applying to a broad course partly so I get that exposure before committing to a narrower path."
+    },
+    "commonMistakes": [
+      "A vague answer like 'I just want to work in tech'",
+      "An overly rigid, unrealistically specific plan with no room to change",
+      "No connection to any actual experience or evidence of the stated interest"
+    ],
+    "followUps": ["What's drawing you toward that particular area specifically?"]
+  },
+  {
+    "id": "prog-software-engineering-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining a technical concept simply",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["communication", "concept"],
+    "question": "How would you explain what an API is to a family member who has never coded?",
+    "lookingFor": "The ability to translate a technical concept into plain language using a relatable analogy, a key skill for a working engineer.",
+    "idealAnswer": {
+      "bullets": [
+        "Use a concrete, everyday analogy rather than technical jargon",
+        "Convey the core idea of a defined way for two systems to communicate",
+        "Check the explanation actually lands, rather than just reciting it"
+      ],
+      "modelAnswer": "I'd compare it to ordering at a restaurant. You don't walk into the kitchen and cook the meal yourself, you tell the waiter what you want from the menu, and the waiter brings back exactly that, without you needing to know how the kitchen works inside. An API is like that menu and waiter for two pieces of software, one program asks for something specific in an agreed format, and the other program sends back an answer, without either needing to know how the other actually works internally. That's roughly what's happening when a weather app on your phone shows you today's forecast, it's asking another system somewhere else for that information using exactly that kind of request."
+    },
+    "commonMistakes": [
+      "Using technical terms like 'endpoint' or 'request' without translating them",
+      "An analogy so vague it doesn't actually convey the mechanism",
+      "Getting so deep into detail that it stops being accessible to a non-coder"
+    ],
+    "followUps": ["Can you think of another everyday analogy that captures a different technical idea you know?"]
+  }
+]

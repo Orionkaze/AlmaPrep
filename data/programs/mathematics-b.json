@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-mathematics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Proof by contradiction",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["proof", "number-theory", "reasoning"],
+    "question": "Can you prove that the square root of 2 is irrational, and explain why proof by contradiction is the natural tool for this particular statement?",
+    "lookingFor": "Fluent execution of the classic proof plus genuine insight into why contradiction suits non-existence claims.",
+    "idealAnswer": {
+      "bullets": [
+        "Assume root 2 equals p over q in lowest terms and derive that p must be even",
+        "Follow through to show q must also be even, contradicting the lowest-terms assumption",
+        "Explain that contradiction works well here because a direct proof would have to rule out every possible fraction at once"
+      ],
+      "modelAnswer": "I'd start by assuming, for contradiction, that root 2 equals p over q where the fraction is already fully reduced. Squaring gives p squared equals 2q squared, so p squared is even, which means p itself must be even, say p equals 2k. Substituting back shows q squared is also even, so q is even too, but that contradicts our assumption that p over q was in lowest terms. I like this proof because a direct approach would need to somehow check every rational number, whereas contradiction just needs one clean inconsistency to close the door on all of them at once."
+    },
+    "commonMistakes": [
+      "Getting lost partway through the algebra and losing track of what's being contradicted",
+      "Not stating the lowest-terms assumption explicitly, so the contradiction has nowhere to land",
+      "Treating it as a memorised script rather than explaining why the method fits the claim"
+    ],
+    "followUps": ["Could you use the same style of argument to show that the square root of 3 is irrational?"]
+  },
+  {
+    "id": "prog-mathematics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits without L'Hopital",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["calculus", "limits", "reasoning"],
+    "question": "How would you evaluate the limit of sin(x) over x as x approaches 0, without reaching for L'Hopital's rule?",
+    "lookingFor": "Understanding that this limit underlies the derivative of sine, so using L'Hopital here is circular, plus a genuine geometric argument.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that L'Hopital would need the derivative of sine, which itself relies on this very limit",
+        "Set up the squeeze theorem using areas of a triangle, a sector, and a larger triangle",
+        "Conclude the limit is 1 by squeezing sin(x)/x between two expressions that both tend to 1"
+      ],
+      "modelAnswer": "I'd actually flag first that using L'Hopital here is a bit circular, because differentiating sine relies on already knowing this limit equals 1. Instead I'd draw a unit circle with a small angle x and compare the area of a thin triangle, the circular sector, and a larger triangle built from the tangent line. That gives the inequality sin(x) less than x less than tan(x) for small positive x, and dividing through and taking the limit squeezes sin(x)/x between cos(x) and 1. Since cos(x) approaches 1 as x approaches 0, the squeeze theorem forces the limit to be exactly 1."
+    },
+    "commonMistakes": [
+      "Reaching straight for L'Hopital without noticing the circularity",
+      "Quoting the answer as 1 with no justification at all",
+      "Confusing the squeeze theorem's requirement that both bounding functions converge to the same value"
+    ],
+    "followUps": ["What happens to the limit of sin(kx) over x as x approaches 0, for some constant k?"]
+  },
+  {
+    "id": "prog-mathematics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Cardinality of infinite sets",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["infinity", "set-theory", "proof"],
+    "question": "Are there more real numbers than natural numbers? How would you convince me of your answer?",
+    "lookingFor": "Comfort with the idea that infinities can differ in size, plus a working grasp of Cantor's diagonal argument.",
+    "idealAnswer": {
+      "bullets": [
+        "State that yes, the reals are uncountable while the naturals are countable, so they are different sizes of infinity",
+        "Sketch Cantor's diagonal argument: assume a list of all reals between 0 and 1, then construct a new number that differs from every listed one",
+        "Explain the contradiction this creates, which shows no such complete list can exist"
+      ],
+      "modelAnswer": "Yes, and it genuinely surprised me the first time I saw it, because both sets are infinite yet they're not the same size. Cantor's argument assumes you could list every real number between 0 and 1 against the natural numbers, then builds a new decimal by changing the nth digit of the nth listed number so it differs from every entry on the list. That new number can't be anywhere on the supposed complete list, which is a contradiction, so no such listing can exist and the reals must be uncountable. What I find beautiful about it is that the proof doesn't rely on any specific numbers at all, just the structure of listing itself."
+    },
+    "commonMistakes": [
+      "Claiming all infinities are the same size",
+      "Reciting the diagonal argument without explaining what the contradiction actually shows",
+      "Confusing countability with the set simply being infinite"
+    ],
+    "followUps": ["Is the set of rational numbers countable or uncountable, and why does that feel surprising given how densely they sit on the number line?"]
+  },
+  {
+    "id": "prog-mathematics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Fundamental theorem of calculus",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["calculus", "intuition", "reasoning"],
+    "question": "What is the fundamental theorem of calculus actually saying, in your own words rather than the formula?",
+    "lookingFor": "Genuine conceptual grasp that differentiation and integration are inverse processes, not just formula recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that accumulating a rate of change and then differentiating the result gets you back the original rate",
+        "Connect area under a curve to a running total that changes according to the curve's height",
+        "Show why this links two ideas that look completely different on the surface, slopes and areas"
+      ],
+      "modelAnswer": "To me it's saying that adding things up and finding rates of change are secretly the same operation running in opposite directions. If I define a function that measures the area under a curve up to a point x, then that area function's own rate of change at x is just the height of the original curve at x, because a tiny sliver of extra area is basically height times a thin width. That's what lets you calculate an exact area by finding an antiderivative instead of summing infinitely many slivers by hand. I remember finding it strange that something as static as area could be unlocked by something as dynamic as a derivative, and that's really the heart of the theorem."
+    },
+    "commonMistakes": [
+      "Just stating the formula without explaining what it means",
+      "Describing integration and differentiation as unrelated topics",
+      "Missing the accumulation function idea entirely"
+    ],
+    "followUps": ["Why does the theorem require the function to be continuous?"]
+  },
+  {
+    "id": "prog-mathematics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Necessity of complex numbers",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["complex-numbers", "history", "foundations"],
+    "question": "Why do we need complex numbers? Aren't they just invented to make certain equations work?",
+    "lookingFor": "Historical accuracy and an understanding that complex numbers were forced upon mathematicians by real-number problems, not chosen arbitrarily.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the historical origin in solving cubic equations, where complex numbers appeared even in formulas for real solutions",
+        "Push back gently on 'invented' versus 'discovered' as being too simple a distinction",
+        "Give a modern reason they matter, such as electrical engineering or the fact that they make every polynomial factor completely"
+      ],
+      "modelAnswer": "It's a fair challenge, but historically complex numbers weren't invented to satisfy some abstract curiosity, they showed up in Cardano's formula for cubic equations even when the final answers were ordinary real numbers. Mathematicians at the time were uncomfortable with the square roots of negatives appearing midway through, but ignoring them meant losing correct real solutions, so they had to be taken seriously. Today I'd point to the fact that every polynomial factors completely over the complex numbers, which is such a clean and powerful property that it's hard to imagine algebra without it. And practically, engineers use complex numbers constantly for alternating current and signal processing, so they're far from just a mathematical curiosity."
+    },
+    "commonMistakes": [
+      "Saying complex numbers are 'not real' and therefore not useful",
+      "Missing the historical cubic equation origin entirely",
+      "Giving only an abstract answer with no concrete application"
+    ],
+    "followUps": ["Can you think of a real-world quantity that's naturally described using a complex number?"]
+  },
+  {
+    "id": "prog-mathematics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Group theory intuition",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["algebra", "abstraction", "groups"],
+    "question": "What is a group, and can you give an example of one that isn't just numbers under addition or multiplication?",
+    "lookingFor": "Comfort with abstraction, correct recall of the group axioms, and evidence of genuine exploration beyond the standard textbook examples.",
+    "idealAnswer": {
+      "bullets": [
+        "State the axioms clearly: closure, associativity, identity, and inverses",
+        "Give a non-numeric example such as the symmetries of a square under composition",
+        "Explain what's gained by studying the abstract structure rather than any one specific example"
+      ],
+      "modelAnswer": "A group is a set with an operation that combines two elements to give another element in the set, where the operation is associative, there's an identity element that does nothing, and every element has an inverse that undoes it. My favourite non-numeric example is the symmetries of a square, the rotations and reflections that map the square onto itself, combined by doing one after another. Composing two symmetries always gives another symmetry, doing nothing is the identity, and every rotation or flip can be undone, so it satisfies all the axioms even though there's no addition or multiplication in sight. What I find powerful is that once you prove something about groups in general, it applies to numbers, symmetries, and even Rubik's cube moves all at once, which is really the whole point of abstraction."
+    },
+    "commonMistakes": [
+      "Only giving numeric examples like integers under addition",
+      "Forgetting one of the four axioms, especially associativity",
+      "Not being able to explain why abstraction is useful beyond definitions"
+    ],
+    "followUps": ["Is the symmetry group of the square commutative? How would you check?"]
+  },
+  {
+    "id": "prog-mathematics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Conditional probability paradox",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["probability", "conditional-probability", "reasoning"],
+    "question": "Talk me through the Monty Hall problem. Why is switching doors the better strategy?",
+    "lookingFor": "Clear reasoning about how new information changes probabilities, not just a memorised answer.",
+    "idealAnswer": {
+      "bullets": [
+        "State the setup and the counterintuitive claim, that switching wins two thirds of the time",
+        "Explain that the host's action is not random, he always reveals a goat, which injects information",
+        "Walk through the probability split before and after the reveal to justify switching"
+      ],
+      "modelAnswer": "There are three doors, one with a prize, and I pick one, so I have a one third chance of being right and a two thirds chance the prize is behind one of the other two. The host, who knows where the prize is, then opens one of the remaining doors to reveal a goat, and crucially he can always do this because he's not choosing randomly. That means the two thirds probability that was spread across the other two doors now collapses entirely onto the one door he didn't open, so switching gives me a two thirds chance of winning instead of the one third I started with. It took me a while to trust this the first time I saw it, but running through it with a small simulation convinced me the host's guaranteed knowledge is what makes it work."
+    },
+    "commonMistakes": [
+      "Assuming both remaining doors are equally likely after the reveal",
+      "Not explaining why the host's action carries information",
+      "Getting the final probabilities wrong, such as saying it's fifty fifty"
+    ],
+    "followUps": ["How would the answer change if the host opened a door at random and it happened to reveal a goat?"]
+  },
+  {
+    "id": "prog-mathematics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Mathematical induction",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["induction", "proof", "algebra"],
+    "question": "Prove that the sum of the first n positive integers equals n times n plus one over two, using induction, and explain why induction is a valid proof method.",
+    "lookingFor": "Correct mechanical execution plus a real understanding of why the base case and inductive step together prove the statement for all n.",
+    "idealAnswer": {
+      "bullets": [
+        "Verify the base case, usually n equals 1",
+        "Assume the formula holds for some k and show it then holds for k plus 1",
+        "Explain induction as a chain reaction, each true case triggers the next, covering all natural numbers"
+      ],
+      "modelAnswer": "For the base case, when n equals 1 the sum is just 1, and the formula gives 1 times 2 over 2 which is also 1, so it checks out. Assuming the formula holds for some k, meaning the sum up to k is k times k plus one over two, I add k plus 1 to both sides, which gives the sum up to k plus 1 equalling k times k plus one over two plus k plus 1, and simplifying that algebraically gives exactly the formula with k plus 1 substituted in. Induction works as a proof method because it's like knocking over dominoes, once you know the base case falls and each case knocks over the next, you've guaranteed every single natural number is covered without checking them individually. That's what makes it so much more powerful than just testing a few examples."
+    },
+    "commonMistakes": [
+      "Skipping the base case entirely",
+      "Assuming the result is true for all n rather than just the inductive hypothesis for k",
+      "Making an algebra error in the inductive step and not catching it"
+    ],
+    "followUps": ["Could you adapt this proof to find a formula for the sum of the first n odd numbers?"]
+  },
+  {
+    "id": "prog-mathematics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "History and rigor of calculus",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["history-of-math", "rigor", "calculus"],
+    "question": "Newton and Leibniz built calculus on infinitesimals that weren't rigorously defined for almost two hundred years. Does that bother you?",
+    "lookingFor": "Nuanced awareness of the gap between mathematical discovery and rigorous formalisation, and why both matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge honestly that the historical foundations really were shaky and criticised at the time",
+        "Reference the later epsilon delta formalisation by Cauchy and Weierstrass that fixed the gap",
+        "Distinguish the intuition that drives discovery from the rigor that later confirms it's sound"
+      ],
+      "modelAnswer": "It doesn't bother me, actually, I find it reassuring in a strange way. Newton and Leibniz's infinitesimals were genuinely criticised at the time, famously by Bishop Berkeley who called them ghosts of departed quantities, and calculus worked incredibly well for physics long before anyone could fully justify why. It wasn't until Cauchy and later Weierstrass introduced the epsilon delta definition of a limit that the whole edifice was put on solid logical footing. I think it shows something true about how mathematics actually progresses, intuition and results often arrive first, and rigor catches up afterward to confirm the intuition was pointing somewhere real."
+    },
+    "commonMistakes": [
+      "Claiming calculus was always rigorous from the start",
+      "Dismissing the historical gap as unimportant with no real engagement",
+      "Not naming the epsilon delta resolution at all"
+    ],
+    "followUps": ["Do you think intuition without rigor is ever enough in mathematics, or does it always eventually need formal proof?"]
+  },
+  {
+    "id": "prog-mathematics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Infinitude of primes",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["number-theory", "primes", "proof"],
+    "question": "Are there infinitely many prime numbers, and how would you prove it?",
+    "lookingFor": "Confident recall of Euclid's proof plus awareness of what's still open in prime number theory.",
+    "idealAnswer": {
+      "bullets": [
+        "Present Euclid's proof by contradiction, assuming a finite list of primes",
+        "Construct a new number from multiplying all listed primes and adding one, and show it must have a prime factor not on the list",
+        "Note the contrast with genuinely open questions like the twin prime conjecture"
+      ],
+      "modelAnswer": "Yes, and Euclid's proof from over two thousand years ago is still the cleanest way to see it. Suppose there were only finitely many primes, p1 through pn, then consider the number formed by multiplying all of them together and adding 1. That number isn't divisible by any of the primes on our list, since dividing by any of them leaves a remainder of 1, so either it's prime itself or it has a prime factor that wasn't on our original list, either way contradicting the assumption that we'd listed them all. What I find interesting is how much about primes is still unknown even though this proof is so old, like whether there are infinitely many twin primes, which nobody has managed to settle."
+    },
+    "commonMistakes": [
+      "Claiming the constructed number is always itself prime",
+      "Forgetting to frame it as a proof by contradiction",
+      "Confusing this proof with results about the density or spacing of primes"
+    ],
+    "followUps": ["What do you know about the twin prime conjecture, and why is it still unresolved?"]
+  },
+  {
+    "id": "prog-mathematics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Matrices as transformations",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["linear-algebra", "geometry", "intuition"],
+    "question": "What does it mean geometrically to multiply a vector by a matrix?",
+    "lookingFor": "Visual, geometric fluency with linear algebra rather than purely mechanical row by column computation.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the matrix as encoding a linear transformation of space, stretching, rotating, or shearing it",
+        "Connect the determinant to how the transformation scales area or volume",
+        "Mention eigenvectors as the special directions that only get stretched, not rotated"
+      ],
+      "modelAnswer": "Geometrically, multiplying by a matrix moves every point in space according to a consistent rule, it might stretch things in one direction, rotate them, or shear them, but straight lines stay straight and the origin stays fixed. I find it helpful to think of the matrix's columns as telling you exactly where the basic unit vectors land, and everything else follows from that by linearity. The determinant then tells you how much the transformation scales area, and if it's zero the transformation squashes space down a dimension, which is why matrices with zero determinant aren't invertible. Eigenvectors are the directions that don't get rotated at all under the transformation, just stretched or shrunk, which is why they show up so often when you want to understand a transformation's essential behaviour."
+    },
+    "commonMistakes": [
+      "Describing matrix multiplication only as a computational procedure with no geometric picture",
+      "Confusing determinant sign with magnitude",
+      "Not connecting eigenvectors to the geometric picture at all"
+    ],
+    "followUps": ["What would a matrix with determinant zero do to a shape drawn on the plane?"]
+  },
+  {
+    "id": "prog-mathematics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Non-Euclidean geometry",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["geometry", "foundations", "history-of-math"],
+    "question": "Euclid's fifth postulate troubled mathematicians for two thousand years. What happens if you reject it?",
+    "lookingFor": "Awareness that rejecting the parallel postulate leads to entirely consistent geometries, not contradictions, and why that mattered historically.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that mathematicians long assumed the fifth postulate could be derived from the others, and it can't",
+        "Describe what happens when you replace it, giving rise to spherical or hyperbolic geometry",
+        "Mention a real consequence, such as general relativity using curved, non-Euclidean space"
+      ],
+      "modelAnswer": "For centuries mathematicians tried to prove the parallel postulate from Euclid's other four axioms, assuming it must secretly follow from them, but it turns out to be genuinely independent. If you replace it with the assumption that no parallel lines exist, you get spherical geometry, where the angles of a triangle sum to more than 180 degrees, and if you assume infinitely many parallels through a point you get hyperbolic geometry, where they sum to less. Both of these are entirely logically consistent, they're just describing curved spaces instead of flat ones, which genuinely surprised mathematicians like Gauss and Lobachevsky when they worked it out. What makes it more than a curiosity to me is that general relativity actually uses curved, non-Euclidean geometry to describe how mass bends spacetime, so rejecting that one postulate turned out to describe the real universe."
+    },
+    "commonMistakes": [
+      "Assuming rejecting the postulate leads to a contradiction",
+      "Not being able to name either alternative geometry",
+      "Missing the connection to relativity or any real application"
+    ],
+    "followUps": ["Can you picture what a triangle looks like on the surface of a sphere, and why its angles sum to more than 180 degrees?"]
+  },
+  {
+    "id": "prog-mathematics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Misuse of p-values",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["statistics", "reasoning", "p-values"],
+    "question": "What's wrong with treating a p-value under 0.05 as proof that a result is real?",
+    "lookingFor": "Precise understanding of what a p-value actually measures and the dangers of treating a threshold as automatic proof.",
+    "idealAnswer": {
+      "bullets": [
+        "State correctly what a p-value measures, the probability of seeing data this extreme if the null hypothesis were true",
+        "Point out that it says nothing directly about the probability the hypothesis itself is true",
+        "Raise the practical dangers, multiple testing and publication bias inflating the number of falsely significant results"
+      ],
+      "modelAnswer": "A p-value only tells you how surprising your data would be if the null hypothesis were actually true, it doesn't tell you the probability that your hypothesis is correct, which is the mistake people usually make when they treat 0.05 as some magic proof threshold. If you run enough tests, roughly one in twenty will cross that threshold purely by chance even when there's no real effect, so without correcting for multiple comparisons you'll end up with plenty of false positives. There's also a publication bias problem, where studies that cross 0.05 get published and the ones that don't quietly disappear, which distorts what the literature ends up looking like. I think a p-value is a useful piece of evidence, but treating it as a binary proof or disproof switch misunderstands what it's actually measuring."
+    },
+    "commonMistakes": [
+      "Describing the p-value as the probability the hypothesis is true",
+      "Not mentioning multiple testing or publication bias at all",
+      "Suggesting p-values are entirely useless rather than misused"
+    ],
+    "followUps": ["How would you correct for running many statistical tests at once?"]
+  },
+  {
+    "id": "prog-mathematics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Godel's incompleteness theorem",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["logic", "foundations", "godel"],
+    "question": "What does Godel's incompleteness theorem actually say, and why does it matter?",
+    "lookingFor": "A genuine, careful grasp of the theorem's content rather than a vague pop-science summary, plus its historical significance.",
+    "idealAnswer": {
+      "bullets": [
+        "State the core claim accurately, that any consistent formal system powerful enough to encode arithmetic contains true statements it cannot prove",
+        "Distinguish truth from provability within a formal system",
+        "Explain its historical impact on Hilbert's program to fully formalise all of mathematics"
+      ],
+      "modelAnswer": "Godel's first incompleteness theorem says that in any consistent formal system rich enough to describe basic arithmetic, there will always be true statements about numbers that the system cannot prove using its own axioms and rules. It's easy to overstate this as mathematics being broken, but what it really shows is a gap between truth and provability, that no fixed set of axioms can ever capture every true arithmetic statement, no matter how carefully you build it. Historically it mattered enormously because Hilbert had hoped to find a complete, consistent set of axioms that could mechanically settle every mathematical question, and Godel showed that goal was impossible in principle, not just difficult in practice. I find it fascinating that a piece of pure logic essentially told mathematicians something permanent about the limits of their own discipline."
+    },
+    "commonMistakes": [
+      "Vaguely saying 'math can't prove everything' without the precise setup",
+      "Confusing incompleteness with inconsistency",
+      "Not connecting it to Hilbert's program or its historical context"
+    ],
+    "followUps": ["Does Godel's theorem mean mathematics as a whole is somehow unreliable?"]
+  },
+  {
+    "id": "prog-mathematics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Optimization problem",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["calculus", "optimization", "applied"],
+    "question": "A farmer has 100 metres of fencing to enclose a rectangular field against an existing straight wall, so only three sides need fencing. How would you find the dimensions that maximize the enclosed area?",
+    "lookingFor": "Clean translation of a word problem into a calculus optimisation, with correct use of the second derivative to confirm a maximum.",
+    "idealAnswer": {
+      "bullets": [
+        "Set up variables and the constraint, two widths plus one length equal 100",
+        "Express area as a function of a single variable by substituting the constraint",
+        "Differentiate, solve for the critical point, and confirm it's a maximum"
+      ],
+      "modelAnswer": "I'd let x be the width of the two sides perpendicular to the wall and y be the length parallel to it, so the fencing constraint is 2x plus y equals 100, meaning y equals 100 minus 2x. The area is x times y, so substituting gives area as a function of x alone, A of x equals x times 100 minus 2x, which expands to 100x minus 2x squared. Differentiating gives 100 minus 4x, and setting that to zero gives x equals 25, and since the second derivative is negative 4, that confirms it's a maximum rather than a minimum. So the width should be 25 metres and the length 50 metres, giving a maximum area of 1250 square metres."
+    },
+    "commonMistakes": [
+      "Forgetting that only three sides need fencing and setting up the constraint as if it were four",
+      "Finding the critical point but never checking whether it's a maximum or minimum",
+      "Leaving the answer purely in terms of x without stating the actual dimensions"
+    ],
+    "followUps": ["How would the setup change if the fencing also had to include the side along the wall?"]
+  },
+  {
+    "id": "prog-mathematics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of predictive modelling",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["ethics", "statistics", "bias"],
+    "question": "A predictive policing algorithm you helped build turns out to reinforce racial bias baked into the historic arrest data it was trained on. What's your responsibility as the mathematician behind the model?",
+    "lookingFor": "Recognition that mathematical models aren't neutral, and structured reasoning about disclosure, correction, and professional responsibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that choosing data, features, and objectives are value-laden decisions, not purely technical ones",
+        "Reason through the responsibility to investigate, document, and flag the bias once discovered rather than staying quiet",
+        "Weigh options between fixing the model, halting its use, and being transparent with whoever deployed it"
+      ],
+      "modelAnswer": "I think it's tempting for mathematicians to hide behind the idea that we just build the model and the data speaks for itself, but choosing what data to train on and what outcome to optimise for are value judgements, whether we admit it or not. If I discovered the bias, my first responsibility would be to actually verify it rigorously, quantify how the model's error rates differ across groups rather than relying on a hunch. After that I don't think I could stay quiet, I'd want to document the finding clearly and raise it with whoever commissioned the model, and push for either retraining with bias correction or pausing deployment until it's fixed. I don't think mathematics gives you an excuse to be a neutral bystander once you know your work is causing real harm to real people."
+    },
+    "commonMistakes": [
+      "Claiming the model is neutral because it's 'just following the data'",
+      "Jumping to 'quit the project' as the only ethical option with no attempt to fix or investigate",
+      "Treating this as a purely technical bug rather than an ethical issue with real consequences"
+    ],
+    "followUps": ["What would you actually measure to check whether a model is biased across groups?"]
+  },
+  {
+    "id": "prog-mathematics-b-017",
+    "category": "Ethics & Situational",
+    "subtopic": "Data manipulation dilemma",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["ethics", "research-integrity", "statistics"],
+    "question": "You're helping a research group analyse data and notice a colleague has quietly dropped several inconvenient outliers to get a cleaner, more publishable result. What do you do?",
+    "lookingFor": "Clear distinction between legitimate data cleaning and manipulation, plus mature judgement about how to raise the issue.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish clearly between principled outlier removal, done transparently with a stated method, and quietly discarding inconvenient data",
+        "Reason through raising it directly with the colleague first rather than escalating immediately",
+        "Recognise that the credibility of the whole field depends on this kind of honesty, so staying silent has real cost"
+      ],
+      "modelAnswer": "There's a real difference between removing outliers using a stated, defensible method decided before looking at the results, and quietly dropping points because they get in the way of the conclusion you wanted, and what I'd be worried about here is the second one. I'd want to talk to my colleague directly first, ask them to walk me through why those points were excluded, partly because there might be a legitimate reason I'm not seeing yet. If it turned out the exclusions really were just chosen to clean up the result, I'd push for the analysis to be redone properly and for that decision to be documented, because published results that other people build on need to be trustworthy. Staying quiet would feel like being complicit in something that undermines the whole reason we do rigorous statistics in the first place."
+    },
+    "commonMistakes": [
+      "Treating any outlier removal as automatically dishonest",
+      "Escalating to a supervisor or authority immediately without ever raising it with the colleague",
+      "Not recognising why this matters beyond the immediate paper"
+    ],
+    "followUps": ["What would count as a legitimate, honest reason to exclude an outlier from a dataset?"]
+  },
+  {
+    "id": "prog-mathematics-b-018",
+    "category": "Ethics & Situational",
+    "subtopic": "Using another's proof",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["ethics", "academic-integrity", "proof"],
+    "question": "Suppose you're stuck on a hard problem and find a very similar proof already published online. Is it acceptable to use its structure in work you submit as your own?",
+    "lookingFor": "Clear thinking about the line between learning from a technique and passing off someone else's work as original, with honest attention to citation.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish learning a technique and then reproducing understanding, from copying a structure without understanding it",
+        "Insist on transparency, citing the source rather than presenting it as fully original",
+        "Note that in a formal submission the rules of the specific competition or course usually settle this and should be checked first"
+      ],
+      "modelAnswer": "I think there's a real difference between studying someone else's proof until I genuinely understand the idea and can reconstruct it myself, and just copying the structure without engaging with why it works, and only the first one sits right with me. If I used a technique I found online, I'd want to be upfront about it, citing where the idea came from rather than presenting it as something I invented from scratch, because passing off someone else's insight as my own feels dishonest even if I technically wrote out the steps myself. In something like a formal submission or competition I'd also check the actual rules first, because a lot of them explicitly address exactly this situation and I'd rather follow the letter of it than guess. Ultimately I want credit for what I actually understand, not for finding the right search result."
+    },
+    "commonMistakes": [
+      "Treating any external reference as automatically fine because 'everyone looks things up'",
+      "Not mentioning citation or transparency at all",
+      "Failing to distinguish learning from a source versus copying it wholesale"
+    ],
+    "followUps": ["Does your answer change if this were a formal exam rather than a personal problem set?"]
+  },
+  {
+    "id": "prog-mathematics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and mathematical research",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["ai", "current-debate", "research"],
+    "question": "Systems like AlphaProof are starting to solve olympiad-level problems and assist in mathematical research. Do you think AI will change what it means to be a mathematician?",
+    "lookingFor": "An informed, balanced view that engages with a genuinely current debate rather than a generic opinion about AI.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of specific developments, such as AI systems reaching olympiad medal-level performance or assisting with formal proof verification",
+        "Distinguish pattern-matching and search from the creative act of deciding which questions are worth asking",
+        "Give a considered view on what's likely to change versus what's likely to remain distinctly human"
+      ],
+      "modelAnswer": "I've followed this with real interest, especially systems like AlphaProof reaching medal-level performance on olympiad problems by combining search with formal proof checking in systems like Lean. I don't think it makes mathematicians obsolete, because so far these systems are extremely good at finding proofs for well-posed problems, but deciding which problems are actually worth asking in the first place, spotting a connection between two seemingly unrelated areas, that still feels like a deeply human, creative act. What I do think will change is the day to day work, formal verification tools could let mathematicians check huge proofs far more reliably than human peer review alone, freeing people up to focus on the more exploratory, intuition-driven parts of the job. I'm genuinely excited rather than worried about it, I think it'll shift where human effort goes rather than remove the need for it."
+    },
+    "commonMistakes": [
+      "Giving a generic AI opinion with no specific knowledge of current developments in mathematics",
+      "Claiming AI will fully replace mathematicians with no nuance",
+      "Dismissing AI's relevance entirely without engaging with the actual debate"
+    ],
+    "followUps": ["What do you think a proof assistant like Lean actually does differently from a search engine or a calculator?"]
+  },
+  {
+    "id": "prog-mathematics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Computer-assisted proofs",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["proof", "computer-assisted", "current-debate"],
+    "question": "The four colour theorem was proved partly through exhaustive computer checking of thousands of cases. Some mathematicians were uneasy accepting that as a genuine proof. Where do you stand?",
+    "lookingFor": "Thoughtful engagement with a real historical controversy in mathematics, weighing what counts as proof against human verifiability.",
+    "idealAnswer": {
+      "bullets": [
+        "Define proof as a valid logical argument regardless of who or what checks each step, provided the method is sound",
+        "Acknowledge the genuine discomfort mathematicians felt about not being able to verify every case by hand",
+        "Note that formal proof assistants have since strengthened confidence in results like this by machine-verifying the logic itself"
+      ],
+      "modelAnswer": "I think a proof is a proof if the logical argument is valid, and I don't see why the argument becomes less valid just because a computer, rather than a person, checked thousands of individual cases, as long as the method for generating and checking those cases is itself sound. That said, I understand the discomfort, mathematics has always valued proofs that a human can read through and genuinely understand, and the four colour proof's reliance on exhaustive case checking meant no single person could hold the whole argument in their head. What reassures me is that the proof has since been re-verified using formal proof assistants that check every logical step from the axioms up, which addresses the worry about hidden bugs in the original code. I'd say my view has shifted over time from slight skepticism toward accepting that rigor doesn't require human-scale comprehensibility, just verifiable correctness."
+    },
+    "commonMistakes": [
+      "Rejecting computer-assisted proofs as not real mathematics with no engagement with the actual debate",
+      "Accepting them uncritically with no acknowledgment of why mathematicians were originally uneasy",
+      "Not knowing the specific historical example being referenced"
+    ],
+    "followUps": ["Do you think there's a meaningful difference between a proof no human can fully check and a proof no human has bothered to check?"]
+  },
+  {
+    "id": "prog-mathematics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Replication crisis and statistics",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["statistics", "current-debate", "applied-math"],
+    "question": "There's an ongoing replication crisis in fields like psychology and medicine that rely heavily on statistics. What does that tell you about how mathematics gets used outside pure maths?",
+    "lookingFor": "The ability to separate the certainty of pure mathematics from the messier reality of applying statistical methods, plus awareness of how misuse rather than flawed math drives the crisis.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish the internal certainty of proven mathematical results from the uncertainty inherent in applying statistics to noisy real-world data",
+        "Identify specific causes like p-hacking, small sample sizes, and publication bias as misuse of methods rather than flaws in the mathematics itself",
+        "Draw a broader conclusion about the importance of statistical literacy across disciplines that rely on mathematical tools"
+      ],
+      "modelAnswer": "I think it says less about mathematics being unreliable and more about the gap between a mathematical method being valid in principle and being applied carefully in practice. A statistical test is a precise mathematical object with clear assumptions, but once real researchers with real incentives to publish start choosing which analyses to run after seeing the data, or working with small noisy samples, the guarantees the method promised start to break down even though the underlying mathematics hasn't changed at all. What strikes me is that the fix isn't abandoning statistics, it's things like pre-registering analysis plans and requiring larger samples, which are really about disciplining how the mathematics gets used. It's made me think that understanding statistics well enough to spot misuse is almost as important as knowing how to run the test in the first place."
+    },
+    "commonMistakes": [
+      "Concluding that statistics itself is untrustworthy or broken",
+      "Not naming any specific mechanism like p-hacking or publication bias",
+      "Treating this as unrelated to mathematics rather than as a story about applying it responsibly"
+    ],
+    "followUps": ["What's one concrete change a field could make to reduce false positive results?"]
+  },
+  {
+    "id": "prog-mathematics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering a flawed proof",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "proof", "reasoning"],
+    "question": "Imagine you find what looks like a genuine gap in the proof of a well-known, long-accepted theorem. What would you actually do?",
+    "lookingFor": "Intellectual humility combined with rigorous follow-through rather than either dismissing your own finding or assuming you've overturned established mathematics.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by seriously questioning your own understanding before assuming the experts are wrong",
+        "Test the supposed gap against small concrete cases or known consequences of the theorem to see if it holds up",
+        "Describe the proper channel, contacting an expert or supervisor, rather than either staying silent or announcing it prematurely"
+      ],
+      "modelAnswer": "My honest first instinct would be to assume I've misunderstood something, given how many people have checked a well-known theorem over the years, so I'd go back through the proof slowly and see if the gap disappears once I read it more carefully. If it still looked like a real gap, I'd try to test it against small concrete examples or known results that depend on the theorem, because if those still held up despite the gap, that would tell me something useful about whether it's a real problem or just a presentation issue. Assuming it survived that scrutiny, I wouldn't announce it publicly straight away, I'd take it to a teacher or someone with more expertise and ask them to look at it with me, because at that stage I'd rather be corrected quietly than embarrass myself or spread confusion. I think the instinct to stay curious but also genuinely doubt yourself first is what separates a useful discovery from a false alarm."
+    },
+    "commonMistakes": [
+      "Immediately assuming the famous theorem must be wrong",
+      "Giving up and assuming you must be wrong with no attempt to actually verify",
+      "Jumping straight to a dramatic public claim without any verification step"
+    ],
+    "followUps": ["What would make you confident enough to actually raise this with someone senior?"]
+  },
+  {
+    "id": "prog-mathematics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Choosing an open problem",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "open-problems", "curiosity"],
+    "question": "If you could instantly know the answer to one unsolved problem in mathematics, which would you choose, and why?",
+    "lookingFor": "Genuine, specific engagement with a real open problem, showing curiosity and some understanding rather than name-dropping.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific open problem understood at some real depth, not just as a famous label",
+        "Explain what makes that problem matter, either intellectually or because of what it would unlock",
+        "Show honest personal curiosity rather than reciting a rehearsed 'impressive' answer"
+      ],
+      "modelAnswer": "I'd pick the Riemann hypothesis, partly because I've spent time reading about how it connects to the distribution of prime numbers through the zeta function, and partly because so much other mathematics quietly assumes it's true and would suddenly have solid footing if it were confirmed. What draws me to it isn't just its fame, it's that primes look so irregular individually but the hypothesis suggests there's a hidden, precise order underneath that irregularity, which is exactly the kind of pattern I find most satisfying in mathematics. I'll admit I don't fully understand the analytic number theory needed to seriously attack it myself yet, but that's part of why I'd want to know the answer, I'm curious whether the pattern really is there or whether our intuition about primes has been misleading us all along."
+    },
+    "commonMistakes": [
+      "Naming a famous problem with no real explanation of what it says",
+      "Choosing a problem purely because it sounds impressive",
+      "Giving an answer with zero personal curiosity or reasoning behind it"
+    ],
+    "followUps": ["What would knowing the answer actually let mathematicians do that they can't do now?"]
+  },
+  {
+    "id": "prog-mathematics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Value of mathematics without application",
+    "program": "Mathematics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "philosophy-of-math", "funding"],
+    "question": "If a branch of mathematics were proven to have absolutely no real-world application, ever, does it still deserve to be studied and funded?",
+    "lookingFor": "A considered position that weighs intrinsic intellectual value against practical funding realities, drawing on genuine historical examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Argue for intrinsic value, that mathematics can be worth pursuing for its own intellectual and aesthetic merit",
+        "Cite a real historical example where 'useless' pure mathematics later became essential, such as number theory underpinning modern cryptography",
+        "Acknowledge honestly that funding is finite and that this creates a genuine practical tension worth engaging with, not dismissing"
+      ],
+      "modelAnswer": "I'd say yes, though I want to be honest that this is a genuinely hard question rather than an easy yes. Part of my answer is that mathematics has intrinsic value the same way art or music does, understanding something true and elegant is worthwhile even if it never touches the physical world. But I'd also push back gently on the premise, because history is full of examples like number theory, which was considered a beautiful but useless corner of pure mathematics for over a century before it became the foundation of modern cryptography that secures nearly all our digital communication. Where I do think the question gets genuinely hard is funding, since money is finite and there's a real argument that society has to make choices, so I'd want mathematicians to be able to defend the value of their work on intellectual grounds even without promising an application, rather than dodging the question entirely."
+    },
+    "commonMistakes": [
+      "Arguing purely on the basis that applications always eventually appear, avoiding the actual hypothetical",
+      "Dismissing pure mathematics as worthless without application",
+      "Ignoring the genuine funding tension entirely"
+    ],
+    "followUps": ["Should funding bodies treat pure and applied mathematics differently, and if so, how?"]
+  },
+  {
+    "id": "prog-mathematics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining a concept simply",
+    "program": "Mathematics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "communication", "calculus"],
+    "question": "Imagine you had to explain what a derivative is to a bright twelve-year-old who's never seen calculus. How would you do it?",
+    "lookingFor": "The ability to translate a formal idea into an intuitive, jargon-free explanation, which is a genuine sign of understanding it deeply.",
+    "idealAnswer": {
+      "bullets": [
+        "Reach for a concrete, everyday analogy such as a speedometer or steepness of a hill instead of the formal limit definition",
+        "Avoid jargon like 'limit' or 'infinitesimal' entirely and build up the idea gradually",
+        "Check understanding by working through a simple concrete example together"
+      ],
+      "modelAnswer": "I'd start with something they already have intuition for, like a car's speedometer, and ask them what it means when it reads 60 rather than just telling them a formula. I'd explain that a derivative is just a precise way of answering 'how fast is something changing right now', the same way the speedometer tells you your speed at this exact instant rather than your average speed over the whole trip. Then I'd draw a curve on paper, maybe the height of a ball thrown in the air, and show how the derivative at any point is basically the steepness of the curve there, steep when it's changing fast and flat when it's barely changing at all. I'd finish by picking a specific point on the curve together and asking them to guess whether the derivative there is positive, negative, or zero, just to check the idea had actually landed rather than assuming it had."
+    },
+    "commonMistakes": [
+      "Reaching straight for the formal limit definition with a twelve-year-old",
+      "Using an analogy but never checking whether it actually landed",
+      "Overloading the explanation with unnecessary technical vocabulary"
+    ],
+    "followUps": ["How would you then explain what an integral is, building on the same analogy?"]
+  }
+]

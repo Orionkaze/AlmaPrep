@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-statistics-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Why statistics",
+    "program": "Statistics",
+    "difficulty": "easy",
+    "tags": ["motivation", "statistics"],
+    "question": "What made you want to study statistics rather than another maths-heavy subject?",
+    "lookingFor": "A specific moment or experience that shows genuine pull toward data and uncertainty, not just general ability at maths.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment, project, or dataset that hooked you",
+        "Explain what statistics specifically offers that pure maths doesn't for you",
+        "Show it's a considered choice, not a fallback because you're good at numbers"
+      ],
+      "modelAnswer": "I always liked maths for its precision, but what pulled me toward statistics was a school project where I analysed survey data on sleep habits and realised the numbers could actually tell a story about real people. I liked that the answer wasn't always clean, that you had to reason about uncertainty and make a judgement call rather than just solve for x. Pure maths felt closed, statistics felt like it was constantly touching the real world, and that's the part I want to keep doing."
+    },
+    "commonMistakes": [
+      "Saying only that they are good at maths",
+      "Giving no concrete example or moment",
+      "Describing statistics as just a means to a well-paid job"
+    ],
+    "followUps": ["What's a moment where a number surprised you and you had to dig into why?"]
+  },
+  {
+    "id": "prog-statistics-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this course",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why do you want to study statistics at this university specifically?",
+    "lookingFor": "Evidence of real research into the course structure, not generic praise that would fit any institution.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific module, project option, or teaching feature",
+        "Connect it to something you've already done or want to do",
+        "Show you understand what distinguishes this course from similar ones"
+      ],
+      "modelAnswer": "I looked closely at your second-year options and the applied statistics module that runs alongside a real dataset from a partner organisation caught my attention, because I want to learn statistics by actually wrestling with messy data rather than only textbook examples. I also liked that the course lets you take a computing-heavy pathway from year one, which matters to me since I taught myself R for a school project and want to keep building on that. It felt like a course built around doing statistics, not just learning about it."
+    },
+    "commonMistakes": [
+      "Praise that could apply to any university",
+      "Citing only league table rank",
+      "No link between the course features and the applicant's own interests"
+    ],
+    "followUps": ["What would you want to get out of that module specifically?"]
+  },
+  {
+    "id": "prog-statistics-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant project or experience",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["experience", "project"],
+    "question": "Tell us about a project or piece of coursework where you worked with real data.",
+    "lookingFor": "A concrete, specific example of hands-on data work with honest reflection on what was hard about it.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the dataset and question you were trying to answer",
+        "Explain a genuine difficulty you ran into with the data or method",
+        "Reflect on what you learned about doing statistics rather than just the result"
+      ],
+      "modelAnswer": "For my extended project I collected step-count data from about forty classmates over a month to see whether exam stress affected activity levels. The messiest part was that half the sample stopped logging consistently in the final week, which was exactly when I needed the data most, so I had to think carefully about whether dropping those rows would bias my conclusions. In the end I found a small negative correlation, but the more useful lesson was how much of real analysis is dealing with imperfect data rather than running a clean test. It made me want to properly learn how statisticians handle missing data."
+    },
+    "commonMistakes": [
+      "Describing only the result with no methodology",
+      "Picking an example with no genuine difficulty encountered",
+      "Overclaiming expertise with software or methods they don't actually understand"
+    ],
+    "followUps": ["How did you decide what to do with the missing data?"]
+  },
+  {
+    "id": "prog-statistics-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "motivation"],
+    "question": "Have you read anything outside the syllabus that got you interested in statistics? Tell us about it.",
+    "lookingFor": "Genuine engagement with a specific book, article, or podcast, with the ability to discuss its content, not just name-drop it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific book, article, or source, not a vague genre",
+        "Summarise one idea from it in your own words",
+        "Explain what it changed about how you think, or a question it left you with"
+      ],
+      "modelAnswer": "I read 'How to Lie with Statistics' by Darrell Huff, and even though it's an old book the ideas about misleading graph axes and biased sampling felt completely current when I started noticing the same tricks in news articles. The chapter on correlation versus causation stuck with me because it used an example so simple I could explain it to my parents at dinner. It left me wanting to actually learn the proper tools for spotting when a claim is statistically sound, which is a big part of why I want to study this properly rather than just picking it up from articles."
+    },
+    "commonMistakes": [
+      "Naming a source they clearly haven't read closely",
+      "No specific idea or example from the material",
+      "Choosing something with no real connection to statistics"
+    ],
+    "followUps": ["Did you disagree with anything in it?"]
+  },
+  {
+    "id": "prog-statistics-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistics vs pure mathematics",
+    "program": "Statistics",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "motivation"],
+    "question": "How would you say statistics differs from pure mathematics?",
+    "lookingFor": "An understanding that statistics deals with uncertainty and inference from data, distinct from the deductive certainty of pure maths.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that pure maths proves things with certainty from axioms",
+        "Explain statistics deals with uncertainty and draws conclusions from incomplete data",
+        "Give a small example that shows the difference in practice"
+      ],
+      "modelAnswer": "Pure maths starts from axioms and proves things that are true with certainty, like a geometric proof holds regardless of the world. Statistics is different because you're almost always working from incomplete information, a sample rather than the whole population, so your conclusions come with a margin of doubt built in. For example, if I toss a coin ten times and get seven heads, maths can tell me the probability of that happening with a fair coin, but statistics is about deciding, given that result, how confident I should be that the coin isn't fair at all. That uncertainty is what makes it interesting to me rather than something to be avoided."
+    },
+    "commonMistakes": [
+      "Claiming statistics is just applied maths with no real distinction",
+      "No example to ground the explanation",
+      "Confusing probability theory with statistics entirely"
+    ],
+    "followUps": ["Where do you think probability theory fits between the two?"]
+  },
+  {
+    "id": "prog-statistics-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Mean, median, and mode",
+    "program": "Statistics",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "descriptive-stats"],
+    "question": "When would you choose the median over the mean to describe a dataset?",
+    "lookingFor": "Understanding that the median is more robust to outliers and skew, with a real example of when that matters.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the mean is sensitive to extreme values and the median is not",
+        "Give a concrete example, such as income or house prices, where skew matters",
+        "Mention that the choice depends on what you want the summary to represent"
+      ],
+      "modelAnswer": "The mean can be dragged around by extreme values because every number in the dataset pulls on it, while the median just cares about the middle position, so it's much steadier when the data is skewed. Income is the classic example, a handful of very high earners can pull the average income well above what a typical person actually earns, so the median gives a more honest sense of the typical case. I'd choose the mean when the data is roughly symmetric and I actually want to account for every value, like average exam scores in a fairly consistent class."
+    },
+    "commonMistakes": [
+      "Saying the median is always better without qualification",
+      "No real-world example",
+      "Confusing mode with median"
+    ],
+    "followUps": ["What would you use the mode for instead?"]
+  },
+  {
+    "id": "prog-statistics-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "P-values",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["hypothesis-testing", "inference"],
+    "question": "In plain terms, what is a p-value, and what is a common misunderstanding about it?",
+    "lookingFor": "A correct, jargon-light explanation plus awareness that a p-value is not the probability the null hypothesis is true.",
+    "idealAnswer": {
+      "bullets": [
+        "Define it as the probability of seeing data this extreme, or more, if the null hypothesis were true",
+        "Correct the common misreading that it's the probability the hypothesis is true",
+        "Mention that a small p-value doesn't automatically mean the effect is important"
+      ],
+      "modelAnswer": "A p-value is the probability of getting a result at least as extreme as what you observed, assuming the null hypothesis is actually true. The mistake people make constantly, including in news reports, is treating it as the probability that the null hypothesis itself is true, which isn't what it measures at all. It also doesn't tell you how big or meaningful an effect is, a tiny effect can have a small p-value if the sample is large enough, so I try to remember that statistical significance and real-world importance are two separate questions."
+    },
+    "commonMistakes": [
+      "Defining it as the probability the hypothesis is true or false",
+      "No mention of the assumption that the null hypothesis holds",
+      "Conflating statistical significance with practical importance"
+    ],
+    "followUps": ["Why might a very large sample size make this misunderstanding worse?"]
+  },
+  {
+    "id": "prog-statistics-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Correlation and causation",
+    "program": "Statistics",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "causation"],
+    "question": "Can you give an example where two things are correlated but one clearly doesn't cause the other?",
+    "lookingFor": "A genuine own example, with an explanation of what might actually be driving the relationship, such as a confounding variable.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific, plausible pair of correlated variables",
+        "Explain why direct causation is implausible",
+        "Suggest a confounding variable or alternative explanation"
+      ],
+      "modelAnswer": "Ice cream sales and drowning incidents rise and fall together over the year, but obviously eating ice cream doesn't cause anyone to drown. The real driver is the weather, hot months mean more people buy ice cream and also more people go swimming, so temperature is the confounding variable behind both trends. It's a simple example but it's stuck with me because it shows how easy it is to see a pattern and jump to a causal story without asking what else might explain it."
+    },
+    "commonMistakes": [
+      "Only stating the rule with no example",
+      "Picking an example where causation is actually plausible",
+      "Not identifying the likely confounder"
+    ],
+    "followUps": ["How would you go about testing whether a relationship is actually causal?"]
+  },
+  {
+    "id": "prog-statistics-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Central Limit Theorem",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["inference", "probability"],
+    "question": "What is the Central Limit Theorem and why does it matter in practice?",
+    "lookingFor": "A correct statement of the theorem in accessible language and an appreciation of why it underpins so much of applied statistics.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the distribution of sample means tends toward normal as sample size grows, regardless of the original distribution",
+        "Note the underlying population doesn't need to be normal itself",
+        "Explain why this matters, it lets us use normal-based methods on all kinds of data"
+      ],
+      "modelAnswer": "The Central Limit Theorem says that if you take repeated samples from almost any population and look at the distribution of their means, that distribution gets closer and closer to a normal distribution as the sample size increases, even if the original data isn't normal at all. What makes it so powerful in practice is that it justifies using normal-based tools, like confidence intervals and many hypothesis tests, on data that doesn't look bell-shaped to begin with, as long as your sample is reasonably large. It's one of those results that quietly holds up huge amounts of applied statistics, which is part of why I find it such a satisfying idea."
+    },
+    "commonMistakes": [
+      "Claiming the original population must be normal for the theorem to apply",
+      "Vague statement with no mention of sample size",
+      "No sense of why it matters practically"
+    ],
+    "followUps": ["Roughly how large does a sample need to be for this to kick in?"]
+  },
+  {
+    "id": "prog-statistics-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Type I and Type II errors",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["hypothesis-testing", "inference"],
+    "question": "What's the difference between a Type I and a Type II error, and can you give a real-world example where one matters more than the other?",
+    "lookingFor": "Correct definitions plus a sensible real-world case, such as medical testing, where the trade-off is clearly explained.",
+    "idealAnswer": {
+      "bullets": [
+        "Define Type I as a false positive, rejecting a true null hypothesis",
+        "Define Type II as a false negative, failing to reject a false null hypothesis",
+        "Give an example where the costs of the two errors are clearly asymmetric"
+      ],
+      "modelAnswer": "A Type I error is a false positive, you conclude there's an effect when there actually isn't one, and a Type II error is a false negative, you miss a real effect that's there. Medical screening is the example I always come back to, if a cancer test gives a false positive that's stressful and leads to unnecessary further tests, but a false negative means a real cancer gets missed, which is far more dangerous. That's why screening tests are often deliberately tuned to accept more false positives in exchange for catching almost all the true cases, because the cost of the two errors isn't symmetric at all."
+    },
+    "commonMistakes": [
+      "Mixing up which error is which",
+      "No real-world example given",
+      "Treating both errors as equally costly in all situations"
+    ],
+    "followUps": ["How does adjusting your significance level affect the balance between the two?"]
+  },
+  {
+    "id": "prog-statistics-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Sampling bias",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["sampling", "data-collection"],
+    "question": "If you wanted to estimate the average screen time of teenagers in your city, how would you make sure your sample was representative?",
+    "lookingFor": "Practical awareness of sampling bias and a sensible method for reducing it, not just a definition recited from memory.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a specific bias risk in an obvious sampling method",
+        "Propose a more representative approach, such as random or stratified sampling",
+        "Acknowledge that no method is perfect and mention a remaining limitation"
+      ],
+      "modelAnswer": "If I just surveyed people at my own school, I'd end up with a sample biased by things like the school's location or its policy on phones, so it wouldn't generalise to the whole city. I'd try to get a list of schools across different areas and income levels and randomly sample students from each, essentially a stratified approach, so the different pockets of the city are all represented in proportion. Even then I'd worry about who actually responds, teenagers who are more engaged with school might answer differently to a survey than those who aren't, so I'd want to think about non-response bias too."
+    },
+    "commonMistakes": [
+      "Proposing a convenience sample without recognising the bias",
+      "Only naming the term 'random sampling' with no practical detail",
+      "Ignoring non-response bias entirely"
+    ],
+    "followUps": ["How would you check afterward whether your sample turned out representative?"]
+  },
+  {
+    "id": "prog-statistics-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Confidence intervals",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["inference", "confidence-intervals"],
+    "question": "What does it actually mean when we say a 95% confidence interval for a mean is, say, 40 to 50?",
+    "lookingFor": "The correct frequentist interpretation, about the procedure's long-run behaviour, and awareness of the common misinterpretation.",
+    "idealAnswer": {
+      "bullets": [
+        "State the correct interpretation, if we repeated the sampling many times, 95% of such intervals would contain the true mean",
+        "Flag the common wrong interpretation, that there's a 95% chance the true mean is in this particular interval",
+        "Show awareness this is a subtle but important distinction"
+      ],
+      "modelAnswer": "It means that if we repeated the sampling process many times and built a confidence interval each time, about 95% of those intervals would contain the true population mean. It's tempting to say there's a 95% chance the true mean lies between 40 and 50 for this specific interval, but that's not quite right, once the interval is calculated the true mean either is or isn't in it, the 95% describes the reliability of the method rather than this one result. It's a subtle distinction but I think it matters, because it changes what you're actually allowed to claim from your data."
+    },
+    "commonMistakes": [
+      "Stating there is a 95% chance the true value falls in this specific interval",
+      "No mention of the repeated-sampling interpretation",
+      "Confusing confidence intervals with prediction intervals"
+    ],
+    "followUps": ["How would a Bayesian interpret a similar interval differently?"]
+  },
+  {
+    "id": "prog-statistics-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Frequentist vs Bayesian",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["bayesian", "inference"],
+    "question": "What's the basic difference between the frequentist and Bayesian approaches to statistics?",
+    "lookingFor": "A grasp of the conceptual difference in how probability itself is interpreted, with an example, rather than just naming both schools.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain frequentists treat probability as long-run frequency and parameters as fixed but unknown",
+        "Explain Bayesians treat probability as a degree of belief and update it with a prior",
+        "Give a simple example of how the two would answer a question differently"
+      ],
+      "modelAnswer": "Frequentists treat probability as a long-run frequency, so a fixed but unknown parameter like a true population mean doesn't itself have a probability distribution, only your data and your procedure do. Bayesians treat probability as a degree of belief, so you start with a prior belief about the parameter, update it with the data using Bayes' theorem, and end up with a posterior distribution that directly expresses your uncertainty about the parameter. A practical example is coin flipping, a frequentist estimates the bias from flips alone, while a Bayesian could start with a prior belief that the coin is probably close to fair and let the data shift that belief. I find the Bayesian framing more intuitive to explain to people, but I'm looking forward to properly understanding when each approach is more appropriate."
+    },
+    "commonMistakes": [
+      "Simply naming both schools with no conceptual distinction",
+      "Claiming one approach is always better than the other",
+      "Getting the direction of the prior-to-posterior update wrong"
+    ],
+    "followUps": ["Can you think of a situation where a strong prior might be a problem?"]
+  },
+  {
+    "id": "prog-statistics-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Law of large numbers vs gambler's fallacy",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["probability", "misconceptions"],
+    "question": "A friend says that because a coin has landed heads five times in a row, tails is 'due' next. What's wrong with that reasoning, and how does it relate to the law of large numbers?",
+    "lookingFor": "Clear distinction between the gambler's fallacy and the law of large numbers, showing the applicant understands why independence matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain each flip is independent, so the coin has no memory of past results",
+        "Name the gambler's fallacy directly",
+        "Clarify what the law of large numbers actually says, that long-run proportions converge, not that short-run imbalances self-correct"
+      ],
+      "modelAnswer": "That's the gambler's fallacy, each coin flip is independent, so the coin doesn't remember it's landed heads five times, the probability of tails on the next flip is still fifty percent regardless of what came before. People often confuse this with the law of large numbers, which says that over a very large number of flips the proportion of heads will settle close to fifty percent, but it does that by swamping the early imbalance with lots of new flips, not by some correcting force making tails more likely soon. I think the confusion comes from a reasonable instinct that things should balance out, it's just applied to the wrong timescale."
+    },
+    "commonMistakes": [
+      "Agreeing that tails is more likely",
+      "Confusing the law of large numbers with a self-correcting mechanism",
+      "Not naming or recognising the gambler's fallacy"
+    ],
+    "followUps": ["Would your answer change if you didn't know the coin was fair?"]
+  },
+  {
+    "id": "prog-statistics-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Standard deviation",
+    "program": "Statistics",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "descriptive-stats"],
+    "question": "What does the standard deviation actually tell you about a dataset, in your own words?",
+    "lookingFor": "An intuitive, correct grasp of spread around the mean rather than just reciting the formula.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain it measures how spread out the data is around the mean",
+        "Note a small standard deviation means values cluster close to the mean, a large one means they're spread wide",
+        "Give a simple comparative example"
+      ],
+      "modelAnswer": "It tells you roughly how far, on average, the values in a dataset sit from the mean. A small standard deviation means the data points cluster tightly around the average, while a large one means they're spread out much more widely, even if two datasets have the exact same mean. I like the example of two classes with the same average test score, one where everyone scored close to that average and one where scores swing wildly, the mean alone hides that difference completely, and the standard deviation is what reveals it."
+    },
+    "commonMistakes": [
+      "Only reciting the formula with no intuitive explanation",
+      "Confusing standard deviation with variance without noting the relationship",
+      "No example showing why it's useful alongside the mean"
+    ],
+    "followUps": ["Why do we usually use standard deviation rather than variance when reporting results?"]
+  },
+  {
+    "id": "prog-statistics-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Simpson's paradox",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["paradox", "confounding"],
+    "question": "Have you come across Simpson's paradox? Can you explain what it is?",
+    "lookingFor": "Understanding that a trend can reverse when data is aggregated versus split by groups, ideally with an example and awareness of why it matters for real analysis.",
+    "idealAnswer": {
+      "bullets": [
+        "State that a trend appearing in separate groups can disappear or reverse when the groups are combined",
+        "Give or sketch an example, such as a treatment that looks worse overall but better within each subgroup",
+        "Explain why it happens, usually a confounding variable unevenly distributed across groups"
+      ],
+      "modelAnswer": "Simpson's paradox is when a trend that shows up in several separate groups reverses or vanishes once you combine all the data together. The classic example is a medical treatment that looks less effective than another overall, but is actually more effective within every individual subgroup, because the groups differ hugely in size or severity of cases and that imbalance skews the combined total. It happens because there's a confounding variable, like how severe each patient's condition was, that's unevenly split between the groups being compared. It's a slightly unsettling result the first time you see it, because it shows how a single aggregate number can genuinely mislead you even without anyone doing anything wrong with the maths."
+    },
+    "commonMistakes": [
+      "Describing it as simply 'correlation isn't causation' without the reversal detail",
+      "No example or sketch of how the reversal happens",
+      "Missing the role of the confounding or lurking variable"
+    ],
+    "followUps": ["How would you check whether a result you found might be hiding a Simpson's paradox?"]
+  },
+  {
+    "id": "prog-statistics-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Regression to the mean",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["regression", "misconceptions"],
+    "question": "What is regression to the mean, and can you think of an example where people mistake it for a real effect?",
+    "lookingFor": "Correct explanation of the statistical phenomenon plus a plausible real-world example where it's misattributed to an intervention.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that extreme measurements tend to be followed by measurements closer to the average",
+        "Note this happens even with no underlying change, due to natural variation",
+        "Give an example of someone wrongly crediting an intervention for what's really regression to the mean"
+      ],
+      "modelAnswer": "Regression to the mean is the tendency for an extreme measurement to be followed by one closer to average, simply because part of that first extreme result was likely due to random variation rather than a real underlying shift. A classic example is a student who does unusually badly on one test, gets extra tutoring, and then does better next time, the parents credit the tutoring, but some of that improvement would probably have happened anyway just from the score drifting back toward their normal level. It's a useful concept because it makes me cautious about claiming an intervention worked just because things improved after an unusually bad result."
+    },
+    "commonMistakes": [
+      "Confusing it with simple averaging with no mention of extreme starting points",
+      "No example connecting it to a real misattribution",
+      "Claiming it means outcomes are entirely random with no real effects possible"
+    ],
+    "followUps": ["How would you design a study to rule out regression to the mean as the explanation?"]
+  },
+  {
+    "id": "prog-statistics-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Testing a hypothesis intuitively",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["hypothesis-testing", "reasoning"],
+    "question": "How would you go about checking whether a coin someone hands you is actually fair?",
+    "lookingFor": "Sound intuitive reasoning toward a hypothesis test, without necessarily needing exact formulas, showing the logic of statistical testing.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose flipping it a reasonable number of times and recording results",
+        "Frame it as comparing the observed proportion of heads against what you'd expect from a fair coin",
+        "Recognise that a small number of flips can't rule out bias with much confidence, larger samples give more certainty"
+      ],
+      "modelAnswer": "I'd flip it a good number of times, maybe a hundred, and record how many heads I get. If it were truly fair, I'd expect something close to fifty heads, so I'd be looking at how far my actual count is from that and whether the gap is bigger than I'd expect from ordinary random variation. If I only flipped it ten times, though, getting seven heads wouldn't really tell me much, because that's well within what a fair coin could easily produce by chance, so I'd want enough flips that a genuinely biased coin would show up clearly against the natural noise."
+    },
+    "commonMistakes": [
+      "Suggesting only a handful of flips is enough to draw a firm conclusion",
+      "No comparison to what a fair coin would be expected to produce",
+      "Treating any deviation from exactly fifty-fifty as proof of bias"
+    ],
+    "followUps": ["How would you decide how many flips is 'enough'?"]
+  },
+  {
+    "id": "prog-statistics-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistics used to mislead",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["media", "critical-thinking"],
+    "question": "Can you think of an example from the news or media where a statistic was used in a misleading way?",
+    "lookingFor": "A specific example with a clear explanation of the misleading technique used, showing critical engagement with statistics in the real world.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific, real or realistic example rather than a vague generalisation",
+        "Explain precisely what made the presentation misleading",
+        "Suggest what the fairer or more accurate presentation would have looked like"
+      ],
+      "modelAnswer": "I remember a headline claiming a food ingredient 'doubled' the risk of a certain condition, which sounds terrifying until you find the actual numbers buried in the article, the risk went from one in a million to two in a million. The relative increase is technically true, but reporting it without the absolute risk makes something negligible sound alarming. A fairer headline would have given both figures, or led with the absolute risk, because that's what actually matters for someone deciding whether to worry about it. It's made me much more careful about checking whether a percentage change is relative or absolute before reacting to it."
+    },
+    "commonMistakes": [
+      "A vague claim about media in general with no specific example",
+      "Not identifying the actual technique, like relative versus absolute risk",
+      "No suggestion of what fairer reporting would look like"
+    ],
+    "followUps": ["Why do you think relative risk gets reported more often than absolute risk?"]
+  },
+  {
+    "id": "prog-statistics-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistics and data science",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["applications", "data-science"],
+    "question": "A lot of what statisticians do now sounds a lot like data science. Why apply for statistics rather than a computer science or data science course?",
+    "lookingFor": "A clear-eyed understanding of the distinction, valuing statistical theory and inference over pure engineering or programming focus.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real overlap between the fields honestly",
+        "Explain what statistics specifically offers, the theory of inference and uncertainty, that a more engineering-focused course might not emphasise as deeply",
+        "Connect it to your own goals or interests rather than dismissing the other field"
+      ],
+      "modelAnswer": "There's definitely overlap, a lot of data science is applied statistics with better software, and I don't think the two fields are in competition. What draws me to statistics specifically is that I want to properly understand the theory behind why a method works and when it breaks down, not just how to call a function that fits a model, because I think that understanding is what lets you catch a bad analysis before it goes wrong. Computer science courses tend to focus more on the engineering and systems side, which is valuable, but it's not where my curiosity actually sits, I want the maths and the reasoning about uncertainty at the core of what I study."
+    },
+    "commonMistakes": [
+      "Dismissing computer science or data science as inferior",
+      "No real distinction drawn, treating the fields as identical",
+      "Answer with no personal connection to the choice"
+    ],
+    "followUps": ["Do you think statistics as a discipline needs to change because of the rise of machine learning?"]
+  },
+  {
+    "id": "prog-statistics-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistics behind machine learning",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["applications", "machine-learning"],
+    "question": "Where do you think statistics fits into how machine learning and AI systems actually work?",
+    "lookingFor": "Awareness that many ML methods rest on statistical foundations, like estimation, uncertainty, and overfitting, expressed without excessive jargon.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that many ML techniques are statistical models in different clothing",
+        "Mention a concept like overfitting or bias-variance that's fundamentally statistical",
+        "Show curiosity about the overlap rather than reciting buzzwords"
+      ],
+      "modelAnswer": "A lot of machine learning is built on statistical ideas even when it doesn't look that way at first, something like linear regression is a statistical model that's also considered a basic form of machine learning. The idea of overfitting is a good example, when a model fits the noise in your training data too closely and performs badly on new data, that's fundamentally a statistical problem about generalising from a sample, and statisticians were thinking about that kind of trade-off long before the phrase 'machine learning' existed. I'm genuinely curious about that overlap, and I'd like to understand the statistical foundations properly rather than just learning to use the tools without knowing why they work."
+    },
+    "commonMistakes": [
+      "Treating statistics and machine learning as completely unrelated fields",
+      "Using buzzwords like 'AI' with no concrete statistical concept behind them",
+      "No specific example, like overfitting or bias-variance trade-off"
+    ],
+    "followUps": ["What do you think statisticians can offer that a purely engineering approach to AI might miss?"]
+  },
+  {
+    "id": "prog-statistics-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining a concept simply",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["communication", "fundamentals"],
+    "question": "Explain the idea of a confidence interval to someone who has never studied maths beyond school.",
+    "lookingFor": "The ability to translate a technical statistical idea into plain, accurate language without dumbing it down to the point of being wrong.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid jargon while keeping the explanation technically correct",
+        "Use a relatable analogy or example",
+        "Convey the core idea, a range that's likely to contain the true answer, plus honest uncertainty about a single guess"
+      ],
+      "modelAnswer": "Imagine you're trying to guess how many sweets are in a jar without counting them all, so you take a small handful out, count those, and use that to estimate the total. Instead of giving one exact number, which is almost certainly going to be wrong, you give a range, like between four hundred and five hundred, because that's more honest about how sure you actually are. A confidence interval works the same way, it's a range built from your sample that's designed to usually capture the true value, and giving a range instead of a single number is actually the more careful, more honest answer, not a weaker one."
+    },
+    "commonMistakes": [
+      "Using technical terms like 'sampling distribution' that undermine the point of simplifying",
+      "Oversimplifying to the point of being factually wrong",
+      "No analogy, just a restated definition"
+    ],
+    "followUps": ["How would you explain what makes a confidence interval wider or narrower?"]
+  },
+  {
+    "id": "prog-statistics-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Probability puzzle",
+    "program": "Statistics",
+    "difficulty": "hard",
+    "tags": ["probability", "reasoning"],
+    "question": "You're on a game show with three doors, one hides a car and two hide goats. You pick a door, the host, who knows what's behind each door, opens a different door revealing a goat, and offers you the chance to switch. Should you switch?",
+    "lookingFor": "Correct reasoning through the Monty Hall problem, showing the applicant can reason carefully under a counterintuitive result rather than just recalling the answer.",
+    "idealAnswer": {
+      "bullets": [
+        "State that switching is the better strategy, doubling the odds of winning",
+        "Explain the reasoning, the host's action gives you new information because they always avoid the car",
+        "Address the intuitive but wrong instinct that it's simply fifty-fifty after one door is revealed"
+      ],
+      "modelAnswer": "You should switch, it doubles your chance of winning from one in three to two in three. The reason is that your first pick has a one in three chance of being right and that doesn't change just because the host opens a door, but crucially the host always opens a door with a goat behind it, deliberately avoiding the car, so that action carries real information. If your original pick was wrong, which happens two thirds of the time, the host is forced to reveal the other goat, which means the remaining unopened door must be the car, so switching wins in exactly those two-thirds of cases. It's the kind of problem where the intuitive fifty-fifty answer feels right but is actually missing what the host's behaviour tells you."
+    },
+    "commonMistakes": [
+      "Concluding it's a fifty-fifty choice after the reveal",
+      "Reciting the answer without explaining why the host's knowledge matters",
+      "Getting confused about which door probabilities update"
+    ],
+    "followUps": ["Would your answer change if the host opened a door at random and happened to reveal a goat?"]
+  },
+  {
+    "id": "prog-statistics-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Data ethics",
+    "program": "Statistics",
+    "difficulty": "medium",
+    "tags": ["ethics", "data"],
+    "question": "Statisticians increasingly work with very personal data, health records, financial histories, browsing behaviour. What responsibilities do you think come with that?",
+    "lookingFor": "Thoughtful awareness of privacy, consent, and the risk of misuse or bias, without either dismissing the concern or being paralysed by it.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise concrete risks, like re-identification, consent, and biased outcomes affecting real people",
+        "Show it doesn't stop valuable analysis, just requires care",
+        "Give or gesture toward a specific safeguard, like anonymisation or checking a model for unfair bias"
+      ],
+      "modelAnswer": "I think the responsibility starts with remembering that behind every row in a dataset there's a real person who often didn't fully choose to be there, which means being careful about consent, and about whether supposedly anonymised data could still be traced back to someone through combinations of details. I don't think that should stop valuable analysis, health research built on personal data saves lives, but it does mean building in safeguards, like properly anonymising data and checking whether a model's predictions are systematically worse for some groups than others. It's something I'd want to take seriously rather than treat as a box-ticking exercise, because getting it wrong has real consequences for real people, not just numbers on a screen."
+    },
+    "commonMistakes": [
+      "Dismissing privacy concerns as an obstacle to good analysis",
+      "Being so cautious the answer implies no personal data should ever be used",
+      "No concrete safeguard mentioned, only vague concern"
+    ],
+    "followUps": ["Can you think of a case where anonymised data was still traced back to real individuals?"]
+  },
+  {
+    "id": "prog-statistics-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "What you'd bring to the course",
+    "program": "Statistics",
+    "difficulty": "easy",
+    "tags": ["fit", "contribution"],
+    "question": "What do you think you'd bring to a statistics course, beyond good grades?",
+    "lookingFor": "Specific, credible qualities backed by evidence, showing self-awareness about what makes a good statistics student beyond raw ability.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific trait or habit, not a generic virtue like 'hard work'",
+        "Back it with a concrete example",
+        "Connect it to what actually helps in studying statistics, such as scepticism, patience with messy data, or curiosity about real problems"
+      ],
+      "modelAnswer": "I think I bring a genuine stubbornness about not accepting a result until I understand why it came out that way, which showed up in my project when I got a correlation that seemed too strong and I kept digging until I found I'd accidentally included a duplicate set of rows. That kind of scepticism matters in statistics because it's so easy to trust a clean-looking output without questioning whether the data or the method actually supports it. I also just enjoy the slow, patient part of cleaning and checking data that a lot of people find tedious, and I think that patience is exactly what makes the more exciting analysis afterward trustworthy."
+    },
+    "commonMistakes": [
+      "Generic answer like 'I work hard' with no evidence",
+      "Listing achievements instead of a genuine personal quality",
+      "No connection between the quality and what statistics actually demands"
+    ],
+    "followUps": ["Can you think of a time that habit caused you a problem rather than helping?"]
+  }
+]

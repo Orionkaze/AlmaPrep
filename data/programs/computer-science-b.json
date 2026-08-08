@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-computer-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithmic complexity trade-offs",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["algorithms", "complexity", "tradeoffs"],
+    "question": "Say you have two sorting algorithms for the same data: one is always O(n log n), the other is O(n squared) in the worst case but often behaves closer to O(n) on the kind of data you actually expect. How would you decide which one to use?",
+    "lookingFor": "Evidence you understand Big O as a worst-case bound, not the whole story, and can reason about real-world data rather than reciting complexity classes.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that Big O describes worst-case growth, not guaranteed real-world speed",
+        "Weigh the actual expected input (nearly sorted, random, adversarial) against the guarantee",
+        "Mention constant factors, memory use, and stability as practical tie-breakers"
+      ],
+      "modelAnswer": "Big O tells you how something scales in the worst case, but it doesn't tell you what actually happens on the data you're going to see. If I know the input is usually nearly sorted, like a list that gets small updates, I might genuinely prefer the algorithm that's O(n squared) in theory but close to linear in practice, because the worst case rarely shows up. But if the data could come from an untrusted source, I'd want the algorithm with the guaranteed bound, because someone could deliberately feed it a worst case. I'd also check things like memory overhead and whether I need the sort to be stable before deciding."
+    },
+    "commonMistakes": [
+      "Treating Big O as the actual runtime rather than a worst-case bound",
+      "Picking the 'better' complexity class without asking what the real data looks like",
+      "Ignoring constant factors and memory cost entirely"
+    ],
+    "followUps": ["What would change if the data came from an untrusted user rather than your own system?"]
+  },
+  {
+    "id": "prog-computer-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Recursion vs iteration",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["recursion", "fundamentals", "reasoning"],
+    "question": "Can you explain how recursion works, and describe a situation where you'd choose it over a loop, and one where you wouldn't?",
+    "lookingFor": "A clear grasp of recursion mechanics (base case, call stack) plus practical judgement about when it helps versus hurts.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the base case and recursive case, and that each call adds to the call stack",
+        "Give a case where recursion is the natural fit, like traversing a tree",
+        "Give a case where iteration is better, like a simple counted loop where recursion risks stack overflow"
+      ],
+      "modelAnswer": "Recursion is when a function calls itself, working toward a base case that stops it, and every call it makes sits on the call stack until it returns. I'd reach for recursion when the problem is naturally nested, like walking through a tree structure, because the recursive version mirrors the structure and is much easier to read. I'd avoid it for something like summing a huge list where a simple loop does the job, because deep recursion can blow the call stack and a loop uses constant memory. It really comes down to whether the problem's shape matches the tool."
+    },
+    "commonMistakes": [
+      "Explaining recursion without mentioning the base case",
+      "Claiming recursion is always more elegant with no downside",
+      "Not recognizing the risk of stack overflow on deep recursion"
+    ],
+    "followUps": ["What is tail call optimization, and why doesn't every language support it?"]
+  },
+  {
+    "id": "prog-computer-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "P versus NP",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["theory", "complexity", "computer-science-theory"],
+    "question": "What is the P versus NP problem, and why do people outside theoretical computer science actually care about it?",
+    "lookingFor": "A correct, plain-language grasp of the distinction between solving and verifying, plus awareness of real stakes like cryptography.",
+    "idealAnswer": {
+      "bullets": [
+        "Define P as problems solvable quickly and NP as problems whose solutions can be checked quickly",
+        "State that whether P equals NP is unresolved",
+        "Connect it to a real consequence, such as cryptography relying on some problems being hard to solve"
+      ],
+      "modelAnswer": "P is the set of problems a computer can solve quickly, and NP is the set of problems where, if someone hands you a proposed solution, you can check it's correct quickly, even if finding it yourself might be hard. The open question is whether every problem that's easy to check is also secretly easy to solve, and nobody has proven it either way. It matters far beyond theory because a huge amount of modern encryption relies on certain problems being hard to solve but easy to verify. If it turned out P equals NP, a lot of the security the internet depends on would need to be rethought."
+    },
+    "commonMistakes": [
+      "Confusing 'hard to solve' with 'impossible to solve'",
+      "Not knowing the problem is unresolved and stating a false answer",
+      "Giving no real-world stakes, treating it as purely academic trivia"
+    ],
+    "followUps": ["Can you name a problem you think belongs in NP but not P?"]
+  },
+  {
+    "id": "prog-computer-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "The halting problem",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["computability", "theory", "reasoning"],
+    "question": "Why is it impossible, in general, to write a program that can always correctly say whether another program will eventually finish or run forever?",
+    "lookingFor": "Understanding of the self-reference/diagonalization idea behind the halting problem, even in informal terms.",
+    "idealAnswer": {
+      "bullets": [
+        "State the halting problem as a decision problem about programs and inputs",
+        "Give the intuition of the contradiction: assume such a checker exists, then build a program that defeats it",
+        "Note the practical implication, like why some bugs and infinite loops can't be caught automatically for every case"
+      ],
+      "modelAnswer": "The halting problem asks whether we can build a program that takes any other program and its input and always correctly says whether it will finish or loop forever. Turing showed this is impossible using a clever contradiction: if such a checker existed, you could build a program that does the opposite of whatever the checker predicts about itself, which breaks the checker either way. What I find interesting is the practical fallout, that tools like compilers can catch a lot of bugs but can never guarantee they've caught every possible infinite loop, because that would require solving an undecidable problem. It's one of those results that quietly sets a hard limit on what software tools can promise."
+    },
+    "commonMistakes": [
+      "Saying it's impossible because 'computers aren't smart enough' rather than a formal limit",
+      "Missing the self-reference trick entirely and just asserting the result",
+      "Not connecting it to any practical implication"
+    ],
+    "followUps": ["Does this mean static analysis tools are useless? Why or why not?"]
+  },
+  {
+    "id": "prog-computer-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Hash table mechanics",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["data-structures", "hashing", "fundamentals"],
+    "question": "How does a hash table manage to look things up in close to constant time, and what happens when two different keys hash to the same slot?",
+    "lookingFor": "Solid grasp of hashing, indexing, and at least one collision-resolution strategy.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a hash function maps a key to an array index directly",
+        "Note that lookup is fast because you compute the index instead of searching",
+        "Describe a collision-handling method, such as chaining or open addressing"
+      ],
+      "modelAnswer": "A hash table takes a key, runs it through a hash function that produces a number, and uses that number as an index straight into an array, so looking something up doesn't require scanning anything, you just compute where it should be. Collisions happen when two different keys hash to the same index, and there are a couple of common ways to handle that. One is chaining, where each slot holds a small list of everything that landed there, and another is open addressing, where you probe forward to the next free slot. As long as the table isn't too full and the hash function spreads keys out well, both approaches keep lookups close to constant time on average."
+    },
+    "commonMistakes": [
+      "Saying lookup is fast without explaining why, just calling it 'magic'",
+      "Not knowing any collision resolution strategy",
+      "Ignoring the effect of load factor on performance"
+    ],
+    "followUps": ["What happens to lookup speed as the table gets close to full?"]
+  },
+  {
+    "id": "prog-computer-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Choosing the right data structure",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["data-structures", "reasoning"],
+    "question": "If you needed to repeatedly check whether an element belongs to a large, constantly changing set, which data structure would you reach for, and why?",
+    "lookingFor": "Practical reasoning about matching data structure to access pattern, not just naming one.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a hash set as the natural choice for fast membership checks",
+        "Justify it in terms of average time complexity for insert and lookup",
+        "Acknowledge a trade-off, such as no ordering or worst-case degradation"
+      ],
+      "modelAnswer": "I'd reach for a hash set, because it gives average constant time for both checking membership and adding new elements, which fits a set that keeps changing. If I also needed the elements in sorted order, I'd think about a balanced tree instead, since that trades a bit of speed for ordering. The trade-off with a hash set is that it doesn't preserve order and, in a bad case with lots of collisions, performance can degrade, so I'd also want to know roughly how the keys are distributed before committing to it."
+    },
+    "commonMistakes": [
+      "Defaulting to a list or array without considering lookup cost",
+      "Not mentioning any trade-off or limitation of the chosen structure",
+      "Confusing average case with worst case"
+    ],
+    "followUps": ["When would you choose a balanced tree over a hash set for this?"]
+  },
+  {
+    "id": "prog-computer-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Database normalization trade-offs",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["databases", "tradeoffs", "design"],
+    "question": "Why might a database designer deliberately denormalize a database, even though normalization is usually taught as the 'correct' way to design one?",
+    "lookingFor": "Understanding that normalization and performance can pull in different directions, and when it's reasonable to trade one for the other.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what normalization is trying to achieve, like reducing redundancy and update anomalies",
+        "Give a concrete reason to denormalize, such as avoiding expensive joins for read-heavy workloads",
+        "Note the trade-off being accepted, like risk of inconsistent data"
+      ],
+      "modelAnswer": "Normalization is about splitting data up so each fact is stored in one place, which avoids the mess of updating the same information in five different tables. But if an application is doing a huge number of reads and each one requires joining several normalized tables together, that can get slow at scale. In that case a designer might deliberately duplicate some data to avoid the join, accepting the extra work of keeping copies in sync in exchange for faster reads. It really comes down to whether the workload cares more about write consistency or read speed."
+    },
+    "commonMistakes": [
+      "Treating normalization as always correct with no exceptions",
+      "Not naming a concrete reason to denormalize",
+      "Ignoring the consistency risk that comes with denormalizing"
+    ],
+    "followUps": ["How would you keep denormalized copies of data from drifting out of sync?"]
+  },
+  {
+    "id": "prog-computer-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Race conditions in concurrent code",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["concurrency", "systems", "reasoning"],
+    "question": "What is a race condition, and can you walk through a simple example of how one could happen when two threads run at the same time?",
+    "lookingFor": "A concrete, correct example showing genuine understanding of shared state and timing, not just a definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a race condition as outcome depending on timing of concurrent operations on shared state",
+        "Walk through a specific example, like two threads incrementing the same counter",
+        "Mention at least one mitigation, like locks or atomic operations"
+      ],
+      "modelAnswer": "A race condition happens when two threads access shared data at the same time and the final result depends on the exact timing of who runs first, which makes the program's behavior unpredictable. A classic example is two threads both incrementing the same counter variable: each one reads the current value, adds one, and writes it back, but if they both read the value before either writes, one increment gets lost. It looks like the counter went up by two, but it only went up by one. The usual fix is to protect that read-modify-write sequence with a lock, or use an atomic increment operation so the steps can't be interleaved."
+    },
+    "commonMistakes": [
+      "Giving a vague definition with no concrete example",
+      "Confusing a race condition with a deadlock",
+      "Not offering any mitigation when asked"
+    ],
+    "followUps": ["What's the difference between a race condition and a deadlock?"]
+  },
+  {
+    "id": "prog-computer-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "CAP theorem",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["distributed-systems", "theory", "tradeoffs"],
+    "question": "The CAP theorem says a distributed system can't guarantee consistency, availability, and partition tolerance all at the same time. Can you explain what that trade-off actually looks like?",
+    "lookingFor": "Correct grasp of the three properties and a sense of what real systems actually choose.",
+    "idealAnswer": {
+      "bullets": [
+        "Define consistency, availability, and partition tolerance in plain terms",
+        "Explain that partition tolerance is usually non-negotiable in real distributed systems, so the real choice is between consistency and availability",
+        "Give an example of a system leaning one way or the other"
+      ],
+      "modelAnswer": "Consistency means every read gets the most recent write, availability means every request gets a response even if it's not the latest data, and partition tolerance means the system keeps working even if some machines can't talk to each other. In practice, network partitions happen whether you like it or not, so the real trade-off most systems face is between consistency and availability during a partition. A banking system might choose consistency, refusing a request rather than risk showing stale balance, while something like a social media feed might choose availability, showing slightly outdated data rather than showing an error. I think the interesting part is that this isn't a technical limitation so much as a decision about what kind of wrongness is acceptable."
+    },
+    "commonMistakes": [
+      "Treating all three properties as equally optional in practice",
+      "Not giving a real example of a system choosing one side",
+      "Confusing consistency here with database ACID consistency"
+    ],
+    "followUps": ["Can you think of a real application where availability clearly matters more than consistency?"]
+  },
+  {
+    "id": "prog-computer-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Compiled vs interpreted languages",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["compilers", "fundamentals", "languages"],
+    "question": "What's actually different between a compiled language and an interpreted one, and why might that distinction matter less than it used to?",
+    "lookingFor": "Correct technical grounding plus awareness that modern runtimes blur the line (JIT compilation, bytecode).",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that compiling translates source to machine code ahead of time, interpreting executes it on the fly",
+        "Note the classic trade-off: compiled tends to run faster, interpreted tends to be more flexible to develop with",
+        "Mention that modern languages blur this with bytecode and just-in-time compilation"
+      ],
+      "modelAnswer": "A compiled language gets translated all the way down to machine code before you ever run it, while an interpreted language is read and executed line by line by another program at runtime. The classic trade-off was that compiled code runs faster because the translation work is already done, while interpreted code is easier to test and iterate on since there's no separate build step. But that line has gotten blurry, languages like Python and Java often compile to an intermediate bytecode first, and then a just-in-time compiler translates hot parts of that bytecode into machine code while the program is running. So a lot of modern languages are really doing a mix of both rather than sitting cleanly on one side."
+    },
+    "commonMistakes": [
+      "Treating the categories as strict and mutually exclusive",
+      "Not mentioning JIT compilation or bytecode at all",
+      "Confusing 'compiled' with 'fast' as an absolute rule"
+    ],
+    "followUps": ["Can you name a language that uses just-in-time compilation, and explain roughly how it works?"]
+  },
+  {
+    "id": "prog-computer-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Garbage collection trade-offs",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["memory", "systems", "tradeoffs"],
+    "question": "Why do some languages use automatic garbage collection while others make the programmer manage memory manually? What's actually being traded off?",
+    "lookingFor": "Understanding of manual vs automatic memory management and the real cost/benefit, not just 'GC is easier'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what garbage collection automates: reclaiming memory no longer in use",
+        "Give the benefit, fewer memory bugs like leaks or dangling pointers",
+        "Give the cost, less predictable performance and less fine-grained control"
+      ],
+      "modelAnswer": "Garbage collection automatically finds memory that's no longer reachable by the program and frees it, so the programmer doesn't have to explicitly track every allocation. That removes a whole category of bugs, like forgetting to free memory and leaking it, or freeing something too early and leaving a dangling reference. The cost is that you give up precise control over exactly when memory gets reclaimed, and the collector itself takes CPU time, which can cause unpredictable pauses that matter a lot in something like a real-time system. Languages like C give you manual control because in some domains, like embedded systems, that predictability is worth more than the convenience."
+    },
+    "commonMistakes": [
+      "Presenting garbage collection as strictly better with no downside",
+      "Not naming a specific bug class that manual management risks",
+      "Ignoring performance predictability as a real cost"
+    ],
+    "followUps": ["Can you name a type of application where manual memory management is still the better choice?"]
+  },
+  {
+    "id": "prog-computer-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Proving correctness of a recursive algorithm",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["proof", "algorithms", "reasoning"],
+    "question": "How would you go about convincing yourself that a recursive algorithm, say one that computes a factorial, actually produces the correct answer for every input, not just the ones you happened to test?",
+    "lookingFor": "Grasp of induction as a proof technique applied concretely to a recursive function.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify induction as the natural tool: base case plus inductive step",
+        "Show the base case holds (e.g. factorial of 0 or 1)",
+        "Show that if it's correct for n minus 1, the recursive step correctly builds the answer for n"
+      ],
+      "modelAnswer": "I'd use induction, because a recursive algorithm and an inductive proof have almost the same shape. First I'd check the base case, that factorial of zero returns one, which the function does directly without recursing. Then I'd assume the function correctly computes factorial of n minus one, and show that the recursive step, multiplying n by that result, must therefore give the correct factorial of n. Since that holds for every n building on the one before it, and the base case is solid, the whole chain is correct by induction. Testing a handful of inputs can only build confidence, but induction is what actually proves it for all of them."
+    },
+    "commonMistakes": [
+      "Relying on testing a few examples as if that were a proof",
+      "Skipping the base case entirely",
+      "Not clearly connecting the inductive step to the recursive call"
+    ],
+    "followUps": ["What would go wrong with this proof if the base case were missing?"]
+  },
+  {
+    "id": "prog-computer-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "TCP versus UDP",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["networking", "tradeoffs", "fundamentals"],
+    "question": "Why would an application deliberately choose UDP over TCP, even though UDP doesn't guarantee that data arrives, or arrives in order?",
+    "lookingFor": "Understanding of the reliability/speed trade-off and a real use case where losing some data is acceptable.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core difference: TCP guarantees delivery and order, UDP does not",
+        "Explain why that guarantee costs latency and overhead",
+        "Give a concrete use case where speed matters more than perfect delivery, like live video or gaming"
+      ],
+      "modelAnswer": "TCP guarantees your data arrives, arrives in order, and gets resent if it's lost, but all of that checking and resending costs time. UDP just sends packets without any of those guarantees, which makes it faster and lower overhead. For something like a live video call or a multiplayer game, a dropped or late packet is barely noticeable if the next one arrives quickly, but waiting for TCP to resend an old packet would actually make the experience worse, because you'd rather skip ahead than freeze waiting for something stale. So the choice really comes down to whether a little bit of imperfect data is more acceptable than a delay."
+    },
+    "commonMistakes": [
+      "Saying UDP is 'just worse' with no valid use case",
+      "Not explaining what specifically TCP guarantees that UDP doesn't",
+      "Giving an example where reliability actually matters, contradicting the point"
+    ],
+    "followUps": ["Would you use UDP or TCP for a file transfer, and why?"]
+  },
+  {
+    "id": "prog-computer-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "SQL injection and defenses",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["security", "databases", "reasoning"],
+    "question": "Can you explain what a SQL injection attack actually is, and how a developer would defend against it?",
+    "lookingFor": "Correct technical explanation of the vulnerability plus a real defense, like parameterized queries.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that injection happens when untrusted input is concatenated directly into a query",
+        "Give a concrete example of malicious input changing the query's meaning",
+        "Name a real defense, such as parameterized queries or prepared statements"
+      ],
+      "modelAnswer": "SQL injection happens when a program takes user input and pastes it directly into a database query as text, so if someone types something like a string that includes their own SQL syntax, it can change what the query actually does. A classic example is a login form where entering a certain crafted string into the username field can trick the query into always returning true, letting someone log in without a real password. The fix is to never build queries by directly concatenating input, and instead use parameterized queries or prepared statements, where the input is always treated as data and never as part of the query's structure. It's a good example of how a small habit in how you write code can be the difference between safe and badly exploitable."
+    },
+    "commonMistakes": [
+      "Describing the attack vaguely without a concrete mechanism",
+      "Suggesting input filtering alone as a complete fix instead of parameterized queries",
+      "Not knowing any real defense when asked directly"
+    ],
+    "followUps": ["Why isn't just filtering out quote characters from user input a reliable fix?"]
+  },
+  {
+    "id": "prog-computer-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias in a hiring algorithm",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "ai", "bias"],
+    "question": "Say you helped build a hiring algorithm for a company, and it turns out to be quietly favoring one demographic because of biased training data, even though it technically hits the accuracy target the company asked for. What would you do?",
+    "lookingFor": "Structured ethical reasoning that goes beyond 'just fix it', weighing responsibility, evidence, and realistic next steps.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that meeting the stated metric doesn't make the outcome acceptable",
+        "Reason through what evidence you'd gather before raising it",
+        "Land on a concrete next step, like flagging it to whoever's accountable rather than staying silent or unilaterally shipping a fix"
+      ],
+      "modelAnswer": "Hitting the accuracy target the company asked for doesn't actually mean the system is doing its job fairly, so I wouldn't treat that as a reason to let it go. First I'd want to be sure I had solid evidence, running the numbers properly across groups rather than acting on a hunch, because an accusation like this needs to be right. Once I had that, I'd raise it clearly with whoever's responsible for the product, explain the pattern and where it likely came from in the training data, and push for the deployment to be paused until it's addressed rather than quietly patching it myself and hoping nobody asks. Staying silent because the metric technically passed feels like the kind of decision that's easy to justify in the moment and hard to justify afterward."
+    },
+    "commonMistakes": [
+      "Assuming the metric passing settles the ethical question",
+      "Jumping straight to going public or quitting without exhausting other steps",
+      "Vague answer that never commits to a specific action"
+    ],
+    "followUps": ["What would you do if you raised it and were told to ship it anyway?"]
+  },
+  {
+    "id": "prog-computer-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Shipping with a known security flaw",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["ethics", "software-engineering", "judgement"],
+    "question": "You're on a team about to ship a feature tomorrow, and you discover a bug that could occasionally expose users' private data, but properly fixing it would blow the deadline. What would you do?",
+    "lookingFor": "Ability to weigh business pressure against user harm and propose a realistic path, not just an idealistic refusal or blind compliance.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the conflict between deadline pressure and real user harm",
+        "Propose gathering enough information to size the actual risk before deciding",
+        "Favor escalating and proposing options, like a partial fix or delay, over silently shipping or unilaterally blocking release"
+      ],
+      "modelAnswer": "My instinct is that a deadline doesn't outweigh real risk to users' private data, but I'd want to understand the actual severity first rather than panicking. I'd quickly work out how likely the exposure actually is and what data is at risk, then bring that to whoever owns the release decision, because it's not really mine to make alone. I'd come with options rather than just a problem, like whether we can ship with that specific feature disabled, or delay by a day to patch it properly. If I were overruled and asked to ship it as is, I'd want that decision documented and made by someone with the authority to accept that risk, not buried."
+    },
+    "commonMistakes": [
+      "Deciding unilaterally to delay the release without escalating",
+      "Shipping quietly and hoping no one notices",
+      "Treating this as purely a technical problem with no communication to stakeholders"
+    ],
+    "followUps": ["What if your manager told you to ship it anyway and stay quiet about the bug?"]
+  },
+  {
+    "id": "prog-computer-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Attribution in open source",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["ethics", "open-source", "reflection"],
+    "question": "You find out that a widely used open-source library you rely on was actually built mostly by one unpaid contributor whose name barely appears anywhere. Does that change how you think about using open-source software?",
+    "lookingFor": "Genuine reflection on the labor and incentives behind open source, not just a surface-level 'that's nice' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the real, often invisible, labor behind free software",
+        "Reflect on what obligation, if any, a user has: credit, contribution, sponsorship",
+        "Connect it to something concrete you'd actually change in how you use or contribute to open source"
+      ],
+      "modelAnswer": "It does make me think differently, because it's easy to treat open-source tools as if they're just there, like infrastructure, when really someone is often maintaining them for free in their spare time. I don't think it means I have to stop using the library, but it does make me want to actually acknowledge that work, whether that's crediting it properly, reporting bugs instead of just quietly working around them, or contributing back if I ever fix something myself. It's changed how I think about starting my own small projects too, I'd want to be honest with myself about whether I'm willing to maintain something long term before I put it out there expecting others to rely on it for free."
+    },
+    "commonMistakes": [
+      "Giving a purely sentimental answer with no concrete follow-through",
+      "Ignoring the labor and treating open source as inherently free of obligation",
+      "Overcorrecting into saying you'd stop using open source entirely"
+    ],
+    "followUps": ["Would you ever contribute to a project like that yourself? What would stop you?"]
+  },
+  {
+    "id": "prog-computer-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "AI coding assistants and CS education",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["ai", "current-debate", "education"],
+    "question": "AI coding assistants can now write a significant amount of code for you. What do you think that means for how computer science should be taught, or for what a computer scientist actually needs to know?",
+    "lookingFor": "A considered, non-dismissive view that separates 'writing syntax' from the underlying skills that still matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish between the mechanical act of writing code and the underlying skills like problem decomposition and judgement",
+        "Take an actual position rather than only listing both sides",
+        "Show awareness of the debate without treating it as settled"
+      ],
+      "modelAnswer": "I think it changes what's valuable to learn more than it removes the need to learn computer science at all. Writing syntax was never really the hard part for a good programmer, the hard part is breaking a messy problem into something a computer can actually solve and knowing when a generated solution is subtly wrong. If anything I think it raises the bar on things like being able to read and evaluate code critically, because you're going to be reviewing more code than you write from scratch. I do think curricula will need to spend less time on rote syntax drills and more on that judgement, but I'd be wary of anyone who says the fundamentals, like understanding data structures or how a system actually behaves, stop mattering."
+    },
+    "commonMistakes": [
+      "Dismissing AI tools entirely as irrelevant or a passing fad",
+      "Claiming fundamentals no longer matter at all",
+      "Giving a wishy-washy 'it depends' with no actual stance"
+    ],
+    "followUps": ["Do you use AI coding tools yourself? How do you decide when to trust their output?"]
+  },
+  {
+    "id": "prog-computer-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "AI training data and copyright",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["ai", "copyright", "current-debate"],
+    "question": "There's an ongoing legal and ethical debate about AI models being trained on copyrighted code and writing without the original authors' permission. Where do you stand on that, and why?",
+    "lookingFor": "A genuine position with reasoning that acknowledges the strongest points on both sides, not a rehearsed talking point.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of both sides: creators' rights versus how learning-from-examples has historically worked",
+        "Take a position while acknowledging its weakest point",
+        "Ground it in something concrete, like a specific case or a personal view on fair compensation"
+      ],
+      "modelAnswer": "I lean toward thinking creators deserve some say and some benefit when their work trains a commercial model, because there's a real difference between a human learning from reading code and a company building a product that can reproduce or substitute for that work at scale. At the same time I recognize the argument that all learning, human or machine, builds on existing work, and drawing a clean legal line is genuinely hard. If I had to land somewhere, I'd say the current approach of training first and dealing with consequences later feels backwards, and I'd rather see licensing or opt-out systems figured out earlier, even if that slows things down. I don't think it's a settled question, and I'm open to updating my view as the actual court cases play out."
+    },
+    "commonMistakes": [
+      "Refusing to take any position at all",
+      "Ignoring the counterargument entirely and only stating one side",
+      "Treating the legal question as already resolved when it isn't"
+    ],
+    "followUps": ["Do you think the answer should be different for code versus for creative writing or art?"]
+  },
+  {
+    "id": "prog-computer-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantum computing and cryptography",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["quantum-computing", "cryptography", "current-debate"],
+    "question": "Quantum computers are expected to eventually break some of the encryption the internet currently relies on. What do you understand about why that is, and what's being done about it?",
+    "lookingFor": "Correct, if simplified, technical grasp plus awareness of the real-world response (post-quantum cryptography).",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that current public-key encryption relies on problems, like factoring large numbers, that are hard for classical computers",
+        "Note that a sufficiently powerful quantum computer running an algorithm like Shor's could solve those problems fast",
+        "Mention that the field is responding with post-quantum cryptography, designing new algorithms that don't rely on those same hard problems"
+      ],
+      "modelAnswer": "A lot of encryption we use today, like RSA, relies on the fact that factoring a very large number into its prime factors is extremely slow for a normal computer. Quantum computers, if they get powerful enough, could run an algorithm called Shor's algorithm that solves that same problem dramatically faster, which would make that kind of encryption breakable. What I find genuinely interesting is that this isn't science fiction anymore, cryptographers are actively working on post-quantum cryptography, designing new encryption methods based on different mathematical problems that quantum computers aren't known to solve any faster. Standards bodies have already started selecting some of these algorithms, so the shift is happening before the threat is fully realized rather than after."
+    },
+    "commonMistakes": [
+      "Vague statement that quantum computers are 'faster' with no mechanism",
+      "Not knowing that a response, post-quantum cryptography, already exists",
+      "Overstating that quantum computers can already break all encryption today"
+    ],
+    "followUps": ["Why can't we just wait until quantum computers are actually powerful enough before switching encryption methods?"]
+  },
+  {
+    "id": "prog-computer-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Open versus closed AI model weights",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["ai", "open-source", "current-debate"],
+    "question": "Some AI labs release their models' weights openly for anyone to use, while others keep them closed. What do you think are the real trade-offs between those two approaches?",
+    "lookingFor": "Balanced reasoning about innovation, safety, and accountability, with an actual opinion rather than pure fence-sitting.",
+    "idealAnswer": {
+      "bullets": [
+        "Give the case for open weights: transparency, research access, competition",
+        "Give the case for closed weights: safety controls, misuse prevention, monetization enabling continued development",
+        "State a personal leaning with reasoning, while acknowledging the trade-off is real"
+      ],
+      "modelAnswer": "Open weights let independent researchers actually study and improve on a model instead of trusting a company's word for how it behaves, and they lower the barrier for smaller teams to build on cutting edge work. The case for closed weights is that once weights are out, you can't take them back, so if a model can be misused, like helping someone cause real harm, there's no way to patch that after release. I lean toward thinking openness is valuable for accountability, but I don't think it's a free choice, the safety argument is genuinely stronger for the most capable models than for smaller ones. I'd want the openness decision to depend on what the model can actually do, not be a blanket policy either way."
+    },
+    "commonMistakes": [
+      "Only presenting one side without engaging with the other",
+      "Treating the choice as purely ideological with no practical reasoning",
+      "Refusing to state any personal view"
+    ],
+    "followUps": ["Should the answer depend on how capable the model is? Why?"]
+  },
+  {
+    "id": "prog-computer-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Production data loss under pressure",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "software-engineering", "judgement"],
+    "question": "Imagine you're the only developer awake when you realize a bug you shipped an hour ago is actively deleting user data in production right now. Walk me through what you'd actually do, step by step.",
+    "lookingFor": "Calm, prioritized, realistic troubleshooting instinct: stop the bleeding, communicate, then fix and reflect.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize stopping the ongoing damage first, like rolling back or disabling the feature",
+        "Communicate the situation rather than trying to silently fix it alone",
+        "Address recovery and root cause after the immediate damage is contained"
+      ],
+      "modelAnswer": "My first move would be to stop the bleeding, not fix the root cause, so I'd roll back the deployment or disable the feature flag if one exists, because every minute it stays live is more data lost. At the same time, or right after, I'd wake up or message whoever else needs to know, because handling something like data loss alone, without anyone else aware, is a bad idea even if I think I can manage it. Once the immediate damage is stopped, I'd figure out the actual scope of what was lost and whether it can be restored from a backup, and only after that would I actually dig into what caused the bug in the first place. I'd also want to write up what happened afterward, because the goal isn't just fixing this one incident, it's making sure the next person catches it faster."
+    },
+    "commonMistakes": [
+      "Jumping straight to debugging the root cause while damage is still happening",
+      "Trying to handle it entirely alone without telling anyone",
+      "No mention of communication or after-the-fact review"
+    ],
+    "followUps": ["How would you decide whether to wake someone up at 3am versus waiting until morning?"]
+  },
+  {
+    "id": "prog-computer-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Programming split-second decisions for autonomous systems",
+    "program": "Computer Science",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "ai-ethics", "autonomous-systems"],
+    "question": "A self-driving car's software sometimes has to decide how to react in the split second before an unavoidable collision. How would you even begin to think about programming a decision like that?",
+    "lookingFor": "Ability to reframe an abstract trolley-problem into a real engineering and ethical question, without pretending there's a clean answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Push back gently on the framing: most real engineering effort goes into avoiding the scenario, not resolving it",
+        "Acknowledge that some decision still has to be encoded, and that it's a genuinely hard ethical design question, not just a technical one",
+        "Mention that this shouldn't be one engineer's call, it needs transparency, testing, and probably regulation"
+      ],
+      "modelAnswer": "Honestly, my first thought is that the real engineering effort goes into never reaching that split second at all, through better sensing and much earlier braking, so the scenario is rarer in practice than it sounds in the thought experiment. But I know some decision still has to be encoded for the moments it can't be avoided, and I don't think there's a clean formula for that, it's genuinely a values question dressed up as a technical one. I don't think it should be left to one engineer's personal judgement either, because the choice affects the public, so it needs to be made transparently, tested extensively, and probably shaped by regulation and public input rather than buried in a single company's code. I find it a genuinely uncomfortable question, and I think that discomfort is actually the right response to have."
+    },
+    "commonMistakes": [
+      "Diving straight into a trolley-problem answer without questioning the framing",
+      "Claiming there's an obviously correct rule to encode",
+      "Treating it as purely a technical problem with no ethical weight"
+    ],
+    "followUps": ["Who do you think should actually be responsible for making that decision, if not the engineer?"]
+  },
+  {
+    "id": "prog-computer-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering plagiarized code in a group project",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "ethics", "collaboration"],
+    "question": "You're working on a group coding project and you realize a teammate copied a large chunk of their part directly from an online repository without saying anything. What would you do?",
+    "lookingFor": "Practical, fair-minded handling that talks to the person directly before escalating, while taking the integrity issue seriously.",
+    "idealAnswer": {
+      "bullets": [
+        "Verify the situation rather than assuming or accusing immediately",
+        "Talk to the teammate directly first",
+        "Have a plan if the direct conversation doesn't resolve it, rather than just letting it go"
+      ],
+      "modelAnswer": "First I'd actually make sure I was right, comparing the code closely rather than acting on a hunch, because getting this wrong would unfairly damage someone's trust in me too. Assuming I was sure, I'd talk to them privately rather than raising it in front of the group or going straight to a supervisor, and ask them directly what happened, because there could be an innocent explanation, like using a reference and forgetting to credit it. If it turned out to be a genuine copy-paste with no attribution, I'd push for us to either rewrite that part properly or disclose it honestly if the project requires original work, because submitting it as is puts the whole group at risk, not just them. I'd only escalate beyond that if they refused to fix it, since at that point it stops being just their problem."
+    },
+    "commonMistakes": [
+      "Reporting immediately without ever speaking to the teammate",
+      "Ignoring it entirely to avoid an awkward conversation",
+      "Assuming guilt without verifying the situation first"
+    ],
+    "followUps": ["What would you do if the teammate refused to acknowledge or fix it?"]
+  },
+  {
+    "id": "prog-computer-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a simple system from scratch",
+    "program": "Computer Science",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "systems-design", "reasoning"],
+    "question": "If you had to design a simple system for a library to track which books are checked out, what would your first few decisions be, and what could go wrong with a naive approach?",
+    "lookingFor": "Structured design thinking: identify entities, edge cases, and failure modes before jumping to implementation.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the core entities and relationships, like books, copies, and members",
+        "Think through an edge case a naive design would miss, like multiple copies of the same book or double-booking",
+        "Show awareness of a realistic failure mode, like two people checking out the last copy at the same time"
+      ],
+      "modelAnswer": "I'd start by figuring out the actual entities, because a book title and a physical copy of it aren't the same thing, a library might have five copies of the same book and I need to track each one separately, not just whether 'the book' is checked out. Then I'd think through members and due dates, and what should happen at the edges, like what happens if someone tries to check out the very last available copy while someone else is doing the same thing at almost the same moment. A naive design that just flips a boolean flag on the book title would break there, because two checkouts could both succeed and now the system thinks there are more copies out than actually exist. I'd want the checkout action to be something that can't happen twice for the same copy at once, even before worrying about the rest of the interface."
+    },
+    "commonMistakes": [
+      "Jumping straight to database tables or code without identifying entities first",
+      "Not considering concurrent access or edge cases at all",
+      "Overengineering the very first pass instead of starting simple and iterating"
+    ],
+    "followUps": ["How would you handle two people trying to check out the last copy at the exact same time?"]
+  }
+]

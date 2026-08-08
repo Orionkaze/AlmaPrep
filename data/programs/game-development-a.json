@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-game-development-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for the field",
+    "program": "Game Development",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story"],
+    "question": "What first got you interested in making games rather than just playing them?",
+    "lookingFor": "A genuine origin story that shows the shift from consuming games to wanting to build them.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific moment, game, or tool that flipped you from player to maker",
+        "Show what you actually did next, however small",
+        "Connect it to why you want to study it formally now"
+      ],
+      "modelAnswer": "I'd been playing games my whole life, but the switch flipped when I opened the modding tools for Skyrim and realised I could actually change how a game behaved, not just experience it. I spent a summer building a small quest mod, breaking it constantly and learning why it broke, and that troubleshooting was more satisfying than finishing most games I'd played. It made me want to understand the systems underneath properly instead of just poking at them, which is why I want to study game development formally now."
+    },
+    "commonMistakes": [
+      "\"I've loved games since I was a kid\" with nothing more specific",
+      "Only talking about playing, never making",
+      "No clear pivot moment from consuming to creating"
+    ],
+    "followUps": ["What was the first thing you ever built or modified?"]
+  },
+  {
+    "id": "prog-game-development-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this program",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why do you want to study game development here specifically, rather than teaching yourself or doing a general computer science degree?",
+    "lookingFor": "Understanding of what a structured, interdisciplinary program offers beyond self-teaching, backed by specific research into the course.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific structural element of the course, like a studio project or module",
+        "Explain the limits of self-teaching alone",
+        "Show research into what makes this course distinct"
+      ],
+      "modelAnswer": "I've already taught myself a fair amount in Unity from tutorials, but that's given me gaps, I can script a mechanic but I've never had to work inside a production pipeline with artists and designers pulling in different directions. Your course's second-year studio project, where programmers, artists and designers ship a full vertical slice together, is exactly the structured pressure I can't replicate alone. A general computer science degree would give me the code but not the design theory or the collaborative practice, and games genuinely need both."
+    },
+    "commonMistakes": [
+      "Generic praise that would fit any university's game course",
+      "Leaning on rankings or reputation alone",
+      "Ignoring what actually makes self-teaching insufficient"
+    ],
+    "followUps": ["What gap in your self-taught knowledge are you hoping this fills?"]
+  },
+  {
+    "id": "prog-game-development-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Formative game experience",
+    "program": "Game Development",
+    "difficulty": "easy",
+    "tags": ["analysis", "formative-game"],
+    "question": "Tell us about a game that had a big impact on you, and why.",
+    "lookingFor": "The ability to articulate specific design choices, not just plot or general fun.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick one specific game, not a vague genre",
+        "Identify a specific design choice, not just story or graphics",
+        "Explain what it taught you about design"
+      ],
+      "modelAnswer": "Celeste is the game I keep coming back to. What struck me wasn't just how hard it was but how the assist mode let players tune the difficulty without shame built into the framing, which felt like genuinely inclusive design rather than an afterthought. It also uses the platforming mechanics themselves to tell the story, the character's anxiety literally becomes the obstacle you're climbing. That taught me mechanics and narrative don't have to be separate layers, they can say the same thing at once."
+    },
+    "commonMistakes": [
+      "Only describing the plot",
+      "A vague \"it was really fun\" with no design language",
+      "Picking a game they clearly haven't thought deeply about"
+    ],
+    "followUps": ["What would you change about it if you could?"]
+  },
+  {
+    "id": "prog-game-development-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Industry awareness",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["industry-knowledge", "research"],
+    "question": "Who in the games industry, past or present, do you admire, and why?",
+    "lookingFor": "Genuine familiarity with an industry figure or studio's actual work, not surface-level fame.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific person or studio with accurate detail",
+        "Explain a specific piece of work or philosophy that resonates",
+        "Avoid generic hero-worship"
+      ],
+      "modelAnswer": "I admire Jennifer Scheurle's work on accessibility and cognitive design, particularly her writing on how sound design can carry gameplay information for players who can't rely on visual cues alone. It reframed accessibility for me as a design problem worth solving elegantly, not a checkbox added at the end. I try to think about that when I prototype now, asking early who might be excluded by a mechanic rather than patching it in later."
+    },
+    "commonMistakes": [
+      "Naming a huge celebrity figure with no substantive reason",
+      "Getting basic facts wrong about their work",
+      "Treating admiration as trivia rather than something that shaped their own thinking"
+    ],
+    "followUps": ["How has that admiration shaped anything you've made?"]
+  },
+  {
+    "id": "prog-game-development-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Personal projects",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["portfolio", "reflection"],
+    "question": "What's a game or prototype you've built, and what didn't work about it?",
+    "lookingFor": "Evidence of actually making things, plus honest reflection on shortcomings.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a concrete project with real scope",
+        "Be honest about what failed or had to be cut",
+        "Show what was learned or changed as a result"
+      ],
+      "modelAnswer": "For a game jam I built a small stealth puzzle game where light and sound revealed the player to enemies. The core idea worked, but I'd underestimated how long enemy pathfinding would take to get right, so I shipped with enemies that just walked fixed routes, which made the game feel static rather than tense. Afterward I went back and implemented simple line-of-sight detection on my own time, and it taught me to prototype the riskiest system first instead of saving it for last."
+    },
+    "commonMistakes": [
+      "Describing only a finished, polished success with no honest flaw",
+      "A vague description with no specifics",
+      "Blaming teammates entirely for the shortcoming"
+    ],
+    "followUps": ["What would you build differently if you started that project again today?"]
+  },
+  {
+    "id": "prog-game-development-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Engine familiarity",
+    "program": "Game Development",
+    "difficulty": "easy",
+    "tags": ["engines", "tools"],
+    "question": "Which game engines or tools have you used, and what's one thing you like or dislike about one of them?",
+    "lookingFor": "Hands-on familiarity plus a critical opinion, not just name-dropping software.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific engines or tools actually used",
+        "Give a concrete like or dislike with reasoning",
+        "Show awareness that different tools involve trade-offs"
+      ],
+      "modelAnswer": "I've mostly worked in Unity because the C# scripting and huge asset store made it easy to get started, and I've dabbled in Godot for a smaller project because it's lighter and fully open source. What I like about Godot is how readable its scene and node system is, it maps really cleanly onto how I think about a game's structure. What frustrates me about Unity is how quickly a project's dependencies can get tangled across packages, which slowed down a group project when versions didn't match across our machines."
+    },
+    "commonMistakes": [
+      "Listing engine names with no actual usage behind them",
+      "No genuine opinion or trade-off given",
+      "Claiming implausibly expert-level mastery"
+    ],
+    "followUps": ["If you had to pick one engine to specialise in, which would it be and why?"]
+  },
+  {
+    "id": "prog-game-development-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Programming fundamentals",
+    "program": "Game Development",
+    "difficulty": "easy",
+    "tags": ["programming", "fundamentals"],
+    "question": "What programming languages do you know, and how have you used them in a game context?",
+    "lookingFor": "Concrete coding experience tied to an actual mechanic or system built, not just coursework.",
+    "idealAnswer": {
+      "bullets": [
+        "Name languages with an honest proficiency level",
+        "Connect each to a specific mechanic or system built",
+        "Show understanding of why a language suited that task"
+      ],
+      "modelAnswer": "I'm most comfortable in C#, which I've used in Unity to build things like a simple inventory system with drag and drop UI. I also know some Python from school, which I used to write a quick script generating random dungeon layouts for a text-based prototype before I ever touched an engine. I like that Python let me test the logic of the generation quickly, and then I could think about how to actually visualise it once the algorithm worked."
+    },
+    "commonMistakes": [
+      "Listing languages never actually used for anything real",
+      "No connection to a game-specific application",
+      "Overstating fluency"
+    ],
+    "followUps": ["What's a bug you struggled with and how did you eventually fix it?"]
+  },
+  {
+    "id": "prog-game-development-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Core game loops",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["game-design", "core-loop"],
+    "question": "What do you understand by a 'core game loop', and can you describe one from a game you like?",
+    "lookingFor": "Correct conceptual grasp of a core loop plus the ability to break down a real example.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a core loop as the repeated cycle of actions driving engagement",
+        "Break down a real example into its actual steps",
+        "Explain why that loop keeps players engaged"
+      ],
+      "modelAnswer": "A core loop is the small repeated cycle of actions a player performs over and over that the rest of the game is built around, it's what you're actually doing moment to moment. In Slay the Spire the loop is roughly choose a card to play, see the outcome, adjust your next choice, which repeats within a single fight and then again as you build your deck between fights. What makes it compelling is that the loop operates at two timescales at once, the tactical choice each turn and the strategic choice of deck-building across a run, so you're never bored at either level."
+    },
+    "commonMistakes": [
+      "Confusing core loop with overall genre or story",
+      "Picking an example but not breaking it into actual steps",
+      "Describing the loop too vaguely to be checkable"
+    ],
+    "followUps": ["How would you change that loop to make it more replayable?"]
+  },
+  {
+    "id": "prog-game-development-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "What makes a game fun",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["game-design", "player-experience"],
+    "question": "In your view, what makes a game fun? Does that differ across genres?",
+    "lookingFor": "A thought-out framework for fun rather than a single word, plus awareness that fun isn't monolithic.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a working framework rather than a single vague word",
+        "Acknowledge fun varies by genre or player type",
+        "Ground the answer with a concrete example"
+      ],
+      "modelAnswer": "I don't think there's one kind of fun, I lean on the idea that different games satisfy different needs, like mastery in a fighting game versus curiosity in an exploration game versus social connection in a party game. A puzzle game like Baba Is You is fun because of the moment you finally see the trick, that flash of understanding, whereas something like Animal Crossing is fun in a much slower, low-stakes, comforting way. So when I'm designing something I try to ask which of those feelings I'm actually chasing, because the tools you'd use to build tension are different from the tools you'd use to build comfort."
+    },
+    "commonMistakes": [
+      "Reducing fun to a single vague word like \"enjoyment\"",
+      "Treating all genres as needing the same kind of fun",
+      "No concrete game example to anchor the claim"
+    ],
+    "followUps": ["Can a game be good even if it isn't fun in that sense?"]
+  },
+  {
+    "id": "prog-game-development-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Genre conventions",
+    "program": "Game Development",
+    "difficulty": "easy",
+    "tags": ["genres", "fundamentals"],
+    "question": "Pick two game genres and explain one core mechanical difference between them.",
+    "lookingFor": "Accurate, specific genre knowledge that goes beyond surface labels.",
+    "idealAnswer": {
+      "bullets": [
+        "Choose two genres accurately",
+        "Identify a genuine mechanical, not just aesthetic, difference",
+        "Give example titles for each"
+      ],
+      "modelAnswer": "I'd compare a roguelike like Hades with a Metroidvania like Hollow Knight. In a roguelike, death resets your run and progress is usually meta, you carry knowledge or small permanent unlocks forward but the level layout and your build are regenerated each time. In a Metroidvania, the map is persistent and hand-crafted, and progress comes from unlocking new abilities that let you access areas you'd already seen but couldn't reach. Both create a sense of growing mastery, but one does it through repetition and randomness and the other through exploration and memory of a fixed space."
+    },
+    "commonMistakes": [
+      "Distinguishing genres only by art style or setting",
+      "Picking genres that are actually the same thing under different names",
+      "A vague comparison with no example titles"
+    ],
+    "followUps": ["Which of those two design approaches appeals to you more as a designer?"]
+  },
+  {
+    "id": "prog-game-development-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Math and physics in games",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["math", "physics", "technical"],
+    "question": "How much math or physics do you think game development actually requires, and where have you seen it show up?",
+    "lookingFor": "A realistic understanding of practical math like vectors and trigonometry, tied to a concrete example.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific areas like vectors for movement or trigonometry for angles",
+        "Avoid overstating to advanced-only math or dismissing it entirely",
+        "Connect it to something they've actually built"
+      ],
+      "modelAnswer": "It shows up more than people expect, but usually in practical rather than advanced forms. When I built a simple top down shooter, aiming the player toward the mouse meant working out the angle between two points, which is just basic trigonometry, and moving a projectile in that direction meant using a normalised vector so speed stayed consistent regardless of direction. I haven't needed anything like calculus yet, but I can see how physics-heavy genres, like a racing game tuning suspension, would need a lot more of it."
+    },
+    "commonMistakes": [
+      "Claiming you need advanced math like calculus for everything",
+      "Dismissing math as irrelevant to design",
+      "No concrete example of applying it"
+    ],
+    "followUps": ["Have you ever had to debug something that turned out to be a math error?"]
+  },
+  {
+    "id": "prog-game-development-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Level design principles",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["level-design", "game-design"],
+    "question": "What makes a level well designed, in your opinion? Can you point to an example?",
+    "lookingFor": "Understanding of pacing and environmental guidance, not just aesthetics.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference pacing, difficulty curve, or environmental guidance",
+        "Give a concrete example level",
+        "Explain how the level teaches or tests a mechanic"
+      ],
+      "modelAnswer": "For me a well designed level teaches you something without a tutorial popup, usually by placing you somewhere you can only progress by discovering the mechanic through the environment itself. The first proper level of Portal does this really well, each room isolates one idea about the portal gun before combining it with the next, so the difficulty ramps step by step and you never feel lost. It also uses the space itself to hint where to look, like a visible far wall you clearly need to reach but can't yet, which pulls you forward without any text on screen."
+    },
+    "commonMistakes": [
+      "Describing only visual or aesthetic qualities of a level",
+      "No reference to pacing or teaching",
+      "Picking an example they can't actually explain in detail"
+    ],
+    "followUps": ["How would you test whether a level was actually teaching what you intended?"]
+  },
+  {
+    "id": "prog-game-development-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Storytelling in games vs other media",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["narrative", "game-design"],
+    "question": "What can games do with storytelling that a film or book can't?",
+    "lookingFor": "Grasp of interactivity and player agency as a distinct narrative tool, backed by an example.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify interactivity or player agency as the key differentiator",
+        "Give a concrete example of a game using it",
+        "Avoid treating games as just interactive movies"
+      ],
+      "modelAnswer": "A game can make the player complicit in a choice rather than just showing them one, which changes how a story lands emotionally. In Spec Ops: The Line, you're the one who pulls the trigger on the white phosphorus attack, and that action being yours rather than a character's on a screen makes the horror afterward hit differently than if you'd just watched a cutscene. Film and books can only describe a choice, a game can make you own the consequence of making it, and that's a tool unique to the medium."
+    },
+    "commonMistakes": [
+      "Treating games as just movies with extra controls",
+      "Naming interactivity with no concrete example",
+      "Ignoring that not every game needs heavy narrative"
+    ],
+    "followUps": ["Do you think every game needs a strong narrative? Why or why not?"]
+  },
+  {
+    "id": "prog-game-development-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Playtesting and iteration",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["playtesting", "iteration"],
+    "question": "Why is playtesting important, and have you ever had a playtest change your mind about a design decision?",
+    "lookingFor": "Understanding that designer intuition is unreliable, backed by a real example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that designers lose the ability to see their own game with fresh eyes",
+        "Describe a concrete instance where feedback changed a decision",
+        "Show willingness to kill ideas that don't actually work"
+      ],
+      "modelAnswer": "I think playtesting matters because you lose the ability to see your own game with fresh eyes the moment you understand how it works, so problems that would confuse a new player become invisible to you. When I ran a small playtest for a stealth prototype, three separate testers got stuck at the same spot because I'd assumed a subtle lighting cue was obvious, when really it needed a much stronger visual signal. I was reluctant to change it at first because I liked how subtle it was, but watching people actually get stuck was more convincing than my own instinct."
+    },
+    "commonMistakes": [
+      "Treating playtesting as just a final QA pass rather than a design tool",
+      "Claiming your first design instinct is always right",
+      "Giving no concrete example"
+    ],
+    "followUps": ["How do you decide which playtest feedback to act on and which to ignore?"]
+  },
+  {
+    "id": "prog-game-development-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Understanding of production roles",
+    "program": "Game Development",
+    "difficulty": "easy",
+    "tags": ["teamwork", "production"],
+    "question": "Game development is usually a team effort. What roles do you understand exist beyond 'programmer' and 'artist', and which are you most drawn to?",
+    "lookingFor": "Awareness of the broader discipline map, plus genuine self-placement within it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name roles beyond the obvious two, like design, production, audio, or QA",
+        "Place yourself honestly among them with reasoning",
+        "Show respect for roles outside your own interest"
+      ],
+      "modelAnswer": "Beyond programming and art there's game design, which is really its own discipline about systems and balance rather than code or visuals, plus production keeping everything on schedule, audio design, and QA testing which I think is underrated because they're the ones who actually break the game before players do. I'm most drawn to design itself, I like the puzzle of balancing systems so they feel fair, but I know I need enough programming to actually prototype my own ideas rather than just describing them to someone else."
+    },
+    "commonMistakes": [
+      "Only naming programmer and artist as if that's the whole team",
+      "Picking a role with no reasoning",
+      "Dismissing roles like QA or production as less important"
+    ],
+    "followUps": ["How would you handle a disagreement with a teammate in a different role, say an artist, about a design choice?"]
+  },
+  {
+    "id": "prog-game-development-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of monetization",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["ethics", "monetization", "industry"],
+    "question": "What's your view on loot boxes and other randomised monetization in games? Where do you draw the line?",
+    "lookingFor": "Balanced ethical reasoning that weighs business reality against player harm, especially around minors and gambling-like mechanics.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the legitimate business need for monetization in free-to-play models",
+        "Identify the specific harm, like gambling-like mechanics or opaque odds targeting minors",
+        "Propose a workable line rather than an absolute stance"
+      ],
+      "modelAnswer": "I understand why free to play games need some monetization, development costs are real and not everyone can charge upfront, so I'm not against paying for cosmetics or convenience. Where I think it crosses a line is when the reward is randomised and tied to real money in a way that mimics gambling, especially in games popular with kids who don't have the same sense of odds or spending limits. I'd draw the line at requiring published odds and keeping randomised paid mechanics out of games rated for younger audiences, rather than banning monetization outright."
+    },
+    "commonMistakes": [
+      "A flat \"loot boxes are evil\" or \"it's all fine, it's just business\" with no nuance",
+      "Ignoring the minors and gambling angle entirely",
+      "Refusing to commit to any actual line"
+    ],
+    "followUps": ["Should this be regulated by law, or left to the industry to self-police?"]
+  },
+  {
+    "id": "prog-game-development-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Indie vs AAA development",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["industry", "indie", "aaa"],
+    "question": "What do you see as the main differences between working on an indie game versus a AAA title, and which appeals more to you right now?",
+    "lookingFor": "Realistic understanding of scale, team size, creative control, and risk trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify concrete differences like team size, budget, or creative freedom",
+        "Avoid romanticising indie or dismissing AAA",
+        "Give an honest personal preference with reasoning"
+      ],
+      "modelAnswer": "AAA studios have the budget and specialist teams to build things at a scale and polish an indie team just can't match, but that scale often means a designer's individual voice gets filtered through a lot of process and stakeholders. Indie teams have far less resource and more risk, a game can just fail commercially and take the studio with it, but a small team can make a strange, personal decision and ship it without ten layers of approval. Right now the indie side appeals more to me because I want to learn the whole pipeline myself before I specialise, but I don't rule out wanting the scale of a AAA project later once I know what I actually want to specialise in."
+    },
+    "commonMistakes": [
+      "Romanticising indie as purely passion and AAA as purely soulless",
+      "Giving no concrete structural differences",
+      "Refusing to state a genuine current preference"
+    ],
+    "followUps": ["What's a specific indie game you think punches above its budget, and why?"]
+  },
+  {
+    "id": "prog-game-development-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Critiquing a game's design",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["critique", "game-design", "analysis"],
+    "question": "Tell us about a game you enjoyed but think has a real design flaw. How would you fix it?",
+    "lookingFor": "The ability to separate enjoyment from critical analysis, and propose a specific, plausible fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a game they clearly know well",
+        "Identify a specific, defensible flaw rather than a vague complaint",
+        "Propose a concrete fix and consider its trade-offs"
+      ],
+      "modelAnswer": "I love Assassin's Creed Odyssey, but I think its skill tree is a real flaw, it has so many passive stat boosts that most choices don't actually change how you play, they just make numbers bigger. I'd redesign it around fewer, more distinct active abilities that meaningfully change your combat approach, similar to how Hades handles its boons, so each unlock is a real decision rather than a formality. The trade-off is that would mean fewer total unlocks to chase, which might upset players who like the sense of constant progression, so I'd probably keep a smaller separate track of pure stat growth alongside it."
+    },
+    "commonMistakes": [
+      "Picking a flaw that's really just a personal taste complaint dressed up as design critique",
+      "No concrete proposed fix",
+      "Refusing to consider the trade-offs of their own fix"
+    ],
+    "followUps": ["Would your fix risk breaking anything else about the game that currently works?"]
+  },
+  {
+    "id": "prog-game-development-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Game loop and frame rate",
+    "program": "Game Development",
+    "difficulty": "easy",
+    "tags": ["technical", "game-loop", "fundamentals"],
+    "question": "Can you explain, in simple terms, what a game's 'update loop' does and why frame rate matters?",
+    "lookingFor": "Correct basic technical grasp of the update-render cycle and why a consistent frame rate matters for feel.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the loop as repeatedly updating state and then rendering it",
+        "Explain frame rate as how often that cycle runs and its effect on smoothness and responsiveness",
+        "Note the risk of tying gameplay logic directly to frame rate"
+      ],
+      "modelAnswer": "The update loop is the engine repeatedly running through a cycle, usually process input, update the game state like positions and physics, then render the frame, and it does this many times a second to create the illusion of continuous motion. Frame rate is how many times that cycle completes per second, so a higher frame rate means smoother motion and more responsive input, which matters a lot in something like a fighting game where a few frames of delay changes whether a combo lands. One thing I learned the hard way in a prototype was that if you tie movement speed directly to frame count instead of actual elapsed time, the game runs at different speeds on different machines, which is why you use delta time instead."
+    },
+    "commonMistakes": [
+      "Confusing frame rate with input lag or network latency",
+      "Describing the loop only vaguely with no update or render distinction",
+      "Not knowing why frame-rate-dependent logic is a bug"
+    ],
+    "followUps": ["What's delta time, and why does it matter here?"]
+  },
+  {
+    "id": "prog-game-development-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and NPC behavior",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["ai", "technical", "npc-behavior"],
+    "question": "How do you think NPC or enemy AI in games actually works? Give an example from a game you've played.",
+    "lookingFor": "A realistic, non-mystical understanding of game AI as rule-based systems, distinct from machine-learning AI, backed by an example.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish rule-based game AI like state machines from real machine-learning AI",
+        "Explain with a concrete example how an enemy might switch states",
+        "Show awareness that most game AI is designed to feel smart rather than actually learn"
+      ],
+      "modelAnswer": "Most game AI isn't learning anything in the machine learning sense, it's usually a set of rules or states the designer wrote, like a finite state machine where an enemy moves between patrol, alert and attack states based on conditions like whether they can see the player. In Alien Isolation, the Xenomorph's behaviour is actually built from a layered system where a director AI nudges it toward the player using rough information while a more reactive local AI handles what it actually does once it's close, which is why it feels unpredictable without being truly random. I find that more impressive than actual learning AI in games, because it's specifically tuned to feel threatening and fair at the same time, which is a real design skill."
+    },
+    "commonMistakes": [
+      "Assuming game AI uses the same machine learning as tools like ChatGPT",
+      "Describing AI only as \"the enemy that chases you\" with no mechanism",
+      "No concrete game example"
+    ],
+    "followUps": ["Would you ever want to use real machine learning in a game you design? For what?"]
+  },
+  {
+    "id": "prog-game-development-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Accessibility in game design",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["accessibility", "game-design", "inclusion"],
+    "question": "What does accessibility mean in game design, and why does it matter to you?",
+    "lookingFor": "Understanding beyond just subtitles, covering visual, motor, and cognitive accessibility, plus genuine personal conviction.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific accessibility features across different needs",
+        "Explain it as good design practice rather than a niche add-on",
+        "Give a reason it matters to them personally or through observation"
+      ],
+      "modelAnswer": "Accessibility covers things like colourblind-safe palettes, remappable controls for players with limited mobility, subtitles and visual cues for deaf players, and adjustable difficulty or assist options for players who process challenge differently. I got interested in it after watching my cousin, who has limited use of one hand, struggle with games that assumed two-handed controller input by default, when a simple remapping option would have let him play games he otherwise couldn't touch. It's stuck with me since as a reminder that accessibility isn't a nice extra, it's the difference between a game reaching its full possible audience or quietly shutting a chunk of it out."
+    },
+    "commonMistakes": [
+      "Reducing accessibility to just subtitles",
+      "Treating it as a checkbox rather than genuine design thinking",
+      "No personal grounding or reasoning for why it matters"
+    ],
+    "followUps": ["Can accessibility options ever conflict with a designer's original creative vision? How would you handle that?"]
+  },
+  {
+    "id": "prog-game-development-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Handling a failed project",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["resilience", "project-experience"],
+    "question": "Tell us about a game project that didn't go the way you planned. What happened, and what did you take from it?",
+    "lookingFor": "An honest account of a real, game-specific setback with genuine reflection and a concrete change afterward.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a genuine specific setback, like scope, team, or technical issues",
+        "Avoid blaming teammates or circumstances entirely",
+        "Show a concrete change in approach afterward"
+      ],
+      "modelAnswer": "For a team game jam, we scoped a full crafting and combat system in 48 hours, which was hopelessly ambitious, and by the halfway mark we hadn't finished either system properly. I pushed to cut combat entirely and focus purely on the crafting loop with a simple win condition, which felt like giving up at the time but meant we actually shipped something coherent instead of two broken halves. Since then I always sketch the smallest possible version of an idea first and only add scope once that core is actually working, rather than building outward from an ambitious plan."
+    },
+    "commonMistakes": [
+      "Blaming teammates or time pressure with no self-reflection",
+      "Describing a \"failure\" that's secretly a humble-brag",
+      "No concrete change in future behaviour"
+    ],
+    "followUps": ["How do you decide what to cut when a project is running out of time?"]
+  },
+  {
+    "id": "prog-game-development-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "UI and UX in games",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["ui", "ux", "game-design"],
+    "question": "What's the difference between a game's UI and its UX, and can you give an example of a game with UI you think works particularly well or badly?",
+    "lookingFor": "A correct conceptual distinction between UI and UX, plus a specific, defensible example.",
+    "idealAnswer": {
+      "bullets": [
+        "Define UI as the visible interface and UX as the overall feel of interacting with the system",
+        "Give a specific example with functional reasoning, not just visual taste",
+        "Note that minimal or diegetic UI can still serve UX well"
+      ],
+      "modelAnswer": "UI is the actual visible elements, the health bar, the menus, the icons, while UX is the broader experience of how it feels to actually use and understand the game, UI is one tool that shapes UX but isn't the whole of it. Dead Space does this really well by putting the health bar as a glowing strip on the character's spine instead of a corner HUD, which keeps you inside the world's tension instead of glancing away to a menu overlay. It's a good example of good UI serving good UX by being almost invisible rather than by being flashy."
+    },
+    "commonMistakes": [
+      "Treating UI and UX as interchangeable terms",
+      "Giving only a visual example with no functional reasoning",
+      "Unable to explain why the chosen example is good or bad beyond \"it looks nice\""
+    ],
+    "followUps": ["Can you think of a game where the UI actually hurt the experience?"]
+  },
+  {
+    "id": "prog-game-development-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "On-the-spot design challenge",
+    "program": "Game Development",
+    "difficulty": "hard",
+    "tags": ["curveball", "creativity", "design-thinking"],
+    "question": "You have sixty seconds. Pitch me a simple game concept using only a ball and a wall.",
+    "lookingFor": "Quick creative thinking under pressure that commits to a coherent core mechanic, not polish.",
+    "idealAnswer": {
+      "bullets": [
+        "Commit to one clear idea quickly rather than freezing or hedging",
+        "Describe an actual mechanic, not just a theme",
+        "Show you can think in systems on the spot"
+      ],
+      "modelAnswer": "The wall slowly crumbles every time the ball hits it, and the player has to bounce the ball off changing angles to control exactly where it breaks, because breaking too much too fast lets something dangerous through from the other side. So the core tension is between wanting to break the wall to progress and needing to control where it breaks to stay protected. It's basically Breakout with a defence objective layered on top instead of a pure clearing objective, which changes the decision from 'hit everything' to 'hit carefully.'"
+    },
+    "commonMistakes": [
+      "Freezing or refusing to commit to a concrete idea",
+      "Describing only a setting or story with no actual mechanic",
+      "Over-apologising for the idea instead of just presenting it confidently"
+    ],
+    "followUps": ["What would the win or lose condition be?"]
+  },
+  {
+    "id": "prog-game-development-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Career direction in games",
+    "program": "Game Development",
+    "difficulty": "medium",
+    "tags": ["goals", "motivation", "career"],
+    "question": "What kind of role or type of game do you eventually want to work on, and why does this course get you there?",
+    "lookingFor": "A grounded direction honestly connected to the course structure, neither overprecise nor vague.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine direction, whether role, genre, or studio type",
+        "Connect it honestly to specific parts of the course",
+        "Show openness to that direction evolving"
+      ],
+      "modelAnswer": "Right now I'm most drawn to systems design on narrative-driven RPGs, the kind of game where mechanics and story reinforce each other, though I know that could shift once I've tried more disciplines properly. Your course's mix of a dedicated narrative design module alongside the core programming and design modules is exactly the combination I think that role needs, because I don't just want to write systems in isolation from the story they're meant to serve. I'm also realistic that my interests might move once I actually work in a full team project, and I'd rather that happen here where I can pivot than after I've already committed to a specific studio job."
+    },
+    "commonMistakes": [
+      "An overly precise job title with no room to grow",
+      "A goal disconnected from anything the course actually offers",
+      "Sounding uncertain they even want to work in games"
+    ],
+    "followUps": ["What would make you change your mind about that direction?"]
+  }
+]

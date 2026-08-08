@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-geography-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Plate boundaries and earthquake distribution",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["physical", "tectonics", "hazards"],
+    "question": "Why do earthquakes cluster along certain plate boundaries but volcanic activity doesn't occur at all of them equally?",
+    "lookingFor": "Reasoning that distinguishes boundary types and mechanisms, not just naming them.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the three boundary types: divergent, convergent, transform",
+        "Explain that magma generation happens mainly at divergent zones and subduction zones, not transform faults",
+        "Give a named example to anchor the reasoning, such as the San Andreas versus the Andes"
+      ],
+      "modelAnswer": "All three boundary types generate earthquakes because rock is being stressed and fractured, but volcanoes need a way for magma to actually form and rise. At transform boundaries like the San Andreas, plates are just grinding past each other laterally, so you get huge stress release and quakes but nothing melting. At convergent boundaries like the Andes, the subducting plate is pushed down into the mantle and partially melts, feeding volcanoes as well as quakes. That's why the Pacific 'Ring of Fire' is really a story of subduction, not just plate contact in general."
+    },
+    "commonMistakes": [
+      "Treating all plate boundaries as producing the same hazards",
+      "Naming the boundary types but not explaining the melting mechanism",
+      "Giving no concrete example to test the explanation against"
+    ],
+    "followUps": ["Why are earthquakes at transform boundaries often shallower but still very destructive?"]
+  },
+  {
+    "id": "prog-geography-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "River processes and landform formation",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["rivers", "fluvial-geomorphology", "landforms"],
+    "question": "Explain how a meander migrates across a floodplain over time, and why it sometimes gets cut off to form an oxbow lake.",
+    "lookingFor": "A process-based explanation linking erosion and deposition to the final landform, not just a labelled diagram recited from memory.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the helicoidal flow that erodes the outer bank and deposits on the inner bank",
+        "Show how that asymmetry makes the meander loop grow tighter over time",
+        "Describe the neck cutoff process during a flood that leaves an oxbow lake"
+      ],
+      "modelAnswer": "The fastest current in a meander swings toward the outer bank, undercutting it through erosion, while the slower inner bank collects deposited sediment as a point bar. Because that pattern repeats every flow cycle, the loop keeps growing more exaggerated and the neck of land between two bends gets narrower each year. Eventually, usually during a high-discharge flood, the river cuts straight through that thin neck because it's a shorter, faster route, and the old loop gets sealed off by deposition at both ends, leaving the crescent-shaped oxbow lake behind. What I find interesting is that the river is essentially always taking the path of least resistance, and the oxbow is just the fossil record of it doing that."
+    },
+    "commonMistakes": [
+      "Describing erosion and deposition without connecting them to why the loop grows",
+      "Skipping straight to 'oxbow lake' without explaining the neck cutoff mechanism",
+      "Confusing which bank erodes and which deposits"
+    ],
+    "followUps": ["What would happen to this process if the river's discharge became much more variable due to climate change?"]
+  },
+  {
+    "id": "prog-geography-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Glacial erosion versus fluvial erosion landforms",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["glaciation", "landforms", "fieldwork"],
+    "question": "How would you distinguish, just from looking at a landscape, whether a valley was shaped primarily by glacial erosion or by fluvial erosion?",
+    "lookingFor": "Applied field reasoning using cross-section shape, evidence, and landform vocabulary, not just definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast the U-shaped cross-section of glacial valleys with the V-shaped cross-section of river valleys",
+        "Point to supporting evidence like truncated spurs, hanging valleys, or striations for glacial action",
+        "Acknowledge that many valleys show both, since rivers often continue eroding after glaciers retreat"
+      ],
+      "modelAnswer": "I'd start with the cross-section: a glacier is a wide, rigid mass that erodes evenly across its width, so it leaves a broad U-shaped valley with steep sides, whereas a river is narrow and erodes mostly downward, leaving a V-shape. Then I'd look for corroborating evidence, truncated spurs where a glacier has sliced through interlocking spurs, or a hanging valley where a smaller tributary glacier didn't cut as deep as the main one. I'd also check for striations on exposed rock, since those scratches are a fairly unambiguous glacial signature. Realistically a lot of upland valleys were carved by ice and then had a river running through the bottom of them afterward, so you often see a V-shaped notch sitting inside a wider U, which tells its own layered story."
+    },
+    "commonMistakes": [
+      "Only citing the U-shape versus V-shape rule without supporting evidence",
+      "Assuming a valley must be exclusively one process or the other",
+      "Ignoring what evidence would actually be visible in the field versus on a map"
+    ],
+    "followUps": ["What landform evidence would tell you a glacier was retreating rather than advancing?"]
+  },
+  {
+    "id": "prog-geography-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Urban heat island mechanisms",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["urban", "climate", "human-geography"],
+    "question": "What causes the urban heat island effect, and why might a mitigation measure that works well in one city fail in another?",
+    "lookingFor": "Mechanistic understanding of causes plus awareness that solutions are context-dependent, not universal.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core causes: dark surfaces absorbing heat, reduced vegetation, waste heat from buildings and traffic, and street canyon geometry trapping heat",
+        "Name a plausible mitigation, such as reflective roofing, tree canopy, or green corridors",
+        "Explain why local climate, density, or building stock could make that same measure less effective elsewhere"
+      ],
+      "modelAnswer": "Cities are hotter than surrounding rural areas mainly because concrete and asphalt absorb and re-radiate heat instead of reflecting it or letting it evaporate the way vegetation and soil do, and that's compounded by waste heat from vehicles, air conditioning, and industry, plus tall buildings trapping warm air in street canyons. Something like planting street trees works brilliantly in a city with the space and rainfall to support them, but in a dense, water-scarce city that same strategy might fail because there isn't enough irrigation to keep the canopy alive. It reminds me that urban climate solutions have to be read against the specific city's density, water supply, and building form, not copied wholesale from somewhere else."
+    },
+    "commonMistakes": [
+      "Listing causes without explaining the underlying physical mechanism",
+      "Assuming one mitigation strategy is universally the right answer",
+      "Ignoring water, space, or maintenance constraints that limit real-world solutions"
+    ],
+    "followUps": ["How would you actually measure whether a mitigation strategy had worked?"]
+  },
+  {
+    "id": "prog-geography-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Carbon border adjustment and trade policy",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["trade", "climate-policy", "current-affairs"],
+    "question": "The EU's carbon border adjustment mechanism taxes imports based on their carbon footprint. As a geographer, what's your view on whether that's a fair way to tackle emissions?",
+    "lookingFor": "Informed engagement with a live policy debate, weighing environmental intent against uneven global development.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what the policy actually does and why it exists",
+        "Weigh the environmental logic against the fairness concern for developing exporters",
+        "Reach a reasoned, not one-sided, position"
+      ],
+      "modelAnswer": "The logic makes sense on paper, it stops European industries from being undercut by imports made more cheaply because they weren't subject to a carbon price, and in theory it pushes exporters to decarbonise too. But I think the fairness question is real, a lot of the countries exporting carbon-intensive goods to Europe are still industrialising, and they didn't create the historical emissions that got us here, so effectively taxing their exports can look like richer countries protecting their markets under an environmental banner. I don't think that makes it wrong, but I'd want to see the revenue genuinely reinvested in helping exporters decarbonise rather than just sitting in EU coffers, otherwise it's hard to defend as fair rather than just protective."
+    },
+    "commonMistakes": [
+      "Treating the policy as purely an environmental measure with no trade politics attached",
+      "Dismissing it outright as protectionism with no acknowledgment of its climate logic",
+      "Answering with no reference to how it actually affects developing economies"
+    ],
+    "followUps": ["What would a fairer version of this policy look like to you?"]
+  },
+  {
+    "id": "prog-geography-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of dam-building and displacement",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["ethics", "development", "displacement"],
+    "question": "A government wants to build a hydroelectric dam that would power millions of homes but would flood valleys and displace an indigenous community who have lived there for generations. How would you think through whether it should go ahead?",
+    "lookingFor": "Structured ethical reasoning weighing collective benefit against the specific, concentrated harm to a community, not a snap yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension between broad public benefit and concentrated harm to a specific group",
+        "Raise the question of whether the affected community actually consented or was just informed",
+        "Land on a position that includes conditions, such as resettlement terms and alternative sites, rather than a flat approval or refusal"
+      ],
+      "modelAnswer": "My instinct is that clean power for millions of people is a huge benefit, but I don't think that automatically outweighs the cost to a specific community who never chose to bear it, especially if their displacement is treated as an acceptable statistic rather than a real loss of home and history. I'd want to know whether the process involved free, prior, and informed consent from that community, not just a compensation package handed down after the decision was already made. If it went ahead, I'd want to see genuinely fair resettlement, a real say in the terms, and a serious look at whether a less destructive site or a mix of smaller renewable projects could deliver similar power without the same concentrated cost. The scale of the benefit doesn't excuse skipping that process, it just makes it more urgent to get it right."
+    },
+    "commonMistakes": [
+      "Approving the dam purely on a utilitarian headcount with no attention to process",
+      "Refusing any development on the community's land without weighing the wider benefit",
+      "Giving no concrete conditions, just a vague 'it depends'"
+    ],
+    "followUps": ["Does your answer change if the community's consent was 'obtained' but under clear economic pressure?"]
+  },
+  {
+    "id": "prog-geography-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate justice and migration obligations",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["ethics", "migration", "climate-justice"],
+    "question": "As sea levels rise, some low-lying nations may become uninhabitable within decades. Do wealthier countries that have historically emitted the most carbon have an obligation to accept climate refugees from those nations?",
+    "lookingFor": "Reasoned engagement with historical responsibility versus practical and political limits, avoiding a purely idealistic or purely dismissive answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Connect historical emissions data to the idea of responsibility, not just sympathy",
+        "Acknowledge the practical and political difficulty of large-scale resettlement obligations",
+        "Suggest what obligation might realistically look like beyond simple admission numbers"
+      ],
+      "modelAnswer": "I think there's a strong moral case, a small number of industrialised countries produced the large majority of historical emissions, while low-lying island nations that contributed almost nothing to the problem stand to lose their entire territory. That kind of asymmetry does look like an obligation to me, not charity. But I don't think it's realistic to reduce that obligation to just accepting a fixed number of migrants, because that runs into domestic politics that most governments won't easily overcome. I'd argue the obligation is broader than migration alone, funding adaptation, supporting relocation with dignity and land rights rather than refugee status, and yes, opening real pathways for resettlement where adaptation genuinely isn't enough."
+    },
+    "commonMistakes": [
+      "Answering with pure sympathy and no reference to emissions responsibility",
+      "Ignoring the political and logistical reality of mass resettlement",
+      "Treating 'climate refugee' as a settled legal category when it currently isn't one"
+    ],
+    "followUps": ["What legal status, if any, should someone displaced purely by climate change actually have?"]
+  },
+  {
+    "id": "prog-geography-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: redesigning a flood-prone coastal city",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "urban-planning", "flood-risk"],
+    "question": "Imagine you're advising the planning authority of a coastal city that floods every few years and is growing fast. Walk me through how you'd approach redesigning it.",
+    "lookingFor": "Structured problem-solving that moves from diagnosis to trade-offs to a phased plan, showing applied geographic thinking under a hypothetical.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by diagnosing the specific flood mechanism, whether it's fluvial, coastal, or pluvial, since the solution differs",
+        "Weigh hard engineering against nature-based and zoning solutions, including their costs and who bears them",
+        "Sequence the plan realistically, acknowledging that a fast-growing city can't be paused while it's redesigned"
+      ],
+      "modelAnswer": "First I'd want to know what kind of flooding it actually is, storm surge, river overflow, or just poor drainage overwhelmed by heavy rain, because those need very different fixes and I wouldn't want to recommend a sea wall for a drainage problem. Then I'd look at a mix of measures rather than one silver bullet, restoring wetlands or mangroves upstream to slow water where that's viable, alongside harder infrastructure like pumps or barriers where the risk is too immediate to wait for nature-based solutions to mature. Since the city is still growing, I'd push hard on zoning, keeping new development out of the highest-risk floodplain rather than just building around the problem, even though that's politically the hardest sell because it looks like blocking growth rather than protecting it. I'd sequence it so the highest-risk, lowest-cost interventions happen first, and treat the bigger infrastructure as a longer-term programme funded partly by the growth itself."
+    },
+    "commonMistakes": [
+      "Jumping straight to a sea wall without diagnosing the actual flood type",
+      "Proposing only hard infrastructure with no mention of zoning or land use",
+      "Ignoring that a growing city can't simply pause development during the redesign"
+    ],
+    "followUps": ["Who should pay for it, the whole city, or mainly the people in the highest-risk areas?"]
+  },
+  {
+    "id": "prog-geography-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Rewilding versus agricultural land use",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["land-use", "conservation", "current-affairs"],
+    "question": "There's a growing rewilding movement, restoring land to a wild state instead of farming it. Where do you stand on rewilding versus maintaining agricultural land, and what's the geography behind that trade-off?",
+    "lookingFor": "Awareness of a live land-use debate with a clear, reasoned position grounded in geographic factors like productivity and food security.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what rewilding actually involves and a real example",
+        "Identify the core trade-off between biodiversity or carbon gains and food production or rural livelihoods",
+        "Reach a position, ideally a nuanced one based on land quality rather than an all-or-nothing stance"
+      ],
+      "modelAnswer": "Projects like Knepp in England are the example I know best, converting intensively farmed, fairly marginal land back to a wild grazing system, and the biodiversity results have been striking. I don't think rewilding and farming have to be a straight either-or though, the geography really matters, marginal upland or flood-prone land that was only ever borderline productive is a much better rewilding candidate than high-grade arable land we actually need for food security. My honest position is that I'd rather see rewilding targeted at the least productive land first, because that gets most of the ecological benefit without forcing a stark trade-off against food production."
+    },
+    "commonMistakes": [
+      "Treating the debate as a simple choice between farming and nature with no land-quality nuance",
+      "Citing rewilding as an idea with no concrete example",
+      "Ignoring the livelihoods of farming communities affected by land conversion"
+    ],
+    "followUps": ["What would you say to a farmer who lost their tenancy because their land was rewilded?"]
+  },
+  {
+    "id": "prog-geography-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "GIS and remote sensing in disaster response",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["gis", "remote-sensing", "hazards"],
+    "question": "How is satellite imagery and GIS actually used in the hours after a disaster like an earthquake or flood, and what are its limits?",
+    "lookingFor": "Practical, specific knowledge of how the technology is applied, plus honest awareness of its limitations, not a vague 'technology helps' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific application, such as before-and-after imagery to map damage extent or flood inundation",
+        "Mention how that data feeds into response, like prioritising where rescue teams go",
+        "Name a real limitation, such as cloud cover, resolution, or the time lag before usable imagery arrives"
+      ],
+      "modelAnswer": "After a disaster, agencies often compare before-and-after satellite images to map the extent of damage or flood inundation quickly, without needing anyone on the ground yet, and that gets layered into a GIS with population data to help responders prioritise the worst-hit, most populated areas first rather than searching blind. What limits it is that optical satellites can't see through cloud cover, which is exactly the condition you often get during the storm that caused the flooding in the first place, so responders sometimes have to wait for a clear pass or use radar imagery instead, which is less intuitive to interpret. It's a powerful first sweep, but it's not a substitute for ground reporting once teams are actually there."
+    },
+    "commonMistakes": [
+      "Speaking only in generalities about 'technology helping disaster response'",
+      "Not mentioning any real limitation of the method",
+      "Confusing GIS with satellite imagery as if they were the same tool"
+    ],
+    "followUps": ["How would you cross-check satellite-derived damage estimates against reality on the ground?"]
+  },
+  {
+    "id": "prog-geography-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Critiquing the demographic transition model",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["population", "development", "theory"],
+    "question": "The demographic transition model was based on the experience of Western Europe. Does it still hold as a useful model for understanding population change in countries today?",
+    "lookingFor": "Critical engagement with a classic model, aware of both its continued usefulness and its limits when applied outside its original context.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what the model claims in brief, stages moving from high to low birth and death rates",
+        "Identify at least one real limitation, such as countries skipping stages or industrialising under very different global conditions",
+        "Reach a balanced verdict rather than dismissing or fully endorsing the model"
+      ],
+      "modelAnswer": "The basic shape, death rates falling before birth rates as a country develops, still shows up almost everywhere, so it's not wrong exactly. But it was built on Western Europe's experience of gradual industrialisation over a couple of centuries, and countries developing today are doing it much faster, often with contraception and public health interventions arriving before industrialisation the way it happened in Europe, which compresses or reorders the stages. I'd say it's still a useful starting sketch, but I wouldn't trust it to predict the timeline for a specific country today without also looking at things like female education, urbanisation speed, and government policy, which the original model doesn't really account for."
+    },
+    "commonMistakes": [
+      "Reciting the stages with no critical evaluation at all",
+      "Dismissing the model entirely with no acknowledgment of what it gets right",
+      "Confusing the demographic transition model with the epidemiological transition"
+    ],
+    "followUps": ["Can you name a country whose population history doesn't fit the model well?"]
+  },
+  {
+    "id": "prog-geography-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Resource geopolitics of critical minerals",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["geopolitics", "resources", "current-affairs"],
+    "question": "Lithium is becoming as strategically important as oil once was, and much of it sits in a small number of countries. What geographic and political tensions do you think that's going to create?",
+    "lookingFor": "Applied geopolitical reasoning that connects physical resource distribution to real economic and diplomatic consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of where lithium is concentrated, such as the South American 'lithium triangle' and Australia",
+        "Identify a specific tension, such as processing capacity being concentrated elsewhere from extraction, or environmental and community costs of extraction",
+        "Draw a reasonable parallel or contrast with historical oil geopolitics"
+      ],
+      "modelAnswer": "A lot of the raw lithium sits in a handful of places, Chile, Argentina, Bolivia, and Australia, but most of the refining and battery manufacturing happens elsewhere, particularly in China, so there's a real tension between who extracts the resource and who captures the value from processing it. I think that mirrors the old oil story in some ways, resource-rich countries wanting to move up the value chain instead of just exporting raw material, but it's different because lithium extraction, especially brine evaporation in places like the Salar de Atacama, uses enormous amounts of water in already dry regions, which creates a direct conflict with local farming and indigenous communities. I'd expect more of these countries to start restricting raw exports and pushing for domestic processing, which is going to reshape supply chains and probably cause friction with the countries that currently dominate the refining stage."
+    },
+    "commonMistakes": [
+      "Treating lithium geopolitics as identical to oil with no distinct features",
+      "Naming no specific countries or regions",
+      "Ignoring the environmental and community costs of extraction"
+    ],
+    "followUps": ["Should extraction-heavy countries be allowed to restrict raw material exports to force processing to move onshore?"]
+  },
+  {
+    "id": "prog-geography-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Modernization theory versus dependency theory",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["development-theory", "economic-geography", "debate"],
+    "question": "Modernization theory says developing countries just need to follow the same path richer countries took. Dependency theory says the global economic system is structured to keep them poor. Which do you find more convincing, and why?",
+    "lookingFor": "Genuine engagement with two competing development theories, showing understanding of each and a defensible personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "State what each theory actually claims accurately, not a caricature of either",
+        "Reference a real-world case that supports or complicates each view",
+        "Commit to a position, ideally one that draws selectively from both rather than a forced full endorsement"
+      ],
+      "modelAnswer": "Modernization theory assumes there's a fairly universal path, from traditional to industrial to mass consumption, and that poorer countries just need capital, technology, and the right institutions to follow it. Dependency theory pushes back hard on that, arguing that the global economy was structured by colonialism to keep poorer 'periphery' countries supplying raw materials to richer 'core' countries, so the playing field was never level to begin with. I find dependency theory more convincing as a historical explanation, the terms of trade and debt structures really have kept a lot of countries locked into low-value exports, but I think modernization theory isn't entirely wrong either, since countries like South Korea did industrialise rapidly with the right state investment and openly used export-led strategies. So my honest answer is that dependency theory explains why the starting line wasn't fair, while some of modernization theory's tools have still worked for countries that managed to break out."
+    },
+    "commonMistakes": [
+      "Presenting a strawman version of either theory",
+      "Refusing to take any position at all",
+      "Citing no real country example to test the theories against"
+    ],
+    "followUps": ["Does South Korea's rapid industrialisation actually disprove dependency theory, or fit within it?"]
+  },
+  {
+    "id": "prog-geography-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of coastal management decisions",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["ethics", "coastal-management", "hazards"],
+    "question": "A coastal village is eroding into the sea. A sea wall would protect it but is hugely expensive and might just shift erosion further along the coast. Managed retreat means abandoning it. How should a decision like that actually be made, and who should make it?",
+    "lookingFor": "Ethical and procedural reasoning about a genuinely contested coastal management problem, including who has the right to decide.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the trade-off honestly, cost and downstream erosion versus loss of homes and heritage",
+        "Raise the question of who bears the cost and who has a voice, residents, wider taxpayers, downstream communities",
+        "Land on a process-based answer, such as transparent cost-benefit analysis combined with genuine resident consultation, rather than a flat verdict"
+      ],
+      "modelAnswer": "I don't think there's a universally right answer here, because protecting the village might just export the erosion problem to the next community along the coast, who never agreed to bear that cost. What I'd want is a decision process rather than a single verdict handed down centrally, a proper cost-benefit analysis that's honest about who pays and who's affected downstream, paired with real consultation with residents rather than a consultation that's really just informing them of a decision already made. If a sea wall isn't viable long-term, I think residents deserve a managed retreat process that treats their loss seriously, fair compensation, support relocating, and time, rather than being left to fend for themselves once funding runs out. The geography of who benefits and who loses needs to be made visible, not buried in an engineering report."
+    },
+    "commonMistakes": [
+      "Picking a side, wall or retreat, with no acknowledgment of who bears the downstream cost",
+      "Treating this as a purely technical engineering decision with no ethical dimension",
+      "Giving no answer to who should actually be making the decision"
+    ],
+    "followUps": ["What if the village is wealthy enough to fund the wall itself but the erosion it causes harms a poorer community nearby?"]
+  },
+  {
+    "id": "prog-geography-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Urban water crises and Day Zero events",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["water-resources", "current-affairs", "urban"],
+    "question": "Cities like Cape Town and Chennai have come close to 'Day Zero', running out of piped water entirely. What do you think is really driving urban water crises like this, climate or management?",
+    "lookingFor": "Nuanced awareness of a current issue, resisting a single-cause explanation in favour of how climate and governance interact.",
+    "idealAnswer": {
+      "bullets": [
+        "Show knowledge of at least one real case and roughly what happened",
+        "Avoid a single-cause answer, connect climate variability with infrastructure and demand management failures",
+        "Note that the two interact rather than compete as explanations"
+      ],
+      "modelAnswer": "Cape Town's crisis in 2018 is the case I know best, it followed several years of unusually severe drought, so climate variability was a real trigger. But what turned a drought into a near Day Zero event was also about management, the city had underinvested in diversifying its water supply beyond a few large dams, and demand had kept growing without matching investment in efficiency or reuse. I don't think it's fair to blame either factor alone, climate change is making droughts more frequent and severe, but it's the gap between that new climate reality and how cities have planned their water systems that turns a dry spell into an actual emergency. Cape Town's response afterward, aggressive demand restrictions and diversifying supply, is really an admission that management hadn't kept pace."
+    },
+    "commonMistakes": [
+      "Blaming climate change alone with no reference to infrastructure or governance",
+      "Blaming mismanagement alone with no acknowledgment of genuine climate stress",
+      "Naming no specific city or event to ground the answer"
+    ],
+    "followUps": ["What would you prioritise first if you were advising a city trying to avoid its own Day Zero?"]
+  },
+  {
+    "id": "prog-geography-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of clearing informal settlements",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["ethics", "urbanization", "informal-settlements"],
+    "question": "A city government wants to clear an informal settlement to build infrastructure that would benefit the wider city, but tens of thousands of people live there with no legal title to the land. What should happen?",
+    "lookingFor": "Ethical reasoning that takes both the wider public benefit and the residents' rights seriously, without dismissing informal settlements as simply illegal.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that lack of legal title doesn't erase decades of lived, legitimate community presence",
+        "Weigh the public benefit of the infrastructure against the scale and manner of the harm caused",
+        "Propose a fairer process, such as in-situ upgrading or genuine resettlement with services, rather than simple clearance"
+      ],
+      "modelAnswer": "The absence of legal title doesn't mean the settlement isn't a real, functioning community, often it exists precisely because formal housing systems failed to provide for people who still needed somewhere to live and work near the city's economy. I don't think the wider city's benefit automatically overrides that, especially because eviction without a serious resettlement plan tends to just push poverty and informality somewhere else rather than solving it. Where possible I'd want the city to look at in-situ upgrading, improving the settlement rather than demolishing it, and where the infrastructure genuinely can't be rerouted, I'd want relocation to come with secure tenure, proximity to jobs, and services, not a token payment and a bus ticket to the edge of the city. The test I'd apply is whether the process treats residents as people with rights to be negotiated with, or as an obstacle to be cleared."
+    },
+    "commonMistakes": [
+      "Treating lack of legal title as equivalent to lack of legitimate claim",
+      "Ignoring the genuine public benefit case for the infrastructure",
+      "Proposing no concrete alternative to simple clearance"
+    ],
+    "followUps": ["Does your answer change if the infrastructure is something like a flood defence that would also protect the settlement itself?"]
+  },
+  {
+    "id": "prog-geography-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Reshoring and deglobalization of supply chains",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["globalization", "economic-geography", "current-affairs"],
+    "question": "Supply chains that used to stretch across the world are increasingly being brought closer to home, 'reshoring'. What's driving that shift, and what does it mean geographically?",
+    "lookingFor": "Understanding of a current economic geography trend and its spatial consequences, not just a headline-level summary.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify real drivers, such as pandemic supply shocks, geopolitical tension, and rising freight or labour costs",
+        "Explain the geographic consequence, shifting production toward nearer or friendlier countries, sometimes called nearshoring or friend-shoring",
+        "Note a trade-off, such as higher costs to consumers or slower gains for countries that had relied on being manufacturing hubs"
+      ],
+      "modelAnswer": "A few things converged, the pandemic exposed how fragile long, thin supply chains are when one factory or port shuts down, and rising tension between major economies, especially around China, made businesses nervous about depending so heavily on a single country. Geographically that's shown up as nearshoring, companies moving production closer to their main markets, like manufacturing shifting toward Mexico to serve the US, or friend-shoring, moving to politically aligned countries even if they're not physically close. The trade-off is that shorter, more resilient supply chains generally cost more, since the original globalization was largely built around finding the cheapest possible production location, so this shift is really companies trading some efficiency for resilience, and that's going to reshape which countries benefit from manufacturing investment over the next decade."
+    },
+    "commonMistakes": [
+      "Naming 'reshoring' as a trend with no explanation of what's actually driving it",
+      "Ignoring the cost or efficiency trade-off involved",
+      "Confusing reshoring, nearshoring, and friend-shoring as identical"
+    ],
+    "followUps": ["Which countries do you think stand to lose the most from this shift, and why?"]
+  },
+  {
+    "id": "prog-geography-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Atmospheric circulation and desert formation",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["climatology", "atmospheric-circulation", "physical"],
+    "question": "Why do so many of the world's major deserts sit at around 30 degrees north and south of the equator?",
+    "lookingFor": "Correct application of global atmospheric circulation theory to explain a real spatial pattern.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the Hadley cell, warm moist air rising at the equator and losing moisture as rain",
+        "Describe that same air descending as dry air at around 30 degrees latitude",
+        "Name real examples like the Sahara or the Australian deserts to anchor the pattern"
+      ],
+      "modelAnswer": "It comes down to the Hadley cell. Warm, moist air rises at the equator, cools as it climbs, and dumps most of its moisture as rain, which is why you get tropical rainforest belts near the equator. That same air, now dry, moves outward at high altitude and sinks back down at around 30 degrees latitude, and sinking air warms up as it descends, which actually suppresses cloud formation rather than producing it. So you end up with persistent high pressure and very little rainfall at that latitude band, which is exactly why the Sahara, the Arabian deserts, and the deserts of Australia and the American Southwest all sit in roughly that zone. It's one of those patterns where the map makes a lot more sense once you understand the mechanism driving it rather than just memorising where the deserts are."
+    },
+    "commonMistakes": [
+      "Attributing desert location simply to 'lack of rain' without explaining why",
+      "Confusing rising and sinking air's effects on rainfall",
+      "Naming no real deserts to check the explanation against"
+    ],
+    "followUps": ["Why don't all deserts follow this pattern, for instance ones caused by rain shadow effects?"]
+  },
+  {
+    "id": "prog-geography-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: siting a new city from scratch",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "settlement-geography", "planning"],
+    "question": "If you were asked to choose the site for a brand new city from scratch, purely on geographic grounds, what factors would you weigh and how would you weigh them against each other?",
+    "lookingFor": "Structured application of settlement geography principles under an open hypothetical, with sensible prioritisation, not just a list of factors.",
+    "idealAnswer": {
+      "bullets": [
+        "List the core factors, water supply, flood and hazard risk, terrain, access to trade routes or resources",
+        "Show reasoning about trade-offs between them, not treating every factor as equally important",
+        "Reference a real historical or planned city as a comparison point"
+      ],
+      "modelAnswer": "Reliable fresh water would be non-negotiable for me, since I can engineer around a lot of other constraints but not around the absence of water. After that I'd weigh hazard exposure heavily, avoiding active floodplains, fault lines, or low-lying coastal land vulnerable to sea level rise, even if that land looks cheap and flat and tempting to build on. Then I'd think about connectivity, proximity to a navigable river or coast for trade, or at least a feasible route for road and rail, because a city that's hard to connect struggles to grow economically no matter how nice the site is. Brasília is the case that comes to mind, it was sited more for political symbolism than for these practical factors, and it's had to spend enormous resources retrofitting infrastructure and connections that a more geographically chosen site might have had more naturally."
+    },
+    "commonMistakes": [
+      "Listing factors with no attempt to prioritise or weigh them against each other",
+      "Ignoring hazard risk entirely in favour of just economic factors",
+      "Giving no real-world comparison to test the reasoning against"
+    ],
+    "followUps": ["What would you sacrifice first if you couldn't get all of your ideal conditions in one place?"]
+  },
+  {
+    "id": "prog-geography-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Sovereignty and statehood under sea level rise",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["climate-change", "sovereignty", "current-affairs"],
+    "question": "Some Pacific island nations are exploring digitally preserving their statehood and even their maritime boundaries in case their land disappears under rising seas. What do you make of that, and what does it say about how we define a country?",
+    "lookingFor": "Awareness of a genuinely current and unusual geopolitical development, with thoughtful reflection on how geography underpins legal and political definitions of statehood.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the actual issue, countries like Tuvalu pursuing legal recognition of statehood independent of physical territory",
+        "Explain why this challenges the traditional, territory-based definition of a state",
+        "Offer a genuine reflection, not just a factual restatement, on what that shift might mean"
+      ],
+      "modelAnswer": "Tuvalu's push to have its statehood and maritime boundaries legally recognised even if its land eventually goes underwater is one of the more striking things happening in geography right now, because the traditional definition of a state has always assumed a fixed, physical territory. What it exposes is that statehood was never purely about land, it's really about a government, a people, and international recognition, and land was just the historical proxy we used because it was easy to point to. I find it both a genuinely creative legal response to an unfair situation, since these nations didn't cause the emissions threatening them, and also a slightly uncomfortable sign of how far climate change is forcing us to rewrite ideas we assumed were fixed. It makes me think geography as a discipline needs to take seriously that 'territory' itself is becoming a contested and changing concept, not a stable backdrop."
+    },
+    "commonMistakes": [
+      "Not knowing any specific real-world example of this happening",
+      "Treating it as a purely legal curiosity with no geographic reflection",
+      "Dismissing the issue as unimportant because the land hasn't disappeared yet"
+    ],
+    "followUps": ["Should a state without physical territory still control its maritime exclusive economic zone?"]
+  },
+  {
+    "id": "prog-geography-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Map projection bias",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["cartography", "gis", "bias"],
+    "question": "The Mercator projection is still the most common world map even though it distorts the size of countries near the poles. Does that distortion actually matter?",
+    "lookingFor": "Understanding of why all projections distort something, plus genuine reflection on whether that distortion has real-world consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why the Mercator distorts area at high latitudes, projecting a sphere onto a cylinder",
+        "Give the classic example, Greenland appearing similar in size to Africa when Africa is around fourteen times larger",
+        "Reach a considered position on whether the distortion has real consequences, such as shaping perceptions of a country's importance"
+      ],
+      "modelAnswer": "Mercator's projection was built to keep angles and shapes accurate for sea navigation, but that comes at the cost of stretching area badly the further you get from the equator, which is why Greenland looks roughly the size of Africa on it when Africa is actually about fourteen times larger. I don't think that's just a technical curiosity, maps shape how people intuitively judge scale and importance, and a projection that visually inflates wealthy northern countries while shrinking the tropics has a quiet ideological effect even if that wasn't the original intent. That said, I wouldn't say the Mercator is simply 'wrong', it's the right tool for navigation, the real issue is using it by default for general world maps in classrooms and media where accurate area actually matters more than preserving angles."
+    },
+    "commonMistakes": [
+      "Not explaining why the distortion happens, just stating that it does",
+      "Concluding that the Mercator is simply bad with no acknowledgment of what it's good for",
+      "Missing the classic Greenland-versus-Africa example or an equivalent"
+    ],
+    "followUps": ["What projection would you use instead for a general world map, and what would that trade off?"]
+  },
+  {
+    "id": "prog-geography-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Environmental determinism versus possibilism",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["theory", "human-geography", "debate"],
+    "question": "Environmental determinism argues that climate and geography largely determine a society's development. Possibilism argues geography just sets limits within which culture decides. Where do you sit on that debate, and why has determinism fallen out of favour academically?",
+    "lookingFor": "Understanding of a foundational disciplinary debate, including its historical and ethical baggage, with a clearly reasoned personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "State both positions accurately, determinism as geography largely causing outcomes, possibilism as geography setting limits within which humans choose",
+        "Explain why determinism fell out of favour, its historical use to justify colonial and racial hierarchies",
+        "Give a personal position, ideally showing awareness of newer approaches like Jared Diamond's work as a partial revival of the debate"
+      ],
+      "modelAnswer": "Environmental determinism, in its older form, argued that climate and terrain more or less dictated how advanced or civilised a society would become, and it was used, often explicitly, to justify colonial hierarchies by claiming temperate climates naturally produced 'superior' cultures, which is a big part of why the discipline moved away from it. Possibilism, in contrast, says geography sets real limits and opportunities, but human culture, technology, and choice decide what's actually done within them, which feels far more defensible and matches what we actually observe, societies in similar climates developing very differently. I lean strongly toward possibilism, but I think work like Jared Diamond's on why some regions industrialised earlier than others shows that geography's influence, especially through domesticable crops and animals, deserves serious attention again, as long as it's framed as shaping probabilities and opportunities rather than dictating outcomes."
+    },
+    "commonMistakes": [
+      "Not knowing why determinism is considered problematic historically",
+      "Presenting possibilism as simply 'geography doesn't matter at all'",
+      "Taking no clear position after describing both theories"
+    ],
+    "followUps": ["Is Jared Diamond's work in Guns, Germs, and Steel a return to determinism, or a genuinely different argument?"]
+  },
+  {
+    "id": "prog-geography-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: allocating scarce water between farming and cities",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "ethics", "water-resources"],
+    "question": "You're advising a drought-hit region that has to choose between water for farming, which is the main local livelihood, and water for a growing city's households. How would you approach that allocation?",
+    "lookingFor": "Applied reasoning combining livelihoods, basic needs, and long-term resilience, not a snap either-or answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish basic household needs, which I'd treat as close to non-negotiable, from broader agricultural water use",
+        "Acknowledge the livelihood and food security stakes for farmers, not just treat them as lower priority by default",
+        "Propose a process, such as efficiency measures and phased cuts, rather than a single cutoff decision"
+      ],
+      "modelAnswer": "I'd separate basic household needs, drinking water, sanitation, from the larger volumes used in agriculture, because I think there's a strong case that survival needs come first almost by definition. But I wouldn't then treat farming as simply expendable, because for a lot of families it's not just income, it's their entire livelihood and identity, and cutting it off carelessly can cause its own humanitarian crisis. I'd want to look first at where water is being used inefficiently, outdated flood irrigation instead of drip systems for instance, before assuming the only lever is an all-or-nothing cut, and where cuts to farming are unavoidable, I'd want them phased and paired with real compensation or support, not just announced and enforced. The city's growth also isn't free of responsibility here, if it's expanding fast, some of the adjustment has to come from urban demand management too, not just from farmers absorbing the whole shortfall."
+    },
+    "commonMistakes": [
+      "Treating farming water use as automatically lower priority with no consideration of livelihoods",
+      "Refusing to prioritise basic household needs at all",
+      "Proposing a single blunt cutoff instead of a phased, efficiency-first approach"
+    ],
+    "followUps": ["What would you do if the drought was severe enough that even efficiency gains couldn't close the gap?"]
+  },
+  {
+    "id": "prog-geography-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "The solar geoengineering debate",
+    "program": "Geography",
+    "difficulty": "hard",
+    "tags": ["climate-change", "geoengineering", "current-affairs"],
+    "question": "Some scientists are seriously proposing solar geoengineering, deliberately reflecting sunlight to cool the planet, as a response to climate change. What's your take?",
+    "lookingFor": "Informed, balanced engagement with a genuinely contested and current scientific and ethical debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic understanding of what's being proposed, such as stratospheric aerosol injection",
+        "Weigh the appeal, relatively fast and cheap cooling, against the real risks, unequal regional effects and moral hazard",
+        "Reach a genuine, reasoned position rather than a purely for-or-against reaction"
+      ],
+      "modelAnswer": "The idea, usually stratospheric aerosol injection, mimics what large volcanic eruptions already do naturally, reflecting some sunlight back and cooling the planet, and what makes it tempting is that it could act far faster and more cheaply than waiting for global emissions cuts to take effect. But it worries me for a few reasons, the regional effects on rainfall patterns aren't uniform, so cooling the planet on average could still disrupt monsoons that hundreds of millions of people depend on, and once you start you more or less have to keep going, because stopping suddenly could cause a rapid rebound in warming that's arguably worse. My real concern is the moral hazard, that treating it as an available fallback makes it easier for governments to keep delaying the harder, more essential work of cutting emissions. I think it's worth researching carefully as a last-resort option, but I'd be very uneasy seeing it used as a substitute for decarbonisation rather than alongside it."
+    },
+    "commonMistakes": [
+      "Rejecting geoengineering outright with no understanding of the actual proposal",
+      "Endorsing it enthusiastically with no mention of the regional risks or moral hazard",
+      "Confusing solar geoengineering with carbon capture, which works on a completely different principle"
+    ],
+    "followUps": ["Who should get to decide whether and when to deploy something like this, given its effects cross borders?"]
+  },
+  {
+    "id": "prog-geography-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Fieldwork ethics with vulnerable communities",
+    "program": "Geography",
+    "difficulty": "medium",
+    "tags": ["fieldwork", "ethics", "methodology"],
+    "question": "If your dissertation fieldwork meant interviewing a vulnerable community, say slum residents or disaster survivors, about a difficult topic, what ethical considerations would guide how you approach it?",
+    "lookingFor": "Genuine understanding of research ethics with vulnerable participants, going beyond a generic mention of 'informed consent'.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention meaningful informed consent, explained clearly rather than as a form people sign without understanding",
+        "Address the power imbalance between researcher and participant and how to reduce it",
+        "Consider what participants actually get from the research, not just what the researcher extracts"
+      ],
+      "modelAnswer": "I'd want consent to actually be meaningful, not just a form signed under pressure, so I'd explain clearly what the research is for, how their words would be used, and that they can stop or refuse to answer anything at any point without consequence. I'd be conscious of the power imbalance too, I'm coming in as a student with an agenda, and participants who've been through something like a disaster might feel obliged to talk to me even if it's painful, so I'd want to check in during the conversation rather than just pushing through a fixed question list. I'd also think hard about what they get out of it, since research that only extracts stories and gives nothing back can feel exploitative, so I'd want to share findings with the community afterward in a way that's actually useful to them, not just publish and disappear."
+    },
+    "commonMistakes": [
+      "Mentioning 'informed consent' as a checkbox with no explanation of what makes it meaningful",
+      "Ignoring the power imbalance between researcher and vulnerable participants",
+      "Treating the research purely as data extraction with nothing given back to the community"
+    ],
+    "followUps": ["What would you do if a participant became visibly distressed during an interview?"]
+  }
+]

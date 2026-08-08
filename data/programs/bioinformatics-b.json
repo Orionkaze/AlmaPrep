@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-bioinformatics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Alignment algorithms",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["algorithms", "sequence-alignment", "fundamentals"],
+    "question": "What is the difference between global and local sequence alignment, and why would you choose one over the other?",
+    "lookingFor": "Clear grasp of Needleman-Wunsch versus Smith-Waterman and when each is the right tool, not just memorised names.",
+    "idealAnswer": {
+      "bullets": [
+        "Global alignment forces the whole length of both sequences to line up, local alignment finds the best-matching subregion",
+        "Name the algorithms: Needleman-Wunsch for global, Smith-Waterman for local, both dynamic programming",
+        "Give a scenario for each: global for two full genes of similar length, local for finding a conserved domain inside a much longer protein"
+      ],
+      "modelAnswer": "Global alignment tries to line up two sequences end to end, so it makes sense when the sequences are roughly the same length and you expect them to be homologous across their whole span, like comparing the same gene in two closely related species. Local alignment, which is what Smith-Waterman does, instead hunts for the best-scoring matching stretch anywhere inside the sequences, which is why it's what you'd use to find a conserved binding domain buried inside a much longer, otherwise unrelated protein. I think of it as global asking 'how similar are these overall' and local asking 'is there a piece of one hiding inside the other.'"
+    },
+    "commonMistakes": [
+      "Mixing up which algorithm is global and which is local",
+      "Saying BLAST does full dynamic programming rather than a heuristic",
+      "Giving no concrete scenario for when each is appropriate"
+    ],
+    "followUps": ["Why does BLAST use a heuristic instead of full dynamic programming?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetic code exceptions",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["molecular-biology", "genetic-code", "fundamentals"],
+    "question": "The genetic code is often called universal. Can you name an exception, and what does that mean for someone writing gene-finding software?",
+    "lookingFor": "Awareness that biology breaks its own rules and that computational tools must be built to handle that, not treat the textbook code as absolute.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a real exception, such as mitochondrial codon reassignments or stop-codon readthrough for selenocysteine",
+        "Explain the practical consequence: a gene-finder using the standard codon table will mistranslate or misannotate these regions",
+        "Show awareness that annotation tools need organism-specific or context-specific codon tables"
+      ],
+      "modelAnswer": "Human mitochondrial DNA is a classic exception, where the codon that normally means stop, UGA, actually codes for tryptophan instead. If a gene-prediction tool blindly applied the standard nuclear codon table to mitochondrial sequence, it would call a premature stop and truncate the protein incorrectly, which is exactly why tools like those in NCBI's genetic code tables let you specify which codon table to use for a given genome. It's a good reminder that 'universal' in biology usually means 'the common case,' and software has to be built with the exceptions in mind rather than assuming one rule fits everything."
+    },
+    "commonMistakes": [
+      "Claiming the genetic code has no known exceptions",
+      "Naming an exception but not connecting it to a software consequence",
+      "Confusing codon reassignment with simple mutation"
+    ],
+    "followUps": ["Can you think of another biological 'rule' that turned out to have exceptions?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Multiple testing in GWAS",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["statistics", "genomics", "gwas"],
+    "question": "In a genome-wide association study you test hundreds of thousands of SNPs for association with a disease. Why can't you just use a p-value cutoff of 0.05, and what would you do instead?",
+    "lookingFor": "Understanding of multiple-testing inflation and a real correction method, showing statistical literacy beyond a memorised threshold.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that testing hundreds of thousands of hypotheses at 0.05 guarantees huge numbers of false positives by chance alone",
+        "Name a correction approach, such as Bonferroni or the commonly used genome-wide significance threshold around 5x10^-8",
+        "Show awareness of the trade-off: stricter thresholds cut false positives but risk missing real, smaller-effect signals"
+      ],
+      "modelAnswer": "If you run five hundred thousand independent tests at a 0.05 threshold, you'd expect around twenty-five thousand of them to look significant purely by chance, which would make the study meaningless. That's why GWAS conventionally use a much stricter genome-wide significance threshold, often around five times ten to the minus eight, which is roughly a Bonferroni correction for the number of independent tests across the genome. The cost is that you might miss real associations with small effect sizes, which is part of why researchers now also use polygenic scores that aggregate many sub-threshold signals rather than relying on single-SNP significance alone."
+    },
+    "commonMistakes": [
+      "Not recognising the multiple-testing problem at all",
+      "Naming a correction but not explaining why it's needed",
+      "Ignoring the trade-off between false positives and false negatives"
+    ],
+    "followUps": ["What's the difference between Bonferroni correction and controlling the false discovery rate?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Hidden Markov Models",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["algorithms", "gene-prediction", "probability"],
+    "question": "Gene finders like GENSCAN use Hidden Markov Models. In plain terms, what problem is the HMM actually solving?",
+    "lookingFor": "Ability to translate a formal statistical model into intuitive biological terms, showing real understanding rather than jargon recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the setup: hidden states are biological labels like exon, intron, intergenic; the DNA sequence is the observed output",
+        "Explain the core task: finding the most likely sequence of hidden states given the observed bases, typically via the Viterbi algorithm",
+        "Note that transition and emission probabilities are learned from known, annotated genes"
+      ],
+      "modelAnswer": "The idea is that you never directly observe whether a stretch of DNA is exon or intron, you only see the raw letters, so the HMM treats exon, intron, and intergenic region as hidden states that generate the sequence you can see. The model has learned, from real annotated genes, how likely it is to transition from one state to another and how likely each state is to emit a particular base or codon pattern. Given a new unlabelled sequence, an algorithm like Viterbi then finds the single most probable path through those hidden states, which is effectively the model's best guess at where the genes and their exon-intron structure actually are."
+    },
+    "commonMistakes": [
+      "Describing an HMM as just a lookup table of gene locations",
+      "Not distinguishing hidden states from observed emissions",
+      "Failing to mention that probabilities are learned from training data"
+    ],
+    "followUps": ["What happens to gene prediction accuracy in a genome with very few known annotated genes to train on?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Overfitting in genomic ML",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["machine-learning", "genomics", "methodology"],
+    "question": "You build a machine learning model that predicts disease risk from genomic data and it gets 99% accuracy on your training set. Should you be pleased?",
+    "lookingFor": "Recognition of overfitting and small-sample dangers specific to genomic datasets, plus a sensible next step.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise 99% training accuracy as a red flag for overfitting rather than a straightforward win",
+        "Note the specific genomic issue: far more features (variants) than samples, which makes memorisation easy",
+        "Propose the fix: held-out test set, cross-validation, and checking performance on an independent cohort"
+      ],
+      "modelAnswer": "Honestly, that number would worry me more than it would please me, because genomic datasets often have tens of thousands of variants but only a few hundred patients, and a model with that many features can essentially memorise the training set rather than learning anything generalisable. I'd want to know the accuracy on a held-out test set the model never saw, ideally from a different cohort entirely, because a model that looks perfect on training data and falls apart on new data isn't clinically useful at all. Cross-validation and an independent replication cohort are really the only way to trust a number like that."
+    },
+    "commonMistakes": [
+      "Taking the 99% figure at face value as a success",
+      "Not mentioning the high-dimension, low-sample-size problem typical of genomics",
+      "Suggesting more training epochs as the fix rather than proper validation"
+    ],
+    "followUps": ["How would you design a validation strategy if you only had one small cohort available?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "AlphaFold and protein structure",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["current-development", "structural-biology", "ai"],
+    "question": "AlphaFold is often described as having 'solved' the protein folding problem. Do you agree with that framing?",
+    "lookingFor": "A nuanced, informed view of a genuinely current debate, not an uncritical repetition of headlines.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real achievement: near-experimental accuracy for many single-protein structure predictions",
+        "Push back on the framing: it predicts a static structure well but struggles with protein dynamics, disordered regions, and multi-protein complexes in many cases",
+        "Note the practical impact regardless, such as accelerating structure-based drug design and basic research"
+      ],
+      "modelAnswer": "I'd say AlphaFold made an enormous breakthrough but 'solved' oversells it a little. It predicts a single static structure with accuracy that rivals X-ray crystallography for a huge range of proteins, which is genuinely remarkable given how long structure determination used to take. But proteins aren't static, they move, fold conditionally, form complexes, and have intrinsically disordered regions that don't have one 'correct' shape, and that dynamic side is still an open problem even with newer versions built for complexes. I think the honest framing is that it solved structure prediction for a huge class of well-behaved single proteins, and that's already transforming fields like drug design even though the harder dynamic cases remain."
+    },
+    "commonMistakes": [
+      "Treating the 'solved' claim as simply true with no caveats",
+      "Being dismissive of AlphaFold's real impact",
+      "Having no awareness of its actual limitations, like disordered regions or dynamics"
+    ],
+    "followUps": ["How do you think tools like AlphaFold change what a structural biologist's job looks like?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Incidental findings dilemma",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["ethics", "genomics", "dilemma"],
+    "question": "While analysing a research participant's whole genome sequence for an unrelated study, you notice a variant strongly linked to a serious, treatable disease that the participant never consented to be tested for. What do you do?",
+    "lookingFor": "Structured ethical reasoning that weighs participant autonomy, potential benefit, and the limits of the original consent, rather than a snap answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between respecting the original consent scope and the potential to prevent real harm",
+        "Bring in the actual governance path: this isn't a personal call, it goes through the study's ethics protocol and often a genetic counsellor",
+        "Land on a defensible position, generally favouring disclosure of serious, actionable findings through proper channels rather than silence"
+      ],
+      "modelAnswer": "My instinct is that a serious, treatable condition is exactly the kind of thing where staying silent could cause real harm, but I also know I can't just email the participant myself, because the original consent may not have covered this and there are real protocols for exactly this situation. I'd raise it with the study's ethics board and, if the protocol allows return of actionable incidental findings, that decision should go through a genetic counsellor who can deliver it properly and support the participant. I think the right answer leans toward disclosure when a finding is serious and something can actually be done about it, but the how matters as much as the whether, and that's not a call I'd make alone."
+    },
+    "commonMistakes": [
+      "Deciding unilaterally to contact the participant directly without going through proper channels",
+      "Defaulting to strict silence purely because it wasn't in the original consent, with no further reasoning",
+      "Giving no structured reasoning at all, just a gut reaction"
+    ],
+    "followUps": ["Should informed consent forms be required to ask participants in advance whether they want incidental findings returned?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Open data sharing debate",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["ethics", "data-sharing", "current-debate"],
+    "question": "There's an ongoing debate about whether raw genomic data from research participants should be shared openly to accelerate science, or kept tightly controlled to protect privacy. Where do you stand?",
+    "lookingFor": "Awareness of a genuine, live tension in the field, argued with structure rather than picking an easy side.",
+    "idealAnswer": {
+      "bullets": [
+        "State the case for openness: faster discovery, reproducibility, benefit especially to underrepresented populations who need more reference data",
+        "State the case for control: genomic data can't be truly anonymised and re-identification risk is real and growing",
+        "Land on a middle position, such as controlled-access repositories with tiered permissions rather than a pure open-or-closed choice"
+      ],
+      "modelAnswer": "I understand the argument for fully open data, science moves faster when more people can pool and reanalyse datasets, and that especially matters for populations that are underrepresented in current reference genomes. But genomic data is different from most other data because it's inherently identifying, you can't strip out a name and call it anonymous the way you might with a survey, and re-identification from genomic data has actually been demonstrated. I lean toward the middle ground that's already emerging in practice, controlled-access repositories like dbGaP where researchers apply for access and agree to terms, because that keeps most of the collaborative benefit while adding real accountability that pure open publication doesn't have."
+    },
+    "commonMistakes": [
+      "Picking a side with no acknowledgment of the other position's real merits",
+      "Claiming genomic data can be fully anonymised",
+      "Having no awareness of how this is actually handled in practice, like controlled-access databases"
+    ],
+    "followUps": ["Should the answer differ for data from a country with weaker data protection laws?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Novel genome assembly",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "genome-assembly", "reasoning"],
+    "question": "Imagine you're handed short-read sequencing data from a newly discovered organism and you don't even know its ploidy or approximate genome size in advance. How would you approach assembling its genome?",
+    "lookingFor": "Structured problem-solving under genuine uncertainty, showing you know assembly isn't a single push-button step.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with estimation before assembly: k-mer frequency analysis (like GenomeScope) to estimate genome size, heterozygosity, and rough ploidy signal",
+        "Choose an assembly strategy informed by that estimate, being cautious that short reads alone struggle with repeats and high heterozygosity",
+        "Validate the resulting assembly with independent checks like BUSCO completeness scores before trusting it"
+      ],
+      "modelAnswer": "Before I even tried to assemble anything, I'd run a k-mer frequency analysis on the raw reads, because the shape of that k-mer spectrum can actually tell you a lot, a single clean peak suggests low heterozygosity, while multiple peaks can hint at higher ploidy or a heterozygous diploid genome, and it gives a genome size estimate without needing a reference. That would shape my choice of assembler and parameters, and I'd stay realistic that short reads alone are genuinely bad at resolving repetitive regions, so if long-read data were available I'd want to fold that in too. Once I had a draft assembly I wouldn't just trust it, I'd run something like BUSCO to check how many expected single-copy orthologous genes are actually present and complete, because that's a much more honest measure of assembly quality than contig count alone."
+    },
+    "commonMistakes": [
+      "Jumping straight to running an assembler with no upfront estimation step",
+      "Assuming short reads alone are sufficient for any genome regardless of repeat content",
+      "Treating a completed assembly as automatically trustworthy with no validation"
+    ],
+    "followUps": ["What would make you suspect the organism is polyploid rather than diploid from the data alone?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Assembly graph strategies",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["algorithms", "genome-assembly", "graphs"],
+    "question": "What's the difference between overlap-layout-consensus assembly and de Bruijn graph assembly, and why did short-read sequencing push the field toward the latter?",
+    "lookingFor": "Understanding of why algorithm choice tracks the underlying sequencing technology, not just definitions in isolation.",
+    "idealAnswer": {
+      "bullets": [
+        "OLC finds pairwise overlaps between reads directly, which scales poorly when you have millions of short reads",
+        "De Bruijn graphs break reads into fixed-length k-mers and build a graph of k-mer overlaps, avoiding pairwise comparison",
+        "Explain the trade-off this introduces: de Bruijn approaches are efficient at scale but are more sensitive to sequencing errors and repeats shorter than the k-mer length"
+      ],
+      "modelAnswer": "Overlap-layout-consensus works by directly comparing reads to each other to find overlaps and then laying them out into a consensus, which makes intuitive sense but becomes computationally brutal once you have tens of millions of short reads, because pairwise comparison scales badly. De Bruijn graph assembly sidesteps that by breaking every read into overlapping k-mers and building a graph where you connect k-mers rather than comparing whole reads to each other, which is much more efficient at the scale short-read sequencers produce. The cost is that de Bruijn assembly is quite sensitive to sequencing errors, since a single error creates a spurious branch in the graph, and it struggles with repeats longer than the chosen k-mer size, which is part of why long-read technologies have become so valuable for resolving repetitive regions that short-read de Bruijn assembly just can't untangle."
+    },
+    "commonMistakes": [
+      "Describing the two methods without explaining why one became dominant for short reads",
+      "Not mentioning the k-mer size sensitivity of de Bruijn graphs",
+      "Confusing overlap-layout-consensus with reference-based alignment"
+    ],
+    "followUps": ["How does long-read sequencing change which of these approaches makes more sense?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Variant calling errors",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["genomics", "variant-calling", "error-analysis"],
+    "question": "A variant caller flags a mutation in a patient's sequencing data. What are some reasons that call might be wrong, and how would you sanity-check it?",
+    "lookingFor": "Practical understanding of real sources of error in a variant-calling pipeline, not blind trust in software output.",
+    "idealAnswer": {
+      "bullets": [
+        "Give concrete error sources: sequencing errors, misalignment in repetitive regions, low coverage at that position, or a reference genome mismatch",
+        "Describe sanity checks: read depth and quality scores at the site, visual inspection of aligned reads, orthogonal confirmation like Sanger sequencing",
+        "Show awareness that even 'clean' pipelines produce false positives, especially in low-complexity or repetitive regions"
+      ],
+      "modelAnswer": "A flagged variant could be a real sequencing error rather than a true mutation, especially in a low-coverage region where one or two misread bases can look like a variant, or it could be a misalignment artefact where reads from a repetitive region got mapped to the wrong place entirely. Before trusting it I'd look at the depth and base quality scores at that exact position, and I'd want to actually look at the aligned reads in something like IGV to see if the variant is supported consistently across reads or looks like noise clustered at read ends. For anything clinically significant, I wouldn't rely on the pipeline output alone at all, I'd want an orthogonal confirmation like Sanger sequencing before it ever reached a patient."
+    },
+    "commonMistakes": [
+      "Treating variant caller output as ground truth with no verification step",
+      "Naming only one error source instead of several distinct ones",
+      "Not distinguishing sequencing error from alignment error"
+    ],
+    "followUps": ["Why might repetitive regions of the genome be especially prone to this kind of false positive?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Codon degeneracy",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["molecular-biology", "genetic-code", "evolution"],
+    "question": "The genetic code has 64 codons but only 20 amino acids. Why does this redundancy exist, and why does it matter to a bioinformatician?",
+    "lookingFor": "Understanding of the wobble hypothesis and its practical downstream relevance to sequence analysis, not just the fact of redundancy itself.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the wobble hypothesis: the third codon position pairs less strictly with the tRNA anticodon, allowing one tRNA to read multiple codons",
+        "Connect it to evolutionary robustness: many mutations at the third position are synonymous and don't change the protein",
+        "Give the bioinformatics relevance: synonymous versus non-synonymous mutation rates are used to detect selection pressure, as in dN/dS analysis"
+      ],
+      "modelAnswer": "Most of that redundancy sits in the third position of the codon, which is exactly what the wobble hypothesis describes, the pairing between that third base and the tRNA anticodon is looser, so a single tRNA can often recognise more than one codon. That has a real evolutionary upside, because a mutation at that third position frequently doesn't change the amino acid at all, giving the genome some built-in tolerance to mutation. It matters directly to bioinformatics because comparing the rate of synonymous to non-synonymous substitutions, the dN over dS ratio, is one of the main ways we detect whether a gene is under purifying selection, positive selection, or evolving neutrally, and none of that analysis makes sense without understanding why the redundancy exists in the first place."
+    },
+    "commonMistakes": [
+      "Stating the redundancy fact without explaining the wobble mechanism behind it",
+      "Not connecting it to any real analytical technique like dN/dS",
+      "Confusing synonymous mutations with silent mutations that occur outside coding regions"
+    ],
+    "followUps": ["What would a dN/dS ratio much greater than 1 suggest about a gene?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Multiple sequence alignment complexity",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["algorithms", "complexity", "sequence-alignment"],
+    "question": "Aligning two sequences optimally is solvable in polynomial time, but exact multiple sequence alignment across many sequences is NP-hard. Why does adding more sequences change the problem so fundamentally, and how do real tools cope?",
+    "lookingFor": "Genuine grasp of how computational complexity scales and awareness that practical tools are heuristics with known trade-offs.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that pairwise dynamic programming builds a 2D matrix, but exact MSA needs an N-dimensional matrix that grows exponentially with the number of sequences",
+        "Name the practical workaround: progressive alignment, building a guide tree and aligning sequences in order of similarity rather than all at once",
+        "Note the known weakness of this approach: early alignment errors get locked in and propagate, 'once a gap, always a gap'"
+      ],
+      "modelAnswer": "Pairwise alignment with something like Needleman-Wunsch fills in a two-dimensional matrix, which is manageable, but extending that exact same idea to many sequences means building an N-dimensional matrix, and the computation genuinely explodes exponentially as you add sequences, which is why exact MSA is NP-hard. In practice, tools like Clustal or MUSCLE avoid that entirely by using progressive alignment, they build a guide tree from pairwise similarities and then align sequences step by step from most similar to least similar, which is fast but heuristic. The known catch is that mistakes made early in that process tend to get locked in, there's a saying in the field that it's 'once a gap, always a gap,' which is part of why more recent tools try to revisit and refine the alignment iteratively rather than trusting the first progressive pass completely."
+    },
+    "commonMistakes": [
+      "Not explaining why the dimensionality of the problem grows with sequence count",
+      "Naming a tool without explaining the progressive alignment strategy it uses",
+      "Missing the known weakness of progressive alignment, that early errors propagate"
+    ],
+    "followUps": ["How might a poor choice of guide tree affect the final alignment quality?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistical power in small cohorts",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["statistics", "study-design", "genomics"],
+    "question": "A lab wants to find genes differentially expressed between healthy and diseased tissue using RNA-seq, but they only have three samples per group. What concerns would you raise?",
+    "lookingFor": "Applied statistical reasoning about power, biological variability, and the difference between a real effect and noise in small-sample genomic studies.",
+    "idealAnswer": {
+      "bullets": [
+        "Raise the statistical power problem directly: three replicates per group gives very limited power to detect anything but large, consistent effects",
+        "Explain the risk of noise: biological and technical variability between individuals can easily masquerade as a group difference at that sample size",
+        "Suggest practical mitigations: use tools designed for small-sample RNA-seq like DESeq2 or edgeR that model variance carefully, and treat findings as hypotheses needing validation rather than conclusions"
+      ],
+      "modelAnswer": "With only three samples per group I'd be genuinely cautious about how much we can conclude, because statistical power at that sample size is low enough that we'll likely miss real but moderate effects, and worse, normal biological variability between three individual people can easily look like a group-level signal purely by chance. I'd still want to use a tool like DESeq2 or edgeR rather than a naive t-test, since they're built to borrow statistical strength across genes to estimate variance more reliably even with few replicates, but I'd treat whatever comes out as a shortlist of candidates rather than confirmed findings. Realistically I'd push for either more replicates if the budget allows it, or for treating this as a pilot study whose top hits get validated with an independent method like qPCR before anyone reports them as real."
+    },
+    "commonMistakes": [
+      "Not identifying low statistical power as the core issue",
+      "Suggesting a standard t-test is adequate without mentioning specialised RNA-seq statistical tools",
+      "Treating the results from three replicates as reliable without flagging the need for validation"
+    ],
+    "followUps": ["How would your concerns change if the biological variability within each group were unusually low?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "CRISPR off-target detection",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["crispr", "genomics", "current-development"],
+    "question": "CRISPR gene editing can cut DNA at unintended 'off-target' sites. How would a bioinformatician help identify or predict where those off-target cuts might occur?",
+    "lookingFor": "Understanding of both predictive and empirical approaches to a real applied problem, plus awareness that prediction alone isn't enough for clinical use.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe computational prediction: searching the genome for sequences similar to the guide RNA target, scored by mismatch position and number, since mismatches near the PAM site matter more",
+        "Describe empirical, unbiased detection methods that don't rely purely on prediction, such as GUIDE-seq or similar genome-wide assays",
+        "Note why prediction alone is insufficient: off-target effects can occur at sites with low sequence similarity that computational tools would miss"
+      ],
+      "modelAnswer": "The first layer is computational, searching the whole genome for sequences similar to the guide RNA and scoring them by how many mismatches they have and, importantly, where those mismatches fall, since mismatches close to the PAM site are much more disruptive to cutting than ones further away. But I know prediction based purely on sequence similarity isn't the full picture, because some real off-target cuts happen at sites that don't look obviously similar on paper, which is why experimental genome-wide methods like GUIDE-seq exist, they actually tag cut sites across the whole genome in living cells rather than just predicting them from sequence alone. I'd treat computational prediction as a way to prioritise what to test experimentally, not as a substitute for actually measuring it, especially for anything heading toward a therapeutic application."
+    },
+    "commonMistakes": [
+      "Only mentioning computational prediction with no empirical validation method",
+      "Not explaining why mismatch position relative to the PAM matters",
+      "Assuming perfect sequence similarity is the only signal that predicts an off-target site"
+    ],
+    "followUps": ["Why might off-target risk assessment matter more for a therapeutic application than for a research tool?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Direct-to-consumer genetic testing",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["ethics", "genomics", "public-understanding"],
+    "question": "Direct-to-consumer genetic testing companies sell disease risk reports to the public. What concerns you about how those results get interpreted by ordinary consumers?",
+    "lookingFor": "Awareness of the gap between raw genotyping technology and clinical-grade interpretation, and the human consequences of that gap.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish the technology from clinical interpretation: most DTC tests use SNP genotyping arrays, not full sequencing, and only capture a fraction of relevant variants",
+        "Raise the risk communication problem: a modest relative risk increase can be misread by consumers as near-certain fate, or a clear result can be wrongly read as a guarantee of safety",
+        "Note the downstream human impact: anxiety, false reassurance, or major life decisions made on statistically thin evidence without genetic counselling"
+      ],
+      "modelAnswer": "What concerns me most is the gap between what the technology actually measures and what people think it's telling them. Most consumer tests use SNP arrays that check known common variants, not full sequencing, so they can genuinely miss rare but significant mutations while reporting confidently on modest, common-variant risk scores. When someone gets a report saying they have an elevated risk for a disease, without a genetic counsellor to explain what a relative risk increase actually means statistically, it's very easy for them to read a modest percentage bump as a near-certain diagnosis, or conversely to read a negative result as a guarantee they're safe. That gap between raw data and responsible interpretation is exactly where I think the field still has real work to do, both in the interfaces these companies build and in genetic literacy generally."
+    },
+    "commonMistakes": [
+      "Assuming DTC tests provide the same coverage as full clinical sequencing",
+      "Not addressing how non-experts might misread probabilistic risk figures",
+      "Treating this purely as a technology problem with no human or communication dimension"
+    ],
+    "followUps": ["Should companies be required to provide access to a genetic counsellor before releasing high-risk results?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Genomic data scale",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["computing", "genomics", "infrastructure"],
+    "question": "A single human genome sequenced at high coverage produces well over 100 gigabytes of raw data. What practical challenges does that scale create, and how does the field manage it?",
+    "lookingFor": "Awareness that bioinformatics is as much an engineering discipline as a biological one, with concrete strategies for handling scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Name concrete challenges: storage cost at population scale, compute time for alignment and variant calling, and the bandwidth cost of moving data around",
+        "Give practical mitigations: compressed file formats like CRAM instead of BAM, cloud and distributed computing, and pipeline standardisation",
+        "Show awareness of the bigger-picture consequence: this scale is why biobank-level projects need serious infrastructure investment, not just more disk space"
+      ],
+      "modelAnswer": "At the scale of a single genome it's manageable, but multiply that by a biobank with hundreds of thousands of participants and you're talking about serious storage cost, real compute time for alignment and variant calling across every sample, and the practical headache of even moving that much data between institutions over a network. The field has responded with things like the CRAM format, which compresses aligned sequencing data far more efficiently than the older BAM format by referencing the genome instead of storing every base outright, and a lot of large-scale analysis has moved to cloud platforms where you bring the compute to the data instead of shipping data around. I think it's a good reminder that bioinformatics is genuinely as much a systems and infrastructure problem as it is a biology problem once you're working at population scale."
+    },
+    "commonMistakes": [
+      "Only mentioning storage without addressing compute or data transfer",
+      "Vague answer with no named format or technique",
+      "Treating this as a minor technical detail rather than a real bottleneck for large studies"
+    ],
+    "followUps": ["Why might moving compute to the data, rather than data to the compute, matter for a multi-institution study?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Imputation versus sequencing",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["genomics", "statistics", "methodology"],
+    "question": "Many large genetic studies use genotype imputation rather than sequencing every participant fully. What is imputation actually doing, and what are its limits?",
+    "lookingFor": "Understanding of a statistical technique widely used in genomics, including honest awareness of where it breaks down.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism: using a reference panel of fully sequenced genomes and known patterns of linkage disequilibrium to statistically infer untyped variants from a cheaper genotyping array",
+        "Note the practical benefit: it makes large cohort studies affordable while still capturing far more variants than the array alone measured",
+        "Identify the key limitation: accuracy drops for rare variants and for populations poorly represented in the reference panel"
+      ],
+      "modelAnswer": "Imputation uses the fact that nearby genetic variants tend to be inherited together, in blocks, because of linkage disequilibrium, so if you know someone's genotype at a set of common markers from a cheap array, you can statistically infer their likely genotype at nearby untyped positions by comparing against a reference panel of fully sequenced genomes that already show which variants travel together. That's what makes it possible to run huge cohort studies affordably, genotyping is far cheaper than full sequencing for every participant. The real limitation is that it works best for common variants and for populations well represented in the reference panel, so a rare variant, or a person from an ancestry group underrepresented in that panel, gets imputed far less reliably, which is honestly a significant equity issue in genomics given how European-ancestry-heavy a lot of reference panels historically have been."
+    },
+    "commonMistakes": [
+      "Describing imputation as if it directly measures the variant rather than statistically inferring it",
+      "Not mentioning linkage disequilibrium as the underlying mechanism",
+      "Missing the equity concern around reference panel representation"
+    ],
+    "followUps": ["Why might this limitation disproportionately affect certain populations in genomic medicine?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Batch effects in RNA-seq",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "statistics", "rna-seq"],
+    "question": "You're analysing RNA-seq differential expression data and notice that samples cluster more strongly by the day they were processed in the lab than by disease status. What would you do?",
+    "lookingFor": "Recognition of a batch effect and a structured, honest response to it, including knowing when a study might simply need to be redone.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly diagnose the pattern as a batch effect, a technical artefact confounding the biological signal of interest",
+        "Describe practical responses: statistical correction methods like ComBat or including batch as a covariate in the model, but only if batch and disease status aren't fully confounded",
+        "Recognise the honest limit: if batch and disease group were processed on entirely separate days with no overlap, no statistical correction can cleanly separate the two, and the experiment may need to be redesigned or repeated"
+      ],
+      "modelAnswer": "That clustering pattern is a textbook sign of a batch effect, some technical variation from processing, like reagent lot or the exact day of library prep, is dominating over the actual biology I care about. If disease and healthy samples were reasonably mixed across the different processing days, I could try correcting for it statistically, either with a tool like ComBat or by including batch as a covariate directly in the differential expression model. But I'd first check whether batch and disease status are confounded, meaning whether, say, all the diseased samples happened to be run on one day and all the healthy ones on another, because if that's the case no statistical trick can cleanly pull the biological signal apart from the technical one, and the honest answer would be that the experiment needs to be redesigned with proper randomisation across batches rather than patched after the fact."
+    },
+    "commonMistakes": [
+      "Not recognising the pattern as a batch effect at all",
+      "Assuming statistical correction can always fix any batch effect regardless of confounding",
+      "Failing to consider that the experiment might need to be redone rather than patched"
+    ],
+    "followUps": ["How would you design the sample processing schedule from the start to avoid this problem?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Consent and biobank reuse",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["ethics", "consent", "dilemma"],
+    "question": "A biobank collected genetic samples years ago under broad consent for 'future health research.' A new team now wants to use that data to build an ancestry-prediction tool that could also be repurposed for law enforcement identification. Is that an appropriate use of the original consent?",
+    "lookingFor": "Careful reasoning about the limits of broad consent and the difference between what's legally permitted and what feels ethically sound.",
+    "idealAnswer": {
+      "bullets": [
+        "Question whether 'future health research' reasonably covers a tool with clear non-health, law-enforcement applications",
+        "Weigh the real tension: broad consent enables valuable long-term research but can drift far from what participants actually pictured agreeing to",
+        "Propose a path forward, such as review by an ethics board and, ideally, re-contact or opt-out mechanisms rather than assuming the original consent settles it"
+      ],
+      "modelAnswer": "I don't think this sits comfortably under 'future health research' at all, because an ancestry tool that could be repurposed for law enforcement identification is a genuinely different use case with different stakes than a participant likely pictured when they agreed years ago, even if the consent language is broad enough to technically permit it. Broad consent exists because asking people to re-consent for every possible future study is impractical, and I do think it has real value, but there has to be a limit where a new use is different enough in kind, not just in specifics, that it needs fresh ethical review rather than just checking a box against old paperwork. My instinct is this should go back to an ethics board, and ideally there'd be some mechanism to inform or re-contact participants given how far this has drifted from a purely health research purpose."
+    },
+    "commonMistakes": [
+      "Treating the original broad consent as automatically covering any future use",
+      "Refusing to engage with the genuine practical value of broad consent for research",
+      "Giving no concrete next step, like ethics board review or re-contact"
+    ],
+    "followUps": ["Does your answer change if the ancestry tool were purely for academic research with no law enforcement application at all?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-generated protein design",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["current-debate", "ai", "biosecurity"],
+    "question": "Generative AI models can now design entirely new proteins, including ones that don't exist in nature. What's your view on the biosecurity concerns this raises?",
+    "lookingFor": "Balanced awareness of a live, current debate in the field, weighing real scientific benefit against real dual-use risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine upside: designing novel enzymes, therapeutics, or materials far faster than trial-and-error methods",
+        "Take the dual-use risk seriously: the same generative capability could in principle be misused to design harmful biological agents",
+        "Point to a sensible governance response, such as screening of DNA synthesis orders against known-hazard sequences and responsible-disclosure norms in the field, rather than either total openness or blanket restriction"
+      ],
+      "modelAnswer": "The upside is genuinely exciting, being able to design a novel enzyme or therapeutic protein computationally rather than through years of trial and error could speed up real medicine, but I don't think it's honest to talk about that potential without taking the dual-use risk seriously too, because the same generative capability that designs a helpful protein doesn't inherently know the difference between helpful and harmful. I think the sensible response isn't to shut the technology down, since that risk exists whether or not the tool is public, but to build in the kind of safeguards the field is already starting to discuss, like screening DNA synthesis orders against databases of known hazardous sequences, so there's a checkpoint before a designed sequence can actually be manufactured. It's a live debate precisely because there's no clean answer yet, and I think that's actually a reason to find the problem more interesting, not less worth solving."
+    },
+    "commonMistakes": [
+      "Focusing only on the exciting applications with no acknowledgment of dual-use risk",
+      "Dismissing the technology entirely as too dangerous with no nuance",
+      "Having no awareness of any real governance response, like synthesis screening"
+    ],
+    "followUps": ["Who do you think should be responsible for enforcing safeguards like DNA synthesis screening, companies, governments, or the scientific community itself?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Conservation and function prediction",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["evolution", "genomics", "function-prediction"],
+    "question": "Why can evolutionary conservation across species be used to predict whether a stretch of DNA is functionally important, and where does that logic break down?",
+    "lookingFor": "Solid grasp of comparative genomics logic along with honest awareness of its limitations, not a one-sided textbook answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core logic: functionally important sequence is under purifying selection, so mutations there tend to be eliminated, leaving it more similar across species than neutral sequence",
+        "Give an application: this is how tools identify likely regulatory elements or coding regions even without direct experimental evidence",
+        "Identify where it breaks down: some genuinely functional sequence isn't conserved, such as fast-evolving regulatory regions or lineage-specific elements, so conservation is a useful signal, not a definitive test"
+      ],
+      "modelAnswer": "The logic is that if a piece of DNA does something important, mutations there are more likely to be harmful and get weeded out by natural selection, so over evolutionary time that sequence stays more similar across species than a random, non-functional stretch would. That's genuinely useful, it's part of how comparative genomics tools flag likely regulatory elements or coding sequence even before anyone runs an experiment on it. But it's not a perfect test, because some real functional elements, especially certain regulatory sequences, evolve quickly and turn over between species even while doing something important in each one, and conversely some conserved sequence might just be conserved by chance or for reasons we don't yet understand. So I'd treat conservation as strong supporting evidence, not proof, and always want experimental follow-up before calling something functional purely from a conservation track."
+    },
+    "commonMistakes": [
+      "Stating the rule without explaining the underlying selection mechanism",
+      "Treating conservation as a guaranteed indicator of function with no exceptions",
+      "Not giving a concrete example of where the logic fails"
+    ],
+    "followUps": ["How might this limitation matter more for regulatory DNA than for protein-coding DNA?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Phylogenetic tree reliability",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["phylogenetics", "evolution", "methodology"],
+    "question": "You build a phylogenetic tree from gene sequences to figure out how several species are related. What could make that tree misleading even if your alignment is correct?",
+    "lookingFor": "Awareness that a technically well-built tree can still tell the wrong evolutionary story, showing depth beyond running the software correctly.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a real confound: horizontal gene transfer or gene duplication meaning the gene's history differs from the species' actual history",
+        "Explain long-branch attraction, where rapidly evolving lineages can be wrongly grouped together purely due to convergent random change, not shared ancestry",
+        "Note the value of checking multiple independent genes or using bootstrap support values rather than trusting a single tree from a single gene"
+      ],
+      "modelAnswer": "Even with a perfect alignment, the tree you get is a tree of that one gene's history, not necessarily the species' history, and those two can diverge, for instance through horizontal gene transfer in bacteria or through gene duplication where you're accidentally comparing paralogs instead of true orthologs across species. There's also a classic statistical trap called long-branch attraction, where two lineages that are evolving unusually fast can end up grouped together in the tree simply because they've both accumulated a lot of random change that happens to look similar, not because they're actually closely related. Because of that, I wouldn't trust a single tree built from a single gene, I'd want to check the topology against multiple independent genes and look at bootstrap support values to see how confident the tree actually is at each branching point before drawing a real evolutionary conclusion from it."
+    },
+    "commonMistakes": [
+      "Assuming a correct alignment guarantees a correct tree",
+      "Not mentioning either horizontal gene transfer or long-branch attraction as concrete failure modes",
+      "Treating bootstrap values or multi-gene checks as unnecessary extra steps rather than important validation"
+    ],
+    "followUps": ["Why might using multiple unrelated genes rather than just one make a phylogeny more trustworthy?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Pipeline reproducibility",
+    "program": "Bioinformatics",
+    "difficulty": "medium",
+    "tags": ["reproducibility", "methodology", "software"],
+    "question": "Bioinformatics has had well-documented reproducibility problems, where the same raw data run through the same nominal pipeline by different labs gives different results. Why does this happen?",
+    "lookingFor": "Awareness that computational analysis carries hidden sources of variability, and knowledge of real practices that reduce it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name concrete sources of variation: different software versions, undocumented parameter choices, and different reference genome builds or annotation versions",
+        "Explain why this matters biologically, not just technically: it means published findings can be genuinely hard to independently verify",
+        "Point to real mitigations: workflow managers like Nextflow or Snakemake, containerisation like Docker, and depositing exact code and parameters alongside a paper"
+      ],
+      "modelAnswer": "A lot of it comes down to details that seem minor but aren't, different versions of the same software can change default parameters or algorithms between releases, two labs might be using slightly different builds of the reference genome or different versions of its gene annotation, and a parameter choice that seemed obvious to one team might never even get written down for someone else to replicate. The consequence is real, it means a published result can be genuinely hard for another lab to independently confirm just by following the methods section, which undermines the whole point of publishing it. The field has been moving toward fixes like workflow managers such as Nextflow or Snakemake that make every step and parameter explicit and rerunnable, and containerising the whole environment with something like Docker so the exact same software versions run regardless of whose machine it's on, which I think is genuinely necessary infrastructure rather than a nice-to-have."
+    },
+    "commonMistakes": [
+      "Blaming reproducibility problems purely on 'bad science' rather than technical sources of variation",
+      "Not naming any concrete cause, like software versioning or reference build differences",
+      "Having no awareness of real tools or practices used to address it"
+    ],
+    "followUps": ["Why might reference genome version differences be a particularly sneaky source of irreproducibility?"]
+  },
+  {
+    "id": "prog-bioinformatics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Outbreak analysis under pressure",
+    "program": "Bioinformatics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "public-health", "reasoning"],
+    "question": "You're part of a team sequencing a pathogen genome during a fast-moving disease outbreak. Public health officials want an answer on transmission patterns within hours, but your usual quality-control process takes days. How do you handle that tension?",
+    "lookingFor": "Realistic, structured reasoning about balancing speed and rigor under real pressure, not a naive pick of one extreme.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both real pressures honestly: acting late on a real outbreak has genuine human cost, but acting confidently on wrong data can misdirect an entire public health response",
+        "Propose a practical middle path: deliver a fast, clearly caveated preliminary result while the fuller quality-controlled analysis continues in parallel",
+        "Show awareness of communication discipline: being explicit with officials about confidence level and what could change, rather than presenting a rushed number as final"
+      ],
+      "modelAnswer": "I'd take both pressures seriously rather than picking one side, because acting too slowly during a real outbreak has a genuine human cost, but handing officials a confident-sounding number built on rushed, unchecked data could send an entire public health response in the wrong direction, which might be worse than the delay. What I'd actually want to do is give a fast preliminary read, clearly labelled as preliminary, on whatever core question matters most urgently, like a rough transmission cluster picture, while the full quality-controlled analysis keeps running in parallel and gets delivered as soon as it's ready. The part I'd be most careful about is the communication, making sure officials understand exactly how much confidence to put in the early number and that it might shift, because a bioinformatician's job in that moment isn't just to produce an answer fast, it's to make sure the answer's limitations travel with it."
+    },
+    "commonMistakes": [
+      "Choosing one extreme, either refusing to give any answer until full QC is done, or handing over a number with no caveats",
+      "Not considering that a preliminary and a full analysis can run in parallel",
+      "Ignoring the communication responsibility of flagging confidence level to non-technical officials"
+    ],
+    "followUps": ["How would you decide which quality-control steps are safe to shortcut under time pressure and which aren't?"]
+  }
+]

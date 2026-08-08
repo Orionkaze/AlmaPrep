@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-audiology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Conductive vs sensorineural hearing loss",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["anatomy", "audiometry", "diagnosis"],
+    "question": "What's the difference between a conductive and a sensorineural hearing loss, and how would an audiogram show which one a patient has?",
+    "lookingFor": "Clear grasp of the anatomy distinction and the ability to explain how bone and air conduction results reveal where the problem sits.",
+    "idealAnswer": {
+      "bullets": [
+        "Conductive loss = a block in the outer or middle ear stopping sound transmission; sensorineural = damage in the cochlea or auditory nerve",
+        "On an audiogram, conductive loss shows an air-bone gap, with bone conduction thresholds better than air; sensorineural shows both reduced together",
+        "Give example causes for each, like wax or otosclerosis versus noise damage or presbycusis"
+      ],
+      "modelAnswer": "From what I've read, a conductive loss happens when something blocks sound before it even reaches the cochlea, like earwax, fluid behind the eardrum, or a fixed stapes bone in otosclerosis, while a sensorineural loss is damage to the cochlea's hair cells or the auditory nerve itself, so the signal never gets encoded properly even once it arrives. The audiogram is what actually separates the two: you test air conduction through headphones and bone conduction through a vibrator behind the ear, and if bone conduction is much better than air, that gap tells you sound just isn't getting through the middle ear efficiently. If both thresholds are reduced together with no gap, the problem has to be past the middle ear. I find it a neat piece of logic, that you can localise a problem without ever looking inside the ear."
+    },
+    "commonMistakes": [
+      "Confusing which type shows the air-bone gap",
+      "Describing hearing loss only in terms of loudness, not where in the pathway it occurs",
+      "Not being able to name a real cause for either type"
+    ],
+    "followUps": ["What would a mixed hearing loss look like on an audiogram?"]
+  },
+  {
+    "id": "prog-audiology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Presbycusis and high-frequency loss",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["cochlea", "hearing-loss", "physiology"],
+    "question": "Why does age-related hearing loss, presbycusis, usually affect high frequencies before low ones?",
+    "lookingFor": "Understanding of cochlear tonotopic organisation and why the base is more vulnerable over a lifetime.",
+    "idealAnswer": {
+      "bullets": [
+        "Cochlea is tonotopically organised: high frequencies processed near the base, low frequencies near the apex",
+        "Base hair cells take the initial mechanical impact of every sound and accumulate a lifetime of stress, so they fail first",
+        "Practical consequence: consonant sounds are lost before vowels, which is why speech can sound present but unclear"
+      ],
+      "modelAnswer": "The cochlea is organised like a piano keyboard, with high frequencies detected right at the base near the oval window and low frequencies further up near the apex. Because every sound wave has to pass through the base first, those hair cells take the brunt of a lifetime's wear, so they tend to fail earliest. That's why presbycusis feels so frustrating, high-frequency consonants like s, f and th carry a lot of the clarity of speech, so someone can hear that you're talking without making out the words. I think that gap between hearing volume and hearing clarity is one of the most under-appreciated parts of hearing loss."
+    },
+    "commonMistakes": [
+      "Saying hearing loss affects all frequencies equally",
+      "Not connecting the tonotopic anatomy to the pattern",
+      "Missing the real-world consequence for speech understanding"
+    ],
+    "followUps": ["Why might someone with presbycusis say people are mumbling rather than that they can't hear?"]
+  },
+  {
+    "id": "prog-audiology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Otoacoustic emissions and newborn screening",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["screening", "cochlea", "pediatric"],
+    "question": "What are otoacoustic emissions, and why are they used to screen newborns for hearing loss?",
+    "lookingFor": "Knowledge of the OAE mechanism and why it suits testing infants who can't give a behavioural response.",
+    "idealAnswer": {
+      "bullets": [
+        "OAEs are faint sounds produced by outer hair cells in a healthy cochlea, picked up by a tiny probe microphone in the ear canal",
+        "Their presence indicates the outer hair cells and usually the middle ear are functioning; absence suggests a possible problem",
+        "Ideal for newborns because it's quick, passive, needs no behavioural response, and works while the baby sleeps"
+      ],
+      "modelAnswer": "Otoacoustic emissions are essentially an echo the cochlea sends back, produced by the outer hair cells as they actively vibrate in response to a sound, and a tiny probe microphone in the ear canal picks that echo up. If a healthy cochlea is working you get a clear emission back, and if the outer hair cells are damaged, the emission is weak or missing. It's used for newborn screening because it doesn't need the baby to do anything, no button press, no head turn, so you can test it in the first days of life while they're asleep, exactly the window where early diagnosis makes the biggest difference for language development."
+    },
+    "commonMistakes": [
+      "Confusing OAEs with ABR testing",
+      "Not explaining why they suit infants specifically",
+      "Vague description with no mention of outer hair cells"
+    ],
+    "followUps": ["If a baby refers on an OAE screen, what would the next diagnostic step be, and why?"]
+  },
+  {
+    "id": "prog-audiology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Masking in pure-tone audiometry",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["audiometry", "diagnosis", "reasoning"],
+    "question": "Why is masking sometimes necessary during a hearing test, and what could go wrong if an audiologist skipped it?",
+    "lookingFor": "Understanding of cross-hearing across the skull and the risk of a false result if masking is omitted.",
+    "idealAnswer": {
+      "bullets": [
+        "Sound played to one ear can cross the skull and be picked up by the other, better ear, especially at high intensities or via bone conduction",
+        "Masking noise is fed to the non-test ear so only the true threshold of the test ear is measured",
+        "Skipping it risks masking a real asymmetry, attributing the good ear's hearing to the poorer one"
+      ],
+      "modelAnswer": "Sound doesn't stay neatly in one ear, especially at louder intensities or with bone conduction, it can cross over the skull and be picked up by the other ear, so what looks like a response from the ear being tested might actually be the better ear sneaking in. Masking gets around that by playing noise into the non-test ear so it's too busy to eavesdrop, meaning the threshold recorded is genuinely from the ear intended. If an audiologist skipped it on someone with a big difference between their two ears, they could end up recording the poorer ear's threshold as much better than it really is, which matters hugely if that difference is driving the referral for something like a tumour."
+    },
+    "commonMistakes": [
+      "Not knowing what interaural attenuation or cross-hearing means",
+      "Thinking masking is only relevant for bone conduction",
+      "Failing to identify the clinical risk of a missed asymmetry"
+    ],
+    "followUps": ["Would masking matter more for air conduction or bone conduction testing, and why?"]
+  },
+  {
+    "id": "prog-audiology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Hidden hearing loss / cochlear synaptopathy",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["cochlea", "reasoning", "speech-in-noise"],
+    "question": "A patient comes in with a completely normal audiogram but insists they really struggle to follow conversation in a noisy restaurant. How would you think about that?",
+    "lookingFor": "Awareness of hidden hearing loss and the limits of the standard audiogram, plus willingness to take the complaint seriously.",
+    "idealAnswer": {
+      "bullets": [
+        "Standard pure-tone audiometry only tests threshold sensitivity in quiet, and can miss damage that affects how sound is coded over time",
+        "Emerging research on cochlear synaptopathy suggests noise exposure can damage synapses between hair cells and the auditory nerve without shifting thresholds",
+        "A good clinician wouldn't dismiss the complaint just because the audiogram is normal, and would consider speech-in-noise testing"
+      ],
+      "modelAnswer": "I'd want to take the complaint seriously rather than tell the patient the audiogram says they're fine, because a normal audiogram only proves the quietest tone they can detect in silence, it doesn't test how well their ear codes rapid, complex signals like speech buried in background noise. There's research on cochlear synaptopathy, where noise exposure can damage the connection between hair cells and the auditory nerve without ever shifting the threshold on a standard test, which would fit a story like this. I think it's a good example of why audiology can't just be about reading a chart, so I'd want to run something like a speech-in-noise test rather than assume the audiogram is the whole story."
+    },
+    "commonMistakes": [
+      "Concluding the patient's complaint isn't real because the audiogram is normal",
+      "Not knowing that pure-tone testing has real diagnostic limits",
+      "No mention of speech-in-noise testing as a next step"
+    ],
+    "followUps": ["What kind of test would actually capture that difficulty, if the audiogram can't?"]
+  },
+  {
+    "id": "prog-audiology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Hearing aids vs cochlear implants",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["hearing-aids", "cochlear-implant", "diagnosis"],
+    "question": "How would you explain to someone why a hearing aid works for one person's hearing loss but a cochlear implant is needed for another's?",
+    "lookingFor": "Understanding of the amplification vs direct-stimulation distinction and the severity threshold that separates them.",
+    "idealAnswer": {
+      "bullets": [
+        "Hearing aids amplify sound so remaining functional hair cells can pick it up, useful for mild to severe loss",
+        "Cochlear implants bypass damaged hair cells entirely and stimulate the auditory nerve directly, for severe to profound loss",
+        "The decision depends on how much residual hearing and hair cell function remains, established through audiometry"
+      ],
+      "modelAnswer": "A hearing aid is really just a very sophisticated amplifier, it makes sound louder and shapes it so that whatever hair cells the person still has left can pick up the signal, and that works well through mild to quite severe loss as long as there's something there to amplify. A cochlear implant is different altogether, it skips the damaged hair cells and sends electrical signals straight to the auditory nerve, which is why it's used for severe to profound loss where there just isn't enough working cochlea left for amplification to help. The line between the two comes down to how much residual function the audiogram shows, it's not a preference, it's what the ear is actually capable of doing."
+    },
+    "commonMistakes": [
+      "Saying cochlear implants are simply 'stronger hearing aids'",
+      "Not mentioning that implants bypass hair cells and stimulate the nerve directly",
+      "No mention of the residual hearing threshold that determines candidacy"
+    ],
+    "followUps": ["Why might someone who meets cochlear implant candidacy still choose a hearing aid, or vice versa?"]
+  },
+  {
+    "id": "prog-audiology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Tympanometry interpretation",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["middle-ear", "diagnosis", "audiometry"],
+    "question": "What does a flat, type B tympanogram usually suggest, and why is that useful information alongside the audiogram?",
+    "lookingFor": "Knowledge of middle ear function testing and how it complements pure-tone threshold data.",
+    "idealAnswer": {
+      "bullets": [
+        "Tympanometry measures how the eardrum moves in response to pressure changes, showing middle ear compliance",
+        "A flat type B trace usually indicates fluid in the middle ear or a perforated eardrum",
+        "Combined with the audiogram it helps distinguish a middle-ear cause from a cochlear one, guiding whether medical referral is needed"
+      ],
+      "modelAnswer": "Tympanometry tests how springy the eardrum is by changing the air pressure in the ear canal and watching how much it flexes, and a flat type B trace basically means the eardrum barely moved, which usually points to fluid sitting behind it or a perforation. On its own an audiogram might just show a conductive-looking dip, but the tympanogram tells you why, so if it's fluid you know that's probably a medical issue to sort out first rather than something you'd fit a hearing aid around. I like that the two tests answer different questions, one tells you how well the person hears and the other tells you what's actually happening mechanically."
+    },
+    "commonMistakes": [
+      "Confusing tympanometry with audiometry",
+      "Not linking type B specifically to fluid or perforation",
+      "Treating tympanometry as if it measures hearing sensitivity itself"
+    ],
+    "followUps": ["What would a type C tympanogram suggest instead, and how is that clinically different?"]
+  },
+  {
+    "id": "prog-audiology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Auditory processing disorder vs hearing loss",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["pediatric", "reasoning", "diagnosis"],
+    "question": "A child has a normal audiogram but the teacher says they struggle to follow instructions in a noisy classroom and often ask people to repeat themselves. How would you approach figuring out what's going on?",
+    "lookingFor": "Awareness that normal thresholds don't rule out auditory processing disorder, plus a structured, multi-disciplinary approach.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the audiogram only measures peripheral sensitivity, not how the brain organises and interprets sound",
+        "Consider central auditory processing disorder as one possibility among several, including attention, language, or classroom acoustics",
+        "Advocate for a broader assessment rather than a single test, involving other professionals like speech-language pathologists"
+      ],
+      "modelAnswer": "The audiogram tells you the child's ears can detect sound at normal levels, but it doesn't tell you what happens once that sound reaches the brain, so I wouldn't take a normal result as the end of the story. This pattern, struggling in noise and needing repetition despite hearing fine in quiet, is a classic profile for something like central auditory processing disorder, but I'd be careful not to jump straight to that label, because attention difficulties or a badly designed, echoey classroom can look similar. I think the right move is a broader assessment involving speech and language input and classroom observation, rather than treating the audiogram as if it's already answered the question."
+    },
+    "commonMistakes": [
+      "Assuming a normal audiogram means there's no hearing-related issue at all",
+      "Jumping straight to an APD diagnosis without ruling out other explanations",
+      "Not considering the classroom environment itself as a factor"
+    ],
+    "followUps": ["How might poor classroom acoustics alone produce a similar picture, even with fully typical processing?"]
+  },
+  {
+    "id": "prog-audiology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Noise-induced hearing loss mechanism",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["noise", "cochlea", "physiology"],
+    "question": "Why does noise-induced hearing loss so often show up as a dip around 4000 Hz on an audiogram?",
+    "lookingFor": "Knowledge of the cochlear mechanics behind the classic noise notch.",
+    "idealAnswer": {
+      "bullets": [
+        "The basilar membrane region tuned to roughly 3000-6000 Hz sits at a point of maximum mechanical stress from common noise sources",
+        "That area also has comparatively less blood supply and is more vulnerable to metabolic exhaustion from sustained loud exposure",
+        "The resulting hair cell damage creates the classic noise notch, while frequencies just above 4000 Hz are often relatively spared"
+      ],
+      "modelAnswer": "There's a specific region of the cochlea, tuned to somewhere around three to six thousand hertz, that seems to take the most mechanical punishment from a lot of common noise sources, partly because of how the basilar membrane resonates and partly because that area has less blood supply to recover with. Over years of loud exposure the hair cells there wear out faster than their neighbours, which is why you get that characteristic notch on the audiogram right around four thousand hertz. I think it's a nice example of how a pattern on a chart can tell a story, a notch like that is often the first clue toward asking about noise exposure at work or from hobbies."
+    },
+    "commonMistakes": [
+      "Not knowing the notch is specifically located near 4000 Hz",
+      "Describing noise damage as uniform across all frequencies",
+      "Missing that the notch pattern can be used diagnostically as a clue to noise history"
+    ],
+    "followUps": ["Would you expect the notch to be worse in one ear than the other for someone who fired a rifle for years, and why?"]
+  },
+  {
+    "id": "prog-audiology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "ABR testing in infants",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["pediatric", "screening", "diagnosis"],
+    "question": "Why might an audiologist use auditory brainstem response testing instead of standard behavioural audiometry for a very young infant?",
+    "lookingFor": "Understanding that ABR is objective and electrophysiological, so it doesn't rely on a voluntary behavioural response.",
+    "idealAnswer": {
+      "bullets": [
+        "Behavioural audiometry needs a reliable voluntary response, which infants can't give consistently",
+        "ABR measures electrical activity from the auditory nerve and brainstem in response to sound, using scalp electrodes",
+        "It's usually done while the baby is asleep, giving objective, frequency-specific threshold estimates"
+      ],
+      "modelAnswer": "Behavioural testing depends on the person reliably signalling that they heard something, turning their head or pressing a button, and a very young infant doesn't have that kind of consistent voluntary control yet. ABR gets around that by measuring the electrical activity the auditory nerve and brainstem generate in response to a sound, picked up through electrodes on the scalp, so it works whether or not the baby can respond on purpose, usually while they're asleep. What I find interesting is that it's genuinely objective, reading the nervous system's own response rather than relying on behaviour, which makes it possible to get real threshold information at an age where you'd otherwise be guessing."
+    },
+    "commonMistakes": [
+      "Confusing ABR with OAE testing",
+      "Thinking ABR requires the infant to be awake and responsive",
+      "Not explaining that ABR reads neural activity rather than behaviour"
+    ],
+    "followUps": ["What's the difference between what OAE and ABR each tell you about where a hearing loss might be located?"]
+  },
+  {
+    "id": "prog-audiology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Same audiogram, different real-world difficulty",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["reasoning", "speech-in-noise", "cognition"],
+    "question": "Two patients have nearly identical audiograms, yet one manages fine in daily life and the other finds conversation exhausting. What could explain that gap?",
+    "lookingFor": "Reasoning beyond the pure-tone chart towards cognition, listening effort, coping strategies, and life context.",
+    "idealAnswer": {
+      "bullets": [
+        "The audiogram measures threshold sensitivity, not real-world speech understanding or listening effort",
+        "Cognitive factors like working memory and processing speed, plus coping strategies like lipreading, vary between people with the same peripheral loss",
+        "Life context matters too, one might spend most time in quiet settings and the other in noisy, demanding ones"
+      ],
+      "modelAnswer": "I think the audiogram is really just measuring one narrow thing, the quietest tone someone can detect in silence, and it says almost nothing about how hard their brain has to work to understand speech once background noise or fast talkers are involved. Two people with identical thresholds can have very different listening effort and fatigue depending on things like working memory, how good they've become at using visual cues and context to fill gaps, or honestly just how demanding their day-to-day environment is. That's actually one of the things that draws me to audiology, the chart is the starting point of the story, not the whole story, and figuring out why two similar-looking cases feel so different in real life seems like the genuinely interesting clinical work."
+    },
+    "commonMistakes": [
+      "Assuming the audiogram alone should predict real-world function",
+      "Not mentioning cognitive load or listening effort as a factor",
+      "Ignoring environmental or context differences between the two patients"
+    ],
+    "followUps": ["How would you go about investigating the gap for the struggling patient, beyond repeating the audiogram?"]
+  },
+  {
+    "id": "prog-audiology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Vestibular system and audiologist's role",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["vestibular", "anatomy", "balance"],
+    "question": "Why do audiologists get involved in dizziness and balance problems, given that the inner ear is mainly known for hearing?",
+    "lookingFor": "Understanding of the shared anatomy between the cochlea and the vestibular system.",
+    "idealAnswer": {
+      "bullets": [
+        "The cochlea and the vestibular labyrinth share the same fluid-filled inner ear space and the same eighth cranial nerve",
+        "Conditions affecting one can affect the other, so an audiologist's expertise naturally extends to balance",
+        "Audiologists run tests like videonystagmography or vestibular evoked myogenic potentials, working alongside ENT and physiotherapy"
+      ],
+      "modelAnswer": "It surprised me at first too, but the cochlea for hearing and the vestibular organs for balance sit right next to each other inside the same bony labyrinth, sharing fluid and the same eighth cranial nerve, so a problem in one area can spill into the other, like in Meniere's disease where people get both hearing loss and vertigo together. Because audiologists already understand that inner-ear anatomy in depth and run the equipment to test it, it makes sense that their expertise extends to balance testing, things like videonystagmography or vestibular evoked potentials, usually alongside an ENT doctor or physiotherapist. I actually think that overlap is one of the more fascinating parts of the field."
+    },
+    "commonMistakes": [
+      "Not knowing hearing and balance organs share the same inner-ear space and nerve",
+      "Assuming balance is entirely outside an audiologist's scope",
+      "No example of a condition linking the two, like Meniere's disease"
+    ],
+    "followUps": ["Can you name a condition where hearing and balance symptoms appear together, and explain why?"]
+  },
+  {
+    "id": "prog-audiology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Real ear measurement and hearing aid verification",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["hearing-aids", "verification", "reasoning"],
+    "question": "Why isn't it enough to just set a hearing aid to match a formula calculated from someone's audiogram? What else should an audiologist check?",
+    "lookingFor": "Understanding of individual ear canal acoustics and the need for real-world verification, not just prescriptive fitting.",
+    "idealAnswer": {
+      "bullets": [
+        "Prescriptive formulas estimate target gain from the audiogram, but every ear canal has different resonance and volume",
+        "Real ear measurement places a probe microphone near the eardrum to verify the actual sound level delivered matches the target",
+        "Skipping verification risks under- or over-amplifying without anyone noticing, since software estimates aren't the same as reality"
+      ],
+      "modelAnswer": "A prescriptive formula is a great starting point, but it's calculated from an audiogram plus average assumptions about how sound travels through an ear canal, and real ears vary a lot in shape and volume, which changes how much of that amplified sound actually reaches the eardrum. That's why real ear measurement matters, you put a thin probe microphone right near the eardrum and measure what's actually arriving, rather than trusting the hearing aid's internal estimate. Without that step you could be under-amplifying someone with a small canal or over-amplifying someone with a larger one, and nobody would necessarily know just by looking at the fitting software. A formula is never the finished answer, you still have to verify against the individual."
+    },
+    "commonMistakes": [
+      "Assuming the hearing aid's built-in software output is the same as a real ear measurement",
+      "Not explaining why ear canal variation matters",
+      "Treating the prescriptive target as the final verification step rather than a starting estimate"
+    ],
+    "followUps": ["What might real ear measurement reveal that the fitting software alone would miss?"]
+  },
+  {
+    "id": "prog-audiology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Cochlear implants and Deaf culture",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["ethics", "cochlear-implant", "deaf-culture"],
+    "question": "Some in the Deaf community have historically opposed pediatric cochlear implantation, viewing deafness as a cultural identity rather than something to fix. How would you think through that tension if you were counselling a family?",
+    "lookingFor": "Ability to hold both the medical and cultural viewpoints in tension without dismissing either, centring the family's informed decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the medical case for earlier implantation supporting spoken language, and the cultural case for Deaf identity and sign language as a full language",
+        "Recognise the decision involves values as much as data, and that the audiologist's role is to give full, unbiased information rather than push an outcome",
+        "Show respect for autonomy while remaining honest about what the evidence says on outcomes and timing"
+      ],
+      "modelAnswer": "I don't think this is a case where one side is simply right, the clinical evidence is genuinely strong that earlier implantation tends to support better spoken language outcomes, but the Deaf community's view that deafness is a full cultural identity with its own rich language in sign is also a completely legitimate position, not a rejection of good sense. If I were involved in counselling a family, I'd want to give them the clearest, most honest picture of the evidence on timing and outcomes, without pushing them toward the choice I might personally lean towards, because it's their child and their values that should drive the decision. My job would be to make sure they're deciding with full information, including exposure to Deaf community perspectives, not to decide for them."
+    },
+    "commonMistakes": [
+      "Presenting only the medical case and dismissing the cultural perspective",
+      "Presenting only the cultural case and downplaying evidence on language outcomes",
+      "Claiming there's an obviously correct answer rather than acknowledging real value tension"
+    ],
+    "followUps": ["Should a very young child's future ability to choose a Deaf identity themselves factor into the decision, given they can't yet weigh in?"]
+  },
+  {
+    "id": "prog-audiology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Autonomy vs benefit in an unwilling patient",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["ethics", "autonomy", "elderly-care"],
+    "question": "An elderly patient with clear hearing loss refuses to wear hearing aids even though his family says his isolation and confusion have gotten worse. What would guide how you'd handle that?",
+    "lookingFor": "Respect for patient autonomy balanced against genuine concern for wellbeing, without being paternalistic or simply giving up.",
+    "idealAnswer": {
+      "bullets": [
+        "Start from the assumption that a competent adult has the right to decline treatment, even if family disagrees",
+        "Explore the reasons behind the refusal rather than assuming stubbornness, since cost, vanity, or past bad experiences are common and addressable",
+        "Keep the door open with honest information about the stakes rather than pressuring, and revisit rather than force"
+      ],
+      "modelAnswer": "My first instinct is that if he's mentally competent, the decision is genuinely his to make, and it would be wrong for me to side with the family and pressure him just because they're frustrated. What I'd actually want to understand first is why he's refusing, because in my experience that's rarely just stubbornness, it might be that a previous hearing aid felt uncomfortable or made him feel old, or he simply doesn't understand what's being offered now. I'd want to give him honest, non-judgmental information, including that untreated hearing loss is linked to more social withdrawal and cognitive decline, and then leave the door open rather than pushing, because trust and a slow yes will get him further than a fight ever would."
+    },
+    "commonMistakes": [
+      "Siding entirely with the family and pressuring the patient",
+      "Refusing to engage further once the patient says no, treating autonomy as the end of the conversation",
+      "Not exploring the actual reason behind the refusal"
+    ],
+    "followUps": ["Would your approach change if the family reported he seemed increasingly confused rather than just isolated?"]
+  },
+  {
+    "id": "prog-audiology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ototoxic drug monitoring dilemma",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["ethics", "ototoxicity", "oncology"],
+    "question": "A patient needs a life-saving chemotherapy drug that's known to be ototoxic and could cause permanent hearing loss. How would you think about the audiologist's role in that situation?",
+    "lookingFor": "Understanding of ototoxicity monitoring as a supportive role, weighing quality of life against survival without overstepping.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the treatment decision belongs to the patient and oncology team, not the audiologist",
+        "The audiologist's real role is monitoring hearing across treatment to catch changes early and inform dose or timing discussions",
+        "Being honest with the patient about the tradeoff up front matters as much as the technical monitoring itself"
+      ],
+      "modelAnswer": "In a situation like that I don't think it's the audiologist's place to weigh in on whether the treatment should happen at all, that's a decision between the patient and their oncology team where survival is obviously the priority. What I see the audiologist's role as being is making sure the patient goes in with full information about the hearing risk, and then monitoring their hearing carefully throughout treatment so any change gets caught as early as possible, which can support decisions about dose or scheduling. It's a good example of how audiology often isn't the deciding voice in someone's care, but a really important supporting one, protecting quality of life around a decision already made for good reason."
+    },
+    "commonMistakes": [
+      "Suggesting the audiologist should try to talk the patient out of the treatment",
+      "Ignoring the audiologist's actual role of monitoring in favour of vague sympathy",
+      "Treating hearing loss and survival as equally weighted rather than acknowledging the priority"
+    ],
+    "followUps": ["What would you say to a patient who is angry after losing hearing despite monitoring?"]
+  },
+  {
+    "id": "prog-audiology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "OTC hearing aid regulation",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["policy", "hearing-aids", "access"],
+    "question": "In 2022 the US created a new over-the-counter category for hearing aids, letting adults buy them without seeing an audiologist first. What do you make of that change?",
+    "lookingFor": "Balanced awareness of the access-versus-quality-of-care tension in a real, current policy debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the basic fact: OTC aids are for adults with perceived mild-to-moderate loss, sold without a prescription or professional fitting",
+        "Argument in favour: cost and access have kept many people from ever getting help, and OTC lowers that barrier significantly",
+        "Argument for caution: self-diagnosis can miss underlying medical causes, and self-fitting without verification may under-deliver"
+      ],
+      "modelAnswer": "I think the OTC category is a genuinely well-intentioned response to a real problem, most people with hearing loss wait years before getting help, partly because of cost and partly because seeing a professional feels like a big step, so removing that barrier for adults with milder, self-perceived loss should get more people helped sooner. What worries me a little is that self-diagnosis can miss something that actually needs medical attention, like a treatable middle-ear issue, and a device bought without any verification isn't necessarily fitted well for that person's ear. I'd like to see the field lean into that by making the professional route feel like an upgrade rather than a gatekeeper, so people who need more than OTC can offer still find their way to proper care."
+    },
+    "commonMistakes": [
+      "Only listing the access benefit with no acknowledgment of the quality-of-care tradeoff",
+      "Not knowing basic facts about what the OTC category actually covers",
+      "Dismissing the change entirely as bad for the profession without engaging with the access argument"
+    ],
+    "followUps": ["How do you think audiologists should respond professionally to this shift, rather than just react to it?"]
+  },
+  {
+    "id": "prog-audiology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Hearing loss and dementia research",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["dementia", "research-literacy", "cognition"],
+    "question": "There's growing research linking untreated hearing loss in midlife to a higher risk of dementia later on. What do you understand about that link, and how cautious should we be interpreting it?",
+    "lookingFor": "Awareness of the leading hypotheses plus appropriate scientific caution about correlation versus causation.",
+    "idealAnswer": {
+      "bullets": [
+        "Summarise the hypotheses: increased cognitive load from effortful listening, and social isolation, both linked to cognitive decline",
+        "Note the research is largely observational so far, and hasn't proven that treating hearing loss prevents dementia",
+        "Show appropriate caution, it's a strong motivating reason to take hearing loss seriously without overstating it as guaranteed prevention"
+      ],
+      "modelAnswer": "From what I've read, the leading idea is that untreated hearing loss forces the brain to spend so much extra effort decoding sound that it may leave less cognitive capacity for other things, and separately, hearing loss often leads to social withdrawal, and both effortful listening and isolation are independently linked to cognitive decline. I'd be careful about overstating it though, most of that evidence is observational, so it shows a correlation rather than proving hearing loss directly causes dementia or that hearing aids will definitely prevent it. I still think it's one of the more compelling recent reasons to take hearing health seriously earlier in life, I just wouldn't want to promise a guarantee that current research can't actually back up."
+    },
+    "commonMistakes": [
+      "Overstating the link as if hearing aids are proven to prevent dementia",
+      "Not being able to explain any mechanism behind the association",
+      "Dismissing the research entirely as irrelevant"
+    ],
+    "followUps": ["What kind of study would you need to see to move from correlation to a causal claim here?"]
+  },
+  {
+    "id": "prog-audiology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in hearing aid technology",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["ai", "hearing-aids", "current-debate"],
+    "question": "Modern hearing aids increasingly use machine learning to automatically classify sound environments and adjust settings. What excites you, and what concerns you, about that trend?",
+    "lookingFor": "An informed, balanced take on a real current development, not just enthusiasm or fear.",
+    "idealAnswer": {
+      "bullets": [
+        "Excitement: automatic environment classification can adjust processing in real time better than manual switching",
+        "Concern: a black-box algorithm trained on population data may not fit every individual, and can be hard to troubleshoot",
+        "Balanced view: it should support, not replace, the audiologist's individualised verification and patient feedback"
+      ],
+      "modelAnswer": "What excites me is that a lot of the manual fiddling patients used to do, switching programs for a restaurant versus a quiet room, can now happen automatically and probably faster than a person would react, which should make devices feel less like a chore. What concerns me is that these are trained on population-level data, so the algorithm's idea of the right setting might not match what actually works best for one specific person, and if a patient can't tell why the device is behaving a certain way, that's harder to troubleshoot together. I'd want to see it used as a smart assistant sitting on top of proper individualised fitting and verification, rather than something that replaces the clinician checking in on how the patient is really doing."
+    },
+    "commonMistakes": [
+      "Treating AI as either purely a solution or purely a threat with no nuance",
+      "Not identifying a specific technical benefit like real-time environment classification",
+      "Missing the individualisation or verification concern"
+    ],
+    "followUps": ["How would you personally check whether an AI-driven setting was actually working for a specific patient?"]
+  },
+  {
+    "id": "prog-audiology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Teleaudiology expansion",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["teleaudiology", "access", "current-debate"],
+    "question": "Remote hearing care, teleaudiology, expanded a lot after the pandemic. Where do you think it genuinely helps, and where does it fall short compared to an in-person visit?",
+    "lookingFor": "Nuanced understanding of what can and can't be done remotely in audiology.",
+    "idealAnswer": {
+      "bullets": [
+        "Helps with access for rural or mobility-limited patients, follow-up counselling, and remote programming adjustments",
+        "Falls short for physical examination of the ear, precise probe-microphone measurements, or hands-on fitting adjustments",
+        "A realistic view treats it as a genuine extension of care for the right cases, not a full replacement"
+      ],
+      "modelAnswer": "I think teleaudiology is genuinely valuable for people who'd otherwise struggle to reach a clinic, someone in a rural area or with limited mobility, and it's also useful for follow-up counselling or fine-tuning a hearing aid's settings remotely once the initial fitting is done. Where it clearly falls short is anything needing physical access to the ear itself, you can't do a proper otoscopy or a real ear measurement with a probe microphone over a video call, and some of the trust built in an in-person relationship is harder to replicate remotely. My honest view is that it's a real expansion of who can access care, but it works best layered on top of an initial in-person relationship rather than replacing it entirely."
+    },
+    "commonMistakes": [
+      "Treating teleaudiology as either a complete replacement or entirely useless",
+      "Not naming a specific limitation, like the inability to do otoscopy remotely",
+      "No mention of the access benefit for underserved patients"
+    ],
+    "followUps": ["What's one specific part of an audiology visit you think could never move online?"]
+  },
+  {
+    "id": "prog-audiology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "First-time hearing aid user adjustment",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["hearing-aids", "counselling", "hypothetical"],
+    "question": "Imagine you were counselling a first-time hearing aid user who comes back after a week saying, 'It just doesn't sound natural, I don't think this is for me.' How would you think through that?",
+    "lookingFor": "Understanding of the brain's adjustment period to amplified sound, combined with structured troubleshooting rather than dismissing the complaint.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that a well-fitted hearing aid can still sound unnatural at first, because the brain needs time to relearn missing frequencies",
+        "Separate 'it takes adjustment' from a genuinely poor fit, so the fitting itself is worth checking",
+        "Set realistic expectations up front and support the patient with a gradual wearing schedule rather than dismissing the complaint"
+      ],
+      "modelAnswer": "My first thought would be that this is a really common and expected reaction, because if someone has been missing certain frequencies for years, their brain has essentially forgotten what those sounds should sound like, so hearing them again can feel artificial even when the fitting is technically correct. But I wouldn't just wave the complaint away as normal acclimatisation without checking, because 'it doesn't sound natural' can also be a genuine sign of an overly aggressive setting. If the fitting checks out, the honest, useful thing to do is explain the adjustment period clearly, suggest working up wearing time gradually in easier listening situations first, and make sure they know I'll keep checking in rather than leaving them to push through alone."
+    },
+    "commonMistakes": [
+      "Assuming the complaint is always just normal adjustment without re-checking the fitting",
+      "Dismissing the patient's frustration instead of validating it",
+      "Not offering a concrete plan going forward, like a gradual wear schedule"
+    ],
+    "followUps": ["How would you tell the difference between normal acclimatisation and a fitting that's actually wrong?"]
+  },
+  {
+    "id": "prog-audiology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Anxious parents after a failed newborn screen",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["pediatric", "counselling", "hypothetical"],
+    "question": "A newborn fails their initial hearing screening, but the parents seem anxious and are inclined to just wait and see rather than come back for the follow-up test. How would you approach that conversation?",
+    "lookingFor": "Empathetic communication balanced with clear, honest urgency about early diagnosis, without resorting to scare tactics.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the parents' anxiety as understandable rather than something to override",
+        "Explain, without alarmism, that a failed initial screen is common and often not permanent hearing loss, but follow-up is what protects the child if it is",
+        "Make the next step as easy as possible rather than just repeating the recommendation"
+      ],
+      "modelAnswer": "I'd want to start by acknowledging that their anxiety makes complete sense, nobody wants to hear their newborn might have a hearing problem, and I think naming that first would help more than diving straight into clinical facts. Then I'd explain honestly that a lot of babies who don't pass the first screen turn out to have completely normal hearing, sometimes it's just fluid or positioning during the test, but the only way to know for sure, and to catch it early if there really is something there, is the follow-up test. I'd try to make the actual next step as easy as possible for them, whether that's helping schedule it or explaining exactly what to expect, because what looks like resistance is often really just fear, and reducing the fear usually does more than repeating the recommendation louder."
+    },
+    "commonMistakes": [
+      "Using fear or worst-case scenarios to pressure the parents into compliance",
+      "Dismissing their anxiety instead of acknowledging it",
+      "Not giving a concrete, low-friction next step"
+    ],
+    "followUps": ["What would you say if the parents still refused the follow-up after this conversation?"]
+  },
+  {
+    "id": "prog-audiology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Sudden sensorineural hearing loss urgency",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["emergency", "diagnosis", "hypothetical"],
+    "question": "A patient calls saying they woke up yesterday with sudden, significant hearing loss in one ear. Why might that be treated as more urgent than a typical hearing complaint, and what would you want to happen next?",
+    "lookingFor": "Awareness that sudden sensorineural hearing loss is a time-sensitive otologic emergency requiring prompt referral, not routine scheduling.",
+    "idealAnswer": {
+      "bullets": [
+        "Sudden sensorineural hearing loss is an otologic emergency because early treatment, often steroids, works far better within the first couple of weeks",
+        "The appropriate response is prompt referral to an ENT or physician, not a routine audiology appointment weeks later",
+        "Recognise it can occasionally signal something more serious and shouldn't be waved off as ordinary age-related change"
+      ],
+      "modelAnswer": "Sudden sensorineural hearing loss is treated as a genuine emergency because the evidence suggests treatments like steroids work far better the sooner they're given, often within about two weeks of onset, so any delay can mean permanently losing the chance to recover hearing that might otherwise have come back. If someone called me describing that, I wouldn't slot them into a normal routine appointment, I'd want them seen urgently, ideally by an ENT physician the same day or the next, both to start treatment and rule out anything more serious behind it. It's a good reminder that not every hearing complaint moves at the same pace, most things in audiology can wait a couple of weeks for an appointment, but this specific presentation genuinely can't."
+    },
+    "commonMistakes": [
+      "Treating it like a routine hearing complaint that can wait for a normal appointment slot",
+      "Not knowing that early steroid treatment is time-sensitive",
+      "Failing to recognise it needs medical, not just audiological, referral"
+    ],
+    "followUps": ["What might make you suspect the cause is something other than typical sudden sensorineural hearing loss?"]
+  },
+  {
+    "id": "prog-audiology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Personal listening devices and teen hearing loss",
+    "program": "Audiology",
+    "difficulty": "medium",
+    "tags": ["noise", "pediatric", "hypothetical"],
+    "question": "A teenager keeps coming back with small but real shifts in their hearing thresholds, and you suspect it's from how loudly and often they use earbuds. How would you handle that beyond just noting it in the chart?",
+    "lookingFor": "Proactive, non-judgmental patient education and a holistic approach rather than a purely clinical, one-off intervention.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the pattern early rather than waiting for a larger, harder-to-reverse shift",
+        "Approach the conversation without shaming the teenager, focusing on practical changes like volume limits and listening breaks",
+        "Track the trend across visits and consider involving parents thoughtfully, rather than treating each visit in isolation"
+      ],
+      "modelAnswer": "I wouldn't just note the shift and move on, because a small change now can be an early warning that adds up over years into something much harder to reverse, so I'd want to flag the trend to the patient directly. I'd try not to lecture a teenager about something basically everyone their age does, telling them to just stop using earbuds isn't realistic, so I'd focus on practical changes instead, like using the volume-limiting features already built into most phones, taking listening breaks, or using noise-cancelling earbuds so they're not cranking the volume up just to beat background noise. I'd also want to track it over repeat visits rather than treating each appointment as a one-off, because it's really the trend that tells you whether the advice is actually working."
+    },
+    "commonMistakes": [
+      "Only recording the data without acting on the pattern",
+      "Being preachy or unrealistic, like telling a teen to simply stop using earbuds",
+      "Treating each visit as isolated instead of tracking the trend"
+    ],
+    "followUps": ["What's one specific, realistic piece of advice you'd give that a teenager would actually follow?"]
+  },
+  {
+    "id": "prog-audiology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetic counselling and hearing loss",
+    "program": "Audiology",
+    "difficulty": "hard",
+    "tags": ["genetics", "pediatric", "counselling"],
+    "question": "Genetic testing can now identify a specific cause for a lot of childhood hearing loss. If a family asked you what a genetic diagnosis would actually change for their child, what would you tell them?",
+    "lookingFor": "Understanding of the practical and emotional value of a genetic diagnosis beyond just naming a cause, and honesty about its limits.",
+    "idealAnswer": {
+      "bullets": [
+        "A genetic diagnosis can inform prognosis, since some genetic causes predict progressive loss and others predict stable loss",
+        "It can guide management, such as indicating whether cochlear implantation is likely to be very effective, or flagging associated syndromic features",
+        "It has real value beyond treatment too, ending a diagnostic search, informing family planning, and connecting families to support communities"
+      ],
+      "modelAnswer": "I'd explain that a genetic diagnosis isn't just a label, it can change how we manage things, because some genetic causes are known to be progressive, so we'd monitor more closely, while others predict stable hearing, or predict that a cochlear implant is likely to work particularly well, so it shapes real decisions rather than just satisfying curiosity. I'd also be honest that it doesn't change the hearing loss itself, and for some genes we still don't know much about what to expect. But I'd tell them it often matters just as much for the family's peace of mind and future planning, having an actual answer after searching for one, understanding the chances for future children, and sometimes connecting with other families who share that specific diagnosis, and those things are genuinely valuable even before you get to the clinical management side."
+    },
+    "commonMistakes": [
+      "Treating a genetic diagnosis as purely academic with no practical impact",
+      "Overpromising that genetic testing always changes treatment",
+      "Ignoring the emotional and family-planning value of a diagnosis"
+    ],
+    "followUps": ["Would you handle the conversation differently if the test came back with no identifiable cause at all?"]
+  }
+]

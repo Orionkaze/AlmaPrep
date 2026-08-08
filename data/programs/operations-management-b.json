@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-operations-management-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Little's Law",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["littles-law", "queuing", "fundamentals"],
+    "question": "Little's Law says the average number of items in a process equals the arrival rate multiplied by the average time each item spends in the process. Why does that relationship hold, and why is it actually useful to an operations manager?",
+    "lookingFor": "Correct grasp of the relationship between work-in-process, throughput, and flow time, plus a real sense of why it's a practical diagnostic tool, not just a formula.",
+    "idealAnswer": {
+      "bullets": [
+        "State the relationship, WIP equals throughput multiplied by flow time, and note it holds for almost any stable process regardless of its internal detail",
+        "Explain why that's powerful: if you can measure two of the three variables, you can infer the third without ever directly observing it",
+        "Give a practical use, such as estimating how long a patient will wait just from bed count and admission rate"
+      ],
+      "modelAnswer": "The relationship holds because if items arrive and leave at a steady average rate, the number sitting in the system at any moment has to be a direct function of how long each one stays, so faster arrivals or longer stays both mean more items in process at once. What I find useful about it is that it works no matter how messy or complicated the actual process is inside, which means you don't need to fully understand a system to reason about it. A hospital could use it to estimate average patient stay just from bed occupancy and admission rate, without tracking a single patient's journey directly, which is a surprisingly cheap way to get real insight."
+    },
+    "commonMistakes": [
+      "Reciting the formula without explaining why it holds",
+      "Missing that it applies to almost any stable process, not just factories",
+      "Giving no concrete example of how it's actually used"
+    ],
+    "followUps": ["If a manager wanted to reduce WIP, would they focus on arrival rate or flow time, and why?"]
+  },
+  {
+    "id": "prog-operations-management-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Push versus pull production",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["push-pull", "kanban", "toyota"],
+    "question": "What's the practical difference between a push system and a pull system, and why did Toyota favour pull?",
+    "lookingFor": "Clear grasp of forecast-driven versus demand-triggered production, and the specific waste pull is designed to avoid.",
+    "idealAnswer": {
+      "bullets": [
+        "Define push as producing to a forecast ahead of actual orders, and pull as producing only in response to a real downstream demand signal",
+        "Explain Toyota's reasoning, that pull ties production to actual consumption and avoids building inventory nobody has asked for yet",
+        "Note the trade-off, pull needs relatively stable, predictable demand or the whole chain struggles to keep up with sudden swings"
+      ],
+      "modelAnswer": "A push system makes a batch based on what it expects to sell, while a pull system only makes the next unit once a signal, like an empty kanban card, shows that one has actually been used downstream. Toyota favoured pull because forecasts are always somewhat wrong, and push systems tend to quietly build up excess inventory to cover that uncertainty, which is exactly the kind of waste lean is built to eliminate. The catch is that pull works best when demand is fairly steady, since a genuine demand spike can outrun a system that's deliberately holding very little buffer stock."
+    },
+    "commonMistakes": [
+      "Describing pull as simply 'making less stuff' with no mechanism",
+      "Not explaining the specific waste push creates",
+      "Ignoring that pull struggles with volatile demand"
+    ],
+    "followUps": ["Would you expect a hospital's blood bank to run push or pull, and why?"]
+  },
+  {
+    "id": "prog-operations-management-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of the EOQ model",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["eoq", "inventory", "model-limits"],
+    "question": "The economic order quantity model assumes constant, known demand and a fixed lead time. What happens to its usefulness once a business actually faces volatile, unpredictable demand?",
+    "lookingFor": "Understanding that EOQ is a simplified benchmark, and awareness of what has to be added or replaced when its assumptions break down.",
+    "idealAnswer": {
+      "bullets": [
+        "State what EOQ actually optimises, the order quantity that minimises total ordering and holding cost, under an assumption of certainty",
+        "Explain that under volatile demand a single fixed reorder quantity no longer reliably prevents stockouts or excess stock",
+        "Describe what's added in practice, such as safety stock, a dynamic reorder point, or moving to periodic review with demand forecasting built in"
+      ],
+      "modelAnswer": "EOQ gives you the order size that balances the cost of ordering too often against the cost of holding too much, but it only works cleanly because it assumes demand is steady and known in advance. Once demand actually swings around, that fixed quantity stops being safe, because the model has no way to represent the risk of running out during an unexpected spike. In practice businesses still use EOQ as a rough benchmark, but they layer safety stock and a dynamically adjusted reorder point on top, or move to a review system that reacts to real demand signals instead of a single static number."
+    },
+    "commonMistakes": [
+      "Treating EOQ as if it's still literally correct under uncertainty",
+      "Dismissing EOQ as useless rather than explaining its role as a benchmark",
+      "Not naming a concrete adjustment like safety stock"
+    ],
+    "followUps": ["How would you decide how much safety stock is enough?"]
+  },
+  {
+    "id": "prog-operations-management-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Perishability of service capacity",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["services", "capacity", "perishability"],
+    "question": "Why is capacity in a hotel or an airline seat considered perishable, and what does that force operations managers to do differently compared to manufacturing?",
+    "lookingFor": "Correct understanding that unsold service capacity is lost forever, and awareness of the specific tools that response requires.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that an empty seat or room at departure or midnight can't be stored and sold later, unlike a physical product",
+        "Contrast this with manufacturing, where unsold output can sit in inventory until demand arrives",
+        "Name the tools this forces, such as dynamic pricing and overbooking, to capture as much value from fixed capacity as possible before it disappears"
+      ],
+      "modelAnswer": "A hotel room that goes unsold tonight can't be put on a shelf and sold tomorrow, the revenue from that exact room-night is simply gone once the day passes, which is what makes it perishable. A factory facing the same demand uncertainty can just build extra units in a quiet period and hold them as inventory until someone buys them. Because service capacity can't be banked that way, operators lean on tools like dynamic pricing to shift demand into empty slots and overbooking to guard against no-shows, both of which are really just ways of squeezing as much value as possible out of capacity before it expires."
+    },
+    "commonMistakes": [
+      "Confusing perishability with the physical product itself spoiling",
+      "Not contrasting it with manufacturing's ability to hold inventory",
+      "Naming no concrete operational response"
+    ],
+    "followUps": ["What's the risk if a hotel overbooks too aggressively?"]
+  },
+  {
+    "id": "prog-operations-management-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Revenue and yield management",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["yield-management", "pricing", "services"],
+    "question": "Airlines change ticket prices constantly for the same seat depending on when you book. What operational logic is behind that, and what's the risk if they get it wrong?",
+    "lookingFor": "Understanding of yield management as allocating perishable capacity across demand segments to maximise revenue, plus awareness of the failure modes on both sides.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that each seat's opportunity cost changes as departure nears, so price is used to allocate scarce capacity to whoever values it most at that moment",
+        "Note the risk of underpricing early, selling cheap seats to price-sensitive travellers and having none left for high-value late bookings",
+        "Note the opposite risk, holding seats back too aggressively and flying with empty seats that earned nothing at all"
+      ],
+      "modelAnswer": "The logic is that a seat sold today to a leisure traveller and the same seat sold tomorrow to a business traveller booking last-minute aren't really the same product, since willingness to pay differs hugely by how close to departure it is. Pricing dynamically lets the airline capture more of that variation instead of charging one flat fare that leaves money on the table either way. If they get it wrong by underestimating late demand, they sell too many cheap seats early and have nothing left for the high-margin bookings, but if they hold back too many seats expecting demand that never shows up, the plane flies with empty seats that could have earned something."
+    },
+    "commonMistakes": [
+      "Describing it as simple price gouging with no operational logic",
+      "Only naming one side of the risk, not both",
+      "Not connecting it to the perishability of the seat"
+    ],
+    "followUps": ["How is overbooking connected to this same logic?"]
+  },
+  {
+    "id": "prog-operations-management-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Applying DMAIC to a real defect",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["six-sigma", "dmaic", "problem-solving"],
+    "question": "A component defect rate has crept up on a production line and nobody knows why. Walk me through how a DMAIC approach would tackle it.",
+    "lookingFor": "Structured application of Define, Measure, Analyse, Improve, Control, with real reasoning at each step rather than reciting the acronym.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the problem precisely, what the defect actually is and what target rate would count as fixed, before touching the process",
+        "Measure the current state with real data and confirm the measurement system itself is trustworthy, then analyse for root cause rather than guessing",
+        "Improve with a tested, evidence-based change, and control it afterward with ongoing monitoring so the defect rate doesn't quietly drift back up"
+      ],
+      "modelAnswer": "I'd start by defining exactly what counts as this defect and what target rate we're actually trying to hit, because 'it's gotten worse' isn't specific enough to fix. Then I'd measure the current rate properly, including checking that whatever's measuring the defects is itself reliable, since a lot of apparent problems turn out to be measurement noise. From there I'd analyse for the actual root cause using the data, maybe a fishbone diagram or looking for correlation with a specific shift or supplier batch, rather than jumping straight to a fix. Once a change is tested and shown to work, I'd want a control step, like a control chart, so we'd catch it immediately if the defect rate started creeping up again instead of finding out three months later."
+    },
+    "commonMistakes": [
+      "Naming the five letters with no actual reasoning at each stage",
+      "Jumping to a fix before analysing root cause",
+      "No mention of a control step to prevent recurrence"
+    ],
+    "followUps": ["What would make you suspect the measurement system itself, rather than the process, is the problem?"]
+  },
+  {
+    "id": "prog-operations-management-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Statistical process control beyond the limits",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["spc", "control-charts", "variation"],
+    "question": "A machine's output stays within its usual control limits, but someone insists the process still isn't in control. Is that possible, and what would make you agree with them?",
+    "lookingFor": "Deeper SPC understanding, that non-random patterns within limits can signal an emerging special cause even without a limit breach.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that control charts flag points beyond limits as an obvious special cause, but that's not the only signal worth watching",
+        "Describe a non-random pattern within the limits, such as a run of points steadily trending in one direction or all falling on one side of the centre line, as a sign something has genuinely shifted",
+        "Distinguish this from being within spec, being statistically 'in control' just means the variation is stable and predictable, not that it's good enough for the customer"
+      ],
+      "modelAnswer": "Yes, it's genuinely possible, because a control chart isn't just checking whether points cross a line, it's checking whether the pattern of points looks random. If I saw seven or eight points in a row steadily creeping upward, even while every single one stayed inside the limits, that's not the kind of pattern pure random variation produces, and it usually means something in the process has started to shift, like a tool slowly wearing down. I'd also be careful not to confuse 'in control' with 'good enough,' since a process can be perfectly stable and predictable while still producing output outside what the customer actually needs."
+    },
+    "commonMistakes": [
+      "Assuming staying within limits automatically means the process is fine",
+      "Not naming a specific non-random pattern",
+      "Conflating statistical control with meeting the customer's specification"
+    ],
+    "followUps": ["What would you do differently if the process were out of statistical control versus just out of spec?"]
+  },
+  {
+    "id": "prog-operations-management-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Exploit before elevate in theory of constraints",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["theory-of-constraints", "bottleneck", "capacity"],
+    "question": "The theory of constraints says you should exploit a bottleneck before you elevate it by adding capacity. What does that actually mean in practice, and why not just add capacity straight away?",
+    "lookingFor": "Correct understanding of the exploit, subordinate, elevate sequence, and the practical reasoning for not jumping straight to investment.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain exploiting the constraint means squeezing every bit of output from it without spending money, such as eliminating its downtime and never letting it sit idle or work on low-priority items",
+        "Explain subordinating the rest of the process to the bottleneck's pace before touching capacity",
+        "Give the reasoning for not elevating immediately, capacity investment is expensive and slow, and a bottleneck is often underused due to scheduling or setup waste rather than a true physical limit"
+      ],
+      "modelAnswer": "Exploiting the bottleneck means making sure the constrained step never sits idle, never gets starved of input, and is never wasted on low-priority work, essentially getting everything possible out of the capacity you already have for free. Only once that's genuinely maxed out does it make sense to elevate, meaning spend real money on more capacity there. The reason you don't jump straight to buying more capacity is that a lot of bottlenecks are underused because of bad scheduling, changeovers, or upstream starvation, not because the machine is physically incapable of more, so you'd be paying for capacity you might not have actually needed."
+    },
+    "commonMistakes": [
+      "Treating 'exploit' as if it means overworking the bottleneck harder rather than removing waste around it",
+      "Skipping straight to 'add more machines' as the answer",
+      "Not explaining why elevating first can waste money"
+    ],
+    "followUps": ["What's a realistic example of a bottleneck being underused due to scheduling rather than true capacity limits?"]
+  },
+  {
+    "id": "prog-operations-management-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Takt time and line balancing",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["takt-time", "line-balancing", "assembly"],
+    "question": "What is takt time, and how would you use it to decide how many workstations an assembly line needs?",
+    "lookingFor": "Correct definition of takt time as the pace set by demand, and a working grasp of how it's used to size and balance a line.",
+    "idealAnswer": {
+      "bullets": [
+        "Define takt time as available production time divided by customer demand rate, the pace the line must match to meet demand exactly",
+        "Explain that no single workstation's task time can exceed takt time or the whole line falls behind",
+        "Describe using total work content divided by takt time to estimate the number of stations needed, then balancing tasks evenly across them"
+      ],
+      "modelAnswer": "Takt time is basically how often a finished unit needs to come off the line to keep up with demand, worked out by dividing the time available in a shift by how many units customers actually need in that shift. Once I know that number, every workstation's task has to fit within it, because if any single station takes longer than takt time, the whole line starts backing up behind it. To size the line, I'd add up all the work that needs doing on one unit and divide by takt time to get a rough number of stations, then actually balance the specific tasks across them so no station is left doing far more or far less work than the others."
+    },
+    "commonMistakes": [
+      "Confusing takt time with cycle time or processing time",
+      "Not connecting it to demand rate specifically",
+      "Giving no method for estimating the number of stations"
+    ],
+    "followUps": ["What happens to takt time if demand suddenly doubles?"]
+  },
+  {
+    "id": "prog-operations-management-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "The bullwhip effect",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["bullwhip-effect", "supply-chain", "forecasting"],
+    "question": "Why does a small change in customer demand at the retail end of a supply chain often turn into wild swings in orders further up the chain, at the manufacturer?",
+    "lookingFor": "Correct explanation of the bullwhip effect with real causes named, plus at least one plausible mitigation.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the bullwhip effect, small demand fluctuations amplifying into larger swings as they pass upstream through each link in the chain",
+        "Name real causes, such as order batching, promotional price swings, rationing behaviour during shortages, and each link forecasting off the order it receives rather than true end-customer demand",
+        "Suggest a mitigation, such as sharing real point-of-sale data upstream so every link forecasts from the same real signal"
+      ],
+      "modelAnswer": "Each link in the chain doesn't actually see real customer demand, it only sees the order placed by the link just below it, and that order already has noise baked in from batching, promotions, or a retailer overreacting to a stockout. Because every stage forecasts and orders based on that already-distorted signal rather than the true underlying demand, small genuine changes get amplified again and again as they move upstream, which is why a manufacturer can see huge order swings even when actual consumer demand barely moved. The fix that actually addresses the root cause is sharing real point-of-sale data across the whole chain, so everyone is reacting to the same true signal instead of amplifying each other's guesses."
+    },
+    "commonMistakes": [
+      "Describing the effect without explaining why it happens",
+      "Naming only one cause instead of the several that compound",
+      "Proposing a fix that doesn't actually address information distortion"
+    ],
+    "followUps": ["Why might a supplier's own promotional discounts make the bullwhip effect worse?"]
+  },
+  {
+    "id": "prog-operations-management-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Newsvendor-style perishable inventory decision",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["inventory", "case-reasoning", "perishability"],
+    "question": "A flower shop has to decide every morning how many roses to order, knowing unsold ones are worthless by evening but running out means turning away customers. How would you think about the right quantity to order?",
+    "lookingFor": "Recognition of the underage versus overage cost trade-off in a single-period stocking decision, without needing to name the newsvendor model explicitly.",
+    "idealAnswer": {
+      "bullets": [
+        "Frame it as balancing the cost of ordering too many, wasted roses, against the cost of ordering too few, a lost sale and disappointed customer",
+        "Reason that the right quantity should lean higher when a stockout is relatively more costly than a leftover flower, and lower when the reverse is true",
+        "Note that you'd want the actual distribution of past daily demand, not just the average, to set a sensible order quantity"
+      ],
+      "modelAnswer": "This is really a trade-off between two different kinds of cost, wasted stock if I order too many roses and they die unsold, versus a lost sale and an unhappy customer if I order too few. If a lost sale is much more costly to the business than a wasted flower, say because that customer might not come back, I'd deliberately lean toward ordering a bit more than the average day needs, and the reverse if leftover stock is expensive relative to a missed sale. I'd also want to look at how much daily demand actually varies day to day rather than just the average, because a wildly unpredictable demand pattern needs a different order quantity than a steady one even if the average is identical."
+    },
+    "commonMistakes": [
+      "Suggesting you should simply order the historical average every day",
+      "Only considering the cost of waste, not the cost of a stockout, or vice versa",
+      "Ignoring that demand variability matters, not just the average"
+    ],
+    "followUps": ["How would a big local event, like a wedding fair, change how you'd order that morning?"]
+  },
+  {
+    "id": "prog-operations-management-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual sourcing and risk pooling",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["sourcing", "risk", "supply-chain"],
+    "question": "Why might a company deliberately use two suppliers for the same critical part, even though a single supplier could offer a better price?",
+    "lookingFor": "Understanding of the trade-off between cost efficiency and supply risk, with a sense that dual sourcing needn't mean a rigid fifty-fifty split.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that single sourcing usually wins on price and relationship depth but concentrates all the risk in one place",
+        "Explain that dual sourcing sacrifices some of that price advantage in exchange for resilience if one supplier fails, plus negotiating leverage",
+        "Note that in practice it's often a primary supplier for most volume plus a smaller qualified backup, rather than an even split"
+      ],
+      "modelAnswer": "A single supplier can usually offer a sharper price because they get all your volume and a deeper relationship, but that also means if anything goes wrong with them, a fire, a strike, a quality failure, your whole production stops with no backup. Using two suppliers gives up some of that price advantage, but it means a failure at one supplier doesn't take down the entire line, and it also gives you leverage in price negotiations since neither supplier has you fully captive. In practice this usually isn't a clean fifty-fifty split either, it's often a main supplier for most of the volume and a smaller, qualified backup kept warm in case something goes wrong."
+    },
+    "commonMistakes": [
+      "Assuming dual sourcing always means an equal split",
+      "Ignoring the real cost disadvantage of not consolidating volume with one supplier",
+      "Only mentioning risk without the negotiating leverage angle"
+    ],
+    "followUps": ["How would you decide which parts are worth dual sourcing and which aren't?"]
+  },
+  {
+    "id": "prog-operations-management-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Make versus buy decisions",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["make-vs-buy", "outsourcing", "strategy"],
+    "question": "How would you decide whether a company should manufacture a part itself or buy it from an outside supplier?",
+    "lookingFor": "Understanding that make-versus-buy is a strategic decision, not purely a cost comparison, and awareness of the key non-cost factors.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with the direct cost comparison, in-house fixed and variable cost against the supplier's price, but note it can't stop there",
+        "Weigh strategic importance, whether the part is close to the company's core competitive advantage or intellectual property, which argues for keeping it in-house",
+        "Consider control and dependency, quality control, capacity flexibility, and the risk of becoming reliant on an outside party for something critical"
+      ],
+      "modelAnswer": "I'd start with the numbers, comparing what it actually costs to make the part ourselves against what a supplier charges, including the fixed cost of any equipment we'd need. But I don't think the decision should stop there, because if the part is close to what actually makes the product special, like a proprietary component, keeping it in-house protects both quality control and the intellectual property behind it, even if it costs slightly more. On the other hand, for something generic that any supplier could produce reliably, buying it frees up capital and management attention for the things that actually differentiate the business, so the real question is less 'which is cheaper' and more 'which parts are worth controlling directly.'"
+    },
+    "commonMistakes": [
+      "Treating it as a pure cost comparison with no strategic dimension",
+      "Ignoring dependency risk from outsourcing something critical",
+      "Giving a generic answer with no example of what kind of part belongs on each side"
+    ],
+    "followUps": ["What would make you reverse a make decision back to buy a few years later?"]
+  },
+  {
+    "id": "prog-operations-management-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Single queue versus multiple queues",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["queuing", "variance", "customer-experience"],
+    "question": "Why do most banks and airports now use a single winding queue feeding multiple counters, instead of a separate line for each counter?",
+    "lookingFor": "Understanding that pooling reduces variance in wait time even when total service capacity is unchanged, plus fairness benefits.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a single queue removes the risk of picking a slower line, since everyone feeds into the same order regardless of which counter frees up",
+        "Note the statistical point, pooling variability across servers into one queue reduces average and worst-case wait time compared to the same total capacity split into separate lines",
+        "Mention the fairness benefit, nobody watches a person who arrived after them get served first because they picked a faster line"
+      ],
+      "modelAnswer": "With separate lines, one line can randomly run slow because of a complicated transaction while another sits idle, and customers have no way to know which line to pick, so some people end up waiting far longer purely by bad luck. A single line pools everyone's variability together, so as soon as any counter frees up, whoever is next in line gets it, which statistically brings down both the average wait and the worst-case wait even though the total serving capacity hasn't changed at all. It also just feels fairer, since nobody has to watch someone who arrived later get served first because they happened to queue at the quicker counter."
+    },
+    "commonMistakes": [
+      "Assuming total capacity is what changed, rather than variance",
+      "Only mentioning fairness without the statistical wait-time benefit",
+      "Claiming a single line is always better with no acknowledgement of space or design cost"
+    ],
+    "followUps": ["Can you think of a situation where separate lines might still make more sense?"]
+  },
+  {
+    "id": "prog-operations-management-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Reverse logistics and e-commerce returns",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["reverse-logistics", "e-commerce", "current-development"],
+    "question": "Online retail returns have become a huge operational cost. Why are returns so much harder to manage than the original delivery, and how have retailers responded?",
+    "lookingFor": "Understanding of why reverse logistics is structurally harder than forward logistics, plus awareness of real, current retailer responses.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why returns are harder, items come back in unpredictable condition, unpredictable timing, and unpredictable location, unlike a planned forward shipment",
+        "Name the real costs involved, return shipping, inspection and grading, restocking or liquidation, and the margin already lost",
+        "Give a real response, such as letting customers keep low-value items rather than pay to process the return, or consolidating dedicated return centres"
+      ],
+      "modelAnswer": "A forward delivery is planned end to end, the retailer knows exactly what's shipping, in what condition, and when, but a return arrives whenever the customer feels like sending it, in whatever condition it's in, often without proper packaging, which makes it much harder to plan capacity around. On top of the shipping cost back, the item has to be inspected and graded before anyone even knows if it can be resold at full price, discounted, or written off entirely, so the actual processing cost per item is often higher than people assume. Some retailers have responded by simply letting customers keep certain low-value returns instead of paying to ship and process them, since it's genuinely cheaper than running the reverse logistics for a five-dollar item."
+    },
+    "commonMistakes": [
+      "Treating returns as just 'delivery in reverse' with the same cost structure",
+      "Naming only shipping cost and ignoring inspection or grading",
+      "Giving no real example of how retailers have actually responded"
+    ],
+    "followUps": ["Do you think 'keep it, don't return it' policies are sustainable long term?"]
+  },
+  {
+    "id": "prog-operations-management-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Servitization",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["servitization", "business-model", "operations-shift"],
+    "question": "Rolls-Royce sells jet engine power by the hour instead of selling engines outright to airlines. What does that shift actually do to how they have to run operations?",
+    "lookingFor": "Understanding of servitization as realigning incentives and operational focus toward uptime and reliability rather than the point of sale.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that tying revenue to actual usage or uptime shifts the incentive fully toward reliability over the product's whole life, not just quality at the point of sale",
+        "Note this requires investing in things like sensors, telemetry, and predictive maintenance to catch problems before they cause downtime",
+        "Point out the risk shift, engine downtime now directly costs the seller revenue, not just the customer, so it changes who bears operational risk"
+      ],
+      "modelAnswer": "Once revenue depends on how many hours the engine actually flies rather than a one-time sale, Rolls-Royce's incentives change completely, because every hour of unplanned downtime is now their own lost revenue, not just the airline's problem. That pushes operations toward things like continuous sensor monitoring and predictive maintenance, catching a part that's likely to fail before it actually causes an unscheduled grounding, rather than just meeting a quality bar when the engine first ships. It also means the risk of an unreliable engine has genuinely moved from the customer's balance sheet onto the manufacturer's, which is probably the whole point, it forces them to actually build for long-term reliability rather than just hitting a delivery spec."
+    },
+    "commonMistakes": [
+      "Describing it as just a pricing change with no operational consequence",
+      "Not mentioning predictive maintenance or telemetry",
+      "Missing that risk itself shifts to the seller"
+    ],
+    "followUps": ["What kind of business might be badly suited to a servitization model like this?"]
+  },
+  {
+    "id": "prog-operations-management-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Reshoring and friend-shoring debate",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["reshoring", "geopolitics", "current-development"],
+    "question": "A number of companies have recently announced moving manufacturing closer to home, or to politically friendlier countries, even where labour costs are higher. What's driving that, and do you think it will stick?",
+    "lookingFor": "Awareness of current tariff and geopolitical pressures, plus a balanced, reasoned view on whether the trend is durable rather than a confident guess.",
+    "idealAnswer": {
+      "bullets": [
+        "Name real drivers, tariffs and trade tension, geopolitical risk of depending on a single region, rising freight costs, and a post-pandemic priority on resilience over pure cost",
+        "Note that automation is narrowing the labour-cost gap that used to make distant offshoring so compelling, making reshoring more financially viable than it once was",
+        "Give a balanced view on durability, likely partial and concentrated in strategically sensitive goods rather than a full reversal of globalisation, since cost pressure hasn't gone away"
+      ],
+      "modelAnswer": "A lot of this comes down to tariffs and geopolitical risk making a single distant supplier feel less like a cost saving and more like a liability, especially after the pandemic showed how badly a regional shock can ripple through a supply chain. What makes it more financially realistic now than it might have been a decade ago is that automation has narrowed the labour cost gap, so reshoring doesn't sting as much on the wage line as it used to. I don't think this means globalisation reverses wholesale though, I'd expect it to concentrate in strategically sensitive goods like semiconductors or defence-related parts, while genuinely commodity products stay wherever it's cheapest, because the underlying cost pressure that drove offshoring in the first place hasn't actually disappeared."
+    },
+    "commonMistakes": [
+      "Giving a vague answer about 'bringing jobs back' with no real driver named",
+      "Predicting total reversal of globalisation with no nuance",
+      "Not connecting automation to why reshoring is more viable now"
+    ],
+    "followUps": ["Which kinds of products do you think are least likely to ever be reshored?"]
+  },
+  {
+    "id": "prog-operations-management-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI in supply chain planning",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["ai", "supply-chain", "current-development"],
+    "question": "There's a lot of talk about generative AI being used for supply chain planning and control towers. What do you think it realistically adds beyond the forecasting and optimisation tools operations has already used for decades?",
+    "lookingFor": "A balanced, non-hyped view distinguishing traditional operations research tools from what generative AI genuinely adds, plus healthy scepticism about its limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish traditional forecasting and optimisation tools, which are good at crunching structured numbers within a defined model, from what generative AI adds",
+        "Identify the real addition, a natural language interface for quickly exploring what-if scenarios and pulling insight from messy unstructured sources like supplier emails or news",
+        "Show appropriate scepticism, it doesn't replace the underlying operations research maths, and it can oversimplify or get a complex trade-off wrong if not checked against real data"
+      ],
+      "modelAnswer": "The actual optimisation, working out the best shipping route or reorder quantity, has been done well by operations research tools for decades, so I don't think generative AI is replacing that math. What it seems to genuinely add is speed and accessibility, letting a planner ask a plain-language question like what happens if this supplier goes down for two weeks and get a fast synthesis, including pulling in messy information like a news report or a supplier's email, that a traditional dashboard wouldn't touch. I'd stay a bit cautious about it though, because it can sound confident while oversimplifying a genuinely complex trade-off, so I'd want any output checked against the real underlying data before anyone actually acts on it."
+    },
+    "commonMistakes": [
+      "Treating generative AI as if it invents the underlying optimisation itself",
+      "Pure hype with no acknowledgement of its limits",
+      "Giving a vague answer with no concrete example of what it adds"
+    ],
+    "followUps": ["What's a decision you'd never want to hand fully to an AI tool without a human check?"]
+  },
+  {
+    "id": "prog-operations-management-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Circular economy in operations",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["sustainability", "circular-economy", "current-development"],
+    "question": "What does circular economy mean in an operations context, and what's the biggest practical barrier to actually running one?",
+    "lookingFor": "Correct definition beyond recycling as a slogan, plus a genuine, specific practical barrier rather than a vague statement about cost.",
+    "idealAnswer": {
+      "bullets": [
+        "Define circular economy as designing products and processes so materials are reused, remanufactured, or recycled back into production, rather than a linear take-make-dispose model",
+        "Give a concrete example, such as remanufacturing engines or a take-back scheme",
+        "Name a genuine practical barrier, reverse logistics and quality-grading of returned material is expensive and unpredictable, and virgin material is often still cheaper without regulation or a real price on waste"
+      ],
+      "modelAnswer": "A circular economy in operations means designing the whole system so materials keep flowing back in, through remanufacturing, refurbishment, or recycling, instead of a straight line from raw material to landfill, which is the default most industries were built around. A good example is engine remanufacturing, where a used engine is stripped, inspected, and rebuilt to as-new spec instead of scrapped. The real barrier isn't a lack of good intentions, it's that collecting used material back and grading its quality reliably is genuinely expensive and unpredictable, and without a real cost attached to waste or virgin material, it's often still just cheaper to make things from scratch, which is why circular models usually need either regulation or a strong brand reason to actually pencil out."
+    },
+    "commonMistakes": [
+      "Reducing circular economy to 'recycling more'",
+      "Naming no concrete example",
+      "Giving a vague barrier like 'it's expensive' with no explanation of why"
+    ],
+    "followUps": ["What would make virgin material stop being the cheaper default option?"]
+  },
+  {
+    "id": "prog-operations-management-b-020",
+    "category": "Ethics & Situational",
+    "subtopic": "Safety shortcut under deadline pressure",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety", "judgement"],
+    "question": "You're managing a production line and you're told to hit a big shipment deadline. Skipping one non-critical-looking safety inspection step would let you make it. What would you do?",
+    "lookingFor": "Structured ethical reasoning that resists treating 'non-critical-looking' as settled by deadline pressure, without freezing into indecision.",
+    "idealAnswer": {
+      "bullets": [
+        "Push back on the framing that a step someone under pressure has labelled 'non-critical' is actually safe to skip, since that judgement is exactly what pressure distorts",
+        "Look for a genuine faster-but-still-safe alternative before assuming it's a binary choice between the deadline and the inspection",
+        "Land on keeping the inspection and communicating the deadline risk transparently upward, rather than quietly cutting the corner"
+      ],
+      "modelAnswer": "My instinct is to be suspicious of my own judgement in that moment, because 'this one looks non-critical' is exactly the kind of thing pressure convinces you of right before something goes wrong. Before assuming it's a straight choice between the deadline and the inspection, I'd want to check whether there's a genuinely safe way to compress the timeline elsewhere, like reallocating people to the inspection itself. If there really is no safe alternative, I'd keep the inspection and go back to whoever set the deadline with an honest account of the risk, rather than quietly deciding on my own that it's fine to skip, because that's not really my call to make alone."
+    },
+    "commonMistakes": [
+      "Accepting 'non-critical-looking' at face value without questioning it",
+      "Treating it as a simple binary with no search for an alternative",
+      "Quietly skipping the step without escalating the risk transparently"
+    ],
+    "followUps": ["What would you do if your manager told you to skip it anyway?"]
+  },
+  {
+    "id": "prog-operations-management-b-021",
+    "category": "Ethics & Situational",
+    "subtopic": "Automation and job displacement",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "automation", "workforce"],
+    "question": "Introducing automation on a production line would improve quality and cut costs substantially, but it would also make a number of experienced workers' roles redundant. How should an operations manager weigh that decision?",
+    "lookingFor": "Balanced ethical reasoning that takes both the business case and the human impact seriously, rather than dismissing either side.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the business case is real and ignoring it isn't neutral either, since a company that falls behind competitively eventually risks everyone's job, not just some",
+        "Argue the decision itself can be defensible, but how it's carried out is where the ethics really lives",
+        "Name concrete responses that make the transition more responsible, such as transparent timelines, retraining, or redeployment rather than sudden dismissal"
+      ],
+      "modelAnswer": "I don't think the honest answer is to pretend the cost and quality case doesn't matter, because a company that refuses to modernise can end up putting far more jobs at risk later by simply losing competitively. But I don't think that settles the ethics of it either, because how the change is handled matters just as much as whether it happens, so I'd want a transparent timeline given to affected workers early, genuine retraining or redeployment options where roles exist elsewhere in the business, and honesty rather than false reassurance about what's actually changing. The decision to automate can be defensible, but treating the people affected as an afterthought instead of part of the plan is where I think it actually goes wrong."
+    },
+    "commonMistakes": [
+      "Dismissing the business case as irrelevant compared to worker impact",
+      "Dismissing the human impact as an unavoidable cost of progress",
+      "Giving no concrete idea of what a responsible rollout would look like"
+    ],
+    "followUps": ["Would your answer change if the company were struggling financially rather than simply trying to improve margins?"]
+  },
+  {
+    "id": "prog-operations-management-b-022",
+    "category": "Ethics & Situational",
+    "subtopic": "Post-shipment defect and recall decision",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "quality", "recall"],
+    "question": "After a product batch has already shipped to customers, quality testing turns up a defect that's unlikely to cause real harm but does breach the company's own spec. Do you recall it?",
+    "lookingFor": "Proportionate ethical reasoning that neither minimises the breach nor treats a full recall as automatically the only honest response.",
+    "idealAnswer": {
+      "bullets": [
+        "Resist minimising the breach just because harm seems unlikely, since 'unlikely' is not the same as 'impossible' and the spec exists for a reason",
+        "Weigh proportionality honestly, considering severity, likelihood, and whether a full recall itself might cause disproportionate harm like unnecessary panic or waste",
+        "Land on transparency as the non-negotiable part, customers and regulators deserve honest information even if the chosen response falls short of a full recall"
+      ],
+      "modelAnswer": "I wouldn't let 'unlikely to cause harm' quietly become 'so it doesn't matter,' because the spec exists precisely to define what an acceptable risk actually looks like, and that's not really a call I should make unilaterally just because a recall is expensive. At the same time, I don't think transparency automatically means a full recall is always the right response, since an unnecessarily dramatic recall for a genuinely low-risk issue could itself cause harm, like panic or wasted product, that's disproportionate to the actual defect. What I wouldn't compromise on is disclosure, I think customers and regulators deserve to know honestly what was found, even if the practical response ends up being a targeted fix or a monitored batch rather than a blanket recall."
+    },
+    "commonMistakes": [
+      "Deciding no action is needed purely because harm seems unlikely",
+      "Assuming a full recall is always the only honest option regardless of proportionality",
+      "Skipping disclosure to customers or regulators entirely"
+    ],
+    "followUps": ["Who inside the company should have the authority to make that final call?"]
+  },
+  {
+    "id": "prog-operations-management-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hospital emergency department flow",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["case-study", "healthcare", "bottleneck"],
+    "question": "A hospital's emergency department wait times have gotten worse even though they hired more doctors. If you were asked to figure out why, where would you start looking?",
+    "lookingFor": "Systems thinking that resists the obvious fix and considers downstream or upstream constraints, plus awareness that healthcare queues aren't first-come-first-served.",
+    "idealAnswer": {
+      "bullets": [
+        "Question the assumption that doctors were the actual constraint, and consider that the real limit might be downstream, such as beds being unavailable for admission",
+        "Propose mapping the whole patient journey stage by stage to find where time is genuinely being lost, rather than guessing",
+        "Note that an ER's queue isn't first-come-first-served, priority and triage rules change how the whole flow should be analysed"
+      ],
+      "modelAnswer": "My first instinct is that more doctors probably wasn't the actual constraint, so it's worth asking what's happening downstream, like whether patients who are ready to be admitted are stuck in the emergency department because there aren't enough hospital beds free, which would tie up ED capacity regardless of how many doctors are on shift. I'd want to actually time each stage a patient goes through, from arrival and triage to being seen, to tests, to either discharge or admission, rather than assuming the bottleneck is wherever it looks busiest. It also matters that an ER doesn't serve people in the order they arrived, since triage prioritises by severity, so any analysis has to account for that rather than treating it like a simple queue."
+    },
+    "commonMistakes": [
+      "Assuming more doctors should automatically fix a wait-time problem",
+      "Not proposing any way to actually locate where time is lost",
+      "Treating the ER like a simple first-come-first-served queue"
+    ],
+    "followUps": ["What data would you want to see first to test your hypothesis about beds?"]
+  },
+  {
+    "id": "prog-operations-management-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a no-warehouse delivery model",
+    "program": "Operations Management",
+    "difficulty": "medium",
+    "tags": ["cross-docking", "case-study", "logistics"],
+    "question": "A new grocery delivery startup wants to avoid holding any warehouse inventory of its own. How would operations need to be designed to make that work?",
+    "lookingFor": "Understanding of cross-docking logic, that avoiding storage shifts the burden onto timing and information precision, plus awareness of the fragility that creates.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain cross-docking, goods arriving from suppliers move almost straight onto outbound delivery vehicles without being stored",
+        "Identify that this depends on very tight synchronisation, needing demand to be known in advance and supplier lead times to be reliable, rather than needing warehouse space",
+        "Acknowledge the trade-off, it minimises holding cost but leaves the business fragile to any single delayed inbound shipment since there's no buffer stock to absorb it"
+      ],
+      "modelAnswer": "Without a warehouse, the model basically has to become cross-docking, where whatever arrives from a supplier moves almost immediately onto an outbound vehicle instead of sitting in storage, which means the whole system depends on tight timing rather than physical space. That really requires demand to be known well ahead of time, probably through pre-orders or a short fixed ordering window, and suppliers who reliably deliver exactly when promised, because there's no buffer to absorb a delay. The obvious trade-off is that this keeps holding costs very low, but it makes the whole business fragile to a single late supplier shipment, since there's genuinely nothing sitting in reserve to cover the gap."
+    },
+    "commonMistakes": [
+      "Describing a normal warehouse operation and just calling it 'no inventory'",
+      "Not identifying timing and demand visibility as the real requirement",
+      "Ignoring the fragility this design creates"
+    ],
+    "followUps": ["What would you do if one supplier's delivery was consistently a few hours late?"]
+  },
+  {
+    "id": "prog-operations-management-b-025",
+    "category": "Ethics & Situational",
+    "subtopic": "Cost versus carbon supplier choice",
+    "program": "Operations Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "sustainability", "sourcing"],
+    "question": "You're choosing a supplier for a key material. One is far cheaper but has a much higher carbon footprint, the other costs more but is far greener. As the person responsible for the decision, how would you approach it?",
+    "lookingFor": "Reasoned weighing of genuine cost pressure against reputational, regulatory, and long-term risk, without defaulting automatically to either price or ethics.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid treating it as purely a moral question or purely a financial one in isolation, and weigh genuine cost pressure against reputational and future regulatory risk like carbon pricing",
+        "Consider whether the choice is really binary, such as negotiating a phased switch or using the decision as leverage to push the cheaper supplier to improve",
+        "Land on a reasoned position rather than assuming price or sustainability should automatically win regardless of the actual numbers"
+      ],
+      "modelAnswer": "I wouldn't want to pretend the cost difference doesn't matter, since a business decision that ignores its own margins isn't actually sustainable either, but I also wouldn't want to treat the carbon footprint as someone else's problem once we know about it and are choosing to benefit from the lower price. Before deciding, I'd want to know whether it really has to be a straight either-or, for instance whether the cheaper supplier could be pushed toward a cleaner process over time as a condition of keeping the contract, which might get most of the cost benefit without locking in the worst of the footprint indefinitely. If it really does come down to a binary choice, I'd want to weigh the actual numbers, including future costs like carbon pricing or reputational risk, rather than deciding on instinct alone in either direction."
+    },
+    "commonMistakes": [
+      "Choosing purely on price with no consideration of long-term risk",
+      "Choosing purely on principle with no acknowledgement of real cost pressure",
+      "Treating it as a fixed binary with no exploration of a middle path"
+    ],
+    "followUps": ["How would your answer change if the company had made a public sustainability commitment?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-genetics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Genotype, phenotype and incomplete penetrance",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["genotype", "phenotype", "penetrance"],
+    "question": "Two people can carry the exact same disease-causing mutation and yet only one of them develops the disease. How would you explain that?",
+    "lookingFor": "Understanding that genotype does not guarantee phenotype, with correct use of penetrance, expressivity, and modifying factors.",
+    "idealAnswer": {
+      "bullets": [
+        "Define incomplete penetrance and variable expressivity clearly",
+        "Mention modifier genes, environmental factors, and stochastic developmental noise",
+        "Give or invent a concrete example rather than staying purely abstract"
+      ],
+      "modelAnswer": "That gap between genotype and outcome is what geneticists call incomplete penetrance, where carrying a mutation raises risk without guaranteeing disease. BRCA1 is a good example, a woman can carry the same mutation as her sister and never develop breast cancer because other genes, hormonal exposure, or just chance in cell division change the outcome. I find it a useful reminder that a genetic test gives you a probability, not a verdict, and that framing matters hugely for how results get communicated to patients."
+    },
+    "commonMistakes": [
+      "Treating the mutation as fully deterministic",
+      "Confusing penetrance with expressivity",
+      "Giving no real-world example to anchor the explanation"
+    ],
+    "followUps": ["How would you counsel a patient given this uncertainty?"]
+  },
+  {
+    "id": "prog-genetics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Epigenetics and identical twins",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["epigenetics", "twins", "gene-expression"],
+    "question": "Identical twins share essentially the same DNA sequence, so why can they end up with different disease risks or even different physical traits later in life?",
+    "lookingFor": "A clear grasp of epigenetic mechanisms as the explanation, not a vague appeal to 'environment'.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific mechanisms: DNA methylation, histone modification, chromatin remodelling",
+        "Explain that these change gene expression without altering the underlying sequence",
+        "Link accumulation of epigenetic differences to age, lifestyle, and exposure over time"
+      ],
+      "modelAnswer": "Same sequence does not mean same output, because which genes actually get switched on or off depends on epigenetic marks like DNA methylation and histone modification, not just the letters of the code. Twins start out with very similar epigenetic patterns, but different diets, smoking, stress, or even the womb environment can each nudge that pattern differently, and those changes accumulate over decades. That is part of why twin studies are so useful in genetics, the differences that emerge are a window into what is environmental versus what is baked into sequence."
+    },
+    "commonMistakes": [
+      "Saying 'environment' with no mechanism behind it",
+      "Implying epigenetic changes alter the DNA sequence itself",
+      "Ignoring that twins start off epigenetically similar and diverge over time"
+    ],
+    "followUps": ["Can epigenetic changes be inherited by the next generation?"]
+  },
+  {
+    "id": "prog-genetics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "CRISPR-Cas9 mechanism",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["crispr", "gene-editing", "mechanism"],
+    "question": "Can you walk me through how CRISPR-Cas9 actually finds and cuts a specific piece of DNA?",
+    "lookingFor": "A technically accurate walkthrough of guide RNA targeting, PAM recognition, and the cut, showing genuine understanding rather than memorised buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the guide RNA's role in sequence-specific targeting",
+        "Mention the PAM sequence requirement for Cas9 binding",
+        "Describe the double-strand break and the two repair pathways, NHEJ and HDR"
+      ],
+      "modelAnswer": "You design a short guide RNA that matches the DNA sequence you want to target, and it directs the Cas9 enzyme to that exact location in the genome. Cas9 will only cut if it also finds a short PAM sequence sitting right next to the target, which acts like a safety check before it commits. Once bound correctly it makes a double-strand break, and the cell's own repair machinery takes over, either patching it messily through non-homologous end joining, which can disrupt the gene, or precisely through homology-directed repair if you supply a template. I think the elegance of the system is that the specificity comes almost entirely from base pairing, which is what made it so much cheaper and faster than earlier tools like zinc finger nucleases."
+    },
+    "commonMistakes": [
+      "Skipping the PAM sequence entirely",
+      "Not distinguishing the two DNA repair pathways",
+      "Describing CRISPR as if it always produces precise edits"
+    ],
+    "followUps": ["What causes off-target effects, and how do researchers try to reduce them?"]
+  },
+  {
+    "id": "prog-genetics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Polygenic versus monogenic traits",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["polygenic", "monogenic", "heritability"],
+    "question": "What's the practical difference between a disorder like cystic fibrosis and a trait like height or type 2 diabetes risk, from a genetics standpoint?",
+    "lookingFor": "Clear distinction between monogenic and polygenic inheritance and its consequences for prediction and testing.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain monogenic disorders as driven largely by one gene with high predictive power",
+        "Explain polygenic traits as the sum of many small-effect variants plus environment",
+        "Connect this to why polygenic risk scores are probabilistic, not diagnostic"
+      ],
+      "modelAnswer": "Cystic fibrosis is monogenic, a mutation in the CFTR gene is both necessary and largely sufficient to cause the disease, so a single genetic test is highly predictive. Height or type 2 diabetes risk are polygenic, shaped by hundreds or thousands of variants each contributing a tiny effect, plus a large environmental component like diet or activity. That is why you can build a polygenic risk score for diabetes but it only shifts someone's probability, it cannot tell them with certainty the way a CFTR result can, and I think conflating the two in public conversation causes a lot of confusion about what genetic testing can actually promise."
+    },
+    "commonMistakes": [
+      "Treating polygenic risk scores as deterministic",
+      "Ignoring the environmental contribution to polygenic traits",
+      "Assuming all rare disorders are monogenic"
+    ],
+    "followUps": ["How would you explain a polygenic risk score to a worried patient?"]
+  },
+  {
+    "id": "prog-genetics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Hardy-Weinberg equilibrium assumptions",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["population-genetics", "hardy-weinberg", "assumptions"],
+    "question": "The Hardy-Weinberg principle assumes a population isn't evolving. What has to be true of a real population for that assumption to hold, and why does it almost never fully hold in nature?",
+    "lookingFor": "Solid recall of the five assumptions and the ability to critique their realism, showing conceptual rather than rote knowledge.",
+    "idealAnswer": {
+      "bullets": [
+        "List the assumptions: no mutation, no migration, no selection, random mating, infinite population size",
+        "Explain that real populations almost always violate at least one, especially finite size and selection",
+        "Frame Hardy-Weinberg as a null model used to detect evolution by looking for deviation"
+      ],
+      "modelAnswer": "The model needs no new mutations entering the gene pool, no migration in or out, no natural selection acting on the alleles, completely random mating, and an infinite population size so genetic drift doesn't matter. Almost no real population satisfies all five, populations are finite so drift always has some effect, and most traits are under at least mild selection somewhere. What I find useful about the model is that it's not meant to be realistic, it's a null hypothesis, so when a population's allele frequencies deviate from what Hardy-Weinberg predicts, that deviation itself is evidence that something like selection or non-random mating is actually happening."
+    },
+    "commonMistakes": [
+      "Missing one or more of the five assumptions",
+      "Treating the model as a description of real populations rather than a null hypothesis",
+      "Confusing genetic drift with natural selection"
+    ],
+    "followUps": ["How would you use allele frequency data to detect selection at a specific locus?"]
+  },
+  {
+    "id": "prog-genetics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Multi-hit model of cancer",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["cancer-genetics", "mutation", "tumor-suppressors"],
+    "question": "If everyone accumulates DNA mutations throughout life, why doesn't everyone develop cancer, and why do some inherited mutations still only raise risk rather than guarantee it?",
+    "lookingFor": "Understanding of the multi-hit hypothesis, tumor suppressor versus oncogene logic, and DNA repair as a counterbalance.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the multi-hit hypothesis, cancer usually needs several independent mutations in the same cell lineage",
+        "Distinguish tumor suppressor genes, which often need both alleles disabled, from oncogenes",
+        "Mention DNA repair and apoptosis as ongoing safeguards that catch most damaged cells first"
+      ],
+      "modelAnswer": "A single mutation is rarely enough, cancer usually needs a cell to accumulate several hits, disabling tumor suppressors, activating oncogenes, and losing normal growth control, all in the same lineage of cells. For a gene like TP53, you typically need both copies disabled, which is why an inherited faulty copy, as in Li-Fraumeni syndrome, only raises risk rather than guaranteeing disease, the second hit still has to happen somewhere in a specific cell. On top of that, cells have DNA repair machinery and apoptosis constantly weeding out damaged cells before they ever become a tumor, so most mutations we accumulate over a lifetime simply never add up to cancer."
+    },
+    "commonMistakes": [
+      "Implying one mutation is sufficient to cause cancer",
+      "Not distinguishing tumor suppressors from oncogenes",
+      "Forgetting the role of DNA repair and apoptosis as a counterbalance"
+    ],
+    "followUps": ["Why might oncogenes only need one mutated allele to drive cancer, unlike most tumor suppressors?"]
+  },
+  {
+    "id": "prog-genetics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Genome-wide association studies and their limits",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["gwas", "statistics", "study-design"],
+    "question": "A genome-wide association study finds a variant statistically linked to a disease. What would make you cautious about concluding that variant actually causes the disease?",
+    "lookingFor": "Critical understanding of GWAS limitations: correlation versus causation, linkage disequilibrium, population stratification, and small effect sizes.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that association is not causation, the true causal variant may just be nearby",
+        "Explain linkage disequilibrium as a reason a flagged SNP can be a marker rather than the driver",
+        "Mention population stratification and the need for replication and functional follow-up"
+      ],
+      "modelAnswer": "The first thing I'd check is whether the flagged variant is actually functional or just sitting near the real causal variant, because linkage disequilibrium means nearby SNPs get inherited together and the one with the strongest statistical signal isn't necessarily the one doing anything biologically. I'd also want to know if the study controlled for population stratification, since ancestry differences between cases and controls can produce spurious associations that have nothing to do with the disease. Given that individual GWAS hits usually have tiny effect sizes, I'd be looking for replication in an independent cohort and ideally some functional evidence, like the variant changing gene expression, before treating it as anything more than a lead worth following up."
+    },
+    "commonMistakes": [
+      "Treating a GWAS hit as a confirmed causal mechanism",
+      "Not mentioning linkage disequilibrium",
+      "Ignoring population stratification as a confound"
+    ],
+    "followUps": ["What kind of follow-up experiment would move a GWAS hit from correlation toward causation?"]
+  },
+  {
+    "id": "prog-genetics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Gene therapy delivery vectors",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["gene-therapy", "vectors", "safety"],
+    "question": "Why do most gene therapies use a modified virus to deliver the corrected gene, and what makes that risky?",
+    "lookingFor": "Understanding of viral vectors as efficient delivery vehicles, paired with awareness of immune response and insertional mutagenesis risks.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that viruses naturally evolved to deliver genetic material into cells efficiently",
+        "Name a common vector type such as AAV or lentivirus and its use case",
+        "Identify the two main risks: immune reaction to the vector, and insertional mutagenesis disrupting other genes"
+      ],
+      "modelAnswer": "Viruses are essentially natural delivery machines, they evolved specifically to get genetic material past a cell's defenses and into the nucleus, which is exactly the problem gene therapy needs to solve, so researchers strip out the harmful viral genes and repurpose the shell to carry a therapeutic gene instead. Adeno-associated virus is popular because it causes mild immune response and doesn't usually integrate into the genome, while lentivirus is used when you actually want permanent integration, like in some blood stem cell therapies. The risks are that the immune system can still react against the vector itself, sometimes severely, and for integrating vectors there's a real chance the gene lands somewhere it disrupts another important gene, which is what caused leukemia in some of the earliest gene therapy trials."
+    },
+    "commonMistakes": [
+      "Not naming any specific vector type",
+      "Ignoring immune response as a risk",
+      "Forgetting insertional mutagenesis as a historical and ongoing concern"
+    ],
+    "followUps": ["Why might non-viral delivery methods like lipid nanoparticles be gaining ground?"]
+  },
+  {
+    "id": "prog-genetics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Genetic redundancy and knockout phenotypes",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["gene-function", "knockout", "redundancy"],
+    "question": "Researchers knock out a gene expecting a dramatic effect, and the organism develops almost normally. What might explain that?",
+    "lookingFor": "Awareness of genetic redundancy, compensatory pathways, and the limits of single-gene knockout studies.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain genetic redundancy, related paralog genes performing an overlapping function",
+        "Mention compensatory upregulation of other pathway members after the knockout",
+        "Note that this is a real limitation of single-gene knockout studies, not a failure of the hypothesis"
+      ],
+      "modelAnswer": "A lot of genomes carry paralogs, genes that arose from duplication and still overlap in function, so knocking out one copy can leave a close relative to pick up the slack. There's also evidence that cells can respond to a knockout by actively upregulating other genes in the same pathway, which is different from redundancy but produces a similar masking effect. I think that's actually one of the more humbling lessons in genetics, a clean single-gene knockout with no visible phenotype doesn't mean the gene is unimportant, it might just mean the system is more robust than a simple loss-of-function experiment can reveal."
+    },
+    "commonMistakes": [
+      "Concluding the gene must be unimportant",
+      "Not distinguishing redundancy from compensatory regulation",
+      "Ignoring that phenotype can depend on environmental or developmental context"
+    ],
+    "followUps": ["How might you design an experiment to reveal a masked phenotype like this?"]
+  },
+  {
+    "id": "prog-genetics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Function of non-coding DNA",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["non-coding-dna", "genome", "regulation"],
+    "question": "Only about two percent of the human genome codes for protein. What is the rest of it doing, and is 'junk DNA' still a fair label?",
+    "lookingFor": "Awareness that non-coding DNA includes regulatory and functional elements, alongside honest engagement with how much genuinely has no known function.",
+    "idealAnswer": {
+      "bullets": [
+        "Name functional categories: promoters, enhancers, non-coding RNA genes, structural regions",
+        "Reference the ENCODE project's claims and the controversy over how much of the genome is truly functional",
+        "Give a balanced view rather than declaring the whole genome functional or all of it junk"
+      ],
+      "modelAnswer": "A good chunk of that non-coding DNA is doing real work, enhancers and promoters that control when and where genes switch on, non-coding RNA genes like microRNAs that regulate gene expression, and structural regions involved in things like chromosome packaging. The ENCODE project's claim that most of the genome shows some biochemical activity got a lot of attention, but I think the more careful reading of the debate is that biochemical activity isn't the same as functional importance, plenty of that activity could be incidental. My honest answer is that 'junk DNA' is probably too dismissive a label given what we now know about regulatory elements, but 'everything is functional' overstates the evidence too, and a good geneticist should be comfortable holding that uncertainty."
+    },
+    "commonMistakes": [
+      "Claiming all non-coding DNA is junk with no function",
+      "Claiming ENCODE proved the entire genome is functional",
+      "Naming no specific category of non-coding element"
+    ],
+    "followUps": ["What kind of evidence would convince you a non-coding region is truly functional, rather than just biochemically active?"]
+  },
+  {
+    "id": "prog-genetics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Linkage, recombination and genetic mapping",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["linkage", "recombination", "mapping"],
+    "question": "Two genes are found to be inherited together far more often than chance would predict. What does that tell you, and how could you use it to build a genetic map?",
+    "lookingFor": "Solid grasp of linkage, recombination frequency, and how crossing-over distance translates into map units.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that co-inheritance above chance implies physical proximity on the same chromosome",
+        "Connect recombination frequency to physical distance, closer genes recombine less often",
+        "Mention that this logic underlies genetic linkage maps measured in centimorgans"
+      ],
+      "modelAnswer": "If two genes show up together in offspring far more often than independent assortment would predict, that's a strong sign they're physically close together on the same chromosome, because crossing over is less likely to separate genes that are near each other. You can actually use the recombination frequency, how often the two alleles do get separated, as a rough proxy for physical distance, that's the basis of a genetic linkage map measured in centimorgans rather than base pairs. It's a slightly indirect way of mapping a genome, but historically it let geneticists build surprisingly accurate maps decades before sequencing technology existed."
+    },
+    "commonMistakes": [
+      "Confusing linkage with simple dominance or recessive inheritance",
+      "Getting the relationship backwards, thinking farther genes recombine less",
+      "Not connecting recombination frequency to map distance"
+    ],
+    "followUps": ["Why does recombination frequency become an unreliable distance measure for genes that are very far apart?"]
+  },
+  {
+    "id": "prog-genetics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Chromosomal versus single-gene disorders",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["chromosomal-disorders", "aneuploidy", "diagnosis"],
+    "question": "How does a condition caused by an extra whole chromosome, like Down syndrome, differ in scale and consequence from a single-gene mutation disorder?",
+    "lookingFor": "Understanding of dosage effects from aneuploidy versus a single altered gene product, and why chromosomal disorders often affect multiple systems.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that an extra chromosome changes the dosage of hundreds of genes at once",
+        "Contrast this with a single-gene mutation, which usually disrupts one specific protein or pathway",
+        "Connect this to why chromosomal disorders tend to affect multiple organ systems"
+      ],
+      "modelAnswer": "An extra copy of chromosome 21 doesn't just add one faulty gene, it changes the dosage of every gene on that chromosome at once, which is why Down syndrome affects so many systems, heart development, cognition, immune function, all together, rather than one specific pathway. A single-gene mutation, like the one behind cystic fibrosis, usually disrupts one protein's function and the consequences trace fairly directly from that one broken piece. I think that scale difference is exactly why chromosomal disorders are generally harder to treat with a targeted therapy, you can't easily correct dosage for hundreds of genes the way you might try to correct one gene's product."
+    },
+    "commonMistakes": [
+      "Treating both types of disorder as equally targetable by gene-specific therapy",
+      "Not mentioning gene dosage as the underlying mechanism",
+      "Vague answer with no named example"
+    ],
+    "followUps": ["Why might some chromosomes be more tolerant of an extra copy than others?"]
+  },
+  {
+    "id": "prog-genetics-b-013",
+    "category": "Ethics & Situational",
+    "subtopic": "Germline versus somatic gene editing",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["ethics", "germline-editing", "crispr"],
+    "question": "Should germline editing, changes that pass on to future generations, be treated differently from somatic editing, which only affects the treated patient? Where would you draw the line?",
+    "lookingFor": "Structured ethical reasoning distinguishing consent, reversibility, and societal risk in germline versus somatic editing, not a flat yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why germline editing raises consent issues for people who don't yet exist",
+        "Weigh the argument for eliminating heritable disease against the risk of unintended, permanent changes to the gene pool",
+        "Land on a defensible line, such as allowing somatic therapy broadly while restricting germline editing to narrow, heavily regulated cases"
+      ],
+      "modelAnswer": "Somatic editing only affects the person being treated and they can consent to it, which puts it in roughly the same ethical category as any other medical intervention with risk. Germline editing is different because the changes pass down to children and grandchildren who never had any say, and a mistake or an unforeseen consequence doesn't stay contained to one patient, it enters the gene pool. I'd support somatic gene therapy being pursued much more freely, but I think germline editing should stay restricted to severe, well understood single-gene diseases with no other treatment option, under strict oversight, rather than being opened up for anything framed as enhancement."
+    },
+    "commonMistakes": [
+      "Treating the two as ethically identical",
+      "Giving a flat ban or flat approval with no reasoning",
+      "Not engaging with the consent problem for future generations"
+    ],
+    "followUps": ["What would change your view if a germline edit could reliably prevent a fatal childhood disease with no side effects?"]
+  },
+  {
+    "id": "prog-genetics-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Duty to warn relatives of genetic risk",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["ethics", "genetic-counseling", "privacy"],
+    "question": "Suppose a genetic test reveals a patient carries a mutation that also puts their siblings at serious risk, but the patient refuses to tell them. As someone working in this field, how would you think through that?",
+    "lookingFor": "Careful weighing of patient confidentiality against the health interests of at-risk relatives, without jumping to a simple answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension between medical confidentiality and preventing harm to relatives",
+        "Describe practical steps before breaching confidentiality, like counseling the patient and exploring their reasons",
+        "Recognise that most professional guidance favours respecting confidentiality except in narrow, serious, actionable cases"
+      ],
+      "modelAnswer": "My instinct is that confidentiality has to be the strong default, patients need to trust that a genetic test won't automatically expose their private information to family members. But I'd want to spend real time with the patient first, understanding why they're reluctant and helping them see that their siblings could actually do something useful with that information, like earlier screening. If it were a serious, actionable condition, something like a BRCA mutation where early screening genuinely changes outcomes, and the patient still refused after that conversation, I think most ethical guidelines would still lean toward respecting their choice, only in very extreme and narrow cases would breaching confidentiality even be on the table, and I'd want that decision made through a proper ethics process, not by me alone."
+    },
+    "commonMistakes": [
+      "Jumping straight to 'I would just tell the family'",
+      "Ignoring the actionability of the condition as a relevant factor",
+      "Treating this as a simple binary with no professional process involved"
+    ],
+    "followUps": ["Does your answer change if the condition were something imminently life-threatening and easily preventable?"]
+  },
+  {
+    "id": "prog-genetics-b-015",
+    "category": "Ethics & Situational",
+    "subtopic": "Insurers and genetic test data",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["ethics", "privacy", "insurance"],
+    "question": "Should insurance companies be allowed to use genetic test results when setting premiums or coverage?",
+    "lookingFor": "A reasoned position that engages with both the actuarial logic of insurance and the discrimination risk of genetic data, not a purely emotional answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the actuarial logic insurers normally rely on",
+        "Explain why genetic risk is different from lifestyle risk, since it is inherited and largely unchosen",
+        "State a clear position, generally favouring restriction, with reasoning rather than assertion"
+      ],
+      "modelAnswer": "Insurance normally works by pricing risk, so on the surface it seems consistent for insurers to want genetic data the same way they use smoking status or family history. But genetic risk is different in an important way, you don't choose your genome and in most cases you can't change it, so using it to raise someone's premiums punishes people for something entirely outside their control, in a way that using smoking status doesn't. I'd come down against allowing it for most personal insurance, similar to how laws like GINA in the US already restrict genetic discrimination in health insurance and employment, because otherwise you create a strong disincentive for people to get genetic testing that could actually help them manage their health."
+    },
+    "commonMistakes": [
+      "Ignoring the actuarial reasoning insurers actually use",
+      "Not distinguishing unchosen genetic risk from lifestyle risk",
+      "Giving no clear position either way"
+    ],
+    "followUps": ["Should the same restriction apply to life insurance as to health insurance?"]
+  },
+  {
+    "id": "prog-genetics-b-016",
+    "category": "Ethics & Situational",
+    "subtopic": "Selecting embryos for non-disease traits",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["ethics", "embryo-selection", "designer-babies"],
+    "question": "Preimplantation genetic testing already lets parents screen embryos for serious disease. Should the same technology be allowed to select for traits like predicted height, eye colour, or intelligence?",
+    "lookingFor": "A thoughtful line drawn between disease prevention and trait enhancement, aware of the practical and social complications, not just a moral reflex.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish disease prevention, generally accepted, from trait selection for non-medical characteristics",
+        "Note the practical limit that most such traits are polygenic and only weakly predictable at the embryo stage",
+        "Raise the social equity concern of access being limited to those who can afford it, widening existing inequality"
+      ],
+      "modelAnswer": "I think there's a meaningful line between preventing serious disease and selecting for traits like height or predicted intelligence, the first is about reducing suffering and the second edges into deciding what kind of person is more desirable, which makes me uncomfortable. Practically, most of those traits are polygenic and only weakly predictable from an embryo's genome anyway, so the technology currently promises more certainty than it can deliver. I'd also worry about equity, if this stays expensive and only accessible to wealthier families, you risk widening social inequality along genetic lines in a way that feels like a step toward stratifying people by birth in a new form."
+    },
+    "commonMistakes": [
+      "Treating disease screening and trait selection as ethically identical",
+      "Ignoring the weak predictive power of polygenic scores at the embryo stage",
+      "Not raising equity or access concerns"
+    ],
+    "followUps": ["Would your view change if predictive accuracy for a trait like intelligence improved dramatically?"]
+  },
+  {
+    "id": "prog-genetics-b-017",
+    "category": "Curveball/Personality",
+    "subtopic": "The He Jiankui CRISPR babies case",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["current-events", "crispr", "regulation"],
+    "question": "In 2018 a scientist in China claimed to have used CRISPR to edit the genomes of twin embryos before birth, aiming to make them resistant to HIV. What's your view on why that case triggered such a strong global backlash?",
+    "lookingFor": "Awareness of the actual case details and the ability to articulate why the scientific community reacted so strongly, beyond a vague 'it was unethical'.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate recall: He Jiankui, germline editing of twin embryos, aimed at CCR5 for HIV resistance",
+        "Explain the specific failures: no genuine medical need, inadequate consent process, unknown off-target and long-term risk, no international oversight",
+        "Connect it to broader consequences, tightened regulation and loss of public trust in gene editing research"
+      ],
+      "modelAnswer": "That was He Jiankui's case, he edited the CCR5 gene in twin embryos hoping to make them resistant to HIV, even though there were already effective, much less risky ways to prevent transmission from an HIV-positive father, so there wasn't really a genuine unmet medical need to justify a first-ever human germline edit. The backlash was so strong because it broke almost every norm at once, the consent process for the parents was questionable, the safety and off-target effects of the edit weren't well understood, and there was no international oversight or approval for what was essentially an irreversible experiment on future humans. I think it set the field back in a real way, it made regulators and funders far more cautious about germline work generally, even work that might be scientifically well justified."
+    },
+    "commonMistakes": [
+      "Not knowing the basic facts of the case",
+      "Giving only a moral reaction with no specifics about what went wrong procedurally",
+      "Confusing this with an approved or sanctioned clinical trial"
+    ],
+    "followUps": ["Do you think this case should change how germline research is regulated internationally, and how?"]
+  },
+  {
+    "id": "prog-genetics-b-018",
+    "category": "Curveball/Personality",
+    "subtopic": "Polygenic embryo screening companies",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["current-events", "polygenic-scores", "ivf"],
+    "question": "A number of companies now offer to rank IVF embryos by predicted future disease risk or even traits like intelligence, using polygenic scores. What do you make of that as a current development in the field?",
+    "lookingFor": "Awareness of the emerging polygenic embryo screening industry, engagement with both its scientific limitations and its ethical questions.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that such services exist and are commercially available, not purely hypothetical",
+        "Critique the scientific limitation, polygenic scores are population-level statistical tools that lose much of their power at the embryo level with siblings",
+        "Raise the ethical concern about marketing statistical uncertainty as if it were a confident prediction"
+      ],
+      "modelAnswer": "I've followed this, companies like Orchid and Genomic Prediction already offer polygenic screening for IVF embryos, ranking them by predicted risk for things like diabetes or heart disease and in some cases traits like cognitive ability. My biggest concern is scientific before it's even ethical, polygenic scores were built to predict differences across large, genetically diverse populations, and using them to rank a handful of full siblings, who share most of their genetic background already, gives you far less real predictive power than the marketing suggests. Even setting that aside, I think there's something troubling about presenting parents with a ranked list implying a confident choice when the underlying tool is genuinely uncertain, it risks commercialising anxiety more than it delivers real benefit."
+    },
+    "commonMistakes": [
+      "Being unaware such services already exist commercially",
+      "Accepting the marketing claims about predictive accuracy at face value",
+      "Only discussing ethics with no scientific critique of the tool itself"
+    ],
+    "followUps": ["How would you regulate a company offering this kind of screening?"]
+  },
+  {
+    "id": "prog-genetics-b-019",
+    "category": "Curveball/Personality",
+    "subtopic": "Cost and access to approved gene therapies",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["current-events", "gene-therapy", "access"],
+    "question": "Some approved gene therapies, like the one for spinal muscular atrophy, now cost over two million dollars per patient. What does that tell you about where the field is heading, and does it concern you?",
+    "lookingFor": "Awareness of real pricing precedent in approved gene therapies and thoughtful engagement with the access and sustainability question.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly reference an actual therapy such as Zolgensma for SMA, or similar one-time high cost treatments",
+        "Explain the underlying cost logic, small patient populations, high development and manufacturing cost, one-time dosing",
+        "Give a genuine, reasoned view on whether current pricing models are sustainable or need to change"
+      ],
+      "modelAnswer": "Zolgensma is the example I know best, a single dose for spinal muscular atrophy priced above two million dollars, and it does concern me, though I understand some of the logic behind it. These treatments target small patient populations, so the enormous development cost gets spread over very few doses, and it's a one-time treatment rather than something a company profits from repeatedly like a chronic medication. Even so, I think the field needs new payment models, things like outcomes-based installment payments that some insurers are experimenting with, because a genuinely curative therapy shouldn't be functionally unavailable to families just because of how the bill is structured in one lump sum."
+    },
+    "commonMistakes": [
+      "Naming no actual therapy or pricing figure",
+      "Dismissing the cost logic entirely without understanding small-population economics",
+      "Having no actual opinion on sustainability"
+    ],
+    "followUps": ["What alternative payment model do you think would work best for one-time curative therapies?"]
+  },
+  {
+    "id": "prog-genetics-b-020",
+    "category": "Curveball/Personality",
+    "subtopic": "CRISPR-based approved therapy for sickle cell disease",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["current-events", "crispr", "sickle-cell"],
+    "question": "A CRISPR-based treatment for sickle cell disease has now been approved for patients. Why is that milestone significant, beyond just being 'the first CRISPR therapy'?",
+    "lookingFor": "Understanding of the actual mechanism and significance of Casgevy, showing the candidate follows the field rather than repeating a headline.",
+    "idealAnswer": {
+      "bullets": [
+        "Correctly describe the mechanism, editing BCL11A to reactivate fetal hemoglobin rather than directly correcting the sickle mutation",
+        "Explain why this is significant as proof that ex vivo CRISPR editing can be both safe and durably effective in patients",
+        "Note the practical limits, such as cost and the need for bone marrow conditioning, that limit how widely it can be used"
+      ],
+      "modelAnswer": "What I find significant about Casgevy is that it doesn't even directly fix the sickle mutation, it edits the BCL11A gene in a patient's own blood stem cells to switch fetal hemoglobin back on, which compensates for the faulty adult hemoglobin, and that's a clever indirect strategy rather than a straightforward correction. The bigger deal to me is that it proves ex vivo CRISPR editing, taking cells out of the body, editing them, and putting them back, can be durably safe and effective at a regulatory-approval level, which sets a template for other blood disorders. The catch is that it still requires bone marrow conditioning and costs millions of dollars per patient, so the scientific proof of concept is way ahead of it being an accessible, scalable treatment, especially in the regions where sickle cell disease is most common."
+    },
+    "commonMistakes": [
+      "Assuming the therapy directly repairs the sickle cell mutation",
+      "Treating approval as equivalent to widespread accessibility",
+      "Having no awareness of the actual mechanism"
+    ],
+    "followUps": ["Why might sickle cell disease have been a strategic first target for CRISPR therapy, versus other genetic disorders?"]
+  },
+  {
+    "id": "prog-genetics-b-021",
+    "category": "Behavioral / Competency",
+    "subtopic": "Discovering unexpected paternity in research data",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "research-ethics", "confidentiality"],
+    "question": "Imagine you're helping run a family genetics study for a research project, and while analysing the DNA you notice the data shows the listed father cannot be the biological father of one of the children in the study. What would you do?",
+    "lookingFor": "Sound judgement about scope of authority, confidentiality, and following institutional protocol rather than personally intervening.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this is not the researcher's decision to make unilaterally",
+        "Reference the need for a pre-established protocol, most studies decide this in advance during ethics review",
+        "Prioritise confidentiality and avoid disclosing the finding directly to any family member"
+      ],
+      "modelAnswer": "My first instinct would be to not act on it myself at all, this is exactly the kind of incidental finding that a study should have a protocol for before it ever starts, usually decided during ethics board review. I'd flag it to my supervisor or the study's principal investigator rather than saying anything to the family, because it isn't my place to decide who learns sensitive information like that, and mishandling it could cause real harm to the family relationships involved. If the study genuinely had no policy for this scenario, I think that itself is worth raising as a gap, because it's a predictable enough situation in family genetics research that it should be planned for rather than handled ad hoc."
+    },
+    "commonMistakes": [
+      "Deciding personally to tell the family",
+      "Ignoring the issue entirely with no escalation",
+      "Not recognising this as a foreseeable, protocol-governed situation in family studies"
+    ],
+    "followUps": ["How would you feel if the study's existing protocol required disclosure and you personally disagreed with that policy?"]
+  },
+  {
+    "id": "prog-genetics-b-022",
+    "category": "Behavioral / Competency",
+    "subtopic": "Incidental findings in a research participant's genome",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "incidental-findings", "consent"],
+    "question": "You're sequencing genomes for a study on an unrelated trait, and you spot a variant in one participant strongly linked to a serious, treatable adult-onset disease that they never consented to be screened for. Walk me through how you'd think about this.",
+    "lookingFor": "Reasoned engagement with actionability, the original consent scope, and the tension between beneficence and respecting participant autonomy.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish actionable findings, where something can genuinely be done, from findings with no clinical value",
+        "Acknowledge that the participant only consented to the original study's scope, not incidental findings",
+        "Describe the proper channel, returning results through a genetic counselor per the study's established return-of-results policy, not informal disclosure"
+      ],
+      "modelAnswer": "The fact that it's serious but treatable really changes my thinking, because if there's nothing actionable I'd lean toward not disclosing something the participant never asked about, but here early treatment could genuinely help them. That said, I still wouldn't just email them the result myself, most well-designed studies have a return-of-results policy set during ethics review specifically for scenarios like this, often involving a genetic counselor who can deliver the news properly and help the participant understand it. If the study genuinely had no such policy, I'd raise it with the ethics board rather than improvising, because how you deliver a finding like this matters almost as much as whether you deliver it at all."
+    },
+    "commonMistakes": [
+      "Treating all incidental findings the same regardless of actionability",
+      "Disclosing the finding directly and informally",
+      "Ignoring the original consent scope of the study"
+    ],
+    "followUps": ["Should participants be able to opt out of ever receiving incidental findings, even actionable ones?"]
+  },
+  {
+    "id": "prog-genetics-b-023",
+    "category": "Behavioral / Competency",
+    "subtopic": "Designing an experiment to test gene function",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "experimental-design", "gene-function"],
+    "question": "You've identified a gene you suspect controls flowering time in a plant. How would you actually go about testing whether it's necessary and sufficient for that trait?",
+    "lookingFor": "Ability to design a coherent, controlled experiment distinguishing necessity from sufficiency, showing genuine experimental reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a loss-of-function approach, such as a knockout or knockdown, to test necessity",
+        "Propose a gain-of-function approach, such as overexpression in a background lacking the gene, to test sufficiency",
+        "Mention appropriate controls and replication to rule out confounding effects"
+      ],
+      "modelAnswer": "To test necessity I'd knock the gene out, using something like CRISPR to disrupt it, and see whether flowering time shifts compared to wild-type plants grown under identical conditions, if it's truly necessary I'd expect a clear delay or loss of flowering response. To test sufficiency I'd do the opposite, overexpress the gene in a genetic background where it's normally silent or low, and see if that's enough on its own to trigger early flowering even without the usual environmental cue. I'd want several independent transgenic lines rather than just one, grown alongside proper wild-type and empty-vector controls, because a single line could carry an unrelated mutation from the insertion process that confounds the result."
+    },
+    "commonMistakes": [
+      "Only proposing a knockout, without addressing sufficiency",
+      "Forgetting proper controls or replication",
+      "Vague experimental description with no comparison to wild-type"
+    ],
+    "followUps": ["How would you rule out that an observed phenotype comes from an off-target effect rather than the gene itself?"]
+  },
+  {
+    "id": "prog-genetics-b-024",
+    "category": "Behavioral / Competency",
+    "subtopic": "Explaining a genetic result to a worried relative",
+    "program": "Genetics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "communication", "genetic-counseling"],
+    "question": "Imagine a family member gets a direct-to-consumer genetic test back showing an elevated risk for a disease and panics, calling you because you're 'the one studying genetics'. How would you actually handle that conversation?",
+    "lookingFor": "Ability to translate genetic risk into plain, honest, reassuring language without overstepping into unqualified medical advice.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the difference between relative and absolute risk in plain language",
+        "Be honest about the limits of your own expertise and the difference between a hobbyist test and a clinical one",
+        "Point them toward a genetic counselor or doctor for an actual clinical interpretation"
+      ],
+      "modelAnswer": "I'd start by trying to slow things down and ask what the report actually said, because these direct-to-consumer results often report relative risk, like 'twice the average risk,' which sounds alarming but can still mean a fairly small absolute chance depending on the baseline. I'd be upfront that I'm not a doctor or a licensed genetic counselor, so I can help them understand the concept behind the numbers but I shouldn't be the one interpreting what it means for their actual health. What I'd really push them toward is booking time with a genetic counselor or their physician, who can look at their full family history alongside the test and give them something clinically meaningful rather than a raw percentage from a consumer report."
+    },
+    "commonMistakes": [
+      "Giving informal medical advice beyond your qualifications",
+      "Not explaining relative versus absolute risk",
+      "Dismissing the family member's concern instead of engaging with it"
+    ],
+    "followUps": ["What's a common way relative risk gets misunderstood by the public, and how would you correct it?"]
+  },
+  {
+    "id": "prog-genetics-b-025",
+    "category": "Behavioral / Competency",
+    "subtopic": "Prioritising limited genetic testing resources",
+    "program": "Genetics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "resource-allocation", "healthcare"],
+    "question": "A hospital genetics lab can only run a limited number of whole-genome sequencing tests each month, but far more patients could plausibly benefit from one. If you had to help set the criteria for who gets tested first, what would you prioritise and why?",
+    "lookingFor": "Structured, defensible reasoning about triage criteria that balances clinical urgency, actionability, and fairness rather than an arbitrary rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose criteria centered on clinical urgency and actionability, cases where a result would change treatment soon",
+        "Address fairness explicitly, avoiding criteria that would systematically disadvantage certain patients",
+        "Acknowledge the discomfort of triage rather than pretending there's a perfectly clean answer"
+      ],
+      "modelAnswer": "I'd want to prioritise cases where a result would actually change clinical management soon, for example a critically ill newborn with an unexplained condition where a diagnosis could redirect treatment immediately, over a case where the result is more informational than urgent. I'd also build in a check for fairness, making sure the criteria don't accidentally favour patients who are better resourced or better able to advocate for themselves, which can easily happen if referral patterns are uneven. I don't think there's a fully clean answer here, someone with a less urgent but still meaningful need will always be waiting longer than I'd like, and I'd want the criteria reviewed regularly by a proper committee rather than treated as fixed once decided."
+    },
+    "commonMistakes": [
+      "Proposing a purely first-come-first-served system with no clinical reasoning",
+      "Ignoring fairness or equity concerns in access",
+      "Presenting the answer as if triage involves no real trade-off or discomfort"
+    ],
+    "followUps": ["How would you handle a case that falls just outside your criteria but the family is pushing hard for testing?"]
+  }
+]

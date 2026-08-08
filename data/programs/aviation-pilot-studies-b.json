@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-aviation-pilot-studies-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Lift and angle of attack",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["aerodynamics", "physics", "concept"],
+    "question": "Can you explain what actually generates lift on a wing, and why the angle of attack matters more than most people think?",
+    "lookingFor": "Correct physical reasoning about lift, not the oversimplified Bernoulli myth, plus the insight that stall depends on angle of attack rather than speed alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain lift as a pressure difference created by air being deflected downward and accelerated over the curved upper surface",
+        "State that angle of attack, not speed alone, determines how much lift a wing produces",
+        "Explain that a stall happens when angle of attack exceeds a critical value and airflow separates, regardless of airspeed"
+      ],
+      "modelAnswer": "Lift comes from the wing deflecting air downward and creating lower pressure above the wing than below it, so there's a net upward force on the aircraft. I used to think it was purely about speed, but what really matters is the angle of attack, the angle between the wing and the oncoming air. You can stall a wing at almost any speed if you pitch it up steeply enough, which is why stall warnings are tied to angle of attack sensors rather than a fixed airspeed number. That distinction matters a lot for safety because a pilot can stall in a steep turn even while flying quite fast."
+    },
+    "commonMistakes": [
+      "Reciting only the outdated 'equal transit time' Bernoulli explanation",
+      "Believing stall only happens at low speed",
+      "Confusing lift with thrust"
+    ],
+    "followUps": ["What happens aerodynamically during a stall recovery?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Go/no-go weather judgment",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["judgement", "weather", "risk-management"],
+    "question": "You're a student pilot planning a solo cross-country and the forecast shows marginal VFR with a chance of the ceiling dropping. Your instructor isn't available to double check. How do you decide whether to go?",
+    "lookingFor": "Structured risk assessment using personal minimums, weather trend, and escape routes, rather than bravado or a single snapshot decision.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference objective tools like the weather trend across multiple forecasts, not just one snapshot",
+        "Hold personal minimums stricter than the bare legal minimums as a low-experience student",
+        "Build in decision points and an alternate or turn-back plan rather than a single go/no-go call"
+      ],
+      "modelAnswer": "As a student I'd hold myself to minimums well above the legal VFR minimums, because I don't have the experience yet to safely handle marginal conditions alone. I'd look at the trend across a few forecasts rather than one snapshot, and if the ceiling was forecast to be dropping toward my personal limit during the flight, that's a no-go for me, not a maybe. I'd also plan the route with a turn-back point and an alternate airport in mind before I even started the engine. Scrubbing a flight because the weather is trending the wrong way isn't a failure, it's exactly the judgement flying is supposed to teach you."
+    },
+    "commonMistakes": [
+      "Treating legal minimums as the same as safe minimums",
+      "No mention of a decision point or alternate",
+      "Framing pushing through marginal weather as showing confidence"
+    ],
+    "followUps": ["What would make you turn back mid-flight even after departing in good weather?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Engine failure after takeoff",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["emergency-procedure", "airmanship", "hypothetical"],
+    "question": "Talk me through your priorities in the first few seconds after an engine failure just after takeoff in a single-engine aircraft.",
+    "lookingFor": "Correct aviate-navigate-communicate ordering and understanding of best glide speed and the 'impossible turn' hazard.",
+    "idealAnswer": {
+      "bullets": [
+        "Fly the aircraft first by pitching for best glide speed immediately to avoid a secondary stall",
+        "Pick a landing site roughly ahead rather than attempting to turn back to the runway at low altitude",
+        "Only then run the failure checklist and communicate, in that strict order"
+      ],
+      "modelAnswer": "The very first thing is to lower the nose and get the aircraft to best glide speed, because the instinctive reaction to hold the nose up after a power loss is actually what causes a stall-spin accident. At low altitude I'd pick a landing spot roughly ahead of me rather than trying to turn back to the runway, since that turn needs more altitude than people think. Only once the aircraft is under control would I glance at the engine checklist and get a distress call out. It's a strict order, fly first, then troubleshoot, then talk, because getting that order wrong is what kills people in this exact scenario."
+    },
+    "commonMistakes": [
+      "Jumping straight to troubleshooting the engine before securing glide speed",
+      "Assuming a turn back to the runway is always survivable",
+      "Prioritising the radio call over flying the aircraft"
+    ],
+    "followUps": ["Why is the turn back to the runway called the 'impossible turn'?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Cabin pressurization rationale",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["systems", "structures", "concept"],
+    "question": "Airliners cruise at 35,000 feet but the cabin is pressurized to roughly 8,000 feet, not sea level. Why not just pressurize it fully?",
+    "lookingFor": "Understanding of the structural trade-off between pressure differential stress and fuselage weight, not just an oxygen-focused answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the pressure differential between cabin and outside air increases fuselage stress as altitude increases",
+        "Note that pressurizing fully to sea level would require a heavier, thicker fuselage to survive repeated fatigue cycles",
+        "Show awareness that roughly 8,000 feet cabin altitude is the accepted trade-off between comfort/safety and structural weight"
+      ],
+      "modelAnswer": "The fuselage is basically a pressure vessel, and the bigger the difference between the pressure inside the cabin and the thin air outside, the more stress that puts on the structure every single flight. If you pressurized fully to sea level at 35,000 feet, you'd need a much heavier and thicker fuselage to handle that repeated stress safely over thousands of cycles, which costs fuel and money. Around 8,000 feet cabin altitude is the point regulators and manufacturers settled on where most healthy passengers are comfortable without needing that extra structural weight. It's a genuine engineering trade-off between comfort and what the airframe can sustainably take."
+    },
+    "commonMistakes": [
+      "Not connecting pressure differential to structural fatigue",
+      "Assuming the limitation is purely about oxygen availability",
+      "Giving a vague answer with no mechanism or numbers"
+    ],
+    "followUps": ["What physiological effects can passengers feel at 8,000 feet cabin altitude?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Reporting a near-miss under just culture",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety-culture", "reporting"],
+    "question": "Imagine you're a first officer and you realise you nearly missed a critical checklist item that could have caused a serious incident, but nothing actually went wrong. Do you report it, even though it could affect how your captain and airline see you?",
+    "lookingFor": "Understanding of 'just culture' safety reporting and prioritising system-wide safety over personal image.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the concept of a non-punitive 'just culture' safety reporting system and why it exists",
+        "Show willingness to self-report an honest error even without personal consequence, because near-misses are valuable data",
+        "Distinguish honest mistakes worth reporting from reckless or intentional misconduct"
+      ],
+      "modelAnswer": "I'd report it, because aviation safety runs on the idea that near-misses are actually the most valuable information you have, since nobody got hurt but you learn exactly what nearly went wrong. Most airlines run a just culture reporting system specifically so pilots can be honest about a genuine slip without fear of punishment, and staying silent just throws away a chance to fix a gap before it catches someone else. I'd rather have a slightly uncomfortable conversation now than have that same gap catch a less alert crew on a worse day. The whole point of the profession is that judgement improves because people before you were honest about their mistakes."
+    },
+    "commonMistakes": [
+      "Deciding not to report because nothing bad happened",
+      "Confusing honest self-reporting with admitting reckless negligence and fearing punishment",
+      "No mention of the systemic safety culture, only personal conscience"
+    ],
+    "followUps": ["Would your answer change if reporting it meant your captain got in trouble too?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Pilot shortage and training pathways",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "training", "industry"],
+    "question": "There's an ongoing debate about the global pilot shortage and whether reducing minimum flight hours for a commercial license is the right fix. What's your view?",
+    "lookingFor": "Awareness of the actual debate around training pathways and hours requirements, with balanced reasoning rather than a one-line opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the real debate: airlines pushing faster pathways versus traditional hour-building",
+        "Weigh the safety argument for building real experience against the economic pressure of a genuine shortage",
+        "Land on a considered position rather than a purely populist one"
+      ],
+      "modelAnswer": "I know airlines are under real pressure because of the shortage, and some are pushing pathways that get cadets into the right seat with far fewer hours than the traditional route. My worry is that raw hours aren't just a bureaucratic hurdle, they're where you build the pattern recognition for the rare abnormal situation that a simulator can't fully replicate. I don't think the answer is simply cutting hours, I think it's better simulator-based training that's actually validated against real outcomes, so quality replaces quantity rather than just less of both. It's a genuine tension between urgent industry need and the fact that experience is hard to shortcut safely."
+    },
+    "commonMistakes": [
+      "Giving a one-line opinion with no acknowledgment of the shortage's real economic pressure",
+      "Not knowing what an alternative training pathway actually involves",
+      "Treating it as purely a hours-number argument rather than a training-quality argument"
+    ],
+    "followUps": ["Have you looked into how your own training pathway compares to newer routes?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Single-pilot commercial operations debate",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "automation", "safety"],
+    "question": "Some manufacturers and regulators are exploring single-pilot operations for commercial airliners to cut costs. What do you think of that direction?",
+    "lookingFor": "An informed view on the loss of redundancy and cross-checking, not a blanket dismissal or blind acceptance.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness this is an active, contested regulatory conversation, not a settled question",
+        "Explain what's lost without a second pilot: cross-checking, workload sharing, and incapacitation backup",
+        "Give a reasoned personal position rather than just repeating headlines"
+      ],
+      "modelAnswer": "I know some manufacturers are lobbying for single-pilot operations on long-haul cruise segments to cut crew costs, and regulators are genuinely divided on it. What concerns me most isn't normal cruise, it's the loss of the second set of eyes that catches the one mistake a tired or task-saturated pilot alone would miss, and the total loss of redundancy if that one pilot becomes incapacitated. I think automation has genuinely improved, but I'm not convinced it's ready to substitute for the crew cross-check that's caught real accidents before they happened. I'd want to see a lot more independent safety data before I'd trust that trade-off myself as a future pilot."
+    },
+    "commonMistakes": [
+      "Not knowing this is an actual live debate in the industry",
+      "Dismissing it purely on emotion without naming the specific safety mechanism lost",
+      "Assuming automation already fully solves the redundancy problem"
+    ],
+    "followUps": ["What role do you think automation should play in reducing pilot workload instead?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Fatigue reporting versus commercial pressure",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "fatigue", "judgement"],
+    "question": "You're rostered for a flight and you genuinely feel too fatigued to fly safely, but calling in fatigued will disrupt the schedule and annoy your crew. What do you do?",
+    "lookingFor": "Prioritising the fatigue-reporting right over social or commercial pressure, treating fatigue as a genuine impairment.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise fatigue as a genuine safety impairment comparable to being over an alcohol limit",
+        "Use the formal fatigue-reporting mechanism rather than quietly flying anyway",
+        "Acknowledge the social discomfort honestly while still prioritising safety"
+      ],
+      "modelAnswer": "I'd call in fatigued, even though I know it's inconvenient for everyone, because fatigue affects judgement and reaction time in ways that are genuinely comparable to flying over the alcohol limit, it's just less visible. Every pilot has the right, and honestly the duty, to declare fatigue under the regulations precisely because the system knows commercial pressure will otherwise push people to fly tired. I'd feel bad about disrupting the roster, that discomfort is real, but that's exactly the pressure the reporting system is designed to protect against. I'd rather have an awkward conversation on the ground than make a decision at altitude with a brain that isn't working properly."
+    },
+    "commonMistakes": [
+      "Deciding to fly anyway to avoid disrupting the schedule",
+      "Treating fatigue as minor tiredness rather than a genuine impairment",
+      "Not knowing that formal fatigue-reporting protections exist"
+    ],
+    "followUps": ["How would you try to prevent getting into that situation in the first place?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Sustainable aviation fuel versus electric flight",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "sustainability", "technology"],
+    "question": "How realistic do you think fully electric or hydrogen-powered commercial airliners are in the next twenty years, versus sustainable aviation fuel as the near-term answer?",
+    "lookingFor": "An informed grasp of battery energy-density limits versus jet fuel, and sustainable aviation fuel as the realistic near-term lever.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that battery energy density is far below jet fuel, limiting electric flight mostly to short-hop or small aircraft",
+        "Position sustainable aviation fuel as the more realistic near-term lever because it's a drop-in replacement",
+        "Show balanced awareness of hydrogen's promise and its own infrastructure and storage challenges"
+      ],
+      "modelAnswer": "The honest limit is energy density, batteries store a fraction of the energy per kilogram that jet fuel does, so electric aircraft make sense for short regional hops but not for a long-haul widebody carrying that much weight in batteries. I think sustainable aviation fuel is the more realistic lever for the next couple of decades because it's a drop-in replacement that works with existing engines and infrastructure, even though supply and cost are still real constraints. Hydrogen is interesting longer term, but the storage and airport infrastructure problems are significant, so I don't expect it to scale to mainline commercial flying within twenty years. I find it a genuinely exciting problem, decarbonising aviation is going to take several different solutions working together rather than one silver bullet."
+    },
+    "commonMistakes": [
+      "Assuming electric airliners are close to feasible for long-haul flight",
+      "Not knowing what sustainable aviation fuel actually is or why it's a drop-in fuel",
+      "Treating the topic as settled rather than an active engineering trade-off"
+    ],
+    "followUps": ["What would need to change for hydrogen to become viable sooner?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Crew resource management and the authority gradient",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["crm", "communication", "teamwork"],
+    "question": "As a first officer, if you saw your captain about to make a decision you believed was unsafe, how would you actually raise it in the cockpit?",
+    "lookingFor": "Knowledge of a structured, escalating CRM assertiveness technique, not passive deference or aggressive confrontation.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that cockpits have a real authority gradient that can suppress junior crew from speaking up",
+        "Describe a structured, escalating way to raise a concern: observation, then concern, then a proposed action, escalating if unaddressed",
+        "Balance respect for the captain's role with a genuine commitment to intervene if safety is truly at risk"
+      ],
+      "modelAnswer": "I know cockpits have a real authority gradient, and a lot of accident investigations have found the first officer noticed the problem but didn't push hard enough to be heard. I'd use a structured approach, starting with a clear factual observation, then stating my concern directly, then proposing what I think we should do instead, and I'd escalate the tone if I wasn't getting a response, because staying quiet isn't an option if I genuinely believe safety is at risk. I'd want to do that respectfully, the captain has more experience than me and might see something I don't, but respect can't mean silence when it actually matters. That balance, assertive but not aggressive, is something I know I'd need to practise deliberately, not just hope for in the moment."
+    },
+    "commonMistakes": [
+      "Saying you'd simply defer to the captain's greater experience",
+      "Describing an approach that's aggressive rather than structured and respectful",
+      "Not acknowledging the authority gradient problem at all"
+    ],
+    "followUps": ["Can you think of a real accident where a communication breakdown like this played a role?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "V1 decision speed reasoning",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["performance", "takeoff", "concept"],
+    "question": "Why is V1 defined as a decision speed rather than just a single fixed number that applies to every takeoff?",
+    "lookingFor": "Understanding that V1 varies with weight, runway, wind, and conditions, and represents a go/no-go commitment point.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain V1 is calculated per takeoff based on weight, runway length, wind, temperature, and runway condition",
+        "Explain why it functions as a commitment point: below V1 you can still stop safely, above it you're committed to continue",
+        "Show that getting this speed wrong in either direction erodes a real safety margin"
+      ],
+      "modelAnswer": "V1 isn't one fixed number, it's recalculated for essentially every takeoff because it depends on things like aircraft weight, runway length, wind, temperature, and even runway contamination like standing water. It marks the point where, below it, you still have enough runway left to reject the takeoff and stop safely, but above it you no longer do, so you're committed to continuing even with an engine failure. That's why crews brief it specifically before every departure rather than treating it as a memorised constant, because a V1 that's right for a short dry runway at low weight could be dangerously wrong on a longer or contaminated one. Getting that calculation wrong either way, too high or too low, eats directly into the safety margin that number exists to protect."
+    },
+    "commonMistakes": [
+      "Treating V1 as a fixed universal number rather than a per-flight calculation",
+      "Confusing V1 with rotation speed",
+      "Not explaining the reject-versus-continue logic clearly"
+    ],
+    "followUps": ["What happens if an engine fails one second after V1?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Passenger medical emergency mid-flight",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "decision-making", "resource-management"],
+    "question": "Imagine you're the pilot in command and a passenger has a suspected heart attack mid-flight over the ocean, far from any airport. Walk me through how you'd think about the decision to divert.",
+    "lookingFor": "Structured decision-making that weighs medical urgency against fuel, weather, and available diversion airports, using onboard resources first.",
+    "idealAnswer": {
+      "bullets": [
+        "Use available resources first: cabin crew, any onboard medical kit, a doctor among passengers, and ground-based medical support",
+        "Weigh the medical urgency against real constraints like fuel, weather, and runway suitability rather than picking the nearest airport reflexively",
+        "Communicate clearly with dispatch and air traffic control and make a timely, committed decision"
+      ],
+      "modelAnswer": "The first thing I'd do is use everything already available, get cabin crew checking for a doctor on board, use the onboard medical kit, and get ground-based medical support on the radio or datalink for guidance, because a proper assessment changes how urgent this really is. Then I'd look at realistic diversion options along or near my track, checking fuel, weather, and whether the runway can actually handle my aircraft, rather than just picking the closest dot on the map. I'd keep the company and air traffic control updated early so they can get emergency services ready on the ground, because losing time on that call costs the passenger more than losing time on the flight plan. It's a genuinely hard decision because you're weighing one person's life against fuel and safety margins for everyone else, and I think being decisive but not reckless is the right instinct."
+    },
+    "commonMistakes": [
+      "Diverting immediately to the nearest airport without checking suitability, weather, or fuel",
+      "Forgetting to use onboard resources like a medical kit or a doctor among passengers",
+      "Being indecisive and delaying the diversion decision too long"
+    ],
+    "followUps": ["What if diverting meant landing significantly overweight?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Automation dependency debate",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "automation", "safety"],
+    "question": "Increasing cockpit automation is often credited with improving safety, but some accident investigators argue it's eroding pilots' manual flying skills. Where do you stand?",
+    "lookingFor": "A nuanced view referencing both automation's safety record and the skill-decay concern, not a one-sided answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge automation's genuine safety record and workload reduction benefits",
+        "Show awareness of the counter-argument: skill decay and 'automation surprise' when a pilot must suddenly hand-fly an abnormal situation",
+        "Land on a balanced view favouring deliberate manual-flying practice alongside automation"
+      ],
+      "modelAnswer": "Automation has a genuinely strong safety record, it's reduced workload and cut out a lot of the errors that came from pilots juggling too many manual tasks at once. But I think the critics have a real point too, there have been accidents where crews were caught out because they'd become so used to the automation handling things that when it disconnected unexpectedly, their raw hand-flying and instrument-scanning skills had quietly eroded. I don't think the answer is less automation, I think it's airlines deliberately building in manual flying practice, like hand-flying certain approaches in good weather, so the skill stays sharp for the day the automation isn't there. It's not really automation versus manual flying, it's making sure one doesn't quietly replace the other by accident."
+    },
+    "commonMistakes": [
+      "Taking an uncritical pro-automation stance with no acknowledgment of the skill-decay concern",
+      "Dismissing automation as making pilots worse with no nuance",
+      "Giving a vague opinion with no specific reasoning"
+    ],
+    "followUps": ["Can you name an incident where automation confusion played a role?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Controlled versus uncontrolled airspace",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["airspace", "regulation", "concept"],
+    "question": "What's actually the practical difference to a pilot between flying in controlled and uncontrolled airspace?",
+    "lookingFor": "Correct technical grasp of clearance and separation responsibility, beyond a textbook definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain controlled airspace requires clearance and air traffic control provides separation services",
+        "Explain uncontrolled airspace relies more on see-and-avoid and pilot self-announcement, with no guaranteed separation",
+        "Give a practical example of how this changes a pilot's actual workload and communication habits"
+      ],
+      "modelAnswer": "In controlled airspace I need a clearance to enter and air traffic control is actively working to keep aircraft separated from each other, which means I'm following their instructions closely. In uncontrolled airspace there's often no air traffic service at all, so separation comes down to see-and-avoid and pilots self-announcing their position and intentions on a common frequency so everyone builds a mental picture of traffic. Practically that changes my workload a lot, in uncontrolled airspace I'm doing more of my own traffic scanning and radio calls, whereas in controlled airspace I'm listening carefully and complying promptly with instructions. It's less about the map colour and more about who's actually responsible for keeping me separated from other aircraft."
+    },
+    "commonMistakes": [
+      "Reciting the definition without explaining the practical workload difference",
+      "Confusing controlled airspace with simply 'busier' airspace",
+      "Not mentioning separation responsibility at all"
+    ],
+    "followUps": ["How does that change your radio procedures at an uncontrolled airfield?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Swiss cheese model of accident causation",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["safety", "risk-management", "concept"],
+    "question": "Most serious aviation accidents aren't caused by a single error. Can you explain a model for how you understand accident causation, and why that matters for how you'd fly?",
+    "lookingFor": "Knowledge of the Swiss cheese or defense-in-depth model and its implication that catching an error early matters as much as not making it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the Swiss cheese model: multiple layers of defense each have gaps, and an accident happens only when several gaps line up",
+        "Draw out the implication that any single link in the chain can break the sequence",
+        "Connect it to a personal commitment to speak up or double-check even on small things"
+      ],
+      "modelAnswer": "The model I think about most is the Swiss cheese model, the idea that there are multiple layers of defense, like checklists, training, air traffic control, and crew cross-checks, and each layer has small gaps or holes. A serious accident usually needs several of those holes to line up at once, it's rarely just one person making one mistake. What that means for how I'd fly is that I don't need to be perfect to prevent an accident, I just need to be one of the layers that catches the problem before all the holes align, which is why I'd take even small checklist deviations seriously rather than assuming someone else will catch it. It reframes safety from 'don't make mistakes' to 'be a reliable layer of defense,' which feels like a much more honest way to think about it."
+    },
+    "commonMistakes": [
+      "Not knowing a named model at all and describing accidents as caused by one person's error",
+      "Describing the model incorrectly or vaguely",
+      "Failing to connect it to a personal implication for their own behaviour"
+    ],
+    "followUps": ["Can you think of a real accident that fits this pattern?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Bottle-to-throttle and personal conduct",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["ethics", "regulation", "personal-standards"],
+    "question": "Aviation has strict rest and alcohol rules, like the 'eight hours bottle to throttle' guidance. Do you think these rules go far enough, and how would you hold yourself to them as a student?",
+    "lookingFor": "Understanding that stated rules are legal minimums, not safe targets, and commitment to a stricter personal discipline.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the eight-hour rule as a legal floor, not necessarily a safe target",
+        "Explain how alcohol's effects on sleep and judgement can outlast that window",
+        "Commit to a personal standard stricter than the bare legal minimum"
+      ],
+      "modelAnswer": "Eight hours is the legal minimum, but I don't think it's necessarily the safe minimum, alcohol can disrupt sleep quality and leave you dehydrated and mentally foggy well past when your blood alcohol technically clears. A lot of professional pilots hold themselves to a stricter personal rule, sometimes closer to twelve or twenty four hours before an early flight, and I think that's the right instinct. As a student I'd rather build the habit early of treating the legal rule as a floor, not a target, because the whole point of the margin is to cover exactly the kind of individual variation the rule can't account for. It's a small discipline now that I think becomes a much bigger deal once actual lives are riding on my judgement."
+    },
+    "commonMistakes": [
+      "Treating the legal minimum as automatically safe",
+      "Not knowing the actual rule or rough figure",
+      "No mention of a personal standard beyond the legal one"
+    ],
+    "followUps": ["What other personal minimums do you think you'd set for yourself as a new pilot?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and autonomous flight debate",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "automation", "technology"],
+    "question": "There's growing talk of AI-assisted or fully autonomous cargo aircraft. What's your honest take on how close that actually is, and what would need to be true for you to trust it?",
+    "lookingFor": "Grounded, informed reasoning distinguishing near-term applications from full passenger autonomy, with a real standard for trust.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish near-term applications like cargo drones or assist systems from full passenger autonomy, a much bigger leap",
+        "Identify what would build trust: extensive real-world data and handling of degraded or edge-case situations, not marketing demos",
+        "Give a personal, considered opinion rather than a purely enthusiastic or dismissive one"
+      ],
+      "modelAnswer": "I think we're much closer to autonomy in cargo and remote operations than in passenger aircraft, because the risk calculus and regulatory bar is different when there's no one in the cabin. For me to trust a fully autonomous passenger system, I'd want to see it handle degraded situations, like sensor failure or unusual weather, with the same or better track record than experienced human crews over millions of real flight hours, not just simulated demonstrations. I don't think that's close for passenger flying yet, but I do think AI-assisted systems that support the pilot are coming much sooner and I'm genuinely excited about that. It's a topic I follow because I want to actually understand where my own judgement will still matter most in the career I'm choosing."
+    },
+    "commonMistakes": [
+      "Treating full autonomy as either imminent or impossible with no reasoning",
+      "Not distinguishing between cargo or assisted systems and full passenger autonomy",
+      "Giving a purely emotional answer with no criteria for what would build trust"
+    ],
+    "followUps": ["Which part of a pilot's job do you think is hardest to automate?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Continue versus divert with tightening fuel",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "fuel-planning", "decision-making"],
+    "question": "You're approaching your destination and the weather has deteriorated below minimums, but your alternate airport is also now showing marginal conditions and your fuel is getting tight. What do you do?",
+    "lookingFor": "Early decision-making and awareness that this scenario reflects a failure to decide sooner, not just a present-tense choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the decision should have been made earlier, before fuel became genuinely tight",
+        "Reason through immediate options: brief hold if fuel allows and conditions are improving, divert to the best remaining option, or declare a fuel emergency",
+        "Show that indecision itself is the dangerous choice and commit to acting early"
+      ],
+      "modelAnswer": "Honestly the mistake in this scenario would already be sitting there if I let fuel get genuinely tight with two marginal options, so my first instinct is that I should have committed to a diversion earlier while I still had more airports and more fuel margin available. Given the situation as stated, I'd check the trend at both fields immediately, if my alternate is stable or improving I'd go there now rather than waiting, and if fuel is getting critical I would not hesitate to declare a fuel emergency to get priority handling, that's exactly what it's for. What I wouldn't do is keep flying toward the original destination hoping it improves, because hope isn't a fuel plan. The real lesson is that this decision needed to be made minutes ago, not now, and next time I'd build in a firmer personal fuel-based decision gate earlier in the flight."
+    },
+    "commonMistakes": [
+      "Continuing to the original destination hoping the weather clears",
+      "Not considering declaring a fuel emergency when genuinely needed",
+      "Treating this as only a present-tense decision with no reflection on the earlier planning failure"
+    ],
+    "followUps": ["At what fuel state would you declare an emergency rather than just requesting priority?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Unruly passenger hypothetical",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "authority", "resource-management"],
+    "question": "As the pilot in command, if cabin crew radioed you that a passenger was becoming aggressive and refusing to sit down mid-flight, what would actually be going through your mind?",
+    "lookingFor": "Understanding of proportionate response, flight deck security priority, and trusting trained cabin crew rather than personally intervening.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the pilot in command's overriding responsibility is flight deck security and overall safety, not personally managing the cabin incident",
+        "Trust cabin crew's trained de-escalation procedures rather than leaving the flight deck",
+        "Weigh whether the situation genuinely threatens safety enough to warrant diversion, versus letting trained crew handle it"
+      ],
+      "modelAnswer": "My first priority is the flight deck itself, making sure it stays secure and that I'm not distracted from actually flying the aircraft, so I'd let cabin crew run their trained procedure rather than trying to manage it myself from the cockpit. I'd want a clear, calm update on severity, is this a loud disagreement or an actual physical threat to crew or other passengers, because that changes my response completely. If it's genuinely escalating and posing a safety risk, I'd start considering diversion to get law enforcement involved on the ground, but I wouldn't jump straight to that for something crew can de-escalate themselves. It's really a judgement call about proportionality, using the resources and training already built into the crew rather than treating every disruption as a full emergency."
+    },
+    "commonMistakes": [
+      "Suggesting the pilot should leave the flight deck to personally intervene",
+      "Treating every disruptive passenger situation as an automatic diversion",
+      "No mention of assessing severity before deciding on a response"
+    ],
+    "followUps": ["What would tip this from 'let cabin crew handle it' to 'divert now'?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining a stall to a non-pilot",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["aerodynamics", "communication", "concept"],
+    "question": "How would you explain what an aerodynamic stall actually is to someone who assumes it means the engine has stopped?",
+    "lookingFor": "A clear, accurate conceptual explanation distinguishing aerodynamic stall from engine failure.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that a stall is about airflow separating from the wing at too high an angle of attack, unrelated to the engine",
+        "Correct the misconception directly and note the aircraft can stall with engines at full power",
+        "Use a simple, accurate analogy without oversimplifying to the point of being wrong"
+      ],
+      "modelAnswer": "I'd start by clearing up the misconception directly, a stall has nothing to do with the engine, the engine can be running perfectly and the aircraft can still stall. It happens when the wing is pitched at too steep an angle relative to the airflow, so the air can't stay smoothly attached to the top surface anymore and separates, and the wing suddenly stops producing enough lift. A rough analogy I'd use is sticking your hand flat out of a car window, tilt it gently and you feel lift, tilt it too steeply and the smooth airflow breaks up and your hand just gets pushed back, that's basically what happens to a wing. Recovery is about reducing that angle, not about restarting anything, which is exactly the opposite of what people usually assume."
+    },
+    "commonMistakes": [
+      "Conflating stall with engine failure in the explanation itself",
+      "Using only jargon with no accessible analogy",
+      "Getting the actual mechanism, angle of attack rather than speed, wrong"
+    ],
+    "followUps": ["Can an aircraft stall while climbing steeply at full power?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Integrated versus modular training pathway",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["training", "self-awareness", "reflection"],
+    "question": "There are different routes into a commercial pilot career, integrated academy courses versus modular training done part-time. How would you weigh which is right for you, and what does that choice say about your judgement?",
+    "lookingFor": "A genuine reflective comparison of real trade-offs, not a rehearsed preference or a choice based purely on prestige.",
+    "idealAnswer": {
+      "bullets": [
+        "Compare real trade-offs: integrated is faster and structured but expensive and inflexible, modular is more affordable and flexible but demands self-discipline",
+        "Show awareness of how each pathway is generally viewed without assuming one is simply 'better'",
+        "Connect the choice back to honest self-knowledge about discipline, finances, and learning style"
+      ],
+      "modelAnswer": "Integrated courses give you a tightly structured, faster timeline and some airlines like the consistency of that pipeline, but they're expensive and you're locked into their schedule and instructors. Modular training is more flexible and often more affordable because you can build hours and ratings in stages, but it demands a lot more self-discipline to keep momentum going and to plan the sequence sensibly yourself. Being honest with myself, I know I work best with external structure and deadlines, which is part of why I lean toward the integrated route, but I've made sure to actually research the cost and job-placement outcomes rather than just picking the option that sounds more prestigious. I think being able to articulate that trade-off is actually more important to admissions than which one I've picked, because it shows I've thought about the decision seriously rather than defaulting to it."
+    },
+    "commonMistakes": [
+      "Treating one pathway as objectively superior with no trade-off discussion",
+      "Basing the decision only on prestige or what sounds impressive",
+      "No genuine self-reflection connecting the choice to personal discipline or circumstances"
+    ],
+    "followUps": ["What would make you change your mind about that choice later?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Crosswind limits and personal minimums",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["limitations", "judgement", "concept"],
+    "question": "An aircraft has a published maximum demonstrated crosswind component. Does that mean it's the aircraft's absolute limit, and how would that shape your own decision-making as a new pilot?",
+    "lookingFor": "Correct understanding that demonstrated crosswind is a tested reference, not a hard structural limit, plus a personal-minimums mindset.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the demonstrated crosswind component is the strongest crosswind tested during certification, not necessarily an absolute limit",
+        "Note that the aircraft may technically handle more, but that doesn't mean a given pilot should attempt it",
+        "Commit to setting a personal crosswind minimum well inside the published figure, especially early in a career"
+      ],
+      "modelAnswer": "The demonstrated crosswind component is the strongest crosswind that was tested during certification, it's not necessarily the absolute limit of what the aircraft could physically handle, so technically the aircraft might handle more. But I don't think that number should ever be read as a target for a pilot, especially early on, because your own skill and currency matter just as much as what the airframe can survive. I'd want to set myself a personal crosswind minimum well below that published figure while I'm still building experience, and only creep closer to it gradually as my proficiency and comfort genuinely improve. It's the same idea as personal weather minimums, the published number tells you what's possible, not what's wise for you specifically on a given day."
+    },
+    "commonMistakes": [
+      "Assuming the demonstrated crosswind figure is a hard certified limit the aircraft cannot exceed",
+      "Not distinguishing between aircraft capability and pilot capability",
+      "No mention of setting a stricter personal minimum"
+    ],
+    "followUps": ["How would you decide when you're ready to fly closer to that published limit?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Reporting a peer's rule-cutting",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "peer-conflict", "safety-culture"],
+    "question": "During training, you notice a fellow student pilot regularly cutting corners on pre-flight checks when instructors aren't watching. What would you do?",
+    "lookingFor": "Willingness to address a genuine safety issue directly, and escalate if unresolved, without becoming a bystander.",
+    "idealAnswer": {
+      "bullets": [
+        "Talk to the person directly first, framing it as a safety concern rather than a personal attack",
+        "If the behaviour continues and poses a genuine risk, be willing to escalate to an instructor",
+        "Reflect honestly on the discomfort rather than pretending it's an easy decision"
+      ],
+      "modelAnswer": "I'd talk to them directly first, honestly, because I'd want to give them the chance to hear it as a concern from someone who cares about their safety, not as me reporting them behind their back. If they brushed it off and kept skipping checks, I think I'd have to escalate it to an instructor, because a missed pre-flight check isn't a personal choice that only affects them, it can affect anyone flying that aircraft afterwards. I won't pretend that's an easy thing to do, it risks the friendship and it feels like snitching in the moment, but I think staying silent because it's uncomfortable is exactly the kind of shortcut-tolerant culture that leads to real accidents. I'd rather have an awkward year of training than carry that kind of silence into a career where the stakes are so much higher."
+    },
+    "commonMistakes": [
+      "Deciding to stay silent to avoid conflict or damaging the friendship",
+      "Escalating immediately without first raising it directly with the person",
+      "Downplaying the safety significance of skipped pre-flight checks"
+    ],
+    "followUps": ["What if the person got defensive and the friendship suffered because of it?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Handling unexpected severe turbulence",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "airmanship", "resource-management"],
+    "question": "If you hit unexpected severe turbulence while the cabin crew are mid-service and passengers are unbuckled, what's actually going through your mind as the flying pilot?",
+    "lookingFor": "Correct sequencing: secure people first, fly the correct turbulence technique, then assess and coordinate.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise the seatbelt sign and a clear announcement so passengers and crew can secure themselves immediately",
+        "Fly the appropriate turbulence technique, maintaining attitude rather than chasing altitude, avoiding overcontrolling",
+        "Coordinate with the other pilot and cabin crew afterward to check for injuries and assess next steps"
+      ],
+      "modelAnswer": "The very first thing is the seatbelt sign and a firm, clear announcement telling everyone to sit down and buckle up immediately, because unsecured people are the actual danger in severe turbulence, more than the aircraft itself. As the flying pilot I'd focus on maintaining a safe attitude and speed rather than chasing a precise altitude, since overcontrolling the aircraft in rough air can actually add structural stress rather than reduce it. Once we're through the worst of it, I'd coordinate with my co-pilot and get an update from cabin crew on whether anyone was hurt, because that determines whether we need to consider a diversion or file a report. It's really about sequencing, secure people first, fly smoothly, then assess, rather than trying to do everything at once."
+    },
+    "commonMistakes": [
+      "Focusing on chasing a specific altitude rather than a stable attitude",
+      "Forgetting the immediate priority of securing passengers and crew",
+      "Overcontrolling the aircraft, adding stress rather than reducing it"
+    ],
+    "followUps": ["Why can aggressively correcting for altitude in turbulence actually be counterproductive?"]
+  },
+  {
+    "id": "prog-aviation-pilot-studies-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Aviation's climate footprint",
+    "program": "Aviation / Pilot Studies",
+    "difficulty": "hard",
+    "tags": ["ethics", "sustainability", "reflection"],
+    "question": "Aviation contributes meaningfully to global carbon emissions, and demand for flying keeps growing. As someone choosing to become a pilot, how do you personally reconcile that?",
+    "lookingFor": "Honest, reflective engagement with the tension rather than defensive dismissal or naive idealism.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension honestly rather than deflecting or minimising aviation's climate impact",
+        "Show awareness of real industry efforts like sustainable aviation fuel and efficiency gains, without overstating how solved the problem is",
+        "Give a genuine personal reconciliation rather than a rehearsed line"
+      ],
+      "modelAnswer": "I don't think I can honestly dodge it, aviation is a real contributor to emissions and growing demand makes that harder, not easier, so I don't want to pretend that tension isn't there. What reconciles it for me is that I see this as an industry actively in the middle of trying to solve that problem, through sustainable aviation fuel and more efficient engines and routing, and I'd genuinely rather be inside that effort helping push it forward than watching from outside and just feeling uneasy about it. I'm also honest with myself that efficiency gains alone probably aren't enough yet, and I think acknowledging that gap, rather than overselling progress, is part of being responsible about the choice I'm making. It's not a fully comfortable answer, but I'd rather sit with that discomfort than pretend it isn't there."
+    },
+    "commonMistakes": [
+      "Dismissing the climate concern entirely or getting defensive",
+      "Overstating how solved the problem already is",
+      "Giving a vague answer with no genuine personal reflection"
+    ],
+    "followUps": ["What's one thing you think the industry could be doing faster?"]
+  }
+]

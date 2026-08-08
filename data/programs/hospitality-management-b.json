@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-hospitality-management-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "RevPAR vs occupancy vs ADR",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["revenue-management", "metrics", "reasoning"],
+    "question": "A hotel's occupancy went up ten percent year on year but RevPAR fell. How would you explain that to a general manager?",
+    "lookingFor": "Understanding that RevPAR is occupancy multiplied by average daily rate, plus a plausible explanation for why ADR must have dropped further than occupancy rose.",
+    "idealAnswer": {
+      "bullets": [
+        "Define RevPAR as occupancy multiplied by average daily rate, not just a headcount number",
+        "Explain that occupancy rising while RevPAR fell means ADR must have fallen even more sharply",
+        "Suggest plausible causes: heavy discounting, more OTA-driven demand, weaker corporate or group mix"
+      ],
+      "modelAnswer": "RevPAR is occupancy multiplied by average daily rate, so if occupancy rose but RevPAR fell, the average rate must have dropped by more than the occupancy gain made up for. That usually means the hotel filled rooms by discounting or by leaning harder on lower-yielding channels like OTAs, rather than through genuine demand growth. I'd want to look at the segment mix, whether corporate and group business held its rate while leisure got discounted, before assuming the extra bookings were actually good for the business."
+    },
+    "commonMistakes": [
+      "Treating higher occupancy as automatically good news",
+      "Not knowing the RevPAR formula at all",
+      "Giving a vague answer without naming a plausible cause"
+    ],
+    "followUps": ["What would you check first in the data to confirm your explanation?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "GOPPAR and cost control",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["finance", "profitability", "cost-control"],
+    "question": "Two hotels have identical RevPAR but very different GOPPAR. What does that tell you, and why might it happen?",
+    "lookingFor": "Understanding that GOPPAR reflects profitability after costs, not revenue, so identical RevPAR with different GOPPAR points to a cost-side difference.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain GOPPAR captures profit after operating costs, unlike RevPAR which is pure revenue",
+        "Recognize that identical RevPAR with different GOPPAR points to a cost-side difference",
+        "Name plausible drivers: labour cost, energy use, F&B cost ratio, management efficiency"
+      ],
+      "modelAnswer": "RevPAR only tells you how much revenue a room generated, it says nothing about what it cost to earn that revenue. If two hotels have the same RevPAR but different GOPPAR, the difference has to be on the cost side, things like staffing levels, energy efficiency, or how well they control food and beverage costs. A hotel with lean, well-scheduled staffing and tighter procurement can turn the same top line into a much healthier profit per available room."
+    },
+    "commonMistakes": [
+      "Confusing RevPAR and GOPPAR as the same metric",
+      "Assuming the difference must be revenue-related",
+      "Not being able to name any actual cost drivers"
+    ],
+    "followUps": ["Which cost line would you look at first if you were the GM trying to close that gap?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Dynamic and yield pricing logic",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["revenue-management", "pricing", "reasoning"],
+    "question": "Explain in your own words why an airline seat and a hotel room might sell for a different price every hour, and whether you think that's fair to the guest.",
+    "lookingFor": "Grasp of perishable inventory and yield management logic, plus a reasoned view on fairness rather than a flat yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the perishable inventory idea: an unsold room tonight is lost revenue forever",
+        "Connect pricing changes to demand forecasting and remaining inventory",
+        "Offer a considered view on fairness, weighing efficiency against guest trust"
+      ],
+      "modelAnswer": "A hotel room is perishable, if it's not sold tonight that revenue is gone forever, so the price constantly adjusts based on how much demand and inventory is left, similar to an airline seat. I think it's mostly fair because it lets the hotel offer real bargains in slow periods and it reflects genuine scarcity in busy ones, but it only stays fair if guests aren't misled about it, for instance if the same room is shown at wildly different prices to different people for reasons that have nothing to do with demand. Transparency is really the line for me."
+    },
+    "commonMistakes": [
+      "Not connecting the pricing logic to perishable inventory",
+      "Giving a one-word fairness verdict with no reasoning",
+      "Confusing dynamic pricing with personalised or discriminatory pricing"
+    ],
+    "followUps": ["Where would you draw the line between dynamic pricing and something you'd call unfair?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Franchise vs management contract vs ownership",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["business-models", "strategy"],
+    "question": "What's the practical difference between a hotel operating under a franchise agreement and one under a management contract, and why might a brand prefer one over the other?",
+    "lookingFor": "Understanding of the structural difference in control, risk and revenue between the two models, and reasoning about brand strategy.",
+    "idealAnswer": {
+      "bullets": [
+        "Franchise: owner runs the hotel day to day, pays for the brand name and standards, keeps operating control",
+        "Management contract: the brand's operating company runs the hotel on the owner's behalf for a fee, tighter control",
+        "Explain the trade-off brands weigh: consistency and quality control versus speed of expansion and capital risk"
+      ],
+      "modelAnswer": "Under a franchise the owner runs the hotel themselves and just pays the brand for the name, the reservation system and the standards manual, so the brand has less day to day control. Under a management contract the brand's own operating company actually runs the hotel for the owner in exchange for a fee, which gives it much tighter control over quality and guest experience. A brand that's expanding fast and wants to keep its balance sheet light will lean on franchising, but where consistency really matters, like a luxury flag, it's more likely to insist on managing the property itself."
+    },
+    "commonMistakes": [
+      "Treating the two models as basically the same thing",
+      "Not identifying who bears the financial risk in each",
+      "No sense of why a brand would choose one over the other"
+    ],
+    "followUps": ["Which model would you expect a new budget brand entering a market to use, and why?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "OTA dependency and direct booking strategy",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["distribution", "strategy", "commercial-awareness"],
+    "question": "Online travel agencies can take a commission of fifteen to twenty five percent on a booking. Why do hotels keep using them if direct bookings are so much more profitable?",
+    "lookingFor": "Awareness of the reach-versus-margin trade-off in distribution strategy, not a simplistic OTAs-are-bad answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge OTAs bring reach and visibility a single hotel often can't generate alone",
+        "Explain the trade-off: commission cost against incremental demand that wouldn't otherwise exist",
+        "Mention tactics hotels use to rebalance, like loyalty perks or steering guests to book direct next time"
+      ],
+      "modelAnswer": "OTAs give a hotel access to a huge pool of travellers who are already searching and comparing, reach that a single property, especially an independent one, usually can't buy on its own. The commission is real, but if that booking wouldn't have happened otherwise, some margin is still better than an empty room. Most hotels try to have it both ways, they use OTAs to fill the funnel and get discovered, then push guests toward booking direct next time with loyalty rates or perks the OTA can't match."
+    },
+    "commonMistakes": [
+      "Assuming hotels should just avoid OTAs entirely",
+      "Not mentioning the reach or discovery benefit",
+      "No awareness of how hotels try to convert OTA guests to direct"
+    ],
+    "followUps": ["What would you do as a small independent hotel to reduce OTA dependence without losing bookings?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Service recovery paradox",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["service-quality", "guest-experience", "reasoning"],
+    "question": "There's a theory that a guest who has a problem resolved brilliantly can end up more loyal than a guest who never had a problem at all. Do you believe that, and what does it mean for how a hotel should train staff?",
+    "lookingFor": "Engagement with the service recovery paradox concept and a reasoned, not naive, application of it.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of why a strong recovery can build more trust than flawless service",
+        "Add a caveat: it's not a reason to let more things go wrong on purpose",
+        "Draw out the training implication: empower frontline staff to fix problems on the spot"
+      ],
+      "modelAnswer": "I do believe it, a guest who watches a hotel actually own a mistake and fix it fast learns something a flawless stay never teaches them, that the hotel will look after them when things go wrong. But I don't think that means a hotel should be relaxed about mistakes, the paradox only works if failures stay rare and recovery is genuinely excellent, not a substitute for getting things right the first time. For training, it tells me staff need real authority to solve problems on the spot instead of having to escalate everything, because a guest who has to wait for a manager to fix things twice over loses that goodwill fast."
+    },
+    "commonMistakes": [
+      "Treating the paradox as license to be careless about service",
+      "Not connecting it to a concrete training or empowerment implication",
+      "Simple agree or disagree with no reasoning"
+    ],
+    "followUps": ["How much authority would you personally give a front desk agent to resolve a complaint without asking a manager?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Brand standardization vs local authenticity",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["branding", "strategy", "global"],
+    "question": "Global hotel chains promise a consistent experience in every city, but guests increasingly say they want something that feels local. How would you square that tension if you were designing a new hotel brand?",
+    "lookingFor": "Ability to reason through a genuine strategic tension rather than picking a side without justification.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the tension clearly: predictability and trust versus authenticity and distinctiveness",
+        "Propose a workable middle ground, standardizing operations while localizing design or experience",
+        "Show awareness this is a live strategic debate in the industry, not settled"
+      ],
+      "modelAnswer": "I'd standardise the things guests rely on for trust, like booking ease, cleanliness standards and how a complaint gets handled, because that consistency is actually the whole value of a brand. But I'd deliberately leave the guest-facing experience, the food, the art, the local partnerships, open to reflect the city it's in, almost like a shared operating system with a local skin. A lot of newer lifestyle brands are already doing exactly this, and I think it's the right answer because guests want the reliability of a brand promise without feeling like they could be in any city in the world."
+    },
+    "commonMistakes": [
+      "Picking one side without acknowledging the real trade-off",
+      "No concrete idea of what stays standardised versus what localises",
+      "Not recognising this as an active industry debate"
+    ],
+    "followUps": ["Can you name a hotel brand you think gets this balance right?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Segment mix and demand risk",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["revenue-management", "risk", "strategy"],
+    "question": "A city hotel gets sixty percent of its revenue from corporate travel and forty percent from leisure. Is that a healthy mix, and what would you want to know before answering?",
+    "lookingFor": "Reasoning about diversification, seasonality and risk rather than a snap judgement.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize there's no universally right ratio, it depends on the market and cycle",
+        "Identify relevant follow-up questions: seasonality, city events calendar, sensitivity to economic downturns",
+        "Show awareness that overreliance on one segment is a risk, not just a fact"
+      ],
+      "modelAnswer": "I wouldn't call it healthy or unhealthy without knowing more, because the right mix really depends on the city and what each segment is exposed to. Corporate travel is usually more resilient week to week but can fall off a cliff in a recession or when companies cut travel budgets, while leisure fills weekends and holidays but is more seasonal. I'd want to know how the two segments move together, if corporate softens does leisure pick up the slack, because a hotel that's overweight on one segment with no natural offset is carrying more risk than the revenue numbers alone suggest."
+    },
+    "commonMistakes": [
+      "Declaring a fixed ideal ratio like fifty-fifty",
+      "Not asking any clarifying questions",
+      "Missing the risk and diversification angle entirely"
+    ],
+    "followUps": ["What would you do differently in how you price rooms Monday to Thursday versus the weekend?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "All-inclusive resort economics",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["business-models", "resorts", "reasoning"],
+    "question": "How does an all-inclusive resort make money if guests can eat and drink as much as they want for one fixed price?",
+    "lookingFor": "Understanding of cost averaging, volume and behavioral economics behind the all-inclusive model.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that pricing is built around average consumption, not worst-case consumption",
+        "Note that most guests don't actually maximize what they consume",
+        "Mention the value of predictable cash flow and controlled procurement at scale"
+      ],
+      "modelAnswer": "The price is set based on what an average guest actually eats and drinks over a stay, not what a guest theoretically could if they tried to maximise it, and in practice most people don't come close to that ceiling. The resort also buys food and drink in bulk on fixed supplier contracts, so its costs per guest are much more predictable than the price suggests, and it can steer guests toward higher-margin house options over premium brands. On top of that, it locks in the whole stay's revenue upfront, which is worth a lot to a resort managing cash flow and staffing."
+    },
+    "commonMistakes": [
+      "Assuming the model only works because guests underconsume, missing the procurement and margin steering angle",
+      "Not mentioning upfront cash flow as a benefit",
+      "Vague answer with no actual mechanism"
+    ],
+    "followUps": ["What risk does this model carry if a resort gets its average consumption assumption wrong?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Cultural adaptation vs standard of service",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["global-service", "cultural-competence", "reasoning"],
+    "question": "Should a five-star hotel serve guests from every culture in exactly the same way, or adapt its service depending on who the guest is?",
+    "lookingFor": "A nuanced view distinguishing genuine cultural responsiveness from stereotyping, tied to what five-star service actually means.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish adapting to individual preference from applying broad cultural stereotypes",
+        "Argue that true luxury service is personalized to the guest in front of you, not a fixed script",
+        "Flag the risk of over-generalizing based on nationality or culture"
+      ],
+      "modelAnswer": "I don't think treating every guest identically is actually what five-star service means, real luxury is noticing and responding to what this specific guest wants, and that will vary by culture sometimes and by pure personal preference other times. Where I'd be careful is not turning that into a checklist based on nationality, assuming every guest from one country wants the same thing is just stereotyping with better manners. The standard I'd apply is paying close attention to the individual guest and letting their actual signals, not a cultural script, guide how I serve them."
+    },
+    "commonMistakes": [
+      "Advocating a rigid one-size-fits-all standard as the definition of fairness",
+      "Sliding into stereotyping while trying to sound culturally aware",
+      "Not distinguishing individual preference from cultural generalization"
+    ],
+    "followUps": ["Can you give an example where adapting service might cross the line into stereotyping?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Labour cost vs guest experience trade-off",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["operations", "staffing", "reasoning"],
+    "question": "If you were a hotel general manager and had to cut ten percent from your operating budget, would you cut staffing hours or guest-facing amenities first, and why?",
+    "lookingFor": "Structured trade-off reasoning connecting cost decisions to guest experience and staff wellbeing, not a snap answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh which cuts guests actually notice and value against which are invisible",
+        "Consider the knock-on effect of understaffing on service quality and staff burnout",
+        "Land on a reasoned choice, ideally a mix, rather than an absolute rule"
+      ],
+      "modelAnswer": "I'd look hard at amenities first, because a lot of them, like an underused gym item or a seasonal turndown extra, guests barely register if they disappear, whereas cutting staffing hours shows up immediately in wait times and how rushed the service feels. That said, I wouldn't treat it as an absolute rule, if an amenity is actually core to why guests book that hotel, cutting it could hurt more than a small staffing trim spread carefully across quieter shifts. I'd want to look at guest feedback data on what people actually mention before deciding, rather than assuming staffing is untouchable or that amenities are always safe to cut."
+    },
+    "commonMistakes": [
+      "Treating staffing cuts as costless because they're invisible on a budget sheet",
+      "Giving an absolute rule with no acknowledgment of context",
+      "Not mentioning guest feedback or data as an input to the decision"
+    ],
+    "followUps": ["How would understaffing during a cut show up in guest reviews a few months later?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-012",
+    "category": "Ethics & Situational",
+    "subtopic": "Fake reviews and reputation management",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "reputation", "integrity"],
+    "question": "A hotel you're managing is losing bookings to a competitor that clearly has fake five-star reviews propping up its rating. Your regional manager suggests doing the same 'just to level the playing field'. What do you do?",
+    "lookingFor": "Firm ethical reasoning that rejects matching bad behavior, with a constructive alternative offered.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the idea clearly, explain why fake reviews are dishonest and risk real consequences",
+        "Acknowledge the commercial pressure is real, not dismiss it",
+        "Propose a legitimate alternative: genuinely improving service, prompting real guests to review, reporting the competitor"
+      ],
+      "modelAnswer": "I'd push back on that directly, matching dishonest reviews with our own doesn't level anything, it just adds two hotels lying to guests instead of one, and platforms like Google and TripAdvisor do catch and penalise this eventually. I understand the pressure my manager is under if we're visibly losing bookings, so I wouldn't just say no and walk away, I'd suggest we report the suspicious reviews to the platform and put real effort into prompting our actual happy guests to leave reviews, since we're leaving genuine goodwill on the table. It's slower, but it's the only version of this that doesn't blow up on us later."
+    },
+    "commonMistakes": [
+      "Going along with the manager's suggestion because of hierarchy or competitive pressure",
+      "Refusing with no constructive alternative offered",
+      "Not acknowledging the real commercial pressure behind the request"
+    ],
+    "followUps": ["What would you do if your manager insisted after you raised your objection?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-013",
+    "category": "Ethics & Situational",
+    "subtopic": "Tipping and service charge ethics",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "labour", "industry-debate"],
+    "question": "Some countries are moving to abolish tipping and fold service into a higher menu price with guaranteed staff wages instead. Do you think the hospitality industry should make that shift everywhere?",
+    "lookingFor": "A reasoned position weighing worker income stability against cultural habit and incentive effects, not a reflexive answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the core trade-off: predictable wages and pay equity versus the incentive tipping creates and habit inertia",
+        "Acknowledge this varies by country and labour market, not a single universal answer",
+        "Commit to a considered position rather than sitting on the fence entirely"
+      ],
+      "modelAnswer": "I lean toward moving away from relying on tips, because it makes income unpredictable and can create pay gaps between front of house staff who get tipped well and kitchen staff who never see a cent of it, which never felt fair to me. The counterargument I take seriously is that tipping does give staff an immediate incentive to go the extra mile, and that switching cold in a culture built around it can just mean the wage rise gets swallowed by higher menu prices without staff actually seeing more money. I think the right path is a gradual shift toward guaranteed wages with fair tip pooling across departments, so kitchen and housekeeping staff, who guests never even see, aren't left out of it."
+    },
+    "commonMistakes": [
+      "Refusing to take any position",
+      "Ignoring the incentive or service-quality argument for tipping entirely",
+      "Not mentioning that back-of-house staff are usually excluded from tips"
+    ],
+    "followUps": ["How would you handle staff pushback if they feared losing income under a no-tipping model?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Automation replacing hospitality staff",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "technology", "future-of-work"],
+    "question": "A hotel group is piloting robot delivery for room service and AI chatbots for check-in, and says it will cut fifteen percent of frontline jobs. As a future manager in this industry, how do you think about that trade-off?",
+    "lookingFor": "Balanced ethical reasoning about efficiency gains against livelihoods and the human core of hospitality, with a constructive stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine efficiency and cost case for automation, not dismiss it outright",
+        "Weigh the human cost: real job losses and what that means for the people affected",
+        "Offer a considered view on where automation belongs and where human service is the actual product"
+      ],
+      "modelAnswer": "I don't think automation is wrong in itself, having a robot handle a routine food delivery frees a member of staff to spend that time actually talking to a guest who wants help, which is time better spent. What worries me is treating the fifteen percent job cut as just an efficiency number without owning the real impact on those people's lives, that's not something I'd want to wave away with a line about progress. If I were making that call, I'd want the business to invest some of the savings into retraining staff into more guest-facing, judgment-heavy roles rather than treating automation purely as a headcount reduction exercise, because hospitality's whole value is the human part, and I don't think you can automate your way past that."
+    },
+    "commonMistakes": [
+      "Treating automation as either an unqualified good or an unqualified evil",
+      "No mention of what happens to the displaced staff",
+      "Missing that hospitality's core value proposition is human service"
+    ],
+    "followUps": ["Where specifically would you draw the line on what should stay human?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-015",
+    "category": "Ethics & Situational",
+    "subtopic": "Surge pricing during a crisis",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "pricing", "crisis"],
+    "question": "During a natural disaster, hotel rooms in the area often see huge spikes in demand and some properties raise their rates sharply. Is that just normal supply and demand at work, or is it price gouging?",
+    "lookingFor": "Ability to distinguish normal yield management from exploitative pricing in an emergency, with a clear line drawn.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish routine demand-based pricing from pricing during a crisis where guests have no real choice",
+        "Explain why the absence of genuine choice changes the ethics, not just the economics",
+        "Take a clear position, most likely favoring rate caps or restraint during declared emergencies"
+      ],
+      "modelAnswer": "Normal dynamic pricing works because guests genuinely have choices, they can book earlier, pick another date, or stay somewhere else, and the price is signalling real scarcity they can plan around. In a disaster, people evacuating their homes don't have that choice, they need a room tonight, so charging whatever the market will bear stops being a pricing strategy and starts looking like taking advantage of people at the worst moment of their lives. I think hotels should hold or cap rates during a declared emergency, plenty of chains already have policies like that, and honestly I think it's also just better for the brand long term, guests remember who took care of them when it mattered."
+    },
+    "commonMistakes": [
+      "Calling all price increases gouging regardless of context, missing that normal dynamic pricing is legitimate",
+      "Ignoring the absence of real choice as the ethical crux",
+      "Refusing to take a clear position"
+    ],
+    "followUps": ["Would your answer change if the price rise only reflected genuinely higher operating costs during the crisis?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-016",
+    "category": "Ethics & Situational",
+    "subtopic": "Guest data privacy and personalization",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["ethics", "data-privacy", "technology"],
+    "question": "Hotels increasingly track guest preferences, from favorite pillow type to drink orders, to personalize future stays. Where would you draw the line between thoughtful personalization and surveillance?",
+    "lookingFor": "Reasoned distinction between service-relevant data use and overreach, with attention to consent and guest expectation.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish data guests would expect and welcome from data collection that feels covert or unrelated to service",
+        "Raise consent and transparency as the practical test",
+        "Acknowledge the commercial incentive to over-collect and why a hotel should resist it"
+      ],
+      "modelAnswer": "I'd draw the line at whether a guest would be pleased or unsettled to find out what's being recorded and why. Remembering that someone likes a firm pillow or takes their coffee black is the kind of thing a great hotel has always tried to do, it's just digitized now, and most guests would be delighted a hotel remembered. But things like tracking a guest's movements around the property in detail, or quietly building a profile from data that has nothing to do with improving their stay, cross into surveillance, especially if it's not something the guest agreed to or would expect. I think hotels should be collecting only what actually improves service and be upfront that they're doing it, because the moment a guest feels watched rather than looked after, personalization stops being a selling point."
+    },
+    "commonMistakes": [
+      "Treating all data collection as equally acceptable because it improves service",
+      "No mention of consent or guest awareness as a criterion",
+      "Dismissing personalization entirely instead of finding the actual line"
+    ],
+    "followUps": ["Should a hotel ever share a guest's preference data with a sister property in the same group without asking?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Post-pandemic labour shortage and staff retention",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["industry-awareness", "labour", "current-debate"],
+    "question": "Many hotels and restaurants are still struggling to fully staff up years after the pandemic even though demand has recovered. What do you think is really driving that, and what would you do about it?",
+    "lookingFor": "Current awareness of the structural labour shift in hospitality, beyond a vague 'people don't want to work' take.",
+    "idealAnswer": {
+      "bullets": [
+        "Name real drivers: pay that hasn't kept pace, unsociable hours, workers who left the industry during the pandemic and didn't return",
+        "Reject the lazy explanation that people simply don't want to work",
+        "Suggest a credible response: better pay, scheduling, career paths, not just recruitment ads"
+      ],
+      "modelAnswer": "I don't buy the idea that people just don't want to work anymore, I think a lot of hospitality workers left during the pandemic, found jobs with more predictable hours and better pay in other sectors, and simply didn't see a reason to come back to unsociable shifts and wages that hadn't moved much. If I were trying to fix it, I'd focus less on recruitment marketing and more on the actual job, clearer progression paths, more predictable scheduling, and pay that reflects how physically and emotionally demanding the work is, because you can't advertise your way out of a job people have genuinely decided isn't worth it anymore."
+    },
+    "commonMistakes": [
+      "Blaming workers for not wanting to work with no structural explanation",
+      "Only mentioning pay without any other driver",
+      "Proposing only recruitment marketing as the fix"
+    ],
+    "followUps": ["Do you think this is a temporary blip or a permanent shift in how people view hospitality careers?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Over-tourism and destination backlash",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["industry-awareness", "sustainability", "current-debate"],
+    "question": "Cities like Venice, Barcelona and Amsterdam have introduced tourist taxes or visitor caps because residents say tourism is making their cities unlivable. As a future hospitality professional, how should the industry respond to that backlash?",
+    "lookingFor": "Awareness of the over-tourism debate and a nuanced professional response rather than defensiveness.",
+    "idealAnswer": {
+      "bullets": [
+        "Show genuine awareness of specific measures cities have taken, not just a vague sense of the issue",
+        "Avoid a purely defensive industry stance, engage with the residents' complaint as legitimate",
+        "Suggest how the industry might respond constructively, spreading demand, engaging with local communities"
+      ],
+      "modelAnswer": "I think the industry has to actually accept that residents' complaints are legitimate rather than treating tourist taxes as an inconvenience to lobby against, cities like Venice capping day-trippers exist because tourism at that volume was genuinely eroding people's ability to live normal lives there. A constructive response looks like hotels and destination marketers actively working to spread demand across the year and into less-visited neighbourhoods, rather than just chasing peak-season volume, and being honest that unlimited growth isn't actually the goal, sustainable growth is. I'd rather work for a destination that's planning for that shift now than one still treating every visitor as pure upside."
+    },
+    "commonMistakes": [
+      "No specific examples, just a generic sense that overtourism exists",
+      "Framing the issue purely as a threat to industry revenue",
+      "Dismissing residents' concerns instead of engaging with them"
+    ],
+    "followUps": ["Can you think of a destination that's handled this balance well?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI in guest service",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["industry-awareness", "technology", "current-debate"],
+    "question": "Some hotel chains are now using generative AI chatbots to handle guest enquiries before a human ever gets involved. What's your honest view on how far that should go?",
+    "lookingFor": "Current, specific awareness of AI adoption in hospitality with a considered opinion on limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness this is happening now, not a hypothetical future",
+        "Distinguish routine, high-volume enquiries suited to AI from emotionally sensitive ones that need a person",
+        "Give an honest, specific opinion on where the limit should sit"
+      ],
+      "modelAnswer": "I think it makes sense for the routine stuff, checking a booking, asking about parking or checkout time, questions where a fast accurate answer matters more than a human touch, and AI genuinely handles those well now. Where I'd stop it is anything involving a genuine problem or an upset guest, a chatbot telling someone their room flood claim is being processed feels cold in exactly the moment a guest needs to feel heard. My honest view is that AI should absorb the repetitive volume so staff have more time for the moments that actually need a person, not replace the person in those moments too."
+    },
+    "commonMistakes": [
+      "Treating AI adoption as a distant hypothetical rather than something happening now",
+      "No distinction between routine and emotionally sensitive interactions",
+      "A vague answer with no actual opinion on limits"
+    ],
+    "followUps": ["How would you feel personally if a hotel used AI to write the empathetic reply to your own complaint?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Subscription and membership hotel models",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["industry-awareness", "business-models", "current-debate"],
+    "question": "A few newer hospitality brands are experimenting with subscription models, a flat monthly fee for a set number of nights, instead of the traditional pay-per-stay booking. What do you make of that shift?",
+    "lookingFor": "Awareness of an emerging business model trend and reasoning about who it serves and why it might or might not scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness this is a real, current experiment, not something invented for the question",
+        "Identify who the model actually serves, remote workers, frequent travellers seeking predictability",
+        "Give a reasoned view on the model's limits or risks, like matching guest demand to available inventory"
+      ],
+      "modelAnswer": "I've seen a few brands try this aimed at remote workers and long-stay travellers who want predictable costs rather than booking city by city, and I think it makes real sense for that specific guest, it's basically applying a gym membership logic to travel. What I'm less sure about is whether it scales past a niche, because a hotel still has fixed inventory and peak periods, and if subscribers all want to book the same popular weeks, the flat fee model runs into the same scarcity problem pay-per-stay was built to solve. I'd want to see how those brands handle demand spikes before I'd call it the future rather than a smart niche product."
+    },
+    "commonMistakes": [
+      "Not knowing this trend exists and improvising a generic answer",
+      "No engagement with who the model actually serves",
+      "Missing the inventory or scarcity tension the model has to solve"
+    ],
+    "followUps": ["What guest segment do you think this model is least suited to?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Sustainability certification and greenwashing",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["industry-awareness", "sustainability", "current-debate"],
+    "question": "Sustainability certifications like Green Key or LEED are becoming common in hotel marketing, but critics say some of it is greenwashing. How would you tell the difference as a guest, or as someone working in the industry?",
+    "lookingFor": "Awareness of real sustainability frameworks and healthy skepticism, distinguishing substantive action from marketing.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least one real certification or framework, showing this isn't a made-up answer",
+        "Identify practical markers of substance: measurable targets, third-party audits, operational changes versus one-off gestures",
+        "Show skepticism toward surface-level gestures marketed as the whole sustainability story"
+      ],
+      "modelAnswer": "Certifications like Green Key or LEED are a decent starting signal because they involve some third-party audit rather than the hotel just grading its own homework, but I'd still want to look past the badge itself. The real tell for me is whether a hotel can point to specific, measurable changes, energy use down a certain percentage, food waste tracked and reduced, rather than just a towel reuse card in the bathroom, which barely costs the hotel anything and gets marketed as if it's a serious commitment. As someone working in the industry I'd want to be the one pushing for the substantive changes, not just the marketing language around them."
+    },
+    "commonMistakes": [
+      "Not naming any actual certification or framework",
+      "Treating every sustainability claim as automatically genuine",
+      "Cynicism with no idea of what a genuine marker would even look like"
+    ],
+    "followUps": ["What's one sustainability change you'd want a hotel you worked at to actually make, beyond towel and linen reuse programs?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-022",
+    "category": "Curveball/Personality",
+    "subtopic": "Viral negative review crisis",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "crisis-management", "reputation"],
+    "question": "Imagine you're a duty manager and a guest's angry video about a mistake at your hotel has just gone viral online, and the details in it are exaggerated. What do you do in the first hour?",
+    "lookingFor": "Composed, structured crisis response reasoning, prioritizing facts and guest care over panic or denial.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize the actual guest situation first, addressing it directly and sincerely",
+        "Gather facts internally before responding publicly, rather than reacting in panic",
+        "Respond publicly with honesty and proportion, correcting exaggeration without attacking the guest"
+      ],
+      "modelAnswer": "First I'd go straight to the guest, not the internet, and make sure whatever actually went wrong is being fixed and they feel heard, because chasing the online story while ignoring the real person behind it would make everything worse. While that's happening I'd get the facts straight internally, what actually happened versus what the video shows, so any public response is accurate rather than defensive or reactive. When we do respond publicly, I'd acknowledge the parts that were genuinely our fault clearly, and gently correct the exaggerated parts with facts rather than getting combative, because arguing with an angry guest online in front of everyone else almost always backfires."
+    },
+    "commonMistakes": [
+      "Responding publicly and defensively before addressing the actual guest",
+      "Ignoring the exaggeration entirely instead of correcting it factually and calmly",
+      "Panicking and escalating without gathering facts first"
+    ],
+    "followUps": ["How would your approach change if the video's core claim turned out to be true?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-023",
+    "category": "Curveball/Personality",
+    "subtopic": "Overbooking and a VIP guest",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "operations", "judgement"],
+    "question": "Your hotel is overbooked tonight because of a system error, and you have one room left but two guests with confirmed bookings standing at the desk, one is a first-time guest and one is a loyalty member who's stayed twenty times. How do you handle it?",
+    "lookingFor": "Structured, fair judgement under pressure that doesn't simply default to whoever seems more important.",
+    "idealAnswer": {
+      "bullets": [
+        "Resist an automatic 'loyalty member wins' reflex, think through what's actually fair",
+        "Consider practical criteria: who can be relocated with least disruption, honest communication with both",
+        "Propose a concrete resolution that treats both guests with respect, not just the one being bumped"
+      ],
+      "modelAnswer": "My instinct isn't to just default to the loyalty member automatically, both guests have a confirmed booking and the mistake is entirely ours, not theirs. I'd look at practical factors, who has more flexibility, for instance if one guest is here for one night and the other for a week, and I'd be straightforward with whichever guest we need to relocate about what happened and why, rather than making them feel like an afterthought. I'd also make sure the guest we move gets a genuinely better outcome, a strong alternative and a real gesture, because our error shouldn't cost either of them a worse night than they booked."
+    },
+    "commonMistakes": [
+      "Automatically prioritising the loyalty member without considering fairness",
+      "No concrete plan for how the bumped guest is compensated or communicated with",
+      "Blaming the guests or the system instead of taking ownership"
+    ],
+    "followUps": ["What would you say to the guest you have to relocate, in the actual words you'd use?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-024",
+    "category": "Curveball/Personality",
+    "subtopic": "Staff walkout during peak season",
+    "program": "Hospitality Management",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "leadership", "crisis-management"],
+    "question": "It's the Friday of a fully booked bank holiday weekend and a third of your housekeeping team calls in sick at once, which you suspect is a coordinated protest over a recent pay decision. What do you do?",
+    "lookingFor": "Composed leadership reasoning that addresses the immediate operational crisis and the underlying grievance, not just one or the other.",
+    "idealAnswer": {
+      "bullets": [
+        "Address the immediate operational problem: reprioritize rooms, redeploy other staff, communicate honestly with guests",
+        "Take the underlying grievance seriously rather than treating it purely as a discipline problem",
+        "Show intent to have a real conversation with staff afterward, not just push through the weekend and move on"
+      ],
+      "modelAnswer": "In the moment, I'd triage, prioritise cleaning rooms for arriving guests over ones already occupied, pull in whoever can help from other departments, and be upfront with guests if certain services or times are affected rather than pretending everything's normal. But I wouldn't treat it as just an absenteeism problem to punish through, if it really is a protest over pay, that's a real signal about how staff are feeling, and pushing through the weekend without addressing it just guarantees it happens again. Once the weekend's handled, I'd want an honest conversation with the team about what's driving this, because losing a third of housekeeping at once on your busiest weekend is a symptom, not the actual problem."
+    },
+    "commonMistakes": [
+      "Treating it purely as a discipline or scheduling problem, ignoring the possible grievance",
+      "No concrete operational plan for the immediate weekend",
+      "Threatening consequences without any acknowledgment of the underlying issue"
+    ],
+    "followUps": ["How would your response differ if you learned afterward it genuinely was coordinated?"]
+  },
+  {
+    "id": "prog-hospitality-management-b-025",
+    "category": "Curveball/Personality",
+    "subtopic": "Budget cut forcing a service trade-off",
+    "program": "Hospitality Management",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "operations", "decision-making"],
+    "question": "Head office tells you, as the general manager, that you must cut your food and beverage budget by twenty percent this quarter with no exceptions. Walk me through how you'd decide what to change.",
+    "lookingFor": "Structured, guest-aware decision-making process rather than an arbitrary or purely cost-driven cut.",
+    "idealAnswer": {
+      "bullets": [
+        "Start from guest impact and data, not just the easiest line items to cut",
+        "Consider options beyond straight menu-shrinking, like portion sizes, supplier renegotiation, or seasonal menus",
+        "Show intent to communicate the change honestly to guests and staff rather than cutting quietly"
+      ],
+      "modelAnswer": "I'd start by looking at what guests actually value most on the menu, using covers and feedback data, rather than just cutting whatever's cheapest to cut, because a twenty percent reduction that guts the thing people book us for would cost more in repeat business than it saves. I'd look first at supplier renegotiation and reducing waste, since that can claw back real money without guests noticing anything at all, and only after that would I look at trimming the menu itself, ideally toward simpler, seasonal dishes rather than removing guest favourites. Whatever we land on, I'd be upfront with the team about why, because staff who understand the reasoning defend the changes to guests far better than staff who just see things quietly disappearing."
+    },
+    "commonMistakes": [
+      "Cutting the easiest or most visible items without checking what guests actually value",
+      "Only considering menu cuts and ignoring supplier or waste-reduction levers",
+      "No plan for communicating the change to staff or guests"
+    ],
+    "followUps": ["What would you do if, after all that, guest complaints about the changes still rose sharply?"]
+  }
+]

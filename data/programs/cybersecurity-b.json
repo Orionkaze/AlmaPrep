@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-cybersecurity-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Zero trust architecture",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["zero-trust", "network-security", "architecture"],
+    "question": "Zero trust architecture is a big theme in security right now. What does it actually mean, and how is it different from the old idea of a secure network perimeter?",
+    "lookingFor": "A clear grasp that zero trust replaces implicit inside-the-network trust with continuous per-request verification, not just a buzzword repeated back.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the old model: a strong perimeter, but anything already inside the network was largely trusted by default",
+        "Define zero trust as verifying every user and device on every request, regardless of network location",
+        "Connect the shift to a real driver, like remote work, cloud services, or VPN accounts being compromised"
+      ],
+      "modelAnswer": "The old model is like a castle with a moat, once you got past the firewall or VPN you were basically trusted to move around freely inside. Zero trust assumes there is no safe inside, every request has to prove who it is and what it should be allowed to touch, even from a device already sitting on the corporate network. It became more than a buzzword because remote work and cloud services broke the idea of one defensible perimeter, and because so many breaches start with an attacker who has already gotten hold of one set of legitimate-looking credentials. I find it interesting because it treats trust as something continuously earned rather than granted once at the door."
+    },
+    "commonMistakes": [
+      "Describing zero trust as just 'more firewalls' rather than a shift in the trust model",
+      "Assuming zero trust means no access at all rather than continuously verified access",
+      "Not connecting it to a real driver like remote work or cloud adoption"
+    ],
+    "followUps": ["Can you name one practical control that actually implements zero trust in a real system?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Defence in depth",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["defense-in-depth", "architecture", "fundamentals"],
+    "question": "What does 'defence in depth' mean, and can you give an example of what it looks like in a real system?",
+    "lookingFor": "Understanding of layered, independent controls so that one failure doesn't mean total compromise.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core idea: multiple independent layers of protection rather than one strong wall",
+        "Give a concrete stacked example, like firewall, MFA, encryption, and monitoring together",
+        "Note the point isn't just prevention, some layers exist to detect or slow an attacker down"
+      ],
+      "modelAnswer": "Defence in depth means you don't rely on any single control to keep you safe, you stack several independent layers so that if one fails, the whole system isn't immediately compromised. A real example would be a company that has a firewall filtering traffic, multi-factor authentication on top of passwords, encrypted data at rest, and a monitoring system watching for unusual behaviour, all at once, on the same system. What I think is underrated about this idea is that not every layer is about stopping the attacker outright, monitoring exists to detect and slow them down even after something else has already failed. It's really an admission that no single control is perfect."
+    },
+    "commonMistakes": [
+      "Listing controls without explaining why layering them matters",
+      "Treating defence in depth as just 'buy more security tools'",
+      "Forgetting that detection layers matter as much as prevention layers"
+    ],
+    "followUps": ["If a company could only afford to add one more layer this year, how would you help decide which?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Buffer overflow vulnerabilities",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["memory-safety", "vulnerabilities", "low-level"],
+    "question": "Can you explain, at a basic level, what a buffer overflow vulnerability is, and why it's still relevant even though many modern languages are memory-safe?",
+    "lookingFor": "A correct technical grasp of writing past allocated memory and overwriting adjacent memory or control flow, plus awareness that plenty of critical software is still written in unsafe languages.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a buffer overflow as writing more data into a fixed-size memory block than it was allocated to hold",
+        "Note that the extra data can overwrite adjacent memory, including things like a return address, letting an attacker redirect execution",
+        "Explain relevance today: operating system kernels, embedded devices, and huge amounts of legacy C and C plus plus code still exist and get patched, not rewritten"
+      ],
+      "modelAnswer": "A buffer overflow happens when a program writes more data into a fixed-size block of memory than it was actually allocated to hold, and in a language like C that extra data just spills into whatever memory sits next to it. If that adjacent memory happens to store something like a function's return address, an attacker can carefully craft the overflow to overwrite it and redirect the program to run their own code instead. It might feel like an old problem from the nineties, but so much of the world still runs on C and C plus plus, operating system kernels, embedded firmware in routers and cars, that this class of bug hasn't gone away, it's just moved to where rewriting everything in a memory-safe language isn't realistic yet. Languages like Rust are gaining ground specifically because they catch this category of bug at compile time rather than relying on the programmer to be careful every single time."
+    },
+    "commonMistakes": [
+      "Describing it vaguely as 'crashing a program' with no mechanism",
+      "Assuming memory-safe languages have made buffer overflows entirely obsolete",
+      "Not connecting the overwritten memory to actual attacker control, like a return address"
+    ],
+    "followUps": ["What's one mitigation, like a stack canary or ASLR, that makes this harder to exploit today?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Threat modelling",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["threat-modeling", "risk", "design"],
+    "question": "If you were asked to threat model a new online system before it launched, what would that actually involve?",
+    "lookingFor": "Understanding of proactively reasoning about how a system could be attacked before it's built, not just testing it afterwards.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain threat modelling as systematically asking what could go wrong before the system exists, not after",
+        "Mention a structured approach, like walking through categories of threat such as spoofing, tampering, or information disclosure",
+        "Note the output should be concrete, prioritised risks tied to design decisions, not a vague list of worries"
+      ],
+      "modelAnswer": "Threat modelling means sitting down with the design of a system, often literally a diagram of how data flows through it, and systematically asking what could go wrong at each point, before a single line of defensive code gets written. A structured way to do that is something like STRIDE, walking through categories such as someone spoofing identity, tampering with data in transit, or sensitive information being disclosed where it shouldn't be, so you're not just brainstorming randomly. The point isn't to produce a long scary list, it's to end up with a prioritised set of risks that actually change design decisions, like deciding a particular data flow needs encryption or a particular endpoint needs stricter authentication before launch rather than after a breach forces the fix."
+    },
+    "commonMistakes": [
+      "Describing it as the same thing as penetration testing after launch",
+      "Producing an unstructured list of fears with no prioritisation",
+      "Not connecting the exercise back to actual design changes"
+    ],
+    "followUps": ["Which threat category do you think is most often missed by teams doing this informally?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Cross-site scripting variants",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["web-security", "xss", "vulnerabilities"],
+    "question": "Cross-site scripting comes in different forms, reflected, stored, and DOM-based. Can you explain the difference?",
+    "lookingFor": "Correct technical distinctions between the three variants, not treating XSS as one undifferentiated bug.",
+    "idealAnswer": {
+      "bullets": [
+        "Reflected XSS: malicious script is part of the request itself and immediately echoed back in the response",
+        "Stored XSS: malicious script is saved on the server, like in a comment field, and served to every later visitor",
+        "DOM-based XSS: the vulnerable processing happens entirely in client-side JavaScript, without the malicious payload ever touching the server"
+      ],
+      "modelAnswer": "Reflected XSS is when the malicious script rides along in the request itself, like a crafted link, and the server immediately reflects it back into the page without sanitising it, so it only affects whoever clicks that specific link. Stored XSS is more dangerous because the script gets saved somewhere persistent, like a comment field, and then gets served to every single visitor who views that page afterwards, no crafted link required. DOM-based XSS is the odd one out because the server can be doing everything right, the vulnerability lives entirely in client-side JavaScript that unsafely takes something like a URL fragment and writes it into the page, so the malicious payload never even has to pass through the server to cause damage."
+    },
+    "commonMistakes": [
+      "Treating all three as the same bug with different names",
+      "Not realising DOM-based XSS can happen with no server involvement at all",
+      "Confusing stored XSS with a database breach rather than a script execution issue"
+    ],
+    "followUps": ["Why is stored XSS generally considered more dangerous than reflected XSS?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Privilege escalation",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["privilege-escalation", "access-control"],
+    "question": "What is privilege escalation, and what's the difference between vertical and horizontal privilege escalation?",
+    "lookingFor": "Accurate definitions of both variants with a concrete example of each, not just the terms recited.",
+    "idealAnswer": {
+      "bullets": [
+        "Define privilege escalation as gaining access beyond what was originally granted",
+        "Vertical: moving from a lower privilege level to a higher one, like a regular user gaining admin rights",
+        "Horizontal: staying at the same privilege level but accessing another user's data or account they shouldn't reach"
+      ],
+      "modelAnswer": "Privilege escalation is when an attacker, or even a legitimate but curious user, ends up with more access than they were originally granted. Vertical escalation is the more dramatic version, going from a normal user account to admin rights, for example by exploiting a flaw in how a system checks permissions. Horizontal escalation is subtler, you don't gain higher privileges, you stay at the same level but reach someone else's account or data you shouldn't be able to see, like changing a user ID in a URL and suddenly viewing another customer's order history. I think horizontal escalation gets underrated in how people talk about security because it doesn't sound as scary as 'becoming admin,' but it can expose just as much sensitive data."
+    },
+    "commonMistakes": [
+      "Only knowing the vertical case and not the horizontal one",
+      "Confusing privilege escalation with simple unauthorised login",
+      "Giving no concrete example for either type"
+    ],
+    "followUps": ["What's a common coding mistake that leads to horizontal privilege escalation?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Man-in-the-middle attacks",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["network-security", "mitm"],
+    "question": "What is a man-in-the-middle attack, and what's one real technical mechanism that makes it possible on a public wifi network?",
+    "lookingFor": "Correct conceptual definition plus a specific, plausible mechanism, not just 'someone intercepts your data'.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a man-in-the-middle attack as an attacker secretly positioning themselves between two communicating parties",
+        "Name a specific mechanism, like ARP spoofing or a fake wifi access point mimicking a trusted network name",
+        "Note that encryption, like proper HTTPS, is the main defence rather than trusting the network itself"
+      ],
+      "modelAnswer": "A man-in-the-middle attack is when an attacker secretly inserts themselves between two parties who think they're talking directly to each other, letting them intercept, or even alter, the traffic in between. On public wifi, a common way to do this is setting up a fake access point with a name similar to the legitimate one, like the real cafe wifi, so devices connect to the attacker's network without realising it. Once you're routing your traffic through them, they can watch everything that isn't properly encrypted end to end. That's why relying on 'the network is probably fine' is risky, and why proper HTTPS matters so much, it means even if the traffic is intercepted, it's unreadable without the private key."
+    },
+    "commonMistakes": [
+      "Giving only a vague definition with no real mechanism",
+      "Claiming a VPN makes you fully immune to this without qualification",
+      "Confusing it with simple eavesdropping on unencrypted broadcast traffic"
+    ],
+    "followUps": ["Would HTTPS alone fully protect you here? What could still go wrong?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Software supply chain attacks",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["supply-chain", "current-events", "software-security"],
+    "question": "Software supply chain attacks, like the SolarWinds breach or the XZ Utils backdoor, have become a major focus in security. What makes this type of attack so hard to defend against?",
+    "lookingFor": "Awareness of a real recent case plus understanding that trust is extended transitively through dependencies most organisations never directly audit.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific real case accurately, like SolarWinds or the XZ Utils backdoor",
+        "Explain the core problem: organisations implicitly trust every dependency their software relies on, often without ever reviewing that code",
+        "Note the blast radius is huge, one compromised component can quietly reach thousands of downstream organisations at once"
+      ],
+      "modelAnswer": "The XZ Utils case really stuck with me, an attacker spent years building trust as a contributor to a small but widely used compression library before quietly inserting a backdoor that could have compromised huge numbers of Linux systems, and it was only caught because one engineer noticed a slightly slower SSH login. What makes supply chain attacks so hard to defend against is that they exploit trust nobody thinks to question, a company might carefully audit its own code but has no realistic way of reviewing every open source dependency several layers deep in its build. And because one compromised component gets pulled into thousands of downstream projects, the blast radius is enormous compared to attacking one organisation directly. It's made me think trust in software is a lot more transitive and fragile than people usually assume."
+    },
+    "commonMistakes": [
+      "Naming a case with no accurate technical detail about how it worked",
+      "Treating this as just 'use good antivirus,' missing that it's a trust problem, not a detection problem",
+      "Not explaining why the blast radius is so much larger than a typical breach"
+    ],
+    "followUps": ["What's one thing an organisation can actually do to reduce this specific risk?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-009",
+    "category": "Ethics & Situational",
+    "subtopic": "Ransomware payment dilemma",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["ethics", "ransomware", "dilemma"],
+    "question": "Imagine you're advising a small hospital that's just been hit by ransomware and its patient systems are down. Law enforcement advises against paying, but the board is under pressure to restore care quickly. What would you weigh in that decision?",
+    "lookingFor": "Structured ethical reasoning that weighs immediate patient harm against funding criminal activity and the lack of any guarantee, rather than a snap verdict either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension: real, immediate harm to patients now versus longer-term consequences of paying",
+        "Note paying offers no guarantee of a working decryption key and can mark the organisation as a soft target for future attacks",
+        "Land on a reasoned position, likely favouring not paying while pursuing backups and incident response, while acknowledging the human cost of that choice"
+      ],
+      "modelAnswer": "My instinct is that patient safety has to come first, and I understand why a board under that pressure would want to just pay and make the problem go away. But paying doesn't actually guarantee you get a working decryption key back, attackers have taken money and not delivered before, and it can mark the hospital as a target that pays, inviting repeat attacks. I'd want to know first whether there are clean backups that could restore critical systems faster than negotiating with criminals, and treat payment as a last resort rather than the default response. It's not a comfortable answer given real patients are affected right now, but funding the ransomware economy on the promise of a fix that might not even work feels like it trades a short-term relief for a longer-term, wider harm."
+    },
+    "commonMistakes": [
+      "Giving a snap 'never pay, ever' answer with no acknowledgment of the human stakes",
+      "Assuming payment guarantees recovery",
+      "Ignoring the role of backups and incident response as the actual first question"
+    ],
+    "followUps": ["Does your answer change if there are no working backups at all?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-010",
+    "category": "Ethics & Situational",
+    "subtopic": "Encryption backdoor debate",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["encryption", "privacy", "policy", "current-events"],
+    "question": "Governments sometimes argue that messaging apps should build in backdoors so law enforcement can access encrypted communications during criminal investigations. What's your view on that debate?",
+    "lookingFor": "Genuine engagement with both sides of a live policy debate, including the technical reality that a backdoor can't be selectively secure.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the legitimate law enforcement interest, like stopping serious crime or terrorism",
+        "Explain the technical counterargument: a backdoor built for 'good guys' is a vulnerability any attacker can eventually find and use",
+        "Land on a considered position rather than refusing to engage with the tension"
+      ],
+      "modelAnswer": "I understand the argument, there are real cases where encrypted communication has shielded serious crime, and law enforcement's frustration is genuine, not manufactured. But the technical problem is that you can't build a backdoor that only works for the 'right' people, once that access mechanism exists in the system, it's a vulnerability that can be discovered and abused by criminals, hostile states, or anyone else who finds it, and history has examples of exactly that happening with similar mechanisms. My own view leans toward not weakening encryption for everyone to catch a smaller number of bad actors, because it ends up putting journalists, activists, and ordinary users at risk too, but I do think that's a genuinely hard trade-off and I don't think people who land differently on it are being unreasonable."
+    },
+    "commonMistakes": [
+      "Dismissing the law enforcement side entirely as illegitimate",
+      "Not explaining the technical reason a backdoor can't be selectively secure",
+      "Refusing to state any actual position when asked directly"
+    ],
+    "followUps": ["Can you think of a real historical example where a similar access mechanism was later abused?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantum computing and cryptography",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["cryptography", "quantum", "current-events"],
+    "question": "You may have heard that quantum computing could eventually break a lot of today's encryption. What's the actual concern there, and what's being done about it?",
+    "lookingFor": "Basic accurate awareness that quantum computers threaten specific algorithms like RSA, not encryption in general, plus awareness of post-quantum cryptography efforts.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a sufficiently powerful quantum computer could break the maths behind widely used algorithms like RSA, using something like Shor's algorithm",
+        "Clarify this threatens asymmetric encryption specifically, not every form of cryptography equally",
+        "Mention that organisations like NIST have been standardising post-quantum algorithms to replace vulnerable ones ahead of time"
+      ],
+      "modelAnswer": "The concern is that a lot of today's asymmetric encryption, like RSA, relies on problems, such as factoring huge numbers, that are practically impossible for classical computers but that a sufficiently powerful quantum computer could solve efficiently using something called Shor's algorithm. That doesn't mean all encryption is instantly broken, symmetric encryption is affected far less severely, but a lot of the internet's security, including how HTTPS exchanges keys, leans on the asymmetric side. What's being done is that standards bodies like NIST have already selected post-quantum algorithms designed to resist this, and organisations are starting to migrate now, partly because of a real concern called 'harvest now, decrypt later,' where encrypted data is being stolen today specifically to be decrypted once quantum computers are powerful enough."
+    },
+    "commonMistakes": [
+      "Claiming quantum computers already exist and are breaking encryption today",
+      "Not distinguishing the impact on asymmetric versus symmetric encryption",
+      "Unaware that post-quantum cryptography standards already exist and migration is underway"
+    ],
+    "followUps": ["What does 'harvest now, decrypt later' mean, and why would an attacker bother doing that today?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Prompt injection in AI systems",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["ai-security", "prompt-injection", "current-events"],
+    "question": "AI chatbots and assistants have introduced a fairly new kind of vulnerability called prompt injection. What is it, and why is it hard to fully fix?",
+    "lookingFor": "Understanding that the vulnerability comes from AI systems being unable to reliably separate trusted instructions from untrusted data, not just 'people trick the chatbot'.",
+    "idealAnswer": {
+      "bullets": [
+        "Define prompt injection as hiding malicious instructions inside content the AI processes, like a webpage or document, to override its intended behaviour",
+        "Explain the root cause: language models process instructions and data in the same channel, so they can't always reliably tell them apart",
+        "Note why it's hard to fully patch, unlike a normal software bug, it isn't a single line of faulty code but a structural property of how these systems currently work"
+      ],
+      "modelAnswer": "Prompt injection is when someone hides instructions inside content an AI system is going to read, like text buried in a webpage or an email, so that when the AI processes it, it follows those hidden instructions instead of, or alongside, what the actual user asked for. The reason it's hard to fully fix is that language models don't cleanly separate 'trusted instructions from my developer or user' from 'data I'm just reading,' both arrive as the same kind of text, so a cleverly worded piece of data can end up being treated like a command. That's different from a typical software bug where you can patch one faulty function, this is closer to a structural property of how current models work, which is why the mitigations right now are more about limiting what the AI is allowed to do with sensitive actions rather than claiming the injection risk is fully solved."
+    },
+    "commonMistakes": [
+      "Describing it as just 'jailbreaking' with no distinction from that related but different problem",
+      "Claiming there's a simple, complete fix, like better filtering",
+      "Not explaining the structural reason instructions and data get confused in the first place"
+    ],
+    "followUps": ["What's one practical way a system could limit the damage even if a prompt injection succeeds?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Bug bounty programmes",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["bug-bounty", "disclosure", "policy"],
+    "question": "Companies run bug bounty programmes that pay researchers to report vulnerabilities. Do you think that's a better model than treating all unauthorised testing as a crime? Why?",
+    "lookingFor": "A reasoned opinion that recognises how incentives shape researcher behaviour, not just a one-line endorsement.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain how bug bounties give researchers a legal, rewarded path instead of pushing them toward the black market or silence",
+        "Acknowledge the model's limits, like scope restrictions and payouts that may not match the vulnerability's real severity",
+        "Give a reasoned overall opinion rather than staying neutral"
+      ],
+      "modelAnswer": "I think bug bounty programmes are a genuinely good model because they give researchers a legal, defined path to report what they find and actually get paid for it, instead of the alternative where a curious researcher either stays quiet out of fear of legal consequences or, worse, sells the vulnerability on the black market. That said, they're not perfect, the scope of what's covered can be narrow, and payouts sometimes don't match how serious a vulnerability actually is compared to what it would be worth to a criminal buyer, which can still push some researchers the wrong way. On balance I'd still rather have that legal channel existing than not, criminalising all unauthorised testing without any safe alternative just pushes the same activity underground where nobody benefits from the disclosure."
+    },
+    "commonMistakes": [
+      "Giving a purely positive answer with no acknowledgment of the model's limits",
+      "Not explaining the underlying incentive problem bug bounties are trying to solve",
+      "Refusing to state a clear opinion when asked directly"
+    ],
+    "followUps": ["What would you do if you found a serious bug in a company with no bug bounty programme at all?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Insider threat dilemma",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["insider-threat", "ethics", "situational"],
+    "question": "Say you're doing a placement on a company's security team and you notice a senior colleague quietly copying small amounts of company data to a personal drive. You're junior, and confronting them directly could be awkward or even risky for you. What would you do?",
+    "lookingFor": "Reasoning that avoids both silent inaction and reckless direct confrontation, favouring a proper reporting channel while taking the observation seriously.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real discomfort and power imbalance of being junior and reporting a senior colleague",
+        "Avoid two extremes: ignoring it out of fear, or confronting them directly and possibly compromising an investigation",
+        "Choose to report through a proper channel, like a manager or a confidential reporting process, with what was actually observed, not speculation"
+      ],
+      "modelAnswer": "I'd take it seriously rather than talking myself out of it because they're senior and I'm just on placement, insider threats are exactly the kind of thing that gets missed because junior people feel it isn't their place to say anything. I wouldn't confront them directly though, partly because I might be missing context, and partly because if it is something serious, tipping them off could let them cover their tracks or make my own position genuinely awkward. I'd report exactly what I observed, factually and without speculation, to my manager or through whatever confidential reporting process the company has, and let people with the authority and full picture decide what happens next. It's an uncomfortable position to be in, but staying silent because it's uncomfortable isn't really neutral, it just leaves the risk sitting there."
+    },
+    "commonMistakes": [
+      "Deciding to confront the colleague directly without considering the risk of tipping them off",
+      "Staying silent purely because reporting a senior colleague feels awkward",
+      "Speculating or exaggerating rather than reporting only what was actually observed"
+    ],
+    "followUps": ["What would you do if you reported it and nothing seemed to happen afterwards?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud shared responsibility model",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["cloud-security", "fundamentals"],
+    "question": "In cloud computing there's a concept called the 'shared responsibility model'. What does that mean, and why do breaches sometimes happen because someone misunderstood it?",
+    "lookingFor": "Correct explanation of the split between provider and customer responsibilities, with a realistic example of the misunderstanding causing a breach.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the split: the cloud provider secures the underlying infrastructure, the customer secures how they configure and use it",
+        "Give a concrete example, like a misconfigured storage bucket left publicly accessible",
+        "Note the misunderstanding usually comes from assuming 'the cloud' handles security entirely on its own"
+      ],
+      "modelAnswer": "The shared responsibility model means the cloud provider is responsible for securing the underlying infrastructure, the physical servers, the network, the hypervisor, but the customer is responsible for how they configure and use what they've been given, things like access permissions, encryption settings, and what's exposed to the internet. A classic example is a company leaving a cloud storage bucket set to public by mistake and sensitive customer data being scraped as a result, that's not the provider's infrastructure failing, it's a configuration choice the customer made. I think the misunderstanding happens because 'the cloud' sounds like a fully managed, secure black box, when really you've just moved which part of the security problem is yours, not made the problem disappear."
+    },
+    "commonMistakes": [
+      "Assuming the cloud provider is responsible for everything once data moves to the cloud",
+      "Giving no concrete example of a misconfiguration causing real harm",
+      "Confusing this with a purely legal or contractual concept rather than a technical one"
+    ],
+    "followUps": ["Whose responsibility do you think patching the operating system on a cloud virtual machine is?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Secure IoT device design",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["iot", "hypothetical", "design"],
+    "question": "Suppose you were asked to think through the security of a new smart doorbell camera before it shipped to millions of homes. What are the main risks you'd want to address, and how?",
+    "lookingFor": "Applied reasoning about a realistic IoT threat surface, not a generic 'use strong passwords' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a specific real risk, like default or weak credentials making devices trivially compromisable at scale",
+        "Address the video and network data path, ensuring encrypted transmission and secure cloud storage",
+        "Consider the update problem: how the device gets security patches once it's in someone's home for years"
+      ],
+      "modelAnswer": "The first thing I'd worry about is default credentials, IoT botnets like Mirai spread specifically because huge numbers of devices shipped with the same default username and password that nobody ever changed, so I'd want to force a unique setup process with no usable default. I'd also want to make sure the video feed is encrypted both in transit to the cloud and at rest, because a doorbell camera is about as personal and physically sensitive a data stream as you can imagine, someone watching who comes and goes from your home. The part I think gets overlooked is the update problem, a doorbell might sit unpatched in someone's home for five years, so I'd want a reliable, low-friction automatic update mechanism built in from day one, because relying on the average customer to manually update firmware just isn't realistic."
+    },
+    "commonMistakes": [
+      "Giving only a generic 'use encryption and strong passwords' answer with no specifics",
+      "Ignoring the long-term update and patching problem for devices left in homes for years",
+      "Not considering privacy implications specific to a camera pointed at a doorstep"
+    ],
+    "followUps": ["What would you do about a device that's already in the field and can no longer receive updates?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Biometric authentication trade-offs",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["biometrics", "privacy", "authentication"],
+    "question": "Biometric authentication, like fingerprints or face recognition, is often marketed as more secure than passwords. What are the trade-offs people don't always think about?",
+    "lookingFor": "Understanding that biometrics solve convenience more than they solve security, and that they carry an irreversibility problem passwords don't.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the irreversibility problem: a compromised password can be changed, a compromised fingerprint cannot",
+        "Note biometrics are often more about convenience than raw security, and can be spoofed or coerced",
+        "Raise the privacy dimension, biometric data is uniquely identifying and its storage and use carries its own risk"
+      ],
+      "modelAnswer": "The trade-off I think about most is that biometrics can't be changed. If my password leaks I can reset it, but if my fingerprint data leaks from some database, I can't exactly get a new fingerprint, that compromise is permanent in a way a password breach isn't. Biometrics are also not automatically more secure in every sense, they're often really solving convenience, unlocking a phone faster, and they can be spoofed with a good enough fake fingerprint or photo, or in more extreme cases someone can be physically coerced into unlocking a device in a way you can't be coerced into 'remembering' a password you've chosen to forget. There's also a real privacy question, that biometric data is uniquely tied to you as a person, so how and where it's stored matters enormously, a breach there is different in kind from a leaked password hash."
+    },
+    "commonMistakes": [
+      "Treating biometrics as unambiguously more secure with no caveats",
+      "Not mentioning that a compromised biometric can't be reset the way a password can",
+      "Ignoring the coercion angle, like being physically forced to unlock a device"
+    ],
+    "followUps": ["Would you recommend combining biometrics with a password rather than replacing it? Why?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-018",
+    "category": "Ethics & Situational",
+    "subtopic": "Nation-state cyberattacks",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["cyberwarfare", "ethics", "current-events"],
+    "question": "Attacks on critical infrastructure like power grids are increasingly attributed to nation-states, for example the Stuxnet worm or attacks on Ukraine's power grid. Do you think state-sponsored cyberattacks should be treated under different rules than criminal ones?",
+    "lookingFor": "Thoughtful engagement with the blurred line between cyberwarfare and crime, referencing a real case rather than speaking in the abstract.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific real incident accurately to ground the answer",
+        "Recognise the genuine difficulty of attribution and proportionate response in cyberspace compared to conventional warfare",
+        "Offer a considered position on whether existing legal and ethical frameworks are adequate"
+      ],
+      "modelAnswer": "Stuxnet is the case that made this real for me, a worm that physically damaged centrifuges in a nuclear facility, which is a level of consequence that starts to look a lot more like sabotage or an act of war than ordinary crime. I think the honest answer is that our existing frameworks, built around clearer physical borders and clearer attribution, weren't really designed for this, it's much harder to prove who's really behind an attack in cyberspace, and that ambiguity makes it easy for states to act with a level of deniability they wouldn't have with a physical strike. I do think there should be different norms for attacks on critical infrastructure specifically, because the potential for civilian harm is so much higher than typical cybercrime, but I'm honestly not sure the international frameworks have caught up to actually enforce that distinction yet."
+    },
+    "commonMistakes": [
+      "Speaking entirely in the abstract with no reference to a real incident",
+      "Treating attribution in cyberspace as straightforward when it's genuinely contested",
+      "Giving no actual opinion when asked directly"
+    ],
+    "followUps": ["What makes attribution of a cyberattack to a specific nation-state so difficult?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Deepfakes in social engineering",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["social-engineering", "deepfakes", "current-events"],
+    "question": "Deepfake audio and video are starting to show up in social engineering attacks, like a fake voice call impersonating a company's CEO. How do you think this changes the threat landscape compared to traditional phishing?",
+    "lookingFor": "Understanding of how deepfakes undermine a cue people previously relied on, voice or face recognition, rather than just calling it 'scary new tech'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that traditional phishing relies on text, which trained people learn to scrutinise, deepfakes attack a cue people trust instinctively, like a familiar voice",
+        "Give a concrete example, like a fraudulent transfer authorised after a deepfaked voice call from a 'CEO'",
+        "Suggest what changes as a defence, like verification through a separate channel rather than trusting the voice or face alone"
+      ],
+      "modelAnswer": "Traditional phishing attacks something people can be trained to scrutinise, a slightly wrong email address or an odd link, but a deepfake attacks something we trust almost instinctively, recognising a familiar voice or face, which most of us have never had a reason to be suspicious of. There have already been real cases of fraudulent wire transfers being authorised after employees received what sounded exactly like their CEO's voice on a call urgently requesting the payment. I think it means organisations need to shift toward verifying high-stakes requests through a separate channel entirely, like a callback to a known number or a pre-agreed code word, rather than trusting that 'it sounded like them' is good enough evidence anymore, because that particular kind of evidence just isn't reliable in the way it used to be."
+    },
+    "commonMistakes": [
+      "Treating this as identical to traditional phishing with no real difference explained",
+      "Giving no concrete example of a real or realistic deepfake social engineering scenario",
+      "Not suggesting any actual change in defensive behaviour"
+    ],
+    "followUps": ["What's one low-tech verification habit that would still defeat a convincing deepfake call?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-020",
+    "category": "Ethics & Situational",
+    "subtopic": "Penetration test scope creep",
+    "program": "Cybersecurity",
+    "difficulty": "hard",
+    "tags": ["penetration-testing", "ethics", "scope"],
+    "question": "Imagine you're running an authorised penetration test and, while working within scope, you stumble across a separate, serious vulnerability that's outside the agreed scope of the test entirely. What would you do?",
+    "lookingFor": "Reasoning that respects the legal boundary of authorisation while still taking the discovery seriously and escalating it responsibly.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that testing further outside the agreed scope, even out of good intent, could breach the legal authorisation entirely",
+        "Choose to stop and document the finding rather than exploit or ignore it",
+        "Escalate it clearly to the client through the proper reporting channel, separate from the in-scope findings"
+      ],
+      "modelAnswer": "I'd stop immediately and not test it any further, because the authorisation I have is specifically for the agreed scope, and continuing outside it, even with good intent, could cross a real legal line and undermine the whole engagement. I'd document exactly what I observed and how I stumbled on it, without probing deeper to 'prove' it, and raise it with the client separately and clearly, flagged as an out-of-scope finding that they should urgently address, rather than quietly folding it into the main report as if it were authorised. It's tempting to want to just fix or fully verify it because it's clearly serious, but staying inside the boundary of what I was actually asked and allowed to do is what keeps the whole profession trustworthy."
+    },
+    "commonMistakes": [
+      "Continuing to test the out-of-scope vulnerability to 'confirm' it",
+      "Ignoring it entirely because it's technically not part of the assignment",
+      "Quietly including it in the report without clearly flagging it as out of scope"
+    ],
+    "followUps": ["Would your answer change if the vulnerability looked like it was already being actively exploited?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Security by design",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["security-by-design", "software-development"],
+    "question": "What does 'security by design' mean, and why do you think security so often gets bolted on at the end of a project instead?",
+    "lookingFor": "Understanding of security as an early design constraint, plus realistic insight into the organisational pressures that push it to the end.",
+    "idealAnswer": {
+      "bullets": [
+        "Define security by design as treating security as a requirement from the earliest design decisions, not a final checklist",
+        "Explain why it gets bolted on late in practice: deadline pressure, and security not producing a visible feature for stakeholders",
+        "Note the real cost of the late approach, retrofitting security is usually far more expensive than designing for it upfront"
+      ],
+      "modelAnswer": "Security by design means treating security requirements as part of the architecture from the very first decisions, like how data flows and who can access what, rather than as a checklist you run through right before launch. I think it gets bolted on late so often because security doesn't produce a visible feature, nobody's demo looks more impressive because of good input validation, so under deadline pressure it's the thing that quietly gets deprioritised in favour of features stakeholders can actually see. The frustrating part is that retrofitting security afterward is usually far more expensive and disruptive than designing for it from the start, because by then core architectural decisions are already locked in and changing them means reworking things that were built assuming a much friendlier threat model."
+    },
+    "commonMistakes": [
+      "Defining it only as 'adding security features' without the design-decision framing",
+      "Giving no real explanation for why it happens late in practice anyway",
+      "Not mentioning the higher cost of retrofitting security compared to designing it in early"
+    ],
+    "followUps": ["What's one early design decision that's hard to change later if security wasn't considered?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Open source security responsibility",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["open-source", "current-events", "software-security"],
+    "question": "A huge amount of critical software depends on open source projects maintained by a handful of volunteers, which is part of what made vulnerabilities like Log4Shell such a big deal. Who do you think is actually responsible for the security of that kind of software?",
+    "lookingFor": "A nuanced view that doesn't simply blame under-resourced volunteer maintainers, referencing a real case.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a real case like Log4Shell accurately to ground the reasoning",
+        "Push back on the instinct to blame volunteer maintainers alone for a resourcing problem they didn't create",
+        "Argue responsibility is shared, companies that profit from free dependencies should invest back into their security"
+      ],
+      "modelAnswer": "Log4Shell is the case that comes to mind, a vulnerability in a widely used logging library maintained largely by volunteers, that ended up affecting an enormous share of enterprise software almost overnight. I don't think it's fair to put the responsibility purely on the maintainers, a lot of these projects are maintained in someone's spare time with essentially no funding, while huge, profitable companies use the software for free and rarely contribute back financially or with engineering time. I think responsibility has to be shared, companies that depend heavily on open source infrastructure should be investing in its security, whether through funding, dedicated engineering contributions, or better auditing of what they actually depend on, rather than treating it as a free resource with no obligations attached."
+    },
+    "commonMistakes": [
+      "Placing responsibility entirely on the volunteer maintainers",
+      "Giving no real example to ground the reasoning",
+      "Ignoring the role that well-resourced companies using the software for free should play"
+    ],
+    "followUps": ["What's one practical thing a company could do to reduce this risk without waiting on maintainers?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Attack surface",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["attack-surface", "risk"],
+    "question": "What does 'attack surface' mean, and can you think of an example of a well-intentioned feature that actually increases it?",
+    "lookingFor": "Correct concept plus a genuine, specific example showing the trade-off between functionality and exposure.",
+    "idealAnswer": {
+      "bullets": [
+        "Define attack surface as the total set of points where an attacker could try to get in or extract data",
+        "Explain that it grows with every added feature, integration, or exposed endpoint, not just with obvious flaws",
+        "Give a specific example of a helpful feature that quietly expands the attack surface"
+      ],
+      "modelAnswer": "Attack surface is basically every point where an attacker could try to interact with a system to get in or pull data out, every exposed endpoint, open port, third-party integration, or input field counts toward it. It grows even when nothing is technically broken, just by adding more legitimate functionality, which is what makes reducing it hard, because you're often trading it off directly against usefulness. A good example is a 'forgot password' feature, it exists purely to help legitimate users, but it's also a classic target, if it reveals whether an email address exists in the system, or has a weak reset token, it becomes a new avenue an attacker never had to touch the main login form to exploit."
+    },
+    "commonMistakes": [
+      "Defining it only as 'the number of vulnerabilities' rather than the number of potential entry points",
+      "Giving no concrete example, or an example unrelated to a genuine trade-off",
+      "Assuming attack surface only grows from bugs, not from legitimate added features"
+    ],
+    "followUps": ["How would you go about reducing a system's attack surface without removing useful features?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Cyber kill chain",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["kill-chain", "attacker-lifecycle"],
+    "question": "Can you walk through the general stages an attacker goes through in something like the cyber kill chain, from initial reconnaissance to achieving their goal?",
+    "lookingFor": "A roughly correct sequence of stages with understanding of why breaking the chain early is more valuable than late.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a roughly correct sequence, like reconnaissance, gaining initial access, establishing persistence, and finally acting on objectives",
+        "Explain the value of the model: defenders can break the chain at any stage, not just at the final step",
+        "Note that stopping an attacker early, like at reconnaissance or initial access, is far cheaper than catching them after they've achieved their goal"
+      ],
+      "modelAnswer": "It generally starts with reconnaissance, the attacker researching the target, then finding a way to get initial access, maybe through a phishing email or an exposed vulnerable service. From there they usually try to establish persistence, so they don't lose access if that first foothold gets closed, before moving laterally through the network toward whatever they actually want, and finally acting on their real objective, whether that's stealing data or deploying ransomware. What I think is valuable about thinking in stages like this is that it reframes defence, you don't need to catch the attacker at the very end, breaking the chain at any single earlier stage, even just spotting the reconnaissance or blocking the initial phishing email, stops the whole attack, and it's far cheaper to stop something early than to catch it after data has already left the building."
+    },
+    "commonMistakes": [
+      "Jumping straight to the final stage, like data theft, with no earlier steps described",
+      "Treating the stages as rigid and always happening in the same fixed order",
+      "Not explaining why breaking the chain early has more value than only detecting the final stage"
+    ],
+    "followUps": ["Which stage do you think is hardest for defenders to actually detect, and why?"]
+  },
+  {
+    "id": "prog-cybersecurity-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Principle of least privilege",
+    "program": "Cybersecurity",
+    "difficulty": "medium",
+    "tags": ["least-privilege", "access-control", "hypothetical"],
+    "question": "Say you're setting up system access for a new employee who only needs to view sales reports. What does the principle of least privilege tell you to do, and what could go wrong if you ignore it?",
+    "lookingFor": "Correct application of the principle to a specific scenario, with a realistic account of the risk of over-provisioning access.",
+    "idealAnswer": {
+      "bullets": [
+        "State the principle: grant only the minimum access needed to do the job, nothing more",
+        "Apply it concretely: read-only access to the sales reporting system specifically, not broad database or admin access",
+        "Explain the real risk of ignoring it, a compromised or careless account then has far more reach than the job ever required"
+      ],
+      "modelAnswer": "Least privilege means giving that employee exactly the access their role needs and nothing beyond it, so in this case, read-only access to the sales reporting tool itself, not broader access to the underlying database or any admin functions they'll never actually use. If that principle gets ignored and they're given broad access because it's easier to just grant a standard 'full access' role, the risk isn't really about them personally, it's that if their account is ever phished or compromised, the attacker inherits whatever excessive access was sitting there unused, turning a low-risk role into a much bigger security exposure than it needed to be. It's a small extra bit of admin effort upfront that meaningfully shrinks what any single compromised account can actually do."
+    },
+    "commonMistakes": [
+      "Describing the principle only in the abstract without applying it to the specific scenario",
+      "Assuming the risk is about the employee misbehaving rather than their account being compromised by someone else",
+      "Suggesting broad access is fine as long as the employee is trusted"
+    ],
+    "followUps": ["How would you handle it if that employee later needed temporary access to a different system for one project?"]
+  }
+]

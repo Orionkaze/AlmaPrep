@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-architecture-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Tension and compression",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["structures", "forces", "fundamentals"],
+    "question": "A cantilevered balcony sticks out over a street with nothing holding it up from below. How does it actually stay up?",
+    "lookingFor": "Correct grasp of how cantilevers work through tension and compression acting together, not just 'it's strong concrete'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the balcony is anchored by a back span inside the building that counterbalances the load",
+        "Identify which parts of the section are in tension and which are in compression",
+        "Show understanding that the material, usually reinforced concrete or steel, is chosen because it handles both forces well"
+      ],
+      "modelAnswer": "A cantilever only looks like it's floating. What's really happening is the balcony slab continues back into the floor inside the building, and that back span acts like a lever arm that resists the load trying to tip the balcony down. The top of the slab near the wall goes into tension while the bottom goes into compression, which is exactly why reinforced concrete works so well here: the steel bars take the tension near the top and the concrete takes the compression below. I find it satisfying that something that looks like it defies gravity is really just a very disciplined balance of forces."
+    },
+    "commonMistakes": [
+      "Saying the balcony is 'just strong' without explaining the back span or lever action",
+      "Getting tension and compression the wrong way round for a cantilever",
+      "Assuming any material could do this job as well as reinforced concrete or steel"
+    ],
+    "followUps": ["What happens structurally if that back span is too short?"]
+  },
+  {
+    "id": "prog-architecture-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Lateral load systems",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["structures", "seismic", "wind-load"],
+    "question": "How does a tall building resist being pushed sideways by wind or an earthquake, and what are the main systems architects and engineers use to do it?",
+    "lookingFor": "Real understanding of lateral stability systems, such as shear walls, braced frames, moment frames, or a central core, and how the choice shapes the plan and elevation.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least two lateral systems, such as shear walls, diagonal bracing, moment-resisting frames, or a central core, and how each resists sideways force",
+        "Explain the trade-off each system creates for the architectural plan, openness versus stiffness",
+        "Show awareness that wind and seismic loads are not the same problem and can call for different strategies"
+      ],
+      "modelAnswer": "Gravity is the easy part of structural design. What makes tall buildings interesting to me is the lateral problem: wind pushes the whole building sideways and an earthquake shakes the ground under it, so you need a system that resists that horizontal force without the building swaying itself apart. A concrete core around the lifts and stairs is one common answer, it acts like a rigid spine the rest of the building leans on. Diagonal bracing on the facade, like the John Hancock Center in Chicago, does a similar job but does it visibly, turning a structural necessity into an architectural statement. I think the choice of system says a lot about whether an architect wants to hide the structure or make it part of the building's identity."
+    },
+    "commonMistakes": [
+      "Talking only about gravity loads and never addressing lateral force",
+      "Vague answers like 'it's reinforced' without naming an actual system",
+      "Treating wind and seismic design as interchangeable problems"
+    ],
+    "followUps": ["Why might a building in an earthquake zone need more flexibility than one only dealing with wind?"]
+  },
+  {
+    "id": "prog-architecture-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Foundations and soil",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["structures", "foundations", "site-conditions"],
+    "question": "Why might two buildings of exactly the same design need completely different foundations depending on where they're built?",
+    "lookingFor": "Understanding that foundation choice responds to soil bearing capacity and ground conditions, not just the weight of the building.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that soil bearing capacity varies by site and determines whether a shallow or deep foundation is needed",
+        "Give an example of a foundation suited to poor or variable ground, such as piles or a raft, versus firm ground, such as strip or pad footings",
+        "Show awareness that site investigation happens before design decisions are finalised, not after"
+      ],
+      "modelAnswer": "The building above ground can be identical, but the ground underneath is never the same twice. On firm clay or bedrock you can often use simple strip or pad footings because the soil can carry the load close to the surface. On soft or made-up ground, like reclaimed land or old fill, the same footings would settle unevenly, so you'd need piles driven down to a stronger layer, or a raft foundation that spreads the load across a wider area so it doesn't concentrate stress on weak spots. That's why a site investigation report matters so much before design even starts, the ground genuinely changes what's structurally possible above it."
+    },
+    "commonMistakes": [
+      "Assuming foundation type is purely about the building's weight, not the soil",
+      "Not knowing the difference between a shallow and a deep foundation",
+      "Treating site investigation as a formality rather than something that shapes design"
+    ],
+    "followUps": ["What would you do if a site investigation revealed poor ground after the design was already finished?"]
+  },
+  {
+    "id": "prog-architecture-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Thermal bridging and the building envelope",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["building-envelope", "thermal-performance", "detailing"],
+    "question": "What is thermal bridging, and why can a small detail in a wall or window junction undo a lot of a building's energy performance?",
+    "lookingFor": "Technical understanding of thermal bridging and appreciation that performance is decided at the level of construction detail, not just overall specification.",
+    "idealAnswer": {
+      "bullets": [
+        "Define thermal bridging as a localised path where heat escapes faster than through the surrounding construction, usually where an element is continuous through the insulation layer",
+        "Give a concrete example, such as a steel balcony connection or a window reveal, and explain why it's a weak point",
+        "Show understanding that a building's headline insulation rating can be undermined by a handful of poorly detailed junctions"
+      ],
+      "modelAnswer": "Thermal bridging happens where something like a steel beam, a concrete slab edge, or a window frame punches straight through the insulation layer and gives heat a shortcut out of the building. A classic example is a balcony cast as one continuous slab with the floor inside, the concrete conducts heat out along its whole length even if the walls around it are beautifully insulated. What I find striking is that a handful of these junctions can drag a building's real-world energy performance well below what the insulation specification on paper would suggest. It's made me pay much more attention to junction details in drawings, that's often where the actual performance of a building is decided, not in the headline figures."
+    },
+    "commonMistakes": [
+      "Confusing thermal bridging with simple lack of insulation",
+      "No concrete example of where a thermal bridge typically occurs",
+      "Assuming a good insulation spec alone guarantees good performance"
+    ],
+    "followUps": ["How would you detail a balcony connection to avoid this problem?"]
+  },
+  {
+    "id": "prog-architecture-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Right to light",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["planning-law", "daylight", "urban-context"],
+    "question": "What is 'right to light', and how does it constrain what you can design next to an existing building?",
+    "lookingFor": "Awareness of the legal and design principle that a neighbouring building can hold a right to a minimum level of daylight, and how it shapes massing.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that right to light is a legal entitlement neighbouring properties can hold to a baseline level of daylight through existing windows",
+        "Show understanding that it can force a new building to step back, angle, or reduce height near a boundary",
+        "Acknowledge it's a real design constraint that shapes massing early, not just a legal footnote"
+      ],
+      "modelAnswer": "Right to light is a legal principle that means an existing building can, in certain circumstances, hold an entitlement to a baseline level of daylight through windows that have received it for a long period, and a new building next door can't simply block that out. In practice it often shows up as a stepped or angled massing, you'll see new developments with a lower street-facing edge that steps up further back from the boundary, and that shape is very often a right to light diagram translated directly into form. I think it's a good example of how a legal constraint that has nothing to do with aesthetics ends up producing a recognisable architectural language, once you notice it you start seeing those setback profiles everywhere in dense cities."
+    },
+    "commonMistakes": [
+      "Confusing right to light with general daylighting design, which is related but distinct",
+      "Thinking it only affects planning permission and not actual building form",
+      "No awareness that it can be a binding legal claim, not just guidance"
+    ],
+    "followUps": ["Can you think of a building whose shape you think was clearly driven by this kind of constraint?"]
+  },
+  {
+    "id": "prog-architecture-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Zoning envelope massing puzzle",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["zoning", "hypothetical", "massing"],
+    "question": "You're given a tight infill site: a maximum height, a floor area ratio cap, and a required setback from the street. Walk me through how you'd start thinking about the massing.",
+    "lookingFor": "Ability to reason through competing constraints methodically and translate abstract numbers into spatial form.",
+    "idealAnswer": {
+      "bullets": [
+        "Show how to translate the height cap, setback, and floor area ratio into an actual buildable envelope before designing",
+        "Discuss the trade-off between building tall and thin versus low and deep within the same floor area",
+        "Bring in a non-numeric factor, such as light, street presence, or neighbours, that would influence the choice within the envelope"
+      ],
+      "modelAnswer": "The first thing I'd do is actually draw the envelope those three numbers create, the height cap and setback give me a maximum outline, and the floor area ratio tells me how much of that outline I'm allowed to fill with usable floor space stacked up. From there it's a genuine design decision: I could go tall and slender within the height limit and leave more open ground, or spread wider and lower and lose some daylight and outdoor space. I'd want to walk the site and see how the street works, a slender form might let more light reach a narrow lane, while a lower, deeper form might sit more comfortably next to older neighbours. The numbers set the boundary but they don't actually make the design decision for you, that's still the interesting part."
+    },
+    "commonMistakes": [
+      "Treating the regulatory numbers as the finished design rather than a starting envelope",
+      "Not connecting the abstract calculation to an actual spatial or experiential outcome",
+      "Ignoring the site and context entirely and treating it as a pure geometry problem"
+    ],
+    "followUps": ["What would you do if the maximum buildable envelope produced spaces that were genuinely poor to live or work in?"]
+  },
+  {
+    "id": "prog-architecture-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Embodied versus operational carbon",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["sustainability", "carbon", "trade-offs"],
+    "question": "A client could either retrofit an old, energy-inefficient building or demolish it and build a new one that performs much better. How would you think through the carbon trade-off?",
+    "lookingFor": "Nuanced reasoning that distinguishes embodied carbon from operational carbon, rather than a reflexive 'always retrofit' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish embodied carbon, locked in the existing structure and released by demolition and new construction, from operational carbon, the ongoing energy used to run the building",
+        "Recognise that a much more efficient new building has to run for years before its lower operational emissions offset the carbon cost of demolishing and rebuilding",
+        "Avoid treating retrofit as automatically correct, acknowledge cases where the existing structure genuinely can't be made to perform"
+      ],
+      "modelAnswer": "I'd want to actually run the numbers rather than assume retrofit always wins, because it doesn't always. Demolishing a building releases the carbon locked into its structure and throws away the energy that went into making it, and building new adds more on top of that, so a far more efficient new building typically has to run for a long time, often decades, before its lower operating emissions pay back that upfront carbon debt. That said, I wouldn't assume retrofit is automatically correct either, if the existing structure genuinely can't be adapted to meet basic safety or performance needs, forcing a retrofit can waste money and still leave a poor building. What I'd actually want is a proper embodied carbon assessment before making the call, because the honest answer depends on the specific building, not a general rule."
+    },
+    "commonMistakes": [
+      "Assuming retrofit is always the lower-carbon answer without doing any actual comparison",
+      "Ignoring the payback period concept entirely",
+      "Treating this as a purely aesthetic or heritage question rather than a carbon accounting one"
+    ],
+    "followUps": ["What information would you need before you could actually make that recommendation to a client?"]
+  },
+  {
+    "id": "prog-architecture-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Heritage listing versus energy retrofit",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["heritage", "sustainability", "current-debate"],
+    "question": "There's a growing tension between heritage protection and the need to retrofit old buildings for energy efficiency, a listed building's owner might be blocked from adding external insulation or solar panels. What's your view on how that tension should be resolved?",
+    "lookingFor": "Awareness of a genuine live debate in the profession, with a considered position rather than dismissing either heritage or climate concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that heritage protection and climate performance are both legitimate public interests that can genuinely conflict",
+        "Discuss options that try to reconcile them, such as internal insulation, sympathetic solar tile products, or case-by-case flexibility rather than blanket rules",
+        "Avoid treating either heritage or sustainability as automatically more important"
+      ],
+      "modelAnswer": "I think this is one of the more genuinely difficult debates in the profession right now, because both sides are right about something real. Heritage protection exists because we've learned that once you strip a historic facade of its original fabric, you can't get it back, but the climate emergency doesn't wait for that argument to be settled and old buildings are a huge share of a country's emissions. I'm drawn to the middle-ground solutions I've read about, internal wall insulation instead of external cladding, slate-effect solar tiles instead of standard panels, case-by-case conservation officer judgement instead of blanket refusal. It won't satisfy purists on either side, but I think architecture has to get comfortable making imperfect compromises when two real public goods are in tension."
+    },
+    "commonMistakes": [
+      "Picking a side and ignoring the legitimate concern on the other",
+      "Not knowing this is an active, current debate in planning and conservation practice",
+      "Offering no concrete middle-ground solution, just describing the conflict"
+    ],
+    "followUps": ["Who do you think should get to make that decision, the conservation officer, the owner, or someone else?"]
+  },
+  {
+    "id": "prog-architecture-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI and design authorship",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["ai", "current-debate", "authorship"],
+    "question": "Image-generating AI tools can now produce a plausible-looking building facade from a text prompt in seconds. What do you think that means for architecture as a discipline?",
+    "lookingFor": "Considered engagement with a live debate, distinguishing image generation from actual architectural design, which has to resolve structure, brief, and buildability.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish a generated image from an actual design, which has to resolve structure, brief, budget, and buildability",
+        "Identify a genuine risk, such as devaluing the design process or questions of authorship and training data, as well as a genuine use, such as fast early-stage visual exploration",
+        "Show your own considered position rather than pure enthusiasm or pure dismissal"
+      ],
+      "modelAnswer": "I think it's easy to either dismiss these tools or get carried away by them, and neither reaction is quite right. What they produce is a plausible image, not a design, it hasn't resolved how the building actually stands up, how people move through it, or what it costs, so there's a real risk of mistaking a good render for a finished idea. At the same time I've used them myself to generate quick mood images early in a project, and they're genuinely useful for exploring a visual direction fast before you commit real design time. What worries me more is the authorship question, these models are trained on other architects' work without consent, and I don't think the profession has really settled what that means yet."
+    },
+    "commonMistakes": [
+      "Treating a generated image as equivalent to a finished architectural design",
+      "Pure techno-enthusiasm or pure dismissal with no nuance",
+      "No awareness of the training-data and authorship debate"
+    ],
+    "followUps": ["Where in the design process, if anywhere, do you think these tools are actually useful?"]
+  },
+  {
+    "id": "prog-architecture-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Modular and 3D-printed construction",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["construction-innovation", "current-development", "housing"],
+    "question": "Modular, off-site, and even 3D-printed construction are getting a lot of attention as ways to build housing faster. What do you make of that trend?",
+    "lookingFor": "Genuine awareness of current construction innovation and its actual trade-offs, not just enthusiasm for novelty.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what these methods actually offer, such as speed, quality control, and addressing labour shortages",
+        "Identify a real limitation, such as design flexibility, transport constraints, or upfront factory investment",
+        "Ground the answer in an actual project or example rather than speaking purely in the abstract"
+      ],
+      "modelAnswer": "What draws me to modular and off-site construction is that building components in a factory means far tighter quality control and much less exposure to weather delays, and it directly answers a genuine shortage of skilled site labour in a lot of countries right now. I've read about projects using 3D-printed concrete walls for affordable housing that can go up in days rather than weeks. But I don't think it's a universal answer, modular systems often trade away some design flexibility because everything has to fit standard transportable dimensions, and the upfront cost of setting up a factory line only makes sense at real scale. I think it's a genuinely important tool for certain problems, particularly volume housing, rather than a replacement for bespoke design across the board."
+    },
+    "commonMistakes": [
+      "Treating modular or 3D-printed construction as futuristic novelty without engaging with real trade-offs",
+      "No awareness of an actual project or application",
+      "Assuming it will replace all conventional construction rather than suit specific problems"
+    ],
+    "followUps": ["What kind of building do you think is least suited to a modular approach?"]
+  },
+  {
+    "id": "prog-architecture-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Housing affordability and zoning reform",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["housing-crisis", "policy", "current-debate"],
+    "question": "Many cities have a housing affordability crisis that's partly blamed on restrictive zoning and local opposition to new development. Do you think architects have any real influence over that, or is it purely a policy problem?",
+    "lookingFor": "An informed, non-simplistic take on a live policy debate that recognises architecture's real but limited role.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the actual debate, including restrictive zoning and local opposition to added density",
+        "Avoid claiming architects can single-handedly solve a policy and economics problem",
+        "Identify something concrete architects can genuinely contribute, such as demonstrating that added density can be done well, or engaging communities honestly"
+      ],
+      "modelAnswer": "I don't think architects can fix a housing crisis on their own, it's fundamentally a policy and economics problem, decades of zoning that restricts what can be built and where has a much bigger effect than any individual design decision. But I don't think that lets architects off the hook either. A lot of local opposition to new housing comes from genuinely bad past experience of density done badly, overshadowed streets, no green space, no community input, and I think architects have real influence there, showing that more homes can be added to a neighbourhood without making it worse to live in. That's a slower, less glamorous kind of influence than designing a landmark building, but I think it might matter more."
+    },
+    "commonMistakes": [
+      "Claiming architecture alone can solve the housing crisis",
+      "Dismissing the profession's role entirely as 'not my problem'",
+      "No awareness of the actual zoning and density debate driving the crisis"
+    ],
+    "followUps": ["Can you think of a project or place where good design actually changed how a community felt about new density?"]
+  },
+  {
+    "id": "prog-architecture-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "The 'starchitect' and landmark buildings",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["urban-economics", "current-debate", "iconic-architecture"],
+    "question": "Cities sometimes commission an expensive, dramatic landmark building hoping it will regenerate a whole area, the so-called 'Bilbao effect'. Do you think that's a good use of public money?",
+    "lookingFor": "A considered, non-dogmatic position on iconic architecture as an urban regeneration strategy, weighing genuine success against failed imitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the actual Bilbao case and what specifically made it work, a genuinely transformed post-industrial city, not the building alone",
+        "Show awareness that many imitators failed because they copied the building, not the underlying conditions",
+        "Weigh the argument on its own terms rather than simply approving or condemning landmark architecture"
+      ],
+      "modelAnswer": "The Guggenheim Bilbao genuinely did help transform a declining industrial city, but I think it's often misunderstood as 'build a dramatic building and regeneration follows', when really it was one part of a much bigger investment in transport, the riverfront, and public space at the same time. A lot of cities that tried to copy just the building, a striking landmark by a famous architect, without the surrounding investment ended up with an expensive object that didn't do the same work. So my honest answer is that it can be a good use of public money, but only as part of a wider strategy, and I'm sceptical of using it as a shortcut on its own. The building gets the credit, but it was rarely doing the job alone."
+    },
+    "commonMistakes": [
+      "Treating the Bilbao effect as a simple formula that any dramatic building can replicate",
+      "Either uncritically praising or uncritically dismissing landmark architecture",
+      "No reference to the actual case or its specific conditions"
+    ],
+    "followUps": ["Can you think of a landmark building that didn't deliver the regeneration it promised?"]
+  },
+  {
+    "id": "prog-architecture-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Co-living and micro-units",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["housing", "current-debate", "unit-design"],
+    "question": "Co-living schemes and very small private units with shared communal space are becoming more common in expensive cities. What's your view on that as a housing model?",
+    "lookingFor": "Balanced awareness of a real current housing typology debate, weighing genuine benefits against real risks of eroded standards.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the genuine case for co-living, affordability, community, and efficient use of expensive land",
+        "Identify the real risk, minimum space standards being eroded or isolation dressed up as community",
+        "Land on a considered position rather than simply endorsing or condemning the model"
+      ],
+      "modelAnswer": "I understand the appeal, land in expensive cities is scarce, and shrinking the private unit while investing in generous shared kitchens, lounges, and workspaces can genuinely make sense, especially for people who'd otherwise be priced out entirely or living somewhere worse. What worries me is that 'co-living' can also become a marketing term for units that are simply too small, dressed up with a shared lounge that doesn't really compensate for a bedroom you can barely turn around in. I think the model deserves to exist, but I'd want to see it held to honest minimum space standards rather than treated as an excuse to avoid them. The idea is good, the risk is that it gets used to justify something worse than it promises."
+    },
+    "commonMistakes": [
+      "Treating co-living as either purely innovative or purely exploitative with no nuance",
+      "No awareness of the space standards debate underlying the criticism",
+      "Ignoring the genuine affordability problem the model is responding to"
+    ],
+    "followUps": ["What minimum standard do you think a private room in a co-living scheme should have to meet?"]
+  },
+  {
+    "id": "prog-architecture-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Cladding fire safety reform",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["fire-safety", "regulation", "current-development"],
+    "question": "Building regulations around external cladding have changed significantly following high-profile fires in recent years. Why does that matter to how architects specify materials?",
+    "lookingFor": "Awareness of a major, real regulatory shift and its practical impact on material specification and professional responsibility.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that combustible cladding materials on tall buildings have been restricted following real fire safety failures",
+        "Explain the practical effect: architects now have to verify a material's fire performance, not just its appearance and cost",
+        "Show understanding that this shifted responsibility and scrutiny onto the whole specification chain, not just one person"
+      ],
+      "modelAnswer": "Cladding regulation changed a great deal after it became clear that some widely used external cladding systems could allow fire to spread rapidly up a building's facade, with devastating consequences in a small number of very high-profile cases. The practical effect on architects is that a material choice on a tall building now has to be justified with fire performance data, not just appearance, cost, or thermal performance, and that verification has to be documented and traceable. What it's changed in me is how I think about specification generally, I used to think of a material spec sheet as a formality, but it's actually where a lot of real responsibility sits, and I think the profession is right to take it far more seriously now."
+    },
+    "commonMistakes": [
+      "Treating cladding regulation as a minor technical footnote rather than a major shift in professional practice",
+      "No understanding of why combustible cladding on tall buildings became a serious safety issue",
+      "Dismissing this as purely a compliance or paperwork problem rather than a genuine design responsibility"
+    ],
+    "followUps": ["How would you handle it if a contractor proposed a cheaper cladding substitute during construction?"]
+  },
+  {
+    "id": "prog-architecture-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Cost-cutting cladding substitution",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["ethics", "professional-responsibility", "situational"],
+    "question": "Midway through construction, a contractor proposes substituting the specified cladding for a cheaper alternative to save money, and it looks like it might not meet the fire performance standard you specified. What do you do?",
+    "lookingFor": "Firm, structured ethical reasoning that prioritises verified safety over cost pressure and site politics.",
+    "idealAnswer": {
+      "bullets": [
+        "Refuse to approve the substitution without independently verified fire performance data, regardless of time or cost pressure",
+        "Escalate appropriately, involving the fire engineer or building control, rather than making the call alone",
+        "Acknowledge the real pressure, cost, schedule, a difficult client relationship, without letting it override the safety decision"
+      ],
+      "modelAnswer": "I would not approve that substitution on the strength of a verbal assurance or a lower price, I'd need to see actual test data and certification for the proposed material against the same standard the original specification met. I know in practice there's real pressure in that moment, a contractor pushing for a decision, a client worried about budget and programme, but I don't think that pressure is a legitimate reason to move on cladding without proof. I'd want to bring in whoever else needs to sign off, a fire engineer or building control, so it isn't a judgement call I'm making alone under time pressure. It's an uncomfortable conversation to have on site, but a cladding decision is exactly the kind of thing where I think the discomfort of pushing back matters far less than getting it right."
+    },
+    "commonMistakes": [
+      "Approving the change informally to keep the project moving, without verified data",
+      "Treating it as purely the contractor's or fire engineer's responsibility to catch, not yours",
+      "No mention of escalation or bringing in the right specialist before deciding"
+    ],
+    "followUps": ["What would you do if the client pressured you directly to approve it anyway?"]
+  },
+  {
+    "id": "prog-architecture-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Design that accelerates displacement",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["ethics", "gentrification", "social-impact"],
+    "question": "You're asked to design an attractive, well-reviewed development in a lower-income neighbourhood, and you strongly suspect it will raise local rents and push out existing residents. How do you think about that?",
+    "lookingFor": "Honest, structured ethical reasoning that doesn't dodge the tension between doing good design work and its wider social consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension: refusing the commission doesn't stop the development, but participating can still contribute to real harm",
+        "Discuss concrete design or process responses, such as built-in affordable units, community consultation, or ground-floor uses that serve existing residents",
+        "Show awareness that this is a structural, not purely individual, problem, without using that as an excuse to disengage"
+      ],
+      "modelAnswer": "I'd want to sit with the discomfort of this rather than resolve it too quickly, because I don't think refusing the project on principle actually protects the neighbourhood, someone else will likely build something less thoughtful in my place. What I think I can actually do is push, as early and as hard as possible, for things that soften the impact: genuinely affordable units built in rather than added as an afterthought, ground-floor spaces that serve people who already live there rather than only new arrivals, and honest engagement with the existing community before the design is fixed. I know that doesn't fully resolve the underlying economics driving displacement, that's a policy and market problem bigger than any one building. But I don't think that lets me off the hook for trying to make the specific decisions I do control less harmful."
+    },
+    "commonMistakes": [
+      "Refusing to engage with the tension at all, treating it as purely a market outcome unrelated to design",
+      "A simple 'I would just refuse the project' with no reasoning about whether that actually helps",
+      "No concrete idea of what could actually be done differently within the design"
+    ],
+    "followUps": ["Who do you think should actually decide whether a development like this goes ahead?"]
+  },
+  {
+    "id": "prog-architecture-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Witnessing a shortcut during work experience",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["ethics", "professional-responsibility", "situational"],
+    "question": "While shadowing at a practice, you overhear a senior architect deciding to skip a required structural check to save time before a deadline. You're just a work experience student. What, if anything, do you do?",
+    "lookingFor": "Mature ethical reasoning about speaking up appropriately from a position of little power, without either freezing or overreacting.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real power imbalance honestly rather than pretending you'd confidently confront a senior professional",
+        "Identify a proportionate first step, such as asking a genuine question or flagging it to someone else at the practice",
+        "Show that safety concerns don't stop mattering just because you're junior or a student"
+      ],
+      "modelAnswer": "I'll be honest, as a student on work experience I don't have the standing to walk in and confront a senior architect directly, and pretending I would is dishonest. But I don't think that means staying completely silent is right either. I think the proportionate thing is to ask a genuine, curious question in the moment, something like whether that check normally happens before this deadline, which opens a door without accusing anyone. If that didn't lead anywhere and it still seemed serious, I think I'd feel obliged to mention what I saw to another person at the practice I trusted, even as a student, because a structural check isn't something I think it's okay to just let go because I'm junior. It's a genuinely uncomfortable position, and I don't think there's a version of the answer that isn't uncomfortable."
+    },
+    "commonMistakes": [
+      "Claiming you'd confidently confront a senior professional as a student, which isn't realistic",
+      "Deciding it's not your responsibility at all because of your junior position",
+      "No concrete, proportionate first step, just abstract principle"
+    ],
+    "followUps": ["Does your answer change if you were a first-year employee rather than a student on work experience?"]
+  },
+  {
+    "id": "prog-architecture-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing against personal values",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["ethics", "professional-neutrality", "values"],
+    "question": "Suppose you were asked to design a private members' club that you knew would effectively exclude people who couldn't afford the fees, a purpose you find personally uncomfortable. Would you take the commission?",
+    "lookingFor": "Thoughtful reasoning about professional neutrality versus personal values in a genuinely ambiguous case, distinct from a clearly harmful commission.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish this from a clearly unlawful or seriously harmful brief, since exclusivity through pricing exists in many ordinary businesses",
+        "Reflect honestly on where your personal line actually sits and why",
+        "Consider whether the design itself could soften or address the discomfort in some way"
+      ],
+      "modelAnswer": "I think this sits in a genuinely grey area rather than a clear-cut ethical line. A private club with membership fees isn't unlawful or straightforwardly harmful in the way, say, discriminatory design would be, most restaurants and gyms exclude people by price too, so I don't think I could refuse purely on that basis without being inconsistent. What I'd actually ask myself is whether the specific project crosses a line I care about more than general economic exclusion, is there anything about who it displaces or what it symbolises that goes further than that. I think I probably would take the commission, but I'd want to be honest with myself about the discomfort rather than rationalising it away, and I'd think about whether there's anything in the design itself, a public-facing ground floor, for instance, that could soften what the building represents."
+    },
+    "commonMistakes": [
+      "Treating this as identical to a clearly unlawful or harmful commission, which collapses an important distinction",
+      "Refusing to actually take a position, just describing the discomfort",
+      "No honest reflection on where your own line actually is and why"
+    ],
+    "followUps": ["Is there a commission you think you genuinely would refuse, and what makes it different from this one?"]
+  },
+  {
+    "id": "prog-architecture-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Ambition versus buildability",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["architectural-history", "reflection", "case-study"],
+    "question": "Some of the most celebrated buildings in history, like the Sydney Opera House, went wildly over budget and schedule because the design was more ambitious than the engineering of the time could easily deliver. What do you take from a story like that?",
+    "lookingFor": "Reflective, non-simplistic engagement with a real case, weighing the value of ambition against the real costs of underestimating buildability.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness of what actually happened, the original shell geometry had to be reworked before it could be engineered and built",
+        "Weigh the genuine value the ambition ultimately produced against the real cost overrun and human toll on the people involved",
+        "Draw a considered, personal lesson rather than either 'ambition always wins' or 'never take risks'"
+      ],
+      "modelAnswer": "What strikes me about the Sydney Opera House is that the original sail-like shells as drawn couldn't actually be built, they weren't based on a single describable geometry, and it took years of extra engineering work to rework them into shells based on sections of a sphere before construction could properly proceed. The cost overrun was enormous and it cost Jorn Utzon his role on the project, which is a genuinely hard thing to sit with, an idea that good doesn't guarantee the person who had it gets to see it through. But the building the world got is one of the most recognisable in existence, and I don't think a more cautious, buildable-from-day-one design would have achieved that. What I take from it isn't that ambition always wins, it's that ambition has to be paired with an honest, early relationship with the engineers who'll have to make it real, not treated as their problem to solve later."
+    },
+    "commonMistakes": [
+      "Getting the basic facts of the case wrong or too vague to be credible",
+      "Drawing an overly simple lesson, either 'always be ambitious' or 'never take architectural risks'",
+      "No acknowledgment of the real human and financial cost involved"
+    ],
+    "followUps": ["Can you think of a more recent building that ran into a similar tension between ambition and buildability?"]
+  },
+  {
+    "id": "prog-architecture-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Contaminated site blows the budget",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "site-conditions", "problem-solving"],
+    "question": "You've finished the design for a small housing scheme, and then the site investigation comes back showing ground contamination that will cost far more to remediate than the client budgeted for. What do you do?",
+    "lookingFor": "Structured, realistic problem-solving that treats this as a genuine professional situation with several live options, not a single easy fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Establish the actual scale and nature of the contamination and the realistic remediation options before proposing anything",
+        "Present the client with real trade-offs, full remediation with reduced scope elsewhere, partial remediation, or reconsidering the site, rather than a free solution",
+        "Show awareness of the duty not to under-report or minimise a contamination finding to keep the project moving"
+      ],
+      "modelAnswer": "The first thing I'd want is real clarity, what exactly is the contamination, how deep does it go, and what would actually be needed to make the site safe to build and live on, rather than reacting to a scary number before understanding it properly. Then I think the honest thing to do is bring the client real options rather than pretend I can make the problem disappear within the existing budget: full remediation paired with cutting scope elsewhere in the design, a partial remediation that caps off the worst area and adjusts the layout around it, or in a serious case, being honest that the site itself might not be viable as planned. What I wouldn't do is let budget pressure push me toward downplaying what the site investigation actually found, that's not a decision I think I'm entitled to make on the client's behalf, contamination is a safety and legal issue, not just a cost one."
+    },
+    "commonMistakes": [
+      "Assuming there's always a way to make the original budget work without real trade-offs",
+      "Downplaying a serious contamination finding to keep the client happy or the project moving",
+      "Jumping to a single solution without laying out the actual options"
+    ],
+    "followUps": ["How would you handle it if the client asked you to leave the contamination finding out of a report to investors?"]
+  },
+  {
+    "id": "prog-architecture-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Budget halved mid-project",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "budget", "design-decisions"],
+    "question": "Halfway through a project, your client tells you the budget has been cut by half. How would you decide what to cut from the design?",
+    "lookingFor": "Practical, principled prioritisation that protects the design's core intent rather than cutting evenly or randomly across the board.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the design's essential idea or spatial move that shouldn't be compromised, and protect it first",
+        "Show a method for prioritising cuts, finishes and non-structural elements before spatial quality or safety, rather than cutting evenly",
+        "Acknowledge this requires an honest conversation with the client about what the cut budget actually means for the outcome"
+      ],
+      "modelAnswer": "I don't think the right response is to cut ten percent off everything evenly, that usually just produces a worse version of the same building rather than a genuinely good smaller one. I'd go back to the core idea of the design, the one or two moves that actually make it work as a piece of architecture, and protect those as hard as I could, because a building that keeps its spatial logic but loses some finishes still feels intentional, while one that loses its logic feels compromised everywhere no matter how nice the materials are. Then I'd look for cuts that hurt the least, simpler finishes, deferring a non-essential element to a later phase, before I'd ever touch spatial quality, daylight, or anything safety-related. And I'd be honest with the client about what half the budget actually buys, rather than quietly pretending I can deliver the same building for less."
+    },
+    "commonMistakes": [
+      "Cutting evenly across every element rather than prioritising",
+      "Protecting finishes or appearance while quietly compromising spatial quality or safety",
+      "Not being honest with the client about what the reduced budget actually means"
+    ],
+    "followUps": ["What would you do if the client insisted on keeping every element but wanted you to find the savings some other way?"]
+  },
+  {
+    "id": "prog-architecture-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Persuading a resistant client",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "client-relations", "negotiation"],
+    "question": "Your client wants to remove a design feature, say a shading device or a larger stair, that you believe is important, but they see it as an unnecessary cost. How do you handle that disagreement?",
+    "lookingFor": "A constructive, evidence-based approach to persuasion that respects the client's authority without simply capitulating on something you believe matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Lead with the client's own priorities and concerns, not just your design conviction",
+        "Use concrete evidence, such as performance data, cost-in-use, or comparable examples, rather than pure aesthetic argument",
+        "Show willingness to accept the client's final decision gracefully if they still don't agree, while making sure they're deciding with full information"
+      ],
+      "modelAnswer": "I'd start by actually listening to why they want it gone, is it pure cost, or is there a concern about maintenance or how it looks that I haven't addressed, because arguing against the wrong objection never works. Then I'd try to make my case in terms that matter to them rather than just my own design conviction, for the shading device that might mean showing what it actually saves in cooling costs over the building's life, or what internal comfort looks like without it on a hot day. If they still weren't convinced after that, I think I'd have to accept it's their building and their decision, my job is to make sure they're deciding with the full picture, not to win the argument. I'd rather lose that particular fight with the relationship and their trust intact than win it and lose both."
+    },
+    "commonMistakes": [
+      "Treating the client's cost concern as simply wrong rather than engaging with it",
+      "Only offering an aesthetic or philosophical argument with no concrete evidence",
+      "Refusing to accept the client's final decision, or capitulating instantly without making the case at all"
+    ],
+    "followUps": ["What would you do if you thought removing it created a genuine safety or performance risk, not just a design compromise?"]
+  },
+  {
+    "id": "prog-architecture-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Density versus sprawl",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["urban-design", "current-debate", "sustainability"],
+    "question": "Do you think cities should grow by building denser within their existing footprint, or by expanding outward? What's your view on that debate?",
+    "lookingFor": "A considered, evidence-aware position on a genuinely live urban planning debate, aware of the trade-offs on both sides.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh the environmental and infrastructure case for density, less land consumption, shorter commutes, more efficient services, against real concerns about how density is delivered",
+        "Acknowledge that sprawl has real appeal to people, space, affordability, and that dismissing that isn't persuasive",
+        "Show that the answer is about how density is done well, not density versus sprawl as a binary"
+      ],
+      "modelAnswer": "I lean toward density, mostly because sprawl consumes land and locks people into long car-dependent commutes that make the climate problem worse in a way that's hard to undo later. But I don't think it's honest to pretend sprawl doesn't have a real appeal, space, affordability, a garden, and a lot of opposition to density in cities comes from genuine past experience of it being done badly, overshadowed streets and no green space to speak of. So I don't think the real question is density versus sprawl as a binary, it's whether density is delivered well, with daylight, outdoor space, and infrastructure that actually keeps up with it. I'd rather architects spend their energy proving density can be genuinely good to live in than just arguing for more of it in the abstract."
+    },
+    "commonMistakes": [
+      "Treating this as a simple binary rather than a question of how density is delivered",
+      "Dismissing sprawl's genuine appeal to people rather than engaging with it",
+      "No awareness that opposition to density is often rooted in real, badly delivered past examples"
+    ],
+    "followUps": ["Can you think of a densely built neighbourhood that you think genuinely works well to live in?"]
+  },
+  {
+    "id": "prog-architecture-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "A famous technical failure",
+    "program": "Architecture",
+    "difficulty": "hard",
+    "tags": ["case-study", "structures", "critical-reflection"],
+    "question": "Boston's John Hancock Tower famously had large glass panes falling from its facade after it was completed. What do you think a case like that teaches architects?",
+    "lookingFor": "Accurate awareness of a real technical failure case and a mature reflection on what it reveals about the limits of design without full engineering testing.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness of the case, large glass panels detaching and falling from the tower's facade due to a design and manufacturing fault discovered after construction",
+        "Draw the lesson that ambitious new facade systems need rigorous testing before being deployed at scale, not just confidence in the design",
+        "Avoid treating it as a simple story of incompetence, engage with why a genuinely well-regarded design team ran into it"
+      ],
+      "modelAnswer": "What happened at the Hancock Tower was that panes of its glass curtain wall began cracking and falling to the street below not long after it was finished, and it turned out to be a fundamental problem with how the double-glazed units themselves were made, not something anyone could have caught by just looking at the drawings. What I take from it is that pushing a facade system further than it's been tested before is a genuinely serious risk, not a failure of talent, this was a highly regarded practice, and it still happened. It's made me think differently about new material systems generally, I think there's a real professional responsibility to ask how proven a system actually is before specifying it at the scale of an entire tower, however elegant it looks in the drawings. Ambition and rigorous testing have to move together, not one after the other."
+    },
+    "commonMistakes": [
+      "Getting the basic facts of the case wrong or too vague to sound credible",
+      "Treating it as pure incompetence rather than engaging with the underlying design and manufacturing lesson",
+      "No connection drawn to a broader principle about testing new systems"
+    ],
+    "followUps": ["How do you think architects should balance using an innovative, unproven material system against that kind of risk?"]
+  },
+  {
+    "id": "prog-architecture-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing for a flood-prone site",
+    "program": "Architecture",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "resilience", "climate-adaptation"],
+    "question": "You're asked to design a small community centre on a site that floods once every few years. How would you approach that brief?",
+    "lookingFor": "Practical, discipline-relevant reasoning about resilient design strategies, not just 'raise it up on stilts' without further thought.",
+    "idealAnswer": {
+      "bullets": [
+        "Consider more than one resilience strategy, elevating the building, wet-proofing ground-floor uses, resilient materials, and drainage, rather than a single fix",
+        "Think about which uses can tolerate occasional flooding at ground level and which genuinely can't",
+        "Show awareness that resilient design also has cost and everyday-use implications, not just flood-day performance"
+      ],
+      "modelAnswer": "My first instinct isn't to just lift the whole building onto stilts and call it solved, that can work but it also changes how the building meets the street every single day, not only on the rare day it floods. I'd think about which functions genuinely need to sit above flood level, like the kitchen, storage, and anything electrical, versus which could tolerate an occasional flood at ground level if they're finished with wet-proof materials that can be hosed down and dried out, like a hall with a sealed concrete floor and no fitted furniture. I'd also want to think about the site itself, whether the landscaping and drainage can actually slow water down before it reaches the building at all, rather than treating flood resistance as something only the structure has to solve. The building has to work well on the four hundred ordinary days a year, not just perform well on the one flood day, and I think a good resilient design keeps both in view."
+    },
+    "commonMistakes": [
+      "Reaching for a single obvious fix like stilts without considering the everyday-use cost",
+      "Treating every part of the building as equally flood-vulnerable rather than differentiating by use",
+      "Ignoring landscape and drainage strategies that could reduce the flood risk before it reaches the building"
+    ],
+    "followUps": ["What would you do differently if the site flooded every year rather than once every few years?"]
+  }
+]

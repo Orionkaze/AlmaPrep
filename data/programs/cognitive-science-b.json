@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-cognitive-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Computationalism vs connectionism",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "computation",
+      "connectionism",
+      "theory"
+    ],
+    "question": "What's the difference between the classical computational theory of mind and a connectionist model of cognition?",
+    "lookingFor": "A clear grasp of the two paradigms and their real trade-offs, not just name-dropping.",
+    "idealAnswer": {
+      "bullets": [
+        "Classical view: mind as symbol manipulation over discrete representations, rule-based",
+        "Connectionist view: cognition as patterns of activation across networks of simple units, learned through weighted connections",
+        "Note a genuine trade-off, such as symbolic systems being better at explicit logic and connectionist ones better at graceful degradation and learning from data"
+      ],
+      "modelAnswer": "The classical view treats the mind like a computer running rules over symbols, so thinking is basically formal logic on structured representations, which explains things like language syntax nicely. Connectionism instead models cognition as activation spreading through networks of simple units with weighted connections, more like the brain's own architecture, and it's much better at things like pattern recognition and learning from messy data. What I find interesting is that neither fully explains everything on its own, symbolic models struggle with the fluid, context-sensitive parts of cognition while pure connectionist networks struggle to explain systematic, rule-like reasoning, which is partly why hybrid approaches keep coming back."
+    },
+    "commonMistakes": [
+      "Treating the two as interchangeable jargon for 'brain models'",
+      "Describing only one paradigm and ignoring the comparison",
+      "Confusing connectionism with modern deep learning without noting the historical link"
+    ],
+    "followUps": [
+      "Where do modern neural networks fit into this debate?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "The Chinese Room argument",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "philosophy-of-mind",
+      "ai",
+      "argument"
+    ],
+    "question": "Searle's Chinese Room argument claims a system can pass the Turing test without understanding anything. Do you find it convincing?",
+    "lookingFor": "The ability to state the argument accurately, then take and defend a genuine position rather than just reciting objections.",
+    "idealAnswer": {
+      "bullets": [
+        "State the argument correctly: syntax manipulation without semantics doesn't equal understanding",
+        "Engage with at least one serious counter, such as the systems reply",
+        "Land on a defensible personal position rather than a neutral non-answer"
+      ],
+      "modelAnswer": "Searle's point is that a person following a rulebook to manipulate Chinese symbols could produce fluent replies without understanding a word, so passing the Turing test can't be proof of genuine understanding. I take the systems reply seriously though, that maybe the person doesn't understand but the whole system, person plus rulebook plus room, does, in the same way no single neuron in my brain understands English but the system of them does. I lean toward thinking Searle is right that syntax alone isn't sufficient for meaning, but I'm less confident he's shown understanding requires anything more than the right kind of causal organisation, which is exactly why this argument still unsettles me rather than resolves the question."
+    },
+    "commonMistakes": [
+      "Misstating the thought experiment or garbling its structure",
+      "Treating it as settled rather than contested",
+      "Refusing to commit to any actual view"
+    ],
+    "followUps": [
+      "Does this argument apply to large language models today?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "The mind-body problem",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "philosophy-of-mind",
+      "consciousness",
+      "dualism"
+    ],
+    "question": "How would you explain the mind-body problem to someone who's never studied philosophy, and where do you personally land on it?",
+    "lookingFor": "A plain-language explanation of a genuinely hard problem, plus honest, reasoned personal engagement.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the problem simply: how physical processes in the brain give rise to subjective experience",
+        "Name at least one position, such as physicalism, dualism, or functionalism",
+        "Be honest about the difficulty rather than pretending it's resolved"
+      ],
+      "modelAnswer": "The mind-body problem is really the question of how something physical, like electrical signals firing between neurons, produces something that doesn't feel physical at all, like the redness of red or the ache of missing someone. I'm drawn to physicalism, the idea that mental states just are brain states, because it fits everything else we know about how damage to the brain changes the mind. But I'll admit the hard problem, why any physical process should feel like anything from the inside at all, doesn't go away just because I've picked a camp, and I think anyone who says it's fully solved either way is overselling their certainty."
+    },
+    "commonMistakes": [
+      "Explaining it so abstractly it stays inaccessible",
+      "Presenting one theory as obviously correct with no acknowledgment of difficulty",
+      "Confusing the mind-body problem with a purely neuroscience question"
+    ],
+    "followUps": [
+      "What kind of evidence, if any, do you think could settle this debate?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Nativism vs empiricism in language",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "language-acquisition",
+      "chomsky",
+      "development"
+    ],
+    "question": "Chomsky argued children are born with an innate language faculty. What's the strongest evidence for and against that view?",
+    "lookingFor": "Balanced knowledge of the poverty-of-the-stimulus argument and its usage-based critics.",
+    "idealAnswer": {
+      "bullets": [
+        "State the nativist case: poverty of the stimulus, rapid acquisition despite messy input, universal grammar",
+        "State a genuine counter: usage-based and statistical learning accounts showing children track patterns in rich input",
+        "Show awareness this is an active, not settled, debate"
+      ],
+      "modelAnswer": "Chomsky's strongest evidence is the poverty of the stimulus argument, children hear messy, incomplete language yet reliably converge on complex grammar by around age four, which seems to need some built-in structure to explain. The strongest pushback comes from usage-based linguists who show that infants are remarkably good statistical learners, picking up on patterns and frequencies in speech that turn out to be richer than the classic argument assumed. I don't think the debate is fully settled, but I find the usage-based work compelling because it doesn't require us to posit a specific grammar module, just powerful general learning mechanisms applied to language."
+    },
+    "commonMistakes": [
+      "Presenting nativism as unchallenged fact",
+      "Not naming a specific counter-argument, just gesturing at 'other theories'",
+      "Confusing language acquisition with general cognitive development"
+    ],
+    "followUps": [
+      "What would change your mind on this question?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual process theory",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "reasoning",
+      "kahneman",
+      "bias"
+    ],
+    "question": "Explain System 1 and System 2 thinking, and give an example of when relying on System 1 leads us astray.",
+    "lookingFor": "Correct understanding of dual process theory applied to a concrete, well-explained example.",
+    "idealAnswer": {
+      "bullets": [
+        "Define System 1 as fast, automatic, intuitive and System 2 as slow, effortful, deliberate",
+        "Give a concrete bias example, such as the bat-and-ball problem or anchoring",
+        "Note that System 1 usually works well and isn't simply 'bad thinking'"
+      ],
+      "modelAnswer": "System 1 is the fast, automatic thinking we use for most of the day, recognising a face or dodging a car, while System 2 is the slower, effortful reasoning we switch on for something like long division. The classic example is the bat and ball problem, a bat and ball cost one dollar ten together and the bat costs a dollar more than the ball, most people blurt out ten cents because System 1 grabs the first plausible answer, when the correct answer is five cents. I don't think this means System 1 is unreliable in general, it's usually a brilliant shortcut, it's just that certain problems are specifically shaped to exploit its pattern-matching instead of triggering the deliberate check."
+    },
+    "commonMistakes": [
+      "Calling System 1 'wrong' or 'bad' thinking generally",
+      "Giving a vague example with no actual bias demonstrated",
+      "Mixing up which system is fast and which is slow"
+    ],
+    "followUps": [
+      "Can you train yourself to catch System 1 errors, or is that unrealistic?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Cognitive bias in your own reasoning",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "bias",
+      "self-reflection",
+      "reasoning"
+    ],
+    "question": "Describe a cognitive bias you've caught yourself falling for, and how you noticed it.",
+    "lookingFor": "Genuine self-awareness plus accurate technical naming of the bias, not a generic 'I try to be open-minded' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, correctly used bias, such as confirmation bias or the sunk cost fallacy",
+        "Describe a real situation, not a hypothetical one",
+        "Explain what actually made you notice, and what you did differently afterward"
+      ],
+      "modelAnswer": "I kept a subscription to a coding course I'd stopped enjoying for months, telling myself I'd already paid for it so I should finish, which is a textbook sunk cost fallacy since the money was gone either way and shouldn't have affected a decision about my future time. I noticed it when a friend asked me a simple question, would you sign up for this again today, and the honest answer was no. I cancelled it and picked something I actually wanted to learn, and now I try to ask myself that same forward-looking question whenever I feel stuck finishing something out of obligation."
+    },
+    "commonMistakes": [
+      "Naming a bias incorrectly or vaguely",
+      "Describing a hypothetical rather than a real personal instance",
+      "Skipping the 'how did you notice' part entirely"
+    ],
+    "followUps": [
+      "Do you think awareness of a bias is enough to overcome it?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Embodied cognition",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "embodiment",
+      "theory",
+      "perception"
+    ],
+    "question": "What does it mean to say cognition is 'embodied,' and why might that challenge a purely computational view of the mind?",
+    "lookingFor": "Understanding that embodied cognition ties thought to the body and environment, and how that pushes against brain-in-a-vat style computationalism.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain embodied cognition: the body and its interactions with the environment actively shape thought, not just carry commands from the brain",
+        "Give a concrete example, like gesture aiding problem solving or motor experience shaping abstract concepts",
+        "Explain why this pushes back on the idea that a brain, or its symbol-processing equivalent, is sufficient on its own"
+      ],
+      "modelAnswer": "Embodied cognition is the idea that thinking isn't something that happens purely inside the skull and then gets executed by the body, the body's structure and its ongoing interaction with the world are part of the thinking itself. A concrete example is how people naturally gesture while solving a spatial problem, and blocking their hands measurably hurts their performance, which suggests the gesture isn't just decoration on top of an internal computation. That's a challenge to a purely computational view because it implies you can't fully explain cognition by simulating a brain in isolation, you'd also need to model its physical interaction with a real environment, which is a much bigger claim than classical computationalism makes."
+    },
+    "commonMistakes": [
+      "Treating embodiment as just 'the brain controls the body'",
+      "No concrete example to ground the claim",
+      "Missing why this matters for the computational theory of mind specifically"
+    ],
+    "followUps": [
+      "Does embodied cognition suggest anything about whether disembodied AI can truly think like us?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "The replication crisis",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "methodology",
+      "psychology"
+    ],
+    "question": "Psychology has faced a well-documented replication crisis. What do you understand by that, and how should it change the way you read a cognitive science study?",
+    "lookingFor": "Awareness of a real, current methodological debate and a sensible practical takeaway, not just alarmism.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what the crisis is: many high-profile findings, especially in social and cognitive psychology, failed to replicate in large follow-up efforts",
+        "Mention a contributing cause, such as small samples, p-hacking, or publication bias toward positive results",
+        "Give a practical reading habit it changes, like checking sample size or looking for replication rather than trusting one striking study"
+      ],
+      "modelAnswer": "The replication crisis refers to the discovery, especially from large projects like the Reproducibility Project, that a large share of famous psychology findings didn't hold up when other labs tried to reproduce them under the same conditions. Part of the cause is structural, journals historically rewarded surprising positive results, which pushed researchers toward small samples and flexible analysis choices that inflate false positives. It's changed how I read studies, I now actively look for whether a finding has been replicated by an independent lab and how large the sample was, rather than being impressed by a single striking headline result, because a lot of what used to be textbook psychology turned out to be fragile."
+    },
+    "commonMistakes": [
+      "Vague awareness ('some studies didn't replicate') with no mechanism",
+      "Concluding psychology as a whole is unscientific or worthless",
+      "No practical change in how they'd evaluate a study"
+    ],
+    "followUps": [
+      "Should this make us distrust findings in cognitive neuroscience too, or is that a different situation?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Do large language models understand language",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "ai",
+      "current-debate",
+      "language"
+    ],
+    "question": "There's an ongoing debate about whether large language models genuinely understand language or are just sophisticated pattern matchers. Where do you stand, and why does it matter for cognitive science?",
+    "lookingFor": "Current awareness of the debate, a reasoned position, and a sense of why it's relevant to the discipline, not just tech-news familiarity.",
+    "idealAnswer": {
+      "bullets": [
+        "Show accurate awareness of the actual debate, such as the stochastic parrot critique versus emergent capability claims",
+        "Take a position with reasoning rather than a hedge",
+        "Explain why the answer matters for cognitive science, such as what it tells us about the necessity of grounding, embodiment, or intention for meaning"
+      ],
+      "modelAnswer": "I think the honest answer is that these models are extraordinary statistical pattern matchers that produce outputs indistinguishable from understanding in many contexts, but I'm skeptical that predicting the next token, however well, is the same thing as grounding a word in experience the way a human does. What makes the debate matter for cognitive science is that it forces us to be precise about what we even mean by understanding, if a system with no body, no perception, and no goals can produce convincingly meaningful language, that either says something is missing from our definition of understanding, or it says meaning requires less grounding than embodied cognition theorists assumed. I don't think we have a clean answer yet, and honestly I think that's what makes this the most interesting live question in the field right now."
+    },
+    "commonMistakes": [
+      "Only technology-news level familiarity with no cognitive science framing",
+      "A flat 'they're just autocomplete' or 'they clearly think' with no argument",
+      "Not connecting the debate back to what it means for the discipline"
+    ],
+    "followUps": [
+      "What experiment, if any, could actually distinguish real understanding from convincing imitation?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Brain-computer interface data privacy",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "neurotechnology",
+      "privacy"
+    ],
+    "question": "A company wants to sell a consumer brain-computer interface headset that can infer mood and attention from neural signals, and monetise that data for advertising. As someone entering this field, what's your ethical view?",
+    "lookingFor": "Structured ethical reasoning about neural data specifically, weighing benefit against the unusual intimacy of the data, not a blanket yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine benefits, such as accessibility tools or mental health monitoring",
+        "Identify what makes neural data different from other personal data, its intimacy and the risk of inference beyond what the user consciously discloses",
+        "Land on a specific safeguard, such as strict consent, data minimisation, or banning third-party sale of raw signals rather than a vague 'be careful'"
+      ],
+      "modelAnswer": "I don't think brain-computer interfaces are inherently wrong, they could genuinely help people with paralysis communicate or help clinicians catch depression earlier, and I don't want ethical caution to block that. But neural data is different from browsing history because it can reveal states a person hasn't consciously chosen to disclose, even to themselves, so treating it like ordinary ad-targeting data feels like a real overreach. My position is that the mood and attention inferences should never be sold to third parties for advertising, only used for the function the user explicitly consented to, and I'd want regulation that treats raw neural signals more like medical records than like clickstream data."
+    },
+    "commonMistakes": [
+      "A blanket 'all neurotech for profit is unethical' with no nuance",
+      "Treating neural data as just another form of personal data with no distinction",
+      "No concrete safeguard proposed, just general unease"
+    ],
+    "followUps": [
+      "Should users be allowed to sell their own neural data if they want to?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-predicted cognitive decline",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "dilemma",
+      "clinical"
+    ],
+    "question": "An AI model trained on speech patterns can predict early-stage dementia years before clinical symptoms appear, with reasonable but imperfect accuracy. If you were running the study, would you tell participants their individual risk score?",
+    "lookingFor": "Careful weighing of autonomy and potential harm from an uncertain prediction, landing on a defensible, specific policy rather than a snap answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh the value of informing someone against the psychological harm of an imperfect, possibly wrong prediction",
+        "Consider consent, such as letting participants choose in advance whether they want to know",
+        "Reach a specific, defensible policy rather than staying purely abstract"
+      ],
+      "modelAnswer": "My instinct is that people generally have a right to information about their own health, but a probabilistic score from an imperfect model is different from a diagnosis, and telling someone bluntly could cause real harm, anxiety, insurance discrimination, decisions made on shaky ground, without necessarily being actionable. I'd want to ask participants at enrollment whether they want to know their result at all, so the choice sits with them rather than the researcher deciding for them, and for anyone who says yes, I'd insist the result comes with a clinician-led conversation about what the accuracy actually means, not just a number. I don't think there's a version of this that avoids all discomfort, but I'd rather protect autonomy and pair it with proper context than withhold information paternalistically."
+    },
+    "commonMistakes": [
+      "A flat 'always tell them, it's their data' with no acknowledgment of harm from an uncertain score",
+      "A flat 'never tell them, it's too risky' with no respect for autonomy",
+      "Ignoring the model's imperfect accuracy entirely"
+    ],
+    "followUps": [
+      "Does your answer change if the prediction is 95% accurate versus 60% accurate?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Behavioral nudging",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "behavioral-economics",
+      "manipulation"
+    ],
+    "question": "Governments increasingly use behavioral 'nudges,' like default enrollment in pension schemes, that exploit known cognitive biases to steer choices toward outcomes they consider good. Is that manipulation, or legitimate policy?",
+    "lookingFor": "A reasoned distinction between manipulation and legitimate influence, not a reflexive answer either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Define the tension: nudges work precisely because they bypass deliberate reasoning, which sounds manipulative even when the goal is good",
+        "Offer a criterion for distinguishing acceptable nudges from manipulation, such as transparency, reversibility, or alignment with the person's own stated goals",
+        "Apply that criterion to the pension example specifically rather than staying abstract"
+      ],
+      "modelAnswer": "I think the honest tension is that nudges work precisely by exploiting the same biases we criticise in other contexts, like the default effect, so the mechanism is the same as manipulation even if the intent is benevolent. What makes the difference for me is whether the nudge is transparent and easily reversible, if I can find out I've been auto-enrolled and opt out in five minutes with no penalty, that's different from a hidden manipulation I can never detect or undo. Applied to pensions specifically, I'd defend it, most people say they want to save more but struggle with present bias, so a reversible default that aligns with their own stated long-term goal feels like it's helping people act on their own values rather than overriding them."
+    },
+    "commonMistakes": [
+      "Calling all nudges manipulation with no distinguishing criterion",
+      "Calling all nudges fine because the goal is good, ignoring the mechanism",
+      "Staying fully abstract without applying it to the pension example"
+    ],
+    "followUps": [
+      "Would your view change if the nudge pushed people toward something you personally disagreed with?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Testing genuine understanding in an AI system",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "experiment-design",
+      "ai"
+    ],
+    "question": "Design a single experiment, beyond the standard Turing test, that could give evidence about whether an AI system genuinely understands a concept rather than just producing convincing outputs about it.",
+    "lookingFor": "Creative but rigorous experimental thinking that identifies a real limitation of the Turing test and proposes a testable alternative.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a specific weakness of the plain Turing test, such as it only tests surface conversational plausibility",
+        "Propose a concrete alternative test, ideally one probing generalisation, counterfactual reasoning, or transfer to a novel unfamiliar situation",
+        "Acknowledge the test's own limits honestly rather than overselling it"
+      ],
+      "modelAnswer": "The Turing test only checks whether output sounds convincing to a human judge, which a system could pass through memorised patterns without any real grasp of the underlying concept, so I'd want a test based on counterfactual transfer instead. I'd take a physical concept, say the idea of balance, teach the system through language only, then present it with a genuinely novel scenario it couldn't have seen in training, like balancing an oddly shaped object it's never been described before, and see if it can reason correctly about what would happen. A system that only pattern-matches training examples should fail on truly novel combinations, while a system with something like real understanding should generalise the underlying principle, though I'd admit even this test can't fully rule out that it's just pattern-matching at a more abstract level."
+    },
+    "commonMistakes": [
+      "Just describing a more elaborate version of the Turing test",
+      "No concrete, testable mechanism, only a vague idea",
+      "Overselling the proposed test as fully conclusive"
+    ],
+    "followUps": [
+      "How would you know if your test itself was fair, and not just harder trivia?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a memory intervention",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "memory",
+      "experiment-design"
+    ],
+    "question": "A patient with anterograde amnesia can't form new explicit memories but can still learn new motor skills. How would you explain that dissociation, and what does it tell you about the structure of memory?",
+    "lookingFor": "Correct understanding of the declarative versus procedural memory distinction, tied to a real neural explanation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the dissociation using declarative versus procedural memory systems, tied to different brain structures such as the hippocampus versus the basal ganglia and cerebellum",
+        "Reference or resemble a known real case, such as patient H.M., to ground the answer",
+        "Draw out the implication: memory isn't a single unified system, it's multiple dissociable systems"
+      ],
+      "modelAnswer": "This dissociation is what made cases like H.M. so important, he lost the ability to form new conscious, explicit memories after hippocampal damage, yet he could still learn and improve at motor tasks like mirror tracing across days, without ever remembering having practiced them. That tells us declarative memory, facts and events, depends heavily on the hippocampus and medial temporal lobe, while procedural memory, skills and habits, relies on separate circuits involving the basal ganglia and cerebellum that don't need that same structure intact. It's a strong argument against thinking of memory as one single system, it's really several dissociable systems that can be damaged independently, which is part of why cognitive science had to move away from a unitary model of memory."
+    },
+    "commonMistakes": [
+      "Treating memory as one undifferentiated system throughout the answer",
+      "No reference to the actual neural structures involved",
+      "Missing the broader implication about multiple memory systems"
+    ],
+    "followUps": [
+      "What kind of task would you use to test whether a new patient has the same dissociation?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Free will and neuroscience",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "free-will",
+      "neuroscience",
+      "philosophy"
+    ],
+    "question": "Libet's experiments showed brain activity predicting a decision before people reported consciously deciding. Does that settle the question of free will?",
+    "lookingFor": "Critical engagement with the actual experiment and its well-known methodological critiques, not a naive acceptance of the popular headline.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the experiment accurately: readiness potential preceding reported conscious intention by a few hundred milliseconds",
+        "Raise at least one genuine critique, such as the difficulty of timing subjective awareness, or that the task was a trivial arbitrary movement rather than a meaningful decision",
+        "Reach a measured conclusion, not 'this proves free will doesn't exist'"
+      ],
+      "modelAnswer": "Libet found that a readiness potential in the brain shows up a few hundred milliseconds before people report consciously deciding to move their wrist, which got popularly read as proof that the brain decides before 'we' do. I think that reading moves too fast though, the task was an arbitrary, meaningless flick of the wrist with no real stakes, and asking someone to introspectively time the exact moment of a conscious urge is notoriously unreliable, so a few hundred milliseconds of noise there isn't shocking. My honest view is that Libet's work is a genuinely important challenge to a naive picture of conscious will as the first cause of action, but it's a long way from proving free will is an illusion, especially for the kind of deliberate, high-stakes decisions that matter most to how we think about responsibility."
+    },
+    "commonMistakes": [
+      "Accepting the popular 'free will is disproven' reading uncritically",
+      "Misdescribing the actual experimental setup",
+      "No engagement with any methodological critique"
+    ],
+    "followUps": [
+      "Does this change how you'd think about moral responsibility?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Mirror neurons and empathy claims",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "neuroscience",
+      "empathy",
+      "critical-thinking"
+    ],
+    "question": "Mirror neurons are often credited in popular science with explaining empathy and even language evolution. How much of that claim do you think holds up?",
+    "lookingFor": "Skeptical, evidence-based engagement with an overhyped popular science topic, rather than repeating the media narrative.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what mirror neurons actually are: neurons that fire both when performing an action and observing it, first found in macaques",
+        "Note that the leap to human empathy and language evolution is far more speculative than commonly presented",
+        "Show awareness that human mirror neuron evidence is largely indirect, from fMRI, not confirmed single-cell recordings"
+      ],
+      "modelAnswer": "Mirror neurons were originally found in macaque premotor cortex, cells that fire both when the monkey performs an action and when it watches another perform the same action, which is a genuinely interesting finding on its own. The popular science leap to 'this is the neural basis of human empathy and even language' goes well beyond the original evidence though, most human studies rely on fMRI, which shows overlapping brain regions active during action and observation but can't confirm the same individual neurons are doing both jobs the way the monkey studies did. I think the honest position is that mirror neurons are a real and interesting phenomenon that got wildly oversold as a grand unifying explanation for social cognition, and the actual evidence for their role in human empathy specifically is much thinner than the popular narrative suggests."
+    },
+    "commonMistakes": [
+      "Repeating the popular oversold claim as settled fact",
+      "Dismissing mirror neurons as fake or meaningless",
+      "Not distinguishing macaque single-cell evidence from human fMRI evidence"
+    ],
+    "followUps": [
+      "What kind of study would actually confirm mirror neurons play a causal role in human empathy?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "The hard problem of consciousness",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "consciousness",
+      "philosophy",
+      "theory"
+    ],
+    "question": "Chalmers distinguishes the 'easy problems' of consciousness from the 'hard problem.' What's the distinction, and why does it matter for cognitive science as a discipline?",
+    "lookingFor": "Accurate grasp of Chalmers's distinction and its implication for whether cognitive science can, even in principle, fully explain subjective experience.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the easy problems: explaining cognitive functions like attention, memory, or reportability in mechanistic terms",
+        "Explain the hard problem: why any of that processing is accompanied by subjective experience at all",
+        "Explain the stakes for the discipline, whether cognitive science's methods can in principle touch the hard problem or only ever explain function"
+      ],
+      "modelAnswer": "The easy problems are things like explaining how the brain integrates information, focuses attention, or produces a verbal report, and they're called easy not because they're simple but because we know in principle what kind of mechanistic answer would satisfy them. The hard problem is different, it's the question of why any of that neural processing feels like something from the inside at all, rather than happening in the dark with no subjective experience attached. This matters for cognitive science because most of our actual methods, from fMRI to computational modelling, are built to explain function, so if the hard problem really is a separate kind of question, it raises the uncomfortable possibility that our entire toolkit might explain everything about behaviour and cognition while still leaving the core mystery of experience untouched."
+    },
+    "commonMistakes": [
+      "Collapsing the hard problem into just another easy problem",
+      "Vague description with no actual distinction stated",
+      "Not connecting it to what it means for the discipline's methods"
+    ],
+    "followUps": [
+      "Do you think the hard problem is a real problem, or a confusion about language?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Working memory and cognitive load",
+    "program": "Cognitive Science",
+    "difficulty": "easy",
+    "tags": [
+      "memory",
+      "attention",
+      "fundamentals"
+    ],
+    "question": "Why can most people hold only a handful of items in working memory at once, and what's an everyday consequence of that limit?",
+    "lookingFor": "Correct basic grasp of working memory capacity limits with a genuine, specific real-world consequence.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference the classic capacity limit, roughly four to seven chunks depending on the account",
+        "Mention chunking as a strategy that effectively extends the limit",
+        "Give a specific, real everyday consequence rather than a generic one"
+      ],
+      "modelAnswer": "Working memory capacity is limited to somewhere around four meaningful chunks for most people, which is why a phone number feels manageable when it's grouped into chunks like an area code and two smaller blocks, but the same eleven digits read one at a time would be much harder to hold onto. Chunking is basically the trick our minds use to fit more information into that fixed slot budget, treating a familiar pattern as one unit instead of many. A real consequence I've noticed is trying to follow multi-step spoken directions without writing them down, past about three or four turns I start dropping the early steps, which is exactly the kind of overload the capacity limit predicts."
+    },
+    "commonMistakes": [
+      "Citing an outdated or overconfident exact number with no caveat",
+      "No mention of chunking as a mitigating strategy",
+      "A vague, non-specific 'consequence' like 'it's hard to remember things'"
+    ],
+    "followUps": [
+      "How might multitasking interact with this limit?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Piaget vs Vygotsky",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "development",
+      "theory",
+      "comparison"
+    ],
+    "question": "Piaget and Vygotsky both studied cognitive development in children but disagreed on the role of social interaction. What's the core disagreement, and which do you find more compelling?",
+    "lookingFor": "Accurate comparison of the two theorists plus a reasoned, defended preference rather than a flat 'both have good points.'",
+    "idealAnswer": {
+      "bullets": [
+        "State Piaget's view: children move through universal developmental stages largely through independent exploration",
+        "State Vygotsky's view: cognitive development is fundamentally social, scaffolded through more knowledgeable others within a zone of proximal development",
+        "Give a genuine reasoned preference or synthesis, not a non-committal shrug"
+      ],
+      "modelAnswer": "Piaget saw development as a largely solo journey, a child moves through fixed stages, like moving from concrete to abstract thought, mainly by actively exploring and reorganising their own understanding of the world. Vygotsky pushed back on that solitary picture, arguing that a child's development is fundamentally social, that what a child can do with the help of a more capable partner today, within what he called the zone of proximal development, becomes what they can do alone tomorrow. I find Vygotsky's account more compelling for how learning actually happens in classrooms, because it explains why good teaching and peer collaboration accelerate development in a way a purely stage-based, solo-exploration model doesn't fully account for, though I think Piaget was right that development still has to build on a child's own existing cognitive structures."
+    },
+    "commonMistakes": [
+      "Confusing which theorist emphasised social interaction",
+      "A flat 'they're both right' with no reasoning",
+      "Missing the specific mechanism, like the zone of proximal development"
+    ],
+    "followUps": [
+      "How would a Vygotskian classroom look different from a Piagetian one?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Animal theory of mind",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "comparative-cognition",
+      "theory-of-mind",
+      "animals"
+    ],
+    "question": "How would you design a study to test whether a non-human animal has a theory of mind, meaning it understands that others have beliefs that can differ from reality?",
+    "lookingFor": "Understanding of the false-belief logic underlying theory-of-mind tests, adapted sensibly for a non-verbal animal.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core logic: you need to show the animal tracks another's belief, not just the animal's own knowledge of reality",
+        "Propose a non-verbal, behavioural equivalent of a false-belief task, such as a competitive food-hiding paradigm",
+        "Acknowledge the interpretive difficulty, that clever behaviour can sometimes be explained by simpler rules without invoking real belief attribution"
+      ],
+      "modelAnswer": "The key logical trick in any theory-of-mind test is separating what the animal itself knows about reality from what it thinks another individual believes, which is why human false-belief tasks move an object while a character is absent. For a non-verbal animal I'd use something like a competitive paradigm with scrub jays or chimpanzees, letting a subordinate watch a dominant either see or not see where food was hidden, then checking whether the subordinate re-hides the food only when the dominant actually saw the original hiding spot. I'd stay cautious about the interpretation though, because a simpler rule like 'avoid caches visible to others' could produce the same behaviour without the animal truly representing what the dominant believes, so I'd want several converging paradigms before claiming real belief attribution."
+    },
+    "commonMistakes": [
+      "Proposing a test that only checks the animal's own knowledge, not the other's belief",
+      "No acknowledgment of the simpler-explanation problem",
+      "Vague design with no concrete behavioural measure"
+    ],
+    "followUps": [
+      "What existing findings, if any, are you aware of on this question?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Inattentional blindness",
+    "program": "Cognitive Science",
+    "difficulty": "easy",
+    "tags": [
+      "attention",
+      "perception",
+      "fundamentals"
+    ],
+    "question": "What is inattentional blindness, and what does it reveal about the relationship between attention and perception?",
+    "lookingFor": "Correct definition with the right classic example and an accurate takeaway about attention gating conscious perception.",
+    "idealAnswer": {
+      "bullets": [
+        "Define inattentional blindness: failing to notice a fully visible, unexpected object because attention is engaged elsewhere",
+        "Reference the classic gorilla counting study, or an equivalent example",
+        "State the takeaway: seeing isn't automatic, attention is required for conscious perception even of salient things"
+      ],
+      "modelAnswer": "Inattentional blindness is when people fail to notice something completely visible and often quite obvious, simply because their attention is focused elsewhere, the classic demonstration being the study where people counting basketball passes often miss a person in a gorilla suit walking through the middle of the scene. What it reveals is that vision isn't a passive camera automatically registering everything in front of the eyes, conscious perception seems to require attention actively selecting and processing information, so something can be fully within your visual field and still never reach awareness. It's part of why eyewitness testimony and even everyday things like missing a pedestrian while focused on a phone are more explainable than they might seem."
+    },
+    "commonMistakes": [
+      "Confusing inattentional blindness with change blindness",
+      "No concrete classic example given",
+      "Missing the core takeaway about attention gating perception"
+    ],
+    "followUps": [
+      "How is this different from change blindness?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Predictive processing debate",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "current-debate",
+      "predictive-processing",
+      "perception"
+    ],
+    "question": "Predictive processing, the idea that the brain is fundamentally a prediction machine constantly minimising error between expectation and sensory input, has become a major framework in cognitive science. What's appealing about it, and what are its limits?",
+    "lookingFor": "Genuine current awareness of a live theoretical debate, with a balanced view rather than either uncritical enthusiasm or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core idea: perception, action, and even emotion reinterpreted as minimising prediction error against a generative model",
+        "Note its appeal, such as unifying perception, action, and learning under one principle, and explaining illusions as predictions overriding raw input",
+        "Raise a genuine limit, such as unfalsifiability concerns or difficulty specifying exactly what counts as a prediction error in practice"
+      ],
+      "modelAnswer": "Predictive processing reframes the brain not as passively receiving sensory data but as constantly generating predictions about what it expects to sense, and using the mismatch, the prediction error, to update its model or guide action, which elegantly explains things like why optical illusions persist even once you know they're illusions, your expectation is still overriding the raw signal. What I find appealing is how much it unifies under one principle, perception, action, attention, and even some accounts of emotion all get described using the same prediction-error currency. My concern is that the framework is sometimes so flexible it risks becoming unfalsifiable, almost any finding can be redescribed post hoc as 'minimising prediction error,' and I'd want to see it make sharper, novel testable predictions rather than just re-narrating existing findings in its own vocabulary before I'd call it a genuinely unified theory of the brain."
+    },
+    "commonMistakes": [
+      "No real engagement, just naming the term without explaining the mechanism",
+      "Purely enthusiastic with no critical limit raised",
+      "Confusing predictive processing with simple stimulus-response conditioning"
+    ],
+    "followUps": [
+      "Can you think of a finding that predictive processing would struggle to explain?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of fMRI as a method",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "methodology",
+      "neuroscience",
+      "fmri"
+    ],
+    "question": "fMRI is one of the most popular tools in cognitive neuroscience, but what does it actually measure, and where does that create problems for interpreting results?",
+    "lookingFor": "Correct understanding that fMRI measures an indirect metabolic proxy, and the interpretive gap that creates.",
+    "idealAnswer": {
+      "bullets": [
+        "State what fMRI actually measures: blood oxygenation changes as an indirect proxy for neural activity, not neurons firing directly",
+        "Explain the resulting problem: poor temporal resolution and the risk of reverse-inference, assuming a region's activation implies a specific mental state",
+        "Show awareness this is a real, ongoing methodological caution in the field, not a reason to dismiss the method"
+      ],
+      "modelAnswer": "fMRI doesn't measure neurons firing directly, it measures the blood oxygenation level dependent signal, essentially tracking blood flow changes that follow neural activity by a few seconds, which makes it a proxy rather than a direct readout. That creates two real problems, its temporal resolution is far too slow to capture the millisecond timescale of actual cognitive processes, and it tempts researchers into reverse inference, seeing a region like the amygdala light up and concluding 'therefore fear,' when that same region is involved in plenty of other processes too. I think fMRI is still an incredibly valuable tool for localising which networks are involved in a task, I just try to stay cautious about treating a coloured brain map as if it directly proves a specific mental state, rather than one useful piece of converging evidence."
+    },
+    "commonMistakes": [
+      "Saying fMRI measures neurons firing directly",
+      "No mention of the reverse-inference problem",
+      "Dismissing fMRI as useless rather than identifying its specific limits"
+    ],
+    "followUps": [
+      "What method would you pair with fMRI to address its weaknesses?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Cross-cultural universality of emotion",
+    "program": "Cognitive Science",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "emotion",
+      "cross-cultural"
+    ],
+    "question": "You want to test whether facial expressions of basic emotions are universally recognised across cultures rather than learned locally. How would you design that study, and what confound would you need to rule out?",
+    "lookingFor": "Sound experimental design instincts and awareness of a genuine confound, referencing the logic behind real universality research.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose testing with a culturally isolated population with minimal media exposure to Western facial expression norms",
+        "Describe a sensible task, such as matching facial photographs to emotion words or short stories",
+        "Identify a real confound to control, such as prior exposure to outside media, or translation and concept mismatches in the emotion labels used"
+      ],
+      "modelAnswer": "I'd want to test recognition in a population with minimal exposure to Western media, similar to Ekman's original work with isolated groups in Papua New Guinea, showing them photographs of posed facial expressions and asking them to match each face to a short story describing an emotional situation rather than relying on translated emotion word labels, which avoids assuming the language even has an exact matching word. The confound I'd be most careful about is prior media exposure, if the 'isolated' group has actually seen any outside television or photographs, that alone could explain apparent universality through learning rather than an innate mechanism, so I'd want to screen and report exposure levels carefully. I'd also want to include an equal number of non-basic, more culturally specific expressions as controls, so a flat 'they matched everything' result doesn't get misread as universal recognition of only the basic emotions."
+    },
+    "commonMistakes": [
+      "Using emotion-word labels without addressing translation validity",
+      "No control for prior outside media exposure",
+      "A vague design with no specific task or control condition"
+    ],
+    "followUps": [
+      "Ekman's original claims about universal basic emotions have been challenged since. What's the core of that challenge?"
+    ]
+  },
+  {
+    "id": "prog-cognitive-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Philosophical zombies",
+    "program": "Cognitive Science",
+    "difficulty": "hard",
+    "tags": [
+      "philosophy-of-mind",
+      "consciousness",
+      "thought-experiment"
+    ],
+    "question": "A philosophical zombie is imagined as physically and behaviourally identical to a conscious person but with no inner subjective experience at all. What is this thought experiment actually meant to show, and do you think it succeeds?",
+    "lookingFor": "Accurate grasp of what the zombie argument is trying to establish, plus a genuine, defended verdict on whether it works.",
+    "idealAnswer": {
+      "bullets": [
+        "State the target of the argument correctly: it's meant to show consciousness isn't logically reducible to physical or functional facts, since a physical duplicate without experience is conceivable",
+        "Engage with at least one serious objection, such as questioning whether the scenario is actually coherent rather than merely imaginable",
+        "Reach a genuine personal verdict rather than a non-committal summary"
+      ],
+      "modelAnswer": "The zombie argument tries to show that physicalism is false by pointing out that we can seemingly conceive of a being physically and behaviourally identical to a conscious person in every way, yet with nobody home inside, which would mean consciousness is something extra, not fully fixed by the physical facts. The obvious objection is that conceivability doesn't guarantee genuine possibility, plenty of things feel imaginable at a surface level, like a shape that's both a square and a circle, until you look closely and see they're actually incoherent, and some physicalists argue the same is true of zombies once you take seriously what full physical and functional duplication really entails. I lean toward thinking the argument doesn't succeed as a knockdown proof, because I'm not convinced our intuition that zombies are conceivable tracks real metaphysical possibility, but I do think it's valuable precisely because it forces physicalists to explain why consciousness doesn't feel obviously reducible even if it turns out to be."
+    },
+    "commonMistakes": [
+      "Misstating the thought experiment as being about literal fictional zombies",
+      "Treating the argument as an obvious proof with no engagement of objections",
+      "No personal verdict given, just a neutral restatement"
+    ],
+    "followUps": [
+      "If zombies are truly conceivable, what would that mean for building conscious AI?"
+    ]
+  }
+]

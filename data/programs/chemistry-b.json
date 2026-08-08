@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-chemistry-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Rates of reaction and temperature",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["kinetics", "collision-theory", "reasoning"],
+    "question": "Why does raising the temperature of a reaction mixture by just 10 degrees often roughly double the rate of reaction?",
+    "lookingFor": "Correct use of collision theory and the Arrhenius relationship, not just a memorized rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that rate depends on both collision frequency and the fraction of collisions with enough energy",
+        "Link the exponential term in the Arrhenius equation to why a small temperature rise has a large effect",
+        "Note that collision frequency alone barely changes, so it's the energy distribution that matters"
+      ],
+      "modelAnswer": "Raising the temperature does increase how often molecules collide, but that effect is small on its own. What really matters is the Boltzmann distribution of molecular energies shifting so that far more collisions now exceed the activation energy. Because that relationship is exponential rather than linear, even a ten degree rise can dramatically increase the fraction of successful collisions, which is why the rate roughly doubles rather than nudging up slightly."
+    },
+    "commonMistakes": [
+      "Saying molecules 'move faster so they react more' without mentioning activation energy",
+      "Treating the doubling rule as an exact law rather than a rough approximation",
+      "Confusing collision frequency with collision effectiveness"
+    ],
+    "followUps": ["How would a catalyst change this picture without changing temperature?"]
+  },
+  {
+    "id": "prog-chemistry-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Le Chatelier in industry",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["equilibrium", "industrial-chemistry", "haber-process"],
+    "question": "The Haber process for making ammonia is run at around 450°C and 200 atmospheres, even though lower temperature would favour a higher yield. Why?",
+    "lookingFor": "Ability to weigh thermodynamic yield against kinetic rate and economic reality, not just recite Le Chatelier.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the forward reaction is exothermic, so lower temperature favours more product at equilibrium",
+        "Explain that low temperature makes the rate impractically slow, so a compromise temperature is chosen",
+        "Mention that high pressure favours the side with fewer gas moles and a catalyst speeds up reaching equilibrium"
+      ],
+      "modelAnswer": "Since nitrogen and hydrogen react exothermically to form ammonia, Le Chatelier's principle says a lower temperature should push the equilibrium further toward product. But at low temperature the reaction is so slow that almost nothing forms in a reasonable time, so industry accepts a lower equilibrium yield in exchange for a rate that's actually usable. The high pressure helps because there are fewer gas molecules on the product side, and the iron catalyst speeds up reaching whatever equilibrium is available without shifting its position."
+    },
+    "commonMistakes": [
+      "Saying the catalyst increases yield rather than just rate",
+      "Forgetting that the compromise temperature is a rate-versus-yield trade-off",
+      "Not connecting pressure choice to moles of gas on each side"
+    ],
+    "followUps": ["Why is unreacted gas recycled rather than the reaction just being run for longer?"]
+  },
+  {
+    "id": "prog-chemistry-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Colour in transition metal compounds",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["inorganic-chemistry", "transition-metals", "bonding"],
+    "question": "Why are so many transition metal compounds coloured, while compounds of main group metals like sodium or calcium are usually white?",
+    "lookingFor": "Understanding of d-orbital splitting and electron transitions, explained clearly.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that ligands split the d-orbitals into different energy levels",
+        "Link visible light absorption to electrons jumping between those split d-orbitals",
+        "Note that main group ions like Na+ have no partially filled d-subshell for this to happen"
+      ],
+      "modelAnswer": "In a transition metal complex the surrounding ligands split the five d-orbitals into two groups with slightly different energies, and if the d-subshell is partially filled, an electron can absorb a photon of visible light to jump from the lower group to the higher one. The colour we see is the light that wasn't absorbed. Sodium and calcium ions have no d-electrons at all in their compounds, so there's no such transition available and the light passes through largely unabsorbed, which is why their salts look white."
+    },
+    "commonMistakes": [
+      "Saying 'transition metals are just colourful' without mechanism",
+      "Forgetting that a completely empty or completely full d-subshell also gives no colour",
+      "Mixing up absorbed colour with observed colour"
+    ],
+    "followUps": ["Why is a zinc compound like zinc oxide white despite zinc being a transition metal?"]
+  },
+  {
+    "id": "prog-chemistry-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "SN1 versus SN2 mechanisms",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["organic-chemistry", "mechanism", "reasoning"],
+    "question": "How would you decide whether a given nucleophilic substitution is likely to go by an SN1 or SN2 mechanism?",
+    "lookingFor": "Systematic reasoning across substrate structure, nucleophile strength, and solvent, not a memorized checklist.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh substrate structure: tertiary favours SN1 via a stable carbocation, primary favours SN2",
+        "Consider nucleophile strength and concentration: strong nucleophiles push toward SN2",
+        "Bring in solvent: polar protic solvents stabilise carbocations and favour SN1"
+      ],
+      "modelAnswer": "I'd start with the substrate. A tertiary carbon can form a relatively stable carbocation and is too hindered for backside attack, which points toward SN1, whereas a primary carbon can't stabilise a carbocation well but is open to backside attack, which points toward SN2. Then I'd look at the nucleophile: a strong, concentrated nucleophile favours the concerted SN2 pathway, while a weak one gives the carbocation time to form first. Solvent matters too, since a polar protic solvent stabilises the charged intermediate and favours SN1, while a polar aprotic solvent leaves the nucleophile more reactive and favours SN2. For a secondary substrate it's genuinely a judgement call between all three factors."
+    },
+    "commonMistakes": [
+      "Only looking at the carbon type and ignoring nucleophile and solvent",
+      "Assuming SN1 is always racemic when partial inversion can occur",
+      "Treating the rule as absolute rather than a balance of competing factors"
+    ],
+    "followUps": ["What would you expect for a secondary substrate with a weak nucleophile in a polar protic solvent?"]
+  },
+  {
+    "id": "prog-chemistry-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "How buffers resist pH change",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["acid-base", "equilibrium", "buffers"],
+    "question": "Explain how a buffer solution keeps pH almost constant when a small amount of acid is added.",
+    "lookingFor": "Clear equilibrium reasoning connecting the conjugate acid-base pair to the added species.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that a buffer contains a weak acid and its conjugate base in comparable amounts",
+        "Explain that added H+ is consumed by the conjugate base, shifting the equilibrium rather than raising free H+ much",
+        "Note the buffer has a finite capacity and stops working once one component is used up"
+      ],
+      "modelAnswer": "A buffer works because it has a reservoir of both a weak acid and its conjugate base sitting in equilibrium. When you add a small amount of strong acid, the extra H+ ions don't stay free in solution, they get mopped up by the conjugate base to form more of the weak acid, so the equilibrium just shifts instead of the pH swinging. That only works up to a point though, because if you keep adding acid you eventually use up the conjugate base and the buffer loses its capacity to resist further change."
+    },
+    "commonMistakes": [
+      "Saying the buffer 'neutralises' the acid without explaining the equilibrium shift",
+      "Forgetting buffers have a limited capacity",
+      "Confusing buffer action with simple dilution"
+    ],
+    "followUps": ["Why does a buffer work best when the pH is close to the pKa of the weak acid?"]
+  },
+  {
+    "id": "prog-chemistry-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Entropy-driven spontaneous reactions",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["thermodynamics", "entropy", "reasoning"],
+    "question": "Some reactions are endothermic yet still happen spontaneously at room temperature. How is that possible?",
+    "lookingFor": "Correct use of Gibbs free energy to show spontaneity depends on both enthalpy and entropy, not enthalpy alone.",
+    "idealAnswer": {
+      "bullets": [
+        "State that spontaneity is governed by ΔG = ΔH − TΔS, not ΔH in isolation",
+        "Explain that a large positive entropy change can outweigh a positive enthalpy change",
+        "Give or accept an example, such as dissolving ammonium nitrate in water"
+      ],
+      "modelAnswer": "Spontaneity isn't decided by enthalpy alone, it's decided by the sign of ΔG, which combines both enthalpy and entropy through ΔG equals ΔH minus TΔS. If a reaction increases disorder a lot, for example when a solid dissolves and its ions become free to move independently in solution, that large positive ΔS can be multiplied by temperature and outweigh a modest positive ΔH. Dissolving ammonium nitrate in water is the classic example, it cools the solution because it's endothermic, but it still happens spontaneously because the entropy gain dominates."
+    },
+    "commonMistakes": [
+      "Assuming endothermic automatically means non-spontaneous",
+      "Forgetting temperature's role in weighting the entropy term",
+      "Not being able to name a concrete example"
+    ],
+    "followUps": ["Would this same reaction still be spontaneous at a much lower temperature?"]
+  },
+  {
+    "id": "prog-chemistry-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme catalysis vs heterogeneous catalysis",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["catalysis", "biochemistry", "comparison"],
+    "question": "What's the key difference between how an enzyme catalyses a reaction and how a solid metal catalyst like platinum does?",
+    "lookingFor": "Understanding of active site specificity versus surface adsorption, with correct shared principle of lowering activation energy.",
+    "idealAnswer": {
+      "bullets": [
+        "Note both work by providing an alternative pathway with lower activation energy",
+        "Explain enzyme specificity through the shape and chemistry of the active site",
+        "Contrast with heterogeneous catalysis, where reactants adsorb onto a solid surface with less specificity"
+      ],
+      "modelAnswer": "Both are ultimately doing the same job, lowering the activation energy by offering an alternative reaction pathway. But an enzyme does this through a precisely shaped active site that binds one specific substrate through a combination of shape and chemical interactions, almost like a lock and key, which is why enzymes are so selective. A platinum catalyst instead works by adsorbing reactant molecules onto its surface, weakening their bonds and holding them in a favourable orientation, but it's far less fussy about exactly what sticks to it, which is why heterogeneous catalysts tend to be less specific but more robust."
+    },
+    "commonMistakes": [
+      "Saying catalysts 'provide energy' rather than lowering the activation barrier",
+      "Missing that enzyme specificity comes from active site shape and chemistry",
+      "Treating both mechanisms as identical"
+    ],
+    "followUps": ["Why might a heavy metal poison a platinum catalyst but not affect most enzymes the same way?"]
+  },
+  {
+    "id": "prog-chemistry-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Ionization energy anomaly",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["atomic-structure", "periodic-trends", "reasoning"],
+    "question": "Ionization energy generally increases across a period, so why does oxygen actually have a lower first ionization energy than nitrogen?",
+    "lookingFor": "Genuine understanding of electron configuration and repulsion, applied to explain an exception to the general trend.",
+    "idealAnswer": {
+      "bullets": [
+        "State the general trend and why it holds (increasing nuclear charge, similar shielding)",
+        "Explain nitrogen's stability from a half-filled 2p subshell with one electron per orbital",
+        "Show oxygen must pair two electrons in one 2p orbital, and that repulsion makes removal easier"
+      ],
+      "modelAnswer": "Across a period ionization energy usually rises because nuclear charge increases while shielding stays roughly the same, so electrons are held more tightly. Nitrogen is an exception to watch for though, because its three 2p electrons sit singly in three separate orbitals, giving it a symmetric, relatively stable half-filled configuration. Oxygen has to put its fourth 2p electron into an orbital that already has one electron, and the extra electron-electron repulsion in that paired orbital makes it easier to remove than you'd expect, which is why oxygen's first ionization energy actually dips below nitrogen's."
+    },
+    "commonMistakes": [
+      "Reciting the trend without being able to explain the exception",
+      "Confusing this with the sulfur-versus-phosphorus anomaly without adapting the reasoning",
+      "Attributing it to shielding rather than electron-electron repulsion"
+    ],
+    "followUps": ["Would you expect a similar dip anywhere else in the periodic table?"]
+  },
+  {
+    "id": "prog-chemistry-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Chirality and drug safety",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["stereochemistry", "pharmaceutical-chemistry", "case-study"],
+    "question": "Two molecules can have the identical formula and identical bonds yet behave completely differently in the body. How, and why does this matter for drug design?",
+    "lookingFor": "Understanding of enantiomers, chiral biological environments, and awareness of a real case like thalidomide.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that enantiomers are non-superimposable mirror images with identical physical properties in an achiral environment",
+        "Note the body is a chiral environment, so enzymes and receptors can respond very differently to each enantiomer",
+        "Reference a real consequence, such as the thalidomide case, to show why this matters practically"
+      ],
+      "modelAnswer": "This is describing enantiomers, molecules that are mirror images of each other but can't be superimposed, a bit like your left and right hand. Chemically and physically they behave almost identically outside the body, but the body itself is built from chiral molecules like proteins, so an enzyme or receptor can bind one enantiomer well and barely recognise the other. Thalidomide is the case that made this impossible to ignore, one enantiomer worked as intended while the other caused severe birth defects, and that's a huge part of why regulators now require testing and often production of a single enantiomer rather than assuming a racemic mixture is safe."
+    },
+    "commonMistakes": [
+      "Saying the molecules are 'the same' because they have the same formula",
+      "Not connecting chirality to biological receptors being chiral themselves",
+      "Being unable to name any real-world consequence"
+    ],
+    "followUps": ["How might a chemist go about producing just one enantiomer rather than a mixture of both?"]
+  },
+  {
+    "id": "prog-chemistry-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Water as an amphoteric substance",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["acid-base", "water-chemistry", "fundamentals"],
+    "question": "In what sense is water both an acid and a base, and why does that matter for how we define pH?",
+    "lookingFor": "Correct explanation of amphoterism and autoionization, connected to the definition of pH.",
+    "idealAnswer": {
+      "bullets": [
+        "Define amphoteric: able to act as either a proton donor or acceptor depending on what it reacts with",
+        "Describe water's self-ionization into H3O+ and OH-",
+        "Link this to why pure water is neutral rather than acidic or basic"
+      ],
+      "modelAnswer": "Water is amphoteric because it can act as a Bronsted-Lowry acid, donating a proton, or as a base, accepting one, depending on what it's reacting with, it accepts a proton from HCl but donates one to ammonia. That dual behaviour also shows up when water reacts with itself, a tiny fraction of molecules constantly transfer a proton to each other to form H3O+ and OH- in equal amounts. It's exactly that equal split that makes pure water neutral, and it's the basis for defining pH around the concentration of H3O+ relative to that equilibrium."
+    },
+    "commonMistakes": [
+      "Defining amphoteric only in terms of pH rather than proton transfer",
+      "Forgetting that autoionization produces equal H3O+ and OH- in pure water",
+      "Confusing neutral with 'no acid or base character at all'"
+    ],
+    "followUps": ["How does the autoionization constant of water change with temperature, and what does that do to neutral pH?"]
+  },
+  {
+    "id": "prog-chemistry-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Using spectroscopy to determine structure",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["analytical-chemistry", "spectroscopy", "problem-solving"],
+    "question": "If you were handed an unknown organic compound, how would you use spectroscopic techniques to work out its structure?",
+    "lookingFor": "A logical, technique-appropriate workflow rather than a list of instrument names.",
+    "idealAnswer": {
+      "bullets": [
+        "Use mass spectrometry to establish molecular mass and fragmentation clues",
+        "Use infrared spectroscopy to identify functional groups from characteristic absorptions",
+        "Use NMR to map out the carbon-hydrogen framework and how atoms connect"
+      ],
+      "modelAnswer": "I'd start with mass spectrometry to get the molecular mass and look at the fragmentation pattern, which often hints at what pieces the molecule breaks into. Then I'd run infrared spectroscopy to spot functional groups from their characteristic absorption bands, for example a strong peak around 1700 wavenumbers suggesting a carbonyl. From there I'd use NMR, both proton and carbon, to work out how many distinct hydrogen and carbon environments there are and how they're connected through coupling patterns, building up the actual skeleton of the molecule. I'd treat it like solving a puzzle where each technique rules out possibilities the others left open."
+    },
+    "commonMistakes": [
+      "Naming techniques without explaining what information each one actually gives",
+      "Trying to solve the structure from one technique alone",
+      "Not mentioning that the techniques are used together and cross-checked"
+    ],
+    "followUps": ["What would a strong absorption around 1700 wavenumbers in the IR spectrum suggest to you?"]
+  },
+  {
+    "id": "prog-chemistry-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Redox titration reasoning",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["analytical-chemistry", "redox", "stoichiometry"],
+    "question": "In a titration of acidified potassium permanganate against iron(II) sulfate, how do you know when you've reached the endpoint, and what's actually happening chemically?",
+    "lookingFor": "Understanding of redox stoichiometry and why permanganate acts as its own indicator.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the half-reactions: Fe2+ is oxidised to Fe3+, MnO4- is reduced to Mn2+",
+        "Explain why permanganate's own strong purple colour signals the endpoint, since it's normally consumed",
+        "Connect the colour change to the stoichiometric ratio needed to calculate concentration"
+      ],
+      "modelAnswer": "While iron(II) is still present it reduces the purple permanganate ion to nearly colourless manganese(II) as fast as it's added, so the solution stays pale. The endpoint is the moment all the iron(II) has been oxidised to iron(III), because after that the next drop of permanganate has nothing left to react with and its purple colour persists, which is a nice example of a titrant that's its own indicator. From the volume added at that point I can use the known five-to-one electron balance between iron and permanganate to work back to the original iron(II) concentration."
+    },
+    "commonMistakes": [
+      "Forgetting the mixture needs to be acidified for the reaction to proceed as expected",
+      "Getting the mole ratio between the two half-reactions wrong",
+      "Not explaining why permanganate itself acts as the indicator"
+    ],
+    "followUps": ["Why does this titration need to be carried out in acidic conditions rather than neutral?"]
+  },
+  {
+    "id": "prog-chemistry-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Noble gas reactivity",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["inorganic-chemistry", "periodic-table", "bonding"],
+    "question": "Noble gases are taught as unreactive, yet compounds like xenon hexafluoride exist. How do you reconcile that?",
+    "lookingFor": "Nuanced understanding that 'unreactive' is a tendency, not an absolute, tied to ionization energy trends.",
+    "idealAnswer": {
+      "bullets": [
+        "Clarify that noble gases have a full outer shell, giving high stability but not zero reactivity",
+        "Explain that heavier noble gases like xenon have lower ionization energy, making bonding more accessible",
+        "Note that strongly electronegative partners like fluorine can still form real bonds under the right conditions"
+      ],
+      "modelAnswer": "The 'unreactive' label is really a statement about a strong tendency, not an absolute law, and it comes from noble gases already having a full outer shell so there's little incentive to lose, gain, or share electrons. But that incentive isn't zero, and it gets weaker as you go down the group because the outer electrons are further from the nucleus and easier to involve in bonding. Xenon is large enough and has a low enough ionization energy that a sufficiently electronegative and reactive partner like fluorine can pull those outer electrons into genuine bonding, which is exactly how xenon hexafluoride and similar compounds were first made."
+    },
+    "commonMistakes": [
+      "Insisting noble gases 'never' react, contradicted by the question itself",
+      "Not connecting reactivity to the trend in ionization energy down the group",
+      "Assuming this applies equally to helium and neon"
+    ],
+    "followUps": ["Why hasn't a stable compound of helium or neon been made in the same way?"]
+  },
+  {
+    "id": "prog-chemistry-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Resonance and aromatic stability",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["organic-chemistry", "bonding", "aromaticity"],
+    "question": "Why is benzene far less reactive toward addition reactions than a typical alkene, even though it's often drawn with alternating double bonds?",
+    "lookingFor": "Correct understanding of delocalisation and resonance stabilisation, not just the memorised fact that benzene 'resists addition'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that benzene's electrons are delocalised over the whole ring rather than fixed in alternating bonds",
+        "Describe the resulting resonance stabilisation as an energy cost to breaking that delocalisation",
+        "Contrast with an alkene's localised double bond, which is more readily attacked without losing stabilisation"
+      ],
+      "modelAnswer": "The alternating double bond picture is really just a convenient shorthand, in reality all six p-orbitals overlap sideways to form a ring of delocalised electron density above and below the plane of the carbons. That delocalisation lowers the molecule's overall energy compared to what three isolated double bonds would have, so there's a real thermodynamic cost to disrupting it. An addition reaction would force two of those electrons back into a localised bond and break the delocalised system, so benzene tends to undergo substitution instead, which lets it keep the aromatic ring intact while a hydrogen is swapped out."
+    },
+    "commonMistakes": [
+      "Saying benzene 'just doesn't react' without explaining why",
+      "Describing the ring as literally alternating single and double bonds",
+      "Confusing substitution resistance with total lack of reactivity"
+    ],
+    "followUps": ["Why does benzene readily undergo electrophilic substitution instead?"]
+  },
+  {
+    "id": "prog-chemistry-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Colligative properties in everyday life",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["physical-chemistry", "colligative-properties", "applied"],
+    "question": "Why does spreading salt on an icy road actually melt the ice, given that salt itself doesn't produce heat?",
+    "lookingFor": "Correct explanation via freezing point depression as a colligative property, not a vague 'salt melts ice' statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify this as freezing point depression, a colligative property depending on particle number",
+        "Explain that dissolved ions disrupt the equilibrium between solid and liquid water, lowering the freezing point",
+        "Note this only works down to a limit, and depends on concentration of dissolved particles"
+      ],
+      "modelAnswer": "Salt doesn't add heat, what it does is lower the freezing point of water, which is a colligative property that depends on how many dissolved particles are present rather than what they are. When salt dissolves into sodium and chloride ions at the ice surface, it disrupts the equilibrium between ice and liquid water, meaning the liquid state becomes favourable at a temperature where pure water would normally freeze. So the ice actually melts because the system is no longer at its true freezing point, not because any energy was added, and there's a limit to how far this works because eventually the solution becomes saturated."
+    },
+    "commonMistakes": [
+      "Implying the salt itself generates heat",
+      "Not explaining that it's specifically freezing point depression",
+      "Forgetting that the effect depends on particle concentration, not the specific ionic identity"
+    ],
+    "followUps": ["Would you expect calcium chloride to be more or less effective than sodium chloride at the same mass, and why?"]
+  },
+  {
+    "id": "prog-chemistry-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Allotropes of carbon",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["structure-and-bonding", "materials", "carbon"],
+    "question": "Diamond and graphite are both pure carbon, yet one is an insulator and famously hard while the other conducts electricity and is soft enough to write with. How do you explain that with the same element?",
+    "lookingFor": "Structural reasoning connecting bonding arrangement to macroscopic properties.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe diamond's rigid tetrahedral network of four strong covalent bonds per atom",
+        "Describe graphite's layered structure of hexagonal sheets held together by weak forces between layers",
+        "Link graphite's delocalised electrons between layers to its electrical conductivity, and diamond's lack of free electrons to insulation"
+      ],
+      "modelAnswer": "The difference comes entirely from how the same carbon atoms are arranged, not from the atoms themselves. In diamond, every carbon forms four strong covalent bonds in a rigid three-dimensional tetrahedral network, which is why it's so hard and why there are no free electrons or planes to slide along, making it an insulator. Graphite instead bonds each carbon to only three neighbours within flat hexagonal sheets, leaving one electron per atom delocalised across the layer, which explains its conductivity, while the sheets themselves are only held together by weak forces, which is why they slide apart easily and graphite feels soft."
+    },
+    "commonMistakes": [
+      "Attributing the property difference to some difference in the carbon atoms themselves",
+      "Forgetting to mention the delocalised electrons responsible for graphite's conductivity",
+      "Only describing one allotrope's structure and not contrasting it with the other"
+    ],
+    "followUps": ["Where would you place a material like graphene in this comparison?"]
+  },
+  {
+    "id": "prog-chemistry-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "How catalytic converters work",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["catalysis", "environmental-chemistry", "applied"],
+    "question": "What's actually happening chemically inside a car's catalytic converter?",
+    "lookingFor": "Understanding of heterogeneous catalysis converting harmful exhaust gases into less harmful ones, with correct reaction types.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the harmful gases being targeted, such as carbon monoxide, unburned hydrocarbons, and nitrogen oxides",
+        "Explain the metal surface (platinum, palladium, rhodium) provides a site for adsorption and reaction",
+        "Describe the two broad reaction types: oxidation of CO and hydrocarbons, reduction of nitrogen oxides"
+      ],
+      "modelAnswer": "Exhaust gas contains carbon monoxide, unburned hydrocarbons, and nitrogen oxides, all of which are harmful if released as they are. Inside the converter these gases pass over a honeycomb surface coated with metals like platinum, palladium, and rhodium, which provide a surface for the molecules to adsorb onto and react much faster than they would in free gas. Broadly, the precious metals catalyse oxidation of carbon monoxide and unburned hydrocarbons into carbon dioxide and water, while separately catalysing reduction of nitrogen oxides back into harmless nitrogen gas, so two different reaction types are actually happening side by side on the same surface."
+    },
+    "commonMistakes": [
+      "Saying the converter simply 'filters' the exhaust rather than catalysing chemical reactions",
+      "Missing that both oxidation and reduction reactions occur",
+      "Not naming which pollutants are actually being addressed"
+    ],
+    "followUps": ["Why might a catalytic converter become less effective if leaded fuel were used?"]
+  },
+  {
+    "id": "prog-chemistry-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Atom economy and green chemistry critique",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["green-chemistry", "sustainability", "industrial-chemistry"],
+    "question": "A reaction can have a very high percentage yield and still be considered wasteful by green chemistry standards. How is that possible?",
+    "lookingFor": "Distinction between percentage yield and atom economy, showing awareness that efficiency has more than one dimension.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish percentage yield (how much of the possible product you actually got) from atom economy (how much of the reactant mass ends up in the useful product)",
+        "Explain that a reaction can convert reactants efficiently yet still produce large amounts of by-product mass",
+        "Connect this to green chemistry's broader concern with waste, solvents, and energy, not yield alone"
+      ],
+      "modelAnswer": "Percentage yield only tells you how close you got to the theoretical maximum of product from the reactants you used, it says nothing about how much of the original reactant mass actually ends up in the product versus in by-products. A reaction can have ninety-five percent yield and still have a low atom economy if a large fraction of the starting material's mass is inherently lost as a by-product, meaning most of what you weighed out never becomes anything useful. Green chemistry looks at the whole picture, including atom economy, solvent use, and energy demand, so a chemist optimising purely for yield could still be running quite a wasteful process."
+    },
+    "commonMistakes": [
+      "Treating percentage yield and atom economy as the same measurement",
+      "Assuming a reaction is 'green' simply because yield is high",
+      "Not being able to give a concrete reason mass could be lost despite high yield"
+    ],
+    "followUps": ["Can you think of a reaction type that tends to have poor atom economy even when yield is excellent?"]
+  },
+  {
+    "id": "prog-chemistry-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: pressure to report favourable data",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["ethics", "research-integrity", "judgement"],
+    "question": "You're doing a school research project and your results don't support the hypothesis your supervisor was hoping for. They suggest you quietly drop the outlier data points that ruin the trend. What do you do?",
+    "lookingFor": "Firm commitment to research integrity while handling the interpersonal situation with maturity, not naive idealism or blind compliance.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish legitimate outlier analysis (with justification) from selectively removing inconvenient data",
+        "Show willingness to have an honest, respectful conversation with the supervisor rather than either silently complying or refusing without discussion",
+        "Land on reporting results honestly, even if that means the conclusion is messier or less clean"
+      ],
+      "modelAnswer": "I'd want to first understand whether there's a genuine, defensible reason to treat those points as outliers, like a known equipment fault, because that's different from removing data just because it's inconvenient. If there isn't a real justification, I'd say so honestly to my supervisor rather than just going along with it, explaining that reporting a messier but true result matters more to me than a cleaner story. If they pushed back, I'd still present the full data set and be transparent about the discrepancy in my write-up, because I think the integrity of the result has to come before how tidy the conclusion looks."
+    },
+    "commonMistakes": [
+      "Complying without any pushback because it's a person in authority",
+      "Refusing to engage in conversation and escalating immediately",
+      "Not distinguishing legitimate statistical outlier removal from data manipulation"
+    ],
+    "followUps": ["Would your answer change if this were a published paper rather than a school project?"]
+  },
+  {
+    "id": "prog-chemistry-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: dual-use knowledge",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["ethics", "dual-use", "responsibility"],
+    "question": "Chemistry knowledge that helps make life-saving medicines can, in principle, also help make dangerous substances. Should there be limits on what chemical knowledge gets taught or published?",
+    "lookingFor": "Balanced ethical reasoning that recognises the tension without landing on an extreme position, and awareness of real safeguards that exist.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine dual-use tension rather than dismissing the risk or exaggerating it",
+        "Discuss the difference between foundational knowledge and specific, actionable synthesis details for weapons",
+        "Reference how the field actually handles this, such as journal review processes and export controls, rather than proposing to simply restrict all chemistry education"
+      ],
+      "modelAnswer": "I don't think the answer is to restrict chemistry education broadly, because the same fundamental knowledge that makes dangerous substances possible is also what makes antibiotics, fertilisers, and clean fuels possible, and most misuse doesn't come from what's taught in an undergraduate course. Where I do think limits make sense is around specific, actionable details, like exact synthesis routes for known chemical weapons, which is why journals already have review processes that can withhold certain procedural details even when publishing the broader science. So my honest answer is that the responsibility sits less with restricting general knowledge and more with chemists themselves exercising judgement about what specific information they share and how."
+    },
+    "commonMistakes": [
+      "Arguing for blanket restriction of chemistry knowledge, which is impractical and not how the field works",
+      "Dismissing the dual-use concern entirely as unrealistic",
+      "Giving no concrete example of how this tension is actually managed"
+    ],
+    "followUps": ["Who do you think should bear responsibility if published research is later misused, the researcher or the publisher?"]
+  },
+  {
+    "id": "prog-chemistry-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: cutting corners on hazardous waste",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["ethics", "safety", "environmental-responsibility"],
+    "question": "Imagine you're running a lab experiment and disposing of the chemical waste properly would take much longer than the time you have left before the lab closes. What do you do?",
+    "lookingFor": "Clear prioritisation of safety and proper procedure over convenience, with practical thinking about how to actually solve the time problem.",
+    "idealAnswer": {
+      "bullets": [
+        "State plainly that proper disposal isn't optional, regardless of time pressure",
+        "Propose practical solutions, such as asking for help, storing the waste safely until it can be handled correctly, or informing a supervisor",
+        "Show awareness that improper disposal has real environmental and safety consequences, not just rule-breaking"
+      ],
+      "modelAnswer": "I wouldn't cut corners on this, because improper disposal isn't just against the rules, it can genuinely harm people or the environment depending on what's in the waste. If I was running out of time, my first move would be to tell whoever is responsible for the lab that I need more time or help finishing properly, rather than quietly rushing or dumping it incorrectly. If that wasn't possible, I'd rather safely and clearly label the waste to be dealt with the next session than take a shortcut just to leave on time, because the whole point of the procedure is that it doesn't get skipped when it's inconvenient."
+    },
+    "commonMistakes": [
+      "Treating the closing time as more urgent than the safety procedure",
+      "Not offering any practical alternative, just stating 'I would follow the rules'",
+      "Failing to mention communicating the issue to a supervisor"
+    ],
+    "followUps": ["Would your answer change if the waste were relatively harmless versus genuinely hazardous?"]
+  },
+  {
+    "id": "prog-chemistry-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: PFAS forever chemicals",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "environmental-chemistry", "policy"],
+    "question": "PFAS, the so-called 'forever chemicals', have been in the news over water contamination and health concerns. What do you understand about why they're so persistent, and what's the debate around regulating them?",
+    "lookingFor": "Genuine awareness of a live chemistry-adjacent issue, with correct chemical reasoning for why PFAS resist breakdown.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the chemical basis of persistence: the carbon-fluorine bond is one of the strongest in organic chemistry and resists natural degradation",
+        "Show awareness of the health and environmental contamination concerns driving public attention",
+        "Reference the practical tension in the debate: PFAS are useful (non-stick coatings, firefighting foam, waterproofing) which makes wholesale bans complicated"
+      ],
+      "modelAnswer": "PFAS persist because the carbon-fluorine bond is one of the strongest single bonds in organic chemistry, so these molecules just don't break down through the normal environmental and biological pathways that degrade most organic pollutants, which is exactly why they're called forever chemicals. That persistence means they accumulate in water supplies and in the body over time, and there's growing evidence linking exposure to various health issues, which is why there's real regulatory pressure to set stricter limits. The debate is complicated though, because PFAS are used precisely because of that stability, in things like non-stick cookware, waterproof fabrics, and firefighting foam, so regulators are having to weigh genuine industrial and safety uses against long-term contamination risk, and there's active research into how to actually destroy these compounds rather than just limiting exposure."
+    },
+    "commonMistakes": [
+      "Vague awareness ('I've heard of them') with no chemical explanation",
+      "Not connecting the bond strength to the persistence",
+      "Treating the regulatory debate as one-sided with no legitimate competing interest"
+    ],
+    "followUps": ["What approaches are being explored to actually break down PFAS once they're in the environment?"]
+  },
+  {
+    "id": "prog-chemistry-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: AI in chemistry research",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["current-affairs", "computational-chemistry", "research-trends"],
+    "question": "Tools like AlphaFold and AI-driven materials discovery platforms are increasingly used in chemistry research. Do you think this changes what it means to be a good chemist?",
+    "lookingFor": "A thoughtful, non-defensive take on how AI tools are reshaping the field, grounded in some real understanding rather than hype or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of a specific example of AI's impact, such as protein structure prediction or accelerated materials screening",
+        "Recognise what AI tools are good at (searching vast possibility spaces, pattern recognition) versus what still needs a human chemist (designing experiments, interpreting results, judging chemical plausibility)",
+        "Land on a balanced view rather than either 'AI will replace chemists' or 'AI is irrelevant to real chemistry'"
+      ],
+      "modelAnswer": "I think it changes the job without replacing the core of it. Something like AlphaFold can predict a protein's three-dimensional structure from its sequence in a way that used to take years of crystallography, and AI screening tools can narrow down millions of candidate materials or drug molecules to a shortlist worth actually testing, which massively speeds up the early stages of research. But someone still has to design the experiment that validates the prediction, understand when a model's output doesn't make chemical sense, and make the judgement calls about what's worth pursuing, so I see it as a very powerful tool that shifts where a chemist spends their time rather than something that removes the need for chemical understanding."
+    },
+    "commonMistakes": [
+      "Vague enthusiasm about AI with no specific example",
+      "Dismissing AI's relevance to chemistry as hype",
+      "Not distinguishing what AI is actually good at from what still requires human judgement"
+    ],
+    "followUps": ["Where do you think AI predictions are most likely to go wrong in chemistry?"]
+  },
+  {
+    "id": "prog-chemistry-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Current debate: lithium and critical mineral supply",
+    "program": "Chemistry",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "sustainability", "materials-chemistry"],
+    "question": "The push toward electric vehicles and renewable energy storage has increased demand for lithium and other battery metals. What's the chemistry challenge behind recycling lithium-ion batteries, and why hasn't it been fully solved yet?",
+    "lookingFor": "Real understanding of why battery recycling is chemically hard, beyond a surface-level 'recycling is good' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a lithium-ion battery is a complex mix of different metals, electrolytes, and materials bonded or layered together, not a single pure substance",
+        "Note the difficulty and cost of separating and purifying those components back to battery-grade material without excessive energy or hazardous byproducts",
+        "Show awareness that current recycling rates are low and that this connects to wider supply chain and environmental concerns about mining new lithium"
+      ],
+      "modelAnswer": "The core chemistry challenge is that a lithium-ion battery isn't one substance, it's a tightly packaged combination of a lithium metal oxide cathode, a graphite anode, a flammable organic electrolyte, and various binders and separators, all of which need to be safely taken apart and then separated back into pure, battery-grade materials. Processes that do this, whether by high-temperature smelting or chemical leaching, tend to be energy-intensive, sometimes produce hazardous byproducts, and often don't recover materials at a purity high enough to go straight back into a new battery without further refining. That's a big part of why recycling rates are still relatively low globally, and it's exactly why there's active research into better recovery chemistry, because the alternative is continuing to rely heavily on newly mined lithium and cobalt, which carries its own environmental and geopolitical costs."
+    },
+    "commonMistakes": [
+      "Treating battery recycling as simple melting and reuse",
+      "Not naming the actual components that need separating",
+      "Giving a purely environmental answer with no chemistry reasoning"
+    ],
+    "followUps": ["Would you expect chemical leaching or high-temperature smelting to give a purer recovered material, and why?"]
+  },
+  {
+    "id": "prog-chemistry-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: unexpected result in the lab",
+    "program": "Chemistry",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "scientific-method", "problem-solving"],
+    "question": "Imagine you run an experiment exactly as instructed, but your result flatly contradicts what the theory predicts. What would you actually do, step by step?",
+    "lookingFor": "A methodical, scientifically honest response that resists both blindly trusting theory and blindly trusting a single anomalous result.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with checking procedure and technique for a plausible source of error before doubting the theory",
+        "Describe repeating the experiment to see if the result is reproducible",
+        "Show willingness to take an honestly reproducible anomaly seriously rather than forcing the data to fit expectations"
+      ],
+      "modelAnswer": "My first step wouldn't be to assume the theory is wrong, it would be to go back through my own procedure and check for a plausible mistake, like a calibration error, contamination, or a measurement I misread, since that's statistically the more likely explanation. If I couldn't find an obvious error, I'd repeat the experiment, ideally changing one variable at a time, to see whether the result is actually reproducible or was just a one-off anomaly. If it kept happening consistently, I'd take it seriously and try to understand what it's actually telling me rather than forcing the data to match the theory, because sometimes an inconvenient result is the most interesting part of the experiment."
+    },
+    "commonMistakes": [
+      "Assuming the theory must be wrong without checking your own method first",
+      "Assuming your one result must be an error and discarding it without repeating the experiment",
+      "Having no clear process, just saying 'I'd investigate' with no actual steps"
+    ],
+    "followUps": ["At what point would you decide to report an anomaly rather than assume it's your own error?"]
+  }
+]

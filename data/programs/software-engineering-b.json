@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-software-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithm complexity trade-off",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["algorithms", "complexity", "reasoning"],
+    "question": "Say you have two ways to search a large sorted list: a simple linear scan, and binary search. When might you actually prefer the linear scan even though binary search is faster in theory?",
+    "lookingFor": "Understanding of real trade-offs beyond textbook Big-O, not just reciting complexity classes.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize Big-O describes asymptotic behavior, not performance on every input size",
+        "Mention constant factors, sorting cost, or data locality as real reasons",
+        "Give a genuine scenario where the 'worse' complexity is the practical choice"
+      ],
+      "modelAnswer": "Binary search is O(log n) against linear's O(n), but that only matters once n gets large enough for the difference to show up in practice. If the list is small, say a few dozen items, the overhead of binary search's extra comparisons and branching can actually make linear scan just as fast or faster because of cache locality. There's also the cost of keeping the list sorted in the first place. If the data changes often and you're only searching it once per update, sorting for a single binary search might cost more than several linear scans would."
+    },
+    "commonMistakes": [
+      "Reciting O(log n) vs O(n) without discussing when it actually matters",
+      "Ignoring the cost of maintaining sortedness",
+      "Assuming theoretical complexity always predicts real-world speed"
+    ],
+    "followUps": ["What data structure would you reach for if you needed fast search and frequent insertion?"]
+  },
+  {
+    "id": "prog-software-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Recursion vs iteration",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["recursion", "fundamentals", "trade-offs"],
+    "question": "Any recursive function can be rewritten as an iterative one. So why would you ever choose recursion?",
+    "lookingFor": "Judgement about when recursion genuinely fits a problem's shape, plus awareness of its real cost.",
+    "idealAnswer": {
+      "bullets": [
+        "Note recursion often maps naturally onto self-similar problems like trees or divide and conquer",
+        "Acknowledge the cost, stack depth and risk of stack overflow",
+        "Show real judgement about when to pick one over the other, not just call recursion elegant"
+      ],
+      "modelAnswer": "I'd choose recursion when the problem itself is naturally recursive, like traversing a tree or doing a divide and conquer algorithm such as merge sort, because the code ends up mirroring the structure of the problem and is genuinely easier to read and prove correct. The trade-off is that every recursive call sits on the stack, so for something like processing a huge flat list, an iterative loop is safer and won't risk a stack overflow. I try to ask whether the problem is shaped like a tree or a line before deciding."
+    },
+    "commonMistakes": [
+      "Claiming recursion is always more elegant with no caveat",
+      "Not mentioning stack overflow risk",
+      "Being unable to name a concrete example where recursion fits naturally"
+    ],
+    "followUps": ["Can you think of a case where tail call optimisation would change your answer?"]
+  },
+  {
+    "id": "prog-software-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Race conditions",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["concurrency", "debugging", "reasoning"],
+    "question": "Two threads both increment the same counter variable at the same time, and afterwards the final count is lower than expected. Explain what's happening and how you'd fix it.",
+    "lookingFor": "Correct explanation of a race condition plus awareness of concrete fixes.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that increment is not a single atomic operation, it's read, add, write",
+        "Describe how interleaving of threads causes a lost update",
+        "Name at least one concrete fix, such as a lock or an atomic operation"
+      ],
+      "modelAnswer": "Incrementing a counter looks like one step but it's actually three: read the current value, add one, write it back. If two threads do this at almost the same time, they can both read the same starting value before either writes back, so one of the increments gets silently overwritten and lost. The fix is to make that read-modify-write sequence atomic, either with a lock around the critical section or by using a built-in atomic increment operation that the hardware guarantees can't be interleaved. I'd reach for the atomic operation first since it avoids the overhead and deadlock risk of a lock for something this simple."
+    },
+    "commonMistakes": [
+      "Assuming increment is a single indivisible step",
+      "Suggesting a fix without explaining why the bug happens",
+      "Not distinguishing between a lock and an atomic operation"
+    ],
+    "followUps": ["What would change about your answer if the shared state were a more complex data structure, not just a counter?"]
+  },
+  {
+    "id": "prog-software-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Testing philosophy",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["testing", "tdd", "practice"],
+    "question": "Some engineers write tests before writing the code, others write tests after. Where do you stand, and why?",
+    "lookingFor": "A reasoned, situational position on TDD versus test-after, not dogma either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of what test-first is meant to achieve, defining behaviour before implementation",
+        "Acknowledge the practical cost, e.g. slower for exploratory or uncertain designs",
+        "Land on a situational answer rather than a blanket rule"
+      ],
+      "modelAnswer": "I lean towards writing tests first when I already understand roughly what the function should do, because it forces me to think about edge cases and the actual interface before I get attached to one implementation. But when I'm still exploring a problem and don't know the shape of the solution yet, writing tests first can feel like guessing, so I'll prototype loosely and then write thorough tests once the design settles. I don't think either approach is right in every situation, it depends on how well-defined the problem already is."
+    },
+    "commonMistakes": [
+      "Treating TDD as a moral position rather than a practical tool",
+      "Having no real opinion, just repeating buzzwords",
+      "Ignoring that untested code is the actual failure mode either way"
+    ],
+    "followUps": ["How would you decide how much test coverage is enough?"]
+  },
+  {
+    "id": "prog-software-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Technical debt trade-off",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["technical-debt", "judgement", "trade-offs"],
+    "question": "A team ships a quick, messy fix to hit a deadline, knowing it will need to be redone properly later. Is that good engineering or bad engineering?",
+    "lookingFor": "A nuanced view of technical debt as a legitimate, deliberate trade-off rather than simply bad practice.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that deliberate, tracked technical debt can be a rational trade-off",
+        "Distinguish it from careless shortcuts taken without a plan to repay them",
+        "Mention the real risk, debt that's never revisited compounds"
+      ],
+      "modelAnswer": "I don't think it's automatically bad engineering, taking on debt deliberately, the way a business takes a loan, can be the right call if it lets you hit a genuinely important deadline. What matters is whether the team is honest about it, writes down what was skipped, and actually schedules time to fix it later. The bad version is when the messy fix gets quietly forgotten because it works well enough, and six months later nobody remembers why that part of the codebase is so fragile. So for me the real question isn't whether debt was taken on, it's whether there's a plan to pay it back."
+    },
+    "commonMistakes": [
+      "Treating any shortcut as automatically irresponsible",
+      "Treating any shortcut as automatically fine because it shipped",
+      "Not distinguishing tracked debt from silently accumulated mess"
+    ],
+    "followUps": ["Who do you think should be responsible for deciding when debt gets paid down, engineers or management?"]
+  },
+  {
+    "id": "prog-software-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Monolith vs microservices",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["architecture", "trade-offs", "system-design"],
+    "question": "A startup with five engineers is deciding between building their product as one monolithic application or as a set of microservices from day one. What would you advise, and why?",
+    "lookingFor": "Architecture judgement grounded in team size and complexity, not fashionable buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize microservices add real operational complexity that a small team may not be ready to absorb",
+        "Note a monolith is usually faster to build and easier to refactor once boundaries are clearer",
+        "Show awareness that the right architecture depends on team size and how well-understood the domain is yet"
+      ],
+      "modelAnswer": "For five engineers I'd advise starting with a monolith, even though microservices sound more modern. With that few people, the overhead of managing separate deployments, service boundaries, and network calls between services would eat into time they need for actually building the product, and at this stage nobody fully understands where the real boundaries in the domain even are yet. A well-structured monolith with clear internal modules can be split into services later once specific parts genuinely need to scale independently, and that split is much easier to do correctly once you know the system, rather than guessing at the boundaries up front."
+    },
+    "commonMistakes": [
+      "Choosing microservices because it sounds impressive without weighing team size",
+      "Not mentioning operational overhead at all",
+      "Treating architecture choice as permanent rather than something that can evolve"
+    ],
+    "followUps": ["What signal would tell you it's finally time to split a piece out into its own service?"]
+  },
+  {
+    "id": "prog-software-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Database design trade-off",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["databases", "design", "trade-offs"],
+    "question": "When would you deliberately denormalize a database rather than keeping it in a clean normalized form?",
+    "lookingFor": "Understanding of what normalization protects against and the read-performance trade-off of departing from it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain what normalization is protecting against, redundancy and update anomalies",
+        "Identify read-heavy workloads or reporting needs as a reason to accept some redundancy",
+        "Show awareness of the cost, keeping duplicated data consistent"
+      ],
+      "modelAnswer": "Normalizing a database avoids storing the same fact in multiple places, so updates only ever happen in one spot and you can't end up with contradictory data. But if a system is read-heavy, say a dashboard that constantly joins five tables to show one report, all those joins get expensive at scale. In that case I'd consider denormalizing the specific fields that get queried together, accepting some redundancy in exchange for faster reads, as long as I have a clear, consistent process for keeping the duplicated data in sync when the source changes."
+    },
+    "commonMistakes": [
+      "Treating normalization as always correct with no exceptions",
+      "Not acknowledging the consistency risk that denormalizing introduces",
+      "Confusing denormalization with simply having a badly designed schema"
+    ],
+    "followUps": ["How would you keep duplicated data from drifting out of sync?"]
+  },
+  {
+    "id": "prog-software-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "P vs NP curiosity",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["theory", "computability", "curiosity"],
+    "question": "What's the difference between a problem being hard to solve and a problem being easy to check the answer to, and why does that distinction matter?",
+    "lookingFor": "Grasp of the P versus NP intuition and genuine intellectual curiosity, not textbook parroting.",
+    "idealAnswer": {
+      "bullets": [
+        "Give an intuitive example of a problem that's easy to verify but seems hard to solve, e.g. a Sudoku or scheduling puzzle",
+        "Connect this to the P versus NP question, one of the big open problems in computer science",
+        "Show why it isn't just academic, e.g. implications for cryptography if P equalled NP"
+      ],
+      "modelAnswer": "Take something like a big Sudoku puzzle. If someone hands you a completed grid, checking whether it's valid is quick, you just scan the rows, columns and boxes. But actually finding that solution from a blank grid can take a huge amount of searching. That gap between easy to check and easy to solve is basically what the P versus NP question asks, whether every problem whose answer is easy to verify is also easy to solve from scratch. Nobody's proven it either way, but I find it fascinating that so much of modern cryptography quietly depends on the answer being no, because if someone found a fast way to solve these problems, a lot of internet security would fall apart overnight."
+    },
+    "commonMistakes": [
+      "Confusing P versus NP with simply hard versus easy with no formal distinction",
+      "Being unable to give a concrete verify-versus-solve example",
+      "Missing why the open question has real-world stakes"
+    ],
+    "followUps": ["Can you name a problem you believe is NP-complete, or one that surprised you by having an efficient solution?"]
+  },
+  {
+    "id": "prog-software-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Version control conflict reasoning",
+    "program": "Software Engineering",
+    "difficulty": "easy",
+    "tags": ["version-control", "git", "collaboration"],
+    "question": "You and a teammate both edited the same file and now git is showing a merge conflict. Walk me through how you'd resolve it.",
+    "lookingFor": "A practical, calm process that shows real understanding of what a conflict represents.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a conflict means git can't automatically tell which change should win, not that something is broken",
+        "Describe reading both versions, understanding intent, and talking to the teammate if unclear",
+        "Mention testing after resolving, not just picking a version blindly"
+      ],
+      "modelAnswer": "A merge conflict just means git found two changes to the same lines and can't guess which one is correct, so it's not something to panic about. I'd open the conflicted file, read both versions carefully to understand what each of us was trying to do, and if it's not obvious I'd message my teammate rather than guessing. Once I've combined the changes properly, I'd run the tests before committing the merge, because it's easy to resolve a conflict in a way that compiles but quietly breaks one person's logic."
+    },
+    "commonMistakes": [
+      "Just picking theirs or mine without understanding either change",
+      "Not testing after resolving the conflict",
+      "Treating merge conflicts as a sign something has gone badly wrong"
+    ],
+    "followUps": ["How would smaller, more frequent commits change how often this happens?"]
+  },
+  {
+    "id": "prog-software-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Coupling and cohesion",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["design", "architecture", "fundamentals"],
+    "question": "What do we mean by loose coupling and high cohesion in software design, and why do we want both at once?",
+    "lookingFor": "Clear conceptual grasp connected to maintainability, not just dictionary definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Define coupling as how dependent modules are on each other's internals, cohesion as how focused a module's responsibilities are",
+        "Explain why loose coupling makes change safer and high cohesion makes modules easier to understand",
+        "Give or gesture at a concrete example of one done well or badly"
+      ],
+      "modelAnswer": "Coupling is about how tangled up different parts of a system are with each other, and cohesion is about whether a single module actually does one coherent job. You want loose coupling because if module A barely knows anything about module B's internals, you can change B without breaking A. You want high cohesion because a module that does one clear thing is easier to understand, test, and reuse than one that's a grab bag of unrelated responsibilities. The two work together, a system of tightly-focused, loosely-connected pieces is much easier to change later than one giant tangle where everything touches everything."
+    },
+    "commonMistakes": [
+      "Defining the terms backwards",
+      "Giving definitions with no explanation of why they matter practically",
+      "Treating them as unrelated ideas instead of complementary goals"
+    ],
+    "followUps": ["Can you describe a piece of code you've written or seen that had low cohesion?"]
+  },
+  {
+    "id": "prog-software-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Legacy system migration hypothetical",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "legacy-systems", "planning"],
+    "question": "Imagine you inherit a ten-year-old codebase with no tests, written in a language nobody on the team still likes using. How would you approach modernizing it?",
+    "lookingFor": "Pragmatic, incremental thinking rather than a rewrite-everything impulse.",
+    "idealAnswer": {
+      "bullets": [
+        "Resist the instinct to rewrite everything from scratch immediately",
+        "Prioritize understanding what the system actually does and adding tests around risky areas first",
+        "Propose an incremental strategy, replacing pieces gradually while the system stays live"
+      ],
+      "modelAnswer": "My first instinct might be to rewrite it cleanly, but I know that's usually a trap, a full rewrite takes far longer than expected and the old system quietly encodes years of edge cases nobody remembers anymore. I'd start by understanding what it actually does in practice, probably by talking to whoever uses it and writing tests around the riskiest, most-used parts before touching anything. Then I'd modernize incrementally, replacing one component at a time behind the same interface, so the system keeps working the whole way through rather than betting everything on one big rewrite landing perfectly."
+    },
+    "commonMistakes": [
+      "Jumping straight to rewrite it from scratch",
+      "Ignoring the risk of losing undocumented business logic",
+      "Proposing a plan with no way to keep the system running during the transition"
+    ],
+    "followUps": ["How would you convince a skeptical manager this incremental approach is worth the extra time compared to a full rewrite?"]
+  },
+  {
+    "id": "prog-software-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Ambiguous requirements hypothetical",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "requirements", "judgement"],
+    "question": "You're asked to build a feature and the spec is vague, for example let users filter their results. What do you do before writing any code?",
+    "lookingFor": "The instinct to clarify scope rather than guessing or over-building.",
+    "idealAnswer": {
+      "bullets": [
+        "Show the instinct to ask clarifying questions rather than assume",
+        "Mention scoping, e.g. what filters, how many, performance expectations",
+        "Note the risk of either under-building or over-engineering based on wrong assumptions"
+      ],
+      "modelAnswer": "Before writing anything I'd go back and ask what specifically needs filtering, by what fields, and whether there's a real user need driving the request, like people complaining they can't find things in a long list. Vague specs like that can hide very different amounts of work depending on the answer, filtering by one dropdown is a different project than filtering by ten combinable fields with search. I'd rather spend twenty minutes clarifying scope than build the wrong thing confidently and have to redo it."
+    },
+    "commonMistakes": [
+      "Starting to code immediately based on a guess",
+      "Building the most elaborate possible version just in case",
+      "Not distinguishing between a real ambiguity and something they could reasonably infer"
+    ],
+    "followUps": ["What would you do if the person who wrote the spec wasn't available to ask?"]
+  },
+  {
+    "id": "prog-software-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical bug before deadline hypothetical",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "risk", "judgement"],
+    "question": "The night before a major demo, you find a bug that only shows up in a rare edge case, and fixing it properly would mean touching code you don't fully understand yet. What do you do?",
+    "lookingFor": "Risk-weighted decision making and honesty about limitations, resisting a rushed unsafe fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Weigh the actual risk, how likely is the edge case to appear in the demo",
+        "Prefer a safe, well-understood mitigation over a rushed fix in unfamiliar code",
+        "Show willingness to communicate the risk honestly rather than hide it"
+      ],
+      "modelAnswer": "First I'd figure out how likely that edge case actually is to come up during the demo itself, because a rare edge case that can't realistically occur in the demo flow might just be something to flag and fix properly afterwards. If there's real risk of it showing up, I wouldn't try a rushed fix in code I don't understand the night before, since that's exactly how a small bug turns into a bigger crash. I'd look for the smallest safe mitigation, maybe guarding against that specific input, and I'd tell whoever's running the demo honestly what the risk is rather than quietly hoping it doesn't come up."
+    },
+    "commonMistakes": [
+      "Attempting a risky fix in unfamiliar code under time pressure",
+      "Hiding the bug and hoping it won't surface",
+      "Panicking rather than assessing actual likelihood and impact"
+    ],
+    "followUps": ["How would your answer change if this were a safety-critical system rather than a demo?"]
+  },
+  {
+    "id": "prog-software-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-assisted coding ethics",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["ai", "ethics", "current-debate"],
+    "question": "AI coding assistants can now write large chunks of working code from a short prompt. Is it still important for you to deeply learn how algorithms and data structures work, or is that becoming outdated?",
+    "lookingFor": "A thoughtful position on fundamentals versus tool reliance, not a rehearsed line.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge AI tools are genuinely useful and changing how code gets written",
+        "Argue why understanding fundamentals still matters, e.g. judging whether generated code is correct or efficient",
+        "Show self-awareness about the risk of using tools as a crutch"
+      ],
+      "modelAnswer": "I use AI tools myself and they're genuinely useful for scaffolding or handling boilerplate quickly, but I don't think that makes understanding algorithms and data structures outdated, if anything it makes it more important. If I can't tell whether the code an AI hands me is actually efficient or correct for my situation, I'm just trusting a black box, and that's a risky habit for anyone building something that has to actually work reliably. I want to use these tools as a way to move faster on things I already understand, not as a replacement for understanding them in the first place."
+    },
+    "commonMistakes": [
+      "Dismissing AI tools entirely as if they don't matter",
+      "Claiming fundamentals no longer matter at all",
+      "Giving an answer that sounds rehearsed with no personal reasoning"
+    ],
+    "followUps": ["Have you actually used an AI coding tool and caught it getting something wrong?"]
+  },
+  {
+    "id": "prog-software-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Vibe coding debate",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["ai", "current-debate", "learning"],
+    "question": "There's a growing debate around what people call vibe coding, building software mostly by prompting an AI and accepting what it produces without fully reading it. What's your view on that as a way to build real software?",
+    "lookingFor": "Awareness of a live, specific industry debate and a clear, reasoned personal stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Show they know what the term refers to and why it's controversial right now",
+        "Distinguish appropriate uses, like quick prototypes, from inappropriate ones, like production systems",
+        "Give a genuine personal view, not just it depends with nothing behind it"
+      ],
+      "modelAnswer": "I think vibe coding can be a great way to quickly prototype an idea or explore something you're curious about, where speed matters more than correctness and nobody's relying on it working perfectly. But I'd be uncomfortable shipping something built that way into a real product, because if you don't actually understand the code, you can't debug it properly when it breaks, and it will break eventually. My view is that it's a useful tool for exploration, but it shouldn't replace actually reading and understanding what your software does before other people depend on it."
+    },
+    "commonMistakes": [
+      "Not knowing what the term refers to",
+      "Taking an all-or-nothing stance with no nuance",
+      "Praising or dismissing it without connecting to concrete consequences"
+    ],
+    "followUps": ["Where's the line for you between acceptable and irresponsible use of AI-generated code?"]
+  },
+  {
+    "id": "prog-software-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Security vulnerability disclosure ethics",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "security", "dilemma"],
+    "question": "While working on a personal project, you discover a serious security flaw in an app millions of people use, one that could expose people's private data. What do you do?",
+    "lookingFor": "Structured ethical reasoning around responsible disclosure, not vigilante action or silence.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the tension between wanting to help and the risk of causing harm by going public prematurely",
+        "Favor responsible disclosure, reporting privately with a reasonable timeline",
+        "Show awareness of the ethical line around not exploiting the flaw themselves"
+      ],
+      "modelAnswer": "I wouldn't post it publicly or on social media straight away, because that hands the exact same information to anyone who might want to exploit it before it's fixed. I'd look for the company's security contact or bug bounty program and report it privately, being as clear and specific as I can about what I found, and give them a reasonable amount of time to fix it. I also wouldn't touch or test it further with real user data myself, finding the flaw is one thing, but poking around inside people's private information to prove it crosses a line I'm not willing to cross."
+    },
+    "commonMistakes": [
+      "Suggesting immediate public disclosure without considering the harm",
+      "Suggesting they'd exploit or explore the vulnerability further themselves",
+      "Ignoring that companies need a reasonable timeframe to actually fix things"
+    ],
+    "followUps": ["What would you do if the company ignored your report for months?"]
+  },
+  {
+    "id": "prog-software-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithmic bias ethics",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "ai", "bias"],
+    "question": "You're building a model to help screen job applicants, and you discover it's quietly favouring candidates from certain universities because that's what the historical hiring data shows. What's your responsibility here?",
+    "lookingFor": "Recognition of algorithmic bias as a real engineering and ethical problem, not just a technical detail.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that a model trained on biased historical data will reproduce and often amplify that bias",
+        "Argue that fixing this is the engineer's responsibility, not something to quietly ship",
+        "Suggest concrete steps, e.g. auditing outcomes by group, raising it with the team, adjusting features"
+      ],
+      "modelAnswer": "If the historical data reflects biased past decisions, training a model on it without checking just automates that bias and gives it a false sense of objectivity, which I think is a real harm, not a minor technical quirk. I'd see it as my responsibility to flag it clearly to the team rather than quietly shipping it and hoping nobody notices, because the model did it isn't an excuse if we built the model. Practically, I'd want to audit the outcomes across different groups before deployment, and push to remove or adjust the features that are acting as a proxy for university prestige rather than actual ability."
+    },
+    "commonMistakes": [
+      "Treating the bias as purely a data problem unrelated to their own responsibility",
+      "Assuming removing the obvious feature, like university name, is enough to fix it",
+      "Not proposing any concrete step, just acknowledging bias is bad"
+    ],
+    "followUps": ["How would you actually test whether you'd successfully removed the bias?"]
+  },
+  {
+    "id": "prog-software-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Open source licensing ethics",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["ethics", "open-source", "licensing"],
+    "question": "You find an open-source library that does exactly what you need for a coursework project, but its license requires you to publish your own source code if you use it. What would you do?",
+    "lookingFor": "Understanding that open-source licenses are real obligations, plus honest reasoning about compliance versus convenience.",
+    "idealAnswer": {
+      "bullets": [
+        "Show they understand licenses like copyleft ones create genuine obligations, not just suggestions",
+        "Weigh the real options, comply with the license, find an alternative, or write it themselves",
+        "Show honesty rather than assuming nobody will notice or check"
+      ],
+      "modelAnswer": "I'd take the license seriously rather than just hoping nobody checks, because using someone's work under a license and then ignoring its terms is basically taking something without actually agreeing to the terms of it. If publishing my source code isn't something I can do for that project, I'd look for an alternative library with a more permissive license, or if the piece of functionality is small enough, just write it myself. It's a bit more work, but using open-source code doesn't mean it's free of obligations, it usually just means the obligations are different from paying money."
+    },
+    "commonMistakes": [
+      "Assuming open source means no obligations at all",
+      "Assuming nobody checks license compliance so it doesn't matter",
+      "Not considering the alternative of writing the functionality themselves"
+    ],
+    "followUps": ["Do you know the difference between a permissive license like MIT and a copyleft license like GPL?"]
+  },
+  {
+    "id": "prog-software-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Code reuse and academic integrity",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["ethics", "integrity", "practice"],
+    "question": "Where's the line for you between legitimately learning from other people's code online and academic dishonesty in a programming assignment?",
+    "lookingFor": "A clear, sensible personal standard around attribution and genuine understanding versus copying.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish reading to understand a concept from copying a solution wholesale",
+        "Mention attribution as part of honestly using outside sources",
+        "Tie it back to the actual goal, being able to explain and defend your own code"
+      ],
+      "modelAnswer": "For me the test is whether I could explain every line of what I submitted without looking it up again. Reading someone's blog post to understand how a particular algorithm works, and then writing my own version, feels completely different from copying a solution and changing some variable names. If I do use a specific piece of code or idea from somewhere, I think it's honest to say so, even in a comment, rather than let it look entirely original. The whole point of the assignment is for me to actually learn how to solve the problem, so copying without understanding just cheats myself out of that, even before it's a rules issue."
+    },
+    "commonMistakes": [
+      "Treating everyone does it as a justification",
+      "Having no real personal line, just vague discomfort",
+      "Focusing only on getting caught rather than the actual purpose of the rule"
+    ],
+    "followUps": ["Would your answer change for a personal project versus a graded assignment?"]
+  },
+  {
+    "id": "prog-software-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Safety-critical whistleblowing hypothetical",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "hypothetical", "safety"],
+    "question": "Imagine you're on a team building software for a medical device, and you believe a manager is pressuring the team to ship despite a bug that could, in rare cases, harm a patient. What would you do?",
+    "lookingFor": "Prioritizing safety over deadlines or authority, with structured escalation reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize patient safety clearly over deadline pressure or hierarchy",
+        "Describe a sensible escalation path, raising it formally and going above the manager if needed",
+        "Acknowledge the difficulty and personal risk involved without backing down on the core principle"
+      ],
+      "modelAnswer": "In a case like that I think safety has to come first, full stop, no deadline is worth someone getting hurt, especially in a medical device where the whole point of the software is to help people, not endanger them. I'd first make sure I fully understood the bug and its actual risk, then raise it clearly and in writing with my manager, and if I felt it was being dismissed without good reason, I'd escalate it further, through whatever safety or compliance process the company has, even if that felt uncomfortable. I know that could create real tension on the team, but I'd rather deal with that than stay quiet about something that could genuinely hurt someone."
+    },
+    "commonMistakes": [
+      "Deferring entirely to the manager's authority without pushing back",
+      "Suggesting they'd just quit or go to the press immediately with no internal escalation attempted",
+      "Downplaying the seriousness of patient safety"
+    ],
+    "followUps": ["What would you do if you'd raised it and been told explicitly to drop it?"]
+  },
+  {
+    "id": "prog-software-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Low-code/no-code debate",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["current-debate", "industry", "tools"],
+    "question": "Low-code and no-code platforms let people build working apps by dragging and dropping components instead of writing code. Does that change why someone should still study software engineering properly?",
+    "lookingFor": "A nuanced take distinguishing what these tools solve for from what deep engineering study is for.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of what low-code tools are genuinely good for, e.g. simple internal tools or fast prototypes",
+        "Explain where they hit limits, e.g. complex logic, performance, unusual integrations",
+        "Connect this to why proper study still matters, understanding what's underneath"
+      ],
+      "modelAnswer": "I think low-code tools are genuinely useful for things like a simple internal form or a quick prototype, and it would be a bit precious to dismiss that as not real engineering. But they tend to hit a wall once requirements get complex, when you need custom logic, real performance at scale, or to connect to some slightly unusual system, and at that point someone needs to actually understand what's happening underneath the drag-and-drop interface. That's exactly why I want to study software engineering properly, I want to be the person who can build the low-code platform itself, or step in confidently when the no-code tool's limits are reached, rather than only ever operating inside someone else's boundaries."
+    },
+    "commonMistakes": [
+      "Dismissing low-code tools entirely as not real programming",
+      "Not identifying any concrete limitation of these platforms",
+      "Missing the chance to connect the answer back to their own motivation for studying the subject"
+    ],
+    "followUps": ["Can you think of a type of project where a low-code tool would clearly be the wrong choice?"]
+  },
+  {
+    "id": "prog-software-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantum computing and cryptography",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["current-development", "cryptography", "awareness"],
+    "question": "You may have heard that quantum computers could eventually break some of the encryption the internet currently relies on. Can you explain, at a high level, why that is and what's being done about it?",
+    "lookingFor": "Awareness of a real, current development in the field and a basic, accurate grasp of why it matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a basic correct reason, e.g. much of current encryption relies on factoring being hard classically, and quantum algorithms change that",
+        "Show awareness this is an active area, e.g. mention post-quantum cryptography as the response",
+        "Avoid overstating, e.g. not claiming quantum computers can already do this today"
+      ],
+      "modelAnswer": "A lot of current encryption, like RSA, relies on the fact that factoring a very large number into its prime factors is practically impossible for a classical computer to do quickly. Quantum computers, using an algorithm called Shor's algorithm, could in theory do that factoring dramatically faster, which would break that kind of encryption if a large enough, stable quantum computer actually existed. We're not there yet, today's quantum computers aren't powerful or reliable enough, but it's a real enough concern that there's active work on what's called post-quantum cryptography, encryption methods believed to resist even a future quantum computer, and some of those are already being rolled out."
+    },
+    "commonMistakes": [
+      "Claiming quantum computers already break encryption today",
+      "Being unable to explain even roughly why factoring matters",
+      "Not knowing that a response, post-quantum cryptography, already exists"
+    ],
+    "followUps": ["Why do you think it's worth switching to post-quantum encryption now if capable quantum computers don't exist yet?"]
+  },
+  {
+    "id": "prog-software-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Right to repair and software longevity debate",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["current-debate", "ethics", "industry"],
+    "question": "There's an ongoing debate about companies deliberately slowing down or limiting old devices through software updates, sometimes called planned obsolescence. As a future software engineer, where do you stand on this?",
+    "lookingFor": "Awareness of a live consumer-tech debate and a considered position that acknowledges real tension.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness this is a real, debated practice, not simply a conspiracy theory",
+        "Distinguish legitimate reasons for slowdown, e.g. battery protection, from deliberately engineered obsolescence",
+        "Give a genuine personal position on the engineer's responsibility here"
+      ],
+      "modelAnswer": "I think there's a real difference between an update that slows an old phone down as a side effect of, say, protecting an aging battery from a sudden power draw, and a company deliberately designing software to nudge people toward buying a new device sooner. The first is a legitimate engineering trade-off, even if it's communicated badly. The second I have a real problem with, because it wastes both people's money and, honestly, a lot of hardware that still works fine. As an engineer I think we have some responsibility to at least push back internally when a decision like that is being made purely to drive sales, rather than staying quiet because it's not technically our call."
+    },
+    "commonMistakes": [
+      "Dismissing the whole topic as conspiracy theory",
+      "Not distinguishing legitimate trade-offs from deliberate obsolescence",
+      "Giving no real personal stance, just describing both sides neutrally"
+    ],
+    "followUps": ["Do you think open standards or right-to-repair laws are the better fix for this, or something else?"]
+  },
+  {
+    "id": "prog-software-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Halting problem and limits of computation",
+    "program": "Software Engineering",
+    "difficulty": "hard",
+    "tags": ["theory", "computability", "curiosity"],
+    "question": "Is it possible to write a program that can look at any other program and correctly determine whether it will eventually finish running or loop forever? Why or why not?",
+    "lookingFor": "Grasp of the halting problem's undecidability and genuine curiosity about the limits of computation.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that this is provably impossible in general, this is the halting problem",
+        "Gesture at why, e.g. a rough intuition of the self-referential contradiction the proof relies on",
+        "Show curiosity about why this matters, e.g. limits on what any tool, including AI, can guarantee about code"
+      ],
+      "modelAnswer": "No, and this isn't just a matter of nobody having figured out a clever enough algorithm yet, Alan Turing actually proved it's impossible in general. The rough intuition is that if such a checker existed, you could construct a program that asks the checker about itself and then deliberately does the opposite of whatever the checker predicts, which creates a contradiction no matter what the checker says. I find it genuinely interesting because it means there's a hard mathematical limit on what any tool, even a very advanced one, can guarantee about code just by analysing it, which is part of why bugs like infinite loops can never be fully caught by an automated checker in all cases."
+    },
+    "commonMistakes": [
+      "Claiming it's just a matter of writing a smart enough algorithm",
+      "Being unable to give any intuition for why it's impossible",
+      "Confusing this with a practical limitation rather than a proven mathematical result"
+    ],
+    "followUps": ["Does that limit worry you at all when it comes to trusting automated tools that check code for bugs?"]
+  },
+  {
+    "id": "prog-software-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Agile vs waterfall critical thinking",
+    "program": "Software Engineering",
+    "difficulty": "medium",
+    "tags": ["process", "methodology", "judgement"],
+    "question": "Agile development is often treated as simply better than the older waterfall approach. Do you actually agree with that, or is there a case where waterfall still makes more sense?",
+    "lookingFor": "Independent critical thinking about methodology rather than parroting industry fashion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of what each approach is actually optimizing for, adaptability versus upfront certainty",
+        "Identify a genuine context where waterfall's predictability is valuable, e.g. safety-critical or heavily regulated projects",
+        "Avoid treating either as universally superior"
+      ],
+      "modelAnswer": "I don't think agile is simply better in every case, it's better when requirements are likely to change and you want to learn as you go, which describes a lot of consumer software. But something like the software controlling a piece of aircraft hardware has requirements that are largely fixed upfront by regulation and safety needs, and the priority is rigorous documentation and predictability at every stage, not rapid iteration, so a more waterfall-like process with heavy upfront specification can genuinely make more sense there. I think it's less about one approach being outdated and more about matching the process to how much uncertainty the project actually has."
+    },
+    "commonMistakes": [
+      "Assuming waterfall is simply an outdated mistake with no valid use case",
+      "Giving no concrete example of when waterfall fits better",
+      "Confusing the debate with team size rather than uncertainty and requirements stability"
+    ],
+    "followUps": ["Have you worked on any project, even a school one, using something close to either approach?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-robotics-mechatronics-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for robotics",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["motivation", "robotics"],
+    "question": "What first got you interested in robotics and mechatronics?",
+    "lookingFor": "A genuine, specific origin story that shows sustained interest, not a vague love of technology.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment, project, or experience that sparked it",
+        "Show the interest has been sustained, not a one-off",
+        "Connect it to what you actually want to study or build"
+      ],
+      "modelAnswer": "I took apart an old RC car when I was twelve to see why the steering had stopped working, and putting it back together properly felt more satisfying than anything else I'd done that year. That turned into building small Arduino projects with my school's robotics club, and eventually a line-following robot for a regional competition. What hooked me specifically is the mix, it's not just code and it's not just mechanics, you have to think in both at once, and that's exactly what mechatronics is."
+    },
+    "commonMistakes": [
+      "Saying 'I've always loved technology' with no specific memory",
+      "Describing only a passive interest like watching robotics videos",
+      "Not connecting the story to the actual course content"
+    ],
+    "followUps": ["What's the most recent thing you built or fixed?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why mechatronics over a single discipline",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why did you choose mechatronics rather than a straight mechanical or electrical engineering degree?",
+    "lookingFor": "Real understanding that mechatronics is an integration discipline, with a personal reason for wanting the combination.",
+    "idealAnswer": {
+      "bullets": [
+        "Show you understand mechatronics as mechanical, electrical, and software working together, not a watered-down version of each",
+        "Give a personal reason the combination suits how you think or work",
+        "Avoid implying the single disciplines are inferior"
+      ],
+      "modelAnswer": "When I built my line-following robot, the hardest problems were never purely mechanical or purely electrical, they were where the two met, like a motor that was mechanically fine but drew too much current for my chosen driver. A pure mechanical or electrical degree would let me go deeper in one area, but most real robots fail at the interface between disciplines, and I want to be the person who understands that whole interface. Mechatronics also keeps me doing both the hands-on building and the systems thinking, which is how I stay motivated."
+    },
+    "commonMistakes": [
+      "Implying mechatronics is easier because it avoids specializing",
+      "Not being able to name where mechanical and electrical problems actually meet",
+      "Giving a purely career-based answer with no personal reasoning"
+    ],
+    "followUps": ["Which of the three strands, mechanical, electrical, or software, are you currently weakest in?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's program",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["program-fit", "research"],
+    "question": "Why do you want to study Robotics and Mechatronics here specifically?",
+    "lookingFor": "Evidence of real research into the course, tied to something concrete the applicant wants from it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific lab, module, competition team, or piece of equipment",
+        "Explain why that specific feature matters to their own goals",
+        "Show it's not interchangeable with any other university's course"
+      ],
+      "modelAnswer": "Your course has a dedicated robotics lab where first years get hands-on time with actual robotic arms rather than just simulation, which matters a lot to me because I learn fastest by building and breaking things. I also read about your team's entry in the national autonomous robotics competition, and I'd want to join that from year one. Most courses I looked at push practical work to the final year, and I want that hands-on grounding from the start."
+    },
+    "commonMistakes": [
+      "Generic praise that could apply to any engineering course",
+      "Citing rankings instead of specific course content",
+      "Getting a detail about the course factually wrong"
+    ],
+    "followUps": ["What would you want to build in that lab?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant hands-on experience",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["experience", "project"],
+    "question": "Tell us about a robotics or electronics project you've built. What did you actually do?",
+    "lookingFor": "A concrete, technically credible account of the applicant's own contribution, including what went wrong.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the project specifically, what it did and how",
+        "Be honest and precise about their own role versus a team's",
+        "Include a real difficulty they had to solve, not just a success story"
+      ],
+      "modelAnswer": "I built a small robotic arm out of servo motors and 3D printed parts that could sort objects by color using a basic light sensor. I wrote the control code in Arduino myself, but I worked with a friend on the mechanical design because I hadn't used CAD before that project. The hardest part was that the arm's own weight kept throwing off the servo positioning, so I ended up adding a simple calibration routine that ran every time it powered on. It wasn't perfect, it still misjudged a couple of colors under certain lighting, but it taught me more about closing the loop between sensing and action than any textbook had."
+    },
+    "commonMistakes": [
+      "Describing the project only in vague, high-level terms",
+      "Taking full credit for a team project",
+      "Presenting the project as flawless with nothing learned"
+    ],
+    "followUps": ["What would you change if you built it again?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and inspiration",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "curiosity"],
+    "question": "What have you read or watched recently about robotics that stuck with you?",
+    "lookingFor": "Evidence of curiosity beyond the syllabus, with enough understanding to discuss it critically.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific, not a vague 'documentaries about robots'",
+        "Show they understood the technical substance, not just the headline",
+        "Offer their own opinion or critique of it"
+      ],
+      "modelAnswer": "I read a paper Boston Dynamics published about how their Atlas robot uses model predictive control to plan its footsteps a few steps ahead rather than reacting purely to balance loss. What struck me was how much of what looks like raw physical skill is actually computation happening faster than you'd expect. It made me want to understand control theory properly rather than just treating it as a black box, because right now I can follow the idea but not the actual math behind it."
+    },
+    "commonMistakes": [
+      "Naming something so vague it suggests they didn't actually engage with it",
+      "Only summarizing without offering any opinion or critique",
+      "Choosing something that isn't actually related to robotics or mechatronics"
+    ],
+    "followUps": ["What question did it leave you with?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Definition of mechatronics",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "concept"],
+    "question": "In your own words, what is mechatronics?",
+    "lookingFor": "A clear, own-words definition that captures integration of disciplines, not a memorized textbook line.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the core disciplines being combined: mechanical, electronic, and software or control",
+        "Explain why integration matters rather than just listing the fields",
+        "Give a simple example to ground the definition"
+      ],
+      "modelAnswer": "Mechatronics is the design of systems where mechanical parts, electronics, and software are treated as one problem from the start, rather than being designed separately and bolted together afterwards. A washing machine is a good everyday example, the drum, the motor, and the sensors that detect load and moisture all have to be designed together for the thing to actually work efficiently. What I find compelling is that treating them as one system from the start usually produces a simpler, more reliable design than integrating three separate systems after the fact."
+    },
+    "commonMistakes": [
+      "Reciting a dictionary definition with no personal understanding shown",
+      "Listing the three disciplines without explaining why integration matters",
+      "Confusing mechatronics with robotics as if they were identical"
+    ],
+    "followUps": ["Can you think of a product that fails because it wasn't designed this way?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Sensors versus actuators",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "sensors", "actuators"],
+    "question": "What is the difference between a sensor and an actuator?",
+    "lookingFor": "A clean conceptual distinction with a concrete example of each, showing basic subject fluency.",
+    "idealAnswer": {
+      "bullets": [
+        "State that a sensor takes information in and an actuator produces physical action",
+        "Give a concrete example of each",
+        "Show understanding that a robot needs both working together, not one or the other"
+      ],
+      "modelAnswer": "A sensor takes information from the physical world and turns it into a signal the system can use, like a temperature sensor measuring heat or an ultrasonic sensor measuring distance to an obstacle. An actuator does the opposite, it takes an electrical signal and turns it into physical movement or force, like a motor turning a wheel or a solenoid pushing a valve. Almost every robot is really just a loop between the two, sense the world, decide, then act on it through an actuator, and then sense again."
+    },
+    "commonMistakes": [
+      "Mixing up which one senses and which one acts",
+      "Giving definitions with no real-world example",
+      "Not connecting the two into the sense-decide-act loop"
+    ],
+    "followUps": ["Give me an example of a sensor and actuator working together in something you use daily."]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Degrees of freedom",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["kinematics", "fundamentals"],
+    "question": "What does 'degrees of freedom' mean for a robotic arm, and why does it matter?",
+    "lookingFor": "Correct technical understanding of independent motion axes, linked to a practical design consequence.",
+    "idealAnswer": {
+      "bullets": [
+        "Define degrees of freedom as the number of independent ways a system can move",
+        "Note that a fully unconstrained rigid body in space has six",
+        "Explain the practical trade-off: more degrees of freedom means more dexterity but more complexity and cost"
+      ],
+      "modelAnswer": "Degrees of freedom is the number of independent ways a joint or a whole system can move, so a simple hinge joint has one, and a fully free object floating in space has six, three for position and three for rotation. For a robotic arm, more degrees of freedom means it can reach a target position at more possible orientations, which matters if it needs to work around obstacles or grip something at an awkward angle. The trade-off is that every extra joint adds cost, weight, and another motor that can fail, so real designs try to use the minimum degrees of freedom that the task actually needs."
+    },
+    "commonMistakes": [
+      "Confusing degrees of freedom with the number of motors or joints without explaining independence",
+      "Not mentioning the design trade-off of adding more",
+      "Being unable to give the six degrees of freedom for a free rigid body"
+    ],
+    "followUps": ["How many degrees of freedom would you need for an arm that just needs to pick something up and place it down in the same orientation?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Open-loop versus closed-loop control",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["control-systems", "fundamentals"],
+    "question": "Explain the difference between open-loop and closed-loop control, with an example of each.",
+    "lookingFor": "Correct definitions distinguishing whether feedback is used, backed by real examples.",
+    "idealAnswer": {
+      "bullets": [
+        "Define open-loop as acting without checking the actual outcome",
+        "Define closed-loop as using feedback to compare actual output against the desired one and correct",
+        "Give one plausible example of each"
+      ],
+      "modelAnswer": "Open-loop control means the system just executes a command without checking whether it actually achieved the intended result, like a microwave running for a set time regardless of whether the food is actually hot yet. Closed-loop control adds a sensor that measures the real outcome and feeds it back to correct the action, like a thermostat that keeps measuring room temperature and switches the heater on or off to hold a target value. Closed-loop is more robust to disturbances, but it needs a reliable sensor and it can become unstable if the feedback isn't tuned properly, which is really the whole reason control theory exists."
+    },
+    "commonMistakes": [
+      "Getting open and closed loop backwards",
+      "Giving examples that don't actually match the definition",
+      "Not mentioning that closed-loop depends on sensor feedback"
+    ],
+    "followUps": ["What could go wrong if the feedback in a closed-loop system is delayed?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "PID control basics",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["control-systems", "pid"],
+    "question": "Can you explain, in simple terms, what a PID controller does?",
+    "lookingFor": "A basic but correct grasp of the three terms and why each is needed, without requiring full mathematical rigor.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that PID responds to the error between desired and actual value",
+        "Briefly describe what each term, proportional, integral, and derivative, contributes",
+        "Show awareness that the three terms have to be balanced or tuned"
+      ],
+      "modelAnswer": "A PID controller constantly looks at the error, the gap between where you want the system to be and where it actually is, and adjusts its output based on that error. The proportional term reacts to how big the error is right now, the integral term adds up past error over time to eliminate any small steady offset that proportional alone can't fix, and the derivative term looks at how fast the error is changing to stop the system overshooting. I used a simplified version, really just the P and I terms, to stop my line-following robot oscillating side to side, and tuning those two constants by trial and error taught me a lot about why control engineers take tuning seriously."
+    },
+    "commonMistakes": [
+      "Only naming the letters without explaining what each term does",
+      "Claiming full mathematical mastery they don't actually have",
+      "Not mentioning that the terms need to be tuned to the specific system"
+    ],
+    "followUps": ["What happens if the proportional gain is set too high?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "A robot the applicant admires",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["curiosity", "engineering-appreciation"],
+    "question": "Tell us about a robot or automated system you think is particularly well engineered, and why.",
+    "lookingFor": "Genuine curiosity and the ability to identify a real engineering trade-off, not just naming something impressive.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick something specific enough to actually explain",
+        "Identify a concrete design constraint or trade-off it solves",
+        "Show authentic enthusiasm rather than a rehearsed name-drop"
+      ],
+      "modelAnswer": "I keep coming back to the Mars rovers, specifically how they had to design the whole system to survive a communication delay of many minutes each way, which means the rover has to make some decisions on its own rather than waiting for instructions from Earth. That's a mechatronics problem as much as a software one, the mechanical design has to be reliable enough to fail safely if the autonomy gets something wrong, since there's no engineer around to fix it. It's a good reminder that the hardest engineering problems are often about designing for the situations you can't directly control."
+    },
+    "commonMistakes": [
+      "Naming a robot without explaining any actual engineering detail",
+      "Choosing something purely because it sounds impressive",
+      "Ignoring any trade-off or constraint the design solves"
+    ],
+    "followUps": ["What would you change about its design if you could?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Programming and microcontroller experience",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "easy",
+    "tags": ["programming", "experience"],
+    "question": "What programming languages or microcontroller platforms have you used, and for what?",
+    "lookingFor": "Honest, specific self-assessment of practical technical experience, not an inflated list of buzzwords.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific platforms or languages actually used, not just heard of",
+        "Describe what was built with them",
+        "Be honest about current skill level rather than overstating it"
+      ],
+      "modelAnswer": "I'm most comfortable with C and C++ on Arduino, which is what I used for my line-following robot and a small home automation project that turned lights on based on a light sensor reading. I've also done a bit of Python for basic data logging when I wanted to plot sensor readings over time, though I'd say I'm still a beginner with it compared to C. I haven't used a full microcontroller platform like an STM32 yet, but I'm keen to move onto something with more processing power once I understand the basics properly."
+    },
+    "commonMistakes": [
+      "Listing languages with no evidence of actually using them",
+      "Overstating skill level in a way that invites a follow-up they can't answer",
+      "Giving no concrete project tied to the experience"
+    ],
+    "followUps": ["What's a bug you got stuck on, and how did you eventually solve it?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Gear ratios and torque-speed trade-off",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["mechanical", "gears", "fundamentals"],
+    "question": "Why would you add a gearbox to a motor rather than just using the motor's raw output?",
+    "lookingFor": "Understanding of the torque-speed trade-off in gearing and a sense of when it's needed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that gears trade rotational speed for torque, or vice versa",
+        "Note that raw motor output is often too fast and too weak for practical use",
+        "Mention a real cost, such as backlash, friction losses, or added weight"
+      ],
+      "modelAnswer": "Most small electric motors spin very fast but produce relatively little torque on their own, so a gearbox slows the output speed down and multiplies the torque by roughly the gear ratio, which is usually what you actually need to move a real load like a wheel or an arm joint. Without gearing, a motor might spin a wheel too fast to control precisely and still not have the force to get a robot moving from a standstill. The trade-off is that gears aren't free, they add backlash, weight, and some energy loss to friction, so you pick the gear ratio that gives you just enough torque for the job rather than the maximum possible."
+    },
+    "commonMistakes": [
+      "Saying gears just make things stronger without mentioning the speed trade-off",
+      "Treating gearing as free with no downside",
+      "Confusing gear ratio with motor efficiency"
+    ],
+    "followUps": ["What is backlash, and why can it be a problem in precision robotics?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Actuator types comparison",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["actuators", "motors", "fundamentals"],
+    "question": "What's the difference between a servo motor and a stepper motor, and when would you choose one over the other?",
+    "lookingFor": "Correct technical distinction between position feedback and open-loop stepping, tied to a sensible use case.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a servo uses feedback to hold or reach a precise position, closed-loop",
+        "Explain that a stepper moves in discrete fixed steps, typically open-loop",
+        "Give a sensible scenario for choosing each"
+      ],
+      "modelAnswer": "A servo motor has a built-in feedback sensor and a small controller that constantly checks its actual position against the target and corrects itself, which makes it good for things like a robotic arm joint that needs to hold a precise angle even under load. A stepper motor instead moves in fixed, discrete steps each time it gets a pulse, and without extra feedback it just trusts that it moved the right amount, which works well for something like a 3D printer's axis where the load is predictable and losing a step is rare. I'd choose a servo where the load could vary or precision really matters, and a stepper where I want simple, repeatable positioning without the cost of a feedback sensor."
+    },
+    "commonMistakes": [
+      "Describing them as basically interchangeable",
+      "Missing that servos are closed-loop and steppers are typically open-loop",
+      "Giving no practical scenario for either choice"
+    ],
+    "followUps": ["What happens to a stepper motor if it 'misses' a step under a heavy load?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of automation",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["ethics", "automation", "situational"],
+    "question": "Robots and automation often replace human jobs. As someone entering this field, how do you think about that responsibility?",
+    "lookingFor": "Balanced, thoughtful ethical reasoning that neither dismisses the concern nor treats it as disqualifying for the field.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real human cost of automation rather than brushing past it",
+        "Offer a nuanced view, such as which kinds of work are actually being displaced versus augmented",
+        "Show a sense of the engineer's own responsibility in how systems are designed and deployed"
+      ],
+      "modelAnswer": "I don't think it's honest to pretend automation doesn't cost real jobs, especially repetitive or dangerous manual work, and I don't want to wave that away with a line about progress being inevitable. At the same time, a lot of what I'm drawn to in robotics is automating the genuinely dangerous or physically damaging tasks, like handling hazardous materials, where I think the ethical case is stronger. I think engineers do carry some responsibility here, not to stop building, but to be honest with the companies and communities affected about what's actually changing, and to push for automation that removes people from harm rather than just from payroll wherever that choice exists."
+    },
+    "commonMistakes": [
+      "Dismissing the concern entirely as not their problem",
+      "Being so apologetic about the field that it undermines their own motivation",
+      "Giving a purely abstract answer with no personal position"
+    ],
+    "followUps": ["Can you think of an example where automation clearly did more good than harm?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Current challenge in the field",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["current-events", "field-awareness"],
+    "question": "What do you think is currently the hardest unsolved problem in robotics?",
+    "lookingFor": "Evidence of following the field beyond the syllabus and forming an informed, defensible opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine open problem, not a solved textbook example",
+        "Explain in their own words why it's hard",
+        "Show awareness that reasonable people or approaches disagree"
+      ],
+      "modelAnswer": "I'd say reliable manipulation of unfamiliar objects is still surprisingly unsolved, a warehouse robot can be excellent at picking a known item off a shelf but struggles the moment it meets something oddly shaped or squishy that it hasn't seen before. It's hard because grasping combines uncertain sensing, contact physics that are genuinely difficult to model, and split-second decisions, all at once. I've seen some progress using learning-based approaches that train on huge amounts of simulated grasping, but from what I've read even those still fail in ways that feel almost obvious to a human hand."
+    },
+    "commonMistakes": [
+      "Naming a problem that's actually already well solved",
+      "Giving an answer with no explanation of why it's difficult",
+      "Reciting a headline without understanding the underlying issue"
+    ],
+    "followUps": ["What approach do you think shows the most promise for solving it?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Forward versus inverse kinematics",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["kinematics", "robotics-arm"],
+    "question": "What is the difference between forward and inverse kinematics for a robotic arm?",
+    "lookingFor": "Correct technical distinction between the two problems and awareness of why inverse kinematics is harder.",
+    "idealAnswer": {
+      "bullets": [
+        "Define forward kinematics as computing the end position from known joint angles",
+        "Define inverse kinematics as computing the joint angles needed for a desired end position",
+        "Note why inverse kinematics is generally harder, such as multiple valid solutions or none at all"
+      ],
+      "modelAnswer": "Forward kinematics is the easier direction, given every joint angle in the arm, you calculate exactly where the end effector ends up, which is really just applying trigonometry and the arm's known geometry step by step. Inverse kinematics goes the other way, you know where you want the end effector to be and you need to work out what joint angles get you there, and that's harder because there can be multiple valid sets of angles that reach the same point, or sometimes none at all if the point is out of reach. I only really understood this properly after trying to program a simple two-joint arm to reach a target position and realizing my own trigonometry could give two different elbow configurations for the same point."
+    },
+    "commonMistakes": [
+      "Getting forward and inverse kinematics backwards",
+      "Not mentioning that inverse kinematics can have multiple or no solutions",
+      "Treating both problems as equally simple"
+    ],
+    "followUps": ["How might you decide between two valid solutions to an inverse kinematics problem?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "PLCs and industrial automation",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["industrial-automation", "plc"],
+    "question": "Do you know what a PLC is, and where it's typically used?",
+    "lookingFor": "Basic awareness of industrial automation hardware beyond hobbyist microcontrollers.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a PLC is a ruggedized industrial controller built for reliability in factory environments",
+        "Contrast it briefly with a general-purpose microcontroller like an Arduino",
+        "Give a realistic example of where PLCs are used"
+      ],
+      "modelAnswer": "A PLC, a programmable logic controller, is basically an industrial-grade controller designed to run continuously and reliably in harsh factory conditions, controlling things like conveyor belts, robotic assembly stations, or safety interlocks. It's different from something like an Arduino in that it's built for extreme reliability and easy maintenance rather than flexibility or low cost, and it's usually programmed in ladder logic rather than a general programming language, which is closer to how relay circuits used to be wired. I haven't used one myself yet, but I read about how car manufacturing lines rely on hundreds of PLCs coordinating together, and I'd like to get hands-on with one during the course."
+    },
+    "commonMistakes": [
+      "Confusing a PLC with a general-purpose microcontroller",
+      "Not being able to name a realistic use case",
+      "Claiming hands-on experience they don't have"
+    ],
+    "followUps": ["Why might a factory prefer ladder logic programming over a language like Python for safety-critical control?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Sensor fusion",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["sensors", "sensor-fusion"],
+    "question": "Why might a robot use several different sensors to measure the same thing, like its position, rather than just one?",
+    "lookingFor": "Understanding that individual sensors have distinct weaknesses and combining them improves reliability.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that no single sensor is perfectly accurate or reliable in every condition",
+        "Explain that different sensors fail or drift in different ways, so combining them compensates for individual weaknesses",
+        "Mention this combination is generally called sensor fusion"
+      ],
+      "modelAnswer": "Every sensor has its own weakness, a GPS module can be very accurate outdoors but loses signal indoors or between tall buildings, while a wheel encoder can track position indoors continuously but slowly drifts as small errors add up over distance. Using both together, and cross-checking one against the other, usually gives a much more reliable estimate than either alone, because the errors in each tend to show up in different situations rather than at the same time. That combining process is generally called sensor fusion, and I understand it often uses something like a Kalman filter to blend the readings mathematically, though I've only read about the concept rather than implemented one myself."
+    },
+    "commonMistakes": [
+      "Assuming more sensors are simply always better with no explanation why",
+      "Not identifying a specific weakness that a second sensor compensates for",
+      "Claiming deep familiarity with Kalman filters without real grounding"
+    ],
+    "followUps": ["What might go wrong if two sensors disagree significantly?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Debugging a hardware or software problem",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["problem-solving", "debugging", "behavioral"],
+    "question": "Tell us about a time something you built didn't work, and how you figured out why.",
+    "lookingFor": "A structured, honest account of systematic troubleshooting rather than lucky guessing.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the actual symptom clearly before jumping to the fix",
+        "Show a systematic process of isolating the cause, not random trial and error",
+        "Be honest about how long it took or what they got wrong along the way"
+      ],
+      "modelAnswer": "My color-sorting arm worked perfectly on my desk but completely failed when I demonstrated it under the classroom's fluorescent lights. My first instinct was to blame the code, but I forced myself to test the sensor readings directly first, and it turned out the light sensor was picking up ambient light and skewing every color reading. Rather than rewriting the logic, I added a brief calibration step that measured the ambient light before each sort and corrected for it, which fixed it. It taught me to check the actual sensor data before assuming the bug was in the software, since it's tempting to blame the part you understand best."
+    },
+    "commonMistakes": [
+      "Skipping straight to the fix with no description of the diagnostic process",
+      "Presenting a story where the fix was pure luck",
+      "Blaming a component without evidence they actually checked it"
+    ],
+    "followUps": ["What would you do differently to catch this kind of issue earlier next time?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Working in a team competition",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["teamwork", "competition", "behavioral"],
+    "question": "Have you worked on a robotics competition or group build? What was your specific role?",
+    "lookingFor": "A clear account of a genuine, specific contribution within a team, not a vague claim of general involvement.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the competition or project and its actual goal or rules",
+        "State a specific, verifiable role rather than a vague 'I helped with everything'",
+        "Mention a real team tension or challenge and how it was handled"
+      ],
+      "modelAnswer": "I was on my school's team for a regional line-following and obstacle-avoidance competition, and my specific job was the control code, tuning the sensors and the steering logic, while two teammates handled the chassis and wiring. We disagreed at one point about whether to add a third sensor for sharper turns, since I was worried it would slow down our processing loop, but we tested both versions against the clock and the data settled it rather than either of us just insisting. We placed third, and I learned that most team disagreements in a technical project are actually solvable by just running the experiment instead of arguing about it."
+    },
+    "commonMistakes": [
+      "Claiming credit for the whole team's work without specifics",
+      "Describing no real friction or disagreement, which reads as unlikely",
+      "Being unable to describe what the competition actually required"
+    ],
+    "followUps": ["What would you do differently if you led the team next time?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Autonomous vehicles and safety",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["autonomy", "safety", "current-events"],
+    "question": "What do you think makes self-driving cars such a hard robotics problem compared to, say, a factory robot?",
+    "lookingFor": "Understanding of the difference between structured, predictable environments and open, unpredictable ones.",
+    "idealAnswer": {
+      "bullets": [
+        "Contrast the highly structured, predictable environment of a factory robot with the open unpredictability of public roads",
+        "Mention the need to handle rare edge cases where failure has severe consequences",
+        "Show awareness that this is as much a perception and decision-making problem as a mechanical one"
+      ],
+      "modelAnswer": "A factory robot usually works in a controlled, repeatable environment where the objects, positions, and hazards are largely known in advance, so the engineering problem is mostly about precision and speed. A self-driving car has to handle an environment that's constantly changing and full of unpredictable people, weather, and edge cases that might occur once in a million miles but still have to be handled safely, which is a completely different kind of hard. What strikes me most is that the mechanical side, steering and braking, is honestly the easy part now, the real challenge is perceiving the scene correctly and making the right decision in situations nobody explicitly programmed for."
+    },
+    "commonMistakes": [
+      "Focusing only on mechanical complexity and ignoring perception and decision-making",
+      "Treating the two problems as basically similar",
+      "Giving no sense of why rare edge cases matter so much for safety"
+    ],
+    "followUps": ["How would you think about testing a system for scenarios that are rare but critical?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Traditional control versus machine learning",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "hard",
+    "tags": ["control-systems", "machine-learning"],
+    "question": "When might you use a traditional control approach like PID rather than a machine learning approach for a robotics problem, or vice versa?",
+    "lookingFor": "Balanced judgment about when each approach is appropriate, rather than treating machine learning as automatically superior.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that traditional control is predictable, well understood, and easier to verify for safety",
+        "Note that learning-based approaches can handle problems too complex to model explicitly, like grasping unfamiliar objects",
+        "Show judgment about the trade-off, not a blanket preference for one"
+      ],
+      "modelAnswer": "For something like keeping a motor at a target speed, a PID controller is well understood, predictable, and you can mathematically reason about whether it's stable, which matters a lot if the system needs to be safety-certified. For something like recognizing and grasping an object it's never seen before, the underlying relationship is too complicated to write down by hand, and that's where a learning-based approach earns its complexity, because it can pick up patterns a human engineer couldn't easily encode as rules. I don't think one approach replaces the other, I think good mechatronics engineers know which tool actually fits the specific problem rather than defaulting to whichever is more fashionable."
+    },
+    "commonMistakes": [
+      "Assuming machine learning is always the more advanced or better choice",
+      "Being unable to explain why PID would ever be preferable",
+      "Giving an answer with no concrete example for either approach"
+    ],
+    "followUps": ["What risk does a learning-based controller carry that a PID controller doesn't?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Everyday mechatronic system trade-offs",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["engineering-appreciation", "curiosity"],
+    "question": "Pick an everyday appliance and tell us what design trade-offs its engineers must have faced.",
+    "lookingFor": "Applied engineering intuition, spotting real constraints and trade-offs in something ordinary.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick something specific enough to actually reason about",
+        "Identify at least one genuine design trade-off, such as cost versus reliability or power versus safety",
+        "Show this is their own reasoning, not a memorized fact"
+      ],
+      "modelAnswer": "I'd pick an automatic dishwasher, because it has to sense water level, temperature, and sometimes soil level, then coordinate a pump, a heater, and valves, all while staying sealed and safe around a kitchen full of water and electricity. One trade-off I keep thinking about is cost versus precision, a cheaper float switch for water level is less accurate than a proper pressure sensor, but it's far cheaper and more reliable over years of use, so most manufacturers accept the lower precision. It's a good reminder that in consumer mechatronics, robustness and cost usually beat theoretical precision that nobody would actually notice."
+    },
+    "commonMistakes": [
+      "Choosing something too simple to reveal any real trade-off",
+      "Only describing what the appliance does without identifying a trade-off",
+      "Giving an answer that sounds rehearsed rather than reasoned live"
+    ],
+    "followUps": ["How would you change the design if cost weren't a constraint at all?"]
+  },
+  {
+    "id": "prog-robotics-mechatronics-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Future goals in robotics",
+    "program": "Robotics & Mechatronics",
+    "difficulty": "medium",
+    "tags": ["goals", "motivation", "future"],
+    "question": "Where do you see robotics and mechatronics taking you, and how does this course fit into that?",
+    "lookingFor": "An ambitious but grounded direction, clearly linked to what the specific course actually offers.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a direction rather than an overly specific, unrealistic job title",
+        "Connect the goal honestly to something the course specifically provides",
+        "Show openness to the goal evolving as they learn more"
+      ],
+      "modelAnswer": "I'd like to end up working on robotics for healthcare, ideally assistive devices that give people with limited mobility more independence, since that's the area that first pulled me toward this field after volunteering with a relative who used a powered wheelchair. I know that exact role might look different once I actually understand the field properly, and I'm fine with that changing. What I'm certain of is that this course's combination of control systems, mechanical design, and a hands-on final year project gives me the grounding to move toward that, rather than leaving me strong in only one of the pieces I'd need."
+    },
+    "commonMistakes": [
+      "Giving an unrealistically precise long-term plan with no room to adapt",
+      "A goal with no real connection to what the course specifically offers",
+      "Sounding indifferent about the field's actual future"
+    ],
+    "followUps": ["What's the first step you'd take toward that after finishing the degree?"]
+  }
+]

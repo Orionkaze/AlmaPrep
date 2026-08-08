@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-mechanical-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Stress vs strain and the stress-strain curve",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["materials", "mechanics", "fundamentals"],
+    "question": "Can you explain the difference between stress and strain, and why the shape of a material's stress-strain curve matters to an engineer?",
+    "lookingFor": "Clear grasp of the distinction plus an understanding of what the curve's regions (elastic, yield, plastic, fracture) actually tell a designer.",
+    "idealAnswer": {
+      "bullets": [
+        "Define stress as force per unit area and strain as deformation relative to original length",
+        "Walk through the curve: elastic region, yield point, plastic deformation, and fracture",
+        "Connect the shape to a real design decision, like why you design below the yield point"
+      ],
+      "modelAnswer": "Stress is the internal force a material carries per unit area, while strain is how much it deforms relative to its original size, so stress causes strain. On a stress-strain curve, the initial straight line is the elastic region where the material springs back if you remove the load, and once you pass the yield point the deformation becomes permanent. What I find genuinely useful about the curve is that it tells you where to keep your design margin, you almost always want a component operating well inside the elastic region so it never permanently deforms in normal use. I got interested in this after building a small catapult for a physics project and watching the arm bend a little more each time I overloaded it."
+    },
+    "commonMistakes": [
+      "Using stress and strain interchangeably without defining either",
+      "Describing the curve without connecting it to a design implication",
+      "Forgetting that different materials (brittle vs ductile) have very different curve shapes"
+    ],
+    "followUps": ["How would the curve look different for a brittle material like glass compared to a ductile metal?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Factor of safety reasoning",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["design", "safety", "judgement"],
+    "question": "How would you decide what factor of safety to use when designing a load-bearing component, and what happens if you get it wrong in either direction?",
+    "lookingFor": "Reasoning that balances risk, cost, and material behaviour rather than quoting a fixed number.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain factor of safety as the ratio of a material's strength to the expected working stress",
+        "Identify what should push the number up: uncertainty in loads, consequence of failure, material variability",
+        "Recognise the cost of over-engineering: wasted material, weight, and money"
+      ],
+      "modelAnswer": "Factor of safety is roughly how much stronger you build something than the load you expect it to see, and how big that number should be depends on how confident you are in your load estimates and how bad the consequences of failure would be. For something like a lift cable where failure could kill someone and the loads are hard to predict exactly, you'd want a large margin, whereas for a component you can test repeatedly under controlled conditions you can afford to design closer to the limit. Getting it too low risks failure, but getting it too high just wastes material and adds weight and cost, which matters a lot in something like an aircraft. I think the real skill is not picking a safe number by default but justifying why that specific number fits the situation."
+    },
+    "commonMistakes": [
+      "Treating factor of safety as one universal fixed number for all applications",
+      "Only discussing the danger of it being too low, ignoring the cost of over-design",
+      "Not mentioning uncertainty in loading or material properties as a driver"
+    ],
+    "followUps": ["Would you use the same factor of safety for a component in a car versus in a spacecraft? Why or why not?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Thermodynamics and engine efficiency",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["thermodynamics", "energy", "engines"],
+    "question": "Why can't a heat engine ever be 100 percent efficient, even in theory?",
+    "lookingFor": "Understanding of the second law of thermodynamics and the Carnot limit, not just the first law's energy conservation.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the first law alone doesn't forbid 100 percent efficiency, energy conservation isn't the limiting factor",
+        "Explain that the second law requires some heat to be rejected to a cold reservoir",
+        "Reference the Carnot efficiency and what it depends on (hot and cold reservoir temperatures)"
+      ],
+      "modelAnswer": "It's tempting to think energy conservation is the barrier, but the first law actually allows a perfectly efficient engine in principle, it's the second law that rules it out. Any heat engine has to reject some heat to a cold reservoir to complete its cycle, and the maximum possible efficiency, the Carnot efficiency, depends only on the temperatures of the hot and cold reservoirs. That's why real engines chase higher combustion temperatures or better cooling, because that's actually where the theoretical ceiling moves. I found this genuinely counterintuitive the first time I learned it, because it means no amount of clever engineering, only temperature difference, sets the ultimate limit."
+    },
+    "commonMistakes": [
+      "Citing only friction and losses as the reason, missing the fundamental thermodynamic limit",
+      "Confusing the first law with the second law",
+      "Not knowing that Carnot efficiency depends on reservoir temperatures"
+    ],
+    "followUps": ["How does this explain why engineers push for higher combustion temperatures in jet engines?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Laminar vs turbulent flow",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["fluid-mechanics", "flow", "reynolds-number"],
+    "question": "What determines whether flow over a surface is laminar or turbulent, and why would an engineer care?",
+    "lookingFor": "Correct use of Reynolds number as the governing parameter, plus a practical consequence of the distinction.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain Reynolds number as the ratio of inertial to viscous forces",
+        "Describe laminar as smooth, layered flow and turbulent as chaotic, mixing flow",
+        "Give a real consequence: drag, heat transfer, or noise differences"
+      ],
+      "modelAnswer": "Whether flow is laminar or turbulent mostly comes down to the Reynolds number, which compares inertial forces to viscous forces, and low Reynolds number tends to give smooth, layered laminar flow while high Reynolds number gives chaotic turbulent flow. Laminar flow has lower drag but turbulent flow actually mixes better and can delay separation, which is why golf balls have dimples, the small turbulence they create keeps the flow attached longer and reduces overall drag. I think it's a nice example of how counterintuitive fluid mechanics can be, more chaos in one place can mean less resistance overall. It's the kind of trade-off I want to understand properly rather than just memorise."
+    },
+    "commonMistakes": [
+      "Saying turbulent flow is always worse than laminar without qualification",
+      "Not mentioning Reynolds number at all",
+      "Confusing viscosity's role, thinking higher viscosity always means more turbulence"
+    ],
+    "followUps": ["Can you think of an engineering situation where you'd deliberately want to trigger turbulence?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Resonance and mechanical failure",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["vibrations", "dynamics", "failure"],
+    "question": "Why is resonance dangerous in mechanical systems, and can you give an example where it caused real damage?",
+    "lookingFor": "Understanding of natural frequency and forced vibration, backed by a concrete historical or physical example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain resonance as when a forcing frequency matches a system's natural frequency, amplifying oscillation",
+        "Note that amplitude can grow large enough to cause structural failure",
+        "Cite a real or plausible example, like the Tacoma Narrows Bridge or a washing machine shaking violently"
+      ],
+      "modelAnswer": "Every structure has natural frequencies at which it likes to vibrate, and if you drive it with a force oscillating near one of those frequencies, the amplitude can build up far beyond what the static load would suggest, because the energy keeps adding in phase with the motion. The classic example is the Tacoma Narrows Bridge, where wind-driven oscillation grew close to a natural frequency of the structure and the bridge tore itself apart. It's a striking reminder that a load doesn't have to be huge to be dangerous, it just has to be timed right. That's part of why I find dynamics more unsettling than static structural design, the failure mode isn't obvious from a simple force calculation."
+    },
+    "commonMistakes": [
+      "Describing resonance vaguely as 'vibration getting worse' without mentioning natural frequency matching",
+      "Confusing resonance with simple damping or friction losses",
+      "Assuming resonance is always about sound or noise rather than structural amplitude"
+    ],
+    "followUps": ["How might an engineer deliberately design a structure to avoid resonance with its expected loading?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Brittle vs ductile fracture",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["materials", "failure", "fracture"],
+    "question": "What's the practical difference between brittle and ductile fracture, and why does it matter which one a component experiences?",
+    "lookingFor": "Clear distinction plus awareness of why ductile failure is generally preferred in design.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe ductile fracture as gradual, with visible plastic deformation and warning signs",
+        "Describe brittle fracture as sudden, with little to no warning",
+        "Explain why designers often prefer materials or conditions that fail ductilely, for safety warning"
+      ],
+      "modelAnswer": "Ductile fracture happens gradually, the material yields and visibly deforms, necking down before it finally breaks, so there's usually some warning that something is wrong. Brittle fracture happens suddenly with almost no plastic deformation beforehand, which is what makes it so dangerous, a component can look fine right up until it isn't. That's part of why engineers worry about things like temperature, because some metals that behave ductilely at room temperature become brittle when it's cold, which was a real factor in some historic ship and bridge failures. I think it's a good example of how the same material can behave completely differently depending on conditions, which is exactly why testing under realistic conditions matters so much."
+    },
+    "commonMistakes": [
+      "Assuming fracture behaviour is a fixed material property regardless of temperature or loading rate",
+      "Describing the difference only in terms of hardness rather than deformation behaviour",
+      "Not connecting the distinction to why ductile failure is safer in practice"
+    ],
+    "followUps": ["Can you name a factor besides temperature that might shift a material from ductile to brittle behaviour?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Beam cross-section design trade-offs",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["structures", "design", "mechanics"],
+    "question": "If you wanted to make a beam stiffer without simply adding more material, what would you change, and why does that work?",
+    "lookingFor": "Understanding of the second moment of area and how geometry, not just material quantity, governs stiffness.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that beam deflection depends on the second moment of area (I), not just cross-sectional area",
+        "Explain that moving material further from the neutral axis increases I disproportionately",
+        "Give a concrete example, like an I-beam shape, and note the trade-off against buckling or twisting"
+      ],
+      "modelAnswer": "The stiffness of a beam in bending doesn't just depend on how much material you use, it depends on how that material is distributed, specifically the second moment of area, and moving material away from the neutral axis increases that value far faster than adding the same material near the centre would. That's exactly why I-beams look the way they do, most of the material sits in the flanges, as far from the neutral axis as possible, while the thin web mostly just holds them apart and resists shear. The trade-off is that a very tall, thin section can become more prone to buckling or twisting under certain loads, so you can't just keep stretching the shape taller indefinitely. I like this example because it shows that good design is often about geometry and cleverness rather than brute-force material use."
+    },
+    "commonMistakes": [
+      "Suggesting the only way to increase stiffness is adding more material overall",
+      "Not mentioning the second moment of area or neutral axis at all",
+      "Ignoring the downside trade-offs of extreme cross-sections like buckling"
+    ],
+    "followUps": ["Why do you think I-beams aren't used for every structural application if they're so material-efficient?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Fatigue failure below yield stress",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["materials", "fatigue", "failure"],
+    "question": "How can a metal component fail even though the stress it experiences never exceeds its yield strength?",
+    "lookingFor": "Understanding of fatigue as a cyclic-loading, crack-growth phenomenon distinct from static overload.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain fatigue as damage accumulating from repeated cyclic loading, not a single overload event",
+        "Describe the mechanism: microscopic cracks initiate, usually at a stress concentration, and grow with each cycle",
+        "Note that this is why inspection and fatigue life prediction matter for things like aircraft"
+      ],
+      "modelAnswer": "This is fatigue, and it happens because repeated loading and unloading, even at stresses well below yield, can slowly grow tiny cracks that usually start at a surface flaw or a stress concentration like a sharp corner or a hole. Each cycle the crack grows a little, and eventually it reaches a critical size where the remaining material can't support the load and fails suddenly, sometimes catastrophically. This is exactly why aircraft components have inspection intervals and fatigue life limits rather than just a static strength rating, and it's also why designers round off corners and avoid sharp notches wherever a part sees repeated loading. I find it a slightly unsettling idea, that something can be perfectly safe by every static calculation and still be quietly failing underneath."
+    },
+    "commonMistakes": [
+      "Assuming failure only happens if stress exceeds yield or ultimate strength",
+      "Not mentioning stress concentrations or crack initiation sites",
+      "Treating fatigue and simple overload failure as the same mechanism"
+    ],
+    "followUps": ["Why do engineers pay so much attention to surface finish and sharp corners when fatigue is a concern?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Gear ratio and torque-speed trade-off",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["mechanisms", "gears", "torque"],
+    "question": "If you gear down a motor's output, why does torque increase while speed decreases, and is that trade-off ever truly free?",
+    "lookingFor": "Correct physical reasoning tied to power conservation, not just a memorised rule.",
+    "idealAnswer": {
+      "bullets": [
+        "State that gearing down trades speed for torque roughly in inverse proportion",
+        "Connect this to power being roughly conserved (minus losses), power equals torque times angular speed",
+        "Acknowledge it isn't free: friction, backlash, and gear losses reduce overall efficiency"
+      ],
+      "modelAnswer": "When you gear down, you're trading rotational speed for torque, and the reason is that power is roughly torque multiplied by angular speed, so if the gearbox is reasonably efficient, power in should roughly equal power out, which means if speed drops the torque has to rise to compensate. It's not a completely free trade though, because every real gearbox has friction, meshing losses, and sometimes backlash, so some power is lost as heat and the ratio isn't perfectly reciprocal. I think that's the part people miss when they first learn about gears, it feels like you're getting torque for nothing, but you're really just converting one form of mechanical output into another, and paying a small tax along the way."
+    },
+    "commonMistakes": [
+      "Describing gearing as creating extra energy or torque out of nothing",
+      "Not connecting the trade-off to power conservation",
+      "Ignoring efficiency losses in real gear systems"
+    ],
+    "followUps": ["Where in a car's drivetrain would you want a low gear ratio versus a high one, and why?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Heat transfer modes",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "heat-transfer", "fundamentals"],
+    "question": "Can you name the three modes of heat transfer and explain why an insulated engine casing still gets hot to the touch?",
+    "lookingFor": "Correct definitions of conduction, convection, and radiation, applied to a real, slightly counterintuitive scenario.",
+    "idealAnswer": {
+      "bullets": [
+        "Define conduction, convection, and radiation clearly",
+        "Explain that insulation reduces but never eliminates heat transfer, it slows the rate rather than stopping it",
+        "Note that over time or at high enough internal temperature, surface temperature will still rise"
+      ],
+      "modelAnswer": "The three modes are conduction, heat moving through direct contact within a material, convection, heat carried away by a moving fluid like air, and radiation, heat transferred as electromagnetic waves without needing any medium at all. An insulated casing still gets hot because insulation only reduces the rate of heat transfer, it doesn't stop it completely, so given enough time or a hot enough source inside, heat still conducts through the insulation and eventually reaches the surface. It's the same reason a thermos flask keeps coffee hot for hours rather than forever, the insulation is buying you time, not immunity. I think that distinction, between blocking something and merely slowing it, comes up constantly in engineering."
+    },
+    "commonMistakes": [
+      "Listing the three modes but not applying them to the actual scenario",
+      "Claiming insulation should keep the surface completely cool",
+      "Mixing up convection and conduction"
+    ],
+    "followUps": ["Would radiation matter much for a casing at everyday engine temperatures, or is it more relevant at higher temperatures?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Four-stroke vs two-stroke engines",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["engines", "thermodynamics", "mechanisms"],
+    "question": "What's the fundamental difference between a two-stroke and a four-stroke engine, and why do most cars use four-stroke engines despite two-strokes being simpler and lighter?",
+    "lookingFor": "Correct mechanical understanding plus reasoning about the real-world trade-offs that shape engineering choices.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the stroke cycle difference: four distinct strokes over two crankshaft revolutions versus one revolution for two-stroke",
+        "Note that two-stroke engines mix oil with fuel and are less fuel-efficient and dirtier burning",
+        "Connect the choice to a real constraint: emissions regulations, efficiency, and engine longevity"
+      ],
+      "modelAnswer": "A four-stroke engine completes intake, compression, power, and exhaust as four separate strokes over two crankshaft revolutions, while a two-stroke engine compresses those same events into one revolution by combining some of them, which is why it's simpler and produces more power for its size and weight. Despite that, most cars use four-stroke engines because two-strokes burn oil along with the fuel, which makes them less efficient and much dirtier, and modern emissions regulations essentially rule two-strokes out for road cars. It's a good example of how an engineering solution that looks better on paper, lighter and simpler, can lose out once you weigh in efficiency, emissions, and durability over the engine's life. I think that tension between elegance and real-world constraint is a lot of what makes engineering decisions interesting rather than obvious."
+    },
+    "commonMistakes": [
+      "Describing the stroke difference incorrectly or vaguely",
+      "Not mentioning emissions or efficiency as the reason four-stroke dominates cars",
+      "Assuming two-stroke engines are simply obsolete rather than still used in specific applications"
+    ],
+    "followUps": ["Can you think of an application where a two-stroke engine is still the better choice today?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Control systems feedback and stability",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["control-systems", "stability", "mechatronics"],
+    "question": "In a feedback control system, why might making the controller respond faster to error actually make the system less stable?",
+    "lookingFor": "Genuine grasp of the overshoot and stability trade-off inherent to feedback control, beyond a surface-level definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain feedback control as continuously correcting based on the difference between desired and actual state",
+        "Describe how increasing gain speeds up response but can cause overshoot and oscillation",
+        "Note the trade-off between responsiveness and stability, and that tuning is about finding a balance"
+      ],
+      "modelAnswer": "A feedback controller measures the error between where the system is and where you want it to be, and corrects proportionally, so increasing the gain makes it correct more aggressively and respond faster to disturbances. The problem is that a very aggressive correction tends to overshoot the target, and if the gain is high enough that overshoot can grow with each correction instead of settling down, which is what instability actually looks like. It's a bit like overcorrecting a car that's drifting, small careful corrections bring you back smoothly, but yanking the wheel hard sends you swerving the other way. I find this genuinely elegant because it shows that 'more responsive' and 'more stable' aren't the same goal, and a lot of control engineering is about deliberately choosing to be a little less aggressive to stay safe."
+    },
+    "commonMistakes": [
+      "Assuming faster response is always simply better with no downside",
+      "Not connecting increased gain to overshoot and potential instability",
+      "Describing feedback control only in vague terms without the correction mechanism"
+    ],
+    "followUps": ["Can you think of an everyday example, outside engineering, where overcorrecting causes the same kind of instability?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Stress concentrations and fillets",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["design", "materials", "stress"],
+    "question": "Why do engineers round off sharp internal corners with fillets, and what actually happens to the stress there if they don't?",
+    "lookingFor": "Understanding of stress concentration factors and their real consequence for fatigue and fracture.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that sharp corners cause stress to concentrate locally, far above the nominal average stress",
+        "Connect this to a stress concentration factor and why it's especially dangerous under cyclic loading",
+        "Note that a fillet spreads the load path more gradually, reducing the peak stress"
+      ],
+      "modelAnswer": "A sharp internal corner forces the load lines to bunch up right at that point, so the local stress there can be several times higher than the average stress you'd calculate for the part overall, which is captured by what's called a stress concentration factor. That matters enormously for fatigue, because cracks tend to start exactly at these high-stress points, so a part that looks fine under a simple average-stress calculation can still fail early if it has a sharp corner somewhere. A fillet, a smooth rounded transition, spreads the load path more gradually so the stress doesn't spike as sharply in one spot. It's one of those design details that looks purely cosmetic until you realise it's often the difference between a part lasting years or failing in months."
+    },
+    "commonMistakes": [
+      "Thinking fillets are purely for appearance or manufacturing ease",
+      "Not connecting stress concentration to fatigue failure specifically",
+      "Assuming average stress calculations are always sufficient for design"
+    ],
+    "followUps": ["Where else in a design might you expect a stress concentration besides a sharp internal corner?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Lightweighting trade-offs",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["design", "materials", "trade-offs"],
+    "question": "Car manufacturers talk a lot about lightweighting vehicles. Why isn't it as simple as just using less material or thinner panels?",
+    "lookingFor": "Ability to reason through multiple competing constraints, not just parrot the buzzword.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that reducing material can reduce stiffness, strength, and crash safety if done naively",
+        "Explain that real lightweighting relies on better materials, geometry, and manufacturing, not just less mass",
+        "Give an example: high-strength steel, aluminium, or composites, and note their own trade-offs like cost or repairability"
+      ],
+      "modelAnswer": "If you just make panels thinner or use less material, you generally lose stiffness and strength, and in a car that can mean worse crash performance, more flex, and more noise and vibration, so naive lightweighting can actually make a car worse and less safe. Real lightweighting usually comes from smarter choices, using high-strength steel or aluminium where the geometry lets a thinner section carry the same load, or using composites in specific areas where their strength-to-weight ratio pays off. Those materials bring their own costs though, aluminium is more expensive and harder to repair after a crash, and composites can be difficult to recycle or inspect for hidden damage. I think that's what makes it a genuinely hard engineering problem rather than a simple target, you're optimising several conflicting things, weight, cost, safety, and manufacturability, all at once."
+    },
+    "commonMistakes": [
+      "Treating lightweighting as simply removing material with no downside",
+      "Not mentioning any specific material or design strategy",
+      "Ignoring secondary trade-offs like cost, repairability, or recyclability"
+    ],
+    "followUps": ["If cost were no object, what material would you choose for a car's structure, and why?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Tolerances and manufacturing",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["manufacturing", "design", "precision"],
+    "question": "Why do engineering drawings specify tolerances instead of exact dimensions, and what happens if a tolerance is set too tight?",
+    "lookingFor": "Understanding of manufacturing variability and the cost implications of over-specifying precision.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that no manufacturing process produces a perfectly exact dimension every time",
+        "Note that tolerance defines an acceptable range that still guarantees the part functions correctly",
+        "Connect overly tight tolerances to higher manufacturing cost, more rejected parts, and slower production"
+      ],
+      "modelAnswer": "No manufacturing process, no matter how good, produces exactly the same dimension every single time, there's always some natural variation, so a tolerance defines the range within which the part will still fit and function correctly. If you set a tolerance tighter than it actually needs to be, you end up needing more precise, slower, and more expensive machining, and you'll reject more parts that would have worked perfectly fine, which drives up cost without necessarily improving the product. The skill is figuring out which dimensions actually need to be tight, because they affect fit or function critically, and which ones can be looser without anyone noticing. I think that's a good example of how engineering isn't about maximum precision everywhere, it's about spending precision only where it earns its cost."
+    },
+    "commonMistakes": [
+      "Assuming tighter tolerances are always better for quality",
+      "Not connecting tolerance to manufacturing cost or process variability",
+      "Describing tolerance vaguely without explaining why exact dimensions are impossible"
+    ],
+    "followUps": ["How would you decide which dimensions on a part need a tight tolerance and which don't?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: prototype safety shortcut under deadline pressure",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "safety", "judgement"],
+    "question": "Imagine you're leading a student engineering project and discover, close to the deadline, that a load-bearing part your team is about to present was tested with a safety margin lower than what your brief required. The rest of the team wants to present it anyway since it 'probably' won't fail during the demo. What do you do?",
+    "lookingFor": "Structured ethical reasoning that weighs deadline pressure and team loyalty against honesty and safety, without either dismissing the team or freezing indecisively.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real pressure of the deadline and the team's frustration, don't dismiss it",
+        "Reason through the actual risk versus just going with the group's optimism",
+        "Land on transparency: disclosing the shortfall rather than quietly hoping it holds"
+      ],
+      "modelAnswer": "I understand the pull to just present it, we've all put in the work and probably it would be fine for a short demo, but 'probably fine' isn't the standard we set out to meet, and if it failed in front of the panel that would be worse than being honest upfront. I'd first check whether there's a quick fix, maybe a small design change or an extra brace, that gets us back within the margin without blowing the deadline. If there genuinely isn't time, I'd rather present it honestly, explain the shortfall and what we'd do to fix it, than pretend the number is something it isn't. I think the whole point of a safety margin is that you don't get to decide case by case that it doesn't matter this time, that defeats the purpose of having one at all."
+    },
+    "commonMistakes": [
+      "Deciding to hide the issue and hope it doesn't come up",
+      "Refusing to consider any middle ground like a quick fix, jumping straight to cancelling the presentation",
+      "Not acknowledging the team's legitimate deadline pressure at all"
+    ],
+    "followUps": ["Would your answer change if the part wasn't load-bearing at all, just cosmetic?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: planned obsolescence",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "sustainability", "design"],
+    "question": "Some consumer products are deliberately designed with a limited lifespan to encourage repeat purchases. As a mechanical engineer, how would you feel about being asked to design a component that way, and how would you think it through?",
+    "lookingFor": "Genuine ethical reasoning about competing obligations to employer, consumer, and environment, not a simple yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between business incentives and the consumer's and environment's interests",
+        "Distinguish between reasonable cost-driven design choices and deliberate premature failure",
+        "Reach a considered position, likely pushing back or seeking alternatives, rather than refusing to engage with the question"
+      ],
+      "modelAnswer": "I'd feel genuinely uncomfortable with it, because there's a real difference between designing to a sensible cost and durability target, which every product does, and deliberately engineering a part to fail earlier than it needs to just to force a repurchase. The first is just good design under real constraints, the second feels like it's deceiving the customer, who reasonably expects the product to last as long as it's built to seem like it will. I think I'd want to raise that distinction directly rather than just refuse outright, because sometimes what looks like planned obsolescence is actually a genuine cost trade-off, and it's worth understanding which one you're actually being asked to do. If it really was the deliberate version, I don't think I could sign off on it, both because of the waste it creates and because it treats the customer's trust as something to exploit."
+    },
+    "commonMistakes": [
+      "Giving a purely business-focused answer with no ethical reasoning at all",
+      "Refusing to engage with any nuance between cost-driven design and deliberate obsolescence",
+      "Taking an absolutist stance without considering how you'd actually raise the concern"
+    ],
+    "followUps": ["What would you do if your manager insisted, after you raised your concerns?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics: environmental cost of material choice",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["ethics", "sustainability", "materials"],
+    "question": "If the cheapest and best-performing material for a component also happened to be one of the most environmentally damaging to produce, how would you approach that decision?",
+    "lookingFor": "Balanced reasoning that doesn't default to either pure performance or pure environmentalism without justification.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that performance, cost, and environmental impact are all legitimate factors, not a simple binary",
+        "Suggest gathering more information: how damaging, how much better, whether alternatives exist",
+        "Land on a reasoned position, likely favouring a slightly less optimal but more sustainable choice if the gap is small"
+      ],
+      "modelAnswer": "I wouldn't want to just default to the cheapest option because it's easiest, but I also don't think refusing to ever use a material with any environmental cost is realistic, since almost everything has some impact. I'd want to actually quantify the trade-off, how much worse is the alternative in terms of performance or cost, and how much better is it environmentally, because if a slightly more expensive alternative gets you ninety percent of the performance with a much smaller footprint, that seems like an easy call. If the environmentally damaging material is genuinely irreplaceable for the application, then I think the honest answer is to use it but also be upfront about that cost and look for ways to offset or reduce it elsewhere in the design. I think engineers increasingly have to hold performance and environmental responsibility in the same hand rather than treating them as separate concerns."
+    },
+    "commonMistakes": [
+      "Picking a side immediately without considering the actual magnitude of the trade-off",
+      "Ignoring cost and performance entirely in favour of an absolutist environmental stance",
+      "Giving a vague answer that avoids taking any position"
+    ],
+    "followUps": ["Can you think of a real material substitution in industry that reflects this kind of trade-off?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: EV transition engineering challenge",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["current-events", "automotive", "energy"],
+    "question": "What do you think is the biggest engineering challenge in the shift from combustion engines to electric vehicles?",
+    "lookingFor": "Awareness of a genuine current debate with a specific, well-reasoned answer rather than a generic 'batteries are hard' response.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific challenge: energy density, charging infrastructure, thermal management, or raw material supply",
+        "Explain why that challenge is genuinely hard, not just expensive",
+        "Show awareness that it's a systems problem, not purely a single-component problem"
+      ],
+      "modelAnswer": "I think the biggest challenge is actually thermal management of the battery pack, not just the battery chemistry itself. Lithium-ion cells need to stay within a fairly narrow temperature range to charge quickly, last a long time, and stay safe, so you end up needing quite a sophisticated cooling system, and that system has to work whether the car is fast-charging in the desert or sitting in freezing winter conditions. It's easy to focus on energy density because that's the headline number everyone quotes, but a huge amount of the real engineering effort goes into keeping the pack in its sweet spot under wildly different real-world conditions. I find that side of it more interesting than the chemistry, because it's a proper systems problem involving fluid dynamics, materials, and control all at once."
+    },
+    "commonMistakes": [
+      "Giving only a vague answer like 'batteries need to get better' with no specific mechanism",
+      "Ignoring the systems-level nature of the problem, like thermal management or infrastructure",
+      "Confusing energy density with power density or charging speed"
+    ],
+    "followUps": ["Do you think hydrogen fuel cells are a serious competitor to battery electric vehicles, or a distraction?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: generative design and AI in engineering",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["current-events", "ai", "design"],
+    "question": "AI-driven generative design tools can now produce optimised part geometries that a human might never have thought of. Do you think this changes what it means to be a mechanical engineer?",
+    "lookingFor": "Thoughtful, non-alarmist reasoning about how a tool changes a role, showing understanding of what engineering judgement still requires.",
+    "idealAnswer": {
+      "bullets": [
+        "Show understanding of what generative design actually does: optimising geometry against defined constraints",
+        "Recognise what it doesn't do: defining the right constraints, interpreting results, manufacturing feasibility, judgement",
+        "Land on a considered position, likely that it shifts rather than replaces the engineer's role"
+      ],
+      "modelAnswer": "I think generative design tools are genuinely powerful at exploring shapes a human wouldn't intuitively try, because they can search a huge design space against constraints like weight, stiffness, and stress far faster than we can by hand. But someone still has to decide what those constraints actually should be, interpret whether the resulting geometry is actually manufacturable, and judge whether the tool's assumptions match the real loading the part will see, and that part hasn't gone away at all. If anything, I think it shifts what the engineer spends their time on, less time drawing shapes by hand and more time thinking carefully about the problem definition and validating the output. I'm honestly excited about that shift rather than worried by it, because it sounds like it rewards the kind of judgement and questioning that I think is the actually interesting part of engineering."
+    },
+    "commonMistakes": [
+      "Treating the tool as either a total replacement for engineers or dismissing it entirely as unimportant",
+      "Not explaining what generative design actually optimises against",
+      "Giving a purely emotional reaction without engineering reasoning"
+    ],
+    "followUps": ["What's one thing you think a human engineer will always need to check that an AI tool can't verify on its own?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Current development: composite recycling and circular economy",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["current-events", "sustainability", "manufacturing"],
+    "question": "Wind turbine blades are notoriously hard to recycle because they're made from composite materials. Why is that such a difficult engineering problem, and does it change how you'd think about designing them in the first place?",
+    "lookingFor": "Awareness of the specific material science challenge plus forward-looking design thinking, not just a general sustainability statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why composites are hard to recycle: fibres and resin are bonded in a way that's difficult to separate cleanly",
+        "Note the scale of the problem: blades are large, and the fleet is aging into decommissioning now",
+        "Suggest a forward-looking angle: designing for disassembly or recyclability from the start, not just fixing disposal after the fact"
+      ],
+      "modelAnswer": "Composite blades are strong because the fibres and resin are bonded together permanently, which is exactly what makes them so hard to recycle, you can't just melt them down and separate the components the way you can with a lot of metals. That's becoming a real problem now because a lot of early wind turbines are reaching the end of their service life at the same time, so there's a genuine wave of blades needing disposal with no great solution yet, mostly landfill or expensive mechanical shredding. I think the more interesting engineering question isn't just how to recycle existing blades, but whether future blades could be designed with recyclability in mind from the start, using resins that can be chemically broken down or modular designs that are easier to take apart. It's a good example of a problem that got worse because recyclability wasn't part of the original design brief, and I'd want that to be different for whatever I end up designing."
+    },
+    "commonMistakes": [
+      "Giving a generic sustainability answer without explaining the specific composite bonding issue",
+      "Not connecting the problem to the scale or timing of the current decommissioning wave",
+      "Failing to suggest any forward-looking design implication"
+    ],
+    "followUps": ["Can you think of another engineered product facing the same end-of-life recycling problem?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: assistive device design under constraints",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "design", "constraints"],
+    "question": "Suppose you had to design a simple mechanical device to help someone with limited grip strength open a jar, using only cheap, easily available materials. Walk me through how you'd approach it.",
+    "lookingFor": "Structured design thinking: understanding the real constraint, generating options, and reasoning about trade-offs, not jumping to a final answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by clarifying the actual problem: what specifically limited grip strength prevents, gripping tightly or twisting with force",
+        "Generate at least one plausible mechanism, like a lever-based or ratchet-based gripping tool, and explain the physics",
+        "Consider real constraints: cost, ease of use, manufacturability, and testing with the actual user"
+      ],
+      "modelAnswer": "I'd start by figuring out exactly what limited grip strength stops someone from doing, is it applying enough clamping force to hold the lid still, or generating enough torque to twist it, because those need slightly different solutions. My instinct would be a lever-based gripping tool, something like a wide rubberised jaw that clamps around the lid using a long handle, because a longer lever arm lets you apply the same torque with much less hand force, which is basic mechanical advantage. I'd want to keep it cheap by using off-the-shelf rubber grip material and a simple hinge rather than anything custom-machined, and I'd want to actually test a prototype with someone who has the condition rather than just assuming my design works, because usability problems like grip diameter or fatigue often only show up in real use. I think the most important habit here is resisting the urge to jump straight to a clever mechanism before I've actually nailed down what the real constraint is."
+    },
+    "commonMistakes": [
+      "Jumping directly to a specific mechanism without first clarifying the actual constraint",
+      "Ignoring cost or manufacturability entirely in favour of a purely clever solution",
+      "Not mentioning testing with a real user as part of the process"
+    ],
+    "followUps": ["How would your design change if the person also had limited wrist mobility, not just grip strength?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: root-cause failure diagnosis",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "failure-analysis", "reasoning"],
+    "question": "Imagine a machine in a factory keeps failing at the exact same joint every few weeks, even after it's repaired each time. How would you go about figuring out what's actually wrong?",
+    "lookingFor": "Systematic root-cause thinking rather than jumping to a guess, showing awareness that repeated failure at the same point usually means a repeating condition, not bad luck.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that a repeated failure at the same location strongly suggests a root cause rather than random chance",
+        "Propose gathering evidence: inspecting the failed part, checking loading history, looking for patterns in timing or operating conditions",
+        "Consider a few plausible causes, like fatigue from cyclic loading, misalignment, or a design flaw, and how you'd distinguish between them"
+      ],
+      "modelAnswer": "If it's failing at exactly the same joint every time, that's a strong clue it's not random bad luck, something specific about that location or the way it's loaded is the real cause, and just replacing the part each time without investigating is treating the symptom rather than the disease. I'd want to actually examine a failed part closely, maybe under a microscope, because the fracture surface itself often tells you a lot, a fatigue failure looks quite different from a sudden overload failure. I'd also want to check whether the joint sees repeated cyclic loading, whether it's properly aligned, and whether the maintenance team is actually replacing it with the same design each time or perhaps a slightly different, weaker part. I think the temptation in a live factory is to just fix it fast and move on, but repeated failure at one point is exactly the situation where slowing down to actually diagnose the cause saves far more time in the long run."
+    },
+    "commonMistakes": [
+      "Guessing a single cause immediately without proposing any actual investigation",
+      "Not recognising that repeated failure at the same location points to a systemic cause",
+      "Suggesting only more frequent replacement rather than understanding why it fails"
+    ],
+    "followUps": ["If you found fatigue striations on the fracture surface, what would that tell you about the loading history?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: designing for real-world constraints",
+    "program": "Mechanical Engineering",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "design", "constraints"],
+    "question": "Suppose you were asked to design a small footbridge for a remote community, using only materials and skills available locally. What would matter most to you in that design?",
+    "lookingFor": "Reasoning that prioritises realistic constraints over textbook optimality, and shows awareness that context shapes good engineering.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that 'best' design depends on context, not just theoretical optimal strength-to-weight",
+        "Prioritise constructability with local materials, tools, and skills over exotic materials or complex joints",
+        "Consider maintainability: can the community repair or inspect it themselves over time"
+      ],
+      "modelAnswer": "I think the instinct might be to reach for the theoretically strongest or lightest material, but if there's no way to actually work with it locally, that's the wrong answer for this context. I'd want to design around materials and construction methods the community can actually source and build with, timber or simple steel sections with bolted rather than welded joints if specialist welding isn't available, because a design that can't actually be built is worthless no matter how elegant the calculation. I'd also care a lot about maintainability, using joints and materials that can be inspected and repaired without needing to fly in a specialist every time something needs checking. I think this is a good example of how good engineering isn't the same as maximum sophistication, it's the solution that actually fits the real constraints of who has to build and live with it."
+    },
+    "commonMistakes": [
+      "Defaulting to a textbook-optimal design without considering local buildability",
+      "Ignoring long-term maintainability by the community itself",
+      "Overcomplicating the joint design or material choice for the actual context"
+    ],
+    "followUps": ["How would your priorities change if the bridge needed to carry occasional vehicle traffic, not just pedestrians?"]
+  },
+  {
+    "id": "prog-mechanical-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Composite materials vs metals trade-off",
+    "program": "Mechanical Engineering",
+    "difficulty": "hard",
+    "tags": ["materials", "composites", "design"],
+    "question": "Carbon fibre composites have a much better strength-to-weight ratio than most metals, so why aren't they used for everything, from car chassis to kitchen knives?",
+    "lookingFor": "Nuanced understanding that a single performance metric doesn't capture the whole picture of material selection.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine strength-to-weight advantage of composites",
+        "Identify real limitations: cost, manufacturing complexity, brittleness under impact, difficulty repairing or recycling",
+        "Conclude that material choice depends on the full set of requirements, not one headline property"
+      ],
+      "modelAnswer": "Carbon fibre composites really do beat most metals on strength-to-weight, which is exactly why they show up in aircraft and racing cars where every gram matters and cost is a secondary concern. But they're expensive to manufacture, often need specialised curing processes and skilled labour, and unlike metals they don't yield gracefully, they tend to fail suddenly under impact rather than dent or bend, which is a real safety concern in something like a car chassis in a crash. They're also genuinely difficult to repair or recycle compared to metal, which matters a lot for everyday products that need to survive rough use and eventually be disposed of. I think it's a good reminder that no single number, like strength-to-weight, ever tells you the whole story, a material choice is really an answer to a whole list of requirements at once, not just the headline one."
+    },
+    "commonMistakes": [
+      "Treating strength-to-weight as the only property that matters in material selection",
+      "Not mentioning cost or manufacturing complexity as real barriers",
+      "Ignoring the brittle failure mode of composites under impact"
+    ],
+    "followUps": ["Can you think of a product where composites have started replacing metal successfully despite these downsides?"]
+  }
+]

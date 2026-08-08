@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-information-technology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "IT vs Computer Science distinction",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "program-fit", "reasoning"],
+    "question": "Information Technology and Computer Science courses overlap a lot on paper. How do you understand the difference, and why does that difference matter to you?",
+    "lookingFor": "Genuine understanding that IT leans toward applying, integrating, and running systems while CS leans toward theory and building new computation from first principles.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe CS as closer to algorithms, theory, and building new software or computational models",
+        "Describe IT as closer to selecting, deploying, integrating, securing and maintaining systems that serve an organisation",
+        "Connect the distinction to a real preference of theirs, not just a textbook line"
+      ],
+      "modelAnswer": "From what I've read and seen through a school IT club, computer science tends to ask how do we build this from scratch, while IT tends to ask how do we get real systems working reliably together for real users. I enjoyed the year I spent setting up and troubleshooting our school's network and ticketing system far more than the algorithms module, because I liked the immediate, practical payoff of something working end to end. That's not to say I dislike theory, I just want it in service of a working system rather than as the main event, which is why IT feels like the better fit for me."
+    },
+    "commonMistakes": [
+      "Saying the two fields are basically identical",
+      "Dismissing CS or IT as the 'easier' option",
+      "Giving the textbook definition with no personal connection"
+    ],
+    "followUps": ["Which part of IT do you expect to enjoy least, and why?"]
+  },
+  {
+    "id": "prog-information-technology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Client-server vs peer-to-peer",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["networking", "fundamentals", "concept"],
+    "question": "Can you explain the difference between a client-server architecture and a peer-to-peer architecture, and give a real example of each?",
+    "lookingFor": "Clear conceptual grasp of the two models plus the ability to place familiar technology into the right bucket.",
+    "idealAnswer": {
+      "bullets": [
+        "Client-server: centralised server responds to requests from many clients",
+        "Peer-to-peer: nodes act as both client and server, sharing resources directly with each other",
+        "Give one concrete real-world example of each, ideally with a trade-off"
+      ],
+      "modelAnswer": "In client-server, one machine, the server, holds the resource or service, and clients send requests to it, which is how something like a banking website works, since you want a single trusted, controllable source of truth. In peer-to-peer, every node can act as both requester and provider, so the workload and data get spread across the network, which is how something like BitTorrent works. The trade-off I find interesting is that client-server is easier to secure and update centrally, while peer-to-peer scales well and has no single point of failure but is much harder to police or update consistently."
+    },
+    "commonMistakes": [
+      "Confusing peer-to-peer with just 'no internet connection needed'",
+      "Giving examples that don't actually fit the model described",
+      "Missing any mention of trade-offs like scalability or control"
+    ],
+    "followUps": ["Which model would you choose for a small company's internal file sharing, and why?"]
+  },
+  {
+    "id": "prog-information-technology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Database normalization",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["databases", "fundamentals", "concept"],
+    "question": "What is database normalization, and can you think of a situation where you would deliberately denormalize a database?",
+    "lookingFor": "Understanding of normalization as reducing redundancy and update anomalies, plus the maturity to see when a trade-off toward speed makes sense.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain normalization as organising data to reduce duplication and avoid inconsistent updates",
+        "Mention it happens through splitting data into related tables using keys",
+        "Give a plausible reason to denormalize, such as read-heavy reporting where speed matters more than storage"
+      ],
+      "modelAnswer": "Normalization is about structuring a database so each piece of information lives in one place, so if a customer changes their address you update it once rather than in every order record that mentions them. It usually means breaking data into separate related tables connected by keys instead of one giant flat table. That said, I understand that a highly normalized database can mean a lot of joins, so for something like a dashboard that needs instant reporting on millions of rows, you might deliberately denormalize or maintain a summary table, accepting some redundancy in exchange for speed."
+    },
+    "commonMistakes": [
+      "Defining normalization but never mentioning why redundancy is a problem",
+      "Treating denormalization as always a mistake",
+      "Confusing normalization with data validation or encryption"
+    ],
+    "followUps": ["What could go wrong if you never normalized a database at all?"]
+  },
+  {
+    "id": "prog-information-technology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Symmetric vs asymmetric encryption",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["security", "cryptography", "concept"],
+    "question": "What's the difference between symmetric and asymmetric encryption, and why do most secure systems actually use both together?",
+    "lookingFor": "Correct grasp of the key mechanics plus the practical reasoning for hybrid use, showing understanding beyond memorised definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Symmetric: one shared key for both encryption and decryption, fast but requires securely sharing the key",
+        "Asymmetric: public and private key pair, solves the key-sharing problem but is computationally slower",
+        "Explain the hybrid approach: asymmetric to safely exchange a symmetric key, then symmetric for the actual bulk data"
+      ],
+      "modelAnswer": "Symmetric encryption uses the same key to lock and unlock data, which is fast, but the hard problem is how do two parties agree on that key without someone intercepting it. Asymmetric encryption solves that by using a public key anyone can encrypt with and a private key only the owner can decrypt with, but it's much slower for large amounts of data. That's why something like HTTPS actually uses both, it uses asymmetric encryption briefly at the start of a connection just to safely agree on a shared symmetric key, then switches to symmetric encryption for the rest of the session because it's far faster."
+    },
+    "commonMistakes": [
+      "Saying asymmetric encryption is simply 'more secure' with no explanation",
+      "Not knowing why speed matters for large data transfers",
+      "Missing the connection to a real protocol like HTTPS or TLS"
+    ],
+    "followUps": ["What would happen to online banking if we only had symmetric encryption available?"]
+  },
+  {
+    "id": "prog-information-technology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "CAP theorem reasoning",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["databases", "distributed-systems", "reasoning"],
+    "question": "Have you come across the CAP theorem? Can you explain what it means for a system to have to choose between consistency and availability?",
+    "lookingFor": "Ability to reason through a genuinely hard distributed-systems trade-off rather than just recite the acronym.",
+    "idealAnswer": {
+      "bullets": [
+        "State the theorem: a distributed system can't simultaneously guarantee consistency, availability, and partition tolerance",
+        "Explain that partition tolerance is essentially non-negotiable in real networks, so the real choice is consistency versus availability",
+        "Give a plausible example of a system that would favour one over the other"
+      ],
+      "modelAnswer": "I came across this while reading about how banking apps and social media apps behave differently during network problems. The CAP theorem says that when part of a distributed system can't talk to another part, you can't have both every node seeing perfectly up to date data and every node still responding to requests, you have to pick one. Since networks do fail in the real world, most systems accept they must sometimes sacrifice either strict consistency or availability, so a bank transfer system leans toward consistency because showing a wrong balance is dangerous, while something like a social media like counter leans toward availability because staying responsive matters more than the count being perfectly accurate for a few seconds."
+    },
+    "commonMistakes": [
+      "Reciting 'consistency, availability, partition tolerance' with no explanation of the actual trade-off",
+      "Claiming a real system can have all three all the time",
+      "Giving examples that don't clearly map to the choice being described"
+    ],
+    "followUps": ["Which side of that trade-off would you choose for an online exam submission system, and why?"]
+  },
+  {
+    "id": "prog-information-technology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "What happens when you load a webpage",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["networking", "systems", "reasoning"],
+    "question": "Walk me through, in as much technical detail as you can, what happens between typing a web address into a browser and the page appearing on screen.",
+    "lookingFor": "A structured, technically sequenced explanation showing broad systems understanding rather than a vague summary.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention DNS resolution turning the domain name into an IP address",
+        "Describe establishing a connection, such as TCP handshake and TLS if it's HTTPS, then the HTTP request and response",
+        "Cover the browser rendering the response, including fetching additional resources and building the page"
+      ],
+      "modelAnswer": "First the browser needs to turn the domain name into an IP address, so it checks its cache and then asks a DNS resolver to look that up. Once it has the address, it opens a connection to the server, doing a TCP handshake and, if it's HTTPS, a TLS negotiation to set up encryption, and then it sends an HTTP request for the page. The server processes that, maybe hitting a database, and sends back HTML, which the browser starts parsing immediately, fetching linked resources like CSS and JavaScript along the way, and building up the page structure and visual layout as it goes, rather than waiting for everything to arrive first."
+    },
+    "commonMistakes": [
+      "Skipping DNS entirely and jumping straight to 'the server sends the page'",
+      "Describing only the network layer with no mention of rendering",
+      "Confusing HTTP and HTTPS or skipping encryption setup entirely"
+    ],
+    "followUps": ["What would the user actually experience if DNS resolution failed at that first step?"]
+  },
+  {
+    "id": "prog-information-technology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Hybrid cloud reasoning",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["cloud", "systems", "reasoning"],
+    "question": "Cloud computing is often marketed as the obvious upgrade over running your own servers, yet many organisations still keep some infrastructure on-premises. Why do you think that is?",
+    "lookingFor": "Balanced reasoning about cost, control, latency, compliance and risk rather than a one-sided 'cloud is always better' view.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge real cloud advantages like elasticity and reduced upfront hardware cost",
+        "Identify at least one legitimate reason to stay on-premises, such as regulation, data sensitivity, latency, or long-term cost at scale",
+        "Show it's a deliberate trade-off decision, not simply organisations being behind the times"
+      ],
+      "modelAnswer": "Cloud computing is genuinely attractive because you can scale resources up or down without buying hardware you might not need in six months, and you offload a lot of maintenance to the provider. But some organisations, like hospitals or banks, have data they're legally required to keep within certain borders or under tighter control, and cloud contracts don't always make that simple to guarantee. There's also a cost argument, at a large enough steady scale, running your own servers can actually work out cheaper than paying a cloud provider's margin indefinitely, so I think the hybrid approach isn't organisations being outdated, it's a genuine trade-off between flexibility, control, and long-term cost."
+    },
+    "commonMistakes": [
+      "Treating cloud adoption as purely a technology maturity question",
+      "Giving no concrete reason for staying on-premises",
+      "Ignoring cost and regulatory dimensions entirely"
+    ],
+    "followUps": ["If you were advising a small clinic, would you recommend cloud, on-premises, or hybrid, and why?"]
+  },
+  {
+    "id": "prog-information-technology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Scalability failure case",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["systems", "reliability", "current-events"],
+    "question": "Can you tell me about a real case, or one you can reason through, where a website or system failed because it wasn't built to handle scale, and what you think should have been done differently?",
+    "lookingFor": "Evidence of following real-world tech failures and the ability to diagnose a scaling issue in plain terms.",
+    "idealAnswer": {
+      "bullets": [
+        "Name or describe a plausible real scenario, such as a ticket sale site or exam portal crashing under sudden demand",
+        "Identify the likely bottleneck, such as a single database, no caching, or no load balancing",
+        "Suggest a reasonable fix, like load testing, caching, or horizontal scaling, without overclaiming expertise"
+      ],
+      "modelAnswer": "I remember reading about ticket sale websites for popular concerts crashing within minutes because thousands of people hit the same server at once, and often the bottleneck ends up being a single database getting overwhelmed with requests that weren't spread out or cached. If I were reasoning through it, I'd guess the fix isn't just 'add more servers', it's things like load testing beforehand to know your actual limits, using a queue so users are processed in order instead of all hitting the database simultaneously, and caching anything that doesn't change second to second. It's a good reminder that scale isn't just about having powerful hardware, it's about designing the system so demand doesn't all land in the same place at once."
+    },
+    "commonMistakes": [
+      "Vaguely blaming 'too much traffic' with no deeper diagnosis",
+      "Suggesting only 'buy more servers' as the fix",
+      "Inventing technical specifics that don't hold together logically"
+    ],
+    "followUps": ["How would you test beforehand that a system can handle a big spike in traffic?"]
+  },
+  {
+    "id": "prog-information-technology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "IPv4 to IPv6 transition",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["networking", "current-events", "concept"],
+    "question": "We've had IPv6 available for over two decades because IPv4 addresses are running out, yet most of the internet still runs on IPv4. Why has the transition been so slow?",
+    "lookingFor": "Understanding of the technical difference plus realistic reasoning about why infrastructure change is slow and costly.",
+    "idealAnswer": {
+      "bullets": [
+        "State the core difference: IPv4's limited address space versus IPv6's vastly larger space",
+        "Mention that IPv6 isn't naturally backward compatible with IPv4, so both need to run in parallel",
+        "Explain the slow transition through cost, inertia, and workarounds like NAT that delayed the pressure"
+      ],
+      "modelAnswer": "IPv4 only has about 4.3 billion possible addresses, which sounded like plenty decades ago but isn't nearly enough for a world with billions of connected devices, while IPv6 has an enormous address space that solves that problem for a very long time. The issue is that IPv6 isn't directly compatible with IPv4, so every router, ISP, and piece of infrastructure has to support both during the transition, which is expensive and slow to justify when things already work. On top of that, techniques like network address translation let many devices share one public IPv4 address, which took pressure off the shortage and gave organisations less urgency to migrate, so the switch has been happening but far more gradually than the original timeline expected."
+    },
+    "commonMistakes": [
+      "Not knowing why IPv4 addresses are limited in the first place",
+      "Assuming IPv6 is simply 'switched on' overnight with no compatibility issue",
+      "Giving no real explanation for the slow pace beyond 'people are lazy'"
+    ],
+    "followUps": ["What problems could arise for a device that only supports IPv6 trying to reach an IPv4-only server?"]
+  },
+  {
+    "id": "prog-information-technology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Data breach cover-up dilemma",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["ethics", "security", "situational"],
+    "question": "Imagine you're doing a placement year in an IT department and you discover the company suffered a data breach months ago that was quietly patched and never disclosed to affected users. What would you do?",
+    "lookingFor": "Structured ethical reasoning that weighs loyalty and career risk against user harm and legal obligation, landing on a responsible course of action.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between being new and junior versus the seriousness of undisclosed harm to real users",
+        "Favour raising it through proper internal channels first, such as a manager, compliance, or data protection officer",
+        "Show willingness to escalate further if internal channels fail, while acknowledging the personal risk involved"
+      ],
+      "modelAnswer": "As a placement student I'd feel nervous about rocking the boat, but I don't think that outweighs the fact that real people's data may have been exposed without their knowledge, which in a lot of places is actually a legal disclosure requirement, not just an ethical one. My first step would be to raise it clearly with my manager or, if the organisation has one, the data protection or compliance officer, laying out what I found rather than accusing anyone. If it became clear that raising it internally was being deliberately ignored or buried, I think I'd have to consider escalating further, even though I know that could cost me the placement, because staying silent would make me complicit in leaving people unprotected."
+    },
+    "commonMistakes": [
+      "Deciding to say nothing because they're 'just an intern'",
+      "Jumping straight to going public or to regulators without trying internal channels first",
+      "Ignoring the legal disclosure dimension entirely"
+    ],
+    "followUps": ["Would your answer change if disclosing it meant the company might go out of business?"]
+  },
+  {
+    "id": "prog-information-technology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Engagement design ethics",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["ethics", "design", "situational"],
+    "question": "Suppose you were asked to help design a feature that would clearly boost how long people spend on an app, but you personally believe it exploits attention in an unhealthy way. How would you think this through?",
+    "lookingFor": "Genuine ethical wrestling with the tension between technical capability and user wellbeing, rather than an easy dismissal either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension between what's technically effective and what's good for users",
+        "Reason through options, such as raising concerns, proposing an alternative, or refusing to build it",
+        "Avoid a simplistic 'I'd just refuse' answer with no consideration of nuance or consequence"
+      ],
+      "modelAnswer": "I'd want to separate two questions, whether the feature works and whether it's the right thing to build, because IT skills are powerful enough that being effective isn't the same as being responsible. My first move would be to actually voice the concern to whoever's leading the project, explaining specifically what I think is exploitative about it, since sometimes a small tweak, like adding natural stopping points instead of infinite engagement loops, solves the underlying goal without the harm. If I raised it and was told to build it exactly as designed anyway, I think I'd have to weigh how central this is to my role and possibly decline that specific piece of work, because I don't want to become someone who builds things I believe actively hurt the people using them."
+    },
+    "commonMistakes": [
+      "Refusing outright with no attempt to understand or influence the design first",
+      "Building it uncritically because 'that's the job'",
+      "Giving a purely technical answer with no ethical reasoning at all"
+    ],
+    "followUps": ["Do you think it's ever acceptable to design for engagement at the cost of wellbeing?"]
+  },
+  {
+    "id": "prog-information-technology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Facial recognition surveillance dilemma",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["ethics", "ai", "privacy"],
+    "question": "If you were asked to help build a facial recognition system for a city's public surveillance network, what ethical concerns would you want addressed before agreeing to work on it?",
+    "lookingFor": "Awareness of concrete harms like misidentification bias, consent, and mission creep, plus a thoughtful rather than absolutist stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Raise concerns about accuracy bias across different demographic groups",
+        "Raise concerns about consent, oversight, and how the data could be repurposed beyond its original stated use",
+        "Land on a reasoned position rather than a flat yes or no"
+      ],
+      "modelAnswer": "I'd want to know first how the system was tested for accuracy across different skin tones and facial features, since facial recognition has a well documented history of higher error rates for some groups, and a misidentification in a surveillance context can mean someone gets wrongly stopped or worse. I'd also want clarity on oversight, like who can access the data, how long it's stored, and whether there are legal limits stopping the system from quietly expanding into tracking things beyond what it was originally approved for. I don't think I'd refuse outright, because there can be legitimate public safety uses, but I'd want strong technical accuracy and strict governance in place before I'd feel comfortable being part of building it."
+    },
+    "commonMistakes": [
+      "Treating the technology as neutral with no mention of bias or misuse risk",
+      "Refusing to engage with the question by saying they'd simply never work on it",
+      "Naming concerns with no reasoning for why they matter"
+    ],
+    "followUps": ["Who do you think should decide where and how such a system is deployed?"]
+  },
+  {
+    "id": "prog-information-technology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Privacy vs personalization trade-off",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["ethics", "privacy", "data"],
+    "question": "Personalized recommendations rely on collecting detailed data about users. Where do you personally draw the line between useful personalization and invasive data collection?",
+    "lookingFor": "A thought-out personal position that recognises both the value and the risk of data collection, not a blanket stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine value personalization can offer users",
+        "Identify a specific line, such as consent, transparency, or purpose limitation, rather than a vague feeling",
+        "Show awareness this is genuinely debated, not a settled question"
+      ],
+      "modelAnswer": "I actually like personalization when it's based on data I can see and understand, like a shopping site recommending things similar to what I've bought before. Where it starts to feel invasive to me is when data gets combined across sources I never knowingly gave, like inferring things about my mood or health from unrelated browsing patterns, because at that point I haven't meaningfully consented to that specific use. So the line I'd draw is around transparency and purpose, I'm fine with data being used for the thing I agreed to it being used for, and uncomfortable when it quietly gets repurposed for something else entirely."
+    },
+    "commonMistakes": [
+      "Saying they don't care about privacy at all with no reasoning",
+      "Saying all data collection is wrong with no acknowledgment of real benefits",
+      "Giving an answer with no clear, specific line at all"
+    ],
+    "followUps": ["Should users be able to see and delete every piece of data a company holds on them?"]
+  },
+  {
+    "id": "prog-information-technology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI and entry-level jobs",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["ai", "current-events", "career-awareness"],
+    "question": "There's a lot of debate right now about generative AI tools writing code and potentially reducing demand for entry-level developers. Does that concern you, and how does it shape how you think about studying IT?",
+    "lookingFor": "Realistic, non-defensive engagement with a genuine current threat to the field, plus a thoughtful view on how to adapt rather than denial or panic.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the debate honestly rather than dismissing it or catastrophising",
+        "Show awareness of what AI tools are currently good and bad at",
+        "Explain how it shapes their own approach to learning, such as focusing on judgement, systems thinking, or problem framing rather than just syntax"
+      ],
+      "modelAnswer": "It does concern me a little, I've seen how quickly tools can now generate working code from a prompt, and I know some of the more repetitive entry-level tasks are genuinely at risk of being automated. But from what I've tried myself, these tools are good at producing code and much weaker at knowing whether that code is actually the right solution to the real problem, or how it fits into a larger messy system with legacy constraints. So it's actually made me more deliberate about wanting to build strong fundamentals in things like system design, debugging, and understanding requirements, because I think that judgement is what stays valuable even as the tools around it change quickly."
+    },
+    "commonMistakes": [
+      "Denying that generative AI has any real impact on the field",
+      "Sounding panicked with no constructive response",
+      "Giving a generic 'AI is the future' answer with no personal reflection"
+    ],
+    "followUps": ["What skill do you think will matter most in an AI-assisted development world?"]
+  },
+  {
+    "id": "prog-information-technology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Right to be forgotten vs data-driven business",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["privacy", "regulation", "current-events"],
+    "question": "Regulations like GDPR give people a 'right to be forgotten', letting them ask companies to delete their data. What tension does this create for how modern IT systems are actually built?",
+    "lookingFor": "Understanding that data deletion is technically harder than it sounds in distributed, backed-up, and interconnected systems, plus awareness of why the right exists.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the purpose of the right, giving people control over their digital footprint",
+        "Identify the technical difficulty, such as data existing in backups, logs, caches, and third-party systems",
+        "Show it's a genuine engineering and design challenge, not just a policy checkbox"
+      ],
+      "modelAnswer": "The idea behind the right to be forgotten makes sense to me, people shouldn't be stuck with old data about them living forever somewhere they can't control. But technically it's a lot harder than just pressing delete, because that person's data might be scattered across live databases, backups taken months ago, analytics logs, and maybe even shared with third party services the company works with. So it actually forces IT teams to design systems from the start with deletion in mind, tracking where personal data flows so it can genuinely be found and removed everywhere, rather than treating privacy as something bolted on after the system is already built."
+    },
+    "commonMistakes": [
+      "Assuming deletion is a simple single action with no technical complexity",
+      "Not knowing why the regulation exists in the first place",
+      "Treating it as purely a legal issue with no engineering dimension"
+    ],
+    "followUps": ["How might this affect the way a company designs its backup strategy?"]
+  },
+  {
+    "id": "prog-information-technology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantum computing and encryption",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["security", "current-events", "cryptography"],
+    "question": "There's growing talk about quantum computers eventually being able to break current encryption standards. What do you understand about that threat, and should it worry us today?",
+    "lookingFor": "Basic accurate understanding of why quantum computing threatens certain encryption methods, plus balanced judgement about the current versus future risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that much current encryption, especially asymmetric encryption, relies on problems like factoring large numbers that are hard for classical computers but theoretically fast for a sufficiently powerful quantum computer",
+        "Note that practical, large-scale quantum computers capable of this don't fully exist yet, so it's a future risk rather than an active crisis",
+        "Mention that the field is already responding with post-quantum cryptography research"
+      ],
+      "modelAnswer": "As I understand it, a lot of current encryption, especially the asymmetric kind used to secure things like online banking, relies on problems such as factoring huge numbers, which are essentially impossible for normal computers to brute force in reasonable time but could, in theory, be solved much faster by a sufficiently advanced quantum computer. What reassures me a bit is that we're not there yet, today's quantum computers aren't powerful or stable enough to actually break real-world encryption. That said, I don't think it should be ignored, because encrypted data being stored today could still be harvested and decrypted later once quantum computers catch up, which is part of why there's already active research into post-quantum cryptography designed to resist that future threat."
+    },
+    "commonMistakes": [
+      "Claiming quantum computers can already break encryption today",
+      "Dismissing the concern entirely as science fiction",
+      "Not distinguishing between symmetric and asymmetric encryption vulnerability"
+    ],
+    "followUps": ["Why might 'harvest now, decrypt later' be a real concern even before quantum computers are ready?"]
+  },
+  {
+    "id": "prog-information-technology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Net neutrality debate",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["current-events", "policy", "networking"],
+    "question": "What's your understanding of the net neutrality debate, and where do you personally land on it?",
+    "lookingFor": "Accurate grasp of the core issue and a defensible personal position, showing engagement with an ongoing tech policy debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain net neutrality as the principle that internet providers should treat all data equally, not speeding up or blocking based on content or who pays more",
+        "Mention at least one argument from each side, such as fair access versus infrastructure investment incentives",
+        "Give a personal stance with reasoning, not just a repeated slogan"
+      ],
+      "modelAnswer": "Net neutrality is the idea that internet providers shouldn't be able to speed up, slow down, or block traffic based on what site it's going to or who's paying them extra, everyone's data gets treated the same. The argument for it is that without it, providers could favour their own services or big companies that pay more, squeezing out smaller sites and start-ups who can't afford preferential treatment. The counterargument is that removing those rules might let providers invest more in infrastructure because they can charge differently for different use cases, but personally I lean toward supporting net neutrality, because I think a level playing field for access to information matters more than the efficiency argument, especially for smaller creators and businesses who'd otherwise get squeezed out."
+    },
+    "commonMistakes": [
+      "Confusing net neutrality with data privacy or censorship",
+      "Only presenting one side of the debate",
+      "Giving a stance with no supporting reasoning"
+    ],
+    "followUps": ["How might net neutrality rules, or the lack of them, affect a small start-up website?"]
+  },
+  {
+    "id": "prog-information-technology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "AI regulation awareness",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["ai", "regulation", "current-events"],
+    "question": "Governments around the world are starting to regulate artificial intelligence, with rules like the EU AI Act. Do you think regulating AI development is the right approach, or does it risk holding back innovation?",
+    "lookingFor": "Balanced awareness of the debate around AI regulation with a clear, reasoned personal opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that AI regulation is an active, real policy area, not a hypothetical",
+        "Present at least one genuine argument for regulation and one concern about overregulation",
+        "Land on a considered personal view rather than a neutral non-answer"
+      ],
+      "modelAnswer": "I think some regulation is genuinely necessary, especially for high-risk uses like AI in hiring decisions, healthcare diagnosis, or law enforcement, where a biased or wrong output can seriously harm someone and there's currently very little accountability if it goes wrong. At the same time, I understand the worry that overly broad or rigid rules could slow down smaller companies and researchers who don't have the legal resources big tech firms do, effectively entrenching the largest players. My own view is that risk-based regulation, like tiering rules by how much harm a given AI use case could cause rather than regulating all AI identically, strikes a more sensible balance than a blanket approach."
+    },
+    "commonMistakes": [
+      "Claiming to have never heard of any AI regulation debate",
+      "Giving a purely one-sided answer with no acknowledgment of trade-offs",
+      "Refusing to commit to any actual opinion"
+    ],
+    "followUps": ["Should the same AI rules apply equally to a small start-up and a large tech company?"]
+  },
+  {
+    "id": "prog-information-technology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Ransomware on critical infrastructure",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["security", "current-events", "reasoning"],
+    "question": "There have been several high-profile ransomware attacks on hospitals and critical infrastructure in recent years. Why do you think these systems keep being targeted, and what do you think makes them so hard to defend?",
+    "lookingFor": "Understanding of why critical infrastructure is an attractive target and awareness of real defensive challenges like legacy systems and human factors.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why critical infrastructure is attractive to attackers, such as high pressure to pay quickly to restore essential services",
+        "Mention real defensive challenges, like ageing legacy systems, limited IT budgets, or human error such as phishing",
+        "Avoid oversimplifying it as purely a technology problem"
+      ],
+      "modelAnswer": "I think critical infrastructure like hospitals gets targeted precisely because the stakes are so high, attackers are betting that an organisation where lives or essential services are on the line will pay a ransom quickly rather than risk prolonged downtime. What makes these systems especially hard to defend is that a lot of them run on legacy software that's expensive and risky to update, sometimes because a critical piece of equipment only works with an outdated operating system, and IT security budgets in public services are often stretched thin compared to private tech companies. On top of that, a huge number of these attacks still start with something as simple as a phishing email, so it's not purely a technology problem, it's also about training and human behaviour under everyday pressure."
+    },
+    "commonMistakes": [
+      "Blaming the attack purely on 'hackers being sophisticated' with no structural explanation",
+      "Ignoring the human factor entirely and focusing only on technical vulnerabilities",
+      "Suggesting an unrealistic simple fix like 'just update everything'"
+    ],
+    "followUps": ["What would you prioritise first if you were given a limited budget to improve a hospital's cybersecurity?"]
+  },
+  {
+    "id": "prog-information-technology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Zero-downtime legacy migration",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["systems", "hypothetical", "reasoning"],
+    "question": "Imagine you're asked to plan how you'd move a company's critical system off an old legacy platform onto a new one, without the business being able to afford any downtime. How would you approach it?",
+    "lookingFor": "Structured, realistic thinking about incremental migration strategy rather than a naive 'switch it over one weekend' plan.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject a risky big-bang cutover in favour of an incremental or parallel-run approach",
+        "Mention running old and new systems in parallel with data synced, testing thoroughly before fully switching over",
+        "Include a rollback plan in case something goes wrong"
+      ],
+      "modelAnswer": "My instinct would be to avoid a single big switch-over weekend, because if anything goes wrong there's no safety net and the business is exposed. I'd want to run the new system in parallel with the old one first, gradually syncing data between them and routing a small, low-risk slice of real traffic to the new system to see how it behaves under genuine conditions, before slowly increasing that share over time. Throughout that, I'd want a clear rollback plan at every stage, so if something breaks on the new system we can fall back to the old one instantly rather than being stuck mid-migration with neither system fully working."
+    },
+    "commonMistakes": [
+      "Proposing a single all-at-once cutover with no fallback",
+      "Ignoring the need to keep data synchronised between old and new systems during transition",
+      "Giving a purely technical answer with no mention of risk management"
+    ],
+    "followUps": ["How would you decide which users or data to move to the new system first?"]
+  },
+  {
+    "id": "prog-information-technology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Critical bug under pressure",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "reasoning", "prioritization"],
+    "question": "Suppose you were part of a team and a critical bug was reported on a live system late on a Friday evening. Walk me through how you'd think about handling it.",
+    "lookingFor": "Calm, structured prioritisation showing an understanding of triage, communication, and not making a risky situation worse.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with assessing severity and actual user impact before jumping to a fix",
+        "Mention communicating clearly with the team or stakeholders rather than acting alone in a panic",
+        "Weigh the risk of a rushed fix against the risk of leaving the bug live overnight"
+      ],
+      "modelAnswer": "The first thing I'd want to do is figure out how serious this actually is, is it affecting every user or a small edge case, and is data or money at risk, because that shapes how urgently and how carefully I need to move. I'd want to loop in whoever else needs to know rather than quietly trying to fix it alone late at night, both so someone can sanity check my thinking and so the business is aware of what's happening. Then I'd weigh whether a quick patch is safe enough to deploy immediately or whether a temporary mitigation, like disabling the broken feature, is actually the smarter move until we can properly test a fix with fresh eyes, because a rushed change on a tired Friday night can easily turn one bug into two."
+    },
+    "commonMistakes": [
+      "Jumping straight to writing a fix with no assessment of severity",
+      "Trying to handle it entirely alone with no communication",
+      "Not considering that a rushed fix could make things worse"
+    ],
+    "followUps": ["What would make you decide a mitigation is better than an immediate full fix?"]
+  },
+  {
+    "id": "prog-information-technology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Technical debt vs shipping fast",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "reasoning", "trade-offs"],
+    "question": "If you had to choose between shipping a feature quickly with some shortcuts, or taking longer to build it properly, how would you decide which way to go?",
+    "lookingFor": "Nuanced trade-off thinking rather than a dogmatic 'always ship fast' or 'always do it perfectly' stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise it depends on context, such as how critical the feature is and how much it will be reused or built upon",
+        "Mention the concept of technical debt as a real cost that has to be repaid eventually",
+        "Give a reasonable decision rule rather than an absolute answer"
+      ],
+      "modelAnswer": "I don't think there's a single right answer, it depends on what the shortcut is actually costing you later. If it's a small feature that might be scrapped in a month anyway, or something urgent like a security patch, shipping fast and accepting some technical debt seems reasonable, as long as everyone's honest that it needs revisiting. But if it's something core that a lot of other features will be built on top of, cutting corners there tends to compound, because every future addition inherits the same weak foundation, so I'd lean toward taking the extra time. My rule of thumb would be to ask how expensive it'll be to fix this later compared to now, and let that answer guide the decision rather than just defaulting to speed."
+    },
+    "commonMistakes": [
+      "Insisting shortcuts are always acceptable or always unacceptable",
+      "Not mentioning technical debt as a real concept with real cost",
+      "Giving no clear reasoning framework at all"
+    ],
+    "followUps": ["Can you think of a real product feature where you suspect shortcuts were taken?"]
+  },
+  {
+    "id": "prog-information-technology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Single cloud vendor risk",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["cloud", "hypothetical", "risk"],
+    "question": "Suppose a company you're advising wants to move everything, all their data and applications, onto a single cloud provider to simplify operations. What risks would you want them to think through first?",
+    "lookingFor": "Ability to identify vendor lock-in and single point of failure risks, showing systems-level risk thinking beyond convenience.",
+    "idealAnswer": {
+      "bullets": [
+        "Raise vendor lock-in, where switching providers later becomes technically and financially painful",
+        "Raise the single point of failure risk if that one provider has an outage or a service disruption",
+        "Mention pricing risk, since a provider can change pricing once a company is fully dependent on them"
+      ],
+      "modelAnswer": "The convenience is real, one provider, one bill, one set of tools to learn, but I'd want them to think hard about vendor lock-in, because the more deeply they build around that provider's specific tools, the harder and more expensive it becomes to ever leave, even if a better or cheaper option comes along later. I'd also flag that putting everything with one provider means if that provider has a major outage, which has happened to even the biggest cloud companies, the business goes down entirely rather than just part of it. And there's a pricing risk too, once a company is fully dependent, the provider has much more leverage to raise prices over time, so I'd suggest at least keeping critical data portable and considering a multi-cloud or exit strategy even if they do mostly commit to one provider."
+    },
+    "commonMistakes": [
+      "Only praising the convenience with no mention of any risk",
+      "Naming a risk with no explanation of why it matters",
+      "Suggesting multi-cloud with no acknowledgment of its own added complexity"
+    ],
+    "followUps": ["Is multi-cloud always worth the added complexity, in your view?"]
+  },
+  {
+    "id": "prog-information-technology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Explaining scaling limits to a non-technical audience",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["communication", "systems", "reasoning"],
+    "question": "How would you explain to a non-technical manager why simply 'adding more servers' doesn't always fix a slow or overloaded system?",
+    "lookingFor": "Ability to translate a real technical nuance, that some bottlenecks don't parallelize, into plain language for a non-expert.",
+    "idealAnswer": {
+      "bullets": [
+        "Use a plain analogy rather than jargon",
+        "Explain that some bottlenecks, like a single shared database, can't just be duplicated the way stateless application servers can",
+        "Keep the explanation genuinely accessible, checking it would land with a non-technical listener"
+      ],
+      "modelAnswer": "I'd probably use an analogy like a restaurant kitchen, adding more chefs helps if the problem is too few people cooking, but it doesn't help if everyone's stuck waiting for the same single oven, because the oven itself is the bottleneck no matter how many chefs you add around it. I'd explain that in a lot of systems, the part that's actually struggling is something like a shared database that everything else depends on, and just adding more of the easy-to-duplicate parts, like web servers, won't fix that shared bottleneck, it might even make it worse by sending more requests at the same overloaded database. So I'd frame it as, first we need to find the actual oven in this kitchen before deciding whether adding more staff will even help."
+    },
+    "commonMistakes": [
+      "Using heavy technical jargon that a non-technical listener wouldn't follow",
+      "Not actually explaining why some parts of a system can't simply be duplicated",
+      "Giving a vague answer with no concrete analogy or example"
+    ],
+    "followUps": ["Can you think of another everyday analogy that captures a different technical concept?"]
+  },
+  {
+    "id": "prog-information-technology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithmic bias awareness",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["ai", "ethics", "current-events"],
+    "question": "There have been well documented cases of AI systems, like hiring tools or loan approval algorithms, showing bias against certain groups even though race or gender was never an explicit input. How does that happen, and what would you want to check for if you were building such a system?",
+    "lookingFor": "Understanding that bias can enter through proxy variables and historical training data, plus concrete awareness of how to check for it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that bias often comes from historical data reflecting past discrimination, which the model then learns and repeats",
+        "Mention proxy variables, where a seemingly neutral input like postcode or school name correlates strongly with a protected characteristic",
+        "Give a concrete check, such as testing outcomes across different demographic groups before deployment"
+      ],
+      "modelAnswer": "Even without explicitly including race or gender as an input, a model trained on historical hiring or lending data can pick up patterns that reflect past discrimination, so it ends up learning to prefer whatever the biased historical outcomes favoured. It can also happen through proxy variables, something like a postcode or which school someone went to might seem neutral but can correlate strongly with race or socioeconomic background, so the model effectively uses it as a stand-in even though it was never told to. If I were building a system like this, I'd want to actually test its outputs across different demographic groups before it ever goes live, comparing approval or selection rates rather than just trusting that removing the obvious protected fields was enough to make it fair."
+    },
+    "commonMistakes": [
+      "Assuming removing protected characteristics from the input data automatically removes bias",
+      "Not mentioning proxy variables at all",
+      "Suggesting no concrete way to actually test or catch the bias"
+    ],
+    "followUps": ["Who do you think should be responsible if a deployed AI system turns out to be biased, the engineer, the company, or someone else?"]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-information-systems-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "IS vs Computer Science",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["fundamentals", "is-vs-cs", "concept"],
+    "question": "How would you explain to someone the difference between information systems and computer science?",
+    "lookingFor": "A clear grasp that IS is about people, process and technology working together, not just coding.",
+    "idealAnswer": {
+      "bullets": [
+        "Define CS as building the technology itself (algorithms, software engineering)",
+        "Define IS as how organizations use technology to solve business problems, blending people, process, and data",
+        "Give a concrete example that shows the distinction"
+      ],
+      "modelAnswer": "I'd say computer science is mostly about how you build the technology itself, like designing algorithms or writing efficient code. Information systems is more about how an organization actually uses that technology to solve a real problem, so it sits at the meeting point of people, process and data as much as code. For example, a CS graduate might build a hospital's scheduling software, but an IS person would be the one asking whether nurses will actually trust and use it, and how it fits into existing workflows. That's the side that pulls me in, because the technology only matters if people actually adopt it."
+    },
+    "commonMistakes": [
+      "Saying IS is just easier programming",
+      "Ignoring the people and process side of IS entirely",
+      "Treating the two fields as identical"
+    ],
+    "followUps": ["Which of the two feels more natural to you, and why?"]
+  },
+  {
+    "id": "prog-information-systems-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Sociotechnical systems",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["sociotechnical", "systems-thinking"],
+    "question": "What do we mean when we call an information system a 'sociotechnical' system?",
+    "lookingFor": "Understanding that IS success depends on the interaction between technology, people and organizational context, not the technology alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a sociotechnical system includes hardware and software plus the people, roles and processes around it",
+        "Note that optimizing only the technical side without the social side often causes failure",
+        "Give a real or plausible example of good technology failing for social reasons"
+      ],
+      "modelAnswer": "A sociotechnical system means the technology and the people using it are treated as one connected system, not two separate things. You can build a technically flawless piece of software, but if it ignores how people actually work, who has authority to input data, or how much time staff realistically have, it will fail in practice. I read about a hospital electronic records rollout that had excellent software but doctors resented how it slowed down consultations, so they found workarounds that actually made data less accurate. That's why I think IS has to study the organization as carefully as the code."
+    },
+    "commonMistakes": [
+      "Defining it as just technology plus training",
+      "Giving no example of technology failing for human reasons",
+      "Treating it as a buzzword without real content"
+    ],
+    "followUps": ["Can you think of a technology you use that fails this test?"]
+  },
+  {
+    "id": "prog-information-systems-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Normalization vs denormalization",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["databases", "design-tradeoff"],
+    "question": "When would you choose to denormalize a database rather than keep it fully normalized?",
+    "lookingFor": "Practical understanding that normalization reduces redundancy but can cost query performance, and knowing when the trade-off favors denormalizing.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain normalization's goal: reduce redundancy and update anomalies",
+        "Explain that heavy joins across normalized tables can slow down read-heavy systems",
+        "Identify contexts like reporting or read-heavy applications where denormalizing helps"
+      ],
+      "modelAnswer": "Normalizing a database is about cutting redundancy so you don't update the same fact in five places, but it means your data is spread across lots of tables, so reading it back often needs several joins. For a system that's read constantly, like a dashboard pulling sales reports every few seconds, those joins can get expensive, so it can make sense to denormalize some tables and accept a bit of redundancy for speed. I saw this trade-off in a school project where I built a small inventory database, the normalized version was clean but slow for the reports page, so I added a summary table just for that view. The lesson for me was that normalization is a default, not a rule to follow blindly."
+    },
+    "commonMistakes": [
+      "Claiming normalization is always correct with no exceptions",
+      "Not mentioning the performance trade-off at all",
+      "Confusing normalization with indexing"
+    ],
+    "followUps": ["What risk do you introduce when you denormalize?"]
+  },
+  {
+    "id": "prog-information-systems-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Conflicting stakeholder requirements",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["requirements", "stakeholders", "reasoning"],
+    "question": "Two departments want completely different features from the same new system and both insist their need is most urgent. How would you approach gathering requirements in that situation?",
+    "lookingFor": "Structured reasoning about requirements conflict, using prioritization criteria rather than picking a side by instinct.",
+    "idealAnswer": {
+      "bullets": [
+        "Separate stated wants from underlying business needs through interviews",
+        "Use objective criteria such as cost, risk, or number of users affected to prioritize, not seniority",
+        "Involve both departments in a joint session so trade-offs are visible and owned together"
+      ],
+      "modelAnswer": "I'd start by not taking either department's request at face value and instead asking what problem each feature is actually meant to solve, because sometimes two requests that look opposed are solvable together once you understand the underlying need. Then I'd try to prioritize using something more objective than who shouts loudest, like how many people are affected, how much risk delay creates, or dependencies between the features. I'd also want to bring both departments into the same room to see the trade-off directly, because a decision made in front of them feels fairer than one handed down. My worry with picking a side too fast is that whichever department loses stops trusting the process for the rest of the project."
+    },
+    "commonMistakes": [
+      "Suggesting you'd just ask a manager to decide and move on",
+      "Assuming the more senior department automatically wins",
+      "Not proposing any concrete prioritization method"
+    ],
+    "followUps": ["What would you do if the conflict genuinely couldn't be resolved?"]
+  },
+  {
+    "id": "prog-information-systems-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "BPR vs continuous improvement",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["bpr", "change", "process"],
+    "question": "What's the difference between business process reengineering and continuous process improvement, and when might an organization need the more radical option?",
+    "lookingFor": "Ability to distinguish incremental from radical change and reason about when radical redesign is justified.",
+    "idealAnswer": {
+      "bullets": [
+        "Define continuous improvement as incremental, ongoing tweaks to a working process",
+        "Define BPR as a from-scratch redesign, often enabled by new technology",
+        "Explain BPR is justified when incremental fixes can't overcome a fundamentally broken process"
+      ],
+      "modelAnswer": "Continuous improvement is about small, steady changes to a process that's basically working, refining it bit by bit. Business process reengineering is more radical, it means questioning the whole process from the ground up and redesigning it, often because new technology makes an old way of working obsolete rather than just slow. I think reengineering makes sense when an organization keeps hitting the same wall no matter how many small fixes it tries, which usually means the process itself, not the execution, is the problem. The risk is that reengineering is disruptive and expensive, so I'd only recommend it once incremental change has clearly been tried and failed."
+    },
+    "commonMistakes": [
+      "Treating the two as interchangeable",
+      "Recommending BPR as a first resort for every problem",
+      "No mention of the disruption or cost of BPR"
+    ],
+    "followUps": ["What's a real risk of pushing BPR through an organization too fast?"]
+  },
+  {
+    "id": "prog-information-systems-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Legacy system integration",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["enterprise-architecture", "legacy-systems"],
+    "question": "Why do so many large organizations still run on decades-old legacy systems, and what makes replacing them so difficult?",
+    "lookingFor": "Awareness of real-world constraints in enterprise IS: cost, risk, embedded business logic, integration complexity.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain legacy systems often encode critical, undocumented business logic built up over years",
+        "Note the cost and risk of full replacement, including downtime and data migration errors",
+        "Mention integration debt: other systems now depend on the legacy system's quirks"
+      ],
+      "modelAnswer": "A lot of legacy systems keep running because they quietly work, and over decades they've absorbed business rules and exceptions that were never written down anywhere else, so replacing them risks losing knowledge nobody remembers documenting. Migration is also genuinely risky, moving core financial or operational data wrong can shut a business down for days, so the cost of getting it wrong is enormous compared to the cost of leaving it alone. On top of that, other systems have usually grown up around the legacy system's specific behavior, so replacing it means untangling a web of dependencies, not swapping one box for another. I find that tension between innovation and operational risk one of the more interesting problems in this field."
+    },
+    "commonMistakes": [
+      "Assuming it's purely about lack of budget or laziness",
+      "No mention of embedded business logic or integration dependencies",
+      "Suggesting a full rip-and-replace is always the right answer"
+    ],
+    "followUps": ["How would you approach modernizing a legacy system with minimal risk?"]
+  },
+  {
+    "id": "prog-information-systems-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Agile vs waterfall for IS delivery",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["agile", "project-management", "methodology"],
+    "question": "For a large enterprise information system, would you argue for an agile approach or a more traditional waterfall approach, and why?",
+    "lookingFor": "Reasoned trade-off between predictability and flexibility, not blind allegiance to agile as a buzzword.",
+    "idealAnswer": {
+      "bullets": [
+        "Note waterfall suits well-understood, regulation-heavy requirements where late change is costly",
+        "Note agile suits uncertain or evolving requirements where user feedback should shape the build",
+        "Recognize large enterprise projects often use a hybrid depending on the subsystem"
+      ],
+      "modelAnswer": "I don't think either is automatically right, it depends how well understood the requirements are. If I'm building something like a regulatory compliance system where the rules are fixed and well documented, waterfall's upfront planning and predictability probably serves better because change late in the project is expensive there. But if the system is meant to support a process that's still evolving, like a new customer service platform, agile lets you test with real users early and adjust before you've built the wrong thing at scale. In practice I think large enterprise projects often end up hybrid, agile for the parts facing users and something closer to waterfall for the core infrastructure that has to be rock solid."
+    },
+    "commonMistakes": [
+      "Declaring agile always superior without justification",
+      "Not acknowledging any middle ground or hybrid approach",
+      "Confusing agile with having no planning at all"
+    ],
+    "followUps": ["What's a real downside of agile in a large, regulated organization?"]
+  },
+  {
+    "id": "prog-information-systems-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud vs on-premise",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["cloud", "infrastructure", "tradeoff"],
+    "question": "What factors would push an organization toward keeping its systems on-premise instead of moving to the cloud?",
+    "lookingFor": "Balanced understanding beyond cloud is always better: cost structure, control, compliance, latency.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention regulatory or data sovereignty requirements that restrict where data can live",
+        "Mention cost structure: predictable capital spend versus ongoing operating cost at scale",
+        "Mention control over performance, security, and customization needs"
+      ],
+      "modelAnswer": "Cloud gets talked about like it's the obvious answer, but there are real reasons to stay on-premise. Some industries, like banking or healthcare in certain countries, have strict rules about where data physically has to live, and the cloud provider's data center might not satisfy that. Cost is another factor, cloud is flexible but at a large enough constant scale, running your own hardware can actually be cheaper over years, even though the upfront investment is higher. There's also a control argument, some organizations want full say over security configuration or need extremely low latency that only local infrastructure gives them, so I don't think move everything to the cloud is a rule, it's a case-by-case decision."
+    },
+    "commonMistakes": [
+      "Assuming cloud is unconditionally superior",
+      "No mention of data sovereignty or compliance",
+      "Ignoring cost-at-scale trade-offs"
+    ],
+    "followUps": ["What would make you change your mind for a specific organization?"]
+  },
+  {
+    "id": "prog-information-systems-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Data warehousing and BI",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["data-warehouse", "business-intelligence"],
+    "question": "Why might a company keep a separate data warehouse instead of just running its reports directly off the live operational database?",
+    "lookingFor": "Understanding of transactional versus analytical workloads and why analytics needs different infrastructure than transactions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain operational databases are optimized for fast transactions, not big analytical queries",
+        "Explain heavy reporting queries on a live system can slow down or lock the system customers depend on",
+        "Mention that a warehouse combines and cleans data from multiple source systems for consistent analysis"
+      ],
+      "modelAnswer": "The live operational database is built to handle lots of small, fast transactions, like someone placing an order, and it's tuned for that. A big analytical report scanning millions of rows competes for the same resources and can actually slow down or even lock the system that customers are relying on in that moment, which is a real risk for a retailer during a sale. A data warehouse solves that by being a separate copy, optimized for exactly that kind of heavy querying, and it usually pulls in data from several different systems so you're analyzing one consistent picture instead of stitching together mismatched sources. I think that separation between running the business and understanding the business is a really elegant piece of systems design."
+    },
+    "commonMistakes": [
+      "Not distinguishing transactional load from analytical load",
+      "Missing the multi-source consolidation benefit",
+      "Vague answer with no technical reasoning"
+    ],
+    "followUps": ["What's a downside of the data in a warehouse not being perfectly real-time?"]
+  },
+  {
+    "id": "prog-information-systems-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Security vs usability trade-off",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["cybersecurity", "risk", "tradeoff"],
+    "question": "Security, usability and cost often pull against each other when designing a system's access controls. How would you think about that trade-off?",
+    "lookingFor": "Reasoned understanding that security is a spectrum decided by risk, not an absolute to be maximized blindly.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that maximal security controls usually damage usability and adoption",
+        "Argue for calibrating controls to the actual sensitivity and risk of the data or system in question",
+        "Mention that overly strict controls can push users toward risky workarounds, undermining security anyway"
+      ],
+      "modelAnswer": "My instinct used to be that more security is always better, but I've come round to thinking it's really a calibration problem. If you force constant re-authentication or lock down every feature for a system that only handles low-risk data, people will find workarounds, like writing passwords down or using personal devices instead, and you end up less secure than when you started. I'd want to match the strength of the controls to how sensitive the data actually is, so something handling patient health records deserves a lot more friction than an internal lunch-ordering tool. The goal isn't maximum security, it's the right amount of security that people will actually work within."
+    },
+    "commonMistakes": [
+      "Arguing security should always be maximized regardless of cost",
+      "Not mentioning that excessive controls create workarounds",
+      "Treating this as purely a technical rather than a human problem"
+    ],
+    "followUps": ["Give an example of a control that's technically secure but practically counterproductive."]
+  },
+  {
+    "id": "prog-information-systems-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Privacy vs personalization dilemma",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["ethics", "privacy", "personalization"],
+    "question": "A company can dramatically improve its recommendation engine by tracking users more closely than its privacy policy technically allows, and almost no one would notice. Would you build it?",
+    "lookingFor": "Ethical reasoning under limited external accountability, not just following the law or blind compliance.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the framing that no one would notice makes it acceptable",
+        "Distinguish between what's legal, what the policy promises, and what's actually right",
+        "Propose a concrete alternative such as seeking honest consent instead"
+      ],
+      "modelAnswer": "The fact that no one would notice is exactly why I think it matters more, not less, because the whole point of a privacy policy is a promise users can't personally verify, so quietly breaking it is a real betrayal of trust even if it's never caught. I wouldn't build it as described. I'd go back and ask whether we could get the same improvement by being upfront and asking users to opt into more detailed tracking in exchange for something they'd value, better recommendations, because that keeps the choice with them instead of taking it. If leadership pushed back and insisted, I think I'd have to escalate it as an ethics concern rather than just build what's asked, because being technically capable of something doesn't make it right to ship."
+    },
+    "commonMistakes": [
+      "Saying it's fine because everyone does it or it's common practice",
+      "Focusing only on legal risk rather than the ethical breach of trust",
+      "Offering no concrete alternative, just refusal with nothing constructive"
+    ],
+    "followUps": ["What would you do if your manager insisted you build it anyway?"]
+  },
+  {
+    "id": "prog-information-systems-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Shadow IT governance dilemma",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["ethics", "governance", "shadow-it"],
+    "question": "You discover a team in your organization has been using an unapproved cloud tool to share sensitive customer data because the official system is too slow for their work. What would you do?",
+    "lookingFor": "Balanced judgement that treats shadow IT as a signal of a real problem, not purely a compliance violation to punish.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the underlying cause: the official system is failing a real business need",
+        "Address the immediate data risk first, without simply shaming or punishing the team",
+        "Push for fixing the official system's shortcomings so the workaround becomes unnecessary"
+      ],
+      "modelAnswer": "My first reaction is that this is a data risk that needs addressing quickly, sensitive customer data outside approved controls is a real problem regardless of intent. But I wouldn't treat it purely as a disciplinary issue, because the team clearly turned to that tool because the official system wasn't meeting a genuine need, and punishing them without fixing that just pushes the same behavior somewhere less visible next time. I'd want to understand exactly what was too slow or missing, get the data secured immediately, and then make the case to leadership that the real fix is improving the sanctioned system, not just banning workarounds. Shadow IT is usually a symptom, and I think good governance treats it as useful information rather than just a rule violation."
+    },
+    "commonMistakes": [
+      "Treating it as purely a compliance issue to be punished",
+      "Ignoring the immediate data security risk in favor of just fixing the root cause",
+      "Having no plan to prevent the same workaround from recurring"
+    ],
+    "followUps": ["How would you balance urgency of the data risk against not alienating the team?"]
+  },
+  {
+    "id": "prog-information-systems-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Flawed algorithm whistleblowing dilemma",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["ethics", "algorithmic-harm", "whistleblowing"],
+    "question": "Suppose you're on a team that built an automated system for screening loan applications, and you discover it's systematically disadvantaging a group of applicants in a way the company hasn't noticed. What do you do?",
+    "lookingFor": "Willingness to act on discovered harm through proper channels, weighing loyalty against real-world consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Treat the discovery as urgent given the real financial harm to real people",
+        "Raise it through internal channels first, with evidence, rather than going straight to going public",
+        "Be willing to escalate further if the organization doesn't act, because the harm is ongoing"
+      ],
+      "modelAnswer": "I'd treat this as urgent rather than something to quietly flag and move on from, because every day the system runs, real people are being denied loans they should have qualified for. My first step would be documenting the pattern clearly with data, then raising it directly with whoever owns the system and, if needed, up the chain, because I'd want to give the organization a real chance to fix it before assuming bad faith. If I raised it properly and nothing changed while the harm continued, I think I'd have an obligation to escalate further, even outside the company, because staying quiet at that point would make me complicit in a harm I could have stopped. I'd rather be the person who caused an uncomfortable conversation than the one who let it keep happening."
+    },
+    "commonMistakes": [
+      "Deciding to say nothing to avoid conflict at work",
+      "Jumping straight to a public complaint without using internal channels first",
+      "Downplaying the real-world harm as merely a technical bug"
+    ],
+    "followUps": ["What if your manager told you to stay quiet about it?"]
+  },
+  {
+    "id": "prog-information-systems-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Generative AI in enterprise systems",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["genai", "enterprise", "current-debate"],
+    "question": "What's your view on companies rushing to plug generative AI into core business systems right now? Is the caution or the enthusiasm more justified?",
+    "lookingFor": "Informed, balanced awareness of a live debate rather than one-sided cheerleading or dismissal.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of real benefits like automating routine analysis, drafting, and customer support",
+        "Show awareness of real risks like hallucination in high-stakes decisions or over-trust by users",
+        "Land on a nuanced position, such as good for augmenting judgment but risky when it replaces it unchecked"
+      ],
+      "modelAnswer": "I think both sides have a real point, which is what makes it interesting to me. The enthusiasm is fair because generative AI genuinely speeds up things like drafting reports, summarizing customer feedback, or handling first-line support questions that used to eat up a lot of staff time. But the caution is fair too, because these systems can produce confident, wrong answers, and if that gets embedded into something like a system flagging fraud or medical claims without a human properly checking it, the mistakes could be serious and hard to trace. My own view is that it's most valuable right now as something that speeds up a person's work rather than something that replaces their judgment entirely, especially anywhere the cost of being wrong is high."
+    },
+    "commonMistakes": [
+      "One-sided hype with no acknowledgment of real risk",
+      "One-sided dismissal with no acknowledgment of real benefit",
+      "Vague answer with no specific example of use or failure"
+    ],
+    "followUps": ["Can you think of a specific business function where you'd be most cautious about this?"]
+  },
+  {
+    "id": "prog-information-systems-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Algorithmic bias debate",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["algorithmic-bias", "ethics", "current-debate"],
+    "question": "There's ongoing debate about algorithmic bias in automated decision systems, like hiring or credit scoring tools. What do you think causes it, and can it actually be fixed?",
+    "lookingFor": "Understanding that bias often comes from training data reflecting historical inequality, and a realistic view on mitigation rather than a naive claim that bias can simply be removed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain bias typically comes from historical data reflecting past human decisions and inequalities",
+        "Note that removing obviously protected attributes isn't enough because proxies can reintroduce bias",
+        "Give a realistic view: bias can be reduced and monitored, but rarely eliminated completely"
+      ],
+      "modelAnswer": "From what I've read, a lot of algorithmic bias isn't the algorithm inventing prejudice, it's the algorithm learning it from historical data that already reflects decades of biased human decisions, like who got hired or approved for credit in the past. What surprised me is that just removing an obvious field like race or gender from the data usually isn't enough, because other variables like zip code or school name can quietly act as a proxy for the same thing. I don't think bias can be completely eliminated, but I do think it can be measured, monitored, and reduced with the right auditing, and honestly I think that ongoing vigilance is now a core part of building these systems responsibly, not an optional extra."
+    },
+    "commonMistakes": [
+      "Claiming bias is simply a technical bug that's easily patched",
+      "Not mentioning proxy variables at all",
+      "Overclaiming that bias can be eliminated entirely"
+    ],
+    "followUps": ["Who do you think should be responsible for auditing these systems, the company or a regulator?"]
+  },
+  {
+    "id": "prog-information-systems-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Low-code and no-code platforms",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["low-code", "current-development", "citizen-development"],
+    "question": "Low-code and no-code platforms let non-programmers build business applications themselves. What impact do you think this has on the role of information systems professionals?",
+    "lookingFor": "Informed, forward-looking view of how the field is evolving rather than fear or dismissal of the trend.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge low-code genuinely reduces the need for custom coding on simple business apps",
+        "Note IS professionals are still needed for governance, integration, and security of complex systems",
+        "Suggest the role shifts toward architecture and oversight rather than disappearing"
+      ],
+      "modelAnswer": "I think low-code platforms genuinely take away a chunk of the simple work, like a department wanting a basic form or workflow app no longer needs a developer for that. But I don't think it makes IS professionals unnecessary, if anything it raises the stakes on the harder parts, because now you have lots of these small apps built by people without formal training, and someone still needs to make sure they're secure, that they don't create duplicate or inconsistent data, and that they actually integrate with the core systems properly. I'd guess the role shifts more toward oversight and architecture, setting the guardrails other people build within, rather than writing every line of code yourself."
+    },
+    "commonMistakes": [
+      "Dismissing low-code as a fad with no real impact",
+      "Assuming it eliminates the need for IS professionals entirely",
+      "No mention of the governance or integration risk it creates"
+    ],
+    "followUps": ["What risk does citizen development create for an organization's data?"]
+  },
+  {
+    "id": "prog-information-systems-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Data sovereignty debate",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["data-sovereignty", "policy", "current-debate"],
+    "question": "Several countries now require certain data about their citizens to be stored physically within their borders. What's driving this, and what challenge does it create for global organizations?",
+    "lookingFor": "Awareness of a real live policy trend and its practical operational consequences for IS design.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the drivers: national security, privacy protection, and reducing foreign legal jurisdiction over citizens' data",
+        "Explain the practical challenge: global systems on shared cloud infrastructure now need to be partitioned by region",
+        "Note the cost and complexity trade-off this creates for multinational organizations"
+      ],
+      "modelAnswer": "From what I understand, a lot of this comes from countries wanting more control over their citizens' data, partly for privacy and partly to avoid a foreign government's laws being able to reach into their data through a company's overseas servers. For a global organization, that's a real headache, because a system that used to just run on one shared cloud infrastructure now might need separate, region-specific instances that don't share data freely across borders. That adds real cost and complexity, you're essentially running parallel versions of parts of your system, and I think it's a good example of how a purely technical decision, like where to host data, now has to be made with legal and political factors in the room from the start."
+    },
+    "commonMistakes": [
+      "Not naming any real driver behind data localization laws",
+      "Treating it as a purely legal issue with no technical consequence",
+      "Vague, generic answer with no specific example"
+    ],
+    "followUps": ["How might a company design its systems from the start to handle this more easily?"]
+  },
+  {
+    "id": "prog-information-systems-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a system for a small business",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "small-business", "systems-design"],
+    "question": "Imagine a small local business with no dedicated IT staff asks you to help set up their first proper information system. Where would you actually start?",
+    "lookingFor": "Practical, grounded systems-thinking approach that starts with understanding needs, not jumping to a tech stack.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by understanding the business's actual pain points and workflow before proposing tools",
+        "Prioritize simplicity, cost, and ease of maintenance over sophistication, given no IT staff",
+        "Consider off-the-shelf or cloud solutions over custom-built systems for a small operation"
+      ],
+      "modelAnswer": "I wouldn't start by picking software, I'd start by spending time actually watching how they currently work, where things get lost, like orders tracked on paper, or where time gets wasted, like manually reconciling sales at the end of the day. Given they have no IT staff, I'd lean toward simple, well-supported off-the-shelf tools rather than anything custom-built, because something that breaks with nobody able to fix it is worse than a slightly less perfect solution that just works. I'd probably start with one clear pain point, maybe inventory tracking, get that solid, and only then look at connecting it to the next piece, like sales or accounting, rather than trying to solve everything at once. Small businesses need something reliable and maintainable more than something impressive."
+    },
+    "commonMistakes": [
+      "Jumping straight to recommending specific software with no needs analysis",
+      "Recommending an over-engineered custom system for a business with no IT support",
+      "Trying to solve every problem simultaneously instead of prioritizing"
+    ],
+    "followUps": ["What would make you recommend a custom-built system instead of an off-the-shelf one here?"]
+  },
+  {
+    "id": "prog-information-systems-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "High-stakes legacy migration",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "migration", "healthcare"],
+    "question": "Say you're advising a hospital on migrating twenty years of patient records from an old system to a new one. What would worry you most about that project?",
+    "lookingFor": "Ability to reason about high-stakes migration risk: data integrity, downtime, and continuity of care.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify data integrity risk during migration as the top concern given the stakes for patient safety",
+        "Consider downtime risk, since care can't simply pause while the migration happens",
+        "Recognize the need for a careful, possibly parallel-running transition rather than a single cutover"
+      ],
+      "modelAnswer": "What would worry me most is data getting corrupted, mismatched, or dropped during the migration, because in a hospital that's not just an inconvenience, a wrong allergy record or missing medication history could genuinely hurt someone. I'd also be worried about downtime, you can't tell a hospital to pause care for a weekend while the new system settles in, so the transition has to be planned around continuous operation. Because of that, I don't think I'd trust a single hard cutover, I'd want to run the old and new systems in parallel for a period, cross-checking records before fully switching, even though that's slower and more expensive, because in this context I'd rather be careful than fast."
+    },
+    "commonMistakes": [
+      "Treating this like a routine IT migration with no discussion of patient safety stakes",
+      "Suggesting a single hard cutover with no fallback plan",
+      "No mention of testing or verifying data integrity"
+    ],
+    "followUps": ["How would you handle staff resistance to learning a new system in the middle of this?"]
+  },
+  {
+    "id": "prog-information-systems-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Incident response during peak load",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "incident-response", "reasoning"],
+    "question": "Imagine you're part of the team running a company's order system, and it goes down completely during its busiest sales period of the year. Walk me through how you'd think about responding.",
+    "lookingFor": "Structured incident-response thinking under pressure: communicate, contain, diagnose, prevent recurrence.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize immediate communication to stakeholders and customers over silently debugging",
+        "Follow a structured approach: contain or mitigate first, then diagnose root cause",
+        "Commit to a post-incident review to prevent recurrence, not just patching the symptom"
+      ],
+      "modelAnswer": "My first instinct wouldn't be to dive straight into the code, it would be to make sure the right people know immediately, both internally and with an honest message to customers, because uncertainty during an outage usually does more damage to trust than the outage itself. Then I'd want the team to focus on containing the damage first, like switching to a manual fallback process if one exists, rather than trying random fixes live on the production system under pressure, which tends to make things worse. Once it's stable, I'd want a proper root cause investigation and, importantly, an honest post-incident review afterward, because the real value of a crisis like that is making sure the same failure can't happen again next year."
+    },
+    "commonMistakes": [
+      "Jumping straight to technical fixes with no mention of communication",
+      "No structured containment step before diagnosis",
+      "Treating the incident as over once the system is back up, with no follow-up review"
+    ],
+    "followUps": ["How would you balance being transparent with customers against not causing panic?"]
+  },
+  {
+    "id": "prog-information-systems-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital divide",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["digital-divide", "equity", "current"],
+    "question": "As more essential services move online, what responsibility do you think organizations have toward people who don't have reliable internet access or digital skills?",
+    "lookingFor": "Awareness that IS decisions have equity consequences, and a thoughtful, non-dismissive stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize that digital-only services can exclude elderly, low-income, or rural populations",
+        "Argue organizations have some responsibility to maintain accessible alternatives for essential services",
+        "Balance this against the real efficiency and cost benefits of digital channels"
+      ],
+      "modelAnswer": "I think there's a real risk of leaving people behind when everything moves online, especially for essential things like healthcare booking or government services, where someone without reliable internet or the confidence to use an app can end up genuinely excluded. I don't think the answer is to slow down digital transformation, because the efficiency gains are real, but I do think organizations providing essential services have some responsibility to keep an accessible offline or assisted option available, even if it's used by a shrinking minority. It's a bit like keeping a ramp next to a staircase, most people won't need it, but for the people who do, its absence isn't a minor inconvenience, it's exclusion from something they need."
+    },
+    "commonMistakes": [
+      "Dismissing the digital divide as no longer a relevant concern",
+      "Arguing for stopping digital transformation entirely instead of a balanced approach",
+      "No concrete example of who is affected"
+    ],
+    "followUps": ["Should the cost of maintaining offline access be the government's responsibility or the company's?"]
+  },
+  {
+    "id": "prog-information-systems-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "User resistance to new systems",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["change-management", "adoption", "organizational-behavior"],
+    "question": "Why do you think employees so often resist a new information system even when it's objectively better than the one it replaces?",
+    "lookingFor": "Understanding that resistance is usually rational from the user's perspective, not simple stubbornness.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize resistance often stems from lost familiarity or fear of looking incompetent during transition",
+        "Note that objectively better on paper doesn't guarantee it's better for a specific person's daily tasks",
+        "Suggest involving users early and communicating honestly as ways to reduce resistance"
+      ],
+      "modelAnswer": "I think it's easy to assume resistance is just stubbornness, but usually it's pretty rational from the person's point of view. They've built real speed and confidence in the old system, and a new one, even if it's better in the long run, means a period of feeling slow and incompetent at their own job, which is uncomfortable for anyone. It also might genuinely be worse for their specific task even if it's better overall for the organization, since better on average doesn't mean better for every user. I think the way to reduce that resistance is involving people in testing it early, so it reflects how they actually work, and being honest about the disruption of the transition instead of pretending it will be seamless."
+    },
+    "commonMistakes": [
+      "Dismissing resistance as simple stubbornness or fear of change",
+      "Assuming objectively better means every user will benefit equally",
+      "No concrete suggestion for reducing resistance"
+    ],
+    "followUps": ["What would you do if resistance persisted months after rollout?"]
+  },
+  {
+    "id": "prog-information-systems-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Surveillance capitalism critique",
+    "program": "Information Systems",
+    "difficulty": "hard",
+    "tags": ["big-data", "ethics", "current-debate"],
+    "question": "Some critics argue that the modern data economy amounts to a kind of surveillance, where companies profit from tracking behavior people never really consented to. Do you think that criticism is fair?",
+    "lookingFor": "Ability to engage seriously with a critical framing rather than being defensive of the industry or dismissing it wholesale.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the criticism seriously rather than dismissing it as anti-tech alarmism",
+        "Distinguish between meaningful consent and buried, technically-legal consent in long terms-of-service documents",
+        "Offer a nuanced personal view rather than an absolute stance"
+      ],
+      "modelAnswer": "I think there's real substance to that criticism. Most people click accept on a long terms of service document without actually understanding how much behavioral data is being collected or what it's used for, so calling that meaningful consent feels like a stretch even if it's technically legal. At the same time, I don't think it's fair to say all data collection is exploitative, some of it genuinely improves the product people are using. Where I land is that the fairness of it should depend on how understandable and genuinely optional the tracking is, and right now I think most consent mechanisms fail that test, which is part of what draws me to wanting to work on the more responsible side of this field."
+    },
+    "commonMistakes": [
+      "Dismissing the criticism entirely as exaggerated or anti-technology",
+      "Accepting it wholesale with no nuance about legitimate uses of data",
+      "Giving an answer that feels rehearsed with no genuine personal position"
+    ],
+    "followUps": ["What would meaningful consent actually look like to you in practice?"]
+  },
+  {
+    "id": "prog-information-systems-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Interoperability and APIs",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["interoperability", "apis", "integration"],
+    "question": "Why does it matter so much whether different information systems can talk to each other through standard interfaces, rather than each being built as a closed system?",
+    "lookingFor": "Understanding of interoperability's practical value: avoiding data silos, enabling integration, reducing duplicated work.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain closed systems create data silos where the same information gets duplicated and drifts out of sync",
+        "Explain standard interfaces let organizations combine best-of-breed tools instead of being locked into one vendor",
+        "Note interoperability reduces long-term cost and fragility compared to custom point-to-point integrations"
+      ],
+      "modelAnswer": "When systems can't talk to each other, organizations end up with data silos, the same customer information gets typed into three different tools and inevitably drifts out of sync over time, which causes real problems, like a customer service agent seeing a different address than the shipping system. Standard interfaces, like a well-documented API, let different systems share information reliably without needing a custom, fragile connection built specially for that one pair of systems. It also means an organization isn't locked into a single vendor for everything, they can pick the best tool for each job and still have them work together, which I think is a much healthier way to build an organization's technology over time than one giant closed system trying to do everything."
+    },
+    "commonMistakes": [
+      "Not mentioning data silos or duplication as the core problem",
+      "Treating interoperability as a purely technical nicety rather than a business necessity",
+      "Ignoring vendor lock-in as a consequence of closed systems"
+    ],
+    "followUps": ["What's a downside of relying heavily on third-party APIs?"]
+  },
+  {
+    "id": "prog-information-systems-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Why IT projects fail",
+    "program": "Information Systems",
+    "difficulty": "medium",
+    "tags": ["project-failure", "risk", "reasoning"],
+    "question": "Large information systems projects fail or run wildly over budget surprisingly often. What do you think is the most common underlying cause?",
+    "lookingFor": "Genuine reasoning about IS project failure, ideally citing requirements or communication issues rather than a single glib answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify poor or shifting requirements gathering as a frequent root cause",
+        "Note that failure is often more about communication and organizational politics than pure technical difficulty",
+        "Show awareness that overly optimistic planning and scope creep compound the problem over time"
+      ],
+      "modelAnswer": "I don't think it's usually because the technology is too hard, most of the failures I've read about trace back to unclear or shifting requirements, where the people building the system and the people who'll actually use it never really agreed on what done looks like. That gets worse because of scope creep, where more requirements keep getting added as the project runs without adjusting the timeline or budget to match, so the project quietly becomes a different, bigger thing than what was planned. I also think there's an honesty problem in a lot of these projects, early warning signs get downplayed because nobody wants to be the one to say the deadline is unrealistic, so problems compound until they're too big to hide. It's made me think that IS projects fail more from communication breakdowns than from anything purely technical."
+    },
+    "commonMistakes": [
+      "Blaming failure purely on poor coding or technical incompetence",
+      "Not mentioning requirements or scope issues at all",
+      "Offering only a generic poor planning answer with no specifics"
+    ],
+    "followUps": ["If you were leading a project and saw early warning signs like this, what would you actually do?"]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-manufacturing-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Design for manufacturability",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "dfm",
+      "design",
+      "subject-knowledge"
+    ],
+    "question": "A part looks perfect on the CAD screen but is expensive and slow to manufacture. What does 'design for manufacturability' actually mean, and how would you check a design against it?",
+    "lookingFor": "Real grasp of DFM as an iterative discipline linking design intent to process constraints, not a buzzword.",
+    "idealAnswer": {
+      "bullets": [
+        "Define DFM as designing with the chosen process, tooling, and tolerances in mind from the start, not fixing problems after the fact",
+        "Give concrete checks: minimise unnecessary features, avoid tight tolerances where they are not functionally needed, design for standard tooling and fixturing",
+        "Mention involving manufacturing engineers early and iterating the design rather than treating drawing release as final"
+      ],
+      "modelAnswer": "For me DFM means asking, before a design is finalised, whether the geometry can actually be made efficiently on the equipment available, not just whether it satisfies the function on paper. I'd check things like whether tolerances are tighter than the application needs, whether there are undercuts or thin walls that make machining or moulding harder, and whether the part can be held securely for each operation. I saw this firsthand building a jig for a school project, where a beautiful design failed because I hadn't thought about how a drill would actually reach the hole I'd drawn. So I'd treat DFM as a conversation that starts at the sketch stage, not a checklist applied at the end."
+    },
+    "commonMistakes": [
+      "Treating DFM as only about cost cutting rather than manufacturability itself",
+      "Giving a definition with no concrete example of a design check",
+      "Implying DFM happens only after the design is finished"
+    ],
+    "followUps": [
+      "Can you think of a time a design looked good on paper but would have been hard to actually make?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "GD&T and functional tolerancing",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "gdt",
+      "tolerances",
+      "precision"
+    ],
+    "question": "Two shafts both meet a 10mm plus or minus 0.05mm diameter tolerance, but one fits smoothly into its bearing and the other doesn't. What could geometric tolerancing explain that a simple size tolerance can't?",
+    "lookingFor": "Understanding that size tolerance alone doesn't control form, orientation, or position, and that GD&T captures the difference.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a shaft can be within its diameter tolerance at every cross-section yet still be out of round, tapered, or bent along its length",
+        "Introduce concepts like circularity, straightness, or runout as things size tolerance alone does not constrain",
+        "Note that fit and function often depend on these geometric properties, not just the two-point diameter measurement"
+      ],
+      "modelAnswer": "Size tolerance only tells you the diameter measured at points is within range, it says nothing about whether the shaft is perfectly round or straight along its length. A shaft could be egg-shaped or slightly bowed and still pass every two-point diameter check while binding in a bearing that needs true roundness and straightness. That's what geometric tolerancing like circularity, cylindricity, or runout is for, it controls the shape and location of a feature, not just its size. I ran into this idea reading about GD&T for a robotics competition part that kept binding even though our micrometer readings looked fine."
+    },
+    "commonMistakes": [
+      "Assuming diameter tolerance alone fully controls fit",
+      "Confusing GD&T with just tighter numerical tolerances",
+      "Not naming any specific geometric control"
+    ],
+    "followUps": [
+      "Why might a designer choose a looser size tolerance but a tighter geometric one?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Process capability, Cp versus Cpk",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "spc",
+      "statistics",
+      "quality"
+    ],
+    "question": "A process has a Cp of 1.5 but a Cpk of 0.8. What does that gap tell you, and why does it matter?",
+    "lookingFor": "Correct distinction between spread (Cp) and centring (Cpk), and the practical implication.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain Cp measures whether the process spread fits within the tolerance band, assuming it's centred",
+        "Explain Cpk accounts for how centred the process actually is relative to the tolerance limits",
+        "Conclude the gap means the process is capable in principle but running off-centre, so parts near one limit are likely failing even though the spread itself is fine"
+      ],
+      "modelAnswer": "Cp only asks whether the spread of the process would fit inside the tolerance if it were perfectly centred, so a Cp of 1.5 says the process has plenty of room in principle. Cpk asks the harder question, whether it's actually centred, and a Cpk of 0.8 tells me the mean has drifted toward one of the limits, so parts are probably failing on that side even though the overall spread is fine. That gap is exactly the kind of thing that would make me look for a shift in a tool, a fixture, or a setpoint rather than assume the process itself needs more precision. I came across this idea reading about Six Sigma and it stuck with me because it separates two problems that look identical on a spec sheet but need completely different fixes."
+    },
+    "commonMistakes": [
+      "Treating Cp and Cpk as interchangeable",
+      "Saying the process is simply 'bad' without identifying centring as the issue",
+      "Not connecting the gap to an actionable next step"
+    ],
+    "followUps": [
+      "If you could only fix one of the two, spread or centring, which would you prioritise here?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Residual stress in machining and welding",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "residual-stress",
+      "machining",
+      "materials"
+    ],
+    "question": "A machined or welded part sometimes warps days after it leaves the factory, with no load applied. What's going on?",
+    "lookingFor": "Awareness of residual stress as a real, delayed-distortion phenomenon in manufacturing, not just theory.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that machining, welding, and rapid cooling can leave locked-in internal stresses even when the part looks geometrically fine",
+        "Note that these stresses can slowly relax or redistribute after the part is released from a fixture, causing distortion over time",
+        "Mention mitigation like stress-relief heat treatment, controlled cooling, or symmetric material removal"
+      ],
+      "modelAnswer": "That's usually residual stress, where the heat of welding or the cutting forces of machining leave internal stresses locked into the material even though it looks dimensionally correct right off the machine. Once the part is unclamped or the surrounding material is removed, those stresses can slowly redistribute and pull the part out of shape over hours or days. It's part of why aerospace and precision parts often go through a stress relief heat treatment step, or why machinists remove material symmetrically rather than all from one side. I first read about this in the context of welded frames warping after assembly, and it changed how I think about a part being 'finished' the moment it comes off the machine."
+    },
+    "commonMistakes": [
+      "Assuming warping must mean a measurement error",
+      "Not connecting the cause to heat or cutting forces specifically",
+      "Missing that mitigation exists, like stress relief or symmetric removal"
+    ],
+    "followUps": [
+      "How would you design a process to catch this before the part ships?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Robust design and Taguchi thinking",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "taguchi",
+      "robust-design",
+      "doe"
+    ],
+    "question": "What does it mean to design a process to be 'robust' rather than just accurate, and why might that matter more on a factory floor?",
+    "lookingFor": "Grasp of robustness as insensitivity to variation, ideally with a nod to design of experiments or the Taguchi idea.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish accuracy, hitting the target on average, from robustness, staying close to target despite variation in materials, environment, or operators",
+        "Reference the idea of designing a process or product so its performance doesn't swing wildly with small, uncontrollable changes",
+        "Give a practical reason it matters: real factories have variable raw material batches, temperature, humidity, operator technique, and a robust process tolerates that"
+      ],
+      "modelAnswer": "Accuracy is about the process hitting its target on average, but robustness is about how much the outcome swings when things you can't fully control, like a slightly different batch of resin or a warmer shop floor, change a bit. I came across the Taguchi idea that you can sometimes design a process so its output barely reacts to those uncontrollable factors, rather than trying to eliminate every source of variation, which is often impossible on a real floor. That matters because a factory never runs in perfectly controlled lab conditions, so a process that's accurate in testing but sensitive to small shifts will still produce scrap in production. I find that distinction more useful than just chasing a tighter tolerance."
+    },
+    "commonMistakes": [
+      "Equating robustness with simply tightening tolerances",
+      "No mention of variation from real-world conditions",
+      "Treating accuracy and robustness as the same thing"
+    ],
+    "followUps": [
+      "Can you think of an everyday product design that seems robust to how differently people use it?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Bottleneck reasoning on a line",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "bottleneck",
+      "throughput",
+      "process-design"
+    ],
+    "question": "If you speed up every station on a production line except one, why doesn't the line's overall output go up much?",
+    "lookingFor": "Understanding of the bottleneck or theory of constraints idea, that the slowest station sets the pace of the whole line.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the overall throughput of a line is capped by its slowest station, the bottleneck",
+        "Note that improving non-bottleneck stations just creates more idle time or work-in-progress piling up in front of the bottleneck",
+        "Conclude that the correct lever is identifying and improving the bottleneck itself, or better balancing work across stations"
+      ],
+      "modelAnswer": "The line can only move as fast as its slowest station, so if I speed up everything except that one station, all I've really done is create more inventory piling up in front of the bottleneck while the other stations sit idle waiting. The overall output is set by whatever the constraint is processing per hour, not by the average speed of every station. So the actual lever is either speeding up that specific bottleneck station, adding capacity there, or shifting some of its work to a slower neighbour to rebalance the line. I found this counterintuitive the first time I read about it because it feels like every improvement should help, but it only helps if it touches the constraint."
+    },
+    "commonMistakes": [
+      "Assuming any local speedup automatically raises total output",
+      "Not identifying the bottleneck as the limiting factor",
+      "Suggesting speeding up everything equally as the fix"
+    ],
+    "followUps": [
+      "How would you actually go about identifying which station is the bottleneck on a real line?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Mistake-proofing versus inspection",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "poka-yoke",
+      "quality",
+      "process-design"
+    ],
+    "question": "What's the difference between catching a defect through inspection and designing a process so the defect can't happen at all? Which would you prioritise?",
+    "lookingFor": "Understanding of poka-yoke or mistake-proofing as prevention rather than detection, with reasoning for priority.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish detection, finding a defect after it's made, from prevention, designing the process or fixture so the error is physically impossible or immediately obvious",
+        "Give an example of a mistake-proofing device, like an asymmetric part that only fits one way",
+        "Argue prevention is generally preferable because it avoids the cost and risk of a defect ever existing, though inspection still has a role as a backstop"
+      ],
+      "modelAnswer": "Inspection catches a defect after it's already been made, which means the scrap, rework, or safety risk has already happened by the time anyone notices. Mistake-proofing, or poka-yoke, tries to design the process so the error simply can't occur, like a connector that's shaped so it only fits one way round, or a fixture that won't close unless a part is positioned correctly. I'd prioritise prevention wherever it's practical, because catching a defect is really just managing the cost of a mistake that's already happened, while preventing it removes the cost entirely. That said, I don't think inspection disappears, it's still a sensible backstop for the failure modes you haven't managed to design out yet."
+    },
+    "commonMistakes": [
+      "Treating inspection and prevention as equally good options",
+      "No concrete example of a mistake-proofing mechanism",
+      "Ignoring that inspection still has a legitimate backstop role"
+    ],
+    "followUps": [
+      "Can you think of an everyday object that's mistake-proofed in this way?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Metal additive manufacturing in aerospace",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "additive-manufacturing",
+      "aerospace",
+      "current-development"
+    ],
+    "question": "Metal 3D printing is now being used for real load-bearing aerospace parts, not just prototypes. What's the main hurdle stopping it from being used even more widely?",
+    "lookingFor": "Awareness beyond hype, that certifying part-to-part consistency and material properties for safety-critical use is the real bottleneck.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that printed metal parts can have internal defects, porosity, or grain structure that vary between builds, batches, or even location within a single part",
+        "Explain that certifying a part for flight requires proving consistent, predictable material properties, which is harder for AM than for well-characterised wrought or cast processes",
+        "Mention that regulators and manufacturers are addressing this with in-process monitoring, standardised qualification, and post-process treatments like hot isostatic pressing"
+      ],
+      "modelAnswer": "The exciting part of metal additive manufacturing is the design freedom, but the hard part is that the properties of a printed part can vary depending on where in the build it sat, the laser parameters that day, or the powder batch, in a way that's much harder to control than a wrought or cast process with decades of characterisation behind it. For something like a turbine bracket that has to be flight-certified, you need to prove the material behaves predictably every single time, not just in a good sample part. That's why I've read about companies pairing AM with in-process sensors and post-process treatments like hot isostatic pressing to close up internal porosity, and why qualification programmes are such a big deal in the industry right now. It's less about the printer and more about proving repeatability at scale."
+    },
+    "commonMistakes": [
+      "Focusing only on print speed or cost as the barrier",
+      "No mention of certification, consistency, or material properties",
+      "Treating AM as already fully mature for all aerospace uses"
+    ],
+    "followUps": [
+      "Why might this be less of a barrier for a non-safety-critical part, like a bracket in a car interior?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Reshoring and tariffs debate",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "reshoring",
+      "supply-chain",
+      "current-debate"
+    ],
+    "question": "There's been a lot of talk about bringing manufacturing back to the US and Europe, partly driven by tariffs and supply chain concerns. Do you think reshoring is mostly a good move, and what would an engineer actually have to solve to make it work?",
+    "lookingFor": "Balanced awareness of the reshoring debate and specific engineering-level implications, not just a political opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the drivers: tariffs, pandemic-era supply shocks, geopolitical risk, and the appeal of shorter, more resilient supply chains",
+        "Acknowledge the real costs, higher labour and facility costs, and a domestic skills or supplier-base gap built up over decades of offshoring",
+        "Frame the engineering challenge concretely, automation and process design that make domestic production cost-competitive despite higher labour costs"
+      ],
+      "modelAnswer": "I think reshoring makes sense for parts where supply chain risk or lead time really matters, like critical electronics or defence components, but I'm cautious about treating it as a universal fix, because a lot of the cost advantage of offshore manufacturing came from decades of built-up supplier networks and skilled labour that don't reappear overnight just because of a tariff. The engineering problem I find interesting is that reshored production often only works economically if it's heavily automated, so the real challenge becomes designing processes and lines that can be cost-competitive with a smaller, less specialised local workforce. I've been reading about semiconductor fabs being built in the US as an example, and even with huge subsidies the ramp-up has been slower than expected because you can't just relocate decades of process knowledge. So I'd say it's the right direction for some sectors, but it's an engineering and workforce problem as much as a policy one."
+    },
+    "commonMistakes": [
+      "Giving a purely political opinion with no engineering angle",
+      "Assuming reshoring is either simply good or simply bad with no nuance",
+      "Not naming any real driver or example"
+    ],
+    "followUps": [
+      "Which kinds of products do you think are least suited to reshoring, and why?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-based visual defect inspection",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "ai",
+      "quality-control",
+      "current-development"
+    ],
+    "question": "Factories are increasingly using AI-based computer vision to catch defects instead of human inspectors. What are the real advantages and the real risks of that shift?",
+    "lookingFor": "Grounded understanding of AI inspection's strengths, like speed and fatigue resistance, and genuine limitations, like edge cases and over-trust.",
+    "idealAnswer": {
+      "bullets": [
+        "Give real advantages: consistent attention that doesn't fatigue, ability to catch subtle patterns across huge volumes of images, speed",
+        "Give real risks: the system can fail silently on defect types it wasn't trained on, and operators may over-trust it and stop double-checking",
+        "Mention that a sensible rollout keeps some human oversight, especially for novel or safety-critical failure modes, rather than a full swap"
+      ],
+      "modelAnswer": "The obvious advantage is that a camera system doesn't get tired on the two thousandth part of a shift the way a human inspector's attention naturally does, and it can be trained to spot subtle surface defects consistently across huge volumes far faster than a person could. The risk I think about is that it's only as good as the defects it's been trained on, so a genuinely novel failure mode, something the training data never saw, could slip straight through with no one noticing until it's a bigger problem downstream. There's also a human factor risk, where operators start trusting the system so completely that they stop doing any of their own spot checks, which removes a useful layer of redundancy. I'd want to see it deployed alongside some ongoing human sampling, especially early on, rather than as a total replacement from day one."
+    },
+    "commonMistakes": [
+      "Treating AI inspection as strictly better with no downside",
+      "Only listing job-loss concerns without engineering-level risks",
+      "No mention of what a sensible rollout would look like"
+    ],
+    "followUps": [
+      "How would you decide when it's safe to remove human double-checking entirely?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Semiconductor manufacturing and geopolitics",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "semiconductors",
+      "geopolitics",
+      "current-awareness"
+    ],
+    "question": "Why has semiconductor manufacturing capacity become such a geopolitical flashpoint in the last few years?",
+    "lookingFor": "Awareness of chip fabrication's extreme concentration, capital intensity, and strategic importance, beyond a vague 'chip shortage' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that advanced chip fabrication is extremely concentrated in a small number of facilities, particularly in Taiwan, making the global economy dependent on a narrow, geographically exposed supply base",
+        "Explain the capital and technical barriers: fabs cost tens of billions of dollars and take years to build, so capacity can't shift quickly",
+        "Connect it to chips being essential to everything from cars to defence systems, which is why governments are now subsidising domestic fabs"
+      ],
+      "modelAnswer": "What struck me reading about this is just how concentrated the most advanced chip manufacturing actually is, a huge share of leading-edge capacity sits in a handful of facilities in Taiwan, so a natural disaster or a geopolitical crisis there would ripple through nearly every industry that depends on semiconductors, which today is almost every industry. Building a new fab is also incredibly capital and time intensive, tens of billions of dollars and years of construction and process qualification, so you can't just decide to diversify capacity quickly even if you want to. That combination of concentration, difficulty of entry, and the fact that chips sit inside everything from phones to fighter jets is exactly why governments have started subsidising domestic fabrication through things like the CHIPS Act. It's a good example of how a manufacturing engineering decision, where to locate a fab, has become a genuine national security question."
+    },
+    "commonMistakes": [
+      "Only referencing the pandemic-era shortage with no deeper structural explanation",
+      "Not mentioning geographic concentration or capital intensity",
+      "Vague statement that 'chips are important' with no specifics"
+    ],
+    "followUps": [
+      "What would you consider the biggest engineering barrier to building a competitive new fab quickly?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Decarbonising steelmaking",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "sustainability",
+      "materials",
+      "current-development"
+    ],
+    "question": "Steelmaking is one of the hardest industries to decarbonise. What makes it so difficult, and what's changing?",
+    "lookingFor": "Understanding that traditional steelmaking's emissions come from the chemistry of the process itself, not just the energy source, plus awareness of emerging alternatives.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that traditional blast furnace steelmaking uses coke as both a fuel and a chemical reducing agent, so carbon emissions come from the chemistry itself, not just from burning fuel for heat",
+        "Note that simply switching to renewable electricity doesn't solve this, because the carbon is needed to strip oxygen from iron ore",
+        "Mention emerging approaches like hydrogen-based direct reduction, which replaces carbon with hydrogen as the reducing agent, producing water instead of CO2"
+      ],
+      "modelAnswer": "What makes steel so hard to decarbonise is that in a traditional blast furnace, the carbon from coke isn't just fuel, it's actually the chemical agent that strips oxygen away from the iron ore, so the CO2 comes from the core chemistry of the process, not only from burning something for heat. That means you can't just plug in renewable electricity and call it solved, because you still need something to do that reducing job. What's changing is hydrogen-based direct reduction, where hydrogen replaces carbon as the reducing agent and the byproduct is water vapour instead of CO2, and a few pilot plants using this approach have started producing what's being called green steel. I find it a really clear example of how decarbonising manufacturing sometimes means rethinking the chemistry of a process, not just cleaning up its power supply."
+    },
+    "commonMistakes": [
+      "Assuming renewable electricity alone would decarbonise steelmaking",
+      "Not distinguishing carbon as fuel versus carbon as chemical reducing agent",
+      "No mention of any real alternative process"
+    ],
+    "followUps": [
+      "What trade-offs would a steel plant face in switching to a hydrogen-based process?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Right to repair versus assembly efficiency",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "right-to-repair",
+      "design-ethics",
+      "current-debate"
+    ],
+    "question": "The 'right to repair' movement is pushing manufacturers to make products easier to fix rather than replace. As a manufacturing engineer, what tension does that create with how products are currently designed and made?",
+    "lookingFor": "Grasp of real design and manufacturing trade-offs between repairability and cost, assembly efficiency, and sometimes performance.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that many modern products are designed for fast, cheap assembly, glued rather than screwed, fused components, proprietary fasteners, which cuts manufacturing cost but makes disassembly and repair hard",
+        "Acknowledge the tension: repairability often means more parts, more assembly steps, or looser tolerances, which can raise manufacturing cost or affect performance and durability",
+        "Show a view on how to resolve it, modular design, standardised fasteners, accessible service points, without assuming there's no real cost"
+      ],
+      "modelAnswer": "A lot of products today are designed to be assembled as fast and cheaply as possible, which often means gluing components together or using proprietary fasteners, and that same design choice that makes assembly efficient is exactly what makes the product hard to open up and repair later. Designing for repairability usually pushes the other way, more standardised fasteners, modular components, accessible service points, and that can mean more parts, more assembly steps, or a slightly bulkier product, so there's a real manufacturing cost trade-off, not just a design preference. I think the interesting engineering problem is finding designs that are modular enough to repair without giving up too much of the assembly efficiency, and I've seen a few companies experiment with snap-fit modular designs that seem to manage both reasonably well. It's a case where a consumer and environmental push is genuinely reshaping how products get engineered and manufactured, not just how they're marketed."
+    },
+    "commonMistakes": [
+      "Only discussing the environmental angle with no manufacturing trade-off",
+      "Assuming repairability is free or has no cost implication",
+      "No concrete example of a design tension"
+    ],
+    "followUps": [
+      "Can you think of a product you own that seems designed against repair, and how would you redesign it?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Remanufacturing versus recycling",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "remanufacturing",
+      "circular-economy",
+      "sustainability"
+    ],
+    "question": "Remanufacturing, taking a worn-out product back, rebuilding it to as-new spec, and reselling it, is sometimes called a better business than recycling. Why might that be true from a manufacturing standpoint?",
+    "lookingFor": "Understanding that remanufacturing preserves the embedded value of the base component, unlike recycling which destroys that structure.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that recycling breaks a product back down to raw material, throwing away all the energy and precision manufacturing already invested in its shape and structure",
+        "Explain that remanufacturing keeps the core component largely intact, cleaning, inspecting, replacing only worn parts, so it recovers most of that embedded value",
+        "Note industries where this is already well established, like engine and gearbox remanufacturing, as evidence it can be a real commercial model, not just an environmental gesture"
+      ],
+      "modelAnswer": "Recycling melts a product back down to raw material, which means every bit of energy and precision that went into machining, forming, and assembling it the first time is thrown away and has to be redone from scratch. Remanufacturing keeps the core casting or housing intact, you clean it, inspect it, replace the parts that actually wore out, like bearings or seals, and you end up with something that performs to original spec while recovering most of that embedded manufacturing value. Diesel engine and gearbox remanufacturing is a good example, it's a genuinely profitable industry, not just a sustainability talking point, because the base component is expensive to make and still has a lot of useful life left in it once the worn parts are replaced. I think that's the real argument for remanufacturing over recycling wherever the base component allows it, it's not really about being greener, it's about not throwing away value that's already been created."
+    },
+    "commonMistakes": [
+      "Treating remanufacturing and recycling as basically the same thing",
+      "Framing it purely as an environmental choice with no economic logic",
+      "No real industry example"
+    ],
+    "followUps": [
+      "What kinds of products would be poorly suited to remanufacturing, and why?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Cybersecurity risk in connected factories",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "cybersecurity",
+      "industry-4.0",
+      "risk"
+    ],
+    "question": "As factories get more connected, sensors, networked controllers, cloud dashboards, they also become more exposed to cyberattack. What's actually at risk if a production line gets hacked, beyond just data theft?",
+    "lookingFor": "Understanding that industrial cyberattacks can directly cause physical harm or damage, not just steal information.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish IT security, protecting data, from OT, operational technology, security, protecting the physical process itself",
+        "Give concrete physical risks: an attacker altering a controller's setpoints could cause equipment damage, produce unsafe out-of-spec parts undetected, or even risk worker safety",
+        "Mention that legacy industrial equipment was often never designed with security in mind, and connecting it to networks can expose vulnerabilities that weren't a concern when it was isolated"
+      ],
+      "modelAnswer": "What makes this different from a normal data breach is that on a factory floor, a hacked system isn't just leaking information, it can directly change what a physical machine does, so an attacker altering a controller's temperature or pressure setpoint could damage equipment, quietly push out-of-spec parts that pass as normal, or even create a real safety hazard for the people working the line. A lot of the equipment running factories today is older gear that was never designed with any security in mind because it used to sit isolated from any network, and the push toward Industry 4.0 connectivity has effectively opened doors that were never meant to be opened. I remember reading about an attack on a steel mill where manipulated controls caused physical damage to a furnace, which really brought home that this isn't a hypothetical, it's an operational safety issue as much as an IT one. So I'd think about factory cybersecurity as protecting the physical process, not just the data sitting on top of it."
+    },
+    "commonMistakes": [
+      "Treating it as purely a data privacy or IT issue",
+      "Not distinguishing legacy OT equipment risk from modern IT systems",
+      "No mention of physical or safety consequences"
+    ],
+    "followUps": [
+      "How would you balance the benefits of connectivity against this added risk when designing a new line?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital twin technology limitations",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "digital-twin",
+      "simulation",
+      "current-development"
+    ],
+    "question": "Digital twins, virtual models of a real production line that update from live data, are being talked up as transformative. What are they actually good for, and where do you think the hype outruns the reality?",
+    "lookingFor": "Balanced view: genuine value in simulation-driven optimisation and predictive maintenance, tempered by awareness that a twin is only as good as its underlying model and data quality.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a genuine use case: testing a process change or predicting a failure in simulation before touching the real line, reducing downtime and risk",
+        "Note the hype-outruns-reality point: a digital twin is only as accurate as the physics and data behind it, and building a truly faithful model of a complex process is hard and expensive",
+        "Mention that for many smaller operations the cost and effort of building an accurate twin may outweigh the benefit compared to simpler monitoring"
+      ],
+      "modelAnswer": "I think digital twins are genuinely useful for things like testing whether a process change would create a bottleneck, or predicting when a machine is likely to fail based on live sensor data, without having to experiment on the real line and risk downtime. Where I think the hype gets ahead of reality is that a digital twin is only as good as the model and data behind it, and building something that actually captures the real physics and quirks of a messy, aging factory floor is genuinely hard and expensive, so a twin that looks impressive in a demo can still be a poor predictor of the real system. For a lot of smaller manufacturers I'd guess the cost of building and maintaining an accurate twin outweighs what simpler monitoring and maintenance scheduling could already achieve. I'd want to see a digital twin justified by a specific decision it improves, not adopted just because it's the current trend."
+    },
+    "commonMistakes": [
+      "Pure enthusiasm with no acknowledgment of limitations",
+      "Pure skepticism with no acknowledgment of genuine use cases",
+      "No mention of data or model accuracy as the core dependency"
+    ],
+    "followUps": [
+      "What kind of factory do you think benefits most from investing in a digital twin?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of signing off borderline inspection data",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "quality",
+      "integrity"
+    ],
+    "question": "Imagine you're doing a work placement and you're asked to sign off inspection paperwork on a batch of parts that are borderline out of tolerance, with your supervisor implying it's fine because 'it's always been fine before.' What would you do?",
+    "lookingFor": "Structured ethical reasoning that holds the line on integrity while showing awareness of workplace power dynamics.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the core issue: signing off data you believe to be false compromises both personal integrity and downstream safety or customer trust",
+        "Show awareness of the power imbalance, and reason through how to raise it without just capitulating or refusing dramatically",
+        "Land on a concrete action: re-measure, ask for the tolerance rationale, escalate through a quality process rather than either silently signing or storming off"
+      ],
+      "modelAnswer": "I wouldn't sign off something I believed was actually out of tolerance, because inspection paperwork exists precisely so people downstream can trust that a part meets its spec, and 'it's always been fine before' isn't the same as it actually meeting spec this time. I recognise it's hard to push back as the most junior person in the room, so I wouldn't want to make it confrontational, I'd ask to re-measure it together and ask what the actual functional reasoning behind that tolerance is, since sometimes tolerances genuinely are conservative and there's a documented process for a deviation. But if it turned out I was just being asked to sign something I knew was false with no real justification, I'd say I wasn't comfortable signing it and ask who else I could raise it with, because my name on that document is my responsibility, not just a formality."
+    },
+    "commonMistakes": [
+      "Simply saying 'I'd refuse' with no acknowledgment of the real workplace difficulty",
+      "Silently going along with it to avoid conflict",
+      "No concrete next step, just vague discomfort"
+    ],
+    "followUps": [
+      "What would you do if your supervisor got visibly frustrated with you for asking to re-measure?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of unsafe supplier labor conditions",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "supply-chain",
+      "labor"
+    ],
+    "question": "Suppose as part of a project you find evidence that a supplier your company uses for a key component has unsafe working conditions in its factory. It's cheap and reliable, and switching suppliers would delay the whole project. What do you think the right response is?",
+    "lookingFor": "Willingness to treat worker safety as non-negotiable while reasoning practically about how to act within a company structure.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the framing that cost or convenience outweighs worker safety, and be clear that continuing to use the supplier unchanged isn't acceptable",
+        "Reason about realistic action within a company: raising it formally to whoever manages supplier relationships or compliance, rather than assuming you personally can fix or hide it",
+        "Consider proportionate response, giving the supplier a chance to remediate with a clear deadline and audit, rather than jumping straight to either ignoring it or unilaterally cutting them off without process"
+      ],
+      "modelAnswer": "My starting point is that unsafe working conditions aren't something I'd treat as a cost-versus-schedule trade-off, that's a line I wouldn't be willing to cross regardless of how reliable or cheap the supplier is. Realistically, as one engineer on a project I probably can't unilaterally switch suppliers, so I'd document what I found clearly and raise it formally with whoever manages supplier compliance or procurement, rather than either quietly ignoring it or trying to handle it myself outside proper channels. I'd also think it's fair to give the supplier a genuine chance to fix specific, documented issues with a clear deadline and a follow-up audit, because cutting them off instantly with no process might not even improve conditions for the workers there, but I wouldn't accept indefinite delay as an excuse to do nothing. I think the test for me is whether I'd be comfortable explaining my decision publicly, and quietly continuing as normal wouldn't pass that test."
+    },
+    "commonMistakes": [
+      "Treating cost and schedule as legitimate reasons to overlook safety violations",
+      "Assuming they personally must fix it alone, ignoring realistic company structures",
+      "Giving a vague 'I'd report it' with no reasoning about proportionate response"
+    ],
+    "followUps": [
+      "What would you do if you raised it and the company decided to do nothing?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of automation and job loss",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "automation",
+      "jobs"
+    ],
+    "question": "You're asked to design an automation upgrade for a small, family-run manufacturing shop that would double output but would very likely mean laying off several long-serving employees. How do you think about that as the engineer doing the design?",
+    "lookingFor": "Recognition that engineers make recommendations within a broader human context, and willingness to surface trade-offs rather than treat the technical solution as automatically the right call.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the legitimate business case for automation while not pretending the human cost is irrelevant to a good engineering recommendation",
+        "Show the engineer's actual scope of influence, presenting options and their real trade-offs rather than either blind execution or refusing to do the job",
+        "Reflect on personal responsibility: doing technical work well doesn't mean ignoring foreseeable human consequences when you're the one framing the options"
+      ],
+      "modelAnswer": "I don't think it's my place to just refuse the project because I disagree with the business decision, but I also don't think a good engineer just designs the most aggressive automation option and hands it over without saying anything about what it means. I'd want to present a few real options, full automation now, a phased rollout that automates the highest-turnover or hardest tasks first, or partial automation paired with retraining some staff into new roles like maintaining the new equipment, along with an honest comparison of cost, output, and workforce impact for each. That way the people actually making the business decision are making it with the full picture, rather than me quietly deciding for them by only ever presenting the option that looks best on paper. I think engineering advice that leaves out the human consequences isn't actually complete advice, even if it's technically correct."
+    },
+    "commonMistakes": [
+      "Treating it as purely a technical problem with no acknowledgment of the human stakes",
+      "Refusing to engage with the project entirely as if that resolves the dilemma",
+      "Assuming they have power to unilaterally decide the business's staffing choices"
+    ],
+    "followUps": [
+      "Do you think it would be different if the shop's survival itself depended on this automation?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of competing against corner-cutting rivals",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "sustainability",
+      "competition"
+    ],
+    "question": "Your company follows strict environmental disposal rules for manufacturing waste, but a competitor is undercutting your prices, and you suspect they're cutting corners on disposal to do it. Does that change how you think your company should compete?",
+    "lookingFor": "Reasoning that resists the temptation to justify cutting corners by pointing at a competitor, while engaging seriously with the competitive pressure.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject 'they're doing it too' as a justification for lowering your own standards",
+        "Engage seriously with the real competitive problem this creates rather than dismissing it, since underpricing built on cut corners is a genuine business threat",
+        "Suggest legitimate responses: process efficiency to close the cost gap honestly, and where appropriate, reporting a genuine regulatory violation rather than matching it"
+      ],
+      "modelAnswer": "I don't think a competitor cutting corners is a reason for us to cut ours, that's the kind of race to the bottom that ends with worse outcomes for everyone, including the environment we're supposedly trying to protect by following the rules in the first place. But I also wouldn't dismiss the competitive pressure as irrelevant, because if they're genuinely winning business by breaking environmental regulations, that's not just unfair, it's something that should be reported to whoever regulates that, rather than quietly tolerated as 'the market.' On our side, I'd want to look hard at whether we can close some of that cost gap honestly, through better process efficiency or waste reduction that lowers cost without lowering our standards, since that's actually within an engineer's control. I'd rather compete on being genuinely better than compete on being willing to cut the same corners."
+    },
+    "commonMistakes": [
+      "Using the competitor's behavior to justify matching it",
+      "Dismissing the competitive threat as unimportant",
+      "No mention of legitimate paths like reporting a real violation or improving efficiency"
+    ],
+    "followUps": [
+      "What would you do if reporting them risked exposing your own company to unwanted regulatory scrutiny too?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: redesigning around a bottleneck",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "process-design",
+      "bottleneck"
+    ],
+    "question": "Imagine you're given a simple three-station assembly line: station A takes 30 seconds per part, station B takes 90 seconds, and station C takes 45 seconds. How would you think about redesigning it to get more parts out per hour, and what would you actually try first?",
+    "lookingFor": "Applied bottleneck reasoning, identifying station B as the constraint and reasoning through realistic first moves rather than jumping to buying more machines everywhere.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify station B as the bottleneck, since the line's throughput is capped at one part every 90 seconds regardless of how fast A and C run",
+        "Reason through realistic first moves: could B's task be split across two parallel stations, could part of B's work be shifted to A or C which have spare time, could the task itself be simplified",
+        "Note that fixing B just shifts the bottleneck elsewhere, so the redesign is really an ongoing process, not a one-time fix"
+      ],
+      "modelAnswer": "The line can only produce a part every ninety seconds no matter how fast A and C run, since B is the constraint and everything queues up behind it, so that's where I'd focus first rather than trying to speed up stations that aren't actually limiting output. My first idea would be to see if B's work can be split, running two parallel stations doing that task so each only needs to handle a part every three minutes effectively halving its bottleneck contribution, or whether some of B's steps could be moved onto A or C, which both have spare capacity relative to the ninety second cycle. I'd also just ask what's actually taking ninety seconds at B, sometimes a task looks fixed in duration but is really slow because of a clumsy fixture or an unnecessary step that a redesign could remove. And I'd keep in mind that once B stops being the bottleneck, whichever station is now the slowest becomes the new one, so this is really an iterative process, not a single fix."
+    },
+    "commonMistakes": [
+      "Suggesting to speed up A and C first, missing that B is the actual constraint",
+      "Treating the fix as permanent rather than recognising the bottleneck will shift",
+      "No concrete idea for how to actually address station B"
+    ],
+    "followUps": [
+      "If splitting station B wasn't physically possible, what else would you try?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: mid-production cost cut demand",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "cost",
+      "trade-offs"
+    ],
+    "question": "Your biggest customer suddenly demands a 20 percent cost reduction on a product you're already manufacturing, or they'll move to a competitor. As the engineer, what levers would you actually look at, and what would you refuse to touch?",
+    "lookingFor": "Structured, realistic thinking about cost levers with a clear line on what shouldn't be sacrificed, like safety or core function.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify realistic levers: material substitution, reducing process steps, design simplification, better yield or scrap reduction, volume or supplier renegotiation",
+        "Be explicit about what's off the table: safety margins, core functional performance, anything that would require deceiving the customer about what they're getting",
+        "Show awareness that a 20 percent cut is large and probably needs more than one lever, and might require an honest conversation with the customer about acceptable trade-offs"
+      ],
+      "modelAnswer": "Twenty percent is a big number, so I wouldn't expect one lever to get there, I'd look at material substitution where the spec allows it, reducing unnecessary process steps, improving yield so less scrap gets thrown away, and renegotiating volume pricing with suppliers if we can commit to a longer contract. What I wouldn't touch is anything that affects safety margins or the core functional performance the customer actually relies on, because quietly degrading the product to hit a price target without telling them isn't a cost reduction, it's a form of deception that would eventually cost us the relationship anyway. If after genuinely exploring those levers we're still short, I think the honest move is to go back to the customer with the trade-offs on the table, maybe a slightly longer lead time, a design change they'd need to approve, or a different tier of the product, rather than silently cutting corners to hit their number."
+    },
+    "commonMistakes": [
+      "Jumping straight to compromising quality or safety without exploring other levers",
+      "Giving only vague levers with no concrete specifics",
+      "Assuming the customer's demand must simply be met at any cost"
+    ],
+    "followUps": [
+      "What would you do if the customer refused any of those trade-offs and just wanted the price cut, full stop?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: sudden loss of a single-source supplier",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "supply-chain",
+      "risk"
+    ],
+    "question": "Your factory relies on a single supplier for a critical component, and that supplier suddenly goes bankrupt with no warning. Walk me through how you'd think about responding in the first few days.",
+    "lookingFor": "Calm, structured crisis reasoning: assess exposure, buy time, find alternatives, and address the underlying single-source risk.",
+    "idealAnswer": {
+      "bullets": [
+        "First step: assess actual exposure, how much stock is on hand, how long that buys, and which products or lines are affected",
+        "Search for near-term alternatives: qualified secondary suppliers, whether the bankrupt supplier's assets or tooling could be acquired or licensed, or a temporary redesign around the component",
+        "Address the root cause afterward: recognise single-sourcing a critical component was the underlying risk, and build in a qualified second source going forward, even if it costs more day to day"
+      ],
+      "modelAnswer": "The first thing I'd want to know is how much inventory of that component we actually have on hand and how many days or weeks of production that buys us, because that tells me how urgent the response really is. While that clock is running I'd be looking for alternatives, whether there's already a qualified second supplier we could ramp up quickly, whether the bankrupt supplier's tooling or IP could be bought or licensed by us or a new partner, or whether the part could be temporarily redesigned to use a component we can already source. Once the immediate fire is out, I think the real lesson is that having a single source for something critical was the actual risk all along, so I'd push for qualifying a genuine second supplier going forward, even though that probably costs a bit more day to day, because that cost is the price of not being in this exact situation again."
+    },
+    "commonMistakes": [
+      "Jumping straight to blame or panic with no structured first step",
+      "Only addressing the immediate crisis with no mention of preventing recurrence",
+      "Assuming a new supplier can be qualified instantly with no ramp-up time"
+    ],
+    "followUps": [
+      "How would you weigh the extra ongoing cost of dual sourcing against the risk it protects against?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Hypothetical: diagnosing an unexplained control chart shift",
+    "program": "Manufacturing Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "spc",
+      "hypothetical",
+      "root-cause"
+    ],
+    "question": "A control chart on a machining line shows the process mean has shifted slightly, though it's still within spec and nothing on the floor seems to have changed, no new operator, no tool change logged, no material change on paper. How would you go about figuring out what happened?",
+    "lookingFor": "Disciplined, skeptical investigation approach: trust the data over the assumption that nothing changed, and check less obvious variables.",
+    "idealAnswer": {
+      "bullets": [
+        "Start from the position that the chart is telling the truth, something did change, even if it's not visible on the obvious logs",
+        "Widen the search beyond the obvious suspects: gradual tool wear, a subtle material batch difference not flagged as a formal change, temperature or humidity shifts, or a measurement system issue itself",
+        "Note the value of checking the measurement system first, since a shift could be in the gauge rather than the process"
+      ],
+      "modelAnswer": "My first instinct would be to trust the chart over the assumption that nothing changed, because a real shift in the data means something changed even if it hasn't been logged as an official change. I'd start by checking the measurement system itself, calibrating or cross-checking the gauge, because it's surprisingly common for a shift like this to actually be a drifting instrument rather than the process. If that checks out, I'd look at things that don't always make it onto a change log, tool wear that's gradual rather than a discrete swap, a subtle difference between material batches from the same supplier, or environmental factors like a change in shop temperature or humidity that day. I'd rather spend an hour tracing a small shift now than wait for it to drift further and start producing parts outside spec."
+    },
+    "commonMistakes": [
+      "Assuming the shift is a false alarm because 'nothing changed' on the visible logs",
+      "Not considering the measurement system itself as a possible source of the shift",
+      "Jumping to a fix before identifying an actual cause"
+    ],
+    "followUps": [
+      "If you traced it to gradual tool wear, would you change the maintenance schedule or just live with periodic small shifts?"
+    ]
+  },
+  {
+    "id": "prog-manufacturing-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Fatigue failure and its design implications",
+    "program": "Manufacturing Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "fatigue",
+      "materials",
+      "design-reasoning"
+    ],
+    "question": "A component can easily survive a single application of its maximum expected load in testing, yet fail in service after months of use well below that load. What's happening, and how should that change how you design and manufacture it?",
+    "lookingFor": "Correct grasp of fatigue failure as distinct from static overload, and its implications for design and manufacturing process control.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain fatigue as failure from repeated cyclic loading well below the static strength, driven by microscopic cracks that initiate and slowly grow with each cycle",
+        "Note that fatigue life is highly sensitive to things static strength isn't, surface finish, small manufacturing defects, and stress concentrations like sharp corners or tool marks",
+        "Draw the design and manufacturing implication: fillet radii instead of sharp corners, better surface finish, and tighter control of internal defects from casting or welding"
+      ],
+      "modelAnswer": "That sounds like fatigue failure, where repeated loading, even well below the load the part survives in a single static test, causes a tiny crack to initiate, usually at some imperfection, and grow a little with every cycle until the part finally breaks. What makes it tricky is that fatigue life is extremely sensitive to things that barely matter for static strength, a rough surface finish, a small casting void, or a sharp corner that concentrates stress can dramatically cut how many cycles a part survives even though it would pass a single load test easily. That's why fatigue-critical parts get design features like generous fillet radii instead of sharp internal corners, and why manufacturing process control, polishing, shot peening, checking for internal defects, matters so much more for these components than for something that only ever sees a single load event. I think it's a good example of why 'it passed the test' isn't always the same as 'it will survive in service.'"
+    },
+    "commonMistakes": [
+      "Confusing fatigue failure with simple static overload",
+      "Not connecting the phenomenon to surface finish or stress concentration",
+      "No design or manufacturing implication drawn out"
+    ],
+    "followUps": [
+      "Why might shot peening, which intentionally deforms a surface, actually improve fatigue life rather than harm it?"
+    ]
+  }
+]

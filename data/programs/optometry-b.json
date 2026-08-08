@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-optometry-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Accommodation mechanism",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["optics", "physiology", "accommodation"],
+    "question": "Can you explain what happens physically inside the eye when it accommodates to focus on something close up?",
+    "lookingFor": "A correct grasp of the ciliary muscle, zonule, and lens mechanics, not just the word 'accommodation'.",
+    "idealAnswer": {
+      "bullets": [
+        "Ciliary muscle contracts, which slackens the zonular fibres",
+        "The crystalline lens relaxes into a more rounded, convex shape, increasing its refractive power",
+        "Link this to why the effect weakens with age as the lens stiffens (presbyopia)"
+      ],
+      "modelAnswer": "When I read up on this I found it's the ciliary muscle that does the work: it contracts, which loosens the zonules holding the lens taut, and the lens's own elasticity lets it spring into a rounder shape that bends light more strongly for a near target. What struck me is that it's an active muscular process for near vision, not distance, which is the opposite of what I'd assumed before I looked into it. It also explains presbyopia neatly, because as the lens loses elasticity with age that rounding response gets weaker even though the muscle itself still works fine."
+    },
+    "commonMistakes": [
+      "Saying the eyeball itself changes shape or length",
+      "Confusing accommodation with pupil constriction",
+      "Not connecting the mechanism to presbyopia when asked to extend it"
+    ],
+    "followUps": ["Why does that same mechanism fail with age?"]
+  },
+  {
+    "id": "prog-optometry-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Myopia vs hyperopia optics",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["optics", "refractive-error", "fundamentals"],
+    "question": "What's actually going on optically in a myopic eye compared to a hyperopic one?",
+    "lookingFor": "Clear understanding of where light focuses relative to the retina in each case and why the lens correction differs.",
+    "idealAnswer": {
+      "bullets": [
+        "Myopia: eye too long or cornea too steep, image forms in front of the retina",
+        "Hyperopia: eye too short or cornea too flat, image forms behind the retina",
+        "Correct lens sign for each and why: minus/concave for myopia, plus/convex for hyperopia"
+      ],
+      "modelAnswer": "In a myopic eye the light-bending power is too strong for the eye's length, usually because the eyeball is a bit too long, so the image comes into focus in front of the retina rather than on it, which is why distance objects blur. Hyperopia is the mirror image: the eye is relatively too short so the focal point would sit behind the retina, and for mild cases the eye can actually accommodate to pull it forward, which is part of why hyperopia can go unnoticed in younger patients. That's also why myopia needs a diverging, minus-powered lens to push the focal point back, while hyperopia needs a converging, plus-powered lens to pull it forward."
+    },
+    "commonMistakes": [
+      "Swapping which condition needs plus versus minus lenses",
+      "Describing hyperopia as simply 'good vision' rather than a refractive error that can be masked by accommodation",
+      "Ignoring corneal curvature as a contributing factor and only mentioning axial length"
+    ],
+    "followUps": ["Why might a hyperopic child pass a basic vision screening?"]
+  },
+  {
+    "id": "prog-optometry-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Astigmatism explanation",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["optics", "refractive-error", "cornea"],
+    "question": "How would you explain astigmatism to a patient who's never heard the term before?",
+    "lookingFor": "Ability to translate a technical optical concept into plain language without losing accuracy.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe unequal curvature across meridians rather than a single spherical surface",
+        "Explain that light focuses at more than one point or as a line rather than a single point",
+        "Use a lay analogy and mention the cylindrical lens correction"
+      ],
+      "modelAnswer": "I'd tell them that instead of the front of the eye being shaped like a round ball, it's a bit more like the back of a spoon, curved more steeply in one direction than the other. Because of that, light doesn't come to a single sharp focus point the way it does in a perfectly round eye, so things look slightly stretched or blurred at every distance rather than just up close or far away. The fix is a lens ground with a cylindrical curve that cancels out that uneven shape, which is why an astigmatism prescription has an extra axis number alongside the usual power."
+    },
+    "commonMistakes": [
+      "Describing astigmatism as only affecting distance or only near vision",
+      "Using jargon like 'meridian' or 'toric' with no lay explanation",
+      "Implying it is a disease rather than a refractive shape difference"
+    ],
+    "followUps": ["Why does the prescription need an axis value, not just a power?"]
+  },
+  {
+    "id": "prog-optometry-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Pinhole test logic",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["clinical-testing", "diagnosis", "refraction"],
+    "question": "Why does looking through a pinhole tell you whether reduced vision is a refractive problem or something pathological?",
+    "lookingFor": "Understanding of how a pinhole narrows the light bundle and what improvement or non-improvement each imply.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the pinhole restricts entering light to a narrow central beam, reducing blur circles from refractive error",
+        "Improved vision through the pinhole suggests the reduction is refractive and correctable with lenses",
+        "No improvement points toward media opacity or retinal/optic nerve pathology rather than a simple prescription issue"
+      ],
+      "modelAnswer": "A pinhole only lets a narrow, central bundle of rays through, so it cuts down the size of the blur circle that an uncorrected refractive error would normally spread across the retina, almost like squinting deliberately. If vision improves noticeably through the pinhole, that's a strong hint the problem is optical and a new prescription will likely fix it. But if vision stays poor even through the pinhole, narrowing the light doesn't help, which points away from a simple refractive cause and toward something like a cataract, corneal scarring, or a retinal or optic nerve problem that needs further investigation rather than just new glasses."
+    },
+    "commonMistakes": [
+      "Claiming the pinhole always improves vision regardless of cause",
+      "Confusing the pinhole test with a visual field test",
+      "Failing to name any example of a non-refractive cause it can screen for"
+    ],
+    "followUps": ["What would you do next if pinhole vision didn't improve?"]
+  },
+  {
+    "id": "prog-optometry-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Tonometry and glaucoma risk",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["glaucoma", "diagnosis", "intraocular-pressure"],
+    "question": "Why isn't a high intraocular pressure reading on its own enough to diagnose glaucoma?",
+    "lookingFor": "Awareness that IOP is a risk factor, not a diagnostic criterion, and that optic nerve and field findings matter more.",
+    "idealAnswer": {
+      "bullets": [
+        "State that tonometry measures IOP, which is a major risk factor but not the disease itself",
+        "Mention normal-tension glaucoma exists, and some high-pressure eyes never develop damage (ocular hypertension)",
+        "Point to optic nerve appearance (cup-to-disc ratio), visual field testing, and corneal thickness as the fuller picture"
+      ],
+      "modelAnswer": "From what I've read, glaucoma is really defined by progressive damage to the optic nerve, and raised intraocular pressure is just the most common risk factor that drives that damage, not the diagnosis itself. There are people with pressures well above the typical range who never develop nerve damage, which is called ocular hypertension, and conversely there's normal-tension glaucoma where the nerve is damaged despite pressure readings in the normal range. That's why a proper workup looks at the optic nerve's cup-to-disc ratio, checks the visual field for the characteristic peripheral loss, and even factors in corneal thickness, because a thin cornea can make tonometry underestimate the true pressure."
+    },
+    "commonMistakes": [
+      "Treating a single elevated IOP reading as a diagnosis",
+      "Not mentioning normal-tension glaucoma or ocular hypertension",
+      "Omitting visual field testing or optic nerve assessment entirely"
+    ],
+    "followUps": ["Why might corneal thickness distort a tonometry reading?"]
+  },
+  {
+    "id": "prog-optometry-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Diabetic retinopathy signs",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["diabetic-retinopathy", "fundus", "systemic-disease"],
+    "question": "What would you expect to see on a fundus exam of a patient with diabetic retinopathy, and why does an optometrist need to know this even though diabetes is managed elsewhere?",
+    "lookingFor": "Concrete clinical signs and an understanding of optometry's screening role in a systemic disease.",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific signs: microaneurysms, dot-and-blot haemorrhages, hard exudates, cotton wool spots, and in advanced disease neovascularisation",
+        "Explain the risk to macular oedema and central vision specifically",
+        "Frame the optometrist's role as often the first to detect systemic disease through routine screening"
+      ],
+      "modelAnswer": "On a fundus exam I'd expect to see microaneurysms first, tiny outpouchings of the retinal capillaries, followed by dot-and-blot haemorrhages, hard exudates from leaking lipid, and cotton wool spots where small nerve fibre areas have been starved of blood. In more advanced, proliferative disease there can be fragile new vessels growing where they shouldn't, which risk bleeding into the eye. What draws me to this is that an optometrist doing a routine eye check is often the first clinician to spot these changes, sometimes before a patient even knows they're diabetic, which makes eye care a genuine front line for catching a systemic disease early."
+    },
+    "commonMistakes": [
+      "Naming only one or two signs without the fuller picture",
+      "Confusing diabetic retinopathy findings with those of hypertensive retinopathy",
+      "Missing the point about optometry's screening role in systemic disease detection"
+    ],
+    "followUps": ["What separates non-proliferative from proliferative diabetic retinopathy?"]
+  },
+  {
+    "id": "prog-optometry-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Cataract vs glaucoma",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["cataract", "glaucoma", "differential"],
+    "question": "How would you distinguish cataract from glaucoma to a worried patient who thinks both are 'the same thing'?",
+    "lookingFor": "A clear differential grasp of mechanism, symptom pattern, and reversibility, communicated simply.",
+    "idealAnswer": {
+      "bullets": [
+        "Cataract: clouding of the lens itself, gradual blur and glare, generally reversible with surgery",
+        "Glaucoma: optic nerve damage usually linked to pressure, starts with peripheral field loss that's often unnoticed, and damage already done is not reversible",
+        "Contrast urgency and monitoring approach for each"
+      ],
+      "modelAnswer": "I'd explain that a cataract is the lens inside the eye going cloudy over time, like a window slowly fogging up, which blurs and dims what you see and causes glare, but it's very treatable because the cloudy lens can be removed and replaced surgically. Glaucoma is different because it's damage to the optic nerve, usually linked to pressure inside the eye, and it tends to eat away at peripheral vision first, which people often don't notice until a lot of the damage is already done. That's the scary part I'd want a patient to understand: cataract surgery can restore vision, but glaucoma treatment is about protecting whatever vision is left, because nerve damage that's already happened can't be undone."
+    },
+    "commonMistakes": [
+      "Treating the two as interchangeable 'age-related eye problems'",
+      "Missing that glaucoma damage is irreversible while cataract vision loss is not",
+      "Failing to mention that glaucoma often has no early symptoms"
+    ],
+    "followUps": ["Why is glaucoma sometimes called the 'silent thief of sight'?"]
+  },
+  {
+    "id": "prog-optometry-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Colour vision deficiency",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["colour-vision", "genetics", "physiology"],
+    "question": "What causes red-green colour vision deficiency, and why is it so much more common in men?",
+    "lookingFor": "Understanding of cone photoreceptor mechanism and the X-linked inheritance pattern.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain it as an absence or altered spectral sensitivity of the long- or medium-wavelength cones",
+        "State the X-linked recessive inheritance pattern as the reason for male prevalence",
+        "Mention how it's typically tested, such as Ishihara plates"
+      ],
+      "modelAnswer": "It comes down to the cones in the retina that respond to red and green wavelengths, the long- and medium-wavelength cones, either being missing or having their sensitivity shifted so the two overlap too much for the brain to tell them apart clearly. The genes for those particular photopigments sit on the X chromosome, and because it's a recessive trait, a man only needs one altered copy to show it while a woman generally needs two, which is why it shows up in roughly one in twelve men but far fewer women. It's usually picked up with something like Ishihara plates, where numbers made of coloured dots are invisible or different to someone with the deficiency."
+    },
+    "commonMistakes": [
+      "Saying colour blindness means seeing no colour at all",
+      "Not explaining why the X-linked pattern causes higher male prevalence",
+      "Confusing red-green deficiency with the much rarer blue-yellow type"
+    ],
+    "followUps": ["Would total colour blindness involve the same mechanism?"]
+  },
+  {
+    "id": "prog-optometry-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Presbyopia vs refractive error",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["presbyopia", "ageing", "fundamentals"],
+    "question": "Is presbyopia a refractive error like myopia, or is it something different? Explain your reasoning.",
+    "lookingFor": "A conceptual distinction between a fixed optical mismatch and a loss of dynamic focusing ability.",
+    "idealAnswer": {
+      "bullets": [
+        "Clarify that presbyopia is a loss of accommodative amplitude, not a static focusing error",
+        "Explain the underlying cause: age-related stiffening of the lens and reduced ciliary efficiency",
+        "Note it happens to nearly everyone eventually, unlike myopia or hyperopia which are individually variable"
+      ],
+      "modelAnswer": "I'd say it's genuinely different, even though people often lump it in with needing glasses generally. Myopia or hyperopia are about the eye's fixed focusing power not matching its length, whereas presbyopia is about losing the eye's ability to actively change its focus for near objects as the lens gets stiffer and less elastic with age. That's also why it's near-universal rather than something only some people get, and why someone who's never needed glasses in their life still ends up needing reading glasses in their forties, because it's a decline in a dynamic mechanism rather than a static mismatch."
+    },
+    "commonMistakes": [
+      "Calling presbyopia simply 'age-related hyperopia'",
+      "Missing that presbyopia affects nearly everyone regardless of prior refractive status",
+      "Not linking the cause back to lens elasticity and ciliary muscle function"
+    ],
+    "followUps": ["Could someone who is myopic still develop presbyopia?"]
+  },
+  {
+    "id": "prog-optometry-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Amblyopia and the critical period",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["amblyopia", "paediatrics", "neurodevelopment"],
+    "question": "Why is early detection of amblyopia so much more important than detecting it in an adult?",
+    "lookingFor": "Understanding of the critical period of visual cortical development and why treatment windows close.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain amblyopia as the brain suppressing input from one eye, not a problem with the eye itself",
+        "Describe the critical period of visual development, roughly up to age seven or eight, during which cortical connections are still plastic",
+        "State that once that window closes, the suppression tends to be permanent even if the underlying cause is later corrected"
+      ],
+      "modelAnswer": "What makes amblyopia different from most eye problems is that the eye itself can be structurally fine, but the brain has learned to suppress or ignore the signal from it, usually because of an uncorrected difference in prescription between the two eyes, a squint, or something blocking clear input like a childhood cataract. The visual cortex is only that plastic for a limited window, roughly up to seven or eight years old, so if you catch it and treat it with things like patching or glasses within that period the brain can be retrained to use both eyes properly. If it's missed until adulthood, the wiring has essentially locked in, so even correcting the original cause afterwards usually can't restore the vision, which is exactly why routine childhood screening matters so much to me."
+    },
+    "commonMistakes": [
+      "Describing amblyopia as purely a structural or muscular eye problem",
+      "Not mentioning the concept of a closing developmental window",
+      "Implying it can always be fixed later in life with the right correction"
+    ],
+    "followUps": ["What are the main underlying causes that lead to amblyopia?"]
+  },
+  {
+    "id": "prog-optometry-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Convergence insufficiency",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["binocular-vision", "clinical-testing"],
+    "question": "A student complains of headaches and eye strain only when reading for long periods, with normal distance vision. What might you consider, and why?",
+    "lookingFor": "Recognition that binocular vision problems like convergence insufficiency can exist despite normal acuity.",
+    "idealAnswer": {
+      "bullets": [
+        "Suggest convergence insufficiency as a binocular coordination issue rather than a refractive one",
+        "Explain that acuity can be perfectly normal while the eyes still struggle to turn inward enough for sustained near work",
+        "Mention near point of convergence testing and vision therapy as the typical approach"
+      ],
+      "modelAnswer": "Because the distance vision is fine, I'd think less about a straightforward refractive error and more about how well the eyes work together up close, since something like convergence insufficiency wouldn't necessarily show up on a standard acuity chart at all. It's about the eyes struggling to turn inward enough and hold that position for sustained near tasks like reading, which causes exactly that pattern of strain, headaches, and sometimes blurred or doubled print after a while. I understand it's usually picked up by measuring the near point of convergence and can often be improved with targeted vision therapy exercises rather than a change in spectacle prescription."
+    },
+    "commonMistakes": [
+      "Assuming normal distance acuity rules out any visual cause",
+      "Jumping straight to prescribing reading glasses without considering binocular function",
+      "Confusing convergence insufficiency with a squint or strabismus"
+    ],
+    "followUps": ["How would you actually test for this in a routine exam?"]
+  },
+  {
+    "id": "prog-optometry-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Contact lens complications",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["contact-lenses", "cornea", "clinical-risk"],
+    "question": "Why can wearing contact lenses too long or too often lead to corneal problems, and what's the mechanism?",
+    "lookingFor": "Understanding of corneal hypoxia and infection risk, not just a vague 'lenses are risky' statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the cornea is avascular and relies on oxygen diffusing through the tear film, which a lens partially blocks",
+        "Describe how reduced oxygen causes corneal oedema and, over time, can drive neovascularisation",
+        "Mention separately the infection risk from poor hygiene or overwear, including serious organisms like Acanthamoeba"
+      ],
+      "modelAnswer": "The cornea has no blood vessels of its own, so it gets its oxygen mostly by diffusion straight through the tear film from the air, and a contact lens sitting on top of it acts as a partial barrier to that. If a lens is worn too long, especially an older low-oxygen-permeability material, the cornea can swell from that lack of oxygen, and chronic hypoxia over years can even trigger new blood vessels growing in from the edge, trying to compensate. That's separate from the infection risk, which comes more from hygiene and overwear letting bacteria or, in rarer but serious cases, organisms like Acanthamoeba from tap water get trapped against the eye, which is why I think patient education on lens care is as important as the fitting itself."
+    },
+    "commonMistakes": [
+      "Attributing all contact lens problems to a single vague cause like 'dryness'",
+      "Not distinguishing hypoxia-related complications from infection-related ones",
+      "Missing that corneal oxygen supply, not blood supply, is the relevant mechanism"
+    ],
+    "followUps": ["Why would daily disposables reduce some of this risk compared to monthly lenses?"]
+  },
+  {
+    "id": "prog-optometry-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Myopia epidemic and control",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["myopia-control", "current-development", "public-health"],
+    "question": "There's been a lot of talk about a global rise in myopia, especially in children. What's driving it, and what's the profession trying to do about it beyond just prescribing stronger glasses?",
+    "lookingFor": "Awareness of the myopia epidemic as a live public-health issue and the shift from correction to active progression control.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite likely drivers: increased near work and reduced time outdoors, especially in urbanised, exam-focused environments",
+        "Explain the shift from simply correcting myopia to actively slowing its progression",
+        "Name at least one control method: low-dose atropine, orthokeratology, or specially designed multifocal lenses using peripheral defocus"
+      ],
+      "modelAnswer": "From what I've read, the rise is being linked to a combination of more time spent on close, sustained near work like screens and studying, and significantly less time spent outdoors, particularly in East Asian cities where prevalence has climbed the fastest. What I find genuinely interesting is that the profession isn't just responding by prescribing stronger minus lenses anymore, it's shifting toward actively slowing how fast a child's myopia progresses, using tools like low-dose atropine drops, orthokeratology contact lenses worn overnight, or newer spectacle and soft lens designs that alter peripheral focus to signal the eye to stop growing as much. That reframing, from correcting a number to managing a progressive condition, is honestly one of the things that makes we want to study this field now rather than a decade ago."
+    },
+    "commonMistakes": [
+      "Only mentioning genetics without any environmental drivers",
+      "Naming no specific myopia control method when pressed",
+      "Treating myopia control as identical to simply prescribing a stronger prescription"
+    ],
+    "followUps": ["Why might outdoor time specifically help, beyond just reducing near work?"]
+  },
+  {
+    "id": "prog-optometry-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in retinal screening",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["current-development", "artificial-intelligence", "diagnostics"],
+    "question": "AI systems can now screen fundus photographs for diabetic retinopathy with results approved for clinical use in some places. How do you think that changes what an optometrist actually does?",
+    "lookingFor": "A balanced, informed take on AI as a triage tool that changes but doesn't eliminate the clinician's role.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that such tools exist and are already used for autonomous or assisted screening in some settings",
+        "Argue the optometrist's role shifts toward oversight, image quality, and handling flagged or ambiguous cases rather than disappearing",
+        "Acknowledge a limitation, such as the tool needing good image quality or not replacing full clinical context"
+      ],
+      "modelAnswer": "I think it's a genuinely useful shift rather than a threat, because these tools are mostly being used to triage large volumes of screening photographs, flagging the ones that show signs of retinopathy so a clinician's time goes to the cases that actually need judgement rather than reading every single normal image. That still leaves plenty for an optometrist to do, making sure the images are actually good enough quality to trust, catching anything the algorithm might miss because it's trained mainly on one specific condition, and having the full conversation with the patient about what the finding actually means for them. I'd want to go in understanding these tools well enough to use them critically rather than either dismissing them or trusting them blindly."
+    },
+    "commonMistakes": [
+      "Claiming AI will fully replace optometrists with no nuance",
+      "Dismissing AI screening tools as irrelevant to the profession",
+      "Showing no awareness that such systems already exist and are in clinical use"
+    ],
+    "followUps": ["What kind of case do you think an algorithm like that would be most likely to miss?"]
+  },
+  {
+    "id": "prog-optometry-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Expanding scope of practice",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["current-development", "scope-of-practice", "regulation"],
+    "question": "In several places, optometrists are now allowed to prescribe therapeutic drugs and do minor procedures that used to be ophthalmology-only. What's your view on that trend?",
+    "lookingFor": "Informed engagement with an active regulatory debate, not just a for-or-against opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the trend and a driver, such as workforce shortages or improving access to timely eye care",
+        "Weigh the benefit of faster treatment against the need for rigorous additional training and clear boundaries",
+        "Land on a considered personal view rather than a flat yes or no"
+      ],
+      "modelAnswer": "I think it makes sense given how stretched ophthalmology services can be, and letting a trained optometrist manage something like glaucoma medication or remove a minor foreign body means patients aren't stuck waiting weeks for a problem that could be handled sooner. What matters to me is that the expanded scope has to come with genuinely rigorous extra training and really clear lines about when to refer on, because the risk isn't the expansion itself, it's expansion without the certification catching up. I find it exciting rather than worrying, mainly because it suggests the degree I'd be doing is heading toward more clinical responsibility, not less."
+    },
+    "commonMistakes": [
+      "Giving a purely one-sided opinion with no acknowledgement of the risks or training implications",
+      "Not knowing this trend exists at all",
+      "Confusing prescribing rights with performing full ophthalmic surgery"
+    ],
+    "followUps": ["Where would you personally draw the line on what an optometrist should be allowed to treat?"]
+  },
+  {
+    "id": "prog-optometry-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Teleoptometry and access",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["current-development", "telehealth", "access"],
+    "question": "Remote and app-based vision testing has grown a lot recently. What can it realistically replace, and what can't it?",
+    "lookingFor": "A realistic, specific view of telehealth's strengths and its clinical limits in eye care.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise genuine benefits: improved access for remote or underserved patients, convenience for routine refraction updates",
+        "Identify specific limits: no substitute for a dilated fundus exam, tonometry, or full anterior segment assessment",
+        "Suggest a hybrid model rather than an all-or-nothing stance"
+      ],
+      "modelAnswer": "It's clearly valuable for improving access, especially for people in remote areas or those who just need a routine prescription check, since a lot of basic refraction can genuinely be done well through a well-designed app or remote consultation. What it can't replace is a proper dilated look at the back of the eye, a real intraocular pressure measurement, or the kind of hands-on anterior segment exam that catches things a screen simply can't show, so I don't think it should stand in for a full comprehensive exam, particularly for anyone with risk factors like diabetes or a family history of glaucoma. I'd see it working best as a hybrid, where remote tools handle routine touchpoints and expand access, but a proper in-person exam still happens at sensible intervals."
+    },
+    "commonMistakes": [
+      "Claiming telehealth can fully replace an in-person comprehensive eye exam",
+      "Dismissing remote tools entirely as unreliable",
+      "Not naming a specific test that genuinely requires in-person equipment"
+    ],
+    "followUps": ["Who do you think benefits most from this kind of remote access?"]
+  },
+  {
+    "id": "prog-optometry-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Smart contact lens technology",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["current-development", "wearable-tech", "innovation"],
+    "question": "You may have seen coverage of 'smart' contact lenses that can monitor things like intraocular pressure or glucose levels. How realistic do you think this technology is, and what would it change?",
+    "lookingFor": "A grounded, curious view of emerging wearable eye technology that recognises both promise and current limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the concept, such as sensor-embedded lenses for continuous IOP or tear glucose monitoring",
+        "Note that most versions remain experimental or have struggled to reach mainstream clinical use",
+        "Identify a genuine potential benefit, like continuous rather than snapshot monitoring for conditions like glaucoma"
+      ],
+      "modelAnswer": "I've read about lenses embedded with tiny sensors designed to track intraocular pressure continuously or even pick up glucose levels from tears, and a few high-profile projects in that space have actually been shelved or scaled back because the engineering and accuracy challenges turned out to be harder than expected. What excites me about the idea even so is what continuous monitoring could offer for something like glaucoma, where a single pressure reading in a clinic only captures one moment and pressure is known to fluctuate through the day, so a lens that tracked it around the clock could catch spikes a normal exam would simply miss. I think it's a genuinely promising direction, just one that's still mostly at the research stage rather than something I'd expect to fit routinely tomorrow."
+    },
+    "commonMistakes": [
+      "Treating smart contact lenses as already a routine clinical product",
+      "Showing no awareness the technology exists at all",
+      "Giving no concrete example of what continuous monitoring would actually improve"
+    ],
+    "followUps": ["What practical obstacle do you think has slowed this technology down the most?"]
+  },
+  {
+    "id": "prog-optometry-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Unnecessary sale dilemma",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["ethics", "commercial-pressure", "dilemma"],
+    "question": "Imagine you're training in a practice that also sells eyewear, and a patient with a genuinely tiny, clinically insignificant prescription asks you to write it up anyway so they can buy a pair of glasses. What would guide your decision?",
+    "lookingFor": "Structured ethical reasoning that separates clinical honesty from commercial pressure, without being preachy.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension between patient autonomy or preference and clinical accuracy",
+        "Reason toward being honest about what the prescription actually shows rather than inflating it to justify a sale",
+        "Suggest a way to respect the patient's wish without compromising professional integrity, such as explaining the finding clearly and letting them choose"
+      ],
+      "modelAnswer": "I'd want to be straightforward with the patient about what I actually found, that the difference is so small it's unlikely to change how clearly they see day to day, rather than writing it up as more significant just because they're hoping for glasses. That doesn't mean dismissing what they want either, because if they'd still like a pair for comfort or preference that's a legitimate personal choice, I just don't think it's my place to dress up a clinical finding to justify it. What matters to me is that my prescription reflects reality, and the sale, if there is one, should follow honestly from that rather than the other way round."
+    },
+    "commonMistakes": [
+      "Simply inflating the prescription to keep the patient happy",
+      "Refusing the patient's request in a way that's dismissive of what they actually want",
+      "Treating this as a purely business decision with no ethical weight at all"
+    ],
+    "followUps": ["Does it change anything if your income is partly tied to eyewear sales?"]
+  },
+  {
+    "id": "prog-optometry-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Sight-threatening finding, patient can't afford referral",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["ethics", "access-to-care", "dilemma"],
+    "question": "During a routine exam you spot signs that strongly suggest a sight-threatening condition needing urgent specialist referral, but the patient tells you they genuinely can't afford to see a specialist. What do you do?",
+    "lookingFor": "Ethical reasoning that keeps urgency and honesty intact while genuinely engaging with the access barrier, not brushing past it.",
+    "idealAnswer": {
+      "bullets": [
+        "Be clear and honest about the urgency of the finding without causing panic",
+        "Explore practical options such as public health pathways, charitable schemes, or emergency eye services rather than dropping the issue",
+        "Recognise that cost cannot change the clinical facts, only how you help the patient act on them"
+      ],
+      "modelAnswer": "I'd start by making sure the patient genuinely understands how serious and time-sensitive this is, because softening it to spare their worry would actually be doing them a disservice. Then I'd shift into problem-solving mode with them rather than just repeating the referral, looking into whether there's an emergency eye clinic, a public hospital pathway, or a charitable scheme that could get them seen without the cost being the barrier that stops them going at all. I don't think the finding itself changes because someone can't pay for it, what changes is how much effort I put into finding them a route to actually get the care they need."
+    },
+    "commonMistakes": [
+      "Softening or downplaying the urgency because the patient can't afford care",
+      "Simply telling the patient to 'find a way to pay' with no practical help",
+      "Abandoning the referral altogether once cost is mentioned"
+    ],
+    "followUps": ["Would your approach change if the patient seemed to be minimising their own symptoms?"]
+  },
+  {
+    "id": "prog-optometry-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Suspected abuse in a child exam",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["ethics", "safeguarding", "paediatrics"],
+    "question": "During a child's eye exam you notice retinal findings that could be consistent with non-accidental injury, but you're not certain. How would you handle that?",
+    "lookingFor": "Sober, structured safeguarding reasoning that avoids both false accusation and dangerous silence.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the seriousness of the possibility without leaping to a definite accusation",
+        "Describe following proper safeguarding escalation channels rather than confronting the caregiver directly",
+        "Balance the child's safety as the overriding priority against the discomfort of being wrong"
+      ],
+      "modelAnswer": "I'd take it seriously without treating my own suspicion as proof, because I'm not the one who's meant to make that determination on the spot. What I understand is that the right response isn't to accuse anyone in the room, it's to follow the proper safeguarding protocol, document exactly what I observed, and pass it to the people trained to investigate it properly. I know that's uncomfortable, because being wrong feels like it could unfairly cast suspicion on a family, but staying silent because I might be wrong isn't a safe option either when a child's welfare could be at stake."
+    },
+    "commonMistakes": [
+      "Confronting the parent or caregiver directly on the spot",
+      "Staying silent out of fear of being wrong",
+      "Treating suspicion as a confirmed diagnosis rather than a trigger for proper process"
+    ],
+    "followUps": ["How would you handle it if the caregiver became defensive when you raised concerns gently?"]
+  },
+  {
+    "id": "prog-optometry-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Adult refuses referral for suspected serious pathology",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["ethics", "autonomy", "dilemma"],
+    "question": "You find something on an exam that could indicate a serious problem, possibly even a tumour, but the competent adult patient in front of you flatly refuses to be referred. Where does that leave you?",
+    "lookingFor": "Reasoning that respects patient autonomy while not abandoning professional responsibility to inform and document.",
+    "idealAnswer": {
+      "bullets": [
+        "Affirm that a competent adult has the right to refuse, and that right has to be respected",
+        "Insist on making sure the refusal is genuinely informed, by clearly explaining what's at stake",
+        "Describe documenting the conversation and leaving the door open rather than forcing the issue"
+      ],
+      "modelAnswer": "A competent adult has every right to decline a referral, and I don't think it's my place to override that, but I do think it's my responsibility to make absolutely sure they understand what they're declining before I let it go. I'd want to explain plainly what I found and why it concerns me, without exaggerating it to scare them into compliance, and check they're not refusing out of fear or a misunderstanding of the risk. After that I'd document the conversation carefully and let them know the offer stands, because respecting their choice doesn't mean closing the door on them changing their mind later."
+    },
+    "commonMistakes": [
+      "Pressuring or attempting to override a competent adult's decision",
+      "Simply accepting the refusal without checking it was genuinely informed",
+      "Failing to mention documentation or leaving the option open for the future"
+    ],
+    "followUps": ["Does your answer change if the patient seemed confused rather than clearly competent?"]
+  },
+  {
+    "id": "prog-optometry-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Parents refuse amblyopia patching",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "paediatrics", "counselling"],
+    "question": "A child needs patching therapy for amblyopia, but the parents are refusing because they're worried about the child being bullied at school. How would you approach that conversation?",
+    "lookingFor": "Empathetic, practical counselling that takes the parents' concern seriously while still centring the child's long-term vision.",
+    "idealAnswer": {
+      "bullets": [
+        "Validate the parents' concern as reasonable rather than dismissing it",
+        "Explain clearly what's at stake if the treatment window is missed, using the critical period",
+        "Offer practical alternatives or compromises, such as atropine penalisation or a modified patching schedule, rather than an all-or-nothing stance"
+      ],
+      "modelAnswer": "I'd start by taking the worry seriously rather than brushing it off, because a parent watching their child get teased is a real and valid fear, not an overreaction. But I'd also want them to understand clearly what's at stake, that this treatment only really works within a limited window and if it's missed the vision loss could be permanent in a way that no amount of glasses later can fix. From there I'd talk through alternatives with them, like whether atropine drops might work instead of a patch for part of the treatment, or adjusting the wearing schedule to be less visible at school, because the goal is finding something the family can actually stick with rather than insisting on one rigid approach."
+    },
+    "commonMistakes": [
+      "Dismissing the parents' social concern as unimportant next to the medical need",
+      "Failing to explain the time-limited nature of the treatment window clearly",
+      "Offering no alternative or compromise, only insisting on the original plan"
+    ],
+    "followUps": ["What would you do if the parents still refused after this conversation?"]
+  },
+  {
+    "id": "prog-optometry-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Elderly patient below driving vision standard",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "public-safety", "ethics"],
+    "question": "An elderly patient's vision has dropped below the legal standard for driving, but they tell you they need to drive to get to medical appointments and refuse to stop. How do you handle this?",
+    "lookingFor": "Balanced reasoning between empathy for the patient's situation and the duty to public safety, including practical next steps.",
+    "idealAnswer": {
+      "bullets": [
+        "Show empathy for the genuine hardship stopping driving would cause, not just a rule-citation",
+        "Be direct and clear about the legal and safety implications of continuing to drive",
+        "Explore practical alternatives and mention appropriate reporting steps if refusal persists, tailored to duty of care"
+      ],
+      "modelAnswer": "I'd want to actually sit with why they feel they have no choice, because losing the ability to drive when you rely on it for medical appointments is a genuine loss of independence, not something to brush past quickly. At the same time I'd be direct that their vision is below the legal threshold and that continuing to drive puts them and others at real risk, and I wouldn't soften that just because the conversation is difficult. I'd try to help them find alternatives, like community transport or family support for those specific appointments, and if they still refused to stop I understand there are proper channels for reporting a driver who doesn't meet the standard, which I'd see as a last resort rather than a first move."
+    },
+    "commonMistakes": [
+      "Only citing the rule with no empathy for the patient's situation",
+      "Avoiding the difficult conversation altogether to keep the visit comfortable",
+      "Not knowing that formal reporting channels exist as a last resort"
+    ],
+    "followUps": ["What would push you from advising them to actually reporting the situation?"]
+  },
+  {
+    "id": "prog-optometry-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Limited resources, one shot at a rural exam",
+    "program": "Optometry",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "access", "triage"],
+    "question": "You're doing an outreach clinic in a remote community where a patient may only get one eye exam this year. With limited time and equipment, how would you decide what to prioritise?",
+    "lookingFor": "Sensible clinical triage reasoning under real-world constraints, not an attempt to run a full ideal exam regardless of context.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise tests that catch sight-threatening or progressive disease over pure refraction if time is tight",
+        "Ask targeted history questions to direct limited testing time efficiently",
+        "Show awareness that this is a real trade-off, not a scenario where you can simply do everything"
+      ],
+      "modelAnswer": "If I genuinely only had one shot, I'd want to prioritise the checks that catch something sight-threatening or progressive over just updating a prescription, because a small refractive change is far less urgent than missing early glaucoma or diabetic changes that this person might not get checked again for a year. I'd start with a quick, targeted history, asking about diabetes, family history of eye disease, and any symptoms, to steer where I spend the limited time I have rather than running through a fixed checklist regardless of relevance. It's an uncomfortable trade-off compared to a full comprehensive exam, but I think being honest about that trade-off and prioritising deliberately is better than trying to do a bit of everything and doing none of it well."
+    },
+    "commonMistakes": [
+      "Insisting on running a full standard exam regardless of time constraints",
+      "Prioritising refraction over disease screening when time is genuinely limited",
+      "Not using patient history to help direct limited testing time"
+    ],
+    "followUps": ["What would you skip first if you had to cut something?"]
+  },
+  {
+    "id": "prog-optometry-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Reflecting on the boundary with ophthalmology",
+    "program": "Optometry",
+    "difficulty": "hard",
+    "tags": ["reflection", "scope-of-practice", "self-awareness"],
+    "question": "Optometry has a clear boundary with ophthalmology in most places, meaning there will be cases you can diagnose but must hand over to someone else to treat surgically. Does that boundary ever frustrate you, and how would you handle it?",
+    "lookingFor": "Genuine reflective honesty about the limits of the role, rather than a rehearsed claim of total contentment.",
+    "idealAnswer": {
+      "bullets": [
+        "Answer honestly rather than claiming the boundary will never bother them",
+        "Explain what they find satisfying about the diagnostic and long-term care side of the role regardless",
+        "Show they've actually thought about the handover moment, not just the diagnosing part"
+      ],
+      "modelAnswer": "Honestly, I think there probably will be moments it frustrates me, especially the first time I spot something serious and know the next step isn't mine to take. But when I've talked to optometrists about this, what came through is that the diagnosing and the ongoing relationship with a patient over years is its own reward, you're often the one who catches the problem in the first place and the one who manages everything before and after the surgical part. So I don't think the boundary bothers me as much as it might sound, because I'm genuinely drawn to the detective work of figuring out what's wrong and guiding someone through it, more than to the idea of being the one holding the scalpel."
+    },
+    "commonMistakes": [
+      "Claiming the boundary would never bother them at all, which reads as rehearsed",
+      "Revealing they actually wanted to do ophthalmology and see optometry as a lesser fallback",
+      "Giving no real thought to what happens at the handover point itself"
+    ],
+    "followUps": ["What part of the diagnostic process do you think you'd find most rewarding?"]
+  }
+]

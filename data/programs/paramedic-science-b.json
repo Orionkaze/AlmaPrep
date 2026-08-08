@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-paramedic-science-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Triage under mass casualty",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "triage",
+      "mass-casualty",
+      "prioritization"
+    ],
+    "question": "You arrive first at a multi-vehicle pile-up with several casualties and no backup for several minutes. Talk me through how you'd decide who to treat first.",
+    "lookingFor": "Structured triage reasoning that prioritizes the greatest number of salvageable lives over instinctively rushing to the loudest or most visible casualty.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a rapid sweep to sort casualties by urgency before committing to treat anyone",
+        "Reference something like walking wounded, breathing status, and circulation as sorting criteria",
+        "Acknowledge the discomfort of walking past someone who needs help to assess everyone first"
+      ],
+      "modelAnswer": "My instinct would be to run straight to whoever is screaming, but I know that's exactly the wrong instinct because the quiet casualty might be the one dying fastest. I'd do a rapid sweep first, checking who can walk, who's breathing, and who has a pulse I can feel, and use that to sort people into rough priority bands before I commit to treating anyone. It would feel wrong to walk past someone crying out in pain, but if I get pulled into one case too early I could lose someone else who had a chance. I'd rather make myself useful to the most people than feel useful to the first person I reach."
+    },
+    "commonMistakes": [
+      "Rushing to treat the first or loudest casualty without sorting everyone first",
+      "Freezing because there's no protocol memorized for the exact scenario",
+      "Ignoring scene safety in the rush to reach patients"
+    ],
+    "followUps": [
+      "How would your approach change once a second crew arrives?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Confidentiality versus public safety",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "confidentiality",
+      "dilemma"
+    ],
+    "question": "You're treating a patient who tells you in confidence that they're planning to seriously hurt someone else once they're discharged. What do you do?",
+    "lookingFor": "Recognition that confidentiality has limits when there's a credible risk of serious harm to a named third party, reasoned through rather than stated as a rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Show you understand confidentiality is the default, not an absolute",
+        "Explain the threshold that would justify breaking it, such as a specific, credible threat to an identifiable person",
+        "Mention escalating to a senior clinician or appropriate authority rather than deciding alone"
+      ],
+      "modelAnswer": "My starting point is that what a patient tells me is confidential, and that trust matters for getting an honest history from anyone I treat. But confidentiality isn't unlimited, if someone tells me they're planning to seriously harm a specific person, that crosses into a duty to prevent harm that overrides it. I wouldn't decide alone on scene though, I'd flag it to my crewmate or a senior clinician as soon as I safely could, because this is exactly the kind of judgment call that shouldn't rest on one person's read of the situation. I'd rather be second-guessed for raising it than stay silent and have something happen."
+    },
+    "commonMistakes": [
+      "Treating confidentiality as absolute with no exceptions",
+      "Deciding to break confidentiality over something vague or unspecific",
+      "Not mentioning escalating to a senior colleague or authority"
+    ],
+    "followUps": [
+      "What if the threat was vague, like 'I'll make them pay'? Does your threshold change?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Capacity and refusal of treatment",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "consent",
+      "capacity",
+      "ethics"
+    ],
+    "question": "An intoxicated patient with a head injury refuses transport to hospital. Can you just let them go?",
+    "lookingFor": "Understanding that intoxication doesn't automatically remove capacity, but a head injury raises real risk that needs careful, documented assessment rather than a quick sign-off.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that capacity has to be assessed, not assumed absent just because someone is drunk",
+        "Flag that a head injury specifically raises the risk that their judgment is impaired by the injury itself, not only alcohol",
+        "Describe involving others, documenting thoroughly, and not treating a refusal as the end of the conversation"
+      ],
+      "modelAnswer": "Being intoxicated doesn't automatically mean someone lacks capacity, so I couldn't just assume that and act however I liked, I'd need to actually assess whether they understand, retain, weigh, and communicate a decision about their own care. But a head injury changes the picture, because the injury itself could be affecting their judgment in a way that looks like normal drunkenness but isn't, so I'd be much more cautious about accepting a quick refusal at face value. I'd try to involve family or friends on scene, explain the risks clearly, and document everything carefully, because 'they said no' isn't enough on its own if I have real doubts about whether that no was genuinely informed."
+    },
+    "commonMistakes": [
+      "Assuming intoxication automatically removes or preserves capacity",
+      "Treating a single refusal as the end of the duty of care",
+      "Not mentioning documentation or involving others on scene"
+    ],
+    "followUps": [
+      "What would change your mind about accepting the refusal?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Early recognition of shock",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "physiology",
+      "shock",
+      "clinical-reasoning"
+    ],
+    "question": "How would you recognize a patient going into shock before their blood pressure actually drops?",
+    "lookingFor": "Awareness that the body compensates before vital signs collapse, and the ability to name early subtle signs rather than waiting for a dramatic reading.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that blood pressure is a late sign because the body compensates first",
+        "Name early indicators like rising heart rate, cool or pale skin, delayed capillary refill, anxiety or confusion",
+        "Show the reasoning that by the time blood pressure falls, compensation has already failed"
+      ],
+      "modelAnswer": "I understand blood pressure as one of the last things to change, because the body works hard to protect it by compensating first, so if I wait for a low reading I've already missed the window where I could have acted earlier. I'd be watching for a rising heart rate, skin that's gone cool, pale, or clammy, slower capillary refill, and a patient who seems unusually anxious or restless even if they're not fully able to say why. Those signs together tell me the body is redirecting blood to protect the vital organs, and if I only trust the blood pressure cuff I'll catch the problem too late to make it easier to manage."
+    },
+    "commonMistakes": [
+      "Relying only on blood pressure as the indicator of shock",
+      "Naming signs with no explanation of why they occur",
+      "Confusing early compensated shock with a stable patient"
+    ],
+    "followUps": [
+      "What would tell you the patient has moved from compensated to decompensated shock?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "The ABCDE approach",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "assessment",
+      "fundamentals",
+      "reasoning"
+    ],
+    "question": "Talk me through the ABCDE approach to assessing a patient, and explain why the order actually matters.",
+    "lookingFor": "Understanding ABCDE as a prioritized sequence tied to what kills fastest, not a memorized acronym recited without reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the stages: airway, breathing, circulation, disability, exposure",
+        "Explain the order follows what will kill the patient soonest if left unaddressed",
+        "Note that you fix life threats as you find them rather than working through the whole list first"
+      ],
+      "modelAnswer": "It's airway, breathing, circulation, disability, exposure, but the order isn't arbitrary, it follows how quickly each problem would kill someone if it went unnoticed. An airway problem kills in minutes, so it has to be checked and fixed first, whereas exposure, checking the whole body for injuries, matters but won't kill someone in the next sixty seconds. What I find important is that it's not a strict checklist you complete top to bottom before acting, if you find a blocked airway you fix it immediately rather than moving on to breathing and coming back later. It's really a way of making sure you never miss the thing that's about to kill someone while you're busy with something less urgent."
+    },
+    "commonMistakes": [
+      "Reciting the acronym with no explanation of the ordering logic",
+      "Implying you complete the full assessment before treating anything",
+      "Missing that life threats are fixed the moment they're found"
+    ],
+    "followUps": [
+      "Can you give an example of a life threat you'd fix immediately under 'B' before moving on?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Debate over expanded paramedic prescribing",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "scope-of-practice",
+      "awareness"
+    ],
+    "question": "Paramedics in some regions are now being given the ability to prescribe certain medicines independently. What's your view on that expansion of scope?",
+    "lookingFor": "Awareness of a real ongoing debate in the profession, with a balanced, reasoned view rather than an uninformed opinion or blank stare.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that independent prescribing for paramedics is an active, developing area",
+        "Weigh a genuine benefit, such as faster or more appropriate care without waiting on a doctor",
+        "Weigh a genuine concern, such as training depth, oversight, and risk of scope creep"
+      ],
+      "modelAnswer": "I think it makes sense in principle, because paramedics are often the clinician actually standing in front of the patient, and waiting for a prescription from someone who isn't there can genuinely delay care that a well-trained paramedic could safely give. But I'd want that expansion to come with serious investment in training and ongoing supervision, because prescribing carries risks that go beyond the emergency skills paramedics are traditionally trained for, and I wouldn't want it to become an excuse to stretch people thin without proper support. I find it an encouraging sign for how much the profession is trusted with, but it only works if the training keeps pace with the responsibility."
+    },
+    "commonMistakes": [
+      "Having no awareness that this debate exists at all",
+      "Giving a one-sided opinion with no acknowledgment of the risks",
+      "Confusing paramedic prescribing with administering pre-authorized emergency drugs"
+    ],
+    "followUps": [
+      "What kind of additional training do you think would be essential before a paramedic could prescribe?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Shift toward treating patients at home",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "current-development",
+      "hear-and-treat",
+      "system-awareness"
+    ],
+    "question": "Ambulance services are increasingly trying to treat and discharge patients at home or over the phone rather than taking everyone to hospital. What do you make of this shift?",
+    "lookingFor": "Awareness of hear-and-treat or see-and-treat models and a reasoned take on their upside and their risk, not just approval or disapproval.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that this reflects pressure on emergency departments and a push to reduce unnecessary transports",
+        "Identify a genuine benefit, like freeing up capacity and avoiding unnecessary hospital exposure for patients",
+        "Identify a genuine risk, like missing something serious in a patient who doesn't present classically"
+      ],
+      "modelAnswer": "I understand this as a response to real pressure, hospitals are stretched, and not every patient who calls an ambulance actually needs to be taken in, so treating people appropriately at home frees up capacity for those who genuinely need it and spares people an unnecessary trip. What worries me is the judgment call underneath it, deciding someone doesn't need to go in is a much higher-stakes decision than deciding they do, because the cost of getting it wrong falls entirely on that patient. I think it only works well if paramedics get strong training in safety netting, meaning the patient and their family clearly understand what to watch for and when to call back, so the decision isn't just 'not now' but 'not now, and here's what would change that.'"
+    },
+    "commonMistakes": [
+      "No awareness that this trend or debate exists",
+      "Assuming it's purely about saving money with no clinical rationale",
+      "Ignoring the risk side entirely and treating it as unambiguously good"
+    ],
+    "followUps": [
+      "What would make you nervous about leaving a patient at home rather than transporting them?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Suspected domestic abuse on scene",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "safeguarding",
+      "judgement"
+    ],
+    "question": "You're called to a home for a minor injury, but you suspect the patient is a victim of ongoing domestic abuse who won't say so directly. What would you do?",
+    "lookingFor": "Sensitive, non-confrontational probing that respects the patient's autonomy and safety while still creating an opening and following safeguarding process.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe finding a private moment away from a potential abuser to speak to the patient alone",
+        "Ask open, non-leading questions rather than accusing or pressuring them to disclose",
+        "Explain following safeguarding referral processes even if the patient doesn't disclose that day"
+      ],
+      "modelAnswer": "I wouldn't confront anyone or ask leading questions in front of someone who might be the abuser, so I'd look for a natural, private moment, like asking to check them over in another room, to give the patient a genuine chance to speak if they wanted to. Even then, I wouldn't push, because pressuring someone to disclose before they're ready can make things worse and damage the trust that might matter later. I'd still note my concerns carefully and follow the safeguarding referral process, because even if nothing is said out loud that day, flagging it properly means the right people know and can follow up, rather than the moment just disappearing once I leave."
+    },
+    "commonMistakes": [
+      "Asking directly about abuse in front of a potential abuser",
+      "Pressuring the patient to disclose immediately",
+      "Doing nothing further if the patient denies anything is wrong"
+    ],
+    "followUps": [
+      "What would you do if the patient asked you not to tell anyone what you suspect?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "De-escalating a mental health crisis",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "mental-health",
+      "de-escalation",
+      "communication"
+    ],
+    "question": "How would you approach a patient in a serious mental health crisis who is frightened and reluctant to let you near them?",
+    "lookingFor": "A calm, patient-led approach prioritizing safety and trust-building over rushing to physically manage the situation.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe slowing down, using calm tone and body language, and giving space rather than closing in quickly",
+        "Explain listening to understand their fear before trying to solve or fix anything",
+        "Show awareness that restraint or force is a last resort, not a first move"
+      ],
+      "modelAnswer": "My first move would be to slow everything down, keep my voice calm and my body language open, and not crowd them physically, because someone in crisis often reads a fast approach as a threat even if that's not the intention. I'd try to actually listen to what's frightening them rather than jumping straight into trying to convince them of anything, because people are far more willing to work with someone who seems to have actually heard them. I'd treat any kind of physical intervention as a genuine last resort, something to reach for only if there's an immediate safety risk, because the goal is to build enough trust that they choose to work with me rather than feel like something is being done to them."
+    },
+    "commonMistakes": [
+      "Jumping straight to physical control or restraint",
+      "Talking at the patient rather than listening first",
+      "Treating the crisis as purely a safety problem with no emotional dimension"
+    ],
+    "followUps": [
+      "At what point would you decide the situation needs police support rather than just you and your crewmate?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Breaking news of a death",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "communication",
+      "grief",
+      "resilience"
+    ],
+    "question": "You've just been unable to resuscitate someone, and now you have to tell their family. How would you approach that conversation?",
+    "lookingFor": "Honest, clear, compassionate communication that avoids euphemism and false hope while still handling the moment with care.",
+    "idealAnswer": {
+      "bullets": [
+        "Emphasize using clear, direct language like 'died' rather than vague euphemisms that confuse people",
+        "Describe giving them space to react and not rushing the conversation",
+        "Acknowledge that staying composed enough to support them matters as much as the words used"
+      ],
+      "modelAnswer": "I'd want to be direct and use the word died rather than softer phrases like 'we lost him' or 'he's passed', because I've read that vague language can leave families confused or clinging to false hope in a moment that's already disorienting enough. I'd try to say it early in the conversation rather than building up to it, and then give them space and silence to react instead of filling it with information they can't absorb yet. I know this would be one of the hardest parts of the job for me, but I'd remind myself that staying calm and present for them matters more than finding perfect words, because what they'll remember is whether someone was kind and honest with them in that moment."
+    },
+    "commonMistakes": [
+      "Using vague euphemisms that leave the family unsure what happened",
+      "Rushing through the news to end an uncomfortable moment",
+      "Focusing only on clinical facts with no acknowledgment of the family's grief"
+    ],
+    "followUps": [
+      "How do you think you'd process that call yourself, afterward?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Treating a patient at a crime scene",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "crime-scene",
+      "priorities",
+      "teamwork"
+    ],
+    "question": "You arrive at a stabbing where the scene is also a crime scene. How do you balance treating the patient with not disturbing evidence?",
+    "lookingFor": "Clear prioritization of patient care over evidence preservation, combined with practical awareness of minimizing unnecessary disturbance.",
+    "idealAnswer": {
+      "bullets": [
+        "State plainly that the patient's life comes first, evidence is secondary",
+        "Mention practical steps like noting where items were moved or communicating with police on scene",
+        "Show awareness that police will expect and understand life-saving care to take priority"
+      ],
+      "modelAnswer": "The patient's life takes priority over the scene, full stop, if I need to cut clothing, move something, or reposition someone to treat them, I'm going to do it, because no piece of evidence is worth someone dying while I hesitate. That said, where it doesn't cost the patient anything, I'd try to be mindful, like noting mentally or telling a police officer what I moved and roughly where it was, so the scene can still be understood afterward. I'd also expect police on scene to understand that completely, treating the living person is always going to come before preserving how a room looked, and any experienced officer knows that."
+    },
+    "commonMistakes": [
+      "Hesitating to treat the patient out of concern for disturbing evidence",
+      "Ignoring police entirely instead of briefly communicating what was moved",
+      "Assuming evidence preservation is not their concern at all with no practical steps"
+    ],
+    "followUps": [
+      "What would you say to a police officer who asked you to wait before touching anything?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Parental refusal of treatment for a child",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "paediatrics",
+      "consent"
+    ],
+    "question": "A parent refuses a treatment you believe their child urgently needs. What do you do?",
+    "lookingFor": "Recognition that a child's welfare can override parental refusal in urgent situations, reasoned through carefully rather than either overriding blindly or backing down passively.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by trying to understand the parent's reasoning and address it directly, since refusal often comes from fear or misunderstanding",
+        "Explain the clinical reasoning clearly and calmly rather than issuing orders",
+        "Note that if the child's life is genuinely at risk, the child's welfare can override the refusal, escalated appropriately rather than decided alone"
+      ],
+      "modelAnswer": "My first move would be to understand why the parent is refusing, because it's often fear, a bad past experience, or simply not understanding what I'm seeing, and addressing that directly sometimes resolves it without any conflict at all. I'd explain clearly and calmly what I'm worried about and why the treatment matters, treating them as someone to bring on side rather than someone to overrule. But if I genuinely believed the child's life was at risk and the parent still refused, I know a child's welfare can take priority over parental consent in an emergency, and I'd escalate that immediately to a senior clinician or through the proper emergency process rather than making that call entirely alone on scene."
+    },
+    "commonMistakes": [
+      "Deferring entirely to parental refusal even when the child's life is at risk",
+      "Overriding the parent immediately with no attempt to understand or explain",
+      "Not mentioning escalation to a senior clinician or the proper process"
+    ],
+    "followUps": [
+      "Does your answer change if it's a fifteen-year-old refusing treatment against their parent's wishes, rather than the parent refusing?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Uncertain DNACPR status at a cardiac arrest",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "resuscitation",
+      "dilemma"
+    ],
+    "question": "You arrive at a cardiac arrest, and a family member says the patient didn't want to be resuscitated, but you can't find any written documentation. What do you do?",
+    "lookingFor": "Understanding that verbal claims without documentation generally don't override the default duty to resuscitate, handled with sensitivity rather than dismissal of the family.",
+    "idealAnswer": {
+      "bullets": [
+        "State that without valid documented evidence, the default is to begin resuscitation",
+        "Show sensitivity toward the family rather than dismissing what they're telling you",
+        "Mention continuing to look for documentation and reassessing as more information becomes available"
+      ],
+      "modelAnswer": "Without something documented and valid, like a signed form, I'd have to start resuscitation, because I can't just take a verbal account in a highly emotional moment as certain, even if the family genuinely believes it and means well. I wouldn't want to make them feel dismissed though, I'd explain gently that I have to follow the paperwork rule because it protects patients whose wishes really were documented, while someone else on scene keeps looking for any paperwork that might change things. If documentation turned up partway through, I'd stop and reassess immediately, but until then the safer default has to be treating and resuscitating."
+    },
+    "commonMistakes": [
+      "Accepting a verbal claim from family as sufficient to withhold resuscitation",
+      "Dismissing the family's account rudely rather than explaining the reasoning",
+      "Not adjusting the decision if valid documentation is found mid-resuscitation"
+    ],
+    "followUps": [
+      "How would you explain that decision to a distressed family member in the moment?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Route of adrenaline in anaphylaxis",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "pharmacology",
+      "anaphylaxis",
+      "reasoning"
+    ],
+    "question": "Why is adrenaline given intramuscularly rather than intravenously in prehospital anaphylaxis treatment?",
+    "lookingFor": "Understanding of the safety and reliability trade-off between routes, not just memorized fact recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that intramuscular injection gives reliable, fairly fast absorption without needing IV access",
+        "Explain that IV adrenaline carries a much higher risk of dangerous overdose or arrhythmia if not carefully titrated",
+        "Mention that IM is safer to deliver quickly under pressure, which matters in a fast-moving emergency"
+      ],
+      "modelAnswer": "As I understand it, intramuscular injection gets adrenaline into the bloodstream reliably fast without needing IV access, which matters because in anaphylaxis you often don't have time to establish a line before someone's airway closes. IV adrenaline is far riskier if it's not carefully titrated, because it can cause dangerous spikes in heart rate or blood pressure, so it's generally reserved for very controlled situations rather than a fast-moving prehospital emergency. IM strikes the balance of being quick enough to matter and safe enough that it doesn't introduce a new danger while you're trying to save someone's life."
+    },
+    "commonMistakes": [
+      "Stating the fact with no reasoning behind the route choice",
+      "Confusing the risk profile of IV versus IM adrenaline",
+      "Assuming IV would simply be faster with no downside mentioned"
+    ],
+    "followUps": [
+      "Where on the body is the IM injection typically given, and why there?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Compensated versus decompensated shock",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "physiology",
+      "shock",
+      "clinical-reasoning"
+    ],
+    "question": "What's the difference between compensated and decompensated shock, and why does that distinction matter for how you treat someone?",
+    "lookingFor": "A clear physiological explanation of the compensation mechanism and its failure point, tied to practical treatment urgency rather than just definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain compensated shock as the body maintaining blood pressure through mechanisms like raised heart rate and vasoconstriction",
+        "Explain decompensated shock as the point those mechanisms fail and blood pressure drops",
+        "Connect this to urgency: decompensation signals the patient is close to cardiac arrest and needs aggressive treatment"
+      ],
+      "modelAnswer": "In compensated shock the body is still managing to protect blood pressure, mainly by speeding up the heart and constricting blood vessels to keep enough blood reaching the vital organs, even though something underneath is seriously wrong. Decompensated shock is what happens when those mechanisms exhaust themselves and can't keep up anymore, and that's when blood pressure actually starts to fall. The reason this distinction matters so much to me is that a patient can look deceptively stable while compensated, so if I wait for low blood pressure to treat aggressively, I'm actually reacting to the point where they're much closer to cardiac arrest rather than catching the problem while there's still room to intervene."
+    },
+    "commonMistakes": [
+      "Treating compensated shock as not serious because vital signs look normal",
+      "Confusing which stage comes first",
+      "Giving a textbook definition with no link to treatment urgency"
+    ],
+    "followUps": [
+      "What treatment would you prioritize once you suspected decompensation was beginning?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Debate over response time targets",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "current-debate",
+      "performance-metrics",
+      "system-awareness"
+    ],
+    "question": "Ambulance services are often judged publicly by their response time targets. Do you think that's the right way to measure how well a service is performing?",
+    "lookingFor": "Awareness of a genuine debate around performance metrics, with a reasoned, balanced view rather than parroting a headline opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that response time matters clinically for time-critical conditions",
+        "Point out the limitation that speed alone says nothing about the quality of care once a crew arrives",
+        "Suggest or reference that a fuller picture would include clinical outcomes, not just arrival time"
+      ],
+      "modelAnswer": "Response time genuinely matters for conditions like cardiac arrest or major trauma, where minutes change outcomes, so I don't think it's a meaningless metric at all. But I think it's incomplete on its own, because it says nothing about whether the care given once someone arrives was actually good, and I've read that focusing too heavily on the clock can push crews toward decisions, like transporting when they didn't need to, just to hit a target. I think a fairer picture would combine response time with outcome measures, like whether the patient's condition actually improved or whether they needed to call again, because speed without quality isn't really the whole job."
+    },
+    "commonMistakes": [
+      "No awareness that this is a debated topic in the profession",
+      "Treating response time as either entirely meaningless or entirely sufficient",
+      "Giving an opinion with no reasoning behind it"
+    ],
+    "followUps": [
+      "What unintended behavior might a strict time target encourage in a crew?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Ambulance handover delays at hospitals",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "current-development",
+      "system-pressure",
+      "awareness"
+    ],
+    "question": "There's been a lot of coverage recently about ambulances queuing outside hospitals, unable to hand patients over. What do you understand about why that happens?",
+    "lookingFor": "Genuine awareness of the handover delay and corridor care crisis and its systemic causes, not just repeating a news headline without understanding.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic mechanism: emergency departments are full, so incoming patients can't be offloaded, which ties up crews and ambulances",
+        "Note the knock-on effect: ambulances stuck waiting can't respond to new calls, worsening response times elsewhere",
+        "Show awareness this is a whole-system problem, not something paramedics alone can fix on scene"
+      ],
+      "modelAnswer": "As I understand it, the core problem is that emergency departments are often already full, so when an ambulance crew arrives with a patient, there's simply nowhere to safely move them, which means the crew and their vehicle can end up waiting outside for hours. The knock-on effect is what worries me most, every ambulance stuck queuing outside a hospital is an ambulance that can't respond to the next emergency call, so a bed shortage in one building ends up quietly making response times worse across an entire region. It's a reminder that this isn't something an individual paramedic can fix by working faster, it's a whole-system capacity problem, from social care and bed availability right through to how patients flow out of hospitals in the first place."
+    },
+    "commonMistakes": [
+      "No real understanding beyond having heard the phrase in the news",
+      "Blaming paramedics or ambulance crews for the delays",
+      "Treating it as an isolated hospital problem with no system-wide connection"
+    ],
+    "followUps": [
+      "What effect do you think handover delays have on the paramedics stuck waiting, beyond the patients?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Witnessing an unrelated emergency en route",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "priorities",
+      "judgement"
+    ],
+    "question": "You're driving to a call and you pass a car crash that hasn't been reported to anyone yet. Do you stop?",
+    "lookingFor": "Sensible weighing of the current call's urgency against the new emergency, with a clear decision-making process rather than a reflexive yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain weighing the severity and urgency of the call you're already going to against what you can see of the new scene",
+        "Mention radioing control immediately either way so another resource can be sent",
+        "Show that the decision depends on specifics rather than a blanket rule"
+      ],
+      "modelAnswer": "I wouldn't have a single fixed answer, it would depend on what I actually knew about both situations in that moment. If my current call sounded genuinely time-critical, like a reported cardiac arrest, I think I'd have to keep going, because someone is already relying on me specifically, but I'd radio control immediately to get another crew or the police to that crash as fast as possible. If the crash looked serious and my current call was lower acuity, I might stop briefly to assess and call it in properly, because a few minutes of a professional assessment could change how the second crew responds. Either way, the one thing I wouldn't do is just drive past without radioing it in, because that's the one option that helps nobody."
+    },
+    "commonMistakes": [
+      "Giving an absolute rule with no consideration of the specifics",
+      "Forgetting to mention radioing control about the new scene",
+      "Assuming stopping is automatically the right or wrong choice"
+    ],
+    "followUps": [
+      "What if you were the only ambulance for miles and both situations looked equally serious?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Disagreeing with a senior colleague on scene",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "teamwork",
+      "clinical-judgement",
+      "conflict"
+    ],
+    "question": "Your senior colleague on scene wants to make a clinical call you think is wrong. What do you do?",
+    "lookingFor": "Willingness to speak up respectfully and assertively about patient safety concerns, without either staying silent out of deference or being needlessly combative.",
+    "idealAnswer": {
+      "bullets": [
+        "Show you'd raise the concern directly and promptly rather than staying silent out of deference",
+        "Frame it as a question or shared problem-solving rather than a confrontation",
+        "Acknowledge that patient safety has to come before hierarchy or ego"
+      ],
+      "modelAnswer": "I wouldn't just go along with something I genuinely thought was wrong for the patient, even from someone more senior, because staying quiet to avoid an awkward moment isn't actually protecting anyone. I'd try to raise it in a way that invites them to explain their thinking rather than accusing them of a mistake, something like asking what they're seeing that's making them lean that way, because sometimes they have information or experience I don't, and sometimes saying it out loud helps them catch it themselves. But if after that conversation I still genuinely believed the patient was at risk, I'd say so plainly, because the patient's safety has to matter more than not wanting to seem like I'm questioning someone senior to me."
+    },
+    "commonMistakes": [
+      "Staying silent to avoid conflict with someone senior",
+      "Being confrontational or accusatory rather than collaborative",
+      "Assuming seniority automatically means they're right with no room to raise a concern"
+    ],
+    "followUps": [
+      "What would you do if they dismissed your concern outright?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Suspected non-accidental injury in a child",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "safeguarding",
+      "paediatrics",
+      "judgement"
+    ],
+    "question": "You're treating a child for a minor injury, but something about the story and the bruising doesn't add up. What would you do?",
+    "lookingFor": "Calm, procedural handling of a safeguarding concern that avoids accusation while still ensuring the concern is properly escalated.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain continuing to treat the child calmly without confronting the caregiver on scene",
+        "Note carefully documenting exactly what was seen and said, without adding interpretation or accusation",
+        "Describe raising the concern through the proper safeguarding referral process"
+      ],
+      "modelAnswer": "I wouldn't say anything accusatory on scene, my priority is still treating the child calmly and keeping the situation from becoming tense or frightening for them. But I'd pay close attention to exactly what I observed, the specific bruising, what was said and by whom, and I'd write that down factually rather than adding my own conclusions, because clear documentation is what actually helps the professionals who follow up. I'd then make sure I raised it through the proper safeguarding referral process rather than deciding myself whether it's significant, because that's a judgment that needs people with the full picture, not something I should quietly decide to let go or blow up on my own."
+    },
+    "commonMistakes": [
+      "Confronting the caregiver directly on scene",
+      "Documenting personal suspicions as fact rather than sticking to observations",
+      "Deciding independently not to escalate because the child seems fine otherwise"
+    ],
+    "followUps": [
+      "What specifically would you make sure was in your documentation?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Processing a distressing call",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "resilience",
+      "wellbeing",
+      "reflection"
+    ],
+    "question": "Paramedics see a lot of trauma and loss. How would you handle a call that affected you deeply, right after you've stepped away from it?",
+    "lookingFor": "Honest, specific self-awareness about processing distress, rather than a vague claim of being unaffected or endlessly resilient.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the idea that a strong paramedic is simply unaffected by difficult calls",
+        "Describe a specific, realistic coping strategy rather than a vague platitude",
+        "Mention the value of talking to a colleague, supervisor, or support service rather than processing it entirely alone"
+      ],
+      "modelAnswer": "I don't think being good at this job means not being affected by it, I think it means having a real way of processing it rather than pretending it didn't happen. If a call hit me hard, I'd want to give myself a few honest minutes before the next job to actually name what I was feeling instead of burying it, and then talk it through with my crewmate, because I've heard that saying it out loud to someone who understands the job matters more than people expect. I'd also want to know that if it stayed with me longer than that, there's a formal support service I could go to without feeling like it made me less capable, because pretending resilience is unlimited is exactly what burns people out."
+    },
+    "commonMistakes": [
+      "Claiming to be entirely unaffected or unbothered by distressing calls",
+      "Giving a vague answer like 'I'd just push through it' with no real strategy",
+      "Implying seeking support is a sign of weakness"
+    ],
+    "followUps": [
+      "What would you do differently if this kept happening after several similar calls in a row?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Point-of-care ultrasound in prehospital care",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "current-development",
+      "technology",
+      "clinical-practice"
+    ],
+    "question": "Some ambulance services are trialing point-of-care ultrasound for paramedics. What do you think this kind of technology could change about prehospital care?",
+    "lookingFor": "Awareness of a real emerging development, with a thoughtful take on both what it could improve and what it would require to use responsibly.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of the specific development, portable ultrasound in the field, rather than a generic answer about technology",
+        "Identify a concrete benefit, like faster identification of internal bleeding or certain cardiac problems on scene",
+        "Note the requirement for real training and the risk of over-relying on a tool instead of clinical judgment"
+      ],
+      "modelAnswer": "I think something like point-of-care ultrasound could genuinely change outcomes, because it could let a paramedic identify something like internal bleeding or a collapsed lung on scene rather than waiting until imaging happens at hospital, and in trauma that kind of head start can matter enormously. What I'd want to see alongside it is proper, thorough training, because a tool like that is only as good as the person interpreting it, and I'd worry about someone treating an ultrasound reading as more certain than it actually is. I find it exciting because it's a sign the profession keeps pushing what's possible outside a hospital, but I'd want the training investment to genuinely match the responsibility that comes with it."
+    },
+    "commonMistakes": [
+      "Giving a generic answer about technology with no specific understanding of the tool",
+      "Assuming the technology has no risks or training requirements",
+      "Overstating what a paramedic using it could diagnose with certainty"
+    ],
+    "followUps": [
+      "What kind of finding on scene do you think this technology could most change how a crew acts?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Two critical patients, one paramedic, distant backup",
+    "program": "Paramedic Science",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "resource-allocation",
+      "judgement"
+    ],
+    "question": "You're the only paramedic on scene in a remote area with two seriously injured patients, and the nearest backup is forty minutes away. How do you think through that?",
+    "lookingFor": "Calm prioritization logic under genuine resource scarcity, honest acknowledgment of the moral weight involved, rather than pretending it's a clean, easy call.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe rapidly assessing both patients to identify who has the more time-critical, treatable problem",
+        "Explain doing what can be done for the less urgent patient, like basic positioning or bleeding control, before focusing on the other",
+        "Acknowledge honestly that this kind of decision carries real emotional weight rather than pretending it's easy"
+      ],
+      "modelAnswer": "I'd force myself to do a fast assessment of both patients first rather than committing to either one immediately, because I need to know which of them has a problem I can actually influence in the next few minutes. If one has something time-critical but treatable, like severe bleeding I can control, and the other's situation is less likely to change either way in that window, I'd focus my attention there, while doing whatever quick, low-effort things I could for the other person first, like positioning them safely or applying pressure they or a bystander could maintain. I'll be honest, I don't think a decision like that would ever feel clean or comfortable, and I think that's the point, it's supposed to weigh on you, but freezing between two people helps neither of them, so I'd rather make the most defensible call I can and live with having tried."
+    },
+    "commonMistakes": [
+      "Refusing to engage with the difficulty and giving an easy, tidy answer",
+      "Freezing between the two patients with no decision framework",
+      "Ignoring what could be done for the second patient while focused on the first"
+    ],
+    "followUps": [
+      "How would you talk about that decision afterward, with your team or in a debrief?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Personal risk versus speed with infectious patients",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "infection-control",
+      "safety",
+      "judgement"
+    ],
+    "question": "You get a call for a patient with symptoms of a serious infectious illness. Walk me through how you'd think about your own safety versus getting to the patient quickly.",
+    "lookingFor": "Understanding that protecting yourself properly is what allows you to actually help the patient, not a competing priority to rush past.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that taking a moment for appropriate protective equipment is not wasted time, it's part of treating the patient safely",
+        "Explain that a paramedic who becomes infected or incapacitated can't help this patient or anyone after them",
+        "Show balance by not treating precautions as an excuse to delay unnecessarily"
+      ],
+      "modelAnswer": "I'd remind myself that putting on the right protective equipment properly isn't time taken away from the patient, it's actually part of treating them safely, because if I go in unprotected and end up infected myself, I'm no use to them or to whoever needs me on the next call. That said, I wouldn't want precautions to become an excuse to drag my feet either, so I'd want to know the protocol well enough that I could get appropriately protected quickly and efficiently rather than treating it as a lengthy ritual. It comes down to trusting that a careful thirty seconds at the door usually costs less than the alternative of a paramedic being taken out of action."
+    },
+    "commonMistakes": [
+      "Treating personal protection as optional or a distraction from patient care",
+      "Framing precautions as an excuse for unnecessary delay",
+      "Failing to explain why protecting yourself also protects future patients"
+    ],
+    "followUps": [
+      "What would you do if a bystander pressured you to rush in without full protective equipment?"
+    ]
+  },
+  {
+    "id": "prog-paramedic-science-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Family member pressuring against protocol",
+    "program": "Paramedic Science",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "communication",
+      "judgement"
+    ],
+    "question": "A family member on scene is insisting you do something that goes against your clinical protocol. How would you handle that?",
+    "lookingFor": "Firm, respectful communication that holds the clinical line while acknowledging the family's fear and distress rather than dismissing them.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the family member's fear or motivation rather than dismissing the request outright",
+        "Explain clearly and calmly why the protocol exists and why deviating could cause harm",
+        "Hold the clinical line rather than caving to pressure just to defuse the tension"
+      ],
+      "modelAnswer": "I'd start by recognizing that whatever they're asking for almost certainly comes from fear or love for the person I'm treating, not from trying to be difficult, so I wouldn't want to dismiss them or get defensive. I'd explain calmly and specifically why I'm doing things a certain way, because most people calm down at least a little once they understand there's a real reason behind it rather than it feeling arbitrary. But I wouldn't change my clinical decision just to make the tension go away in the moment, because giving in to pressure that isn't clinically sound could genuinely put their family member at more risk, and staying calm while holding that line is part of the job."
+    },
+    "commonMistakes": [
+      "Dismissing the family member's concern without any acknowledgment",
+      "Caving to pressure and deviating from protocol just to defuse tension",
+      "Being cold or clinical in tone rather than compassionate while still holding firm"
+    ],
+    "followUps": [
+      "How would you handle it if the family member became aggressive rather than just insistent?"
+    ]
+  }
+]

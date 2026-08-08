@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-artificial-intelligence-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for AI",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["motivation", "ai", "personal"],
+    "question": "What first got you interested in artificial intelligence?",
+    "lookingFor": "A genuine, specific origin story that shows sustained curiosity, not a borrowed answer about AI being 'the future'.",
+    "idealAnswer": {
+      "bullets": [
+        "Point to a specific moment, project, or piece of media that sparked it",
+        "Explain what kept the interest alive beyond that first spark",
+        "Avoid vague claims like 'AI is the future' with nothing behind them"
+      ],
+      "modelAnswer": "It started when I built a simple chess engine for a school project and got completely fascinated by how a program with no explicit chess knowledge could search its way to good moves. That led me down a rabbit hole into machine learning, and I ended up teaching myself to train a basic image classifier over a summer just to see if I could get it to tell apart my dog from next door's. What keeps me hooked is that every answer opens up three new questions I want to chase."
+    },
+    "commonMistakes": [
+      "Saying AI is interesting because it is 'the future' with no personal detail",
+      "Naming a movie or news headline with no follow-through",
+      "Overclaiming technical depth that later questions expose as thin"
+    ],
+    "followUps": ["What did you do next to pursue that interest?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this course",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why do you want to study Artificial Intelligence specifically at this university, rather than a general computer science degree elsewhere?",
+    "lookingFor": "Evidence of real research into the AI programme's structure and specialism, not generic praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific module, project stream, or research group in the AI programme",
+        "Explain why a dedicated AI degree suits you better than general CS",
+        "Tie it to something concrete you have already done or want to do"
+      ],
+      "modelAnswer": "I looked at a few computer science degrees, but yours dedicates entire years to machine learning theory and has a final-year project stream in reinforcement learning, which is the area I want to specialise in after building a small game-playing agent last year. I want structured grounding in the maths, not just the ability to call a library, and your course front-loads linear algebra and probability specifically for that reason. That combination of depth and an actual AI-focused cohort is what a general CS degree wouldn't give me."
+    },
+    "commonMistakes": [
+      "Praise that could apply to any university's course",
+      "Not distinguishing an AI degree from computer science",
+      "Citing rankings instead of course content"
+    ],
+    "followUps": ["Which specific module are you most looking forward to, and why?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "AI, ML, and deep learning distinction",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "ml", "concept"],
+    "question": "Can you explain how artificial intelligence, machine learning, and deep learning relate to each other?",
+    "lookingFor": "A clear conceptual hierarchy stated correctly, not just buzzwords used interchangeably.",
+    "idealAnswer": {
+      "bullets": [
+        "State that AI is the broad field of making machines behave intelligently",
+        "Place machine learning as a subset of AI that learns patterns from data rather than following fixed rules",
+        "Place deep learning as a subset of machine learning using layered neural networks"
+      ],
+      "modelAnswer": "AI is the umbrella term for any system that performs tasks we'd normally say require intelligence, and that includes plenty of older techniques like rule-based expert systems that never learn from data at all. Machine learning is a subset of that, where instead of hand-coding the rules you let the system learn patterns from examples. Deep learning is a further subset of machine learning that specifically uses neural networks with many layers, which is what has driven most of the recent progress in things like image recognition and language models."
+    },
+    "commonMistakes": [
+      "Treating the three terms as synonyms",
+      "Reversing the hierarchy, for example saying ML is a subset of deep learning",
+      "Giving no example of each"
+    ],
+    "followUps": ["Can you give an example of an AI system that isn't machine learning?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Supervised vs unsupervised learning",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["ml", "fundamentals", "concept"],
+    "question": "What's the difference between supervised and unsupervised learning?",
+    "lookingFor": "Correct definitions plus a concrete example of each, showing real understanding rather than memorised terms.",
+    "idealAnswer": {
+      "bullets": [
+        "Supervised learning trains on labelled data to predict an output",
+        "Unsupervised learning finds structure in unlabelled data, such as clusters",
+        "Give a concrete real-world example for each"
+      ],
+      "modelAnswer": "Supervised learning is when you train a model on data that already has the correct answer attached, like emails labelled spam or not spam, so the model learns to map inputs to known outputs. Unsupervised learning works on data with no labels at all, and the model instead tries to find structure on its own, like grouping customers into clusters based on purchasing habits without anyone telling it what the groups should be. I find supervised learning easier to evaluate because you can measure accuracy against a known answer, whereas unsupervised results need more judgement to interpret."
+    },
+    "commonMistakes": [
+      "Confusing which type uses labelled data",
+      "Giving no example at all",
+      "Conflating unsupervised learning with reinforcement learning"
+    ],
+    "followUps": ["Where would reinforcement learning fit into this picture?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Overfitting",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["ml", "fundamentals", "concept"],
+    "question": "What is overfitting, and how would you try to prevent it?",
+    "lookingFor": "A correct definition tied to generalisation, plus at least one genuine prevention technique.",
+    "idealAnswer": {
+      "bullets": [
+        "Define overfitting as a model learning the training data too closely, including its noise",
+        "Explain the consequence: strong training performance but poor performance on new data",
+        "Name at least one prevention method, such as regularisation, cross-validation, or more data"
+      ],
+      "modelAnswer": "Overfitting is when a model essentially memorises the training data, including its noise and quirks, instead of learning the underlying pattern that would generalise to new examples. You often spot it because training accuracy looks great but performance drops sharply on data the model hasn't seen. When I trained a small classifier for a school project it happened to me, and using cross-validation to check performance on held-out data, plus simplifying the model, was what actually fixed it rather than just adding more layers."
+    },
+    "commonMistakes": [
+      "Defining overfitting as simply 'the model is bad'",
+      "Naming no prevention technique",
+      "Confusing overfitting with underfitting"
+    ],
+    "followUps": ["How is underfitting different, and what would you do about it?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Neural network explanation",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["neural-networks", "fundamentals", "concept"],
+    "question": "Can you explain, in simple terms, how a neural network learns?",
+    "lookingFor": "An intuitive but technically accurate explanation of forward passes, error, and weight adjustment, without needing to derive equations.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the basic structure: inputs, weighted connections, layers, output",
+        "Explain that the network makes a prediction, compares it to the correct answer, and measures the error",
+        "Describe backpropagation and gradient descent at a conceptual level: adjusting weights to reduce that error over many examples"
+      ],
+      "modelAnswer": "A neural network takes an input, passes it through layers of connected nodes where each connection has a weight, and produces an output at the end. At first the weights are essentially random, so the prediction is likely wrong, and you measure how wrong it is using a loss function. Backpropagation then works out how much each weight contributed to that error and gradient descent nudges every weight slightly in the direction that reduces it, and after doing this over thousands of examples the network gradually gets better at the task. I like that it's really just repeated small corrections rather than anything mysterious."
+    },
+    "commonMistakes": [
+      "Describing the architecture but never mentioning learning or error correction",
+      "Getting the direction of gradient descent backwards",
+      "Overusing jargon without demonstrating actual understanding"
+    ],
+    "followUps": ["What role does the learning rate play in this process?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["reading", "current-events", "motivation"],
+    "question": "Tell us about an AI-related book, paper, or article you've read recently and what you took from it.",
+    "lookingFor": "Evidence of genuine independent reading beyond the school syllabus, with a real opinion formed from it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific, not just 'articles about AI in general'",
+        "Summarise the core idea accurately and concisely",
+        "State your own reaction or opinion, not just a summary"
+      ],
+      "modelAnswer": "I read Stuart Russell's 'Human Compatible', and the idea that stuck with me most was his argument that we shouldn't build AI systems with fixed objectives at all, because a system that's certain about what humans want is more dangerous than one that stays uncertain and keeps checking in. It reframed alignment for me from 'write better rules' to 'design systems that know they might be wrong'. I don't fully agree that uncertainty alone solves the problem, since someone still has to define how the system updates that uncertainty, but it's the first book that made the safety debate feel concrete rather than abstract to me."
+    },
+    "commonMistakes": [
+      "Naming a source too vaguely to prove they engaged with it",
+      "Pure summary with no personal opinion",
+      "Picking something clearly picked for the interview rather than genuinely read"
+    ],
+    "followUps": ["Did anything in it change your mind, or did it just confirm what you already thought?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Personal project experience",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["experience", "project", "personal"],
+    "question": "Tell us about a coding or AI project you've built yourself. What did you learn from it?",
+    "lookingFor": "A specific, believable project with genuine technical detail and honest reflection on difficulty.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the project concretely: what it did and what tools or techniques you used",
+        "Mention a real obstacle you hit and how you worked through it",
+        "State a specific lesson learned, not just 'it was a great experience'"
+      ],
+      "modelAnswer": "I built a small model to predict how long a bus route near my house would take based on time of day and weather, using a basic regression model in Python with data I scraped myself over a few weeks. The hardest part was actually the data cleaning, since half my weather readings didn't line up with the bus timestamps, and I ended up spending more time on that than on the model itself. It taught me that in real projects the model is often the easy part and the unglamorous data work is where most of the effort goes."
+    },
+    "commonMistakes": [
+      "Describing a tutorial they followed as if it were an original project",
+      "No mention of any real difficulty or obstacle",
+      "Vague technical description that suggests limited actual involvement"
+    ],
+    "followUps": ["What would you change if you built it again from scratch?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Bias and fairness in AI",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["ethics", "bias", "fairness"],
+    "question": "How can an AI system end up being biased, and what could be done about it?",
+    "lookingFor": "Understanding that bias usually originates in data or design choices, plus realistic mitigation ideas rather than a vague call for 'more ethics'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that bias typically comes from unrepresentative or historically skewed training data",
+        "Note that biased outcomes can also come from the choice of labels, features, or objective function",
+        "Suggest concrete mitigations such as auditing outputs across groups, diversifying data, or involving affected communities"
+      ],
+      "modelAnswer": "Bias usually creeps in through the training data, so if a hiring model is trained on historical hiring decisions that favoured one group, it will learn to reproduce that pattern even without anyone intending it to. It can also come from the choices engineers make, like which features to include or how success is defined in the first place. I think mitigation has to happen at more than one stage, so auditing model outputs across different demographic groups before deployment, and involving people from affected communities in defining what fairness even means for that specific use case, rather than treating it as purely a technical fix."
+    },
+    "commonMistakes": [
+      "Saying bias only comes from 'bad data' with no further detail",
+      "Treating bias as purely a technical problem with a single fix",
+      "Giving no concrete mitigation at all"
+    ],
+    "followUps": ["Can you think of a real case where biased AI caused harm?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Turing test",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["history", "concept", "fundamentals"],
+    "question": "What is the Turing test, and do you think it's still a useful measure of machine intelligence today?",
+    "lookingFor": "Accurate description of the test plus a considered, current view on its limitations.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the test correctly: a human judge tries to distinguish a machine from a human through conversation",
+        "State its original purpose as a practical stand-in for the harder question of 'can machines think'",
+        "Give a reasoned opinion on whether it still matters given modern language models"
+      ],
+      "modelAnswer": "The Turing test, proposed by Alan Turing, has a human judge holding text conversations with both a machine and a person without knowing which is which, and if the judge can't reliably tell them apart, the machine is said to pass. Turing designed it to sidestep the philosophical question of whether machines can really think, by replacing it with something we could actually observe and measure. I don't think it's a very useful benchmark anymore, because modern language models can produce convincing conversation through pattern matching on huge amounts of text without anything most people would call genuine understanding, so passing the test tells us more about fluency than intelligence."
+    },
+    "commonMistakes": [
+      "Getting the mechanics of the test wrong",
+      "Treating passing the test as proof of genuine understanding without question",
+      "Giving no personal opinion when asked directly"
+    ],
+    "followUps": ["What would you propose as a better test of machine intelligence?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Importance of mathematics",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["maths", "fundamentals", "preparation"],
+    "question": "Which areas of maths do you think matter most for AI, and how have you prepared yourself in them?",
+    "lookingFor": "Correct identification of the relevant maths and honest evidence of preparation, not just a list of subject names.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the core areas: linear algebra, probability and statistics, and calculus",
+        "Explain briefly why each matters, for example calculus for gradient-based learning",
+        "Give concrete evidence of personal preparation or practice"
+      ],
+      "modelAnswer": "Linear algebra matters because so much of machine learning is really just operations on vectors and matrices, probability and statistics matter for understanding uncertainty and evaluating models properly, and calculus underpins how gradient descent actually adjusts weights during training. I got a head start on this by working through a linear algebra course online over the summer and applying it directly by implementing gradient descent from scratch in Python instead of just calling a library function, which forced me to actually understand the derivatives involved rather than treat them as magic."
+    },
+    "commonMistakes": [
+      "Listing maths topics with no explanation of relevance",
+      "Claiming strong maths preparation with no evidence",
+      "Omitting probability and statistics entirely"
+    ],
+    "followUps": ["Can you walk me through what a derivative represents in the context of training a model?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Reinforcement learning",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["reinforcement-learning", "concept", "fundamentals"],
+    "question": "How does reinforcement learning differ from the supervised learning you might already know about?",
+    "lookingFor": "Correct grasp of the reward-driven, trial-and-error nature of reinforcement learning versus learning from fixed labelled examples.",
+    "idealAnswer": {
+      "bullets": [
+        "State that reinforcement learning has an agent learning through trial and error via rewards, not fixed labelled examples",
+        "Mention the concept of an environment, actions, and delayed reward",
+        "Give an example, such as game-playing agents or robotics"
+      ],
+      "modelAnswer": "In supervised learning you're given the correct answer for every example up front, whereas in reinforcement learning an agent takes actions in an environment and only gets a reward signal telling it how good the outcome was, often after a whole sequence of decisions rather than immediately. That means the agent has to work out which of its earlier actions actually contributed to a good or bad result, which is a much harder credit assignment problem. AlphaGo is the classic example, where the system learned to play by playing games against itself and adjusting based on whether it won or lost, rather than being shown labelled 'correct' moves."
+    },
+    "commonMistakes": [
+      "Describing reinforcement learning as just another form of supervised learning",
+      "Omitting the idea of delayed reward",
+      "No concrete example given"
+    ],
+    "followUps": ["What's the exploration versus exploitation trade-off in this context?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Black box problem",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["explainability", "ethics", "deep-learning"],
+    "question": "Deep learning models are often described as 'black boxes'. Why does that matter, and should we still use them in high-stakes decisions like medical diagnosis?",
+    "lookingFor": "Genuine grappling with the trade-off between accuracy and explainability, reaching a defensible position rather than a flat yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why deep models are hard to interpret: millions of parameters with no simple human-readable rule",
+        "Explain why explainability matters in high-stakes settings: accountability, trust, catching errors",
+        "Reach a nuanced position, for example allowing use with safeguards rather than an outright ban"
+      ],
+      "modelAnswer": "Deep networks are called black boxes because their decisions emerge from millions of weighted connections, and there's usually no simple rule you can point to and say 'this is why it made that call', which makes it hard to check whether it's reasoning soundly or just picking up a spurious pattern in the data. In medicine that matters a lot, because a doctor needs to be able to justify a decision and catch cases where the model is confidently wrong. I don't think that means we should never use them, but I'd want them paired with interpretability tools and used to support a doctor's judgement rather than replace it, especially in edge cases the model hasn't seen much of before."
+    },
+    "commonMistakes": [
+      "Giving a flat yes or no with no reasoning",
+      "Not explaining why interpretability specifically matters in high-stakes contexts",
+      "Assuming interpretability tools fully solve the problem when they only partially do"
+    ],
+    "followUps": ["Can you name a technique used to make deep learning models more interpretable?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and job displacement",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["ethics", "society", "future"],
+    "question": "As someone entering the field, how do you think about the fact that AI you help build might displace people's jobs?",
+    "lookingFor": "Honest, non-dismissive engagement with the tension rather than either denial of the problem or naive techno-optimism.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the tension honestly rather than minimising it",
+        "Show awareness that impact varies by sector and that displacement is real, not just retraining rhetoric",
+        "Articulate some personal stance on responsibility, for example choosing what to build or supporting policy discussion"
+      ],
+      "modelAnswer": "I don't think it's honest to pretend this isn't a real cost, some jobs genuinely will be automated away and 'people will just retrain' understates how disruptive that is for someone in the middle of their career. At the same time I don't think the answer is to stop building these systems, since the technology exists and will be built somewhere regardless. What I can control is being thoughtful about what I choose to work on, being honest about a system's limitations rather than overselling it, and staying engaged with the policy conversation rather than treating it as someone else's problem to solve."
+    },
+    "commonMistakes": [
+      "Dismissing the concern as overblown with no real engagement",
+      "Pure doom with no constructive personal stance",
+      "Reciting 'new jobs will be created' as if that fully resolves the tension"
+    ],
+    "followUps": ["Is there a type of AI application you personally wouldn't want to work on?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Classification vs regression",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["ml", "fundamentals", "concept"],
+    "question": "What's the difference between a classification problem and a regression problem in machine learning?",
+    "lookingFor": "Correct distinction between predicting discrete categories versus continuous values, with an example of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Classification predicts a discrete category or label",
+        "Regression predicts a continuous numeric value",
+        "Give one example of each"
+      ],
+      "modelAnswer": "Classification is when the output is one of a fixed set of categories, like predicting whether an email is spam or not spam, or which of several animals is in a photo. Regression is when the output is a continuous number, like predicting a house price or tomorrow's temperature. The distinction matters because it changes which model types and evaluation metrics make sense, you wouldn't use accuracy to judge a regression model the way you would a classifier."
+    },
+    "commonMistakes": [
+      "Confusing which one predicts continuous values",
+      "Giving no example",
+      "Assuming the same evaluation metrics apply to both"
+    ],
+    "followUps": ["What metric would you use to evaluate a regression model instead of accuracy?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Data quality",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["data", "fundamentals", "practical"],
+    "question": "Why is data quality often described as more important than the choice of algorithm in machine learning?",
+    "lookingFor": "Understanding that models can only learn what's present in the data, plus an example of data quality problems.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a model can only learn patterns present in its training data",
+        "Give an example of a data quality issue: missing values, mislabelling, unrepresentative sampling",
+        "Note that a sophisticated algorithm on bad data usually underperforms a simple algorithm on good data"
+      ],
+      "modelAnswer": "A model can only learn what's actually in the data you give it, so if the data is mislabelled, full of missing values, or doesn't represent the real population it will be used on, no amount of algorithmic sophistication fixes that. When I worked on my own project, I found a simple linear model on carefully cleaned data outperformed a more complex model I'd trained on messier data, which was a real lesson that garbage in really does mean garbage out. It's why I've heard data scientists say they spend most of their time on cleaning and preparation rather than model building itself."
+    },
+    "commonMistakes": [
+      "Treating this as an abstract claim with no concrete example",
+      "Implying that a good algorithm can compensate for any data problem",
+      "Confusing data quality with data quantity"
+    ],
+    "followUps": ["What would you check first if a model was performing worse than expected?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Autonomous vehicle ethics",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["ethics", "situational", "autonomous-systems"],
+    "question": "An autonomous car has to make a split-second decision in an unavoidable accident scenario. How should engineers approach programming decisions like that?",
+    "lookingFor": "Structured ethical reasoning acknowledging the complexity, rather than a confident but shallow rule.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that no simple rule satisfies everyone, and that these scenarios are rarer in practice than public debate suggests",
+        "Discuss that the harder practical work is minimising the likelihood of ever reaching such a scenario, through better perception and earlier braking",
+        "Note the role of transparency, regulation, and public input rather than engineers deciding ethics alone"
+      ],
+      "modelAnswer": "I think the honest answer is that no single rule, like always minimising the number of people harmed, will satisfy everyone's intuitions about fairness, and treating this purely as a trolley problem probably overstates how often cars would actually face such a clean-cut choice. In practice I'd argue most of the engineering effort should go into reducing the odds of ever reaching that split-second scenario in the first place, through better sensing and earlier, more conservative braking decisions. But for the genuinely unavoidable edge cases, I don't think that decision should be made unilaterally by engineers, it needs input from regulators, ethicists and the public, with the reasoning made transparent rather than buried in code nobody can inspect."
+    },
+    "commonMistakes": [
+      "Giving a single confident rule as if it resolves all disagreement",
+      "Treating this purely as an abstract philosophy question with no engineering angle",
+      "Assuming engineers alone should decide the answer"
+    ],
+    "followUps": ["Who do you think should ultimately be accountable if such a system causes harm?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Large language models and understanding",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["nlp", "llm", "concept"],
+    "question": "Do you think large language models actually 'understand' language, or are they just doing sophisticated pattern matching? What's your view?",
+    "lookingFor": "A considered, defensible opinion that engages with the genuine ambiguity rather than a confident but unexamined stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge this is genuinely debated among researchers, not a settled question",
+        "Explain the mechanism at a basic level: predicting likely next tokens based on patterns learned from huge amounts of text",
+        "State a personal, reasoned position while acknowledging its limits"
+      ],
+      "modelAnswer": "I think it's genuinely an open and debated question rather than something with a clean answer, and I'm a bit wary of anyone who states it too confidently either way. Mechanically, these models are trained to predict the next likely word given everything before it, learned from enormous amounts of text, and that alone can produce startlingly coherent and even seemingly reasoned output without there necessarily being anything we'd call comprehension behind it. My own view leans toward calling it a very powerful statistical approximation of understanding rather than the real thing, mainly because these models fail in ways that suggest they lack a stable internal model of the world, but I hold that view loosely because the field keeps surprising me."
+    },
+    "commonMistakes": [
+      "Asserting a definitive answer as if it were settled science",
+      "Describing the mechanism incorrectly, for example claiming it retrieves memorised sentences",
+      "Refusing to commit to any personal opinion when directly asked"
+    ],
+    "followUps": ["What kind of failure would convince you that a model doesn't really understand, versus one that would convince you it does?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Career goals in AI",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["goals", "motivation", "future"],
+    "question": "What area of AI do you think you'd like to specialise in, and where do you see that taking you after your degree?",
+    "lookingFor": "A grounded direction connected to real interest, with realistic openness to it evolving during study.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific area of interest, backed by some existing experience or reading",
+        "Connect it to a plausible future direction, whether research, industry, or further study",
+        "Show flexibility, acknowledging the interest may shift as they learn more"
+      ],
+      "modelAnswer": "Right now I'm most drawn to computer vision, partly from a school project building a simple object detector for recycling sorting, and I liked how directly the maths connected to something physical you could actually see working. I'd like to end up doing applied research, maybe in an area like medical imaging where the stakes make the accuracy problem more interesting rather than less. I know that could easily change once I'm exposed to areas like NLP or robotics properly during the degree, and I'd rather stay open to that than lock myself into a plan this early."
+    },
+    "commonMistakes": [
+      "An overly rigid five-year plan with no room for the degree to change their mind",
+      "No connection to any existing experience or genuine interest",
+      "A goal disconnected from what the course actually offers"
+    ],
+    "followUps": ["What's drawing you to that area specifically over the alternatives?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Limits of current AI",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["limitations", "concept", "critical-thinking"],
+    "question": "What do you think current AI systems are still bad at, despite all the recent progress?",
+    "lookingFor": "Critical, informed thinking rather than uncritical hype, with a concrete example of a real limitation.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine, specific limitation rather than a vague 'AI isn't perfect'",
+        "Explain briefly why that limitation exists",
+        "Show awareness that this affects real deployment decisions"
+      ],
+      "modelAnswer": "I think current systems are still genuinely bad at robust reasoning outside the patterns they've seen in training, so a model can look brilliant on a familiar type of problem and then fail in a way a human never would on a slightly unusual variation of the same thing. That happens because these systems are fundamentally pattern-matching on their training distribution rather than reasoning from first principles the way a person can. It matters practically because it means you can't just trust a strong benchmark score, you have to stress-test a system on the weird edge cases it'll actually meet in the real world before deploying it anywhere important."
+    },
+    "commonMistakes": [
+      "Giving a vague answer like 'AI still makes mistakes' with no specificity",
+      "Only praising AI capabilities without any genuine critique",
+      "Naming a limitation that's actually already been largely solved, showing outdated knowledge"
+    ],
+    "followUps": ["Can you give a specific example where you've seen an AI system fail like that?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Extracurricular AI exposure",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["experience", "extracurricular", "motivation"],
+    "question": "Have you taken part in any competitions, clubs, courses, or online communities related to AI or programming? What did you gain from it?",
+    "lookingFor": "Concrete, verifiable involvement with a specific, honest takeaway rather than a resume-padding list.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the specific activity and what it actually involved",
+        "Describe your own role or contribution honestly",
+        "State a specific thing learned or gained, not a generic platitude"
+      ],
+      "modelAnswer": "I took part in a regional coding competition last year where one of the rounds involved building a simple recommendation system, and I worked with two others on the feature engineering side while a teammate handled the model itself. We didn't place, but debugging why our recommendations were so repetitive taught me more about the practical side of collaborative filtering than any tutorial had, since I had to actually explain and defend design choices to teammates who disagreed with me. It also confirmed I wanted to keep working in small technical teams rather than solo, which I hadn't expected going in."
+    },
+    "commonMistakes": [
+      "Listing activities with no detail about actual involvement",
+      "Overstating a minor role as if they led the whole effort",
+      "A generic takeaway like 'it was a great learning experience'"
+    ],
+    "followUps": ["What would you do differently if you took part again?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "AI safety and control",
+    "program": "Artificial Intelligence",
+    "difficulty": "hard",
+    "tags": ["safety", "ethics", "future"],
+    "question": "How seriously do you take concerns about long-term AI safety, such as the risk of highly capable systems behaving in unintended ways?",
+    "lookingFor": "A balanced, informed view that neither dismisses the concern nor spirals into unfounded alarmism.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of what the concern actually is, for example goal misspecification, not just 'robots taking over'",
+        "Distinguish near-term risks from more speculative long-term ones",
+        "Give a personal, reasoned level of concern rather than an extreme position either way"
+      ],
+      "modelAnswer": "I take it seriously, but I think the concern is often caricatured as robots turning evil, when the actual worry researchers raise is more about goal misspecification, a system optimising exactly what we told it to rather than what we actually meant, which is a subtler and more plausible failure mode. I'm more immediately concerned about nearer-term issues like biased deployment and misuse of current systems, since those are happening now rather than hypothetically, but I don't think that means the longer-term alignment questions should be dismissed either. I'd rather take a measured view, informed by what researchers in the field actually argue, than either panic or wave it away."
+    },
+    "commonMistakes": [
+      "Dismissing the entire topic as science fiction",
+      "Describing the concern inaccurately as robots with malicious intent",
+      "An extreme doomer position with no nuance"
+    ],
+    "followUps": ["What's one thing you think the field is doing well to address this?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Training and test data",
+    "program": "Artificial Intelligence",
+    "difficulty": "easy",
+    "tags": ["ml", "fundamentals", "evaluation"],
+    "question": "Why do we split data into training and test sets when building a machine learning model?",
+    "lookingFor": "Clear understanding that the split exists to estimate real-world performance honestly, not just repeat memorised terminology.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that the training set is what the model learns from",
+        "Explain that the test set is held back to check performance on unseen data",
+        "State why this matters: without it you can't tell if the model has actually generalised or just memorised"
+      ],
+      "modelAnswer": "The training set is the data the model actually learns its parameters from, and the test set is data it never sees during that process, kept aside specifically to check how well it performs afterward. If you evaluated a model on the same data it trained on, you'd get a falsely optimistic picture, because a model can score well just by memorising rather than genuinely learning a pattern that generalises. Keeping the test set completely separate is really the only honest way to estimate how the model would perform on new, real-world data it hasn't encountered before."
+    },
+    "commonMistakes": [
+      "Confusing training and test sets",
+      "Not explaining why the split matters, just stating that it exists",
+      "Forgetting that the test set should never be used during model development"
+    ],
+    "followUps": ["What's a validation set, and how is it different from a test set?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "AI in an unfamiliar domain",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["applied", "creativity", "problem-solving"],
+    "question": "If you had to design an AI system to solve a real problem in your local community, what would you build and why?",
+    "lookingFor": "Genuine problem-first thinking, showing they can identify a real need rather than forcing AI onto a problem that doesn't need it.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify a real, specific local problem before jumping to a solution",
+        "Explain plausibly why an AI approach specifically helps, versus a simpler alternative",
+        "Acknowledge a realistic limitation or risk of the proposed system"
+      ],
+      "modelAnswer": "Where I live, a lot of food gets wasted at local markets because vendors overestimate demand and there's no easy way to predict it, so I'd want to build a simple demand forecasting model using past sales, weather, and local events to help vendors stock more accurately. I think AI genuinely helps here because the pattern depends on several interacting variables that are hard for a person to weigh intuitively every single day. The risk I'd worry about is vendors trusting the model blindly on days it's clearly wrong, like an unannounced local event, so I'd want the system to show its confidence rather than just spit out a single number."
+    },
+    "commonMistakes": [
+      "Choosing AI for a problem a simpler tool would solve just as well",
+      "Describing the idea with no acknowledgment of any downside or risk",
+      "A vague, unspecific 'problem' like 'helping the community' with no real detail"
+    ],
+    "followUps": ["What data would be hardest to actually get for that system?"]
+  },
+  {
+    "id": "prog-artificial-intelligence-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Contribution to the cohort",
+    "program": "Artificial Intelligence",
+    "difficulty": "medium",
+    "tags": ["fit", "teamwork", "contribution"],
+    "question": "AI courses often involve group projects with people from very different backgrounds. What would you bring to a team like that?",
+    "lookingFor": "Honest self-assessment of a real strength backed by evidence, with awareness of how it complements others.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a genuine strength, backed by a specific example, not a generic trait",
+        "Explain how it complements skills others might bring",
+        "Show awareness that a good team needs more than just technical skill"
+      ],
+      "modelAnswer": "I tend to be the person who pushes a group to actually test assumptions early rather than build for weeks on an idea nobody has checked, which came from a project where we lost a lot of time because we didn't validate our data source until it was almost too late. I think that pairs well with teammates who are stronger on the pure modelling side, since I'm more focused on making sure what we're building is actually grounded in reality. I also try to make sure quieter teammates get heard, because some of the best catches in that same project came from someone who almost didn't speak up."
+    },
+    "commonMistakes": [
+      "A generic claim like 'I'm a hard worker' with no evidence",
+      "Only listing technical skills with no mention of collaboration",
+      "Overselling themselves as the obvious leader of any team"
+    ],
+    "followUps": ["Tell us about a time that strength actually helped a team you were part of."]
+  }
+]

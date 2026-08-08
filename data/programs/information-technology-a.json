@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-information-technology-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Origin of interest in IT",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["motivation", "origin-story"],
+    "question": "What first got you interested in Information Technology?",
+    "lookingFor": "A specific, personal moment or experience that sparked genuine interest, not a vague love of computers.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment, project, or problem that hooked you",
+        "Explain what specifically appealed to you about it",
+        "Connect it to what you've done since to pursue that interest"
+      ],
+      "modelAnswer": "It started when our home Wi-Fi kept dropping and I spent a weekend figuring out it was a channel conflict with the neighbour's router. That feeling of tracing a problem back to its actual cause stuck with me, and I started setting up a small home lab with an old laptop just to break things and fix them. Since then I've built a NAS box for my family's photos and helped our school migrate its attendance sheets to a simple database. It's the mix of logic and usefulness that keeps pulling me in."
+    },
+    "commonMistakes": [
+      "Saying 'I've always loved computers' with no specific moment",
+      "Describing gaming as the sole motivation with no follow-through",
+      "Giving an answer that sounds identical for any tech-related course"
+    ],
+    "followUps": ["What have you done since then to build on that interest?"]
+  },
+  {
+    "id": "prog-information-technology-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this course specifically",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why do you want to study Information Technology at this university in particular?",
+    "lookingFor": "Specific, researched reasons tied to this course's structure or strengths, not generic praise.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific module, lab, placement scheme, or facility",
+        "Tie it to a concrete personal goal or gap you want to fill",
+        "Show you understand how this differs from a plain computer science degree"
+      ],
+      "modelAnswer": "I looked closely at your course structure and the fact that the second year has a mandatory industry placement module stood out, because I want to see how IT actually runs inside an organisation, not just how to build it in isolation. I'm also drawn to the systems administration and networking labs you mentioned in the open day, since that hands-on infrastructure side is where I'm weakest and most want to grow. It felt more applied than a pure computer science degree, which is exactly the balance I'm after."
+    },
+    "commonMistakes": [
+      "Praise that would fit any university's IT course",
+      "Focusing only on rankings or campus life",
+      "Not distinguishing IT from computer science"
+    ],
+    "followUps": ["What do you think you'd contribute to the course?"]
+  },
+  {
+    "id": "prog-information-technology-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "IT vs Computer Science",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["it-vs-cs", "field-understanding"],
+    "question": "How would you explain the difference between Information Technology and Computer Science, and why did you choose IT?",
+    "lookingFor": "A clear, accurate understanding of the two fields' emphasis and a genuine reason for preferring IT.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain computer science leans toward theory, algorithms, and building software from first principles",
+        "Explain IT leans toward applying, integrating, and maintaining systems that already exist",
+        "Give a personal reason IT's emphasis suits you better"
+      ],
+      "modelAnswer": "As I understand it, computer science is more about the theory behind computing, designing algorithms and building software from the ground up, while IT is more about applying existing technology, setting up networks, managing systems, and keeping the infrastructure that businesses depend on running smoothly and securely. I enjoy programming, but what excites me more is when a bunch of different systems, a database, a website, and a network, need to actually work together reliably. That's why IT felt like the better fit than a pure computer science route."
+    },
+    "commonMistakes": [
+      "Saying the two fields are basically the same thing",
+      "Describing IT as 'easier' computer science",
+      "Giving no personal reason for the choice, just the definition"
+    ],
+    "followUps": ["Which part of that applied, systems-integration side interests you most?"]
+  },
+  {
+    "id": "prog-information-technology-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Hands-on project experience",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["project", "experience", "hands-on"],
+    "question": "Tell us about a technical project you've built or worked on outside of class.",
+    "lookingFor": "A concrete, self-directed project with genuine technical detail and evidence of what was learned.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe what the project was and why you started it",
+        "Explain a real technical decision or obstacle you dealt with",
+        "Say what you learned or would do differently"
+      ],
+      "modelAnswer": "I set up a small server on an old desktop to host a website for my school's chess club, using a simple LAMP stack because I wanted to understand what actually happens between a browser request and a page loading. The trickiest part was getting the database to talk to the PHP backend securely, since my first attempt left the login form open to basic SQL injection, which I only caught after reading about it and testing it myself. Fixing that with parameterised queries taught me more about real-world security than any tutorial had. I still run it today and add small features when I have time."
+    },
+    "commonMistakes": [
+      "Describing only a tutorial followed step by step with no personal decisions",
+      "Vague description with no technical specifics",
+      "No mention of a problem faced or lesson learned"
+    ],
+    "followUps": ["What would you build next if you had more time and resources?"]
+  },
+  {
+    "id": "prog-information-technology-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and current trends",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "current-affairs"],
+    "question": "What's a recent development in technology that you've been following, and why does it interest you?",
+    "lookingFor": "Evidence of genuine, current engagement with the field beyond the syllabus, with an informed opinion.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, recent development, not something generic or outdated",
+        "Explain the actual mechanics or implications, showing real understanding",
+        "Give a personal opinion or connection, not just a summary"
+      ],
+      "modelAnswer": "I've been following the growth of edge computing, where processing happens closer to the device instead of sending everything to a central cloud server. I read a case study on a factory using it to cut latency for real-time sensor monitoring, since round-tripping data to a distant data centre was too slow for their safety systems. It interests me because it pushes against the assumption that 'more cloud is always better,' and it made me think differently about the trade-offs between centralised and distributed systems, which I'd like to explore more formally in this course."
+    },
+    "commonMistakes": [
+      "Naming a topic with no real detail behind it",
+      "Picking something years out of date and calling it recent",
+      "Reciting facts with no personal view or reflection"
+    ],
+    "followUps": ["What's a downside or limitation of that development?"]
+  },
+  {
+    "id": "prog-information-technology-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Networking fundamentals",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["networking", "fundamentals"],
+    "question": "In simple terms, what happens when you type a website address into a browser and press enter?",
+    "lookingFor": "A basic but accurate grasp of DNS lookup, requests, and response, showing real curiosity about how systems work.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention DNS translating the domain name into an IP address",
+        "Mention the browser sending a request to the server at that address",
+        "Mention the server sending back the page data for the browser to display"
+      ],
+      "modelAnswer": "First the browser needs to find the actual server behind that address, so it asks a DNS server to translate the domain name into an IP address, a bit like looking up a phone number from a name. Once it has the address, the browser sends a request to that server asking for the page. The server processes the request and sends back the page's data, which the browser then renders on screen. I find it satisfying that something that feels instant is actually a whole chain of steps happening in milliseconds."
+    },
+    "commonMistakes": [
+      "Skipping DNS entirely and jumping straight to 'the page loads'",
+      "Confusing IP addresses with URLs",
+      "Overcomplicating the answer with jargon that isn't quite accurate"
+    ],
+    "followUps": ["What is an IP address, and why does a website need one?"]
+  },
+  {
+    "id": "prog-information-technology-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Databases basics",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["databases", "fundamentals"],
+    "question": "What is a database, and why do organisations need one instead of just using spreadsheets?",
+    "lookingFor": "Understanding of structured data storage and the practical limits of spreadsheets at scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a database as organised, structured storage that can be queried efficiently",
+        "Contrast with spreadsheets breaking down with large volumes, concurrent users, or complex relationships",
+        "Mention reliability features like consistency or controlled access"
+      ],
+      "modelAnswer": "A database is a structured way of storing data so it can be searched, updated, and connected to other data efficiently, usually organised into tables with defined relationships between them. Spreadsheets work fine for small, simple lists, but they fall apart when many people need to edit data at the same time, when the volume gets large, or when you need to link related information, like customers to their orders, without duplicating everything. Databases also give you tools to keep data consistent and control who can see or change what, which spreadsheets really aren't built for."
+    },
+    "commonMistakes": [
+      "Saying a database is 'just a bigger spreadsheet' with no real distinction",
+      "Ignoring concurrency and multi-user issues entirely",
+      "No mention of relationships between tables"
+    ],
+    "followUps": ["What's the difference between a relational and a non-relational database?"]
+  },
+  {
+    "id": "prog-information-technology-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Cybersecurity basics",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["cybersecurity", "fundamentals"],
+    "question": "What is a firewall, and what does it actually do?",
+    "lookingFor": "A correct, non-buzzwordy grasp of a firewall as a traffic filter based on rules.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe it as a system that monitors and filters incoming and outgoing network traffic",
+        "Mention it works based on rules, allowing or blocking traffic accordingly",
+        "Clarify it's one layer of defence, not a complete security solution"
+      ],
+      "modelAnswer": "A firewall is a system, either hardware or software, that sits between a network and the outside world and monitors the traffic passing through it. It checks traffic against a set of rules and blocks anything that looks suspicious or isn't explicitly permitted, similar to a security guard checking IDs at a door. What I think people get wrong is treating it as a complete solution, when really it's one layer, it won't stop something like a phishing email that a user clicks on themselves, so it has to work alongside other measures."
+    },
+    "commonMistakes": [
+      "Describing a firewall as antivirus software",
+      "Claiming it stops all types of attacks",
+      "No mention of rules or traffic filtering at all"
+    ],
+    "followUps": ["Can you give an example of a threat a firewall would not stop?"]
+  },
+  {
+    "id": "prog-information-technology-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud computing understanding",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["cloud", "infrastructure"],
+    "question": "What does 'the cloud' actually mean, and why has it become so central to IT infrastructure?",
+    "lookingFor": "An accurate, de-mystified explanation of cloud computing and the practical drivers behind its adoption.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the cloud as remote servers accessed over the internet rather than local hardware",
+        "Mention benefits like scalability, cost, and not managing physical infrastructure",
+        "Show awareness of a trade-off, such as dependency on a provider or connectivity"
+      ],
+      "modelAnswer": "The cloud is really just someone else's data centre, servers owned and maintained by a company like AWS or Azure that you rent capacity from over the internet, rather than buying and running your own physical machines. It's become central because it lets a business scale up or down as demand changes without buying hardware they might not need in six months, and it shifts the burden of maintenance onto the provider. The trade-off is that you're now dependent on that provider's reliability and pricing, which is why I find questions about vendor lock-in genuinely interesting."
+    },
+    "commonMistakes": [
+      "Describing the cloud as something magical or non-physical",
+      "Listing benefits with no mention of any trade-off",
+      "Confusing cloud storage with cloud computing generally"
+    ],
+    "followUps": ["What's a risk a business takes on by moving everything to the cloud?"]
+  },
+  {
+    "id": "prog-information-technology-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Programming background",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["programming", "experience"],
+    "question": "What programming languages have you used, and which one do you enjoy working with most?",
+    "lookingFor": "Genuine hands-on experience and a specific, reasoned preference rather than a memorised list.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the languages actually used, with honest depth of experience",
+        "Pick a favourite and give a real reason tied to what it's used for",
+        "Mention a specific thing built with it"
+      ],
+      "modelAnswer": "I've mainly used Python and a bit of JavaScript. Python is the one I enjoy most because its readability let me focus on the logic of a problem rather than fighting the syntax, which mattered when I built a small script to automate renaming and sorting my photo backups. I've dabbled in JavaScript for a school project's front end, but I'm far more confident in Python and I'm looking forward to broadening into other languages properly in this course."
+    },
+    "commonMistakes": [
+      "Listing languages with no evidence of actually having used them",
+      "Claiming expert-level fluency that won't survive a follow-up question",
+      "Giving no reason for the stated preference"
+    ],
+    "followUps": ["What's something you found genuinely difficult to learn in that language?"]
+  },
+  {
+    "id": "prog-information-technology-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Debugging and problem-solving",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["problem-solving", "debugging"],
+    "question": "Describe a time something you built or set up didn't work, and how you worked out what was wrong.",
+    "lookingFor": "A methodical, patient approach to diagnosing a technical problem, not a lucky guess.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the specific symptom of the failure clearly",
+        "Explain the actual process of isolating the cause, not just the fix",
+        "Reflect on what the experience taught about troubleshooting generally"
+      ],
+      "modelAnswer": "I set up a Raspberry Pi as a small home file server, and it kept dropping off the network every few hours. My first guess was a Wi-Fi power-saving setting, but disabling that didn't help, so I started checking logs instead of guessing further and noticed the drops lined up exactly with a scheduled backup job overloading the memory. Once I saw the pattern in the logs it made sense, and I fixed it by scheduling the backup for overnight and limiting its memory use. It taught me to trust logs over intuition when something seems random."
+    },
+    "commonMistakes": [
+      "Describing a fix with no explanation of how the cause was found",
+      "A story where the problem was solved by luck rather than method",
+      "No genuine technical detail, just 'I fixed it eventually'"
+    ],
+    "followUps": ["How do you usually decide where to start looking when something breaks?"]
+  },
+  {
+    "id": "prog-information-technology-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Operating systems basics",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["operating-systems", "fundamentals"],
+    "question": "What does an operating system actually do?",
+    "lookingFor": "A basic but accurate understanding of resource management and the interface between hardware and software.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe it as managing hardware resources like the CPU, memory, and storage",
+        "Mention it provides a common interface for applications to run on",
+        "Give an example of resource management, like scheduling multiple programs"
+      ],
+      "modelAnswer": "An operating system manages the computer's hardware, things like the processor, memory, and storage, and decides how those resources get shared between all the different programs running at once. It also gives applications a common set of services to use rather than each program having to talk to the hardware directly, which is why the same app can run on different machines with different components. A good example is how it juggles my browser, a music player, and a document editor all at once without me noticing any of the scheduling happening underneath."
+    },
+    "commonMistakes": [
+      "Describing an operating system as just 'Windows or Mac'",
+      "No mention of resource management or scheduling",
+      "Confusing the OS with a single application"
+    ],
+    "followUps": ["What might happen if two programs both needed exclusive access to the same resource at once?"]
+  },
+  {
+    "id": "prog-information-technology-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Software development life cycle",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["sdlc", "process"],
+    "question": "Can you walk us through the basic stages of the software development life cycle?",
+    "lookingFor": "A structured grasp of how software projects actually move from idea to deployment and maintenance.",
+    "idealAnswer": {
+      "bullets": [
+        "Cover the main stages: requirements, design, development, testing, deployment, maintenance",
+        "Show understanding that stages can overlap or repeat, not just a rigid sequence",
+        "Mention why skipping a stage, like testing, causes real problems"
+      ],
+      "modelAnswer": "Broadly it starts with gathering requirements, understanding what the system actually needs to do and for whom, then moving into design, where you plan the architecture and how components fit together. After that comes the actual development, followed by testing to catch bugs and mismatches with the requirements before it reaches users. Then it's deployed, but the cycle doesn't really end there, because maintenance and updates continue for as long as the system is in use. I read about a case where a company skipped proper testing to hit a deadline and ended up with a much costlier fix once real users found the bugs, which made the value of that stage very concrete for me."
+    },
+    "commonMistakes": [
+      "Listing stages with no understanding of what happens in each",
+      "Treating it as a strictly linear process with no iteration",
+      "Forgetting maintenance as an ongoing stage"
+    ],
+    "followUps": ["Why might a team choose an agile approach over a rigid, sequential one?"]
+  },
+  {
+    "id": "prog-information-technology-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of data privacy",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["ethics", "data-privacy", "judgement"],
+    "question": "A company you're working for wants to collect more customer data than is strictly needed, because it might be useful later. What's your view on that?",
+    "lookingFor": "Structured ethical reasoning that weighs business interest against privacy principles like data minimisation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine business motivation before dismissing it",
+        "Bring in a real principle, such as data minimisation or purpose limitation",
+        "Land on a practical, reasoned position rather than an absolute stance"
+      ],
+      "modelAnswer": "I understand the appeal, extra data can unlock insights you didn't know you'd need, but I don't think 'it might be useful later' is a good enough justification on its own. Good practice, and increasingly the law under things like data minimisation principles, says you should only collect what you have a defined purpose for right now. My view is that if the company genuinely anticipates a future use, they should define that use clearly and get proper consent for it, rather than hoovering up data speculatively, because the risk of a breach or losing customer trust isn't worth the vague upside. I'd raise that concern directly rather than just going along with it."
+    },
+    "commonMistakes": [
+      "Giving an absolute 'more data is always good for business' answer",
+      "Refusing to engage with the business motivation at all",
+      "No mention of any real privacy principle or regulation"
+    ],
+    "followUps": ["Does your answer change if the data would be anonymised?"]
+  },
+  {
+    "id": "prog-information-technology-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Situational troubleshooting",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["situational", "troubleshooting", "communication"],
+    "question": "You're asked to fix a system issue for a non-technical colleague who is frustrated and doesn't understand the problem. Walk us through how you'd handle it.",
+    "lookingFor": "A calm, structured approach that balances technical diagnosis with clear, non-jargon communication.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the frustration and reassure before diving into the fix",
+        "Diagnose methodically rather than guessing to look fast",
+        "Explain the outcome in plain language, not technical jargon"
+      ],
+      "modelAnswer": "I'd start by acknowledging their frustration honestly, something like telling them I understand this is disrupting their work and I'll get to the bottom of it, because feeling heard usually calms the situation before any fix even starts. Then I'd ask specific questions to understand exactly what they were doing when it broke, rather than assuming, and work through it methodically rather than trying to look fast with a guess. Once I found the cause, I'd explain it back to them in plain terms, avoiding jargon, and tell them what I changed so they'd know what to expect if it happened again. Good IT support is as much about the conversation as the fix."
+    },
+    "commonMistakes": [
+      "Jumping straight to a technical fix with no acknowledgement of the person's frustration",
+      "Explaining the resolution in jargon they can't use",
+      "Guessing at a fix instead of diagnosing properly"
+    ],
+    "followUps": ["What would you do if you couldn't identify the cause within a reasonable time?"]
+  },
+  {
+    "id": "prog-information-technology-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "LAN vs WAN",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["networking", "fundamentals"],
+    "question": "What's the difference between a LAN and a WAN?",
+    "lookingFor": "Accurate, basic networking knowledge with a real-world example of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Define LAN as a network confined to a small local area",
+        "Define WAN as a network spanning a larger geographic area, connecting multiple LANs",
+        "Give a concrete example of each"
+      ],
+      "modelAnswer": "A LAN, a local area network, covers a small physical space, like a single office building or a home, where devices are connected directly, often over Wi-Fi or Ethernet. A WAN, a wide area network, spans a much larger area and typically connects multiple LANs together, often across cities or countries, with the internet itself being the largest example of a WAN. A company with offices in two different cities would use a WAN connection to link their two local office LANs into one network."
+    },
+    "commonMistakes": [
+      "Confusing LAN and WAN scope",
+      "Treating 'the internet' and 'WAN' as unrelated concepts",
+      "Giving no real-world example"
+    ],
+    "followUps": ["What's a practical challenge of connecting LANs across a WAN?"]
+  },
+  {
+    "id": "prog-information-technology-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Emerging technology interest",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["emerging-tech", "curiosity"],
+    "question": "Which emerging area of IT, like AI, IoT, or automation, are you most curious about, and why?",
+    "lookingFor": "Genuine, specific curiosity backed by some real understanding, not a buzzword drop.",
+    "idealAnswer": {
+      "bullets": [
+        "Name one specific area rather than listing several vaguely",
+        "Explain a concrete example or application that drew you in",
+        "Show awareness of a real challenge or limitation in that area"
+      ],
+      "modelAnswer": "I'm most curious about the Internet of Things, particularly in agriculture, after reading about soil moisture sensors that let farmers irrigate only where and when it's actually needed instead of on a fixed schedule. What interests me is less the sensors themselves and more the challenge of getting hundreds of low-power devices to communicate reliably over a large area without draining their batteries in a month. It's a problem that sits right at the intersection of networking and hardware constraints, which is exactly the kind of applied challenge I want to study."
+    },
+    "commonMistakes": [
+      "Naming three trendy buzzwords with no depth on any of them",
+      "No specific example or application mentioned",
+      "No awareness of any real limitation or open problem"
+    ],
+    "followUps": ["What do you see as the biggest obstacle to that technology becoming more widespread?"]
+  },
+  {
+    "id": "prog-information-technology-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Website vs web application",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["web-development", "fundamentals"],
+    "question": "What's the difference between a website and a web application?",
+    "lookingFor": "Understanding of static versus interactive, data-driven content and correct examples of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a website as largely static, informational content",
+        "Describe a web application as interactive, with users triggering actions and data changing",
+        "Give a clear real-world example of each"
+      ],
+      "modelAnswer": "A website is usually mostly static, informational pages that display content but don't really respond to user input beyond navigation, something like a company's 'about us' page. A web application is interactive, users log in, submit data, and the content changes based on what they do, with a lot more happening on a backend server or database behind the scenes. Something like online banking or an email client is a web application, since it's constantly reading and writing user-specific data, whereas a simple restaurant menu page is a website."
+    },
+    "commonMistakes": [
+      "Treating the two terms as interchangeable",
+      "No mention of the backend or data interactivity distinction",
+      "Choosing examples that don't clearly illustrate the difference"
+    ],
+    "followUps": ["Where would you place a blog on that spectrum, and why?"]
+  },
+  {
+    "id": "prog-information-technology-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Version control awareness",
+    "program": "Information Technology",
+    "difficulty": "easy",
+    "tags": ["collaboration", "tools"],
+    "question": "Have you used a version control system like Git? What problem does it actually solve?",
+    "lookingFor": "Practical familiarity, even basic, with why tracking changes and collaboration tools matter.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the core problem: tracking changes and allowing multiple people to work without overwriting each other",
+        "Mention a specific feature used, like commits or branches",
+        "Give a concrete personal example of using it, if any"
+      ],
+      "modelAnswer": "I've used Git for a couple of group school projects. The problem it solves is that without it, if two people edit the same file, one of you ends up overwriting the other's work, or you're stuck emailing files back and forth with 'final_v3' in the name. Git tracks every change as a commit, so you can see exactly what changed and by whom, and branches let people work on separate features without disturbing the main version until it's ready to merge. It genuinely made our group project less chaotic once we actually learned to use it properly instead of dumping files in a shared folder."
+    },
+    "commonMistakes": [
+      "Claiming fluency with no concrete example",
+      "Describing Git as just cloud file storage",
+      "No mention of the collaboration or conflict problem it solves"
+    ],
+    "followUps": ["Have you ever run into a merge conflict? How did you resolve it?"]
+  },
+  {
+    "id": "prog-information-technology-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "IT's role in an organisation",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["field-understanding", "career"],
+    "question": "In your understanding, what does an IT department actually do within a typical organisation?",
+    "lookingFor": "Realistic breadth of understanding beyond 'fixing computers' toward infrastructure, security, and support at scale.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention infrastructure and systems management, not just troubleshooting",
+        "Mention security and data protection responsibilities",
+        "Show awareness that IT enables other departments rather than working in isolation"
+      ],
+      "modelAnswer": "It's more than fixing a broken laptop, though that's the visible part. An IT department manages the underlying infrastructure, the networks, servers, and software systems that every other department depends on to actually do their jobs, and it's also usually responsible for security, making sure data is protected and systems are patched against threats. What I find interesting is that IT often isn't visible until something breaks, which means a lot of the real value is in the quiet, ongoing work of keeping everything running reliably before problems ever surface."
+    },
+    "commonMistakes": [
+      "Reducing IT entirely to help-desk support",
+      "No mention of security responsibilities",
+      "Describing IT as disconnected from the rest of the business"
+    ],
+    "followUps": ["Which part of that, infrastructure, security, or support, interests you most?"]
+  },
+  {
+    "id": "prog-information-technology-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Group project role",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["teamwork", "project"],
+    "question": "Tell us about a group technical project you worked on. What role did you play?",
+    "lookingFor": "A clear, honest account of a specific contribution and how it fit within the team's work.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the project and the team's overall goal briefly",
+        "Be specific about your actual role and contribution",
+        "Mention a challenge in the collaboration and how it was handled"
+      ],
+      "modelAnswer": "For a school project we built a simple inventory tracking system for our robotics club, and I ended up taking on the database design while two others handled the front end. Early on we clashed over how normalised the tables should be, since I wanted a cleaner structure and they wanted something faster to build against, so we compromised by starting simple and I documented exactly how we'd extend it later if needed. It taught me that a technically 'correct' design isn't always the right call if it slows the whole team down."
+    },
+    "commonMistakes": [
+      "Claiming credit for the entire project alone",
+      "Vague role description with no specific contribution",
+      "No mention of any friction or how it was resolved"
+    ],
+    "followUps": ["What would you do differently if you led that project again?"]
+  },
+  {
+    "id": "prog-information-technology-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Long-term goals in IT",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["goals", "future", "motivation"],
+    "question": "What kind of role or area within IT do you see yourself working toward, and how does this course get you there?",
+    "lookingFor": "A grounded, informed direction connected clearly to what the course actually offers.",
+    "idealAnswer": {
+      "bullets": [
+        "Give a specific direction within IT, not just 'working in tech'",
+        "Show it's informed by some real exposure or research, not a guess",
+        "Connect it clearly to specific parts of the course"
+      ],
+      "modelAnswer": "I'm drawn toward systems and network administration, ideally working somewhere the infrastructure genuinely matters, like healthcare or logistics where downtime has real consequences. That interest came from volunteering with a local charity where I helped their small office set up shared file access properly, and I realised how much I enjoyed the puzzle of making disparate systems work together reliably. Your course's focus on networking, systems administration, and a placement year is exactly the path to build the practical skills that role actually needs, rather than just the theory."
+    },
+    "commonMistakes": [
+      "An overly generic goal like 'I want to work in tech'",
+      "A goal disconnected from anything the course actually offers",
+      "No grounding in any real exposure or reasoning"
+    ],
+    "followUps": ["What's the first step you'd take toward that after graduating?"]
+  },
+  {
+    "id": "prog-information-technology-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Current tech news awareness",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["current-affairs", "critical-thinking"],
+    "question": "Can you tell us about a recent major IT-related incident, like a data breach or system outage, and what you think it reveals about how organisations manage technology?",
+    "lookingFor": "Specific, accurate awareness of a real incident plus genuine analytical reflection, not just headline recall.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific, real incident with roughly accurate detail",
+        "Explain the underlying cause as you understand it",
+        "Offer a genuine reflection on what it reveals about IT practice"
+      ],
+      "modelAnswer": "I followed the CrowdStrike outage in 2024, where a faulty update to their security software caused widespread crashes on Windows systems worldwide, grounding flights and disrupting hospitals. What struck me was that it wasn't a malicious attack at all, it was a routine update that went wrong and rolled out globally before anyone caught the problem, which showed me how much trust organisations place in a single vendor's testing process. It made me think a lot about the value of staged rollouts and having a genuine rollback plan, rather than assuming an update from a trusted supplier is automatically safe."
+    },
+    "commonMistakes": [
+      "Vague mention of 'a hack happened somewhere' with no real detail",
+      "Getting basic facts of the incident clearly wrong",
+      "Stopping at the summary with no reflection on its wider implications"
+    ],
+    "followUps": ["What would you have done differently if you were responsible for that rollout?"]
+  },
+  {
+    "id": "prog-information-technology-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Testing and quality assurance",
+    "program": "Information Technology",
+    "difficulty": "medium",
+    "tags": ["testing", "quality"],
+    "question": "Why is testing such an important part of delivering an IT system, and what happens when it's skipped?",
+    "lookingFor": "Understanding of testing's role in catching defects early and the real cost of skipping it.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain testing catches defects before they reach real users",
+        "Mention that fixing bugs found late is far more costly than catching them early",
+        "Give a concrete consequence of inadequate testing"
+      ],
+      "modelAnswer": "Testing is really about catching problems while they're still cheap and safe to fix, before real users, or worse, real money or safety, are affected. When it's skipped or rushed, bugs surface in production instead, where fixing them is far more expensive and often more embarrassing, since users have already been affected. I read about a retailer whose checkout system crashed during a major sale because a change hadn't been load-tested properly, and it cost them a huge amount of lost revenue in just a few hours, which made very concrete for me why testing isn't a step to cut corners on."
+    },
+    "commonMistakes": [
+      "Treating testing as a minor, optional final step",
+      "No mention of the cost difference between catching bugs early versus late",
+      "No concrete example of consequences"
+    ],
+    "followUps": ["What's the difference between testing a system's function and testing its performance under load?"]
+  },
+  {
+    "id": "prog-information-technology-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "IT's societal impact",
+    "program": "Information Technology",
+    "difficulty": "hard",
+    "tags": ["impact", "reflection", "society"],
+    "question": "Why does Information Technology matter to society, beyond just making things convenient?",
+    "lookingFor": "Thoughtful reflection connecting IT to broader consequences, both positive and negative, rather than a shallow 'tech is good' answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Move beyond convenience to a substantive impact, like access, equity, or infrastructure dependence",
+        "Acknowledge a genuine downside or risk, not just benefits",
+        "Tie it back to a personal reason it matters to the applicant"
+      ],
+      "modelAnswer": "Beyond convenience, IT has quietly become the infrastructure that critical services run on, hospitals scheduling patients, banks processing payments, schools managing records, so when it works well it genuinely expands what's possible, and when it fails or excludes people, the consequences are serious. I've seen that first-hand volunteering at a community centre helping elderly residents navigate online government forms that assumed everyone had reliable internet and digital confidence, which isn't true. That's part of why I care about this field, not just the technology itself but making sure the systems we build actually serve everyone they're meant to."
+    },
+    "commonMistakes": [
+      "Staying at the level of 'technology makes life easier' with nothing deeper",
+      "Only listing benefits with no acknowledgement of risk or exclusion",
+      "No personal connection to why it matters to the applicant specifically"
+    ],
+    "followUps": ["What's a group of people you think gets left behind by IT systems today?"]
+  }
+]

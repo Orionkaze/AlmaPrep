@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-telecommunications-engineering-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for telecom engineering",
+    "program": "Telecommunications Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "telecom", "fit"],
+    "question": "Why telecommunications engineering specifically, rather than general electrical or computer engineering?",
+    "lookingFor": "A motivation grounded in what actually draws them to signals and networks, not a vague love of gadgets.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the specific slice of telecom that pulls them in, like wireless systems, networks, or signal processing",
+        "Distinguish it honestly from adjacent fields such as general EE or pure computer science",
+        "Back it with a concrete experience, not just an interest in phones or the internet"
+      ],
+      "modelAnswer": "What pulled me toward telecom specifically was building a small FM transmitter for a school project and realizing how much careful engineering sits between a voice and a signal that actually travels through the air. General electrical engineering felt too broad and computer science felt too disconnected from the physical medium, but telecom sits right at that boundary of physics and information. I like that a dropped call or a slow connection is actually a chain of solvable engineering problems, from the antenna to the protocol stack, and I want to spend years getting good at that chain."
+    },
+    "commonMistakes": [
+      "Saying they just like phones or the internet with no engineering reasoning",
+      "Failing to distinguish telecom from computer science or general electrical engineering",
+      "Giving an answer with no personal experience behind it"
+    ],
+    "followUps": ["Which part of that chain, from antenna to application, interests you most?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's program",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit"],
+    "question": "Why do you want to study telecommunications engineering at our university specifically?",
+    "lookingFor": "Evidence of real research into the course, not generic praise that would fit any program.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific module, lab, or faculty research area in telecom or networks",
+        "Connect it to a concrete personal interest or project",
+        "Show understanding of what makes this program distinct from others they could apply to"
+      ],
+      "modelAnswer": "I looked closely at your third-year RF and antenna design lab because it's one of the few undergraduate courses I found that lets students build and test their own antenna rather than only simulating one. That matches how I learn, since I only really understood modulation once I'd built a wobbly transmitter that barely worked. I also noticed your department runs a joint project with the campus radio society, which is exactly the kind of hands-on grounding I want alongside the theory."
+    },
+    "commonMistakes": [
+      "Praise that could apply to any university's engineering department",
+      "Leaning only on rankings or reputation",
+      "No specific reference to modules, labs, or research"
+    ],
+    "followUps": ["What would you want to get out of that specific lab or project?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Hands-on experience",
+    "program": "Telecommunications Engineering",
+    "difficulty": "easy",
+    "tags": ["experience", "hands-on", "motivation"],
+    "question": "Have you done any hands-on projects related to communications or networking? Tell us about one.",
+    "lookingFor": "A genuine, specific project that shows initiative and some real technical engagement, however small.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a concrete project, even a modest one, with what they actually built or configured",
+        "Explain a problem they ran into and how they solved or worked around it",
+        "Show what it taught them about the field"
+      ],
+      "modelAnswer": "I set up a small home mesh network using a couple of old routers to see if I could improve wifi coverage in our house, which sounds simple but took a lot of trial and error with channel selection to stop the two routers interfering with each other. I ended up reading about co-channel interference just to understand why my signal kept dropping in one corner of the house. It was a small project, but it made concepts like frequency reuse feel real instead of just something in a textbook."
+    },
+    "commonMistakes": [
+      "Describing only passive use of technology with no building or configuring",
+      "Overstating the scale or sophistication of the project",
+      "Not reflecting on what was learned from a problem encountered"
+    ],
+    "followUps": ["What would you do differently if you built it again?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and current awareness",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "current-events", "motivation"],
+    "question": "What have you read or followed recently about developments in telecommunications?",
+    "lookingFor": "Genuine engagement with the field beyond the syllabus, with enough detail to show real understanding.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific article, talk, or topic rather than a vague area of interest",
+        "Explain the core idea in their own words, showing they understood it rather than skimmed it",
+        "Offer a personal opinion or question it raised, not just a summary"
+      ],
+      "modelAnswer": "I've been following the rollout of low earth orbit satellite internet, particularly how companies are handling the handoff problem when a satellite passing overhead gets replaced by the next one without the user noticing a break in connection. It struck me as a much harder version of the handover problem in cellular networks, since the satellites themselves are moving relative to the ground station. It made me curious whether the same techniques used for mobile handover between cell towers could scale to something moving that fast, which is something I'd like to actually study properly."
+    },
+    "commonMistakes": [
+      "Naming a topic with no ability to explain the underlying idea",
+      "Reciting headlines with no personal reaction or question",
+      "Picking something so old or basic it does not show current engagement"
+    ],
+    "followUps": ["What's a question that reading left you with?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Analog vs digital signals",
+    "program": "Telecommunications Engineering",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "signals", "concept"],
+    "question": "Can you explain the difference between an analog and a digital signal?",
+    "lookingFor": "A clear conceptual grasp of continuous versus discrete signals, with a real-world example of each.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe analog as continuous in both time and amplitude, digital as discrete values",
+        "Give a concrete example of each, like a microphone waveform versus a bitstream",
+        "Mention at least one practical reason digital is often preferred, like noise resistance"
+      ],
+      "modelAnswer": "An analog signal varies continuously, so a sound wave from a microphone can take any value at any instant, which is how old telephone lines carried voice directly as an electrical waveform. A digital signal instead represents information as discrete values, usually ones and zeros, so it has to be sampled and quantized from that continuous original. I find it interesting that digital signals are more resistant to noise because a receiver only has to decide between a small number of possible levels, whereas analog noise just gets added straight into the waveform and is much harder to remove."
+    },
+    "commonMistakes": [
+      "Saying digital just means 'better' without explaining why",
+      "Confusing digital with binary computers rather than discrete signal values",
+      "Giving no real-world example of either type"
+    ],
+    "followUps": ["Why does converting analog to digital always lose some information?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Bandwidth",
+    "program": "Telecommunications Engineering",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "bandwidth", "concept"],
+    "question": "In your own words, what is bandwidth, and why does it limit how fast we can send data?",
+    "lookingFor": "An intuitive but technically sound explanation connecting frequency range to data capacity.",
+    "idealAnswer": {
+      "bullets": [
+        "Define bandwidth as the range of frequencies a channel can carry",
+        "Connect a wider bandwidth to the ability to carry more information per second",
+        "Avoid the common confusion between bandwidth and simple internet speed marketing"
+      ],
+      "modelAnswer": "Bandwidth is the range of frequencies a channel or system can carry, so a channel that spans from one megahertz to two megahertz has a bandwidth of one megahertz. A wider bandwidth generally lets you pack more information through in the same amount of time, which is why fiber optic cables, with their huge usable frequency range, can carry vastly more data than a narrow copper line. It's a bit different from how the word gets used in everyday speech to mean internet speed, since actual throughput also depends on things like noise and the modulation scheme being used."
+    },
+    "commonMistakes": [
+      "Equating bandwidth directly with internet speed with no mention of frequency range",
+      "Confusing bandwidth with data rate without explaining the relationship",
+      "No connection made between bandwidth and channel capacity"
+    ],
+    "followUps": ["Can you think of a reason more bandwidth alone doesn't guarantee faster data transfer?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Modulation",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["modulation", "rf", "concept"],
+    "question": "Why do we modulate a signal before transmitting it, instead of sending the original signal directly?",
+    "lookingFor": "Understanding of why baseband signals need to be shifted to a carrier frequency for practical transmission.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that low-frequency baseband signals would need impractically large antennas",
+        "Mention that modulation allows multiple signals to share a medium without overlapping",
+        "Give a basic idea of what modulation does, like shifting the signal onto a higher-frequency carrier"
+      ],
+      "modelAnswer": "If you tried to broadcast an audio signal directly, you would need an antenna comparable in size to the wavelength of that low frequency, which for voice frequencies would be enormous and completely impractical. Modulation shifts the information onto a much higher frequency carrier wave, which needs a far smaller antenna and travels more efficiently through the air. It also means different stations can each be given their own carrier frequency, so many signals can share the same physical space without stepping on each other, which is basically how radio and television stations coexist."
+    },
+    "commonMistakes": [
+      "Vaguely saying modulation makes signals 'stronger' without explaining why",
+      "Not mentioning antenna size or the practicality of transmitting low frequencies directly",
+      "Confusing modulation with amplification"
+    ],
+    "followUps": ["What's the difference between amplitude modulation and frequency modulation?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Sampling theorem",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["sampling", "signal-processing", "theory"],
+    "question": "What does the Nyquist sampling theorem tell us, and why does it matter when converting analog signals to digital?",
+    "lookingFor": "A grasp of the sampling rate requirement and the consequence of violating it, without necessarily reciting the formal proof.",
+    "idealAnswer": {
+      "bullets": [
+        "State that you must sample at more than twice the highest frequency present in the signal",
+        "Explain what goes wrong if you sample too slowly, referencing aliasing",
+        "Connect it to a practical example, like why CD audio uses a particular sampling rate"
+      ],
+      "modelAnswer": "The Nyquist theorem says that to fully capture a signal digitally, you need to sample it at more than twice its highest frequency component, otherwise you lose the ability to reconstruct it accurately. If you sample too slowly, higher frequencies get misread as lower ones, an effect called aliasing, which is why old films sometimes show wagon wheels appearing to spin backward when the frame rate is too low relative to the wheel's rotation. It's why audio CDs sample at 44.1 kilohertz, comfortably more than twice the roughly 20 kilohertz upper limit of human hearing, so the theorem isn't just abstract math, it directly decides real design choices."
+    },
+    "commonMistakes": [
+      "Stating the rule without any explanation of what happens if it's violated",
+      "Confusing sample rate with bit depth or resolution",
+      "Giving no real-world example to ground the concept"
+    ],
+    "followUps": ["Why do you think engineers often sample a bit above the strict Nyquist rate rather than exactly at it?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "How a mobile call works",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["cellular", "systems", "concept"],
+    "question": "Walk us through, at a high level, what happens when you make a call on your mobile phone.",
+    "lookingFor": "A coherent end-to-end mental model of the path a call takes, showing systems-level thinking rather than isolated facts.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the phone connecting wirelessly to the nearest cell tower or base station",
+        "Mention that the network routes the call through the core network to find the receiving phone's location",
+        "Note that voice is digitized, compressed, and reassembled at the other end"
+      ],
+      "modelAnswer": "When I speak into my phone, the microphone captures an analog voice signal that gets digitized and compressed, then modulated onto a radio frequency and sent to the nearest cell tower. From there it travels into the carrier's core network, which has to figure out which cell tower the person I'm calling is currently registered near, since they could be anywhere. Once it locates them, the call gets routed back out through their nearest tower, and their phone decompresses and reconstructs the voice signal so it comes out sounding like me. What I find impressive is how much of that happens in a fraction of a second without either of us noticing any of the underlying handoffs."
+    },
+    "commonMistakes": [
+      "Skipping straight from phone to phone with no mention of the network in between",
+      "Confusing the cellular network with the internet with no distinction",
+      "Describing only the wireless hop and ignoring the core network routing"
+    ],
+    "followUps": ["What happens differently if you move between two cell towers mid-call?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "OSI model",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["networking", "osi", "fundamentals"],
+    "question": "Why do we describe networks using layered models like the OSI model, rather than treating the whole thing as one system?",
+    "lookingFor": "Understanding of layering as a design principle for managing complexity, not just rote recall of layer names.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that layering separates concerns so each layer only handles one job",
+        "Note that layers can be developed, upgraded, or replaced independently",
+        "Give at least one or two example layers and what they're responsible for"
+      ],
+      "modelAnswer": "Layering breaks an enormous problem, getting data reliably from one application to another across physical wires and radio waves, into smaller manageable pieces where each layer only has to worry about its own job. The physical layer just deals with getting raw bits across a medium, while a layer further up, like the transport layer, worries about things like making sure packets arrive in order, without either one needing to know the details of the other. That separation is also why you can swap out the physical layer, moving from ethernet cable to wifi, without rewriting the applications on top, which is a huge practical benefit."
+    },
+    "commonMistakes": [
+      "Reciting all seven layer names with no explanation of why layering exists",
+      "Treating the model as purely academic with no practical benefit mentioned",
+      "Confusing OSI layers with the TCP/IP model without acknowledging they're different"
+    ],
+    "followUps": ["Can you give an example of a problem at one layer that shouldn't affect the layer above it?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Circuit vs packet switching",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["switching", "networking", "concept"],
+    "question": "What's the difference between circuit switching and packet switching, and why did the internet end up using packet switching?",
+    "lookingFor": "Clear grasp of the two switching paradigms and a sensible reason for packet switching's advantage for data traffic.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain circuit switching as a dedicated path reserved for the whole call, like traditional telephony",
+        "Explain packet switching as breaking data into packets that share the network and are reassembled at the end",
+        "Give a reason packet switching suits bursty data traffic better, like efficient use of shared capacity"
+      ],
+      "modelAnswer": "Circuit switching reserves a dedicated path through the network for the entire duration of a call, the way old telephone exchanges physically connected a wire from caller to receiver, and that path stays reserved even during silences. Packet switching instead breaks data into small packets that get sent independently and can take different routes, sharing the network's capacity with everyone else's traffic and getting reassembled at the destination. The internet uses packet switching because most data traffic is bursty rather than constant, so reserving a dedicated circuit for every connection would waste huge amounts of capacity sitting idle."
+    },
+    "commonMistakes": [
+      "Describing the mechanisms without explaining why one suits data traffic better",
+      "Confusing packet switching with just 'the internet' with no mechanism explained",
+      "Missing that circuit switching guarantees a fixed path for the whole session"
+    ],
+    "followUps": ["Why does packet switching make guaranteeing latency harder than circuit switching does?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Multiplexing",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["multiplexing", "fundamentals", "concept"],
+    "question": "How can multiple phone calls or data streams share the same cable or radio channel at once?",
+    "lookingFor": "Basic understanding of multiplexing, ideally naming at least one specific technique like TDM or FDM.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the general idea of multiplexing, combining multiple signals onto one shared medium",
+        "Describe at least one specific technique, such as splitting by time slots or by frequency band",
+        "Mention that the receiving end has to know how to separate the streams back out"
+      ],
+      "modelAnswer": "The general idea is multiplexing, where several signals share one physical medium instead of each needing its own dedicated line. One way to do it is time division multiplexing, where each signal gets a tiny time slot to transmit in turn, cycling fast enough that it seems continuous to each user. Another is frequency division multiplexing, where each signal is given its own slice of the frequency spectrum to use simultaneously, which is roughly how multiple radio stations broadcast at once without interfering, and at the receiving end the system has to know exactly how to pick each stream back out again."
+    },
+    "commonMistakes": [
+      "Naming the concept but not describing how any specific technique actually separates the streams",
+      "Confusing multiplexing with simple cable bundling",
+      "Not mentioning that the receiver has to demultiplex the combined signal"
+    ],
+    "followUps": ["Which do you think is more efficient for bursty data traffic, time or frequency division, and why?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Fiber optics",
+    "program": "Telecommunications Engineering",
+    "difficulty": "easy",
+    "tags": ["fiber-optics", "physics", "concept"],
+    "question": "How does an optical fiber actually keep light traveling down the cable instead of leaking out the sides?",
+    "lookingFor": "Basic understanding of total internal reflection and why fiber has become dominant for long-distance communication.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain total internal reflection, where light bounces off the boundary between core and cladding instead of escaping",
+        "Mention the difference in refractive index between the core and the outer cladding as the reason it works",
+        "Note at least one advantage fiber has over copper, like lower loss over distance or higher capacity"
+      ],
+      "modelAnswer": "Light stays inside the fiber because of total internal reflection. The core of the fiber has a higher refractive index than the surrounding cladding, so when light traveling down the core hits that boundary at a shallow enough angle, instead of passing through and escaping, it reflects entirely back into the core and keeps bouncing along the length of the cable. That's a big part of why fiber can carry signals over huge distances with far less loss than copper wire, which is why undersea cables and long-haul backbones are almost entirely fiber now."
+    },
+    "commonMistakes": [
+      "Saying light is just 'guided' through the cable with no physical mechanism given",
+      "Confusing fiber optics with simple mirrors rather than refractive index difference",
+      "Not mentioning any practical advantage of fiber over copper"
+    ],
+    "followUps": ["Why does bending a fiber too sharply cause signal loss?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Antenna basics",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["antennas", "rf", "concept"],
+    "question": "Why are antennas for different frequencies different sizes, like why is a car radio antenna longer than a wifi antenna?",
+    "lookingFor": "Understanding that antenna dimensions relate to the wavelength of the signal, showing a real grasp of the physics rather than memorized facts.",
+    "idealAnswer": {
+      "bullets": [
+        "Connect antenna length to the wavelength of the signal it's designed for, often a simple fraction like a half or quarter wavelength",
+        "Note that lower frequencies have longer wavelengths, which is why AM or FM radio antennas are longer",
+        "Mention that higher frequency signals like wifi have short wavelengths, allowing much smaller antennas"
+      ],
+      "modelAnswer": "An antenna works best when its physical length is tied to the wavelength of the signal it's sending or receiving, often built as a half wavelength or a quarter wavelength for practical designs. Radio frequencies used for FM broadcast are relatively low, which means their wavelengths are several meters long, so a car antenna has to be a decent length to efficiently couple with that signal. Wifi operates at much higher frequencies, in the gigahertz range, which have wavelengths only centimeters long, so the antenna inside a laptop or phone can be tiny and still work efficiently."
+    },
+    "commonMistakes": [
+      "Saying longer antennas are simply 'more powerful' without linking to wavelength",
+      "Getting the frequency-wavelength relationship backwards",
+      "No mention of why antenna length is tied to a fraction of the wavelength"
+    ],
+    "followUps": ["What trade-off do engineers face when trying to make an antenna smaller than its ideal size?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Noise and signal quality",
+    "program": "Telecommunications Engineering",
+    "difficulty": "easy",
+    "tags": ["noise", "snr", "fundamentals"],
+    "question": "What is signal-to-noise ratio, and why does it matter for how well a communication system performs?",
+    "lookingFor": "A working understanding of SNR as a measure of signal quality relative to interference, with a practical implication.",
+    "idealAnswer": {
+      "bullets": [
+        "Define SNR as the strength of the desired signal compared to background noise",
+        "Explain that a low SNR makes it harder for a receiver to correctly distinguish the intended signal",
+        "Give a real-world example, like a weak wifi signal or a call breaking up near the edge of coverage"
+      ],
+      "modelAnswer": "Signal-to-noise ratio compares how strong the signal you actually want is against the background noise that's always present in any real system, whether that's thermal noise in the electronics or interference from other devices. When the ratio is low, meaning noise is relatively large compared to the signal, it gets much harder for the receiver to correctly tell what was actually sent, which shows up as things like static on a call or a wifi connection that keeps dropping packets. It's part of why standing right next to a wifi router feels so much more reliable than being three rooms away, since the signal has weakened relative to the constant background noise."
+    },
+    "commonMistakes": [
+      "Defining SNR only in words with no sense of it being a ratio of two things",
+      "Confusing noise with interference from other users without acknowledging both matter",
+      "No practical example connecting SNR to a real experience like a weak connection"
+    ],
+    "followUps": ["What are some sources of noise in a wireless communication system?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Error detection and correction",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["error-correction", "reliability", "concept"],
+    "question": "Why do communication systems need error detection or correction, and can you describe roughly how one method works?",
+    "lookingFor": "Understanding that transmitted data can be corrupted and that structured redundancy lets errors be caught or fixed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that noise or interference can flip bits during transmission",
+        "Describe at least one method conceptually, like parity bits or checksums, in plain terms",
+        "Distinguish detection, noticing an error occurred, from correction, being able to fix it without resending"
+      ],
+      "modelAnswer": "Any real channel has noise or interference that can flip a bit from a one to a zero or the reverse, so systems need a way to catch or even fix those mistakes without the sender knowing anything went wrong. A simple example is a parity bit, where you add an extra bit that just tracks whether the number of ones in a block of data is even or odd, so if the count doesn't match on arrival you know something got corrupted. That only detects an error though, it doesn't tell you which bit or fix it, whereas more advanced schemes add enough extra redundant information that the receiver can actually work out what the original data must have been and correct it on the spot."
+    },
+    "commonMistakes": [
+      "Not distinguishing between detecting an error and correcting one",
+      "Describing error correction with no concrete mechanism at all",
+      "Assuming errors only happen due to hardware failure rather than noise or interference"
+    ],
+    "followUps": ["Why might a system choose to just detect an error and ask for retransmission rather than try to correct it?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "5G vs 4G",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["5g", "cellular", "current-technology"],
+    "question": "What actually changed with 5G compared to 4G, beyond just being faster?",
+    "lookingFor": "Awareness that 5G brings more than raw speed, including lower latency and support for many connected devices.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention higher data rates but go beyond that to at least one other improvement",
+        "Reference lower latency and why that matters for applications like remote control or gaming",
+        "Note the ability to support a much higher density of connected devices, relevant to IoT"
+      ],
+      "modelAnswer": "It's easy to think of 5G as just a speed upgrade, but two other changes matter just as much. One is much lower latency, meaning the delay between sending and receiving a response drops significantly, which matters enormously for things like remote surgery or self-driving car communication where a slow response isn't just inconvenient, it's dangerous. The other is that 5G is designed to support a far higher density of connected devices in the same area, which is important as more everyday objects, from sensors to appliances, start needing a network connection alongside all the phones already competing for the same spectrum."
+    },
+    "commonMistakes": [
+      "Only mentioning speed with no other distinguishing feature",
+      "Overstating 5G capabilities with no grounding in why they matter",
+      "Confusing 5G's higher frequency bands with simply 'more power'"
+    ],
+    "followUps": ["Why does using higher frequency bands for 5G create new coverage challenges?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Satellite communication",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["satellite", "orbits", "concept"],
+    "question": "What's the difference between a geostationary satellite and a low earth orbit satellite, and why would you choose one over the other for communications?",
+    "lookingFor": "Understanding of the orbit altitude trade-off between coverage, latency, and the number of satellites needed.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that geostationary satellites orbit at an altitude where they stay fixed relative to a point on earth",
+        "Explain that low earth orbit satellites are much closer but move relative to the ground, needing many satellites for continuous coverage",
+        "Give a trade-off, such as latency versus the complexity and cost of a large satellite constellation"
+      ],
+      "modelAnswer": "A geostationary satellite orbits at an altitude where its orbital period exactly matches the earth's rotation, so from the ground it appears to sit still in the sky, which makes it simple to point a fixed dish at it for something like satellite television. A low earth orbit satellite sits much closer to the planet, which means it moves quickly relative to any point on the ground, so you need a large constellation of them handing a connection off between each other to give continuous coverage. The trade-off is that the geostationary satellite's distance introduces noticeable latency because of how far the signal has to travel, while low earth orbit systems have much lower latency but require far more satellites and more complex handover engineering."
+    },
+    "commonMistakes": [
+      "Not connecting orbital altitude to why one appears fixed and the other doesn't",
+      "Missing the latency trade-off entirely",
+      "Assuming more satellites is simply worse rather than explaining the coverage reason for it"
+    ],
+    "followUps": ["Why does the distance to a geostationary satellite matter more for a phone call than for streaming video?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Spectrum regulation",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["spectrum", "regulation", "policy"],
+    "question": "Why is radio spectrum a limited and regulated resource, and what happens if it isn't managed carefully?",
+    "lookingFor": "Understanding of spectrum scarcity and interference, plus awareness that this is as much a policy issue as a technical one.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that only a finite range of usable frequencies exists for a given purpose, and overlapping uses cause interference",
+        "Describe why unmanaged use would cause different services, like emergency radio and broadcast television, to collide",
+        "Show awareness that spectrum allocation is a mix of engineering and government policy, often auctioned or licensed"
+      ],
+      "modelAnswer": "Spectrum is limited because only certain frequency ranges propagate usefully for a given purpose, whether that's penetrating buildings, traveling long distances, or supporting high data rates, so everyone effectively wants to use the same useful slices. If two services broadcast on overlapping frequencies in the same area without coordination, their signals interfere and both become unusable, which is why something as safety critical as air traffic control or emergency services can't be left to chance. That's why governments license spectrum, often through auctions to telecom companies for exclusive use in a region, and it's really as much a regulatory and economic problem as an engineering one, since the physics only tells you interference will happen, not who gets to avoid it."
+    },
+    "commonMistakes": [
+      "Treating spectrum scarcity as a purely technical issue with no mention of regulation or policy",
+      "Not explaining what actually happens when spectrum use collides",
+      "Vague answer with no concrete example of a service that needs protected spectrum"
+    ],
+    "followUps": ["Do you think spectrum should always go to the highest bidder in an auction? Why or why not?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Router vs switch",
+    "program": "Telecommunications Engineering",
+    "difficulty": "easy",
+    "tags": ["networking", "hardware", "fundamentals"],
+    "question": "What's the basic difference between what a router does and what a switch does in a network?",
+    "lookingFor": "Clear grasp of the distinct roles of routers and switches in moving data through a network.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a switch connects devices within a single local network, forwarding data based on hardware addresses",
+        "Explain a router connects different networks together, forwarding data based on logical addresses",
+        "Give an everyday example, like a home router combining both functions"
+      ],
+      "modelAnswer": "A switch connects devices within the same local network, like the computers and printers in a single office, and forwards data based on hardware addresses so that a message meant for one device doesn't get blasted out to every other device unnecessarily. A router's job is different, it connects separate networks together, like a home network and the wider internet, and decides how to forward data between them based on logical addresses so a packet can find its way across many networks to reach a completely different one. In practice, the box most people call a home router actually does both jobs at once, switching between the devices in the house and routing traffic out to the internet."
+    },
+    "commonMistakes": [
+      "Treating the two as interchangeable with no distinct roles described",
+      "Not mentioning the different types of address each device forwards based on",
+      "Missing that a router connects separate networks rather than devices within one"
+    ],
+    "followUps": ["Why can't a switch alone get your home devices connected to the internet?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Latency and real-time applications",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["latency", "voip", "trade-offs"],
+    "question": "Why can a connection have plenty of bandwidth but still feel laggy during a video call?",
+    "lookingFor": "Understanding that bandwidth and latency are different measures, and that real-time applications are sensitive to delay and jitter, not just throughput.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish bandwidth, how much data per second, from latency, how long each piece of data takes to arrive",
+        "Explain that real-time applications like video calls are sensitive to delay and to jitter, variation in that delay",
+        "Give a cause of high latency unrelated to bandwidth, like distance, routing, or congestion at a router"
+      ],
+      "modelAnswer": "Bandwidth is about how much data can flow per second, but latency is about how long any single piece of data takes to get from one end to the other, and those are genuinely separate things. A video call is extremely sensitive to latency and especially to jitter, meaning the delay varying from packet to packet, because even with tons of bandwidth available, if audio packets arrive late or out of a steady rhythm the conversation starts to stutter and talk over itself. High latency can come from the sheer physical distance the signal travels, or from congestion at routers along the path adding queuing delay, neither of which extra bandwidth on your own connection can fix."
+    },
+    "commonMistakes": [
+      "Treating bandwidth and latency as the same thing",
+      "Not mentioning jitter as a separate issue from raw delay",
+      "Assuming more bandwidth always fixes a laggy connection"
+    ],
+    "followUps": ["Why might adding more bandwidth to a congested router actually make jitter worse rather than better?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Network security",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["security", "encryption", "networks"],
+    "question": "Why is encryption necessary in telecommunications, and roughly how does it protect data being transmitted?",
+    "lookingFor": "Basic understanding of why unprotected transmission is vulnerable and how encryption addresses that, without requiring deep cryptography detail.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that wireless and shared media transmissions can be intercepted by anyone with the right equipment",
+        "Describe the basic idea of encryption, scrambling data so only someone with the right key can read it",
+        "Mention a real-world stake, like protecting banking details or personal messages"
+      ],
+      "modelAnswer": "Wireless signals in particular travel through open air, so in principle anyone nearby with the right receiver could intercept the raw transmission, and even wired networks pass through shared infrastructure that isn't fully trustworthy. Encryption addresses this by scrambling the data using a key before it's sent, so that even if someone intercepts the raw bits, without the correct key to reverse the process the data is unreadable to them. It matters enormously in practice, since without it something like online banking or a private message would be exposed to anyone able to listen in along the path, which is why encryption isn't optional for most modern communication systems."
+    },
+    "commonMistakes": [
+      "Saying encryption is just 'a password' with no sense of the scrambling mechanism",
+      "Not explaining why wireless or shared transmission is vulnerable to interception in the first place",
+      "No concrete stakes given for why encryption actually matters"
+    ],
+    "followUps": ["What's the difference between encrypting data and simply hiding that it was sent at all?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Digital divide and access",
+    "program": "Telecommunications Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "access", "policy"],
+    "question": "As telecom infrastructure improves, some regions and communities are still left without reliable connectivity. What do you think engineers can actually do about that?",
+    "lookingFor": "Thoughtful engagement with the social dimension of telecom engineering, balancing technical realism with genuine concern.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the problem is partly economic and political, not purely a technical gap",
+        "Offer at least one realistic technical angle, like lower-cost infrastructure or satellite coverage for remote areas",
+        "Avoid overpromising that engineering alone solves an access problem with deep economic roots"
+      ],
+      "modelAnswer": "I think it's tempting to treat this as purely a technical problem, but a lot of it comes down to the economics of laying infrastructure to sparsely populated or low income areas where the return on investment for a company just isn't there. That said, engineers do have real levers, like designing lower-cost base stations, working on satellite or mesh network options that don't require the same dense infrastructure as fiber, and pushing for open standards that lower the cost of entry for smaller providers. I don't think engineering alone closes the gap, since policy and subsidy matter enormously too, but I do think it's part of an engineer's responsibility to design with cost and reach in mind rather than only optimizing for the easiest markets."
+    },
+    "commonMistakes": [
+      "Claiming a purely technical fix will solve an access problem with real economic roots",
+      "Dismissing the issue as outside engineering's responsibility entirely",
+      "Giving a vague answer with no concrete technical angle offered"
+    ],
+    "followUps": ["Can you think of a real example of technology designed specifically for low-resource connectivity?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Everyday engineered system",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["curiosity", "applied", "systems-thinking"],
+    "question": "Tell us about a piece of everyday communications technology you think is cleverly engineered, and why.",
+    "lookingFor": "Genuine curiosity and the ability to see the engineering trade-offs behind something most people take for granted.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick something specific in telecom or networking rather than something generic",
+        "Explain roughly how it works at a level that shows real understanding",
+        "Identify a trade-off or constraint the design has to solve"
+      ],
+      "modelAnswer": "I find the wifi handoff between rooms in a house surprisingly clever, the way a laptop silently switches from one access point to a stronger one without dropping a video call. It has to constantly measure signal strength from multiple access points in the background, decide when the current one has gotten weak enough to be worth switching, and then complete that handoff fast enough that packets in flight don't just get lost. What impresses me is the trade-off involved, switch too eagerly and you get a flickering, unstable connection jumping between access points, switch too late and you get a noticeably weak signal, so the system has to be tuned carefully in between."
+    },
+    "commonMistakes": [
+      "Naming something without explaining how it actually works",
+      "Choosing an example unrelated to telecom or communications",
+      "Not identifying any real trade-off or design constraint"
+    ],
+    "followUps": ["How would you test whether a handoff system like that was tuned well?"]
+  },
+  {
+    "id": "prog-telecommunications-engineering-a-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Future goals in telecom",
+    "program": "Telecommunications Engineering",
+    "difficulty": "medium",
+    "tags": ["goals", "motivation", "future"],
+    "question": "Which area of telecommunications engineering do you think you'll want to specialize in, and why?",
+    "lookingFor": "A grounded, honest sense of direction that shows they've thought about the breadth of the field, while staying open to change.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific area, like RF and antenna design, networks, or signal processing, with a reason",
+        "Ground the choice in something concrete they've already encountered, not just a guess",
+        "Show openness to the idea that this might change once they see more of the field"
+      ],
+      "modelAnswer": "Right now I'm most drawn to wireless systems and antenna design, mostly because the FM transmitter project I built made the physical, almost tangible side of getting a signal through the air feel like the part I enjoy most rather than the software side of networking. I know that's based on fairly limited exposure though, and I'm genuinely looking forward to the first-year survey modules to see where else I might end up, since I've heard from older students that a lot of people change direction once they actually try signal processing or network protocol design properly. I'd rather come in with a strong starting interest and stay open than pretend I've already decided my whole path."
+    },
+    "commonMistakes": [
+      "Naming a specialization with no personal grounding for why",
+      "Sounding so rigidly decided that it seems inflexible to what the course actually offers",
+      "Naming something disconnected from telecom entirely, like pure software development"
+    ],
+    "followUps": ["What would make you change your mind about that specialization?"]
+  }
+]

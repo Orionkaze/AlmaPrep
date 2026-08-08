@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-physics-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Newton's third law paradox",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["mechanics", "newtons-laws", "reasoning"],
+    "question": "If every action has an equal and opposite reaction, how does a horse manage to pull a cart forward at all?",
+    "lookingFor": "Correctly separates the action-reaction pair, which act on different bodies, from the net-force analysis on each body separately.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that the horse pulls the cart and the cart pulls the horse back equally, but these act on different objects so they never cancel within one body's equation of motion",
+        "Explain that the horse's own forward motion comes from a separate pair: the horse pushes back on the ground, the ground pushes the horse forward",
+        "Compare net force on each body separately to show forward acceleration is still possible for both"
+      ],
+      "modelAnswer": "The key is that the two forces in Newton's third law act on different objects, so they never cancel out within a single body's equation of motion. The cart pulls back on the horse just as hard as the horse pulls forward on the cart, but what actually moves the horse forward is a separate pair: the horse pushes backward on the ground with its hooves, and the ground pushes the horse forward by an equal and opposite reaction. So the horse accelerates forward because the ground's push exceeds the cart's backward pull, and the cart accelerates forward because the horse's forward pull exceeds the cart's friction and inertia. Once I stopped trying to cancel forces acting on different bodies, the paradox just dissolved."
+    },
+    "commonMistakes": [
+      "Trying to cancel the horse's pull on the cart with the cart's pull on the horse as if they act on the same object",
+      "Forgetting that friction with the ground is what actually propels the horse",
+      "Concluding incorrectly that Newton's third law makes forward motion impossible"
+    ],
+    "followUps": ["What happens to this analysis if the horse is standing on ice?"]
+  },
+  {
+    "id": "prog-physics-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Equivalence of gravitational and inertial mass",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["mechanics", "gravity", "general-relativity"],
+    "question": "Why do a hammer and a feather fall at the same rate in a vacuum? What does that tell you about gravity itself?",
+    "lookingFor": "Connects the classical explanation, mass cancelling in F equals ma, to the deeper significance of the equivalence principle underlying general relativity.",
+    "idealAnswer": {
+      "bullets": [
+        "State that gravitational force scales with mass but so does resistance to acceleration, so mass cancels",
+        "Note this equivalence of gravitational mass and inertial mass is an empirical fact, not a logical necessity",
+        "Connect it to Einstein taking that equivalence seriously to build general relativity"
+      ],
+      "modelAnswer": "In free fall the gravitational force on an object is proportional to its mass, but so is its resistance to acceleration, so when you divide force by mass in Newton's second law the mass cancels and every object accelerates at the same rate regardless of what it's made of. What struck me is that there's no logical reason gravitational mass and inertial mass have to be the same quantity, they're defined completely differently, one from how strongly gravity pulls on you and one from how hard it is to push you. That equivalence is actually the seed of general relativity, Einstein took it seriously enough to say gravity isn't really a force at all but curved spacetime, which is why everything falls the same way regardless of mass."
+    },
+    "commonMistakes": [
+      "Saying 'gravity pulls everything the same' without explaining why the mass cancels",
+      "Not distinguishing gravitational mass from inertial mass",
+      "Missing the connection to general relativity entirely"
+    ],
+    "followUps": ["How would this differ on the Moon, and why?"]
+  },
+  {
+    "id": "prog-physics-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Rayleigh scattering",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["optics", "waves", "everyday-physics"],
+    "question": "Why is the sky blue during the day but red at sunset?",
+    "lookingFor": "Correct physical mechanism, Rayleigh scattering's wavelength dependence, applied consistently to explain both observations.",
+    "idealAnswer": {
+      "bullets": [
+        "State that scattering by air molecules increases sharply for shorter wavelengths",
+        "Explain daytime blue: light travels a short path, blue scatters across the whole sky",
+        "Explain sunset red: light travels a longer path, blue is scattered out along the way, leaving red and orange"
+      ],
+      "modelAnswer": "Air molecules scatter shorter wavelengths, like blue and violet light, much more strongly than longer wavelengths like red, because Rayleigh scattering intensity increases roughly with the inverse fourth power of wavelength. During the day the sun is high, so its light only travels through a thin slice of atmosphere, and the blue light gets scattered all over the sky in every direction, which is why the sky itself looks blue to us. At sunset the light has to travel a much longer path through the atmosphere to reach your eyes, so most of the blue has already been scattered away by the time it gets to you, leaving the reds and oranges that survived the trip. I like that one mechanism explains both, it's just a question of path length."
+    },
+    "commonMistakes": [
+      "Saying the sky is blue because it reflects the ocean",
+      "Confusing Rayleigh scattering with the reason the sun itself looks yellow",
+      "Not connecting the two phenomena to the same underlying mechanism"
+    ],
+    "followUps": ["Why isn't the sky violet, since violet scatters even more than blue?"]
+  },
+  {
+    "id": "prog-physics-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Double-slit and wave-particle duality",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["quantum-mechanics", "waves", "reasoning"],
+    "question": "In the double-slit experiment, what actually happens if you fire electrons one at a time? Why is that so strange?",
+    "lookingFor": "Understands that interference builds up even with single particles, and grapples with what that implies about superposition and measurement.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe that individual electrons still land as discrete dots, but over many electrons an interference pattern emerges",
+        "Explain this implies each electron behaves as if it explored both slits in superposition, interfering with itself",
+        "Note that measuring which slit it went through destroys the interference pattern, tying detection to disturbance"
+      ],
+      "modelAnswer": "Even if you send electrons through one at a time, each one still lands on the screen as a single localized dot, exactly like a particle. But if you wait and build up thousands of these dots, the pattern that emerges is a full interference pattern of bright and dark fringes, which only makes sense if each individual electron somehow explored both slits at once and interfered with itself. What's stranger is that the moment you set up a detector to find out which slit it actually went through, the interference pattern disappears and you just get two clumps like classical particles. That tells me it's not that we're ignorant of some hidden path, the act of measurement itself is changing what's physically happening, which is the part of quantum mechanics I find genuinely unsettling and fascinating."
+    },
+    "commonMistakes": [
+      "Saying the electron 'splits' into two smaller electrons",
+      "Treating this as just a practical measurement problem rather than a fundamental one",
+      "Confusing interference with diffraction alone"
+    ],
+    "followUps": ["Does this mean the electron has no definite path at all before it's measured?"]
+  },
+  {
+    "id": "prog-physics-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Heisenberg uncertainty principle",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["quantum-mechanics", "reasoning"],
+    "question": "People often say the uncertainty principle is about the limits of our measuring instruments. Is that right?",
+    "lookingFor": "Distinguishes fundamental quantum indeterminacy from mere experimental or technological limitation.",
+    "idealAnswer": {
+      "bullets": [
+        "State the principle correctly: complementary variables like position and momentum can't both be known to arbitrary precision at once",
+        "Explain it's not clumsy measurement disturbing the system, it's a fundamental property of the quantum state itself",
+        "Give a concrete illustration of the particle not possessing both a precise position and momentum simultaneously"
+      ],
+      "modelAnswer": "That's a common misconception and I used to think that way too. It's not that our instruments are too clumsy or that measuring one property disturbs the other, it's that a quantum particle genuinely doesn't have a precisely defined position and a precisely defined momentum at the same time, the wavefunction itself doesn't allow it. If you write the particle's state as spread out in position, mathematically its momentum has to be spread out too, that's a property of Fourier transforms, not a limitation of technology. So even with a perfect, disturbance-free measuring device, you still couldn't beat the uncertainty relation, because there simply isn't a sharper truth hiding underneath waiting to be measured."
+    },
+    "commonMistakes": [
+      "Attributing it entirely to the observer effect or physical disturbance from measurement",
+      "Confusing it with general experimental error",
+      "Failing to name specific complementary variables"
+    ],
+    "followUps": ["Does this uncertainty apply to macroscopic objects too, like a thrown ball?"]
+  },
+  {
+    "id": "prog-physics-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Entropy and the arrow of time",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["thermodynamics", "cosmology", "reasoning"],
+    "question": "Why does time seem to move in one direction, when most of the fundamental laws of physics work the same forwards and backwards?",
+    "lookingFor": "Connects the second law of thermodynamics and statistical mechanics to the perceived direction of time, recognizing the puzzle of low initial entropy.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that Newton's laws, electromagnetism, even quantum mechanics are largely time-reversible at the microscopic level",
+        "Explain entropy statistically: vastly more high-entropy microstates than low-entropy ones, so systems evolve toward disorder",
+        "Acknowledge the deeper open puzzle of why the universe began in a low-entropy state at all"
+      ],
+      "modelAnswer": "It's a genuinely strange fact that if you look at the microscopic equations, whether it's Newton's laws or electromagnetism, they work equally well run forwards or backwards in time, there's nothing in them that says time has to have a direction. What actually creates the arrow of time is statistics, the second law of thermodynamics says entropy tends to increase because there are astronomically more disordered configurations than ordered ones, so a system almost always evolves toward the more probable, higher entropy state, and that's what we experience as time moving forward. What I find genuinely puzzling, and I don't think anyone has a full answer, is why the universe started in such a low entropy state in the first place, since that's the actual reason entropy has room to increase at all."
+    },
+    "commonMistakes": [
+      "Claiming the fundamental laws themselves are asymmetric in time",
+      "Explaining entropy only as 'disorder increases' without the statistical reasoning behind it",
+      "Not acknowledging the open question of low initial entropy"
+    ],
+    "followUps": ["Could entropy ever decrease in an isolated system, even briefly?"]
+  },
+  {
+    "id": "prog-physics-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Twin paradox",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["special-relativity", "reasoning"],
+    "question": "In the twin paradox, one twin travels near light speed and returns younger than the other. Isn't that a contradiction, since motion is relative?",
+    "lookingFor": "Resolves the apparent paradox by identifying the asymmetry: only the travelling twin undergoes acceleration and a change of reference frame.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the apparent symmetry that makes it seem paradoxical, each twin sees the other's clock run slow",
+        "Identify the resolution: the travelling twin accelerates to turn around, breaking the symmetry between frames",
+        "Explain that the twin who changes inertial frames accumulates less proper time, and this is experimentally confirmed"
+      ],
+      "modelAnswer": "At first it does look like a contradiction, because from the travelling twin's point of view it's the stay-at-home twin who's moving away and should be the one aging slower, so symmetry seems to demand they end up the same age. The resolution is that the situation isn't actually symmetric, the travelling twin has to decelerate, turn around, and accelerate back, which means they switch inertial reference frames while the twin at home stays in one frame the whole time. That acceleration is the physical fact that breaks the tie, and when you work through the spacetime geometry properly using proper time along each path, the travelling twin really has aged less, and this has actually been confirmed with atomic clocks flown on aircraft."
+    },
+    "commonMistakes": [
+      "Insisting it's a genuine unresolved contradiction because 'motion is relative'",
+      "Failing to identify the acceleration or frame change as the key asymmetry",
+      "Giving a hand-wavy answer without connecting to real experimental confirmation"
+    ],
+    "followUps": ["Roughly how large would the age difference need to be for it to be noticeable without atomic clocks?"]
+  },
+  {
+    "id": "prog-physics-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "General relativity as curvature",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["general-relativity", "communication"],
+    "question": "How would you explain to a non-physicist what it means to say gravity is 'the curvature of spacetime'?",
+    "lookingFor": "Clear, accurate lay explanation avoiding the misleading circularity of the trampoline analogy, showing genuine conceptual grasp.",
+    "idealAnswer": {
+      "bullets": [
+        "Move away from force framing: massive objects warp the geometry of spacetime around them",
+        "Explain that objects in free fall follow the straightest possible path, a geodesic, through that curved geometry",
+        "Offer an analogy while flagging its limits, since the rubber sheet secretly relies on gravity to work"
+      ],
+      "modelAnswer": "I'd start by saying that in Einstein's picture, massive objects like the sun don't reach out and pull on the Earth with an invisible force, instead they actually bend the shape of space and time around themselves. Objects like the Earth aren't being pulled off a straight path, they're doing the equivalent of moving in a straight line, just through space that's curved, so what looks like an orbit to us is really the straightest possible path available in that curved geometry. The classic rubber sheet analogy helps a bit, but I'd flag that it secretly relies on gravity pulling the ball down onto the sheet to work, which is a bit circular, so I try to emphasize that it's the geometry itself doing the work, not an extra force layered on top."
+    },
+    "commonMistakes": [
+      "Relying entirely on the rubber-sheet analogy without noting its circularity",
+      "Describing curvature vaguely without mentioning geodesics or straight-line motion",
+      "Reverting back to force language halfway through the explanation"
+    ],
+    "followUps": ["What observational evidence first confirmed this over Newtonian gravity?"]
+  },
+  {
+    "id": "prog-physics-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "How a laser works",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["optics", "quantum-mechanics", "applied"],
+    "question": "Talk me through, physically, how a laser produces coherent light.",
+    "lookingFor": "Understands stimulated emission, population inversion, and the role of the optical cavity in producing coherent, monochromatic light.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain stimulated emission: a photon triggers an excited atom to emit an identical, in-phase photon",
+        "Describe population inversion, pumping more atoms into the excited state than the ground state",
+        "Describe the optical cavity bouncing photons back and forth, amplifying one mode, with a partial mirror letting the beam out"
+      ],
+      "modelAnswer": "The core physics is stimulated emission, when a photon of just the right energy passes an atom that's already in an excited state, instead of just being absorbed it can trigger that atom to drop down and emit a second photon that's identical in phase, frequency, and direction to the first. For that process to dominate over ordinary absorption, you need what's called a population inversion, where you pump energy into the medium so more atoms sit in the excited state than the ground state, which isn't the natural equilibrium so it takes active pumping to maintain. Then you put that medium inside a cavity between two mirrors, one fully reflective and one partially so, and photons bounce back and forth building up more and more identical photons in the same mode, until a coherent, highly directional beam leaks out through the partial mirror. It's a nice example of a purely quantum mechanical effect, stimulated emission, producing something with such clean classical wave behaviour."
+    },
+    "commonMistakes": [
+      "Explaining lasers as just 'concentrated light' without mentioning stimulated emission",
+      "Skipping population inversion and why it's necessary",
+      "Not mentioning the role of the cavity or mirrors in building coherence"
+    ],
+    "followUps": ["Why does a laser pointer stay a tight beam over distance while a torch spreads out?"]
+  },
+  {
+    "id": "prog-physics-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Stellar equilibrium",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["astrophysics", "thermodynamics"],
+    "question": "What stops a star like the Sun from either collapsing under its own gravity or blowing itself apart?",
+    "lookingFor": "Understanding of hydrostatic equilibrium between gravitational collapse and outward pressure from fusion-generated radiation and gas pressure.",
+    "idealAnswer": {
+      "bullets": [
+        "State that gravity is constantly pulling the star's mass inward",
+        "Explain that fusion generates outward radiation and thermal gas pressure balancing gravity",
+        "Note the balance is self-regulating: faster fusion causes expansion and cooling that slows fusion back down"
+      ],
+      "modelAnswer": "A star is really a constant tug of war between gravity, which is always pulling all that mass inward, and the outward pressure generated by fusion happening in the core, both radiation pressure and ordinary thermal gas pressure. As long as fusion is converting hydrogen into helium at a steady rate, the outward push exactly balances gravity's inward pull, and that balance is called hydrostatic equilibrium. What I find elegant is that it's self-regulating, if fusion speeds up for some reason, the core heats up and expands, which cools it back down and slows fusion again, so the star naturally settles back to equilibrium rather than running away in either direction. It's only once the hydrogen fuel starts running low that this balance breaks down and the star's life cycle moves into its next stage."
+    },
+    "commonMistakes": [
+      "Only mentioning gravity without explaining the counteracting pressure source",
+      "Confusing fusion energy output with an explosion rather than sustained pressure",
+      "Missing the self-regulating, negative feedback aspect of the balance"
+    ],
+    "followUps": ["What eventually happens to that balance once the hydrogen runs out?"]
+  },
+  {
+    "id": "prog-physics-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Hubble's law and cosmic redshift",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["cosmology", "astrophysics"],
+    "question": "How do we actually know the universe is expanding, rather than, say, galaxies just moving away from us for some other reason?",
+    "lookingFor": "Explains the redshift-distance relationship and why it points to space itself expanding rather than galaxies moving through static space.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that distant galaxies show redshift that increases with distance, following Hubble's law",
+        "Note this pattern is what you'd expect from space uniformly stretching, not an explosion centered on us",
+        "Mention supporting evidence beyond redshift, such as the cosmic microwave background"
+      ],
+      "modelAnswer": "The main evidence is that when you measure the light from distant galaxies, their spectral lines are shifted toward longer, redder wavelengths, and crucially the amount of that redshift increases roughly proportionally with distance, which is Hubble's law. If galaxies were just flying outward from some explosion with us near the center, you wouldn't expect that clean relationship in every direction, but if space itself is uniformly stretching, then every observer anywhere would see every other galaxy receding, with the more distant ones receding faster, which is exactly the pattern we see, and it means we're not in any special position. That picture is backed up independently by the cosmic microwave background radiation, which is basically the redshifted afterglow of the early hot universe, and its properties fit the expansion model very precisely."
+    },
+    "commonMistakes": [
+      "Describing it like an explosion in pre-existing space rather than space itself stretching",
+      "Not explaining why the redshift-distance relationship is the key evidence",
+      "Ignoring corroborating evidence like the cosmic microwave background"
+    ],
+    "followUps": ["Why can't we just say we're at the center of the explosion if everything looks like it's moving away from us?"]
+  },
+  {
+    "id": "prog-physics-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Evidence for dark matter",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["cosmology", "astrophysics", "reasoning"],
+    "question": "We've never directly detected dark matter. Why do most physicists still believe it exists rather than looking for a better theory of gravity?",
+    "lookingFor": "Balanced awareness of multiple independent lines of evidence, and honest engagement with alternative theories like modified gravity.",
+    "idealAnswer": {
+      "bullets": [
+        "Cite at least two independent lines of evidence, such as galaxy rotation curves, gravitational lensing, or the Bullet Cluster",
+        "Explain why convergence of multiple independent methods pointing to the same missing mass is compelling",
+        "Show awareness that modified gravity alternatives exist, and explain why the Bullet Cluster is hard for them to explain"
+      ],
+      "modelAnswer": "The strongest reason isn't any single measurement, it's that several completely independent lines of evidence all point to the same missing mass. Galaxy rotation curves show stars orbiting far faster at the edges of galaxies than the visible matter can explain, gravitational lensing shows more mass bending light around galaxy clusters than we can see, and the pattern of fluctuations in the cosmic microwave background only fits our models if a certain amount of extra, non-luminous matter was present in the early universe. I do think modified gravity theories like MOND deserve to be taken seriously, and they explain rotation curves reasonably well, but the observation I find hardest for them to explain is the Bullet Cluster, where the mass inferred from lensing has visibly separated from the visible hot gas after a collision, which looks exactly like what you'd expect if there's a separate, mostly collisionless form of matter there. That's why I lean toward dark matter still being the better explanation, even though I'd genuinely love to see it detected directly."
+    },
+    "commonMistakes": [
+      "Citing only one piece of evidence, usually rotation curves",
+      "Dismissing modified gravity alternatives without engaging with them",
+      "Overstating dark matter as proven fact rather than the best current explanation"
+    ],
+    "followUps": ["What kind of experiment would convince you dark matter doesn't exist?"]
+  },
+  {
+    "id": "prog-physics-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Standing waves and resonance failure",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["waves", "mechanics", "applied"],
+    "question": "What physically causes a structure like a bridge to fail from resonance, and why is that different from just strong wind?",
+    "lookingFor": "Understands resonance as energy building up over repeated cycles at a natural frequency, distinct from a single large static force.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain natural frequency: a structure's stiffness and mass distribution set frequencies it 'wants' to oscillate at",
+        "Explain resonance: a periodic driving force matching that frequency adds energy in phase each cycle, so amplitude builds",
+        "Contrast with a single strong gust, which delivers one large force but doesn't repeatedly pump in energy"
+      ],
+      "modelAnswer": "Every structure has natural frequencies it will oscillate at if you displace it and let it go, which come from its stiffness and how the mass is distributed. Resonance failure happens when some periodic driving force, like rhythmic wind vortices or synchronized footsteps, happens to match one of those natural frequencies, so every cycle adds a little more energy in phase with the existing oscillation, and the amplitude keeps growing rather than settling down. That's fundamentally different from a single strong gust of wind, which delivers a lot of force all at once but only once, so it might stress the structure but it isn't repeatedly pumping energy into a growing oscillation the way a matched periodic force does. It's why engineers care so much about a structure's natural frequencies and try to make sure nothing likely to occur, like wind vortices or crowds walking in step, lines up with them."
+    },
+    "commonMistakes": [
+      "Confusing resonance failure with simple overload from a strong static force",
+      "Not explaining why energy builds up specifically when frequencies match",
+      "Vague answer without mentioning natural frequency"
+    ],
+    "followUps": ["Can you think of a real example where engineers had to design around this?"]
+  },
+  {
+    "id": "prog-physics-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Electromagnetic induction",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["electromagnetism", "energy"],
+    "question": "Conceptually, why does moving a magnet through a coil of wire generate a current, and what does that have to do with energy conservation?",
+    "lookingFor": "Correct physical reasoning via Faraday's law and Lenz's law, with awareness of the energy source of the induced current.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a changing magnetic flux through the coil induces an electromotive force, generating a current",
+        "Explain Lenz's law: the induced current opposes the change that caused it",
+        "Connect to energy conservation: the work done pushing against that opposition supplies the induced current's energy"
+      ],
+      "modelAnswer": "Faraday's law says that whenever the magnetic flux passing through a loop of wire changes, it induces an electromotive force around that loop, which drives a current if the circuit is closed. What determines the direction of that current is Lenz's law, the induced current always flows in the direction that opposes the change that created it, so if you're pushing a magnet into the coil, the induced current creates its own magnetic field that pushes back against the magnet. That opposition is exactly what ties this to energy conservation, because it means you have to do mechanical work to push the magnet through the coil against that resistance, and that work is precisely what becomes the electrical energy of the induced current, so nothing is generated for free, you're just converting one form of energy into another."
+    },
+    "commonMistakes": [
+      "Stating Faraday's law without explaining Lenz's law or direction",
+      "Missing the energy conservation link entirely",
+      "Suggesting current is induced just by a magnet being near a coil, without needing a change in flux"
+    ],
+    "followUps": ["Would spinning the magnet instead of pushing it linearly work the same way? Why is that useful in a generator?"]
+  },
+  {
+    "id": "prog-physics-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Conservation of momentum in collisions",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["mechanics", "energy", "reasoning"],
+    "question": "In a perfectly inelastic collision, momentum is conserved but kinetic energy isn't. Where does the missing energy go, and why doesn't that violate conservation of energy?",
+    "lookingFor": "Understands the distinction between momentum and kinetic energy conservation, and correctly identifies where the 'lost' energy goes.",
+    "idealAnswer": {
+      "bullets": [
+        "State that momentum is always conserved in a closed system, but kinetic energy is only conserved in elastic collisions",
+        "Explain the energy converts into heat, sound, and permanent deformation rather than being destroyed",
+        "Reinforce that total energy including these forms is still conserved, only kinetic energy decreases"
+      ],
+      "modelAnswer": "Momentum conservation comes from Newton's third law applying to the internal forces during the collision, and that holds regardless of what kind of collision it is, so total momentum is conserved whether the collision is elastic or perfectly inelastic. Kinetic energy is a different story, it's only guaranteed to be conserved in an idealized elastic collision, and in a perfectly inelastic one, where the objects stick together, some kinetic energy does go missing from the 'useful motion' bookkeeping. But it isn't actually destroyed, it converts into other forms like heat from friction and internal deformation, sound waves from the impact, and permanent structural deformation of the materials, all of which are still forms of energy. So total energy, if you properly account for all those forms, is still perfectly conserved, it's specifically kinetic energy, the energy of bulk motion, that decreases."
+    },
+    "commonMistakes": [
+      "Claiming energy is simply lost or destroyed in inelastic collisions",
+      "Confusing conservation of momentum with conservation of kinetic energy",
+      "Not naming where the energy actually goes, such as heat, sound, or deformation"
+    ],
+    "followUps": ["Could you design an experiment to actually measure that energy going into heat?"]
+  },
+  {
+    "id": "prog-physics-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use physics research",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["ethics", "dilemma", "policy"],
+    "question": "Nuclear physics gave us both power plants and weapons. If your PhD research had clear military applications alongside civilian ones, would you take funding from a defense contractor?",
+    "lookingFor": "Structured ethical reasoning weighing scientific freedom, funding realities, and responsibility for downstream use, not a snap verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tension: much fundamental physics funding, historically and today, has military ties",
+        "Reason through factors like publication freedom and whether the target application is offensive weaponry or dual-use science",
+        "Land on a considered position, such as evaluating case by case and drawing a line at direct weapons-design work"
+      ],
+      "modelAnswer": "I'd be lying if I said this was a simple call, because historically an enormous amount of fundamental physics, including things I benefit from every day, was funded through defense budgets, so refusing any tie to military money would rule out a huge amount of legitimate science. What would actually matter to me is how directly the funding shapes the research and what happens to the results, so I'd want to know whether I could still publish openly, whether the funder was steering the questions toward weapons applications specifically, and whether the work is genuinely dual-use like basic nuclear structure research versus something aimed squarely at weapons design. I think I'd take funding for genuinely open, publishable fundamental research even if the funding body had military ties, but I'd draw a hard line at anything where the explicit deliverable is a weapon, because at that point I'm not doing physics anymore, I'm doing engineering for harm, and I'd want to be honest with myself about that distinction rather than hiding behind 'it's just basic research'."
+    },
+    "commonMistakes": [
+      "Giving a snap yes or no with no reasoning about the specifics",
+      "Pretending physics funding has never had military entanglement",
+      "Refusing to actually commit to a position after laying out the tension"
+    ],
+    "followUps": ["Does your answer change if the research is purely theoretical with no near-term application either way?"]
+  },
+  {
+    "id": "prog-physics-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Research integrity under pressure",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["ethics", "dilemma", "research-integrity"],
+    "question": "Your supervisor wants you to leave out three data points from your final year project because they don't fit the expected trend, and the deadline is tomorrow. What do you do?",
+    "lookingFor": "Recognizes this as a data integrity issue, not just a formatting choice, and reasons toward honest handling rather than compliance or silent defiance.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that removing inconvenient data without statistical justification is a form of manipulation, regardless of time pressure",
+        "Reason through the proper response: ask for the reasoning, and check for a legitimate cause versus just tidying the trend",
+        "Land on a course of action: raise the concern, and report outliers transparently rather than quietly deleting them"
+      ],
+      "modelAnswer": "My first move would be to actually ask my supervisor why they think those three points should be excluded, because there's a real difference between removing a data point because you've identified a genuine cause, like a documented equipment malfunction during that run, and removing it because it just doesn't fit the story you wanted to tell. If there's no defensible reason beyond it looking messy, I wouldn't quietly delete it even under deadline pressure, because that's basically fabricating a cleaner result than what actually happened, and it undermines the entire point of collecting data in the first place. I'd push back respectfully, and if we couldn't agree, I'd include the full dataset and be transparent in my write-up about the outliers and any uncertainty around them, because I'd rather submit an honest project with an unexplained anomaly than a falsely clean one I can't actually defend if someone asks about it."
+    },
+    "commonMistakes": [
+      "Complying immediately without questioning the justification",
+      "Treating this as a purely technical formatting decision rather than an integrity issue",
+      "Refusing to engage with the supervisor at all instead of raising the concern directly"
+    ],
+    "followUps": ["What if it wasn't your supervisor asking, but you noticed a labmate had already done this in a paper you're co-authoring?"]
+  },
+  {
+    "id": "prog-physics-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Scientist as public communicator versus advocate",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["ethics", "policy", "communication"],
+    "question": "Should a physicist working on climate-related energy research also be a public advocate for climate policy, or does that risk compromising scientific objectivity?",
+    "lookingFor": "Nuanced view distinguishing communicating established science from taking political positions, without dismissing the physicist's civic role.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish communicating what the data shows from advocating specific policy solutions, which involves value judgments",
+        "Argue that staying silent isn't automatically more objective, and physicists have a role in accurate public understanding",
+        "Land on a workable position: be rigorous and transparent about which claims are physics and which are personal judgment"
+      ],
+      "modelAnswer": "I don't think being a physicist means you have to stay silent on climate policy, because staying quiet doesn't make you neutral, it just means the loudest voices in the room might be the least informed ones. What I do think matters is being really clear with your audience about which part of what you're saying is physics, like the measured warming trend or the radiative forcing from a given gas, and which part is a value judgment about which policy trade-off is worth making, because those require different kinds of expertise and different kinds of justification. I'd want to be the physicist who's scrupulously honest about the uncertainty in the science while still being willing to say plainly what the data supports, and I don't think that combination compromises objectivity, I think pretending you have no opinions at all is often less honest than being transparent about where the science ends and your own judgment begins."
+    },
+    "commonMistakes": [
+      "Arguing scientists should never express any policy opinion to preserve objectivity",
+      "Blurring the line between established physics and personal political preference without acknowledging it",
+      "Giving a purely evasive non-answer"
+    ],
+    "followUps": ["How would you handle a journalist pushing you to give a simple yes or no on a policy question the science doesn't fully settle?"]
+  },
+  {
+    "id": "prog-physics-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Gravitational wave astronomy",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["current-events", "astrophysics", "general-relativity"],
+    "question": "Why was the first detection of gravitational waves by LIGO in 2015 considered such a big deal, beyond just confirming Einstein was right?",
+    "lookingFor": "Understands it as opening a genuinely new observational channel, not just a confirmation of existing theory.",
+    "idealAnswer": {
+      "bullets": [
+        "Note gravitational waves had been predicted a century earlier, so confirmation itself wasn't the main surprise",
+        "Explain the bigger significance: an entirely new way of observing events invisible to any telescope, like merging black holes",
+        "Mention the technical achievement of measuring a distortion smaller than a fraction of a proton's width"
+      ],
+      "modelAnswer": "Einstein had predicted gravitational waves back in 1916, so in a sense the detection wasn't a huge theoretical surprise, general relativity had already passed plenty of other tests. What made it such a landmark was that it opened up a genuinely new way of observing the universe, one that doesn't rely on light at all, so it lets us detect events like two black holes merging, which are completely dark and invisible to any telescope, but which shake spacetime itself in a way LIGO can pick up. What I find almost as remarkable as the discovery itself is the sheer technical achievement, LIGO had to measure a distortion in the length of a four kilometer arm smaller than a thousandth of the width of a proton, which says a lot about how far experimental precision has come."
+    },
+    "commonMistakes": [
+      "Treating it as merely confirming Einstein was correct with no further significance",
+      "Not mentioning the new observational window it opened, such as black hole mergers",
+      "Missing the scale of the measurement precision involved"
+    ],
+    "followUps": ["What kinds of astronomical events do you think gravitational wave detectors might reveal that we haven't found yet?"]
+  },
+  {
+    "id": "prog-physics-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Evaluating extraordinary claims",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["current-events", "scientific-method", "condensed-matter"],
+    "question": "In 2023 a group claimed to have found a room-temperature, ambient-pressure superconductor called LK-99, and it went viral before other labs failed to replicate it. What does that episode teach you about how physics as a field actually evaluates a big claim?",
+    "lookingFor": "Understands the scientific method as a social, collective process of replication and scrutiny, and can articulate healthy scientific skepticism without cynicism.",
+    "idealAnswer": {
+      "bullets": [
+        "Recall the outline: an extraordinary claim spread rapidly on preprints and social media before peer review",
+        "Explain the field's response: multiple independent labs quickly attempted replication and the consensus shifted",
+        "Draw the lesson that extraordinary claims need independently replicated evidence, and hype can outrun verification"
+      ],
+      "modelAnswer": "What struck me about LK-99 was less the original claim and more how fast the field actually responded, within weeks multiple labs around the world had tried to reproduce the material and test its properties independently, and the consensus shifted quite quickly once the diamagnetic behaviour and resistance drop couldn't be reliably reproduced and were traced to other causes like ferromagnetic impurities. I think it's a genuinely good example of the scientific method working as a collective, distributed process rather than something that happens inside one lab, no single paper gets to declare a room-temperature superconductor real, it has to survive independent replication. The part that makes me a little cautious is how much faster the hype spread through preprints and social media than the actual verification did, so I try to hold extraordinary claims, however exciting, a bit more loosely until independent replication catches up."
+    },
+    "commonMistakes": [
+      "Not knowing what LK-99 was or getting the outcome wrong",
+      "Treating the initial claim's failure as proof the scientific process is broken rather than working as intended",
+      "Giving a vague answer about 'skepticism' without describing the actual replication process"
+    ],
+    "followUps": ["What would it take for you personally to be convinced by a claim like that in the future?"]
+  },
+  {
+    "id": "prog-physics-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Fusion ignition milestone",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["current-events", "energy", "nuclear"],
+    "question": "In December 2022, the National Ignition Facility announced it had achieved fusion ignition, getting more energy out of a reaction than the lasers put in. Does that mean fusion power is close?",
+    "lookingFor": "Correctly interprets the milestone's real significance without either dismissing it or overstating imminent commercial fusion power.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain accurately what was achieved: the reaction produced more energy than the laser energy delivered to the fuel, scientific breakeven",
+        "Clarify what it doesn't mean, since total plant energy including laser inefficiency was still far from breakeven",
+        "Show honest excitement balanced against realistic engineering timelines for commercial fusion"
+      ],
+      "modelAnswer": "It was a genuine milestone, for the first time a fusion reaction released more energy than the laser energy that was actually delivered into the fuel capsule, which is called scientific breakeven and is something physicists have been working toward for decades. But I'd be careful not to overstate it, because that energy comparison doesn't include how much electricity it took to actually power those lasers in the first place, which was something like a hundred times more than what came out, so we're still a long way from a power plant that produces net electricity for the grid. I think the honest way to describe it is as proof that the underlying physics works, which is a real and exciting result, but turning that into a commercially viable power plant is still an enormous engineering challenge, and I'd be skeptical of timelines that suggest fusion power is just around the corner."
+    },
+    "commonMistakes": [
+      "Confusing scientific breakeven with total plant-level energy breakeven",
+      "Dismissing the achievement as meaningless hype",
+      "Claiming fusion power plants are now only a few years away"
+    ],
+    "followUps": ["What do you think is the biggest remaining engineering hurdle to commercial fusion?"]
+  },
+  {
+    "id": "prog-physics-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hubble tension debate",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["current-events", "cosmology", "reasoning"],
+    "question": "There's currently a discrepancy between different methods of measuring how fast the universe is expanding, the so-called Hubble tension. What's your take on what that might mean?",
+    "lookingFor": "Awareness of the actual debate, its two main measurement approaches, and balanced reasoning about possible explanations.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the two approaches in tension: early-universe cosmic microwave background methods versus local distance-ladder methods",
+        "Note the discrepancy has grown more statistically significant as measurements improved",
+        "Discuss possible explanations honestly, an unaccounted systematic error or genuinely new physics such as evolving dark energy"
+      ],
+      "modelAnswer": "The tension is between two different ways of measuring the expansion rate of the universe, one uses the cosmic microwave background and assumes the standard cosmological model to predict what today's expansion rate should be, and the other measures it much more directly using the distance ladder built on Cepheid variable stars and supernovae in the nearby universe, and the two methods now disagree by around ten percent, which is well outside their stated uncertainties. Early on people assumed it was probably some unaccounted systematic error in one of the measurement chains, but as both methods have been refined independently and the discrepancy has actually gotten more statistically significant rather than less, that explanation has started to feel less satisfying on its own. I find it a genuinely open and exciting question, it might turn out to be a subtle systematic we haven't found yet, but it's also one of the more credible hints that our standard cosmological model might be missing something, possibly around how dark energy behaves over cosmic time, and I'd love to work on untangling which it is."
+    },
+    "commonMistakes": [
+      "Not knowing what the two competing measurement methods actually are",
+      "Assuming it's definitely new physics rather than acknowledging systematic error is still plausible",
+      "Vague answer without naming any specific measurement techniques"
+    ],
+    "followUps": ["If you had to bet, would you guess this resolves as new physics or as an undiscovered systematic error?"]
+  },
+  {
+    "id": "prog-physics-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Slower speed of light thought experiment",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "special-relativity", "reasoning"],
+    "question": "Suppose the speed of light were only, say, 10 meters per second, walking pace. What would everyday life actually look like?",
+    "lookingFor": "Genuine physical reasoning applying relativistic effects to a vivid, tractable scenario rather than vague sci-fi imagery.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that relativistic effects would become noticeable at ordinary human speeds, not just near-light speeds",
+        "Reason through concrete consequences: visible length contraction, visible time dilation, and increasing effective inertia near 10 m/s",
+        "Acknowledge deeper implications, such as simultaneity becoming observer-dependent at walking pace"
+      ],
+      "modelAnswer": "If light only travelled at walking pace, all the relativistic effects that are normally only noticeable near light speed would show up in everyday life, because those effects depend on your speed as a fraction of light speed, not on some absolute threshold. A cyclist going past you would visibly look squashed in their direction of travel due to length contraction, and you'd actually see their watch ticking slower than yours, while from their point of view it would be you who looked squashed and slow, which is the same relativity of simultaneity that's normally too subtle to notice. Accelerating would also get harder and harder the closer you got to that 10 meters per second limit, since your effective inertia increases, so sprinting flat out would feel like pushing against an ever-stiffening wall rather than smoothly speeding up. Basic things like agreeing on 'what time is it right now' between two people walking at different speeds would stop having a single unambiguous answer, which is a genuinely disorienting thing to sit with."
+    },
+    "commonMistakes": [
+      "Giving vague sci-fi imagery without grounding it in actual relativistic physics",
+      "Only mentioning one effect, like time dilation, and ignoring others such as length contraction",
+      "Treating the scenario as physically impossible to reason about rather than engaging with it"
+    ],
+    "followUps": ["Would causality still work normally in this world, or could you imagine paradoxes arising?"]
+  },
+  {
+    "id": "prog-physics-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a low-budget experiment",
+    "program": "Physics",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "experimental-design", "mechanics"],
+    "question": "You're given a stopwatch, a metre ruler, and a piece of string, and asked to measure the acceleration due to gravity as accurately as you can. How would you actually do it?",
+    "lookingFor": "Practical experimental design reasoning: method choice, sources of error, and how to improve precision with minimal equipment.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a simple pendulum method, using period equals two pi root length over g to solve for g",
+        "Address precision strategies, such as timing many oscillations and dividing to reduce reaction-time error",
+        "Identify systematic errors and mitigation, such as the small-angle assumption and measuring to the bob's center of mass"
+      ],
+      "modelAnswer": "I'd build a simple pendulum with the string and a small mass, since the period of a pendulum for small swings is two pi times the square root of length over g, so if I measure the length and the period I can solve for g directly. To get a decent value out of just a stopwatch, I wouldn't time a single swing, because human reaction time alone could be a big fraction of one period, I'd time something like twenty full oscillations and divide by twenty, which spreads that reaction time error out and shrinks its effect a lot. I'd also keep the swing angle small, under about ten degrees, since the formula assumes small-angle motion, and I'd measure the length from the pivot to the center of the bob rather than just the string length, since that's a common source of systematic error people overlook. If I had time I'd repeat it with a few different lengths and check that g came out consistent across them, since a genuine result should be robust to that."
+    },
+    "commonMistakes": [
+      "Timing a single oscillation instead of multiple to reduce reaction-time error",
+      "Forgetting the small-angle approximation limitation of the pendulum formula",
+      "Ignoring where exactly to measure the pendulum's effective length"
+    ],
+    "followUps": ["How would you estimate your uncertainty in the final value of g?"]
+  },
+  {
+    "id": "prog-physics-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Contradicting an established theory",
+    "program": "Physics",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "scientific-method", "reasoning"],
+    "question": "Suppose your final year experiment produced a result that seemed to violate conservation of energy, and you'd checked your setup carefully. What would you actually do?",
+    "lookingFor": "Sound scientific reasoning: extraordinary claims need extraordinary scrutiny, weighing far more likely mundane explanations before entertaining a genuine breakthrough.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritize ruling out mundane explanations first, such as measurement error or unaccounted energy input",
+        "Reason about prior probability: conservation of energy is extremely well tested, so error is far more likely than violation",
+        "Describe proper next steps: repeat the experiment, seek independent replication before making any public claim"
+      ],
+      "modelAnswer": "My honest first assumption would be that I've made a mistake somewhere, not that I've overturned one of the best-tested laws in physics, because conservation of energy has survived an enormous number of experiments across every branch of physics, so the prior probability that I've found a genuine violation is astronomically lower than the probability I've missed an energy input or output somewhere, like heat loss, friction, or an uncalibrated instrument. So I'd go back through the setup systematically looking for anything unaccounted for, redo the measurement carefully, and ideally get a labmate to run it independently without telling them what result I got, so they can't unconsciously bias it toward what I expect. Only if the anomaly survived all of that scrutiny, careful rechecking, repetition, and independent replication, would I even start to take seriously that something genuinely interesting was going on, and even then I'd want to present it as a puzzling anomaly to more experienced physicists rather than jumping to 'I've disproved conservation of energy' straight away."
+    },
+    "commonMistakes": [
+      "Immediately assuming a fundamental law has been overturned without ruling out mundane errors first",
+      "Not mentioning independent replication or repeatability as a check",
+      "Being so skeptical that they'd never even consider reporting a genuine anomaly"
+    ],
+    "followUps": ["What's the difference between healthy scientific skepticism and just refusing to believe surprising results?"]
+  }
+]

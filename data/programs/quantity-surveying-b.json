@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-quantity-surveying-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Cost planning vs bill of quantities",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["cost-planning", "boq", "fundamentals"],
+    "question": "What's the difference between an elemental cost plan and a bill of quantities, and when would a quantity surveyor use each?",
+    "lookingFor": "Understanding that cost planning is an early, approximate design-stage tool while a BOQ is a detailed, post-design pricing document, plus why the sequencing matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Cost plan is produced early, broken down by building element, before full design detail exists",
+        "BOQ is produced once drawings and specification are complete, itemised by measured quantity for tendering",
+        "Explain the purpose shift: cost plan controls design decisions, BOQ prices the finished design"
+      ],
+      "modelAnswer": "A cost plan is built during design, broken down by element like substructure or external walls, and it's used to keep the design within budget before every detail is fixed. A bill of quantities comes later, once drawings are complete, and it lists every measured item so contractors can price it consistently at tender. I find the relationship interesting because the cost plan is really a design-control tool, while the BOQ is a pricing and fairness tool, and a good QS has to move between those two mindsets constantly."
+    },
+    "commonMistakes": [
+      "Treating the two documents as interchangeable",
+      "Describing a BOQ without mentioning measurement rules or standardised itemisation",
+      "Missing that cost plans exist to influence design, not just record cost"
+    ],
+    "followUps": ["At what RIBA design stage would you expect the first cost plan to be produced?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Standard measurement rules",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["measurement", "nrm", "standards"],
+    "question": "Why do quantity surveyors measure work according to standard rules like NRM rather than just counting up what's on the drawings themselves?",
+    "lookingFor": "Grasp that standard measurement rules exist to make tenders comparable and disputes avoidable, not just a bureaucratic formality.",
+    "idealAnswer": {
+      "bullets": [
+        "Standard rules ensure every contractor prices the same scope in the same way",
+        "Without them, tenders would not be comparable and disputes over what's included would multiply",
+        "Mention a concrete rule, like how NRM defines what's deemed included in a unit rate"
+      ],
+      "modelAnswer": "If every QS measured however they liked, two contractors could price identical work completely differently just because they interpreted the scope differently, and the client would have no fair way to compare bids. Rules like NRM standardise exactly what's included in a rate, so a rate for brickwork is understood to include things like cutting and waste unless stated otherwise. I think of it as a shared language that lets very different firms compete on a level playing field, which is what makes tendering fair rather than a guessing game."
+    },
+    "commonMistakes": [
+      "Describing measurement rules as just a formatting convention",
+      "Not connecting standardisation to tender comparability",
+      "Confusing measurement rules with contract conditions"
+    ],
+    "followUps": ["Can you think of a situation where strict rule-based measurement might still lead to a dispute?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Provisional sums and prime cost sums",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["provisional-sums", "cost-control", "boq"],
+    "question": "What's a provisional sum, and why might relying on too many of them in a bill of quantities cause problems later in a project?",
+    "lookingFor": "Technical accuracy about provisional sums plus reasoning about the cost-certainty risk they introduce.",
+    "idealAnswer": {
+      "bullets": [
+        "Define a provisional sum as an allowance for work not yet fully designed or defined at tender",
+        "Explain it gets replaced with actual cost once the work is instructed, which can move the final account",
+        "Reason that too many provisional sums undermine the client's cost certainty at tender stage"
+      ],
+      "modelAnswer": "A provisional sum is a placeholder figure in the bill for work that isn't fully designed yet, like ground conditions that can't be confirmed until you dig, and it gets adjusted to the real cost once that work is actually instructed. The problem is that a tender full of provisional sums looks like a fixed price but isn't really one, because a large chunk of the contract value is still an estimate. I'd want to flag to a client that every provisional sum is a bit of cost certainty they're giving up, so the design team should be pushed to firm up as much as possible before tender."
+    },
+    "commonMistakes": [
+      "Confusing provisional sums with contingency",
+      "Not explaining what happens to the sum once work is instructed",
+      "Missing the cost-certainty risk to the client"
+    ],
+    "followUps": ["How would you advise a client who wants to reduce the number of provisional sums before tender?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Procurement route selection",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["procurement", "risk-allocation", "reasoning"],
+    "question": "A client wants both cost certainty and the fastest possible programme, but you know those two goals usually pull against each other. How would you advise them on choosing a procurement route?",
+    "lookingFor": "Ability to compare procurement routes on their real trade-offs and give a reasoned, client-specific recommendation rather than a textbook list.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the traditional route offers cost certainty at tender but is slower because design must finish first",
+        "Explain design and build or construction management can compress programme but shift or blur risk and price certainty",
+        "Push back gently on the client's assumption and ask which goal matters more, since both fully cannot usually be maximised"
+      ],
+      "modelAnswer": "I'd start by being honest that they probably can't max out both, because traditional procurement gives cost certainty precisely by finishing design before pricing, which takes time, while design and build speeds things up by overlapping design and construction, but that overlap is what introduces cost risk. I'd ask what happens if the project runs late versus what happens if it runs over budget, because whichever consequence is worse for them should drive the choice. If speed is really critical, I'd suggest a two-stage tender under a design and build route, where an early contractor involvement lets us get some cost certainty on the earlier packages without waiting for full design. I think the QS's job here is less about naming the right route and more about making the trade-off visible so the client makes an informed choice."
+    },
+    "commonMistakes": [
+      "Listing procurement routes with no comparison of trade-offs",
+      "Promising a route that magically achieves both cost certainty and speed",
+      "Not asking what the client actually values more"
+    ],
+    "followUps": ["What risk does the client take on specifically under a design and build route that they wouldn't under traditional?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Whole-life costing",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["life-cycle-costing", "sustainability", "value"],
+    "question": "Why might a quantity surveyor recommend a more expensive option at construction stage over a cheaper one?",
+    "lookingFor": "Understanding of whole-life or life-cycle costing as opposed to only capital cost, with a concrete example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain whole-life costing weighs capital cost against operating, maintenance and replacement cost over the building's life",
+        "Give a concrete example, such as glazing or plant with a higher upfront but lower running cost",
+        "Note the client's time horizon and discount rate affect whether the higher upfront cost is worth it"
+      ],
+      "modelAnswer": "A cheaper option at construction stage can end up costing more overall once you account for energy use, maintenance, and how soon it needs replacing. A classic example is choosing a more efficient heating system that costs more to install but pays that back through lower running costs within a few years. I'd want to run the numbers as a whole-life cost comparison rather than just comparing capital prices, but I'd also ask the client how long they plan to hold the building, because a developer selling in three years won't value the same things as an owner-occupier holding it for thirty."
+    },
+    "commonMistakes": [
+      "Only discussing sustainability without the cost mechanics",
+      "Ignoring that the client's ownership horizon changes the right answer",
+      "Treating whole-life costing as always favouring the expensive option"
+    ],
+    "followUps": ["How would you handle a client who only cares about capital cost and dismisses whole-life figures?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Value engineering",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["value-engineering", "cost-reduction", "judgement"],
+    "question": "How is value engineering different from just cutting costs, and where do you think the line can get blurred in practice?",
+    "lookingFor": "Distinguishing value engineering as function-preserving optimisation from crude cost-cutting, with honest awareness that the distinction can erode under pressure.",
+    "idealAnswer": {
+      "bullets": [
+        "Define value engineering as achieving the same function or performance for less cost, not simply removing scope",
+        "Contrast it with cost cutting, which reduces price by reducing quality or function",
+        "Acknowledge the real-world pressure where value engineering quietly becomes cost cutting when budgets are tight"
+      ],
+      "modelAnswer": "Value engineering is meant to keep the same function or performance while finding a cheaper way to deliver it, like substituting a material that performs identically but costs less because it's easier to source. Cost cutting, on the other hand, actually reduces what the building does or how well it does it, even if it's dressed up in the same language. I think the honest answer is that under budget pressure the line blurs fast, because a value engineering workshop under a tight deadline can turn into everyone quietly agreeing to lower standards and calling it optimisation. I'd want to keep asking at each proposed change whether function is genuinely preserved, not just whether the number goes down."
+    },
+    "commonMistakes": [
+      "Defining value engineering as simply another word for cost cutting",
+      "Giving a textbook definition with no acknowledgement of real-world pressure",
+      "Failing to mention that function or performance must be preserved"
+    ],
+    "followUps": ["Give an example of a change you'd refuse to call value engineering even if a project manager wanted to."]
+  },
+  {
+    "id": "prog-quantity-surveying-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Risk allocation in contracts",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["risk", "contracts", "reasoning"],
+    "question": "There's a principle that risk should sit with whoever is best placed to manage it. What does that mean in practice for a quantity surveyor drafting contract terms, and can you think of a case where it's hard to apply?",
+    "lookingFor": "Applied understanding of risk allocation theory with a genuine example of where the principle breaks down in practice.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the principle: the party who can best predict, price, control or insure a risk should carry it",
+        "Give an example, such as ground conditions or design risk, and who should sensibly hold it",
+        "Identify a genuinely hard case, like weather or a novel material, where control and knowledge are split between parties"
+      ],
+      "modelAnswer": "The idea is that whoever can actually influence or price a risk should carry it, so a contractor who controls how work is sequenced should carry programme risk, while a client who chooses the design should carry design risk if they haven't handed that over. A case I find genuinely hard is unforeseen ground conditions, because the contractor is the one digging and best placed to react, but the client commissioned the site investigation and controls how much information was shared before tender. I'd argue the fairest answer is that risk should follow information, so if the client withheld or under-scoped the site investigation, they should carry more of that risk than if they'd shared everything available. It's a good example of why 'best placed to manage' isn't always a clean split."
+    },
+    "commonMistakes": [
+      "Reciting the principle with no worked example",
+      "Assuming risk allocation is always obvious and uncontested",
+      "Confusing risk allocation with insurance or contingency"
+    ],
+    "followUps": ["How does NEC's early warning mechanism try to address exactly this kind of shared risk?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Variations and cost impact",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["variations", "valuation", "contracts"],
+    "question": "A client wants to change the specification of the flooring after the contract has been signed. Walk me through how you'd assess and value that variation.",
+    "lookingFor": "Practical grasp of how variations are instructed, priced and their knock-on effects assessed.",
+    "idealAnswer": {
+      "bullets": [
+        "Confirm the change needs a formal instruction before being valued or actioned",
+        "Value it against existing contract rates first, only using fair pricing where no comparable rate exists",
+        "Check for knock-on effects, such as time impact or effect on other trades"
+      ],
+      "modelAnswer": "First I'd make sure there's a proper written instruction, because pricing a change that was only agreed verbally is a good way to end up in a dispute later. Then I'd look for a rate already in the contract for similar flooring and use that as the basis, only building a fresh rate from first principles if nothing comparable exists. I'd also check whether the new flooring changes the programme, for example if it needs a longer drying time before other trades can follow, because a variation isn't just a cost question, it can carry a time claim with it too."
+    },
+    "commonMistakes": [
+      "Jumping straight to a new price without checking existing contract rates",
+      "Ignoring the need for a formal instruction",
+      "Missing the possible time or sequencing impact of the change"
+    ],
+    "followUps": ["What would you do if the contractor's proposed rate for the variation seemed unreasonably high?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Retention",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["retention", "cash-flow", "contracts"],
+    "question": "What's the purpose of retention in a construction contract, and why has it become a controversial practice recently?",
+    "lookingFor": "Technical understanding of retention plus awareness of the current debate around subcontractor cash flow and insolvency risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain retention withholds a percentage of payment as security against defects",
+        "Note it's released in stages, typically at practical completion and after the defects period",
+        "Reference the current debate: retention cash trapped up the supply chain, and losses when a main contractor becomes insolvent"
+      ],
+      "modelAnswer": "Retention holds back a small percentage, often around five percent, of each payment as security that the contractor will come back and fix any defects, and it's usually released half at practical completion and half after the defects liability period ends. The controversy is that this money sits with whoever is holding it, often the main contractor, and if they become insolvent before release, subcontractors can lose retention they're owed even though they did the work properly. That's part of why there's been a push toward retention deposit schemes or trust accounts, so the money is ring-fenced rather than just sitting on the paying party's balance sheet."
+    },
+    "commonMistakes": [
+      "Explaining retention mechanically with no mention of the current insolvency debate",
+      "Confusing retention with a performance bond",
+      "Getting the release stages wrong"
+    ],
+    "followUps": ["What would you say to a subcontractor worried about retention risk before agreeing to a contract?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Claims and extensions of time",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["claims", "delay", "contracts"],
+    "question": "A contractor submits a claim for an extension of time because of unusually bad weather. How would you go about assessing whether it's valid?",
+    "lookingFor": "Structured reasoning about causation, contract entitlement, and evidence rather than a yes/no reflex.",
+    "idealAnswer": {
+      "bullets": [
+        "Check whether the contract actually lists exceptional weather as a relevant event entitling extension",
+        "Assess causation using a critical path analysis, not just that bad weather happened somewhere on site",
+        "Require evidence, such as weather records compared against what's normal for the season and location"
+      ],
+      "modelAnswer": "I'd start with the contract itself, because not every form treats bad weather the same way, and some only allow it if it's exceptionally severe for the time of year, not just ordinary rain. Then I'd want to see whether the weather actually affected work on the critical path, because if the delayed activity had float or wasn't driving the completion date, it doesn't justify an extension even if the weather was genuinely bad. I'd ask for supporting evidence like meteorological records benchmarked against historical averages for that location, and I'd cross-check the contractor's programme to see if the claimed impact lines up with what was actually happening on site at that time. Only once causation and contractual entitlement both hold up would I recommend granting the extension."
+    },
+    "commonMistakes": [
+      "Accepting or rejecting the claim without checking the contract's specific wording",
+      "Not distinguishing between weather that happened and weather that actually caused delay",
+      "Ignoring critical path analysis and float"
+    ],
+    "followUps": ["What's the difference between an extension of time and a claim for loss and expense?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Cash flow forecasting",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["cash-flow", "forecasting", "s-curve"],
+    "question": "Why do construction project cash flow forecasts typically follow an S-curve shape, and why does that matter to a client?",
+    "lookingFor": "Understanding of the S-curve pattern and its practical use for a client managing funding drawdown.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the S-curve reflects slow spend at the start, rapid spend mid-project, and slowing again toward completion",
+        "Connect this to why site setup and finishing trades are both lower-value periods compared to the structural mid-phase",
+        "Explain why this matters for a client's funding drawdown or loan facility planning"
+      ],
+      "modelAnswer": "Spending starts slowly because early work like site setup, groundworks and foundations doesn't consume much value relative to the effort involved, then it accelerates through the structural and envelope stages where a lot of cost is committed quickly, and it tails off again during fit-out and finishes. That shape matters hugely to a client because if they're drawing down a loan facility, they need the forecast to plan how much cash to have available and when, rather than assuming spend is even across the programme. I'd use the S-curve to flag to them exactly when their peak funding need will hit, so there are no surprises with the bank."
+    },
+    "commonMistakes": [
+      "Describing the shape without explaining why it occurs",
+      "Not connecting the forecast to the client's practical funding needs",
+      "Assuming spend is linear across the programme"
+    ],
+    "followUps": ["How would a delay to the structural phase specifically distort this curve?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Price escalation and fluctuations",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["fluctuations", "risk", "market"],
+    "question": "Given how volatile material prices have been in recent years, would you advise a client to use a fixed-price contract or one with a fluctuations clause?",
+    "lookingFor": "Reasoned trade-off between price certainty and fair risk transfer, informed by real recent market volatility.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain a fixed-price contract gives certainty but the contractor will price in a large risk premium for volatility",
+        "Explain a fluctuations clause shares actual market movement, avoiding an inflated buffer, but reduces certainty",
+        "Give a reasoned recommendation tied to the client's risk appetite and market conditions rather than a flat rule"
+      ],
+      "modelAnswer": "If I lock a contractor into a fixed price during a genuinely volatile market, they're going to price in a big contingency to protect themselves, so the client ends up paying for risk that might never even happen. A fluctuations clause, tied to a published index for key materials like steel or timber, lets the price move with the real market instead of an inflated guess, which can actually work out cheaper on average even though it's less certain. I'd lean toward recommending a fluctuations clause on materials with known volatility right now, but I'd cap it or limit it to a defined list of materials, so the client isn't exposed to unlimited risk on everything."
+    },
+    "commonMistakes": [
+      "Recommending one option with no reasoning tied to actual market conditions",
+      "Not mentioning that fixed price includes a risk premium",
+      "Treating fluctuations clauses as all-or-nothing rather than capable of being scoped"
+    ],
+    "followUps": ["How would you cap a fluctuations clause to protect the client from unlimited exposure?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "BIM and 5D cost estimation",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["bim", "digital-qs", "current-development"],
+    "question": "5D BIM lets quantities be extracted directly from a building model instead of measured by hand. What do you think this changes about the quantity surveyor's role, and what doesn't it change?",
+    "lookingFor": "Informed view on a live industry shift, distinguishing automatable measurement from judgement work that still needs a human QS.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge 5D BIM automates a lot of the mechanical quantity take-off that used to be done manually",
+        "Argue that judgement work like pricing risk, interpreting incomplete design, and advising the client doesn't disappear",
+        "Show awareness that model quality and modelling discipline determine whether the extracted quantities are actually trustworthy"
+      ],
+      "modelAnswer": "5D BIM takes over a lot of the repetitive measurement work, extracting quantities straight from the model instead of someone counting them off drawings, which is genuinely useful and reduces certain kinds of human error. But I don't think it replaces the QS, because the model only tells you what's modelled, and someone still has to judge what's missing, price the risk around unresolved design, and have the difficult conversation with a client about what a number actually means for their budget. I'd also say a model is only as reliable as the discipline behind how it was built, so a QS still needs to sense-check outputs rather than trust them blindly. I see it as changing what a QS spends their day doing, shifting from manual measurement toward interpretation and advice, rather than making the role obsolete."
+    },
+    "commonMistakes": [
+      "Claiming BIM will fully replace quantity surveyors",
+      "Dismissing BIM as irrelevant to the profession",
+      "Describing the technology with no view on what it means for the role itself"
+    ],
+    "followUps": ["What would you do if a 5D model's quantities didn't match your own manual check?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Embodied carbon costing",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["carbon", "sustainability", "current-development"],
+    "question": "There's growing pressure to measure and cost embodied carbon alongside capital cost. How would you explain that idea to a client who's only ever thought in terms of pounds and pence?",
+    "lookingFor": "Ability to translate a live sustainability debate into practical cost language, showing genuine subject awareness rather than a rehearsed buzzword.",
+    "idealAnswer": {
+      "bullets": [
+        "Define embodied carbon simply as the emissions locked into materials and construction before the building even opens",
+        "Explain why it's becoming a live issue: planning requirements, investor pressure, and future carbon pricing risk",
+        "Frame it in terms the client cares about, such as future regulatory or resale risk, not just environmental virtue"
+      ],
+      "modelAnswer": "I'd explain that embodied carbon is basically the emissions baked into the concrete, steel and other materials before the building's even switched on, as opposed to the carbon it uses while running. I'd tell the client this matters commercially now, not just ethically, because more planning authorities are starting to ask for embodied carbon assessments, and investors and future buyers are increasingly screening buildings on this. I'd frame it as a cost risk conversation, that a high-carbon building today could carry a real financial penalty at resale or refinancing in a few years, and that measuring it now, alongside the normal cost plan, lets us make design choices that protect the asset's value later, not just its emissions."
+    },
+    "commonMistakes": [
+      "Explaining carbon only in environmental terms with no cost or commercial framing",
+      "Confusing embodied carbon with operational carbon",
+      "Treating this as a fringe issue rather than a live regulatory and market trend"
+    ],
+    "followUps": ["What tension might arise between minimising embodied carbon and minimising capital cost?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Modern methods of construction",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["mmc", "offsite", "current-development"],
+    "question": "Modular and offsite construction are often promoted as cheaper and faster. From a cost surveying perspective, is that always true?",
+    "lookingFor": "Balanced, non-superficial understanding of offsite construction economics, not just repeating the marketing pitch.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine benefits: reduced programme, less site labour, more predictable quality",
+        "Identify hidden costs: transport, factory margin, design lock-in earlier, limited repeat-order savings on small projects",
+        "Conclude the answer depends on project scale and repetition, not a blanket yes"
+      ],
+      "modelAnswer": "Offsite construction can genuinely cut programme time and reduce the on-site labour and weather risk, because a lot of the build happens in a controlled factory environment in parallel with groundworks. But it's not automatically cheaper, because you're paying for transport, factory overheads, and a design that has to be locked down much earlier than a traditional build allows, which removes flexibility later. I think the real savings come from repetition, so a scheme with hundreds of identical units benefits a lot more than a one-off bespoke building, where the setup cost of the modular approach might not be recovered at all. I'd want to run a proper comparative cost exercise rather than assume offsite is cheaper just because it's newer."
+    },
+    "commonMistakes": [
+      "Assuming offsite is always cheaper because it's marketed that way",
+      "Ignoring transport and factory overhead costs",
+      "Not connecting cost benefit to project scale or repetition"
+    ],
+    "followUps": ["How would early design freeze under MMC affect the cost planning process specifically?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and automation in the profession",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["ai", "current-development", "profession"],
+    "question": "Some people say AI tools will make quantity surveying obsolete within a generation. What's your honest view?",
+    "lookingFor": "A grounded, non-defensive opinion that shows the applicant has actually thought about the profession's future rather than reciting reassurance.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid a purely defensive dismissal; acknowledge which parts of the role are genuinely at risk of automation",
+        "Identify what's harder to automate: client trust, negotiation, judgement under incomplete information, accountability",
+        "Show this shapes how the applicant wants to be trained, not just a comforting prediction"
+      ],
+      "modelAnswer": "I don't think it's obsolete so much as reshaped, and I'd rather be honest that the routine parts, like measurement and basic cost checking, are exactly the parts AI tools are already getting good at. What's harder to automate is the judgement side, deciding how much risk to price into an unclear scope, negotiating a fair settlement on a dispute, or telling a client an unwelcome truth about their budget in a way they can actually act on. Someone still has to be accountable for that advice, and I don't think a client wants to be told their multi-million pound risk allowance was set by an algorithm with no one answerable for it. Honestly it makes me want to make sure I build strong judgement and communication skills alongside the technical ones, because that's the part I don't think gets automated away."
+    },
+    "commonMistakes": [
+      "Dismissing the question with a defensive 'AI will never replace humans' with no reasoning",
+      "Overclaiming that the entire profession will disappear",
+      "Giving a generic answer with no personal stake in how it shapes their own training"
+    ],
+    "followUps": ["Which specific QS task would you be most comfortable handing entirely to an automated tool?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-017",
+    "category": "Ethics & Situational",
+    "subtopic": "Client pressure to under-report costs",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["ethics", "integrity", "situational"],
+    "question": "A client asks you to present a cost report that understates the true forecast final cost, because they need to show a lender the project is on budget. What would you do?",
+    "lookingFor": "Firm ethical reasoning that protects professional integrity and third parties, without being naive about the client relationship.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this is a request to misrepresent figures to a third party, which crosses a professional integrity line",
+        "Explain you'd refuse to falsify the report and explain why, rather than simply comply or quietly walk away",
+        "Consider the RICS professional obligation to report honestly and the real risk to the lender and ultimately the client"
+      ],
+      "modelAnswer": "I'd tell the client directly that I can't put my name to a report that misstates the forecast cost, because a cost report exists precisely so a lender can trust the number, and knowingly understating it isn't a grey area, it's misleading a third party who's relying on my professional judgement. I'd try to understand what's actually driving the request, because if they're worried about triggering a funding covenant, there might be a legitimate way to present the situation honestly while explaining the mitigation plan, rather than hiding the number. If they insisted on the false figure, I'd have to refuse and be clear that continuing to act for them on that basis isn't something I could do, because my accountability as a surveyor is to accurate reporting, not to telling the client what they want to hear."
+    },
+    "commonMistakes": [
+      "Agreeing to soften the numbers to keep the client happy",
+      "Refusing without offering to help solve the underlying problem honestly",
+      "Not recognising the third party, the lender, who's actually harmed by the misrepresentation"
+    ],
+    "followUps": ["What would you do if your firm's senior partner told you to go along with the client's request?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-018",
+    "category": "Ethics & Situational",
+    "subtopic": "Conflict of interest in tendering",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["ethics", "conflict-of-interest", "tendering"],
+    "question": "You're running a tender process for a client and discover one of the bidding contractors is owned by a close family friend. What do you do?",
+    "lookingFor": "Clear recognition of conflict of interest and a proactive disclosure-first response rather than trying to manage it quietly.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this is a conflict of interest even if the applicant is confident they'd stay objective",
+        "The right first step is proactive disclosure to the client, not silent self-management",
+        "Consider practical remedies: recusal from evaluating that bid, or an independent second reviewer"
+      ],
+      "modelAnswer": "Even if I was confident I could stay completely objective, I don't think that's my call to make quietly, because a conflict of interest is about how the process looks and can be trusted, not just whether I personally feel biased. I'd disclose it to the client straight away, before scores or recommendations go anywhere, and let them decide how they want to handle it. Realistically I'd suggest either stepping back from evaluating that particular bid and having a colleague assess it instead, or if the relationship is close enough, recommending the firm isn't the one running that part of the process at all, because transparency upfront protects everyone, including me, far more than hoping nobody notices later."
+    },
+    "commonMistakes": [
+      "Assuming personal confidence in one's own objectivity is sufficient",
+      "Hiding the relationship to avoid an awkward conversation",
+      "Only disclosing after being asked rather than proactively"
+    ],
+    "followUps": ["Would your answer change if the friend's company submitted clearly the best value bid?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-019",
+    "category": "Ethics & Situational",
+    "subtopic": "Suspected bid rigging",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["ethics", "collusion", "whistleblowing"],
+    "question": "While reviewing tender returns, you notice a pattern that strongly suggests two contractors colluded on their pricing. What would you do with that suspicion?",
+    "lookingFor": "Structured, professional response that escalates appropriately without either overreacting on thin evidence or ignoring a serious red flag.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid making a public accusation on suspicion alone; document the specific pattern first",
+        "Escalate internally and to the client, since bid rigging undermines the entire tender's fairness",
+        "Recognise the seriousness, since collusive tendering can be a legal competition issue, not just a professional one"
+      ],
+      "modelAnswer": "I wouldn't accuse anyone outright on a hunch, but I also wouldn't sit on it, so I'd document exactly what pattern I'd noticed, like suspiciously matching pricing structures or identical unusual errors across two bids. I'd raise it with my senior colleague and the client straight away, because if collusion is real, it doesn't just affect those two bids, it undermines the fairness of the whole tender for every other contractor who priced honestly. I'm aware this can actually be a competition law issue and not just a professional integrity one, so I'd want it escalated to someone senior enough to decide whether it needs to go further than an internal conversation, rather than me trying to quietly resolve it myself."
+    },
+    "commonMistakes": [
+      "Accusing a contractor directly without gathering evidence first",
+      "Deciding to ignore it because it's not their direct responsibility",
+      "Not recognising the wider fairness and legal implications for the whole tender"
+    ],
+    "followUps": ["What specific evidence in tender pricing would make you suspicious of collusion in the first place?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Responding to a cost overrun",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "cost-control", "client-management"],
+    "question": "Midway through a project, your cost report shows the anticipated final cost has risen fifteen percent above the approved budget. Walk me through what you'd actually do next.",
+    "lookingFor": "A practical, sequenced response combining diagnosis, options, and honest client communication rather than a vague reassurance.",
+    "idealAnswer": {
+      "bullets": [
+        "First establish the specific causes of the overrun, separating genuine scope change from poor original estimating or unforeseen risk",
+        "Develop realistic options, such as descoping, value engineering, or renegotiating the programme, before going to the client",
+        "Communicate to the client early and clearly, rather than delaying the bad news or presenting it without options"
+      ],
+      "modelAnswer": "I'd first dig into exactly where the fifteen percent is coming from, because the response is completely different if it's driven by a client-instructed change versus unforeseen ground conditions versus my own team simply underestimating a package originally. Once I understood the cause, I'd put together realistic options before I went anywhere near the client, whether that's identifying genuine value engineering opportunities, phasing some scope into a later stage, or accepting the increase with a clear justification. I'd then go to the client as soon as I had a credible picture, not wait until it got worse hoping it would resolve itself, because in my experience clients are far angrier about being surprised late than about bad news delivered early with a plan attached."
+    },
+    "commonMistakes": [
+      "Jumping straight to telling the client without doing the diagnostic work first",
+      "Delaying the bad news hoping the position improves",
+      "Presenting the problem with no options or recommendation attached"
+    ],
+    "followUps": ["What would you say differently to the client if the overrun was caused by your own team's earlier estimating error?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Evaluating divergent tenders",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "tendering", "evaluation"],
+    "question": "You receive three tenders for the same scope of work, and one is thirty percent lower than the other two. How would you approach evaluating it?",
+    "lookingFor": "Sensible suspicion of an outlier bid combined with a fair, structured investigation rather than either automatic rejection or automatic acceptance.",
+    "idealAnswer": {
+      "bullets": [
+        "Treat a large outlier as a signal to investigate, not automatically the best or automatically disqualified",
+        "Check for a scope misunderstanding, a pricing error, or a genuinely different (and riskier) delivery approach",
+        "Consider going back to the contractor to clarify before making a recommendation to the client"
+      ],
+      "modelAnswer": "A bid that much lower than the other two is a signal to look closer, not a reason to celebrate a great deal or to dismiss it outright. I'd first check whether they've actually priced the same scope, since a missing item or a misunderstood specification could easily explain that kind of gap. If the scope genuinely matches, I'd go back to the contractor and ask them to walk me through how they got there, because sometimes it's a legitimate different method of working, but sometimes it's a pricing error they haven't caught yet, and it's much better for everyone to find that out before the contract is signed rather than after. I'd present the client with my findings and a clear recommendation, rather than just handing over the lowest number and letting them assume cheaper automatically means better value."
+    },
+    "commonMistakes": [
+      "Automatically recommending the lowest bid without investigation",
+      "Automatically disqualifying the outlier without checking the reason",
+      "Not going back to the contractor to clarify before making a recommendation"
+    ],
+    "followUps": ["What would you do if the contractor confirmed the low price but you still suspected they'd made an error?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Material price shocks mid-contract",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "market-risk", "client-advice"],
+    "question": "Three months into a fixed-price contract, the price of steel spikes sharply due to a global supply shock. The contractor comes to you asking for relief. How would you handle it?",
+    "lookingFor": "Ability to separate contractual entitlement from commercial reality, and to advise the client honestly on both.",
+    "idealAnswer": {
+      "bullets": [
+        "Check the contract first: whether it's genuinely fixed price with no fluctuations mechanism, which usually means the contractor bears this risk",
+        "Distinguish contractual entitlement from commercial reality, since a contractor pushed into serious loss can still put the project at risk through insolvency or poor-quality shortcuts",
+        "Advise the client honestly on both the legal position and the practical risk of refusing all relief"
+      ],
+      "modelAnswer": "I'd start by checking the contract, and if it's genuinely fixed price with no fluctuations clause, then strictly speaking that risk sits with the contractor and they aren't contractually entitled to relief. But I wouldn't stop there, because if the price shock is severe enough to genuinely threaten their ability to complete the project, refusing to engage at all could leave the client facing something much worse, like the contractor cutting corners or becoming insolvent mid-build. I'd advise the client on both the legal position and the commercial risk honestly, and I might suggest a partial goodwill gesture or an agreed variation on remaining unbought steel, framed clearly as commercial pragmatism and not a precedent that changes the contract's risk allocation."
+    },
+    "commonMistakes": [
+      "Only citing the contract with no consideration of commercial risk to the client",
+      "Recommending full relief without checking contractual entitlement first",
+      "Not distinguishing a legal answer from a practical business decision"
+    ],
+    "followUps": ["How would you make sure a goodwill gesture here doesn't set an unwanted precedent for future variations?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Dispute resolution routes",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["disputes", "adjudication", "contracts"],
+    "question": "If a payment dispute arises on a construction contract, why might adjudication often be preferred over going straight to arbitration or litigation?",
+    "lookingFor": "Understanding of adjudication's speed and cash-flow protection role in construction disputes, and awareness it's not always final.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain adjudication is designed to be fast, often decided within twenty-eight days, to protect cash flow on live projects",
+        "Contrast with arbitration or litigation, which are slower and more expensive but produce a more final, binding outcome",
+        "Note adjudication decisions are only temporarily binding, so a party can still pursue arbitration or litigation afterward"
+      ],
+      "modelAnswer": "Adjudication exists because construction disputes over payment can seriously damage a project's cash flow if they drag on for months, so it's built to force a decision within about twenty-eight days, keeping money moving even while the underlying disagreement is still unresolved. Arbitration and litigation take much longer and cost far more, but they produce a genuinely final and binding result, whereas an adjudicator's decision is only binding until either side chooses to reopen it through arbitration or the courts. I'd think of adjudication as a way to keep a live project moving without pretending it always gives the last word on who's actually right."
+    },
+    "commonMistakes": [
+      "Describing adjudication as always final and binding",
+      "Not explaining why speed matters specifically for live construction projects",
+      "Confusing adjudication with mediation"
+    ],
+    "followUps": ["Why might a party still choose to pursue arbitration after losing at adjudication?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Standard forms of contract",
+    "program": "Quantity Surveying",
+    "difficulty": "hard",
+    "tags": ["contracts", "nec", "jct"],
+    "question": "NEC and JCT are both widely used standard forms, but they're often described as having quite different philosophies. What's the real difference, in your understanding?",
+    "lookingFor": "Genuine comparative understanding of contract philosophy, not just naming both forms.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain NEC's collaborative, proactive philosophy, built around early warning notices and mutual trust clauses",
+        "Explain JCT's more traditional, reactive philosophy, addressing issues through defined mechanisms once problems arise",
+        "Give a reasoned view or example of which suits which type of project"
+      ],
+      "modelAnswer": "NEC is built around a proactive, collaborative philosophy, where parties are contractually obliged to flag problems early through early warning notices, so issues get managed before they become disputes. JCT tends to be more traditional and reactive, with well-established mechanisms for handling variations, extensions of time and loss and expense once something has actually happened, but less built-in incentive to surface problems in advance. I think NEC suits complex or high-risk projects where early collaboration genuinely changes outcomes, like major infrastructure, while JCT's familiarity and clearly defined processes can suit more straightforward building projects where the parties value predictability over proactive collaboration."
+    },
+    "commonMistakes": [
+      "Only naming the forms without describing their underlying philosophy",
+      "Claiming one form is simply better than the other in all cases",
+      "Confusing contract philosophy with procurement route"
+    ],
+    "followUps": ["What's an early warning notice under NEC, and what happens if a party fails to give one?"]
+  },
+  {
+    "id": "prog-quantity-surveying-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Sustainability certification cost premium",
+    "program": "Quantity Surveying",
+    "difficulty": "medium",
+    "tags": ["sustainability", "breeam", "cost-value"],
+    "question": "A client is deciding whether it's worth paying more upfront to achieve a BREEAM excellent rating. How would you help them think through that decision?",
+    "lookingFor": "Ability to frame a sustainability certification decision as a genuine cost-benefit exercise tailored to the client's specific goals.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the actual cost premium, since it varies hugely by building type and how far the base design already meets the criteria",
+        "Weigh it against the client's specific benefit, such as rental premium, tenant demand, planning requirements, or funding conditions",
+        "Avoid treating certification as automatically worth it or automatically a vanity cost, and instead quantify for this client"
+      ],
+      "modelAnswer": "I'd start by finding out how far the current design already sits from an excellent rating, because the marginal cost premium depends heavily on that, not on some fixed industry percentage. Then I'd want to understand what's actually driving the client's interest, whether it's a planning condition, a lender requirement, or a genuine belief that certified buildings command a rental premium and attract tenants faster, because each of those changes how I'd value the benefit side of the equation. I wouldn't just say it's always worth it or always a vanity cost, I'd want to put a real number on both sides for this specific building and this specific client's goals, then let them make an informed decision rather than a values-based guess."
+    },
+    "commonMistakes": [
+      "Treating BREEAM as automatically worth the extra cost without quantifying it",
+      "Dismissing sustainability certification as purely a marketing exercise",
+      "Not tailoring the analysis to the client's actual goals, such as resale, letting, or planning requirements"
+    ],
+    "followUps": ["What evidence would you look for to justify a rental or resale premium claim to a skeptical client?"]
+  }
+]

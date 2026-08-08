@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-strength-conditioning-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Progressive overload as an applicant explains it",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["physiology", "programming", "fundamentals"],
+    "question": "Explain progressive overload to me as if I've never trained a day in my life. Why does the body actually respond to it?",
+    "lookingFor": "A clear explanation of the principle plus the physiological mechanism behind it, not just a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "Define progressive overload as gradually increasing demand (load, volume, or difficulty) so the body must adapt",
+        "Explain the mechanism: mechanical tension and metabolic stress trigger muscle protein synthesis and neural adaptation",
+        "Give a concrete example of applying it safely over weeks, not just adding weight blindly"
+      ],
+      "modelAnswer": "Progressive overload just means you keep giving the body a reason to change, by gradually asking it to do a bit more than it's used to, whether that's more weight, more reps, or less rest. The reason it works is that tension and fatigue on the muscle and nervous system act as a signal, the body doesn't want to be caught out again so it builds more contractile protein and gets better at recruiting motor units. What I find interesting is that overload doesn't have to mean heavier every single week, you can progress through range of motion or tempo just as validly, which is something a lot of gym-goers get wrong."
+    },
+    "commonMistakes": [
+      "Treating progressive overload as 'always add more weight' and ignoring other variables",
+      "Giving the definition with no physiological reasoning behind it",
+      "Confusing progressive overload with simply training harder every session"
+    ],
+    "followUps": ["How would you apply this differently to a beginner versus an elite athlete?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Periodization model trade-offs",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["periodization", "programming", "planning"],
+    "question": "What's the difference between linear and undulating periodization, and when might you choose one over the other?",
+    "lookingFor": "Understanding of both models' structure and a reasoned judgement on context, not textbook recitation only.",
+    "idealAnswer": {
+      "bullets": [
+        "Define linear periodization: progressive shift from high volume/low intensity to low volume/high intensity over a macrocycle",
+        "Define undulating periodization: variation of volume/intensity within shorter cycles, daily or weekly",
+        "Give a reasoned example of which suits which athlete or sport phase"
+      ],
+      "modelAnswer": "Linear periodization builds in blocks, so you might spend weeks on hypertrophy, then move to strength, then peak for power, with volume dropping as intensity rises. Undulating periodization changes the emphasis much more often, sometimes day to day, so a lifter might do a heavy day, a volume day, and a power day in the same week. I think linear suits someone with one clear competition to peak for, like a powerlifter, while undulating fits team sport athletes who need to maintain several qualities at once through a long season without ever fully detraining any of them."
+    },
+    "commonMistakes": [
+      "Only naming the terms without explaining the structural difference",
+      "Claiming one model is objectively superior in all contexts",
+      "Confusing periodization with simple progressive overload"
+    ],
+    "followUps": ["How would in-season periodization for a football player differ from off-season?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Strength versus power distinction",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["biomechanics", "terminology", "performance"],
+    "question": "A lot of people use 'strength' and 'power' interchangeably. How would you distinguish them, and why does the distinction matter for training?",
+    "lookingFor": "Correct physics-based distinction, force versus force times velocity, applied to training implications.",
+    "idealAnswer": {
+      "bullets": [
+        "Define strength as maximal force production capacity",
+        "Define power as the rate of doing work, force multiplied by velocity",
+        "Explain why training methods differ, heavy slow lifts versus explosive or ballistic work"
+      ],
+      "modelAnswer": "Strength is really about how much force you can produce, regardless of how fast, which is why a max deadlift is a pure strength test. Power brings time into it, it's force multiplied by velocity, so it's about how quickly you can express that force, which matters far more in a sprint start or a jump. The distinction matters because training for pure strength usually means heavy loads and slower bar speeds, while power training uses lighter loads moved explosively, or plyometrics, and a lot of sports actually need the power end of that spectrum more than raw strength."
+    },
+    "commonMistakes": [
+      "Treating strength and power as synonyms",
+      "Leaving out the time or velocity component of power",
+      "Failing to connect the definitions to actual training method differences"
+    ],
+    "followUps": ["Can someone be very strong but not very powerful? Give an example."]
+  },
+  {
+    "id": "prog-strength-conditioning-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Mechanism behind delayed onset muscle soreness",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["physiology", "recovery", "misconceptions"],
+    "question": "What actually causes delayed onset muscle soreness, and is soreness a good marker of an effective session?",
+    "lookingFor": "Correct current understanding of DOMS plus a critical stance on using soreness as a training marker.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that DOMS comes from microscopic muscle damage and the resulting inflammatory response, especially after eccentric or unfamiliar loading",
+        "Correct the outdated lactic acid myth",
+        "Argue that soreness is an unreliable measure of session quality or progress"
+      ],
+      "modelAnswer": "DOMS comes from small tears in the muscle fibres and connective tissue, mostly from eccentric loading you're not used to, and the ache you feel a day or two later is really the inflammatory repair process kicking in. It's not lactic acid, that gets cleared within an hour or so of finishing exercise, so that explanation doesn't hold up. I'd be cautious about chasing soreness as proof a session worked, because you can get huge adaptation from a well-programmed session with barely any soreness, and constantly training to be sore just risks digging a recovery hole."
+    },
+    "commonMistakes": [
+      "Blaming lactic acid buildup for delayed soreness",
+      "Treating soreness as the goal of every session",
+      "Not distinguishing DOMS from acute injury pain"
+    ],
+    "followUps": ["How would you coach a beginner who thinks no soreness means no progress?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Recognising overtraining versus normal fatigue",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["recovery", "monitoring", "athlete-welfare"],
+    "question": "How would you tell the difference between an athlete who's just tired from training and one who's heading toward overtraining syndrome?",
+    "lookingFor": "Knowledge of objective and subjective markers plus appreciation that overtraining is a syndrome, not a single bad week.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish functional overreaching, short-term and recoverable, from non-functional overreaching and overtraining syndrome, prolonged and systemic",
+        "List markers: persistent performance decline, mood disturbance, resting heart rate or HRV changes, sleep disruption, illness frequency",
+        "Emphasise that overtraining is diagnosed over weeks, using trends, not a single tired session"
+      ],
+      "modelAnswer": "Normal fatigue usually clears within a few days of easier training, whereas overtraining syndrome is a much longer pattern, sometimes weeks, where performance keeps dropping despite rest. I'd want to look at trends rather than one bad day, things like resting heart rate or heart rate variability drifting in the wrong direction, mood and sleep getting worse, and the athlete picking up more minor illnesses than usual. The tricky part is that a short dip, what's sometimes called functional overreaching, can actually be a useful and planned part of a training block, so the real skill is knowing whether the athlete bounces back after a taper or keeps sliding."
+    },
+    "commonMistakes": [
+      "Treating any single fatigued session as overtraining",
+      "Listing symptoms with no timeframe or trend-based reasoning",
+      "Not distinguishing planned overreaching from harmful overtraining"
+    ],
+    "followUps": ["What would you actually measure week to week to catch this early?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Matching energy systems to sport demands",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["physiology", "energy-systems", "sport-specificity"],
+    "question": "How would you design conditioning differently for a 100m sprinter versus a marathon runner, in terms of energy systems?",
+    "lookingFor": "Correct application of the three energy systems to training design, not just naming them.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify that sprinting relies mainly on the ATP-PCr system, with some glycolytic contribution",
+        "Identify that marathon running relies predominantly on the aerobic, oxidative system",
+        "Translate this into different conditioning approaches: short maximal efforts with full recovery versus sustained aerobic volume"
+      ],
+      "modelAnswer": "A 100m sprint lasts under 10 seconds, so it's fuelled almost entirely by the ATP-PCr system, with the glycolytic system starting to contribute if the effort runs longer. That means a sprinter's conditioning should be short, maximal efforts with long recovery, so each rep stays high quality rather than turning into a fitness session. A marathon is the opposite end of the spectrum, it's dominated by the aerobic system, so training needs to build mitochondrial density and fat oxidation through sustained volume, and flooding a sprinter's program with that kind of work would actually blunt their explosiveness."
+    },
+    "commonMistakes": [
+      "Naming the energy systems correctly but not connecting them to actual programming choices",
+      "Prescribing generic cardio for both athletes",
+      "Ignoring that most sports use a blend rather than one pure system"
+    ],
+    "followUps": ["Where would a 400m runner sit on this spectrum, and how would that change your program?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Stretch-shortening cycle and plyometric risk",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["plyometrics", "biomechanics", "injury-risk"],
+    "question": "What's happening physiologically when an athlete does a depth jump, and why do coaches introduce plyometrics carefully rather than all at once?",
+    "lookingFor": "Understanding of the stretch-shortening cycle and elastic energy storage plus sound risk management reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the stretch-shortening cycle: rapid eccentric loading stores elastic energy in tendons and triggers a stretch reflex, boosting the following concentric action",
+        "Note the reliance on tendon stiffness and neuromuscular timing, which takes time to develop",
+        "Explain why volume and intensity of plyometrics are progressed carefully to avoid tendon and joint overload"
+      ],
+      "modelAnswer": "In a depth jump the muscle and tendon get loaded eccentrically on landing, which stores elastic energy and also triggers a reflex contraction, so the following jump can be more powerful than a jump from a standing start. That whole stretch-shortening cycle depends on the tendon being stiff enough and the nervous system being fast enough to use that stored energy before it's lost as heat, and those qualities take time to build. Coaches introduce plyometrics gradually and control the volume because the forces on landing are so high, if you throw a lot of depth jumps at someone whose tendons aren't ready you're just asking for patellar tendon or Achilles trouble."
+    },
+    "commonMistakes": [
+      "Describing plyometrics as just 'jump training' without explaining the underlying mechanism",
+      "Ignoring the injury risk and progression aspect entirely",
+      "Confusing the stretch-shortening cycle with simple muscle contraction"
+    ],
+    "followUps": ["How would you decide an athlete is ready to progress from box jumps to depth jumps?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of an athlete wanting to train through injury",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["ethics", "athlete-welfare", "dilemma"],
+    "question": "An athlete you're working with is clearly carrying an injury but begs you to let them train through it because a big competition is close. What do you do?",
+    "lookingFor": "Structured ethical reasoning that prioritises athlete welfare over short-term performance, without dismissing the athlete's autonomy.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the tension between the athlete's autonomy and ambition and the coach's duty of care",
+        "Reason through options: modify rather than fully stop, involve medical staff, communicate honestly about risk",
+        "Land on prioritising long-term health over a single competition, while explaining the decision rather than just imposing it"
+      ],
+      "modelAnswer": "I'd want to actually understand what the injury is and get a medical opinion rather than making the call myself, because I'm not qualified to judge tissue-level risk. If it's something that could get seriously worse under load, I think my responsibility is to say no to the version of training they're asking for, even if that's unpopular, because one competition isn't worth a long-term injury. I wouldn't want to just shut them down though, I'd look for what they could still do safely, so they don't feel like their whole preparation has stopped, and I'd be honest with them about why I'm making that call rather than just refusing without explanation."
+    },
+    "commonMistakes": [
+      "Simply deferring to the athlete's wishes because they're desperate to compete",
+      "Refusing outright with no attempt to find a safe alternative",
+      "Not involving medical expertise in the decision"
+    ],
+    "followUps": ["What would you do if the athlete's own doctor cleared them but you still felt uneasy?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Athlete tracking data ownership and privacy",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["technology", "ethics", "current-debate"],
+    "question": "GPS trackers and wearables now generate huge amounts of data on athletes. What's the current debate around how that data is used, and where do you stand?",
+    "lookingFor": "Awareness of a live issue in sport science, data ownership, surveillance, selection use, with a reasoned personal position.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the debate: who owns athlete data, and whether it should be used in contract, selection, or disciplinary decisions",
+        "Note concerns: athletes feeling surveilled, data being used against them without full context, unequal access to interpretation",
+        "Give a reasoned personal position, ideally balancing performance benefit against athlete rights"
+      ],
+      "modelAnswer": "There's a real tension right now around whether wearable and GPS data belongs to the athlete or the club, and whether that data should be able to influence contract or selection decisions, especially when the athlete has no say in how it's interpreted. I think the data is genuinely useful for load management and injury prevention, that part isn't controversial, but I'm uneasy about it being used punitively without the athlete having access to their own numbers or a say in the conversation. My view is that athletes should at minimum be able to see and contextualise their own data before it's used to make a decision about them."
+    },
+    "commonMistakes": [
+      "Not being aware there is an active debate at all",
+      "Giving a purely technical answer about what wearables measure with no ethical dimension",
+      "Taking a position with no reasoning behind it"
+    ],
+    "followUps": ["Should athletes be able to opt out of tracking? What would that cost the team?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing a return-to-play program hypothetical",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["rehabilitation", "programming", "hypothetical"],
+    "question": "Imagine you're building a return-to-play strength program for an athlete nine months post-ACL reconstruction. What would guide your decisions?",
+    "lookingFor": "Structured reasoning around criteria-based progression rather than a fixed timeline, showing awareness of reinjury risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Emphasise criteria-based progression, strength symmetry, hop test performance, movement quality, over calendar time alone",
+        "Mention graded exposure to sport-specific demands: change of direction, deceleration, contact",
+        "Acknowledge the psychological readiness component alongside physical readiness"
+      ],
+      "modelAnswer": "I wouldn't just go by the nine months on the calendar, I'd want to see objective criteria met first, things like quad strength within around 90 percent of the uninjured leg and symmetric hop test results, because time alone doesn't tell you the tissue or the movement pattern is actually ready. I'd build up gradually from controlled strength work into deceleration and change of direction drills before reintroducing anything unpredictable like contact or reactive agility, since those uncontrolled moments are where a lot of reinjuries happen. I'd also pay attention to how confident the athlete actually feels cutting on that knee, because fear of reinjury changes movement mechanics just as much as any physical deficit does."
+    },
+    "commonMistakes": [
+      "Relying purely on elapsed time since surgery as the return criterion",
+      "Ignoring the psychological readiness component",
+      "Jumping straight to full sport participation without a graded exposure phase"
+    ],
+    "followUps": ["What would make you delay clearance even if the strength numbers looked fine?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Early sport specialization debate",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["youth-athletes", "current-debate", "ltad"],
+    "question": "There's growing debate about children specialising in one sport very young. What's your view, and what does the research generally suggest?",
+    "lookingFor": "Awareness of long-term athletic development principles and the specialization-versus-injury or burnout tension.",
+    "idealAnswer": {
+      "bullets": [
+        "Note the research trend linking early single-sport specialization to higher overuse injury and burnout risk",
+        "Reference the general logic of long-term athletic development models favouring broad movement competency before specialising",
+        "Give a nuanced personal view acknowledging exceptions, such as early-peaking technical sports like gymnastics"
+      ],
+      "modelAnswer": "The general research picture suggests that specialising very young in one sport is linked to higher rates of overuse injury and burnout, partly because the same joints and movement patterns get repetitively loaded without the variety that a developing body benefits from. Long-term athletic development models generally argue for building broad physical literacy first, running, jumping, throwing, catching, before narrowing into one sport in the mid-teens. I do think there are exceptions, sports like gymnastics or figure skating where elite performance really does require an early start, but even there I'd want to see it paired with proper load monitoring rather than just assuming more is better."
+    },
+    "commonMistakes": [
+      "Giving a blanket opinion with no reference to research or LTAD frameworks",
+      "Ignoring legitimate exceptions in early-peaking technical sports",
+      "Confusing early specialization with early participation in sport generally"
+    ],
+    "followUps": ["How would you advise a parent whose ten-year-old wants to train one sport year-round?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "RPE-based autoregulation versus fixed percentages",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["programming", "autoregulation", "monitoring"],
+    "question": "Some programs use fixed percentages of 1RM, others use RPE or RIR. What are the trade-offs between the two approaches?",
+    "lookingFor": "Understanding of both methods and a reasoned view of when autoregulation adds value.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain fixed percentage programming: prescribed load based on a tested or estimated one rep max",
+        "Explain RPE or RIR autoregulation: load adjusted daily based on perceived effort or reps in reserve",
+        "Discuss trade-offs: percentages are predictable but ignore daily readiness, RPE adapts to fatigue but relies on athlete honesty and experience"
+      ],
+      "modelAnswer": "Fixed percentages give you a clean, predictable plan based on a tested one rep max, which is easy to program and track over a block. The problem is they assume the athlete's capacity is the same every single day, which it isn't, sleep, stress, and accumulated fatigue all shift what's actually a hard set on a given day. RPE or reps in reserve tries to fix that by letting the athlete or coach adjust the load to how it actually feels, so a prescribed RPE 8 might mean a slightly lighter bar on a rough day, but that only works well once the athlete has enough experience to rate their effort honestly rather than just guessing."
+    },
+    "commonMistakes": [
+      "Treating one method as universally correct with no situational reasoning",
+      "Not acknowledging that RPE accuracy depends on athlete experience",
+      "Confusing RPE with RIR without distinguishing the two"
+    ],
+    "followUps": ["Would you trust RPE ratings from a first-year athlete? Why or why not?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Return-to-play protocol after concussion",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["safety", "concussion", "protocol"],
+    "question": "Why do modern return-to-play protocols after a concussion involve a graded, stepwise process rather than just resting until symptoms disappear?",
+    "lookingFor": "Understanding of graded exertion protocols and why premature return carries serious risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the stepwise return-to-play protocol: rest, light aerobic activity, sport-specific exercise, non-contact drills, full contact, return",
+        "Note that each stage tests whether symptoms return under increasing physiological and cognitive load",
+        "Explain the risk of second impact syndrome or prolonged recovery if an athlete returns too early"
+      ],
+      "modelAnswer": "The reason it's staged rather than just rest-then-return is that symptoms disappearing at rest doesn't mean the brain is actually ready for the physical and cognitive load of full training, so each step gradually reintroduces exertion and checks whether symptoms come back before moving on. If symptoms return at any stage, the athlete drops back down rather than pushing through, which stops a premature return turning into a much longer setback. It matters a lot because a second head impact before the brain has fully recovered carries a real risk of much more serious and sometimes catastrophic injury, so the caution in the protocol isn't excessive, it's necessary."
+    },
+    "commonMistakes": [
+      "Assuming symptom-free at rest means fully recovered",
+      "Not knowing the stepwise structure of standard protocols",
+      "Downplaying the seriousness of returning too early"
+    ],
+    "followUps": ["Who should have the final say on clearance, the coach, the athlete, or a medical professional?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Public perception versus evidence on creatine",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["nutrition", "supplements", "current-debate"],
+    "question": "Creatine has a lot of public myths around it, kidney damage, being 'like steroids'. What does the evidence actually say, and why do you think the myths persist?",
+    "lookingFor": "Accurate evidence-based knowledge plus insight into why misinformation spreads.",
+    "idealAnswer": {
+      "bullets": [
+        "State that creatine monohydrate is one of the most researched supplements and evidence does not support kidney damage in healthy individuals at recommended doses",
+        "Clarify it is not a steroid or hormone, it supports ATP regeneration for short high-intensity efforts",
+        "Offer a reasoned explanation for why the myths persist, such as word association or older poor-quality studies"
+      ],
+      "modelAnswer": "Creatine monohydrate is actually one of the most studied supplements in sport science, and the evidence in healthy people doesn't support the kidney damage claim at normal doses, that fear seems to come from very early studies with methodological issues that never really got corrected in public perception. It's not a steroid at all, it doesn't touch hormone levels, it just helps regenerate ATP faster for short bursts of high intensity effort, which is why it shows up in strength and power sports. I think the myth persists partly because 'creatine' sounds clinical and unfamiliar, and partly because the supplement industry in general has a credibility problem, so people lump a well-evidenced compound in with much shakier products."
+    },
+    "commonMistakes": [
+      "Repeating the kidney damage myth as fact",
+      "Confusing creatine with anabolic steroids",
+      "Giving the correct facts with no insight into why the misinformation spreads"
+    ],
+    "followUps": ["How would you advise a worried parent of a 16-year-old athlete asking about creatine?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Training around the menstrual cycle",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["female-athletes", "current-debate", "physiology"],
+    "question": "There's increasing interest in periodising training around the menstrual cycle for female athletes. What's the current thinking, and how confident is the evidence really?",
+    "lookingFor": "Awareness of the emerging field with appropriate scientific caution rather than overclaiming.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the general hypothesis: hormonal fluctuations across the cycle may affect strength, injury risk such as ACL, and recovery",
+        "Note that the evidence base is still developing and individual variability is high, so blanket rules are risky",
+        "Argue for individualised monitoring, athlete-reported symptoms and tracking, over applying a generic template"
+      ],
+      "modelAnswer": "The idea is that oestrogen and progesterone fluctuations across the cycle might affect things like ligament laxity, strength expression, and recovery, and there's been particular interest in whether ACL injury risk shifts at certain phases. What I'd say honestly is that a lot of this research is still fairly early and individual variability between athletes is huge, so I'd be cautious about applying a rigid one-size-fits-all template based on cycle day alone. I think the more defensible approach right now is tracking how each individual athlete actually reports feeling and performing across her own cycle and adjusting from there, rather than assuming every athlete follows the same pattern the research suggests on average."
+    },
+    "commonMistakes": [
+      "Overstating the certainty of the evidence as if it's fully settled",
+      "Ignoring the topic entirely as if it's not relevant to strength and conditioning",
+      "Applying a generic rule to all female athletes without individualisation"
+    ],
+    "followUps": ["How would you even go about collecting that individual data without it feeling invasive?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics of concealing an athlete's condition from selectors",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["ethics", "dilemma", "professional-integrity"],
+    "question": "A head coach asks you to keep an athlete's fitness concerns quiet from the selection panel because they need them for a big match. What would you do?",
+    "lookingFor": "Reasoned ethical stance prioritising honesty and athlete safety over pressure from authority, while acknowledging the difficulty of the position.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the pressure and power imbalance of being asked this by a head coach",
+        "Reason that withholding relevant safety information from selectors is a breach of professional and ethical duty",
+        "Propose a constructive path: raise the concern directly, escalate to medical staff, or document the disagreement rather than simply complying or refusing loudly"
+      ],
+      "modelAnswer": "I'd feel the pressure of that request, it's not a comfortable position being asked something by the person who essentially oversees your role. But I don't think I could go along with it, because if there's a genuine fitness concern, hiding it from selectors isn't just against the rules, it puts the athlete and possibly others at risk, and that's not something I'd want to have my name attached to. I'd go back to the coach directly, explain why I can't do that, and suggest we loop in the medical team so the decision is made properly, that way I'm not undermining the coach publicly but I'm also not compromising on something I think is a genuine safety issue."
+    },
+    "commonMistakes": [
+      "Simply complying because the request comes from someone senior",
+      "Refusing dramatically with no attempt to handle it professionally",
+      "Not recognising the athlete's wellbeing as the central issue"
+    ],
+    "followUps": ["What would you do if the coach then excluded you from future decisions for refusing?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Diagnosing a training plateau",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["programming", "problem-solving", "hypothetical"],
+    "question": "An athlete tells you they've followed your program exactly for three months but their squat hasn't moved at all. Walk me through how you'd figure out what's going wrong.",
+    "lookingFor": "Structured diagnostic thinking across multiple possible causes rather than jumping to one assumption.",
+    "idealAnswer": {
+      "bullets": [
+        "Check the basics first: is recovery, sleep, nutrition, stress, actually adequate, and is 'exactly' really exact",
+        "Consider programming issues: insufficient overload, poor exercise selection, technique breakdown, or lack of variation",
+        "Consider non-physical causes: measurement error, testing conditions, or psychological factors like fear under heavier loads"
+      ],
+      "modelAnswer": "First I'd actually sit down with them and check what 'followed it exactly' really means, sometimes life gets in the way and sessions get shortened or skipped without the athlete really registering it as a deviation. Assuming the program really was followed, I'd look at recovery next, because a perfectly designed program on too little sleep or under a lot of outside stress won't produce much adaptation. If recovery looks fine, I'd look at the program itself, whether the overload has actually been progressive or whether it's been the same weight for weeks, and I'd also want to watch them lift, because sometimes a plateau is really a technical breakdown or even hesitation under heavier loads rather than a true strength ceiling."
+    },
+    "commonMistakes": [
+      "Assuming the only possible cause is insufficient training intensity",
+      "Not checking recovery or life factors outside the gym",
+      "Skipping directly to a program overhaul without diagnosing the actual cause"
+    ],
+    "followUps": ["If it turned out to be a confidence issue under heavy weight, how would you address that?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Aerobic base relevance across sports",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["physiology", "aerobic-training", "sport-specificity"],
+    "question": "Why might a strength coach still care about an athlete's aerobic base, even in a sport that looks mostly about power, like rugby or basketball?",
+    "lookingFor": "Understanding that aerobic capacity underpins recovery between efforts even in anaerobic-dominant sports.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that most team sports are repeated-sprint sports, and recovery between high-intensity efforts depends heavily on the aerobic system",
+        "Note aerobic base supports faster recovery of phosphocreatine stores between sprints",
+        "Acknowledge the balance needed so aerobic work doesn't dilute power and speed qualities"
+      ],
+      "modelAnswer": "Even though rugby or basketball look dominated by explosive actions, those actions are repeated many times across a match, and it's actually the aerobic system that clears fatigue and helps restore phosphocreatine between those bursts. So an athlete with a poor aerobic base might hit a great top speed early on but fade badly by the second half, not because their power output dropped permanently but because they can't recover quickly enough between efforts. The balancing act for a strength coach is building enough aerobic capacity to support that repeated effort without piling on so much steady-state work that it blunts the very power and speed qualities the sport actually needs."
+    },
+    "commonMistakes": [
+      "Assuming power sports have no meaningful aerobic component",
+      "Recommending heavy distance running without considering the interference effect on power",
+      "Not connecting aerobic capacity to between-effort recovery specifically"
+    ],
+    "followUps": ["How would you train that aerobic quality without it interfering with sprint speed?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Youth resistance training and growth plate myth",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["youth-athletes", "misconceptions", "safety"],
+    "question": "Parents often worry that lifting weights will stunt a child's growth or damage their growth plates. What does the evidence actually say?",
+    "lookingFor": "Accurate correction of a persistent myth with an appreciation of what real precautions are needed.",
+    "idealAnswer": {
+      "bullets": [
+        "State that current evidence does not support resistance training stunting growth when properly supervised and programmed",
+        "Clarify actual risk comes from poor technique, excessive load, or lack of supervision, not resistance training itself",
+        "Note the benefits: bone density, coordination, and injury resilience when introduced appropriately"
+      ],
+      "modelAnswer": "The research doesn't actually support the idea that supervised resistance training stunts growth or damages growth plates, that fear seems to come more from anecdotal injury reports than from controlled evidence, and several major paediatric and sports medicine bodies now actively endorse youth resistance training. The real risk isn't the training itself, it's poor supervision, bad technique, or loading that's inappropriate for the child's stage of development, which is really no different from the risk in any other unsupervised physical activity. Done properly it actually seems to build bone density and movement competency that can protect against injury later, so I'd want to reassure a worried parent while being honest that quality coaching is what makes the difference."
+    },
+    "commonMistakes": [
+      "Repeating the growth plate myth as established fact",
+      "Overselling youth resistance training with no acknowledgement of real supervision needs",
+      "Confusing youth training risk with adult training risk"
+    ],
+    "followUps": ["At what age would you feel comfortable introducing structured resistance training, and why?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "AI-generated training programs, promise and limits",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["technology", "current-debate", "coaching"],
+    "question": "AI apps now generate personalised training programs from wearable data. Do you see that as a threat to strength coaches, or a tool? What can't it replace?",
+    "lookingFor": "Balanced, current awareness of AI in strength and conditioning with a clear view of what human coaching still provides.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge AI's genuine strength: processing large data sets and adjusting load recommendations quickly and consistently",
+        "Identify what AI struggles with: reading movement quality live, life context, building trust and buy-in, in-the-moment coaching cues",
+        "Give a reasoned personal position on how the two should coexist rather than a simple threat or no-threat answer"
+      ],
+      "modelAnswer": "I think it's genuinely useful as a tool, an algorithm can process someone's sleep, HRV and training history far faster than a coach can and flag when load should probably come down, that kind of pattern recognition is a real strength. What it can't do is watch someone's bar path in real time and catch a subtle technical breakdown before it becomes an injury, or notice that an athlete seems flat today because of something going on outside the gym that no wearable would ever capture. My honest view is that it's a threat to coaches who only offer generic programming with no relationship or eye for movement, but it's a tool for coaches who use it to free up time for the coaching that actually needs a human in the room."
+    },
+    "commonMistakes": [
+      "Dismissing AI tools as irrelevant to real coaching",
+      "Claiming AI can fully replace human coaching judgement",
+      "Giving a vague 'it's both good and bad' answer with no specifics"
+    ],
+    "followUps": ["How would you personally decide when to trust the algorithm's recommendation over your own read of the athlete?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Purpose and mechanics of a competition taper",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["programming", "peaking", "recovery"],
+    "question": "Why do athletes reduce training volume before a competition rather than just training hard right up to it?",
+    "lookingFor": "Understanding of the fitness-fatigue relationship and taper mechanics.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the fitness-fatigue model: fitness and fatigue both build with training, but fatigue masks true fitness in the short term",
+        "Explain that reducing volume while maintaining some intensity allows fatigue to dissipate while fitness is largely retained",
+        "Note the risk of tapering too much or too little, both of which cost performance"
+      ],
+      "modelAnswer": "The logic comes from the idea that fitness and fatigue build together during hard training, but fatigue is what's actually masking how fit you've become, so if you tested someone at the end of a brutal block they'd underperform even though they're fitter than ever. A taper drops the volume while keeping some intensity in, so the fatigue clears over a week or two but the fitness adaptations, which last longer, mostly stick around. It's a real balancing act though, taper too little and the athlete is still carrying fatigue on competition day, taper too much or for too long and you actually start to lose some of the fitness you built, so getting the length and the drop-off right is as much art as science."
+    },
+    "commonMistakes": [
+      "Explaining tapering as simply 'resting' with no mechanism",
+      "Not acknowledging the risk of tapering too much",
+      "Confusing taper with a full deload or complete rest"
+    ],
+    "followUps": ["How would a taper differ for a strength sport versus an endurance event?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethics dilemma around reporting suspected doping",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["ethics", "doping", "dilemma"],
+    "question": "You strongly suspect a training partner is using performance-enhancing drugs, but you have no proof. What would you do?",
+    "lookingFor": "Careful ethical reasoning under uncertainty, balancing fairness to the sport against the risk of a false accusation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the difficulty of acting on suspicion without proof, and the harm a wrong accusation could cause",
+        "Reason through appropriate channels: raising concerns with someone qualified, like a governing or anti-doping body, rather than confronting or publicly accusing",
+        "Land on a position that values clean sport while respecting due process"
+      ],
+      "modelAnswer": "Without actual proof I don't think it's my place to confront them directly or say anything publicly, because getting it wrong could destroy someone's reputation and career over a suspicion, and that's a serious thing to get wrong. But I also don't think staying completely silent sits right with me, because doping isn't a victimless choice, it's unfair to everyone else competing clean. I think the right route is to raise what I've noticed with someone who actually has the authority and the proper process to look into it, like an anti-doping body, rather than either accusing them myself or pretending I haven't noticed anything at all."
+    },
+    "commonMistakes": [
+      "Deciding to confront the person directly based on suspicion alone",
+      "Staying completely silent because there's no proof",
+      "Not recognising the seriousness of a false accusation"
+    ],
+    "followUps": ["Would your answer change if the suspected athlete were a close friend?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Athlete workload and burnout in modern competitive structures",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["current-debate", "athlete-welfare", "load-management"],
+    "question": "There's been a lot of discussion about athlete burnout from packed competition schedules and constant travel. What's driving that debate, and what role does a strength and conditioning coach actually play in it?",
+    "lookingFor": "Awareness of a live issue in sport, congested calendars and commercial pressure, plus a grounded view of what strength and conditioning can realistically control.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the driver: commercial and competitive pressure expanding fixture calendars and travel demands beyond what athletes can easily recover from",
+        "Note the tension between organisations wanting more games or events and player welfare bodies pushing back",
+        "Explain the realistic role: load monitoring, advocating with data, managing what's controllable within a schedule the coach doesn't set"
+      ],
+      "modelAnswer": "A lot of this comes down to competition calendars getting more crowded because of commercial pressure, more fixtures, more travel, more tournaments, while the recovery time athletes actually get hasn't grown to match it, and player associations have started pushing back harder on that mismatch. As a strength and conditioning coach I don't get to set the fixture list, but I think the real value I can add is using load data to make an evidence-based case when a schedule looks unsustainable, and managing what is within my control, like adjusting session intensity and prioritising recovery work when the calendar is unavoidably packed. It's a bit of a humbling role in that sense, you're often managing the consequences of a decision made somewhere else entirely."
+    },
+    "commonMistakes": [
+      "Not being aware this is an active, ongoing debate in sport",
+      "Overstating what a strength coach can actually control about the fixture calendar",
+      "Treating burnout as purely a physical issue with no mention of the commercial or structural driver"
+    ],
+    "followUps": ["If you disagreed with a schedule but had no power to change it, what would you actually do?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Programming with limited equipment, resource-constrained hypothetical",
+    "program": "Strength & Conditioning",
+    "difficulty": "medium",
+    "tags": ["programming", "hypothetical", "resourcefulness"],
+    "question": "You're placed at a school with one squat rack, a handful of dumbbells, and forty kids to train in an hour. How would you actually run that session?",
+    "lookingFor": "Practical, resourceful programming reasoning under real-world constraints, not an idealised textbook answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a structure that manages the bottleneck, such as circuits or stations to keep everyone working despite limited equipment",
+        "Prioritise movement quality and bodyweight or dumbbell-based options where the rack is the constraint",
+        "Show awareness of practical logistics: grouping by ability, safety supervision with large numbers"
+      ],
+      "modelAnswer": "With one rack and forty kids, queuing everyone for the squat rack one at a time just wastes the whole session, so I'd set it up as stations, maybe four or five groups rotating through a rack-based lift, a dumbbell-based exercise, a bodyweight strength move and something like a jump or sprint drill, so nobody is standing around. I'd lean on bodyweight and dumbbell variations more heavily than I might with a fully equipped gym, split squats, goblet squats, that kind of thing, because they still build real strength and let more kids work at once safely. I'd also want to group roughly by experience level so I'm not trying to spot a complete beginner and a confident lifter on the same station at the same time, because with that many kids safety has to come before anything fancy in the programming."
+    },
+    "commonMistakes": [
+      "Designing an ideal program that assumes unlimited equipment and time",
+      "Ignoring the safety or supervision challenge of a large group",
+      "Not considering grouping by ability level"
+    ],
+    "followUps": ["How would you keep the less confident kids engaged rather than intimidated in that setup?"]
+  },
+  {
+    "id": "prog-strength-conditioning-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Specificity versus general physical preparedness trade-off",
+    "program": "Strength & Conditioning",
+    "difficulty": "hard",
+    "tags": ["programming", "sport-specificity", "philosophy"],
+    "question": "Some coaches argue training should mimic the sport as closely as possible, others argue general physical preparedness matters more, especially early in an athlete's development. Where do you land, and why?",
+    "lookingFor": "Nuanced reasoning about the specificity versus GPP trade-off across an athlete's development stage, not a one-sided answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the principle of specificity, sometimes called the SAID principle, and its logic for late-stage competition preparation",
+        "Explain the case for general physical preparedness: a broad foundation reduces injury risk and supports long-term development, especially for younger or less trained athletes",
+        "Land on a developmental view: GPP-dominant early, shifting toward specificity closer to competition or at higher training age"
+      ],
+      "modelAnswer": "The specificity argument makes sense on paper, the body adapts specifically to the demands placed on it, so mimicking sport movements should transfer best. But I think that logic works much better for an athlete who's already built a broad physical foundation, if you push specificity onto someone who's undertrained generally, you're often just reinforcing existing weaknesses and movement compensations rather than fixing them. My honest view is that general physical preparedness should dominate early in an athlete's development or training age, building strength, mobility and coordination broadly, and then training can get progressively more specific as competition gets closer or as the athlete matures, rather than treating specificity as the right approach at every stage."
+    },
+    "commonMistakes": [
+      "Picking one side absolutely with no consideration of training age or athlete stage",
+      "Confusing specificity with simply practising the sport more",
+      "Not mentioning the injury-risk argument for a broader foundation"
+    ],
+    "followUps": ["How would you know when an athlete is ready to shift from GPP-dominant to more specific training?"]
+  }
+]

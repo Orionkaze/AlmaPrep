@@ -1,0 +1,752 @@
+[
+  {
+    "id": "prog-electronic-engineering-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Op-amp non-idealities",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "op-amps",
+      "analog-design",
+      "reasoning"
+    ],
+    "question": "A real op-amp isn't the ideal device from the textbook. What non-idealities actually bite you when you build a circuit, and how do you design around them?",
+    "lookingFor": "Understanding that ideal-op-amp analysis is a first approximation, with awareness of real limits like offset, CMRR, and slew rate.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least two real limitations: input offset voltage, finite CMRR, bias current, slew rate, or gain-bandwidth product",
+        "Explain a concrete symptom each one causes in a circuit",
+        "Mention at least one practical mitigation, like choosing a precision part or adding compensation"
+      ],
+      "modelAnswer": "I built a summing amplifier for a school project and couldn't work out why the output had a small but constant error even with zero input, which turned out to be input offset voltage that the ideal model just ignores. Slew rate got me too, when I tried to amplify a fast square wave and the output came out as a slanted ramp instead of a sharp edge, because the op-amp physically couldn't change its output fast enough. Now when I pick an op-amp for a design I actually check the datasheet for offset, bandwidth, and slew rate against what the signal needs, rather than assuming any op-amp will do the job the same way."
+    },
+    "commonMistakes": [
+      "Treating the ideal virtual-short model as always exactly true",
+      "Naming a non-ideality with no real symptom or example",
+      "Not connecting the limitation to a design choice that fixes it"
+    ],
+    "followUps": [
+      "How would slew rate limit the maximum frequency of a large sine wave the amplifier can output cleanly?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Stability and phase margin",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "control-systems",
+      "stability",
+      "feedback"
+    ],
+    "question": "Why can a feedback amplifier that looks fine on paper start oscillating in the real world, and what does phase margin have to do with it?",
+    "lookingFor": "Grasp of stability beyond the basic idea of feedback, connecting loop gain, phase shift, and oscillation risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that extra phase shift builds up through real components at high frequency",
+        "State the instability condition: loop gain of 1 with 180 degrees of phase shift turns negative feedback positive",
+        "Connect phase margin to how much safety buffer a design has before that happens"
+      ],
+      "modelAnswer": "Feedback is meant to be self-correcting, but every real component, wires, parasitic capacitance, the op-amp's own internal stages, adds a bit of phase delay as frequency goes up. If enough delay stacks up that the signal comes back shifted by a full 180 degrees right where the loop gain is still 1, the negative feedback has effectively flipped into positive feedback and the circuit rings or oscillates instead of settling. Phase margin is basically how much extra phase shift you can tolerate before you hit that danger point, so when I'm choosing compensation or gain settings I think of it as a safety margin, not just a number to satisfy a spec sheet."
+    },
+    "commonMistakes": [
+      "Describing feedback as automatically stable with no mention of phase",
+      "Confusing gain margin and phase margin, or ignoring frequency dependence entirely",
+      "Giving a purely mathematical answer with no physical intuition for where the phase shift comes from"
+    ],
+    "followUps": [
+      "What would you do to a circuit's design if you measured a phase margin of only 10 degrees?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "FIR versus IIR filters",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "dsp",
+      "filters",
+      "tradeoffs"
+    ],
+    "question": "If you were designing a digital filter for a signal-processing task, when would you choose an FIR filter over an IIR filter, and why?",
+    "lookingFor": "Understanding of the core tradeoff between linear phase and stability versus computational efficiency.",
+    "idealAnswer": {
+      "bullets": [
+        "State that FIR filters can be designed with exactly linear phase, IIR generally cannot",
+        "Note IIR filters achieve a sharper roll-off with far fewer coefficients, so they're cheaper to compute",
+        "Mention that FIR filters are always stable while IIR filters can become unstable due to feedback"
+      ],
+      "modelAnswer": "I'd lean toward an FIR filter whenever the phase response actually matters, like in audio or biomedical signal work where distorting the timing relationship between frequencies would ruin the shape of the waveform, because FIR filters can be built with exactly linear phase. IIR filters are attractive when you're tight on processing power or memory, since you can get a much steeper cutoff with a handful of coefficients compared to the potentially hundreds an FIR filter might need. The catch is that IIR filters use feedback internally, so they can become unstable if you're not careful with the coefficients, whereas an FIR filter is inherently stable because it only looks at past inputs, never its own output."
+    },
+    "commonMistakes": [
+      "Saying one type is simply 'better' without naming the tradeoff",
+      "Confusing which type gives linear phase",
+      "Not knowing that IIR filters can be unstable"
+    ],
+    "followUps": [
+      "What would happen to the output of an IIR filter if you picked unstable coefficients by mistake?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantization noise and ADC resolution",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "adc",
+      "signal-processing",
+      "quantization"
+    ],
+    "question": "You have a sensor signal you want to digitise. How does the number of bits in your ADC affect the quality of that signal, beyond just how many discrete steps it has?",
+    "lookingFor": "Connects bit depth to quantifiable signal quality, showing understanding of quantization error as a noise-like effect.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that each sample gets rounded to the nearest available level, creating quantization error",
+        "State that this error behaves like added noise, and more bits reduces its size",
+        "Reference the roughly 6 dB of signal-to-noise ratio gained per additional bit"
+      ],
+      "modelAnswer": "Every time the ADC samples the signal it has to round it to the nearest of its available levels, and that rounding error is basically noise stacked on top of your real signal, what people call quantization noise. The fewer bits you have, the coarser those steps are and the bigger that noise floor is relative to your signal, so a low-resolution ADC can genuinely limit how much useful information you get out even if your sampling rate is fine. I remember reading that each extra bit roughly buys you about 6 dB more signal-to-noise ratio, which is why for something like an audio or a precision measurement application you often see engineers pushing for 16, 24, even more bits rather than just accepting whatever's cheapest."
+    },
+    "commonMistakes": [
+      "Thinking resolution only affects the number of displayed digits, not signal quality",
+      "Ignoring the noise-floor framing entirely",
+      "Not distinguishing quantization noise from sampling-rate related aliasing"
+    ],
+    "followUps": [
+      "If a signal is inherently noisy from the sensor itself, does adding more ADC bits keep helping indefinitely?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Impedance matching in RF systems",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "rf",
+      "transmission-lines",
+      "impedance"
+    ],
+    "question": "Why does impedance matter so much when you're sending a high-frequency signal down a cable or trace, and what goes wrong if it's not matched?",
+    "lookingFor": "Physical intuition for reflections on transmission lines at high frequency, not just a memorised formula.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that at high frequency, a trace or cable behaves as a transmission line, not just a wire",
+        "State that a mismatch between source, line, and load impedance causes part of the signal to reflect back",
+        "Describe a real consequence: signal degradation, standing waves, or power loss"
+      ],
+      "modelAnswer": "At low frequency you can mostly treat a wire as a simple connection, but once the signal's wavelength gets comparable to the length of the trace or cable, that trace starts behaving like a transmission line with its own characteristic impedance. If the source, the line, and the load don't all present the same impedance, some of the signal's energy reflects back toward the source instead of being fully absorbed at the load, and those reflections interfere with the forward-travelling signal. In a radio system that shows up as lost transmit power and a distorted, ringing waveform, which is exactly why you see so much care put into 50-ohm matching networks and controlled-impedance PCB traces in RF design."
+    },
+    "commonMistakes": [
+      "Treating impedance matching as only a power-transfer issue with no mention of reflections",
+      "Ignoring the frequency dependence, i.e. why it doesn't matter much at DC",
+      "Vague answer with no physical mechanism for the reflection"
+    ],
+    "followUps": [
+      "What tool or measurement would you use to actually check how well matched a real RF circuit is?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Phase-locked loops and clock jitter",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "plls",
+      "clocking",
+      "phase-noise"
+    ],
+    "question": "What does a phase-locked loop actually do, and why do engineers care so much about phase noise in the clock it produces?",
+    "lookingFor": "Conceptual grasp of PLL operation and why timing precision matters in real digital and RF systems.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the PLL's basic job: locking an oscillator's phase and frequency to a reference using feedback",
+        "Explain phase noise as small random timing fluctuations, not a fixed frequency error",
+        "Connect phase noise to a real consequence, like data errors in communication or reduced ADC accuracy"
+      ],
+      "modelAnswer": "A PLL takes a reference signal and forces a voltage-controlled oscillator to track its frequency and phase using a feedback loop with a phase detector and a filter, which is how you generate a stable, adjustable clock from a fixed reference crystal. Phase noise is the small, random jitter in exactly when each clock edge arrives, rather than the clock's average frequency being wrong, and it matters because that jitter directly limits how precisely you can time-sample a signal or decode a high-speed data stream. In something like a wireless receiver, too much phase noise in the local oscillator can smear a tightly packed constellation of symbols together and cause bit errors, so it's not just an academic spec, it genuinely caps how well the whole system performs."
+    },
+    "commonMistakes": [
+      "Describing a PLL only as 'a clock generator' with no mechanism",
+      "Confusing phase noise with a simple frequency offset",
+      "No connection between phase noise and an actual downstream failure mode"
+    ],
+    "followUps": [
+      "Where in a PLL's loop would you look to try to reduce its phase noise?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Switching power supply operation",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "power-electronics",
+      "efficiency",
+      "circuits"
+    ],
+    "question": "Why do most modern devices use switching regulators like buck converters rather than simple linear regulators to step down voltage?",
+    "lookingFor": "Understanding of the efficiency tradeoff between linear and switching regulation, with a basic sense of how switching regulation works.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a linear regulator dissipates the voltage difference as heat, wasting energy proportional to the drop",
+        "Describe a switching regulator's basic idea: rapidly switching a transistor and storing/releasing energy in an inductor",
+        "State that this lets switching converters achieve much higher efficiency, especially with a large input-output voltage gap"
+      ],
+      "modelAnswer": "A linear regulator basically burns off the extra voltage as heat, so if you're dropping a battery from say 12 volts down to 3.3 volts, most of that energy is wasted rather than delivered to the load, which is a real problem for anything battery powered. A buck converter instead switches a transistor on and off very quickly, storing energy in an inductor during the on phase and releasing it to the output during the off phase, so it's converting voltage rather than just dissipating the excess. That switching approach can hit efficiencies well above 90 percent even with a big voltage drop, which is why almost every modern phone, laptop, or IoT device relies on switching regulation despite the extra circuit complexity and the switching noise it introduces."
+    },
+    "commonMistakes": [
+      "Saying switching regulators are simply 'more efficient' with no explanation of why",
+      "Describing a linear regulator's operation incorrectly, e.g. claiming it also switches",
+      "Ignoring the noise or complexity tradeoff switching regulators introduce"
+    ],
+    "followUps": [
+      "What's a downside of switching regulators that might make you choose a linear regulator instead in some cases?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Thermal limits in IC design",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "thermal",
+      "power-dissipation",
+      "reliability"
+    ],
+    "question": "Why is heat such a fundamental limiting factor in modern chip design, and how do engineers actually manage it?",
+    "lookingFor": "Awareness that power density and heat dissipation, not just transistor count, constrain what a chip can do.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that switching transistors dissipates power as heat, and packing more of them into a smaller area raises power density",
+        "State that excess heat degrades performance and reliability, and beyond a limit can permanently damage the chip",
+        "Name at least one mitigation: heat sinks, dynamic frequency scaling, better process nodes, or architectural choices like multiple lower-power cores"
+      ],
+      "modelAnswer": "Every time a transistor switches it dissipates a little energy as heat, and as chips pack billions of transistors into a few square centimetres, that heat has to go somewhere or the chip's temperature climbs to a point where performance drops and long-term reliability suffers. That's basically why we hit what people call the power wall, where simply cramming in more transistors or clocking them faster stops being viable without exotic cooling. Engineers manage it a few ways at once, better heat sinks and thermal interface materials, dynamic frequency and voltage scaling that throttles the chip when it gets hot, and architecturally favouring more efficient cores or specialised accelerators over just chasing raw clock speed."
+    },
+    "commonMistakes": [
+      "Treating heat as just a packaging afterthought rather than a design constraint",
+      "Not connecting power density to transistor count or clock speed",
+      "Naming no concrete mitigation technique"
+    ],
+    "followUps": [
+      "Why might a chip with more cores running at a lower clock speed sometimes outperform a chip with fewer cores at a higher clock speed?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Signal integrity in high-speed PCB design",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "signal-integrity",
+      "pcb",
+      "emi"
+    ],
+    "question": "As digital signals get faster, PCB layout stops being just about connecting components. What problems start to matter, and why?",
+    "lookingFor": "Recognition that at high speed, layout itself becomes an electrical design problem, not just a mechanical one.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that fast edges make traces behave like transmission lines requiring controlled impedance",
+        "Name at least one specific issue: crosstalk between adjacent traces, ground bounce, or reflections from impedance discontinuities",
+        "Mention that unintended radiation can cause EMI problems and fail regulatory compliance"
+      ],
+      "modelAnswer": "Once your signal edges get fast enough, a trace on a board stops being a simple wire and starts behaving like a transmission line, so things like trace width, spacing from the ground plane, and via placement all affect its impedance and therefore signal quality. Traces routed too close together can couple energy into each other through crosstalk, and a poorly designed ground return path can cause ground bounce that corrupts logic levels right when a device is trying to switch cleanly. On top of the signal quality issues, fast edges with sharp transitions radiate electromagnetic energy more efficiently, so a badly laid out high-speed board can fail EMC compliance testing even if every individual component works perfectly on its own."
+    },
+    "commonMistakes": [
+      "Treating PCB layout as purely mechanical, with no electrical consequences",
+      "Naming only one issue without explaining the underlying cause",
+      "Missing the EMC/regulatory angle entirely"
+    ],
+    "followUps": [
+      "What's one concrete layout technique you'd use to reduce crosstalk between two adjacent high-speed traces?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "FPGA versus ASIC tradeoffs",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "fpga",
+      "asic",
+      "design-tradeoffs"
+    ],
+    "question": "If you were designing a new digital product, how would you decide between implementing the logic on an FPGA versus designing a custom ASIC?",
+    "lookingFor": "Ability to reason through the cost, flexibility, and volume tradeoffs that drive real engineering decisions, not just definitions.",
+    "idealAnswer": {
+      "bullets": [
+        "State that FPGAs are reprogrammable and have low upfront cost but higher per-unit cost and lower peak performance",
+        "State that ASICs require expensive, non-recoverable design and fabrication costs but are far cheaper and more efficient at high volume",
+        "Frame the decision around production volume, time-to-market, and the risk of needing to change the design later"
+      ],
+      "modelAnswer": "I'd think about it mainly through volume and how settled the design is. An FPGA lets you get something working quickly and reprogram it if you find a bug or want to change the logic later, which makes it great for prototyping, low-volume products, or anything where the spec might still shift. An ASIC costs a huge amount upfront for the design and mask fabrication and you can't change it once it's made, but at high volumes that cost gets spread out and the per-unit price, power consumption, and performance are all dramatically better than an FPGA doing the same job. So for a product I expected to sell in the millions with a stable, well-verified design, I'd push toward an ASIC, but for anything early-stage or lower volume an FPGA is the safer, faster choice."
+    },
+    "commonMistakes": [
+      "Describing only what each technology is, with no decision framework",
+      "Ignoring the non-recoverable engineering cost of ASICs",
+      "Assuming ASICs are always 'better' regardless of volume"
+    ],
+    "followUps": [
+      "What would you do if you started on an FPGA but the product later needed to scale to millions of units?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "RISC-V and open instruction set architectures",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "risc-v",
+      "current-development",
+      "chip-industry"
+    ],
+    "question": "You may have come across RISC-V in the news. What is it, and why is its rise seen as a significant shift in the chip industry?",
+    "lookingFor": "Awareness of a genuine current development, understood in context rather than as a memorised buzzword.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that RISC-V is an open, royalty-free instruction set architecture, unlike proprietary ISAs like x86 or Arm",
+        "State why openness matters: companies can design custom chips without licensing fees or restrictions",
+        "Note a real-world driver, such as reducing dependency on a small number of foreign chip architecture licensors"
+      ],
+      "modelAnswer": "RISC-V is an open instruction set architecture, meaning the specification for how the processor's instructions work is free for anyone to implement, unlike x86 which is controlled by Intel and AMD or Arm which requires a licence. That openness matters a lot commercially, because a company can design a custom chip tailored exactly to its product without paying ongoing licence fees or being locked into another company's roadmap, which is a big reason you're seeing it pop up in everything from microcontrollers to data centre chips. I think the geopolitical angle is just as interesting, since countries and companies worried about depending on foreign-controlled architectures see RISC-V as a way to build chip capability that isn't subject to another nation's export controls."
+    },
+    "commonMistakes": [
+      "Confusing RISC-V with a specific chip or product rather than an instruction set standard",
+      "Not explaining why openness actually matters commercially",
+      "A purely technical answer that misses the current industry context"
+    ],
+    "followUps": [
+      "What's a tradeoff or risk that comes with an open standard like RISC-V compared to a tightly controlled one like Arm?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Global semiconductor supply chain",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "supply-chain",
+      "current-development",
+      "geopolitics"
+    ],
+    "question": "The last few years saw a global chip shortage disrupt everything from cars to game consoles. What made the semiconductor supply chain so vulnerable to that kind of disruption?",
+    "lookingFor": "Systems-level awareness of how concentrated and specialised chip manufacturing is, beyond just 'there weren't enough chips'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that advanced chip fabrication is extremely capital-intensive and concentrated in a handful of foundries, notably in Taiwan",
+        "Note that building new fab capacity takes years, so supply can't respond quickly to a sudden demand spike",
+        "Mention a real trigger or consequence, like pandemic demand shifts, or policy responses such as the CHIPS Act"
+      ],
+      "modelAnswer": "What struck me learning about the chip shortage is how concentrated advanced chip manufacturing actually is, a huge share of the world's most advanced chips comes from a small number of fabs, especially TSMC in Taiwan, because building a leading-edge fab costs tens of billions of dollars and takes years to plan and construct. When demand suddenly shifted during the pandemic, first dropping as car makers cancelled orders and then spiking as remote work drove demand for laptops and other electronics, that rigid, long-lead-time supply chain simply couldn't flex fast enough, and the industries that got squeezed hardest, like car manufacturers, were the ones that had cancelled their orders and lost their place in the queue. It's part of why you've since seen governments push legislation like the CHIPS Act to fund domestic fab capacity, treating chip production almost like a strategic resource rather than a normal commodity."
+    },
+    "commonMistakes": [
+      "Blaming the shortage on a single simple cause with no systems view",
+      "Not mentioning the geographic concentration of advanced fabrication",
+      "Vague awareness with no specific example or policy response"
+    ],
+    "followUps": [
+      "Do you think it's realistic for a country to become fully self-sufficient in advanced chip manufacturing? Why or why not?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Export controls on advanced chips",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "geopolitics",
+      "current-debate"
+    ],
+    "question": "Governments have started restricting exports of advanced chips and chip-making equipment to certain countries. As a future engineer, how do you think about the ethics of that kind of policy?",
+    "lookingFor": "Balanced reasoning about the tension between national security, global collaboration, and unintended consequences, not a one-sided verdict.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the stated rationale: preventing advanced chips from powering military or surveillance applications",
+        "Weigh a real cost: restrictions can slow global research collaboration and hurt civilian applications and economies",
+        "Reach a considered position rather than simply agreeing or disagreeing outright"
+      ],
+      "modelAnswer": "I can see the logic behind these restrictions, advanced chips genuinely do underpin things like military systems and mass surveillance, so a government limiting who can access the most cutting-edge fabrication technology isn't an unreasonable instinct if you're worried about how it might be used. At the same time, I think it's worth being honest that these controls also slow down legitimate scientific collaboration and can hurt ordinary civilian industries and researchers in the restricted countries who had nothing to do with military applications, and history suggests restricted countries often just accelerate their own domestic alternatives instead of staying behind. My own view is that the policy is defensible in principle but needs to be narrowly targeted at genuinely dual-use, high-end technology, because a blanket approach ends up punishing a lot of civilian innovation for a security goal it may not even achieve."
+    },
+    "commonMistakes": [
+      "Taking an uncritical, purely patriotic or purely anti-restriction stance",
+      "Ignoring the dual-use nature of chip technology entirely",
+      "Refusing to state any actual position after listing both sides"
+    ],
+    "followUps": [
+      "Do you think an individual engineer bears any personal responsibility for how the chips they help design end up being used?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Quantum computing, hype versus reality",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "quantum-computing",
+      "current-development",
+      "critical-thinking"
+    ],
+    "question": "Quantum computing gets a lot of headlines. As someone studying electronic engineering, what do you think it's actually close to being useful for, and what's overhyped?",
+    "lookingFor": "Critical, informed enthusiasm rather than uncritical hype or dismissiveness.",
+    "idealAnswer": {
+      "bullets": [
+        "Show basic understanding of what makes quantum computing different, such as superposition enabling certain parallel-style computations",
+        "Distinguish realistic near-term applications, like optimisation or simulation of quantum systems, from general-purpose computing",
+        "Acknowledge a real current limitation, such as qubit stability, error correction, or the need for extreme cooling"
+      ],
+      "modelAnswer": "What I find genuinely exciting is that quantum computers exploit superposition and entanglement to explore many possible states at once, which for very specific problems like simulating molecular interactions for drug discovery or certain classes of optimisation could be transformative in a way classical computers structurally can't match. What I think is overhyped is the idea that quantum computers will replace classical computers for everyday tasks, they're not going to run a phone or a laptop, because qubits are extremely fragile, error rates are still high, and most current systems need cooling close to absolute zero to even function. I try to stay excited about the specific problems quantum computing is actually suited for rather than the vague headline that it'll 'break all encryption' or 'solve everything', because the engineering reality is still years of hard work away from that."
+    },
+    "commonMistakes": [
+      "Treating quantum computers as simply 'faster classical computers'",
+      "Pure hype with no mention of current technical limitations",
+      "Dismissing the field entirely with no recognition of genuine near-term potential"
+    ],
+    "followUps": [
+      "What engineering challenge do you think is the biggest bottleneck to making quantum computers practical?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Right to repair and design implications",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "right-to-repair",
+      "current-debate",
+      "design-ethics"
+    ],
+    "question": "Right-to-repair laws are being introduced in several countries, requiring manufacturers to make electronics easier to fix. As an engineer, what design decisions does that actually force you to reconsider?",
+    "lookingFor": "Concrete engineering-level thinking about repairability, not just a general opinion on the policy.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least one specific design choice affected: glued versus screwed enclosures, modular components, or availability of schematics and spare parts",
+        "Recognise a genuine engineering tradeoff, such as repairability versus water resistance, size, or manufacturing cost",
+        "Take a position on how you'd balance those competing goals"
+      ],
+      "modelAnswer": "Right-to-repair really does hit specific design decisions, things like whether a battery is glued in versus held with screws, whether a manufacturer publishes schematics and sells spare parts, and whether components are modular enough that a single failed part doesn't mean replacing the whole board. The honest tradeoff is that some of the design choices that make devices thinner, more water resistant, or cheaper to mass produce, like fully sealed unibody enclosures, are often the exact choices that make repair harder, so it's not simply manufacturers being lazy or greedy, there are real competing engineering goals. My own instinct as an engineer is that repairability should be treated as a first-class design requirement alongside things like size and cost, rather than an afterthought, because a device that can be economically repaired instead of replaced is both better for the customer and better for the amount of electronic waste we're generating."
+    },
+    "commonMistakes": [
+      "Treating this as purely a policy or legal question with no engineering detail",
+      "Ignoring genuine tradeoffs, e.g. water resistance, that repairability affects",
+      "Giving an opinion with no specific design decision named"
+    ],
+    "followUps": [
+      "Can you think of a product that does this balance well, one that's both repairable and still well engineered?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Sensor redundancy in safety-critical systems",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "autonomous-systems",
+      "redundancy",
+      "safety"
+    ],
+    "question": "Self-driving cars rely on multiple types of sensors, cameras, radar, and sometimes lidar, rather than just one. Why is that redundancy so important, and what's the engineering challenge in combining them?",
+    "lookingFor": "Understanding of why redundancy exists as a safety principle, and awareness of the real difficulty of sensor fusion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain why relying on a single sensor type is risky: each sensor type has specific weaknesses, such as cameras struggling in fog or radar having poor resolution",
+        "State that different sensor types tend to fail in different conditions, so combining them covers each other's blind spots",
+        "Identify the real challenge: fusing conflicting or noisy data from different sensors into one reliable picture in real time"
+      ],
+      "modelAnswer": "Every sensor type has a weakness that could be dangerous on its own, cameras struggle in fog, glare, or darkness, radar has poor resolution for identifying exactly what an object is even though it works well in bad weather, and lidar can struggle with reflective or absorptive surfaces, so relying on just one is a single point of failure for the whole safety system. Because these weaknesses tend to show up in different conditions, combining sensor types means the car is unlikely to be simultaneously blind across all of them at once, which is the whole point of building in redundancy for something safety-critical. The genuinely hard engineering problem is sensor fusion, taking those different data streams, which disagree with each other constantly and arrive at different rates and resolutions, and combining them into one trustworthy model of the world in real time, fast enough to actually act on it."
+    },
+    "commonMistakes": [
+      "Saying redundancy is just 'having backups' with no explanation of complementary failure modes",
+      "Ignoring the real difficulty of combining conflicting sensor data",
+      "Naming only one sensor type's weakness with no comparison"
+    ],
+    "followUps": [
+      "What should the car do if two of its sensor systems genuinely disagree about whether an obstacle is there?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Safety-critical bug near a deadline",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "safety",
+      "situational"
+    ],
+    "question": "Imagine you're on a team finishing the firmware for a medical device, and two days before the scheduled launch you discover a rare bug that could, in unusual conditions, cause an incorrect reading. Delaying means missing a contractual deadline and real cost to the company. What do you do?",
+    "lookingFor": "Prioritises patient safety over schedule pressure while reasoning through the decision like a professional, not a simple 'always report' script.",
+    "idealAnswer": {
+      "bullets": [
+        "State clearly that patient safety takes priority over the deadline",
+        "Describe a realistic process: document the bug precisely, assess its actual severity and likelihood, and escalate it rather than deciding alone",
+        "Acknowledge the real business cost honestly rather than dismissing it, while still holding the safety line"
+      ],
+      "modelAnswer": "My first move wouldn't be to unilaterally decide anything, it would be to document exactly what I'd found, how the bug is triggered, how severe the consequence is, and how likely those conditions are, and take that straight to my lead and whoever owns safety and regulatory sign-off, because a decision this serious shouldn't rest on one engineer two days before launch. I do think patient safety has to come before the deadline, an incorrect reading from a medical device could genuinely hurt someone, and no contractual penalty is worth that risk, but I'd also be honest that I understand the cost to the company and wouldn't dismiss it as unimportant, just secondary. If leadership tried to ship anyway without addressing it, I'd feel obligated to push back formally and make sure my concerns were on record, because staying quiet would make me complicit in a decision I believe is wrong."
+    },
+    "commonMistakes": [
+      "Deciding alone to either hide the bug or halt the launch without escalating",
+      "Treating the business cost as completely irrelevant instead of acknowledging the real tension",
+      "No concrete process for documenting or assessing the severity of the bug"
+    ],
+    "followUps": [
+      "What would you do if your manager told you to stay quiet about it and ship on time?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Pressure to falsify compliance data",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "integrity",
+      "situational"
+    ],
+    "question": "Suppose during EMC testing your product fails to meet a regulatory limit, and your manager suggests quietly adjusting the test report so it passes, saying the margin is small and it'll be fine in practice. How do you respond?",
+    "lookingFor": "Firm ethical stance on data integrity, with realistic handling of workplace power dynamics rather than a naive refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "Refuse to falsify the data, and explain why: falsified compliance records are both illegal and a genuine safety and legal liability",
+        "Propose a constructive alternative rather than just saying no, such as investigating a design fix or a legitimate retest",
+        "Show awareness of how to handle the pressure professionally, such as raising it with a compliance officer if pushed"
+      ],
+      "modelAnswer": "I wouldn't adjust the report, however small the margin, because a compliance test exists precisely to catch failures that look small on paper but could matter in the field, and a falsified record isn't just an ethical problem, it's illegal and it exposes the whole company to serious liability if something goes wrong later. Rather than just refusing and leaving it there, I'd want to be useful about it, going back to the design to understand why we failed and whether there's a genuine fix, or whether we legitimately qualify for a retest under different conditions. If my manager kept pushing after I'd explained my concerns clearly, I'd escalate it to whoever owns quality or regulatory compliance, because at that point it's bigger than a disagreement between the two of us, it's about whether the company is following the law."
+    },
+    "commonMistakes": [
+      "Agreeing to adjust the data because a manager asked",
+      "Refusing with no constructive next step, leaving the actual problem unsolved",
+      "Threatening to go straight to external authorities without first raising it internally"
+    ],
+    "followUps": [
+      "Would your answer change if the failure really was a measurement artefact and the product almost certainly does comply?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Dual-use technology and personal responsibility",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "ethics",
+      "dual-use",
+      "responsibility"
+    ],
+    "question": "A lot of electronic engineering research, from signal processing to chip design, has both civilian and military or surveillance applications. Do you think an engineer bears any responsibility for how their work gets used?",
+    "lookingFor": "Nuanced ethical reasoning about dual-use technology, avoiding both naive absolution and paralysing guilt.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that most fundamental electronics research is genuinely dual-use, and engineers can't control every downstream application",
+        "Argue that responsibility isn't zero either, especially the closer the work is to a specific, foreseeable harmful use",
+        "Describe a personal line or practical way you'd handle it, such as choosing which projects to work on"
+      ],
+      "modelAnswer": "I don't think an engineer can be held responsible for every conceivable use of a fundamental technology, if I improve a signal processing algorithm, I genuinely have no way to control whether it ends up in a hearing aid or a military radar, and treating all dual-use research as morally off-limits would basically shut down most of engineering. That said, I don't think responsibility is zero either, the closer your specific work is to a clear, foreseeable harmful application, like directly designing targeting systems, the more I think you do have to reckon with what you're actually building and why. For myself, I'd want to draw a practical line around the specific project rather than the underlying science, being comfortable contributing to broadly useful technology while being willing to say no to a role that's explicitly about building something I think causes harm."
+    },
+    "commonMistakes": [
+      "Claiming complete personal responsibility for every downstream use, however remote",
+      "Claiming zero responsibility because 'someone else decides how to use it'",
+      "No personal line or practical stance, only abstract philosophising"
+    ],
+    "followUps": [
+      "Would you be comfortable working for a company whose main customer was a military, even in a purely civilian-facing role?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Designing under real-world power constraints",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "hypothetical",
+      "design-constraints",
+      "applied"
+    ],
+    "question": "Suppose you're asked to design an electronic patient-monitoring device for a rural clinic that has unreliable mains power and no guaranteed refrigeration for batteries. What would actually shape your design decisions?",
+    "lookingFor": "Practical engineering reasoning under real constraints, not just an idealised feature list.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify power as the central constraint and propose a concrete response, such as low-power design plus a battery backup or solar option",
+        "Consider environmental robustness beyond power, like heat tolerance for components and batteries without refrigeration",
+        "Balance functionality against simplicity and cost so the device is realistically usable and maintainable on-site"
+      ],
+      "modelAnswer": "The unreliable mains power would shape almost everything, I'd want the device built around low-power components from the start rather than treating power efficiency as an afterthought, and I'd pair that with a battery backup, ideally rechargeable via a small solar panel, so the device keeps working through outages without needing a constant grid connection. Since I can't count on refrigeration, I'd need to pick a battery chemistry and components rated for the local ambient temperature range rather than assuming a controlled environment, which probably rules out some higher energy density but heat-sensitive options. I'd also try to resist the urge to add every possible feature, because a simpler device that's genuinely reliable and easy for local staff to maintain without specialist support is worth more in that setting than a feature-rich one that fails when nobody nearby can fix it."
+    },
+    "commonMistakes": [
+      "Designing as if mains power and controlled temperature can be assumed",
+      "Adding many features without considering maintainability in a resource-limited setting",
+      "No concrete power-management proposal, just naming 'battery backup' with no detail"
+    ],
+    "followUps": [
+      "How would your design change if the device also needed to transmit data back to a central hospital?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Reliability versus cost under budget pressure",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "safety",
+      "tradeoffs"
+    ],
+    "question": "You're designing the power supply for a piece of hospital equipment and you're over budget. A cheaper capacitor is available with a shorter rated lifetime and slightly wider tolerances than the one you specified. What do you do?",
+    "lookingFor": "Ability to reason about acceptable versus unacceptable tradeoffs in safety-critical contexts, not a reflexive answer either way.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that the acceptability of the swap depends on the actual role and criticality of that component in the circuit",
+        "Describe a real process: check the component against the full spec, not just the budget, including derating and failure mode",
+        "Land on a clear default: in safety-critical equipment, cost pressure alone shouldn't override a validated reliability requirement"
+      ],
+      "modelAnswer": "Before deciding anything I'd want to actually understand what that capacitor is doing in the circuit, whether it's in a position where a shorter lifetime or wider tolerance genuinely risks a safety-relevant failure, or whether it's somewhere more forgiving, because not every component swap carries the same risk even on the same board. If it sits somewhere critical, feeding power to a sensor whose accuracy actually matters for patient care, I wouldn't make that swap purely to hit a budget number, I'd go back and either find a different way to cut cost elsewhere or flag to the project lead that the budget target isn't compatible with the reliability requirement as specified. Cost pressure is real and I wouldn't ignore it, but on safety-critical hospital equipment I think the default has to be that a validated component requirement wins over a budget line unless there's a genuine engineering justification, not just a cheaper price tag."
+    },
+    "commonMistakes": [
+      "Making the swap automatically because it's cheaper and 'probably fine'",
+      "Refusing to even consider it without evaluating where the component actually sits in the circuit",
+      "No process for escalating a genuine conflict between budget and safety requirements"
+    ],
+    "followUps": [
+      "How would you actually verify whether the cheaper capacitor is safe to use before making that call?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Debugging an intermittent field failure",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": [
+      "hypothetical",
+      "debugging",
+      "reasoning"
+    ],
+    "question": "A product you helped design works perfectly in every lab test, but customers report it randomly fails in the field. It won't reproduce on your bench. How would you actually approach tracking that down?",
+    "lookingFor": "Systematic diagnostic reasoning under uncertainty, treating an unreproducible bug as a real engineering problem rather than giving up.",
+    "idealAnswer": {
+      "bullets": [
+        "Start by gathering data on the actual failure conditions from the field rather than guessing: temperature, humidity, power quality, usage patterns",
+        "Consider environmental or edge-case differences between the lab and the field that could explain the gap, like temperature extremes, EMI, or power supply noise",
+        "Describe a concrete next step, such as building instrumented units to log conditions in the field, or systematically varying one lab condition at a time"
+      ],
+      "modelAnswer": "The first thing I'd resist is guessing, I'd want to collect real data from the field first, when exactly the failures happen, what the units have in common, temperature, power source, how long they'd been running, because 'random' almost always means there's a variable I haven't identified yet, not true randomness. My instinct would be to look hard at what's different between my bench and the field, since a controlled lab typically has stable temperature, clean power, and none of the electromagnetic noise from other nearby equipment that a real environment has, any of which could be triggering a marginal timing or thermal issue that never shows up under ideal conditions. If I still couldn't reproduce it, I'd push to get instrumented units out to a few affected customers to log conditions right up to the failure, because at that point the fastest path to a fix is getting real data from the exact environment where it's actually happening."
+    },
+    "commonMistakes": [
+      "Concluding it's a one-off fluke with no further investigation",
+      "Only changing lab test conditions randomly with no hypothesis",
+      "Ignoring the value of getting real field data instead of trying to only replicate it on the bench"
+    ],
+    "followUps": [
+      "If you found it was temperature related but only above 40 degrees Celsius, what would that suggest about the root cause?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Energy harvesting for IoT devices",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "iot",
+      "energy-harvesting",
+      "low-power"
+    ],
+    "question": "Battery replacement is often the biggest maintenance cost for a large network of IoT sensors. How might energy harvesting change that, and what are its real limits?",
+    "lookingFor": "Grounded understanding of energy harvesting as a genuine but constrained solution, not a magic fix.",
+    "idealAnswer": {
+      "bullets": [
+        "Name at least one harvesting source relevant to a sensor deployment, such as solar, vibration, thermal gradient, or RF energy",
+        "Explain the fundamental tradeoff: harvested power is typically tiny and inconsistent, so the whole system must be designed for ultra-low average power",
+        "Acknowledge a real limitation, such as unsuitability for high-power or high-duty-cycle applications"
+      ],
+      "modelAnswer": "For something like a distributed sensor network, harvesting energy from ambient sources like small solar cells, vibration from machinery, or a thermal gradient near a hot pipe can genuinely eliminate the need to physically visit and replace batteries, which for thousands of remote sensors is a huge maintenance saving. The catch is that harvested power is usually tiny and inconsistent, often microwatts to a few milliwatts, so the whole device has to be designed around ultra-low average power, sleeping almost all the time and waking briefly to sample and transmit, rather than assuming a steady power budget like you'd get from a battery or mains supply. It's not a universal fix either, a sensor that needs to transmit frequently or over a long range needs real bursts of power that a small harvester often can't supply on demand, so you often still need a small buffer battery or supercapacitor alongside the harvester rather than replacing batteries entirely."
+    },
+    "commonMistakes": [
+      "Treating energy harvesting as a complete replacement for batteries in all cases",
+      "Not connecting harvesting to the need for an ultra-low-power system design",
+      "Naming a harvesting source with no sense of how little power it typically provides"
+    ],
+    "followUps": [
+      "What kind of sensor application would you say is fundamentally unsuited to energy harvesting?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Edge AI accelerator chips",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "edge-ai",
+      "current-development",
+      "chip-design"
+    ],
+    "question": "There's been a big push toward running AI models directly on small devices, phones, cameras, sensors, rather than sending everything to the cloud. Why is that trend happening, and what does it mean for chip design?",
+    "lookingFor": "Understanding of a genuinely current trend in electronics, connected to concrete design consequences.",
+    "idealAnswer": {
+      "bullets": [
+        "Give at least one real driver: reduced latency, lower bandwidth or cloud cost, improved privacy, or offline reliability",
+        "Explain the resulting chip design consequence: specialised low-power AI accelerators optimised for matrix operations, distinct from general-purpose CPUs",
+        "Note a real constraint this creates, such as tight power and memory budgets compared to a cloud data centre"
+      ],
+      "modelAnswer": "Running AI on the device itself rather than the cloud cuts out the round trip delay of sending data to a server and back, which matters a lot for something like real-time object detection in a camera, and it also means the device keeps working without an internet connection and can avoid sending potentially sensitive data, like a face or a voice recording, off the device at all. That's driven a real shift in chip design toward small, specialised AI accelerators, often called NPUs, built to efficiently do the matrix multiplications neural networks rely on, rather than relying purely on a general-purpose CPU or GPU that wasn't optimised for that specific job. The hard constraint is that these chips have to hit useful AI performance within a tiny power and memory budget, nothing like the resources of a data centre GPU, which is a genuinely interesting and active area of chip architecture research right now."
+    },
+    "commonMistakes": [
+      "Vague awareness of the trend with no concrete driver or design consequence named",
+      "Confusing edge AI accelerators with general-purpose processors",
+      "Ignoring the power and memory constraints that make edge AI chip design hard"
+    ],
+    "followUps": [
+      "What's a real application where sending data to the cloud is still clearly the better choice than processing it on the device?"
+    ]
+  },
+  {
+    "id": "prog-electronic-engineering-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Ethical sourcing of electronics materials",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": [
+      "ethics",
+      "supply-chain",
+      "materials"
+    ],
+    "question": "Electronics manufacturing depends on materials like cobalt and rare earth elements, some of which are mined under poor labour conditions. As a future engineer, how do you think about that part of the supply chain you're contributing to?",
+    "lookingFor": "Genuine ethical engagement with an uncomfortable supply-chain reality, connected to something an engineer can actually influence.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the reality directly rather than deflecting, naming a specific material or region where this is a documented issue",
+        "Recognise the limits of individual influence while still identifying something within an engineer's actual control, like material choice or supplier standards",
+        "Avoid either extreme: neither dismissing the issue as someone else's problem nor claiming it can be solved by personal choices alone"
+      ],
+      "modelAnswer": "I think it's honest to say this is uncomfortable, materials like cobalt used in batteries have well documented labour and environmental issues in some mining regions, and as someone who wants to build electronics I don't think it's fair to pretend that's someone else's problem entirely once I'm in the industry. At the same time, I don't think an individual engineer can single-handedly fix a global mining supply chain, so I try to think about what's actually within my influence, things like favouring suppliers with credible traceability and labour standards where I have a choice, supporting design decisions that reduce the amount of these materials needed, like more efficient battery chemistries, and not just shrugging when the topic comes up in a design review. It's not a complete answer, but I'd rather be honestly engaged with an imperfect one than pretend the issue doesn't touch my own field."
+    },
+    "commonMistakes": [
+      "Deflecting the issue as entirely the responsibility of manufacturers or governments",
+      "Overclaiming that personal choices alone can solve a structural supply-chain problem",
+      "Showing no specific awareness of a real material or region tied to the issue"
+    ],
+    "followUps": [
+      "Can you think of a specific engineering decision, like a battery chemistry choice, that could reduce this kind of impact?"
+    ]
+  }
+]

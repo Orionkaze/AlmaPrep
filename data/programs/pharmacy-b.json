@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-pharmacy-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Mechanism of action reasoning",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["pharmacodynamics", "mechanism", "reasoning"],
+    "question": "Pick a drug you've read about and explain how it actually works at the receptor or enzyme level, not just what it's used for.",
+    "lookingFor": "Genuine grasp of pharmacodynamics beyond a textbook label, applied to a specific example the applicant chose.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific drug and its molecular target, not just its drug class",
+        "Explain agonist, antagonist, inhibitor, or similar mechanism in plain terms",
+        "Connect the mechanism to the clinical effect and maybe a side effect"
+      ],
+      "modelAnswer": "I'd pick omeprazole, which I read about after my grandmother was prescribed it for acid reflux. It's a proton pump inhibitor, so it irreversibly blocks the H+/K+ ATPase in the stomach's parietal cells, which is the final step in acid secretion, rather than just neutralising acid that's already there like an antacid would. That's why it's taken once daily and why it takes a few days to reach full effect, since the body has to make new pumps. I found it interesting that the same irreversible binding explains why stopping it can cause a rebound in acid production."
+      },
+    "commonMistakes": [
+      "Describing what the drug treats without explaining how it works",
+      "Confusing agonist and antagonist mechanisms",
+      "Picking a drug they can't actually explain under follow-up"
+    ],
+    "followUps": ["What would happen if you gave that drug alongside something that acts on the same pathway?"]
+  },
+  {
+    "id": "prog-pharmacy-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Half-life and dosing interval",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["pharmacokinetics", "dosing", "reasoning"],
+    "question": "Why do some drugs get dosed once a day and others three or four times a day? Walk me through the pharmacokinetics.",
+    "lookingFor": "Understanding of half-life, steady state, and therapeutic window driving real-world dosing schedules.",
+    "idealAnswer": {
+      "bullets": [
+        "Link dosing frequency to a drug's half-life",
+        "Explain the idea of maintaining concentration within a therapeutic window",
+        "Note that patient adherence is also a practical factor in dosing design"
+      ],
+      "modelAnswer": "It comes down to how quickly the body clears the drug, which is captured by its half-life. A drug with a long half-life stays above the minimum effective concentration for many hours, so once-daily dosing keeps it in the therapeutic window without dipping too low before the next dose. A short half-life drug would fall below effective levels quickly, so it needs more frequent dosing to avoid gaps in coverage, even though that's harder for patients to stick to. That's actually one reason formulation scientists design extended-release versions, to turn a short half-life drug into something closer to once-daily dosing."
+      },
+    "commonMistakes": [
+      "Saying dosing frequency is arbitrary or just tradition",
+      "Ignoring the therapeutic window concept entirely",
+      "Not mentioning adherence as a real design consideration"
+    ],
+    "followUps": ["How would kidney impairment change how you'd think about a drug's half-life?"]
+  },
+  {
+    "id": "prog-pharmacy-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Enzyme-mediated drug interaction",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["drug-interaction", "metabolism", "reasoning"],
+    "question": "A patient stable on warfarin starts taking a new medicine that induces liver enzymes. What happens to their warfarin levels, and why does that matter?",
+    "lookingFor": "Applied understanding of CYP enzyme induction and its clinical consequence for a narrow therapeutic index drug.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain enzyme induction speeds up metabolism, lowering drug concentration over time",
+        "Connect this to warfarin specifically having a narrow therapeutic index",
+        "Note the clinical risk, that reduced anticoagulation could mean clot risk returns"
+      ],
+      "modelAnswer": "If the new drug induces the liver enzymes that break down warfarin, the body will clear warfarin faster, so its blood level and its anticoagulant effect will actually drop over the following one to two weeks as the enzyme induction ramps up. That's dangerous with warfarin specifically because it has such a narrow therapeutic index, so a level that's too low leaves the patient under-protected against clots, while a level that's too high risks bleeding. In practice this is exactly why pharmacists flag interacting medicines and often recommend more frequent INR monitoring whenever a patient's regimen changes."
+      },
+    "commonMistakes": [
+      "Confusing enzyme induction with enzyme inhibition, getting the direction backwards",
+      "Not recognising warfarin's narrow therapeutic index as the reason it's dangerous",
+      "Giving a vague answer without naming the actual mechanism"
+    ],
+    "followUps": ["What would you expect instead if the new drug inhibited those enzymes rather than inducing them?"]
+  },
+  {
+    "id": "prog-pharmacy-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Bioavailability and route selection",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["bioavailability", "formulation", "reasoning"],
+    "question": "Why might a drug that works well when injected fail almost completely if you just made it into a tablet?",
+    "lookingFor": "Understanding of first-pass metabolism and oral bioavailability limits, not just a definition of the term.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that oral drugs pass through the gut wall and liver before reaching circulation",
+        "Introduce first-pass metabolism as a reason a drug can be broken down before it acts",
+        "Mention that some drugs are also degraded by stomach acid or enzymes before absorption"
+      ],
+      "modelAnswer": "An injected drug goes straight into the bloodstream, but a swallowed drug has to survive the stomach's acid, get absorbed across the gut wall, and then pass through the liver before it reaches general circulation, and that liver pass is what we call first-pass metabolism. If the liver's enzymes break down a large fraction of the drug on that first pass, only a small amount ever makes it into the bloodstream in its active form, so the oral dose that would be needed might be impractically high or the drug might not work at all. Insulin is the classic example, it's a protein that stomach enzymes would just digest, which is exactly why it has to be injected rather than swallowed."
+      },
+    "commonMistakes": [
+      "Only mentioning stomach acid and ignoring first-pass liver metabolism",
+      "Treating bioavailability as a fixed property rather than route-dependent",
+      "Giving no concrete example to anchor the explanation"
+    ],
+    "followUps": ["Can you think of a formulation trick that helps a drug survive that journey?"]
+  },
+  {
+    "id": "prog-pharmacy-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Generic versus branded medicines",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["bioequivalence", "generics", "public-perception"],
+    "question": "A patient tells you the generic version of their medicine 'doesn't work as well' as the branded one. What's actually going on scientifically, and how would you respond?",
+    "lookingFor": "Understanding of bioequivalence standards alongside empathy for genuine patient perception, without dismissing the patient.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that generics must meet bioequivalence standards for the active ingredient",
+        "Acknowledge that inactive ingredients, appearance, or nocebo effect can genuinely affect perceived response",
+        "Show how to address the patient's concern without being dismissive"
+      ],
+      "modelAnswer": "Scientifically, generics have to prove bioequivalence, meaning the active ingredient reaches the bloodstream within a tightly regulated range compared to the branded version, so the core treatment effect should be essentially the same. That said, I wouldn't just tell the patient they're wrong, because a different pill colour, shape, or inactive fillers can genuinely change how confident someone feels taking it, and that nocebo effect is a real, documented phenomenon, not just imagination. I'd listen to what specifically changed for them, check there isn't a genuine formulation issue like a different excipient they're sensitive to, and make sure they still feel informed and in control of their treatment."
+      },
+    "commonMistakes": [
+      "Dismissing the patient's experience outright as purely psychological",
+      "Not knowing what bioequivalence standards actually require",
+      "Assuming generics and branded drugs are chemically identical in every way"
+    ],
+    "followUps": ["What might make you take a patient's complaint further and actually flag it?"]
+  },
+  {
+    "id": "prog-pharmacy-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Antimicrobial resistance and stewardship",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["current-debate", "antimicrobial-resistance", "public-health"],
+    "question": "Antimicrobial resistance is often called one of the biggest threats to modern medicine. What role do you think pharmacists specifically play in addressing it?",
+    "lookingFor": "Awareness of a live public health issue plus a specific, realistic view of the pharmacist's role rather than a generic statement.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness of why AMR is a serious and growing problem",
+        "Identify concrete pharmacist actions, like stewardship advice, refusing inappropriate requests, patient education on completing courses",
+        "Show balanced thinking, that pharmacists are one part of a bigger system, not the whole solution"
+      ],
+      "modelAnswer": "Resistance is growing because antibiotics have been overused and sometimes used for infections they were never going to treat, like viral colds, and the pipeline of new antibiotics hasn't kept pace. Pharmacists sit at a really practical checkpoint, they can question a prescription that looks unnecessary, counsel patients on finishing a course properly instead of stopping once symptoms ease, and push back gently when someone wants antibiotics for something that clearly won't respond to them. I don't think pharmacists can solve resistance alone, since it also needs new drug development and global coordination, but stewardship at the counter is one of the few places the public actually interacts with that fight directly."
+      },
+    "commonMistakes": [
+      "Vague 'it's a big problem' answer with no specific pharmacist role",
+      "Overstating that pharmacists alone can solve resistance",
+      "Confusing antimicrobial resistance with vaccine hesitancy or an unrelated issue"
+    ],
+    "followUps": ["Have you seen or read about a specific initiative tackling this?"]
+  },
+  {
+    "id": "prog-pharmacy-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Expanding pharmacist prescribing rights",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["current-debate", "scope-of-practice", "policy"],
+    "question": "Several countries are expanding pharmacists' ability to prescribe certain medicines independently. Do you think that's a good direction for the profession?",
+    "lookingFor": "A reasoned, non-defensive position on an actual live policy debate, weighing access and safety rather than just cheerleading the profession.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that this is a genuine, contested policy shift, not settled",
+        "Give arguments on both sides, access and convenience versus training and oversight concerns",
+        "Land on a considered personal view rather than refusing to commit"
+      ],
+      "modelAnswer": "I think it's largely a good direction, because pharmacists are often the most accessible healthcare professional, someone can walk in without an appointment, and for things like minor infections or contraception that reduces real barriers to care, especially for people who can't easily get a doctor's appointment. That said, I understand the concern that prescribing well requires diagnostic judgement that pharmacy training doesn't currently emphasise as much as medical training does, so it has to come with proper additional qualification and clear limits on what can be prescribed independently. My honest view is that supervised, scoped expansion, rather than unlimited prescribing, gets the access benefit without pretending pharmacists and doctors have identical training."
+      },
+    "commonMistakes": [
+      "Treating this as uncontroversial and only listing benefits",
+      "Not knowing this is an active real-world policy debate at all",
+      "Giving a completely noncommittal answer with no actual stance"
+    ],
+    "followUps": ["What extra training would you want in place before you'd be comfortable prescribing independently?"]
+  },
+  {
+    "id": "prog-pharmacy-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Pharmacogenomics and personalised dosing",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["current-development", "pharmacogenomics", "precision-medicine"],
+    "question": "What do you understand about pharmacogenomics, and how might it change how pharmacists work in the next decade?",
+    "lookingFor": "Awareness of an emerging field and a realistic sense of its practical implications, not just buzzword recognition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the core idea, that genetic variation affects how individuals metabolise or respond to drugs",
+        "Give a concrete example, like variation in CYP enzymes affecting codeine or clopidogrel response",
+        "Describe a realistic implication for future pharmacy practice, like genotype-guided dosing becoming routine"
+      ],
+      "modelAnswer": "Pharmacogenomics is about how someone's genetic makeup affects the way they metabolise or respond to a drug, so the same dose can be effective for one person and useless or even dangerous for another. A well-known example is CYP2D6 variation affecting codeine, where ultra-rapid metabolisers convert it to morphine so fast it can be dangerous, while poor metabolisers barely get any pain relief from it at all. I think within a decade genetic testing before prescribing certain high-risk drugs could become fairly routine, and pharmacists will need to interpret those results and flag dosing adjustments, which is a real shift from the one-dose-fits-most model most current guidelines are built around."
+      },
+    "commonMistakes": [
+      "Using the term without being able to explain a concrete mechanism",
+      "Overstating that genetic testing is already universal in practice today",
+      "Confusing pharmacogenomics with general genetics or gene therapy"
+    ],
+    "followUps": ["What barriers do you think are slowing wider adoption of pharmacogenomic testing?"]
+  },
+  {
+    "id": "prog-pharmacy-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "AI and automation in dispensing",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["current-development", "technology", "automation"],
+    "question": "Automated dispensing systems and AI tools are increasingly used to check prescriptions for errors. Does that make the pharmacist's role less important?",
+    "lookingFor": "Balanced awareness of how technology is reshaping the profession, without either dismissing it or ceding the pharmacist's judgement entirely to it.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge real benefits, catching interaction errors and reducing dispensing mistakes",
+        "Argue the pharmacist's role shifts rather than shrinks, toward counselling and clinical judgement",
+        "Note a limitation of automated systems, like context a system can't judge"
+      ],
+      "modelAnswer": "I don't think it makes the role less important, I think it changes what the role is mostly made of. These systems are genuinely good at catching things like flagged drug interactions or dosing errors faster and more consistently than a tired human checking hundreds of scripts a day, so that's a real safety gain. But a system can't have the conversation with a patient about why they've stopped taking their medication, or notice that someone seems anxious about a diagnosis and needs more time, and it can't weigh a genuinely ambiguous clinical judgement call the way a pharmacist with full context can. I'd expect the job to shift toward more patient-facing clinical work as the routine checking gets automated, not disappear."
+      },
+    "commonMistakes": [
+      "Dismissing the technology as unreliable or unnecessary",
+      "Assuming automation removes any need for pharmacist judgement",
+      "Giving a purely technical answer with no view on the human role"
+    ],
+    "followUps": ["Can you think of a situation where an automated system might miss something a human pharmacist would catch?"]
+  },
+  {
+    "id": "prog-pharmacy-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Online pharmacy regulation",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["current-debate", "regulation", "online-pharmacy"],
+    "question": "Online pharmacies have grown a lot, and so have concerns about unregulated sellers online. Where do you think the line should be drawn?",
+    "lookingFor": "Awareness of a genuine regulatory tension between convenience and safety, with a specific, thought-through position.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine benefits of legitimate online pharmacy, access and convenience",
+        "Identify the real risk, counterfeit or unverified medicines and lack of proper counselling",
+        "Propose a reasonable line, like requiring verified pharmacist oversight and prescription checks regardless of channel"
+      ],
+      "modelAnswer": "Legitimate online pharmacies are genuinely useful, especially for people who are housebound or in areas without easy access to a physical pharmacy, and for repeat prescriptions where you don't need much counselling each time. The real danger is the unregulated sellers who'll ship prescription-only medicines with no verification at all, which is how counterfeit or wrongly dosed products end up with patients. I think the line should be that any online sale still has to go through a real pharmacist checking the prescription and being available for a genuine consultation, the delivery channel shouldn't change the standard of care, it should just change how convenient reaching that standard is."
+      },
+    "commonMistakes": [
+      "Treating all online pharmacy as either entirely safe or entirely dangerous",
+      "No concrete proposal for where the line should actually sit",
+      "Not distinguishing legitimate regulated services from unregulated sellers"
+    ],
+    "followUps": ["How would you verify a prescription is genuine in an online-only interaction?"]
+  },
+  {
+    "id": "prog-pharmacy-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Dispensing error discovered late",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["ethics", "patient-safety", "accountability"],
+    "question": "Imagine you're shadowing in a pharmacy and you notice a wrong dose was dispensed to a patient who has already left. What would you do?",
+    "lookingFor": "Structured ethical and practical reasoning that prioritises patient safety and honesty over minimising embarrassment.",
+    "idealAnswer": {
+      "bullets": [
+        "Prioritise immediate patient safety, contacting the patient before anything else",
+        "Show understanding that transparency and reporting the error matters, not covering it up",
+        "Recognise as a student their role is to flag it to the supervising pharmacist immediately, not act alone"
+      ],
+      "modelAnswer": "As a student I wouldn't have the authority to contact the patient myself, so the first thing I'd do is tell the supervising pharmacist immediately and clearly, because every minute matters if the wrong dose could cause harm. From what I understand, the priority after that is contacting the patient right away to explain the mistake and get them the correct medicine or advice, even though that's an uncomfortable conversation to have. I think the instinct to want to quietly fix it and hope no one notices is understandable but wrong, patient safety and honesty about the error have to come before protecting the pharmacy's reputation or anyone's pride."
+      },
+    "commonMistakes": [
+      "Suggesting they'd try to handle it alone as a student rather than escalating immediately",
+      "Focusing on protecting the pharmacy's reputation over patient safety",
+      "Vague answer with no concrete first action"
+    ],
+    "followUps": ["What would you say if the supervising pharmacist wanted to just let it go since the dose difference seemed minor?"]
+  },
+  {
+    "id": "prog-pharmacy-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Conscientious objection in dispensing",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["ethics", "conscientious-objection", "dilemma"],
+    "question": "Suppose you had a personal moral objection to dispensing a legally prescribed medicine, like emergency contraception. How would you handle that as a pharmacist?",
+    "lookingFor": "Mature reasoning that balances personal conscience against a professional duty of care, without moralising at the patient.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge personal conscience can be genuine without judging the patient",
+        "Prioritise the patient never being left without access or made to feel judged",
+        "Describe a practical route, referring to a colleague, rather than simply refusing and walking away"
+      ],
+      "modelAnswer": "I'd want to be honest that a pharmacist is allowed to have personal views, but the patient in front of me has a legal right to that medicine and shouldn't be made to feel judged or ashamed for needing it. If I genuinely had an objection, the responsible approach would be to make sure a colleague could step in immediately without the patient having to explain themselves twice or feel delayed, rather than just refusing and leaving them stuck. What I wouldn't do is use the counter as a place to express a personal opinion to someone who came in needing time-sensitive care, that crosses from conscience into imposing a view on someone else's healthcare decision."
+      },
+    "commonMistakes": [
+      "Saying they'd simply refuse without any plan for the patient's access",
+      "Using the moment to voice a personal opinion to the patient",
+      "Ignoring that emergency contraception is often time-sensitive"
+    ],
+    "followUps": ["What if no colleague was available to step in at that moment?"]
+  },
+  {
+    "id": "prog-pharmacy-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Confidentiality versus a parent's concern",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["ethics", "confidentiality", "dilemma"],
+    "question": "A parent asks you what medicine their sixteen-year-old has just been prescribed, but the prescription is confidential to the teenager. What do you do?",
+    "lookingFor": "Understanding that patient confidentiality generally applies regardless of age for a competent minor, handled with empathy toward the parent.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise confidentiality generally belongs to the patient, not automatically the parent, once the teen can understand their own care",
+        "Explain how to decline without being cold or dismissive toward a worried parent",
+        "Mention encouraging the teenager to involve their parent voluntarily where appropriate"
+      ],
+      "modelAnswer": "I understand the instinct that a parent should know everything about their child's healthcare, but a sixteen-year-old who understands their treatment generally has the same right to confidentiality as an adult patient, so I couldn't just hand that information over without the teenager's consent. I'd try to be warm about it rather than just citing a rule, explaining that I'm not allowed to share those details but that I'd really encourage their child to talk to them directly about it. If there were a genuine safety concern, like risk of serious harm, that would be a different, more serious situation, but a parent simply wanting to know isn't enough to override that confidentiality on its own."
+      },
+    "commonMistakes": [
+      "Assuming a parent is automatically entitled to a minor's health information",
+      "Being needlessly harsh or bureaucratic with a worried parent",
+      "Not distinguishing routine curiosity from a genuine safety concern"
+    ],
+    "followUps": ["Would your answer change if the teenager were twelve instead of sixteen?"]
+  },
+  {
+    "id": "prog-pharmacy-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Raising concerns about unsafe practice",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["ethics", "whistleblowing", "professionalism"],
+    "question": "While on a placement, you notice a senior pharmacist regularly skipping the double-check step for controlled medicines because they're busy. What would you do?",
+    "lookingFor": "Willingness to raise a genuine safety concern responsibly despite a power imbalance, rather than staying silent or going straight to confrontation.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the seriousness of skipping a safety check specifically for controlled medicines",
+        "Show a graduated, respectful approach, raising it directly or through the right channel rather than public confrontation",
+        "Acknowledge the discomfort of the power imbalance as a student while still committing to act"
+      ],
+      "modelAnswer": "I'd find that genuinely difficult given they're senior to me, but controlled medicines exist precisely because the risk of error or diversion is high, so I don't think being busy is a good enough reason to skip the check, and I wouldn't feel right staying silent. I'd probably start by asking a genuine, non-accusatory question in the moment, like whether they wanted me to do the second check since I noticed it hadn't happened, which gives them a face-saving way to fix it without me making a formal complaint straight away. If it kept happening regularly after that, I think I'd have to raise it with my placement supervisor or the person responsible for training, because a pattern is different from a one-off busy day, and patient safety has to come before my discomfort about the hierarchy."
+      },
+    "commonMistakes": [
+      "Saying they'd say nothing because the person is senior",
+      "Jumping straight to a formal complaint without any lower-key first step",
+      "Treating the missed check as trivial rather than a serious safety lapse"
+    ],
+    "followUps": ["What would you do if raising it informally didn't change anything?"]
+  },
+  {
+    "id": "prog-pharmacy-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Suspicious opioid prescription",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["ethics", "opioid-crisis", "dilemma"],
+    "question": "A regular customer comes in with a prescription for a strong opioid from a doctor you don't recognise, and something about the pattern feels off to you. How would you think through whether to dispense it?",
+    "lookingFor": "Structured professional judgement that balances genuine patient pain relief against the real risk of diversion or misuse, without snap judging the patient.",
+    "idealAnswer": {
+      "bullets": [
+        "Avoid assuming guilt, since a legitimate patient could easily fit an unusual pattern",
+        "Describe a concrete verification step, like checking the prescription against records or contacting the prescriber",
+        "Show awareness this reflects a real ongoing tension in pharmacy around the opioid crisis"
+      ],
+      "modelAnswer": "I'd be careful not to treat my gut feeling as proof of anything, because a genuine chronic pain patient can easily look unusual on paper, maybe they've just switched doctors or gotten a new specialist referral. What I'd actually do is verify things properly, checking the prescription details against what I can see in the patient's dispensing history and, if something still didn't add up, calling the prescribing doctor's office to confirm it's legitimate before dispensing. I know this is part of a bigger, genuinely difficult tension in pharmacy right now, between not wanting to under-treat patients in real pain and not wanting to become an unwitting part of the opioid crisis, and I don't think there's a way to fully avoid that discomfort, just a responsible process for handling it."
+      },
+    "commonMistakes": [
+      "Refusing to dispense based purely on a hunch with no verification",
+      "Dispensing automatically without acknowledging any responsibility to check",
+      "Showing no awareness of the opioid crisis as context for this being a real, common dilemma"
+    ],
+    "followUps": ["What would you do if you called the prescriber's office and couldn't reach anyone before closing time?"]
+  },
+  {
+    "id": "prog-pharmacy-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Drug shortage triage",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "resource-allocation", "dilemma"],
+    "question": "Your pharmacy has one dose left of a critical medicine and two patients who both need it urgently. How would you think about deciding who gets it?",
+    "lookingFor": "Recognition this shouldn't be a personal snap judgement, and awareness of principled, protocol-based approaches to scarce-resource allocation.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject the idea of deciding alone on gut feeling or who seems more sympathetic",
+        "Describe using clinical urgency and established protocol or escalation to a senior clinician",
+        "Acknowledge the emotional weight of the situation honestly rather than pretending it's simple"
+      ],
+      "modelAnswer": "I don't think this is a decision I should be making alone or based on who I personally feel more sympathy for, that's exactly the kind of bias a proper protocol exists to prevent. In reality I'd expect there to be clinical triage guidance, prioritising based on medical urgency and prognosis with that dose rather than anything else, and I'd want to escalate to a senior pharmacist or the prescribing clinicians so the decision is made with full clinical context, not just what I can see at the counter. I won't pretend that makes it easy, knowing one patient may go without something urgent is genuinely hard, but a consistent, defensible process is fairer than any single person's instinct in the moment."
+      },
+    "commonMistakes": [
+      "Claiming they'd just personally decide based on who seems more deserving",
+      "Ignoring that real systems have triage protocols for exactly this situation",
+      "Treating the dilemma as trivial or easy to resolve"
+    ],
+    "followUps": ["What clinical factors do you think should matter most in that kind of triage?"]
+  },
+  {
+    "id": "prog-pharmacy-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Suspected counterfeit medicine",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "quality-control", "patient-safety"],
+    "question": "A patient shows you a box of medicine they bought abroad and asks if it's safe to keep taking. You notice the packaging looks slightly off. What do you do?",
+    "lookingFor": "Cautious, patient-centred handling of a plausible counterfeit-medicine scenario, without either alarming the patient unnecessarily or waving it through.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the concern seriously rather than dismissing a slightly odd package as nothing",
+        "Avoid definitively diagnosing counterfeit status without proper verification, while still advising caution",
+        "Give the patient a practical, safe next step rather than leaving them without guidance"
+      ],
+      "modelAnswer": "I wouldn't want to alarm them unnecessarily, but I also wouldn't brush off something that looked genuinely off, since counterfeit medicines are a real problem, especially with products bought outside regulated supply chains. I'd tell them honestly that I can't confirm it's authentic just by looking at it, but that the packaging inconsistencies are enough that I'd want them to stop taking it until we can verify it, and I'd offer to help source a properly regulated equivalent from the pharmacy in the meantime. I think the key is not making the patient feel foolish for asking, they did exactly the right thing by checking rather than just continuing to take it."
+      },
+    "commonMistakes": [
+      "Confidently declaring it counterfeit or confidently declaring it fine without real verification",
+      "Dismissing the patient's concern as overreacting",
+      "Leaving the patient with no medicine and no plan"
+    ],
+    "followUps": ["How would you actually go about verifying whether a specific medicine is genuine?"]
+  },
+  {
+    "id": "prog-pharmacy-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Repeated over-the-counter purchase pattern",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "judgement", "patient-safety"],
+    "question": "A customer you don't know comes in for the third time this week to buy a large pack of paracetamol. What goes through your mind, and what do you do?",
+    "lookingFor": "Sensible clinical vigilance around a genuine over-the-counter safety concern, balanced with respect for the customer's autonomy and dignity.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the pattern as a genuine red flag given paracetamol overdose risk, without assuming the worst",
+        "Describe a respectful, low-pressure way to check in rather than an accusatory confrontation",
+        "Know a realistic next step, like limiting sale quantity or offering support resources if genuinely concerned"
+      ],
+      "modelAnswer": "Repeated large purchases of paracetamol specifically would worry me, because it's genuinely dangerous in overdose and that pattern is a known risk sign, so I wouldn't just sell it without a word. I'd try to ask gently, something like checking what it's for and whether they're managing ongoing pain okay, in a way that leaves room for a completely innocent explanation like a big family needing it for different people. If something in that conversation still felt seriously concerning, I'd know that pharmacies can limit the quantity sold and I could also offer information about support services, but I'd want to do that supportively rather than treating the person like a suspect."
+      },
+    "commonMistakes": [
+      "Ignoring the pattern and selling it without any check-in",
+      "Being confrontational or accusatory rather than gentle",
+      "Not knowing that pharmacies can actually limit quantities sold for safety reasons"
+    ],
+    "followUps": ["What would make you decide to actually refuse the sale rather than just ask a question?"]
+  },
+  {
+    "id": "prog-pharmacy-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Herbal supplement interactions",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["drug-interaction", "supplements", "reasoning"],
+    "question": "Many patients don't think of herbal supplements as 'real medicine' and don't mention them. Why does that matter, and can you give an example of why?",
+    "lookingFor": "Awareness that herbal products are pharmacologically active and can genuinely interact with prescribed drugs, with a specific example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that herbal products contain pharmacologically active compounds despite being seen as 'natural'",
+        "Give a concrete, real example of an interaction",
+        "Suggest a practical way to get patients to disclose supplement use"
+      ],
+      "modelAnswer": "Patients often assume 'natural' means harmless, but herbal supplements contain genuinely active compounds that can interact with prescribed drugs just like any other medicine, they're just not regulated or dosed as tightly. St John's Wort is a classic example, it induces the same liver enzymes involved in metabolising a lot of drugs, so it can drop the effectiveness of things like oral contraceptives or certain antidepressants without the patient realising why. Because of that I think it matters to actually ask about supplements directly rather than just asking about 'medicines,' since a lot of patients genuinely don't think to mention something they bought at a health food shop."
+      },
+    "commonMistakes": [
+      "Assuming herbal products are inert or automatically safe",
+      "Giving no concrete interaction example",
+      "Not addressing why patients fail to disclose supplement use"
+    ],
+    "followUps": ["How would you phrase the question so patients actually think to mention supplements?"]
+  },
+  {
+    "id": "prog-pharmacy-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Polypharmacy in elderly patients",
+    "program": "Pharmacy",
+    "difficulty": "hard",
+    "tags": ["polypharmacy", "geriatrics", "reasoning"],
+    "question": "An 82-year-old patient is on eleven different medications prescribed by four different doctors. What concerns would you have, and how might a pharmacist help?",
+    "lookingFor": "Understanding of polypharmacy risk in elderly patients and the pharmacist's distinct role in medication reconciliation.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the core risks, interaction burden, side effects mimicking new symptoms, and reduced adherence",
+        "Explain the pharmacist's unique vantage point, seeing the whole medication list across prescribers",
+        "Mention a concrete action, like a medication review or deprescribing conversation"
+      ],
+      "modelAnswer": "With eleven medications from four different doctors, my first concern is that no single prescriber may actually see the full picture, so interactions can slip through, and side effects from one drug can easily get mistaken for a new health problem and treated with yet another medicine, which just compounds the issue. Elderly patients also process drugs differently, often more slowly, so doses that were fine years ago might now be too strong. This is actually one of the clearest places pharmacists add real value, doing a full medication review across every prescriber's contributions, checking for genuine ongoing need, and having a careful deprescribing conversation with the patient and their doctors about anything that may no longer be necessary."
+      },
+    "commonMistakes": [
+      "Only listing generic interaction risk without addressing the age-specific factors",
+      "Not identifying the pharmacist's unique cross-prescriber vantage point",
+      "Suggesting stopping medications unilaterally without involving prescribers"
+    ],
+    "followUps": ["What would make you cautious about removing a medication rather than just adding more?"]
+  },
+  {
+    "id": "prog-pharmacy-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Placebo effect and adherence",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["placebo", "adherence", "reasoning"],
+    "question": "How much of a medicine's effect do you think can come from the patient's belief that it will work, and does that matter to how a pharmacist counsels patients?",
+    "lookingFor": "Nuanced understanding of the placebo effect as a real, measurable phenomenon relevant to counselling, not dismissed as fake.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness the placebo effect is measurable and genuinely affects outcomes, not just imagined",
+        "Avoid overclaiming that belief alone explains all drug effects",
+        "Connect this to practical counselling, like the tone and confidence used when explaining a medicine"
+      ],
+      "modelAnswer": "Studies genuinely show that belief and expectation can measurably affect outcomes, sometimes through real physiological pathways like the brain's own pain-relief chemicals being triggered by expectation, so I don't think it's fake or just in someone's head. That said, I wouldn't want to overstate it, a placebo isn't going to clear a bacterial infection, the drug's own pharmacology is still doing the main work in most serious conditions. Where I think it matters practically is in how a pharmacist counsels someone, explaining a medicine clearly and confidently, rather than vaguely, probably genuinely helps a patient's experience of it and their willingness to stick with the treatment."
+      },
+    "commonMistakes": [
+      "Dismissing placebo effects as entirely fake or irrelevant",
+      "Overclaiming that belief alone can substitute for real pharmacology in serious illness",
+      "Not connecting the concept to any practical counselling implication"
+    ],
+    "followUps": ["Could poor counselling ever produce a negative version of this effect?"]
+  },
+  {
+    "id": "prog-pharmacy-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Insurance denial hypothetical",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "access-to-medicine", "advocacy"],
+    "question": "A patient's insurance won't cover the medicine their doctor prescribed, and the cheaper covered alternative isn't quite as effective for them. What would you do?",
+    "lookingFor": "Practical patient advocacy within real-world constraints, showing the applicant understands cost is a genuine barrier to care.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the cost barrier seriously as a genuine clinical issue, not just an administrative inconvenience",
+        "Describe concrete options, contacting the prescriber, checking for manufacturer assistance programs, or requesting a formulary exception",
+        "Avoid pretending a pharmacist can simply override insurance decisions"
+      ],
+      "modelAnswer": "I'd treat this as a real clinical problem, not just paperwork, because a patient not being able to afford their medicine is functionally the same as not having access to treatment at all. Practically, I'd look at whether there's a patient assistance program from the manufacturer, and I'd contact the prescriber about whether a formulary exception could be requested with proper clinical justification, since insurers will sometimes cover a non-preferred drug if the doctor documents why the alternative isn't suitable. I know I can't just override an insurance decision myself, but I think part of the job is not leaving the patient to sort out that maze alone."
+      },
+    "commonMistakes": [
+      "Treating the situation as purely the insurance company's or patient's problem to solve alone",
+      "Claiming a pharmacist can simply override coverage decisions",
+      "No concrete next step offered to the patient"
+    ],
+    "followUps": ["What would you say to the patient if none of those options worked out?"]
+  },
+  {
+    "id": "prog-pharmacy-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Clinical trial phases",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["drug-development", "clinical-trials", "knowledge"],
+    "question": "Can you walk me through roughly what happens between a new drug being discovered in a lab and it appearing on a pharmacy shelf?",
+    "lookingFor": "A reasonably accurate grasp of the drug development pipeline, showing genuine background reading rather than a vague notion.",
+    "idealAnswer": {
+      "bullets": [
+        "Mention preclinical testing before any human trials",
+        "Give a roughly correct account of phase 1 through 3 trials and their differing purposes",
+        "Note regulatory approval and post-market monitoring as the final steps"
+      ],
+      "modelAnswer": "It starts with preclinical work, testing the compound in lab and animal studies to get an early sense of safety and how it behaves in a biological system, before it's anywhere near a human. If that looks promising, it moves into phase one trials with a small group of healthy volunteers mainly to check safety and dosing, then phase two with a larger group of actual patients to start looking at whether it works, and phase three with an even larger, often multi-site trial to confirm efficacy and catch rarer side effects before it goes to a regulator like the FDA or MHRA for approval. Even after approval, there's ongoing phase four monitoring once it's actually being used by the public, because some rare effects only show up at a much larger scale than any trial can realistically capture."
+      },
+    "commonMistakes": [
+      "Skipping preclinical testing and starting the explanation at human trials",
+      "Confusing what each trial phase is actually testing for",
+      "Not mentioning post-approval monitoring as part of the process"
+    ],
+    "followUps": ["Why might a promising drug still fail during phase three after passing phases one and two?"]
+  },
+  {
+    "id": "prog-pharmacy-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Vaccine hesitancy and public trust",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["current-development", "vaccination", "public-health"],
+    "question": "Pharmacists now deliver a lot of vaccinations directly. How would you handle a patient who's hesitant about getting vaccinated and starts questioning the evidence?",
+    "lookingFor": "Awareness of the pharmacist's expanding public health role and a respectful, evidence-based, non-condescending approach to hesitancy.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that pharmacist-delivered vaccination is now a significant, growing part of the role",
+        "Describe listening to the specific concern rather than dismissing hesitancy outright",
+        "Give evidence-based information without being condescending or pushy"
+      ],
+      "modelAnswer": "I know pharmacist-led vaccination has expanded a lot, partly because pharmacies are so much more accessible than booking a doctor's appointment, so I'd expect this conversation to come up regularly. I wouldn't want to just lecture someone who's hesitant, because that usually makes people defensive, so I'd start by actually asking what specifically is worrying them, since 'hesitant' can mean anything from a genuine side effect concern to something they read that isn't accurate. From there I'd try to give clear, honest information addressing that specific concern, including being upfront about real possible side effects rather than pretending there are none, because I think trust comes from honesty, not from being told a decision is simple when the person doesn't feel like it is."
+      },
+    "commonMistakes": [
+      "Being dismissive or condescending toward a hesitant patient",
+      "Not knowing pharmacists actually deliver vaccinations as a significant part of current practice",
+      "Overselling by claiming there are no possible side effects at all"
+    ],
+    "followUps": ["What would you do if the patient's specific concern was based on something factually inaccurate?"]
+  },
+  {
+    "id": "prog-pharmacy-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Pharmaceutical waste and sustainability",
+    "program": "Pharmacy",
+    "difficulty": "medium",
+    "tags": ["current-development", "sustainability", "environment"],
+    "question": "There's growing concern about pharmaceutical waste ending up in water systems. Is this something a pharmacist should actually be thinking about?",
+    "lookingFor": "Awareness of an emerging sustainability issue within pharmacy practice and a concrete sense of what a pharmacist can practically do about it.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that unused or improperly disposed medicine is a real, growing environmental concern",
+        "Explain a concrete cause, like patients flushing unused medicines or over-dispensing",
+        "Identify a practical pharmacist-level action, like take-back schemes or right-sizing prescriptions"
+      ],
+      "modelAnswer": "Yes, I think it genuinely is part of the role now, even though it's not the first thing people associate with pharmacy. A lot of the problem comes from unused medicines being flushed or thrown in general waste, and residues like antibiotics or hormones ending up in water systems where they can affect aquatic life and even contribute to resistance outside the human body entirely. Practically, pharmacies can run take-back schemes so patients have somewhere proper to return unused medicine instead of the toilet, and pharmacists can also help by making sure patients aren't routinely over-dispensed more than they'll realistically use, which reduces the leftover pile in the first place."
+      },
+    "commonMistakes": [
+      "Treating this as entirely outside a pharmacist's concern or responsibility",
+      "Not identifying a specific cause like flushing or over-dispensing",
+      "No concrete practical action offered"
+    ],
+    "followUps": ["Have you seen a take-back or disposal scheme in your own area?"]
+  }
+]

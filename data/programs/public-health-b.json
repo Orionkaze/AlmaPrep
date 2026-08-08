@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-public-health-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Incidence vs prevalence",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["epidemiology", "fundamentals", "measurement"],
+    "question": "What's the difference between incidence and prevalence, and why does mixing them up matter in practice?",
+    "lookingFor": "A precise grasp of the two measures and a real example of why conflating them leads to bad conclusions.",
+    "idealAnswer": {
+      "bullets": [
+        "Incidence is new cases over a time period; prevalence is total existing cases at a point in time",
+        "A disease can have rising prevalence with falling incidence if people live longer with it",
+        "Give a concrete example where using the wrong measure would mislead policy"
+      ],
+      "modelAnswer": "Incidence counts new cases that appear over a given period, while prevalence counts everyone who currently has the condition, whether they got it yesterday or ten years ago. What I find interesting is that better treatment can actually push prevalence up even as incidence falls, because people are surviving longer with the disease rather than dying or recovering quickly. If a health department used prevalence alone to judge whether a prevention campaign was working, they might wrongly conclude it had failed when in fact fewer new people were getting infected each year. That distinction seems small but it changes what intervention you'd actually fund."
+    },
+    "commonMistakes": [
+      "Defining both terms but never explaining why the distinction matters",
+      "Confusing which one is a snapshot and which is a flow",
+      "Giving no concrete example of the two diverging"
+    ],
+    "followUps": ["Can you think of a disease where prevalence would rise even as incidence falls?"]
+  },
+  {
+    "id": "prog-public-health-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Correlation, confounding, causation",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["epidemiology", "confounding", "reasoning"],
+    "question": "A study finds that people who carry lighters have higher rates of lung cancer. Walk me through why that correlation doesn't mean lighters cause cancer.",
+    "lookingFor": "Clear identification of a confounder and a demonstration of structured causal reasoning, not just reciting 'correlation isn't causation.'",
+    "idealAnswer": {
+      "bullets": [
+        "Name the actual confounder linking both variables (smoking)",
+        "Explain the mechanism: smoking causes both lighter-carrying and cancer risk",
+        "Describe how you'd test the real hypothesis, e.g. stratifying by smoking status"
+      ],
+      "modelAnswer": "Carrying a lighter and having lung cancer are both driven by a third factor, which is smoking, so the lighter itself isn't doing anything causal. Smokers are far more likely to carry lighters and, separately, far more likely to develop lung cancer, which creates a correlation between the first two even though there's no direct link. To actually test for a causal effect I'd want to stratify the data by smoking status and see whether lighter-carrying still predicts cancer within non-smokers, which it almost certainly wouldn't. It's a useful reminder that before I trust any correlation I should ask what third variable might be driving both sides."
+    },
+    "commonMistakes": [
+      "Saying 'correlation isn't causation' without identifying the actual confounder",
+      "Assuming reverse causation instead of a shared cause",
+      "Not offering any method to actually test the relationship"
+    ],
+    "followUps": ["What's the difference between a confounder and an effect modifier?"]
+  },
+  {
+    "id": "prog-public-health-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Herd immunity threshold",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["epidemiology", "infectious-disease", "reasoning"],
+    "question": "If a disease has a reproduction number of 5, roughly what proportion of the population needs to be immune before its spread starts to decline, and why?",
+    "lookingFor": "Correct application of the herd immunity formula with intuition for what R0 represents, not just a memorized number.",
+    "idealAnswer": {
+      "bullets": [
+        "State the formula: herd immunity threshold is roughly 1 minus 1 over R0",
+        "Work through the arithmetic (1 - 1/5 = 80%)",
+        "Explain intuitively why a higher R0 demands a higher immune proportion"
+      ],
+      "modelAnswer": "The rough formula is one minus one over R0, so with an R0 of 5 that's one minus a fifth, which is about 80 percent of the population needing immunity before transmission starts shrinking. The intuition is that each infected person is trying to infect five others on average, so you need enough of those potential contacts to already be immune that the effective reproduction number drops below one. The higher the R0, the more contagious the disease is per contact, so proportionally more of the population has to be protected to break the chain. It also assumes immunity is evenly distributed and that people mix roughly randomly, which real populations rarely do perfectly."
+    },
+    "commonMistakes": [
+      "Confusing R0 with the herd immunity threshold itself",
+      "Getting the arithmetic wrong (e.g. using 1/R0 instead of 1 - 1/R0)",
+      "Not mentioning that the formula assumes uniform mixing"
+    ],
+    "followUps": ["Why might the real-world threshold differ from this simple formula?"]
+  },
+  {
+    "id": "prog-public-health-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Sensitivity vs specificity trade-off",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["epidemiology", "screening", "reasoning"],
+    "question": "You're designing a screening program for a serious but rare disease. Would you rather the test have high sensitivity or high specificity, and what are you trading off?",
+    "lookingFor": "Understanding of the sensitivity-specificity trade-off and how disease severity, rarity, and downstream confirmatory testing should shape the choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Define sensitivity (catching true cases) and specificity (correctly ruling out non-cases)",
+        "Reason that for a serious disease, missing a case is usually costlier than a false alarm, favoring sensitivity as an initial filter",
+        "Acknowledge the cost: low specificity in a rare disease means most positives are false, so a confirmatory second test matters"
+      ],
+      "modelAnswer": "For a screening test on something serious, I'd lean toward high sensitivity first, because missing a real case means someone goes untreated, and that's usually a worse outcome than a false alarm that gets corrected later. But I'd also remember that because the disease is rare, even a test with fairly good specificity will still flag a lot of healthy people as positive, since the false positives from the huge unaffected group can outnumber the true positives from the tiny affected group. That's really an argument for using a highly sensitive test as a first pass and then following any positive up with a more specific confirmatory test rather than relying on one test to do both jobs. So it's less a straight either-or choice and more about designing a pathway that uses each property where it's strongest."
+    },
+    "commonMistakes": [
+      "Picking one property without acknowledging the trade-off exists",
+      "Ignoring how disease rarity affects the positive predictive value",
+      "Not mentioning a two-stage or confirmatory testing approach"
+    ],
+    "followUps": ["How does disease rarity affect the positive predictive value of even a good test?"]
+  },
+  {
+    "id": "prog-public-health-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Ecological fallacy",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["epidemiology", "study-design", "reasoning"],
+    "question": "A country-level study finds that nations with more doctors per capita have higher rates of a certain cancer. Why should you be cautious about concluding that doctors somehow cause the cancer, or even drawing conclusions about individuals from this data at all?",
+    "lookingFor": "Recognition of the ecological fallacy: aggregate-level associations don't necessarily hold at the individual level.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the ecological fallacy explicitly",
+        "Explain a plausible alternative driver, such as wealthier countries having both more doctors and better cancer detection",
+        "State clearly that country-level patterns can't be assumed to apply to individuals"
+      ],
+      "modelAnswer": "This looks like a case of the ecological fallacy, where a pattern that holds across groups gets wrongly applied to individuals within those groups. A much more likely explanation is that wealthier countries have both more doctors per capita and better diagnostic technology, so they're simply detecting more cancer that would otherwise go unrecorded, not generating more of it. It would be a mistake to tell an individual patient that seeing more doctors raises their personal cancer risk, because the country-level association doesn't tell us anything reliable about what's happening to any one person. To actually investigate this I'd want individual-level data linking a person's healthcare access to their diagnosis, rather than relying on national averages."
+    },
+    "commonMistakes": [
+      "Taking the aggregate finding at face value",
+      "Not naming or recognizing the ecological fallacy",
+      "Failing to propose a more plausible confounding explanation"
+    ],
+    "followUps": ["What individual-level study design would actually test this properly?"]
+  },
+  {
+    "id": "prog-public-health-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Social determinants of health",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["social-determinants", "equity", "policy"],
+    "question": "Give an example of a social determinant of health that isn't obviously 'medical,' and explain how it actually shapes health outcomes.",
+    "lookingFor": "A concrete, well-reasoned example showing the applicant understands health as shaped by conditions beyond clinical care.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a specific determinant (housing, transport, education, food access) rather than a vague category",
+        "Trace the causal pathway from that factor to a health outcome",
+        "Show awareness that this is often a bigger driver of health than healthcare access itself"
+      ],
+      "modelAnswer": "I'd point to housing quality. Cold, damp housing is linked to higher rates of respiratory illness and worsens conditions like asthma, and overcrowded housing makes it much easier for infections to spread within a household. It also has knock-on effects, because a child living in unstable or poor-quality housing is more likely to miss school, which affects long-term outcomes that go well beyond the immediate illness. What strikes me is that a public health intervention aimed at housing policy could plausibly do more for population respiratory health than an intervention aimed only at hospitals, which is why I think public health has to look upstream of the clinic."
+    },
+    "commonMistakes": [
+      "Naming a determinant without explaining the mechanism",
+      "Staying too abstract, e.g. just saying 'poverty causes bad health'",
+      "Treating social determinants as a footnote to clinical care rather than central to it"
+    ],
+    "followUps": ["How would you go about measuring the impact of that determinant?"]
+  },
+  {
+    "id": "prog-public-health-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Upstream vs downstream intervention",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["prevention", "policy", "reasoning"],
+    "question": "What's the difference between an upstream and a downstream public health intervention, and which do you think is undervalued right now?",
+    "lookingFor": "Clear conceptual understanding plus a defensible, specific opinion rather than a textbook restatement.",
+    "idealAnswer": {
+      "bullets": [
+        "Define upstream (root causes, policy, environment) vs downstream (treating individuals after harm occurs)",
+        "Give one clear example of each",
+        "Offer a specific, reasoned view on which is currently undervalued and why"
+      ],
+      "modelAnswer": "Downstream interventions treat problems after they've already shown up in a person, like treating someone for lung disease, while upstream interventions try to change the conditions that produce the problem in the first place, like air quality regulation. I think upstream work is chronically undervalued because it's harder to attach a face or a success story to a regulation that quietly prevented illness that never happened. Political and funding cycles reward visible, immediate fixes, so hospitals get built while zoning or pollution policy gets deprioritized even though it might prevent far more disease per pound spent. I'd want to work somewhere in that upstream space precisely because it's underinvested relative to its impact."
+    },
+    "commonMistakes": [
+      "Defining the terms but giving no opinion on which is undervalued",
+      "Picking a side with no reasoning to back it",
+      "Confusing upstream with 'more expensive' rather than 'more preventive'"
+    ],
+    "followUps": ["Why do you think funding tends to favor downstream interventions?"]
+  },
+  {
+    "id": "prog-public-health-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Antimicrobial resistance",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["infectious-disease", "global-health", "policy"],
+    "question": "Why is antimicrobial resistance considered a public health problem rather than just a clinical one?",
+    "lookingFor": "Understanding that AMR is a collective-action and systems problem, not just an individual patient issue.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that resistant strains spread between people, making it a population-level threat",
+        "Note the collective-action problem: each individual prescription contributes to a shared resource being depleted",
+        "Connect it to systems drivers like agricultural antibiotic use and weak regulation, not just doctor behavior"
+      ],
+      "modelAnswer": "Resistance that develops in one person's infection doesn't stay contained to them, because resistant bacteria can spread to others, which turns it into a population-level threat rather than an individual clinical outcome. It's also a genuine collective-action problem, since antibiotics work like a shared resource: every unnecessary prescription anywhere in the system, including in livestock farming, chips away at effectiveness for everyone, not just the person taking the drug. That's why I think the real levers are things like stewardship policy, agricultural regulation, and surveillance systems rather than just telling individual doctors to prescribe more carefully, because no single actor can fix a shared-resource problem alone."
+    },
+    "commonMistakes": [
+      "Framing it purely as a problem of doctors overprescribing",
+      "Ignoring the agricultural and veterinary contribution",
+      "Not connecting individual behavior to the collective-resource dynamic"
+    ],
+    "followUps": ["What policy lever do you think would have the biggest impact on AMR?"]
+  },
+  {
+    "id": "prog-public-health-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "One Health and zoonotic spillover",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["infectious-disease", "global-health", "prevention"],
+    "question": "What does the 'One Health' approach mean, and why has it gained attention since COVID-19?",
+    "lookingFor": "Understanding that human, animal, and environmental health are interconnected, applied to a real example of spillover risk.",
+    "idealAnswer": {
+      "bullets": [
+        "Define One Health as recognizing human, animal, and environmental health as linked systems",
+        "Explain why zoonotic spillover (animal to human transmission) is a growing risk, e.g. land use change, wildlife trade",
+        "Connect it to COVID-19's likely origins and why prevention needs cross-sector coordination"
+      ],
+      "modelAnswer": "One Health is the idea that human, animal, and environmental health can't really be separated, because diseases move between those systems constantly, and a policy that only looks at human health misses where a lot of outbreaks actually start. COVID-19 pushed it into the mainstream because it was very likely a spillover event from animals to humans, and that pattern isn't unique to this pandemic; deforestation and wildlife trade keep bringing humans into closer contact with viruses that used to stay in animal populations. What I find compelling about the approach is that it forces public health, veterinary science, and environmental policy to actually coordinate instead of working in silos, because a spillover risk sitting in a wildlife market is a public health problem long before anyone gets sick."
+    },
+    "commonMistakes": [
+      "Defining One Health vaguely without connecting it to spillover mechanics",
+      "Treating it as only relevant to exotic diseases rather than an ongoing structural risk",
+      "Missing the cross-sector coordination point entirely"
+    ],
+    "followUps": ["What's one policy change that could reduce spillover risk?"]
+  },
+  {
+    "id": "prog-public-health-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Health equity vs equality",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["equity", "policy", "reasoning"],
+    "question": "What's the difference between health equity and health equality, and can you think of a policy where pursuing one over the other actually matters?",
+    "lookingFor": "Clear conceptual distinction plus a concrete policy example that shows real understanding of the trade-off, not just a slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "Define equality as giving everyone the same resources, equity as giving people what they need to reach similar outcomes",
+        "Give a concrete example where equal distribution would fail to close a gap",
+        "Show awareness that pursuing equity can mean unequal treatment, which some people find politically uncomfortable"
+      ],
+      "modelAnswer": "Equality means giving everyone the same thing, while equity means giving people what they specifically need to end up with a similar outcome, which can mean giving different amounts to different groups. A mobile vaccination clinic policy is a good example: distributing clinics evenly across a city sounds fair, but if one neighborhood has poor public transport and high work inflexibility, an equal number of clinics there won't achieve equal uptake. An equity-focused approach might place more clinics, at more flexible hours, in that neighborhood specifically, which is technically unequal treatment but is aimed at closing an outcome gap rather than an input gap. I think that distinction matters because equity policies are sometimes criticized as 'unfair' when really they're targeting a fairer result."
+    },
+    "commonMistakes": [
+      "Treating equity and equality as interchangeable",
+      "Giving a definition with no concrete policy example",
+      "Not acknowledging that equity can look like unequal treatment, which is politically contested"
+    ],
+    "followUps": ["How would you respond to someone who says equity policy is unfair to the majority?"]
+  },
+  {
+    "id": "prog-public-health-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Health literacy",
+    "program": "Public Health",
+    "difficulty": "easy",
+    "tags": ["communication", "health-literacy", "prevention"],
+    "question": "Why does low health literacy matter as a public health issue, beyond just individuals struggling to read a prescription label?",
+    "lookingFor": "Recognition that health literacy affects population-level outcomes and system efficiency, not just individual comprehension.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that low health literacy leads to worse chronic disease management and more emergency care use",
+        "Connect it to unequal outcomes, since it correlates with education and socioeconomic status",
+        "Show it's a systems issue: complex forms and jargon create the barrier as much as the individual does"
+      ],
+      "modelAnswer": "Low health literacy isn't just about someone misreading a label once; it shapes whether they manage a chronic condition well over years, whether they show up for preventive screenings, and whether they end up needing far more expensive emergency care because a problem wasn't caught early. It also tracks closely with education and income, so it becomes another channel through which existing inequalities turn into worse health outcomes. I'd also push back a little on the framing that it's purely an individual deficit, because a lot of health information is written in genuinely confusing jargon, so the system is creating part of the barrier itself, not just the reader."
+    },
+    "commonMistakes": [
+      "Treating it as a purely individual failing rather than a systems issue",
+      "Not connecting it to downstream costs like emergency care use",
+      "Missing the link to socioeconomic inequality"
+    ],
+    "followUps": ["What's one concrete way you'd redesign health communication to fix this?"]
+  },
+  {
+    "id": "prog-public-health-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Nudge theory and paternalism",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["policy", "ethics", "behavioral-science"],
+    "question": "Governments increasingly use 'nudges,' like default opt-ins for organ donation, to shape health behavior without banning anything. Where do you think the line is between a helpful nudge and unacceptable paternalism?",
+    "lookingFor": "Structured ethical reasoning about autonomy, transparency, and the difference between shaping choice and removing it.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish nudges (preserve choice, alter the default) from bans or coercion",
+        "Identify transparency as a key ethical test: is the nudge visible and easy to opt out of",
+        "Give a reasoned personal line rather than refusing to commit"
+      ],
+      "modelAnswer": "I think the key test is whether the choice is genuinely preserved and visible, not just technically preserved. An opt-out organ donation default still lets you say no, and if the process is well publicized, I think that's ethically fine because it's just correcting for inertia rather than removing anyone's agency. Where I'd start to worry is if a nudge relies on people not noticing it, like burying the opt-out in fine print, because then it's really exploiting inattention rather than respecting autonomy, even if it's technically reversible. So my line is roughly transparency: a nudge people can easily see and undo is fair game, but one that only works because people don't notice it has crossed into manipulation."
+    },
+    "commonMistakes": [
+      "Refusing to actually take a position",
+      "Treating all nudges as equivalent to bans",
+      "Not distinguishing between transparent and covert nudges"
+    ],
+    "followUps": ["Does your answer change if the nudge targets children rather than adults?"]
+  },
+  {
+    "id": "prog-public-health-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Global vaccine equity",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["global-health", "ethics", "policy"],
+    "question": "During COVID-19, wealthy countries secured most of the early vaccine supply while low-income countries waited far longer. Was that outcome unjust, and what would you have changed?",
+    "lookingFor": "Balanced reasoning that weighs national obligation against global equity, with a concrete proposed alternative rather than pure condemnation.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension: governments are elected to protect their own citizens first",
+        "Explain the self-defeating consequence of hoarding: variants can emerge anywhere and spread everywhere",
+        "Propose something concrete, like binding advance-purchase quotas for a shared global mechanism"
+      ],
+      "modelAnswer": "I do think it was unjust, but I want to be fair to why it happened: elected governments are under real pressure to protect their own citizens first, and that's not an unreasonable instinct on its own. The problem is that hoarding turned out to be self-defeating as well as unfair, because letting the virus circulate freely anywhere gave it more chances to mutate into variants that eventually reached the wealthy countries too. What I'd have changed is building binding commitments into vaccine deals up front, so that a fixed share of any manufacturer's output had to go to a shared global pool like COVAX regardless of who paid first, rather than leaving global distribution to voluntary donations after the fact. That way national self-interest and global equity would have been pulling in the same direction instead of against each other."
+    },
+    "commonMistakes": [
+      "Pure moral condemnation with no acknowledgment of the political pressures involved",
+      "No concrete alternative policy proposed",
+      "Missing the self-interested argument (variant risk) for why equity also serves wealthy countries"
+    ],
+    "followUps": ["Would you support making such quotas legally binding, even overriding national procurement law?"]
+  },
+  {
+    "id": "prog-public-health-b-014",
+    "category": "Ethics & Situational",
+    "subtopic": "Pandemic ventilator triage",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["ethics", "resource-allocation", "dilemma"],
+    "question": "During a severe outbreak, a hospital has one ventilator left and two patients who need it: a 78-year-old with several other health conditions, and a 34-year-old who is otherwise healthy. As the public health advisor asked to help design the hospital's triage protocol beforehand, what principles would you want the protocol built on?",
+    "lookingFor": "Structured ethical reasoning about triage principles decided in advance, not an ad hoc individual verdict, with awareness of the controversy involved.",
+    "idealAnswer": {
+      "bullets": [
+        "Argue for principle-based protocols set before a crisis, not bedside improvisation under pressure",
+        "Discuss a defensible criterion like short-term survival likelihood rather than raw age or perceived social worth",
+        "Acknowledge the discomfort and controversy in any triage rule, including the age discrimination concern"
+      ],
+      "modelAnswer": "My first instinct is that this decision shouldn't be made at the bedside in the moment at all; it should be decided by a protocol agreed on calmly beforehand, precisely so no individual clinician has to make an impossible judgment call under pressure. I'd want the protocol to prioritize based on likelihood of surviving the immediate illness with treatment, which is a clinical measure rather than a judgment about a person's overall worth or age itself, because using age directly risks discriminating against older patients for their age rather than their prognosis. I'd also want the protocol to be published and publicly justified in advance, because a rule that only shows its reasoning after the fact loses public trust exactly when trust matters most. I don't think any version of this is comfortable, and I'd want the protocol reviewed constantly rather than treated as settled."
+    },
+    "commonMistakes": [
+      "Picking one patient directly instead of discussing protocol principles",
+      "Using raw age or 'social worth' as the deciding factor without acknowledging the ethical problem with that",
+      "Treating the question as having an easy answer rather than a genuinely contested one"
+    ],
+    "followUps": ["Should a patient's likely quality of life afterward factor into the protocol at all?"]
+  },
+  {
+    "id": "prog-public-health-b-015",
+    "category": "Ethics & Situational",
+    "subtopic": "Vaccine mandates and autonomy",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["ethics", "policy", "autonomy"],
+    "question": "Do you think it's ethically justified for a government to mandate a vaccine for healthcare workers, even against their individual wishes?",
+    "lookingFor": "Weighing of individual autonomy against duty to protect vulnerable patients, with a clear, defensible position and its limits.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize the genuine tension between bodily autonomy and duty of care to patients",
+        "Distinguish the healthcare-worker context (contact with vulnerable people) from a blanket population mandate",
+        "State a defensible position with a limiting principle, e.g. accommodation for genuine medical exemptions"
+      ],
+      "modelAnswer": "I think this context is different from a mandate on the general public, because healthcare workers are in regular contact with people who are especially vulnerable, and choosing that profession comes with some accepted professional obligations, similar to existing requirements like hepatitis B vaccination in many health systems. I'd support a mandate in that specific setting, but I'd want it to include a genuine medical exemption pathway and probably an option to redeploy someone to lower-contact roles rather than simply firing them, because the goal is protecting patients, not punishing the worker. I do take the autonomy objection seriously, and I don't think this reasoning would extend as easily to mandating the same vaccine for the whole population, where the contact-with-vulnerable-people argument is much weaker."
+    },
+    "commonMistakes": [
+      "Giving a blanket yes or no with no reasoning about the healthcare-worker context specifically",
+      "Not distinguishing this from mandates on the general population",
+      "Ignoring the exemption or accommodation question entirely"
+    ],
+    "followUps": ["Would your answer change for a mandate aimed at the general public rather than healthcare workers?"]
+  },
+  {
+    "id": "prog-public-health-b-016",
+    "category": "Ethics & Situational",
+    "subtopic": "Health surveillance vs privacy",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["ethics", "privacy", "surveillance"],
+    "question": "Contact-tracing apps during COVID-19 could track who you'd been near, which helped stop outbreaks but also raised real privacy concerns. How would you think through that trade-off if you were advising on whether to launch one?",
+    "lookingFor": "Structured reasoning that weighs public health benefit against privacy harm, with attention to specific safeguards rather than a blanket yes or no.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge both the genuine public health value and the genuine privacy risk, without dismissing either",
+        "Propose specific safeguards, such as data minimization, time-limited retention, and voluntary participation",
+        "Consider the trust cost: overreach can backfire by reducing future public cooperation"
+      ],
+      "modelAnswer": "I wouldn't want to wave away either side of this, because the public health value of catching exposure early is real, but so is the risk of building infrastructure that could later be repurposed for something people never consented to. I'd want any such app built with data minimization by design, meaning it stores the least identifying information possible, deletes it automatically after a short window, and stays voluntary rather than mandatory, because forcing adoption would likely trigger reduced trust and worse compliance elsewhere in the pandemic response. I think the trade-off actually pushes public health people to be more careful about privacy, not less, because a surveillance backlash can cost you the cooperation you need for everything else, from vaccination to future outbreak reporting."
+    },
+    "commonMistakes": [
+      "Endorsing the app with no privacy safeguards discussed",
+      "Rejecting the app outright with no engagement with its public health value",
+      "Not mentioning the trust and future-cooperation cost of overreach"
+    ],
+    "followUps": ["Should participation ever be made mandatory during a severe enough outbreak?"]
+  },
+  {
+    "id": "prog-public-health-b-017",
+    "category": "Ethics & Situational",
+    "subtopic": "Sin taxes and personal responsibility",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["ethics", "policy", "autonomy"],
+    "question": "Some argue that taxing sugary drinks unfairly targets lower-income people who consume them more, while others say it's exactly the population the tax is meant to help. Where do you land?",
+    "lookingFor": "Balanced reasoning that acknowledges the regressive-tax critique while weighing it against actual health outcomes and revenue use.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the regressive-tax objection honestly rather than dismissing it",
+        "Weigh it against evidence on reduced consumption and revenue use, e.g. funding programs that benefit the same communities",
+        "Land on a considered position rather than sitting entirely on the fence"
+      ],
+      "modelAnswer": "The regressive-tax criticism is fair on its face, because a flat tax on a sugary drink does take a bigger share of a lower income than a higher one. But I'd weigh that against the fact that lower-income communities also tend to carry a heavier burden of diet-related disease, so a policy that meaningfully reduces consumption there could deliver more health benefit exactly where it's needed most, especially if the revenue is earmarked for things like community health programs rather than absorbed into general funds. I do lean toward supporting the tax, but I think it only holds up ethically if the revenue is visibly reinvested in the same communities paying it, otherwise it really is just an extra cost with no offsetting benefit."
+    },
+    "commonMistakes": [
+      "Dismissing the regressive-tax objection instead of engaging with it",
+      "Sitting entirely on the fence with no actual position",
+      "Ignoring what happens to the tax revenue"
+    ],
+    "followUps": ["Does earmarking the revenue actually change the ethics, or is that just better optics?"]
+  },
+  {
+    "id": "prog-public-health-b-018",
+    "category": "Ethics & Situational",
+    "subtopic": "Reporting a colleague's data concern",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["ethics", "research-integrity", "situational"],
+    "question": "You're working on a group research project analyzing survey data, and you notice a teammate has quietly excluded a batch of responses that don't support the hypothesis, without telling anyone. What do you do?",
+    "lookingFor": "Willingness to address a research integrity issue directly and proportionately, rather than staying silent or overreacting immediately.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognize this as a research integrity issue, not just an interpersonal disagreement",
+        "Talk to the teammate directly first to understand their reasoning before escalating",
+        "Be willing to escalate to a supervisor if the exclusion isn't justified and isn't corrected"
+      ],
+      "modelAnswer": "This is a research integrity issue, not just a stylistic disagreement, because quietly dropping inconvenient data changes what the results actually mean. I'd go to my teammate directly first and ask them to walk me through why those responses were excluded, since there are sometimes legitimate reasons like clear data-entry errors, and I don't want to accuse them before understanding their side. If the explanation doesn't hold up, meaning the exclusion was really just because it hurt the hypothesis, I'd push for it to be reversed and documented properly, and if they refused, I'd feel obligated to raise it with our supervisor, because I'd rather have an uncomfortable conversation than be part of publishing a misleading result."
+    },
+    "commonMistakes": [
+      "Staying silent to avoid conflict with the teammate",
+      "Escalating immediately without first hearing the teammate's reasoning",
+      "Treating it as a minor issue rather than a genuine integrity concern"
+    ],
+    "followUps": ["What if the teammate were your project lead rather than a peer?"]
+  },
+  {
+    "id": "prog-public-health-b-019",
+    "category": "Ethics & Situational",
+    "subtopic": "Prioritizing GLP-1 drug access",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["ethics", "resource-allocation", "current-debate"],
+    "question": "New weight-loss drugs like GLP-1 agonists are expensive and in short supply, and health systems have to decide who gets access first. How would you think through who should be prioritized?",
+    "lookingFor": "Structured reasoning about allocation criteria under scarcity, engaging with equity, medical need, and the current real-world shortage debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose a defensible prioritization criterion, e.g. highest clinical need or comorbidity risk over pure demand",
+        "Address the equity concern that wealthier patients can currently buy access privately while public systems ration",
+        "Show awareness this is a live, contested debate rather than treating it as already settled"
+      ],
+      "modelAnswer": "I'd want prioritization based on clinical need, meaning people with the highest risk from obesity-related conditions like type 2 diabetes or cardiovascular disease, rather than first-come-first-served or ability to pay, because the drug's biggest health return is likely concentrated in that group. What makes this genuinely hard right now is that people who can pay privately are already accessing the drug regardless of what any public prioritization scheme decides, which means a needs-based public system is competing against a parallel market that undermines the whole point of prioritizing by need. I don't think there's a clean fix for that tension, but I'd still argue a public health system should prioritize by need rather than shrug and default to willingness to pay, even knowing it won't fully control the private market."
+    },
+    "commonMistakes": [
+      "Ignoring the private-market access problem that undercuts public prioritization",
+      "Defaulting to 'whoever can pay' without ethical justification",
+      "Treating the shortage as a temporary technicality rather than a real allocation dilemma"
+    ],
+    "followUps": ["Should the drug be prioritized differently if it's being prescribed for weight loss versus diabetes management?"]
+  },
+  {
+    "id": "prog-public-health-b-020",
+    "category": "Current Awareness",
+    "subtopic": "AI in outbreak surveillance",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["current-debate", "technology", "surveillance"],
+    "question": "Public health agencies are increasingly using AI tools to scan news, search trends, and social media for early signs of outbreaks. What's promising about that, and what worries you?",
+    "lookingFor": "Balanced awareness of a live debate, showing both genuine engagement with the technology's promise and a specific, reasoned concern.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the promise: faster detection than waiting for formal case reporting",
+        "Raise a specific concern, e.g. false alarms, bias in what gets indexed online, or surveillance overreach",
+        "Show this is a live, evolving area rather than a settled success story"
+      ],
+      "modelAnswer": "The promising part is speed; formal case reporting can lag weeks behind an actual outbreak, while unusual spikes in search terms or local news can sometimes flag something days earlier, and early days matter enormously for containment. What worries me is that these signals are noisy and biased toward places with strong internet access and English-language reporting, so an outbreak in a region with less online activity could be systematically missed even while the tool looks like it's working well elsewhere. I'd also want clear rules about what happens with a false alarm, because a wrongly flagged outbreak can trigger real economic and social costs, like disrupted travel or panic buying, before anyone's confirmed it's real. I think the tools are worth using, but as an early trigger for human investigation, not as a decision-maker on their own."
+    },
+    "commonMistakes": [
+      "Only listing the benefits with no genuine concern raised",
+      "Vague concern with no specific mechanism, like just saying 'privacy' with no elaboration",
+      "Not recognizing this as an active, unresolved area of practice"
+    ],
+    "followUps": ["How would you validate whether one of these AI signals is worth acting on?"]
+  },
+  {
+    "id": "prog-public-health-b-021",
+    "category": "Current Awareness",
+    "subtopic": "US life expectancy stagnation",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["current-debate", "chronic-disease", "policy"],
+    "question": "Life expectancy in the United States has fallen behind other wealthy countries despite far higher healthcare spending. What do you think explains that gap?",
+    "lookingFor": "Awareness of a real, current public health debate with a substantive explanation beyond 'the healthcare system is bad.'",
+    "idealAnswer": {
+      "bullets": [
+        "Name specific drivers: deaths of despair (overdose, suicide), chronic disease burden, gun violence, maternal mortality, weak primary care access",
+        "Note that spending is concentrated on treatment rather than prevention or primary care",
+        "Show this is a genuinely debated, multi-causal issue rather than a single simple explanation"
+      ],
+      "modelAnswer": "I think it's a mix of factors rather than one single cause. Overdose deaths and suicide, sometimes grouped as deaths of despair, have pulled down averages significantly, alongside higher rates of gun violence and maternal mortality than most peer countries. I'd also point to the structure of spending itself: a huge share goes toward expensive treatment for late-stage disease rather than primary care and prevention, so people with chronic conditions like diabetes or hypertension aren't being caught and managed early the way they might be in systems built around universal primary care access. What I find striking is that spending more on the same broken structure hasn't closed the gap, which suggests the problem is more about where and how the money is spent than the total amount."
+    },
+    "commonMistakes": [
+      "A single vague cause like 'the healthcare system' with no specifics",
+      "Ignoring non-clinical drivers like overdose deaths or gun violence",
+      "Not engaging with why higher spending hasn't closed the gap"
+    ],
+    "followUps": ["Which single driver do you think would be most tractable to fix through policy?"]
+  },
+  {
+    "id": "prog-public-health-b-022",
+    "category": "Current Awareness",
+    "subtopic": "Adolescent mental health and social media",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["current-debate", "mental-health", "policy"],
+    "question": "Several countries and US states have moved to restrict social media access for teenagers, citing a youth mental health crisis. How confident are you in the evidence behind that link, and does it justify the policy response?",
+    "lookingFor": "Nuanced engagement with contested evidence rather than accepting or dismissing the claim wholesale, plus a reasoned view on the policy.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the evidence is correlational and genuinely debated among researchers, not settled",
+        "Distinguish plausible mechanisms (sleep disruption, social comparison) from moral panic framing",
+        "Give a reasoned view on whether restriction policy is proportionate given the uncertainty"
+      ],
+      "modelAnswer": "I'd be careful not to overstate how settled this is, because a lot of the underlying evidence is correlational, and researchers still disagree about how much of the rise in teen anxiety and depression is actually driven by social media versus other factors happening at the same time, like academic pressure or the aftermath of the pandemic. That said, I do find some proposed mechanisms plausible, like sleep disruption from late-night use and the effect of constant social comparison, so I don't think the concern is baseless either. On the policy response, I lean toward supporting more moderate measures first, like stronger age verification and design changes to reduce compulsive use, rather than a blanket ban, partly because I'm not confident enough in the causal evidence to justify the most restrictive option yet, and partly because bans are hard to enforce and can just push use underground."
+    },
+    "commonMistakes": [
+      "Treating the causal link as fully proven",
+      "Dismissing the concern entirely as moral panic with no engagement",
+      "Giving no view at all on whether the policy response is proportionate"
+    ],
+    "followUps": ["What evidence would change your mind in either direction?"]
+  },
+  {
+    "id": "prog-public-health-b-023",
+    "category": "Current Awareness",
+    "subtopic": "Climate change as a health threat",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["current-debate", "climate", "prevention"],
+    "question": "The WHO has called climate change the single biggest health threat facing humanity. What's a specific, non-obvious pathway from climate change to a health outcome that you find compelling?",
+    "lookingFor": "Ability to trace a specific causal mechanism beyond the obvious heatwave example, showing genuine subject depth.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick a specific, less obvious pathway (e.g. shifting vector ranges, food security and malnutrition, mental health from displacement)",
+        "Trace the mechanism step by step",
+        "Show why it's a public health problem specifically, not just an environmental one"
+      ],
+      "modelAnswer": "The one I find most compelling is the expansion of disease vector ranges. As temperatures rise, mosquitoes that carry diseases like dengue or malaria can survive and breed in regions that used to be too cold for them, which means public health systems in places like southern Europe now have to plan for diseases they've historically never had to manage. That's a genuinely public health problem rather than a purely environmental one, because it means surveillance systems, vaccine stockpiles, and clinician training all need to expand geographically ahead of the disease itself, not react after cases already start appearing. It's the kind of slow-moving shift that's easy to underestimate because it doesn't look like an emergency until it suddenly is one."
+    },
+    "commonMistakes": [
+      "Defaulting only to the obvious heatwave-mortality example with no depth",
+      "Staying at the level of 'climate change is bad for health' with no specific mechanism",
+      "Confusing an environmental effect with a genuine health-system implication"
+    ],
+    "followUps": ["What would you want a health system to do differently to prepare for that shift?"]
+  },
+  {
+    "id": "prog-public-health-b-024",
+    "category": "Hypothetical / Scenario",
+    "subtopic": "Outbreak response under budget constraint",
+    "program": "Public Health",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "resource-allocation", "reasoning"],
+    "question": "Imagine a fast-spreading but low-mortality respiratory illness breaks out in a mid-sized town, and the local health department has enough budget to do only one of the following well: mass testing, a public information campaign, or targeted support for the most vulnerable residents to isolate safely. Which would you choose, and how would you defend it if challenged?",
+    "lookingFor": "Structured decision-making under real constraints, weighing trade-offs explicitly and defending a choice rather than trying to have all three.",
+    "idealAnswer": {
+      "bullets": [
+        "Resist the urge to say 'do all three'; commit to a genuine trade-off",
+        "Reason from the disease's specific profile (low mortality but fast-spreading) to what matters most",
+        "Anticipate a challenge and defend the choice rather than retreating to vagueness"
+      ],
+      "modelAnswer": "Given it's low mortality but fast-spreading, I'd put the budget into targeted support for the most vulnerable residents to isolate safely, rather than mass testing or a general information campaign, because the biggest harm from a fast-spreading, low-mortality illness is concentrated in the smaller group of people for whom it isn't low-mortality at all, like the elderly or immunocompromised. Mass testing would tell us a lot about spread, but knowing the numbers doesn't protect anyone by itself, and a general information campaign helps only if people can actually act on the advice, which isn't guaranteed for someone who can't afford to miss work to isolate. If challenged on skipping mass testing, I'd say that without the resources to also act on what testing reveals, the data mostly serves reporting rather than protection, and I'd rather spend limited money on the intervention that reduces harm directly for the group facing the real risk."
+    },
+    "commonMistakes": [
+      "Trying to have all three without committing to a trade-off",
+      "Choosing an option without connecting it to the specific disease profile given",
+      "Collapsing under the follow-up challenge instead of defending the reasoning"
+    ],
+    "followUps": ["What would make you change your choice if the disease's mortality rate were higher?"]
+  },
+  {
+    "id": "prog-public-health-b-025",
+    "category": "Hypothetical / Scenario",
+    "subtopic": "Persuading a skeptical community",
+    "program": "Public Health",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "communication", "trust"],
+    "question": "Suppose you were asked to help design outreach for a community that has deep, historically grounded distrust of public health authorities. A straightforward information campaign hasn't worked. What would you try instead?",
+    "lookingFor": "Understanding that trust deficits require relationship-based, not just informational, strategies, with awareness of why historical distrust is often rational rather than irrational.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge that the distrust is often grounded in real historical harm, not irrational fear",
+        "Propose working through trusted community messengers rather than external authority figures",
+        "Emphasize two-way listening and addressing specific concerns rather than just repeating the same facts louder"
+      ],
+      "modelAnswer": "I'd start from the assumption that the distrust is usually rational given real history, not a knowledge gap that more facts will fix, so repeating the same information louder is unlikely to work and might even backfire. I'd want to work through people the community already trusts, like local faith leaders, community health workers, or long-standing local organizations, rather than sending in outside officials who read as another version of the same institution that caused the original harm. I'd also want the engagement to genuinely go both ways, meaning actually listening to specific concerns and being honest about what's uncertain, rather than treating the interaction as a one-way delivery of the 'correct' message, because I think people can tell the difference between being informed and being managed."
+    },
+    "commonMistakes": [
+      "Treating distrust as irrational rather than historically grounded",
+      "Proposing to simply repeat the same campaign louder or more often",
+      "Skipping trusted community messengers in favor of official channels"
+    ],
+    "followUps": ["What would you do if the trusted community messengers themselves disagreed with the public health guidance?"]
+  }
+]

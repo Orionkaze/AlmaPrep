@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-meteorology-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Ensemble forecasting and uncertainty",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["forecasting", "uncertainty", "probability"],
+    "question": "Weather forecasts are often given as a single line on a map, but modern forecasting is really about probabilities. Can you explain what an ensemble forecast is and why meteorologists use it instead of running one perfect model?",
+    "lookingFor": "Understanding that the atmosphere is chaotic and that ensembles turn that chaos into honest probability, not a guess dressed up as certainty.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that small differences in initial conditions can grow into very different outcomes",
+        "Describe an ensemble as the same model run many times from slightly different, equally plausible starting points",
+        "Show that the spread of the ensemble members becomes the probability itself, not just noise to ignore"
+      ],
+      "modelAnswer": "An ensemble forecast runs the same weather model dozens of times, each time starting from a slightly different, equally plausible estimate of the atmosphere's current state, because we can never measure it perfectly everywhere. Because the atmosphere is chaotic, those tiny starting differences can grow into very different outcomes a few days out, so the ensemble members start to diverge. If most members agree, you can be confident in the forecast, but if they scatter widely, that spread itself is useful information, it tells you the atmosphere is in an unpredictable state. That is why a good forecaster gives you a percentage chance of rain rather than a flat yes or no."
+    },
+    "commonMistakes": [
+      "Describing an ensemble as just 'running the model faster' or 'more accurately'",
+      "Treating a wide spread as a model failure rather than useful information",
+      "Confusing ensemble forecasting with simply averaging multiple different models together"
+    ],
+    "followUps": ["If ten out of twenty ensemble members show rain and ten don't, what would you actually tell the public?"]
+  },
+  {
+    "id": "prog-meteorology-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "CAPE and atmospheric instability",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "instability", "severe-weather"],
+    "question": "What does it mean for the atmosphere to be 'unstable', and how would a forecaster use a value like CAPE to judge whether a thunderstorm is likely?",
+    "lookingFor": "A grasp of parcel theory and buoyancy, plus recognition that instability alone doesn't guarantee a storm.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain instability through parcel theory, a rising parcel that stays warmer than its surroundings keeps rising",
+        "Define CAPE as the integrated buoyant energy available to a rising parcel",
+        "Note that high CAPE still needs moisture and a lifting trigger to actually produce a storm"
+      ],
+      "modelAnswer": "Instability means that if you nudge a parcel of air upward, it ends up warmer, and therefore more buoyant, than the air around it, so it keeps rising on its own rather than sinking back down. CAPE measures the total energy available to that rising parcel by comparing its temperature to the environment all the way up, and a large CAPE value means there is a lot of fuel for a strong updraft if something triggers it, like a front or daytime heating. On its own though CAPE does not guarantee a storm, you also need enough moisture and a lifting mechanism to actually get the parcel moving, which is why forecasters look at CAPE alongside wind shear and a trigger before calling a severe weather risk."
+    },
+    "commonMistakes": [
+      "Saying high CAPE alone means a storm will definitely happen",
+      "Confusing CAPE with CIN or with wind shear",
+      "Describing instability without any reference to comparing the parcel to its surroundings"
+    ],
+    "followUps": ["What is capping and why can it sometimes make a severe storm worse rather than preventing it?"]
+  },
+  {
+    "id": "prog-meteorology-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Rossby waves and blocked weather patterns",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["jet-stream", "climate-patterns", "extreme-weather"],
+    "question": "You may have read that a 'wavy jet stream' is linked to prolonged heatwaves or cold snaps staying in place for weeks. What is actually going on physically, and why would a wavier pattern cause weather to get 'stuck'?",
+    "lookingFor": "Understanding of Rossby waves and blocking, plus honest awareness of what is settled science versus active debate.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain Rossby waves as large meanders in the jet stream driven by the pole-to-equator temperature gradient",
+        "Describe how an amplified, slow-moving wave lets a ridge or trough stall instead of progressing eastward",
+        "Show awareness that the link to Arctic warming weakening that gradient is discussed but still debated"
+      ],
+      "modelAnswer": "The jet stream is not a straight river of air, it naturally bends into large meanders called Rossby waves because of the Earth's rotation and the temperature contrast between the pole and the equator. Normally those waves move steadily from west to east, so a ridge of warm high pressure over you today has usually moved on within a few days. When the pattern amplifies into very large, slow moving waves, a ridge can effectively get stuck in place for one or two weeks, which is what produces a prolonged heatwave, while a stuck trough does the same for cold or wet weather somewhere else. There is an active debate about whether faster Arctic warming is weakening that pole to equator temperature gradient and making these stuck, wavy patterns more common, though I know the attribution is still being argued over in the literature."
+    },
+    "commonMistakes": [
+      "Presenting the Arctic-amplification link to blocking as settled fact rather than an active debate",
+      "Confusing Rossby waves with gravity waves or tidal waves",
+      "Describing 'stuck' weather without explaining why the wave stops propagating eastward"
+    ],
+    "followUps": ["How would a meteorologist distinguish a temporary ridge from a genuine blocking pattern on a forecast chart?"]
+  },
+  {
+    "id": "prog-meteorology-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "The Madden-Julian Oscillation",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["tropical-meteorology", "subseasonal-forecasting", "oscillation"],
+    "question": "Beyond El Nino, there's a tropical pattern called the Madden-Julian Oscillation that forecasters increasingly use for two to four week outlooks. What is it, and why does it matter for extending forecast range?",
+    "lookingFor": "Recognition of a specific, less commonly known tropical driver and why it fills the subseasonal forecasting gap.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe the MJO as an eastward-moving pulse of enhanced tropical convection on a 30-60 day cycle",
+        "Contrast its timescale with El Nino, which operates over a season or more",
+        "Explain why it helps fill the forecast skill gap between short-range weather and seasonal outlooks"
+      ],
+      "modelAnswer": "The MJO is a pulse of enhanced thunderstorm activity that forms over the Indian Ocean and slowly tracks eastward around the tropics over about thirty to sixty days, unlike El Nino which sits in one place for a season or more. As that pulse of convection moves, it changes where heat and moisture are being pumped into the upper atmosphere, and that can trigger ripple effects far outside the tropics, including shifts in the jet stream that forecasters link to cold outbreaks or storminess a couple of weeks later. It matters because there is a well known gap in forecast skill between short range weather models, which lose accuracy after about ten days, and seasonal climate outlooks, and the MJO is one of the few signals that gives useful predictability in that two to four week window."
+    },
+    "commonMistakes": [
+      "Confusing the MJO with El Nino or calling it the same phenomenon on a shorter timescale",
+      "Missing that it propagates eastward rather than staying fixed",
+      "Not connecting it back to why subseasonal forecasting is a genuine gap worth filling"
+    ],
+    "followUps": ["Can you think of why tropical convection thousands of kilometres away might influence weather at higher latitudes?"]
+  },
+  {
+    "id": "prog-meteorology-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Reading a skew-T log-P sounding",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["sounding", "instability", "forecasting-tools"],
+    "question": "If I handed you a skew-T log-P sounding from a weather balloon, what would you actually be looking for on it to assess storm risk?",
+    "lookingFor": "Practical fluency with a real forecasting tool, not just textbook definitions of instability.",
+    "idealAnswer": {
+      "bullets": [
+        "Read the gap between temperature and dew point curves to find moist versus dry layers",
+        "Compare the steepness of the temperature curve against the adiabats to judge instability",
+        "Check for a capping inversion and read the wind profile for shear that could organise a storm"
+      ],
+      "modelAnswer": "I'd first look at how close the temperature and dew point lines are to each other, because where they run close together the air is nearly saturated, and where they spread apart you've got a dry layer. Then I'd compare the steepness of the temperature curve against the dry and moist adiabats, since a curve that's steeper than the moist adiabat tells you the atmosphere is unstable in that layer. I'd look for a cap, a warm layer that the temperature curve pushes against, because that convective inhibition can either stop storms forming altogether or let energy build up for something more explosive if it breaks. Finally I'd check the wind barbs at different heights on the side of the diagram, since strong veering with height is what turns an ordinary thunderstorm into a rotating one."
+    },
+    "commonMistakes": [
+      "Only mentioning CAPE by name without describing what to actually look for on the diagram",
+      "Ignoring the wind profile entirely and focusing only on temperature and moisture",
+      "Treating a capping inversion as always a bad sign rather than understanding its dual role"
+    ],
+    "followUps": ["Why might a strong cap actually make a storm more dangerous once it finally breaks, rather than less?"]
+  },
+  {
+    "id": "prog-meteorology-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Data assimilation in numerical models",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["numerical-modeling", "data-assimilation", "forecasting"],
+    "question": "Weather models need a starting point before they can run forward in time. What is 'data assimilation', and why is it one of the hardest problems in operational meteorology?",
+    "lookingFor": "Understanding that forecast quality depends heavily on how well the starting state is built, not just the model's equations.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain assimilation as blending scattered observations with a short-range background forecast",
+        "Note the difficulty of uneven observation coverage, especially over oceans, and varying instrument error",
+        "Connect it to chaos, small errors in the starting state grow rapidly as the forecast runs forward"
+      ],
+      "modelAnswer": "Data assimilation is the process of blending millions of observations, surface stations, weather balloons, satellites, aircraft, with the model's own short range forecast from a few hours ago, to build the best possible estimate of what the atmosphere looks like right now. It's hard because those observations are scattered unevenly, there's almost nothing over the oceans compared to land, and each type of instrument has its own error characteristics and update frequency, so the system has to statistically weigh how much to trust each one. It matters so much because the model is chaotic, so a small error in that starting picture doesn't stay small, it grows as the forecast runs forward, which is really why bigger, better observation networks and smarter assimilation methods are often what improves forecasts more than tweaking the model's equations."
+    },
+    "commonMistakes": [
+      "Thinking data assimilation just means feeding raw observations directly into the model",
+      "Ignoring that observation coverage is very uneven geographically",
+      "Not connecting assimilation quality to forecast skill later in the run"
+    ],
+    "followUps": ["Why might improving the observation network sometimes do more for forecast accuracy than improving the model itself?"]
+  },
+  {
+    "id": "prog-meteorology-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Doppler radar and storm rotation",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["radar", "storm-structure", "instrumentation"],
+    "question": "How does Doppler radar let a forecaster see rotation inside a storm, when the radar itself doesn't take a photograph?",
+    "lookingFor": "Understanding of the Doppler principle and the velocity couplet signature, not just that radar 'sees storms'.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish reflectivity, precipitation intensity, from velocity, motion toward or away from the radar",
+        "Explain the Doppler shift as the basis for measuring radial velocity",
+        "Describe the velocity couplet, adjacent inbound and outbound readings, as the signature of rotation"
+      ],
+      "modelAnswer": "Doppler radar sends out a pulse and measures two separate things when it bounces back, how strong the return is, which tells you how much precipitation is there, and how much the frequency of that returning pulse has shifted, which tells you whether the precipitation is moving toward or away from the radar and how fast, using the same Doppler effect as an ambulance siren changing pitch. On its own that's only motion along one line from the radar, not the full three dimensional wind, but if you see a tight pair of pixels right next to each other, one showing strong motion toward the radar and one showing strong motion away, that couplet is the signature of air rotating around a point, which is exactly what a forecaster looks for to spot a mesocyclone before it possibly drops a tornado."
+    },
+    "commonMistakes": [
+      "Confusing reflectivity with velocity as if they're the same measurement",
+      "Claiming radar directly measures full three-dimensional wind everywhere in the storm",
+      "Not explaining what the paired inbound and outbound signature actually looks like"
+    ],
+    "followUps": ["Why is radar less useful for storms that are very far from the radar site?"]
+  },
+  {
+    "id": "prog-meteorology-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Radiative-convective equilibrium",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["thermodynamics", "atmospheric-physics"],
+    "question": "Why doesn't the Earth's surface just keep heating up under constant sunlight until radiation alone balances it out? What role does convection play in setting the actual temperature profile of the lower atmosphere?",
+    "lookingFor": "Grasp that the observed lapse rate is a balance between radiative heating and convective overturning, not radiation acting alone.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that pure radiative balance would produce an unrealistically steep, unstable near-surface profile",
+        "Describe convection kicking in once the radiative lapse rate exceeds what the atmosphere can sustain",
+        "Connect this balance to the roughly observed tropospheric lapse rate"
+      ],
+      "modelAnswer": "If you only had radiation moving heat around, the lapse rate near the surface would end up far steeper than air can actually sustain, because sunlight heats the ground efficiently but infrared cooling to space from the lower atmosphere is slow, so the surface would keep getting relatively hotter than the air just above it. Once that radiative profile gets steeper than the rate at which a rising parcel cools, the atmosphere becomes unstable and convection takes over, bubbles of warm air physically carry heat upward much faster than radiation can. That convective overturning keeps resetting the lapse rate back toward the adiabatic rate, which is really why the troposphere has the roughly six and a half degree per kilometre profile we actually observe, it's a balance between radiative heating trying to steepen it and convection constantly flattening it back out."
+    },
+    "commonMistakes": [
+      "Treating radiation and convection as unrelated processes rather than a balancing act",
+      "Not explaining why a steep radiative lapse rate becomes unstable",
+      "Giving a vague answer with no mention of the actual observed lapse rate"
+    ],
+    "followUps": ["Why does this balance look so different on a planet like Venus with a much thicker atmosphere?"]
+  },
+  {
+    "id": "prog-meteorology-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Comparing global forecast models",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["numerical-modeling", "forecasting", "model-comparison"],
+    "question": "Meteorologists often say the European model 'beats' the American GFS model, especially for things like hurricane tracks. What actually causes two models simulating the same physical atmosphere to disagree, and is that gap fixed or shrinking?",
+    "lookingFor": "Understanding of what actually differs between operational models and awareness that model performance evolves over time, not folk wisdom repeated uncritically.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify real sources of divergence: resolution, data assimilation method, and physics parameterizations",
+        "Explain historically why ECMWF held an edge, computing resources and assimilation quality",
+        "Show awareness that the gap has narrowed as agencies upgrade, not a permanent ranking"
+      ],
+      "modelAnswer": "Both models are solving the same physical equations for the atmosphere, but they differ in resolution, in exactly how they assimilate observations into their starting conditions, and in the parameterizations they use for things models can't resolve directly, like individual clouds or convection, which have to be approximated with equations rather than simulated from first principles. For a long time ECMWF had an edge partly because it had more computing power dedicated to a smaller number of forecast regions and a very strong data assimilation system, and that showed up clearly in things like hurricane track errors. I know the gap isn't fixed though, NOAA rebuilt the GFS around a new dynamical core a few years ago specifically to close that difference, so it's less about one model being permanently better and more about which agency is currently ahead on a particular upgrade cycle."
+    },
+    "commonMistakes": [
+      "Repeating 'the European model is just better' without explaining any actual mechanism",
+      "Assuming the ranking between models is permanent and unchanging",
+      "Confusing model resolution with forecast accuracy as if they were the same thing"
+    ],
+    "followUps": ["If you were building a new forecast model from scratch today, which of those factors would you prioritise improving first?"]
+  },
+  {
+    "id": "prog-meteorology-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Urban heat island effect",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["microclimate", "urban-climate", "temperature"],
+    "question": "Why can a city center be several degrees warmer at night than the surrounding countryside, even though both receive the same sunlight during the day?",
+    "lookingFor": "Understanding of heat capacity, reduced evapotranspiration, and radiative trapping, not just 'concrete gets hot'.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the high heat capacity of concrete and asphalt storing and slowly releasing daytime heat",
+        "Contrast with vegetation's evaporative cooling, which the city largely lacks",
+        "Mention street canyon geometry trapping outgoing radiation and reducing overnight cooling"
+      ],
+      "modelAnswer": "Concrete and asphalt have a much higher heat capacity than soil or vegetation, so they absorb a lot of the sun's energy during the day and then release it slowly overnight, which is exactly when the countryside, having far less of that stored heat and more vegetation cooling itself through evapotranspiration, cools off quickly. Cities also add heat directly, from vehicles, air conditioning units, and industry, and tall buildings create street canyons that trap outgoing infrared radiation and reduce how much open sky the surface can radiate heat out to. Put together, those effects mean the temperature difference is usually biggest at night under clear, calm conditions, which is also when it matters most for things like heatwave mortality, since residents don't get the overnight relief that would otherwise let their bodies recover."
+    },
+    "commonMistakes": [
+      "Saying only 'concrete absorbs heat' without explaining the nighttime release mechanism",
+      "Forgetting the role of reduced vegetation and evapotranspiration",
+      "Missing that the effect is strongest specifically at night under clear, calm conditions"
+    ],
+    "followUps": ["What urban design changes would you expect to meaningfully reduce this effect?"]
+  },
+  {
+    "id": "prog-meteorology-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Climate change attribution science",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["climate-change", "attribution-science", "statistics"],
+    "question": "After a major heatwave or flood, you'll often see a headline like 'made three times more likely by climate change.' How do scientists actually arrive at a number like that, and what are the limits of that kind of claim?",
+    "lookingFor": "Genuine understanding of counterfactual modeling and healthy scepticism about headline simplification.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe running climate model ensembles with and without human emissions and comparing event frequency",
+        "Explain the resulting likelihood ratio or magnitude increase figure",
+        "Note the method works better for temperature extremes than complex local events like specific floods"
+      ],
+      "modelAnswer": "Attribution scientists run large ensembles of climate model simulations twice, once with the actual history of human greenhouse gas emissions and once in a counterfactual world without them, and then compare how often an event of that magnitude shows up in each set of simulations. If a heatwave that severe happens three times more often in the real-world simulations than in the world without our emissions, that's where the 'three times more likely' figure comes from. The limits are real though, this works much better for temperature extremes, which are directly tied to global warming, than for something like a specific flood, where local factors like land use, drainage, and even the exact storm track matter enormously and models may not resolve them well, so I'd be cautious about a headline number that drops the uncertainty range the actual paper reported."
+    },
+    "commonMistakes": [
+      "Describing attribution as simple correlation rather than counterfactual modelling",
+      "Treating attribution claims as equally solid for all event types",
+      "Repeating a headline figure without acknowledging its uncertainty range"
+    ],
+    "followUps": ["Why might attribution be much harder for a tornado outbreak than for a heatwave?"]
+  },
+  {
+    "id": "prog-meteorology-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Vorticity and mesocyclone development",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["severe-weather", "storm-dynamics", "wind-shear"],
+    "question": "Explain in your own words how a straight-line thunderstorm updraft can start rotating to form a mesocyclone.",
+    "lookingFor": "Real conceptual understanding of tilting and stretching of vorticity, not a memorised buzzword answer.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain horizontal vorticity generated by vertical wind shear",
+        "Describe the updraft tilting that horizontal spin into the vertical",
+        "Explain stretching intensifying the rotation through conservation of angular momentum"
+      ],
+      "modelAnswer": "Wind shear, meaning the wind changing speed or direction as you go up in height, sets up a horizontal spinning motion in the air, like an invisible rolling pin lying on its side. When a strong thunderstorm updraft pushes up through that layer, it tilts part of that horizontal spin so it becomes vertical spin instead, aligned with the updraft itself. Once that vertical rotation exists, the updraft stretches the air column upward, and because rotating air conserves angular momentum the same way a spinning skater speeds up by pulling their arms in, that stretching tightens and intensifies the spin, which is how you get a mesocyclone, a rotating column several kilometres wide inside the storm, well before any tornado might drop from it."
+    },
+    "commonMistakes": [
+      "Saying storms rotate simply 'because of the Coriolis effect', which is far too weak at storm scale",
+      "Skipping the tilting step and jumping straight from shear to rotation",
+      "Confusing a mesocyclone with a tornado as if they're the same size and process"
+    ],
+    "followUps": ["Why is the Coriolis effect not actually the reason an individual thunderstorm rotates?"]
+  },
+  {
+    "id": "prog-meteorology-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Nocturnal boundary layer and inversions",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["boundary-layer", "microclimate", "temperature-inversion"],
+    "question": "On a clear, calm night, why can the air just above the ground actually be colder than the air a hundred metres higher up, and why does that matter for things like frost or fog?",
+    "lookingFor": "Understanding of radiative cooling, calm-air mixing failure, and the practical consequences of a surface inversion.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain radiative cooling of the ground under clear skies with no cloud to trap outgoing heat",
+        "Note that calm winds prevent mixing that would otherwise redistribute the cold air",
+        "Connect the resulting surface inversion to frost pooling in valleys and trapped fog"
+      ],
+      "modelAnswer": "Under clear skies at night the ground loses heat quickly to space as infrared radiation, since there's no cloud layer to trap it and radiate some back down, so the surface cools faster than the air sitting above it. If the wind is calm there's nothing to mix that cold air near the ground with the relatively warmer air above, so instead of temperature dropping steadily with height like normal, you get a shallow layer right at the surface where it actually increases with height, which is a surface inversion. That cold, dense air pools in low-lying areas, which is exactly why frost tends to form in valleys rather than on nearby slopes, and why fog and pollutants also get trapped right at ground level until the sun comes up and mixes the layer out again."
+    },
+    "commonMistakes": [
+      "Forgetting to mention that calm wind, not just clear sky, is required for the inversion to persist",
+      "Describing inversions as universal rather than tied to specific radiative, calm-night conditions",
+      "Not connecting the inversion to why frost pools specifically in low-lying terrain"
+    ],
+    "followUps": ["Why do orchard owners sometimes use wind machines or even helicopters on frost-risk nights?"]
+  },
+  {
+    "id": "prog-meteorology-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud seeding and weather modification ethics",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["ethics", "weather-modification", "policy"],
+    "question": "Some regions now use cloud seeding to try to increase rainfall or reduce hail damage. If you were advising a government on this, what ethical concerns would you want addressed before approving a program?",
+    "lookingFor": "Structured ethical reasoning that goes beyond 'is it effective' to equity, consent, and governance.",
+    "idealAnswer": {
+      "bullets": [
+        "Raise the scientific uncertainty problem, hard to prove the counterfactual of what would have fallen anyway",
+        "Flag transboundary equity, seeding upwind potentially reducing rainfall for downwind neighbours",
+        "Address who controls access and whether oversight stays public rather than privatised"
+      ],
+      "modelAnswer": "My first concern would be that the science is genuinely uncertain, it's very hard to prove how much extra rain fell because of seeding versus what would have fallen anyway, so I'd want independent, transparent evaluation built in before scaling anything up. Beyond that, precipitation that falls in one place has often traveled from somewhere else, so I'd want to know whether seeding in one region could mean less rain downwind for a neighbouring area or country, and if so, who's accountable for that and whether they were even consulted. I'd also worry about who gets to control it, if it becomes something wealthier regions or private operators can afford and others can't, it risks becoming another form of inequality dressed up as a technical fix, so I'd want clear public oversight rather than leaving it to whoever can pay."
+    },
+    "commonMistakes": [
+      "Only discussing whether cloud seeding works technically, without any ethical dimension",
+      "Ignoring the transboundary or downwind equity question entirely",
+      "Giving a flat yes or no verdict instead of reasoning through the tensions"
+    ],
+    "followUps": ["Should neighbouring regions have a legal right to object to another region's cloud seeding program?"]
+  },
+  {
+    "id": "prog-meteorology-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "False alarms versus missed warnings",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["ethics", "forecasting", "risk-communication"],
+    "question": "A forecaster has to decide whether to issue a severe weather warning based on a model that's showing only a moderate, uncertain signal. Issue it and you risk a false alarm that erodes public trust next time. Don't issue it and you risk people being caught off guard by something real. How would you think through that decision?",
+    "lookingFor": "Reasoning that weighs asymmetric consequences and favours calibrated communication over a binary choice.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise the two error types are not equally costly, missed life-threatening events versus eroded trust",
+        "Favour calibrated, honest language over forcing the decision into a binary warn or don't-warn",
+        "Commit to tracking the false alarm rate over time rather than treating each call in isolation"
+      ],
+      "modelAnswer": "I'd start by recognising the two kinds of error aren't equally bad, a missed warning on something genuinely dangerous can cost lives, while a false alarm mostly costs trust, and trust can be rebuilt if you're honest about why you called it. Where possible I'd rather communicate the actual uncertainty than force it into a binary yes or no, something like a watch that clearly says 'conditions are favourable but not certain' does more good than either staying silent or crying wolf with full confidence. If the potential impact is severe enough, I'd lean toward warning even on a moderate signal, but I'd also want my agency tracking its false alarm rate over time and being transparent about it, because if warnings become background noise people stop reacting to real ones, and that failure mode kills people just as surely as staying silent does."
+    },
+    "commonMistakes": [
+      "Picking one option decisively without weighing the asymmetric consequences",
+      "Ignoring that probabilistic, tiered communication is an option between silence and a full warning",
+      "Treating false alarms and missed warnings as equally costly"
+    ],
+    "followUps": ["How would you personally track and learn from a warning that turned out to be a false alarm?"]
+  },
+  {
+    "id": "prog-meteorology-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "AI forecasting models and accountability",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["ethics", "artificial-intelligence", "forecasting"],
+    "question": "New AI weather models can now sometimes beat traditional physics-based models on certain forecasts, but nobody can fully explain why they made a specific prediction. Would you be comfortable using one of these to issue a life-safety warning, like an evacuation order?",
+    "lookingFor": "Balanced reasoning about opacity, accountability, and a hybrid rather than all-or-nothing stance.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge genuine accuracy gains without dismissing them",
+        "Flag the opacity problem, an unexplainable error can't be traced the way a physics model's can",
+        "Propose a hybrid approach, AI as one voice alongside physics models and human judgment for high-stakes calls"
+      ],
+      "modelAnswer": "I think the accuracy gains are real and worth taking seriously, but I'd be uneasy relying on one of these models as the sole basis for something as consequential as an evacuation order, precisely because when it gets something wrong you can't trace back through its reasoning the way you can with a physics-based model, where you can usually point to which equation or which piece of missing data caused the error. For life-safety decisions I'd want it used as one strong voice among several, alongside traditional models and an experienced human forecaster who can sanity-check it against what they know about how storms actually behave, rather than letting it issue the call on its own. There's also an accountability question, if an AI model is wrong and people are hurt because of it, someone has to own that decision, and I don't think it's fair or safe to let the model itself be that someone."
+    },
+    "commonMistakes": [
+      "Either rejecting AI models outright or trusting them uncritically, with no middle ground",
+      "Not addressing the accountability question of who is responsible for a wrong call",
+      "Ignoring that traditional physics models are also imperfect, just in traceable ways"
+    ],
+    "followUps": ["Who do you think should be held responsible if an AI-driven warning is wrong and someone is hurt as a result?"]
+  },
+  {
+    "id": "prog-meteorology-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Paywalled forecasts and public safety equity",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["ethics", "equity", "public-service"],
+    "question": "Private weather companies increasingly offer more precise, premium forecasts to paying customers, while public national weather services provide the free baseline. Is there anything ethically uncomfortable about that split, especially around severe weather?",
+    "lookingFor": "A distinction between commercial convenience and life-safety information, with concern for vulnerable communities.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish routine, commercial-forecast convenience from life-safety information",
+        "Note the equity risk of exposed, lower-income communities losing out on paid precision or lead time",
+        "Argue the public baseline for severe weather should stay robustly funded regardless of private growth"
+      ],
+      "modelAnswer": "I don't think it's a problem for a private company to sell a farmer a hyper local forecast for planning irrigation, that's a convenience product and people can choose whether to pay for it. It becomes uncomfortable when the extra precision or earlier lead time that could actually save someone's life during a severe storm ends up gated behind a subscription, because the people who often live in the most exposed housing are also the least likely to be able to pay for a premium alert. I'd want to see a clear line where anything genuinely life-safety related stays with a well funded public service available to everyone, and private companies compete on top of that for convenience and precision, rather than the public baseline being allowed to degrade because everyone assumes the private sector will fill the gap."
+    },
+    "commonMistakes": [
+      "Treating all private weather services as equally problematic, including routine commercial products",
+      "Not connecting the concern to who is most vulnerable to severe weather in the first place",
+      "Giving a purely economic answer with no ethical reasoning about safety"
+    ],
+    "followUps": ["Should private weather companies be required to share severe weather data freely, even if it undercuts their business model?"]
+  },
+  {
+    "id": "prog-meteorology-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "AI weather models versus physics-based forecasting",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["artificial-intelligence", "numerical-modeling", "current-debate"],
+    "question": "There's been a lot of debate recently about AI models trained on historical weather data starting to outperform traditional physics-based forecasting models on some metrics. What do you make of that, and do you think AI will eventually replace physical models entirely?",
+    "lookingFor": "Genuine awareness of a live debate in the field with a reasoned, non-hyped position.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that AI models are faster, cheaper, and competitive on standard verification metrics",
+        "Raise the concern that models trained on historical data may struggle with genuinely novel extreme events",
+        "Land on a balanced, hybrid-future view rather than declaring a winner"
+      ],
+      "modelAnswer": "I've followed this with real interest, models like those from DeepMind and others can now produce a ten day global forecast in minutes rather than hours, using a fraction of the computing power, and on standard accuracy scores they're genuinely competitive with, and sometimes better than, the traditional physics based models. What makes me cautious about a full replacement is that these models learn patterns from decades of historical weather, so I'd worry about how well they handle a genuinely unprecedented event that doesn't resemble anything in their training data, which is exactly the kind of event that matters most as the climate changes. My honest guess is we end up with a hybrid future, physics based models staying essential for extreme and novel situations and for actually understanding the underlying processes, with AI models used for speed, routine forecasting, and as an extra ensemble member to blend with the physical ones."
+    },
+    "commonMistakes": [
+      "Declaring AI models will fully replace physics-based models with no nuance",
+      "Dismissing AI forecasting entirely as a gimmick despite its measured accuracy gains",
+      "Showing no awareness that this is a live, ongoing debate in the field"
+    ],
+    "followUps": ["Why might an AI model trained on historical data struggle specifically with a climate that is changing over time?"]
+  },
+  {
+    "id": "prog-meteorology-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Shrinking weather observation networks",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["observations", "forecasting", "current-events"],
+    "question": "Budget pressures have led some national weather services to cut back the number of weather balloon launches. Why does that matter for forecast quality, even though we now have satellites?",
+    "lookingFor": "Understanding that satellites and balloons provide complementary, not interchangeable, information.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that radiosondes give direct, high vertical resolution profiles that satellites don't fully replicate",
+        "Note satellites provide broad coverage but rely on indirect retrievals that need balloon data for calibration",
+        "Connect reduced launches to degraded data assimilation, especially before severe weather events"
+      ],
+      "modelAnswer": "Weather balloons give you a direct vertical slice through the whole atmosphere, actual temperature, humidity, and wind measured at very fine vertical resolution as the balloon rises, twice a day at a fixed location. Satellites are incredible for global horizontal coverage, but a lot of what they give you for temperature and moisture are indirect retrievals from radiance measurements, which are less precise vertically and actually need to be calibrated and validated against balloon data to stay accurate. So cutting back launches doesn't just remove one data point, it degrades the whole assimilation system's ability to build an accurate starting picture of the atmosphere in that region, which matters most exactly when you need it, ahead of a severe weather setup where getting the vertical profile right can be the difference between catching an instability signature and missing it."
+    },
+    "commonMistakes": [
+      "Assuming satellites make balloon data entirely redundant",
+      "Not explaining why balloons give better vertical resolution specifically",
+      "Missing the connection between fewer observations and degraded data assimilation"
+    ],
+    "followUps": ["What kind of forecast would suffer the most from a reduced balloon network, a routine forecast or a severe weather setup?"]
+  },
+  {
+    "id": "prog-meteorology-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "The Category 6 hurricane scale debate",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["hurricanes", "current-debate", "risk-communication"],
+    "question": "There's an ongoing debate among meteorologists about whether the Saffir-Simpson hurricane scale needs a 'Category 6' for the most extreme storms we're now seeing. What's your take?",
+    "lookingFor": "Understanding of what the scale actually measures and a reasoned view on whether extending it solves the real problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that Saffir-Simpson is wind-based, with category five already open-ended above 157 mph",
+        "Point out the scale's real weakness is that it ignores surge and rainfall, which cause most deaths",
+        "Give a reasoned opinion rather than a flat yes or no"
+      ],
+      "modelAnswer": "The argument for adding a category is that we've now seen a handful of storms cross wind speeds so far beyond the current category five threshold that some scientists think the public should have a way to distinguish them. But I actually lean toward thinking that misses the bigger problem with the scale, Saffir-Simpson only measures sustained wind speed, and in most hurricanes it's storm surge and inland flooding from rainfall that kill more people, not the wind itself, and a storm can be a weak category one by wind and still be catastrophic because of flooding. Adding a category six might actually reinforce the wrong instinct, that wind category is the main thing to worry about, so if I were advising on this I'd rather see effort go into better communicating surge and flood risk directly, the way some agencies are already starting to do, rather than extending a scale that was never really measuring the thing that kills the most people."
+    },
+    "commonMistakes": [
+      "Not knowing that Saffir-Simpson measures wind speed only, not overall danger",
+      "Assuming category five is a hard ceiling rather than already open-ended",
+      "Giving no independent opinion, just describing both sides without landing anywhere"
+    ],
+    "followUps": ["What would a hurricane risk scale that accounted for surge and rainfall actually need to include?"]
+  },
+  {
+    "id": "prog-meteorology-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Space weather awareness",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["space-weather", "infrastructure", "current-events"],
+    "question": "Meteorology isn't only about the troposphere. Why has 'space weather', things like solar flares and geomagnetic storms, become a growing concern for forecasters and infrastructure planners?",
+    "lookingFor": "Awareness that meteorology extends beyond the lower atmosphere and understanding of concrete infrastructure risks.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism, solar activity interacting with Earth's magnetosphere inducing ground currents",
+        "List concrete risks: power grid transformers, satellites, GPS accuracy, and polar aviation communication",
+        "Connect growing concern to increased reliance on satellite and GPS-dependent infrastructure"
+      ],
+      "modelAnswer": "Space weather is really about activity on the sun, solar flares and coronal mass ejections, that sends bursts of charged particles and radiation toward Earth, and when those interact with our magnetic field they can induce electrical currents in long conductors like power grid transmission lines and damage transformers, disrupt satellite electronics, degrade GPS accuracy, and interfere with radio communication that airlines rely on for polar routes. It's become a bigger concern precisely because we've built so much critical infrastructure that depends on satellites and precise GPS timing since the last time a truly extreme storm hit, the 1859 Carrington event, so agencies have been investing more in monitoring and early warning, giving grid operators maybe a day or two of notice to take protective steps if a major eruption is heading our way. I find it a fascinating reminder that meteorology doesn't stop at the top of the atmosphere, the sun is effectively the biggest weather system we have to keep an eye on."
+    },
+    "commonMistakes": [
+      "Not knowing any concrete infrastructure risk beyond a vague 'it messes with electronics'",
+      "Confusing space weather with ordinary atmospheric weather",
+      "Missing why growing dependence on satellites and GPS makes this more urgent now than decades ago"
+    ],
+    "followUps": ["How much warning time do we typically get before a solar storm actually reaches Earth?"]
+  },
+  {
+    "id": "prog-meteorology-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Stratospheric aerosol injection and geoengineering",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["ethics", "geoengineering", "climate-policy"],
+    "question": "Some scientists have proposed deliberately injecting aerosols into the stratosphere to reflect sunlight and cool the planet as a stopgap against climate change. What's your view on pursuing research into this kind of geoengineering?",
+    "lookingFor": "Balanced reasoning that weighs the physical plausibility against termination shock, unequal side effects, and governance.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism by analogy to volcanic cooling, like Pinatubo",
+        "Raise termination shock and the risk of treating a symptom rather than the root cause",
+        "Flag the governance problem, unequal regional side effects from a unilateral global intervention"
+      ],
+      "modelAnswer": "The basic idea, putting reflective aerosols into the stratosphere the way a big volcanic eruption like Pinatubo naturally does for a year or two afterward, is physically plausible as a way to cool the planet quickly, and that's tempting given how slowly we're actually cutting emissions. What worries me is that it treats a symptom rather than the cause, carbon dioxide keeps building up and the oceans keep acidifying underneath it, and if a program like that were ever started and then stopped abruptly, you'd get a rapid rebound in warming, what people call termination shock, that could be worse than doing nothing. There's also a real governance problem, cooling the whole planet isn't something one country should get to decide unilaterally when the side effects, like shifting monsoon patterns, could land hardest on regions that had no say in the decision, so my honest view is that cautious, transparent, international research makes sense, but actually deploying it feels premature and needs a lot more global agreement than currently exists."
+    },
+    "commonMistakes": [
+      "Either fully endorsing or fully rejecting geoengineering with no reasoning in between",
+      "Not mentioning termination shock as a distinct risk from simply 'it might not work'",
+      "Ignoring the governance and unequal-impact dimension entirely"
+    ],
+    "followUps": ["Who do you think should have the authority to approve or halt a global-scale intervention like this?"]
+  },
+  {
+    "id": "prog-meteorology-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "On-duty forecaster flash flood decision",
+    "program": "Meteorology",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "risk-communication", "severe-weather"],
+    "question": "Imagine you're on shift at a forecasting office. Six hours out, your model guidance shows roughly a 30 percent chance of a flash flood severe enough to be life-threatening in a densely populated area, but it's genuinely uncertain. Walk me through how you'd decide what to do.",
+    "lookingFor": "Structured decision making under uncertainty that treats consequence severity, not just raw probability, as central.",
+    "idealAnswer": {
+      "bullets": [
+        "Gather more evidence first, trends across model runs, ensemble spread, radar, and ground conditions",
+        "Reason that a moderate probability of a catastrophic outcome is not the same as low risk",
+        "Choose a calibrated, honest communication option and commit to monitoring closely for an upgrade"
+      ],
+      "modelAnswer": "Before deciding anything I'd want to look beyond that one number, checking how the probability has trended across recent model runs, what the ensemble spread actually looks like, and whether real time radar or soil saturation data is starting to confirm or undercut the signal. Thirty percent might sound like a low probability, but if the consequence is genuinely life threatening flooding in a dense population area, I don't think low probability of a catastrophic outcome is the same as low risk, so I'd lean toward communicating it rather than staying silent and hoping it resolves favourably. I'd probably issue something calibrated to the actual uncertainty, a flood watch with language that's honest about the confidence level, rather than a full warning, and stay on it closely so I could upgrade quickly the moment trends firmed up. I'd rather explain afterward why I acted on a credible thirty percent chance of something severe than explain why I stayed quiet and people were caught off guard."
+    },
+    "commonMistakes": [
+      "Treating 30 percent as automatically 'unlikely, so do nothing'",
+      "Jumping straight to a decision without describing how they'd gather more evidence first",
+      "Picking a binary warn or don't-warn answer with no calibrated middle option"
+    ],
+    "followUps": ["How would your answer change if the same 30 percent probability applied to a sparsely populated rural area instead?"]
+  },
+  {
+    "id": "prog-meteorology-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Discovering a faulty sensor before broadcast",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "data-quality", "professional-judgment"],
+    "question": "Just before you're about to finalise a forecast that will be broadcast publicly, you notice one of the automated weather stations feeding into your model has been reporting an obviously wrong temperature for the last few hours. What do you do?",
+    "lookingFor": "Diligence about data quality under time pressure, without either panicking or ignoring the problem.",
+    "idealAnswer": {
+      "bullets": [
+        "Check whether the bad reading actually made it into the assimilation for this run",
+        "Cross check nearby stations to see whether the broader pattern still makes physical sense",
+        "Flag confidence honestly if in doubt, and report the faulty sensor separately for maintenance"
+      ],
+      "modelAnswer": "My first step would be to actually check whether that bad reading made it into this particular model run or the analysis behind it, rather than just assuming it must have, since a lot of systems have quality control that flags and rejects obviously wrong values automatically. If I couldn't confirm that quickly, I'd cross check nearby stations to see whether the general pattern still makes physical sense despite that one bad data point, and I'd rather take a few extra minutes to verify than rush out a forecast built on a value I already know is wrong. If there was any real doubt, I'd flag it clearly to whoever I handed the forecast to, or add a note about the confidence in that specific area, and separately report the faulty sensor so it gets fixed, because letting a small, known data problem quietly ride into a public forecast because of time pressure feels like exactly the kind of shortcut that erodes trust when it eventually gets found out."
+    },
+    "commonMistakes": [
+      "Ignoring the bad reading and issuing the forecast unchanged to save time",
+      "Panicking and pulling the whole forecast without first checking whether it actually affected the output",
+      "Forgetting to actually report the faulty sensor for maintenance afterward"
+    ],
+    "followUps": ["What would you do if you didn't have time to verify before the broadcast deadline?"]
+  },
+  {
+    "id": "prog-meteorology-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Investigating an unexpected local frost event",
+    "program": "Meteorology",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "microclimate", "field-investigation"],
+    "question": "A farmer tells you their orchard got hit by frost overnight even though the nearest official weather station, only a few kilometres away, recorded a low well above freezing. As a meteorology student, how would you go about explaining that discrepancy?",
+    "lookingFor": "Recognition that a single station reading doesn't represent all nearby terrain, plus a genuine instinct to verify rather than assume.",
+    "idealAnswer": {
+      "bullets": [
+        "Consider topography, cold air draining into a low-lying orchard could create a frost hollow",
+        "Note that clear, calm nights are exactly when local terrain differences matter most",
+        "Propose actually placing a data logger on site to verify rather than relying only on the distant station"
+      ],
+      "modelAnswer": "The first thing I'd think about is that a temperature reading a few kilometres away doesn't necessarily represent the orchard itself, especially on a clear, calm night, since that's exactly when local topography matters most. If the orchard sits in a slight dip or at the bottom of a slope, cold, dense air draining downhill overnight could pool there and create what's basically a frost hollow, several degrees colder than the surrounding land, while the official station might sit somewhere more exposed or slightly elevated where that cold air doesn't collect. To actually confirm it rather than just guessing, I'd want to put a simple data logger out in the orchard itself, ideally at canopy height, for a few clear calm nights, and compare it directly against the station readings, because that's the kind of hands on verification that turns a plausible explanation into an actual answer."
+    },
+    "commonMistakes": [
+      "Assuming the official station reading must be correct and the farmer's observation is simply wrong",
+      "Giving a general explanation of frost without connecting it to local topography and terrain",
+      "Not proposing any way to actually verify the explanation on site"
+    ],
+    "followUps": ["Why do frost hollows tend to be worst specifically on clear, calm nights rather than cloudy or windy ones?"]
+  }
+]

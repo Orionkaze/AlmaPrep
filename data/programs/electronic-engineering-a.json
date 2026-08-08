@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-electronic-engineering-a-001",
+    "category": "Subject-specific probe",
+    "subtopic": "Motivation for electronic engineering",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["motivation", "electronics", "personal"],
+    "question": "What first got you interested in electronic engineering?",
+    "lookingFor": "A specific, personal origin story that shows genuine curiosity about how electronic systems work, not a generic love of gadgets.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a concrete moment, project, or experience that sparked the interest",
+        "Explain what specifically pulled you toward electronics rather than engineering broadly",
+        "Show the interest has developed since, not stayed static"
+      ],
+      "modelAnswer": "I took apart an old radio when I was about twelve because I wanted to know why it made sound at all, and I remember being amazed that a handful of components could pull a signal out of thin air. That curiosity stuck, so in school I started building simple circuits on breadboards, and last year I put together an FM transmitter kit and actually understood the tuning stage this time. It's the mix of physics and hands-on building that keeps pulling me back in."
+    },
+    "commonMistakes": [
+      "Saying 'I've always loved technology' with no specific memory or example",
+      "Describing an interest in coding or computers generally rather than electronics",
+      "Giving an answer that stops at the origin story with no sign of growth since"
+    ],
+    "followUps": ["What's the most recent thing you've built or tinkered with?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Why this university's course",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["motivation", "program-fit", "research"],
+    "question": "Why do you want to study electronic engineering here specifically, rather than at another university?",
+    "lookingFor": "Specific, researched reasons tied to this course's structure, labs, or staff, connected to the applicant's own goals.",
+    "idealAnswer": {
+      "bullets": [
+        "Reference a specific module, lab facility, or research group rather than general prestige",
+        "Connect the course's structure to how the applicant likes to learn",
+        "Show the choice was made by comparing against other courses, not by default"
+      ],
+      "modelAnswer": "I looked at several courses and what stood out here is that the second-year lab work is assessed as much as the exams, which matters to me because I learn best by building and debugging something real rather than just deriving it on paper. Your embedded systems module also lets students choose their own final project, and I already have an idea involving a low-power sensor node I'd want to develop. I compared this against two other courses that were far more exam-heavy, and this one matched how I actually work."
+    },
+    "commonMistakes": [
+      "Giving an answer that would apply equally to any university's engineering course",
+      "Citing league table rankings as the main reason",
+      "Not being able to name anything specific about the course content or structure"
+    ],
+    "followUps": ["What would you want to build for that final-year project?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Relevant hands-on experience",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["experience", "hands-on", "projects"],
+    "question": "Tell us about a project you've built or worked on outside of the classroom.",
+    "lookingFor": "Genuine hands-on experience with real detail about what was built, what went wrong, and what was learned.",
+    "idealAnswer": {
+      "bullets": [
+        "Describe a specific project with enough technical detail to show real involvement",
+        "Mention a problem that came up and how it was diagnosed and fixed",
+        "Explain what was learned, not just that it 'worked in the end'"
+      ],
+      "modelAnswer": "I built a line-following robot using an Arduino, an IR sensor array, and a small motor driver board. The hardest part wasn't the code, it was that the motors drew more current than the board could supply reliably, so the robot would randomly reset mid-run. I traced it with a multimeter, found the voltage dipping under load, and added a separate battery pack for the motors with a common ground. It taught me that a lot of 'software bugs' in embedded projects actually turn out to be power problems."
+    },
+    "commonMistakes": [
+      "Describing a project only in vague terms with no technical specifics",
+      "Claiming everything worked perfectly with no troubleshooting story",
+      "Talking about a project that was almost entirely someone else's work"
+    ],
+    "followUps": ["What would you change if you built it again from scratch?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Wider reading and interest beyond the syllabus",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["wider-reading", "curiosity", "current-topics"],
+    "question": "Have you read or watched anything recently related to electronics that interested you? Tell us about it.",
+    "lookingFor": "Evidence of genuine curiosity beyond the school curriculum, with the ability to explain the content and why it mattered.",
+    "idealAnswer": {
+      "bullets": [
+        "Name something specific rather than a vague genre of content",
+        "Summarise the core idea accurately in the applicant's own words",
+        "Explain what question or follow-up interest it left them with"
+      ],
+      "modelAnswer": "I've been reading about the push toward gallium nitride transistors replacing silicon in chargers and power supplies, because a friend's new laptop charger is a fraction of the size of my old one and I wanted to know why. What struck me is that GaN can switch faster and handle higher voltages with less heat loss, so you need less bulky cooling and fewer passive components. It made me want to understand switching losses properly, which I know is something covered in second-year power electronics."
+    },
+    "commonMistakes": [
+      "Naming a source but being unable to explain any actual content from it",
+      "Choosing something entirely unrelated to electronics",
+      "Reciting a summary that sounds memorised rather than understood"
+    ],
+    "followUps": ["What's one question that reading left you with?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Electronic vs electrical vs computer engineering",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["fundamentals", "discipline-scope", "concept"],
+    "question": "What's the difference between electronic engineering and electrical engineering, as you understand it?",
+    "lookingFor": "A reasonably accurate distinction showing the applicant has thought about what they're actually applying for.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish electrical engineering's focus on power generation, transmission, and heavy machinery",
+        "Distinguish electronic engineering's focus on smaller-signal circuits, semiconductors, and information processing",
+        "Acknowledge the fields overlap and aren't cleanly separated in practice"
+      ],
+      "modelAnswer": "As I understand it, electrical engineering leans more toward power, things like generators, transformers, and the grid, working with large currents and voltages. Electronic engineering is more about processing and controlling signals at a smaller scale, so semiconductors, circuits, embedded systems, and communications. In practice the two overlap a lot, for example power electronics sits right in between, but electronic engineering is the side that pulled me in because I'm more interested in signals and control than in large-scale power delivery."
+    },
+    "commonMistakes": [
+      "Saying the two are identical with no distinction at all",
+      "Confusing electronic engineering with computer science or software",
+      "Being unable to say why they specifically chose electronic over electrical"
+    ],
+    "followUps": ["Where do you think the two fields overlap most?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Ohm's law and circuit basics",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["circuits", "fundamentals", "ohms-law"],
+    "question": "Can you explain Ohm's law and give an example of using it?",
+    "lookingFor": "Clear grasp of V = IR and the ability to apply it to a simple practical calculation, not just recite the formula.",
+    "idealAnswer": {
+      "bullets": [
+        "State the relationship: voltage equals current times resistance",
+        "Explain what each quantity physically represents in a circuit",
+        "Work through a simple concrete example, such as sizing a resistor for an LED"
+      ],
+      "modelAnswer": "Ohm's law says voltage equals current multiplied by resistance, V equals IR, so for a fixed resistance, more voltage pushes more current through. I use it most practically when picking a resistor for an LED: if I have a 9 volt supply, the LED drops about 2 volts, and I want roughly 20 milliamps through it, I need the resistor to drop the remaining 7 volts at that current, which works out to about 350 ohms. It's a simple relationship but it's the one calculation I reach for constantly."
+    },
+    "commonMistakes": [
+      "Stating the formula but not being able to apply it to any example",
+      "Mixing up which quantity is which in the formula",
+      "Forgetting that resistance can change with temperature or other conditions in real components"
+    ],
+    "followUps": ["What happens to the current if you double the resistance and keep voltage constant?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Analog versus digital signals",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["signals", "analog", "digital"],
+    "question": "What's the difference between an analog signal and a digital signal?",
+    "lookingFor": "A clear conceptual distinction with a real example of each, showing understanding of why the distinction matters.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain analog as continuously varying and digital as discrete levels, usually binary",
+        "Give a concrete real-world example of each",
+        "Note a practical consequence of the difference, such as noise resistance"
+      ],
+      "modelAnswer": "An analog signal varies continuously, so it can take any value within a range, like the voltage from a microphone tracking sound pressure smoothly over time. A digital signal only takes discrete levels, usually just two, representing ones and zeros. What I find interesting is the practical consequence: a digital signal is much more resistant to noise, because a receiver only has to decide between two levels rather than reconstruct an exact continuous value, which is a big part of why so much of modern electronics has moved digital even for things that start out analog, like sound."
+    },
+    "commonMistakes": [
+      "Saying digital just means 'newer' or 'better' without explaining why",
+      "Being unable to give a real example of either type",
+      "Confusing digital with binary code specifically rather than discrete signal levels generally"
+    ],
+    "followUps": ["Where in a system might you need to convert between the two?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-008",
+    "category": "Subject-specific probe",
+    "subtopic": "Transistor as a switch",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["transistors", "semiconductors", "circuits"],
+    "question": "Can you explain, in simple terms, how a transistor can be used as a switch?",
+    "lookingFor": "An understanding of how a small control signal can turn a larger current on or off, without needing exam-level device physics.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the three terminals and their basic roles in a simple switching example",
+        "Explain that a small current or voltage at the control terminal governs a much larger current between the other two",
+        "Connect this to why transistors are the building block of digital logic"
+      ],
+      "modelAnswer": "Take a bipolar transistor as an example: it has a base, collector, and emitter, and if you put a small current into the base, it allows a much larger current to flow from collector to emitter. With no base current, that path is essentially off, and with enough base current it's fully on, so it behaves like a switch controlled electrically rather than mechanically. What makes this powerful is that the switch itself has no moving parts and can flip on and off millions of times a second, which is exactly what you need to build logic gates and, eventually, a whole processor."
+    },
+    "commonMistakes": [
+      "Describing a transistor only as an amplifier with no mention of switching behaviour",
+      "Getting the terminals or their roles confused",
+      "Not connecting the switching idea to why it matters for digital circuits"
+    ],
+    "followUps": ["Why do you think transistors replaced vacuum tubes for this purpose?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Series versus parallel circuits",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["circuits", "fundamentals", "resistors"],
+    "question": "What happens to the total resistance when you add resistors in series versus in parallel?",
+    "lookingFor": "Correct understanding of both configurations with a sense of why the difference occurs, not just memorised formulas.",
+    "idealAnswer": {
+      "bullets": [
+        "State that series resistances simply add together",
+        "State that parallel resistances combine to give a total lower than the smallest individual resistor",
+        "Offer an intuitive reason, such as current having more paths in parallel"
+      ],
+      "modelAnswer": "In series, the resistances just add up directly, because the current has only one path and has to fight through each resistor in turn. In parallel, the total resistance actually goes down and ends up lower than any single resistor in the group, because you're giving the current multiple paths to flow through at once, so it's easier overall for current to get through. I remember it by thinking of series as a single narrow corridor and parallel as opening more doors."
+    },
+    "commonMistakes": [
+      "Saying parallel resistance is higher than series, reversing the relationship",
+      "Only stating the formula with no intuitive explanation",
+      "Confusing the rules for resistors with the rules for capacitors, which behave oppositely"
+    ],
+    "followUps": ["How would the rule differ if these were capacitors instead of resistors?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Capacitor behaviour",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["capacitors", "circuits", "energy-storage"],
+    "question": "What does a capacitor do, and can you describe what happens when one charges up in a simple circuit?",
+    "lookingFor": "Understanding of capacitors as energy storage devices with a grasp of the charging curve, not just a textbook definition.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a capacitor stores energy as an electric field between two plates",
+        "Describe the charging behaviour: fast at first, slowing as it approaches full charge",
+        "Give a real use, such as smoothing, timing, or decoupling"
+      ],
+      "modelAnswer": "A capacitor stores energy in an electric field between two conductive plates separated by an insulator, and it can release that energy again quickly when needed. If you connect one to a resistor and a battery, current flows fastest the moment you connect it, charging the capacitor quickly at first, and then the rate slows down as the capacitor's own voltage starts opposing the source, so it approaches full charge but technically never quite reaches it in finite time. I've used this behaviour practically to smooth out a bumpy DC supply after a rectifier, where the capacitor fills in the dips between peaks."
+    },
+    "commonMistakes": [
+      "Describing a capacitor as if it behaves like a battery with constant output",
+      "Missing that the charging rate slows down rather than being linear",
+      "Giving no real application, leaving the answer purely theoretical"
+    ],
+    "followUps": ["What determines how fast a particular capacitor charges?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Diodes and rectification",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["diodes", "semiconductors", "power-conversion"],
+    "question": "What does a diode do, and how is it used to convert AC to DC?",
+    "lookingFor": "Understanding of one-way current flow and how that property is used to build a rectifier.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a diode allows current to flow in essentially one direction only",
+        "Describe how this blocks or reshapes the negative half of an AC cycle",
+        "Mention that a bridge arrangement and smoothing capacitor typically follow to get usable DC"
+      ],
+      "modelAnswer": "A diode only lets current flow easily in one direction, and blocks it, more or less, in the other. If you put one in series with an AC source, it chops off the negative half of every cycle, leaving you with a series of positive pulses, which is called half-wave rectification. In practice you'd normally use four diodes arranged as a bridge so you make use of both halves of the cycle instead of throwing one away, and then add a capacitor afterward to smooth the pulses into something closer to a steady DC voltage."
+    },
+    "commonMistakes": [
+      "Describing a diode as blocking current completely in both directions",
+      "Skipping the role of the smoothing capacitor and implying rectification alone gives clean DC",
+      "Confusing rectification with amplification"
+    ],
+    "followUps": ["Why is a bridge rectifier generally preferred over a simple half-wave one?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Binary number system",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["binary", "digital", "fundamentals"],
+    "question": "Why do digital electronics use binary rather than, say, decimal?",
+    "lookingFor": "Understanding that binary maps naturally onto two-state physical circuits, giving reliability and simplicity.",
+    "idealAnswer": {
+      "bullets": [
+        "Note that electronic switches naturally have two reliable states, on and off",
+        "Explain that distinguishing only two levels is far more noise-tolerant than distinguishing ten",
+        "Mention that binary logic maps directly onto simple physical switching circuits"
+      ],
+      "modelAnswer": "It comes down to reliability. A transistor is naturally good at being clearly on or clearly off, but it would be much harder to build a circuit that reliably distinguishes ten different voltage levels for decimal digits, especially with noise and component variation. With only two states to tell apart, there's a much bigger margin of error before a one gets mistaken for a zero. Binary also maps very neatly onto logic gates, so building up arithmetic and decision-making from simple AND, OR, and NOT gates becomes straightforward once you commit to two states."
+    },
+    "commonMistakes": [
+      "Saying computers 'just work in binary' with no explanation of why",
+      "Confusing binary with machine code or programming languages generally",
+      "Missing the noise-margin argument entirely"
+    ],
+    "followUps": ["How many bits would you need to represent the decimal number 200?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Logic gates",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["logic-gates", "digital", "fundamentals"],
+    "question": "Can you explain what an AND gate and an OR gate do, with a truth table?",
+    "lookingFor": "Correct, confident explanation of basic combinational logic, ideally with a real-world analogy.",
+    "idealAnswer": {
+      "bullets": [
+        "State that an AND gate outputs true only when all inputs are true",
+        "State that an OR gate outputs true when at least one input is true",
+        "Give a real-world analogy, such as a safety interlock or a light switch"
+      ],
+      "modelAnswer": "An AND gate only outputs a one if every single input is a one, so with two inputs the output is one only for the input pair one-one, and zero for the other three combinations. An OR gate outputs a one if at least one input is a one, so it's only zero when every input is zero. A good analogy for AND is a car that only starts if both the key is turned and the seatbelt is fastened, while OR is more like a room light that turns on if either of two switches is flipped."
+    },
+    "commonMistakes": [
+      "Swapping the behaviour of AND and OR",
+      "Being unable to fill in a truth table when asked directly",
+      "Confusing OR with exclusive-OR"
+    ],
+    "followUps": ["What's the difference between OR and exclusive-OR?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Operational amplifiers and feedback",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": ["op-amps", "feedback", "analog-design"],
+    "question": "What is negative feedback in an amplifier circuit, and why is it useful?",
+    "lookingFor": "A conceptual grasp of how feeding a portion of the output back to the input stabilises and controls gain, even without deriving the full formula.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that negative feedback subtracts a portion of the output from the input",
+        "Describe the effect: reduced but far more stable and predictable gain",
+        "Mention a practical benefit, such as reduced distortion or defined gain independent of the amplifier's raw open-loop characteristics"
+      ],
+      "modelAnswer": "Negative feedback means you take a portion of the output signal and feed it back to subtract from the input, rather than letting the amplifier run at its full raw gain. An operational amplifier on its own has enormous, unpredictable gain that varies a lot between individual chips, but once you close the loop with a couple of resistors setting the feedback fraction, the overall gain becomes set almost entirely by those resistors instead. I find it a bit counterintuitive that deliberately throwing away gain is what makes the circuit reliable, but that trade of raw gain for stability and predictability is what makes op-amps so useful in practice."
+    },
+    "commonMistakes": [
+      "Confusing negative feedback with positive feedback and oscillation",
+      "Describing feedback only as reducing volume or output with no mention of stability",
+      "Being unable to explain why the trade-off is worthwhile"
+    ],
+    "followUps": ["What do you think happens if you use positive feedback instead?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Kirchhoff's laws",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["circuits", "kirchhoffs-laws", "fundamentals"],
+    "question": "Can you state Kirchhoff's current law and voltage law, and explain what they're actually saying physically?",
+    "lookingFor": "Accurate statement of both laws with a physical, not just mathematical, explanation of why they must hold.",
+    "idealAnswer": {
+      "bullets": [
+        "State the current law: current into a node equals current out of it",
+        "State the voltage law: the sum of voltages around any closed loop is zero",
+        "Ground each law in a physical principle, conservation of charge and conservation of energy"
+      ],
+      "modelAnswer": "Kirchhoff's current law says the total current flowing into any junction must equal the total current flowing out, which is really just conservation of charge, charge can't pile up or vanish at a point in the circuit. Kirchhoff's voltage law says that if you add up all the voltage rises and drops going around any closed loop, they sum to zero, which is conservation of energy, because you end up back where you started with no net change in potential. I find them useful less as formulas to memorise and more as sanity checks, if my analysis of a circuit violates either one, I know I've made an error somewhere."
+    },
+    "commonMistakes": [
+      "Stating the laws correctly but with no physical justification",
+      "Mixing up which law applies to nodes and which applies to loops",
+      "Treating them as unrelated rules rather than consequences of conservation principles"
+    ],
+    "followUps": ["How would you use these laws to analyse a circuit with two loops?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Semiconductors and doping",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["semiconductors", "materials", "doping"],
+    "question": "What makes a semiconductor different from a conductor or an insulator, and what does doping do?",
+    "lookingFor": "Understanding that semiconductors sit between the two extremes and that doping is used to deliberately control conductivity.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a semiconductor's conductivity sits between a conductor's and an insulator's, and can be controlled",
+        "Describe doping as adding small amounts of impurity atoms to add extra free electrons or extra holes",
+        "Distinguish n-type from p-type at a basic level"
+      ],
+      "modelAnswer": "A conductor like copper has lots of free electrons and conducts easily, while an insulator has almost none and blocks current. A pure semiconductor like silicon sits in between, it conducts a little, but what makes it genuinely useful is that you can control its conductivity precisely by doping it, deliberately adding tiny amounts of other elements. Adding an element with one extra electron, like phosphorus, gives you n-type material with surplus free electrons, while adding one with one fewer electron, like boron, gives you p-type material with surplus 'holes' that behave like positive charge carriers. It's the boundary between n-type and p-type regions that makes diodes and transistors possible in the first place."
+    },
+    "commonMistakes": [
+      "Describing semiconductors as simply 'weak conductors' with no mention of controllability",
+      "Confusing n-type and p-type or getting the electron/hole roles backwards",
+      "Not connecting doping to why it enables devices like diodes and transistors"
+    ],
+    "followUps": ["Why is silicon used more commonly than other semiconductors like germanium?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Sampling and the Nyquist theorem",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": ["signal-processing", "sampling", "nyquist"],
+    "question": "When you convert an analog audio signal into a digital one, why do you need to sample it fast enough, and what happens if you don't?",
+    "lookingFor": "An intuitive grasp of the sampling rate requirement and the concept of aliasing, even without a rigorous derivation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a signal must be sampled at more than twice its highest frequency to be reconstructed accurately",
+        "Describe aliasing: sampling too slowly makes high frequencies masquerade as false lower ones",
+        "Give a real example, such as CD audio's sampling rate relative to human hearing"
+      ],
+      "modelAnswer": "If you sample a signal too slowly relative to how fast it's actually changing, you lose information you can never get back, and worse, the high-frequency content doesn't just disappear, it folds back and shows up disguised as a false lower frequency, which is called aliasing. The rule of thumb, the Nyquist rate, is that you need to sample at more than twice the highest frequency present in the signal to reconstruct it faithfully. That's why CD audio samples at 44.1 kilohertz, since human hearing tops out around 20 kilohertz, and that sampling rate leaves enough headroom above twice that to capture it properly."
+    },
+    "commonMistakes": [
+      "Saying you just need to 'sample fast enough' without any quantitative rule",
+      "Not mentioning aliasing or what actually goes wrong when you undersample",
+      "Confusing sample rate with bit depth or resolution"
+    ],
+    "followUps": ["What might you hear if audio were sampled below the Nyquist rate for its content?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Feedback control systems",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["control-systems", "feedback", "applied"],
+    "question": "Can you explain, using a real-world example, what a feedback control system is?",
+    "lookingFor": "Understanding of the sense-compare-correct loop, illustrated with a concrete everyday or engineering example.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the basic loop: measure the output, compare to a desired value, adjust accordingly",
+        "Use a concrete example rather than only abstract terminology",
+        "Note why feedback helps cope with disturbances or changing conditions"
+      ],
+      "modelAnswer": "A feedback control system constantly measures what a system is actually doing, compares that to what you want it to do, and adjusts its input to close the gap. A thermostat is the clearest everyday example, it measures the room temperature, compares it against the setpoint you chose, and turns the heating on or off to correct any difference. What makes feedback powerful is that it keeps working even when conditions change unpredictably, like someone opening a window, because the system is always reacting to the actual measured error rather than following a fixed, pre-planned schedule."
+    },
+    "commonMistakes": [
+      "Describing an open-loop system, like a fixed timer, and calling it feedback",
+      "Using only abstract control-theory language with no concrete example",
+      "Missing why feedback specifically handles disturbances better than a fixed plan"
+    ],
+    "followUps": ["What might go wrong if the feedback loop reacts too aggressively?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Moore's law and the future of chip scaling",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": ["semiconductors", "moores-law", "current-topics"],
+    "question": "What is Moore's law, and do you think it can keep holding true?",
+    "lookingFor": "Accurate understanding of the observation plus a reasoned, opinionated view on physical limits and alternative approaches.",
+    "idealAnswer": {
+      "bullets": [
+        "State Moore's law accurately as an observation about transistor density roughly doubling over time, not a law of physics",
+        "Acknowledge the physical limits being approached, such as atomic-scale features and heat",
+        "Offer a considered view on what might extend or replace it, such as 3D stacking or new materials"
+      ],
+      "modelAnswer": "Moore's law is really an observation Gordon Moore made, that the number of transistors that could be packed onto a chip roughly doubled every couple of years, not an actual law of physics, even though it held remarkably well for decades. I think the traditional version of it, just shrinking transistors on a flat chip, is running into real physical limits, since we're now working with features only a handful of atoms wide and heat dissipation gets harder as things get denser. But I don't think progress stops there, chipmakers are already moving to 3D stacking and new transistor structures, so I'd say the raw shrinking is slowing but the underlying goal of more computing power per chip is still finding new routes forward."
+    },
+    "commonMistakes": [
+      "Stating Moore's law as a fixed law of nature rather than an empirical observation",
+      "Giving no opinion at all when asked whether it will continue",
+      "Confusing transistor density scaling with clock speed increases"
+    ],
+    "followUps": ["What alternative approaches to silicon scaling have you come across?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-020",
+    "category": "Subject-specific probe",
+    "subtopic": "AC versus DC power",
+    "program": "Electronic Engineering",
+    "difficulty": "easy",
+    "tags": ["power", "ac-dc", "fundamentals"],
+    "question": "What's the difference between AC and DC, and why does mains power use AC?",
+    "lookingFor": "Clear understanding of the two current types plus a sound reason for AC's dominance in power distribution.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that DC flows in one constant direction and AC periodically reverses direction",
+        "Note that AC voltage can be stepped up and down efficiently with transformers",
+        "Connect this to why AC is preferred for long-distance power transmission"
+      ],
+      "modelAnswer": "DC, direct current, flows steadily in one direction, like from a battery, while AC, alternating current, reverses direction periodically, which is what comes out of a wall socket. Mains power uses AC mainly because transformers can step its voltage up or down very efficiently, and for long-distance transmission you want very high voltages to keep the current, and therefore the resistive losses in the cables, low. You then step the voltage back down to something safe before it reaches homes, and that whole trick only works easily with AC, which is a big part of why it won out over Edison's original DC distribution system historically."
+    },
+    "commonMistakes": [
+      "Being unable to explain why AC specifically suits long-distance transmission",
+      "Confusing AC and DC with analog and digital",
+      "Missing the role of transformers entirely"
+    ],
+    "followUps": ["Where in a modern device would you expect to find both AC and DC?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Microcontrollers and microprocessors",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["embedded-systems", "microcontrollers", "applied"],
+    "question": "What's the difference between a microcontroller and a microprocessor?",
+    "lookingFor": "Understanding of what's integrated on-chip in each and why that distinction affects what each is used for.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that a microprocessor is essentially just the processing core, needing external memory and peripherals",
+        "Explain that a microcontroller integrates the processor with memory and peripherals on a single chip",
+        "Connect the distinction to typical use cases, such as embedded control versus general computing"
+      ],
+      "modelAnswer": "A microprocessor is really just the processing core on its own, like the CPU in a desktop computer, and it needs separate memory chips, input and output circuitry, and other support components built around it to actually do anything useful. A microcontroller packs a processor, memory, and peripherals like timers and input and output pins all onto a single chip, so it's self-contained and cheap enough to drop into something like a washing machine or a toy without needing a whole surrounding system. I've used microcontrollers like the ATmega on Arduino boards for small embedded projects specifically because everything needed is already on that one chip."
+    },
+    "commonMistakes": [
+      "Using the two terms interchangeably with no distinction",
+      "Describing a microcontroller as more powerful rather than more integrated",
+      "Missing real examples of where each would actually be used"
+    ],
+    "followUps": ["What kind of project would call for a microprocessor rather than a microcontroller?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Modulation and communication systems",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": ["communications", "modulation", "signals"],
+    "question": "What is modulation, and why do we need it to transmit information wirelessly?",
+    "lookingFor": "A conceptual grasp of why baseband signals aren't transmitted directly, and a basic idea of how modulation works.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain modulation as varying a property of a carrier wave to encode information",
+        "Give a reason it's needed, such as antenna size or allowing many signals to share the spectrum",
+        "Name at least one type of modulation, such as amplitude or frequency modulation"
+      ],
+      "modelAnswer": "Modulation means taking your actual information, like an audio signal, and using it to vary some property of a much higher-frequency carrier wave, rather than transmitting the raw signal directly. You need it partly because an efficient antenna needs to be a decent fraction of the wavelength you're transmitting, and audio-frequency wavelengths are far too long to broadcast practically, and partly because it lets many different signals share the airwaves by each being placed on a different carrier frequency. AM radio varies the amplitude of the carrier to encode the sound, while FM varies its frequency instead, which is part of why FM tends to be less affected by the kind of electrical noise that mostly changes signal amplitude."
+    },
+    "commonMistakes": [
+      "Being unable to explain why raw signals can't just be transmitted directly",
+      "Confusing amplitude modulation and frequency modulation",
+      "Describing modulation only vaguely as 'encoding data' with no mechanism"
+    ],
+    "followUps": ["Why might FM be more resistant to certain types of interference than AM?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Well-engineered everyday electronic device",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["curiosity", "applied", "design-tradeoffs"],
+    "question": "Tell us about a piece of everyday electronics you think is particularly well designed, and why.",
+    "lookingFor": "Genuine curiosity and the ability to identify real engineering trade-offs in an ordinary device, not a rehearsed example.",
+    "idealAnswer": {
+      "bullets": [
+        "Pick something specific and describe roughly how it works",
+        "Identify a real constraint or trade-off the design solves",
+        "Show authentic enthusiasm rather than a memorised answer"
+      ],
+      "modelAnswer": "I keep coming back to wireless earbuds, specifically how much they manage to fit into such a tiny volume, a battery, a Bluetooth radio, a microphone, and an amplifier, all while surviving being dropped and getting sweated on. The trade-off that fascinates me is battery life against size, since every extra hour of playback needs more cell volume, but more volume means a bulkier, less comfortable earbud, so the designers are constantly negotiating between comfort and runtime. It's a reminder that a lot of electronic engineering isn't really about making something work once, it's about making something work reliably within very tight physical and power constraints."
+    },
+    "commonMistakes": [
+      "Naming a device without explaining any of its actual engineering",
+      "Ignoring the trade-offs involved and describing it as simply 'good'",
+      "Picking something too complex to meaningfully explain in the time available"
+    ],
+    "followUps": ["What would you change about its design if you could?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-024",
+    "category": "Goals & Future",
+    "subtopic": "Subfield of interest within electronic engineering",
+    "program": "Electronic Engineering",
+    "difficulty": "medium",
+    "tags": ["goals", "specialisation", "motivation"],
+    "question": "Electronic engineering covers a lot of ground, from embedded systems to communications to power electronics. Is there a particular area you're drawn to, and why?",
+    "lookingFor": "A genuine, informed leaning toward a subfield, held with curiosity rather than false certainty about a final career path.",
+    "idealAnswer": {
+      "bullets": [
+        "Name a specific subfield with a real reason for the interest",
+        "Ground the interest in some concrete exposure, reading, or project",
+        "Stay open to the idea that the interest could shift once exposed to more of the course"
+      ],
+      "modelAnswer": "Right now I'm most drawn to embedded systems, mainly from building small microcontroller projects and enjoying the puzzle of getting real-world sensors and code to work together reliably on very limited hardware. I've read a bit about how that connects into the Internet of Things and low-power design, which I find genuinely exciting given how much of that is still being figured out. That said, I know I haven't been properly exposed to areas like RF or power electronics yet, and I'm looking forward to the course potentially changing my mind."
+    },
+    "commonMistakes": [
+      "Naming a subfield with no reasoning or evidence of real interest",
+      "Sounding falsely certain about an entire career path already",
+      "Naming something outside electronic engineering entirely, like pure software development"
+    ],
+    "followUps": ["What's drawing you away from the other areas, if anything?"]
+  },
+  {
+    "id": "prog-electronic-engineering-a-025",
+    "category": "Ethics & Situational",
+    "subtopic": "E-waste and planned obsolescence",
+    "program": "Electronic Engineering",
+    "difficulty": "hard",
+    "tags": ["ethics", "e-waste", "current-topics"],
+    "question": "Electronics contribute significantly to e-waste, and some devices seem designed to be replaced rather than repaired. What's your view on the engineer's responsibility here?",
+    "lookingFor": "Balanced, considered reasoning about design responsibility, weighing commercial pressures against environmental and ethical concerns.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the real tension between commercial pressures and repairability or longevity",
+        "Take a considered position rather than a purely idealistic or purely dismissive one",
+        "Mention a concrete example or trend, such as right-to-repair legislation or modular design"
+      ],
+      "modelAnswer": "I think there's a genuine tension here, companies face real commercial pressure to make devices thin, cheap, and fast to manufacture, and those goals can pull against repairability, like gluing batteries in rather than using screws. I don't think individual engineers can single-handedly fix an industry-wide incentive problem, but I do think engineers have real influence at the design stage, choosing modular components or standard connectors where it doesn't cost much extra. I've followed the right-to-repair movement and legislation in places like the EU with interest, because I think regulation combined with engineers pushing for better design internally is probably a more realistic path than expecting either side to fix it alone."
+    },
+    "commonMistakes": [
+      "Placing all blame on either engineers or consumers with no acknowledgment of commercial pressure",
+      "Giving a purely idealistic answer with no sense of real-world constraints",
+      "Having no awareness of real trends or legislation in this space"
+    ],
+    "followUps": ["Can you think of a specific design choice that improves repairability without much added cost?"]
+  }
+]

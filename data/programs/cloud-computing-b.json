@@ -1,0 +1,602 @@
+[
+  {
+    "id": "prog-cloud-computing-b-001",
+    "category": "Subject-specific probe",
+    "subtopic": "CAP theorem tradeoffs",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["distributed-systems", "cap-theorem", "tradeoffs"],
+    "question": "The CAP theorem says a distributed system can't have consistency, availability, and partition tolerance all at once. Since network partitions happen anyway, what is that theorem really forcing an engineer to choose between?",
+    "lookingFor": "Understanding that partition tolerance is non-negotiable in practice, so the real choice is between consistency and availability during a partition, with awareness of real systems that pick each side.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain that partitions will happen so P is effectively mandatory, making the real tradeoff C versus A",
+        "Give a concrete example of each choice, like a banking ledger favouring consistency and a shopping cart favouring availability",
+        "Mention that most real systems aren't purely one or the other, they tune consistency per operation"
+      ],
+      "modelAnswer": "Once you accept that network partitions are a fact of distributed systems, the theorem stops being a three-way choice and becomes a two-way one, consistency versus availability, whenever a partition actually happens. A banking system will usually refuse a request rather than risk showing a wrong balance, so it leans consistent. A shopping cart service would rather let you keep adding items and reconcile later than show you an error page, so it leans available. I find it more useful in practice as a spectrum than a hard rule, since a lot of systems relax consistency for reads but stay strict for writes."
+    },
+    "commonMistakes": [
+      "Treating the three properties as equally choosable with no mention of partitions being unavoidable",
+      "Giving a textbook definition with no concrete system example",
+      "Assuming CAP means a system is either always consistent or always available everywhere"
+    ],
+    "followUps": ["Can you think of a service where different operations make different CAP tradeoffs?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-002",
+    "category": "Subject-specific probe",
+    "subtopic": "Shared responsibility model",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["security", "iaas", "responsibility"],
+    "question": "In the cloud shared responsibility model, where does the provider's job end and the customer's begin, and why does that line move depending on whether you use IaaS, PaaS, or SaaS?",
+    "lookingFor": "Clear grasp of the security boundary shifting with abstraction level, not just a memorised slogan.",
+    "idealAnswer": {
+      "bullets": [
+        "State that the provider secures the cloud itself, infrastructure, hypervisor, physical security, while the customer secures what they put in it",
+        "Explain the line moves up the stack as you move from IaaS to PaaS to SaaS, with the provider taking on more",
+        "Give an example of a real breach caused by a customer misunderstanding their side, like a misconfigured storage bucket"
+      ],
+      "modelAnswer": "The provider is responsible for the security of the cloud, things like physical data centres, the hypervisor, and network infrastructure, while the customer is responsible for security in the cloud, meaning their data, access controls, and configuration. With IaaS you're managing the operating system and above, so your responsibility is large. Move to SaaS and the provider owns almost everything except your data and who you let access it. I think the interesting failure mode is that a lot of breaches, like an exposed storage bucket, happen not because the provider failed but because a customer assumed the provider had covered something that was actually still their job."
+    },
+    "commonMistakes": [
+      "Saying the cloud provider is responsible for all security",
+      "Not distinguishing how the split changes across IaaS, PaaS, SaaS",
+      "No real-world example of a misconfiguration incident"
+    ],
+    "followUps": ["Who is responsible for patching the operating system on a rented virtual machine?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-003",
+    "category": "Subject-specific probe",
+    "subtopic": "Consistency versus availability hypothetical",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "distributed-systems", "design"],
+    "question": "You're designing the backend for a ride-hailing app. During a network partition between two data centres, would you rather the app show slightly stale driver locations or refuse to show any drivers at all? Walk me through your reasoning.",
+    "lookingFor": "Applied reasoning that ties the abstract consistency-availability tradeoff to a real product decision with user impact in mind.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise this as a live CAP-style tradeoff, not a trick question with one correct universal answer",
+        "Reason about the cost of each failure mode, a stale map versus an unusable app",
+        "Land on a decision, likely favouring availability with staleness bounds, and justify it"
+      ],
+      "modelAnswer": "I'd lean toward showing slightly stale locations rather than nothing, because a rider seeing drivers that are a few seconds out of date can still make a decision, while a blank screen just loses the booking entirely. The risk with staleness is a driver looking further away than they actually are, which is annoying but recoverable. I'd want to cap how stale the data is allowed to get, maybe refusing to show anything older than fifteen or twenty seconds, so I'm trading perfect accuracy for availability but not unlimited inaccuracy. Where I would not accept staleness is the actual payment and trip-matching step, because getting that wrong has real financial consequences."
+    },
+    "commonMistakes": [
+      "Giving a one-word answer with no reasoning about consequences",
+      "Treating every part of the system as needing the same consistency guarantee",
+      "Not distinguishing where staleness is tolerable from where it isn't"
+    ],
+    "followUps": ["Would your answer change for the payment step of the same app? Why?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-004",
+    "category": "Subject-specific probe",
+    "subtopic": "Vendor lock-in dilemma",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["ethics", "vendor-lock-in", "business"],
+    "question": "A cloud provider's proprietary services are far easier and cheaper to build with than open, portable alternatives, but they make it harder for a client to ever leave. If you were advising a small startup, how would you think through that choice?",
+    "lookingFor": "Balanced reasoning about a real engineering ethics tension, speed and cost now versus flexibility and client interest later.",
+    "idealAnswer": {
+      "bullets": [
+        "Acknowledge the genuine tradeoff rather than dismissing lock-in as unimportant or proprietary tools as always bad",
+        "Bring in the client's actual constraints, budget, timeline, growth plans, not just technical purity",
+        "Suggest a practical middle ground, like isolating the proprietary pieces behind an interface"
+      ],
+      "modelAnswer": "I wouldn't treat this as proprietary services being evil, because a small startup with limited runway genuinely benefits from moving fast on tools that are cheaper and better supported. But I would want to be honest with the client about what they're trading away, so it's an informed decision rather than an accident. Where I'd push back is if the lock-in decision is made silently, without the client understanding that switching providers later could mean a costly rewrite. A practical middle ground is to wrap the proprietary service behind our own interface, so at least the rest of the codebase doesn't know or care which vendor is underneath, which limits how deep the lock-in goes."
+    },
+    "commonMistakes": [
+      "Declaring all proprietary cloud services bad practice with no nuance",
+      "Ignoring the client's budget and speed constraints entirely",
+      "Not offering any concrete way to reduce the risk"
+    ],
+    "followUps": ["Does your answer change if the client is a hospital rather than a startup?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-005",
+    "category": "Subject-specific probe",
+    "subtopic": "Serverless versus virtual machines",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["serverless", "architecture", "tradeoffs"],
+    "question": "When would you choose a serverless function over a always-on virtual machine, and when would that choice actually hurt you?",
+    "lookingFor": "Grasp of serverless benefits and its real limitations, not just enthusiasm for the newer technology.",
+    "idealAnswer": {
+      "bullets": [
+        "Name serverless strengths, no idle cost, automatic scaling, less operational overhead",
+        "Name a real weakness, cold starts, execution time limits, or unpredictable cost at high sustained load",
+        "Give a scenario for each, like a workload with spiky traffic versus one with constant heavy usage"
+      ],
+      "modelAnswer": "Serverless makes sense for something like a webhook handler or an occasional image resize job, where traffic is unpredictable and you don't want to pay for a machine sitting idle most of the day. Where it hurts is a workload that runs constantly at high volume, because the per-invocation pricing can end up costing more than a reserved virtual machine, and cold starts can add noticeable latency for the first request after a quiet period. I'd also be cautious with anything that needs a long-running connection or a process that has to keep state in memory across requests, since that fights against how serverless functions are designed to work."
+    },
+    "commonMistakes": [
+      "Presenting serverless as strictly better with no downside",
+      "Not mentioning cold starts or execution time limits",
+      "Vague answer with no concrete workload example"
+    ],
+    "followUps": ["How would you mitigate cold start latency for a customer-facing serverless API?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-006",
+    "category": "Subject-specific probe",
+    "subtopic": "Data sovereignty and cross-border storage",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["data-sovereignty", "regulation", "ethics"],
+    "question": "A cloud provider's cheapest data centre for your app happens to be in a country with much weaker data protection law than your users' home country. How should that factor into where you host their data?",
+    "lookingFor": "Awareness that technical decisions like data centre region carry real legal and ethical weight, not just a cost line item.",
+    "idealAnswer": {
+      "bullets": [
+        "Recognise that data residency has legal consequences, like GDPR-style rules on cross-border transfer",
+        "Weigh cost savings against user trust and regulatory risk, not treat it as purely a technical choice",
+        "Land on a position, likely prioritising compliant hosting even at extra cost, with reasoning"
+      ],
+      "modelAnswer": "I wouldn't treat the cheapest region as a free win, because where you store personal data can determine what legal protections actually apply to it, and users didn't sign up to have their data governed by a weaker regime just to save the company money. If our users are mostly in a region with strict data protection law, I'd want to host in a region that keeps us compliant with that law even if it costs more, because the reputational and legal risk of getting that wrong is much larger than the hosting bill. I'd frame it to a founder not as an ethics lecture but as a real business risk, since a data protection violation can mean fines and lost user trust that outweigh the savings many times over."
+    },
+    "commonMistakes": [
+      "Treating data centre choice as purely a cost or latency decision",
+      "Not naming any real regulatory concept like cross-border transfer restrictions",
+      "No clear final position, just listing considerations"
+    ],
+    "followUps": ["What would you do if the cheaper region were also the only one with low enough latency for your users?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-007",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud sustainability debate",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["sustainability", "current-debate", "energy"],
+    "question": "Cloud providers advertise carbon-neutral data centres, but the growth of AI workloads is driving a sharp rise in their actual electricity and water use. What do you make of that tension?",
+    "lookingFor": "Current awareness of the sustainability debate in cloud computing, going beyond marketing claims to the underlying numbers and incentives.",
+    "idealAnswer": {
+      "bullets": [
+        "Show awareness that carbon-neutral claims often rely on offsets or renewable credits rather than lower actual consumption",
+        "Connect the tension specifically to rising AI compute demand, not cloud growth in general",
+        "Offer a balanced view, acknowledging efficiency gains per unit of compute alongside total consumption still rising"
+      ],
+      "modelAnswer": "I think there's a real gap between the marketing language of carbon neutral and what's happening on the ground, because a lot of those claims lean on renewable energy credits or offsets bought elsewhere rather than the data centre itself using less power. What's made this sharper recently is that AI training and inference are extremely energy and water intensive, so even as providers get more efficient per unit of compute, total consumption keeps climbing because demand is growing faster than efficiency improves. I don't think the honest framing is that cloud providers are lying, it's more that efficiency gains and offset accounting can mask a genuine growth in absolute footprint, and that's the number I'd actually want to see reported."
+    },
+    "commonMistakes": [
+      "Repeating marketing claims uncritically as fact",
+      "No mention of AI workloads as the specific current driver",
+      "Purely cynical dismissal with no acknowledgment of real efficiency progress"
+    ],
+    "followUps": ["What is one concrete step a cloud provider could take that you'd trust more than an offset purchase?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-008",
+    "category": "Subject-specific probe",
+    "subtopic": "AI demand reshaping cloud infrastructure",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["current-development", "ai-workloads", "infrastructure"],
+    "question": "GPU capacity has become the scarcest resource in cloud computing right now. How has that shortage changed the way companies think about cloud architecture and cost?",
+    "lookingFor": "Up-to-date awareness of a live infrastructure trend and its practical downstream effects on design decisions.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify GPU and specialised AI accelerator scarcity as the current bottleneck, distinct from earlier general compute shortages",
+        "Explain downstream effects, like reserved capacity contracts, multi-cloud strategies, or renewed interest in on-prem hardware",
+        "Show the connection back to cost and architecture decisions companies are actually making"
+      ],
+      "modelAnswer": "Because demand for GPU and specialised AI accelerator capacity has outpaced supply, companies training or serving large models can't just spin up what they need on demand the way they could with ordinary compute, so I've read that many are locking in long-term reserved capacity contracts well ahead of when they actually need it, almost like pre-booking. That scarcity has also pushed some companies toward a multi-cloud approach specifically to get access to whichever provider has capacity, rather than for redundancy alone, and it's revived interest in owning hardware for the most predictable, heavy workloads instead of renting everything. I find it a good example of how a resource shortage upstream reshapes architecture decisions that on the surface look purely technical."
+    },
+    "commonMistakes": [
+      "Talking generically about cloud cost with no mention of the GPU or AI accelerator shortage specifically",
+      "Treating this as old news like ordinary compute capacity planning",
+      "No concrete downstream effect on architecture or contracting behaviour"
+    ],
+    "followUps": ["Why might a company choose multi-cloud specifically for capacity reasons rather than for redundancy?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-009",
+    "category": "Subject-specific probe",
+    "subtopic": "Microservices versus monolith",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["architecture", "microservices", "tradeoffs"],
+    "question": "Everyone talks about microservices as the modern way to build cloud applications. When would you actually recommend staying with a monolith instead?",
+    "lookingFor": "Independent judgment that resists trend-following and reasons about team size, complexity, and operational overhead.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the real costs of microservices, operational complexity, network calls, distributed debugging",
+        "Identify conditions favouring a monolith, small team, early-stage product, unclear domain boundaries",
+        "Avoid presenting either as universally correct"
+      ],
+      "modelAnswer": "I'd stay with a monolith for a small team or an early-stage product where the domain boundaries aren't settled yet, because microservices add real operational cost, more deployments to manage, network calls where there used to be function calls, and much harder debugging when a request crosses several services. Splitting things up too early often means guessing at boundaries you'll get wrong, and then you're paying distributed systems complexity for a problem you don't actually have yet. I'd reach for microservices once a system has grown enough that different parts genuinely need to scale, deploy, or be owned by different teams independently, because that's when the added complexity buys you something real."
+    },
+    "commonMistakes": [
+      "Treating microservices as always superior because they're modern",
+      "Not naming any concrete operational cost of microservices",
+      "No mention of team size or organisational fit as a factor"
+    ],
+    "followUps": ["What is a warning sign that a team split into microservices too early?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-010",
+    "category": "Subject-specific probe",
+    "subtopic": "Container orchestration reasoning",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["kubernetes", "containers", "orchestration"],
+    "question": "What problem does a tool like Kubernetes actually solve that plain Docker containers on their own don't?",
+    "lookingFor": "Clear understanding of orchestration's purpose beyond buzzword recognition, distinguishing containerisation from orchestration.",
+    "idealAnswer": {
+      "bullets": [
+        "Distinguish that Docker packages and runs a single container, orchestration manages many containers across many machines",
+        "Name specific problems orchestration solves, restarting failed containers, scheduling across nodes, service discovery, rolling updates",
+        "Give a concrete failure scenario that plain Docker alone wouldn't handle"
+      ],
+      "modelAnswer": "Docker on its own is great at packaging an application with its dependencies and running it consistently, but it doesn't know what to do when a container crashes at three in the morning, or when you need forty instances of a service spread across a dozen machines with none of them overloaded. Kubernetes solves the coordination problem, it restarts failed containers automatically, decides which physical node has room for a new one, handles rolling updates so you're not taking the whole service down to deploy, and gives services a stable way to find each other even as individual containers come and go. I think of Docker as answering how do I package and run one thing, and Kubernetes as answering how do I keep many of these things healthy across a fleet of machines."
+    },
+    "commonMistakes": [
+      "Conflating Docker and Kubernetes as doing the same job",
+      "Naming Kubernetes features with no explanation of the underlying problem they solve",
+      "No concrete failure scenario mentioned"
+    ],
+    "followUps": ["What happens in Kubernetes when a node running several pods suddenly goes offline?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-011",
+    "category": "Subject-specific probe",
+    "subtopic": "Multi-tenancy isolation",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["security", "multi-tenancy", "isolation"],
+    "question": "Public cloud providers run many different customers' workloads on the same physical hardware. What could go wrong with that, and how do providers prevent it?",
+    "lookingFor": "Understanding of the multi-tenancy security problem and the isolation mechanisms, virtualization, that address it.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the risk, one tenant's workload interfering with or accessing another tenant's data or resources on shared hardware",
+        "Explain the isolation mechanism, hypervisors, virtual machines, and resource limits separating tenants",
+        "Reference a real class of vulnerability, like a side-channel attack across the hypervisor boundary"
+      ],
+      "modelAnswer": "The risk is that if isolation between tenants fails, one customer's code could in theory read another customer's memory or data even though they're both running on the same physical server, which would be a serious breach of trust in the whole model. Providers prevent this mainly through the hypervisor, which creates a strict boundary between virtual machines so that one tenant's VM can't directly touch another's memory or storage, plus resource limits so one noisy tenant can't starve another of CPU or bandwidth. What makes this genuinely hard is that side-channel attacks have shown it's possible to leak information across that boundary through things like shared caches, which is why providers keep investing in hardware-level isolation improvements, not just software ones."
+    },
+    "commonMistakes": [
+      "Saying multi-tenancy has no real security risk because providers handle it",
+      "Not mentioning the hypervisor or virtualization as the isolation mechanism",
+      "No awareness of side-channel style attacks as a real concern"
+    ],
+    "followUps": ["Why might a customer with strict compliance needs still pay extra for dedicated hardware instead of shared instances?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-012",
+    "category": "Subject-specific probe",
+    "subtopic": "Disclosing a vulnerability you found",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["ethics", "security", "dilemma"],
+    "question": "During a university project using your college's cloud lab environment, you accidentally discover a misconfiguration that lets you access other students' stored files. What do you do?",
+    "lookingFor": "Sound ethical judgment under a realistic student scenario, favouring responsible disclosure over either exploitation or silence.",
+    "idealAnswer": {
+      "bullets": [
+        "Reject both extremes, browsing the exposed files out of curiosity and staying silent and doing nothing",
+        "Describe reporting responsibly and promptly to whoever administers the system, without exploiting or publicising it first",
+        "Show awareness of documenting what you saw minimally and not touching data beyond what's needed to confirm the issue"
+      ],
+      "modelAnswer": "The moment I realised I could see other students' files, I'd stop looking immediately, because even accidental access doesn't give me the right to browse further, and I wouldn't want anyone doing that with my files either. I'd report it straight away to the course instructor or whoever administers the lab environment, describing exactly what I found and how I stumbled onto it, without naming or detailing whose data I saw beyond what's needed to fix the hole. Staying quiet isn't a neutral option here, because the exposure stays open and someone with worse intentions could find it, so reporting it is really the only responsible path even though it means admitting I was somewhere I technically shouldn't have been."
+    },
+    "commonMistakes": [
+      "Saying they would look further to understand the scope before reporting",
+      "Choosing to say nothing to avoid getting in trouble",
+      "No mention of minimising further access to the exposed data"
+    ],
+    "followUps": ["Would you report it differently if it were a company's production system instead of a university lab?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-013",
+    "category": "Subject-specific probe",
+    "subtopic": "Autoscaling design hypothetical",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "autoscaling", "design"],
+    "question": "You're running a ticket-sale website that gets almost no traffic most days, then a massive spike the moment tickets for a popular event go live. How would you design the infrastructure to handle that?",
+    "lookingFor": "Practical design thinking about elastic scaling, not just naming buzzwords like autoscaling with no mechanism.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose autoscaling that reacts to load, ideally with some pre-warming ahead of a known sale time",
+        "Address the specific spike risk, like a queueing or waiting-room mechanism to smooth the surge",
+        "Mention cost implications of running lean most of the time versus provisioning for the peak"
+      ],
+      "modelAnswer": "I'd want autoscaling that adds instances based on real-time load, but because we usually know in advance exactly when a popular sale goes live, I'd also pre-warm extra capacity a few minutes before that moment rather than relying purely on reactive scaling, since autoscaling can lag behind a truly sudden spike. On top of that I'd put a queueing or virtual waiting room in front of the checkout flow, so instead of every visitor hammering the database at once, people get let through in a controlled rate the backend can actually handle. The rest of the time the system can scale back down to almost nothing, which keeps costs low, so the design is really about being lean by default and briefly over-provisioned right around known spike moments."
+    },
+    "commonMistakes": [
+      "Saying autoscaling alone with no mention of its reaction lag for sudden spikes",
+      "No mention of a queueing or rate-limiting mechanism for the surge itself",
+      "Ignoring cost tradeoffs of the quiet periods"
+    ],
+    "followUps": ["What would you do if the exact sale time wasn't known in advance?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-014",
+    "category": "Subject-specific probe",
+    "subtopic": "Eventual consistency explanation",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["distributed-systems", "consistency", "concept"],
+    "question": "Can you explain what eventual consistency means, and why a system might deliberately choose it over strong consistency?",
+    "lookingFor": "Correct conceptual understanding plus reasoning about why a system would accept it as a tradeoff rather than a flaw.",
+    "idealAnswer": {
+      "bullets": [
+        "Define it correctly, replicas will converge to the same value over time, but may briefly disagree",
+        "Explain the motivation, better availability and lower latency, especially across geographically distributed replicas",
+        "Give an example where it's acceptable, like a social media like count, versus one where it isn't, like an account balance"
+      ],
+      "modelAnswer": "Eventual consistency means that if you stop writing new updates, all the replicas of a piece of data will eventually converge to the same value, but at any given moment right after a write, different replicas might briefly disagree. Systems choose it because waiting for every replica across the world to confirm a write before responding to the user adds real latency, and if a replica is unreachable during a network issue, strict consistency would mean refusing the request entirely. A like count on a social media post is a good place to accept it, a slightly stale number for a second doesn't matter, whereas a bank balance is somewhere I'd want strong consistency even at the cost of some latency, because being briefly wrong there has real consequences."
+    },
+    "commonMistakes": [
+      "Saying eventual consistency means data is never guaranteed to be correct",
+      "No explanation of why a system would choose it, just a definition",
+      "No example distinguishing where it's acceptable from where it isn't"
+    ],
+    "followUps": ["How might an application detect and handle two conflicting writes that both eventually arrive?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-015",
+    "category": "Subject-specific probe",
+    "subtopic": "Cloud repatriation debate",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["current-debate", "cost", "on-prem"],
+    "question": "Some companies that moved fully to the cloud have recently been moving parts of their workloads back to their own data centres, a trend often called repatriation. Why would a company do that after already migrating?",
+    "lookingFor": "Awareness of a live industry debate and the ability to explain the underlying cost and predictability reasoning, not just cloud enthusiasm.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify cost as the main driver, cloud billed at scale for steady, predictable workloads can end up more expensive than owned hardware",
+        "Mention which kind of workload tends to repatriate, stable and predictable rather than spiky",
+        "Show balance, noting this doesn't mean cloud was a mistake, just that the calculus changes at scale and steady state"
+      ],
+      "modelAnswer": "Cloud pricing is really built around flexibility, you pay a premium for the ability to scale up or down instantly, and for a lot of companies that flexibility was worth it while their traffic was unpredictable. But once a company's workload becomes large and steady, running at roughly the same level month after month, that flexibility stops being useful and the ongoing bill can end up higher than what owning and running the equivalent hardware would cost, especially for storage and bandwidth heavy workloads. I don't think this means cloud adoption was wrong for those companies, it's more that the reasons to be in the cloud, elasticity and not managing hardware, matter less once a workload is predictable and large enough that owning becomes the cheaper option again."
+    },
+    "commonMistakes": [
+      "Treating repatriation as proof that cloud computing is generally a bad idea",
+      "No mention of the specific cost dynamic, elasticity premium versus predictable steady-state workloads",
+      "Vague answer with no reference to the actual current trend"
+    ],
+    "followUps": ["What kind of workload would you expect to stay in the cloud even for a large, mature company?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-016",
+    "category": "Subject-specific probe",
+    "subtopic": "Zero trust security model",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["security", "zero-trust", "architecture"],
+    "question": "Traditional network security assumed anything inside the corporate network could be trusted. What does the zero trust model change about that assumption, and why has cloud computing made it more necessary?",
+    "lookingFor": "Understanding of zero trust as a response to a specific weakness of perimeter security, connected to why cloud environments make that weakness worse.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the old assumption, a hardened perimeter with implicit trust for anything already inside it",
+        "State the zero trust principle, verify every request regardless of where it comes from, no implicit trust by location",
+        "Connect it to cloud specifically, resources are no longer inside one physical perimeter, users and services connect from everywhere"
+      ],
+      "modelAnswer": "The old model built a strong wall around the corporate network and largely trusted anything already inside it, so once an attacker got past the perimeter, often through something simple like a phished employee, they could move around fairly freely. Zero trust removes that implicit trust entirely, every request has to prove who it is and that it's allowed to do what it's asking, whether it's coming from inside the office or from the other side of the world. Cloud computing makes this more necessary because there often isn't a single perimeter anymore, services span multiple providers, employees connect from home, and APIs talk to each other across the internet, so the idea of an inside you can trust just doesn't hold up the way it used to."
+    },
+    "commonMistakes": [
+      "Describing zero trust as just adding more firewalls or stronger passwords",
+      "No explanation of why cloud specifically breaks the perimeter assumption",
+      "Treating zero trust as a single product rather than a design principle"
+    ],
+    "followUps": ["What would zero trust look like in practice for a service talking to another internal service?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-017",
+    "category": "Subject-specific probe",
+    "subtopic": "Disaster recovery design hypothetical",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["hypothetical", "disaster-recovery", "reliability"],
+    "question": "Say you're designing the backend for a hospital's patient records system in the cloud. An entire data centre region could go offline. How would you design around that, and what would you tell the hospital about the cost of your choice?",
+    "lookingFor": "Serious engineering judgment for a high-stakes domain, weighing recovery objectives explicitly against cost rather than defaulting to maximal redundancy without justification.",
+    "idealAnswer": {
+      "bullets": [
+        "Propose multi-region replication with a defined recovery time and recovery point objective appropriate to patient safety",
+        "Acknowledge this is expensive and explain why that expense is justified for this specific domain",
+        "Mention testing the failover, not just building it, since an untested plan can fail exactly when needed"
+      ],
+      "modelAnswer": "For patient records I'd design for active replication across at least two regions, with a clearly defined recovery point objective, meaning we accept losing at most a few seconds of data, and a recovery time objective of maybe a minute or two before the system is back up, because for a hospital even a short outage or lost update could affect patient care. I'd be upfront with the hospital that this level of redundancy costs meaningfully more than a single-region setup, roughly double the infrastructure spend in a lot of cases, but I'd argue that's the right tradeoff here specifically because the cost of downtime isn't just financial, it's patient safety. I'd also insist on actually testing the failover regularly, not just building it and hoping, because a disaster recovery plan nobody has rehearsed often fails exactly when it's needed most."
+    },
+    "commonMistakes": [
+      "Proposing maximal redundancy with no acknowledgment of cost or justification for the specific domain",
+      "No specific mention of recovery time or recovery point objectives",
+      "Building the failover plan but not mentioning the need to test it"
+    ],
+    "followUps": ["How would your design change if this were a less critical system, like an internal analytics dashboard?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-018",
+    "category": "Subject-specific probe",
+    "subtopic": "Serverless cold starts",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["serverless", "performance", "reasoning"],
+    "question": "What actually causes a cold start in a serverless function, and what would you do to reduce its impact on a user-facing API?",
+    "lookingFor": "Mechanistic understanding of why cold starts happen, not just recognition of the term, plus a practical mitigation.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the mechanism, the platform has to provision a fresh execution environment, load the runtime and code, before the function can run",
+        "Note that this doesn't happen on every request, only when there's no warm instance already available",
+        "Give a mitigation, like keeping instances warm with scheduled pings, provisioned concurrency, or choosing a lighter runtime"
+      ],
+      "modelAnswer": "A cold start happens because unlike a server that's always running, a serverless platform only creates an execution environment when a request actually needs one, so if there's no warm instance sitting ready, it has to spin one up, download or load your code, and initialise the runtime before it can even start handling the request, and that setup time is what the user feels as extra latency. It doesn't happen on every call, only when demand exceeds the currently warm instances or after a period of inactivity. To reduce the impact on a user-facing API I'd look at provisioned concurrency if the platform supports it, which keeps a set number of instances always warm, or as a cheaper workaround I'd schedule a periodic ping to the function so it doesn't go cold in the first place, and I'd also keep the function's dependencies minimal since a smaller runtime initialises faster."
+    },
+    "commonMistakes": [
+      "Saying cold starts happen on every single request",
+      "No explanation of the actual mechanism, just naming the symptom",
+      "No concrete mitigation offered"
+    ],
+    "followUps": ["Why might provisioned concurrency not fully solve the problem for a sudden traffic spike?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-019",
+    "category": "Subject-specific probe",
+    "subtopic": "Load balancing algorithms",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["load-balancing", "networking", "concept"],
+    "question": "A simple round-robin load balancer sends requests to servers in strict rotation. What's a situation where that would perform badly, and what would you use instead?",
+    "lookingFor": "Understanding that load balancing strategy has to match request characteristics, and awareness of at least one better alternative.",
+    "idealAnswer": {
+      "bullets": [
+        "Identify the failure case, requests of wildly different cost, or servers of different capacity, round robin ignores actual load",
+        "Propose an alternative, like least-connections or weighted load balancing based on current server load",
+        "Explain why the alternative fixes the specific problem named"
+      ],
+      "modelAnswer": "Round robin performs badly when requests aren't roughly equal in cost, say some requests are a quick lookup and others trigger a heavy report generation, because round robin just cycles through servers blindly and doesn't know that one of them is already stuck processing something expensive. It would also perform badly if the servers behind it aren't identical, like if one has more CPU than another, since round robin gives them equal traffic regardless of capacity. I'd use a least-connections approach instead, which sends the next request to whichever server currently has the fewest active connections, or a weighted version of that if the servers have different capacities, because that actually reacts to real load instead of assuming every request and every server is interchangeable."
+    },
+    "commonMistakes": [
+      "Saying round robin is always fine without identifying a real failure case",
+      "No specific alternative algorithm named",
+      "Not explaining why the alternative actually fixes the problem"
+    ],
+    "followUps": ["How would a load balancer know a backend server has become unhealthy and should be taken out of rotation?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-020",
+    "category": "Subject-specific probe",
+    "subtopic": "Cutting corners on encryption under pressure",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["ethics", "security", "dilemma"],
+    "question": "You're on a small team racing to launch a cloud product before the funding runs out. A teammate suggests skipping encryption at rest for user data just for the launch, planning to add it later. What would you say?",
+    "lookingFor": "Willingness to push back on a real pressure scenario, weighing user risk against schedule pressure with a constructive path forward, not just compliance or blind refusal.",
+    "idealAnswer": {
+      "bullets": [
+        "Take the deadline pressure seriously rather than dismissing it, this is a realistic startup tension",
+        "Explain concretely why deferring encryption at rest is risky, unencrypted user data sitting exposed if storage is ever breached or misconfigured",
+        "Propose a workable alternative, like using the cloud provider's built-in encryption at rest, which usually adds little time"
+      ],
+      "modelAnswer": "I understand the pressure, when funding is tight every week matters, but I'd push back on this specific cut because encryption at rest is one of the few security measures that's both cheap and directly protects users if something goes wrong, like a misconfigured storage bucket or a stolen backup. What I'd actually suggest is checking whether the cloud provider offers encryption at rest as a default or a one-line configuration option, because most major providers do, in which case skipping it isn't even saving meaningful time, it's just skipping a checkbox. If there genuinely were a real tradeoff between shipping and this specific protection, I'd want the founder to make that call explicitly and knowingly, rather than the team quietly deciding to defer something that protects user data without anyone above us signing off on the risk."
+    },
+    "commonMistakes": [
+      "Refusing outright with no acknowledgment of the real schedule pressure",
+      "Agreeing to skip it without pushing back or offering an alternative",
+      "Not knowing that encryption at rest is often a low-cost default option from the provider"
+    ],
+    "followUps": ["What would you do if the founder overruled you and insisted on skipping it anyway?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-021",
+    "category": "Subject-specific probe",
+    "subtopic": "Edge computing versus centralized cloud",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["edge-computing", "architecture", "debate"],
+    "question": "Edge computing pushes processing closer to where data is generated instead of sending everything to a central cloud region. What kind of application actually needs that, and what does it give up by not being fully centralized?",
+    "lookingFor": "Reasoned understanding of edge computing's real motivation, latency and bandwidth, alongside its genuine costs, like harder management and weaker consistency.",
+    "idealAnswer": {
+      "bullets": [
+        "Name the core motivation, lower latency and reduced bandwidth for data close to its source",
+        "Give a concrete example needing it, like autonomous vehicles or industrial sensors reacting in real time",
+        "Name a real cost, harder to manage many distributed nodes, weaker consistency, more complex updates"
+      ],
+      "modelAnswer": "An application that genuinely needs edge computing is something like a self-driving car's obstacle detection, where waiting for a round trip to a distant cloud region could mean the difference between reacting in time and not, or a factory floor with sensors that need to trigger a safety shutdown in milliseconds rather than waiting on a network call. What you give up moving away from a fully centralized cloud is a lot of the simplicity, instead of managing one consistent environment you're now managing potentially thousands of distributed edge nodes, keeping their software updated, and dealing with the fact that data spread across the edge is much harder to keep consistent than data sitting in one place. So I'd only reach for edge computing when the latency or bandwidth requirement is real and specific, not as a default architecture choice."
+    },
+    "commonMistakes": [
+      "Describing edge computing without a concrete example of a latency-critical use case",
+      "Presenting edge computing as strictly better than centralized cloud",
+      "No mention of the management or consistency cost of distributing nodes"
+    ],
+    "followUps": ["Would a typical e-commerce website benefit from edge computing? Why or why not?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-022",
+    "category": "Subject-specific probe",
+    "subtopic": "Hyperscaler market concentration debate",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["current-debate", "market-concentration", "regulation"],
+    "question": "A small number of hyperscalers now run most of the world's cloud infrastructure, and regulators in several countries are starting to scrutinise that concentration. Why might that level of dependency on a handful of companies actually be a societal concern, not just a business one?",
+    "lookingFor": "Ability to reason beyond individual company risk to systemic concerns, showing awareness of the current regulatory debate around cloud market concentration.",
+    "idealAnswer": {
+      "bullets": [
+        "Move past a single company's outage risk to systemic concentration risk, many unrelated services failing together",
+        "Mention concerns beyond outages, like pricing power, critical infrastructure and even government services depending on a few private companies",
+        "Show awareness that this is an active regulatory concern, not a hypothetical worry"
+      ],
+      "modelAnswer": "The concern isn't just that any one company might have an outage, it's that so much of the internet, banking, healthcare systems, and even government services now sit on top of the same handful of providers, so when one of them has a bad day, it can take down services that look completely unrelated to each other, which is a systemic fragility rather than an isolated business risk. There's also a market power question, if switching away from a provider is genuinely hard because of how deeply integrated their proprietary services are, that provider has more pricing leverage over its customers than a normal competitive market would allow. I know regulators in the EU and UK have specifically started looking at cloud market concentration for these reasons, treating it a bit like they'd treat concentration in any other critical utility, which tells me this isn't a fringe concern, it's becoming a real policy question."
+    },
+    "commonMistakes": [
+      "Only discussing risk to the individual company using the cloud, missing the systemic angle",
+      "Not mentioning that this is an active area of regulatory scrutiny",
+      "Vague concern with no specific example of cross-sector dependency"
+    ],
+    "followUps": ["What could a regulator realistically do about this without breaking the benefits of cloud computing?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-023",
+    "category": "Subject-specific probe",
+    "subtopic": "Post-quantum cryptography for cloud data",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["current-development", "cryptography", "security"],
+    "question": "Quantum computers capable of breaking today's common encryption don't exist yet, but there's growing concern about data being harvested now and decrypted later once they do. What does that mean for how cloud providers should be thinking about encryption today?",
+    "lookingFor": "Awareness of the harvest-now-decrypt-later threat model and its implication that cryptographic decisions made today have long-tail consequences, showing genuine current-affairs knowledge rather than a vague reference to quantum computing.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the harvest-now-decrypt-later concern, encrypted data stolen today could be decrypted years later once quantum computing matures",
+        "Note this matters most for long-lived sensitive data, not everything equally",
+        "Mention post-quantum cryptography as the current response, and that providers are starting to roll it out ahead of the actual threat materialising"
+      ],
+      "modelAnswer": "The worry is that an attacker doesn't need a working quantum computer today, they just need to steal encrypted data now and sit on it, because if that data is still sensitive years from now and quantum computers eventually become capable of breaking today's encryption, everything stolen in the meantime becomes readable retroactively. That risk matters much more for data that needs to stay confidential for a long time, like medical records or government secrets, than for something like a one-time password that's useless within minutes. I know cloud providers and standards bodies have already started rolling out post-quantum cryptographic algorithms specifically to get ahead of this, which tells me the sensible response isn't to wait until quantum computers actually arrive, it's to start protecting long-lived sensitive data with quantum-resistant encryption now, while the switch can still happen gradually."
+    },
+    "commonMistakes": [
+      "Vaguely saying quantum computers will break encryption someday with no mention of the harvest-now-decrypt-later concept",
+      "Treating this as equally urgent for all types of data regardless of how long it needs to stay secret",
+      "No awareness that post-quantum cryptography rollout is already happening"
+    ],
+    "followUps": ["Why would this concern apply less to data that only needs to stay secret for a few minutes?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-024",
+    "category": "Subject-specific probe",
+    "subtopic": "Viral scaling hypothetical",
+    "program": "Cloud Computing",
+    "difficulty": "medium",
+    "tags": ["hypothetical", "scaling", "design"],
+    "question": "Imagine an app you built as a student project suddenly goes viral overnight and traffic jumps a thousand times over. Walk me through what you'd actually check and change, in order, to keep it standing.",
+    "lookingFor": "Practical, prioritised troubleshooting instinct under pressure, not just a list of buzzwords with no sequence or reasoning.",
+    "idealAnswer": {
+      "bullets": [
+        "Start with identifying the actual bottleneck rather than guessing, checking metrics like CPU, database connections, response times",
+        "Prioritise the cheapest, fastest fixes first, like caching or scaling the obvious bottleneck, over a full rearchitecture",
+        "Mention protecting the system from falling over entirely, like rate limiting, while working on real fixes"
+      ],
+      "modelAnswer": "The first thing I'd do is actually look at metrics rather than guess, checking whether the database, the application servers, or something like an external API call is the thing actually maxing out, because scaling the wrong layer wastes time we don't have. If it's the database struggling with read load, my first move would probably be adding a cache in front of the most frequently read data, since that's usually a fast fix compared to something structural. While I'm working through the real fix I'd also put a basic rate limiter or queue in front of the system so it degrades gracefully instead of crashing entirely under load. Only once things are stable would I think about a deeper rearchitecture, because in the moment the priority is keeping the app alive, not building the perfect long-term system."
+    },
+    "commonMistakes": [
+      "Jumping straight to a full rearchitecture instead of identifying the actual bottleneck first",
+      "Listing scaling buzzwords with no sequence or reasoning about priority",
+      "No mention of protecting the system from total failure while fixes are in progress"
+    ],
+    "followUps": ["What metric would you check first to figure out where the actual bottleneck is?"]
+  },
+  {
+    "id": "prog-cloud-computing-b-025",
+    "category": "Subject-specific probe",
+    "subtopic": "Idempotency in distributed systems",
+    "program": "Cloud Computing",
+    "difficulty": "hard",
+    "tags": ["distributed-systems", "reliability", "reasoning"],
+    "question": "In a distributed cloud system, a client might retry a request because it didn't get a response, even though the server actually processed it the first time. Why is that a serious problem, and how would you design around it?",
+    "lookingFor": "Understanding of idempotency as a design property, connected to the real failure mode of network uncertainty rather than a memorised term.",
+    "idealAnswer": {
+      "bullets": [
+        "Explain the underlying problem, a client can't always tell whether a request failed or just the response was lost, so it retries",
+        "Show why that's serious, an operation like charging a payment or sending an email could happen twice",
+        "Describe the fix, designing the operation to be idempotent, often using a client-generated unique request ID the server checks before processing again"
+      ],
+      "modelAnswer": "The problem is that from the client's point of view, a timeout looks identical whether the server never got the request or the server processed it fine and only the response got lost on the way back, so a naive client retrying to be safe might accidentally cause the same operation to run twice. For something like charging a credit card or sending a confirmation email, that could mean double charging a customer or spamming them twice, which is a real and embarrassing failure, not just a theoretical one. The fix is to design the operation to be idempotent, typically by having the client generate a unique request ID up front and having the server check whether it's already seen that ID before actually performing the action again, so a retry becomes safe no matter how many times it happens."
+    },
+    "commonMistakes": [
+      "Not explaining why the client can't simply tell whether the first request succeeded",
+      "No concrete example of the real-world consequence, like double payment",
+      "Vague mention of idempotency with no explanation of how it's actually implemented"
+    ],
+    "followUps": ["Where would the server need to store those request IDs, and what happens if that storage itself fails?"]
+  }
+]
