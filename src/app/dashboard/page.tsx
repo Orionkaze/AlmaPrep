@@ -20,6 +20,7 @@ import {
 } from "lucide-react"
 import { MySchedule } from "@/components/MySchedule"
 import { createClient } from "@/lib/supabase/server"
+import { createAdminClient } from "@/lib/supabase/admin"
 import { redirect } from "next/navigation"
 import { getCurrentUser } from "@/lib/getCurrentUser"
 
@@ -113,7 +114,10 @@ export default async function DashboardPage() {
       // 1. Fetch user profile
       // Named columns, not "*": the users row carries the full resume text and
       // its analysis, and this page only needs to know a resume exists.
-      const { data: profile } = await supabase
+      const adminClient = createAdminClient()
+      const client = adminClient || supabase
+
+      const { data: profile } = await client
         .from("users")
         .select("username, avatar_url, current_streak, resume_text")
         .eq("id", userId)

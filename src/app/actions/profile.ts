@@ -32,7 +32,10 @@ export async function checkUsernameAvailability(username: string): Promise<{ ava
     }
 
     const supabase = await createClient()
-    const { data, error } = await supabase
+    const adminClient = createAdminClient()
+    const client = adminClient || supabase
+
+    const { data, error } = await client
       .from("users")
       .select("id")
       .eq("username", username.trim())
@@ -76,13 +79,15 @@ export async function createUserProfile(
     if (invalid) return { success: false, error: invalid }
 
     const supabase = await createClient()
+    const adminClient = createAdminClient()
+    const client = adminClient || supabase
 
     // Upsert, not insert: onboarding can legitimately be reached twice (skip
     // then return, or a transient profile read that sent the user back here),
     // and a plain insert failed the second time with a duplicate-key error.
     // subscription_tier is deliberately omitted on conflict — it is set once at
     // creation and only the service role may change it thereafter.
-    const { error } = await supabase
+    const { error } = await client
       .from("users")
       .upsert(
         {
@@ -127,11 +132,13 @@ export async function updateUserProfile(
     }
 
     const supabase = await createClient()
+    const adminClient = createAdminClient()
+    const client = adminClient || supabase
 
     const invalid = validateUsername(username)
     if (invalid) return { success: false, error: invalid }
 
-    const { error } = await supabase
+    const { error } = await client
       .from("users")
       .update({
         username: username.trim(),
