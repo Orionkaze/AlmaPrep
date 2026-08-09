@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { createClient } from "@/lib/supabase/server"
+import { createAdminClient } from "@/lib/supabase/admin"
 import { getAuthSecret } from "@/lib/env"
 import crypto from "crypto"
 
@@ -79,26 +80,69 @@ export const authOptions: NextAuthOptions = {
           })
 
           if (signInResult.error) {
-            // 2. If sign in fails, the user might not exist in Supabase auth yet. Try signing up.
-            const { error: signUpError } = await supabase.auth.signUp({
-              email: user.email,
-              password,
-            })
+            // 2. If sign in fails, they might be an existing user (registered manually or via another provider)
+            // or a completely new user.
+            const admin = createAdminClient()
+            let isExistingUser = false
+            let existingUserId = ""
 
-            if (signUpError) {
-              console.error("Google login: Failed to auto-provision Supabase user auth:", signUpError.message)
-              return false
+            if (admin) {
+              try {
+                const { data: listData } = await admin.auth.admin.listUsers({ perPage: 1000 })
+                const matchedUser = listData?.users?.find(u => u.email?.toLowerCase() === user.email?.toLowerCase())
+                if (matchedUser) {
+                  isExistingUser = true
+                  existingUserId = matchedUser.id
+                }
+              } catch (e) {
+                console.error("Google login: Failed to check if user exists in Supabase:", e)
+              }
             }
 
-            // 3. Retry signing in to set session cookies
-            signInResult = await supabase.auth.signInWithPassword({
-              email: user.email,
-              password,
-            })
+            if (isExistingUser && admin) {
+              // Sync their Supabase password to the deterministic password for Google OAuth
+              console.log(`Google login: Syncing password for existing user: ${user.email}`)
+              const { error: updateError } = await admin.auth.admin.updateUserById(existingUserId, {
+                password: password,
+              })
 
-            if (signInResult.error) {
-              console.error("Google login: Failed to sign in to auto-provisioned Supabase account:", signInResult.error.message)
-              return false
+              if (updateError) {
+                console.error("Google login: Failed to sync password for existing user:", updateError.message)
+                return false
+              }
+
+              // Retry signing in
+              signInResult = await supabase.auth.signInWithPassword({
+                email: user.email,
+                password,
+              })
+
+              if (signInResult.error) {
+                console.error("Google login: Failed to sign in after password sync:", signInResult.error.message)
+                return false
+              }
+            } else {
+              // Brand new user: Auto-provision in Supabase
+              const { error: signUpError } = await supabase.auth.signUp({
+                email: user.email,
+                password,
+              })
+
+              if (signUpError) {
+                console.error("Google login: Failed to auto-provision Supabase user auth:", signUpError.message)
+                return false
+              }
+
+              // Retry signing in to set session cookies
+              signInResult = await supabase.auth.signInWithPassword({
+                email: user.email,
+                password,
+              })
+
+              if (signInResult.error) {
+                console.error("Google login: Failed to sign in to auto-provisioned Supabase account:", signInResult.error.message)
+                return false
+              }
             }
           }
 
