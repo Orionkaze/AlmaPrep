@@ -23,20 +23,31 @@ envContent.split('\n').forEach(line => {
 });
 
 console.log('SUPABASE_URL:', env.NEXT_PUBLIC_SUPABASE_URL);
-console.log('Using SUPABASE_SERVICE_ROLE_KEY to inspect all users...');
 
 const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 
 async function runTest() {
   try {
-    console.log('Fetching all users from users table...');
-    const { data, error } = await supabase.from('users').select('*');
-    
-    if (error) {
-      console.log('Query returned an error:', error);
+    console.log('Fetching auth users...');
+    const { data: { users }, error: authError } = await supabase.auth.admin.listUsers();
+    if (authError) {
+      console.log('Auth query returned error:', authError);
     } else {
-      console.log('Query completed successfully. Total users:', data.length);
-      console.log('Users data:', JSON.stringify(data, null, 2));
+      console.log('Total auth users:', users.length);
+      users.forEach(u => {
+        console.log(`Auth User ID: ${u.id}, Email: ${u.email}, Provider: ${u.app_metadata.provider}`);
+      });
+    }
+
+    console.log('\nFetching public.users profiles...');
+    const { data: profiles, error } = await supabase.from('users').select('*');
+    if (error) {
+      console.log('Profiles query returned error:', error);
+    } else {
+      console.log('Total profiles:', profiles.length);
+      profiles.forEach(p => {
+        console.log(`Profile ID: ${p.id}, Username: ${p.username}, Avatar: ${p.avatar_url}`);
+      });
     }
   } catch (err) {
     console.error('Unexpected exception during test:', err);
