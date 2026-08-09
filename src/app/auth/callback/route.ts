@@ -32,7 +32,17 @@ export async function GET(request: Request) {
       const user = data?.user
       if (user) {
         const isMockMode = process.env.NEXT_PUBLIC_MOCK_AUTH === 'true' || searchParams.get('provider') !== null
-        const provider = searchParams.get('provider') || user.app_metadata?.provider || user.identities?.find(id => id.provider)?.provider || 'email'
+        
+        // Robust provider detection: check search param, provider, providers list, and identities
+        const rawProvider = searchParams.get('provider') || user.app_metadata?.provider || ""
+        const providersList = user.app_metadata?.providers || []
+        const identitiesList = user.identities || []
+        const isGitHub = 
+          rawProvider === 'github' ||
+          providersList.includes('github') ||
+          identitiesList.some(id => id.provider === 'github')
+
+        const provider = isGitHub ? 'github' : (rawProvider || 'email')
         
         if (provider === 'github') {
           // GitHub login flow: Automatically assign GitHub username & skip username selection

@@ -64,6 +64,7 @@ export async function createUserProfile(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     const user = await getCurrentUser()
+    console.log("[createUserProfile] Resolved user session info:", user)
     if (user.isDemo) {
       const cookieStore = await cookies()
       const email = user.email || "guest@almaprep.com"
@@ -72,15 +73,20 @@ export async function createUserProfile(
     }
 
     if (!user.userId) {
+      console.log("[createUserProfile] Aborting: Not authenticated")
       return { success: false, error: "Not authenticated" }
     }
 
     const invalid = validateUsername(username)
-    if (invalid) return { success: false, error: invalid }
+    if (invalid) {
+      console.log("[createUserProfile] Invalid username pattern:", invalid)
+      return { success: false, error: invalid }
+    }
 
     const supabase = await createClient()
     const adminClient = createAdminClient()
     const client = adminClient || supabase
+    console.log("[createUserProfile] Upserting user profile with id:", user.userId, "using adminClient:", !!adminClient)
 
     // Upsert, not insert: onboarding can legitimately be reached twice (skip
     // then return, or a transient profile read that sent the user back here),
@@ -98,6 +104,8 @@ export async function createUserProfile(
         { onConflict: "id" }
       )
 
+    console.log("[createUserProfile] Upsert result error:", error)
+
     if (error) {
       console.error("Error creating user profile in Supabase:", error)
       return { success: false, error: friendlyProfileError(error) }
@@ -107,6 +115,7 @@ export async function createUserProfile(
     revalidatePath("/dashboard")
     revalidatePath("/onboarding")
 
+    console.log("[createUserProfile] Profile upsert success, paths revalidated")
     return { success: true }
   } catch (e) {
     console.error("createUserProfile failed:", e)
