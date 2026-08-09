@@ -356,7 +356,7 @@ export default function InterviewSetupPage() {
                     key={cat.id}
                     value={cat.id}
                     variant="outline"
-                    className="h-auto p-6 flex flex-col items-center text-center cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground rounded-2xl w-full"
+                    className="h-auto p-6 flex flex-col items-center text-center cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground rounded-2xl w-full whitespace-normal"
                   >
                     <div className={`size-14 rounded-2xl ${cat.colorClass} flex items-center justify-center mb-4 opacity-90`}>
                       <cat.icon size={24} strokeWidth={1.75} />
