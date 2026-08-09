@@ -124,7 +124,7 @@ export default function OnboardingPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-6 relative overflow-hidden bg-background">
+    <main className="flex-1 flex flex-col items-center pt-8 sm:pt-12 pb-12 px-4 sm:px-6 relative overflow-hidden bg-background">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-accent/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none" />
       
