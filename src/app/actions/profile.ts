@@ -139,10 +139,14 @@ export async function updateUserProfile(
       })
       .eq("id", user.userId)
 
-    if (error) {
+     if (error) {
       console.error("Error updating user profile in Supabase:", error)
       return { success: false, error: friendlyProfileError(error) }
     }
+
+    const { revalidatePath } = await import("next/cache")
+    revalidatePath("/dashboard")
+    revalidatePath("/dashboard/profile")
 
     return { success: true }
   } catch (e) {

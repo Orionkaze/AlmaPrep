@@ -58,7 +58,7 @@ const headingStyle: React.CSSProperties = {
   fontWeight: 600,
 }
 
-// Removed calculateStreak helper as streak is now stored in DB
+export const dynamic = "force-dynamic"
 
 export default async function DashboardPage() {
   const user = await getCurrentUser()
