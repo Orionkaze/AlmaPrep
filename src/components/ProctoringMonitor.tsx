@@ -57,25 +57,9 @@ export default function ProctoringMonitor({
     (type: ViolationType) => {
       const timestamp = new Date().toISOString();
       setViolations((prev) => {
-        const next = prev.find((v) => v.type === type)
+        return prev.find((v) => v.type === type)
           ? prev.map((v) => (v.type === type ? { ...v, count: v.count + 1, timestamp } : v))
           : [...prev, { type, timestamp, count: 1 }];
-
-        // Respond to the violation-count transition right where it happens,
-        // rather than re-deriving it in a separate effect that watches
-        // `violations` (which would call setState synchronously on every
-        // change and risk cascading renders).
-        const totalCount = next.reduce((acc, v) => acc + v.count, 0);
-        onViolationCountChangeRef.current(totalCount);
-        onViolationLoggedRef.current(next);
-
-        if (totalCount === 3) {
-          setShowWarningModal(true);
-        } else if (totalCount >= threshold) {
-          onTerminateRef.current();
-        }
-
-        return next;
       });
 
       // Set appropriate toast warnings
@@ -96,8 +80,22 @@ export default function ProctoringMonitor({
       }
       setWarningMessage(message);
     },
-    [threshold]
+    []
   );
+
+  // Sync violations and trigger side-effects in an effect instead of during render
+  useEffect(() => {
+    if (violations.length === 0) return;
+    const totalCount = violations.reduce((acc, v) => acc + v.count, 0);
+    onViolationCountChangeRef.current(totalCount);
+    onViolationLoggedRef.current(violations);
+
+    if (totalCount === 3) {
+      setShowWarningModal(true);
+    } else if (totalCount >= threshold) {
+      onTerminateRef.current();
+    }
+  }, [violations, threshold]);
 
   // 1. Visibility API Tab Switch Detection
   useEffect(() => {
