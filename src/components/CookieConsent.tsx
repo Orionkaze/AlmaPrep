@@ -51,15 +51,16 @@ export default function CookieConsent() {
         justifyContent: "center",
         gap: "12px",
         padding: "14px 20px",
-        background: "var(--card, #fff)",
-        borderTop: "1px solid var(--border, #e5e7eb)",
+        background: "var(--color-card, #fff)",
+        color: "var(--color-card-foreground, #0f172a)",
+        borderTop: "1px solid var(--color-border, #cbd5e1)",
         boxShadow: "0 -4px 20px rgba(0,0,0,.06)",
       }}
     >
       <p style={{ margin: 0, fontSize: ".9rem", maxWidth: "60ch" }}>
         We&apos;d like to use analytics cookies to understand how Almaprep is used. They
         are optional, and practice sessions work either way.{" "}
-        <a href="/privacy" style={{ textDecoration: "underline" }}>
+        <a href="/privacy" style={{ textDecoration: "underline", color: "var(--color-primary, #10b981)" }}>
           Privacy policy
         </a>
       </p>
