@@ -23,20 +23,20 @@ envContent.split('\n').forEach(line => {
 });
 
 console.log('SUPABASE_URL:', env.NEXT_PUBLIC_SUPABASE_URL);
-console.log('SUPABASE_ANON_KEY:', env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+console.log('Using SUPABASE_SERVICE_ROLE_KEY to inspect all users...');
 
-const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 
 async function runTest() {
   try {
-    console.log('Testing Supabase connection...');
-    // Attempt a simple query that hits the API gateway
-    const { data, error } = await supabase.from('users').select('*').limit(1);
+    console.log('Fetching all users from users table...');
+    const { data, error } = await supabase.from('users').select('*');
     
     if (error) {
       console.log('Query returned an error:', error);
     } else {
-      console.log('Query completed successfully. Data:', data);
+      console.log('Query completed successfully. Total users:', data.length);
+      console.log('Users data:', JSON.stringify(data, null, 2));
     }
   } catch (err) {
     console.error('Unexpected exception during test:', err);
