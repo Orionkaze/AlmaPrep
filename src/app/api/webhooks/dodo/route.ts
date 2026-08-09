@@ -1,51 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import * as crypto from "crypto"
-import { grantTier } from "@/lib/payments"
-
-/**
- * Manually verifies the standard webhook signature using HMAC-SHA256.
- * Standard Webhooks / Svix signature format:
- * - Signed Content: `${webhook-id}.${webhook-timestamp}.${raw-body}`
- * - Secret: Base64-decoded string (with optional "whsec_" prefix removed)
- * - HMAC-SHA256 hash comparison in constant-time
- */
-function verifySignature(
-  id: string,
-  timestamp: string,
-  signature: string,
-  body: string,
-  secret: string
-): boolean {
-  try {
-    const cleanSecret = secret.startsWith("whsec_") ? secret.substring(6) : secret
-    const secretBytes = Buffer.from(cleanSecret, "base64")
-
-    const signedContent = `${id}.${timestamp}.${body}`
-    const expectedSignature = crypto
-      .createHmac("sha256", secretBytes)
-      .update(signedContent)
-      .digest("base64")
-
-    const signatures = signature.split(" ")
-    for (const sig of signatures) {
-      const [version, signatureValue] = sig.split(",")
-      if (version !== "v1") continue
-
-      const expectedBuffer = Buffer.from(expectedSignature, "base64")
-      const actualBuffer = Buffer.from(signatureValue, "base64")
-
-      if (
-        expectedBuffer.length === actualBuffer.length &&
-        crypto.timingSafeEqual(expectedBuffer, actualBuffer)
-      ) {
-        return true
-      }
-    }
-  } catch (err) {
-    console.error("[dodo-webhook] Error verifying signature:", err)
-  }
-  return false
-}
+import { grantTier, verifyWebhookSignature } from "@/lib/payments"
 
 export async function POST(req: NextRequest) {
   try {
@@ -72,7 +26,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Missing signature headers" }, { status: 400 })
       }
 
-      const isValid = verifySignature(id, timestamp, signature, body, secret)
+      const isValid = verifyWebhookSignature(id, timestamp, signature, body, secret)
       if (!isValid) {
         console.error("[dodo-webhook] Invalid webhook signature")
         return NextResponse.json({ error: "Invalid signature" }, { status: 401 })

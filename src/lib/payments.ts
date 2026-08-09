@@ -1,6 +1,7 @@
 import type { TierId } from "@/config/plans"
 import { SITE_URL } from "@/lib/siteConfig"
 import { createAdminClient } from "@/lib/supabase/admin"
+import * as crypto from "crypto"
 
 export type CheckoutResult =
   | { status: "ok"; url: string }
@@ -125,5 +126,50 @@ export async function grantTier(
     console.error(`[grantTier] Unexpected error for user ${userId}:`, err)
     return { success: false, error: err.message || "Internal error" }
   }
+}
+
+/**
+ * Manually verifies the standard webhook signature using HMAC-SHA256.
+ * Standard Webhooks / Svix signature format:
+ * - Signed Content: `${webhook-id}.${webhook-timestamp}.${raw-body}`
+ * - Secret: Base64-decoded string (with optional "whsec_" prefix removed)
+ * - HMAC-SHA256 hash comparison in constant-time
+ */
+export function verifyWebhookSignature(
+  id: string,
+  timestamp: string,
+  signature: string,
+  body: string,
+  secret: string
+): boolean {
+  try {
+    const cleanSecret = secret.startsWith("whsec_") ? secret.substring(6) : secret
+    const secretBytes = Buffer.from(cleanSecret, "base64")
+
+    const signedContent = `${id}.${timestamp}.${body}`
+    const expectedSignature = crypto
+      .createHmac("sha256", secretBytes)
+      .update(signedContent)
+      .digest("base64")
+
+    const signatures = signature.split(" ")
+    for (const sig of signatures) {
+      const [version, signatureValue] = sig.split(",")
+      if (version !== "v1") continue
+
+      const expectedBuffer = Buffer.from(expectedSignature, "base64")
+      const actualBuffer = Buffer.from(signatureValue, "base64")
+
+      if (
+        expectedBuffer.length === actualBuffer.length &&
+        crypto.timingSafeEqual(expectedBuffer, actualBuffer)
+      ) {
+        return true
+      }
+    }
+  } catch (err) {
+    console.error("[dodo-webhook] Error verifying signature in helper:", err)
+  }
+  return false
 }
 
