@@ -101,14 +101,14 @@ export default function CookieConsent() {
         <div className="flex gap-3 mt-1">
           <button
             type="button"
-            className="btn btn-ghost flex-1 justify-center py-2.5 text-sm font-semibold rounded-xl border border-border"
+            className="btn btn-ghost flex-1 justify-center py-3 text-sm font-semibold rounded-xl border border-border"
             onClick={() => choose(false)}
           >
             Decline
           </button>
           <button
             type="button"
-            className="btn btn-primary flex-1 justify-center py-2.5 text-sm font-semibold rounded-xl"
+            className="btn btn-primary flex-1 justify-center py-3 text-sm font-semibold rounded-xl"
             onClick={() => choose(true)}
           >
             Accept
