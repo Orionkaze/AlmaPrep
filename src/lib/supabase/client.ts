@@ -172,12 +172,12 @@ function createMockBrowserClient(): SupabaseClient {
 
       signInWithOAuth: async ({ provider, options }: { provider: string; options?: { redirectTo?: string } }) => {
         console.log("Mock Supabase Client: signInWithOAuth", provider);
-        const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
+        const mockUser = { id: "demo-user-id", email: provider === "github" ? "github-user@mockmate.com" : "google-user@mockmate.com" };
         try {
           await fetch("/api/auth/mock-session", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: mockUser.email, username: "demo_user" })
+            body: JSON.stringify({ email: mockUser.email, username: provider === "github" ? "github_user" : "google_user" })
           });
         } catch (e) {
           console.error("Failed to set mock session token:", e);
@@ -187,6 +187,7 @@ function createMockBrowserClient(): SupabaseClient {
           if (!targetUrl.searchParams.has("code")) {
             targetUrl.searchParams.set("code", "mock-oauth-code")
           }
+          targetUrl.searchParams.set("provider", provider)
           window.location.href = targetUrl.toString()
         }
         return { data: { provider, url: options?.redirectTo || "/dashboard" }, error: null };
@@ -194,7 +195,20 @@ function createMockBrowserClient(): SupabaseClient {
 
       exchangeCodeForSession: async (code: string) => {
         console.log("Mock Supabase Client: exchangeCodeForSession", code);
-        const mockUser = { id: "demo-user-id", email: "demo@mockmate.com" };
+        let provider = "google"
+        if (typeof window !== "undefined") {
+          const params = new URLSearchParams(window.location.search)
+          provider = params.get("provider") || "google"
+        }
+        const mockUser = {
+          id: "demo-user-id",
+          email: provider === "github" ? "github-user@mockmate.com" : "google-user@mockmate.com",
+          app_metadata: { provider },
+          user_metadata: {
+            user_name: provider === "github" ? "mock-github-user" : undefined,
+            preferred_username: provider === "github" ? "mock-github-user" : undefined,
+          }
+        };
         const session = { access_token: "mock-session-token", expires_in: 3600, user: mockUser };
         return { data: { user: mockUser, session }, error: null };
       },
