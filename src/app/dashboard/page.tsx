@@ -116,14 +116,18 @@ export default async function DashboardPage() {
       // its analysis, and this page only needs to know a resume exists.
       const adminClient = createAdminClient()
       const client = adminClient || supabase
+      console.log("[Dashboard] Querying profile for userId:", userId, "using adminClient:", !!adminClient)
 
-      const { data: profile } = await client
+      const { data: profile, error: profileErr } = await client
         .from("users")
         .select("username, avatar_url, current_streak, resume_text")
         .eq("id", userId)
         .single()
 
+      console.log("[Dashboard] Profile lookup result:", { profile, error: profileErr })
+
       if (!profile) {
+        console.log("[Dashboard] Redirecting to /onboarding because profile is null")
         redirect("/onboarding")
       }
 

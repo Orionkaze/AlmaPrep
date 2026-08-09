@@ -93,6 +93,7 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
         data: { user },
       } = await supabase.auth.getUser()
       if (user) {
+        console.log("[getCurrentUser] Supabase user resolved:", user.id, "email:", user.email)
         return {
           userId: user.id,
           email: user.email ?? null,
@@ -110,6 +111,7 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
     const session = await getServerSession(authOptions)
     let userId = (session?.user as { id?: string } | undefined)?.id ?? null
     const email = session?.user?.email ?? null
+    console.log("[getCurrentUser] NextAuth session check:", { hasSession: !!session, rawUserId: userId, email })
 
     if (userId && email) {
       // Ensure we use the Supabase Auth UUID instead of any internal NextAuth ID
@@ -120,6 +122,7 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
           if (data?.users) {
             const matched = data.users.find(u => u.email?.toLowerCase() === email.toLowerCase())
             if (matched) {
+              console.log("[getCurrentUser] NextAuth bridged to Supabase UUID:", matched.id)
               userId = matched.id
             }
           }
@@ -139,6 +142,8 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
           "user-tie"
       }
     }
+
+    console.log("[getCurrentUser] No active user resolved (null)")
 
     return { userId: null, email: null, isDemo: false }
   } catch (err) {
