@@ -183,7 +183,11 @@ function createMockBrowserClient(): SupabaseClient {
           console.error("Failed to set mock session token:", e);
         }
         if (typeof window !== "undefined" && options?.redirectTo) {
-          window.location.href = options.redirectTo;
+          const targetUrl = new URL(options.redirectTo, window.location.origin)
+          if (!targetUrl.searchParams.has("code")) {
+            targetUrl.searchParams.set("code", "mock-oauth-code")
+          }
+          window.location.href = targetUrl.toString()
         }
         return { data: { provider, url: options?.redirectTo || "/dashboard" }, error: null };
       },
