@@ -401,7 +401,7 @@ export default function InterviewSetupPage() {
                         key={prog.id}
                         value={prog.id}
                         variant="outline"
-                        className="p-4 rounded-xl flex flex-col justify-between h-28 relative overflow-hidden bg-card cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground w-full text-left items-stretch"
+                        className="p-4 rounded-xl flex flex-col justify-between h-28 relative overflow-hidden bg-card cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-foreground w-full text-left items-stretch whitespace-normal"
                       >
                         <div className="flex flex-col flex-1 justify-between">
                           <div>
@@ -542,7 +542,7 @@ export default function InterviewSetupPage() {
                               key={repoName}
                               value={repoName}
                               variant="outline"
-                              className="p-3 rounded-xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between items-stretch h-auto w-full"
+                              className="p-3 rounded-xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between items-stretch h-auto w-full whitespace-normal"
                             >
                               <div className="flex items-start justify-between w-full">
                                 <span className="font-semibold text-xs truncate max-w-[85%] text-foreground">{repoName}</span>
@@ -602,7 +602,7 @@ export default function InterviewSetupPage() {
                   key={p.id}
                   value={p.id}
                   variant="outline"
-                  className="flex-1 p-3.5 h-auto rounded-xl flex flex-col items-start text-left cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/10 data-[state=on]:text-primary w-full"
+                  className="flex-1 p-3.5 h-auto rounded-xl flex flex-col items-start text-left cursor-pointer data-[state=on]:border-primary data-[state=on]:bg-primary/10 data-[state=on]:text-primary w-full whitespace-normal"
                 >
                   <div className="text-xs md:text-sm font-bold mb-1">{p.label}</div>
                   <div className="text-[11px] text-muted-foreground leading-snug">{p.desc}</div>
