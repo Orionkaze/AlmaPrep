@@ -3,6 +3,7 @@ import { cookies } from "next/headers"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
+import { createAdminClient } from "@/lib/supabase/admin"
 import { verifyJWT } from "@/lib/jwt"
 import { getAuthSecret, isMockAuthEnabled } from "@/lib/env"
 import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
@@ -107,13 +108,28 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
 
     // NextAuth fallback (Google users bridged into Supabase).
     const session = await getServerSession(authOptions)
-    const userId = (session?.user as { id?: string } | undefined)?.id ?? null
-    if (userId) {
+    let userId = (session?.user as { id?: string } | undefined)?.id ?? null
+    const email = session?.user?.email ?? null
+
+    if (userId && email) {
+      // Ensure we use the Supabase Auth UUID instead of any internal NextAuth ID
+      const admin = createAdminClient()
+      if (admin) {
+        try {
+          const { data: authUser } = await admin.auth.admin.getUserByEmail(email)
+          if (authUser?.user) {
+            userId = authUser.user.id
+          }
+        } catch (e) {
+          console.error("[getCurrentUser] Admin lookup of email failed:", e)
+        }
+      }
+
       return {
         userId,
-        email: session?.user?.email ?? null,
+        email,
         isDemo: false,
-        username: session?.user?.name || session?.user?.email?.split("@")[0] || "User",
+        username: session?.user?.name || email.split("@")[0] || "User",
         avatarUrl:
           (session?.user as { avatar_url?: string } | undefined)?.avatar_url ||
           session?.user?.image ||

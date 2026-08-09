@@ -116,15 +116,25 @@ export async function updateSession(request: NextRequest) {
       const token = nextAuthToken
       if (token?.email) {
         const password = await generateDeterministicPasswordWebCrypto(token.email, secret)
-        const { error } = await supabase.auth.signInWithPassword({
+        const { error: signInError } = await supabase.auth.signInWithPassword({
           email: token.email,
           password,
         })
-        if (error) {
-          // No email in the log line. This runs on a normal request path for
-          // signed-in students, many of them minors, and a success message
-          // naming them is PII written to the server log for no benefit.
-          console.error("Middleware: Failed to sync Supabase session:", error.message)
+        if (signInError) {
+          // If sign in fails, they may not exist in Supabase auth yet. Auto-provision them.
+          const { error: signUpError } = await supabase.auth.signUp({
+            email: token.email,
+            password,
+          })
+          if (!signUpError) {
+            // Retry sign in to establish cookies
+            await supabase.auth.signInWithPassword({
+              email: token.email,
+              password,
+            })
+          } else {
+            console.error("Middleware: Failed to sync and auto-provision user:", signUpError.message)
+          }
         }
       }
     } catch (err) {
