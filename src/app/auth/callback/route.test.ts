@@ -1,5 +1,4 @@
-import { describe, it, expect, vi, afterEach } from "vitest"
-import { safeNextPath, allowedHost } from "./route"
+import { safeNextPath, allowedHost } from "@/lib/authCallbackUtils"
 
 vi.mock("@/lib/supabase/server", () => ({ createClient: async () => ({}) }))
 vi.mock("next/headers", () => ({ cookies: async () => ({ set: () => {} }) }))
