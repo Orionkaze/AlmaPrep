@@ -60,9 +60,115 @@ export async function GET(request: Request) {
           maxAge: data.session.expires_in || 3600,
         })
       }
+
+      // Check if user is authenticated and get provider
+      const user = data?.user
+      if (user) {
+        const isMockMode = process.env.NEXT_PUBLIC_MOCK_AUTH === 'true' || searchParams.get('provider') !== null
+        const provider = searchParams.get('provider') || user.app_metadata?.provider || user.identities?.find(id => id.provider)?.provider || 'email'
+        
+        if (provider === 'github') {
+          // GitHub login flow: Automatically assign GitHub username & skip username selection
+          const githubUsername = user.user_metadata?.user_name || user.user_metadata?.preferred_username || user.email?.split('@')[0] || 'User'
+          
+          if (isMockMode) {
+            const cookieStore = await cookies()
+            cookieStore.set(
+              "mockmate-demo-user",
+              JSON.stringify({
+                email: user.email || "github-user@mockmate.com",
+                username: githubUsername,
+                avatar_url: "laptop-code"
+              }),
+              { path: "/", maxAge: 604800 }
+            )
+          } else {
+            // Check if profile exists
+            const { data: existingProfile } = await supabase
+              .from('users')
+              .select('id, username')
+              .eq('id', user.id)
+              .maybeSingle()
+            
+            if (!existingProfile) {
+              // Automatically resolve collision by appending sequence numbers if username is already taken
+              let targetUsername = githubUsername.trim()
+              let unique = false
+              let attempt = 0
+              while (!unique && attempt < 10) {
+                const testUsername = attempt === 0 ? targetUsername : `${targetUsername}-${attempt}`
+                const { data: duplicate } = await supabase
+                  .from('users')
+                  .select('id')
+                  .eq('username', testUsername)
+                  .maybeSingle()
+                
+                if (!duplicate) {
+                  targetUsername = testUsername
+                  unique = true
+                } else {
+                  attempt++
+                }
+              }
+              if (!unique) {
+                targetUsername = `${targetUsername}-${Math.floor(1000 + Math.random() * 9000)}`
+              }
+
+              // Create profile in database
+              const { error: insertErr } = await supabase
+                .from('users')
+                .upsert({
+                  id: user.id,
+                  username: targetUsername,
+                  avatar_url: 'laptop-code',
+                }, { onConflict: 'id' })
+
+              if (insertErr) {
+                console.error("Failed to automatically create user profile for GitHub user:", insertErr)
+              }
+            }
+          }
+
+          // GitHub users go directly to the dashboard
+          const isLocalEnv = process.env.NODE_ENV === 'development'
+          if (isLocalEnv) {
+            return NextResponse.redirect(`${origin}/dashboard`)
+          }
+          const forwardedHost = allowedHost(request.headers.get('x-forwarded-host'), origin)
+          if (forwardedHost) {
+            return NextResponse.redirect(`https://${forwardedHost}/dashboard`)
+          }
+          return NextResponse.redirect(`${origin}/dashboard`)
+        } else {
+          // Non-GitHub users (Google, Manual, etc.) must go through username selection if new
+          let hasProfile = false
+          if (isMockMode) {
+            const cookieStore = await cookies()
+            hasProfile = cookieStore.has("mockmate-demo-user")
+          } else {
+            const { data: existingProfile } = await supabase
+              .from('users')
+              .select('id, username')
+              .eq('id', user.id)
+              .maybeSingle()
+            hasProfile = !!existingProfile
+          }
+
+          const redirectPath = hasProfile ? '/dashboard' : '/onboarding'
+          const isLocalEnv = process.env.NODE_ENV === 'development'
+          if (isLocalEnv) {
+            return NextResponse.redirect(`${origin}${redirectPath}`)
+          }
+          const forwardedHost = allowedHost(request.headers.get('x-forwarded-host'), origin)
+          if (forwardedHost) {
+            return NextResponse.redirect(`https://${forwardedHost}${redirectPath}`)
+          }
+          return NextResponse.redirect(`${origin}${redirectPath}`)
+        }
+      }
+
       const isLocalEnv = process.env.NODE_ENV === 'development'
       if (isLocalEnv) {
-        // we can redirect to local origin directly
         return NextResponse.redirect(`${origin}${next}`)
       }
       const forwardedHost = allowedHost(request.headers.get('x-forwarded-host'), origin)
@@ -75,8 +181,5 @@ export async function GET(request: Request) {
     }
   }
 
-  // Send a fixed code rather than free text: the login page renders whatever
-  // arrives here, so an echoed message lets anyone put their own words on our
-  // sign-in screen.
   return NextResponse.redirect(`${origin}/login?error=auth_failed`)
 }

@@ -6,6 +6,55 @@ import { getCurrentUser } from "@/lib/getCurrentUser"
 import { createAdminClient } from "@/lib/supabase/admin"
 import { friendlyProfileError, validateUsername } from "@/lib/profileValidation"
 
+export async function checkUsernameAvailability(username: string): Promise<{ available: boolean; error?: string }> {
+  try {
+    const invalid = validateUsername(username)
+    if (invalid) return { available: false, error: invalid }
+
+    const user = await getCurrentUser()
+    if (user.isDemo) {
+      // In demo mode, check if the username is already taken in the mock user list
+      const cookieStore = await cookies()
+      const mockUserCookie = cookieStore.get("mockmate-demo-user")?.value
+      if (mockUserCookie) {
+        try {
+          const parsed = JSON.parse(decodeURIComponent(mockUserCookie))
+          if (parsed.username && parsed.username.toLowerCase() === username.trim().toLowerCase()) {
+            return { available: true }
+          }
+        } catch {}
+      }
+      return { available: true }
+    }
+
+    if (!user.userId) {
+      return { available: false, error: "Not authenticated" }
+    }
+
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from("users")
+      .select("id")
+      .eq("username", username.trim())
+      .maybeSingle()
+
+    if (error) {
+      console.error("Error checking username availability:", error)
+      return { available: false, error: "Database lookup failed" }
+    }
+
+    // If it is taken by the current user themselves, it is available to re-use
+    if (data && data.id === user.userId) {
+      return { available: true }
+    }
+
+    return { available: !data }
+  } catch (e) {
+    console.error("checkUsernameAvailability failed:", e)
+    return { available: false, error: "An unexpected error occurred" }
+  }
+}
+
 export async function createUserProfile(
   username: string,
   avatarUrl: string
