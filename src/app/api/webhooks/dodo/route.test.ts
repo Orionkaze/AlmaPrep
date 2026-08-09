@@ -12,20 +12,17 @@ vi.mock("@/lib/payments", async (importOriginal) => {
 })
 
 describe("Dodo Webhook Route Handler", () => {
-  const originalEnv = process.env
-
   beforeEach(() => {
-    process.env = { ...originalEnv }
     vi.clearAllMocks()
   })
 
   afterEach(() => {
-    process.env = originalEnv
+    vi.unstubAllEnvs()
   })
 
   it("skips signature verification in non-production environments when secret is unset", async () => {
-    process.env.NODE_ENV = "development"
-    delete process.env.DODO_WEBHOOK_SECRET
+    vi.stubEnv("NODE_ENV", "development")
+    vi.stubEnv("DODO_WEBHOOK_SECRET", "")
 
     const mockPayload = {
       type: "payment.succeeded",
@@ -50,8 +47,8 @@ describe("Dodo Webhook Route Handler", () => {
   })
 
   it("returns 500 in production when DODO_WEBHOOK_SECRET is unset", async () => {
-    process.env.NODE_ENV = "production"
-    delete process.env.DODO_WEBHOOK_SECRET
+    vi.stubEnv("NODE_ENV", "production")
+    vi.stubEnv("DODO_WEBHOOK_SECRET", "")
 
     const request = new NextRequest("http://localhost/api/webhooks/dodo", {
       method: "POST",
@@ -65,8 +62,8 @@ describe("Dodo Webhook Route Handler", () => {
   })
 
   it("returns 400 when missing signature headers when secret is set", async () => {
-    process.env.NODE_ENV = "production"
-    process.env.DODO_WEBHOOK_SECRET = "whsec_MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI="
+    vi.stubEnv("NODE_ENV", "production")
+    vi.stubEnv("DODO_WEBHOOK_SECRET", "whsec_MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=")
 
     const request = new NextRequest("http://localhost/api/webhooks/dodo", {
       method: "POST",
@@ -80,8 +77,8 @@ describe("Dodo Webhook Route Handler", () => {
   })
 
   it("returns 401 when signature verification fails", async () => {
-    process.env.NODE_ENV = "production"
-    process.env.DODO_WEBHOOK_SECRET = "whsec_MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI="
+    vi.stubEnv("NODE_ENV", "production")
+    vi.stubEnv("DODO_WEBHOOK_SECRET", "whsec_MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=")
 
     const request = new NextRequest("http://localhost/api/webhooks/dodo", {
       method: "POST",
@@ -100,8 +97,8 @@ describe("Dodo Webhook Route Handler", () => {
   })
 
   it("downgrades user tier on subscription cancellation event", async () => {
-    process.env.NODE_ENV = "development"
-    delete process.env.DODO_WEBHOOK_SECRET
+    vi.stubEnv("NODE_ENV", "development")
+    vi.stubEnv("DODO_WEBHOOK_SECRET", "")
 
     const mockPayload = {
       type: "subscription.cancelled",
