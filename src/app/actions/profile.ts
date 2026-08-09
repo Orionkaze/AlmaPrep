@@ -98,6 +98,10 @@ export async function createUserProfile(
       return { success: false, error: friendlyProfileError(error) }
     }
 
+    const { revalidatePath } = await import("next/cache")
+    revalidatePath("/dashboard")
+    revalidatePath("/onboarding")
+
     return { success: true }
   } catch (e) {
     console.error("createUserProfile failed:", e)
