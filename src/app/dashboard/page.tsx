@@ -116,8 +116,6 @@ export default async function DashboardPage() {
       // its analysis, and this page only needs to know a resume exists.
       const adminClient = createAdminClient()
       const client = adminClient || supabase
-      console.log("[Dashboard] Querying profile for userId:", userId, "using adminClient:", !!adminClient)
-
       let res = await client
         .from("users")
         .select("username, avatar_url, current_streak, resume_text")
@@ -125,7 +123,6 @@ export default async function DashboardPage() {
         .single()
 
       if (res.error && res.error.code === '42703') {
-        console.log("[Dashboard] current_streak column does not exist. Retrying select query without it...")
         res = await client
           .from("users")
           .select("username, avatar_url, resume_text")
@@ -134,11 +131,8 @@ export default async function DashboardPage() {
       }
 
       const profile = res.data
-      const profileErr = res.error
-      console.log("[Dashboard] Profile lookup result:", { profile, error: profileErr })
 
       if (!profile) {
-        console.log("[Dashboard] Redirecting to /onboarding because profile is null")
         redirect("/onboarding")
       }
 
