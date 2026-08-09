@@ -116,9 +116,12 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
       const admin = createAdminClient()
       if (admin) {
         try {
-          const { data: authUser } = await admin.auth.admin.getUserByEmail(email)
-          if (authUser?.user) {
-            userId = authUser.user.id
+          const { data } = await admin.auth.admin.listUsers({ perPage: 1000 })
+          if (data?.users) {
+            const matched = data.users.find(u => u.email?.toLowerCase() === email.toLowerCase())
+            if (matched) {
+              userId = matched.id
+            }
           }
         } catch (e) {
           console.error("[getCurrentUser] Admin lookup of email failed:", e)
