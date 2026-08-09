@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server"
+import { createAdminClient } from "@/lib/supabase/admin"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { getCurrentUser } from "@/lib/getCurrentUser"
@@ -20,6 +21,8 @@ type ProfileInterviewRow = {
   status: string
   feedback?: { score?: number | null }[]
 }
+
+export const dynamic = "force-dynamic"
 
 export default async function ProfilePage() {
   const user = await getCurrentUser()
@@ -81,8 +84,11 @@ export default async function ProfilePage() {
     interviews = []
   } else {
     if (!supabase) redirect("/login")
-    // 1. Fetch user profile
-    const { data: profile } = await supabase
+     // 1. Fetch user profile
+    const adminClient = createAdminClient()
+    const client = adminClient || supabase
+
+    const { data: profile } = await client
       .from("users")
       .select(
         "username, avatar_url, resume_text, github_autosave, current_streak, longest_streak, created_at, subscription_tier"
