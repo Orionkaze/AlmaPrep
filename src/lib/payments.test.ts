@@ -125,6 +125,71 @@ describe("payments", () => {
       )
     })
 
+    it("creates a checkout session using live mode when DODO_API_KEY starts with live_", async () => {
+      process.env.DODO_API_KEY = "live_key_123"
+      process.env.DODO_PRO_PRODUCT_ID = "pdt_123"
+
+      vi.mocked(fetch).mockResolvedValue({
+        ok: true,
+        json: async () => ({ checkout_url: "https://checkout.dodopayments.com/buy/pdt_123" }),
+      } as Response)
+
+      await createDodoCheckout({
+        plan: "pro",
+        userId: "user_123",
+        email: "test@example.com",
+      })
+
+      expect(fetch).toHaveBeenCalledWith(
+        "https://live.dodopayments.com/v1/checkout/sessions",
+        expect.any(Object)
+      )
+    })
+
+    it("creates a checkout session using live mode when DODO_MODE is set to live", async () => {
+      process.env.DODO_API_KEY = "test_key_123" // doesn't start with live_
+      process.env.DODO_PRO_PRODUCT_ID = "pdt_123"
+      process.env.DODO_MODE = "live"
+
+      vi.mocked(fetch).mockResolvedValue({
+        ok: true,
+        json: async () => ({ checkout_url: "https://checkout.dodopayments.com/buy/pdt_123" }),
+      } as Response)
+
+      await createDodoCheckout({
+        plan: "pro",
+        userId: "user_123",
+        email: "test@example.com",
+      })
+
+      expect(fetch).toHaveBeenCalledWith(
+        "https://live.dodopayments.com/v1/checkout/sessions",
+        expect.any(Object)
+      )
+    })
+
+    it("creates a checkout session using test mode when DODO_MODE is set to test even if key starts with live_", async () => {
+      process.env.DODO_API_KEY = "live_key_123"
+      process.env.DODO_PRO_PRODUCT_ID = "pdt_123"
+      process.env.DODO_MODE = "test"
+
+      vi.mocked(fetch).mockResolvedValue({
+        ok: true,
+        json: async () => ({ checkout_url: "https://checkout.dodopayments.com/buy/pdt_123" }),
+      } as Response)
+
+      await createDodoCheckout({
+        plan: "pro",
+        userId: "user_123",
+        email: "test@example.com",
+      })
+
+      expect(fetch).toHaveBeenCalledWith(
+        "https://test.dodopayments.com/v1/checkout/sessions",
+        expect.any(Object)
+      )
+    })
+
     it("returns error status on failed fetch", async () => {
       process.env.DODO_API_KEY = "test_key_123"
       process.env.DODO_PRO_PRODUCT_ID = "pdt_123"

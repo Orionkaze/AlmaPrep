@@ -21,7 +21,7 @@ export async function createDodoCheckout(req: {
   if (!apiKey || !productId) return { status: "notConfigured" }
 
   try {
-    const isLive = apiKey.startsWith("live_") || process.env.NODE_ENV === "production"
+    const isLive = (apiKey.startsWith("live_") || process.env.DODO_MODE === "live") && process.env.DODO_MODE !== "test"
     const baseUrl = isLive ? "https://live.dodopayments.com" : "https://test.dodopayments.com"
 
     const response = await fetch(`${baseUrl}/v1/checkout/sessions`, {
