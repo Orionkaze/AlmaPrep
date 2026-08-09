@@ -123,13 +123,22 @@ export const authOptions: NextAuthOptions = {
               }
             } else {
               // Brand new user: Auto-provision in Supabase
-              const { error: signUpError } = await supabase.auth.signUp({
-                email: user.email,
-                password,
-              })
+              let createResult
+              if (admin) {
+                createResult = await admin.auth.admin.createUser({
+                  email: user.email,
+                  password,
+                  email_confirm: true,
+                })
+              } else {
+                createResult = await supabase.auth.signUp({
+                  email: user.email,
+                  password,
+                })
+              }
 
-              if (signUpError) {
-                console.error("Google login: Failed to auto-provision Supabase user auth:", signUpError.message)
+              if (createResult.error) {
+                console.error("Google login: Failed to auto-provision Supabase user auth:", createResult.error.message)
                 return false
               }
 
