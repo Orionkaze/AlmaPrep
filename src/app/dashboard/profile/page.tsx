@@ -88,13 +88,25 @@ export default async function ProfilePage() {
     const adminClient = createAdminClient()
     const client = adminClient || supabase
 
-    const { data: profile } = await client
+    let res = await client
       .from("users")
       .select(
         "username, avatar_url, resume_text, github_autosave, current_streak, longest_streak, created_at, subscription_tier"
       )
       .eq("id", userId)
       .single()
+
+    if (res.error && res.error.code === '42703') {
+      res = await client
+        .from("users")
+        .select(
+          "username, avatar_url, resume_text, github_autosave, created_at, subscription_tier"
+        )
+        .eq("id", userId)
+        .single()
+    }
+
+    const profile = res.data
 
     if (!profile) {
       redirect("/onboarding")

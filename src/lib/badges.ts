@@ -30,11 +30,28 @@ export async function checkAndAwardBadges(userId: string) {
       // and "*, feedback(*)" pulled each interview's full summary and
       // improvement list — plus the entire resume text from users — only to
       // count things. interview_reports(*) was fetched and never read at all.
-      supabase
+    let userRes = await supabase
+      .from("users")
+      .select("id, username, avatar_url, resume_text, current_streak, created_at")
+      .eq("id", userId)
+      .single() as unknown as { data: UserRow | null; error?: any };
+
+    if (userRes.error && userRes.error.code === '42703') {
+      userRes = await supabase
         .from("users")
-        .select("id, username, avatar_url, resume_text, current_streak, created_at")
+        .select("id, username, avatar_url, resume_text, created_at")
         .eq("id", userId)
-        .single() as unknown as Promise<{ data: UserRow | null }>,
+        .single() as unknown as { data: UserRow | null; error?: any };
+    }
+
+    const user = userRes.data;
+
+    const [
+      { data: earnedBadges },
+      { data: interviews },
+      { data: codingSessions },
+      { data: githubAnalysis }
+    ] = await Promise.all([
       supabase.from("user_badges").select("badge_slug").eq("user_id", userId),
       supabase
         .from("interviews")
@@ -51,6 +68,7 @@ export async function checkAndAwardBadges(userId: string) {
         .in("status", ["completed", "evaluated"])
         .order("started_at", { ascending: false }) as unknown as Promise<{ data: SessionWithSolutionsAndReports[] | null }>,
       supabase.from("github_analysis").select("id").eq("user_id", userId).maybeSingle()
+    ]);
     ]);
 
     if (!user) return { success: false, error: "User not found" };
