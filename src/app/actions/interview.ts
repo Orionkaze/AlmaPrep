@@ -612,12 +612,16 @@ You MUST return a valid JSON object matching this exact structure:
   "hints": ["1-2 actionable quick hints for improvement"],
   "summary": "1 sentence brief feedback summary"
 }
-Ensure all scores are integers between 0 and 10. Do not include markdown code block wraps. Return only the raw JSON string.`
+Ensure all scores are integers between 0 and 10. Do not include markdown code block wraps. Return only the raw JSON string.
+
+CRITICAL RULES FOR HINTS:
+- Do NOT return generic, repetitive boilerplate advice (e.g., do not just write "Use the STAR method" or "Use confident language" or "avoid fragments" in the same words).
+- Make the hints highly customized, specific, and directly relevant to the exact topic and content of what the candidate said (e.g., "Mention what database you used when explaining the server issue").`
 
     const prompt = `Question asked: "${question}"
 Candidate's Answer: "${answer}"`
 
-    const response = await callGroqJson(systemPrompt, prompt, 0.2)
+    const response = await callGroqJson(systemPrompt, prompt, 0.4)
     const cleaned = cleanJsonResponseText(response)
     return JSON.parse(cleaned)
   } catch (err) {

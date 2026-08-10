@@ -85,7 +85,7 @@ export default function RealTimeHint({ hints, visible, onDismiss }: RealTimeHint
           </h4>
           <ul className="space-y-1.5">
             {hints.map((hint, idx) => (
-              <li key={idx} className="text-xs text-body leading-relaxed font-medium">
+              <li key={idx} className="text-xs text-emerald-50/90 leading-relaxed font-medium">
                 {hint}
               </li>
             ))}
