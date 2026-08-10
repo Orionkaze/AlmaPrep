@@ -113,7 +113,7 @@ describe("payments", () => {
 
       expect(result).toEqual({ status: "ok", url: mockCheckoutUrl })
       expect(fetch).toHaveBeenCalledWith(
-        "https://test.dodopayments.com/v1/checkout/sessions",
+        "https://test.dodopayments.com/checkouts",
         expect.objectContaining({
           method: "POST",
           headers: {
@@ -141,7 +141,7 @@ describe("payments", () => {
       })
 
       expect(fetch).toHaveBeenCalledWith(
-        "https://live.dodopayments.com/v1/checkout/sessions",
+        "https://live.dodopayments.com/checkouts",
         expect.any(Object)
       )
     })
@@ -163,7 +163,7 @@ describe("payments", () => {
       })
 
       expect(fetch).toHaveBeenCalledWith(
-        "https://live.dodopayments.com/v1/checkout/sessions",
+        "https://live.dodopayments.com/checkouts",
         expect.any(Object)
       )
     })
@@ -185,7 +185,7 @@ describe("payments", () => {
       })
 
       expect(fetch).toHaveBeenCalledWith(
-        "https://test.dodopayments.com/v1/checkout/sessions",
+        "https://test.dodopayments.com/checkouts",
         expect.any(Object)
       )
     })

@@ -24,7 +24,7 @@ export async function createDodoCheckout(req: {
     const isLive = (apiKey.startsWith("live_") || process.env.DODO_MODE === "live") && process.env.DODO_MODE !== "test"
     const baseUrl = isLive ? "https://live.dodopayments.com" : "https://test.dodopayments.com"
 
-    const response = await fetch(`${baseUrl}/v1/checkout/sessions`, {
+    const response = await fetch(`${baseUrl}/checkouts`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
