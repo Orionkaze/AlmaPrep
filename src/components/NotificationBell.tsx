@@ -37,9 +37,13 @@ export function NotificationBell() {
             if (new Date(s.scheduledFor) < now && !s.missedNotified) {
               s.missedNotified = true;
               hasChanges = true;
-              toast(`Booking Reminder: ${s.title}`, {
+               toast(`Booking Reminder: ${s.title}`, {
                 description: "You missed a scheduled session! You can still start it now.",
-                style: { backgroundColor: "#eff6ff", color: "#1d4ed8", borderColor: "#bfdbfe" }
+                classNames: {
+                  toast: "bg-blue-50 dark:bg-[#1e293b]/90 border border-blue-200 dark:border-blue-800/40 text-blue-950 dark:text-blue-50 rounded-xl p-4 shadow-lg",
+                  title: "text-blue-900 dark:text-blue-100 font-bold text-sm",
+                  description: "text-blue-700 dark:text-blue-300/90 text-xs mt-1"
+                }
               });
             }
           });
@@ -64,10 +68,24 @@ export function NotificationBell() {
         const shown = sessionStorage.getItem("mock-notifs-shown");
         if (!shown) {
           mockNotifs.forEach(n => {
-            if (n.type === "badge") {
-              toast(n.title, { description: n.message, style: { backgroundColor: "#fffbeb", color: "#b45309", borderColor: "#fde68a" } });
+             if (n.type === "badge") {
+              toast(n.title, {
+                description: n.message,
+                classNames: {
+                  toast: "bg-amber-50 dark:bg-[#1e293b]/90 border border-amber-200 dark:border-amber-800/40 text-amber-950 dark:text-amber-50 rounded-xl p-4 shadow-lg",
+                  title: "text-amber-900 dark:text-amber-100 font-bold text-sm",
+                  description: "text-amber-700 dark:text-amber-300/90 text-xs mt-1"
+                }
+              });
             } else if (n.type === "streak") {
-              toast(n.title, { description: n.message, style: { backgroundColor: "#fff7ed", color: "#c2410c", borderColor: "#fed7aa" } });
+              toast(n.title, {
+                description: n.message,
+                classNames: {
+                  toast: "bg-orange-50 dark:bg-[#1e293b]/90 border border-orange-200 dark:border-orange-800/40 text-orange-950 dark:text-orange-50 rounded-xl p-4 shadow-lg",
+                  title: "text-orange-900 dark:text-orange-100 font-bold text-sm",
+                  description: "text-orange-700 dark:text-orange-300/90 text-xs mt-1"
+                }
+              });
             }
           });
           sessionStorage.setItem("mock-notifs-shown", "true");
@@ -103,12 +121,33 @@ export function NotificationBell() {
           const newNotifs = data.filter((n: Notification) => !currentIds.includes(n.id) && !n.read);
           
           newNotifs.forEach((n: Notification) => {
-            if (n.type === "booking") {
-              toast(n.title, { description: n.message, style: { backgroundColor: "#eff6ff", color: "#1d4ed8", borderColor: "#bfdbfe" } });
+             if (n.type === "booking") {
+              toast(n.title, {
+                description: n.message,
+                classNames: {
+                  toast: "bg-blue-50 dark:bg-[#1e293b]/90 border border-blue-200 dark:border-blue-800/40 text-blue-950 dark:text-blue-50 rounded-xl p-4 shadow-lg",
+                  title: "text-blue-900 dark:text-blue-100 font-bold text-sm",
+                  description: "text-blue-700 dark:text-blue-300/90 text-xs mt-1"
+                }
+              });
             } else if (n.type === "badge") {
-              toast(n.title, { description: n.message, style: { backgroundColor: "#fffbeb", color: "#b45309", borderColor: "#fde68a" } });
+              toast(n.title, {
+                description: n.message,
+                classNames: {
+                  toast: "bg-amber-50 dark:bg-[#1e293b]/90 border border-amber-200 dark:border-amber-800/40 text-amber-950 dark:text-amber-50 rounded-xl p-4 shadow-lg",
+                  title: "text-amber-900 dark:text-amber-100 font-bold text-sm",
+                  description: "text-amber-700 dark:text-amber-300/90 text-xs mt-1"
+                }
+              });
             } else if (n.type === "streak") {
-              toast(n.title, { description: n.message, style: { backgroundColor: "#fff7ed", color: "#c2410c", borderColor: "#fed7aa" } });
+              toast(n.title, {
+                description: n.message,
+                classNames: {
+                  toast: "bg-orange-50 dark:bg-[#1e293b]/90 border border-orange-200 dark:border-orange-800/40 text-orange-950 dark:text-orange-50 rounded-xl p-4 shadow-lg",
+                  title: "text-orange-900 dark:text-orange-100 font-bold text-sm",
+                  description: "text-orange-700 dark:text-orange-300/90 text-xs mt-1"
+                }
+              });
             }
           });
 
