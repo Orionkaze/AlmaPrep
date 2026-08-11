@@ -854,8 +854,24 @@ export default function InterviewWorkspacePage({
 
   // Run all structured test cases
   const runAllTests = async (userCode: string, lang: string) => {
-    if (!challenge) return { passed: 0, failed: 0, total: 0, results: [] };
-    const tests = challenge.hidden_tests || [];
+    let currentChall = challenge;
+    if (!currentChall || !currentChall.hidden_tests || currentChall.hidden_tests.length === 0) {
+      try {
+        const loadSessionRes = await fetch(`/api/interview/accept-change?session_id=${session_id}`);
+        if (loadSessionRes.ok) {
+          const sessionData = await loadSessionRes.json();
+          if (sessionData.challenge) {
+            currentChall = sessionData.challenge;
+            setChallenge(sessionData.challenge);
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching challenge tests on demand:", err);
+      }
+    }
+
+    if (!currentChall) return { passed: 0, failed: 0, total: 0, results: [] };
+    const tests = currentChall.hidden_tests || [];
     const resultsList = [];
     let passedCount = 0;
 
