@@ -87,6 +87,47 @@ export default function RootLayout({
     >
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window === 'undefined') return;
+                var origError = console.error;
+                console.error = function() {
+                  var first = arguments[0];
+                  if (typeof first === 'string' && (
+                    first.indexOf('Encountered a script tag') !== -1 ||
+                    first.indexOf('Monaco initialization') !== -1 ||
+                    first.indexOf('Failed to fetch') !== -1 ||
+                    first.indexOf('[object Event]') !== -1
+                  )) return;
+                  if (first && typeof first === 'object' && first.toString() === '[object Event]') return;
+                  if (first instanceof Error && (first.message.indexOf('Failed to fetch') !== -1 || first.message.indexOf('[object Event]') !== -1)) return;
+                  origError.apply(console, arguments);
+                };
+                window.addEventListener('unhandledrejection', function(event) {
+                  if (event && (
+                    event.reason instanceof Event ||
+                    (event.reason && typeof event.reason === 'object' && event.reason.toString() === '[object Event]') ||
+                    (typeof event.reason === 'string' && (event.reason.indexOf('Failed to fetch') !== -1 || event.reason.indexOf('[object Event]') !== -1))
+                  )) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                  }
+                }, true);
+                window.addEventListener('error', function(event) {
+                  if (event && (
+                    event.error instanceof Event ||
+                    (event.message && (event.message.indexOf('[object Event]') !== -1 || event.message.indexOf('Failed to fetch') !== -1))
+                  )) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                  }
+                }, true);
+              })();
+            `
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
