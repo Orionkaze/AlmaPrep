@@ -1,10 +1,11 @@
 import Link from "next/link"
-import { ArrowLeft, Lock, Sparkles } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { cookies } from "next/headers"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 import { DEFAULT_BADGES } from "@/lib/badgesData"
+import AchievementsGallery from "@/components/badges/AchievementsGallery"
 
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-head), serif",
@@ -12,43 +13,173 @@ const headingStyle: React.CSSProperties = {
   fontWeight: 600,
 }
 
-const CATEGORY_META: Record<string, { label: string; blurb: string }> = {
-  getting_started: { label: "Getting Started", blurb: "Your first steps on Almaprep" },
-  streak: { label: "Streaks", blurb: "Show up, day after day" },
-  interview: { label: "Interviews", blurb: "Reps in the room" },
-  coding: { label: "Coding", blurb: "Technical challenge mastery" },
-  skill: { label: "Skills", blurb: "Delivery, presence and polish" },
-  progress: { label: "Progress", blurb: "Getting measurably better" },
-  special: { label: "Special & Rare", blurb: "The hard-to-earn ones" },
-}
-const CATEGORY_ORDER = ["getting_started", "streak", "interview", "coding", "skill", "progress", "special"]
-
 // Believable earned set for demo mode (no DB).
 const DEMO_EARNED = new Set([
-  "first-step", "profile-pro", "resume-ready", "github-connected",
-  "on-a-roll", "week-warrior", "nervous-no-more", "perfect-score",
-  "bug-slayer", "problem-solver", "silver-tongue", "steady-climber",
-  "lunch-break-hustler", "early-riser",
+  "first-step",
+  "profile-pro",
+  "resume-ready",
+  "github-connected",
+  "on-a-roll",
+  "week-warrior",
+  "nervous-no-more",
+  "perfect-score",
+  "bug-slayer",
+  "problem-solver",
+  "silver-tongue",
+  "steady-climber",
+  "lunch-break-hustler",
+  "early-riser",
 ])
 
-const RARITY_RANK: Record<string, number> = { common: 0, rare: 1, legendary: 2 }
-
-function rarityClasses(rarity: string, earned: boolean) {
-  if (!earned) return "border-border bg-muted/30"
-  switch (rarity) {
-    case "legendary":
-      return "border-amber-300 bg-amber-50 shadow-[0_0_20px_rgba(251,191,36,0.25)] dark:bg-amber-500/10 dark:border-amber-500/40"
-    case "rare":
-      return "border-blue-300 bg-blue-50 dark:bg-blue-500/10 dark:border-blue-500/40"
-    default:
-      return "border-emerald-300 bg-emerald-50 dark:bg-emerald-500/10 dark:border-emerald-500/40"
-  }
+function getRewardXP(rarity: string): number {
+  if (rarity === "legendary") return 250
+  if (rarity === "rare") return 100
+  return 50
 }
-function iconTone(rarity: string, earned: boolean) {
-  if (!earned) return "text-muted-foreground/50"
-  if (rarity === "legendary") return "text-amber-600 dark:text-amber-400"
-  if (rarity === "rare") return "text-blue-600 dark:text-blue-400"
-  return "text-emerald-600 dark:text-emerald-400"
+
+function getBadgeProgress(slug: string, stats: any): { current: number; target: number } {
+  switch (slug) {
+    // Getting Started
+    case "first-step":
+      return { current: stats.mockCount, target: 1 }
+    case "code-debut":
+      return { current: stats.codingCount, target: 1 }
+    case "profile-pro": {
+      let count = 0
+      if (stats.hasUsername) count++
+      if (stats.hasAvatar) count++
+      if (stats.hasResume) count++
+      if (stats.hasGithub) count++
+      return { current: count, target: 4 }
+    }
+    case "resume-ready":
+      return { current: stats.hasResume ? 1 : 0, target: 1 }
+    case "github-connected":
+      return { current: stats.hasGithub ? 1 : 0, target: 1 }
+    case "early-bird":
+      return { current: Math.min(stats.streak, 3), target: 3 }
+
+    // Streak
+    case "on-a-roll":
+      return { current: stats.streak, target: 3 }
+    case "week-warrior":
+      return { current: stats.streak, target: 7 }
+    case "fortnight-fighter":
+      return { current: stats.streak, target: 14 }
+    case "monthly-grinder":
+      return { current: stats.streak, target: 30 }
+    case "unstoppable":
+      return { current: stats.streak, target: 60 }
+    case "century-club":
+      return { current: stats.streak, target: 100 }
+    case "legend":
+      return { current: stats.streak, target: 365 }
+
+    // Interview
+    case "nervous-no-more":
+      return { current: stats.mockCount, target: 5 }
+    case "interview-veteran":
+      return { current: stats.mockCount, target: 25 }
+    case "interview-machine":
+      return { current: stats.mockCount, target: 50 }
+    case "century-interviewer":
+      return { current: stats.mockCount, target: 100 }
+    case "domain-hopper":
+      return { current: stats.domainsCount, target: 5 }
+    case "domain-master":
+      return { current: stats.domainsCount, target: 15 }
+    case "domain-legend":
+      return { current: stats.domainsCount, target: 20 }
+    case "perfect-score":
+      return { current: stats.totalPerfectScores, target: 1 }
+    case "speed-talker":
+      return { current: stats.zeroFillerWordInterviews, target: 1 }
+    case "consistent-performer":
+      return { current: stats.maxConsecutiveHighScores, target: 10 }
+
+    // Coding
+    case "bug-slayer":
+      return { current: stats.firstTrySolves, target: 1 }
+    case "optimizer":
+      return { current: stats.perfectQualitySolves, target: 1 }
+    case "polyglot": {
+      let count = 0
+      if (stats.jsAndPythonSolves.has("javascript")) count++
+      if (stats.jsAndPythonSolves.has("python") || stats.jsAndPythonSolves.has("python3")) count++
+      return { current: count, target: 2 }
+    }
+    case "github-publisher":
+      return { current: stats.reposPushed >= 1 ? 1 : 0, target: 1 }
+    case "problem-solver":
+      return { current: stats.codingCount, target: 10 }
+    case "code-veteran":
+      return { current: stats.codingCount, target: 25 }
+    case "code-machine":
+      return { current: stats.codingCount, target: 50 }
+    case "first-try":
+      return { current: stats.firstTrySolves, target: 5 }
+    case "speed-coder":
+      return { current: stats.fastSolves, target: 1 }
+    case "repo-builder":
+      return { current: stats.reposPushed, target: 5 }
+
+    // Skill
+    case "body-language-boss":
+      return { current: stats.highBodyLanguageInterviews, target: 3 }
+    case "silver-tongue":
+      return { current: stats.lowFillerWordInterviews, target: 3 }
+    case "star-student":
+      return { current: stats.mockCount >= 5 ? 5 : stats.mockCount, target: 5 }
+    case "github-guru":
+      return { current: stats.hasGithub ? 1 : 0, target: 1 }
+    case "proctoring-pro":
+      return { current: stats.zeroViolationInterviews, target: 1 }
+    case "filler-free":
+      return { current: stats.lowFillerWordInterviews, target: 3 }
+    case "posture-perfect":
+      return { current: stats.highBodyLanguageInterviews >= 1 ? 1 : 0, target: 1 }
+    case "eye-contact-king":
+      return { current: stats.highBodyLanguageInterviews, target: 3 }
+
+    // Progress
+    case "glow-up":
+      return { current: stats.mockCount >= 5 ? 5 : stats.mockCount, target: 5 }
+    case "comeback-kid":
+      return { current: stats.mockCount >= 2 ? 1 : 0, target: 1 }
+    case "steady-climber":
+      return { current: stats.maxConsecutiveHighScores >= 5 ? 5 : stats.maxConsecutiveHighScores, target: 5 }
+    case "weak-spot-warrior":
+      return { current: stats.mockCount >= 3 ? 3 : stats.mockCount, target: 3 }
+    case "all-rounder":
+      return { current: stats.domainsCount >= 3 ? 3 : stats.domainsCount, target: 3 }
+    case "overachiever":
+      return { current: stats.maxActsInDay, target: 3 }
+    case "weekend-warrior": {
+      let count = 0
+      if (stats.hasSaturday) count++
+      if (stats.hasSunday) count++
+      return { current: count, target: 2 }
+    }
+
+    // Special
+    case "night-owl":
+      return { current: stats.mockCount >= 1 ? 1 : 0, target: 1 }
+    case "early-riser":
+      return { current: stats.mockCount >= 1 ? 1 : 0, target: 1 }
+    case "lunch-break-hustler":
+      return { current: stats.mockCount >= 1 ? 1 : 0, target: 1 }
+    case "marathon-session":
+      return { current: stats.maxInterviewsInDay, target: 5 }
+    case "ghost-mode":
+      return { current: stats.zeroViolationInterviews >= 1 && stats.zeroFillerWordInterviews >= 1 ? 1 : 0, target: 1 }
+    case "triple-threat":
+      return { current: stats.maxActsInDay >= 3 ? 3 : stats.maxActsInDay, target: 3 }
+    case "almaprep-og":
+      return { current: 1, target: 1 }
+
+    default:
+      return { current: 0, target: 1 }
+  }
 }
 
 export default async function BadgesPage() {
@@ -57,9 +188,65 @@ export default async function BadgesPage() {
   const isDemoMode = cookieStore.has("mockmate-demo-session")
 
   let earned = new Set<string>()
+  const earnedDates: Record<string, string> = {}
+
+  let stats = {
+    mockCount: 0,
+    codingCount: 0,
+    streak: 0,
+    daysSinceSignup: 0,
+    hasUsername: false,
+    hasAvatar: false,
+    hasResume: false,
+    hasGithub: false,
+    totalPerfectScores: 0,
+    zeroFillerWordInterviews: 0,
+    highBodyLanguageInterviews: 0,
+    lowFillerWordInterviews: 0,
+    zeroViolationInterviews: 0,
+    firstTrySolves: 0,
+    perfectQualitySolves: 0,
+    jsAndPythonSolves: new Set<string>(),
+    domainsCount: 0,
+    maxConsecutiveHighScores: 0,
+    reposPushed: 0,
+    hasSaturday: false,
+    hasSunday: false,
+    maxActsInDay: 0,
+    maxInterviewsInDay: 0,
+  }
 
   if (isDemoMode) {
     earned = DEMO_EARNED
+    const baseDate = new Date(Date.now() - 30 * 24 * 3600 * 1000)
+    Array.from(DEMO_EARNED).forEach((slug, idx) => {
+      earnedDates[slug] = new Date(baseDate.getTime() + idx * 24 * 3600 * 1000).toISOString()
+    })
+    stats = {
+      mockCount: 28,
+      codingCount: 18,
+      streak: 14,
+      daysSinceSignup: 30,
+      hasUsername: true,
+      hasAvatar: true,
+      hasResume: true,
+      hasGithub: true,
+      totalPerfectScores: 1,
+      zeroFillerWordInterviews: 1,
+      highBodyLanguageInterviews: 2,
+      lowFillerWordInterviews: 1,
+      zeroViolationInterviews: 2,
+      firstTrySolves: 3,
+      perfectQualitySolves: 1,
+      jsAndPythonSolves: new Set(["javascript"]),
+      domainsCount: 7,
+      maxConsecutiveHighScores: 4,
+      reposPushed: 2,
+      hasSaturday: true,
+      hasSunday: false,
+      maxActsInDay: 2,
+      maxInterviewsInDay: 3,
+    }
   } else {
     const supabase = await createClient()
     let userId = session?.user?.id
@@ -67,115 +254,273 @@ export default async function BadgesPage() {
       const { data } = await supabase.auth.getUser()
       if (data?.user) userId = data.user.id
     } catch {}
+
     if (userId) {
-      const { data: rows } = await supabase
+      const { data: rows } = (await supabase
         .from("user_badges")
-        .select("badge_slug")
-        .eq("user_id", userId) as unknown as { data: { badge_slug: string }[] | null }
-      if (rows) earned = new Set(rows.map((r) => r.badge_slug))
+        .select("badge_slug, earned_at")
+        .eq("user_id", userId)) as unknown as {
+        data: { badge_slug: string; earned_at: string }[] | null
+      }
+      if (rows) {
+        earned = new Set(rows.map((r) => r.badge_slug))
+        rows.forEach((r) => {
+          earnedDates[r.badge_slug] = r.earned_at
+        })
+      }
+
+      try {
+        let userRes
+        try {
+          userRes = await supabase
+            .from("users")
+            .select("username, avatar_url, resume_text, current_streak, created_at")
+            .eq("id", userId)
+            .maybeSingle()
+        } catch {
+          userRes = await supabase
+            .from("users")
+            .select("username, avatar_url, resume_text, created_at")
+            .eq("id", userId)
+            .maybeSingle()
+        }
+
+        const [interviewsRes, sessionsRes, solutionsRes, githubRes, behavioralRes] =
+          await Promise.all([
+            supabase
+              .from("interviews")
+              .select("id, category, created_at, feedback(score), proctoring_log, is_flagged")
+              .eq("user_id", userId)
+              .eq("status", "completed"),
+            supabase
+              .from("interview_sessions")
+              .select("id, started_at, submitted_at, challenge_id")
+              .eq("user_id", userId)
+              .in("status", ["completed", "evaluated"]),
+            supabase
+              .from("coding_solutions")
+              .select(
+                "challenge_id, attempts, created_at, language, quality_score, test_results, github_repo_url"
+              )
+              .eq("user_id", userId),
+            supabase.from("github_analysis").select("user_id").eq("user_id", userId).maybeSingle(),
+            supabase
+              .from("behavioral_analysis")
+              .select("session_id, physical_metrics, speaking_analysis")
+              .eq("user_id", userId),
+          ])
+
+        const dbUser = userRes?.data
+        const interviews = interviewsRes?.data || []
+        const codingSessions = sessionsRes?.data || []
+        const codingSolutions = solutionsRes?.data || []
+        const githubAnalysis = githubRes?.data || null
+        const behavioralAnalysis = behavioralRes?.data || []
+
+        const mockCount = interviews.length
+        const codingCount = codingSessions.length
+        const streak = dbUser?.current_streak || 0
+        const createdAt = dbUser?.created_at ? new Date(dbUser.created_at) : new Date()
+        const daysSinceSignup = Math.floor((Date.now() - createdAt.getTime()) / (1000 * 3600 * 24))
+        const hasResume = !!dbUser?.resume_text
+        const hasGithub = !!githubAnalysis
+        const hasUsername = !!dbUser?.username
+        const hasAvatar = !!dbUser?.avatar_url
+
+        let totalPerfectScores = 0
+        let zeroFillerWordInterviews = 0
+        let highBodyLanguageInterviews = 0
+        let lowFillerWordInterviews = 0
+        let zeroViolationInterviews = 0
+
+        const domains = new Set<string>()
+        let consecutiveHighScores = 0
+        let maxConsecutiveHighScores = 0
+
+        const ascInterviews = [...interviews].sort(
+          (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        )
+
+        ascInterviews.forEach((interview) => {
+          const fb = (interview as any).feedback?.[0]
+          if (!fb) {
+            consecutiveHighScores = 0
+            return
+          }
+
+          if (interview.category) domains.add(interview.category)
+
+          if (fb.score >= 100) totalPerfectScores++
+          if (fb.score >= 80) {
+            consecutiveHighScores++
+            if (consecutiveHighScores > maxConsecutiveHighScores) {
+              maxConsecutiveHighScores = consecutiveHighScores
+            }
+          } else {
+            consecutiveHighScores = 0
+          }
+
+          const behavior = (behavioralAnalysis || []).find((b) => b.session_id === interview.id)
+          if (behavior) {
+            const physical = (behavior as any).physical_metrics || []
+            if (Array.isArray(physical) && physical.length > 0) {
+              const avgBodyLanguage =
+                physical.reduce((acc: number, item: any) => {
+                  const score = item.bodyLanguageScore ?? item.posture_score ?? 0
+                  return acc + score
+                }, 0) / physical.length
+              if (avgBodyLanguage >= 90) highBodyLanguageInterviews++
+            }
+
+            const speaking = (behavior as any).speaking_analysis || {}
+            const totalFiller = speaking.sessionSummary?.metrics?.totalFillerCount
+            if (totalFiller === 0) zeroFillerWordInterviews++
+            if (totalFiller !== undefined && totalFiller < 3) lowFillerWordInterviews++
+          }
+
+          const proctoring = (interview as any).proctoring_log || {}
+          const violationsCount = proctoring.totalCount ?? 0
+          if (violationsCount === 0 && !interview.is_flagged) zeroViolationInterviews++
+        })
+
+        let firstTrySolves = 0
+        let perfectQualitySolves = 0
+        let fastSolves = 0
+        const jsAndPythonSolves = new Set<string>()
+        let reposPushed = 0
+
+        codingSolutions.forEach((sol) => {
+          const session = codingSessions.find((s) => s.challenge_id === sol.challenge_id)
+          if (sol.attempts === 1 && sol.test_results?.passed === sol.test_results?.total)
+            firstTrySolves++
+          if (sol.quality_score === 10) perfectQualitySolves++
+          if (sol.language) jsAndPythonSolves.add(sol.language.toLowerCase())
+          if (sol.github_repo_url) reposPushed++
+
+          if (session) {
+            const start = new Date(session.started_at).getTime()
+            const end = new Date(session.submitted_at || sol.created_at).getTime()
+            if (end - start < 5 * 60 * 1000) fastSolves++
+          }
+        })
+
+        const hasSaturday = interviews.some((i) => new Date(i.created_at).getDay() === 6)
+        const hasSunday = interviews.some((i) => new Date(i.created_at).getDay() === 0)
+
+        const datesCount: Record<string, number> = {}
+        const allActivityDates: Array<{ created_at?: string; started_at?: string }> = [
+          ...interviews,
+          ...codingSessions,
+        ]
+        allActivityDates.forEach((act) => {
+          const d = new Date(act.created_at || act.started_at || Date.now())
+            .toISOString()
+            .split("T")[0]
+          datesCount[d] = (datesCount[d] || 0) + 1
+        })
+        const maxActsInDay = Math.max(0, ...Object.values(datesCount))
+
+        const maxInterviewsInDay = Math.max(
+          0,
+          ...Object.values(
+            interviews.reduce<Record<string, number>>((acc, i) => {
+              const day = new Date(i.created_at).toISOString().split("T")[0]
+              acc[day] = (acc[day] || 0) + 1
+              return acc
+            }, {})
+          )
+        )
+
+        stats = {
+          mockCount,
+          codingCount,
+          streak,
+          daysSinceSignup,
+          hasUsername,
+          hasAvatar,
+          hasResume,
+          hasGithub,
+          totalPerfectScores,
+          zeroFillerWordInterviews,
+          highBodyLanguageInterviews,
+          lowFillerWordInterviews,
+          zeroViolationInterviews,
+          firstTrySolves,
+          perfectQualitySolves,
+          jsAndPythonSolves,
+          domainsCount: domains.size,
+          maxConsecutiveHighScores,
+          reposPushed,
+          hasSaturday,
+          hasSunday,
+          maxActsInDay,
+          maxInterviewsInDay,
+        }
+      } catch (err) {
+        console.error("Failed to fetch detailed stats for badge progress:", err)
+      }
     }
   }
 
-  const total = DEFAULT_BADGES.length
-  const earnedCount = DEFAULT_BADGES.filter((b) => earned.has(b.slug)).length
-  const pct = Math.round((earnedCount / total) * 100)
-  const byRarity = (r: string) => DEFAULT_BADGES.filter((b) => b.rarity === r && earned.has(b.slug)).length
+  // Map to full Badge object structures
+  const badgesList = DEFAULT_BADGES.map((b) => {
+    const isEarned = earned.has(b.slug)
+    const earnedAt = earnedDates[b.slug] || null
 
-  const grouped = CATEGORY_ORDER.map((cat) => ({
-    cat,
-    meta: CATEGORY_META[cat],
-    badges: DEFAULT_BADGES
-      .filter((b) => b.category === cat)
-      .sort((a, b) => Number(earned.has(b.slug)) - Number(earned.has(a.slug)) || RARITY_RANK[a.rarity] - RARITY_RANK[b.rarity]),
-  })).filter((g) => g.badges.length > 0)
+    const rawProgress = getBadgeProgress(b.slug, stats)
+    const progress = isEarned
+      ? { current: rawProgress.target, target: rawProgress.target }
+      : {
+          current: Math.min(rawProgress.current, rawProgress.target),
+          target: rawProgress.target,
+        }
+
+    return {
+      slug: b.slug,
+      name: b.name,
+      description: b.description,
+      category: b.category,
+      rarity: b.rarity,
+      earned: isEarned,
+      earnedAt,
+      progress,
+      rewardXP: getRewardXP(b.rarity),
+    }
+  })
+
+  const total = DEFAULT_BADGES.length
+  const earnedCount = badgesList.filter((b) => b.earned).length
+  const commonCount = badgesList.filter((b) => b.rarity === "common" && b.earned).length
+  const rareCount = badgesList.filter((b) => b.rarity === "rare" && b.earned).length
+  const legendaryCount = badgesList.filter((b) => b.rarity === "legendary" && b.earned).length
 
   return (
     <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8">
       {/* Back + heading */}
       <div>
-        <Link href="/dashboard" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors mb-4">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors mb-4"
+        >
           <ArrowLeft size={16} /> Back to dashboard
         </Link>
-        <h1 className="text-3xl sm:text-4xl text-foreground" style={headingStyle}>Achievements</h1>
-        <p className="text-muted-foreground mt-1">Earn badges as you practice. Here&apos;s your full collection.</p>
+        <h1 className="text-3xl sm:text-4xl text-foreground" style={headingStyle}>
+          Achievements
+        </h1>
+        <p className="text-muted-foreground mt-1">
+          Earn badges as you practice. Here&apos;s your full collection.
+        </p>
       </div>
 
-      {/* Summary card */}
-      <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center size-12 rounded-xl bg-primary/10 text-primary">
-              <Sparkles size={24} />
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-foreground">{earnedCount} <span className="text-muted-foreground text-lg font-medium">/ {total}</span></div>
-              <div className="text-sm text-muted-foreground">badges unlocked</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="text-center">
-              <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">{byRarity("common")}</div>
-              <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Common</div>
-            </div>
-            <div className="text-center">
-              <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{byRarity("rare")}</div>
-              <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Rare</div>
-            </div>
-            <div className="text-center">
-              <div className="text-lg font-bold text-amber-600 dark:text-amber-400">{byRarity("legendary")}</div>
-              <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Legendary</div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="h-2.5 w-full rounded-full bg-muted overflow-hidden">
-            <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${pct}%` }} />
-          </div>
-          <div className="mt-2 text-xs text-muted-foreground font-medium">{pct}% complete — {total - earnedCount} still to unlock</div>
-        </div>
-      </div>
-
-      {/* Category sections */}
-      {grouped.map(({ cat, meta, badges }) => {
-        const catEarned = badges.filter((b) => earned.has(b.slug)).length
-        return (
-          <section key={cat} className="space-y-4">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <h2 className="text-xl text-foreground" style={headingStyle}>{meta.label}</h2>
-                <p className="text-sm text-muted-foreground">{meta.blurb}</p>
-              </div>
-              <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap">{catEarned} / {badges.length}</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {badges.map((b) => {
-                const isEarned = earned.has(b.slug)
-                return (
-                  <div
-                    key={b.slug}
-                    className={`relative flex items-start gap-4 p-4 rounded-xl border transition-all ${rarityClasses(b.rarity, isEarned)} ${isEarned ? "hover:-translate-y-0.5 hover:shadow-md" : "opacity-75"}`}
-                  >
-                    <div className={`flex items-center justify-center size-12 rounded-full flex-shrink-0 ${isEarned ? "bg-white/70 dark:bg-white/10 shadow-sm" : "bg-muted"}`}>
-                      <i className={`${b.icon} text-xl ${iconTone(b.rarity, isEarned)}`} />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-bold text-sm text-foreground truncate">{b.name}</h3>
-                        {!isEarned && <Lock size={12} className="text-muted-foreground flex-shrink-0" />}
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-0.5 leading-snug">{b.description}</p>
-                      <span className={`inline-block mt-2 text-[10px] font-bold uppercase tracking-wider ${iconTone(b.rarity, isEarned)}`}>
-                        {isEarned ? b.rarity : "Locked"}
-                      </span>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </section>
-        )
-      })}
+      {/* Main client gallery view */}
+      <AchievementsGallery
+        badges={badgesList}
+        initialEarnedCount={earnedCount}
+        totalBadgesCount={total}
+        commonCount={commonCount}
+        rareCount={rareCount}
+        legendaryCount={legendaryCount}
+      />
     </main>
   )
 }
