@@ -377,9 +377,9 @@ Ensure the output is clean JSON. Do not include markdown wraps like \`\`\`json. 
       keyExists: !!process.env.GEMINI_API_KEY,
       fn: async () => {
         if (isJson) {
-          return await callGeminiJson(systemPrompt, promptText, 0.7, "gemini-1.5-pro")
+          return await callGeminiJson(systemPrompt, promptText, 0.7, "gemini-2.5-flash")
         } else {
-          return await callGeminiText(systemPrompt, messages, 0.7, "gemini-1.5-pro")
+          return await callGeminiText(systemPrompt, messages, 0.7, "gemini-2.5-flash")
         }
       },
     },
