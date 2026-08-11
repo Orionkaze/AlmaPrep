@@ -4,58 +4,162 @@ import { useEffect } from "react"
 import { toast } from "sonner"
 import { getEarnedBadges, type EarnedBadge } from "@/app/actions/badges"
 import { getStored, setStored } from "@/lib/localStore"
+import BadgeIcon from "@/components/badges/BadgeIcon"
+import { X } from "lucide-react"
 
 const SEEN_KEY = "seen_badges"
 
-// Colors mirror the badges gallery so a toast reads as the same badge.
-function rarityRing(rarity: string): { bg: string; fg: string } {
+function getRarityStyles(rarity: string) {
   switch (rarity) {
     case "legendary":
-      return { bg: "rgba(251,191,36,0.15)", fg: "#f59e0b" }
+      return {
+        fg: "#fbbf24", // gold
+        bg: "rgba(245, 158, 11, 0.12)",
+        border: "rgba(245, 158, 11, 0.4)",
+        glow: "rgba(245, 158, 11, 0.25)",
+      }
     case "rare":
-      return { bg: "rgba(59,130,246,0.15)", fg: "#3b82f6" }
-    default:
-      return { bg: "rgba(16,185,129,0.15)", fg: "#10b981" }
+      return {
+        fg: "#c084fc", // purple
+        bg: "rgba(139, 92, 246, 0.12)",
+        border: "rgba(139, 92, 246, 0.35)",
+        glow: "rgba(139, 92, 246, 0.2)",
+      }
+    default: // common
+      return {
+        fg: "#60a5fa", // blue
+        bg: "rgba(59, 130, 246, 0.12)",
+        border: "rgba(59, 130, 246, 0.35)",
+        glow: "rgba(59, 130, 246, 0.15)",
+      }
   }
 }
 
 function showBadgeToast(badge: EarnedBadge) {
-  const { bg, fg } = rarityRing(badge.rarity)
+  const styles = getRarityStyles(badge.rarity)
+  const xp = badge.rarity === "legendary" ? 250 : badge.rarity === "rare" ? 100 : 50
+
   toast.custom(
-    () => (
+    (t) => (
       <div
         style={{
           display: "flex",
-          alignItems: "center",
-          gap: 14,
-          padding: "14px 16px",
-          borderRadius: 14,
-          background: "var(--card, #0b0f0e)",
-          border: "1px solid var(--border, rgba(255,255,255,0.1))",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
-          width: 340,
-          maxWidth: "88vw",
+          flexDirection: "column",
+          gap: 12,
+          padding: "16px 18px",
+          borderRadius: 16,
+          background: "#0e1715", // AlmaPrep dark theme card bg
+          border: `1px solid ${styles.border}`,
+          boxShadow: `0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px ${styles.glow}`,
+          width: 350,
+          maxWidth: "92vw",
+          position: "relative",
+          overflow: "hidden",
+          color: "#f1f5f9",
+          fontFamily: "var(--font-sans), sans-serif",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 44,
-            height: 44,
-            borderRadius: "50%",
-            background: bg,
-            flexShrink: 0,
-          }}
-        >
-          <i className={badge.icon} style={{ color: fg, fontSize: 20 }} />
+        {/* Toast Header */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span
+            style={{
+              fontSize: 13,
+              fontWeight: 800,
+              color: styles.fg,
+              letterSpacing: "0.05em",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            🏆 You earned a reward! 🎉
+          </span>
+          <button
+            onClick={() => toast.dismiss(t)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#94a3b8",
+              padding: 4,
+              display: "flex",
+              alignItems: "center",
+              borderRadius: "50%",
+            }}
+          >
+            <X size={14} />
+          </button>
         </div>
-        <div style={{ minWidth: 0 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: fg }}>
-            Badge unlocked
+
+        {/* Badge Icon + Text Info */}
+        <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+          <div style={{ flexShrink: 0 }}>
+            <BadgeIcon slug={badge.slug} rarity={badge.rarity} earned={true} size={52} />
           </div>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "var(--foreground, #fff)" }}>{badge.name}</div>
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <div style={{ fontSize: 15, fontWeight: 800, color: "#f8fafc", lineHeight: 1.2 }}>
+              {badge.name}
+            </div>
+            <div
+              style={{
+                fontSize: 9,
+                fontWeight: 800,
+                color: styles.fg,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginTop: 2,
+              }}
+            >
+              {badge.rarity}
+            </div>
+            <div
+              style={{
+                fontSize: 11,
+                color: "#94a3b8",
+                marginTop: 4,
+                lineHeight: "1.35",
+                wordBreak: "break-word",
+              }}
+            >
+              {badge.description}
+            </div>
+          </div>
+        </div>
+
+        {/* Reward tags */}
+        <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 4,
+              fontSize: 10,
+              fontWeight: 800,
+              color: "#10b981",
+              background: "rgba(16,185,129,0.12)",
+              border: "1px solid rgba(16,185,129,0.20)",
+              padding: "4px 10px",
+              borderRadius: 999,
+            }}
+          >
+            ★ +{xp} XP
+          </span>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 4,
+              fontSize: 10,
+              fontWeight: 800,
+              color: styles.fg,
+              background: styles.bg,
+              border: `1px solid ${styles.border}`,
+              padding: "4px 10px",
+              borderRadius: 999,
+            }}
+          >
+            🛡 +1 Badge
+          </span>
         </div>
       </div>
     ),
@@ -63,11 +167,6 @@ function showBadgeToast(badge: EarnedBadge) {
   )
 }
 
-// Shows a toast when the user earns a badge. Badges are awarded server-side after
-// interviews/coding challenges; this diffs the current earned set against what
-// this browser has already acknowledged (localStorage) and toasts the difference.
-// First run seeds the baseline silently so a returning user isn't blasted with
-// toasts for badges they earned long ago.
 export default function BadgeNotifier() {
   useEffect(() => {
     let cancelled = false
@@ -93,16 +192,24 @@ export default function BadgeNotifier() {
       const fresh = earned.filter((b) => !seenSet.has(b.slug))
       if (fresh.length === 0) return
 
-      // Small base delay so the toasts fire after the page has settled and the
-      // Toaster is mounted — toasts dispatched during the initial mount burst on
-      // heavier pages (e.g. the dashboard) can otherwise be dropped.
-      fresh.forEach((b, idx) => {
-        window.setTimeout(() => {
-          if (!cancelled) showBadgeToast(b)
-        }, 900 + idx * 800)
-      })
+      // Process new badge toasts sequentially in a queue
+      for (let i = 0; i < fresh.length; i++) {
+        if (cancelled) break
+        const badge = fresh[i]
+
+        await new Promise<void>((resolve) => {
+          if (cancelled) {
+            resolve()
+            return
+          }
+          showBadgeToast(badge)
+          window.setTimeout(resolve, 5500)
+        })
+      }
+
       await setStored(SEEN_KEY, allSlugs)
     })()
+
     return () => {
       cancelled = true
     }
