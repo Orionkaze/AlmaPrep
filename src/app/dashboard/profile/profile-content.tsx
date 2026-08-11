@@ -189,7 +189,6 @@ export default function ProfileContent({
   // Pre-calculate user stats available in profile context
   const mockCount = interviews.length
   const streak = initialProfile.current_streak || 0
-  const createdAtTime = new Date(createdAt).getTime()
   const daysSinceSignup = calculateDaysSinceSignup(new Date(createdAt))
   const hasUsername = !!(initialProfile.username && initialProfile.username !== "User")
   const hasAvatar = !!(initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie")
