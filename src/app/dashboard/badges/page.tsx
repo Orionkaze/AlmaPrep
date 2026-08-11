@@ -41,32 +41,12 @@ interface InterviewData {
   is_flagged: boolean
 }
 
-interface BadgeStats {
-  mockCount: number
-  codingCount: number
-  streak: number
-  daysSinceSignup: number
-  hasUsername: boolean
-  hasAvatar: boolean
-  hasResume: boolean
-  hasGithub: boolean
-  totalPerfectScores: number
-  zeroFillerWordInterviews: number
-  highBodyLanguageInterviews: number
-  lowFillerWordInterviews: number
-  zeroViolationInterviews: number
-  firstTrySolves: number
-  perfectQualitySolves: number
-  fastSolves: number
-  jsAndPythonSolves: Set<string>
-  domainsCount: number
-  maxConsecutiveHighScores: number
-  reposPushed: number
-  hasSaturday: boolean
-  hasSunday: boolean
-  maxActsInDay: number
-  maxInterviewsInDay: number
-}
+import {
+  BadgeStats,
+  calculateDaysSinceSignup,
+  getRewardXP,
+  getBadgeProgress,
+} from "@/lib/badgeProgress"
 
 interface UserBadgeStats {
   username?: string | null
@@ -74,10 +54,6 @@ interface UserBadgeStats {
   resume_text?: string | null
   current_streak?: number
   created_at?: string
-}
-
-function calculateDaysSinceSignup(createdAt: Date): number {
-  return Math.floor((Date.now() - createdAt.getTime()) / (1000 * 3600 * 24))
 }
 
 const headingStyle: React.CSSProperties = {
