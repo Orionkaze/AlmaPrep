@@ -26,16 +26,6 @@ import {
   LogOut
 } from "lucide-react";
 
-import { loader } from "@monaco-editor/react";
-
-if (typeof window !== "undefined") {
-  loader.config({
-    paths: {
-      vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs"
-    }
-  });
-}
-
 // Lazy-load Monaco Editor with smooth loading placeholder
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
   ssr: false,
