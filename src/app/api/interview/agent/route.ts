@@ -73,7 +73,7 @@ export async function POST(request: Request) {
     if (!apiKey) {
       return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured. Please set it in .env.local" }, { status: 500 });
     }
-    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen-2.5-coder-32b";
+    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen/qwen3.6-27b";
 
     // Define System Prompt
     const systemPrompt = `You are an expert AI coding agent assisting a developer during a technical interview. You have full awareness of their current codebase. Your job is to help them identify problems, propose precise code changes, and explain your reasoning clearly.

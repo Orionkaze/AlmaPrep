@@ -53,7 +53,7 @@ export function cleanJsonResponseText(text: string): string {
 export async function callGroqText(messages: ChatMessage[], temperature: number): Promise<string> {
   const apiKey = groqKey()
   if (!apiKey) throw new Error("GROQ_API_KEY not configured")
-  const model = process.env.GROQ_INTERVIEW_MODEL || process.env.GROQ_MODEL || "llama-3.3-70b-versatile"
+  const model = process.env.GROQ_INTERVIEW_MODEL || process.env.GROQ_MODEL || "openai/gpt-oss-120b"
 
   const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",

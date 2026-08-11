@@ -86,7 +86,7 @@ export async function POST(request: Request) {
     if (!apiKey) {
       return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured" }, { status: 500 });
     }
-    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen-2.5-coder-32b";
+    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen/qwen3.6-27b";
 
     const readmePrompt = `You are a senior technical writer. Create a professional, portfolio-grade README.md for a GitHub repository that contains the solution to a coding challenge.
 Make it detailed, well-structured, and rich. Focus on explanation, approach, and code structure. Do not use generic template placeholders.
