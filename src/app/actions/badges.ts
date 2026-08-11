@@ -6,14 +6,10 @@ import { getRequestUserId } from "@/lib/getRequestUserId";
 export type EarnedBadge = { slug: string; name: string; icon: string; rarity: string; description: string };
 
 // Returns the current user's earned badges (with display info) so the client can
-// diff against what it has already shown and toast the new ones. Demo mode has no
-// real user_badges rows, so it returns [] (no notifications there).
-//
-// This is the only badge function that is a server action, i.e. a public
-// endpoint. It takes no arguments and resolves the user from the session — the
-// award engine (lib/badges.ts) deliberately stays server-internal because it
-// takes a userId.
+// diff against what it has already shown and toast the new ones. Demo mode returns
+// demo badges so popups can be evaluated.
 export async function getEarnedBadges(): Promise<EarnedBadge[]> {
+  try {
     const userId = await getRequestUserId();
     if (!userId) return [];
     if (userId === "demo-user-id") {
@@ -32,7 +28,7 @@ export async function getEarnedBadges(): Promise<EarnedBadge[]> {
           rarity: "common",
           description: "Complete your profile 100%",
         },
-      ]
+      ];
     }
     const supabase = await createClient();
     const { data } = (await supabase
