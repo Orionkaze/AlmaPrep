@@ -14,9 +14,26 @@ export type EarnedBadge = { slug: string; name: string; icon: string; rarity: st
 // award engine (lib/badges.ts) deliberately stays server-internal because it
 // takes a userId.
 export async function getEarnedBadges(): Promise<EarnedBadge[]> {
-  try {
     const userId = await getRequestUserId();
-    if (!userId || userId === "demo-user-id") return [];
+    if (!userId) return [];
+    if (userId === "demo-user-id") {
+      return [
+        {
+          slug: "first-step",
+          name: "First Step",
+          icon: "Rocket",
+          rarity: "common",
+          description: "Complete your first mock interview",
+        },
+        {
+          slug: "profile-pro",
+          name: "Profile Pro",
+          icon: "UserCheck",
+          rarity: "common",
+          description: "Complete your profile 100%",
+        },
+      ]
+    }
     const supabase = await createClient();
     const { data } = (await supabase
       .from("user_badges")

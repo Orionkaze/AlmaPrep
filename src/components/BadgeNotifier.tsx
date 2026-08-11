@@ -170,6 +170,19 @@ function showBadgeToast(badge: EarnedBadge) {
 export default function BadgeNotifier() {
   useEffect(() => {
     let cancelled = false
+
+    if (typeof window !== "undefined") {
+      ;(window as unknown as Record<string, unknown>).triggerTestBadgeToast = (slug: string = "first-step") => {
+        showBadgeToast({
+          slug,
+          name: slug === "first-step" ? "First Step" : "Profile Pro",
+          icon: "Rocket",
+          rarity: slug === "legendary" ? "legendary" : "common",
+          description: "Complete your first mock interview",
+        })
+      }
+    }
+
     ;(async () => {
       let earned: EarnedBadge[]
       try {
@@ -181,9 +194,15 @@ export default function BadgeNotifier() {
 
       const seen = await getStored<string[]>(SEEN_KEY)
       const allSlugs = earned.map((b) => b.slug)
+      const forceToast = typeof window !== "undefined" && window.location.search.includes("toastBadges")
 
-      if (seen === null) {
-        // baseline this user silently
+      if (seen === null || forceToast) {
+        // Toast owned badges for initial preview / test mode
+        for (let i = 0; i < earned.length; i++) {
+          if (cancelled) break
+          showBadgeToast(earned[i])
+          await new Promise<void>((r) => setTimeout(r, 5500))
+        }
         await setStored(SEEN_KEY, allSlugs)
         return
       }
