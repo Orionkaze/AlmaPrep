@@ -49,6 +49,8 @@ import { updateUserProfile, clearAllUserData, updateGithubAutosave } from "@/app
 import { signOut } from "next-auth/react"
 import { clearAllAppStorage } from "@/lib/localStore"
 import Link from "next/link"
+import AchievementsGallery from "@/components/badges/AchievementsGallery"
+import { getBadgeProgress, getRewardXP } from "@/lib/badgeProgress"
 
 const avatarMap: Record<string, LucideIcon> = {
   "laptop-code": Laptop,
