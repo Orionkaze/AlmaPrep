@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { getSessionById, getChallengeById, updateSession } from "@/lib/interviewDb";
 import { createClient } from "@/lib/supabase/server";
 import { getRequestUserId } from "@/lib/getRequestUserId";
