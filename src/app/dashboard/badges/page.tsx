@@ -7,6 +7,40 @@ import { createClient } from "@/lib/supabase/server"
 import { DEFAULT_BADGES } from "@/lib/badgesData"
 import AchievementsGallery from "@/components/badges/AchievementsGallery"
 
+interface PhysicalMetric {
+  bodyLanguageScore?: number
+  posture_score?: number
+}
+
+interface BehavioralAnalysisData {
+  session_id: string
+  physical_metrics?: PhysicalMetric[] | null
+  speaking_analysis?: {
+    sessionSummary?: {
+      metrics?: {
+        totalFillerCount?: number
+      }
+    }
+  } | null
+}
+
+interface InterviewFeedback {
+  score: number
+}
+
+interface ProctoringLog {
+  totalCount?: number
+}
+
+interface InterviewData {
+  id: string
+  category: string
+  created_at: string
+  feedback?: InterviewFeedback[] | null
+  proctoring_log?: ProctoringLog | null
+  is_flagged: boolean
+}
+
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-head), serif",
   letterSpacing: "-0.015em",
@@ -206,6 +240,7 @@ export default async function BadgesPage() {
     zeroViolationInterviews: 0,
     firstTrySolves: 0,
     perfectQualitySolves: 0,
+    fastSolves: 0,
     jsAndPythonSolves: new Set<string>(),
     domainsCount: 0,
     maxConsecutiveHighScores: 0,
@@ -238,6 +273,7 @@ export default async function BadgesPage() {
       zeroViolationInterviews: 2,
       firstTrySolves: 3,
       perfectQualitySolves: 1,
+      fastSolves: 1,
       jsAndPythonSolves: new Set(["javascript"]),
       domainsCount: 7,
       maxConsecutiveHighScores: 4,
@@ -342,7 +378,8 @@ export default async function BadgesPage() {
         )
 
         ascInterviews.forEach((interview) => {
-          const fb = (interview as any).feedback?.[0]
+          const typedInterview = interview as unknown as InterviewData
+          const fb = typedInterview.feedback?.[0]
           if (!fb) {
             consecutiveHighScores = 0
             return
@@ -360,25 +397,25 @@ export default async function BadgesPage() {
             consecutiveHighScores = 0
           }
 
-          const behavior = (behavioralAnalysis || []).find((b) => b.session_id === interview.id)
+          const behavior = (behavioralAnalysis || []).find((b) => b.session_id === interview.id) as unknown as BehavioralAnalysisData | undefined
           if (behavior) {
-            const physical = (behavior as any).physical_metrics || []
+            const physical = behavior.physical_metrics || []
             if (Array.isArray(physical) && physical.length > 0) {
               const avgBodyLanguage =
-                physical.reduce((acc: number, item: any) => {
+                physical.reduce((acc: number, item) => {
                   const score = item.bodyLanguageScore ?? item.posture_score ?? 0
                   return acc + score
                 }, 0) / physical.length
               if (avgBodyLanguage >= 90) highBodyLanguageInterviews++
             }
 
-            const speaking = (behavior as any).speaking_analysis || {}
+            const speaking = behavior.speaking_analysis || {}
             const totalFiller = speaking.sessionSummary?.metrics?.totalFillerCount
             if (totalFiller === 0) zeroFillerWordInterviews++
             if (totalFiller !== undefined && totalFiller < 3) lowFillerWordInterviews++
           }
 
-          const proctoring = (interview as any).proctoring_log || {}
+          const proctoring = typedInterview.proctoring_log || {}
           const violationsCount = proctoring.totalCount ?? 0
           if (violationsCount === 0 && !interview.is_flagged) zeroViolationInterviews++
         })
@@ -413,7 +450,9 @@ export default async function BadgesPage() {
           ...codingSessions,
         ]
         allActivityDates.forEach((act) => {
-          const d = new Date(act.created_at || act.started_at || Date.now())
+          const dateStr = act.created_at || act.started_at
+          if (!dateStr) return
+          const d = new Date(dateStr)
             .toISOString()
             .split("T")[0]
           datesCount[d] = (datesCount[d] || 0) + 1
@@ -447,6 +486,7 @@ export default async function BadgesPage() {
           zeroViolationInterviews,
           firstTrySolves,
           perfectQualitySolves,
+          fastSolves,
           jsAndPythonSolves,
           domainsCount: domains.size,
           maxConsecutiveHighScores,
