@@ -33,15 +33,6 @@ async function testAwardBadges() {
       .select("id, username, avatar_url, resume_text, current_streak, created_at")
       .eq("id", userId)
       .single();
-    
-    if (userRes.error && userRes.error.code === '42703') {
-      console.log("Column current_streak missing, falling back...");
-      userRes = await supabase
-        .from("users")
-        .select("id, username, avatar_url, resume_text, created_at")
-        .eq("id", userId)
-        .single();
-    }
 
     if (userRes.error) {
       console.error("User fetch error:", userRes.error);
@@ -49,40 +40,47 @@ async function testAwardBadges() {
     }
     
     const user = userRes.data;
-    console.log("User profile fetched:", JSON.stringify(user, null, 2));
+    console.log("User profile fetched successfully.");
 
-    console.log("2. Fetching other tables...");
+    console.log("2. Fetching other tables with clean schema...");
     const [
       earnedRes,
       interviewsRes,
-      codingRes,
-      githubRes
+      sessionsRes,
+      solutionsRes,
+      githubRes,
+      behavioralRes
     ] = await Promise.all([
       supabase.from("user_badges").select("badge_slug").eq("user_id", userId),
       supabase
         .from("interviews")
-        .select("id, category, created_at, feedback(score, detailed_metrics)")
+        .select("id, category, created_at, feedback(score), proctoring_log, is_flagged")
         .eq("user_id", userId)
         .eq("status", "completed")
         .order("created_at", { ascending: false }),
       supabase
         .from("interview_sessions")
-        .select(
-          "id, started_at, submitted_at, coding_solutions(attempts, created_at, language, quality_score, test_results)"
-        )
+        .select("id, started_at, submitted_at, challenge_id")
         .eq("user_id", userId)
         .in("status", ["completed", "evaluated"])
         .order("started_at", { ascending: false }),
-      supabase.from("github_analysis").select("id").eq("user_id", userId).maybeSingle()
+      supabase
+        .from("coding_solutions")
+        .select("challenge_id, attempts, created_at, language, quality_score, test_results")
+        .eq("user_id", userId),
+      supabase.from("github_analysis").select("user_id").eq("user_id", userId).maybeSingle(),
+      supabase
+        .from("behavioral_analysis")
+        .select("session_id, physical_metrics, speaking_analysis")
+        .eq("user_id", userId)
     ]);
 
     console.log("Fetched user_badges count:", earnedRes.data?.length, "error:", earnedRes.error?.message);
     console.log("Fetched interviews count:", interviewsRes.data?.length, "error:", interviewsRes.error?.message);
-    if (interviewsRes.data && interviewsRes.data.length > 0) {
-      console.log("Sample interview:", JSON.stringify(interviewsRes.data[0], null, 2));
-    }
-    console.log("Fetched coding sessions count:", codingRes.data?.length, "error:", codingRes.error?.message);
+    console.log("Fetched coding sessions count:", sessionsRes.data?.length, "error:", sessionsRes.error?.message);
+    console.log("Fetched coding solutions count:", solutionsRes.data?.length, "error:", solutionsRes.error?.message);
     console.log("Fetched github analysis exists:", !!githubRes.data, "error:", githubRes.error?.message);
+    console.log("Fetched behavioral analysis count:", behavioralRes.data?.length, "error:", behavioralRes.error?.message);
 
     const earnedSlugs = new Set((earnedRes.data || []).map(b => b.badge_slug));
     const newBadges = [];
@@ -95,7 +93,7 @@ async function testAwardBadges() {
     };
 
     const mockCount = interviewsRes.data?.length || 0;
-    const codingCount = codingRes.data?.length || 0;
+    const codingCount = sessionsRes.data?.length || 0;
     const streak = user.current_streak || 0;
 
     evaluate('first-step', mockCount > 0);
