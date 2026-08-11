@@ -191,8 +191,8 @@ export default function ProfileContent({
   const streak = initialProfile.current_streak || 0
   const createdAtTime = new Date(createdAt).getTime()
   const daysSinceSignup = Math.floor((Date.now() - createdAtTime) / (1000 * 3600 * 24))
-  const hasUsername = initialProfile.username && initialProfile.username !== "User"
-  const hasAvatar = initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie"
+  const hasUsername = !!(initialProfile.username && initialProfile.username !== "User")
+  const hasAvatar = !!(initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie")
   const hasResume = !!initialProfile.resume_text
   const hasGithub = !!githubAnalysis
 
