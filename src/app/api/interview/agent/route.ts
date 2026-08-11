@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSessionById, getChallengeById, updateSession } from "@/lib/interviewDb";
 import { getRequestUserId } from "@/lib/getRequestUserId";
 import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
-import { cleanJsonResponseText } from "@/lib/llm";
+import { cleanJsonResponseText, safeParseJSON } from "@/lib/llm";
 
 interface AgentConversationMessage {
   role: string;
@@ -152,15 +152,11 @@ ${codebaseStr.trim()}`;
 
     const data = await response.json();
     const rawContent = data.choices?.[0]?.message?.content || "";
-    const cleanedContent = cleanJsonResponseText(rawContent);
-
-    let parsedResponse: GroqAgentResponse;
-    try {
-      parsedResponse = JSON.parse(cleanedContent);
-    } catch {
-      console.error("Failed to parse Groq response as JSON:", rawContent);
-      return NextResponse.json({ error: "agent_parse_error", raw: rawContent });
-    }
+    const parsedResponse = safeParseJSON<GroqAgentResponse>(rawContent, {
+      reasoning: rawContent || "I have analyzed your solution.",
+      proposed_changes: [],
+      follow_up: "How would you like to proceed with testing or refining this approach?"
+    });
 
     // Append agent response to conversation and save
     conversation.push({ role: "assistant", content: parsedResponse });
