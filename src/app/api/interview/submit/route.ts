@@ -202,6 +202,8 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       return res;
     };
 
+    const passRatio = dbTestCount === 0 ? 0 : passedCount / dbTestCount;
+
     let parsedLogic = {
       logicScore: Math.round(passRatio * 10),
       timeComplexity: "O(n)",
@@ -245,7 +247,6 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     }
 
     // 4. Evaluate Success Criteria
-    const passRatio = dbTestCount === 0 ? 0 : passedCount / dbTestCount;
     const isSuccess = passRatio >= 0.7 && (parsedLogic.logicScore || 0) >= 7 && (parsedQuality.qualityScore || 0) >= 6;
 
     // 5. Update attempts counter & Save solution in Supabase if logged in
