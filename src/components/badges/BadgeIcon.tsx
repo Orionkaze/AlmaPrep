@@ -50,7 +50,7 @@ import {
   Lock
 } from "lucide-react"
 
-const Github = ({ size, className, ...props }: { size?: number; className?: string; [key: string]: any }) => (
+const Github = ({ size, className, ...props }: React.SVGProps<SVGSVGElement> & { size?: number }) => (
   <svg
     viewBox="0 0 24 24"
     width={size}
@@ -64,7 +64,7 @@ const Github = ({ size, className, ...props }: { size?: number; className?: stri
   </svg>
 )
 
-export const BADGE_ICONS: Record<string, React.ComponentType<any>> = {
+export const BADGE_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   "first-step": Rocket,
   "code-debut": Code2,
   "profile-pro": UserCheck,

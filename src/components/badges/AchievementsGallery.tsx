@@ -75,7 +75,9 @@ export default function AchievementsGallery({
         const fresh = earnedSlugs.filter((s) => !seenSet.has(s))
         
         if (fresh.length > 0) {
-          setNewlyUnlocked(new Set(fresh))
+          setTimeout(() => {
+            setNewlyUnlocked(new Set(fresh))
+          }, 0)
           // Save them as seen so they don't animate again next load
           localStorage.setItem(SEEN_KEY, JSON.stringify([...seenSlugs, ...fresh]))
         }
