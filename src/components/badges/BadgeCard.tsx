@@ -2,7 +2,7 @@
 
 import React from "react"
 import { cn } from "@/lib/utils"
-import { Lock, Sparkles, CheckCircle2 } from "lucide-react"
+import { Lock, CheckCircle2 } from "lucide-react"
 import BadgeIcon from "./BadgeIcon"
 
 interface BadgeData {
@@ -59,7 +59,9 @@ export default function BadgeCard({
         delay: `${Math.random() * 0.3}s`,
       }))
 
-      setSparkles(generated)
+      setTimeout(() => {
+        setSparkles(generated)
+      }, 0)
 
       // Stop the unlock pop bounce animation after 1.5 seconds
       const timer = setTimeout(() => {
@@ -69,7 +71,6 @@ export default function BadgeCard({
     }
   }, [isNewlyUnlocked, rarity])
 
-  const isComplete = earned || progress.current >= progress.target
   const progressPct = Math.min(100, Math.round((progress.current / progress.target) * 100))
 
   // Determine rarity colors

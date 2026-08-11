@@ -10,7 +10,7 @@ import {
   DialogFooter
 } from "@/components/ui/dialog"
 import BadgeIcon from "./BadgeIcon"
-import { Calendar, CheckCircle2, Trophy, Star, ShieldAlert } from "lucide-react"
+import { Calendar, CheckCircle2, Trophy, Star } from "lucide-react"
 
 interface BadgeData {
   slug: string
