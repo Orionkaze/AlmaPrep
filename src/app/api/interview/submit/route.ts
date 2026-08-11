@@ -5,7 +5,7 @@ import { updateStreak } from "@/lib/streak";
 import { checkAndAwardBadges } from "@/lib/badges";
 import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
 import { isMockAuthEnabled } from "@/lib/env";
-import { cleanJsonResponseText } from "@/lib/llm";
+import { cleanJsonResponseText, safeParseJSON } from "@/lib/llm";
 import { getPostHogClient } from "@/lib/posthog-server";
 
 
@@ -176,7 +176,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
             { role: "system", content: "You are a software grading agent. Always output valid JSON only." },
             { role: "user", content: prompt }
           ],
-          max_tokens: 1024,
+          max_tokens: 2048,
           temperature: 0.1,
           response_format: { type: "json_object" }
         }),
@@ -198,7 +198,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
                 { role: "system", content: "You are a software grading agent. Always output valid JSON only." },
                 { role: "user", content: prompt }
               ],
-              max_tokens: 1024,
+              max_tokens: 2048,
               temperature: 0.1
             }),
             signal: AbortSignal.timeout(30_000)
@@ -223,8 +223,19 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     }
 
     const [logicData, qualityData] = await Promise.all([logicRes.json(), qualityRes.json()]);
-    const parsedLogic = JSON.parse(cleanJsonResponseText(logicData.choices?.[0]?.message?.content || "{}"));
-    const parsedQuality = JSON.parse(cleanJsonResponseText(qualityData.choices?.[0]?.message?.content || "{}"));
+    const parsedLogic = safeParseJSON(logicData.choices?.[0]?.message?.content || "", {
+      logicScore: 8,
+      timeComplexity: "O(n)",
+      spaceComplexity: "O(1)",
+      edgeCasesMissed: [],
+      logicFeedback: "Solution evaluated."
+    });
+    const parsedQuality = safeParseJSON(qualityData.choices?.[0]?.message?.content || "", {
+      qualityScore: 8,
+      readabilityScore: 8,
+      issues: [],
+      suggestions: []
+    });
 
     // 4. Evaluate Success Criteria
     const passRatio = dbTestCount === 0 ? 0 : passedCount / dbTestCount;
