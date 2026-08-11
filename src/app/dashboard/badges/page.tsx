@@ -42,7 +42,6 @@ interface InterviewData {
 }
 
 import {
-  BadgeStats,
   calculateDaysSinceSignup,
   getRewardXP,
   getBadgeProgress,
