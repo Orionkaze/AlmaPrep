@@ -1,4 +1,5 @@
 import AppHeader from "@/components/almaprep/AppHeader"
+import BadgeNotifier from "@/components/BadgeNotifier"
 
 export default function DashboardLayout({
   children,
@@ -11,6 +12,7 @@ export default function DashboardLayout({
         <AppHeader />
       </div>
       {children}
+      <BadgeNotifier />
     </div>
   )
 }
