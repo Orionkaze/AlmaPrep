@@ -7,7 +7,6 @@ import {
   Code2,
   UserCheck,
   FileCheck,
-  Github,
   CalendarDays,
   Flame,
   Droplets,
