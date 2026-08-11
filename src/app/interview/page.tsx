@@ -129,13 +129,13 @@ export default function ChallengeSelectionPage() {
   const getDifficultyStyles = (difficulty: string) => {
     switch (difficulty.toLowerCase()) {
       case "easy":
-        return "bg-emerald-50 text-emerald-700 border-emerald-200";
+        return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
       case "medium":
-        return "bg-amber-50 text-amber-800 border-amber-200";
+        return "bg-amber-500/10 text-amber-400 border-amber-500/20";
       case "hard":
-        return "bg-rose-50 text-rose-700 border-rose-200";
+        return "bg-rose-500/10 text-rose-400 border-rose-500/20";
       default:
-        return "bg-gray-50 text-gray-700 border-gray-200";
+        return "bg-muted text-muted-foreground border-border";
     }
   };
 
@@ -149,11 +149,11 @@ export default function ChallengeSelectionPage() {
   );
 
   return (
-    <div className="almaprep-theme min-h-screen bg-[#F9FAFB] text-[#334155] flex flex-col">
+    <div className="almaprep-theme min-h-screen bg-background text-foreground flex flex-col">
       {/* Toast Alert */}
       {errorToast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#062b22] text-[#a7f3d0] border border-[#059669]/20 px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 animate-bounce">
-          <Activity className="size-5 animate-pulse text-[#10b981]" />
+        <div className="fixed bottom-6 right-6 z-50 bg-primary/20 text-primary border border-primary/30 px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 animate-bounce">
+          <Activity className="size-5 animate-pulse text-primary" />
           <span className="text-sm font-medium">{errorToast}</span>
         </div>
       )}
@@ -162,16 +162,16 @@ export default function ChallengeSelectionPage() {
       <main className="flex-1 max-w-[1140px] w-full mx-auto px-6 py-12">
         {/* Header */}
         <div className="mb-10 text-left">
-          <h1 className="text-3xl font-extrabold tracking-tight text-[#0f172a] sm:text-4xl mb-2 font-serif">
+          <h1 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mb-2 font-serif">
             Coding Interviews
           </h1>
-          <p className="text-[#6B7280] text-base sm:text-lg max-w-2xl font-sans leading-relaxed">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-sans leading-relaxed">
             Practice agentic interviews where you direct an AI agent to solve real engineering problems.
           </p>
         </div>
 
         {/* Tab Filters */}
-        <div className="mb-8 border-b border-[#e2e8f0] overflow-x-auto scrollbar-none">
+        <div className="mb-8 border-b border-border overflow-x-auto scrollbar-none">
           <div className="flex space-x-8 min-w-max pb-px">
             {challengeTypes.map((tab) => {
               const Icon = tab.icon;
@@ -182,8 +182,8 @@ export default function ChallengeSelectionPage() {
                   onClick={() => setActiveFilter(tab.id)}
                   className={`flex items-center gap-2 pb-4 text-sm font-medium transition-all duration-150 relative border-b-2 outline-none cursor-pointer ${
                     isActive
-                      ? "text-[#059669] border-[#059669]"
-                      : "text-[#6B7280] border-transparent hover:text-[#0f172a]"
+                      ? "text-primary border-primary"
+                      : "text-muted-foreground border-transparent hover:text-foreground"
                   }`}
                 >
                   {Icon && <Icon className="size-4" />}
@@ -197,17 +197,17 @@ export default function ChallengeSelectionPage() {
         {/* Loading State */}
         {loading ? (
           <div className="flex flex-col items-center justify-center py-24">
-            <Loader2 className="size-8 animate-spin text-[#059669] mb-4" />
-            <p className="text-sm text-[#6b7280] font-medium">Fetching active challenges...</p>
+            <Loader2 className="size-8 animate-spin text-primary mb-4" />
+            <p className="text-sm text-muted-foreground font-medium">Fetching active challenges...</p>
           </div>
         ) : filteredChallenges.length === 0 ? (
           /* Empty State */
-          <div className="flex flex-col items-center justify-center py-20 text-center bg-white rounded-2xl border border-dashed border-[#cbd5e1] p-8 max-w-lg mx-auto mt-8">
-            <div className="p-3 bg-[#f8fafc] rounded-full text-[#9CA3AF] mb-4">
+          <div className="flex flex-col items-center justify-center py-20 text-center bg-card rounded-2xl border border-dashed border-border p-8 max-w-lg mx-auto mt-8">
+            <div className="p-3 bg-muted rounded-full text-muted-foreground mb-4">
               <FileCode2 className="size-8" />
             </div>
-            <h3 className="text-lg font-semibold text-[#0f172a] mb-1">No challenges found</h3>
-            <p className="text-sm text-[#9CA3AF] max-w-xs">
+            <h3 className="text-lg font-semibold text-foreground mb-1">No challenges found</h3>
+            <p className="text-sm text-muted-foreground max-w-xs">
               We couldn&apos;t find any challenges in the &quot;{getChallengeTypeLabel(activeFilter)}&quot; category.
             </p>
           </div>
@@ -219,7 +219,7 @@ export default function ChallengeSelectionPage() {
               return (
                 <div
                   key={challenge.id}
-                  className="group relative flex flex-col justify-between bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm hover:-translate-y-1 hover:border-[#059669] hover:shadow-md transition-all duration-200"
+                  className="group relative flex flex-col justify-between bg-card border border-border rounded-2xl p-6 shadow-sm hover:-translate-y-1 hover:border-primary/50 hover:shadow-md transition-all duration-200"
                 >
                   <div>
                     {/* Badge Row */}
@@ -231,25 +231,25 @@ export default function ChallengeSelectionPage() {
                       >
                         {challenge.difficulty.charAt(0).toUpperCase() + challenge.difficulty.slice(1)}
                       </span>
-                      <span className="text-xs font-semibold text-[#374151] bg-[#F3F4F6] px-2.5 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-muted-foreground bg-muted/60 border border-border/50 px-2.5 py-1 rounded-full">
                         {getChallengeTypeLabel(challenge.challenge_type)}
                       </span>
                     </div>
 
                     {/* Challenge Title */}
-                    <h3 className="text-[#0f172a] font-bold text-lg leading-snug group-hover:text-[#059669] transition-colors duration-150 mb-2">
+                    <h3 className="text-foreground font-bold text-lg leading-snug group-hover:text-primary transition-colors duration-150 mb-2">
                       {challenge.title}
                     </h3>
 
                     {/* Challenge Description */}
-                    <p className="text-[#6B7280] text-sm leading-relaxed line-clamp-3 mb-6">
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6">
                       {challenge.description}
                     </p>
                   </div>
 
                   {/* Bottom Row */}
-                  <div className="flex flex-col gap-3 pt-4 border-t border-[#f1f5f9] mt-auto">
-                    <div className="flex items-center gap-1.5 text-[#6B7280] text-xs font-medium">
+                  <div className="flex flex-col gap-3 pt-4 border-t border-border mt-auto">
+                    <div className="flex items-center gap-1.5 text-muted-foreground text-xs font-medium">
                       {getChallengeIcon(challenge.challenge_type)}
                       <span>{getChallengeTypeLabel(challenge.challenge_type)}</span>
                     </div>
@@ -260,7 +260,7 @@ export default function ChallengeSelectionPage() {
                           setSchedulingChallenge(challenge);
                           setScheduleOpen(true);
                         }}
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 bg-white text-[#6B7280] hover:text-[#0f172a] hover:bg-[#F3F4F6] border border-[#E5E7EB] px-3 py-2 rounded-xl text-sm font-semibold shadow-sm transition-all duration-150 cursor-pointer"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted border border-border px-3 py-2 rounded-xl text-sm font-semibold shadow-sm transition-all duration-150 cursor-pointer"
                       >
                         <Calendar className="size-4" />
                         <span>Schedule</span>
@@ -268,7 +268,7 @@ export default function ChallengeSelectionPage() {
                       <button
                         onClick={() => handleStart(challenge.id)}
                         disabled={startingId !== null}
-                        className="flex-[1.5] inline-flex items-center justify-center gap-1.5 bg-[#059669] text-white hover:bg-[#047857] disabled:opacity-60 px-3 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow transition-all duration-150 cursor-pointer"
+                        className="flex-[1.5] inline-flex items-center justify-center gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 px-3 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow transition-all duration-150 cursor-pointer"
                       >
                         {isStarting ? (
                           <>
