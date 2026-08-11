@@ -37,6 +37,111 @@ const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
   )
 });
 
+function getLanguageFromFilename(filename: string): string {
+  if (!filename) return "javascript";
+  const ext = filename.split(".").pop()?.toLowerCase();
+  switch (ext) {
+    case "py":
+      return "python";
+    case "js":
+    case "jsx":
+      return "javascript";
+    case "ts":
+    case "tsx":
+      return "typescript";
+    case "json":
+      return "json";
+    case "html":
+      return "html";
+    case "css":
+      return "css";
+    case "sql":
+      return "sql";
+    default:
+      return "javascript";
+  }
+}
+
+function WorkspaceCodeEditor({
+  filename,
+  value,
+  readOnly,
+  onChange
+}: {
+  filename: string;
+  value: string;
+  readOnly: boolean;
+  onChange: (val: string | undefined) => void;
+}) {
+  const [useFallback, setUseFallback] = useState(false);
+  const [monacoLoaded, setMonacoLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!monacoLoaded) {
+        setUseFallback(true);
+      }
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [monacoLoaded]);
+
+  if (useFallback) {
+    const lines = (value || "").split("\n");
+    return (
+      <div className="flex h-full w-full bg-[#1e1e1e] font-mono text-sm overflow-hidden border-t border-[#2d2d2d] relative">
+        <div className="bg-[#1e1e1e] text-[#6e7681] text-right pr-3 pl-2 py-3 select-none border-r border-[#2d2d2d] text-xs font-mono shrink-0">
+          {lines.map((_, i) => (
+            <div key={i} className="leading-6">
+              {i + 1}
+            </div>
+          ))}
+        </div>
+        <textarea
+          value={value || ""}
+          readOnly={readOnly}
+          onChange={(e) => onChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Tab") {
+              e.preventDefault();
+              const target = e.currentTarget;
+              const start = target.selectionStart;
+              const end = target.selectionEnd;
+              const newVal = value.substring(0, start) + "  " + value.substring(end);
+              onChange(newVal);
+              setTimeout(() => {
+                target.selectionStart = target.selectionEnd = start + 2;
+              }, 0);
+            }
+          }}
+          className="w-full h-full bg-[#1e1e1e] text-[#e6edf3] p-3 outline-none resize-none font-mono text-sm leading-6 whitespace-pre overflow-auto cursor-text"
+          spellCheck={false}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <MonacoEditor
+      height="100%"
+      language={getLanguageFromFilename(filename)}
+      theme="vs-dark"
+      value={value || ""}
+      onChange={onChange}
+      onMount={() => setMonacoLoaded(true)}
+      options={{
+        readOnly,
+        fontSize: 14,
+        fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+        lineNumbers: "on",
+        wordWrap: "off",
+        minimap: { enabled: false },
+        scrollbar: { vertical: "visible", horizontal: "visible" },
+        domReadOnly: readOnly
+      }}
+    />
+  );
+}
+
 interface DiffChange {
   filename: string;
   original: string;
@@ -1115,22 +1220,11 @@ export default function InterviewWorkspacePage({
           {/* Editor Container */}
           <div className="flex-1 w-full h-full relative">
             {currentFile && (
-              <MonacoEditor
-                height="100%"
-                language={getLanguageFromFilename(currentFile)}
-                theme="vs-dark"
+              <WorkspaceCodeEditor
+                filename={currentFile}
                 value={codebase[currentFile] || ""}
+                readOnly={!manualMode}
                 onChange={handleEditorChange}
-                options={{
-                  readOnly: !manualMode,
-                  fontSize: 14,
-                  fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-                  lineNumbers: "on",
-                  wordWrap: "off",
-                  minimap: { enabled: false },
-                  scrollbar: { vertical: "visible", horizontal: "visible" },
-                  domReadOnly: !manualMode
-                }}
               />
             )}
           </div>
