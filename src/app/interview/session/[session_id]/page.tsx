@@ -484,8 +484,8 @@ export default function InterviewWorkspacePage({
           setCurrentFile(files[0]);
         }
 
-        // Fetch challenge details
-        const chall = ((challengeData.challenges || []) as Challenge[]).find((c) => c.id === sessionData.challenge_id);
+        // Fetch challenge details (prioritize sessionData.challenge which includes full hidden_tests)
+        const chall = sessionData.challenge || ((challengeData.challenges || []) as Challenge[]).find((c) => c.id === sessionData.challenge_id);
         if (chall) {
           setChallenge(chall);
           // Set proposed GitHub repo name

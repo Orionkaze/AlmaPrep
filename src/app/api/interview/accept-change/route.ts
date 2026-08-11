@@ -1,5 +1,4 @@
-import { NextResponse } from "next/server";
-import { getSessionById, updateSession } from "@/lib/interviewDb";
+import { getSessionById, getChallengeById, updateSession } from "@/lib/interviewDb";
 import { createClient } from "@/lib/supabase/server";
 import { getRequestUserId } from "@/lib/getRequestUserId";
 
@@ -25,6 +24,8 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
+    const challenge = await getChallengeById(session.challenge_id);
+
     const supabase = await createClient();
     const { data: profile } = await supabase
       .from("users")
@@ -34,6 +35,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       ...session,
+      challenge,
       github_autosave: !!profile?.github_autosave
     });
   } catch (err) {
