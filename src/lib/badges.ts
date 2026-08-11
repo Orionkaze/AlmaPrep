@@ -1,7 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
 import type {
-  InterviewWithFeedback,
-  SessionWithSolutionsAndReports,
   BadgeRow,
   UserRow,
 } from "@/types/db";
