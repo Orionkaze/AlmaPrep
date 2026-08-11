@@ -19,6 +19,7 @@ import {
   Sparkles
 } from "lucide-react"
 import { MySchedule } from "@/components/MySchedule"
+import BadgeIcon from "@/components/badges/BadgeIcon"
 import { createClient } from "@/lib/supabase/server"
 import { createAdminClient } from "@/lib/supabase/admin"
 import { redirect } from "next/navigation"
@@ -356,30 +357,44 @@ export default async function DashboardPage() {
         {recentBadges.length > 0 && (
           <div className="flex items-center gap-4 bg-card border border-border p-4 rounded-xl shadow-sm overflow-x-auto">
             <div className="flex-shrink-0 mr-2 flex flex-col items-center justify-center">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1"><Sparkles size={14} className="text-amber-500" /> Recent</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1">
+                <Sparkles size={14} className="text-amber-500" /> Recent
+              </span>
               <span className="text-[10px] text-muted-foreground font-semibold">Unlock more in Profile</span>
             </div>
             {recentBadges.map((badge) => {
-              const rarityColors = {
-                common: "border-slate-200 bg-slate-50 text-slate-700",
-                rare: "border-blue-200 bg-blue-50 text-blue-700",
-                legendary: "border-amber-200 bg-amber-50 text-amber-700 shadow-[0_0_15px_rgba(251,191,36,0.4)]"
+              let borderClass = "border-border hover:border-neutral-500/40"
+              let glowColor = "rgba(255,255,255,0.02)"
+              if (badge.rarity === "legendary") {
+                borderClass = "border-amber-500/35 hover:border-amber-400/80"
+                glowColor = "rgba(245, 158, 11, 0.08)"
+              } else if (badge.rarity === "rare") {
+                borderClass = "border-purple-500/30 hover:border-purple-400/80"
+                glowColor = "rgba(139, 92, 246, 0.06)"
+              } else {
+                borderClass = "border-blue-500/30 hover:border-blue-400/80"
+                glowColor = "rgba(59, 130, 246, 0.04)"
               }
-              const colorClass = rarityColors[badge.rarity as keyof typeof rarityColors] || rarityColors.common;
-              
+
               return (
-                <div key={badge.slug} className={`flex items-center gap-3 px-4 py-2 rounded-lg border ${colorClass} min-w-max transition-all hover:scale-105 duration-300`}>
-                  <div className="flex items-center justify-center size-8 rounded-full bg-white/60 shadow-sm">
-                    <i className={`${badge.icon} text-lg`}></i>
+                <div
+                  key={badge.slug}
+                  className={`flex items-center gap-3 px-3 py-1.5 rounded-xl border bg-card/65 min-w-max transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer ${borderClass}`}
+                  style={{
+                    boxShadow: `0 4px 12px -2px ${glowColor}`,
+                  }}
+                >
+                  <div className="flex-shrink-0">
+                    <BadgeIcon slug={badge.slug} rarity={badge.rarity} earned={true} size={40} />
                   </div>
-                  <div>
-                    <p className="text-xs font-bold">{badge.name}</p>
-                    <p className="text-[10px] opacity-80 font-medium uppercase tracking-wider">{badge.rarity}</p>
+                  <div className="text-left pr-2">
+                    <p className="text-xs font-bold text-foreground">{badge.name}</p>
+                    <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground/80 mt-0.5">{badge.rarity}</p>
                   </div>
                 </div>
               )
             })}
-            
+
             <div className="ml-auto pl-4">
               <Link href="/dashboard/profile" className="text-xs font-bold text-primary hover:underline whitespace-nowrap flex items-center gap-1">
                 View All <ArrowRight size={12} />
