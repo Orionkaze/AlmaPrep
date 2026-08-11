@@ -186,6 +186,76 @@ export default function ProfileContent({
   const [githubError, setGithubError] = useState<string | null>(null)
   const [expandedRepo, setExpandedRepo] = useState<string | null>(null)
 
+  // Pre-calculate user stats available in profile context
+  const mockCount = interviews.length
+  const streak = initialProfile.current_streak || 0
+  const createdAtTime = new Date(createdAt).getTime()
+  const daysSinceSignup = Math.floor((Date.now() - createdAtTime) / (1000 * 3600 * 24))
+  const hasUsername = initialProfile.username && initialProfile.username !== "User"
+  const hasAvatar = initialProfile.avatar_url && initialProfile.avatar_url !== "user-tie"
+  const hasResume = !!initialProfile.resume_text
+  const hasGithub = !!githubAnalysis
+
+  const stats = {
+    mockCount,
+    codingCount: 0,
+    streak,
+    daysSinceSignup,
+    hasUsername,
+    hasAvatar,
+    hasResume,
+    hasGithub,
+    totalPerfectScores: 0,
+    zeroFillerWordInterviews: 0,
+    highBodyLanguageInterviews: 0,
+    lowFillerWordInterviews: 0,
+    zeroViolationInterviews: 0,
+    firstTrySolves: 0,
+    perfectQualitySolves: 0,
+    fastSolves: 0,
+    jsAndPythonSolves: new Set<string>(),
+    domainsCount: 0,
+    maxConsecutiveHighScores: 0,
+    reposPushed: 0,
+    hasSaturday: false,
+    hasSunday: false,
+    maxActsInDay: 0,
+    maxInterviewsInDay: 0,
+  }
+
+  // Map to full Badge object structures for AchievementsGallery
+  const badgesList = allBadges.map((b) => {
+    const isEarned = userBadges.some((ub) => ub.badge_slug === b.slug)
+    const earnedInfo = isEarned ? userBadges.find((ub) => ub.badge_slug === b.slug) : null
+    const earnedAt = earnedInfo ? earnedInfo.earned_at : null
+
+    const rawProgress = getBadgeProgress(b.slug, stats)
+    const progress = isEarned
+      ? { current: rawProgress.target, target: rawProgress.target }
+      : {
+          current: Math.min(rawProgress.current, rawProgress.target),
+          target: rawProgress.target,
+        }
+
+    return {
+      slug: b.slug,
+      name: b.name,
+      description: b.description,
+      category: b.category,
+      rarity: b.rarity,
+      earned: isEarned,
+      earnedAt,
+      progress,
+      rewardXP: getRewardXP(b.rarity),
+    }
+  })
+
+  const total = allBadges.length
+  const earnedCount = badgesList.filter((b) => b.earned).length
+  const commonCount = badgesList.filter((b) => b.rarity === "common" && b.earned).length
+  const rareCount = badgesList.filter((b) => b.rarity === "rare" && b.earned).length
+  const legendaryCount = badgesList.filter((b) => b.rarity === "legendary" && b.earned).length
+
   const handleToggleAutosave = async () => {
     const nextVal = !githubAutosave
     setGithubAutosave(nextVal)
@@ -625,75 +695,14 @@ export default function ProfileContent({
 
         {/* Tab 4: Achievements */}
         <TabsContent value="achievements" className="space-y-6">
-          <Card className="shadow-sm">
-            <CardHeader>
-              <CardTitle className="text-lg font-bold" style={headingStyle}>Achievements & Badges</CardTitle>
-              <CardDescription className="text-xs">Showcase your dedication and consistency on AlmaPrep.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {/* Badge Stats Summary */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-muted/40 p-4 rounded-xl border border-border flex flex-col items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">{userBadges.length}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mt-1">Total Earned</span>
-                </div>
-                <div className="bg-amber-500/10 border border-amber-500/20 p-4 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-bold text-amber-500">{userBadges.filter(b => allBadges.find(a => a.slug === b.badge_slug)?.rarity === 'legendary').length}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-500/80 mt-1">Legendary</span>
-                </div>
-                <div className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-bold text-blue-500">{userBadges.filter(b => allBadges.find(a => a.slug === b.badge_slug)?.rarity === 'rare').length}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-500/80 mt-1">Rare</span>
-                </div>
-                <div className="bg-slate-500/10 border border-slate-500/20 p-4 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-bold text-slate-500">{userBadges.filter(b => allBadges.find(a => a.slug === b.badge_slug)?.rarity === 'common').length}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500/80 mt-1">Common</span>
-                </div>
-              </div>
-
-              {/* Badge Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {allBadges.map((badge) => {
-                  const isEarned = userBadges.some(ub => ub.badge_slug === badge.slug);
-                  const earnedInfo = isEarned ? userBadges.find(ub => ub.badge_slug === badge.slug) : null;
-                  
-                  let badgeStyles = "bg-muted/50 border-border/50 opacity-60 grayscale filter";
-                  let iconColor = "text-muted-foreground";
-                  
-                  if (isEarned) {
-                    if (badge.rarity === 'legendary') {
-                      badgeStyles = "bg-amber-50 border-amber-200 shadow-[0_0_20px_rgba(251,191,36,0.3)]";
-                      iconColor = "text-amber-500";
-                    } else if (badge.rarity === 'rare') {
-                      badgeStyles = "bg-blue-50 border-blue-200 shadow-sm";
-                      iconColor = "text-blue-500";
-                    } else {
-                      badgeStyles = "bg-slate-50 border-slate-200 shadow-sm";
-                      iconColor = "text-slate-700";
-                    }
-                  }
-
-                  return (
-                    <div key={badge.slug} className={`p-4 rounded-xl border flex flex-col items-center text-center gap-2 transition-all ${badgeStyles}`}>
-                      <div className={`size-12 rounded-full bg-white flex items-center justify-center shadow-sm mb-1 ${iconColor}`}>
-                        <i className={`${badge.icon} text-2xl`}></i>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-foreground">{badge.name}</h4>
-                        <p className={`text-[10px] uppercase tracking-widest font-semibold mt-0.5 ${isEarned ? iconColor : ""}`}>{badge.rarity}</p>
-                      </div>
-                      <p className="text-[11px] text-muted-foreground leading-snug flex-1">{badge.description}</p>
-                      {isEarned && earnedInfo && (
-                        <div className="mt-2 text-[9px] font-bold uppercase tracking-widest text-muted-foreground bg-black/5 px-2 py-1 rounded-full w-full">
-                          Earned {new Date(earnedInfo.earned_at).toLocaleDateString()}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </CardContent>
-          </Card>
+          <AchievementsGallery
+            badges={badgesList}
+            initialEarnedCount={earnedCount}
+            totalBadgesCount={total}
+            commonCount={commonCount}
+            rareCount={rareCount}
+            legendaryCount={legendaryCount}
+          />
         </TabsContent>
 
         {/* Tab 5: GitHub Integration */}
