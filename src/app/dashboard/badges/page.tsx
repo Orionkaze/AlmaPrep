@@ -310,7 +310,7 @@ export default async function BadgesPage() {
               .eq("user_id", userId),
           ])
 
-        const dbUser = userRes?.data
+        const dbUser = userRes?.data as any
         const interviews = interviewsRes?.data || []
         const codingSessions = sessionsRes?.data || []
         const codingSolutions = solutionsRes?.data || []
