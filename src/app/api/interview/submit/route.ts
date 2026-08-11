@@ -117,7 +117,7 @@ export async function POST(request: Request) {
     if (!apiKey) {
       return NextResponse.json({ error: "INTERVIEW_GROQ_API_KEY not configured" }, { status: 500 });
     }
-    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen3.6-2.7b";
+    const model = process.env.GROQ_CODING_MODEL || process.env.GROQ_MODEL || "qwen-2.5-coder-32b";
 
     // Layer 2 Prompt: Logic & Correctness Grader
     const logicGraderPrompt = `You are a strict technical interviewer. Grade the user's coding solution on correctness, logic, time, and space complexity.
