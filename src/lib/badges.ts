@@ -37,30 +37,45 @@ export async function checkAndAwardBadges(userId: string) {
 
     // 2. Fetch the rest of the relevant data in parallel
     const [
-      { data: earnedBadges },
-      { data: interviews },
-      { data: codingSessions },
-      { data: githubAnalysis }
+      earnedRes,
+      interviewsRes,
+      sessionsRes,
+      solutionsRes,
+      githubRes,
+      behavioralRes
     ] = await Promise.all([
       supabase.from("user_badges").select("badge_slug").eq("user_id", userId),
       supabase
         .from("interviews")
-        .select("id, category, created_at, feedback(score, detailed_metrics)")
+        .select("id, category, created_at, feedback(score), proctoring_log, is_flagged")
         .eq("user_id", userId)
         .eq("status", "completed")
-        .order("created_at", { ascending: false }) as unknown as Promise<{ data: InterviewWithFeedback[] | null }>,
+        .order("created_at", { ascending: false }),
       supabase
         .from("interview_sessions")
-        .select(
-          "id, started_at, submitted_at, coding_solutions(attempts, created_at, language, quality_score, test_results)"
-        )
+        .select("id, started_at, submitted_at, challenge_id")
         .eq("user_id", userId)
         .in("status", ["completed", "evaluated"])
-        .order("started_at", { ascending: false }) as unknown as Promise<{ data: SessionWithSolutionsAndReports[] | null }>,
-      supabase.from("github_analysis").select("id").eq("user_id", userId).maybeSingle()
+        .order("started_at", { ascending: false }),
+      supabase
+        .from("coding_solutions")
+        .select("challenge_id, attempts, created_at, language, quality_score, test_results")
+        .eq("user_id", userId),
+      supabase.from("github_analysis").select("user_id").eq("user_id", userId).maybeSingle(),
+      supabase
+        .from("behavioral_analysis")
+        .select("session_id, physical_metrics, speaking_analysis")
+        .eq("user_id", userId)
     ]);
 
     if (!user) return { success: false, error: "User not found" };
+
+    const earnedBadges = earnedRes.data;
+    const interviews = interviewsRes.data;
+    const codingSessions = sessionsRes.data;
+    const codingSolutions = solutionsRes.data;
+    const githubAnalysis = githubRes.data;
+    const behavioralAnalysis = behavioralRes.data;
 
     const earnedSlugs = new Set((earnedBadges || []).map((b: { badge_slug: string }) => b.badge_slug));
     const newBadges: string[] = [];
@@ -96,7 +111,7 @@ export async function checkAndAwardBadges(userId: string) {
     const ascInterviews = [...(interviews || [])].reverse();
     
     ascInterviews.forEach(interview => {
-      const fb = interview.feedback?.[0];
+      const fb = (interview as any).feedback?.[0];
       if (!fb) {
         consecutiveHighScores = 0;
         return;
@@ -112,13 +127,30 @@ export async function checkAndAwardBadges(userId: string) {
         consecutiveHighScores = 0;
       }
       
-      // Parse detailed feedback if it exists (assuming JSON stored metrics or extracting from text)
-      // Since specific metrics like body language or filler words might be in structured JSON:
-      const details = fb.detailed_metrics || {};
-      if (details.fillerWords === 0) zeroFillerWordInterviews++;
-      if (details.fillerWords !== undefined && details.fillerWords < 3) lowFillerWordInterviews++;
-      if ((details.bodyLanguageScore ?? 0) >= 90) highBodyLanguageInterviews++;
-      if (details.violations === 0) zeroViolationInterviews++;
+      // Match behavioral analysis for this interview session
+      const behavior = (behavioralAnalysis || []).find(b => b.session_id === interview.id);
+      if (behavior) {
+        // Parse eye contact / posture from physical_metrics
+        const physical = (behavior as any).physical_metrics || [];
+        if (Array.isArray(physical) && physical.length > 0) {
+          const avgBodyLanguage = physical.reduce((acc: number, item: any) => {
+            const score = item.bodyLanguageScore ?? item.posture_score ?? 0;
+            return acc + score;
+          }, 0) / physical.length;
+          if (avgBodyLanguage >= 90) highBodyLanguageInterviews++;
+        }
+        
+        // Parse filler words from speaking_analysis
+        const speaking = (behavior as any).speaking_analysis || {};
+        const totalFiller = speaking.sessionSummary?.metrics?.totalFillerCount;
+        if (totalFiller === 0) zeroFillerWordInterviews++;
+        if (totalFiller !== undefined && totalFiller < 3) lowFillerWordInterviews++;
+      }
+      
+      // Parse violations from proctoring_log
+      const proctoring = (interview as any).proctoring_log || {};
+      const violationsCount = proctoring.totalCount ?? 0;
+      if (violationsCount === 0 && !interview.is_flagged) zeroViolationInterviews++;
     });
 
     // Process Coding Sessions
@@ -127,13 +159,14 @@ export async function checkAndAwardBadges(userId: string) {
     let fastSolves = 0; // under 5 mins
     const jsAndPythonSolves = new Set<string>();
 
-    codingSessions?.forEach((session) => {
-      const sol = session.coding_solutions?.[0];
-      if (sol) {
-        if (sol.attempts === 1 && sol.test_results?.passed === sol.test_results?.total) firstTrySolves++;
-        if (sol.quality_score === 10) perfectQualitySolves++;
-        if (sol.language) jsAndPythonSolves.add(sol.language.toLowerCase());
-        
+    codingSolutions?.forEach((sol) => {
+      const session = codingSessions?.find(s => s.challenge_id === sol.challenge_id);
+      
+      if (sol.attempts === 1 && sol.test_results?.passed === sol.test_results?.total) firstTrySolves++;
+      if (sol.quality_score === 10) perfectQualitySolves++;
+      if (sol.language) jsAndPythonSolves.add(sol.language.toLowerCase());
+      
+      if (session) {
         const start = new Date(session.started_at).getTime();
         const end = new Date(session.submitted_at || sol.created_at).getTime();
         if ((end - start) < 5 * 60 * 1000) fastSolves++;
