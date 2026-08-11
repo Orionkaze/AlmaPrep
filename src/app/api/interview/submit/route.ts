@@ -163,8 +163,8 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     // The two graders are independent, so they run together. Awaiting them in
     // sequence doubled the wall clock of every submission — and with the 30s
     // timeout on each, the worst case was 60s instead of 30s.
-    const gradeWithGroq = async (prompt: string) =>
-      fetch("https://api.groq.com/openai/v1/chat/completions", {
+    const gradeWithGroq = async (prompt: string) => {
+      let res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -173,7 +173,7 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
         body: JSON.stringify({
           model,
           messages: [
-            { role: "system", content: "You are a software grading agent. Output JSON only." },
+            { role: "system", content: "You are a software grading agent. Always output valid JSON only." },
             { role: "user", content: prompt }
           ],
           max_tokens: 1024,
@@ -182,6 +182,31 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
         }),
         signal: AbortSignal.timeout(30_000)
       });
+
+      if (!res.ok) {
+        const errorText = await res.clone().text();
+        if (errorText.includes("json_validate_failed") || errorText.includes("response_format")) {
+          res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+              model,
+              messages: [
+                { role: "system", content: "You are a software grading agent. Always output valid JSON only." },
+                { role: "user", content: prompt }
+              ],
+              max_tokens: 1024,
+              temperature: 0.1
+            }),
+            signal: AbortSignal.timeout(30_000)
+          });
+        }
+      }
+      return res;
+    };
 
     const [logicRes, qualityRes] = await Promise.all([
       gradeWithGroq(logicGraderPrompt),

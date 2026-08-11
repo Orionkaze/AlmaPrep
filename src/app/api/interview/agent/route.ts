@@ -108,7 +108,7 @@ ${codebaseStr.trim()}`;
     ];
 
     // Call Groq API
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    let response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -123,6 +123,26 @@ ${codebaseStr.trim()}`;
       }),
       signal: AbortSignal.timeout(30_000)
     });
+
+    if (!response.ok) {
+      const errorText = await response.clone().text();
+      if (errorText.includes("json_validate_failed") || errorText.includes("response_format")) {
+        response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model,
+            messages: groqMessages,
+            max_tokens: 2048,
+            temperature: 0.2
+          }),
+          signal: AbortSignal.timeout(30_000)
+        });
+      }
+    }
 
     if (!response.ok) {
       const errorText = await response.text();
