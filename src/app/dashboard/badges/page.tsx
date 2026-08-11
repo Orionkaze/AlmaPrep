@@ -292,7 +292,7 @@ export default async function BadgesPage() {
 
   if (isDemoMode) {
     earned = DEMO_EARNED
-    const baseDate = new Date(Date.now() - 30 * 24 * 3600 * 1000)
+    const baseDate = new Date("2026-07-12T12:00:00.000Z")
     Array.from(DEMO_EARNED).forEach((slug, idx) => {
       earnedDates[slug] = new Date(baseDate.getTime() + idx * 24 * 3600 * 1000).toISOString()
     })
@@ -385,7 +385,7 @@ export default async function BadgesPage() {
               .eq("user_id", userId),
           ])
 
-        const dbUser = userRes?.data as any
+        const dbUser = userRes?.data as UserBadgeStats | null
         const interviews = interviewsRes?.data || []
         const codingSessions = sessionsRes?.data || []
         const codingSolutions = solutionsRes?.data || []
@@ -396,7 +396,7 @@ export default async function BadgesPage() {
         const codingCount = codingSessions.length
         const streak = dbUser?.current_streak || 0
         const createdAt = dbUser?.created_at ? new Date(dbUser.created_at) : new Date()
-        const daysSinceSignup = Math.floor((Date.now() - createdAt.getTime()) / (1000 * 3600 * 24))
+        const daysSinceSignup = calculateDaysSinceSignup(createdAt)
         const hasResume = !!dbUser?.resume_text
         const hasGithub = !!githubAnalysis
         const hasUsername = !!dbUser?.username
