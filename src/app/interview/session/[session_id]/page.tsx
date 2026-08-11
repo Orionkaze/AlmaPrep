@@ -882,9 +882,9 @@ export default function InterviewWorkspacePage({
 
       try {
         if (lang === "python") {
-          testRes = await runPythonTest(userCode, challenge.title, test);
+          testRes = await runPythonTest(userCode, currentChall.title, test);
         } else {
-          testRes = await runJsTestInWorker(userCode, challenge.title, test);
+          testRes = await runJsTestInWorker(userCode, currentChall.title, test);
         }
 
         const actual = testRes.success ? testRes.result : null;
