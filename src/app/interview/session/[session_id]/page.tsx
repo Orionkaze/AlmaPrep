@@ -201,15 +201,17 @@ interface TestRunResults {
 
 interface LogicFeedback {
   logicScore: number;
-  timeComplexity: string;
-  spaceComplexity: string;
+  // Null when the grader never answered. The submit route stopped filling
+  // these in with a plausible default, so the UI has to be able to say so.
+  timeComplexity: string | null;
+  spaceComplexity: string | null;
   edgeCasesMissed: string[];
   logicFeedback: string;
 }
 
 interface QualityFeedback {
   qualityScore: number;
-  readabilityScore: number;
+  readabilityScore: number | null;
   issues: string[];
   suggestions: string[];
 }
@@ -217,6 +219,7 @@ interface QualityFeedback {
 interface EvaluationFeedback {
   logic?: LogicFeedback;
   quality?: QualityFeedback;
+  gradedByModel?: boolean;
 }
 
 // Deep equality helper for comparing actual vs expected outputs
@@ -1053,13 +1056,8 @@ export default function InterviewWorkspacePage({
     }
   };
 
-  const getLanguageFromFilename = (filename: string) => {
-    if (filename.endsWith(".js")) return "javascript";
-    if (filename.endsWith(".py")) return "python";
-    if (filename.endsWith(".ts")) return "typescript";
-    if (filename.endsWith(".json")) return "json";
-    return "plaintext";
-  };
+  // (A module-level getLanguageFromFilename already exists above and is what
+  // the editor actually uses; this component-local copy was dead.)
 
   const toggleReasoning = (index: number) => {
     setReasoningExpanded((prev) => ({
@@ -1615,11 +1613,15 @@ export default function InterviewWorkspacePage({
                     <div className="grid grid-cols-2 gap-4 border-b border-[#1f2937] pb-3 text-slate-300">
                       <div>
                         <span className="text-slate-400 block mb-0.5">Time Complexity:</span>
-                        <span className="font-mono bg-slate-900 px-2 py-0.5 rounded text-white font-bold">{evaluationFeedback.logic.timeComplexity}</span>
+                        <span className="font-mono bg-slate-900 px-2 py-0.5 rounded text-white font-bold">
+                          {evaluationFeedback.logic.timeComplexity ?? "Not analysed"}
+                        </span>
                       </div>
                       <div>
                         <span className="text-slate-400 block mb-0.5">Space Complexity:</span>
-                        <span className="font-mono bg-slate-900 px-2 py-0.5 rounded text-white font-bold">{evaluationFeedback.logic.spaceComplexity}</span>
+                        <span className="font-mono bg-slate-900 px-2 py-0.5 rounded text-white font-bold">
+                          {evaluationFeedback.logic.spaceComplexity ?? "Not analysed"}
+                        </span>
                       </div>
                     </div>
                     
@@ -1654,7 +1656,11 @@ export default function InterviewWorkspacePage({
                     <div className="border-b border-[#1f2937] pb-3 flex justify-between items-center">
                       <div>
                         <span className="text-slate-400 block mb-0.5">Readability Rating:</span>
-                        <span className="font-mono bg-slate-900 px-2.5 py-0.5 rounded text-emerald-400 font-bold">{evaluationFeedback.quality.readabilityScore || 0}/10</span>
+                        <span className="font-mono bg-slate-900 px-2.5 py-0.5 rounded text-emerald-400 font-bold">
+                          {typeof evaluationFeedback.quality.readabilityScore === "number"
+                            ? `${evaluationFeedback.quality.readabilityScore}/10`
+                            : "Not analysed"}
+                        </span>
                       </div>
                     </div>
                     

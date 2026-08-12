@@ -2,11 +2,15 @@ name: CI Pipeline
 
 on:
   push:
+    # `master` is this repository's default branch. The workflow used to list
+    # only main/develop, neither of which exists here, so it never ran.
     branches:
+      - master
       - main
       - develop
   pull_request:
     branches:
+      - master
       - main
 
 jobs:
@@ -18,24 +22,35 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # The repo is a pnpm workspace and ships pnpm-lock.yaml. `npm ci` against
+      # a package-lock.json that nobody regenerates installed a different tree
+      # than any developer had locally.
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
+      # No per-rule downgrades. The two rules that used to be forced to `warn`
+      # here were the ones actually failing, so CI reported green on a tree
+      # where `pnpm lint` failed locally.
       - name: Run Linter
-        run: |
-          npm run lint -- --rule "@typescript-eslint/no-explicit-any: warn" --rule "react-hooks/set-state-in-effect: warn"
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
 
       - name: Run Tests
-        run: npm test
+        run: pnpm test
 
       - name: Build Application
-        run: npm run build -- --webpack
+        run: pnpm build -- --webpack
         env:
           NEXTAUTH_SECRET: 'placeholder-secret-for-build'
           NEXT_PUBLIC_SUPABASE_URL: 'https://placeholder.supabase.co'

@@ -5,7 +5,7 @@ import { updateStreak } from "@/lib/streak";
 import { checkAndAwardBadges } from "@/lib/badges";
 import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
 import { isMockAuthEnabled } from "@/lib/env";
-import { cleanJsonResponseText, safeParseJSON } from "@/lib/llm";
+import { safeParseJSON } from "@/lib/llm";
 import { getPostHogClient } from "@/lib/posthog-server";
 
 
@@ -160,7 +160,14 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
   "suggestions": ["Use meaningful variable names", "Add error boundaries"]
 }`;
 
-    // Sequential execution with rate limit backoff retry
+    // Both graders have to finish inside one serverless invocation, so the
+    // budget is: two attempts of GRADER_TIMEOUT_MS plus one backoff, and the
+    // two graders overlap. Running them in sequence with sleeps between, as
+    // this did briefly, put the worst case past a minute and turned a slow
+    // grader into a 504 on submit.
+    const GRADER_TIMEOUT_MS = 18_000;
+    const RATE_LIMIT_BACKOFF_MS = 3_000;
+
     const gradeWithGroq = async (prompt: string) => {
       const makeRequest = async (useJsonFormat = true) => {
         const bodyObj: Record<string, unknown> = {
@@ -182,16 +189,16 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
             Authorization: `Bearer ${apiKey}`
           },
           body: JSON.stringify(bodyObj),
-          signal: AbortSignal.timeout(30_000)
+          signal: AbortSignal.timeout(GRADER_TIMEOUT_MS)
         });
       };
 
       let res = await makeRequest(true);
 
-      // Handle 429 Rate Limits with exponential backoff
+      // Handle 429 Rate Limits with a single backoff
       if (res.status === 429) {
         console.warn("Groq rate limited (429). Retrying after backoff...");
-        await new Promise((r) => setTimeout(r, 4000));
+        await new Promise((r) => setTimeout(r, RATE_LIMIT_BACKOFF_MS));
         res = await makeRequest(false);
       } else if (!res.ok) {
         const errorText = await res.clone().text();
@@ -204,47 +211,72 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
 
     const passRatio = dbTestCount === 0 ? 0 : passedCount / dbTestCount;
 
-    let parsedLogic = {
+    type LogicGrade = {
+      logicScore: number;
+      timeComplexity: string | null;
+      spaceComplexity: string | null;
+      edgeCasesMissed: string[];
+      logicFeedback: string;
+    };
+
+    type QualityGrade = {
+      qualityScore: number;
+      readabilityScore: number | null;
+      issues: string[];
+      suggestions: string[];
+    };
+
+    // What we can say when the model never answered. The scores stay, because
+    // they are computed from the sandbox run and that really did happen. The
+    // complexity fields go null rather than "O(n)"/"O(1)": nothing read the
+    // candidate's code, and printing a plausible-looking complexity next to a
+    // hiring recommendation is inventing a finding. Same reasoning as the
+    // constant-8 dimensions that were removed from `scores` below.
+    const GRADING_UNAVAILABLE =
+      "Automated code review was unavailable for this submission, so this reflects the sandbox test run only.";
+
+    const logicFallback: LogicGrade = {
       logicScore: Math.round(passRatio * 10),
-      timeComplexity: "O(n)",
-      spaceComplexity: "O(1)",
+      timeComplexity: null,
+      spaceComplexity: null,
       edgeCasesMissed: [],
-      logicFeedback: "Evaluated from sandbox test execution."
+      logicFeedback: GRADING_UNAVAILABLE
     };
 
-    let parsedQuality = {
+    const qualityFallback: QualityGrade = {
       qualityScore: Math.round(passRatio * 9),
-      readabilityScore: 8,
+      readabilityScore: null,
       issues: [],
-      suggestions: ["Maintain clean variable naming and modular functions."]
+      suggestions: []
     };
 
-    // Run graders sequentially to prevent token spike rate limits
-    try {
-      const logicRes = await gradeWithGroq(logicGraderPrompt);
-      if (logicRes.ok) {
-        const logicData = await logicRes.json();
-        parsedLogic = safeParseJSON(logicData.choices?.[0]?.message?.content || "", parsedLogic);
-      } else {
-        console.warn("Groq logic grading non-OK:", await logicRes.text());
+    // The two graders are independent, so they run together.
+    const runGrader = async <T,>(label: string, prompt: string, fallback: T): Promise<{ value: T; graded: boolean }> => {
+      try {
+        const res = await gradeWithGroq(prompt);
+        if (!res.ok) {
+          console.warn(`Groq ${label} grading non-OK:`, await res.text());
+          return { value: fallback, graded: false };
+        }
+        const data = await res.json();
+        const content = data.choices?.[0]?.message?.content || "";
+        const parsed = safeParseJSON<T | null>(content, null);
+        if (!parsed) return { value: fallback, graded: false };
+        return { value: parsed, graded: true };
+      } catch (e) {
+        console.warn(`${label} grading exception, using fallback:`, e);
+        return { value: fallback, graded: false };
       }
-    } catch (e) {
-      console.warn("Logic grading exception, using fallback:", e);
-    }
+    };
 
-    try {
-      // Small pause between calls to respect TPM limits
-      await new Promise((r) => setTimeout(r, 1000));
-      const qualityRes = await gradeWithGroq(qualityGraderPrompt);
-      if (qualityRes.ok) {
-        const qualityData = await qualityRes.json();
-        parsedQuality = safeParseJSON(qualityData.choices?.[0]?.message?.content || "", parsedQuality);
-      } else {
-        console.warn("Groq quality grading non-OK:", await qualityRes.text());
-      }
-    } catch (e) {
-      console.warn("Quality grading exception, using fallback:", e);
-    }
+    const [logicResult, qualityResult] = await Promise.all([
+      runGrader<LogicGrade>("logic", logicGraderPrompt, logicFallback),
+      runGrader<QualityGrade>("quality", qualityGraderPrompt, qualityFallback),
+    ]);
+
+    const parsedLogic = logicResult.value;
+    const parsedQuality = qualityResult.value;
+    const gradedByModel = logicResult.graded && qualityResult.graded;
 
     // 4. Evaluate Success Criteria
     const isSuccess = passRatio >= 0.7 && (parsedLogic.logicScore || 0) >= 7 && (parsedQuality.qualityScore || 0) >= 6;
@@ -332,7 +364,10 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
     const overallScore = Math.round((passRatio * 40) + (logicScore * 3.5) + (qualityScore * 2.5));
 
     const strengthsList = [
-      `Implemented core algorithm matching time complexity of ${parsedLogic.timeComplexity || "O(n)"}`,
+      // Only claim a complexity when a grader actually reported one.
+      parsedLogic.timeComplexity
+        ? `Implemented core algorithm matching time complexity of ${parsedLogic.timeComplexity}`
+        : `Passed ${passedCount} of ${dbTestCount} sandbox tests`,
       ...(parsedQuality.suggestions || []).slice(0, 2)
     ];
     if (strengthsList.length < 2) {
@@ -344,13 +379,40 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       ...(parsedQuality.issues || []).slice(0, 2)
     ];
     if (weaknessesList.length === 0) {
-      weaknessesList.push("None identified — code meets readability and testing standards.");
+      // "None identified" only means something if something did the looking.
+      weaknessesList.push(
+        gradedByModel
+          ? "None identified — code meets readability and testing standards."
+          : "Not assessed — automated code review was unavailable for this submission."
+      );
     }
 
     const hiringRecommendation = isSuccess ? (overallScore >= 85 ? "Strong Hire" : "Hire") : "No Hire";
-    const recommendationReasoning = isSuccess 
-      ? `The candidate successfully resolved the coding challenge, passing ${passedCount} of ${dbTestCount} sandbox tests. The algorithm shows optimal time complexity (${parsedLogic.timeComplexity || "O(n)"}) and clean style (${parsedQuality.readabilityScore || 0}/10 readability).`
-      : `The candidate did not meet the passing criteria for the coding challenge. They passed ${passedCount} of ${dbTestCount} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`;
+
+    // Each clause is only added when the thing it describes was measured. The
+    // old version asserted "optimal time complexity (O(n))" and a readability
+    // score out of ten even when both graders had failed and the numbers were
+    // defaults, which reads as analysis of the candidate's code but is not.
+    const reasoningParts: string[] = [];
+    if (isSuccess) {
+      reasoningParts.push(
+        `The candidate successfully resolved the coding challenge, passing ${passedCount} of ${dbTestCount} sandbox tests.`
+      );
+      if (parsedLogic.timeComplexity) {
+        reasoningParts.push(`The algorithm's reported time complexity is ${parsedLogic.timeComplexity}.`);
+      }
+      if (typeof parsedQuality.readabilityScore === "number") {
+        reasoningParts.push(`Readability was scored ${parsedQuality.readabilityScore}/10.`);
+      }
+    } else {
+      reasoningParts.push(
+        `The candidate did not meet the passing criteria for the coding challenge. They passed ${passedCount} of ${dbTestCount} tests, with logic score of ${logicScore}/10 and quality score of ${qualityScore}/10.`
+      );
+    }
+    if (!gradedByModel) {
+      reasoningParts.push(GRADING_UNAVAILABLE);
+    }
+    const recommendationReasoning = reasoningParts.join(" ");
 
     const mappedTestResults = test_results.results.map((r: ClientTestResultItem, idx: number) => ({
       test_id: `test-${idx}`,
@@ -415,7 +477,9 @@ You must respond ONLY with a valid JSON object matching this structure (no markd
       evaluation: {
         logic: parsedLogic,
         quality: parsedQuality,
-        tests: test_results
+        tests: test_results,
+        // Lets the session UI say so instead of rendering blanks as findings.
+        gradedByModel
       }
     });
 

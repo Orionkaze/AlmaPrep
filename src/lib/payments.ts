@@ -55,9 +55,12 @@ export async function createDodoCheckout(req: {
     }
 
     return { status: "error", error: "No checkout URL returned from payment provider" }
-  } catch (err: any) {
+  } catch (err) {
     console.error("[createDodoCheckout] exception:", err)
-    return { status: "error", error: err.message || "Failed to contact payment provider" }
+    return {
+      status: "error",
+      error: err instanceof Error ? err.message : "Failed to contact payment provider",
+    }
   }
 }
 
@@ -75,6 +78,15 @@ export async function grantTier(
 
   const adminClient = createAdminClient()
   if (!adminClient) {
+    // In production a null admin client means SUPABASE_SERVICE_ROLE_KEY is
+    // missing, and we cannot record the grant at all. Reporting success there
+    // would make the webhook 200, which tells the payment provider the event
+    // was handled and stops it retrying — a paying customer would silently
+    // never receive Pro. Fail so the retry happens.
+    if (process.env.NODE_ENV === "production") {
+      console.error(`[grantTier] No service-role client in production — refusing to report a grant that did not happen.`)
+      return { success: false, error: "Service role key not configured" }
+    }
     console.warn(`[grantTier] Admin client not available (local development/mock auth). Logging grant action.`)
     return { success: true }
   }
@@ -122,10 +134,93 @@ export async function grantTier(
     }
 
     return { success: true }
-  } catch (err: any) {
+  } catch (err) {
     console.error(`[grantTier] Unexpected error for user ${userId}:`, err)
-    return { success: false, error: err.message || "Internal error" }
+    return { success: false, error: err instanceof Error ? err.message : "Internal error" }
   }
+}
+
+/** How far out of date a webhook timestamp may be before we reject it. */
+export const WEBHOOK_TOLERANCE_SECONDS = 5 * 60
+
+/**
+ * Standard Webhooks requires the receiver to check the timestamp, not just the
+ * signature. The signature stays valid forever, so without this a captured
+ * request can be replayed at any point in the future — including a stale
+ * `subscription.cancelled` replayed to strip someone's access.
+ *
+ * `timestamp` is seconds since the epoch, as a string.
+ */
+export function isTimestampFresh(
+  timestamp: string,
+  nowSeconds: number = Math.floor(Date.now() / 1000),
+  toleranceSeconds: number = WEBHOOK_TOLERANCE_SECONDS
+): boolean {
+  const sent = Number(timestamp)
+  if (!Number.isFinite(sent)) return false
+  return Math.abs(nowSeconds - sent) <= toleranceSeconds
+}
+
+/**
+ * Record that we have handled this webhook id, and report whether we are the
+ * first to do so. The timestamp check above bounds replays to a five-minute
+ * window; this closes that window and also absorbs the provider's own
+ * at-least-once retries, which are normal traffic rather than an attack.
+ *
+ * Returns false ("do not process") when the id has been seen before. On an
+ * infrastructure failure it returns true and logs: dropping a real payment
+ * event is worse than handling a duplicate, and grantTier is idempotent.
+ */
+export async function claimWebhookEvent(
+  eventId: string,
+  provider: string
+): Promise<boolean> {
+  const adminClient = createAdminClient()
+  if (!adminClient) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("[claimWebhookEvent] No service-role client in production — cannot deduplicate.")
+    }
+    return true
+  }
+
+  const { error } = await adminClient
+    .from("webhook_events")
+    .insert({ id: eventId, provider })
+
+  if (!error) return true
+
+  // 23505 = unique_violation: another delivery of this same event got here first.
+  if (error.code === "23505") {
+    console.log(`[claimWebhookEvent] Event ${eventId} already processed, skipping.`)
+    return false
+  }
+
+  console.error("[claimWebhookEvent] Could not record event, processing anyway:", error.message)
+  return true
+}
+
+/**
+ * Whether a subscription event means the customer's access has actually ended.
+ *
+ * "Cancelled" usually means "will not renew" — they have paid through the end
+ * of the current period and should keep Pro until it lapses, at which point
+ * the provider sends an expiry event. Revoking on the cancellation itself takes
+ * away time the customer already paid for.
+ */
+export function subscriptionAccessHasEnded(eventData: {
+  status?: string
+  next_billing_date?: string | null
+  cancel_at_next_billing_date?: boolean
+}): boolean {
+  if (eventData.cancel_at_next_billing_date === true) return false
+
+  const nextBilling = eventData.next_billing_date
+  if (nextBilling) {
+    const endsAt = Date.parse(nextBilling)
+    if (Number.isFinite(endsAt) && endsAt > Date.now()) return false
+  }
+
+  return true
 }
 
 /**

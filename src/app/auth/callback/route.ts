@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { cookies } from 'next/headers'
 import { safeNextPath, allowedHost } from '@/lib/authCallbackUtils'
+import { isMockAuthEnabled } from '@/lib/env'
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
@@ -31,10 +32,19 @@ export async function GET(request: Request) {
       // Check if user is authenticated and get provider
       const user = data?.user
       if (user) {
-        const isMockMode = process.env.NEXT_PUBLIC_MOCK_AUTH === 'true' || searchParams.get('provider') !== null
-        
-        // Robust provider detection: check search param, provider, providers list, and identities
-        const rawProvider = searchParams.get('provider') || user.app_metadata?.provider || ""
+        // isMockAuthEnabled() is the single answer to "are we faking auth", and
+        // it is hard-disabled in production (see lib/env.ts). Deriving it here
+        // from a raw env read plus "?provider= is present" put mock behaviour
+        // back within reach of a query string on the live site: the mock branch
+        // writes a cookie instead of creating the user's row, so a real GitHub
+        // signup that carried &provider= ended up with no profile at all.
+        const isMockMode = isMockAuthEnabled()
+
+        // The query param is part of the mock OAuth shim, so it is only
+        // trustworthy when the shim is what redirected here. Real logins are
+        // identified from the session Supabase just handed us.
+        const providerParam = isMockMode ? searchParams.get('provider') : null
+        const rawProvider = providerParam || user.app_metadata?.provider || ""
         const providersList = user.app_metadata?.providers || []
         const identitiesList = user.identities || []
         const isGitHub = 

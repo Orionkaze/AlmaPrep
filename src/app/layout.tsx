@@ -86,47 +86,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                if (typeof window === 'undefined') return;
-                var origError = console.error;
-                console.error = function() {
-                  var first = arguments[0];
-                  if (typeof first === 'string' && (
-                    first.indexOf('Encountered a script tag') !== -1 ||
-                    first.indexOf('Monaco initialization') !== -1 ||
-                    first.indexOf('Failed to fetch') !== -1 ||
-                    first.indexOf('[object Event]') !== -1
-                  )) return;
-                  if (first && typeof first === 'object' && first.toString() === '[object Event]') return;
-                  if (first instanceof Error && (first.message.indexOf('Failed to fetch') !== -1 || first.message.indexOf('[object Event]') !== -1)) return;
-                  origError.apply(console, arguments);
-                };
-                window.addEventListener('unhandledrejection', function(event) {
-                  if (event && (
-                    event.reason instanceof Event ||
-                    (event.reason && typeof event.reason === 'object' && event.reason.toString() === '[object Event]') ||
-                    (typeof event.reason === 'string' && (event.reason.indexOf('Failed to fetch') !== -1 || event.reason.indexOf('[object Event]') !== -1))
-                  )) {
-                    event.preventDefault();
-                    event.stopImmediatePropagation();
-                  }
-                }, true);
-                window.addEventListener('error', function(event) {
-                  if (event && (
-                    event.error instanceof Event ||
-                    (event.message && (event.message.indexOf('[object Event]') !== -1 || event.message.indexOf('Failed to fetch') !== -1))
-                  )) {
-                    event.preventDefault();
-                    event.stopImmediatePropagation();
-                  }
-                }, true);
-              })();
-            `
-          }}
-        />
+        {/*
+          There used to be an inline script here that monkey-patched
+          console.error and swallowed "Failed to fetch" error /
+          unhandledrejection events with a capture-phase
+          stopImmediatePropagation(). It ran in production, and because an
+          inline <head> script executes before any Next chunk, it registered
+          ahead of Sentry — so Sentry never saw a single network failure. That
+          is the error class we most need reported. The Monaco console noise it
+          was really aimed at is handled in components/theme-provider.tsx,
+          which is correctly gated to development and only touches
+          console.error, never the error events themselves.
+        */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

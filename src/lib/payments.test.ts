@@ -1,5 +1,10 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
-import { verifyWebhookSignature, createDodoCheckout } from "./payments"
+import {
+  verifyWebhookSignature,
+  createDodoCheckout,
+  isTimestampFresh,
+  subscriptionAccessHasEnded,
+} from "./payments"
 import * as crypto from "crypto"
 
 describe("payments", () => {
@@ -211,6 +216,51 @@ describe("payments", () => {
       if (result.status === "error") {
         expect(result.error).toContain("Payment provider error: Bad Request")
       }
+    })
+  })
+
+  describe("isTimestampFresh", () => {
+    const now = 1_700_000_000
+
+    it("accepts a timestamp from a moment ago", () => {
+      expect(isTimestampFresh(String(now - 30), now)).toBe(true)
+    })
+
+    it("accepts a timestamp slightly in the future, for clock skew", () => {
+      expect(isTimestampFresh(String(now + 30), now)).toBe(true)
+    })
+
+    it("rejects a replay from an hour later", () => {
+      expect(isTimestampFresh(String(now - 3600), now)).toBe(false)
+    })
+
+    it("rejects a timestamp that is not a number", () => {
+      expect(isTimestampFresh("not-a-timestamp", now)).toBe(false)
+      expect(isTimestampFresh("", now)).toBe(false)
+    })
+  })
+
+  describe("subscriptionAccessHasEnded", () => {
+    const inTwoWeeks = new Date(Date.now() + 14 * 86_400_000).toISOString()
+    const yesterday = new Date(Date.now() - 86_400_000).toISOString()
+
+    it("keeps access when the subscription is set to lapse at the next billing date", () => {
+      expect(
+        subscriptionAccessHasEnded({ cancel_at_next_billing_date: true, next_billing_date: inTwoWeeks })
+      ).toBe(false)
+    })
+
+    it("keeps access while there is still a future billing date", () => {
+      expect(subscriptionAccessHasEnded({ next_billing_date: inTwoWeeks })).toBe(false)
+    })
+
+    it("ends access once the paid period is behind us", () => {
+      expect(subscriptionAccessHasEnded({ next_billing_date: yesterday })).toBe(true)
+    })
+
+    it("ends access when the payload says nothing about a remaining period", () => {
+      expect(subscriptionAccessHasEnded({})).toBe(true)
+      expect(subscriptionAccessHasEnded({ next_billing_date: null })).toBe(true)
     })
   })
 })

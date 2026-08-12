@@ -3,6 +3,8 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 import { verifyJWT } from '@/lib/jwt'
 import { getAuthSecret, isMockAuthEnabled } from '@/lib/env'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { bridgeGoogleUserToSupabase } from '@/lib/supabaseAuthBridge'
 
 async function generateDeterministicPasswordWebCrypto(email: string, secret: string): Promise<string> {
   const encoder = new TextEncoder()
@@ -116,25 +118,20 @@ export async function updateSession(request: NextRequest) {
       const token = nextAuthToken
       if (token?.email) {
         const password = await generateDeterministicPasswordWebCrypto(token.email, secret)
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-          email: token.email,
-          password,
-        })
-        if (signInError) {
-          // If sign in fails, they may not exist in Supabase auth yet. Auto-provision them.
-          const { error: signUpError } = await supabase.auth.signUp({
-            email: token.email,
-            password,
-          })
-          if (!signUpError) {
-            // Retry sign in to establish cookies
-            await supabase.auth.signInWithPassword({
-              email: token.email,
-              password,
-            })
-          } else {
-            console.error("Middleware: Failed to sync and auto-provision user:", signUpError.message)
-          }
+        // Same ladder as the NextAuth signIn callback: derived password first,
+        // then provision, then magic link for an account that already has a
+        // password of its own. Never overwrite a stored password from here.
+        const bridged = await bridgeGoogleUserToSupabase(
+          supabase,
+          createAdminClient(),
+          token.email,
+          password
+        )
+        if (!bridged.ok) {
+          // No email in the log line. This runs on a normal request path for
+          // signed-in students, many of them minors, and naming them is PII
+          // written to the server log for no benefit.
+          console.error("Middleware: Failed to sync Supabase session:", bridged.reason)
         }
       }
     } catch (err) {

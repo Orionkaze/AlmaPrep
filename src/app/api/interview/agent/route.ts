@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSessionById, getChallengeById, updateSession } from "@/lib/interviewDb";
 import { getRequestUserId } from "@/lib/getRequestUserId";
 import { checkRateLimit, getRateLimitHeaders } from "@/lib/rateLimit";
-import { cleanJsonResponseText, safeParseJSON } from "@/lib/llm";
+import { safeParseJSON } from "@/lib/llm";
 
 interface AgentConversationMessage {
   role: string;
