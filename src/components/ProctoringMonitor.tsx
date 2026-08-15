@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import { ShieldAlert, Maximize } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProctoringWarning from "./ProctoringWarning";
@@ -33,8 +33,21 @@ export default function ProctoringMonitor({
 }: ProctoringMonitorProps) {
   const [violations, setViolations] = useState<ViolationRecord[]>([]);
   const [warningMessage, setWarningMessage] = useState<string | null>(null);
-  const [showWarningModal, setShowWarningModal] = useState(false);
   const [isFullscreenExitBlocking, setIsFullscreenExitBlocking] = useState(false);
+
+  // The total, and whether to show the halfway warning, are both facts about
+  // `violations` — so they are computed here rather than mirrored into state
+  // and pushed by an effect. What we do store is the count the candidate has
+  // already acknowledged, which is the only part the render cannot know.
+  const totalViolationCount = useMemo(
+    () => violations.reduce((acc, v) => acc + v.count, 0),
+    [violations]
+  );
+  const [acknowledgedCount, setAcknowledgedCount] = useState(0);
+  const showWarningModal =
+    totalViolationCount >= 3 &&
+    totalViolationCount < threshold &&
+    totalViolationCount > acknowledgedCount;
 
   const faceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -83,19 +96,18 @@ export default function ProctoringMonitor({
     []
   );
 
-  // Sync violations and trigger side-effects in an effect instead of during render
+  // Report violations outward. This is the effect's whole job now: telling the
+  // parent and, at the limit, ending the interview. Nothing in here sets our
+  // own state, so there is no render cascade to chase.
   useEffect(() => {
     if (violations.length === 0) return;
-    const totalCount = violations.reduce((acc, v) => acc + v.count, 0);
-    onViolationCountChangeRef.current(totalCount);
+    onViolationCountChangeRef.current(totalViolationCount);
     onViolationLoggedRef.current(violations);
 
-    if (totalCount === 3) {
-      setShowWarningModal(true);
-    } else if (totalCount >= threshold) {
+    if (totalViolationCount >= threshold) {
       onTerminateRef.current();
     }
-  }, [violations, threshold]);
+  }, [violations, totalViolationCount, threshold]);
 
   // 1. Visibility API Tab Switch Detection
   useEffect(() => {
@@ -202,8 +214,6 @@ export default function ProctoringMonitor({
     }
   };
 
-  const totalWarnings = violations.reduce((acc, v) => acc + v.count, 0);
-
   return (
     <>
       {/* 1. Dismissible toast alerts */}
@@ -217,9 +227,9 @@ export default function ProctoringMonitor({
       {/* 2. Warning Modal at 3 violations */}
       <ViolationModal
         isOpen={showWarningModal}
-        warningsCount={totalWarnings}
+        warningsCount={totalViolationCount}
         maxWarnings={threshold}
-        onDismiss={() => setShowWarningModal(false)}
+        onDismiss={() => setAcknowledgedCount(totalViolationCount)}
       />
 
       {/* 3. Fullscreen Exit Blocking Overlay */}

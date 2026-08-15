@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Laptop, UserRound, Rocket, Brain, Star, ArrowLeft, Loader2, CheckCircle2, XCircle } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { createUserProfile, checkUsernameAvailability } from "@/app/actions/profile"
 import Link from "next/link"
 import { track, EVENTS } from "@/lib/analytics"
@@ -27,68 +27,61 @@ export default function OnboardingPage() {
   const [username, setUsername] = useState("")
   const [selectedAvatar, setSelectedAvatar] = useState(0)
   const [loading, setLoading] = useState(false)
-  const [checking, setChecking] = useState(false)
-  const [availability, setAvailability] = useState<"available" | "taken" | "invalid" | null>(null)
-  const [validationMessage, setValidationMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  // Real-time debounced username validation
+  // The shape-of-the-name rules are a pure function of what has been typed, so
+  // they are computed during render. They used to be pushed into three pieces
+  // of state from inside an effect, which meant every keystroke rendered once
+  // with the previous verdict still on screen and then again to correct it.
+  const trimmed = username.trim()
+  const localVerdict = useMemo((): { status: "empty" | "invalid" | "ok"; message: string | null } => {
+    if (!trimmed) return { status: "empty", message: null }
+    if (trimmed.length < 2) return { status: "invalid", message: "Username must be at least 2 characters." }
+    if (trimmed.length > 40) return { status: "invalid", message: "Username must be under 40 characters." }
+    if (!/^[a-zA-Z0-9_-]+$/.test(trimmed)) {
+      return { status: "invalid", message: "Only letters, numbers, underscores (_), and hyphens (-) allowed." }
+    }
+    return { status: "ok", message: null }
+  }, [trimmed])
+
+  // The server answer is the one thing render cannot derive. It is stored with
+  // the name it was an answer *to*, so a stale reply for a name the user has
+  // already edited past is simply ignored rather than needing to be cleared.
+  const [remoteCheck, setRemoteCheck] = useState<
+    { forUsername: string; status: "available" | "taken" | "invalid"; message: string } | null
+  >(null)
+
   useEffect(() => {
-    const trimmed = username.trim()
-    if (!trimmed) {
-      setAvailability(null)
-      setValidationMessage(null)
-      setChecking(false)
-      return
-    }
-
-    if (trimmed.length < 2) {
-      setAvailability("invalid")
-      setValidationMessage("Username must be at least 2 characters.")
-      setChecking(false)
-      return
-    }
-
-    if (trimmed.length > 40) {
-      setAvailability("invalid")
-      setValidationMessage("Username must be under 40 characters.")
-      setChecking(false)
-      return
-    }
-
-    // Only alphanumeric, hyphens, and underscores
-    const usernameRegex = /^[a-zA-Z0-9_-]+$/
-    if (!usernameRegex.test(trimmed)) {
-      setAvailability("invalid")
-      setValidationMessage("Only letters, numbers, underscores (_), and hyphens (-) allowed.")
-      setChecking(false)
-      return
-    }
-
-    setChecking(true)
-    setAvailability(null)
-    setValidationMessage(null)
+    if (localVerdict.status !== "ok") return
+    if (remoteCheck?.forUsername === trimmed) return
 
     const timer = setTimeout(async () => {
       try {
         const result = await checkUsernameAvailability(trimmed)
-        if (result.available) {
-          setAvailability("available")
-          setValidationMessage("Username is available")
-        } else {
-          setAvailability("taken")
-          setValidationMessage(result.error || "This username is already taken.")
-        }
-      } catch (err) {
-        setAvailability("invalid")
-        setValidationMessage("Failed to check username availability.")
-      } finally {
-        setChecking(false)
+        setRemoteCheck(
+          result.available
+            ? { forUsername: trimmed, status: "available", message: "Username is available" }
+            : { forUsername: trimmed, status: "taken", message: result.error || "This username is already taken." }
+        )
+      } catch {
+        setRemoteCheck({
+          forUsername: trimmed,
+          status: "invalid",
+          message: "Failed to check username availability.",
+        })
       }
     }, 350)
 
     return () => clearTimeout(timer)
-  }, [username])
+  }, [trimmed, localVerdict.status, remoteCheck?.forUsername])
+
+  const currentRemote = remoteCheck?.forUsername === trimmed ? remoteCheck : null
+  const checking = localVerdict.status === "ok" && !currentRemote
+  const availability: "available" | "taken" | "invalid" | null =
+    localVerdict.status === "empty" ? null
+    : localVerdict.status === "invalid" ? "invalid"
+    : currentRemote?.status ?? null
+  const validationMessage = localVerdict.message ?? currentRemote?.message ?? null
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

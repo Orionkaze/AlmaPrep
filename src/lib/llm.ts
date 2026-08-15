@@ -71,7 +71,15 @@ export function safeParseJSON<T>(text: string, fallback: T): T {
     const parsed = JSON.parse(cleaned);
     return parsed && typeof parsed === "object" ? (parsed as T) : fallback;
   } catch (err) {
-    console.warn("safeParseJSON fallback used:", err, "Raw content:", text);
+    // Deliberately not the whole payload. These responses are grader output
+    // about a candidate's submission and can carry their code and answers
+    // verbatim; a parse failure does not justify copying that into the server
+    // log. The length and opening characters are enough to tell a truncation
+    // from a wrong-shape response.
+    console.warn(
+      `safeParseJSON fallback used (${text.length} chars, starts: ${JSON.stringify(text.slice(0, 80))}):`,
+      err
+    );
     return fallback;
   }
 }

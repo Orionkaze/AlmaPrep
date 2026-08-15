@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { createClient } from "@/lib/supabase/server"
 import { createAdminClient } from "@/lib/supabase/admin"
+import { bridgeGoogleUserToSupabase } from "@/lib/supabaseAuthBridge"
 import { getAuthSecret } from "@/lib/env"
 import crypto from "crypto"
 
@@ -73,91 +74,22 @@ export const authOptions: NextAuthOptions = {
           const supabase = await createClient()
           const password = generateDeterministicPassword(user.email, secret)
 
-          // 1. Try to sign in to Supabase auth with deterministic password
-          let signInResult = await supabase.auth.signInWithPassword({
-            email: user.email,
-            password,
-          })
+          // Sign in with the derived password, provisioning the Supabase
+          // account if this is a first visit. An account the student created
+          // themselves keeps its own password — see lib/supabaseAuthBridge.ts
+          // for why that matters.
+          const bridged = await bridgeGoogleUserToSupabase(supabase, createAdminClient(), user.email, password)
 
-          if (signInResult.error) {
-            // 2. If sign in fails, they might be an existing user (registered manually or via another provider)
-            // or a completely new user.
-            const admin = createAdminClient()
-            let isExistingUser = false
-            let existingUserId = ""
-
-            if (admin) {
-              try {
-                const { data: listData } = await admin.auth.admin.listUsers({ perPage: 1000 })
-                const matchedUser = listData?.users?.find(u => u.email?.toLowerCase() === user.email?.toLowerCase())
-                if (matchedUser) {
-                  isExistingUser = true
-                  existingUserId = matchedUser.id
-                }
-              } catch (e) {
-                console.error("Google login: Failed to check if user exists in Supabase:", e)
-              }
-            }
-
-            if (isExistingUser && admin) {
-              // Sync their Supabase password to the deterministic password for Google OAuth
-              console.log(`Google login: Syncing password for existing user: ${user.email}`)
-              const { error: updateError } = await admin.auth.admin.updateUserById(existingUserId, {
-                password: password,
-              })
-
-              if (updateError) {
-                console.error("Google login: Failed to sync password for existing user:", updateError.message)
-                return false
-              }
-
-              // Retry signing in
-              signInResult = await supabase.auth.signInWithPassword({
-                email: user.email,
-                password,
-              })
-
-              if (signInResult.error) {
-                console.error("Google login: Failed to sign in after password sync:", signInResult.error.message)
-                return false
-              }
-            } else {
-              // Brand new user: Auto-provision in Supabase
-              let createResult
-              if (admin) {
-                createResult = await admin.auth.admin.createUser({
-                  email: user.email,
-                  password,
-                  email_confirm: true,
-                })
-              } else {
-                createResult = await supabase.auth.signUp({
-                  email: user.email,
-                  password,
-                })
-              }
-
-              if (createResult.error) {
-                console.error("Google login: Failed to auto-provision Supabase user auth:", createResult.error.message)
-                return false
-              }
-
-              // Retry signing in to set session cookies
-              signInResult = await supabase.auth.signInWithPassword({
-                email: user.email,
-                password,
-              })
-
-              if (signInResult.error) {
-                console.error("Google login: Failed to sign in to auto-provisioned Supabase account:", signInResult.error.message)
-                return false
-              }
-            }
+          if (!bridged.ok) {
+            // No email in the log line. Sign-in runs for students, many of them
+            // minors, and naming them buys nothing a reason string does not.
+            console.error("Google login: could not establish a Supabase session:", bridged.reason)
+            return false
           }
 
           // Store the Supabase user ID inside the NextAuth user object for session/jwt callbacks
-          if (signInResult.data.user) {
-            user.id = signInResult.data.user.id
+          if (bridged.userId) {
+            user.id = bridged.userId
           }
         } catch (err) {
           console.error("Google login: Unexpected error during Supabase sync:", err)

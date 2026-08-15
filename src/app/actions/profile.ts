@@ -31,6 +31,12 @@ export async function checkUsernameAvailability(username: string): Promise<{ ava
       return { available: false, error: "Not authenticated" }
     }
 
+    // This is the one profile path that legitimately needs the service role:
+    // the users RLS policy is `auth.uid() = id`, so a session can only ever see
+    // its own row and could never tell whether someone else holds a username.
+    // The query is narrow on purpose — one column, exact-match on the name the
+    // caller already typed — so the only thing it can reveal is the boolean we
+    // are returning anyway.
     const supabase = await createClient()
     const adminClient = createAdminClient()
     const client = adminClient || supabase
@@ -78,16 +84,18 @@ export async function createUserProfile(
     const invalid = validateUsername(username)
     if (invalid) return { success: false, error: invalid }
 
+    // Deliberately the RLS-bound client, not the service role. This writes the
+    // caller's own row and nothing else, so RLS costs nothing here and is the
+    // backstop that keeps a future bug in the id above from writing to someone
+    // else's profile — including the subscription_tier note below.
     const supabase = await createClient()
-    const adminClient = createAdminClient()
-    const client = adminClient || supabase
 
     // Upsert, not insert: onboarding can legitimately be reached twice (skip
     // then return, or a transient profile read that sent the user back here),
     // and a plain insert failed the second time with a duplicate-key error.
     // subscription_tier is deliberately omitted on conflict — it is set once at
     // creation and only the service role may change it thereafter.
-    const { error } = await client
+    const { error } = await supabase
       .from("users")
       .upsert(
         {
@@ -131,14 +139,13 @@ export async function updateUserProfile(
       return { success: false, error: "Not authenticated" }
     }
 
+    // RLS client, for the same reason as createUserProfile above.
     const supabase = await createClient()
-    const adminClient = createAdminClient()
-    const client = adminClient || supabase
 
     const invalid = validateUsername(username)
     if (invalid) return { success: false, error: invalid }
 
-    const { error } = await client
+    const { error } = await supabase
       .from("users")
       .update({
         username: username.trim(),
@@ -146,7 +153,7 @@ export async function updateUserProfile(
       })
       .eq("id", user.userId)
 
-     if (error) {
+    if (error) {
       console.error("Error updating user profile in Supabase:", error)
       return { success: false, error: friendlyProfileError(error) }
     }

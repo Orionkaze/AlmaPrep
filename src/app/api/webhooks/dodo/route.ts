@@ -1,10 +1,30 @@
 import { NextRequest, NextResponse } from "next/server"
-import { grantTier, verifyWebhookSignature } from "@/lib/payments"
+import {
+  claimWebhookEvent,
+  grantTier,
+  isTimestampFresh,
+  subscriptionAccessHasEnded,
+  verifyWebhookSignature,
+} from "@/lib/payments"
+
+/** Events that mean the customer is entitled to Pro right now. */
+const GRANTING_EVENTS = new Set([
+  "payment.succeeded",
+  "subscription.active",
+  "subscription.renewed",
+])
+
+/** Events that end entitlement outright, with no paid period left to honour. */
+const REVOKING_EVENTS = new Set([
+  "subscription.expired",
+  "subscription.on_hold",
+  "subscription.failed",
+])
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.text()
-    
+
     // Extract headers case-insensitively (handled by NextRequest headers list)
     const id = req.headers.get("webhook-id") || req.headers.get("svix-id")
     const timestamp = req.headers.get("webhook-timestamp") || req.headers.get("svix-timestamp")
@@ -26,10 +46,24 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Missing signature headers" }, { status: 400 })
       }
 
+      // Freshness before signature: a valid signature never expires, so the
+      // timestamp is the only thing standing between us and a replayed event.
+      if (!isTimestampFresh(timestamp)) {
+        console.error("[dodo-webhook] Webhook timestamp outside the accepted window")
+        return NextResponse.json({ error: "Stale webhook timestamp" }, { status: 400 })
+      }
+
       const isValid = verifyWebhookSignature(id, timestamp, signature, body, secret)
       if (!isValid) {
         console.error("[dodo-webhook] Invalid webhook signature")
         return NextResponse.json({ error: "Invalid signature" }, { status: 401 })
+      }
+
+      // Only claim an id we have actually authenticated, otherwise anyone
+      // could burn ids and make us drop the real deliveries.
+      const isFirstDelivery = await claimWebhookEvent(id, "dodo")
+      if (!isFirstDelivery) {
+        return NextResponse.json({ received: true, duplicate: true }, { status: 200 })
       }
     }
 
@@ -47,42 +81,43 @@ export async function POST(req: NextRequest) {
 
     const userId = eventData.metadata?.user_id
 
-    switch (eventType) {
-      case "payment.succeeded":
-      case "subscription.active":
-      case "subscription.renewed":
-        if (!userId) {
-          console.error(`[dodo-webhook] No user_id found in metadata for event ${eventType}`)
-          return NextResponse.json({ error: "No user_id in metadata" }, { status: 400 })
-        }
-        const grantResult = await grantTier(userId, "pro", "dodo", `Granted via event: ${eventType}`)
-        if (!grantResult.success) {
-          return NextResponse.json({ error: grantResult.error || "Failed to grant tier" }, { status: 500 })
-        }
-        break
+    const isGranting = GRANTING_EVENTS.has(eventType)
+    const isRevoking = REVOKING_EVENTS.has(eventType)
+    const isCancellation = eventType === "subscription.cancelled"
 
-      case "subscription.cancelled":
-      case "subscription.on_hold":
-      case "subscription.failed":
-        if (!userId) {
-          console.error(`[dodo-webhook] No user_id found in metadata for event ${eventType}`)
-          return NextResponse.json({ error: "No user_id in metadata" }, { status: 400 })
-        }
-        const revokeResult = await grantTier(userId, "free", "dodo", `Revoked via event: ${eventType}`)
-        if (!revokeResult.success) {
-          return NextResponse.json({ error: revokeResult.error || "Failed to revoke tier" }, { status: 500 })
-        }
-        break
+    if (!isGranting && !isRevoking && !isCancellation) {
+      console.log(`[dodo-webhook] Unhandled event type: ${eventType}. Ignoring.`)
+      return NextResponse.json({ received: true }, { status: 200 })
+    }
 
-      default:
-        console.log(`[dodo-webhook] Unhandled event type: ${eventType}. Ignoring.`)
+    if (!userId) {
+      console.error(`[dodo-webhook] No user_id found in metadata for event ${eventType}`)
+      return NextResponse.json({ error: "No user_id in metadata" }, { status: 400 })
+    }
+
+    if (isCancellation && !subscriptionAccessHasEnded(eventData)) {
+      // They cancelled but have paid through the end of the current period.
+      // Leave Pro in place; the expiry event is what takes it away.
+      console.log(`[dodo-webhook] Cancellation received; access runs to end of period. No change.`)
+      return NextResponse.json({ received: true, deferred: true }, { status: 200 })
+    }
+
+    const toTier = isGranting ? "pro" : "free"
+    const verb = isGranting ? "Granted" : "Revoked"
+    const result = await grantTier(userId, toTier, "dodo", `${verb} via event: ${eventType}`)
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: result.error || `Failed to ${isGranting ? "grant" : "revoke"} tier` },
+        { status: 500 }
+      )
     }
 
     return NextResponse.json({ received: true }, { status: 200 })
-  } catch (error: any) {
+  } catch (error) {
     console.error("[dodo-webhook] Error processing webhook:", error)
     return NextResponse.json(
-      { error: error?.message || "Internal Server Error" },
+      { error: error instanceof Error ? error.message : "Internal Server Error" },
       { status: 500 }
     )
   }

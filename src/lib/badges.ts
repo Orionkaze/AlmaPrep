@@ -4,6 +4,39 @@ import type {
   UserRow,
 } from "@/types/db";
 
+/** Just the part of a PostgREST error this file branches on. */
+type PostgrestErrorLike = { code?: string; message?: string };
+
+/**
+ * The badge rules read a handful of JSON columns that have no generated types.
+ * These describe only the fields actually inspected below — narrow on purpose,
+ * so a rule that starts reading a new field has to say so here first.
+ */
+type InterviewFeedbackSummary = { score?: number };
+
+type PhysicalMetricSample = {
+  bodyLanguageScore?: number;
+  posture_score?: number;
+};
+
+type SpeakingAnalysis = {
+  sessionSummary?: { metrics?: { totalFillerCount?: number } };
+};
+
+type BehavioralAnalysisRow = {
+  session_id: string;
+  physical_metrics?: PhysicalMetricSample[] | null;
+  speaking_analysis?: SpeakingAnalysis | null;
+};
+
+type InterviewWithBadgeInputs = {
+  id: string;
+  category?: string | null;
+  is_flagged?: boolean | null;
+  feedback?: InterviewFeedbackSummary[] | null;
+  proctoring_log?: { totalCount?: number } | null;
+};
+
 /**
  * Badge evaluation engine.
  *
@@ -21,14 +54,14 @@ export async function checkAndAwardBadges(userId: string) {
       .from("users")
       .select("id, username, avatar_url, resume_text, current_streak, created_at")
       .eq("id", userId)
-      .single() as unknown as { data: UserRow | null; error?: any };
+      .single() as unknown as { data: UserRow | null; error?: PostgrestErrorLike };
 
     if (userRes.error && userRes.error.code === '42703') {
       userRes = await supabase
         .from("users")
         .select("id, username, avatar_url, resume_text, created_at")
         .eq("id", userId)
-        .single() as unknown as { data: UserRow | null; error?: any };
+        .single() as unknown as { data: UserRow | null; error?: PostgrestErrorLike };
     }
 
     const user = userRes.data;
@@ -106,10 +139,10 @@ export async function checkAndAwardBadges(userId: string) {
     let maxConsecutiveHighScores = 0;
     
     // Reverse for chronological checks if needed, but we ordered DESC, so reverse to ASC
-    const ascInterviews = [...(interviews || [])].reverse();
-    
+    const ascInterviews = [...(interviews || [])].reverse() as unknown as InterviewWithBadgeInputs[];
+
     ascInterviews.forEach(interview => {
-      const fb = (interview as any).feedback?.[0];
+      const fb = interview.feedback?.[0];
       if (!fb) {
         consecutiveHighScores = 0;
         return;
@@ -117,8 +150,9 @@ export async function checkAndAwardBadges(userId: string) {
       
       if (interview.category) domains.add(interview.category);
       
-      if (fb.score >= 100) totalPerfectScores++;
-      if (fb.score >= 80) {
+      const score = fb.score ?? 0;
+      if (score >= 100) totalPerfectScores++;
+      if (score >= 80) {
         consecutiveHighScores++;
         if (consecutiveHighScores > maxConsecutiveHighScores) maxConsecutiveHighScores = consecutiveHighScores;
       } else {
@@ -126,28 +160,26 @@ export async function checkAndAwardBadges(userId: string) {
       }
       
       // Match behavioral analysis for this interview session
-      const behavior = (behavioralAnalysis || []).find(b => b.session_id === interview.id);
+      const behavior = ((behavioralAnalysis || []) as unknown as BehavioralAnalysisRow[])
+        .find(b => b.session_id === interview.id);
       if (behavior) {
         // Parse eye contact / posture from physical_metrics
-        const physical = (behavior as any).physical_metrics || [];
+        const physical = behavior.physical_metrics || [];
         if (Array.isArray(physical) && physical.length > 0) {
-          const avgBodyLanguage = physical.reduce((acc: number, item: any) => {
-            const score = item.bodyLanguageScore ?? item.posture_score ?? 0;
-            return acc + score;
+          const avgBodyLanguage = physical.reduce((acc: number, item: PhysicalMetricSample) => {
+            return acc + (item.bodyLanguageScore ?? item.posture_score ?? 0);
           }, 0) / physical.length;
           if (avgBodyLanguage >= 90) highBodyLanguageInterviews++;
         }
-        
+
         // Parse filler words from speaking_analysis
-        const speaking = (behavior as any).speaking_analysis || {};
-        const totalFiller = speaking.sessionSummary?.metrics?.totalFillerCount;
+        const totalFiller = behavior.speaking_analysis?.sessionSummary?.metrics?.totalFillerCount;
         if (totalFiller === 0) zeroFillerWordInterviews++;
         if (totalFiller !== undefined && totalFiller < 3) lowFillerWordInterviews++;
       }
-      
+
       // Parse violations from proctoring_log
-      const proctoring = (interview as any).proctoring_log || {};
-      const violationsCount = proctoring.totalCount ?? 0;
+      const violationsCount = interview.proctoring_log?.totalCount ?? 0;
       if (violationsCount === 0 && !interview.is_flagged) zeroViolationInterviews++;
     });
 

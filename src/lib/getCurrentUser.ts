@@ -3,7 +3,6 @@ import { cookies } from "next/headers"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
-import { createAdminClient } from "@/lib/supabase/admin"
 import { verifyJWT } from "@/lib/jwt"
 import { getAuthSecret, isMockAuthEnabled } from "@/lib/env"
 import { rethrowIfNextControlFlow } from "@/lib/nextControlFlow"
@@ -108,26 +107,17 @@ export const getCurrentUser = cache(async function getCurrentUser(): Promise<{
 
     // NextAuth fallback (Google users bridged into Supabase).
     const session = await getServerSession(authOptions)
-    let userId = (session?.user as { id?: string } | undefined)?.id ?? null
+    const userId = (session?.user as { id?: string } | undefined)?.id ?? null
     const email = session?.user?.email ?? null
 
+    // No email→UUID lookup here. Both NextAuth providers already put the
+    // Supabase Auth UUID on the token: the Google path assigns
+    // `user.id = <supabase user id>` in the signIn callback, and the
+    // credentials path returns `data.user.id` straight from Supabase. The
+    // lookup that used to sit here paged the entire auth user list on request
+    // paths to re-derive an id we were already holding, and silently stopped
+    // finding anyone past the first 1000 accounts.
     if (userId && email) {
-      // Ensure we use the Supabase Auth UUID instead of any internal NextAuth ID
-      const admin = createAdminClient()
-      if (admin) {
-        try {
-          const { data } = await admin.auth.admin.listUsers({ perPage: 1000 })
-          if (data?.users) {
-            const matched = data.users.find(u => u.email?.toLowerCase() === email.toLowerCase())
-            if (matched) {
-              userId = matched.id
-            }
-          }
-        } catch (e) {
-          console.error("[getCurrentUser] Admin lookup of email failed:", e)
-        }
-      }
-
       return {
         userId,
         email,
